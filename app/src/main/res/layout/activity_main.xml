@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<android.support.v7.widget.Toolbar
+			android:id="@+id/toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="?colorPrimary"
+			android:minHeight="?attr/actionBarSize"
+			app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+			app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+		<FrameLayout
+			android:id="@+id/pref_container"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="horizontal"
+		android:layout_gravity="bottom|left"
+		android:layout_marginLeft="3dp"
+		android:id="@+id/activitymainLinearLayout_ShowPreviw">
+
+		<LinearLayout
+			android:layout_height="45dp"
+			android:layout_width="wrap_content"
+			android:orientation="horizontal"
+			android:gravity="center|center_vertical|center_horizontal"
+			android:background="@color/colorPrimaryDarkDarkTheme"
+			android:layout_gravity="center_vertical">
+
+			<RelativeLayout
+				android:layout_height="match_parent"
+				android:layout_width="45dp"
+				android:background="@color/colorPrimaryDarkTheme"
+				android:layout_marginTop="1dp"
+				android:layout_gravity="center|center_vertical"
+				android:layout_marginLeft="2dp">
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:alpha="0.888888888888"
+					android:layout_marginLeft="6dp"
+					android:layout_marginRight="6dp"
+					android:id="@+id/listitemhandleleftTextView1"
+					android:layout_centerInParent="true"/>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="9dp"
+					android:layout_marginLeft="9dp"
+					android:alpha="0.66666666666"
+					android:id="@+id/listitemhandleleftTextView2"
+					android:layout_above="@id/listitemhandleleftTextView1"
+					android:layout_marginBottom="5dp"/>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="15dp"
+					android:layout_marginLeft="15dp"
+					android:alpha="0.33333333333"
+					android:layout_above="@id/listitemhandleleftTextView2"
+					android:layout_marginBottom="5dp"/>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="9dp"
+					android:layout_marginLeft="9dp"
+					android:alpha="0.66666666666"
+					android:layout_below="@id/listitemhandleleftTextView1"
+					android:layout_marginTop="5dp"
+					android:id="@+id/listitemhandleleftTextView3"/>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="15dp"
+					android:layout_marginLeft="15dp"
+					android:alpha="0.33333333333"
+					android:layout_below="@id/listitemhandleleftTextView3"
+					android:layout_marginTop="5dp"/>
+
+			</RelativeLayout>
+
+			<TextView
+				android:background="?android:attr/selectableItemBackground"
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:text="@string/PreviewPowerMenu"
+				android:gravity="center|center_vertical|center_horizontal"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:paddingLeft="5dp"
+				android:paddingRight="5dp"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</FrameLayout>
+

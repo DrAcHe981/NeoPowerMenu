@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:orientation="vertical"
+	android:background="@color/window_background_dark">
+
+	<ScrollView
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<View
+				android:layout_height="0dp"
+				android:layout_width="wrap_content"
+				android:background="@color/transparent"/>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:orientation="vertical"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="10dp">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="@string/category_Preset"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:gravity="center|center_vertical|center_horizontal"
+					android:paddingLeft="10dp"
+					android:paddingRight="10dp"/>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.5"
+					android:minWidth="200dp"/>
+
+			</LinearLayout>
+
+				<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_PresetLoad">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:minHeight="60dp"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preset_Load"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:textColor="#FFFFFF"
+						android:id="@+id/activitycolorpreferencesTextView_PresetLoadTitle"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preset_LoadDesc"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_PresetLoadDesc"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+				<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_PresetSave">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:minHeight="60dp"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preset_Save"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:textColor="#FFFFFF"
+						android:id="@+id/activitycolorpreferencesTextView_PresetSaveTitle"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preset_SaveDesc"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_PresetSaveDesc"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:orientation="vertical"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="10dp">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="@string/category_Reveal"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:gravity="center|center_vertical|center_horizontal"
+					android:paddingLeft="10dp"
+					android:paddingRight="10dp"/>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.5"
+					android:minWidth="200dp"/>
+
+			</LinearLayout>
+
+				<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_RevealBackgroundColor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#8800bcd4"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_RevealBackgroundColorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/reveal_color"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_RevealBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/reveal_colorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_RevealBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+				<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_ActionRevealBackgroundColor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#880097A7"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_ActionRevealBackgroundColorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/Actionreveal_color"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_ActionRevealBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/Actionreveal_colorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_ActionRevealBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:orientation="vertical"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="10dp">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="@string/category_Backgrounds"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:gravity="center|center_vertical|center_horizontal"
+					android:paddingLeft="10dp"
+					android:paddingRight="10dp"/>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.5"
+					android:minWidth="200dp"/>
+
+			</LinearLayout>
+
+				<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogBackgroundcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#F5F5F5"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogBackgroundcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/Dialog_Backgroundcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/Dialog_BackgroundcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogShutdownBackgroundcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#ffd32f2f"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogShutdownBackgroundcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogShutdown_Backgroundcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogShutdownBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogShutdown_BackgroundcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogShutdownBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogRebootBackgroundcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#ff3f51b5"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogRebootBackgroundcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogReboot_Backgroundcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogRebootBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogReboot_BackgroundcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogRebootBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogSoftRebootBackgroundcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#ffe91e63"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogSoftRebootBackgroundcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogSoftReboot_Backgroundcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogSoftRebootBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogSoftReboot_BackgroundcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogSoftRebootBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogRecoveryBackgroundcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#ff8bc34a"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogRecoveryBackgroundcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogRecovery_Backgroundcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogRecoveryBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogRecovery_BackgroundcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogRecoveryBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogBootloaderBackgroundcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#ff277b71"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogBootloaderBackgroundcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogBootloader_Backgroundcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogBootloaderBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogBootloader_BackgroundcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogBotloaderBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogSafeModeBackgroundcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#ff009688"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogSafeModeBackgroundcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogSafeMode_Backgroundcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogSafeModeBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogSafeMode_BackgroundcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogSafeModeBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:orientation="vertical"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="10dp">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="@string/category_Texts"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:gravity="center|center_vertical|center_horizontal"
+					android:paddingLeft="10dp"
+					android:paddingRight="10dp"/>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.5"
+					android:minWidth="200dp"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogTextcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#000000"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogTextcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/Dialog_Textcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogTextColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/Dialog_TextcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogTextColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogShutdownTextcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#FFFFFF"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogShutdownTextcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogShutdown_Textcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogShutdownTextColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogShutdown_TextcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogShutdownTextColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogRebootTextcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#FFFFFF"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogRebootTextcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogReboot_Textcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogRebootTextColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogReboot_TextcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogRebootTextColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogSoftRebootTextcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#FFFFFF"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogSoftRebootTextcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogSoftReboot_Textcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogSoftRebootTextColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogSoftReboot_TextcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogSoftRebootTextColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogRecoveryTextcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#FFFFFF"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogRecoveryTextcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogRecovery_Textcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogRecoveryTextColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogRecovery_TextcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogRecoveryTextColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogBootloaderTextcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#FFFFFF"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogBootloaderTextcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogBootloader_Textcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogBootloaderTextColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogBootloader_TextcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogBotloaderTextColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true" 
+						android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogSafeModeTextcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#FFFFFF"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogSafeModeTextcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogSafeMode_Textcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogSafeModeTextColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogSafeMode_TextcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogSafeModeTextColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="75dp"
+				android:layout_width="match_parent"
+				android:orientation="vertical"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>
+

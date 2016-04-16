@@ -1,0 +1,40 @@
+apply plugin: 'java'
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "de.NeonSoft.neopowermenu"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 11
+        versionName "1.4-pre8"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug-aide {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+		
+dependencies {
+	compile 'com.android.support:support-v4:+'
+	compile 'com.larswerkman:HoloColorPicker:1.5'
+    compile files('lib/XposedBridgeApi-20150213.jar')
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'eu.chainfire:libsuperuser:1.0.0.+'
+    compile 'com.android.support:design:23.1.0'
+    compile fileTree(dir: 'deps', include: ['*.jar'])
+}
