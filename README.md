@@ -1,10 +1,13 @@
 # NeoPowerMenu
 Create Your own Power menu!
+
 ~ Sorry when my English is not the Best...
 
 Some Days ago i saw a Nice looking Xposed Module with some great Animations and so on but it was not working anymore,
 so i decided to take it and make it my own.
+
 After some Days of working on it and sharing with my friends i thought: Okay they mean its Great so why dont share it?
+
 So Now here is the source for ya all!
 
 You can download the app from [Xposed Repository](https://repo.xposed.info/module/de.NeonSoft.neopowermenu)
@@ -13,6 +16,7 @@ You can download the app from [Xposed Repository](https://repo.xposed.info/modul
 
  Original Source by Naman Dwivedi (naman14)
  https://github.com/naman14/MateriaPowerMenu/.
+ 
  Concept by Igor Da Silva
  https://dribbble.com/shots/1939117-Advanced-Power-Menu-Concept-Android-Lollipop﻿
 
