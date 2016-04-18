@@ -12,6 +12,13 @@ So Now here is the source for ya all!
 
 You can download the app from [Xposed Repository](https://repo.xposed.info/module/de.NeonSoft.neopowermenu)
 
+But what is NeoPowerMenu?
+
+Well with NeoPowerMenu you can customize your devices Power Menu as you like,
+Change the colors change what is displayed and change the order!
+
+For support or to share ideas look here [XDA-Developers](http://forum.xda-developers.com/xposed/modules/mod-neopowermenu-t3324581)
+
 ![alt tag](https://raw.githubusercontent.com/DrAcHe981/NeoPowerMenu/master/demo.gif)
 
  Original Source by Naman Dwivedi (naman14)
