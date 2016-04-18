@@ -6,11 +6,13 @@ import android.graphics.*;
 import android.os.*;
 import android.util.*;
 import android.view.*;
+import android.view.WindowManager.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import eu.chainfire.libsuperuser.*;
 import java.util.*;
+import android.view.View.*;
 
 /**
  * Created by naman on 20/03/15.
@@ -35,8 +37,8 @@ public class XposedDialog extends DialogFragment {
 		
 		LinearLayout ListContainer;
 		
-    LinearLayout power, reboot, soft_reboot, screenshot, recovery, bootloader, safemode;
-		TextView powerText, rebootText, soft_rebootText, soft_rebootDescText, screenshotText, recoveryText, bootloaderText, safemodeText;
+    LinearLayout recovery, bootloader, safemode;
+		TextView recoveryText, bootloaderText, safemodeText;
     FrameLayout frame, frame2;
 		View seperator1;
     private CircularRevealView revealView;
@@ -66,8 +68,6 @@ public class XposedDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-				//getDialog().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);;
-				
 				//doubleToConfirm = XposedMainActivity.preferences.getBoolean("DoubleTouchToConfirm",true);
 
         View view = inflater.inflate(R.layout.fragment_power, container, false);
@@ -79,17 +79,7 @@ public class XposedDialog extends DialogFragment {
         revealView = (CircularRevealView) view.findViewById(R.id.reveal);
 				backgroundColor = Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Backgroundcolor","#ffffff"));
 				ListContainer = (LinearLayout) view.findViewById(R.id.ListContainer);
-        power = (LinearLayout) view.findViewById(R.id.power);
-				powerText = (TextView) view.findViewById(R.id.powerText);
-        reboot = (LinearLayout) view.findViewById(R.id.reboot);
-				rebootText = (TextView) view.findViewById(R.id.rebootText);
-        soft_reboot = (LinearLayout) view.findViewById(R.id.soft_reboot);
-				soft_rebootText = (TextView) view.findViewById(R.id.soft_rebootText);
-				soft_rebootDescText = (TextView) view.findViewById(R.id.soft_rebootDescText);
-        screenshot = (LinearLayout) view.findViewById(R.id.screenshot);
-				screenshotText = (TextView) view.findViewById(R.id.screenshotText);
-				//screenshot.setVisibility(View.GONE);
-				seperator1 = view.findViewById(R.id.seperator1);
+        seperator1 = view.findViewById(R.id.seperator1);
         recovery = (LinearLayout) view.findViewById(R.id.recovery);
 				recoveryText = (TextView) view.findViewById(R.id.recoveryText);
         bootloader = (LinearLayout) view.findViewById(R.id.bootloader);
@@ -106,21 +96,10 @@ public class XposedDialog extends DialogFragment {
 
         progress = (ProgressBar) view.findViewById(R.id.progress);
 
-				powerText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
-				rebootText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
-				soft_rebootText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
-				soft_rebootDescText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
-				screenshotText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
 				seperator1.setBackgroundColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
 				recoveryText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
 				bootloaderText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
 				safemodeText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
-
-				power.setVisibility(View.GONE);
-				reboot.setVisibility(View.GONE);
-				soft_reboot.setVisibility(View.GONE);
-				screenshot.setVisibility(View.GONE);
-				
 				
         progress.getIndeterminateDrawable().setColorFilter(
                 Color.parseColor("#ffffff"),
@@ -129,16 +108,6 @@ public class XposedDialog extends DialogFragment {
         powerOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-								if (doubleToConfirm && singleTouch != v) {
-										power.setAlpha((float) 1);
-										reboot.setAlpha((float) .5);
-										soft_reboot.setAlpha((float) .5);
-										screenshot.setAlpha((float) .5);
-										recovery.setAlpha((float) .5);
-										bootloader.setAlpha((float) .5);
-										safemode.setAlpha((float) .5);
-										singleTouch = v;
-								} else {
 								canDismiss = false;
 								
                 final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Backgroundcolor","#d32f2f"));
@@ -165,25 +134,15 @@ public class XposedDialog extends DialogFragment {
 								status_detail.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Textcolor","#ffffff")));
 
 								if(!XposedMainActivity.previewMode) {
+										getDialog().setCanceledOnTouchOutside(false);
 										getDialog().setCancelable(false);
                 new BackgroundThread(SHUTDOWN).start();
 								}
-}
             }
         };
         rebootOnClickListener = new View.OnClickListener() {
 								@Override
 								public void onClick(View v) {
-										if (doubleToConfirm && singleTouch != v) {
-												power.setAlpha((float) .5);
-												reboot.setAlpha((float) 1);
-												soft_reboot.setAlpha((float) .5);
-												screenshot.setAlpha((float) .5);
-												recovery.setAlpha((float) .5);
-												bootloader.setAlpha((float) .5);
-												safemode.setAlpha((float) .5);
-												singleTouch = v;
-										} else {
 												canDismiss = false;
 
 												final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Backgroundcolor","#3f51b5"));
@@ -209,26 +168,16 @@ public class XposedDialog extends DialogFragment {
 												status.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Textcolor","#ffffff")));
 												status_detail.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Textcolor","#ffffff")));
 
-												if(!XposedMainActivity.previewMode) {
+										if(!XposedMainActivity.previewMode) {
+												getDialog().setCanceledOnTouchOutside(false);
 														getDialog().setCancelable(false);
 														new BackgroundThread(REBOOT_CMD).start();
 												}
 										}
-								}
 						};
         soft_rebootOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-								if (doubleToConfirm && singleTouch != v) {
-										power.setAlpha((float) .5);
-										reboot.setAlpha((float) .5);
-										soft_reboot.setAlpha((float) 1);
-										screenshot.setAlpha((float) .5);
-										recovery.setAlpha((float) .5);
-										bootloader.setAlpha((float) .5);
-										safemode.setAlpha((float) .5);
-										singleTouch = v;
-								} else {
 								canDismiss = false;
 								
                 final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogSoftReboot_Backgroundcolor","#e91e63"));
@@ -255,10 +204,10 @@ public class XposedDialog extends DialogFragment {
 								status_detail.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogSoftReboot_Textcolor","#ffffff")));
 
 								if(!XposedMainActivity.previewMode) {
+										getDialog().setCanceledOnTouchOutside(false);
 										getDialog().setCancelable(false);
                 new BackgroundThread(REBOOT_SOFT_REBOOT_CMD).start();
 								}
-}
             }
         };
 				
@@ -279,16 +228,6 @@ public class XposedDialog extends DialogFragment {
         recovery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-								if (doubleToConfirm && singleTouch != v) {
-										power.setAlpha((float) .5);
-										reboot.setAlpha((float) .5);
-										soft_reboot.setAlpha((float) .5);
-										screenshot.setAlpha((float) .5);
-										recovery.setAlpha((float) 1);
-										bootloader.setAlpha((float) .5);
-										safemode.setAlpha((float) .5);
-										singleTouch = v;
-								} else {
 								canDismiss = false;
 								
                 final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogRecovery_Backgroundcolor","#8bc34a"));
@@ -315,25 +254,15 @@ public class XposedDialog extends DialogFragment {
 								status_detail.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogRecovery_Textcolor","#ffffff")));
 
 								if(!XposedMainActivity.previewMode) {
+										getDialog().setCanceledOnTouchOutside(false);
 										getDialog().setCancelable(false);
                 new BackgroundThread(REBOOT_RECOVERY_CMD).start();
 								}
-}
             }
         });
         bootloader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-								if (doubleToConfirm && singleTouch != v) {
-										power.setAlpha((float) .5);
-										reboot.setAlpha((float) .5);
-										soft_reboot.setAlpha((float) .5);
-										screenshot.setAlpha((float) .5);
-										recovery.setAlpha((float) .5);
-										bootloader.setAlpha((float) 1);
-										safemode.setAlpha((float) .5);
-										singleTouch = v;
-								} else {
 								canDismiss = false;
 								
                 final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogBootloader_Backgroundcolor","#277b71"));
@@ -360,25 +289,15 @@ public class XposedDialog extends DialogFragment {
 								status_detail.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogBootloader_Textcolor","#ffffff")));
 
 								if(!XposedMainActivity.previewMode) {
+										getDialog().setCanceledOnTouchOutside(false);
 										getDialog().setCancelable(false);
                 new BackgroundThread(REBOOT_BOOTLOADER_CMD).start();
 								}
-}
             }
         });
         safemode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-								if (doubleToConfirm && singleTouch != v) {
-										power.setAlpha((float) .5);
-										reboot.setAlpha((float) .5);
-										soft_reboot.setAlpha((float) .5);
-										screenshot.setAlpha((float) .5);
-										recovery.setAlpha((float) .5);
-										bootloader.setAlpha((float) .5);
-										safemode.setAlpha((float) 1);
-										singleTouch = v;
-								} else {
 								canDismiss = false;
 								
                 final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogSafeMode_Backgroundcolor","#009688"));
@@ -405,14 +324,14 @@ public class XposedDialog extends DialogFragment {
 								status_detail.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogSafeMode_Textcolor","#ffffff")));
 
 								if(!XposedMainActivity.previewMode) {
+										getDialog().setCanceledOnTouchOutside(false);
 										getDialog().setCancelable(false);
                 new BackgroundThread(REBOOT_SAFE_MODE).start();
 								}
-}
             }
         });
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-
+				
 				for (int position = 0;position < 4;position++) {
 						View InflatedItem = inflater.inflate(R.layout.powermenu_listitem,null);
 						LinearLayout root = (LinearLayout) InflatedItem.findViewById(R.id.powermenuitemRoot);
@@ -554,13 +473,17 @@ public class XposedDialog extends DialogFragment {
         		}
 				}
     }
-
+		
 		@Override
 		public void onCancel(DialogInterface dialog)
 		{
 				// TODO: Implement this method
-				if(canDismiss) {
+				if(canDismiss || XposedMainActivity.previewMode) {
 						super.onCancel(dialog);
+						final Activity activity = getActivity();
+        		if (activity != null && activity instanceof DialogInterface.OnDismissListener) {
+           			((DialogInterface.OnDismissListener) activity).onDismiss(dialog);
+        		}
 				}
 		}
 

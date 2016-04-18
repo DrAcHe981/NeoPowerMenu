@@ -4,6 +4,7 @@ import android.app.*;
 import android.content.*;
 import android.content.res.*;
 import android.graphics.*;
+import android.graphics.drawable.*;
 import android.os.*;
 import android.preference.*;
 import android.view.*;
@@ -20,7 +21,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     private CircularRevealView revealView;
 		private TextView PreviewLabel;
     private int backgroundColor;
-		private boolean mKeyguardShowing = false;
+		public static boolean mKeyguardShowing = false;
 		public static boolean previewMode = false;
     android.os.Handler handler;
     int maxX, maxY;
@@ -32,19 +33,21 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				preferences = PreferenceManager.getDefaultSharedPreferences(this);
 				
         setTheme(R.style.TransparentApp);
-				getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-				getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-				getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-				getWindow().addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+				getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+				getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+				getWindow().setFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED,WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+				getWindow().setFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 				
         getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
 				previewMode = getIntent().getBooleanExtra("previewmode",false);
-				mKeyguardShowing = getIntent().getBooleanExtra("mKeyguardShowing",false);
+				//mKeyguardShowing = getIntent().getBooleanExtra("mKeyguardShowing",false);
+				KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+				mKeyguardShowing = km.isKeyguardLocked();
         if (mKeyguardShowing) {
-						//XposedBridge.log("[NeoPowerMenu] Showing in Keyguard");
+						//Log.d("NeoPowerMenu","Showing in Keyguard");
             getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         } else {
-						//XposedBridge.log("[NeoPowerMenu] Showing Normal");
+						//Log.d("NeoPowerMenu","Showing Normal");
             getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
         }
         super.onCreate(savedInstanceState);
@@ -89,11 +92,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     private void showPowerDialog() {
         FragmentManager fm = getFragmentManager();
         XposedDialog powerDialog = new XposedDialog();
-        if (preferences.getString("pref_Style", "material").equals("material")) {
-        		powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseDark);
-				} else {
-        		powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
-				}
+        powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
         powerDialog.show(fm, "fragment_power");
 
     }
@@ -120,7 +119,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     @Override
     public void onDismiss(final DialogInterface dialog) {
-				
         final Point p = new Point(maxX / 2, maxY / 2);
 
         handler = new Handler();
@@ -138,16 +136,13 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                 overridePendingTransition(0, 0);
             }
         }, 500);
-
     }
 
 		@Override
 		public void onBackPressed()
 		{
 				// TODO: Implement this method
-				if(previewMode) {
-						super.onBackPressed();
-				} else if(XposedDialog.canDismiss) {
+				if(XposedDialog.canDismiss || previewMode) {
 						super.onBackPressed();
 				}
 		}

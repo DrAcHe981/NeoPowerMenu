@@ -8,7 +8,7 @@
 	<de.NeonSoft.neopowermenu.helpers.CircularRevealView
 		android:id="@+id/reveal"
 		android:layout_width="match_parent"
-		android:layout_height="180dp"
+		android:layout_height="150dp"
 		android:layout_gravity="center"/>
 
 	<FrameLayout
@@ -35,7 +35,8 @@
 				android:background="?android:attr/selectableItemBackground"
 				android:clickable="true"
 				android:layoutAnimation="@anim/layout_controller_push_up_in"
-				android:orientation="horizontal">
+				android:orientation="horizontal"
+				android:visibility="gone">
 
 				<ImageView
 					android:id="@+id/ipower"
@@ -62,7 +63,8 @@
 				android:background="?android:attr/selectableItemBackground"
 				android:clickable="true"
 				android:layoutAnimation="@anim/layout_controller_push_up_in"
-				android:orientation="horizontal">
+				android:orientation="horizontal"
+				android:visibility="gone">
 
 				<ImageView
 					android:id="@+id/ireboot"
@@ -89,7 +91,8 @@
 				android:background="?android:attr/selectableItemBackground"
 				android:clickable="true"
 				android:layoutAnimation="@anim/layout_controller_push_up_in"
-				android:orientation="horizontal">
+				android:orientation="horizontal"
+				android:visibility="gone">
 
 				<ImageView
 					android:id="@+id/isoftreboot"
@@ -143,7 +146,8 @@
 				android:background="?android:attr/selectableItemBackground"
 				android:clickable="true"
 				android:layoutAnimation="@anim/layout_controller_push_up_in"
-				android:orientation="horizontal">
+				android:orientation="horizontal"
+				android:visibility="gone">
 
 				<ImageView
 					android:id="@+id/iscreenshot"

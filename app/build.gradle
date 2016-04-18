@@ -7,10 +7,10 @@ android {
 
     defaultConfig {
         applicationId "de.NeonSoft.neopowermenu"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 23
-        versionCode 11
-        versionName "1.4-pre8"
+        versionCode 12
+        versionName "1.4-pre9"
     }
 
     buildTypes {

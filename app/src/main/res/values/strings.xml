@@ -5,6 +5,8 @@
 		
     <string name="action_settings">Settings</string>
 
+		<string name="ShareMessage">Check out this beautiful app to customize your Power Menu from your rooted android device!\n\n</string>
+		
 		<string name="TranslatorWebsite">http://www.Neon-Soft.de</string>
 
 		<string name="PreviewPowerMenu">Preview</string>
@@ -39,6 +41,9 @@
 		<string name="preferencesDesc_Theme">Change the look and feel.</string>
 		<string name="preferencesTitle_VisibilityOrder">Visibility and Order</string>
 		<string name="preferencesDesc_VisibilityOrder">Select the Items you want to show and order them as you wish.</string>
+		<string name="preferencesCategory_Other">Other</string>
+		<string name="preferencesTitle_HideLauncherIcon">Hide App in launcher</string>
+		<string name="preferencesDesc_HideLauncherIcon">Hides the App icon in the launcher, it can take up to a reboot to hide the icon.\nThis Settings are then only accessible over the Xposed Installer.</string>
 		<string name="preferencesCategory_About">About</string>
 		<string name="preferencesTitle_Source">Source</string>
 		<string name="preferencesDesc_Source">The Original Material Power Menu is open source.\nCheckout the source on Github.</string>

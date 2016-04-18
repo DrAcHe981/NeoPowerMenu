@@ -1,6 +1,7 @@
 package de.NeonSoft.neopowermenu.Preferences;
 import android.app.*;
 import android.content.*;
+import android.content.pm.*;
 import android.net.*;
 import android.os.*;
 import android.view.*;
@@ -16,6 +17,8 @@ public class PreferencesPartFragment extends Fragment
 
 		private String ActiveStyle = "Material";
 		private int ActiveStyleId = 0;
+		
+		private boolean hideicon = false;
 
 		private View InflatedView;
 
@@ -34,6 +37,8 @@ public class PreferencesPartFragment extends Fragment
 		private static TextView TextView_VisibilityOrderTitle;
 		private static TextView TextView_VisibilityOrderDesc;
 
+		private static LinearLayout LinearLayout_HideLauncherIcon;
+		
 		private static LinearLayout LinearLayout_Source;
 		private static TextView TextView_SourceTitle;
 		private static TextView TextView_SourceDesc;
@@ -45,6 +50,7 @@ public class PreferencesPartFragment extends Fragment
 		private static LinearLayout LinearLayout_Translator;
 
 		private static LinearLayout LinearLayout_About;
+		private static Switch Switch_HideLauncherIcon;
 
 		private static AlertDialog.Builder adb;
 		private static AlertDialog ad;
@@ -56,7 +62,8 @@ public class PreferencesPartFragment extends Fragment
 				MainActivity.visibleFragment = "Main";
 
 				ActiveStyle = MainActivity.preferences.getString("DialogTheme", "Material");
-
+				hideicon = MainActivity.preferences.getBoolean("HideLauncherIcon",false);
+				
 				InflatedView = inflater.inflate(R.layout.activity_preferences, container, false);
 
 				TextView_ModuleStateTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ModuleStateTitle);
@@ -71,8 +78,14 @@ public class PreferencesPartFragment extends Fragment
 
 				LinearLayout_VisibilityOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_VisibilityOrder);
 
+				LinearLayout_HideLauncherIcon = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_HideLauncherIcon);
+				Switch_HideLauncherIcon = (Switch) InflatedView.findViewById(R.id.activitypreferencesSwitch_HideLauncherIcon);
+				Switch_HideLauncherIcon.setChecked(hideicon);
+				Switch_HideLauncherIcon.setClickable(false);
+				Switch_HideLauncherIcon.setFocusable(false);
+				
 				LinearLayout_Source = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Source);
-
+				
 				LinearLayout_Share = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Share);
 
 				LinearLayout_Translator = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Translator);
@@ -150,6 +163,31 @@ public class PreferencesPartFragment extends Fragment
 								}
 						});
 
+				LinearLayout_HideLauncherIcon.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										if (hideicon)
+										{
+												hideicon = false;
+												String packageName = getActivity().getPackageName();
+												ComponentName componentSettings = new ComponentName(packageName, packageName + ".SettingsActivity");
+												getActivity().getPackageManager().setComponentEnabledSetting(componentSettings, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+										}
+										else
+										{
+												hideicon = true;
+												String packageName = getActivity().getPackageName();
+												ComponentName componentSettings = new ComponentName(packageName, packageName + ".SettingsActivity");
+												getActivity().getPackageManager().setComponentEnabledSetting(componentSettings, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+										}
+										Switch_HideLauncherIcon.setChecked(hideicon);
+										MainActivity.preferences.edit().putBoolean("HideLauncherIcon",hideicon).commit();
+								}
+						});
+						
 				LinearLayout_Source.setOnClickListener(new OnClickListener() {
 
 								@Override
@@ -170,8 +208,8 @@ public class PreferencesPartFragment extends Fragment
 										// TODO: Implement this method
 										Intent i = new Intent(Intent.ACTION_SEND);
 										i.setType("text/plain");
-										i.putExtra(Intent.EXTRA_SUBJECT, "NeoPowerMenu");
-										String sAux = "\nCheck out this beautiful app to add rebooting functionality to your rooted android device\n\n";
+										i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+										String sAux = getString(R.string.ShareMessage);
 										sAux = sAux + "repo.xposed.info/module/de.NeonSoft.neopowermenu \n\n";
 										i.putExtra(Intent.EXTRA_TEXT, sAux);
 										startActivity(Intent.createChooser(i, getString(R.string.preferencesTitle_Share)));
@@ -202,11 +240,14 @@ public class PreferencesPartFragment extends Fragment
 										adb.setMessage("NeoPowerMenu by Neon-Soft / DrAcHe981\n" + 
 																	 "based on a Source from Naman Dwivedi (naman14)\n\n" +
 																	 "< Used Librarys >\n" +
+																	 "> HoloColorPicker from Lars Werkman\n" +
+																	 "An Android Holo themed colorpicker designed by Marie Schweiz\n\n" +
+																	 "Licensed under the Apache License, Version 2.0\n\n" +
 																	 "> DragSortListView from Bauerca\n" +
 																	 "DragSortListView (DSLV) is an extension of the Android ListView that enables drag-and-drop reordering of list items.\n\n" +
-																	 "Licensed under the Apache License, Version 2.0 (the 'License')\n\n" +
+																	 "Licensed under the Apache License, Version 2.0\n\n" +
 																	 "> libsuperuser from Chainfire / ChainsDD\n\n" +
-																	 "Licensed under the Apache License, Version 2.0 (the 'License');\n\n" +
+																	 "Licensed under the Apache License, Version 2.0\n\n" +
 																	 "");
 
 										adb.setPositiveButton(R.string.Dialog_Ok, new DialogInterface.OnClickListener() {

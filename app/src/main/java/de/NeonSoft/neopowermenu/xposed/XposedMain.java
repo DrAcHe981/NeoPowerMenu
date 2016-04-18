@@ -228,13 +228,13 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
         try
 				{
-						boolean mKeyguardShowing = XposedHelpers.getObjectField(mObjectHolder, "mKeyguardShowing");
+						//boolean mKeyguardShowing = XposedHelpers.getObjectField(mObjectHolder, "mKeyguardShowing");
             context = mContext.createPackageContext(PACKAGE_NAME, Context.CONTEXT_IGNORE_SECURITY);
             Intent intent = new Intent(context, XposedMainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-						intent.putExtra("mKeyguardShowing", mKeyguardShowing);
+						//intent.putExtra("mKeyguardShowing", mKeyguardShowing);
             context.startActivity(intent);
         }
 				catch (Exception e)
@@ -244,7 +244,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     }
 
 
-		private void log(String message)
+		public static void log(String message)
 		{
 				XposedBridge.log("[NeoPowerMenu] " + message);
 		}
