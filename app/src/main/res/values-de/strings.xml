@@ -110,22 +110,15 @@
 		<string name="DialogSafeMode_TextcolorDesc">Die Text Farbe des Dialogs wenn auf Abgesicherter Modus geklickt wurde.</string>
 
 
-		<string name="category_MainIcons">Main Icon Colors</string>
-		<string name="Shutdown_Iconcolor">Shutdown Icon color</string>
-		<string name="Shutdown_IconcolorDesc">The color from the Shutdown circle.</string>
-		<string name="Reboot_Iconcolor">Reboot Icon color</string>
-		<string name="Reboot_IconcolorDesc">The color from the Reboot circle.</string>
-		<string name="SoftReboot_Iconcolor">Soft Reboot Icon color</string>
-		<string name="SoftReboot_IconcolorDesc">The color from the Soft Reboot circle.</string>
-
-		<string name="category_BottomIcons">Bottom Icon Colors</string>
-		<string name="Recovery_Iconcolor">Recovery Icon color</string>
-		<string name="Recovery_IconcolorDesc">The color from the Recovery circle.</string>
-		<string name="Bootloader_Iconcolor">Bootloader Icon color</string>
-		<string name="Bootloader_IconcolorDesc">The color from the Bootloader circle.</string>
-		<string name="SafeMode_Iconcolor">Safe Node Icon color</string>
-		<string name="SafeMode_IconcolorDesc">The color from the Safe Mode circle.</string>
-
+		<string name="presetsManager_TitleLocal">Lokale Voreinstellungen</string>
+		<string name="presetsManager_TitleOnline">Online Voreinstellungen</string>
+		<string name="presetsManager_Active">Aktiv:</string>
+		<string name="presetsManager_Creator">Ersteller: [CREATORNAME]</string>
+		<string name="presetsManager_BuiltIn">Eingebaut</string>
+		<string name="presetsManager_Delete">Löschen</string>
+		<string name="presetsManager_Share">Teilen</string>
+		
+		
 		<string name="Dialog_WaitForRoot">Warte auf Root zugriff...</string>
 
 		<string name="Dialog_Ok">Ok</string>
@@ -140,9 +133,9 @@
 		<string name="ColorPicker_Opacity">Transparenz:</string>
 		<string name="ColorPicker_Hex">Hex:</string>
 		
-		<string name="presetLoadDialog_BuiltInLight">(Eingebaut) Hell</string>
-		<string name="presetLoadDialog_BuiltInDark">(Eingebaut) Dunkel</string>
-		<string name="presetLoadDialog_BuiltInBlack">(Eingebaut) Schwarz</string>
+		<string name="presetLoadDialog_BuiltInLight">Hell</string>
+		<string name="presetLoadDialog_BuiltInDark">Dunkel</string>
+		<string name="presetLoadDialog_BuiltInBlack">Schwarz</string>
 		<string name="presetLoad_PresetDeleted">[PRESETNAME] wurde gelöscht!</string>
 		<string name="presetLoad_CantDelBuiltIn">Eingebaute Voreinstellungen können nicht gelöscht werden!</string>
 		<string name="presetLoad_PresetLoaded">[PRESETNAME] wurde geladen!</string>

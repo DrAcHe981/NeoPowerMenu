@@ -6,6 +6,7 @@ import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.DSLV.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import java.util.*;
+import android.support.v4.app.Fragment;
 
 public class PreferencesVisibilityOrderFragment extends Fragment
 {

@@ -12,6 +12,7 @@ import android.widget.*;
 import com.larswerkman.holocolorpicker.*;
 import de.NeonSoft.neopowermenu.*;
 import java.io.*;
+import android.support.v4.app.Fragment;
 
 import de.NeonSoft.neopowermenu.R;
 
@@ -174,7 +175,7 @@ public class PreferencesColorFragment extends Fragment
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										AlertDialog.Builder alertdb = new AlertDialog.Builder(getActivity());
+										/*AlertDialog.Builder alertdb = new AlertDialog.Builder(getActivity());
 										alertdb.setTitle(R.string.preset_Load);
 										File presetsFolder = new File(getActivity().getFilesDir().getPath()+"/presets/");
 										presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
@@ -298,7 +299,8 @@ public class PreferencesColorFragment extends Fragment
 														}
 												});
 										loadpresetsDialog = alertdb.create();
-										loadpresetsDialog.show();
+										loadpresetsDialog.show();*/
+										MainActivity.fragmentManager.beginTransaction().replace(R.id.pref_container, new PreferencesPresetsFragment()).commit();
 								}
 						});
 						

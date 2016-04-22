@@ -10,9 +10,11 @@ import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 
+import android.support.v4.app.Fragment;
+
 public class PreferencesPartFragment extends Fragment
 {
-
+		
     private String Urlgithub = "https://github.com/naman14/MaterialPowerMenu";
 
 		private String ActiveStyle = "Material";

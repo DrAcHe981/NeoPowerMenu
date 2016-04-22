@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 		public static LayoutInflater inflater;
 		private LinearLayout LinearLayout_ShowPreview;
 		public static boolean RootAvailable;
-		public static android.app.FragmentManager fragmentManager;
+		public static android.support.v4.app.FragmentManager fragmentManager;
 		public static String visibleFragment = "Main";
 
     private static final int BG_PRIO = android.os.Process.THREAD_PRIORITY_BACKGROUND;
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
 				LinearLayout_ShowPreview = (LinearLayout) findViewById(R.id.activitymainLinearLayout_ShowPreviw);
 				
-        Fragment fragment = new PreferencesPartFragment();
-        fragmentManager = getFragmentManager();
+        android.support.v4.app.Fragment fragment = new PreferencesPartFragment();
+        fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
 						.replace(R.id.pref_container, fragment).commit();
 						
@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
 						fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
 						fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesPartFragment()).commit();
+				} else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
+						fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesColorFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("Main")) {
 						super.onBackPressed();
 				}

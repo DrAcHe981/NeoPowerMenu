@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content"
+	android:orientation="horizontal">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="vertical">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:orientation="vertical"
+				android:paddingRight="5dp"
+				android:layout_weight="0"
+				android:layout_alignParentRight="true"
+				android:id="@+id/listitemhandleleftLinearLayout1"
+				android:layout_centerVertical="true">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:id="@+id/presetmanagerlistitemLinearLayout_Local"
+					android:visibility="visible">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:text="@string/presetsManager_Active"
+						android:gravity="bottom|center_horizontal"
+						android:textColor="#FFFFFF"
+						android:layout_weight="1.0"/>
+
+					<RadioButton
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:id="@+id/Active"
+						android:layout_weight="1.0"
+						android:gravity="center|center_vertical|center_horizontal"
+						android:layout_gravity="center_horizontal"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:id="@+id/presetmanagerlistitemLinearLayout_Online"
+					android:visibility="gone">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:text="Download:"
+						android:gravity="bottom|center_horizontal"
+						android:textColor="#FFFFFF"
+						android:layout_weight="1.0"/>
+
+					<ImageView
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:src="@android:drawable/ic_delete"
+						android:layout_weight="1.0"
+						android:layout_gravity="center|center_vertical|center_horizontal"
+						android:padding="0dp"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:minHeight="60dp"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:paddingLeft="5dp"
+				android:layout_toLeftOf="@id/listitemhandleleftLinearLayout1"
+				android:layout_alignParentLeft="true"
+				android:layout_marginRight="10dp"
+				android:id="@+id/listitemhandleleftLinearLayout2">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Title/Primary Text"
+					android:layout_weight="1.0"
+					android:gravity="bottom"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textColor="#FFFFFF"
+					android:id="@+id/title"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Description/Secondary Text"
+					android:layout_weight="1.0"
+					android:gravity="top"
+					android:paddingLeft="5dp"
+					android:id="@+id/text"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="35dp"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:gravity="right"
+				android:id="@+id/presetmanagerlistitemLinearLayout_BottomBar"
+				android:layout_below="@id/listitemhandleleftLinearLayout2"
+				android:layout_alignRight="@id/listitemhandleleftLinearLayout2">
+
+				<LinearLayout
+					android:background="?android:attr/selectableItemBackground"
+					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:id="@+id/presetmanagerlistitemLinearLayout_Share"
+					android:gravity="center_vertical"
+					android:paddingRight="5dp"
+					android:paddingLeft="5dp">
+
+					<ImageView
+						android:layout_height="30dp"
+						android:layout_width="30dp"
+						android:src="@drawable/share"
+						android:padding="0dp"
+						android:id="@+id/presetmanagerlistitemImageView_Share"/>
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="wrap_content"
+						android:text="@string/presetsManager_Share"
+						android:gravity="center_vertical"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="match_parent"
+					android:layout_width="2dp"
+					android:background="@color/colorAccentDarkTheme"
+					android:alpha="0.3"
+					android:layout_marginTop="5dp"
+					android:layout_marginBottom="5dp"/>
+
+				<LinearLayout
+					android:background="?android:attr/selectableItemBackground"
+					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:id="@+id/presetmanagerlistitemLinearLayout_Delete"
+					android:gravity="center_vertical"
+					android:paddingRight="5dp"
+					android:paddingLeft="5dp">
+
+					<ImageView
+						android:layout_height="30dp"
+						android:layout_width="30dp"
+						android:src="@drawable/delete"
+						android:padding="0dp"
+						android:id="@+id/presetmanagerlistitemImageView_Delete"/>
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="wrap_content"
+						android:text="@string/presetsManager_Delete"
+						android:gravity="center_vertical"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_height="2dp"
+				android:layout_width="match_parent"
+				android:layout_below="@id/presetmanagerlistitemLinearLayout_BottomBar"
+				android:background="@color/colorAccentDarkTheme"
+				android:alpha="0.3"
+				android:id="@+id/presetmanagerlistitemTextView1"
+				android:layout_marginRight="5dp"
+				android:layout_marginLeft="5dp"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="2dp"
+				android:background="@color/colorAccentDarkTheme"
+				android:alpha="0.3"
+				android:layout_toLeftOf="@id/listitemhandleleftLinearLayout1"
+				android:layout_marginBottom="7dp"
+				android:layout_marginTop="5dp"
+				android:layout_marginRight="5dp"
+				android:layout_alignTop="@id/listitemhandleleftLinearLayout2"
+				android:layout_alignBottom="@id/presetmanagerlistitemTextView1"/>
+
+			<ProgressBar
+				style="?android:attr/progressBarStyleHorizontal"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:id="@+id/presetmanagerlistitemProgressBar_Download"
+				android:progressDrawable="@drawable/custom_progressbar"
+				android:alpha="0.1"
+				android:layout_alignBottom="@id/presetmanagerlistitemTextView1"
+				android:layout_alignTop="@id/listitemhandleleftLinearLayout2"/>
+
+		</RelativeLayout>
+
+	</LinearLayout>
+
+</LinearLayout>
+

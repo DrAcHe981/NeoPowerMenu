@@ -7,7 +7,7 @@
 
 		<string name="ShareMessage">Check out this beautiful app to customize your Power Menu from your rooted android device!\n\n</string>
 		
-		<string name="TranslatorWebsite">http://www.Neon-Soft.de</string>
+		<string name="TranslatorWebsite">http://www.Neon-Soft.de</string> <!-- Change this to your website! -->
 
 		<string name="PreviewPowerMenu">Preview</string>
 
@@ -50,7 +50,7 @@
 		<string name="preferencesTitle_Share">Share</string>
 		<string name="preferencesDesc_Share">Liked the app? Share it among your friends.</string>
 		<string name="preferencesTitle_Translator">Translation by</string>
-		<string name="preferencesDesc_Translator">Robin G. (DrAcHe981)\n~ Sorry when my English is not the best ^^</string>
+		<string name="preferencesDesc_Translator">Robin G. (DrAcHe981)\n~ Sorry when my English is not the best ^^</string> <!-- Replace my name with yours for Translation Credits! -->
 		<string name="preferencesTitle_About">Code by Neon-Soft / DrAcHe981</string>
 		<string name="preferencesDesc_About">based on a Source from Naman Dwivedi(naman14).</string>
 		
@@ -112,22 +112,15 @@
 		<string name="DialogSafeMode_Textcolor">Safe Mode Text Color</string>
 		<string name="DialogSafeMode_TextcolorDesc">The Text Color from the Dialog when clicked on Safe Mode.</string>
 
+
+		<string name="presetsManager_TitleLocal">Lokale Presets</string>
+		<string name="presetsManager_TitleOnline">Online Presets</string>
+		<string name="presetsManager_Active">Active:</string>
+		<string name="presetsManager_Creator">Creator: [CREATORNAME]</string>
+		<string name="presetsManager_BuiltIn">Built in</string>
+		<string name="presetsManager_Delete">Delete</string>
+		<string name="presetsManager_Share">Share</string>
 		
-		<string name="category_MainIcons">Main Icon Colors</string>
-		<string name="Shutdown_Iconcolor">Shutdown Icon color</string>
-		<string name="Shutdown_IconcolorDesc">The color from the Shutdown circle.</string>
-		<string name="Reboot_Iconcolor">Reboot Icon color</string>
-		<string name="Reboot_IconcolorDesc">The color from the Reboot circle.</string>
-		<string name="SoftReboot_Iconcolor">Soft Reboot Icon color</string>
-		<string name="SoftReboot_IconcolorDesc">The color from the Soft Reboot circle.</string>
-		
-		<string name="category_BottomIcons">Bottom Icon Colors</string>
-		<string name="Recovery_Iconcolor">Recovery Icon color</string>
-		<string name="Recovery_IconcolorDesc">The color from the Recovery circle.</string>
-		<string name="Bootloader_Iconcolor">Bootloader Icon color</string>
-		<string name="Bootloader_IconcolorDesc">The color from the Bootloader circle.</string>
-		<string name="SafeMode_Iconcolor">Safe Node Icon color</string>
-		<string name="SafeMode_IconcolorDesc">The color from the Safe Mode circle.</string>
 		
 		<string name="Dialog_WaitForRoot">Waiting for Root...</string>
 		
@@ -143,9 +136,9 @@
 		<string name="ColorPicker_Opacity">Opacity:</string>
 		<string name="ColorPicker_Hex">Hex:</string>
 		
-		<string name="presetLoadDialog_BuiltInLight">(Built in) Light</string>
-		<string name="presetLoadDialog_BuiltInDark">(Built in) Dark</string>
-		<string name="presetLoadDialog_BuiltInBlack">(Built in) Black</string>
+		<string name="presetLoadDialog_BuiltInLight">Light</string>
+		<string name="presetLoadDialog_BuiltInDark">Dark</string>
+		<string name="presetLoadDialog_BuiltInBlack">Black</string>
 		<string name="presetLoad_PresetDeleted">[PRESETNAME] deleted!</string>
 		<string name="presetLoad_CantDelBuiltIn">Built in presets cant be deleted!</string>
 		<string name="presetLoad_PresetLoaded">[PRESETNAME] loaded!</string>

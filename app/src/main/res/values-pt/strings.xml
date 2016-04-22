@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NeoPowerMenu</string>
+		
+    <string name="action_settings">Configurações</string>
+
+		<string name="ShareMessage">Cheque esse lindo aplicativo para customizar seu Menu de Energia para aparelhos Rooteados!\n\n</string>
+		
+		<string name="TranslatorWebsite">http://www.Neon-Soft.de</string>
+
+		<string name="PreviewPowerMenu">Prever</string>
+
+		<string name="powerMenuMain_Shutdown">Desligar</string>
+		<string name="powerMenuMain_Reboot">Reiniciar</string>
+		<string name="powerMenuMain_SoftReboot">Reiniciar Rápido</string>
+		<string name="powerMenuMain_SoftRebootDesc">Simplismente reinicia o Android UI matando o processo zygote</string>
+		<string name="powerMenuMain_Screenshot">Captura de tela</string>
+
+		<string name="powerMenuBottom_Recovery">Recuperação</string>
+		<string name="powerMenuBottom_Bootloader">Bootloader</string>
+		<string name="powerMenuBottom_SafeMode">Modo de segurança</string>
+		
+		<string name="powerMenu_Shuttingdown">Desligando...</string>
+		<string name="powerMenu_Rebooting">Reiniciando...</string>
+		
+		
+		<string name="preferencesCategory_RootXposed">Root e Xposed</string>
+		<string name="preferencesTitle_RootXposed1">Root e Xposed não disponíveis</string>
+		<string name="preferencesDesc_RootXposed1">Root e Xposed são necessários para o funcionamento</string>
+		<string name="preferencesTitle_RootXposed2">Xposed funcionando,acesso Root não.</string>
+		<string name="preferencesDesc_RootXposed2">Mas  é preciso acesso Root para  Desligar ou reiniciar...\nPor favor,permita o acesso Root.</string>
+		<string name="preferencesTitle_RootXposed3">Acesso Root funcionando,Xposed não</string>
+		<string name="preferencesDesc_RootXposed3">Mas é preciso Xposed para substitur o Menu de energia...\nPor favor,ative o modulo no Xposed installer.</string>
+		<string name="preferencesTitle_RootXposed4">Root e Xposed estão funcionando.</string>
+		<string name="preferencesDesc_RootXposed4">O aplicativo deve funcionar corretamente!</string>
+		<string name="preferencesCategory_General">Geral</string>
+		<string name="preferencesTitle_Style">Estilo</string>
+		<string name="preferencesDesc_Style">[STYLENAME] (Mais se seguirão)</string>
+		<string name="preferencesTitle_Theme">Tema</string>
+		<string name="preferencesDesc_Theme">Mudar o tema e prever.</string>
+		<string name="preferencesTitle_VisibilityOrder">Visibilidade e ordem</string>
+		<string name="preferencesDesc_VisibilityOrder">Selecione os itens que você quer que apareça e a ordem de cada um.</string>
+		<string name="preferencesCategory_Other">Outro</string>
+		<string name="preferencesTitle_HideLauncherIcon">Ocultar aplicativo no launcher</string>
+		<string name="preferencesDesc_HideLauncherIcon">Ocultar o aplicativo no launcher, é necessário reiniciar para que as alterações sejam feitas.\nEssa configuração só está acessível no Xposed Installer</string>
+		<string name="preferencesCategory_About">Sobre</string>
+		<string name="preferencesTitle_Source">Fonte</string>
+		<string name="preferencesDesc_Source">O Material Power Menu é código aberto.\nCheque o código no Github.</string>
+		<string name="preferencesTitle_Share">Compartilhar</string>
+		<string name="preferencesDesc_Share">Gostou do aplicativo? Compartilhe-o para todos seus amigos.</string>
+		<string name="preferencesTitle_Translator">Tradução por</string>
+		<string name="preferencesDesc_Translator">DeluxeMark\n~ :D</string>
+		<string name="preferencesTitle_About">Código por Neon-Soft / DrAcHe981</string>
+		<string name="preferencesDesc_About">baseado em um código por Naman Dwivedi(naman14).</string>
+		
+		
+		<string name="visibilityOrderCategory_VisibilityOrder">Visibilidade e Ordem</string>
+		<string name="visibilityOrderTitle_Shutdown">Desligar</string>
+		<string name="visibilityOrderDesc_Shutdown">Desligar o dispositivo.</string>
+		<string name="visibilityOrderTitle_Reboot">Reiniciar</string>
+		<string name="visibilityOrderDesc_Reboot">Reiniciar o dispositivo.</string>
+		<string name="visibilityOrderTitle_SoftReboot">Reiniciar Rápido</string>
+		<string name="visibilityOrderDesc_SoftReboot">Reiniciar</string>
+		<string name="visibilityOrderTitle_Screenshot">Captura de tela</string>
+		<string name="visibilityOrderDesc_Screenshot">Capturas de tela sobre o Menu de energia.</string>
+		
+		<string name="visibilityOrder_Enabled">Ativado:</string>
+		
+		
+		<string name="category_Preset">Pré-ajuste</string>
+		<string name="preset_Load">Carregar Pré-ajuste</string>
+		<string name="preset_LoadDesc">Carregar uma configuração salva</string>
+		<string name="preset_Save">Salvar Pré-ajuste</string>
+		<string name="preset_SaveDesc">Salvar sua configuração atual</string>
+
+		<string name="category_Reveal">Revelar fundo</string>
+		<string name="reveal_color">Cor do fundo revelar.</string>
+		<string name="reveal_colorDesc">A cor do fundo do efeito revelar.</string>
+		<string name="Actionreveal_color">Cor do fundo da ação revelar</string>
+		<string name="Actionreveal_colorDesc">A cor do fundo do efeito revelar quando clicar na opção de Desligar/Reiniciar.</string>
+		
+		<string name="category_Backgrounds">Cores de fundo</string>
+		<string name="Dialog_Backgroundcolor">Cor de fundo</string>
+		<string name="Dialog_BackgroundcolorDesc">Cor de fundo do diálogo.</string>
+		<string name="DialogShutdown_Backgroundcolor">Cor de fundo de Desligar</string>
+		<string name="DialogShutdown_BackgroundcolorDesc">A cor de fundo do diálogo quando clicar em desligar.</string>
+		<string name="DialogReboot_Backgroundcolor">Cor de fundo do reiniciar</string>
+		<string name="DialogReboot_BackgroundcolorDesc">A cor de fundo do diálogo quando clicar em Reiniciar.</string>
+		<string name="DialogSoftReboot_Backgroundcolor">Cor de fundo do Reiniciar Rápido</string>
+		<string name="DialogSoftReboot_BackgroundcolorDesc">Cor de fundo do diálogo quando clicar em Reiniciar Rápido.</string>
+		<string name="DialogRecovery_Backgroundcolor">Cor de fundo de Recuperação</string>
+		<string name="DialogRecovery_BackgroundcolorDesc">Cor de fundo do diálogo quando clicar em Recuperação.</string>
+		<string name="DialogBootloader_Backgroundcolor">Cor de fundo do Bootloader</string>
+		<string name="DialogBootloader_BackgroundcolorDesc">A cor de fundo quando clicar em Bootloader.</string>
+		<string name="DialogSafeMode_Backgroundcolor">Cor de fundo do Modo de Segurança</string>
+		<string name="DialogSafeMode_BackgroundcolorDesc">Cor de fundo do diálogo quando clicar em Modo de Segurança.</string>
+		
+		<string name="category_Texts">Cores dos textos</string>
+		<string name="Dialog_Textcolor">Cor do texto</string>
+		<string name="Dialog_TextcolorDesc">A cor do texto do diálogo.</string>
+		<string name="DialogShutdown_Textcolor">Cor do texto Desligar</string>
+		<string name="DialogShutdown_TextcolorDesc">Cor do texto do diálogo quando clicar em Desligar.</string>
+		<string name="DialogReboot_Textcolor">Cor do texto Reiniciar</string>
+		<string name="DialogReboot_TextcolorDesc">Cor do texto do diálogo quando clicar em Reiniciar.</string>
+		<string name="DialogSoftReboot_Textcolor">Cor do texto Reiniciar Rápido</string>
+		<string name="DialogSoftReboot_TextcolorDesc">Cor do texto do diálogo quando clicar em Reiniciar Rápido.</string>
+		<string name="DialogRecovery_Textcolor">Cor do texto Recuperação</string>
+		<string name="DialogRecovery_TextcolorDesc">Cor do texto do diálogo quando clicar em Recuperação.</string>
+		<string name="DialogBootloader_Textcolor">Cor do texto Bootloader</string>
+		<string name="DialogBootloader_TextcolorDesc">Cor do texto do diálogo quando clicar em Bootloader.</string>
+		<string name="DialogSafeMode_Textcolor">Cor do texto do Modo de segurança</string>
+		<string name="DialogSafeMode_TextcolorDesc">Cor do texto do diálogo quando clicar em Modo de Segurança.</string>
+
+		
+		<string name="category_MainIcons">Cores dos ícones principais</string>
+		<string name="Shutdown_Iconcolor">Cor do ícone de Desligar</string>
+		<string name="Shutdown_IconcolorDesc">Cor do círculo de Desligar.</string>
+		<string name="Reboot_Iconcolor">Cor do ícone de Reiniciar</string>
+		<string name="Reboot_IconcolorDesc">Cor do ícone do círculo de Reiniciar</string>
+		<string name="SoftReboot_Iconcolor">Cor do ícone de Reiniciar Rápido</string>
+		<string name="SoftReboot_IconcolorDesc">Cor do círculo de Reiniciar Rápido</string>
+		
+		<string name="category_BottomIcons">Cor dos ícones abaixo</string>
+		<string name="Recovery_Iconcolor">Cor do ícone de Recuperação</string>
+		<string name="Recovery_IconcolorDesc">Cor do ícone do círculo de Recuperação</string>
+		<string name="Bootloader_Iconcolor">Cor do ícone de Bootloader</string>
+		<string name="Bootloader_IconcolorDesc">Cor do ícone do círculo do Bootloader</string>
+		<string name="SafeMode_Iconcolor">Cor do ícone do Modo de Segurança</string>
+		<string name="SafeMode_IconcolorDesc">Cor do ícone do círculo do Modo de Segurança.</string>
+		
+		<string name="presetsManager_Title">Pré-ajustes</string>
+		<string name="presetsManager_Active">Ativo:</string>
+		<string name="presetsManager_BuiltIn">Padrão</string>
+		
+		<string name="Dialog_WaitForRoot">Esperando acesso Root...</string>
+		
+		<string name="Dialog_Ok">Ok</string>
+		<string name="Dialog_Cancel">Cancelar</string>
+		<string name="Dialog_Delete">Apagar</string>
+		<string name="Dialog_Load">Carregar</string>
+		<string name="Dialog_Save">Salvar</string>
+		<string name="Dialog_SelectColor">Selecionar cor</string>
+
+		<string name="ColorPicker_Value">Valor:</string>
+		<string name="ColorPicker_Saturation">Saturação:</string>
+		<string name="ColorPicker_Opacity">Opacidade:</string>
+		<string name="ColorPicker_Hex">Hex:</string>
+		
+		<string name="presetLoadDialog_BuiltInLight">Light</string>
+		<string name="presetLoadDialog_BuiltInDark">Dark</string>
+		<string name="presetLoadDialog_BuiltInBlack">Black</string>
+		<string name="presetLoad_PresetDeleted">[PRESETNAME] Apagado!</string>
+		<string name="presetLoad_CantDelBuiltIn">Pre-ajustes Padrões não podem ser apagados!</string>
+		<string name="presetLoad_PresetLoaded">[PRESETNAME] Carregado!</string>
+		
+		<string name="presetSaveDialog_InfoText">Escolha um nome para o pré-ajuste</string>
+		<string name="presetSaveDialog_OverwriteText">Já existe,pré-ajuste será sobrescrito!</string>
+		<string name="presetSave_PresetSaved">[PRESETNAME] salvo!</string>
+		
+		<string name="ToggleShow">Mostrar</string>
+		<string name="ToggleHide">Ocultar</string>
+		
+</resources>
