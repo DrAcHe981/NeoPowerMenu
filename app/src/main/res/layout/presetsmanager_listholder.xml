@@ -9,7 +9,7 @@
 		android:layout_height="match_parent"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="match_parent"
-		android:text="This Feature is WIP"
+		android:text="This Feature is currently not Included..."
 		android:gravity="center|center_vertical|center_horizontal"
 		android:id="@+id/presetsmanagerlistholderTextView_Message"
 		android:visibility="gone"/>
