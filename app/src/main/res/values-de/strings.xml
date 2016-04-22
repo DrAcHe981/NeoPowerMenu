@@ -41,9 +41,9 @@
 		<string name="preferencesDesc_Theme">Ändere die Farben.</string>
 		<string name="preferencesTitle_VisibilityOrder">Sichtbarkeit und Sortierung</string>
 		<string name="preferencesDesc_VisibilityOrder">Wähle was gezeigt werden soll und sortiere die Optionen nach deinen wünschen.</string>
-		<string name="preferencesCategory_Other">Other</string>
-		<string name="preferencesTitle_HideLauncherIcon">Verstecke App im Launcher</string>
-		<string name="preferencesDesc_HideLauncherIcon">Versteckt das App Icon im Launcher, es kann bis zu einem neustart brauchen bis das Icon versteckt ist.\nDiese Einstellungen können dann nurnoch über den Xposed Installer geöffnet werden.</string>
+		<string name="preferencesCategory_Other">Anderes</string>
+		<string name="preferencesTitle_HideLauncherIcon">Verstecke die App im Launcher</string>
+		<string name="preferencesDesc_HideLauncherIcon">Versteckt das App Symbol im Launcher, es kann bis zu einem neustart brauchen bis das Symbol versteckt ist.\nDiese Einstellungen können dann nurnoch über den Xposed Installer geöffnet werden.</string>
 		<string name="preferencesCategory_About">Über</string>
 		<string name="preferencesTitle_Source">Source</string>
 		<string name="preferencesDesc_Source">Das Originale Material Power Menu ist open source.\nFinde die source auf Github.</string>
