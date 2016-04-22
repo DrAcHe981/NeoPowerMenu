@@ -149,7 +149,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				{
 						ItemSwitch.setChecked(MainActivity.preferences.getString("lastUsedPreset", getContext().getString(R.string.presetLoadDialog_BuiltInLight)).equalsIgnoreCase(itemsTitle.get(position)) ? true : false);
 				}
-				LocalButton.setOnClickListener(new OnClickListener() {
+				rowView.setOnClickListener(new OnClickListener() {
 
 								@Override
 								public void onClick(View p1)
