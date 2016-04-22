@@ -120,6 +120,7 @@
 		<string name="presetsManager_BuiltIn">Built in</string>
 		<string name="presetsManager_Delete">Delete</string>
 		<string name="presetsManager_Share">Share</string>
+		<string name="presetsManager_NJI">This Feature is currently not Included...</string>
 		
 		
 		<string name="Dialog_WaitForRoot">Waiting for Root...</string>

@@ -120,7 +120,7 @@
 		<string name="presetsManager_BuiltIn">Eingebaut</string>
 		<string name="presetsManager_Delete">Löschen</string>
 		<string name="presetsManager_Share">Teilen</string>
-		
+		<string name="presetsManager_NJI">Diese Funktion ist aktuell noch nicht implementiert...</string>
 		
 		<string name="Dialog_WaitForRoot">Warte auf Root zugriff...</string>
 
