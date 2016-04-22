@@ -315,6 +315,7 @@ public class PreferencesColorFragment extends Fragment
 										alertdb.setTitle(R.string.preset_Save);
 										View inflatedView = MainActivity.inflater.inflate(R.layout.inputdialog,null);
 										final EditText Input = (EditText) inflatedView.findViewById(R.id.inputdialogEditText1);
+										final EditText Input2 = (EditText) inflatedView.findViewById(R.id.inputdialogEditText2);
 										final TextView OverwriteInfo = (TextView) inflatedView.findViewById(R.id.inputdialogTextViewOverwrite);
 										Input.addTextChangedListener(new TextWatcher() {
 
@@ -345,6 +346,7 @@ public class PreferencesColorFragment extends Fragment
 														}
 												});
 										Input.setText(MainActivity.preferences.getString("lastUsedPreset",""));
+										Input2.setText(MainActivity.preferences.getString("lastPresetCreatedBy",""));
 										alertdb.setView(inflatedView);
 										alertdb.setCancelable(true);
 										alertdb.setNegativeButton(R.string.Dialog_Cancel, new AlertDialog.OnClickListener() {
@@ -377,6 +379,12 @@ public class PreferencesColorFragment extends Fragment
 																				Log.e("tag", e.getMessage());
 																		}
 																		fw.append("AppVersion="+versionName+"\n");
+																		if (!Input2.getText().toString().equalsIgnoreCase("")){
+																				MainActivity.preferences.edit().putString("lastPresetCreatedBy",Input2.getText().toString()).commit();
+																				fw.append("Creator="+Input2.getText().toString()+"\n");
+																		} else {
+																				fw.append("Creator=a "+android.os.Build.MANUFACTURER+" " +android.os.Build.MODEL+ " user\n");
+																		}
 																		for (int i=0;i<ColorNames.length;i++) {
 																				fw.append(ColorNames[i]+"="+MainActivity.preferences.getString(ColorNames[i],"#ffffffff")+"\n");
 																		}

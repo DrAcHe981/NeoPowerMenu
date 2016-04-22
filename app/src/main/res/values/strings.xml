@@ -143,6 +143,7 @@
 		<string name="presetLoad_CantDelBuiltIn">Built in presets cant be deleted!</string>
 		<string name="presetLoad_PresetLoaded">[PRESETNAME] loaded!</string>
 		
+		<string name="presetSaveDialog_CreatorNameInfo">This Preset is Created by:</string>
 		<string name="presetSaveDialog_InfoText">Set a name for the Preset:</string>
 		<string name="presetSaveDialog_OverwriteText">Already existing, Preset will be overwritten!</string>
 		<string name="presetSave_PresetSaved">[PRESETNAME] saved!</string>

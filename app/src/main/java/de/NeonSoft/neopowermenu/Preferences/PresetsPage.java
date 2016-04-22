@@ -54,20 +54,21 @@ public class PresetsPage extends Fragment
 				String[] presetsListEnabled = new String[presetsFiles.length+3];
 				String[] presetsListLocal = new String[presetsFiles.length+3];
 						presetsListTitles[0] = getString(R.string.presetLoadDialog_BuiltInLight);
-						presetsListDesc[0] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","Neon-Soft.de")+"("+ getString(R.string.presetsManager_BuiltIn)+")";
+						presetsListDesc[0] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","Neon-Soft.de")+" ("+ getString(R.string.presetsManager_BuiltIn)+")";
 				presetsListEnabled[0] = "true";
 				presetsListLocal[0] = "pre";
 						presetsListTitles[1] = getString(R.string.presetLoadDialog_BuiltInDark);
-						presetsListDesc[1] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","Neon-Soft.de")+"("+ getString(R.string.presetsManager_BuiltIn)+")";
+						presetsListDesc[1] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","Neon-Soft.de")+" ("+ getString(R.string.presetsManager_BuiltIn)+")";
 				presetsListEnabled[1] = "true";
 				presetsListLocal[1] = "pre";
 						presetsListTitles[2] = getString(R.string.presetLoadDialog_BuiltInBlack);
-						presetsListDesc[2] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","Neon-Soft.de")+"("+ getString(R.string.presetsManager_BuiltIn)+")";
+						presetsListDesc[2] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","Neon-Soft.de")+" ("+ getString(R.string.presetsManager_BuiltIn)+")";
 				presetsListEnabled[2] = "true";
 				presetsListLocal[2] = "pre";
-				for (int i=0;i<presetsFiles.length;i++) {
+						for (int i=0;i<presetsFiles.length;i++) {
+								presetsListDesc[i + 3] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","<unknown>");
 						presetsListTitles[i+3] = presetsFiles[i].getName().split(".nps")[0];
-						File tmpfile = new File(presetsFiles[i].getName());
+						File tmpfile = new File(getActivity().getFilesDir().getPath()+"/presets/"+ presetsFiles[i].getName());
 						try
 						{
 								FileInputStream tmpread = new FileInputStream(tmpfile);
@@ -77,16 +78,19 @@ public class PresetsPage extends Fragment
 								while ((aDataRow = myReader.readLine()) != null) { 
 										String aData[] = aDataRow.split("=");
 										if(aData[0].equalsIgnoreCase("Creator")) {
-												aBuffer += aDataRow;
+												aBuffer += aData[1];
 												break;
 										}
 								}
-								presetsListDesc[i + 3] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aBuffer);
+								if (!aBuffer.equalsIgnoreCase("")) {
+										presetsListDesc[i + 3] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aBuffer);
+								}
+								
 						}
 						catch (Throwable e)
 						{
-								presetsListDesc[i + 3] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","<unknown>");
-							}
+								
+						}
 						presetsListEnabled[i+3] = "true";
 						presetsListLocal[i+3] = "true";
 				}
@@ -101,8 +105,6 @@ public class PresetsPage extends Fragment
 				} else {
 						message.setVisibility(View.VISIBLE);
 				}
-        //TextView tvLabel = (TextView) view.findViewById(R.id.pager_header);
-        //tvLabel.setText(page + " -- " + title);
         return view;
     }
 }
