@@ -5,16 +5,16 @@
 		
     <string name="action_settings">Settings</string>
 
-		<string name="ShareMessage">Check out this beautiful app to customize your Power Menu from your rooted android device!\n\n</string>
+		<string name="ShareMessage">Check out this beautiful app to customize your Power Menu of your rooted android device!\n\n</string>
 		
-		<string name="TranslatorWebsite">http://www.Neon-Soft.de</string> <!-- Change this to your website! -->
+		<string name="TranslatorWebsite">http://www.neon-soft.de</string> <!-- Change this to your website! -->
 
 		<string name="PreviewPowerMenu">Preview</string>
 
 		<string name="powerMenuMain_Shutdown">Power Off</string>
 		<string name="powerMenuMain_Reboot">Reboot</string>
 		<string name="powerMenuMain_SoftReboot">Soft Reboot</string>
-		<string name="powerMenuMain_SoftRebootDesc">Simply restarts the Android UI by killing zygote process</string>
+		<string name="powerMenuMain_SoftRebootDesc">Simply restarts the Android UI by killing the zygote process</string>
 		<string name="powerMenuMain_Screenshot">Screenshot</string>
 		<string name="powerMenuMain_ScreenshotDesc">Screenshot delay: [SCREENSHOTDELAY]</string>
 
@@ -28,119 +28,119 @@
 		
 		<string name="preferencesCategory_RootXposed">Root and Xposed</string>
 		<string name="preferencesTitle_RootXposed1">Root and Xposed not available</string>
-		<string name="preferencesDesc_RootXposed1">Root and Xposed are needed to work.</string>
-		<string name="preferencesTitle_RootXposed2">Xposed working,Root not</string>
+		<string name="preferencesDesc_RootXposed1">Root and Xposed are needed for this module to work.</string>
+		<string name="preferencesTitle_RootXposed2">Xposed working, Root not</string>
 		<string name="preferencesDesc_RootXposed2">But Root is needed to Power off or Reboot...\nPlease allow root access.</string>
-		<string name="preferencesTitle_RootXposed3">Root working,Xposed not</string>
+		<string name="preferencesTitle_RootXposed3">Root working, Xposed not</string>
 		<string name="preferencesDesc_RootXposed3">But Xposed is needed to replace the Power Menu...\nPlease activate the module in the Xposed installer.</string>
 		<string name="preferencesTitle_RootXposed4">Root and Xposed are working</string>
-		<string name="preferencesDesc_RootXposed4">App should work fine!</string>
+		<string name="preferencesDesc_RootXposed4">The app should work fine!</string>
 		<string name="preferencesCategory_General">General</string>
 		<string name="preferencesTitle_Style">Style</string>
-		<string name="preferencesDesc_Style">[STYLENAME] (More will follow)</string>
+		<string name="preferencesDesc_Style">[STYLENAME] (More to follow)</string>
 		<string name="preferencesTitle_Theme">Theme</string>
 		<string name="preferencesDesc_Theme">Change the look and feel.</string>
 		<string name="preferencesTitle_VisibilityOrder">Visibility and Order</string>
-		<string name="preferencesDesc_VisibilityOrder">Select the Items you want to show and order them as you wish.</string>
+		<string name="preferencesDesc_VisibilityOrder">Select the items you want to show and order them as you wish.</string>
 		<string name="preferencesCategory_Other">Other</string>
 		<string name="preferencesTitle_Advanced">Advanced Settings</string>
-		<string name="preferencesDesc_Advanced">Change Advanced settings like delays,gravity or speed.</string>
-		<string name="preferencesTitle_HideLauncherIcon">Hide App in launcher</string>
-		<string name="preferencesDesc_HideLauncherIcon">Hides the App icon in the launcher, it can take up to a reboot to hide the icon.\nThis Settings are then only accessible over the Xposed Installer.</string>
+		<string name="preferencesDesc_Advanced">Change advanced settings like delays, gravity or speed.</string>
+		<string name="preferencesTitle_HideLauncherIcon">Hide app in launcher</string>
+		<string name="preferencesDesc_HideLauncherIcon">Hides the app icon in the launcher, it can take up to a reboot to hide the icon.\nThis Settings screen will only be accessible via the Xposed Installer then.</string>
 		<string name="preferencesCategory_About">About</string>
 		<string name="preferencesTitle_NeoSource">Source</string>
-		<string name="preferencesDesc_NeoSource">NeoPowerMenu is open source.\nCheckout the source on Github.</string>
+		<string name="preferencesDesc_NeoSource">NeoPowerMenu is open source.\nCheck out the source on GitHub.</string>
 		<string name="preferencesTitle_OrigSource">Original Source</string>
-		<string name="preferencesDesc_OrigSource">The Original Material Power Menu is open source.\nCheckout the source on Github.</string>
+		<string name="preferencesDesc_OrigSource">The original Material Power Menu is open source.\nCheck out the source on GitHub.</string>
 		<string name="preferencesTitle_Share">Share</string>
-		<string name="preferencesDesc_Share">Liked the app? Share it among your friends.</string>
+		<string name="preferencesDesc_Share">Like the app? Share it with your friends.</string>
 		<string name="preferencesTitle_Translator">Translation by</string>
 		<string name="preferencesDesc_Translator">Robin G. (DrAcHe981)\n~ Sorry when my English is not the best ^^</string> <!-- Replace my name with yours for Translation Credits! -->
 		<string name="preferencesTitle_About">Code by Neon-Soft / DrAcHe981</string>
-		<string name="preferencesDesc_About">based on a Source from Naman Dwivedi(naman14).</string>
+		<string name="preferencesDesc_About">based on the source of Naman Dwivedi (naman14).</string>
 		
 		
-		<string name="visibilityOrderCategory_VisibilityOrder">Visibility and Order</string>
+		<string name="visibilityOrderCategory_VisibilityOrder">Visibility and order</string>
 		<string name="visibilityOrderTitle_Shutdown">Power Off</string>
 		<string name="visibilityOrderDesc_Shutdown">Power Off the device.</string>
 		<string name="visibilityOrderTitle_Reboot">Reboot</string>
 		<string name="visibilityOrderDesc_Reboot">Reboot the device.</string>
 		<string name="visibilityOrderTitle_SoftReboot">Soft Reboot</string>
-		<string name="visibilityOrderDesc_SoftReboot">Simply Restart the Android UI by killing the Zygote process.</string>
+		<string name="visibilityOrderDesc_SoftReboot">Simply restarts the Android UI by killing the zygote process</string>
 		<string name="visibilityOrderTitle_Screenshot">Screenshot</string>
-		<string name="visibilityOrderDesc_Screenshot">Take Screenshots over the Power Menu.</string>
+		<string name="visibilityOrderDesc_Screenshot">Take Screenshots via the Power Menu.</string>
 		
 		<string name="visibilityOrder_Enabled">Enabled:</string>
 		
 		
 		<string name="category_Preset">Presets</string>
-		<string name="preset_Load">Load Preset</string>
+		<string name="preset_Load">Load preset</string>
 		<string name="preset_LoadDesc">Load a saved configuration</string>
-		<string name="preset_Save">Save Preset</string>
+		<string name="preset_Save">Save preset</string>
 		<string name="preset_SaveDesc">Save your current configuration</string>
 
 		<string name="category_Reveal">Reveal backgrounds</string>
-		<string name="reveal_color">Reveal Background Color</string>
-		<string name="reveal_colorDesc">The Background Color from the Reveal effect.</string>
-		<string name="Actionreveal_color">Action Reveal Background Color</string>
-		<string name="Actionreveal_colorDesc">The Background Color from the Reveal effect when clicked on a Reboot/Shutdown option.</string>
+		<string name="reveal_color">Reveal background color</string>
+		<string name="reveal_colorDesc">The background color of the reveal effect.</string>
+		<string name="Actionreveal_color">Action reveal background color</string>
+		<string name="Actionreveal_colorDesc">The background color of the reveal effect when clicked on a Reboot/Shutdown option.</string>
 		
-		<string name="category_Backgrounds">Background Colors</string>
-		<string name="Dialog_Backgroundcolor">background Color</string>
-		<string name="Dialog_BackgroundcolorDesc">The Background Color from the Dialog.</string>
-		<string name="DialogShutdown_Backgroundcolor">Shutdown background Color</string>
-		<string name="DialogShutdown_BackgroundcolorDesc">The Background Color from the Dialog when clicked on Shutdown.</string>
-		<string name="DialogReboot_Backgroundcolor">Reboot background Color</string>
-		<string name="DialogReboot_BackgroundcolorDesc">The Background Color from the Dialog when clicked on Reboot.</string>
-		<string name="DialogSoftReboot_Backgroundcolor">Soft Reboot background Color</string>
-		<string name="DialogSoftReboot_BackgroundcolorDesc">The Background Color from the Dialog when clicked on Soft Reboot.</string>
-		<string name="DialogRecovery_Backgroundcolor">Recovery background Color</string>
-		<string name="DialogRecovery_BackgroundcolorDesc">The Background Color from the Dialog when clicked on Recovery.</string>
-		<string name="DialogBootloader_Backgroundcolor">Bootloader background Color</string>
-		<string name="DialogBootloader_BackgroundcolorDesc">The Background Color from the Dialog when clicked on Bootloader.</string>
-		<string name="DialogSafeMode_Backgroundcolor">Safe Mode background Color</string>
-		<string name="DialogSafeMode_BackgroundcolorDesc">The Background Color from the Dialog when clicked on Safe Mode.</string>
+		<string name="category_Backgrounds">Background colors</string>
+		<string name="Dialog_Backgroundcolor">background color</string>
+		<string name="Dialog_BackgroundcolorDesc">The Background color of the dialog.</string>
+		<string name="DialogShutdown_Backgroundcolor">Shutdown background color</string>
+		<string name="DialogShutdown_BackgroundcolorDesc">The background color of the dialog when clicked on Shutdown.</string>
+		<string name="DialogReboot_Backgroundcolor">Reboot background color</string>
+		<string name="DialogReboot_BackgroundcolorDesc">The background color of the dialog when clicked on Reboot.</string>
+		<string name="DialogSoftReboot_Backgroundcolor">Soft Reboot background color</string>
+		<string name="DialogSoftReboot_BackgroundcolorDesc">The background color of the dialog when clicked on Soft Reboot.</string>
+		<string name="DialogRecovery_Backgroundcolor">Recovery background color</string>
+		<string name="DialogRecovery_BackgroundcolorDesc">The background color of the dialog when clicked on Recovery.</string>
+		<string name="DialogBootloader_Backgroundcolor">Bootloader background color</string>
+		<string name="DialogBootloader_BackgroundcolorDesc">The background color of the dialog when clicked on Bootloader.</string>
+		<string name="DialogSafeMode_Backgroundcolor">Safe Mode background color</string>
+		<string name="DialogSafeMode_BackgroundcolorDesc">The background color of the dialog when clicked on Safe Mode.</string>
 		
-		<string name="category_Texts">Text Colors</string>
-		<string name="Dialog_Textcolor">Text Color</string>
-		<string name="Dialog_TextcolorDesc">The Text Color from the Dialog.</string>
-		<string name="DialogShutdown_Textcolor">Shutdown Text Color</string>
-		<string name="DialogShutdown_TextcolorDesc">The Text Color from the Dialog when clicked on Shutdown.</string>
-		<string name="DialogReboot_Textcolor">Reboot Text Color</string>
-		<string name="DialogReboot_TextcolorDesc">The Text Color from the Dialog when clicked on Reboot.</string>
-		<string name="DialogSoftReboot_Textcolor">Soft Reboot Text Color</string>
-		<string name="DialogSoftReboot_TextcolorDesc">The Text Color from the Dialog when clicked on Soft Reboot.</string>
-		<string name="DialogRecovery_Textcolor">Recovery Text Color</string>
-		<string name="DialogRecovery_TextcolorDesc">The Text Color from the Dialog when clicked on Recovery.</string>
-		<string name="DialogBootloader_Textcolor">Bootloader Text Color</string>
-		<string name="DialogBootloader_TextcolorDesc">The Text Color from the Dialog when clicked on Bootloader.</string>
-		<string name="DialogSafeMode_Textcolor">Safe Mode Text Color</string>
-		<string name="DialogSafeMode_TextcolorDesc">The Text Color from the Dialog when clicked on Safe Mode.</string>
+		<string name="category_Texts">Text colors</string>
+		<string name="Dialog_Textcolor">Text color</string>
+		<string name="Dialog_TextcolorDesc">The text color of the dialog.</string>
+		<string name="DialogShutdown_Textcolor">Shutdown text color</string>
+		<string name="DialogShutdown_TextcolorDesc">The text color of the dialog when clicked on Shutdown.</string>
+		<string name="DialogReboot_Textcolor">Reboot text color</string>
+		<string name="DialogReboot_TextcolorDesc">The text color of the dialog when clicked on Reboot.</string>
+		<string name="DialogSoftReboot_Textcolor">Soft Reboot text color</string>
+		<string name="DialogSoftReboot_TextcolorDesc">The text color of the dialog when clicked on Soft Reboot.</string>
+		<string name="DialogRecovery_Textcolor">Recovery text color</string>
+		<string name="DialogRecovery_TextcolorDesc">The text color of the dialog when clicked on Recovery.</string>
+		<string name="DialogBootloader_Textcolor">Bootloader text color</string>
+		<string name="DialogBootloader_TextcolorDesc">The text color of the dialog when clicked on Bootloader.</string>
+		<string name="DialogSafeMode_Textcolor">Safe Mode text color</string>
+		<string name="DialogSafeMode_TextcolorDesc">The text color of the dialog when clicked on Safe Mode.</string>
 
 
-		<string name="presetsManager_TitleLocal">Lokale Presets</string>
+		<string name="presetsManager_TitleLocal">Local Presets</string>
 		<string name="presetsManager_TitleOnline">Online Presets</string>
 		<string name="presetsManager_Active">Active:</string>
 		<string name="presetsManager_Creator">Creator: [CREATORNAME]</string>
-		<string name="presetsManager_BuiltIn">Built in</string>
+		<string name="presetsManager_BuiltIn">Built-in</string>
 		<string name="presetsManager_Delete">Delete</string>
-		<string name="presetsManager_SureToDelete">Are you sure to delete [PRESETNAME]?\nThis can\'t be undone!</string>
+		<string name="presetsManager_SureToDelete">Are you sure you want to delete [PRESETNAME]?\nThis can\'t be undone!</string>
 		<string name="presetsManager_Share">Share</string>
-		<string name="presetsManager_NJI">This Feature is currently not Included...</string>
-		<string name="presetsManager_ImportMsg">Would you like to import this Preset?</string>
+		<string name="presetsManager_NJI">This Feature is currently not implemented...</string>
+		<string name="presetsManager_ImportMsg">Would you like to import this preset?</string>
 		<string name="presetsManager_ImportSuccess">[PRESETNAME] imported successfully.</string>
 		<string name="presetsManager_ImportFailed">Import failed...</string>
 		
 		
 		<string name="advancedPrefsCategory_LockScreen">Lockscreen</string>
 		<string name="advancedPrefsTitle_ShowOnLockScreen">Show on lockscreen</string>
-		<string name="advancedPrefsDesc_ShowOnLockScreen">Show the Power Menu on the Lockscreen, when disabled nothing will show.</string>
+		<string name="advancedPrefsDesc_ShowOnLockScreen">Show the Power Menu on the lockscreen, when disabled nothing will show.</string>
 		<string name="advancedPrefsCategory_Delays">Delays</string>
-		<string name="advancedPrefs_DelayZero">nearly instant</string>
-		<string name="advancedPrefsTitle_ScreenshotDelay">Screenshot Delay</string>
-		<string name="advancedPrefsDesc_ScreenshotDelay">Delay between click and shoot.</string>
-		<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">Power Menu Delay</string>
-		<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">Delay between reveal show and power menu slide up.</string>
+		<string name="advancedPrefs_DelayZero">Almost instant</string>
+		<string name="advancedPrefsTitle_ScreenshotDelay">Screenshot delay</string>
+		<string name="advancedPrefsDesc_ScreenshotDelay">Delay between click and screenshot.</string>
+		<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">Power Menu delay</string>
+		<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">Delay between showing the reveal animation and the power menu.</string>
 		
 		
 		<string name="Dialog_WaitForRoot">Waiting for Root...</string>
@@ -153,7 +153,7 @@
 		<string name="Dialog_Load">Load</string>
 		<string name="Dialog_Save">Save</string>
 		<string name="Dialog_Ignore">Ignore</string>
-		<string name="Dialog_SelectColor">Select Color</string>
+		<string name="Dialog_SelectColor">Select color</string>
 
 		<string name="ColorPicker_Value">Value:</string>
 		<string name="ColorPicker_Saturation">Saturation:</string>
@@ -163,14 +163,14 @@
 		<string name="presetLoadDialog_BuiltInLight">Light</string>
 		<string name="presetLoadDialog_BuiltInDark">Dark</string>
 		<string name="presetLoadDialog_BuiltInBlack">Black</string>
-		<string name="presetLoad_PresetDeleted">[PRESETNAME] deleted!</string>
-		<string name="presetLoad_CantDelBuiltIn">Built in presets cant be deleted!</string>
-		<string name="presetLoad_PresetLoaded">[PRESETNAME] loaded!</string>
+		<string name="presetLoad_PresetDeleted">Deleted [PRESETNAME]!</string>
+		<string name="presetLoad_CantDelBuiltIn">Built-in presets can\'t be deleted!</string>
+		<string name="presetLoad_PresetLoaded">Loaded [PRESETNAME]!</string>
 		
-		<string name="presetSaveDialog_CreatorNameInfo">This Preset is Created by:</string>
-		<string name="presetSaveDialog_InfoText">Set a name for the Preset:</string>
-		<string name="presetSaveDialog_OverwriteText">Already existing, Preset will be overwritten!</string>
-		<string name="presetSave_PresetSaved">[PRESETNAME] saved!</string>
+		<string name="presetSaveDialog_CreatorNameInfo">This preset was created by:</string>
+		<string name="presetSaveDialog_InfoText">Set a name for the preset:</string>
+		<string name="presetSaveDialog_OverwriteText">Already existing, preset will be overwritten!</string>
+		<string name="presetSave_PresetSaved">Saved [PRESETNAME]!</string>
 		
 		<string name="ToggleShow">Show</string>
 		<string name="ToggleHide">Hide</string>
