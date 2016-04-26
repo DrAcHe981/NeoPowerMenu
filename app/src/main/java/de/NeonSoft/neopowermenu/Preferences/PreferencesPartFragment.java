@@ -14,8 +14,9 @@ import android.support.v4.app.Fragment;
 
 public class PreferencesPartFragment extends Fragment
 {
-		
-    private String Urlgithub = "https://github.com/naman14/MaterialPowerMenu";
+
+    private String Urlgithub = "https://github.com/DrAcHe981/NeoPowerMenu";
+    private String Urloriggithub = "https://github.com/naman14/MaterialPowerMenu";
 
 		private String ActiveStyle = "Material";
 		private int ActiveStyleId = 0;
@@ -32,27 +33,23 @@ public class PreferencesPartFragment extends Fragment
 		private static TextView TextView_StyleDesc;
 
 		private static LinearLayout LinearLayout_Theme;
-		private static TextView TextView_ThemeTitle;
-		private static TextView TextView_ThemeDesc;
 
 		private static LinearLayout LinearLayout_VisibilityOrder;
-		private static TextView TextView_VisibilityOrderTitle;
-		private static TextView TextView_VisibilityOrderDesc;
 
+		private static LinearLayout LinearLayout_Advanced;
+		
 		private static LinearLayout LinearLayout_HideLauncherIcon;
+		private static Switch Switch_HideLauncherIcon;
 		
 		private static LinearLayout LinearLayout_Source;
-		private static TextView TextView_SourceTitle;
-		private static TextView TextView_SourceDesc;
+		private static LinearLayout LinearLayout_OrigSource;
 
 		private static LinearLayout LinearLayout_Share;
-		private static TextView TextView_ShareTitle;
-		private static TextView TextView_ShareDesc;
 
 		private static LinearLayout LinearLayout_Translator;
 
 		private static LinearLayout LinearLayout_About;
-		private static Switch Switch_HideLauncherIcon;
+		
 
 		private static AlertDialog.Builder adb;
 		private static AlertDialog ad;
@@ -80,6 +77,8 @@ public class PreferencesPartFragment extends Fragment
 
 				LinearLayout_VisibilityOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_VisibilityOrder);
 
+				LinearLayout_Advanced = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Advanced);
+				
 				LinearLayout_HideLauncherIcon = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_HideLauncherIcon);
 				Switch_HideLauncherIcon = (Switch) InflatedView.findViewById(R.id.activitypreferencesSwitch_HideLauncherIcon);
 				Switch_HideLauncherIcon.setChecked(hideicon);
@@ -87,6 +86,7 @@ public class PreferencesPartFragment extends Fragment
 				Switch_HideLauncherIcon.setFocusable(false);
 				
 				LinearLayout_Source = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Source);
+				LinearLayout_OrigSource = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_OrigSource);
 				
 				LinearLayout_Share = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Share);
 
@@ -165,6 +165,16 @@ public class PreferencesPartFragment extends Fragment
 								}
 						});
 
+				LinearLayout_Advanced.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										MainActivity.fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesAdvancedFragment()).commit();
+								}
+						});
+						
 				LinearLayout_HideLauncherIcon.setOnClickListener(new OnClickListener() {
 
 								@Override
@@ -189,7 +199,7 @@ public class PreferencesPartFragment extends Fragment
 										MainActivity.preferences.edit().putBoolean("HideLauncherIcon",hideicon).commit();
 								}
 						});
-						
+
 				LinearLayout_Source.setOnClickListener(new OnClickListener() {
 
 								@Override
@@ -198,6 +208,18 @@ public class PreferencesPartFragment extends Fragment
 										// TODO: Implement this method
 										Intent i = new Intent(Intent.ACTION_VIEW);
 										i.setData(Uri.parse(Urlgithub));
+										startActivity(i);
+								}
+						});
+						
+				LinearLayout_OrigSource.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										Intent i = new Intent(Intent.ACTION_VIEW);
+										i.setData(Uri.parse(Urloriggithub));
 										startActivity(i);
 								}
 						});
@@ -285,6 +307,15 @@ public class PreferencesPartFragment extends Fragment
 										{
 												// TODO: Implement this method
 												getActivity().finish();
+										}
+								});
+						adb.setNeutralButton(R.string.Dialog_Ignore, new DialogInterface.OnClickListener() {
+
+										@Override
+										public void onClick(DialogInterface p1, int p2)
+										{
+												// TODO: Implement this method
+												ad.dismiss();
 										}
 								});
 						adb.setCancelable(false);

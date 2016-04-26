@@ -30,6 +30,41 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
             </intent-filter>
+						<!-- Register to handle email attachments -->
+						<!-- WARNING: Do NOT use android:host="*" for these as they will not work properly -->
+						<intent-filter>
+								<!-- needed for properly formatted email messages -->
+								<data
+										android:scheme="content"
+										android:mimeType="application/vnd.neopowermenu"
+										android:pathPattern=".*\\.nps" />
+								<!-- needed for mangled email messages -->
+								<data
+										android:scheme="content"
+										android:mimeType="application/neopowermenu"
+										android:pathPattern=".*\\.nps" />
+								<!-- needed for mangled email messages -->
+								<data
+										android:scheme="content"
+										android:mimeType="application/octet-stream"
+										android:pathPattern=".*\\.nps" />
+
+								<action android:name="android.intent.action.VIEW" />
+
+								<category android:name="android.intent.category.DEFAULT" />
+								<category android:name="android.intent.category.BROWSABLE" />
+						</intent-filter>
+						<!-- Register to handle file opening -->
+						<intent-filter>
+								<data android:scheme="file"
+										android:mimeType="*/*"
+										android:pathPattern=".*\\.nps"/>
+
+								<action android:name="android.intent.action.VIEW" />
+
+								<category android:name="android.intent.category.DEFAULT" />
+								<category android:name="android.intent.category.BROWSABLE" />
+						</intent-filter>
         </activity>
 				<activity-alias 
             android:name=".SettingsActivity"

@@ -116,7 +116,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment
 				arrayEnabledStates[MainActivity.preferences.getInt("ShutdownPosition",0)] = "true";
 				arrayEnabledStates[MainActivity.preferences.getInt("RebootPosition",1)] = "true";
 				arrayEnabledStates[MainActivity.preferences.getInt("SoftRebootPosition",2)] = "true";
-				arrayEnabledStates[MainActivity.preferences.getInt("ScreenshotPosition",3)] = "false";
+				arrayEnabledStates[MainActivity.preferences.getInt("ScreenshotPosition",3)] = "true";
 				listEnabledStates = new ArrayList<String>(Arrays.asList(arrayEnabledStates));
 				
         adapter = new visibilityOrder_ListAdapter(getActivity(),listTitles,listPrefPositions,listDescs,listPrefNames,listEnabledStates);

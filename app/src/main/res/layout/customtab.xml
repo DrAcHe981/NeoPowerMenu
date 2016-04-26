@@ -21,7 +21,8 @@
 			android:gravity="center|center_vertical|center_horizontal"
 			android:paddingLeft="10dp"
 			android:paddingRight="10dp"
-			android:id="@+id/customTabText"/>
+			android:id="@+id/customTabText"
+			android:paddingBottom="2dp"/>
 
 		<TextView
 			android:layout_height="2dp"

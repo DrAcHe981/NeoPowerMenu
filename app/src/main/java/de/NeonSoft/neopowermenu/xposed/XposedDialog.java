@@ -171,7 +171,10 @@ public class XposedDialog extends DialogFragment {
 										if(!XposedMainActivity.previewMode) {
 												getDialog().setCanceledOnTouchOutside(false);
 														getDialog().setCancelable(false);
-														new BackgroundThread(REBOOT_CMD).start();
+												Intent takeScreenshotBC = new Intent();
+												takeScreenshotBC.setAction("de.NeonSoft.neopowermenu.action.Reboot");
+												XposedMainActivity.mContext.sendBroadcast(takeScreenshotBC);
+														//new BackgroundThread(REBOOT_CMD).start();
 												}
 										}
 						};
@@ -219,7 +222,19 @@ public class XposedDialog extends DialogFragment {
 										// TODO: Implement this method
 										if(!XposedMainActivity.previewMode) {
 												dismiss();
-												takeScreenshot();
+												Handler handler = new Handler();
+												handler.postDelayed(new Runnable() {
+
+																@Override
+																public void run()
+																{
+																		// TODO: Implement this method
+																		Intent takeScreenshotBC = new Intent();
+																		takeScreenshotBC.setAction("de.NeonSoft.neopowermenu.action.takeScreenshot");
+																		XposedMainActivity.mContext.sendBroadcast(takeScreenshotBC);
+																}
+														}, XposedMainActivity.preferences.getLong("ScreenshotDelay", 1000));
+												//takeScreenshot();
 												//new BackgroundThread(SCREENSHOT_CMD).start();
 										}
 								}
@@ -256,7 +271,10 @@ public class XposedDialog extends DialogFragment {
 								if(!XposedMainActivity.previewMode) {
 										getDialog().setCanceledOnTouchOutside(false);
 										getDialog().setCancelable(false);
-                new BackgroundThread(REBOOT_RECOVERY_CMD).start();
+										Intent takeScreenshotBC = new Intent();
+										takeScreenshotBC.setAction("de.NeonSoft.neopowermenu.action.RebootRecovery");
+										XposedMainActivity.mContext.sendBroadcast(takeScreenshotBC);
+                //new BackgroundThread(REBOOT_RECOVERY_CMD).start();
 								}
             }
         });
@@ -291,7 +309,10 @@ public class XposedDialog extends DialogFragment {
 								if(!XposedMainActivity.previewMode) {
 										getDialog().setCanceledOnTouchOutside(false);
 										getDialog().setCancelable(false);
-                new BackgroundThread(REBOOT_BOOTLOADER_CMD).start();
+										Intent takeScreenshotBC = new Intent();
+										takeScreenshotBC.setAction("de.NeonSoft.neopowermenu.action.RebootBootloader");
+										XposedMainActivity.mContext.sendBroadcast(takeScreenshotBC);
+                //new BackgroundThread(REBOOT_BOOTLOADER_CMD).start();
 								}
             }
         });
@@ -368,8 +389,15 @@ public class XposedDialog extends DialogFragment {
 								root.setOnClickListener(screenshotOnClickListener);
 								text.setText(getString(R.string.powerMenuMain_Screenshot));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
-								TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Textcolor","#ffffff"))).endConfig()
-										.buildRound(getString(R.string.powerMenuMain_Screenshot).substring(0,1), Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Backgroundcolor","#ff3f51b5")));
+								desc.setVisibility(View.VISIBLE);
+								if(XposedMainActivity.preferences.getLong("ScreenshotDelay",1000)==0) {
+										desc.setText(getString(R.string.powerMenuMain_ScreenshotDesc).replace("[SCREENSHOTDELAY]",getString(R.string.advancedPrefs_DelayZero)));
+								} else {
+										desc.setText(getString(R.string.powerMenuMain_ScreenshotDesc).replace("[SCREENSHOTDELAY]",helper.getTimeString(XposedMainActivity.preferences.getLong("ScreenshotDelay",1000),false))+" (m:s)");
+								}
+								desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#000000")));
+								TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor","#ffffff"))).endConfig()
+										.buildRound(getString(R.string.powerMenuMain_Screenshot).substring(0,1), Color.parseColor(XposedMainActivity.preferences.getString("RevealBackground","#ffffff")));
 								icon.setImageDrawable(drawable);
 						}
 						if (!text.getText().toString().equalsIgnoreCase("Text")) {

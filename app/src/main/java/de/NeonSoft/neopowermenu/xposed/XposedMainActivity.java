@@ -25,11 +25,13 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		public static boolean previewMode = false;
     android.os.Handler handler;
     int maxX, maxY;
+		public static Context mContext;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+				mContext =getApplicationContext();
 				preferences = PreferenceManager.getDefaultSharedPreferences(this);
 				
         setTheme(R.style.TransparentApp);
@@ -75,7 +77,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             public void run() {
                 revealView.reveal(p.x, p.y, color, 2, 440, null);
             }
-        }, 500);
+        }, 10);
 
 
         handler = new Handler();
@@ -84,7 +86,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             public void run() {
                 showPowerDialog();
             }
-        }, 800);
+        }, 350);
 
 
     }

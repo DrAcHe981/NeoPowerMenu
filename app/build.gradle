@@ -9,8 +9,8 @@ android {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 13
-        versionName "1.4-pre10"
+        versionCode 14
+        versionName "1.4-pre11"
     }
 
     buildTypes {
@@ -36,6 +36,5 @@ dependencies {
     compile files('lib/XposedBridgeApi-20150213.jar')
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'eu.chainfire:libsuperuser:1.0.0.+'
-    compile 'com.android.support:design:23.1.0'
     compile fileTree(dir: 'deps', include: ['*.jar'])
 }

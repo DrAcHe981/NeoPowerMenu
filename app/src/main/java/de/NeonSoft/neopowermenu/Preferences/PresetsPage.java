@@ -15,7 +15,8 @@ public class PresetsPage extends Fragment
     private String title;
     private int page;
 		public static LinearLayout progress;
-
+		public static PresetsAdapter adapter;
+		
     // newInstance constructor for creating fragment with arguments
     public PresetsPage (int page, String title) {
 				this.page = page;
@@ -98,10 +99,13 @@ public class PresetsPage extends Fragment
 				ArrayList<String> ListDescs = new ArrayList<String>( Arrays.asList(presetsListDesc));
 				ArrayList<String> ListEnabled = new ArrayList<String>( Arrays.asList(presetsListEnabled));
 				ArrayList<String> ListLocal = new ArrayList<String>( Arrays.asList(presetsListLocal));
-				PresetsAdapter adapter = new PresetsAdapter(getActivity(),ListTitles,ListDescs,ListEnabled,ListLocal);
+				adapter = new PresetsAdapter(getActivity(),ListTitles,ListDescs,ListEnabled,ListLocal);
 				list.setAdapter(adapter);
 						list.setFastScrollEnabled(true);
 						list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+						if (MainActivity.ImportUrl!=null) {
+								PreferencesPresetsFragment.ImportPreset(MainActivity.ImportUrl,adapter);
+						}
 				} else {
 						message.setVisibility(View.VISIBLE);
 				}

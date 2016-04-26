@@ -84,19 +84,40 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												public void onClick(View p1)
 												{
 														// TODO: Implement this method
-														try
-														{
-																String selectedName = itemsTitle.get(position);
-																		File presetFile = new File(context.getFilesDir().getPath()+"/presets/"+selectedName+".nps");
-																		if (presetFile.delete()) {
-																				removeAt(position);
-																				Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetLoad_PresetDeleted).replace("[PRESETNAME]",selectedName),Toast.LENGTH_SHORT).show();
-																		}
+														AlertDialog.Builder adb = new AlertDialog.Builder(context);
+														adb.setTitle(itemsTitle.get(position));
+														adb.setMessage(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]",itemsTitle.get(position)));
+														adb.setPositiveButton(R.string.Dialog_Delete, new DialogInterface.OnClickListener() {
 
-														} catch (Throwable t) {
-																Toast.makeText(context.getApplicationContext(),"Failed to delete: "+t,Toast.LENGTH_LONG).show();
-														}
-														notifyDataSetChanged();
+																		@Override
+																		public void onClick(DialogInterface p1, int p2)
+																		{
+																				// TODO: Implement this method
+																				try
+																				{
+																						String selectedName = itemsTitle.get(position);
+																						File presetFile = new File(context.getFilesDir().getPath()+"/presets/"+selectedName+".nps");
+																						if (presetFile.delete()) {
+																								removeAt(position);
+																								Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetLoad_PresetDeleted).replace("[PRESETNAME]",selectedName),Toast.LENGTH_SHORT).show();
+																						}
+
+																				} catch (Throwable t) {
+																						Toast.makeText(context.getApplicationContext(),"Failed to delete: "+t,Toast.LENGTH_LONG).show();
+																				}
+																				notifyDataSetChanged();
+																		}
+																});
+														adb.setNegativeButton(R.string.Dialog_Cancel, new DialogInterface.OnClickListener() {
+
+																		@Override
+																		public void onClick(DialogInterface p1, int p2)
+																		{
+																				// TODO: Implement this method
+																		}
+																});
+																
+																adb.show();
 												}
 										});
 								Share.setOnClickListener(new OnClickListener() {
@@ -227,12 +248,21 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				return string;
 		}
 
+		public void insert(String[] string) {
+				itemsTitle.add(string[0]);
+				itemsDesc.add(string[1]);
+				itemsEnabled.add(string[2]);
+				itemsLocal.add(string[3]);
+				notifyDataSetChanged();
+		}
+		
 		public void insertAt(String[] string, int to)
 		{
 				itemsTitle.add(to, string[0]);
 				itemsDesc.add(to, string[1]);
 				itemsEnabled.add(to, string[2]);
 				itemsLocal.add(to, string[3]);
+				notifyDataSetChanged();
 		}
 
 		public void removeAt(int position)
@@ -241,6 +271,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				itemsDesc.remove(position);
 				itemsEnabled.remove(position);
 				itemsLocal.remove(position);
+				notifyDataSetChanged();
 		}
 
 }

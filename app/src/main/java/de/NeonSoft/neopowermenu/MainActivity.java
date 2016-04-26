@@ -1,8 +1,8 @@
 package de.NeonSoft.neopowermenu;
 
-import android.app.*;
 import android.content.*;
 import android.content.res.*;
+import android.net.*;
 import android.os.*;
 import android.preference.*;
 import android.support.v7.app.*;
@@ -16,6 +16,7 @@ import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.xposed.*;
 import eu.chainfire.libsuperuser.*;
 import java.io.*;
+import java.net.*;
 
 import android.support.v7.widget.Toolbar;
 
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 		String versionName = "1.0";
 		int versionCode = -1;
 		
+		public static URL ImportUrl = null;
+		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -47,6 +50,19 @@ public class MainActivity extends AppCompatActivity {
 				
 				File presetDir = new File(getFilesDir()+"/presets/");
 				presetDir.mkdirs();
+
+				Uri intentfilterdata = getIntent().getData();
+				if (intentfilterdata != null)
+				{
+						try
+						{
+								ImportUrl = new URL(intentfilterdata.getScheme(), intentfilterdata.getHost(), intentfilterdata.getPath());
+						}
+						catch (Exception e)
+						{
+								e.printStackTrace();
+						}
+				}
 				
 				context = getApplicationContext();
 				inflater = getLayoutInflater();
@@ -97,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
 										launchPowerMenu();
 								}
 						});
+						
+						if (ImportUrl!=null) {
+								fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesPresetsFragment()).commit();
+						}
     }
 
 		@Override
@@ -108,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
 						fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
 						fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesColorFragment()).commit();
+				} else if (visibleFragment.equalsIgnoreCase("Advanced")) {
+						fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("Main")) {
 						super.onBackPressed();
 				}

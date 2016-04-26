@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NeoPowerMenu</string>
+		
+    <string name="action_settings">Настройки</string>
+
+		<string name="ShareMessage">Оцените это отличное приложение для настройки меню выключения с Вашего Аndroid-устройства с root-доступом!\n\n</string>
+		
+		<string name="TranslatorWebsite">http://www.vk.com/smirnaff</string> <!-- Change this to your website! -->
+
+		<string name="PreviewPowerMenu">Предпросмотр</string>
+
+		<string name="powerMenuMain_Shutdown">Выключение</string>
+		<string name="powerMenuMain_Reboot">Перезагрузка</string>
+		<string name="powerMenuMain_SoftReboot">Мягкая Перезагрузка</string>
+		<string name="powerMenuMain_SoftRebootDesc">Просто перезапускает Android UI путём убийства основного процесса</string>
+		<string name="powerMenuMain_Screenshot">Снимок экрана</string>
+
+		<string name="powerMenuBottom_Recovery">Восстановление</string>
+		<string name="powerMenuBottom_Bootloader">Загрузчик</string>
+		<string name="powerMenuBottom_SafeMode">Мягкая Перезагрузка</string>
+		
+		<string name="powerMenu_Shuttingdown">Выключение...</string>
+		<string name="powerMenu_Rebooting">Перезагрузка...</string>
+		
+		
+		<string name="preferencesCategory_RootXposed">Root и Xposed</string>
+		<string name="preferencesTitle_RootXposed1">Root и Xposed недоступны</string>
+		<string name="preferencesDesc_RootXposed1">Root и Xposed должны быть работающими.</string>
+		<string name="preferencesTitle_RootXposed2">Xposed работает, Root - нет</string>
+		<string name="preferencesDesc_RootXposed2">Требуется Root, чтобы выключить или перезагрузить...\nПожалуйста, дайте root-доступ.</string>
+		<string name="preferencesTitle_RootXposed3">Root работает, Xposed - нет</string>
+		<string name="preferencesDesc_RootXposed3">Требуется Xposed, чтобы заменить Меню Выключения...\nПожалуйста, активируете модуль в Xposed installer.</string>
+		<string name="preferencesTitle_RootXposed4">Root и Xposed рабртают</string>
+		<string name="preferencesDesc_RootXposed4">Приложение должно работать хорошо!</string>
+		<string name="preferencesCategory_General">Основное</string>
+		<string name="preferencesTitle_Style">Стиль</string>
+		<string name="preferencesDesc_Style">[STYLENAME] (В будущем будет больше)</string>
+		<string name="preferencesTitle_Theme">Тема</string>
+		<string name="preferencesDesc_Theme">Измените внешний вид.</string>
+		<string name="preferencesTitle_VisibilityOrder">Отображение и порядок</string>
+		<string name="preferencesDesc_VisibilityOrder">Выберите элементы, которые Вы бы хотели видеть и расположите их так, как Вам хочется.</string>
+		<string name="preferencesCategory_Other">Другое</string>
+		<string name="preferencesTitle_HideLauncherIcon">Спрятать приложение в меню приложений</string>
+		<string name="preferencesDesc_HideLauncherIcon">Прячет иконку приложения в меню приложений, может потребоваться перезагрузка.\nЭто приложение будет доступно через Xposed Installer.</string>
+		<string name="preferencesCategory_About">О приложении</string>
+		<string name="preferencesTitle_Source">Исходники</string>
+		<string name="preferencesDesc_Source">Оригинал Material Power Menu с открытыми исходниками.\nОригинальный исходный код на Github.</string>
+		<string name="preferencesTitle_Share">Поделиться</string>
+		<string name="preferencesDesc_Share">Понравилось приложение? Поделитесь им среди своих друзей.</string>
+		<string name="preferencesTitle_Translator">Переведено на русский:</string>
+		<string name="preferencesDesc_Translator">Смирнов Ярослав/Smirnov Yaroslav (Smirnaff)</string> <!-- Replace my name with yours for Translation Credits! -->
+		<string name="preferencesTitle_About">Создано Neon-Soft / DrAcHe981</string>
+		<string name="preferencesDesc_About">Основано на исходном коде Naman Dwivedi(naman14).</string>
+		
+		
+		<string name="visibilityOrderCategory_VisibilityOrder">Отображение и порядок</string>
+		<string name="visibilityOrderTitle_Shutdown">Выключение</string>
+		<string name="visibilityOrderDesc_Shutdown">Выключает устройство.</string>
+		<string name="visibilityOrderTitle_Reboot">Перезагрузка</string>
+		<string name="visibilityOrderDesc_Reboot">Перезагружает устройство.</string>
+		<string name="visibilityOrderTitle_SoftReboot">Мягкая Перезагрузка</string>
+		<string name="visibilityOrderDesc_SoftReboot">Просто перезапускает Android UI путём убийства основного процесса.</string>
+		<string name="visibilityOrderTitle_Screenshot">Снимок экрана</string>
+		<string name="visibilityOrderDesc_Screenshot">Делайте снимки экрана из меню выключения.</string>
+		
+		<string name="visibilityOrder_Enabled">Включено:</string>
+		
+		
+		<string name="category_Preset">Шаблоны</string>
+		<string name="preset_Load">Загрузить шаблон</string>
+		<string name="preset_LoadDesc">Загрузить сохранённую конфигурацию</string>
+		<string name="preset_Save">Сохранить шаблон</string>
+		<string name="preset_SaveDesc">Сохраните свою текущую конфигурацию</string>
+
+		<string name="category_Reveal">Эффекты заполнения</string>
+		<string name="reveal_color">Цвет эффекта заполнения</string>
+		<string name="reveal_colorDesc">Цвет эффекта заполнения заднего фона экрана.</string>
+		<string name="Actionreveal_color">Цвет эффекта заполнения при нажатии</string>
+		<string name="Actionreveal_colorDesc">Цвет эффекта заполнения заднего фона экрана при нажатии на Перезагрузку/Выключение.</string>
+		
+		<string name="category_Backgrounds">Цвета заднего фона</string>
+		<string name="Dialog_Backgroundcolor">Цвет заднего фона</string>
+		<string name="Dialog_BackgroundcolorDesc">Цвет заднего фона в диалоговом окне.</string>
+		<string name="DialogShutdown_Backgroundcolor">Цвет заднего фона Выключения</string>
+		<string name="DialogShutdown_BackgroundcolorDesc">Цвет заднего фона в диалоговом окне при нажатии на Выключение.</string>
+		<string name="DialogReboot_Backgroundcolor">Цвет заднего фона Перезагрузки</string>
+		<string name="DialogReboot_BackgroundcolorDesc">Цвет заднего фона в диалоговом окне при нажатии на Перезагрузку.</string>
+		<string name="DialogSoftReboot_Backgroundcolor">Цвет заднего фона Мягкой Перезагрузки</string>
+		<string name="DialogSoftReboot_BackgroundcolorDesc">Цвет заднего фона в диалоговом окне при нажатии на Мягкую Перезагрузку.</string>
+		<string name="DialogRecovery_Backgroundcolor">Цвет заднего фона Восстановления</string>
+		<string name="DialogRecovery_BackgroundcolorDesc">Цвет заднего фона в диалоговом окне при нажатии на Восстановление.</string>
+		<string name="DialogBootloader_Backgroundcolor">Цвет заднего фона Загрузчика</string>
+		<string name="DialogBootloader_BackgroundcolorDesc">Цвет заднего фона в диалоговом окне при нажатии на Загрузчик.</string>
+		<string name="DialogSafeMode_Backgroundcolor">Цвет заднего фона Безопасного Режима</string>
+		<string name="DialogSafeMode_BackgroundcolorDesc">Цвет заднего фона в диалоговом окне при нажатии на Безопасный Режим.</string>
+		
+		<string name="category_Texts">Цвета текста</string>
+		<string name="Dialog_Textcolor">Цвет текста</string>
+		<string name="Dialog_TextcolorDesc">Цвет текста в диалоговом окне.</string>
+		<string name="DialogShutdown_Textcolor">Цвет теста Выключения</string>
+		<string name="DialogShutdown_TextcolorDesc">Цвет текста в диалоговом окне при нажатии на Выключение.</string>
+		<string name="DialogReboot_Textcolor">Цвет текста Перезагрузки</string>
+		<string name="DialogReboot_TextcolorDesc">Цвет текста в диалоговом окне при нажатии на Перезагрузку.</string>
+		<string name="DialogSoftReboot_Textcolor">Цвет текста Мягкой Перезагрузки</string>
+		<string name="DialogSoftReboot_TextcolorDesc">Цвет текста в диалоговом окне при нажатии на Мягкую Перезагрузку.</string>
+		<string name="DialogRecovery_Textcolor">Цвет текста Восстановления</string>
+		<string name="DialogRecovery_TextcolorDesc">Цвет текста в диалоговом окне при нажатии на Восстановление.</string>
+		<string name="DialogBootloader_Textcolor">Цвет текста Загрузчика</string>
+		<string name="DialogBootloader_TextcolorDesc">Цвет текста в диалоговом окне при нажатии на Загрузчик.</string>
+		<string name="DialogSafeMode_Textcolor">Цвет текста Безопасного Режима</string>
+		<string name="DialogSafeMode_TextcolorDesc">Цвет текста в диалоговом окне при нажатии на Безопасный Режим.</string>
+
+		
+		<string name="presetsManager_TitleLocal">Шаблоны на устройстве</string>
+		<string name="presetsManager_TitleOnline">Шаблоны онлайн</string>
+		<string name="presetsManager_Active">Активный:</string>
+		<string name="presetsManager_Creator">Создатель: [CREATORNAME]</string>
+		<string name="presetsManager_BuiltIn">Встроенный</string>
+		<string name="presetsManager_Delete">Удалить</string>
+		<string name="presetsManager_Share">Поделиться</string>
+		<string name="presetsManager_NJI">Эта опция в данный момент недоступна...</string>
+		<string name="presetsManager_ImportMsg">Вы хотите импортировать этот шаблон?</string>
+		<string name="presetsManager_ImportSuccess">[PRESETNAME] Импортирован успешно.</string>
+		<string name="presetsManager_ImportFailed">Импортировать не удалось...</string>
+		
+		
+		<string name="Dialog_WaitForRoot">Ожидание root-доступа...</string>
+		
+		<string name="Dialog_Ok">Ok</string>
+		<string name="Dialog_Yes">Да</string>
+		<string name="Dialog_Rename">Переименовать</string>
+		<string name="Dialog_Cancel">Отмена</string>
+		<string name="Dialog_Delete">Удалить</string>
+		<string name="Dialog_Load">Загрузить</string>
+		<string name="Dialog_Save">Сохранить</string>
+		<string name="Dialog_Ignore">Игнорировать</string>
+		<string name="Dialog_SelectColor">Выберите цвет</string>
+
+		<string name="ColorPicker_Value">Значение:</string>
+		<string name="ColorPicker_Saturation">Насыщенность:</string>
+		<string name="ColorPicker_Opacity">Непрозрачность:</string>
+		<string name="ColorPicker_Hex">Код:</string>
+		
+		<string name="presetLoadDialog_BuiltInLight">(Встроенный) Светлый</string>
+		<string name="presetLoadDialog_BuiltInDark">(Встроенный) Тёмный</string>
+		<string name="presetLoadDialog_BuiltInBlack">(Встроенный) Чёрный</string>
+		<string name="presetLoad_PresetDeleted">[PRESETNAME] удалён!</string>
+		<string name="presetLoad_CantDelBuiltIn">Встроенные шаблоны не могут быть удалены!</string>
+		<string name="presetLoad_PresetLoaded">[PRESETNAME] загружен!</string>
+		
+		<string name="presetSaveDialog_CreatorNameInfo">TЭтот шаблон создан:</string>
+		<string name="presetSaveDialog_InfoText">Установите имя для шаблона:</string>
+		<string name="presetSaveDialog_OverwriteText">Уже существует, шаблон будет перезаписан!</string>
+		<string name="presetSave_PresetSaved">[PRESETNAME] сохранён!</string>
+		
+		<string name="ToggleShow">Показать</string>
+		<string name="ToggleHide">Скрыть</string>
+		
+</resources>

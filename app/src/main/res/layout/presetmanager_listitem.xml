@@ -96,7 +96,9 @@
 					android:gravity="bottom"
 					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:textColor="#FFFFFF"
-					android:id="@+id/title"/>
+					android:id="@+id/title"
+					android:paddingLeft="10dp"
+					android:paddingRight="10dp"/>
 
 				<TextView
 					android:layout_height="wrap_content"
@@ -104,8 +106,9 @@
 					android:text="Description/Secondary Text"
 					android:layout_weight="1.0"
 					android:gravity="top"
-					android:paddingLeft="5dp"
-					android:id="@+id/text"/>
+					android:paddingLeft="15dp"
+					android:id="@+id/text"
+					android:paddingRight="10dp"/>
 
 			</LinearLayout>
 

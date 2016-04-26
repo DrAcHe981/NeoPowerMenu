@@ -3,6 +3,7 @@ package de.NeonSoft.neopowermenu.xposed;
 import android.content.*;
 import android.os.*;
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.helpers.*;
 import de.robv.android.xposed.*;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.*;
 
@@ -12,6 +13,8 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.*;
 public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 {
 
+		private SharedPreferences preferences;
+		
     public static final String PACKAGE_NAME = MainActivity.class.getPackage().getName();
 
     public static final String CLASS_GLOBAL_ACTIONS = "com.android.internal.policy.impl.GlobalActions";
@@ -57,7 +60,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				if (lpparam.packageName.equals("android"))
 				{
 						log("Loading Power Menu...");
-
+						
 						String usedGADClass;
 						String usedPWMClass;
 						if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
@@ -82,9 +85,91 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										{
 												mObjectHolder = param.thisObject;
 												mContext = (Context) param.args[0];
+												Handler mHandler = new Handler(); 
+												xHandler = mHandler; 
+												BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
+
+														@Override
+														public void onReceive(Context p1, Intent p2)
+														{
+																// TODO: Implement this method
+																if (p2.getAction().equalsIgnoreCase("de.NeonSoft.neopowermenu.action.takeScreenshot")) {
+																		final Handler handler = xHandler;
+																		if (handler == null) return;
+
+																		synchronized (mScreenshotLock) {  
+																				if (mScreenshotConnection != null) {  
+																						return;  
+																				}  
+																				ComponentName cn = new ComponentName("com.android.systemui",  
+																																						 "com.android.systemui.screenshot.TakeScreenshotService");  
+																				Intent intent = new Intent();  
+																				intent.setComponent(cn);  
+																				ServiceConnection conn = new ServiceConnection() {  
+																						@Override  
+																						public void onServiceConnected(ComponentName name, IBinder service) {  
+																								synchronized (mScreenshotLock) {  
+																										if (mScreenshotConnection != this) {  
+																												return;  
+																										}  
+																										final Messenger messenger = new Messenger(service);  
+																										final Message msg = Message.obtain(null, 1);  
+																										final ServiceConnection myConn = this;  
+
+																										Handler h = new Handler(handler.getLooper()) {  
+																												@Override  
+																												public void handleMessage(Message msg) {  
+																														synchronized (mScreenshotLock) {  
+																																if (mScreenshotConnection == myConn) {  
+																																		mContext.unbindService(mScreenshotConnection);  
+																																		mScreenshotConnection = null;  
+																																		handler.removeCallbacks(mScreenshotTimeout);  
+																																}  
+																														}  
+																												}  
+																										};  
+																										msg.replyTo = new Messenger(h);  
+																										msg.arg1 = msg.arg2 = 0;  
+																										h.post(new Runnable() {
+																														@Override
+																														public void run() {
+																																try {
+																																		messenger.send(msg);
+																																} catch (RemoteException e) {
+																																		XposedBridge.log(e);
+																																}
+																														}
+																												});
+																								}  
+																						}  
+																						@Override  
+																						public void onServiceDisconnected(ComponentName name) {}  
+																				};  
+																				if (mContext.bindService(intent, conn, Context.BIND_AUTO_CREATE)) {  
+																						mScreenshotConnection = conn;  
+																						handler.postDelayed(mScreenshotTimeout, 10000);  
+																				}  
+																		} 
+																} else if (p2.getAction().equalsIgnoreCase("de.NeonSoft.neopowermenu.action.Reboot")) {
+																		PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+																		pm.reboot(null);
+																} else if (p2.getAction().equalsIgnoreCase("de.NeonSoft.neopowermenu.action.RebootRecovery")) {
+																		PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+																		pm.reboot("recovery");
+																} else if (p2.getAction().equalsIgnoreCase("de.NeonSoft.neopowermenu.action.RebootBootloader")) {
+																		PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+																		pm.reboot("bootloader");
+																}
+														}
+												};
+												IntentFilter filter = new IntentFilter();
+												filter.addAction("de.NeonSoft.neopowermenu.action.takeScreenshot");
+												filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+												mContext.registerReceiver(mNPMReceiver,filter,null,null);
 												return null;
 										}
 								});
+						log("Registering Broadcast Receiver and setting other values...");
 						log("Hooking (replace) " + usedGADClass + "#showDialog...");
 						XposedHelpers.findAndHookMethod(usedGADClass, lpparam.classLoader, "showDialog", boolean.class, boolean.class, new XC_MethodReplacement() {
 										@Override
@@ -95,6 +180,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										}
 
 								});
+						log("Replaced with showDialog(), just executing startActivity() to start my own dialog.");
 						log("Hooking (replace) " + usedGADClass + "#createDialog...");
 						XposedHelpers.findAndHookMethod(usedGADClass, lpparam.classLoader, "createDialog", new XC_MethodReplacement() {
 										@Override
@@ -105,7 +191,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										}
 
 								});
-						log("Hooking (replace) " + usedGADClass + "#onAirplaneModeChanged");
+						log("Replaced with empty method to prevent crashes, hopefully working...");
+						log("Hooking (replace) " + usedGADClass + "#onAirplaneModeChanged...");
 						XposedHelpers.findAndHookMethod(usedGADClass, lpparam.classLoader, "onAirplaneModeChanged", new XC_MethodReplacement() {
 
 										@Override
@@ -115,27 +202,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 												return null;
 										}
 								});
-
-						//log("Hooking (after) "+usedPWMClass);
-								
-						log("Hooking done!");
-						log("Getting system vars...");
-						log("Reading mHandler from "+usedPWMClass);
-            /*XposedHelpers.findAndHookMethod(usedPWMClass, lpparam.classLoader,"interceptKeyBeforeDispatching", KeyEvent.class, int.class, new XC_MethodHook() {
-
-										@Override
-										protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-												if ((Boolean) XposedHelpers.callMethod(phoneWindowManagerClass, "keyguardOn")) return;
-
-												KeyEvent event = (KeyEvent) param.args[1];
-												int keyCode = event.getKeyCode();
-												boolean down = event.getAction() == KeyEvent.ACTION_DOWN;
-												boolean isFromSystem = (event.getFlags() & KeyEvent.FLAG_FROM_SYSTEM) != 0;
-												xHandler = (Handler) XposedHelpers.getObjectField(param.thisObject, "mHandler");
-											}
-						});*/
-						log("> Skipped: Not Found!");
-						log("Reading done!");
+						log("Replaced with empty method to prevent crashes, hopefully working...");
 				}
 				else if (lpparam.packageName.equals("de.NeonSoft.neopowermenu"))
 				{
@@ -146,71 +213,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										{
 												String active = "active";
 												return active;
-										}
-								});
-						XposedHelpers.findAndHookMethod("de.NeonSoft.neopowermenu.xposed.XposedDialog", lpparam.classLoader, "takeScreenshot", new XC_MethodReplacement() {
-
-										@Override
-										protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam param) throws Throwable
-										{
-												// TODO: Implement this method
-												final Handler handler = xHandler;
-												if (handler == null) return null;
-
-												synchronized (mScreenshotLock) {  
-														if (mScreenshotConnection != null) {  
-																return null;  
-														}  
-														ComponentName cn = new ComponentName("com.android.systemui",  
-																																 "com.android.systemui.screenshot.TakeScreenshotService");  
-														Intent intent = new Intent();  
-														intent.setComponent(cn);  
-														ServiceConnection conn = new ServiceConnection() {  
-																@Override  
-																public void onServiceConnected(ComponentName name, IBinder service) {  
-																		synchronized (mScreenshotLock) {  
-																				if (mScreenshotConnection != this) {  
-																						return;  
-																				}  
-																				final Messenger messenger = new Messenger(service);  
-																				final Message msg = Message.obtain(null, 1);  
-																				final ServiceConnection myConn = this;  
-
-																				Handler h = new Handler(handler.getLooper()) {  
-																						@Override  
-																						public void handleMessage(Message msg) {  
-																								synchronized (mScreenshotLock) {  
-																										if (mScreenshotConnection == myConn) {  
-																												mContext.unbindService(mScreenshotConnection);  
-																												mScreenshotConnection = null;  
-																												handler.removeCallbacks(mScreenshotTimeout);  
-																										}  
-																								}  
-																						}  
-																				};  
-																				msg.replyTo = new Messenger(h);  
-																				msg.arg1 = msg.arg2 = 0;  
-																				h.postDelayed(new Runnable() {
-																								@Override
-																								public void run() {
-																										try {
-																												messenger.send(msg);
-																										} catch (RemoteException e) {
-																												XposedBridge.log(e);
-																										}
-																								}
-																						}, 1000);
-																		}  
-																}  
-																@Override  
-																public void onServiceDisconnected(ComponentName name) {}  
-														};  
-														if (mContext.bindService(intent, conn, Context.BIND_AUTO_CREATE)) {  
-																mScreenshotConnection = conn;  
-																handler.postDelayed(mScreenshotTimeout, 10000);  
-														}  
-												}
-												return null;
 										}
 								});
 						log("Self inject done!");

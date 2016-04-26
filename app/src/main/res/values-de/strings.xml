@@ -16,6 +16,7 @@
 		<string name="powerMenuMain_SoftReboot">Schneller Neustart</string>
 		<string name="powerMenuMain_SoftRebootDesc">Startet die Android UI neu indem der zygote prozess gestoppt wird</string>
 		<string name="powerMenuMain_Screenshot">Bildschirmfoto</string>
+		<string name="powerMenuMain_ScreenshotDesc">Bildschirmfoto Verzögerung: [SCREENSHOTDELAY]</string>
 
 		<string name="powerMenuBottom_Recovery">Recovery</string>
 		<string name="powerMenuBottom_Bootloader">Bootloader</string>
@@ -42,11 +43,15 @@
 		<string name="preferencesTitle_VisibilityOrder">Sichtbarkeit und Sortierung</string>
 		<string name="preferencesDesc_VisibilityOrder">Wähle was gezeigt werden soll und sortiere die Optionen nach deinen wünschen.</string>
 		<string name="preferencesCategory_Other">Anderes</string>
+		<string name="preferencesTitle_Advanced">Erweierte Einstellungen</string>
+		<string name="preferencesDesc_Advanced">Ändere die erweiterten Einstellungen wie verzögerung,gravitation oder geschwindigkeit.</string>
 		<string name="preferencesTitle_HideLauncherIcon">Verstecke die App im Launcher</string>
 		<string name="preferencesDesc_HideLauncherIcon">Versteckt das App Symbol im Launcher, es kann bis zu einem neustart brauchen bis das Symbol versteckt ist.\nDiese Einstellungen können dann nurnoch über den Xposed Installer geöffnet werden.</string>
 		<string name="preferencesCategory_About">Über</string>
-		<string name="preferencesTitle_Source">Source</string>
-		<string name="preferencesDesc_Source">Das Originale Material Power Menu ist open source.\nFinde die source auf Github.</string>
+		<string name="preferencesTitle_NeoSource">Source</string>
+		<string name="preferencesDesc_NeoSource">NeoPowerMenu ist open source.\nFinde die source auf Github.</string>
+		<string name="preferencesTitle_OrigSource">Originale Source</string>
+		<string name="preferencesDesc_OrigSource">Das Originale Material Power Menu ist open source.\nFinde die source auf Github.</string>
 		<string name="preferencesTitle_Share">Teilen</string>
 		<string name="preferencesDesc_Share">Du magst die App? Teile sie mit deinen Freunden.</string>
 		<string name="preferencesTitle_Translator">Übersetzung von</string>
@@ -119,8 +124,20 @@
 		<string name="presetsManager_Creator">Ersteller: [CREATORNAME]</string>
 		<string name="presetsManager_BuiltIn">Eingebaut</string>
 		<string name="presetsManager_Delete">Löschen</string>
+		<string name="presetsManager_SureToDelete">Sind sie sich sicher dass sie [PRESETNAME] löschen möchten?\nDies kann nicht rückgängig gemacht werden!</string>
 		<string name="presetsManager_Share">Teilen</string>
 		<string name="presetsManager_NJI">Diese Funktion ist aktuell noch nicht implementiert...</string>
+		<string name="presetsManager_ImportSuccess">[PRESETNAME] wurde importiert.</string>
+		<string name="presetsManager_ImportFailed">Import fehlgeschlagen...</string>
+
+
+		<string name="advancedPrefsCategory_Delays">Verzögerungen</string>
+		<string name="advancedPrefs_DelayZero">fast sofort</string>
+		<string name="advancedPrefsTitle_ScreenshotDelay">Bildschirmfoto Verzögerung</string>
+		<string name="advancedPrefsDesc_ScreenshotDelay">Verzögerung zwischen dem Klick und dem Foto.</string>
+		<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">Ausschalt Menü Verzögerung</string>
+		<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">Verzögerung zwischen dem Reveal und dem Erscheinen des Ausschalt Menüs.</string>
+		
 		
 		<string name="Dialog_WaitForRoot">Warte auf Root zugriff...</string>
 
@@ -129,6 +146,7 @@
 		<string name="Dialog_Delete">Löschen</string>
 		<string name="Dialog_Load">Laden</string>
 		<string name="Dialog_Save">Speichern</string>
+		<string name="Dialog_Ignore">Ignorieren</string>
 		<string name="Dialog_SelectColor">Farbe wählen</string>
 
 		<string name="ColorPicker_Value">Wert:</string>
