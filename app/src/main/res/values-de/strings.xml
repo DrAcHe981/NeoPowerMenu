@@ -32,7 +32,7 @@
 		<string name="preferencesTitle_RootXposed2">Xposed funktioniert, Root nicht</string>
 		<string name="preferencesDesc_RootXposed2">Aber Root wird zum Ausschalten oder Neustarten benötigt...\nBitte erlaube den Root-Zugriff.</string>
 		<string name="preferencesTitle_RootXposed3">Root funktioniert, Xposed nicht</string>
-		<string name="preferencesDesc_RootXposed3">Aber Xposed wird benötigt um das Ausschaltmenü zu ersetzen...\nBitte aktiviere das Modul im Xposed installer.</string>
+		<string name="preferencesDesc_RootXposed3">Aber Xposed wird benötigt, um das Ausschaltmenü zu ersetzen...\nBitte aktiviere das Modul im Xposed installer.</string>
 		<string name="preferencesTitle_RootXposed4">Root und Xposed funktionieren</string>
 		<string name="preferencesDesc_RootXposed4">Die App sollte wie geplant funktionieren!</string>
 		<string name="preferencesCategory_General">Allgemein</string>
@@ -44,7 +44,7 @@
 		<string name="preferencesDesc_VisibilityOrder">Wähle, was gezeigt werden soll und sortiere die Optionen nach deinen Wünschen.</string>
 		<string name="preferencesCategory_Other">Anderes</string>
 		<string name="preferencesTitle_Advanced">Erweierte Einstellungen</string>
-		<string name="preferencesDesc_Advanced">Ändere die erweiterten Einstellungen wie Verzögerung, Position oder Geschwindigkeit.</string>
+		<string name="preferencesDesc_Advanced">Ändere erweiterte Einstellungen wie Verzögerung, Position oder Geschwindigkeit.</string>
 		<string name="preferencesTitle_HideLauncherIcon">Verstecke die App im Launcher</string>
 		<string name="preferencesDesc_HideLauncherIcon">Versteckt das App-Icon im Launcher, könnte einen Neustart erfordern.\nDiese Einstellungen können dann nur noch über den Xposed Installer geöffnet werden.</string>
 		<string name="preferencesCategory_About">Über</string>
@@ -57,7 +57,7 @@
 		<string name="preferencesTitle_Translator">Übersetzung von</string>
 		<string name="preferencesDesc_Translator">Robin G. (DrAcHe981)</string>
 		<string name="preferencesTitle_About">Skript von Neon-Soft / DrAcHe981</string>
-		<string name="preferencesDesc_About">basierend auf einer Source von Naman Dwivedi (naman14).</string>
+		<string name="preferencesDesc_About">basierend auf der Source von Naman Dwivedi (naman14).</string>
 
 		
 		<string name="visibilityOrderCategory_VisibilityOrder">Sichtbarkeit und Sortierung</string>
@@ -139,7 +139,7 @@
 		<string name="advancedPrefsTitle_ScreenshotDelay">Bildschirmfoto Verzögerung</string>
 		<string name="advancedPrefsDesc_ScreenshotDelay">Verzögerung zwischen dem Klick und dem Screenshot.</string>
 		<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">Ausschaltmenü Verzögerung</string>
-		<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">Verzögerung zwischen dem Reveal und dem Erscheinen des Ausschalt Menüs.</string>
+		<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">Verzögerung zwischen der Reveal-Animation und dem Erscheinen des Ausschaltmenüs.</string>
 		
 		
 		<string name="Dialog_WaitForRoot">Warte auf Rootzugriff...</string>
