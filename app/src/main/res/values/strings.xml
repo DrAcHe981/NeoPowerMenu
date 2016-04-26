@@ -5,7 +5,7 @@
 		
     <string name="action_settings">Settings</string>
 
-		<string name="ShareMessage">Check out this beautiful app to customize your Power Menu from your rooted android device!\n\n</string>
+		<string name="ShareMessage">Check out this beautiful app to customize your Power Menu of your rooted android device!\n\n</string>
 		
 		<string name="TranslatorWebsite">http://www.neon-soft.de</string> <!-- Change this to your website! -->
 
@@ -46,18 +46,18 @@
 		<string name="preferencesTitle_Advanced">Advanced Settings</string>
 		<string name="preferencesDesc_Advanced">Change advanced settings like delays, gravity or speed.</string>
 		<string name="preferencesTitle_HideLauncherIcon">Hide app in launcher</string>
-		<string name="preferencesDesc_HideLauncherIcon">Hides the app icon in the launcher, it can take up to a reboot to hide the icon.\nThis Settings are then only accessible over the Xposed Installer.</string>
+		<string name="preferencesDesc_HideLauncherIcon">Hides the app icon in the launcher, it can take up to a reboot to hide the icon.\nThis Settings screen will only be accessible via the Xposed Installer then.</string>
 		<string name="preferencesCategory_About">About</string>
 		<string name="preferencesTitle_NeoSource">Source</string>
 		<string name="preferencesDesc_NeoSource">NeoPowerMenu is open source.\nCheck out the source on GitHub.</string>
 		<string name="preferencesTitle_OrigSource">Original Source</string>
 		<string name="preferencesDesc_OrigSource">The original Material Power Menu is open source.\nCheck out the source on GitHub.</string>
 		<string name="preferencesTitle_Share">Share</string>
-		<string name="preferencesDesc_Share">Liked the app? Share it with your friends.</string>
+		<string name="preferencesDesc_Share">Like the app? Share it with your friends.</string>
 		<string name="preferencesTitle_Translator">Translation by</string>
 		<string name="preferencesDesc_Translator">Robin G. (DrAcHe981)\n~ Sorry when my English is not the best ^^</string> <!-- Replace my name with yours for Translation Credits! -->
 		<string name="preferencesTitle_About">Code by Neon-Soft / DrAcHe981</string>
-		<string name="preferencesDesc_About">based on the Source from Naman Dwivedi (naman14).</string>
+		<string name="preferencesDesc_About">based on the source of Naman Dwivedi (naman14).</string>
 		
 		
 		<string name="visibilityOrderCategory_VisibilityOrder">Visibility and order</string>
@@ -66,7 +66,7 @@
 		<string name="visibilityOrderTitle_Reboot">Reboot</string>
 		<string name="visibilityOrderDesc_Reboot">Reboot the device.</string>
 		<string name="visibilityOrderTitle_SoftReboot">Soft Reboot</string>
-		<string name="visibilityOrderDesc_SoftReboot">Simply Restart the Android UI by killing the Zygote process.</string>
+		<string name="visibilityOrderDesc_SoftReboot">Simply restarts the Android UI by killing the zygote process</string>
 		<string name="visibilityOrderTitle_Screenshot">Screenshot</string>
 		<string name="visibilityOrderDesc_Screenshot">Take Screenshots via the Power Menu.</string>
 		
@@ -74,9 +74,9 @@
 		
 		
 		<string name="category_Preset">Presets</string>
-		<string name="preset_Load">Load Preset</string>
+		<string name="preset_Load">Load preset</string>
 		<string name="preset_LoadDesc">Load a saved configuration</string>
-		<string name="preset_Save">Save Preset</string>
+		<string name="preset_Save">Save preset</string>
 		<string name="preset_SaveDesc">Save your current configuration</string>
 
 		<string name="category_Reveal">Reveal backgrounds</string>
@@ -108,7 +108,7 @@
 		<string name="DialogShutdown_TextcolorDesc">The text color of the dialog when clicked on Shutdown.</string>
 		<string name="DialogReboot_Textcolor">Reboot text color</string>
 		<string name="DialogReboot_TextcolorDesc">The text color of the dialog when clicked on Reboot.</string>
-		<string name="DialogSoftReboot_Textcolor">Soft Reboot text Color</string>
+		<string name="DialogSoftReboot_Textcolor">Soft Reboot text color</string>
 		<string name="DialogSoftReboot_TextcolorDesc">The text color of the dialog when clicked on Soft Reboot.</string>
 		<string name="DialogRecovery_Textcolor">Recovery text color</string>
 		<string name="DialogRecovery_TextcolorDesc">The text color of the dialog when clicked on Recovery.</string>
@@ -118,7 +118,7 @@
 		<string name="DialogSafeMode_TextcolorDesc">The text color of the dialog when clicked on Safe Mode.</string>
 
 
-		<string name="presetsManager_TitleLocal">Locale Presets</string>
+		<string name="presetsManager_TitleLocal">Local Presets</string>
 		<string name="presetsManager_TitleOnline">Online Presets</string>
 		<string name="presetsManager_Active">Active:</string>
 		<string name="presetsManager_Creator">Creator: [CREATORNAME]</string>
@@ -136,7 +136,7 @@
 		<string name="advancedPrefsTitle_ShowOnLockScreen">Show on lockscreen</string>
 		<string name="advancedPrefsDesc_ShowOnLockScreen">Show the Power Menu on the lockscreen, when disabled nothing will show.</string>
 		<string name="advancedPrefsCategory_Delays">Delays</string>
-		<string name="advancedPrefs_DelayZero">Nearly instant</string>
+		<string name="advancedPrefs_DelayZero">Almost instant</string>
 		<string name="advancedPrefsTitle_ScreenshotDelay">Screenshot delay</string>
 		<string name="advancedPrefsDesc_ScreenshotDelay">Delay between click and screenshot.</string>
 		<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">Power Menu delay</string>
