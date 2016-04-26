@@ -10,6 +10,10 @@ import android.widget.SeekBar.*;
 public class PreferencesAdvancedFragment extends Fragment
 {
 
+		LinearLayout LinearLayout_ShowOnLockScreen;
+		Switch Switch_ShowOnLockScreen;
+		boolean boolean_ShowOnLockScreen;
+		
 		LinearLayout LinearLayout_PowerMenuSlideUpDelay;
 		SeekBar SeekBar_PowerMenuSlideUpDelay;
 		TextView TextView_PowerMenuSlideUpDelay;
@@ -27,6 +31,26 @@ public class PreferencesAdvancedFragment extends Fragment
 				MainActivity.visibleFragment = "Advanced";
 				View InflatedView = inflater.inflate(R.layout.activity_advanced,null);
 
+				boolean_ShowOnLockScreen = MainActivity.preferences.getBoolean("ShowOnLockScreen",true);
+				LinearLayout_ShowOnLockScreen = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_ShowOnLockscreen);
+				Switch_ShowOnLockScreen = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_ShowOnLockScreen);
+				
+				Switch_ShowOnLockScreen.setChecked(boolean_ShowOnLockScreen);
+				Switch_ShowOnLockScreen.setClickable(false);
+				Switch_ShowOnLockScreen.setFocusable(false);
+				
+				LinearLayout_ShowOnLockScreen.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										boolean_ShowOnLockScreen = !boolean_ShowOnLockScreen;
+										MainActivity.preferences.edit().putBoolean("ShowOnLockScreen",boolean_ShowOnLockScreen).commit();
+										Switch_ShowOnLockScreen.setChecked(boolean_ShowOnLockScreen);
+								}
+						});
+				
 				LinearLayout_PowerMenuSlideUpDelay = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_PowerMenuSlideUpDelay);
 				SeekBar_PowerMenuSlideUpDelay = (SeekBar) InflatedView.findViewById(R.id.activityadvancedSeekBar_PowerMenuSlideUpDelay);
 				TextView_PowerMenuSlideUpDelay = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_PowerMenuSlideUpDelayTime);

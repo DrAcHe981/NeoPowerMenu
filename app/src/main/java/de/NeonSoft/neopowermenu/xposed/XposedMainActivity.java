@@ -47,6 +47,9 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				mKeyguardShowing = km.isKeyguardLocked();
         if (mKeyguardShowing) {
 						//Log.d("NeoPowerMenu","Showing in Keyguard");
+						if (!preferences.getBoolean("ShowOnLockScreen",true)) { 
+								finish();
+						}
             getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         } else {
 						//Log.d("NeoPowerMenu","Showing Normal");

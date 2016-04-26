@@ -131,6 +131,9 @@
 		<string name="presetsManager_ImportFailed">Import fehlgeschlagen...</string>
 
 
+		<string name="advancedPrefsCategory_LockScreen">Sperrbildschirm</string>
+		<string name="advancedPrefsTitle_ShowOnLockScreen">Im Sperrbildschirm Öffnen</string>
+		<string name="advancedPrefsDesc_ShowOnLockScreen">Öffne das Ausschalt Menü im Sperrbildschirm, wenn Deaktiviert, wird nichts angezeigt.</string>
 		<string name="advancedPrefsCategory_Delays">Verzögerungen</string>
 		<string name="advancedPrefs_DelayZero">fast sofort</string>
 		<string name="advancedPrefsTitle_ScreenshotDelay">Bildschirmfoto Verzögerung</string>

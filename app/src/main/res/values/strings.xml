@@ -132,6 +132,9 @@
 		<string name="presetsManager_ImportFailed">Import failed...</string>
 		
 		
+		<string name="advancedPrefsCategory_LockScreen">Lockscreen</string>
+		<string name="advancedPrefsTitle_ShowOnLockScreen">Show on lockscreen</string>
+		<string name="advancedPrefsDesc_ShowOnLockScreen">Show the Power Menu on the Lockscreen, when disabled nothing will show.</string>
 		<string name="advancedPrefsCategory_Delays">Delays</string>
 		<string name="advancedPrefs_DelayZero">nearly instant</string>
 		<string name="advancedPrefsTitle_ScreenshotDelay">Screenshot Delay</string>
