@@ -16,16 +16,16 @@ public class PresetsAdapter extends ArrayAdapter<String>
 {
 
 		String[] lightPreset = {"#8800bcd4","#880097a7",
-				"#fff5f5f5","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff8bc34a","#ff277b71","#ff009688",
+				"#fff5f5f5","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
 				"#000000","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
 		String[] darkPreset = {"#88121212","#8821272b",
-				"#ff212121","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff8bc34a","#ff277b71","#ff009688",
+				"#ff212121","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
 				"#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
 		String[] blackPreset = {"#88000000","#88000000",
-				"#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000",
+				"#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000",
 				"#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
 		String[] ColorNames = {"RevealBackground","ActionRevealBackground",
-				"Dialog_Backgroundcolor","DialogShutdown_Backgroundcolor","DialogReboot_Backgroundcolor","DialogSoftReboot_Backgroundcolor","DialogRecovery_Backgroundcolor","DialogBootloader_Backgroundcolor","DialogSafeMode_Backgroundcolor",
+				"Dialog_Backgroundcolor","DialogShutdown_Backgroundcolor","DialogReboot_Backgroundcolor","DialogSoftReboot_Backgroundcolor","DialogScreenshot_Backgrpundcolor","DialogRecovery_Backgroundcolor","DialogBootloader_Backgroundcolor","DialogSafeMode_Backgroundcolor",
 				"Dialog_Textcolor","DialogShutdown_Textcolor","DialogReboot_Textcolor","DialogSoftReboot_Textcolor","DialogRecovery_Textcolor","DialogBootloader_Textcolor","DialogSafeMode_Textcolor"};
 
 		private final Activity context;
