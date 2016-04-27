@@ -113,7 +113,7 @@
     <string name="category_Texts">Цвета текста</string>
     <string name="Dialog_Textcolor">Цвет текста</string>
     <string name="Dialog_TextcolorDesc">Цвет текста в диалоговом окне.</string>
-    <string name="DialogShutdown_Textcolor">Цвет теста Выключения</string>
+    <string name="DialogShutdown_Textcolor">Цвет текста Выключения</string>
     <string name="DialogShutdown_TextcolorDesc">Цвет текста в диалоговом окне при нажатии на Выключение.</string>
     <string name="DialogReboot_Textcolor">Цвет текста Перезагрузки</string>
     <string name="DialogReboot_TextcolorDesc">Цвет текста в диалоговом окне при нажатии на Перезагрузку.</string>
