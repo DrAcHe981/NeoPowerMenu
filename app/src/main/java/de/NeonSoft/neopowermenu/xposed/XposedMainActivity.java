@@ -11,6 +11,7 @@ import android.view.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
+import android.util.*;
 
 /**
  * Created by naman on 20/03/15.
@@ -80,7 +81,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             public void run() {
                 revealView.reveal(p.x, p.y, color, 2, 440, null);
             }
-        }, 10);
+        }, 100);
 
 
         handler = new Handler();
@@ -89,17 +90,20 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             public void run() {
                 showPowerDialog();
             }
-        }, 350);
+        }, 440);
 
 
     }
 
     private void showPowerDialog() {
+				try {
         FragmentManager fm = getFragmentManager();
         XposedDialog powerDialog = new XposedDialog();
         powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
         powerDialog.show(fm, "fragment_power");
-
+				} catch (Throwable t) {
+						Log.e("NeoPowerMenu","Failed to show power menu: "+t.toString());
+				}
     }
 
     public void revealFromTop() {

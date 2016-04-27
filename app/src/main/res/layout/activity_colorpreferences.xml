@@ -47,9 +47,9 @@
 
 			</LinearLayout>
 
-				<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+			<LinearLayout
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -97,9 +97,9 @@
 
 			</LinearLayout>
 
-				<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+			<LinearLayout
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -174,9 +174,9 @@
 
 			</LinearLayout>
 
-				<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+			<LinearLayout
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -237,9 +237,9 @@
 
 			</LinearLayout>
 
-				<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+			<LinearLayout
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -327,9 +327,9 @@
 
 			</LinearLayout>
 
-				<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+			<LinearLayout
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -391,8 +391,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -454,8 +454,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -517,8 +517,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -580,8 +580,71 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogScreenshotBackgroundcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#3F51B5"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogScreenshotBackgroundcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogScreenshot_Backgroundcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogScreenshotBackgroundColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogScreenshot_BackgroundcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogScreenshotBackgroundColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -643,8 +706,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -706,8 +769,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -796,8 +859,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -859,8 +922,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -922,8 +985,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -985,8 +1048,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -1048,8 +1111,71 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitycolorpreferencesLinearLayout_DialogScreenshotTextcolor">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="45dp"
+						android:background="#FFFFFF"
+						android:layout_margin="10dp"
+						android:id="@+id/activitycolorpreferencesTextView_DialogScreenshotTextcolorPreview"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogScreenshot_Textcolor"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitycolorpreferencesTextView_DialogScreenshotTextColorTitle"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/DialogScreenshot_TextcolorDesc"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="5dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitycolorpreferencesTextView_DialogScreenshotTextColorDesc"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -1111,8 +1237,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
@@ -1174,8 +1300,8 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:clickable="true" 
-						android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:background="?android:attr/selectableItemBackground"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"

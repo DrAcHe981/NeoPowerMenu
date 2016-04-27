@@ -10,6 +10,10 @@ import android.widget.SeekBar.*;
 public class PreferencesAdvancedFragment extends Fragment
 {
 
+		LinearLayout LinearLayout_UseGraphics;
+		Switch Switch_UseGraphics;
+		boolean boolean_UseGraphics;
+		
 		LinearLayout LinearLayout_ShowOnLockScreen;
 		Switch Switch_ShowOnLockScreen;
 		boolean boolean_ShowOnLockScreen;
@@ -31,6 +35,26 @@ public class PreferencesAdvancedFragment extends Fragment
 				MainActivity.visibleFragment = "Advanced";
 				View InflatedView = inflater.inflate(R.layout.activity_advanced,null);
 
+				boolean_UseGraphics = MainActivity.preferences.getBoolean("UseGraphics",false);
+				LinearLayout_UseGraphics = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_UseGraphics);
+				Switch_UseGraphics = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_UseGraphics);
+
+				Switch_UseGraphics.setChecked(boolean_UseGraphics);
+				Switch_UseGraphics.setClickable(false);
+				Switch_UseGraphics.setFocusable(false);
+
+				LinearLayout_UseGraphics.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										boolean_UseGraphics = !boolean_UseGraphics;
+										MainActivity.preferences.edit().putBoolean("UseGraphics",boolean_UseGraphics).commit();
+										Switch_UseGraphics.setChecked(boolean_UseGraphics);
+								}
+						});
+				
 				boolean_ShowOnLockScreen = MainActivity.preferences.getBoolean("ShowOnLockScreen",true);
 				LinearLayout_ShowOnLockScreen = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_ShowOnLockscreen);
 				Switch_ShowOnLockScreen = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_ShowOnLockScreen);

@@ -13,6 +13,7 @@ import de.NeonSoft.neopowermenu.helpers.*;
 import eu.chainfire.libsuperuser.*;
 import java.util.*;
 import android.view.View.*;
+import android.graphics.drawable.*;
 
 /**
  * Created by naman on 20/03/15.
@@ -24,9 +25,6 @@ public class XposedDialog extends DialogFragment
 		{
 
     }
-
-    private static final String CLASS_PHONE_WINDOW_MANAGER = "com.android.server.policy.PhoneWindowManager";
-    private static Object mPhoneWindowManager;
 
 		public static Context mContext;
 		public static NotificationManager nfm;
@@ -46,6 +44,7 @@ public class XposedDialog extends DialogFragment
     private CircularRevealView revealView;
     private View selectedView;
     private int backgroundColor;
+		ImageView progressbg;
     ProgressBar progress;
     TextView status, status_detail;
 
@@ -58,8 +57,6 @@ public class XposedDialog extends DialogFragment
     private static final String REBOOT_BOOTLOADER_CMD = "reboot bootloader";
     private static final String[] REBOOT_SAFE_MODE
 		= new String[]{"setprop persist.sys.safemode 1", REBOOT_SOFT_REBOOT_CMD};
-
-		private static final String SCREENSHOT_CMD = "screencap -p /sdcard1/[FILENAME].png";
 
     private static final int BG_PRIO = android.os.Process.THREAD_PRIORITY_BACKGROUND;
     private static final int RUNNABLE_DELAY_MS = 5000;
@@ -97,6 +94,7 @@ public class XposedDialog extends DialogFragment
         status = (TextView) view.findViewById(R.id.status);
         status_detail = (TextView) view.findViewById(R.id.status_detail);
 
+				progressbg = (ImageView) view.findViewById(R.id.progressbg);
         progress = (ProgressBar) view.findViewById(R.id.progress);
 
 				seperator1.setBackgroundColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
@@ -104,10 +102,13 @@ public class XposedDialog extends DialogFragment
 				bootloaderText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 				safemodeText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 
+				//TextDrawable progressbgd = TextDrawable.builder().buildRound("",Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Backgroundcolor","#ffffff")));
+				//progressbg.setImageDrawable(progressbgd);
         progress.getIndeterminateDrawable().setColorFilter(
 						Color.parseColor("#ffffff"),
 						android.graphics.PorterDuff.Mode.SRC_IN);
 
+						
         powerOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -253,8 +254,6 @@ public class XposedDialog extends DialogFragment
 																XposedMainActivity.mContext.sendBroadcast(takeScreenshotBC);
 														}
 												}, XposedMainActivity.preferences.getLong("ScreenshotDelay", 1000));
-										//takeScreenshot();
-										//new BackgroundThread(SCREENSHOT_CMD).start();
 								}
 						}
 				};
@@ -401,18 +400,32 @@ public class XposedDialog extends DialogFragment
 								root.setOnClickListener(powerOnClickListener);
 								text.setText(getString(R.string.powerMenuMain_Shutdown));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
-								TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Textcolor", "#ffffff"))).endConfig()
-										.buildRound(getString(R.string.powerMenuMain_Shutdown).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Backgroundcolor", "#ffd32f2f")));
-								icon.setImageDrawable(drawable);
+								if (XposedMainActivity.preferences.getBoolean("UseGraphics",false)) {
+										GraphicDrawable drawable = GraphicDrawable.builder().buildRound(BitmapFactory.decodeResource(getResources(),R.drawable.delete), Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Backgroundcolor", "#ffd32f2f")));
+										icon.setImageDrawable(drawable);
+										icon.setColorFilter(Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Textcolor","#ffffff")),
+												android.graphics.PorterDuff.Mode.SRC_IN);
+								} else {
+										TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Textcolor", "#ffffff"))).endConfig()
+												.buildRound(getString(R.string.powerMenuMain_Shutdown).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Backgroundcolor", "#ffd32f2f")));
+										icon.setImageDrawable(drawable);
+								}
 						}
 						else if (position == XposedMainActivity.preferences.getInt("RebootPosition", 1) && XposedMainActivity.preferences.getBoolean("RebootEnabled", true))
 						{
 								root.setOnClickListener(rebootOnClickListener);
 								text.setText(getString(R.string.powerMenuMain_Reboot));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								if (XposedMainActivity.preferences.getBoolean("UseGraphics",false)) {
+										GraphicDrawable drawable = GraphicDrawable.builder().buildRound(BitmapFactory.decodeResource(getResources(),R.drawable.delete), Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Backgroundcolor", "#ff3f51b5")));
+										icon.setImageDrawable(drawable);
+										icon.setColorFilter(Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Textcolor","#ffffff")),
+																				android.graphics.PorterDuff.Mode.SRC_IN);
+								} else {
 								TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Textcolor", "#ffffff"))).endConfig()
 										.buildRound(getString(R.string.powerMenuMain_Reboot).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Backgroundcolor", "#ff3f51b5")));
 								icon.setImageDrawable(drawable);
+								}
 						}
 						else if (position == XposedMainActivity.preferences.getInt("SoftRebootPosition", 2) && XposedMainActivity.preferences.getBoolean("SoftRebootEnabled", true))
 						{
@@ -422,9 +435,16 @@ public class XposedDialog extends DialogFragment
 								desc.setVisibility(View.VISIBLE);
 								desc.setText(R.string.powerMenuMain_SoftRebootDesc);
 								desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								if (XposedMainActivity.preferences.getBoolean("UseGraphics",false)) {
+										GraphicDrawable drawable = GraphicDrawable.builder().buildRound(BitmapFactory.decodeResource(getResources(),R.drawable.delete), Color.parseColor(XposedMainActivity.preferences.getString("DialogSoftReboot_Backgroundcolor", "#ffe91e63")));
+										icon.setImageDrawable(drawable);
+										icon.setColorFilter(Color.parseColor(XposedMainActivity.preferences.getString("DialogSoftReboot_Textcolor","#ffffff")),
+																				android.graphics.PorterDuff.Mode.SRC_IN);
+								} else {
 								TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogSoftReboot_Textcolor", "#ffffff"))).endConfig()
 										.buildRound(getString(R.string.powerMenuMain_SoftReboot).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogSoftReboot_Backgroundcolor", "#ffe91e63")));
 								icon.setImageDrawable(drawable);
+								}
 						}
 						else if (position == XposedMainActivity.preferences.getInt("ScreenshotPosition", 4) && XposedMainActivity.preferences.getBoolean("ScreenshotEnabled", true))
 						{
@@ -441,9 +461,16 @@ public class XposedDialog extends DialogFragment
 										desc.setText(getString(R.string.powerMenuMain_ScreenshotDesc).replace("[SCREENSHOTDELAY]", helper.getTimeString(XposedMainActivity.preferences.getLong("ScreenshotDelay", 1000), false)) + " (m:s)");
 								}
 								desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
-								TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#ffffff"))).endConfig()
-										.buildRound(getString(R.string.powerMenuMain_Screenshot).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("RevealBackground", "#ffffff")));
+								if (XposedMainActivity.preferences.getBoolean("UseGraphics",false)) {
+										GraphicDrawable drawable = GraphicDrawable.builder().buildRound(BitmapFactory.decodeResource(getResources(),R.drawable.delete), Color.parseColor(XposedMainActivity.preferences.getString("DialogScreenshot_Backgroundcolor", "#ff3f51b5")));
+										icon.setImageDrawable(drawable);
+										icon.setColorFilter(Color.parseColor(XposedMainActivity.preferences.getString("DialogScreenshot_Textcolor","#ffffff")),
+																				android.graphics.PorterDuff.Mode.SRC_IN);
+								} else {
+								TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogScreenshot_Textcolor", "#ffffff"))).endConfig()
+										.buildRound(getString(R.string.powerMenuMain_Screenshot).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogScreenshot_Backgroundcolor", "#ff3f51b5")));
 								icon.setImageDrawable(drawable);
+								}
 						}
 						if (!text.getText().toString().equalsIgnoreCase("Text"))
 						{
@@ -451,17 +478,38 @@ public class XposedDialog extends DialogFragment
 						}
 				}
 
+				if (XposedMainActivity.preferences.getBoolean("UseGraphics",false)) {
+						GraphicDrawable drawableRecovery = GraphicDrawable.builder().buildRound(BitmapFactory.decodeResource(getResources(),R.drawable.delete), Color.parseColor(XposedMainActivity.preferences.getString("DialogRecovery_Backgroundcolor", "#ff8bc34a")));
+						((ImageView) view.findViewById(R.id.irecovery)).setImageDrawable(drawableRecovery);
+						((ImageView) view.findViewById(R.id.irecovery)).setColorFilter(Color.parseColor(XposedMainActivity.preferences.getString("DialogRecovery_Textcolor","#ffffff")),
+																android.graphics.PorterDuff.Mode.SRC_IN);
+				} else {
         TextDrawable drawableRecovery = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogRecovery_Textcolor", "#ffffff"))).endConfig()
-						.buildRound(getString(R.string.powerMenuBottom_Recovery).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogRecovery_Backgroundcolor", "#ff009688")));
+								.buildRound(getString(R.string.powerMenuBottom_Recovery).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogRecovery_Backgroundcolor", "#ff8bc34a")));
         ((ImageView) view.findViewById(R.id.irecovery)).setImageDrawable(drawableRecovery);
+				}
 
+				if (XposedMainActivity.preferences.getBoolean("UseGraphics",false)) {
+						GraphicDrawable drawableBootloader = GraphicDrawable.builder().buildRound(BitmapFactory.decodeResource(getResources(),R.drawable.delete), Color.parseColor(XposedMainActivity.preferences.getString("DialogBootloader_Backgroundcolor", "#ff277b71")));
+						((ImageView) view.findViewById(R.id.ibootloader)).setImageDrawable(drawableBootloader);
+						((ImageView) view.findViewById(R.id.ibootloader)).setColorFilter(Color.parseColor(XposedMainActivity.preferences.getString("DialogBootloader_Textcolor","#ffffff")),
+																																					 android.graphics.PorterDuff.Mode.SRC_IN);
+				} else {
         TextDrawable drawableBootloader = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogBootloader_Textcolor", "#ffffff"))).endConfig()
-						.buildRound(getString(R.string.powerMenuBottom_Bootloader).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogBootloader_Backgroundcolor", "#009688")));
+								.buildRound(getString(R.string.powerMenuBottom_Bootloader).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogBootloader_Backgroundcolor", "#ff277b71")));
         ((ImageView) view.findViewById(R.id.ibootloader)).setImageDrawable(drawableBootloader);
+				}
 
+				if (XposedMainActivity.preferences.getBoolean("UseGraphics",false)) {
+						GraphicDrawable drawableSafeMode = GraphicDrawable.builder().buildRound(BitmapFactory.decodeResource(getResources(),R.drawable.delete), Color.parseColor(XposedMainActivity.preferences.getString("DialogSafeMode_Backgroundcolor", "#ff009688")));
+						((ImageView) view.findViewById(R.id.isafe)).setImageDrawable(drawableSafeMode);
+						((ImageView) view.findViewById(R.id.isafe)).setColorFilter(Color.parseColor(XposedMainActivity.preferences.getString("DialogSafeMode_Textcolor","#ffffff")),
+																																						 android.graphics.PorterDuff.Mode.SRC_IN);
+				} else {
         TextDrawable drawableSafeMode = TextDrawable.builder().beginConfig().textColor(Color.parseColor(XposedMainActivity.preferences.getString("DialogSafeMode_Textcolor", "#ffffff"))).endConfig()
 						.buildRound(getString(R.string.powerMenuBottom_SafeMode).substring(0, 1), Color.parseColor(XposedMainActivity.preferences.getString("DialogSafeMode_Backgroundcolor", "#009688")));
         ((ImageView) view.findViewById(R.id.isafe)).setImageDrawable(drawableSafeMode);
+				}
 
 
         return view;
@@ -492,14 +540,12 @@ public class XposedDialog extends DialogFragment
 
 								if (sCmd == null)
 										return;
-								if (!sCmd.toString().equalsIgnoreCase(SCREENSHOT_CMD))
-								{
 										/**
 										 * Sending a system broadcast to notify apps and the system that we're going down
 										 * so that they write any outstanding data that might need to be flushed
 										 */
 										Shell.SU.run(SHUTDOWN_BROADCAST);
-								}
+								
 
 								new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
 												@Override
@@ -507,20 +553,6 @@ public class XposedDialog extends DialogFragment
 												{
 														if (sCmd instanceof String)
 														{
-																Date now = new Date();
-																if (sCmd.toString().equalsIgnoreCase(SCREENSHOT_CMD))
-																{
-																		try
-																		{
-																				takeScreenshot();
-																		}
-																		catch (Throwable t)
-																		{
-																				Log.e("NeoPowerMenu", "" + t);
-																		}
-																}
-																else
-																{ 
 																		if (sCmd.toString().equalsIgnoreCase(SHUTDOWN + "notusedjet"))
 																		{
 																				Intent broadcast =new Intent();
@@ -531,7 +563,6 @@ public class XposedDialog extends DialogFragment
 																		{
 																				Shell.SU.run((String) sCmd);
 																		}
-																}
 														}
 														else if (sCmd instanceof String[])
 														{
@@ -604,14 +635,6 @@ public class XposedDialog extends DialogFragment
         super.onActivityCreated(arg0);
         getDialog().getWindow()
 						.getAttributes().windowAnimations = R.style.DialogAnimation;
-    }
-
-
-    private static final Object mScreenshotLock = new Object();
-    private static ServiceConnection mScreenshotConnection = null;  
-    private static void takeScreenshot()
-		{
-				return;
     }
 
 }

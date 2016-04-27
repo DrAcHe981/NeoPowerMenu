@@ -10,9 +10,7 @@
   <string name="powerMenuMain_Shutdown">Wyłącz</string>
   <string name="powerMenuMain_Reboot">Uruchom ponownie</string>
   <string name="powerMenuMain_SoftReboot">Szybki restart</string>
-  <string name="powerMenuMain_SoftRebootDesc">
-Szybki restart UI poprzez zabicie procesu zygote
-</string>
+  <string name="powerMenuMain_SoftRebootDesc">Szybki restart UI poprzez zabicie procesu zygote</string>
   <string name="powerMenuMain_Screenshot">Zrzut  ekranu</string>
   <string name="powerMenuBottom_Recovery">Recovery</string>
   <string name="powerMenuBottom_Bootloader">Bootloader</string>
@@ -23,13 +21,9 @@ Szybki restart UI poprzez zabicie procesu zygote
   <string name="preferencesTitle_RootXposed1">Root oraz Xposed niedostępne</string>
   <string name="preferencesDesc_RootXposed1">Root oraz Xposed są wymagane do działania modułu.</string>
   <string name="preferencesTitle_RootXposed2">Xposed działa, ale root nie.</string>
-  <string name="preferencesDesc_RootXposed2">
-Root jest wymagany do wyłączenia lub restartu...\nZezwól na dostęp roota.
-</string>
+  <string name="preferencesDesc_RootXposed2">Root jest wymagany do wyłączenia lub restartu...\nZezwól na dostęp roota.</string>
   <string name="preferencesTitle_RootXposed3">Root działa,ale Xposed nie</string>
-  <string name="preferencesDesc_RootXposed3">
-Xposed jest wymagany do zastąpienia menu zasilania...\nAktywuj moduł w Xposed Installer.
-</string>
+  <string name="preferencesDesc_RootXposed3">Xposed jest wymagany do zastąpienia menu zasilania...\nAktywuj moduł w Xposed Installer.</string>
   <string name="preferencesTitle_RootXposed4">Root oraz Xposed działają</string>
   <string name="preferencesDesc_RootXposed4">Aplikacja powinna śmigać!</string>
   <string name="preferencesCategory_General">Ogólne</string>

@@ -94,6 +94,8 @@
 		<string name="DialogReboot_BackgroundcolorDesc">Die Hintergrundfarbe des Dialogs, wenn auf Neustarten geklickt wurde.</string>
 		<string name="DialogSoftReboot_Backgroundcolor">Soft Reboot Hintergrundfarbe</string>
 		<string name="DialogSoftReboot_BackgroundcolorDesc">Die Hintergrundfarbe des Dialogs, wenn auf Schneller Neustart geklickt wurde.</string>
+		<string name="DialogScreenshot_Backgroundcolor">Bildschirmfoto Hintergrundfarbe</string>
+		<string name="DialogScreenshot_BackgroundcolorDesc">Die Hintergrundfarbe des Bildschirmfoto Kreises.</string>
 		<string name="DialogRecovery_Backgroundcolor">Recovery Hintergrundfarbe</string>
 		<string name="DialogRecovery_BackgroundcolorDesc">Die Hintergrundfarbe des Dialogs, wenn auf Recovery geklickt wurde.</string>
 		<string name="DialogBootloader_Backgroundcolor">Bootloader Hintergrundfarbe</string>
@@ -110,6 +112,8 @@
 		<string name="DialogReboot_TextcolorDesc">Die Textfarbe des Dialogs, wenn auf Neustarten geklickt wurde.</string>
 		<string name="DialogSoftReboot_Textcolor">Schneller Neustart Textfarbe</string>
 		<string name="DialogSoftReboot_TextcolorDesc">Die Textfarbe des Dialogs, wenn auf Schneller Neustart geklickt wurde.</string>
+		<string name="DialogScreenshot_Textcolor">Bildschirmfoto Textfarbe</string>
+		<string name="DialogScreenshot_TextcolorDesc">Die Textfarbe des Bildschirmfoto Kreises.</string>
 		<string name="DialogRecovery_Textcolor">Recovery Textfarbe</string>
 		<string name="DialogRecovery_TextcolorDesc">Die Textfarbe des Dialogs, wenn auf Recovery geklickt wurde.</string>
 		<string name="DialogBootloader_Textcolor">Bootloader Textfarbe</string>
@@ -131,6 +135,9 @@
 		<string name="presetsManager_ImportFailed">Import fehlgeschlagen...</string>
 
 
+		<string name="advancedPrefsCategory_PowerMenu">Ausschaltmenü</string>
+		<string name="advancedPrefsTitle_UseGraphics">Nutze Grafiken</string>
+		<string name="advancedPrefsDesc_UseGraphics">Nutze Grafiken anstelle der Buchstaben Kreise.</string>
 		<string name="advancedPrefsCategory_LockScreen">Sperrbildschirm</string>
 		<string name="advancedPrefsTitle_ShowOnLockScreen">Im Sperrbildschirm öffnen</string>
 		<string name="advancedPrefsDesc_ShowOnLockScreen">Öffne das Ausschaltmenü im Sperrbildschirm, wenn deaktiviert, wird nichts angezeigt.</string>
@@ -159,9 +166,9 @@
 		<string name="ColorPicker_Opacity">Transparenz:</string>
 		<string name="ColorPicker_Hex">Hex:</string>
 		
-		<string name="presetLoadDialog_BuiltInLight">(Eingebaut) Hell</string>
-		<string name="presetLoadDialog_BuiltInDark">(Eingebaut) Dunkel</string>
-		<string name="presetLoadDialog_BuiltInBlack">(Eingebaut) Schwarz</string>
+		<string name="presetLoadDialog_BuiltInLight">Hell</string>
+		<string name="presetLoadDialog_BuiltInDark">Dunkel</string>
+		<string name="presetLoadDialog_BuiltInBlack">Schwarz</string>
 		<string name="presetLoad_PresetDeleted">[PRESETNAME] wurde gelöscht!</string>
 		<string name="presetLoad_CantDelBuiltIn">Eingebaute Voreinstellungen können nicht gelöscht werden!</string>
 		<string name="presetLoad_PresetLoaded">[PRESETNAME] wurde geladen!</string>

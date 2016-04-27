@@ -94,6 +94,8 @@
 		<string name="DialogReboot_BackgroundcolorDesc">The background color of the dialog when clicked on Reboot.</string>
 		<string name="DialogSoftReboot_Backgroundcolor">Soft Reboot background color</string>
 		<string name="DialogSoftReboot_BackgroundcolorDesc">The background color of the dialog when clicked on Soft Reboot.</string>
+		<string name="DialogScreenshot_Backgroundcolor">Screenshot background color</string>
+		<string name="DialogScreenshot_BackgroundcolorDesc">The background color of the Screenshot Circle.</string>
 		<string name="DialogRecovery_Backgroundcolor">Recovery background color</string>
 		<string name="DialogRecovery_BackgroundcolorDesc">The background color of the dialog when clicked on Recovery.</string>
 		<string name="DialogBootloader_Backgroundcolor">Bootloader background color</string>
@@ -110,6 +112,8 @@
 		<string name="DialogReboot_TextcolorDesc">The text color of the dialog when clicked on Reboot.</string>
 		<string name="DialogSoftReboot_Textcolor">Soft Reboot text color</string>
 		<string name="DialogSoftReboot_TextcolorDesc">The text color of the dialog when clicked on Soft Reboot.</string>
+		<string name="DialogScreenshot_Textcolor">Screenshot text color</string>
+		<string name="DialogScreenshot_TextcolorDesc">The text color of the Screenshot circle letter.</string>
 		<string name="DialogRecovery_Textcolor">Recovery text color</string>
 		<string name="DialogRecovery_TextcolorDesc">The text color of the dialog when clicked on Recovery.</string>
 		<string name="DialogBootloader_Textcolor">Bootloader text color</string>
@@ -132,6 +136,9 @@
 		<string name="presetsManager_ImportFailed">Import failed...</string>
 		
 		
+		<string name="advancedPrefsCategory_PowerMenu">Power Menu</string>
+		<string name="advancedPrefsTitle_UseGraphics">Use Graphics</string>
+		<string name="advancedPrefsDesc_UseGraphics">Use Graphics instead of the Letter circles.</string>
 		<string name="advancedPrefsCategory_LockScreen">Lockscreen</string>
 		<string name="advancedPrefsTitle_ShowOnLockScreen">Show on lockscreen</string>
 		<string name="advancedPrefsDesc_ShowOnLockScreen">Show the Power Menu on the lockscreen, when disabled nothing will show.</string>
