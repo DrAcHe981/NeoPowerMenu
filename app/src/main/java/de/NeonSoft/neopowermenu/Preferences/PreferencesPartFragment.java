@@ -4,11 +4,13 @@ import android.content.*;
 import android.content.pm.*;
 import android.net.*;
 import android.os.*;
+import android.support.v4.app.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
+import eu.chainfire.libsuperuser.*;
 
 import android.support.v4.app.Fragment;
 
@@ -22,6 +24,7 @@ public class PreferencesPartFragment extends Fragment
 		private int ActiveStyleId = 0;
 		
 		private boolean hideicon = false;
+		private boolean DeepXposedLogging = false;
 
 		private View InflatedView;
 
@@ -40,6 +43,9 @@ public class PreferencesPartFragment extends Fragment
 		
 		private static LinearLayout LinearLayout_HideLauncherIcon;
 		private static Switch Switch_HideLauncherIcon;
+		
+		private static LinearLayout LinearLayout_DeepXposedLogging;
+		private static Switch Switch_DeepXposedLogging;
 		
 		private static LinearLayout LinearLayout_Source;
 		private static LinearLayout LinearLayout_OrigSource;
@@ -62,6 +68,7 @@ public class PreferencesPartFragment extends Fragment
 
 				ActiveStyle = MainActivity.preferences.getString("DialogTheme", "Material");
 				hideicon = MainActivity.preferences.getBoolean("HideLauncherIcon",false);
+				DeepXposedLogging = MainActivity.preferences.getBoolean("DeepXposedLogging",false);
 				
 				InflatedView = inflater.inflate(R.layout.activity_preferences, container, false);
 
@@ -84,6 +91,12 @@ public class PreferencesPartFragment extends Fragment
 				Switch_HideLauncherIcon.setChecked(hideicon);
 				Switch_HideLauncherIcon.setClickable(false);
 				Switch_HideLauncherIcon.setFocusable(false);
+
+				LinearLayout_DeepXposedLogging = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_DeepXposedLogging);
+				Switch_DeepXposedLogging = (Switch) InflatedView.findViewById(R.id.activitypreferencesSwitch_DeepXposedLogging);
+				Switch_DeepXposedLogging.setChecked(DeepXposedLogging);
+				Switch_DeepXposedLogging.setClickable(false);
+				Switch_DeepXposedLogging.setFocusable(false);
 				
 				LinearLayout_Source = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Source);
 				LinearLayout_OrigSource = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_OrigSource);
@@ -199,6 +212,17 @@ public class PreferencesPartFragment extends Fragment
 										MainActivity.preferences.edit().putBoolean("HideLauncherIcon",hideicon).commit();
 								}
 						});
+						
+				LinearLayout_DeepXposedLogging.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										DeepXposedLogging = !DeepXposedLogging;
+										Switch_DeepXposedLogging.setChecked(DeepXposedLogging);
+										MainActivity.preferences.edit().putBoolean("DeepXposedLogging",DeepXposedLogging).commit();
+								}
+						});
 
 				LinearLayout_Source.setOnClickListener(new OnClickListener() {
 
@@ -288,14 +312,25 @@ public class PreferencesPartFragment extends Fragment
 								}
 						});
 
-				if (helper.ModuleState().equalsIgnoreCase("active"))
+				try{
+				if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)
 				{
 						if (TextView_ModuleStateTitle != null)
 						{
 								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed2);
 								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed2);
 						}
+				} else {
+						if (TextView_ModuleStateTitle != null)
+						{
+								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
+								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
+						}
 				}
+				} catch (Throwable t) {
+						TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
+						TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
+						}
 				if (!MainActivity.RootAvailable)
 				{
 						adb = new AlertDialog.Builder(getActivity());
@@ -330,6 +365,39 @@ public class PreferencesPartFragment extends Fragment
 				return InflatedView;
 		}
 
+		@Override
+		public void onActivityCreated(Bundle savedInstanceState)
+		{
+				// TODO: Implement this method
+				super.onActivityCreated(savedInstanceState);
+				if(!MainActivity.RootAvailable) {
+						new Thread(new Runnable() {
+										@Override
+										public void run() {
+												helper.setThreadPrio(MainActivity.BG_PRIO);
+
+												if (Shell.SU.available()) {
+														new Handler(Looper.getMainLooper()).post(new Runnable() {
+																		@Override
+																		public void run() {
+																				PreferencesPartFragment.rootAvailable();
+																		}
+																});
+												}
+										}
+								}).start();
+				}
+				MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										MainActivity.launchPowerMenu();
+								}
+						});
+		}
+		
 		public static void rootAvailable()
 		{
 				if (TextView_ModuleStateTitle != null)
@@ -338,21 +406,25 @@ public class PreferencesPartFragment extends Fragment
 
 						//rootstatus.setSummary("Root is available.");
 						//if(appstatus != null) {
-						if (helper.ModuleState().equalsIgnoreCase("active"))
+								try {
+						if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)
 						{
 								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed4);
 								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed4);
 						}
-						else if (helper.ModuleState().equalsIgnoreCase("activenohook"))
-						{
-								TextView_ModuleStateTitle.setText("Root working,Xposed partly");
-								TextView_ModuleStateDesc.setText("Active but there is an unknown problem..,please post your logs to the support thread");
+										else if (helper.ModuleState()<MainActivity.neededModuleActiveVersion) {
+												TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
+												TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
 						}
 						else
 						{
 								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed3);
 								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed3);
 						}
+				} catch (Throwable t) {
+						TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
+						TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
+				}
 						if (ad != null)
 						{
 								MainActivity.RootAvailable = true;

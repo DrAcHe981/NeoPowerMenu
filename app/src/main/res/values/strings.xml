@@ -17,6 +17,7 @@
 		<string name="powerMenuMain_SoftRebootDesc">Simply restarts the Android UI by killing the zygote process</string>
 		<string name="powerMenuMain_Screenshot">Screenshot</string>
 		<string name="powerMenuMain_ScreenshotDesc">Screenshot delay: [SCREENSHOTDELAY]</string>
+		<string name="powerMenuMain_Screenrecord">Screenrecord</string>
 
 		<string name="powerMenuBottom_Recovery">Recovery</string>
 		<string name="powerMenuBottom_Bootloader">Bootloader</string>
@@ -35,6 +36,8 @@
 		<string name="preferencesDesc_RootXposed3">But Xposed is needed to replace the Power Menu...\nPlease activate the module in the Xposed installer.</string>
 		<string name="preferencesTitle_RootXposed4">Root and Xposed are working</string>
 		<string name="preferencesDesc_RootXposed4">The app should work fine!</string>
+		<string name="preferencesTitle_RootXposed5">Hooked Module version is to low...</string>
+		<string name="preferencesDesc_RootXposed5">Please restart your device to complete the update process!</string>
 		<string name="preferencesCategory_General">General</string>
 		<string name="preferencesTitle_Style">Style</string>
 		<string name="preferencesDesc_Style">[STYLENAME] (More to follow)</string>
@@ -47,6 +50,8 @@
 		<string name="preferencesDesc_Advanced">Change advanced settings like delays, gravity or speed.</string>
 		<string name="preferencesTitle_HideLauncherIcon">Hide app in launcher</string>
 		<string name="preferencesDesc_HideLauncherIcon">Hides the app icon in the launcher, it can take up to a reboot to hide the icon.\nThis Settings screen will only be accessible via the Xposed Installer then.</string>
+		<string name="preferencesTitle_DeepXposedLogging">Deep Xposed logging</string>
+		<string name="preferencesDesc_DeepXposedLogging">Enable advanced Xposed logging, after enabling reboot to see changes.</string>
 		<string name="preferencesCategory_About">About</string>
 		<string name="preferencesTitle_NeoSource">Source</string>
 		<string name="preferencesDesc_NeoSource">NeoPowerMenu is open source.\nCheck out the source on GitHub.</string>
@@ -69,6 +74,8 @@
 		<string name="visibilityOrderDesc_SoftReboot">Simply restarts the Android UI by killing the zygote process</string>
 		<string name="visibilityOrderTitle_Screenshot">Screenshot</string>
 		<string name="visibilityOrderDesc_Screenshot">Take Screenshots via the Power Menu.</string>
+		<string name="visibilityOrderTitle_Screenrecord">Screenrecord</string>
+		<string name="visibilityOrderDesc_Screenrecord">Take Screenrecords via the Power Menu.</string>
 		
 		<string name="visibilityOrder_Enabled">Enabled:</string>
 		
@@ -181,5 +188,18 @@
 		
 		<string name="ToggleShow">Show</string>
 		<string name="ToggleHide">Hide</string>
+		
+
+    <!-- Screen recording -->
+    <string name="screenrecord_notif_ticker">Screen is being recorded</string>
+    <string name="screenrecord_notif_title">Recording screen</string>
+    <string name="screenrecord_notif_stop">Stop</string>
+    <string name="screenrecord_notif_pointer">Toggle pointer</string>
+    <string name="screenrecord_toast_error">Unable to record screen</string>
+    <string name="screenrecord_toast_processing">Cannot start new recording as previous recording is still being processed</string>
+    <string name="screenrecord_toast_saved">Recording saved as %s</string>
+    <string name="screenrecord_toast_save_error">Unable to save recording to output file</string>
+    <string name="action_screenrecord">Screen record</string>
+    <string name="pref_powermenu_screenrecord_title">Screen record in power menu</string>
 		
 </resources>

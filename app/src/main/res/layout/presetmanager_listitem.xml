@@ -135,7 +135,7 @@
 						android:layout_height="30dp"
 						android:layout_width="30dp"
 						android:src="@drawable/share"
-						android:padding="0dp"
+						android:padding="3dp"
 						android:id="@+id/presetmanagerlistitemImageView_Share"/>
 
 					<TextView
@@ -168,7 +168,7 @@
 						android:layout_height="30dp"
 						android:layout_width="30dp"
 						android:src="@drawable/delete"
-						android:padding="0dp"
+						android:padding="3dp"
 						android:id="@+id/presetmanagerlistitemImageView_Delete"/>
 
 					<TextView

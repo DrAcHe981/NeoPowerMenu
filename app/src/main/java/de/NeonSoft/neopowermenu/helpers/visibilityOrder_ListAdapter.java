@@ -51,7 +51,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 						ItemSwitch.setChecked(false);
 						MainActivity.preferences.edit().putBoolean(itemsSwitchPrefName.get(position),false).commit();
 				} else {
-						ItemSwitch.setChecked(MainActivity.preferences.getBoolean(itemsSwitchPrefName.get(position),true));
+						ItemSwitch.setChecked(MainActivity.preferences.getBoolean(itemsSwitchPrefName.get(position),false));
 				}
 				ItemSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 

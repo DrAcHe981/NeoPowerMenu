@@ -1362,11 +1362,6 @@
 
 			</LinearLayout>
 
-			<LinearLayout
-				android:layout_height="75dp"
-				android:layout_width="match_parent"
-				android:orientation="vertical"/>
-
 		</LinearLayout>
 
 	</ScrollView>

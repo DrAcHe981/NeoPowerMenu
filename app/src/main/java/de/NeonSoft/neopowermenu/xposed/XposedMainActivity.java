@@ -33,7 +33,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     protected void onCreate(Bundle savedInstanceState) {
 
 				mContext =getApplicationContext();
-				preferences = PreferenceManager.getDefaultSharedPreferences(this);
+				preferences = getSharedPreferences(MainActivity.class.getPackage().getName(),0);
 				
         setTheme(R.style.TransparentApp);
 				getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -56,6 +56,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 						//Log.d("NeoPowerMenu","Showing Normal");
             getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
         }
+				getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         super.onCreate(savedInstanceState);
 				
         setContentView(R.layout.activity_main_xposed);
@@ -99,7 +100,9 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				try {
         FragmentManager fm = getFragmentManager();
         XposedDialog powerDialog = new XposedDialog();
-        powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
+						powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
+						//fm.beginTransaction().add(R.id.powerfragment_holder,powerDialog).commit();
+						//powerDialog.setStyle(DialogFragment.STYLE_NO_FRAME, R.style.ThemeDialogBaseLight);
         powerDialog.show(fm, "fragment_power");
 				} catch (Throwable t) {
 						Log.e("NeoPowerMenu","Failed to show power menu: "+t.toString());
@@ -128,6 +131,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     @Override
     public void onDismiss(final DialogInterface dialog) {
+				if(XposedDialog.canDismiss || previewMode) {
         final Point p = new Point(maxX / 2, maxY / 2);
 
         handler = new Handler();
@@ -145,6 +149,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                 overridePendingTransition(0, 0);
             }
         }, 500);
+				}
     }
 
 		@Override

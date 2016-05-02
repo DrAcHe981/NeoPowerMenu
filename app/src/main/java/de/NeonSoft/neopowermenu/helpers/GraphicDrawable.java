@@ -82,7 +82,7 @@ public class GraphicDrawable extends ShapeDrawable {
         canvas.translate(r.left, r.top);
 
         // draw graphic
-				canvas.drawBitmap(graphic,null,r,textPaint);
+				//canvas.drawBitmap(graphic,null,r,textPaint);
 				
         canvas.restoreToCount(count);
 

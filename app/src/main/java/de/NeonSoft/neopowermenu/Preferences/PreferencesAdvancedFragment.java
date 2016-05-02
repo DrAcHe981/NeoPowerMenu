@@ -81,12 +81,12 @@ public class PreferencesAdvancedFragment extends Fragment
 
 				SeekBar_PowerMenuSlideUpDelay.setEnabled(false);
 				
-				SeekBar_PowerMenuSlideUpDelay.setProgress((int) (Long_PowerMenuSlideUpDelay/500));
-				SeekBar_PowerMenuSlideUpDelay.setMax(200);
+				SeekBar_PowerMenuSlideUpDelay.setMax(150);
+				SeekBar_PowerMenuSlideUpDelay.setProgress((int) (Long_PowerMenuSlideUpDelay/1000));
 				if(Long_ScreenshotDelay == 0 ) {
 						TextView_PowerMenuSlideUpDelay.setText(R.string.advancedPrefs_DelayZero);
 				} else {
-				TextView_PowerMenuSlideUpDelay.setText(helper.getTimeString(Long_PowerMenuSlideUpDelay,true)+" (s:ms)");
+				TextView_PowerMenuSlideUpDelay.setText(helper.getTimeString(Long_PowerMenuSlideUpDelay,true));
 				}
 				SeekBar_PowerMenuSlideUpDelay.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
@@ -94,11 +94,11 @@ public class PreferencesAdvancedFragment extends Fragment
 								public void onProgressChanged(SeekBar p1, int p2, boolean p3)
 								{
 										// TODO: Implement this method
-										Long_PowerMenuSlideUpDelay = (p2*500);
+										Long_PowerMenuSlideUpDelay = (p2*1000);
 										if(Long_ScreenshotDelay == 0 ) {
 												TextView_PowerMenuSlideUpDelay.setText(R.string.advancedPrefs_DelayZero);
 										} else {
-										TextView_PowerMenuSlideUpDelay.setText(helper.getTimeString(Long_PowerMenuSlideUpDelay,true)+" (s:ms)");
+										TextView_PowerMenuSlideUpDelay.setText(helper.getTimeString(Long_PowerMenuSlideUpDelay,true));
 										}
 								}
 
@@ -121,12 +121,12 @@ public class PreferencesAdvancedFragment extends Fragment
 				SeekBar_ScreenshotDelay = (SeekBar) InflatedView.findViewById(R.id.activityadvancedSeekBar_ScreenshotDelay);
 				TextView_ScreenshotDelayTime = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_ScreenshotDelayTime);
 				
+				SeekBar_ScreenshotDelay.setMax(150);
 				SeekBar_ScreenshotDelay.setProgress((int) (Long_ScreenshotDelay/1000));
-				SeekBar_ScreenshotDelay.setMax(200);
 				if(Long_ScreenshotDelay == 0 ) {
 						TextView_ScreenshotDelayTime.setText(R.string.advancedPrefs_DelayZero);
 				} else {
-				TextView_ScreenshotDelayTime.setText(helper.getTimeString(Long_ScreenshotDelay,false)+" (m:s)");
+				TextView_ScreenshotDelayTime.setText(helper.getTimeString(Long_ScreenshotDelay,true));
 				}
 				SeekBar_ScreenshotDelay.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
@@ -138,7 +138,7 @@ public class PreferencesAdvancedFragment extends Fragment
 										if(Long_ScreenshotDelay == 0 ) {
 												TextView_ScreenshotDelayTime.setText(R.string.advancedPrefs_DelayZero);
 										} else {
-										TextView_ScreenshotDelayTime.setText(helper.getTimeString(Long_ScreenshotDelay,false)+" (m:s)");
+										TextView_ScreenshotDelayTime.setText(helper.getTimeString(Long_ScreenshotDelay,true));
 										}
 								}
 
