@@ -83,10 +83,6 @@ Finde die Source auf GitHub."</string>
 
 <!-- Preferences: Background colors -->
 <string name="category_Reveal">"Reveal Hintergründe"</string>
-<string name="reveal_color">"Reveal Hintergrund Farbe"</string>
-<string name="reveal_colorDesc">"Die Hintergrundfarbe des Reveal-Effekts."</string>
-<string name="Actionreveal_color">"Aktions Reveal Hintergrundfarbe"</string>
-<string name="Actionreveal_colorDesc">"Die Hintergrundfarbe des Reveal-Effekts, wenn auf eine Neustart/Ausschalt Option geklickt wurde."</string>
 <string name="category_Backgrounds">"Hintergrundfarben"</string>
 <string name="Dialog_Backgroundcolor">"Hintergrundfarbe"</string>
 <string name="Dialog_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs."</string>
@@ -219,4 +215,28 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="quick_settings_torch_on">"Taschenlampe an"</string>
 <string name="quick_settings_torch_off">"Taschenlampe aus"</string>
 <string name="quick_settings_torch_off_notif">"Zum ausschalten der Taschenlampe hier drücken"</string>
+<string name="RevealBackground">"Reveal Hintergrund Farbe"</string>
+<string name="RevealBackgroundDesc">"Die Hintergrundfarbe des Reveal-Effekts."</string>
+<string name="ActionRevealBackground">"Aktions Reveal Hintergrundfarbe"</string>
+<string name="ActionRevealBackgroundDesc">"Die Hintergrundfarbe des Reveal-Effekts, wenn auf eine Neustart/Ausschalt Option geklickt wurde."</string>
+<string name="DialogScreenrecord_Backgroundcolor">"Bildschirm Aufnahme Hintergrund Farbe"</string>
+<string name="DialogScreenrecord_BackgroundcolorDesc">"Die Hintergrund Farbe Bildschirm Aufnahme Kreises."</string>
+<string name="DialogFlashlight_Backgroundcolor">"Taschenlampe Hintergrund Farbe"</string>
+<string name="DialogFlashlight_BackgroundcolorDesc">"Die Hintergrund Farbe des Taschenlampen Kreises."</string>
+<string name="DialogExpandedDesktop_Backgroundcolor">"Erweiterter Desktop Hintergrund Farbe"</string>
+<string name="DialogExpandedDesktop_BackgroundcolorDesc">"Die Farbe des Erweiterten Desktop Kreises."</string>
+<string name="DialogScreenrecord_Textcolor">"Bildschirm Aufnahme Text Farbe"</string>
+<string name="DialogScreenrecord_TextcolorDesc">"Die Farbe des Buchstabens auf dem Bildschirm Aufnahme Kreis."</string>
+<string name="DialogFlashlight_Textcolor">"Taschenlampe Text Farbe"</string>
+<string name="DialogFlashlight_TextcolorDesc">"Die Farbe des Buchstabens auf dem Taschenlampen Kreis."</string>
+<string name="DialogExpandedDesktop_Textcolor">"Erweiterter Desktop Text Farbe"</string>
+<string name="DialogExpandedDesktop_TextcolorDesc">"Die Farbe des Buchstabens auf dem Erweiterten Desktop Kreis."</string>
+
+<!-- Dialog -->
+<string name="permissionRequestTitle">"Berechtigungen"</string>
+<string name="permissionRequestMsg">"Kamera: um die Taschenlampe ein/aus zu schalten. 
+Speicher lesen/schreiben: Für zukünftige Funktionen (kleiner Tipp: eigene Bilder).
+
+Diese Berechtigungen werden benötigt damit alles funktioniert... 
+Klick auf Ok um den Dialog erneut anzuzeigen, Klick auf Abbrechen um die app zu beenden. "</string>
 </resources>
