@@ -84,12 +84,8 @@ Check out the source on GitHub."</string>
 
 <!-- Preferences: Background colors -->
 <string name="category_Reveal">"Reveal backgrounds"</string>
-		<string name="RevealBackground">"Reveal background color"</string>
-		<string name="RevealBackgroundDesc">"The background color of the reveal effect."</string>
-		<string name="ActionRevealBackground">"Action reveal background color"</string>
-		<string name="ActionRevealBackgroundDesc">"The background color of the reveal effect when clicked on a Reboot/Shutdown option."</string>
 <string name="category_Backgrounds">"Background colors"</string>
-<string name="Dialog_Backgroundcolor">"Background color"</string>
+<string name="Dialog_Backgroundcolor">"background color"</string>
 <string name="Dialog_BackgroundcolorDesc">"The Background color of the dialog."</string>
 <string name="DialogShutdown_Backgroundcolor">"Shutdown background color"</string>
 <string name="DialogShutdown_BackgroundcolorDesc">"The background color of the dialog when clicked on Shutdown."</string>
@@ -98,13 +94,7 @@ Check out the source on GitHub."</string>
 <string name="DialogSoftReboot_Backgroundcolor">"Soft Reboot background color"</string>
 <string name="DialogSoftReboot_BackgroundcolorDesc">"The background color of the dialog when clicked on Soft Reboot."</string>
 <string name="DialogScreenshot_Backgroundcolor">"Screenshot background color"</string>
-		<string name="DialogScreenshot_BackgroundcolorDesc">"The background color of the Screenshot Circle."</string>
-		<string name="DialogScreenrecord_Backgroundcolor">"Screenrecord background color"</string>
-		<string name="DialogScreenrecord_BackgroundcolorDesc">"The background color of the Screenrecord Circle."</string>
-		<string name="DialogFlashlight_Backgroundcolor">"Flashlight background color"</string>
-		<string name="DialogFlashlight_BackgroundcolorDesc">"The background color of the Flashlight Circle."</string>
-		<string name="DialogExpandedDesktop_Backgroundcolor">"Expanded Desktop background color"</string>
-		<string name="DialogExpandedDesktop_BackgroundcolorDesc">"The background color of the Expanded Desktop Circle."</string>
+<string name="DialogScreenshot_BackgroundcolorDesc">"The background color of the Screenshot Circle."</string>
 <string name="DialogRecovery_Backgroundcolor">"Recovery background color"</string>
 <string name="DialogRecovery_BackgroundcolorDesc">"The background color of the dialog when clicked on Recovery."</string>
 <string name="DialogBootloader_Backgroundcolor">"Bootloader background color"</string>
@@ -123,13 +113,7 @@ Check out the source on GitHub."</string>
 <string name="DialogSoftReboot_Textcolor">"Soft Reboot text color"</string>
 <string name="DialogSoftReboot_TextcolorDesc">"The text color of the dialog when clicked on Soft Reboot."</string>
 <string name="DialogScreenshot_Textcolor">"Screenshot text color"</string>
-		<string name="DialogScreenshot_TextcolorDesc">"The text color of the Screenshot circle letter."</string>
-		<string name="DialogScreenrecord_Textcolor">"Screenrecord text color"</string>
-		<string name="DialogScreenrecord_TextcolorDesc">"The text color of the Screenrecord circle letter."</string>
-		<string name="DialogFlashlight_Textcolor">"Flashlight text color"</string>
-		<string name="DialogFlashlight_TextcolorDesc">"The text color of the Flashlight circle letter."</string>
-		<string name="DialogExpandedDesktop_Textcolor">"Expanded Desktop text color"</string>
-		<string name="DialogExpandedDesktop_TextcolorDesc">"The text color of the Expanded Desktop circle letter."</string>
+<string name="DialogScreenshot_TextcolorDesc">"The text color of the Screenshot circle letter."</string>
 <string name="DialogRecovery_Textcolor">"Recovery text color"</string>
 <string name="DialogRecovery_TextcolorDesc">"The text color of the dialog when clicked on Recovery."</string>
 <string name="DialogBootloader_Textcolor">"Bootloader text color"</string>
@@ -167,13 +151,6 @@ This can't be undone!"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Delay between showing the reveal animation and the power menu."</string>
 
 <!-- Dialog -->
-<string name="permissionRequestTitle">"Permissions"</string>
-<string name="permissionRequestMsg">"Camera: To toggle Torch.
-Read/Write Storage: For future Functions (little tip: custom images).
-				
-These permissions are needed to work properly...
-Click Ok to show the Dialog again, click cancel to quit the app."</string>
-		
 <string name="Dialog_WaitForRoot">"Waiting for Root..."</string>
 <string name="Dialog_Ok">"Ok"</string>
 <string name="Dialog_Yes">"Yes"</string>
@@ -239,4 +216,28 @@ Click Ok to show the Dialog again, click cancel to quit the app."</string>
 <string name="quick_settings_torch_on">"Torch On"</string>
 <string name="quick_settings_torch_off">"Torch Off"</string>
 <string name="quick_settings_torch_off_notif">"Touch to turn off"</string>
+<string name="RevealBackground">"Reveal background color"</string>
+<string name="RevealBackgroundDesc">"The background color of the reveal effect."</string>
+<string name="ActionRevealBackground">"Action reveal background color"</string>
+<string name="ActionRevealBackgroundDesc">"The background color of the reveal effect when clicked on a Reboot/Shutdown option."</string>
+<string name="DialogScreenrecord_Backgroundcolor">"Screenrecord background color"</string>
+<string name="DialogScreenrecord_BackgroundcolorDesc">"The background color of the Screenrecord Circle."</string>
+<string name="DialogFlashlight_Backgroundcolor">"Flashlight background color"</string>
+<string name="DialogFlashlight_BackgroundcolorDesc">"The background color of the Flashlight Circle."</string>
+<string name="DialogExpandedDesktop_Backgroundcolor">"Expanded Desktop background color"</string>
+<string name="DialogExpandedDesktop_BackgroundcolorDesc">"The background color of the Expanded Desktop Circle."</string>
+<string name="DialogScreenrecord_Textcolor">"Screenrecord text color"</string>
+<string name="DialogScreenrecord_TextcolorDesc">"The text color of the Screenrecord circle letter."</string>
+<string name="DialogFlashlight_Textcolor">"Flashlight text color"</string>
+<string name="DialogFlashlight_TextcolorDesc">"The text color of the Flashlight circle letter."</string>
+<string name="DialogExpandedDesktop_Textcolor">"Expanded Desktop text color"</string>
+<string name="DialogExpandedDesktop_TextcolorDesc">"The text color of the Expanded Desktop circle letter."</string>
+
+<!-- Dialog -->
+<string name="permissionRequestTitle">"Permissions"</string>
+<string name="permissionRequestMsg">"Camera: To toggle Torch.
+Read/Write Storage: For future Functions (little tip: custom images).
+				
+These permissions are needed to work properly...
+Click Ok to show the Dialog again, click cancel to quit the app."</string>
 </resources>
