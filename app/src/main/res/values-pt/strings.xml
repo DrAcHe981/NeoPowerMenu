@@ -2,7 +2,7 @@
 <resources>
 <string name="app_name">"NeoPowerMenu"</string>
 <string name="action_settings">"Configurações"</string>
-<string name="ShareMessage">"Cheque esse lindo aplicativo para customizar seu Menu de Energia para aparelhos Rooteados!
+<string name="ShareMessage">"Cheque esse lindo aplicativo para customizar seu Menu de Energia!
 
 "</string>
 
@@ -28,11 +28,11 @@
 <string name="preferencesTitle_RootXposed1">"Root e Xposed não disponíveis"</string>
 <string name="preferencesDesc_RootXposed1">"Root e Xposed são necessários para o funcionamento"</string>
 <string name="preferencesTitle_RootXposed2">"Xposed funcionando,acesso Root não."</string>
-<string name="preferencesDesc_RootXposed2">"É preciso acesso Root para  Desligar ou reiniciar...
+<string name="preferencesDesc_RootXposed2">"É preciso ter acesso Root para  Desligar ou reiniciar...
 Por favor,permita o acesso Root."</string>
 <string name="preferencesTitle_RootXposed3">"Acesso Root funcionando,Xposed não"</string>
 <string name="preferencesDesc_RootXposed3">"É preciso Xposed para substitur o Menu de energia...
-Por favor,ative o modulo no Xposed installer."</string>
+Por favor,ative o módulo no Xposed installer."</string>
 <string name="preferencesTitle_RootXposed4">"Root e Xposed estão funcionando."</string>
 <string name="preferencesDesc_RootXposed4">"O aplicativo deve funcionar corretamente!"</string>
 <string name="preferencesCategory_General">"Geral"</string>
@@ -47,7 +47,7 @@ Por favor,ative o modulo no Xposed installer."</string>
 <string name="preferencesDesc_Advanced">"Alterar configurações avançadas como atraso,gravidade ou velocidade."</string>
 <string name="preferencesTitle_HideLauncherIcon">"Ocultar aplicativo no launcher"</string>
 <string name="preferencesDesc_HideLauncherIcon">"Ocultar o aplicativo no launcher, é necessário reiniciar para que as alterações sejam feitas.
-Essa configuração só está acessível no Xposed Installer"</string>
+Essa configuração só está acessível no Xposed Installer."</string>
 <string name="preferencesCategory_About">"Sobre"</string>
 <string name="preferencesTitle_NeoSource">"Fonte"</string>
 <string name="preferencesDesc_NeoSource">"NeoPowerMenu é um código aberto, cheque a fonte no GitHub"</string>
@@ -213,24 +213,28 @@ Isso não pode  ser desfeito!"</string>
 <string name="quick_settings_torch_on">"Lanterna ligada"</string>
 <string name="quick_settings_torch_off">"Lanterna desligada"</string>
 <string name="quick_settings_torch_off_notif">"Toque para desligar"</string>
-<string name="RevealBackground"></string>
-<string name="RevealBackgroundDesc"></string>
-<string name="ActionRevealBackground"></string>
-<string name="ActionRevealBackgroundDesc"></string>
-<string name="DialogScreenrecord_Backgroundcolor"></string>
-<string name="DialogScreenrecord_BackgroundcolorDesc"></string>
-<string name="DialogFlashlight_Backgroundcolor"></string>
-<string name="DialogFlashlight_BackgroundcolorDesc"></string>
-<string name="DialogExpandedDesktop_Backgroundcolor"></string>
-<string name="DialogExpandedDesktop_BackgroundcolorDesc"></string>
-<string name="DialogScreenrecord_Textcolor"></string>
-<string name="DialogScreenrecord_TextcolorDesc"></string>
-<string name="DialogFlashlight_Textcolor"></string>
-<string name="DialogFlashlight_TextcolorDesc"></string>
-<string name="DialogExpandedDesktop_Textcolor"></string>
-<string name="DialogExpandedDesktop_TextcolorDesc"></string>
+<string name="RevealBackground">"Cor do revelar fundo"</string>
+<string name="RevealBackgroundDesc">"A cor do efeito revelar fundo"</string>
+<string name="ActionRevealBackground">"Cor da ação revelar fundo"</string>
+<string name="ActionRevealBackgroundDesc">"A cor do efeito revelar fundo ao clicar na opção Reiniciar/Desligar."</string>
+<string name="DialogScreenrecord_Backgroundcolor">"Cor do fundo da gravação de tela"</string>
+<string name="DialogScreenrecord_BackgroundcolorDesc">"Cor do fundo do círculo da gravação de tela."</string>
+<string name="DialogFlashlight_Backgroundcolor">"Cor do fundo da lanterna"</string>
+<string name="DialogFlashlight_BackgroundcolorDesc">"Cor do fundo do círculo da lanterna."</string>
+<string name="DialogExpandedDesktop_Backgroundcolor">"Cor do fundo da área de trabalho expandida"</string>
+<string name="DialogExpandedDesktop_BackgroundcolorDesc">"Cor do fundo do círculo da área de trabalho expandida."</string>
+<string name="DialogScreenrecord_Textcolor">"Cor do texto da gravação de tela"</string>
+<string name="DialogScreenrecord_TextcolorDesc">"A cor do texto da letra do círculo da gravação de tela."</string>
+<string name="DialogFlashlight_Textcolor">"Cor do texto da lanterna"</string>
+<string name="DialogFlashlight_TextcolorDesc">"Cor do texto da letra do círculo da lanterna."</string>
+<string name="DialogExpandedDesktop_Textcolor">"Cor do texto da área de trabalho expandida"</string>
+<string name="DialogExpandedDesktop_TextcolorDesc">"Cor do texto da letra do círculo da área de trabalho expandida."</string>
 
 <!-- Dialog -->
-<string name="permissionRequestTitle"></string>
-<string name="permissionRequestMsg"></string>
+<string name="permissionRequestTitle">"Permissões"</string>
+<string name="permissionRequestMsg">"Câmera: Para alternar lanterna.
+Leitura/Gravação de armazenamento: para funções futuras (pequena dica: imagens personalizadas).
+
+Essas permissões são necessárias para funcionar corretamente ...
+Clique em OK para mostrar a caixa de diálogo novamente, clique em Cancelar para sair do aplicativo."</string>
 </resources>
