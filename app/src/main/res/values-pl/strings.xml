@@ -6,10 +6,12 @@
 
 
 "</string>
-<string name="TranslatorWebsite">"None"</string>
 
 <!-- Change this to your website! -->
+<string name="TranslatorWebsite">"None"</string>
 <string name="PreviewPowerMenu">"Podgląd"</string>
+
+<!-- Power Menu -->
 <string name="powerMenuMain_Shutdown">"Wyłącz"</string>
 <string name="powerMenuMain_Reboot">"Uruchom ponownie"</string>
 <string name="powerMenuMain_SoftReboot">"Szybki restart"</string>
@@ -21,6 +23,8 @@
 <string name="powerMenuBottom_SafeMode">"Tryb bezpieczny"</string>
 <string name="powerMenu_Shuttingdown">"Wyłączanie..."</string>
 <string name="powerMenu_Rebooting">"Ponowne uruchamianie..."</string>
+
+<!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root oraz Xposed"</string>
 <string name="preferencesTitle_RootXposed1">"Root oraz Xposed niedostępne"</string>
 <string name="preferencesDesc_RootXposed1">"Root oraz Xposed są wymagane do działania modułu."</string>
@@ -59,10 +63,10 @@ Sprawdź źródła na GitHub"</string>
 
 <!-- Add your name here to get language credits -->
 <string name="preferencesDesc_Translator">"Witoslavski (@forum.android.com.pl)"</string>
-
-<!-- Replace my name with yours for Translation Credits! -->
 <string name="preferencesTitle_About">"Kod: Neon-Soft / DrAcHe981"</string>
 <string name="preferencesDesc_About">"Oparte na źródle od Naman Dwivedi(naman14)."</string>
+
+<!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Kolejność i widoczność"</string>
 <string name="visibilityOrderTitle_Shutdown">"Wyłączanie"</string>
 <string name="visibilityOrderDesc_Shutdown">"Wyłącz urządzenie."</string>
@@ -78,6 +82,8 @@ Sprawdź źródła na GitHub"</string>
 <string name="preset_LoadDesc">"Wczytaj gotową konfigurację."</string>
 <string name="preset_Save">"Zapisz szablon"</string>
 <string name="preset_SaveDesc">"Zapisz swoją obecną konfigurację."</string>
+
+<!-- Preferences: Background colors -->
 <string name="category_Reveal">"Tła odsłaniania"</string>
 <string name="reveal_color">"Kolor tła odsłaniania"</string>
 <string name="reveal_colorDesc">"Kolor tła efektu odsłaniania."</string>
@@ -100,6 +106,8 @@ Sprawdź źródła na GitHub"</string>
 <string name="DialogBootloader_BackgroundcolorDesc">"Kolor tła komunikatu, który wyświetla się po wybraniu Bootloadera."</string>
 <string name="DialogSafeMode_Backgroundcolor">"Kolor tła Trybu Bezpiecznego"</string>
 <string name="DialogSafeMode_BackgroundcolorDesc">"Kolor tła komunikatu, który wyświetla się po wybraniu Trybu Bezpiecznego."</string>
+
+<!-- Preferences: Text colors -->
 <string name="category_Texts">"Kolory tekstu"</string>
 <string name="Dialog_Textcolor">"Kolor tekstu"</string>
 <string name="Dialog_TextcolorDesc">"Kolor tekstu komunikatu."</string>
@@ -118,6 +126,8 @@ Sprawdź źródła na GitHub"</string>
 <string name="DialogBootloader_TextcolorDesc">"Kolor tekstu komunikatu, który wyświetla się po wybraniu Bootloadera."</string>
 <string name="DialogSafeMode_Textcolor">"Kolor tekstu Trybu Bezpiecznego"</string>
 <string name="DialogSafeMode_TextcolorDesc">"Kolor tekstu komunikatu, który wyświetla się po wybraniu Trybu Bezpiecznego."</string>
+
+<!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Lokalne szablony"</string>
 <string name="presetsManager_TitleOnline">"Szablony online"</string>
 <string name="presetsManager_Active">"Aktywny:"</string>
@@ -131,6 +141,8 @@ Tego nie można cofnąć!"</string>
 <string name="presetsManager_ImportMsg">"Czy chcesz importować ten szablon?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] importowany pomyślnie."</string>
 <string name="presetsManager_ImportFailed">"Importowanie nie powiodło się..."</string>
+
+<!-- Preferences: Advanced -->
 <string name="advancedPrefsCategory_PowerMenu">"Menu zasilania"</string>
 <string name="advancedPrefsTitle_UseGraphics">"Użyj grafiki"</string>
 <string name="advancedPrefsDesc_UseGraphics">"Użyj grafiki zamiast koła z literą."</string>
@@ -143,6 +155,8 @@ Tego nie można cofnąć!"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Czas między dotknięciem a zrzutem ekranu."</string>
 <string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Opóźnienie menu zasilania"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Opóźnienie między animacją i pojawieniem się menu zasilania"</string>
+
+<!-- Dialog -->
 <string name="Dialog_WaitForRoot">"Czekam na roota..."</string>
 <string name="Dialog_Ok">"Ok"</string>
 <string name="Dialog_Yes">"Tak"</string>
@@ -187,6 +201,25 @@ Tego nie można cofnąć!"</string>
 <string name="screenrecord_toast_processing"></string>
 <string name="screenrecord_toast_saved"></string>
 <string name="screenrecord_toast_save_error"></string>
-<string name="action_screenrecord"></string>
-<string name="pref_powermenu_screenrecord_title"></string>
+<string name="powerMenuMain_FlashlightOn"></string>
+<string name="powerMenuMain_FlashlightOff"></string>
+<string name="powerMenuMain_FlashlightDesc"></string>
+<string name="powerMenuMain_FlashlightDescDisabled"></string>
+<string name="powerMenuMain_ExpandedDesktop"></string>
+<string name="visibilityOrderTitle_Flashlight"></string>
+<string name="visibilityOrderDesc_Flashlight"></string>
+<string name="visibilityOrderTitle_ExpandedDesktop"></string>
+<string name="visibilityOrderDesc_ExpandedDesktop"></string>
+<string name="advancedPrefsTitle_DialogGravity"></string>
+<string name="advancedPrefsDesc_DialogGravity"></string>
+<string name="advancedPrefs_DialogGravityTop"></string>
+<string name="advancedPrefs_DialogGravityLeft"></string>
+<string name="advancedPrefs_DialogGravityCenter"></string>
+<string name="advancedPrefs_DialogGravityRight"></string>
+<string name="advancedPrefs_DialogGravityBottom"></string>
+
+<!-- Torch -->
+<string name="quick_settings_torch_on"></string>
+<string name="quick_settings_torch_off"></string>
+<string name="quick_settings_torch_off_notif"></string>
 </resources>
