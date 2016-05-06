@@ -85,10 +85,6 @@ Sprawdź źródła na GitHub"</string>
 
 <!-- Preferences: Background colors -->
 <string name="category_Reveal">"Tła odsłaniania"</string>
-<string name="reveal_color">"Kolor tła odsłaniania"</string>
-<string name="reveal_colorDesc">"Kolor tła efektu odsłaniania."</string>
-<string name="Actionreveal_color">"Kolor tła akcji odsłaniania"</string>
-<string name="Actionreveal_colorDesc">"Kolor tła efektu odsłaniania po wybraniu Wyłączenia/Ponownego Uruchomienia."</string>
 <string name="category_Backgrounds">"Kolory tła"</string>
 <string name="Dialog_Backgroundcolor">"Kolor tła"</string>
 <string name="Dialog_BackgroundcolorDesc">"Kolor tła komunikatu."</string>
@@ -222,4 +218,24 @@ Tego nie można cofnąć!"</string>
 <string name="quick_settings_torch_on"></string>
 <string name="quick_settings_torch_off"></string>
 <string name="quick_settings_torch_off_notif"></string>
+<string name="RevealBackground"></string>
+<string name="RevealBackgroundDesc"></string>
+<string name="ActionRevealBackground"></string>
+<string name="ActionRevealBackgroundDesc"></string>
+<string name="DialogScreenrecord_Backgroundcolor"></string>
+<string name="DialogScreenrecord_BackgroundcolorDesc"></string>
+<string name="DialogFlashlight_Backgroundcolor"></string>
+<string name="DialogFlashlight_BackgroundcolorDesc"></string>
+<string name="DialogExpandedDesktop_Backgroundcolor"></string>
+<string name="DialogExpandedDesktop_BackgroundcolorDesc"></string>
+<string name="DialogScreenrecord_Textcolor"></string>
+<string name="DialogScreenrecord_TextcolorDesc"></string>
+<string name="DialogFlashlight_Textcolor"></string>
+<string name="DialogFlashlight_TextcolorDesc"></string>
+<string name="DialogExpandedDesktop_Textcolor"></string>
+<string name="DialogExpandedDesktop_TextcolorDesc"></string>
+
+<!-- Dialog -->
+<string name="permissionRequestTitle"></string>
+<string name="permissionRequestMsg"></string>
 </resources>
