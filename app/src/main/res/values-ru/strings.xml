@@ -83,10 +83,6 @@
 
 <!-- Preferences: Background colors -->
 <string name="category_Reveal">"Эффекты заполнения"</string>
-<string name="reveal_color">"Цвет эффекта заполнения"</string>
-<string name="reveal_colorDesc">"Цвет эффекта заполнения заднего фона экрана."</string>
-<string name="Actionreveal_color">"Цвет эффекта заполнения при нажатии"</string>
-<string name="Actionreveal_colorDesc">"Цвет эффекта заполнения заднего фона экрана при нажатии на Перезагрузку/Выключение."</string>
 <string name="category_Backgrounds">"Цвета заднего фона"</string>
 <string name="Dialog_Backgroundcolor">"Цвет заднего фона"</string>
 <string name="Dialog_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне."</string>
@@ -149,7 +145,7 @@
 <string name="advancedPrefsCategory_Delays">"Задержки"</string>
 <string name="advancedPrefs_DelayZero">"почти мгновенно"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Задержка Снимка экрана"</string>
-<string name="advancedPrefsDesc_ScreenshotDelay">"Задержка междунажатием и съёмкой."</string>
+<string name="advancedPrefsDesc_ScreenshotDelay">"Задержка между нажатием и съёмкой."</string>
 <string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Задержка Меню выключения"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Задержка между эффектом заполнения и появлением Меню выключения."</string>
 
@@ -200,7 +196,7 @@
 <string name="screenrecord_toast_save_error">"Невозможно сохранить запись в файл"</string>
 <string name="powerMenuMain_FlashlightOn">"Включить фонарик"</string>
 <string name="powerMenuMain_FlashlightOff">"Выключить фонарик"</string>
-<string name="powerMenuMain_FlashlightDesc">"Выключение через"</string>
+<string name="powerMenuMain_FlashlightDesc">"Выключение после"</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Автоматическое выключение отключено."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Расширенный экран"</string>
 <string name="visibilityOrderTitle_Flashlight">"Фонарик"</string>
@@ -219,4 +215,24 @@
 <string name="quick_settings_torch_on">"Фонарик включен"</string>
 <string name="quick_settings_torch_off">"Фонарик выключен"</string>
 <string name="quick_settings_torch_off_notif">"Нажмите, чтобы выключить"</string>
+<string name="RevealBackground"></string>
+<string name="RevealBackgroundDesc"></string>
+<string name="ActionRevealBackground"></string>
+<string name="ActionRevealBackgroundDesc"></string>
+<string name="DialogScreenrecord_Backgroundcolor"></string>
+<string name="DialogScreenrecord_BackgroundcolorDesc"></string>
+<string name="DialogFlashlight_Backgroundcolor"></string>
+<string name="DialogFlashlight_BackgroundcolorDesc"></string>
+<string name="DialogExpandedDesktop_Backgroundcolor"></string>
+<string name="DialogExpandedDesktop_BackgroundcolorDesc"></string>
+<string name="DialogScreenrecord_Textcolor"></string>
+<string name="DialogScreenrecord_TextcolorDesc"></string>
+<string name="DialogFlashlight_Textcolor"></string>
+<string name="DialogFlashlight_TextcolorDesc"></string>
+<string name="DialogExpandedDesktop_Textcolor"></string>
+<string name="DialogExpandedDesktop_TextcolorDesc"></string>
+
+<!-- Dialog -->
+<string name="permissionRequestTitle"></string>
+<string name="permissionRequestMsg"></string>
 </resources>
