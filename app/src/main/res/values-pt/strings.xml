@@ -5,10 +5,12 @@
 <string name="ShareMessage">"Cheque esse lindo aplicativo para customizar seu Menu de Energia para aparelhos Rooteados!
 
 "</string>
-<string name="TranslatorWebsite">"http://www.Neon-Soft.de"</string>
 
 <!-- Change this to your website! -->
+<string name="TranslatorWebsite">"http://www.Neon-Soft.de"</string>
 <string name="PreviewPowerMenu">"Prever"</string>
+
+<!-- Power Menu -->
 <string name="powerMenuMain_Shutdown">"Desligar"</string>
 <string name="powerMenuMain_Reboot">"Reiniciar"</string>
 <string name="powerMenuMain_SoftReboot">"Reiniciar Rápido"</string>
@@ -20,6 +22,8 @@
 <string name="powerMenuBottom_SafeMode">"Modo de segurança"</string>
 <string name="powerMenu_Shuttingdown">"Desligando..."</string>
 <string name="powerMenu_Rebooting">"Reiniciando..."</string>
+
+<!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
 <string name="preferencesTitle_RootXposed1">"Root e Xposed não disponíveis"</string>
 <string name="preferencesDesc_RootXposed1">"Root e Xposed são necessários para o funcionamento"</string>
@@ -54,12 +58,11 @@ Essa configuração só está acessível no Xposed Installer"</string>
 <string name="preferencesTitle_Translator">"Tradução por"</string>
 
 <!-- Add your name here to get language credits -->
-<!-- Fuzzy -->
-<string name="preferencesDesc_Translator">"DeluxeMark"</string>
-
-<!-- Replace my name with yours for Translation Credits! -->
+<string name="preferencesDesc_Translator">"DeluxeMark™"</string>
 <string name="preferencesTitle_About">"Código por Neon-Soft / DrAcHe981"</string>
 <string name="preferencesDesc_About">"Baseado em um código feito por Naman Dwivedi (naman14)."</string>
+
+<!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidade e Ordem"</string>
 <string name="visibilityOrderTitle_Shutdown">"Desligar"</string>
 <string name="visibilityOrderDesc_Shutdown">"Desligar o dispositivo."</string>
@@ -75,6 +78,8 @@ Essa configuração só está acessível no Xposed Installer"</string>
 <string name="preset_LoadDesc">"Carregar uma configuração salva"</string>
 <string name="preset_Save">"Salvar Pré-ajuste"</string>
 <string name="preset_SaveDesc">"Salvar sua configuração atual"</string>
+
+<!-- Preferences: Background colors -->
 <string name="category_Reveal">"Revelar fundo"</string>
 <string name="reveal_color">"Cor do fundo revelar."</string>
 <string name="reveal_colorDesc">"A cor do fundo do efeito revelar."</string>
@@ -97,6 +102,8 @@ Essa configuração só está acessível no Xposed Installer"</string>
 <string name="DialogBootloader_BackgroundcolorDesc">"A cor de fundo ao clicar em Bootloader."</string>
 <string name="DialogSafeMode_Backgroundcolor">"Cor de fundo do Modo de Segurança"</string>
 <string name="DialogSafeMode_BackgroundcolorDesc">"Cor de fundo do diálogo quando clicar em Modo de Segurança."</string>
+
+<!-- Preferences: Text colors -->
 <string name="category_Texts">"Cores dos textos"</string>
 <string name="Dialog_Textcolor">"Cor do texto"</string>
 <string name="Dialog_TextcolorDesc">"A cor do texto do diálogo."</string>
@@ -114,6 +121,8 @@ Essa configuração só está acessível no Xposed Installer"</string>
 <string name="DialogBootloader_TextcolorDesc">"Cor do texto do diálogo ao clicar em Bootloader."</string>
 <string name="DialogSafeMode_Textcolor">"Cor do texto do Modo de segurança"</string>
 <string name="DialogSafeMode_TextcolorDesc">"Cor do texto do diálogo ao clicar em Modo de Segurança."</string>
+
+<!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Pré-ajustes locais"</string>
 <string name="presetsManager_TitleOnline">"Pré-ajustes online"</string>
 <string name="presetsManager_Active">"Ativo:"</string>
@@ -127,6 +136,8 @@ Isso não pode  ser desfeito!"</string>
 <string name="presetsManager_ImportMsg">"Gostaria de importar esse pré-ajuste?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] Foi importado com sucesso."</string>
 <string name="presetsManager_ImportFailed">"Importação falhou..."</string>
+
+<!-- Preferences: Advanced -->
 <string name="advancedPrefsCategory_PowerMenu">"Menu de energia"</string>
 <string name="advancedPrefsTitle_UseGraphics">"Usar gráficos"</string>
 <string name="advancedPrefsDesc_UseGraphics">"Usar gráficos em vez dos círculos da letra."</string>
@@ -139,6 +150,8 @@ Isso não pode  ser desfeito!"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Atraso entre o clique e a captura de tela."</string>
 <string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Atraso do menu de energia"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Atraso entre mostrar a animação de revelar e o menu de energia."</string>
+
+<!-- Dialog -->
 <string name="Dialog_WaitForRoot">"Esperando acesso Root..."</string>
 <string name="Dialog_Ok">"Ok"</string>
 <string name="Dialog_Yes">"Sim"</string>
@@ -166,23 +179,42 @@ Isso não pode  ser desfeito!"</string>
 <string name="ToggleShow">"Mostrar"</string>
 <string name="ToggleHide">"Ocultar"</string>
 <string name="presetsManager_Title">"Pré-ajustes"</string>
-<string name="powerMenuMain_Screenrecord"></string>
-<string name="preferencesTitle_RootXposed5"></string>
-<string name="preferencesDesc_RootXposed5"></string>
-<string name="preferencesTitle_DeepXposedLogging"></string>
-<string name="preferencesDesc_DeepXposedLogging"></string>
-<string name="visibilityOrderTitle_Screenrecord"></string>
-<string name="visibilityOrderDesc_Screenrecord"></string>
+<string name="powerMenuMain_Screenrecord">"Gravação de tela"</string>
+<string name="preferencesTitle_RootXposed5">"A versão do módulo é muito antiga..."</string>
+<string name="preferencesDesc_RootXposed5">"Por favor,reinicie seu dispositivo para concluir o processo de atualização!"</string>
+<string name="preferencesTitle_DeepXposedLogging">"Logs do xposed"</string>
+<string name="preferencesDesc_DeepXposedLogging">"Ativar logs avançados no xposed,após ativar, reinicie para ver as mudanças."</string>
+<string name="visibilityOrderTitle_Screenrecord">"Gravação de tela"</string>
+<string name="visibilityOrderDesc_Screenrecord">"Gravar a tela através do Menu de Energia."</string>
 
 <!-- Screen recording -->
-<string name="screenrecord_notif_ticker"></string>
-<string name="screenrecord_notif_title"></string>
-<string name="screenrecord_notif_stop"></string>
-<string name="screenrecord_notif_pointer"></string>
-<string name="screenrecord_toast_error"></string>
-<string name="screenrecord_toast_processing"></string>
-<string name="screenrecord_toast_saved"></string>
-<string name="screenrecord_toast_save_error"></string>
-<string name="action_screenrecord"></string>
-<string name="pref_powermenu_screenrecord_title"></string>
+<string name="screenrecord_notif_ticker">"A tela está sendo gravada"</string>
+<string name="screenrecord_notif_title">"Gravando tela"</string>
+<string name="screenrecord_notif_stop">"Parar"</string>
+<string name="screenrecord_notif_pointer">"Alternar ponteiro"</string>
+<string name="screenrecord_toast_error">"Incapaz de gravar a tela"</string>
+<string name="screenrecord_toast_processing">"Não é possível iniciar uma nova gravação de tela se a anterior ainda está sendo processada"</string>
+<string name="screenrecord_toast_saved">"Gravação salva como %s"</string>
+<string name="screenrecord_toast_save_error">"Não foi possível salvar a gravação para o arquivo de saída"</string>
+<string name="powerMenuMain_FlashlightOn">"Ligar Lanterna"</string>
+<string name="powerMenuMain_FlashlightOff">"Desligar Lanterna"</string>
+<string name="powerMenuMain_FlashlightDesc">"Desligando após [AUTOOFF]."</string>
+<string name="powerMenuMain_FlashlightDescDisabled">"Desligar automático desativado."</string>
+<string name="powerMenuMain_ExpandedDesktop">"Área de trabalho expandida"</string>
+<string name="visibilityOrderTitle_Flashlight">"Lanterna"</string>
+<string name="visibilityOrderDesc_Flashlight">"Alternar a lanterna através do Menu de Energia"</string>
+<string name="visibilityOrderTitle_ExpandedDesktop">"Área de trabalho expandida"</string>
+<string name="visibilityOrderDesc_ExpandedDesktop">"Alternar o modo da Área de Trabalho expandida do GravityBox através do Menu de Energia (GravityBox precisa estar instalado)."</string>
+<string name="advancedPrefsTitle_DialogGravity">"Posição do diálogo"</string>
+<string name="advancedPrefsDesc_DialogGravity">"Mudar a posição do diálogo."</string>
+<string name="advancedPrefs_DialogGravityTop">"Cima"</string>
+<string name="advancedPrefs_DialogGravityLeft">"Esquerda"</string>
+<string name="advancedPrefs_DialogGravityCenter">"Centro"</string>
+<string name="advancedPrefs_DialogGravityRight">"Direita"</string>
+<string name="advancedPrefs_DialogGravityBottom">"Abaixo"</string>
+
+<!-- Torch -->
+<string name="quick_settings_torch_on">"Lanterna ligada"</string>
+<string name="quick_settings_torch_off">"Lanterna desligada"</string>
+<string name="quick_settings_torch_off_notif">"Toque para desligar"</string>
 </resources>
