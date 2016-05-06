@@ -1,9 +1,13 @@
 package de.NeonSoft.neopowermenu;
 
+import android.*;
 import android.content.*;
+import android.content.pm.*;
 import android.content.res.*;
 import android.net.*;
 import android.os.*;
+import android.support.v4.app.*;
+import android.support.v4.content.*;
 import android.support.v7.app.*;
 import android.util.*;
 import android.view.*;
@@ -15,7 +19,6 @@ import de.NeonSoft.neopowermenu.Preferences.*;
 import de.NeonSoft.neopowermenu.xposed.*;
 import java.io.*;
 import java.net.*;
-import android.support.v4.app.*;
 
 public class MainActivity extends AppCompatActivity {
 		
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
 		static Animation anim_fade_slide_in_right;
 
 		OnClickListener previewOnClickListener;
+		
+		AlertDialog.Builder adb;
 		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,9 +134,9 @@ public class MainActivity extends AppCompatActivity {
 										launchPowerMenu();
 								}
 						};
-
 						//MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
     }
+		
 		public static void setActionBarButton(String sText,int iImgResId,OnClickListener onclkl) {
 				if(LinearLayout_ActionBarButton.getVisibility()==View.GONE || (!sText.equalsIgnoreCase(TextView_ActionBarButton_Text) && ImageView_ActionBarButton_Icon!=iImgResId)) {
 						if(LinearLayout_ActionBarButton.getVisibility()==View.VISIBLE) {

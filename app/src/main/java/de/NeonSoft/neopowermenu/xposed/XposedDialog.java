@@ -542,14 +542,14 @@ public class XposedDialog extends DialogFragment
 										desc.setText(getString(R.string.powerMenuMain_FlashlightDesc).replace("[AUTOOFF]", helper.getTimeString(XposedMainActivity.preferences.getLong("FlashlightAutoOff", 1000*60*10), true)));
 								}
 								desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
-								createCircleIcon(icon,icon2,(TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? getString(R.string.powerMenuMain_FlashlightOn) : getString(R.string.powerMenuMain_FlashlightOff),getResources().getDrawable((TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? R.drawable.ic_qs_torch_on : R.drawable.ic_qs_torch_off),XposedMainActivity.preferences.getString("DialogScreenrecord_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogScreenrecord_Textcolor","#ffffff"));
+								createCircleIcon(icon,icon2,(TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? getString(R.string.powerMenuMain_FlashlightOn) : getString(R.string.powerMenuMain_FlashlightOff),getResources().getDrawable((TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? R.drawable.ic_qs_torch_on : R.drawable.ic_qs_torch_off),XposedMainActivity.preferences.getString("DialogFlashlight_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogFlashlight_Textcolor","#ffffff"));
 						}
 						else if (position == XposedMainActivity.preferences.getInt("ExpandedDesktopPosition", 6) && XposedMainActivity.preferences.getBoolean("ExpandedDesktopEnabled", false))
 						{
 								root.setOnClickListener(expandedDesktopOnClickListener);
 								text.setText(getString(R.string.powerMenuMain_ExpandedDesktop));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
-								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_ExpandedDesktop),getResources().getDrawable(R.drawable.ic_action_launch),XposedMainActivity.preferences.getString("DialogScreenrecord_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogScreenrecord_Textcolor","#ffffff"));
+								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_ExpandedDesktop),getResources().getDrawable(R.drawable.ic_action_launch),XposedMainActivity.preferences.getString("DialogExpandedDesktop_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogExpandedDesktop_Textcolor","#ffffff"));
 						}
 						if (!text.getText().toString().equalsIgnoreCase("Text"))
 						{

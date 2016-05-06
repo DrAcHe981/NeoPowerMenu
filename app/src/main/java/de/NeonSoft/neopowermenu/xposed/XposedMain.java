@@ -135,7 +135,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 														public void onReceive(Context p1, Intent p2)
 														{
 																// TODO: Implement this method
-																Toast.makeText(p1, "Received NPM Broadcast: " + p2.getAction(), Toast.LENGTH_LONG).show();
+																//Toast.makeText(p1, "Received NPM Broadcast: " + p2.getAction(), Toast.LENGTH_LONG).show();
 																if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_SCREENSHOT))
 																{
 																		final Handler handler = xHandler;

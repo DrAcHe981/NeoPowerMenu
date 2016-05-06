@@ -1,11 +1,12 @@
 package de.NeonSoft.neopowermenu.Preferences;
+import android.*;
 import android.app.*;
 import android.content.*;
 import android.content.pm.*;
-import android.graphics.*;
 import android.net.*;
 import android.os.*;
 import android.support.v4.app.*;
+import android.support.v4.content.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -15,9 +16,12 @@ import eu.chainfire.libsuperuser.*;
 
 import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
+import de.NeonSoft.neopowermenu.R;
 
 public class PreferencesPartFragment extends Fragment
 {
+		
+		Context mContext;
 
     private String Urlgithub = "https://github.com/DrAcHe981/NeoPowerMenu";
     private String Urloriggithub = "https://github.com/naman14/MaterialPowerMenu";
@@ -63,13 +67,17 @@ public class PreferencesPartFragment extends Fragment
 		private static AlertDialog ad;
 		
 		private static ProgressDialog pd = null;
+
+		private static final int MY_PERMISSIONS_REQUEST = 101;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "Main";
-
+	
+				mContext = getActivity();
+				
 				ActiveStyle = MainActivity.preferences.getString("DialogTheme", "Material");
 				hideicon = MainActivity.preferences.getBoolean("HideLauncherIcon",false);
 				DeepXposedLogging = MainActivity.preferences.getBoolean("DeepXposedLogging",false);
@@ -322,9 +330,112 @@ public class PreferencesPartFragment extends Fragment
 						rootAvailable();
 				}
 
+				getPermissions();
 				return InflatedView;
 		}
 
+
+
+		public void getPermissions()
+		{
+				try {
+						if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
+						{
+// Here, thisActivity is the current activity
+								if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+								{
+// Should we show an explanation?
+										if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),Manifest.permission.WRITE_EXTERNAL_STORAGE))
+										{
+
+// Show an expanation to the user *asynchronously* -- don't block
+// this thread waiting for the user's response! After the user
+// sees the explanation, try again to request the permission.
+												showPermissionDialog(MY_PERMISSIONS_REQUEST);
+												return;
+										}
+										else
+										{
+
+// No explanation needed, we can request the permission.
+
+												requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST);
+												return;
+												// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+												// app-defined int constant. The callback method gets the
+												// result of the request.
+										}
+								}
+						}
+				} catch (Throwable t) {
+						Toast.makeText(getActivity(),"getPermission failed: "+t,Toast.LENGTH_LONG).show();
+				}
+		}
+
+
+		@Override
+		public void onRequestPermissionsResult(int requestCode,
+																					 String permissions[], int[] grantResults)
+		{
+				switch (requestCode)
+				{
+						case MY_PERMISSIONS_REQUEST: {
+										// If request is cancelled, the result arrays are empty.
+										if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+										{
+
+												// permission was granted, yay! Do the
+												// contacts-related task you need to do.
+												getPermissions();
+
+										}
+										else
+										{
+												if (adb==null) {
+														showPermissionDialog(MY_PERMISSIONS_REQUEST);
+												}
+												// permission denied, boo! Disable the
+												// functionality that depends on this permission.
+
+										}
+										return;
+								}
+
+								// other 'case' lines to check for other
+								// permissions this app might request
+				}
+		}
+
+		public void showPermissionDialog(int permission) {
+				switch (permission) {
+						case MY_PERMISSIONS_REQUEST:
+								adb = new AlertDialog.Builder(getActivity());
+								adb.setTitle(R.string.permissionRequestTitle);
+								adb.setMessage(R.string.permissionRequestMsg);
+								adb.setPositiveButton(R.string.Dialog_Ok, new DialogInterface.OnClickListener() {
+
+												@Override
+												public void onClick(DialogInterface p1, int p2)
+												{
+														// TODO: Implement this method
+														adb = null;
+														requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST);
+												}
+										});
+								adb.setNegativeButton(R.string.Dialog_Cancel, new DialogInterface.OnClickListener() {
+
+												@Override
+												public void onClick(DialogInterface p1, int p2)
+												{
+														// TODO: Implement this method
+													getActivity().finish();
+												}
+										});
+								adb.show();
+								break;
+				}
+		}
+		
 		private void checkState() {
 				try{
 						if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)

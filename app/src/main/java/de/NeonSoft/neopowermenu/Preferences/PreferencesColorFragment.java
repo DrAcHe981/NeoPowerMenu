@@ -15,14 +15,21 @@ import java.io.*;
 import android.support.v4.app.Fragment;
 
 import de.NeonSoft.neopowermenu.R;
+import de.NeonSoft.neopowermenu.helpers.*;
+import java.util.*;
 
 public class PreferencesColorFragment extends Fragment
 {
 
+		static Context mContext;
+		
 		private static LinearLayout LinearLayout_LoadPreset;
 		
 		private static LinearLayout LinearLayout_SavePreset;
 
+		private static ListView ListView_ColorsList;
+		private static ColorsListAdapter adapter;
+		
 		private static LinearLayout LinearLayout_RevealBackgroundColor;
 		private static TextView TextView_RevealBackgroundColorPreview;
 		
@@ -44,6 +51,15 @@ public class PreferencesColorFragment extends Fragment
 		private static LinearLayout LinearLayout_DialogScreenshotBackgroundColor;
 		private static TextView TextView_DialogScreenshotBackgroundColorPreview;
 
+		private static LinearLayout LinearLayout_DialogScreenrecordBackgroundColor;
+		private static TextView TextView_DialogScreenrecordBackgroundColorPreview;
+
+		private static LinearLayout LinearLayout_DialogFlashlightBackgroundColor;
+		private static TextView TextView_DialogFlashlightBackgroundColorPreview;
+
+		private static LinearLayout LinearLayout_DialogExpandedDesktopBackgroundColor;
+		private static TextView TextView_DialogExpandedDesktopBackgroundColorPreview;
+		
 		private static LinearLayout LinearLayout_DialogRecoveryBackgroundColor;
 		private static TextView TextView_DialogRecoveryBackgroundColorPreview;
 
@@ -67,6 +83,15 @@ public class PreferencesColorFragment extends Fragment
 
 		private static LinearLayout LinearLayout_DialogScreenshotTextColor;
 		private static TextView TextView_DialogScreenshotTextColorPreview;
+
+		private static LinearLayout LinearLayout_DialogScreenrecordTextColor;
+		private static TextView TextView_DialogScreenrecordTextColorPreview;
+
+		private static LinearLayout LinearLayout_DialogFlashlightTextColor;
+		private static TextView TextView_DialogFlashlightTextColorPreview;
+
+		private static LinearLayout LinearLayout_DialogExpandedDesktopTextColor;
+		private static TextView TextView_DialogExpandedDesktopTextColorPreview;
 		
 		private static LinearLayout LinearLayout_DialogRecoveryTextColor;
 		private static TextView TextView_DialogRecoveryTextColorPreview;
@@ -81,21 +106,25 @@ public class PreferencesColorFragment extends Fragment
 		AlertDialog savePresetDialog;
 		File[] presetsFiles;
 		String[] presetsList;
-		String[] lightPreset = {"#8800bcd4","#880097a7",
-				"#fff5f5f5","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
-				"#000000","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] darkPreset = {"#88121212","#8821272b",
-				"#ff212121","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
-				"#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] blackPreset = {"#88000000","#88000000",
-				"#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000",
-				"#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] ColorNames = {"RevealBackground","ActionRevealBackground",
-				"Dialog_Backgroundcolor","DialogShutdown_Backgroundcolor","DialogReboot_Backgroundcolor","DialogSoftReboot_Backgroundcolor","DialogScreenshot_Backgroundcolor","DialogRecovery_Backgroundcolor","DialogBootloader_Backgroundcolor","DialogSafeMode_Backgroundcolor",
-				"Dialog_Textcolor","DialogShutdown_Textcolor","DialogReboot_Textcolor","DialogSoftReboot_Textcolor","DialogScreenshot_Textcolor","DialogRecovery_Textcolor","DialogBootloader_Textcolor","DialogSafeMode_Textcolor"};
-
-		ColorPicker picker;
-		boolean hexChangeViaWheel;
+		String[] lightPreset = {"","",
+				"","#8800bcd4","#880097a7",
+				"","#fff5f5f5","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
+				"","#000000","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
+		String[] darkPreset = {"","",
+				"","#88121212","#8821272b",
+				"","#ff212121","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
+				"","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
+		String[] blackPreset = {"","",
+				"","#88000000","#88000000",
+				"","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000",
+				"","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
+		String[][] ColorNames = {{ColorsListAdapter.TYPE_LOAD,""},{ColorsListAdapter.TYPE_SAVE,""},
+				{ColorsListAdapter.TYPE_HEADER,"Reveal"},{ColorsListAdapter.TYPE_ITEM,"RevealBackground"},{ColorsListAdapter.TYPE_ITEM,"ActionRevealBackground"},
+				{ColorsListAdapter.TYPE_HEADER,"Backgrounds"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogReboot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSoftReboot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenshot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Backgroundcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"Texts"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogReboot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSoftReboot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenshot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Textcolor"}};
+		
+		static ColorPicker picker;
+		static boolean hexChangeViaWheel;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -104,9 +133,17 @@ public class PreferencesColorFragment extends Fragment
 				MainActivity.visibleFragment = "CustomColors";
 				View InflatedView = inflater.inflate(R.layout.activity_colorpreferences,container,false);
 				
+				mContext = getActivity();
+				
 				LinearLayout_LoadPreset = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_PresetLoad);
 			
 				LinearLayout_SavePreset = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_PresetSave);
+				
+				ListView_ColorsList = (ListView) InflatedView.findViewById(R.id.activitycolorpreferencesListView_Colors);
+				
+				adapter = new ColorsListAdapter(getActivity(),ColorNames,lightPreset);
+				ListView_ColorsList.setFastScrollEnabled(true);
+				ListView_ColorsList.setAdapter(adapter);
 				
 				LinearLayout_RevealBackgroundColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_RevealBackgroundColor);
 				TextView_RevealBackgroundColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_RevealBackgroundColorPreview);
@@ -129,6 +166,15 @@ public class PreferencesColorFragment extends Fragment
 				LinearLayout_DialogScreenshotBackgroundColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogScreenshotBackgroundcolor);
 				TextView_DialogScreenshotBackgroundColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogScreenshotBackgroundcolorPreview);
 
+				LinearLayout_DialogScreenrecordBackgroundColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogScreenrecordBackgroundcolor);
+				TextView_DialogScreenrecordBackgroundColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogScreenrecordBackgroundcolorPreview);
+				
+				LinearLayout_DialogFlashlightBackgroundColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogFlashlightBackgroundcolor);
+				TextView_DialogFlashlightBackgroundColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogFlashlightBackgroundcolorPreview);
+				
+				LinearLayout_DialogExpandedDesktopBackgroundColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogExpandedDesktopBackgroundcolor);
+				TextView_DialogExpandedDesktopBackgroundColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogExpandedDesktopBackgroundcolorPreview);
+				
 				LinearLayout_DialogRecoveryBackgroundColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogRecoveryBackgroundcolor);
 				TextView_DialogRecoveryBackgroundColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogRecoveryBackgroundcolorPreview);
 
@@ -154,6 +200,15 @@ public class PreferencesColorFragment extends Fragment
 				LinearLayout_DialogScreenshotTextColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogScreenshotTextcolor);
 				TextView_DialogScreenshotTextColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogScreenshotTextcolorPreview);
 
+				LinearLayout_DialogScreenrecordTextColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogScreenrecordTextcolor);
+				TextView_DialogScreenrecordTextColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogScreenrecordTextcolorPreview);
+
+				LinearLayout_DialogFlashlightTextColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogFlashlightTextcolor);
+				TextView_DialogFlashlightTextColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogFlashlightTextcolorPreview);
+
+				LinearLayout_DialogExpandedDesktopTextColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogExpandedDesktopTextcolor);
+				TextView_DialogExpandedDesktopTextColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogExpandedDesktopTextcolorPreview);
+				
 				LinearLayout_DialogRecoveryTextColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogRecoveryTextcolor);
 				TextView_DialogRecoveryTextColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogRecoveryTextcolorPreview);
 
@@ -163,26 +218,65 @@ public class PreferencesColorFragment extends Fragment
 				LinearLayout_DialogSafeModeTextColor = (LinearLayout) InflatedView.findViewById(R.id.activitycolorpreferencesLinearLayout_DialogSafeModeTextcolor);
 				TextView_DialogSafeModeTextColorPreview = (TextView) InflatedView.findViewById(R.id.activitycolorpreferencesTextView_DialogSafeModeTextcolorPreview);
 				
-				TextView_RevealBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[0],lightPreset[0])));
-				TextView_ActionRevealBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[1],lightPreset[1])));
-				TextView_DialogBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[2],lightPreset[2])));
-				TextView_DialogShutdownBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[3],lightPreset[3])));
-				TextView_DialogRebootBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[4],lightPreset[4])));
-				TextView_DialogSoftRebootBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[5],lightPreset[5])));
-				TextView_DialogScreenshotBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[6],lightPreset[6])));
-				TextView_DialogRecoveryBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[7],lightPreset[7])));
-				TextView_DialogBootloaderBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[8],lightPreset[8])));
-				TextView_DialogSafeModeBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[9],lightPreset[9])));
-			
-				TextView_DialogTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[10],lightPreset[10])));
-				TextView_DialogShutdownTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[11],lightPreset[11])));
-				TextView_DialogRebootTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[12],lightPreset[12])));
-				TextView_DialogSoftRebootTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[13],lightPreset[13])));
-				TextView_DialogScreenshotTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[14],lightPreset[14])));
-				TextView_DialogRecoveryTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[15],lightPreset[15])));
-				TextView_DialogBootloaderTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[16],lightPreset[16])));
-				TextView_DialogSafeModeTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[17],lightPreset[17])));
-				
+				/*int loadColorId = 0;
+				TextView_RevealBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				LinearLayout_RevealBackgroundColor.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										showColorPicker(TextView_RevealBackgroundColorPreview,ColorNames[0],MainActivity.preferences.getString(ColorNames[0],lightPreset[0]),true);
+								}
+						});
+				loadColorId ++;
+				TextView_ActionRevealBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogShutdownBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogRebootBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogSoftRebootBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogScreenshotBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogScreenrecordBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogFlashlightBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogExpandedDesktopBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogRecoveryBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogBootloaderBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogSafeModeBackgroundColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+
+				loadColorId ++;
+				TextView_DialogTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogShutdownTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogRebootTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogSoftRebootTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogScreenshotTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogScreenrecordTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogFlashlightTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogExpandedDesktopTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogRecoveryTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogBootloaderTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				loadColorId ++;
+				TextView_DialogSafeModeTextColorPreview.setBackgroundColor(Color.parseColor(MainActivity.preferences.getString(ColorNames[loadColorId],lightPreset[loadColorId])));
+				*/
 				LinearLayout_LoadPreset.setOnClickListener(new OnClickListener() {
 
 								@Override
@@ -275,7 +369,7 @@ public class PreferencesColorFragment extends Fragment
 																				fw.append("Creator=a "+android.os.Build.MANUFACTURER+" " +android.os.Build.MODEL+ " user\n");
 																		}
 																		for (int i=0;i<ColorNames.length;i++) {
-																				fw.append(ColorNames[i]+"="+MainActivity.preferences.getString(ColorNames[i],"#ffffffff")+"\n");
+																				fw.append(ColorNames[i]+"="+MainActivity.preferences.getString(ColorNames[i][1],"#ffffffff")+"\n");
 																		}
 																		fw.close();
 																		MainActivity.preferences.edit().putString("lastUsedPreset",Input.getText().toString()).commit();
@@ -291,177 +385,12 @@ public class PreferencesColorFragment extends Fragment
 								}
 						});
 				
-				LinearLayout_RevealBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_RevealBackgroundColorPreview,ColorNames[0],MainActivity.preferences.getString(ColorNames[0],lightPreset[0]),true);
-								}
-						});
-				LinearLayout_ActionRevealBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_ActionRevealBackgroundColorPreview,ColorNames[1],MainActivity.preferences.getString(ColorNames[1],lightPreset[1]),true);
-								}
-						});
-
-				LinearLayout_DialogBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogBackgroundColorPreview,ColorNames[2],MainActivity.preferences.getString(ColorNames[2],lightPreset[2]),true);
-								}
-						});
-				LinearLayout_DialogShutdownBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogShutdownBackgroundColorPreview,ColorNames[3],MainActivity.preferences.getString(ColorNames[3],lightPreset[3]),true);
-								}
-						});
-				LinearLayout_DialogRebootBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogRebootBackgroundColorPreview,ColorNames[4],MainActivity.preferences.getString(ColorNames[4],lightPreset[4]),true);
-								}
-						});
-				LinearLayout_DialogSoftRebootBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogSoftRebootBackgroundColorPreview,ColorNames[5],MainActivity.preferences.getString(ColorNames[5],lightPreset[5]),true);
-								}
-						});
-				LinearLayout_DialogScreenshotBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogScreenshotBackgroundColorPreview,ColorNames[6],MainActivity.preferences.getString(ColorNames[6],lightPreset[6]),true);
-								}
-						});
-				LinearLayout_DialogRecoveryBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogRecoveryBackgroundColorPreview,ColorNames[7],MainActivity.preferences.getString(ColorNames[7],lightPreset[7]),true);
-								}
-						});
-				LinearLayout_DialogBootloaderBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogBootloaderBackgroundColorPreview,ColorNames[8],MainActivity.preferences.getString(ColorNames[8],lightPreset[8]),true);
-								}
-						});
-				LinearLayout_DialogSafeModeBackgroundColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogSafeModeBackgroundColorPreview,ColorNames[9],MainActivity.preferences.getString(ColorNames[9],lightPreset[9]),true);
-								}
-						});
-
-				LinearLayout_DialogTextColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogTextColorPreview,ColorNames[10],MainActivity.preferences.getString(ColorNames[10],lightPreset[10]),false);
-								}
-						});
-				LinearLayout_DialogShutdownTextColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogShutdownTextColorPreview,ColorNames[11],MainActivity.preferences.getString(ColorNames[11],lightPreset[11]),false);
-								}
-						});
-				LinearLayout_DialogRebootTextColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogRebootTextColorPreview,ColorNames[12],MainActivity.preferences.getString(ColorNames[12],lightPreset[12]),false);
-								}
-						});
-				LinearLayout_DialogSoftRebootTextColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogSoftRebootTextColorPreview,ColorNames[13],MainActivity.preferences.getString(ColorNames[13],lightPreset[13]),false);
-								}
-						});
-				LinearLayout_DialogScreenshotTextColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogScreenshotTextColorPreview,ColorNames[14],MainActivity.preferences.getString(ColorNames[14],lightPreset[14]),false);
-								}
-						});
-				LinearLayout_DialogRecoveryTextColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogRecoveryTextColorPreview,ColorNames[15],MainActivity.preferences.getString(ColorNames[15],lightPreset[15]),false);
-								}
-						});
-				LinearLayout_DialogBootloaderTextColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogBootloaderTextColorPreview,ColorNames[16],MainActivity.preferences.getString(ColorNames[16],lightPreset[16]),false);
-								}
-						});
-				LinearLayout_DialogSafeModeTextColor.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										showColorPicker(TextView_DialogSafeModeTextColorPreview,ColorNames[17],MainActivity.preferences.getString(ColorNames[17],lightPreset[17]),false);
-								}
-						});
-				
 				return InflatedView;
 		}
 
-		private void showColorPicker(final TextView previewTextView,final String forColor,final String defaultColor,final boolean showOpacityBar) {
+		public static void showColorPicker(final TextView previewTextView,final String forColor,final String defaultColor,final boolean showOpacityBar) {
 
-				AlertDialog.Builder alertdb = new AlertDialog.Builder(getActivity());
+				AlertDialog.Builder alertdb = new AlertDialog.Builder(mContext);
 				View inflatedLayout = MainActivity.inflater.inflate(R.layout.dialogcolorpicker,null);
 				picker = (ColorPicker) inflatedLayout.findViewById(R.id.picker);
 				TextView opacityText = (TextView) inflatedLayout.findViewById(R.id.opacitybarText);
@@ -633,6 +562,7 @@ public class PreferencesColorFragment extends Fragment
 										} catch (Throwable t) {
 												Log.e("NeoPowerMenu",t.toString());
 										}
+										adapter.notifyDataSetChanged();
 										// TODO: Implement this method
 								}
 						});

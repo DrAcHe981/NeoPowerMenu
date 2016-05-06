@@ -71,7 +71,6 @@
 						android:text="@string/app_name"
 						android:gravity="bottom"
 						android:textColor="#FFFFFF"
-						android:textSize="23sp"
 						android:id="@+id/mainTextView_Title"
 						android:ellipsize="marquee"
 						android:marqueeRepeatLimit="marquee_forever"
