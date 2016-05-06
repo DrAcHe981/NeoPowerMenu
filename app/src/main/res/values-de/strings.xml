@@ -5,10 +5,12 @@
 <string name="ShareMessage">"Schau dir diese wundervolle App an und passe das Ausschaltmenü deines gerooteten Geräts nach deinen Wünschen an!
 
 "</string>
-<string name="TranslatorWebsite">"http://www.neon-soft.de"</string>
 
 <!-- Change this to your website! -->
+<string name="TranslatorWebsite">"http://www.neon-soft.de"</string>
 <string name="PreviewPowerMenu">"Vorschau"</string>
+
+<!-- Power Menu -->
 <string name="powerMenuMain_Shutdown">"Ausschalten"</string>
 <string name="powerMenuMain_Reboot">"Neustarten"</string>
 <string name="powerMenuMain_SoftReboot">"Schneller Neustart"</string>
@@ -20,6 +22,8 @@
 <string name="powerMenuBottom_SafeMode">"Abgesicherter Modus"</string>
 <string name="powerMenu_Shuttingdown">"Wird runtergefahren..."</string>
 <string name="powerMenu_Rebooting">"Wird neugestartet..."</string>
+
+<!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root und Xposed"</string>
 <string name="preferencesTitle_RootXposed1">"Root und Xposed sind nicht verfügbar"</string>
 <string name="preferencesDesc_RootXposed1">"Ohne Root und Xposed funktioniert leider nichts."</string>
@@ -57,10 +61,10 @@ Finde die Source auf GitHub."</string>
 
 <!-- Add your name here to get language credits -->
 <string name="preferencesDesc_Translator">"Robin G. (DrAcHe981)"</string>
-
-<!-- Replace my name with yours for Translation Credits! -->
 <string name="preferencesTitle_About">"Skript von Neon-Soft / DrAcHe981"</string>
 <string name="preferencesDesc_About">"basierend auf der Source von Naman Dwivedi (naman14)."</string>
+
+<!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
 <string name="visibilityOrderTitle_Shutdown">"Ausschalten"</string>
 <string name="visibilityOrderDesc_Shutdown">"Schalte dein Gerät aus."</string>
@@ -76,6 +80,8 @@ Finde die Source auf GitHub."</string>
 <string name="preset_LoadDesc">"Lade eine gespeicherte Konfiguration."</string>
 <string name="preset_Save">"Speichere Voreinstellung"</string>
 <string name="preset_SaveDesc">"Speichere deine aktuelle Konfiguration."</string>
+
+<!-- Preferences: Background colors -->
 <string name="category_Reveal">"Reveal Hintergründe"</string>
 <string name="reveal_color">"Reveal Hintergrund Farbe"</string>
 <string name="reveal_colorDesc">"Die Hintergrundfarbe des Reveal-Effekts."</string>
@@ -98,6 +104,8 @@ Finde die Source auf GitHub."</string>
 <string name="DialogBootloader_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs, wenn auf Bootloader geklickt wurde."</string>
 <string name="DialogSafeMode_Backgroundcolor">"Abgesicherter Modus Hintergrundfarbe"</string>
 <string name="DialogSafeMode_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs, auf Abgesicherter Modus geklickt wurde."</string>
+
+<!-- Preferences: Text colors -->
 <string name="category_Texts">"Textfarben"</string>
 <string name="Dialog_Textcolor">"Textfarbe"</string>
 <string name="Dialog_TextcolorDesc">"Die Textfarbe des Dialogs."</string>
@@ -115,6 +123,8 @@ Finde die Source auf GitHub."</string>
 <string name="DialogBootloader_TextcolorDesc">"Die Textfarbe des Dialogs, wenn auf Bootloader geklickt wurde."</string>
 <string name="DialogSafeMode_Textcolor">"Abgesicherter Modus Textfarbe"</string>
 <string name="DialogSafeMode_TextcolorDesc">"Die Textfarbe des Dialogs, wenn auf Abgesicherter Modus geklickt wurde."</string>
+
+<!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Lokale Voreinstellungen"</string>
 <string name="presetsManager_TitleOnline">"Online Voreinstellungen"</string>
 <string name="presetsManager_Active">"Aktiv:"</string>
@@ -128,6 +138,8 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="presetsManager_ImportMsg">"Möchtest du diese Voreinstellungen importieren?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] wurde importiert."</string>
 <string name="presetsManager_ImportFailed">"Import fehlgeschlagen..."</string>
+
+<!-- Preferences: Advanced -->
 <string name="advancedPrefsCategory_PowerMenu">"Ausschaltmenü"</string>
 <string name="advancedPrefsTitle_UseGraphics">"Nutze Grafiken"</string>
 <string name="advancedPrefsDesc_UseGraphics">"Nutze Grafiken anstelle der Buchstaben Kreise."</string>
@@ -140,6 +152,8 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Verzögerung zwischen dem Klick und dem Screenshot."</string>
 <string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Ausschaltmenü Verzögerung"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Verzögerung zwischen der Reveal-Animation und dem Erscheinen des Ausschaltmenüs."</string>
+
+<!-- Dialog -->
 <string name="Dialog_WaitForRoot">"Warte auf Rootzugriff..."</string>
 <string name="Dialog_Ok">"Ok"</string>
 <string name="Dialog_Yes">"Ja"</string>
@@ -168,7 +182,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="ToggleHide">"Verstecken"</string>
 <string name="presetsManager_Title">"Voreinstellungen"</string>
 <string name="powerMenuMain_Screenrecord">"Bildschirmaufnahme"</string>
-<string name="preferencesTitle_RootXposed5">"Aktivierte Modul Version ist zu niedrig... "</string>
+<string name="preferencesTitle_RootXposed5">"Aktiviert Modul Version ist zu niedrig... "</string>
 <string name="preferencesDesc_RootXposed5">"Bitte starte dein gerät neu um den Update Vorgang abzuschließen! "</string>
 <string name="preferencesTitle_DeepXposedLogging">"Tiefes Xposed Logging"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Aktiviere erweitertes logging, nach der Aktivierung neu starten um Änderung zu sehen."</string>
@@ -184,6 +198,25 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="screenrecord_toast_processing">"Es kann keine Bildschirm Aufnahme gestartet werden wenn noch eine verarbeitet wird"</string>
 <string name="screenrecord_toast_saved">"Aufnahme gespeichert als %s"</string>
 <string name="screenrecord_toast_save_error">"Fehler beim Speichern der Aufnahme"</string>
-<string name="action_screenrecord">"Bildschirm Aufnahme"</string>
-<string name="pref_powermenu_screenrecord_title">"Bildschirm Aufnahme im Ausschalt Menü"</string>
+<string name="powerMenuMain_FlashlightOn">"Taschenlampe einschalten"</string>
+<string name="powerMenuMain_FlashlightOff">"Taschenlampe ausschalten"</string>
+<string name="powerMenuMain_FlashlightDesc">"Wird nach [AUTOOFF] ausgeschaltet."</string>
+<string name="powerMenuMain_FlashlightDescDisabled">"Automatisches ausschalten deaktiviert."</string>
+<string name="powerMenuMain_ExpandedDesktop">"Erweiterter Desktop"</string>
+<string name="visibilityOrderTitle_Flashlight">"Taschenlampe"</string>
+<string name="visibilityOrderDesc_Flashlight">"Schalte die Taschenlampe über das Ausschaltmenü ein oder aus."</string>
+<string name="visibilityOrderTitle_ExpandedDesktop">"Erweiterter Desktop"</string>
+<string name="visibilityOrderDesc_ExpandedDesktop">"Schalte den Erweiterten Desktop von GravityBox über das Ausschaltmenü an oder aus (GravityBox muss hierfür installiert sein)."</string>
+<string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
+<string name="advancedPrefsDesc_DialogGravity">"Ändere die Position des Dialogs."</string>
+<string name="advancedPrefs_DialogGravityTop">"Oben"</string>
+<string name="advancedPrefs_DialogGravityLeft">"Links"</string>
+<string name="advancedPrefs_DialogGravityCenter">"Mitte"</string>
+<string name="advancedPrefs_DialogGravityRight">"Rechts"</string>
+<string name="advancedPrefs_DialogGravityBottom">"Unten"</string>
+
+<!-- Torch -->
+<string name="quick_settings_torch_on">"Taschenlampe an"</string>
+<string name="quick_settings_torch_off">"Taschenlampe aus"</string>
+<string name="quick_settings_torch_off_notif">"Zum ausschalten der Taschenlampe hier drücken"</string>
 </resources>
