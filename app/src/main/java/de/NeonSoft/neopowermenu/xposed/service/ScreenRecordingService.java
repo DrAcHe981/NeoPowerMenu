@@ -1,24 +1,38 @@
 package de.NeonSoft.neopowermenu.xposed.service;
 
-import android.app.*;
-import android.content.*;
-import android.graphics.drawable.*;
-import android.media.*;
-import android.net.*;
-import android.os.*;
-import android.provider.*;
-import android.util.*;
-import android.widget.*;
-import com.ogaclejapan.smarttablayout.*;
-import de.NeonSoft.neopowermenu.*;
-import de.NeonSoft.neopowermenu.xposed.service.*;
-import java.io.*;
-import java.lang.reflect.*;
-import java.text.*;
-import java.util.*;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Icon;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
+import android.util.Log;
+import android.widget.Toast;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import de.NeonSoft.neopowermenu.R;
-import java.lang.Process;
 
 public class ScreenRecordingService extends Service
  {
@@ -61,7 +75,8 @@ public class ScreenRecordingService extends Service
 
                 // choose screenrecord binary and prepare command
                 List<String> command = new ArrayList<String>();
-                command.add(getBinaryPath());
+                //command.add("su");
+								command.add(getBinaryPath());
 //                if (!mUseStockBinary && 
 //                        mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_SCREENRECORD_MICROPHONE, true)) {
 //                    command.add("--microphone");
@@ -403,6 +418,7 @@ public class ScreenRecordingService extends Service
     }
 
     private String getBinaryPath() {
+				Log.d(TAG,"Using Binary: " + (mUseStockBinary ? "/system/bin/screenrecord" : getFilesDir() + "/screenrecord"));
         return (mUseStockBinary ? "/system/bin/screenrecord" : getFilesDir() + "/screenrecord");
     }
 

@@ -28,12 +28,11 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     int maxX, maxY;
 		public static Context mContext;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 				mContext =getApplicationContext();
-				preferences = getSharedPreferences(MainActivity.class.getPackage().getName(),0);
+				preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
 				
         setTheme(R.style.TransparentApp);
 				getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

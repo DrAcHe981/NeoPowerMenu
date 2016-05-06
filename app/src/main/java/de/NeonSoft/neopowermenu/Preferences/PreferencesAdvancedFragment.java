@@ -14,6 +14,8 @@ public class PreferencesAdvancedFragment extends Fragment
 		Switch Switch_UseGraphics;
 		boolean boolean_UseGraphics;
 		
+		LinearLayout LinearLayout_DialogGravity;
+		
 		LinearLayout LinearLayout_ShowOnLockScreen;
 		Switch Switch_ShowOnLockScreen;
 		boolean boolean_ShowOnLockScreen;
@@ -52,6 +54,20 @@ public class PreferencesAdvancedFragment extends Fragment
 										boolean_UseGraphics = !boolean_UseGraphics;
 										MainActivity.preferences.edit().putBoolean("UseGraphics",boolean_UseGraphics).commit();
 										Switch_UseGraphics.setChecked(boolean_UseGraphics);
+								}
+						});
+						
+				LinearLayout_DialogGravity = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_DialogGravity);
+						
+				LinearLayout_DialogGravity.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										GravityChooserDialog gcd = new GravityChooserDialog();
+										//MainActivity.fragmentManager.beginTransaction().replace(R.id.pref_container,new GravityChooserDialog()).commit();
+										gcd.setStyle(gcd.STYLE_NO_FRAME,R.style.TransparentApp);
+										gcd.show(MainActivity.fragmentManager,"gravity_chooser");
 								}
 						});
 				

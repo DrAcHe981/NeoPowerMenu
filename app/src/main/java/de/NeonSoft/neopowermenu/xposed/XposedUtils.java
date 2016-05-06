@@ -1,20 +1,54 @@
 package de.NeonSoft.neopowermenu.xposed;
 
 import android.content.*;
+import android.content.pm.*;
 import android.content.res.*;
 import android.os.*;
+import de.NeonSoft.neopowermenu.*;
 import de.robv.android.xposed.*;
+import java.util.*;
 
 import static de.robv.android.xposed.XposedHelpers.callStaticMethod;
 import static de.robv.android.xposed.XposedHelpers.findClass;
-import de.NeonSoft.neopowermenu.*;
 
 public class XposedUtils
 {
+		private static Boolean mHasFlash;
+		private static Boolean mIsExynosDevice;
 		
 		public static void log(String message) {
 				XposedBridge.log("[NeoPowerMenu] "+message);
 		}
+
+    public static boolean isAppInstalled(Context context, String appUri) {
+        try {
+            PackageManager pm = context.getPackageManager();
+            pm.getPackageInfo(appUri, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static boolean hasFlash(Context con) {
+        if (mHasFlash != null) return mHasFlash;
+
+        try {
+            PackageManager pm = con.getPackageManager();
+            mHasFlash = pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+            return mHasFlash;
+        } catch (Throwable t) {
+            mHasFlash = null;
+            return false;
+        }
+    }
+		
+    public static boolean isExynosDevice() {
+        if (mIsExynosDevice != null) return mIsExynosDevice;
+
+        mIsExynosDevice = Build.HARDWARE.toLowerCase(Locale.US).contains("smdk");
+        return mIsExynosDevice;
+    }
 		
 		public static void doShutdown(Context context, int mode) {
 				Intent powerIntent = new Intent();

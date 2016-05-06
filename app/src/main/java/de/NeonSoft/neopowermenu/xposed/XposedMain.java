@@ -23,6 +23,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String TAG = TAG;
 		private XSharedPreferences preferences;
 		private boolean DeepXposedLogging = false;
+		private boolean HookShutdownThread = false;
 		
     public static final String PACKAGE_NAME = MainActivity.class.getPackage().getName();
 
@@ -59,8 +60,10 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static ShutdownThread sInstance = new ShutdownThread();
 		
 		/*<!-- Internal Hook version to check if reboot is needed --!>*/
-		private static final int XposedHookVersion = 15;
+		private static final int XposedHookVersion = 17;
 
+		
+		Object mPhoneWindowManager;
 
     @Override
     public void initZygote(StartupParam startupParam) throws Throwable
@@ -210,10 +213,10 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																{
 																		try
 																		{
-																				Context context = mContext.createPackageContext(PACKAGE_NAME, Context.CONTEXT_IGNORE_SECURITY);
+																				Context context = mContext.createPackageContext(PACKAGE_NAME , Context.CONTEXT_IGNORE_SECURITY);
 																				Intent intent = new Intent(context, ScreenRecordingService.class);
 																				intent.setAction(ScreenRecordingService.ACTION_TOGGLE_SCREEN_RECORDING);
-																				mContext.startService(intent);
+																				context.startService(intent);
 																		}
 																		catch (Throwable t)
 																		{
@@ -306,6 +309,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										}
 								});
 						if (DeepXposedLogging) XposedUtils.log("Replaced with empty method to prevent crashes, hopefully working...");
+						if (HookShutdownThread) {
 						if (DeepXposedLogging) XposedUtils.log("Hooking (after) "+usedSDClass+" constructor...");
 						XposedBridge.hookAllConstructors(ShutdownThreadClass, new XC_MethodHook() {
 								@Override
@@ -379,6 +383,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 								}
 						});
 						if (DeepXposedLogging) XposedUtils.log("Rebuild the function to stop displaying the default shutdown loading dialog...");
+						}
 				}
 				else if (lpparam.packageName.equals("de.NeonSoft.neopowermenu"))
 				{

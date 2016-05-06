@@ -2,6 +2,7 @@ package de.NeonSoft.neopowermenu.Preferences;
 import android.app.*;
 import android.content.*;
 import android.content.pm.*;
+import android.graphics.*;
 import android.net.*;
 import android.os.*;
 import android.support.v4.app.*;
@@ -12,6 +13,7 @@ import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import eu.chainfire.libsuperuser.*;
 
+import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 
 public class PreferencesPartFragment extends Fragment
@@ -59,7 +61,9 @@ public class PreferencesPartFragment extends Fragment
 
 		private static AlertDialog.Builder adb;
 		private static AlertDialog ad;
-
+		
+		private static ProgressDialog pd = null;
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -163,8 +167,7 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										// TODO: Implement this method
-										MainActivity.fragmentManager.beginTransaction().replace(R.id.pref_container, new PreferencesColorFragment()).commit();
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesColorFragment()).commit();
 								}
 						});
 
@@ -173,8 +176,7 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										// TODO: Implement this method
-										MainActivity.fragmentManager.beginTransaction().replace(R.id.pref_container, new PreferencesVisibilityOrderFragment()).commit();
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesVisibilityOrderFragment()).commit();
 								}
 						});
 
@@ -183,8 +185,7 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										// TODO: Implement this method
-										MainActivity.fragmentManager.beginTransaction().replace(R.id.pref_container,new PreferencesAdvancedFragment()).commit();
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesAdvancedFragment()).commit();
 								}
 						});
 						
@@ -193,19 +194,15 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										// TODO: Implement this method
+										hideicon = !hideicon;
+										String packageName = getActivity().getPackageName();
+										ComponentName componentSettings = new ComponentName(packageName, packageName + ".SettingsActivity");
 										if (hideicon)
 										{
-												hideicon = false;
-												String packageName = getActivity().getPackageName();
-												ComponentName componentSettings = new ComponentName(packageName, packageName + ".SettingsActivity");
 												getActivity().getPackageManager().setComponentEnabledSetting(componentSettings, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
 										}
 										else
 										{
-												hideicon = true;
-												String packageName = getActivity().getPackageName();
-												ComponentName componentSettings = new ComponentName(packageName, packageName + ".SettingsActivity");
 												getActivity().getPackageManager().setComponentEnabledSetting(componentSettings, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 										}
 										Switch_HideLauncherIcon.setChecked(hideicon);
@@ -264,18 +261,6 @@ public class PreferencesPartFragment extends Fragment
 								}
 						});
 
-				LinearLayout_Translator.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										Intent i = new Intent(Intent.ACTION_VIEW);
-										i.setData(Uri.parse(getString(R.string.TranslatorWebsite)));
-										startActivity(i);
-								}
-						});
-
 				LinearLayout_About.setOnClickListener(new OnClickListener() {
 
 								@Override
@@ -298,64 +283,39 @@ public class PreferencesPartFragment extends Fragment
 																	 "Licensed under the Apache License, Version 2.0\n\n" +
 																	 "");
 
-										adb.setPositiveButton(R.string.Dialog_Ok, new DialogInterface.OnClickListener() {
-
-														@Override
-														public void onClick(DialogInterface p1, int p2)
-														{
-																// TODO: Implement this method
-														}
-												});
+										adb.setPositiveButton(R.string.Dialog_Ok, null);
 
 										ad = adb.create();
 										ad.show();
 								}
 						});
 
-				try{
-				if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)
-				{
-						if (TextView_ModuleStateTitle != null)
-						{
-								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed2);
-								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed2);
-						}
-				} else {
-						if (TextView_ModuleStateTitle != null)
-						{
-								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
-								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
-						}
-				}
-				} catch (Throwable t) {
-						TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
-						TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
-						}
+				checkState();
 				if (!MainActivity.RootAvailable)
 				{
-						adb = new AlertDialog.Builder(getActivity());
-						adb.setMessage(R.string.Dialog_WaitForRoot);
-						adb.setNegativeButton(R.string.Dialog_Cancel, new DialogInterface.OnClickListener() {
+						pd = new ProgressDialog(getActivity());
+						pd.setMessage(getString(R.string.Dialog_WaitForRoot));
+						pd.setIndeterminate(true);
+						pd.setCancelable(false);
+						pd.setCanceledOnTouchOutside(false);
+						pd.setButton(pd.BUTTON_NEGATIVE, getString(R.string.Dialog_Cancel), new DialogInterface.OnClickListener() {
+
+																 @Override
+																 public void onClick(DialogInterface p1, int p2)
+																 {
+																		 pd.dismiss();
+																		 getActivity().finish();
+																 }
+														 });
+						pd.setButton(pd.BUTTON_NEUTRAL, getString(R.string.Dialog_Ignore), new DialogInterface.OnClickListener() {
 
 										@Override
 										public void onClick(DialogInterface p1, int p2)
 										{
-												// TODO: Implement this method
-												getActivity().finish();
+												pd.dismiss();
 										}
 								});
-						adb.setNeutralButton(R.string.Dialog_Ignore, new DialogInterface.OnClickListener() {
-
-										@Override
-										public void onClick(DialogInterface p1, int p2)
-										{
-												// TODO: Implement this method
-												ad.dismiss();
-										}
-								});
-						adb.setCancelable(false);
-						ad = adb.create();
-						ad.show();
+						pd.show();
 				}
 				else if (MainActivity.RootAvailable)
 				{
@@ -365,6 +325,34 @@ public class PreferencesPartFragment extends Fragment
 				return InflatedView;
 		}
 
+		private void checkState() {
+				try{
+						if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)
+						{
+								if(!MainActivity.RootAvailable) {
+										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed2);
+										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed2);
+								} else {
+										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed4);
+										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed4);
+								}
+						} else if (helper.ModuleState()==-1) {
+								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed3);
+								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed3);
+						} else {
+								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
+								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
+								TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+								TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+						}
+				} catch (Throwable t) {
+						TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
+						TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
+						TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+						TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+				}
+		}
+		
 		@Override
 		public void onActivityCreated(Bundle savedInstanceState)
 		{
@@ -380,57 +368,27 @@ public class PreferencesPartFragment extends Fragment
 														new Handler(Looper.getMainLooper()).post(new Runnable() {
 																		@Override
 																		public void run() {
-																				PreferencesPartFragment.rootAvailable();
+																				rootAvailable();
 																		}
 																});
 												}
 										}
 								}).start();
 				}
-				MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										MainActivity.launchPowerMenu();
-								}
-						});
+				
 		}
 		
-		public static void rootAvailable()
+		private void rootAvailable()
 		{
 				if (TextView_ModuleStateTitle != null)
 				{
-						//rootstatus.setTitle("Root available");
-
-						//rootstatus.setSummary("Root is available.");
-						//if(appstatus != null) {
-								try {
-						if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)
-						{
-								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed4);
-								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed4);
-						}
-										else if (helper.ModuleState()<MainActivity.neededModuleActiveVersion) {
-												TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
-												TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
-						}
-						else
-						{
-								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed3);
-								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed3);
-						}
-				} catch (Throwable t) {
-						TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
-						TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
-				}
-						if (ad != null)
+						if (pd != null)
 						{
 								MainActivity.RootAvailable = true;
-								ad.dismiss();
-								ad = null;
+								pd.dismiss();
+								pd = null;
 						}
+						checkState();
 				}
 		}
 

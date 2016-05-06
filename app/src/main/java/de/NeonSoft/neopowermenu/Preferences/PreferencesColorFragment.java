@@ -189,7 +189,7 @@ public class PreferencesColorFragment extends Fragment
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										MainActivity.fragmentManager.beginTransaction().replace(R.id.pref_container, new PreferencesPresetsFragment()).commit();
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPresetsFragment()).commit();
 								}
 						});
 						
