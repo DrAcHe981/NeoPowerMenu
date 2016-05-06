@@ -215,24 +215,28 @@
 <string name="quick_settings_torch_on">"Фонарик включен"</string>
 <string name="quick_settings_torch_off">"Фонарик выключен"</string>
 <string name="quick_settings_torch_off_notif">"Нажмите, чтобы выключить"</string>
-<string name="RevealBackground"></string>
-<string name="RevealBackgroundDesc"></string>
-<string name="ActionRevealBackground"></string>
-<string name="ActionRevealBackgroundDesc"></string>
-<string name="DialogScreenrecord_Backgroundcolor"></string>
-<string name="DialogScreenrecord_BackgroundcolorDesc"></string>
-<string name="DialogFlashlight_Backgroundcolor"></string>
-<string name="DialogFlashlight_BackgroundcolorDesc"></string>
-<string name="DialogExpandedDesktop_Backgroundcolor"></string>
-<string name="DialogExpandedDesktop_BackgroundcolorDesc"></string>
-<string name="DialogScreenrecord_Textcolor"></string>
-<string name="DialogScreenrecord_TextcolorDesc"></string>
-<string name="DialogFlashlight_Textcolor"></string>
-<string name="DialogFlashlight_TextcolorDesc"></string>
-<string name="DialogExpandedDesktop_Textcolor"></string>
-<string name="DialogExpandedDesktop_TextcolorDesc"></string>
+<string name="RevealBackground">"Цвет фона за Меню выключения"</string>
+<string name="RevealBackgroundDesc">"Цвет эффекта заполнения фона за Меню выключения"</string>
+<string name="ActionRevealBackground">"Цвет фона за Меню выключения при действии"</string>
+<string name="ActionRevealBackgroundDesc">"Цвет эффекта заполнения фона за Меню выключения при нажатии на кнопку Выключения/Перезагрузки "</string>
+<string name="DialogScreenrecord_Backgroundcolor">"Цвет фона Записи экрана "</string>
+<string name="DialogScreenrecord_BackgroundcolorDesc">"Цвет кружка Записи экрана"</string>
+<string name="DialogFlashlight_Backgroundcolor">"Цвет фона Фонарика"</string>
+<string name="DialogFlashlight_BackgroundcolorDesc">"Цвет кружка Фонарика"</string>
+<string name="DialogExpandedDesktop_Backgroundcolor">"Цвет фона Расширенного экрана"</string>
+<string name="DialogExpandedDesktop_BackgroundcolorDesc">"Цвет кружка Расширенного экрана"</string>
+<string name="DialogScreenrecord_Textcolor">"Цвет текста Записи экрана"</string>
+<string name="DialogScreenrecord_TextcolorDesc">"Цвет буквы в кружке Записи экрана"</string>
+<string name="DialogFlashlight_Textcolor">"Цвет текста Фонарика"</string>
+<string name="DialogFlashlight_TextcolorDesc">"Цвет буквы в кружке Фонарика"</string>
+<string name="DialogExpandedDesktop_Textcolor">"Цвет текста Расширенного экрана"</string>
+<string name="DialogExpandedDesktop_TextcolorDesc">"Цвет буквы в кружке Расширенного экрана"</string>
 
 <!-- Dialog -->
-<string name="permissionRequestTitle"></string>
-<string name="permissionRequestMsg"></string>
+<string name="permissionRequestTitle">"Разрешения"</string>
+<string name="permissionRequestMsg">"Камера: чтобы включать фонарик.
+Чтение/Запись памяти: для будущих опций(например, пользовательских изображений)
+
+Эти разрешения должны работать правильно...
+Нажмите ОК, чтобы увидеть диалоговое окно снова, нажмите Отмена, чтобы выйти из приложения."</string>
 </resources>
