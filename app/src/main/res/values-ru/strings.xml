@@ -5,10 +5,12 @@
 <string name="ShareMessage">"Оцените это отличное приложение для настройки меню выключения с Вашего Аndroid-устройства с root-доступом!
 
 "</string>
-<string name="TranslatorWebsite">"http://www.vk.com/smirnaff"</string>
 
 <!-- Change this to your website! -->
+<string name="TranslatorWebsite">"http://www.vk.com/smirnaff"</string>
 <string name="PreviewPowerMenu">"Предпросмотр"</string>
+
+<!-- Power Menu -->
 <string name="powerMenuMain_Shutdown">"Выключение"</string>
 <string name="powerMenuMain_Reboot">"Перезагрузка"</string>
 <string name="powerMenuMain_SoftReboot">"Мягкая Перезагрузка"</string>
@@ -20,6 +22,8 @@
 <string name="powerMenuBottom_SafeMode">"Безопасный режим"</string>
 <string name="powerMenu_Shuttingdown">"Выключение..."</string>
 <string name="powerMenu_Rebooting">"Перезагрузка..."</string>
+
+<!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
 <string name="preferencesTitle_RootXposed1">"Root и Xposed недоступны"</string>
 <string name="preferencesDesc_RootXposed1">"Root и Xposed должны быть работающими."</string>
@@ -57,10 +61,10 @@
 
 <!-- Add your name here to get language credits -->
 <string name="preferencesDesc_Translator">"Смирнов Ярослав/Smirnov Yaroslav (Smirnaff)"</string>
-
-<!-- Replace my name with yours for Translation Credits! -->
 <string name="preferencesTitle_About">"Создано Neon-Soft / DrAcHe981"</string>
 <string name="preferencesDesc_About">"Основано на исходном коде Naman Dwivedi(naman14)."</string>
+
+<!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Отображение и порядок"</string>
 <string name="visibilityOrderTitle_Shutdown">"Выключение"</string>
 <string name="visibilityOrderDesc_Shutdown">"Выключает устройство."</string>
@@ -76,6 +80,8 @@
 <string name="preset_LoadDesc">"Загрузить сохранённую конфигурацию"</string>
 <string name="preset_Save">"Сохранить шаблон"</string>
 <string name="preset_SaveDesc">"Сохраните свою текущую конфигурацию"</string>
+
+<!-- Preferences: Background colors -->
 <string name="category_Reveal">"Эффекты заполнения"</string>
 <string name="reveal_color">"Цвет эффекта заполнения"</string>
 <string name="reveal_colorDesc">"Цвет эффекта заполнения заднего фона экрана."</string>
@@ -98,6 +104,8 @@
 <string name="DialogBootloader_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне при нажатии на Загрузчик."</string>
 <string name="DialogSafeMode_Backgroundcolor">"Цвет заднего фона Безопасного Режима"</string>
 <string name="DialogSafeMode_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне при нажатии на Безопасный Режим."</string>
+
+<!-- Preferences: Text colors -->
 <string name="category_Texts">"Цвета текста"</string>
 <string name="Dialog_Textcolor">"Цвет текста"</string>
 <string name="Dialog_TextcolorDesc">"Цвет текста в диалоговом окне."</string>
@@ -115,6 +123,8 @@
 <string name="DialogBootloader_TextcolorDesc">"Цвет текста в диалоговом окне при нажатии на Загрузчик."</string>
 <string name="DialogSafeMode_Textcolor">"Цвет текста Безопасного Режима"</string>
 <string name="DialogSafeMode_TextcolorDesc">"Цвет текста в диалоговом окне при нажатии на Безопасный Режим."</string>
+
+<!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Шаблоны на устройстве"</string>
 <string name="presetsManager_TitleOnline">"Шаблоны онлайн"</string>
 <string name="presetsManager_Active">"Активный:"</string>
@@ -128,6 +138,8 @@
 <string name="presetsManager_ImportMsg">"Вы хотите импортировать этот шаблон?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] Импортирован успешно."</string>
 <string name="presetsManager_ImportFailed">"Импортировать не удалось..."</string>
+
+<!-- Preferences: Advanced -->
 <string name="advancedPrefsCategory_PowerMenu">"Меню выключения"</string>
 <string name="advancedPrefsTitle_UseGraphics">"Использовать графику"</string>
 <string name="advancedPrefsDesc_UseGraphics">"Использовать графические элементы вместо букв в кружках"</string>
@@ -140,6 +152,8 @@
 <string name="advancedPrefsDesc_ScreenshotDelay">"Задержка междунажатием и съёмкой."</string>
 <string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Задержка Меню выключения"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Задержка между эффектом заполнения и появлением Меню выключения."</string>
+
+<!-- Dialog -->
 <string name="Dialog_WaitForRoot">"Ожидание root-доступа..."</string>
 <string name="Dialog_Ok">"Oк"</string>
 <string name="Dialog_Yes">"Да"</string>
@@ -167,23 +181,42 @@
 <string name="ToggleShow">"Показать"</string>
 <string name="ToggleHide">"Скрыть"</string>
 <string name="presetsManager_Title">"Шаблоны"</string>
-<string name="powerMenuMain_Screenrecord"></string>
-<string name="preferencesTitle_RootXposed5"></string>
-<string name="preferencesDesc_RootXposed5"></string>
-<string name="preferencesTitle_DeepXposedLogging"></string>
-<string name="preferencesDesc_DeepXposedLogging"></string>
-<string name="visibilityOrderTitle_Screenrecord"></string>
-<string name="visibilityOrderDesc_Screenrecord"></string>
+<string name="powerMenuMain_Screenrecord">"Запись экрана"</string>
+<string name="preferencesTitle_RootXposed5">"Установленная версия модуля слишком старая..."</string>
+<string name="preferencesDesc_RootXposed5">"Пожалуйста, перезагрузите устройство, чтобы закончить процесс обновления!"</string>
+<string name="preferencesTitle_DeepXposedLogging">"Подробное логгирование Xposed"</string>
+<string name="preferencesDesc_DeepXposedLogging">"Разрешить подробное логгирование Xposed, после разрешения перезагрузить, чтобы увидеть изменения"</string>
+<string name="visibilityOrderTitle_Screenrecord">"Запись экрана"</string>
+<string name="visibilityOrderDesc_Screenrecord">"Снимает запись экрана через Меню выключения."</string>
 
 <!-- Screen recording -->
-<string name="screenrecord_notif_ticker"></string>
-<string name="screenrecord_notif_title"></string>
-<string name="screenrecord_notif_stop"></string>
-<string name="screenrecord_notif_pointer"></string>
-<string name="screenrecord_toast_error"></string>
-<string name="screenrecord_toast_processing"></string>
-<string name="screenrecord_toast_saved"></string>
-<string name="screenrecord_toast_save_error"></string>
-<string name="action_screenrecord"></string>
-<string name="pref_powermenu_screenrecord_title"></string>
+<string name="screenrecord_notif_ticker">"Экран записывается"</string>
+<string name="screenrecord_notif_title">"Запись экрана"</string>
+<string name="screenrecord_notif_stop">"Стоп"</string>
+<string name="screenrecord_notif_pointer">"Переключить указатель"</string>
+<string name="screenrecord_toast_error">"Невозможно записать экран"</string>
+<string name="screenrecord_toast_processing">"Невозможно начать новую запись, так как старая ещё обрабатывается"</string>
+<string name="screenrecord_toast_saved">"Запись сохранена как %s"</string>
+<string name="screenrecord_toast_save_error">"Невозможно сохранить запись в файл"</string>
+<string name="powerMenuMain_FlashlightOn">"Включить фонарик"</string>
+<string name="powerMenuMain_FlashlightOff">"Выключить фонарик"</string>
+<string name="powerMenuMain_FlashlightDesc">"Выключение через"</string>
+<string name="powerMenuMain_FlashlightDescDisabled">"Автоматическое выключение отключено."</string>
+<string name="powerMenuMain_ExpandedDesktop">"Расширенный экран"</string>
+<string name="visibilityOrderTitle_Flashlight">"Фонарик"</string>
+<string name="visibilityOrderDesc_Flashlight">"Включение фонарика через Меню выключения"</string>
+<string name="visibilityOrderTitle_ExpandedDesktop">"Расширенный экран"</string>
+<string name="visibilityOrderDesc_ExpandedDesktop">"Включение расширенного экрана из GravityBox в Меню выключения(GravityBox должен быть установлен)"</string>
+<string name="advancedPrefsTitle_DialogGravity">"Позиция диалогового окна"</string>
+<string name="advancedPrefsDesc_DialogGravity">"Изменить позицию диалогового окна"</string>
+<string name="advancedPrefs_DialogGravityTop">"Сверху"</string>
+<string name="advancedPrefs_DialogGravityLeft">"Слева"</string>
+<string name="advancedPrefs_DialogGravityCenter">"В центре"</string>
+<string name="advancedPrefs_DialogGravityRight">"Справа"</string>
+<string name="advancedPrefs_DialogGravityBottom">"Снизу"</string>
+
+<!-- Torch -->
+<string name="quick_settings_torch_on">"Фонарик включен"</string>
+<string name="quick_settings_torch_off">"Фонарик выключен"</string>
+<string name="quick_settings_torch_off_notif">"Нажмите, чтобы выключить"</string>
 </resources>
