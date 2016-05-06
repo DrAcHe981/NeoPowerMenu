@@ -81,10 +81,6 @@ Essa configuração só está acessível no Xposed Installer"</string>
 
 <!-- Preferences: Background colors -->
 <string name="category_Reveal">"Revelar fundo"</string>
-<string name="reveal_color">"Cor do fundo revelar."</string>
-<string name="reveal_colorDesc">"A cor do fundo do efeito revelar."</string>
-<string name="Actionreveal_color">"Cor do fundo da ação revelar"</string>
-<string name="Actionreveal_colorDesc">"A cor do fundo do efeito revelar ao clicar na opção de Desligar/Reiniciar."</string>
 <string name="category_Backgrounds">"Cores de fundo"</string>
 <string name="Dialog_Backgroundcolor">"Cor de fundo"</string>
 <string name="Dialog_BackgroundcolorDesc">"Cor de fundo do diálogo."</string>
@@ -217,4 +213,24 @@ Isso não pode  ser desfeito!"</string>
 <string name="quick_settings_torch_on">"Lanterna ligada"</string>
 <string name="quick_settings_torch_off">"Lanterna desligada"</string>
 <string name="quick_settings_torch_off_notif">"Toque para desligar"</string>
+<string name="RevealBackground"></string>
+<string name="RevealBackgroundDesc"></string>
+<string name="ActionRevealBackground"></string>
+<string name="ActionRevealBackgroundDesc"></string>
+<string name="DialogScreenrecord_Backgroundcolor"></string>
+<string name="DialogScreenrecord_BackgroundcolorDesc"></string>
+<string name="DialogFlashlight_Backgroundcolor"></string>
+<string name="DialogFlashlight_BackgroundcolorDesc"></string>
+<string name="DialogExpandedDesktop_Backgroundcolor"></string>
+<string name="DialogExpandedDesktop_BackgroundcolorDesc"></string>
+<string name="DialogScreenrecord_Textcolor"></string>
+<string name="DialogScreenrecord_TextcolorDesc"></string>
+<string name="DialogFlashlight_Textcolor"></string>
+<string name="DialogFlashlight_TextcolorDesc"></string>
+<string name="DialogExpandedDesktop_Textcolor"></string>
+<string name="DialogExpandedDesktop_TextcolorDesc"></string>
+
+<!-- Dialog -->
+<string name="permissionRequestTitle"></string>
+<string name="permissionRequestMsg"></string>
 </resources>
