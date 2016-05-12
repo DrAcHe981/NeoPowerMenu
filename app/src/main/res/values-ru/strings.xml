@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">"NeoPowerMenu"</string>
-<string name="action_settings">"Настройки"</string>
 <string name="ShareMessage">"Оцените это отличное приложение для настройки меню выключения с Вашего Аndroid-устройства с root-доступом!
 
 "</string>
@@ -14,7 +13,7 @@
 <string name="powerMenuMain_SoftRebootDesc">"Просто перезапускает Android UI путём убийства основного процесса"</string>
 <string name="powerMenuMain_Screenshot">"Снимок экрана"</string>
 <string name="powerMenuMain_ScreenshotDesc">"Задержка снимка экрана: [SCREENSHOTDELAY]"</string>
-<string name="powerMenuBottom_Recovery">"Восстановление"</string>
+<string name="powerMenuBottom_Recovery">"Рекавери"</string>
 <string name="powerMenuBottom_Bootloader">"Загрузчик"</string>
 <string name="powerMenuBottom_SafeMode">"Безопасный режим"</string>
 <string name="powerMenu_Shuttingdown">"Выключение..."</string>
@@ -34,7 +33,6 @@
 <string name="preferencesDesc_RootXposed4">"Приложение должно работать хорошо!"</string>
 <string name="preferencesCategory_General">"Основное"</string>
 <string name="preferencesTitle_Style">"Стиль"</string>
-<string name="preferencesDesc_Style">"[STYLENAME] (В будущем будет больше)"</string>
 <string name="preferencesTitle_Theme">"Тема"</string>
 <string name="preferencesDesc_Theme">"Измените внешний вид."</string>
 <string name="preferencesTitle_VisibilityOrder">"Отображение и порядок"</string>
@@ -48,9 +46,6 @@
 <string name="preferencesCategory_About">"О приложении"</string>
 <string name="preferencesTitle_NeoSource">"Исходный код"</string>
 <string name="preferencesDesc_NeoSource">"NeoPowerMenu имеет открытый исходный код.
-Исходники на Github."</string>
-<string name="preferencesTitle_OrigSource">"Оригинальный код"</string>
-<string name="preferencesDesc_OrigSource">"Оригинальный Material Power Menu имеет открытый исходный код.
 Исходники на Github."</string>
 <string name="preferencesTitle_Share">"Поделиться"</string>
 <string name="preferencesDesc_Share">"Понравилось приложение? Поделитесь им среди своих друзей."</string>
@@ -73,45 +68,6 @@
 <string name="preset_LoadDesc">"Загрузить сохранённую конфигурацию"</string>
 <string name="preset_Save">"Сохранить шаблон"</string>
 <string name="preset_SaveDesc">"Сохраните свою текущую конфигурацию"</string>
-
-<!-- Preferences: Background colors -->
-<string name="category_Reveal">"Эффекты заполнения"</string>
-<string name="category_Backgrounds">"Цвета заднего фона"</string>
-<string name="Dialog_Backgroundcolor">"Цвет заднего фона"</string>
-<string name="Dialog_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне."</string>
-<string name="DialogShutdown_Backgroundcolor">"Цвет заднего фона Выключения"</string>
-<string name="DialogShutdown_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне при нажатии на Выключение."</string>
-<string name="DialogReboot_Backgroundcolor">"Цвет заднего фона Перезагрузки"</string>
-<string name="DialogReboot_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне при нажатии на Перезагрузку."</string>
-<string name="DialogSoftReboot_Backgroundcolor">"Цвет заднего фона Мягкой Перезагрузки"</string>
-<string name="DialogSoftReboot_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне при нажатии на Мягкую Перезагрузку."</string>
-<string name="DialogScreenshot_Backgroundcolor">"Цвет фона Снимка экрана"</string>
-<string name="DialogScreenshot_BackgroundcolorDesc">"Цвет кружка Снимка экрана"</string>
-<string name="DialogRecovery_Backgroundcolor">"Цвет заднего фона Восстановления"</string>
-<string name="DialogRecovery_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне при нажатии на Восстановление."</string>
-<string name="DialogBootloader_Backgroundcolor">"Цвет заднего фона Загрузчика"</string>
-<string name="DialogBootloader_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне при нажатии на Загрузчик."</string>
-<string name="DialogSafeMode_Backgroundcolor">"Цвет заднего фона Безопасного Режима"</string>
-<string name="DialogSafeMode_BackgroundcolorDesc">"Цвет заднего фона в диалоговом окне при нажатии на Безопасный Режим."</string>
-
-<!-- Preferences: Text colors -->
-<string name="category_Texts">"Цвета текста"</string>
-<string name="Dialog_Textcolor">"Цвет текста"</string>
-<string name="Dialog_TextcolorDesc">"Цвет текста в диалоговом окне."</string>
-<string name="DialogShutdown_Textcolor">"Цвет текста Выключения"</string>
-<string name="DialogShutdown_TextcolorDesc">"Цвет текста в диалоговом окне при нажатии на Выключение."</string>
-<string name="DialogReboot_Textcolor">"Цвет текста Перезагрузки"</string>
-<string name="DialogReboot_TextcolorDesc">"Цвет текста в диалоговом окне при нажатии на Перезагрузку."</string>
-<string name="DialogSoftReboot_Textcolor">"Цвет текста Мягкой Перезагрузки"</string>
-<string name="DialogSoftReboot_TextcolorDesc">"Цвет текста в диалоговом окне при нажатии на Мягкую Перезагрузку."</string>
-<string name="DialogScreenshot_Textcolor">"Цвет текста Снимка экрана"</string>
-<string name="DialogScreenshot_TextcolorDesc">"Цвет буквы в кружке Снимка экрана"</string>
-<string name="DialogRecovery_Textcolor">"Цвет текста Восстановления"</string>
-<string name="DialogRecovery_TextcolorDesc">"Цвет текста в диалоговом окне при нажатии на Восстановление."</string>
-<string name="DialogBootloader_Textcolor">"Цвет текста Загрузчика"</string>
-<string name="DialogBootloader_TextcolorDesc">"Цвет текста в диалоговом окне при нажатии на Загрузчик."</string>
-<string name="DialogSafeMode_Textcolor">"Цвет текста Безопасного Режима"</string>
-<string name="DialogSafeMode_TextcolorDesc">"Цвет текста в диалоговом окне при нажатии на Безопасный Режим."</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Шаблоны на устройстве"</string>
@@ -161,14 +117,11 @@
 <string name="presetLoadDialog_BuiltInDark">"Тёмный"</string>
 <string name="presetLoadDialog_BuiltInBlack">"Чёрный"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] удалён!"</string>
-<string name="presetLoad_CantDelBuiltIn">"Встроенные шаблоны не могут быть удалены!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] загружен!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Этот шаблон создан:"</string>
 <string name="presetSaveDialog_InfoText">"Установите имя для шаблона:"</string>
 <string name="presetSaveDialog_OverwriteText">"Уже существует, шаблон будет перезаписан!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] сохранён!"</string>
-<string name="ToggleShow">"Показать"</string>
-<string name="ToggleHide">"Скрыть"</string>
 <string name="presetsManager_Title">"Шаблоны"</string>
 <string name="powerMenuMain_Screenrecord">"Запись экрана"</string>
 <string name="preferencesTitle_RootXposed5">"Установленная версия модуля слишком старая..."</string>
@@ -186,7 +139,6 @@
 <string name="screenrecord_toast_processing">"Невозможно начать новую запись, так как старая ещё обрабатывается"</string>
 <string name="screenrecord_toast_saved">"Запись сохранена как %s"</string>
 <string name="screenrecord_toast_save_error">"Невозможно сохранить запись в файл"</string>
-<string name="powerMenuMain_FlashlightOn">"Включить фонарик"</string>
 <string name="powerMenuMain_FlashlightOff">"Выключить фонарик"</string>
 <string name="powerMenuMain_FlashlightDesc">"Выключение после"</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Автоматическое выключение отключено."</string>
@@ -205,21 +157,4 @@
 <string name="quick_settings_torch_on">"Фонарик включен"</string>
 <string name="quick_settings_torch_off">"Фонарик выключен"</string>
 <string name="quick_settings_torch_off_notif">"Нажмите, чтобы выключить"</string>
-<string name="RevealBackground">"Цвет фона за Меню выключения"</string>
-<string name="RevealBackgroundDesc">"Цвет эффекта заполнения фона за Меню выключения"</string>
-<string name="ActionRevealBackground">"Цвет фона за Меню выключения при действии"</string>
-<string name="ActionRevealBackgroundDesc">"Цвет эффекта заполнения фона за Меню выключения при нажатии на кнопку Выключения/Перезагрузки "</string>
-<string name="DialogScreenrecord_Backgroundcolor">"Цвет фона Записи экрана "</string>
-<string name="DialogScreenrecord_BackgroundcolorDesc">"Цвет кружка Записи экрана"</string>
-<string name="DialogFlashlight_Backgroundcolor">"Цвет фона Фонарика"</string>
-<string name="DialogFlashlight_BackgroundcolorDesc">"Цвет кружка Фонарика"</string>
-<string name="DialogExpandedDesktop_Backgroundcolor">"Цвет фона Расширенного экрана"</string>
-<string name="DialogExpandedDesktop_BackgroundcolorDesc">"Цвет кружка Расширенного экрана"</string>
-<string name="DialogScreenrecord_Textcolor">"Цвет текста Записи экрана"</string>
-<string name="DialogScreenrecord_TextcolorDesc">"Цвет буквы в кружке Записи экрана"</string>
-<string name="DialogFlashlight_Textcolor">"Цвет текста Фонарика"</string>
-<string name="DialogFlashlight_TextcolorDesc">"Цвет буквы в кружке Фонарика"</string>
-<string name="DialogExpandedDesktop_Textcolor">"Цвет текста Расширенного экрана"</string>
-<string name="DialogExpandedDesktop_TextcolorDesc">"Цвет буквы в кружке Расширенного экрана"</string>
-
 </resources>
