@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">"NeoPowerMenu"</string>
-<string name="action_settings">"Configurações"</string>
-<string name="ShareMessage">"Cheque esse lindo aplicativo para customizar seu Menu de Energia!
+<string name="ShareMessage">"Cheque esse lindo aplicativo para customizar o Menu de Energia de seu dispositivo Rooteado!
 
 "</string>
 <string name="PreviewPowerMenu">"Prever"</string>
@@ -34,7 +33,6 @@ Por favor,ative o módulo no Xposed installer."</string>
 <string name="preferencesDesc_RootXposed4">"O aplicativo deve funcionar corretamente!"</string>
 <string name="preferencesCategory_General">"Geral"</string>
 <string name="preferencesTitle_Style">"Estilo"</string>
-<string name="preferencesDesc_Style">"[STYLENAME] (Mais estão por vir)"</string>
 <string name="preferencesTitle_Theme">"Tema"</string>
 <string name="preferencesDesc_Theme">"Mudar o tema e prever."</string>
 <string name="preferencesTitle_VisibilityOrder">"Visibilidade e ordem"</string>
@@ -48,8 +46,6 @@ Essa configuração só está acessível no Xposed Installer."</string>
 <string name="preferencesCategory_About">"Sobre"</string>
 <string name="preferencesTitle_NeoSource">"Fonte"</string>
 <string name="preferencesDesc_NeoSource">"NeoPowerMenu é um código aberto, cheque a fonte no GitHub"</string>
-<string name="preferencesTitle_OrigSource">"Fonte original"</string>
-<string name="preferencesDesc_OrigSource">"O Material Power Menu original é um código aberto. Cheque a fonte no GitHub."</string>
 <string name="preferencesTitle_Share">"Compartilhar"</string>
 <string name="preferencesDesc_Share">"Gostou do aplicativo? Compartilhe-o para todos seus amigos."</string>
 <string name="preferencesTitle_Translator">"Tradução por"</string>
@@ -72,45 +68,6 @@ Essa configuração só está acessível no Xposed Installer."</string>
 <string name="preset_Save">"Salvar Pré-ajuste"</string>
 <string name="preset_SaveDesc">"Salvar sua configuração atual"</string>
 
-<!-- Preferences: Background colors -->
-<string name="category_Reveal">"Revelar fundo"</string>
-<string name="category_Backgrounds">"Cores de fundo"</string>
-<string name="Dialog_Backgroundcolor">"Cor de fundo"</string>
-<string name="Dialog_BackgroundcolorDesc">"Cor de fundo do diálogo."</string>
-<string name="DialogShutdown_Backgroundcolor">"Cor de fundo de Desligar"</string>
-<string name="DialogShutdown_BackgroundcolorDesc">"A cor de fundo do diálogo ao clicar em desligar."</string>
-<string name="DialogReboot_Backgroundcolor">"Cor de fundo do reiniciar"</string>
-<string name="DialogReboot_BackgroundcolorDesc">"A cor de fundo do diálogo ao clicar em Reiniciar."</string>
-<string name="DialogSoftReboot_Backgroundcolor">"Cor de fundo do Reiniciar Rápido"</string>
-<string name="DialogSoftReboot_BackgroundcolorDesc">"Cor de fundo do diálogo ao clicar em Reiniciar Rápido."</string>
-<string name="DialogScreenshot_Backgroundcolor">"Cor do fundo da Captura de Tela"</string>
-<string name="DialogScreenshot_BackgroundcolorDesc">"Cor de fundo do círculo da Captura de tela."</string>
-<string name="DialogRecovery_Backgroundcolor">"Cor de fundo de Recuperação"</string>
-<string name="DialogRecovery_BackgroundcolorDesc">"Cor de fundo do diálogo ao clicar em Recuperação."</string>
-<string name="DialogBootloader_Backgroundcolor">"Cor de fundo do Bootloader"</string>
-<string name="DialogBootloader_BackgroundcolorDesc">"A cor de fundo ao clicar em Bootloader."</string>
-<string name="DialogSafeMode_Backgroundcolor">"Cor de fundo do Modo de Segurança"</string>
-<string name="DialogSafeMode_BackgroundcolorDesc">"Cor de fundo do diálogo quando clicar em Modo de Segurança."</string>
-
-<!-- Preferences: Text colors -->
-<string name="category_Texts">"Cores dos textos"</string>
-<string name="Dialog_Textcolor">"Cor do texto"</string>
-<string name="Dialog_TextcolorDesc">"A cor do texto do diálogo."</string>
-<string name="DialogShutdown_Textcolor">"Cor do texto Desligar"</string>
-<string name="DialogShutdown_TextcolorDesc">"Cor do texto do diálogo ao clicar em Desligar."</string>
-<string name="DialogReboot_Textcolor">"Cor do texto Reiniciar"</string>
-<string name="DialogReboot_TextcolorDesc">"Cor do texto do diálogo ao clicar em Reiniciar."</string>
-<string name="DialogSoftReboot_Textcolor">"Cor do texto Reiniciar Rápido"</string>
-<string name="DialogSoftReboot_TextcolorDesc">"Cor do texto do diálogo ao clicar em Reiniciar Rápido."</string>
-<string name="DialogScreenshot_Textcolor">"Cor do texto da Captura de tela."</string>
-<string name="DialogScreenshot_TextcolorDesc">"A cor do texto do círculo da Captura de tela."</string>
-<string name="DialogRecovery_Textcolor">"Cor do texto Recuperação"</string>
-<string name="DialogRecovery_TextcolorDesc">"Cor do texto do diálogo ao clicar em Recuperação."</string>
-<string name="DialogBootloader_Textcolor">"Cor do texto Bootloader"</string>
-<string name="DialogBootloader_TextcolorDesc">"Cor do texto do diálogo ao clicar em Bootloader."</string>
-<string name="DialogSafeMode_Textcolor">"Cor do texto do Modo de segurança"</string>
-<string name="DialogSafeMode_TextcolorDesc">"Cor do texto do diálogo ao clicar em Modo de Segurança."</string>
-
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Pré-ajustes locais"</string>
 <string name="presetsManager_TitleOnline">"Pré-ajustes online"</string>
@@ -128,8 +85,8 @@ Isso não pode  ser desfeito!"</string>
 
 <!-- Preferences: Advanced -->
 <string name="advancedPrefsCategory_PowerMenu">"Menu de energia"</string>
-<string name="advancedPrefsTitle_UseGraphics">"Usar gráficos"</string>
-<string name="advancedPrefsDesc_UseGraphics">"Usar gráficos em vez dos círculos da letra."</string>
+<string name="advancedPrefsTitle_UseGraphics">"Usar ícones"</string>
+<string name="advancedPrefsDesc_UseGraphics">"Usar ícones ao invés de letras no círculo."</string>
 <string name="advancedPrefsCategory_LockScreen">"Tela de bloqueio"</string>
 <string name="advancedPrefsTitle_ShowOnLockScreen">"Mostrar na tela de bloqueio"</string>
 <string name="advancedPrefsDesc_ShowOnLockScreen">"Mostrar o menu de energia na tela de bloqueio, quando desativado nada será mostrado."</string>
@@ -159,14 +116,11 @@ Isso não pode  ser desfeito!"</string>
 <string name="presetLoadDialog_BuiltInDark">"Escuro"</string>
 <string name="presetLoadDialog_BuiltInBlack">"Preto"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] Apagado!"</string>
-<string name="presetLoad_CantDelBuiltIn">"Padrões não podem ser apagados!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] Carregado!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Esse pré-ajuste foi criado por:"</string>
 <string name="presetSaveDialog_InfoText">"Escolha um nome para o pré-ajuste"</string>
 <string name="presetSaveDialog_OverwriteText">"Já existe,pré-ajuste será sobrescrito!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] salvo!"</string>
-<string name="ToggleShow">"Mostrar"</string>
-<string name="ToggleHide">"Ocultar"</string>
 <string name="presetsManager_Title">"Pré-ajustes"</string>
 <string name="powerMenuMain_Screenrecord">"Gravação de tela"</string>
 <string name="preferencesTitle_RootXposed5">"A versão do módulo é muito antiga..."</string>
@@ -184,15 +138,14 @@ Isso não pode  ser desfeito!"</string>
 <string name="screenrecord_toast_processing">"Não é possível iniciar uma nova gravação de tela se a anterior ainda está sendo processada"</string>
 <string name="screenrecord_toast_saved">"Gravação salva como %s"</string>
 <string name="screenrecord_toast_save_error">"Não foi possível salvar a gravação para o arquivo de saída"</string>
-<string name="powerMenuMain_FlashlightOn">"Ligar Lanterna"</string>
 <string name="powerMenuMain_FlashlightOff">"Desligar Lanterna"</string>
 <string name="powerMenuMain_FlashlightDesc">"Desligando após [AUTOOFF]."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Desligar automático desativado."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Área de trabalho expandida"</string>
 <string name="visibilityOrderDesc_Flashlight">"Alternar a lanterna através do Menu de Energia"</string>
 <string name="visibilityOrderDesc_ExpandedDesktop">"Alternar o modo da Área de Trabalho expandida do GravityBox através do Menu de Energia (GravityBox precisa estar instalado)."</string>
-<string name="advancedPrefsTitle_DialogGravity">"Posição do diálogo"</string>
-<string name="advancedPrefsDesc_DialogGravity">"Mudar a posição do diálogo."</string>
+<string name="advancedPrefsTitle_DialogGravity">"Posição da caixa de diálogo"</string>
+<string name="advancedPrefsDesc_DialogGravity">"Mudar a posição da caixa de diálogo."</string>
 <string name="advancedPrefs_DialogGravityTop">"Cima"</string>
 <string name="advancedPrefs_DialogGravityLeft">"Esquerda"</string>
 <string name="advancedPrefs_DialogGravityCenter">"Centro"</string>
@@ -203,21 +156,4 @@ Isso não pode  ser desfeito!"</string>
 <string name="quick_settings_torch_on">"Lanterna ligada"</string>
 <string name="quick_settings_torch_off">"Lanterna desligada"</string>
 <string name="quick_settings_torch_off_notif">"Toque para desligar"</string>
-<string name="RevealBackground">"Cor do revelar fundo"</string>
-<string name="RevealBackgroundDesc">"A cor do efeito revelar fundo"</string>
-<string name="ActionRevealBackground">"Cor da ação revelar fundo"</string>
-<string name="ActionRevealBackgroundDesc">"A cor do efeito revelar fundo ao clicar na opção Reiniciar/Desligar."</string>
-<string name="DialogScreenrecord_Backgroundcolor">"Cor do fundo da gravação de tela"</string>
-<string name="DialogScreenrecord_BackgroundcolorDesc">"Cor do fundo do círculo da gravação de tela."</string>
-<string name="DialogFlashlight_Backgroundcolor">"Cor do fundo da lanterna"</string>
-<string name="DialogFlashlight_BackgroundcolorDesc">"Cor do fundo do círculo da lanterna."</string>
-<string name="DialogExpandedDesktop_Backgroundcolor">"Cor do fundo da área de trabalho expandida"</string>
-<string name="DialogExpandedDesktop_BackgroundcolorDesc">"Cor do fundo do círculo da área de trabalho expandida."</string>
-<string name="DialogScreenrecord_Textcolor">"Cor do texto da gravação de tela"</string>
-<string name="DialogScreenrecord_TextcolorDesc">"A cor do texto da letra do círculo da gravação de tela."</string>
-<string name="DialogFlashlight_Textcolor">"Cor do texto da lanterna"</string>
-<string name="DialogFlashlight_TextcolorDesc">"Cor do texto da letra do círculo da lanterna."</string>
-<string name="DialogExpandedDesktop_Textcolor">"Cor do texto da área de trabalho expandida"</string>
-<string name="DialogExpandedDesktop_TextcolorDesc">"Cor do texto da letra do círculo da área de trabalho expandida."</string>
-
 </resources>
