@@ -167,7 +167,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="colorsDesc_Reveal">"Die Farbe der Reveal Animation."</string>
 <string name="colorsDesc_ActionReveal">"Die Farbe der Reveal Animation wenn auf eine Neu starten/Ausschalten Option geklickt wurde."</string>
 <string name="colorsCategory_Main">"Dialog Farben"</string>
-<string name="colorsDesc_Dialog">"Die Farbe des Dialogs."</string>
+<string name="colorsDesc_Dialog">"Die Farben des Dialogs."</string>
 <string name="colorsCategory_Shutdown">"Ausschalten Farben"</string>
 <string name="colorsDesc_DialogShutdown">"Die Farben des Dialogs wenn auf ausschalten geklickt wurde."</string>
 <string name="colorsCategory_Reboot">"Neu starten Farben"</string>
