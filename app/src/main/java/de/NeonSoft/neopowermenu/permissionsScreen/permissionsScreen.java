@@ -22,11 +22,12 @@ public class permissionsScreen extends Fragment
 {
 
 		private static Activity mActivity;
-		private static final int MY_PERMISSIONS_REQUEST = 101;
+		private static FragmentActivity mFragment;
+		public static final int MY_PERMISSIONS_REQUEST = 101;
 		private static AlertDialog.Builder PermissionsDialog;
 		
 		private static ListView ListView_Permissions;
-		private static PermissionsAdapter adapter;
+		public static PermissionsAdapter adapter;
 		private static CheckBox CheckBox_DontAskAgain;
 		
 		@Override
@@ -37,6 +38,7 @@ public class permissionsScreen extends Fragment
 				View InflatedView = inflater.inflate(R.layout.permissionsscreen,null);
 				
 				mActivity = getActivity();
+				mFragment = getActivity();
 				
 				ListView_Permissions = (ListView) InflatedView.findViewById(R.id.permissionsscreenListView_permissions);
 				adapter = new PermissionsAdapter(mActivity,new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA});
@@ -72,6 +74,8 @@ public class permissionsScreen extends Fragment
 																}
 														});
 												PermissionsDialog.show();
+										} else {
+												MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 										}
 								}
 						});
@@ -89,7 +93,7 @@ public class permissionsScreen extends Fragment
 						
 				return InflatedView;
 		}
-
+		
 		public static boolean checkPermissions(Activity mActivity,String[] permissions) {
 				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
 				{
@@ -104,25 +108,5 @@ public class permissionsScreen extends Fragment
 				}
 		}
 		
-		@Override
-		public void onRequestPermissionsResult(int requestCode,
-																					 String permissions[], int[] grantResults)
-		{
-				switch (requestCode)
-				{
-						case MY_PERMISSIONS_REQUEST: {
-										// If request is cancelled, the result arrays are empty.
-										if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-										{
-
-										}
-										adapter.notifyDataSetChanged();
-										return;
-								}
-
-								// other 'case' lines to check for other
-								// permissions this app might request
-				}
-		}
 
 }

@@ -14,7 +14,7 @@ import android.support.v4.app.Fragment;
 public class PermissionsAdapter extends ArrayAdapter<String>
 {
 
-		private int MY_PERMISSIONS_REQUEST = 101;
+		final private int MY_PERMISSIONS_REQUEST = 101;
 		
 		private static Activity mContext;
 		private static LayoutInflater mInflater;
@@ -54,7 +54,7 @@ public class PermissionsAdapter extends ArrayAdapter<String>
 										{
 												// TODO: Implement this method
 												if (ContextCompat.checkSelfPermission(mContext,mPermissions[p1]) != PackageManager.PERMISSION_GRANTED) {
-														mContext.requestPermissions(new String[] {mPermissions[p1]},MY_PERMISSIONS_REQUEST);
+														ActivityCompat.requestPermissions(mContext,new String[] {mPermissions[p1]},MY_PERMISSIONS_REQUEST);
 												}
 										}
 								});
@@ -84,5 +84,5 @@ public class PermissionsAdapter extends ArrayAdapter<String>
 				}
 				return true;
 		}
-		
+
 }
