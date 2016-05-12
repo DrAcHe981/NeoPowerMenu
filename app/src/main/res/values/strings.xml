@@ -4,7 +4,6 @@
 <string name="ShareMessage">"Check out this beautiful app to customize your Power Menu of your rooted android device!
 
 "</string>
-
 <string name="PreviewPowerMenu">"Preview"</string>
 
 <!-- Power Menu -->
@@ -14,8 +13,6 @@
 <string name="powerMenuMain_SoftRebootDesc">"Simply restarts the Android UI by killing the zygote process"</string>
 <string name="powerMenuMain_Screenshot">"Screenshot"</string>
 <string name="powerMenuMain_ScreenshotDesc">"Screenshot delay: [SCREENSHOTDELAY]"</string>
-		<string name="powerMenuMain_AirplaneMode">"Airplane Mode"</string>
-		<string name="powerMenuMain_RestartUI">"Restart System UI"</string>
 <string name="powerMenuBottom_Recovery">"Recovery"</string>
 <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
 <string name="powerMenuBottom_SafeMode">"Safe Mode"</string>
@@ -59,35 +56,6 @@ Check out the source on GitHub."</string>
 ~ Sorry when my English is not the best ^^"</string>
 <string name="preferencesTitle_About">"Code by Neon-Soft / DrAcHe981"</string>
 <string name="preferencesDesc_About">"based on the source of Naman Dwivedi (naman14)."</string>
-
-<!-- Preferences: Colors -->
-		<string name="colorsType_Background">"Background color"</string>
-		<string name="colorsType_Text">"Text color"</string>
-		<string name="colorsCategory_Reveal">"Reveal backgrounds"</string>
-		<string name="colorsDesc_Reveal">"The color of the reveal animation."</string>
-		<string name="colorsDesc_ActionReveal">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
-		<string name="colorsCategory_Main">"Dialog colors"</string>
-		<string name="colorsDesc_Dialog">"The colors of the dialog."</string>
-		<string name="colorsCategory_Shutdown">"Shutdown colors"</string>
-		<string name="colorsDesc_DialogShutdown">"The colors of the dialog when clicked on Shutdown."</string>
-		<string name="colorsCategory_Reboot">"Reboot colors"</string>
-		<string name="colorsDesc_DialogReboot">"The colors of the dialog when clicked on Reboot."</string>
-		<string name="colorsCategory_SoftReboot">"Soft Reboot colors"</string>
-		<string name="colorsDesc_DialogSoftReboot">"The colors of the dialog when clicked on Soft Reboot."</string>
-		<string name="colorsCategory_Screenshot">"Screenshot colors"</string>
-		<string name="colorsDesc_DialogScreenshot">"The colors from the Screenshot button."</string>
-		<string name="colorsCategory_Screenrecord">"Screenrecord colors"</string>
-		<string name="colorsDesc_DialogScreenrecord">"The colors from the Screenrecord button."</string>
-		<string name="colorsCategory_Flashlight">"Torch colors"</string>
-		<string name="colorsDesc_DialogFlashlight">"The colors from the Torch toggle."</string>
-		<string name="colorsCategory_ExpandedDesktop">"Expanded Desktop colors"</string>
-		<string name="colorsDesc_DialogExpandedDesktop">"The colors from the Expanded Desktop toggle."</string>
-		<string name="colorsCategory_Recovery">"Recovery colors"</string>
-		<string name="colorsDesc_DialogRecovery">"The colors of the dialog when clicked on Recovery."</string>
-		<string name="colorsCategory_Bootloader">"Bootloader colors"</string>
-		<string name="colorsDesc_DialogBootloader">"The colors of the dialog when clicked on Bootloader."</string>
-		<string name="colorsCategory_SafeMode">"Safe Mode colors"</string>
-		<string name="colorsDesc_DialogSafeMode">"The colors of the dialog when clicked on Safe Mode."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibility and order"</string>
@@ -172,15 +140,12 @@ This can't be undone!"</string>
 <string name="screenrecord_toast_processing">"Cannot start new recording as previous recording is still being processed"</string>
 <string name="screenrecord_toast_saved">"Recording saved as %s"</string>
 <string name="screenrecord_toast_save_error">"Unable to save recording to output file"</string>
-<string name="powerMenuMain_Flashlight">"Turn Torch On"</string>
 <string name="powerMenuMain_FlashlightOff">"Turn Torch Off"</string>
 <string name="powerMenuMain_FlashlightDesc">"Turning off after [AUTOOFF]."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Automatic turn off disabled."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Expanded Desktop"</string>
 <string name="visibilityOrderDesc_Flashlight">"Toggle the Torch via the Power Menu."</string>
-		<string name="visibilityOrderDesc_ExpandedDesktop">"Toggle the Expanded Desktop mode from GravityBox via the Power Menu (needs GravityBox to be installed)."</string>
-		<string name="visibilityOrderDesc_AirplaneMode">"Toggle the Airplane mode via the Power Menu."</string>
-		<string name="visibilityOrderDesc_RestartUI">"Restart the System UI via the Power Menu."</string>
+<string name="visibilityOrderDesc_ExpandedDesktop">"Toggle the Expanded Desktop mode from GravityBox via the Power Menu (needs GravityBox to be installed)."</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Change the Dialog position."</string>
 <string name="advancedPrefs_DialogGravityTop">"Top"</string>
@@ -193,17 +158,49 @@ This can't be undone!"</string>
 <string name="quick_settings_torch_on">"Torch On"</string>
 <string name="quick_settings_torch_off">"Torch Off"</string>
 <string name="quick_settings_torch_off_notif">"Touch to turn off"</string>
+<string name="powerMenuMain_AirplaneMode">"Airplane Mode"</string>
+<string name="powerMenuMain_RestartUI">"Restart System UI"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsType_Background">"Background color"</string>
+<string name="colorsType_Text">"Text color"</string>
+<string name="colorsCategory_Reveal">"Reveal backgrounds"</string>
+<string name="colorsDesc_Reveal">"The color of the reveal animation."</string>
+<string name="colorsDesc_ActionReveal">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
+<string name="colorsCategory_Main">"Dialog colors"</string>
+<string name="colorsDesc_Dialog">"The colors of the dialog."</string>
+<string name="colorsCategory_Shutdown">"Shutdown colors"</string>
+<string name="colorsDesc_DialogShutdown">"The colors of the dialog when clicked on Shutdown."</string>
+<string name="colorsCategory_Reboot">"Reboot colors"</string>
+<string name="colorsDesc_DialogReboot">"The colors of the dialog when clicked on Reboot."</string>
+<string name="colorsCategory_SoftReboot">"Soft Reboot colors"</string>
+<string name="colorsDesc_DialogSoftReboot">"The colors of the dialog when clicked on Soft Reboot."</string>
+<string name="colorsCategory_Screenshot">"Screenshot colors"</string>
+<string name="colorsDesc_DialogScreenshot">"The colors from the Screenshot button."</string>
+<string name="colorsCategory_Screenrecord">"Screenrecord colors"</string>
+<string name="colorsDesc_DialogScreenrecord">"The colors from the Screenrecord button."</string>
+<string name="colorsCategory_Flashlight">"Torch colors"</string>
+<string name="colorsDesc_DialogFlashlight">"The colors from the Torch toggle."</string>
+<string name="colorsCategory_ExpandedDesktop">"Expanded Desktop colors"</string>
+<string name="colorsDesc_DialogExpandedDesktop">"The colors from the Expanded Desktop toggle."</string>
+<string name="colorsCategory_Recovery">"Recovery colors"</string>
+<string name="colorsDesc_DialogRecovery">"The colors of the dialog when clicked on Recovery."</string>
+<string name="colorsCategory_Bootloader">"Bootloader colors"</string>
+<string name="colorsDesc_DialogBootloader">"The colors of the dialog when clicked on Bootloader."</string>
+<string name="colorsCategory_SafeMode">"Safe Mode colors"</string>
+<string name="colorsDesc_DialogSafeMode">"The colors of the dialog when clicked on Safe Mode."</string>
+<string name="powerMenuMain_Flashlight">"Turn Torch On"</string>
+<string name="visibilityOrderDesc_AirplaneMode">"Toggle the Airplane mode via the Power Menu."</string>
+<string name="visibilityOrderDesc_RestartUI">"Restart the System UI via the Power Menu."</string>
 
 <!-- Permissions Screen -->
-		<string name="permissionsScreen_Title">"Permissions"</string>
-		<string name="permissionsScreen_NotAllGrantedTitle">"Not all granted."</string>
-		<string name="permissionsScreen_NotAllGranted">"Not all permissions are granted, some functions may not work..."</string>
-		<string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
-		<string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
-		
-		<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
-		<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Needed for future functions (little tip: custom images)."</string>
-		<string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
-		<string name="permissionsScreenDesc_android.permission.CAMERA">"Needed to toggle the Torch."</string>
-		
+<string name="permissionsScreen_Title">"Permissions"</string>
+<string name="permissionsScreen_NotAllGrantedTitle">"Not all granted."</string>
+<string name="permissionsScreen_NotAllGranted">"Not all permissions are granted, some functions may not work..."</string>
+<string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
+<string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
+<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Needed for future functions (little tip: custom images)."</string>
+<string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Needed to toggle the Torch."</string>
 </resources>
