@@ -164,8 +164,8 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="colorsType_Background">"Hintergrund Farbe"</string>
 <string name="colorsType_Text">"Text Farbe"</string>
 <string name="colorsCategory_Reveal">"Reveal Hintergründe"</string>
-<string name="colorsDesc_Reveal">"Die Farbe der General Animation."</string>
-<string name="colorsDesc_ActionReveal">"Die Farbe der ee Tal Animation wenn auf eine Neu starten/Ausschalten Option geklickt wurde."</string>
+<string name="colorsDesc_Reveal">"Die Farbe der Reveal Animation."</string>
+<string name="colorsDesc_ActionReveal">"Die Farbe der Reveal Animation wenn auf eine Neu starten/Ausschalten Option geklickt wurde."</string>
 <string name="colorsCategory_Main">"Dialog Farben"</string>
 <string name="colorsDesc_Dialog">"Die Farbe des Dialogs."</string>
 <string name="colorsCategory_Shutdown">"Ausschalten Farben"</string>
