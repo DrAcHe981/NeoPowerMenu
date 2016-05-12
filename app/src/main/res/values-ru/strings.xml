@@ -157,4 +157,49 @@
 <string name="quick_settings_torch_on">"Фонарик включен"</string>
 <string name="quick_settings_torch_off">"Фонарик выключен"</string>
 <string name="quick_settings_torch_off_notif">"Нажмите, чтобы выключить"</string>
+<string name="powerMenuMain_AirplaneMode">"Режим полёта"</string>
+<string name="powerMenuMain_RestartUI">"Перезапуск System UI"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsType_Background">"Цвет фона"</string>
+<string name="colorsType_Text">"Цвет текста"</string>
+<string name="colorsCategory_Reveal">"Фон появления"</string>
+<string name="colorsDesc_Reveal">"Цвет анимации появления"</string>
+<string name="colorsDesc_ActionReveal">"Цвет анимации фона при нажатии на Перезагрузку/Выключение"</string>
+<string name="colorsCategory_Main">"Цвета в окне"</string>
+<string name="colorsDesc_Dialog">"Цвета диалогового окна"</string>
+<string name="colorsCategory_Shutdown">"Цвета Выключения"</string>
+<string name="colorsDesc_DialogShutdown">"Цвета диалогового окна при нажатии на Выключение"</string>
+<string name="colorsCategory_Reboot">"Цвета Перезагрузки"</string>
+<string name="colorsDesc_DialogReboot">"Цвета диалогового окна при нажатии на Перезагрузку"</string>
+<string name="colorsCategory_SoftReboot">"Цвета Мягкой перезагрузки"</string>
+<string name="colorsDesc_DialogSoftReboot">"Цвета диалогового окна при нажатии на Мягкую перезагрузку"</string>
+<string name="colorsCategory_Screenshot">"Цвета Снимка экрана"</string>
+<string name="colorsDesc_DialogScreenshot">"Цвета диалогового окна при нажатии на Снимок экрана"</string>
+<string name="colorsCategory_Screenrecord">"Цвета Записи экрана"</string>
+<string name="colorsDesc_DialogScreenrecord">"Цвета диалогового окна при нажатии на Запись экрана"</string>
+<string name="colorsCategory_Flashlight">"Цвета Фонарика"</string>
+<string name="colorsDesc_DialogFlashlight">"Цвета диалогового окна при нажатии на переключатель Фонарика"</string>
+<string name="colorsCategory_ExpandedDesktop">"Цвета Расширенного экрана"</string>
+<string name="colorsDesc_DialogExpandedDesktop">"Цвета диалогового окна при нажатии на переключатель Расширенного экрана"</string>
+<string name="colorsCategory_Recovery">"Цвета Рекавери"</string>
+<string name="colorsDesc_DialogRecovery">"Цвета диалогового окна при нажатии на Рекавери"</string>
+<string name="colorsCategory_Bootloader">"Цвета Загрузчика"</string>
+<string name="colorsDesc_DialogBootloader">"Цвета диалогового окна при нажатии на Загрузчик"</string>
+<string name="colorsCategory_SafeMode">"Цвета Безопасного режима"</string>
+<string name="colorsDesc_DialogSafeMode">"Цвета диалогового окна при нажатии на Безопасный режим"</string>
+<string name="powerMenuMain_Flashlight">"Включить Фонарик"</string>
+<string name="visibilityOrderDesc_AirplaneMode">"Включите Режим полёта через Меню выключения"</string>
+<string name="visibilityOrderDesc_RestartUI">"Перезапустите System UI через Меню выключения"</string>
+
+<!-- Permissions Screen -->
+<string name="permissionsScreen_Title">"Разрешения"</string>
+<string name="permissionsScreen_NotAllGrantedTitle">"Не все предоставлены"</string>
+<string name="permissionsScreen_NotAllGranted">"Не все разрешения предоставлены, некоторые функции могут не работать..."</string>
+<string name="permissionsScreen_ClickToRequest">"Нажмите, чтобы запросить разрешения"</string>
+<string name="permissionsScreen_DontAskAgain">"Не спрашивать снова"</string>
+<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Чтение/запись внешней памяти"</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Нужно для будущих функций(например, пользовательские изображения)"</string>
+<string name="permissionsScreenTitle_android.permission.CAMERA">"Камера"</string>
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Нужно для включения Фонарика"</string>
 </resources>
