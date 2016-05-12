@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">"NeoPowerMenu"</string>
-<string name="action_settings">"Einstellungen"</string>
 <string name="ShareMessage">"Schau dir diese wundervolle App an und passe das Ausschaltmenü deines gerooteten Geräts nach deinen Wünschen an!
 
 "</string>
@@ -48,9 +47,6 @@ Diese Einstellungen können dann nur noch über den Xposed Installer geöffnet w
 <string name="preferencesTitle_NeoSource">"Source"</string>
 <string name="preferencesDesc_NeoSource">"NeoPowerMenu ist open source.
 Finde die Source auf GitHub."</string>
-<string name="preferencesTitle_OrigSource">"Originale Source"</string>
-<string name="preferencesDesc_OrigSource">"Das Originale Material Power Menu ist open source.
-Finde die Source auf GitHub."</string>
 <string name="preferencesTitle_Share">"Teilen"</string>
 <string name="preferencesDesc_Share">"Du magst die App? Teile sie mit deinen Freunden."</string>
 <string name="preferencesTitle_Translator">"Übersetzung von"</string>
@@ -60,35 +56,6 @@ Finde die Source auf GitHub."</string>
 <string name="preferencesTitle_About">"Skript von Neon-Soft / DrAcHe981"</string>
 <string name="preferencesDesc_About">"basierend auf der Source von Naman Dwivedi (naman14)."</string>
 
-		<!-- Preferences: Colors -->
-		<string name="colorsType_Background">"Hintergrund Farbe"</string>
-		<string name="colorsType_Text">"Text Farbe"</string>
-		<string name="colorsCategory_Reveal">"Reveal Hintergründe"</string>
-		<string name="colorsDesc_Reveal">"Die Farbe der Reveal Animation."</string>
-		<string name="colorsDesc_ActionReveal">"Die Farbe der Reveal Animation wenn auf eine Neustart/Ausschalten Option geklickt wurde."</string>
-		<string name="colorsCategory_Main">"Dialog Farben"</string>
-		<string name="colorsDesc_Dialog">"Die Farben des Dialogs."</string>
-		<string name="colorsCategory_Shutdown">"Ausschalten Farben"</string>
-		<string name="colorsDesc_DialogShutdown">"Die Farben des Dialogs wenn auf Ausschalten geklickt wurde."</string>
-		<string name="colorsCategory_Reboot">"Neu Starten Farben"</string>
-		<string name="colorsDesc_DialogReboot">"Die Farben des Dialogs wenn auf Neustarten geklickt wurde."</string>
-		<string name="colorsCategory_SoftReboot">"Schneller Neustart Farben"</string>
-		<string name="colorsDesc_DialogSoftReboot">"Die Farben des Dialogs wenn auf Schneller Neustart geklickt wurde."</string>
-		<string name="colorsCategory_Screenshot">"Bildschirmfoto Farben"</string>
-		<string name="colorsDesc_DialogScreenshot">"Die Farben des Bildschirmfoto Knopfes."</string>
-		<string name="colorsCategory_Screenrecord">"Bildschirmaufnahme Farben"</string>
-		<string name="colorsDesc_DialogScreenrecord">"Die Farben des Bildschirmaufnahme Knopfes."</string>
-		<string name="colorsCategory_Flashlight">"Taschenlampe Farben"</string>
-		<string name="colorsDesc_DialogFlashlight">"Die Farben des Taschenlampen Knopfes."</string>
-		<string name="colorsCategory_ExpandedDesktop">"Erweiterter Desktop Farben"</string>
-		<string name="colorsDesc_DialogExpandedDesktop">"Die Farben des Erweiterten Desktop Knopfes."</string>
-		<string name="colorsCategory_Recovery">"Recovery Farben"</string>
-		<string name="colorsDesc_DialogRecovery">"Die Farben des Dialogs wenn auf Recovery geklickt wurde."</string>
-		<string name="colorsCategory_Bootloader">"Bootloader Farben"</string>
-		<string name="colorsDesc_DialogBootloader">"Die Farben des Dialogs wenn auf Bootloader geklickt wurde."</string>
-		<string name="colorsCategory_SafeMode">"Abgesicherter Modus Farben"</string>
-		<string name="colorsDesc_DialogSafeMode">"Die Farben des Dialogs wenn auf Abgesicherter Modus geklickt wurde."</string>
-		
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
 <string name="visibilityOrderDesc_Shutdown">"Schalte dein Gerät aus."</string>
@@ -141,7 +108,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="Dialog_Load">"Laden"</string>
 <string name="Dialog_Save">"Speichern"</string>
 <string name="Dialog_Ignore">"Ignorieren"</string>
-<string name="Dialog_SelectFarben">"Farbe wählen"</string>
+<string name="Dialog_SelectColor">"Farbe wählen"</string>
 <string name="ColorPicker_Value">"Wert:"</string>
 <string name="ColorPicker_Saturation">"Sättigung:"</string>
 <string name="ColorPicker_Opacity">"Transparenz:"</string>
@@ -150,17 +117,14 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="presetLoadDialog_BuiltInDark">"Dunkel"</string>
 <string name="presetLoadDialog_BuiltInBlack">"Schwarz"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] wurde gelöscht!"</string>
-<string name="presetLoad_CantDelBuiltIn">"Eingebaute Voreinstellungen können nicht gelöscht werden!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] wurde geladen!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Diese Voreinstellung ist erstellt von:"</string>
 <string name="presetSaveDialog_InfoText">"Wähle einen Namen für die Voreinstellung:"</string>
 <string name="presetSaveDialog_OverwriteText">"Existiert bereits, Voreinstellung wird überschrieben!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] wurde gespeichert!"</string>
-<string name="ToggleShow">"Zeigen"</string>
-<string name="ToggleHide">"Verstecken"</string>
 <string name="presetsManager_Title">"Voreinstellungen"</string>
 <string name="powerMenuMain_Screenrecord">"Bildschirmaufnahme"</string>
-<string name="preferencesTitle_RootXposed5">"Aktivierte Modul Version ist zu niedrig... "</string>
+<string name="preferencesTitle_RootXposed5">"Aktiviert Modul Version ist zu niedrig... "</string>
 <string name="preferencesDesc_RootXposed5">"Bitte starte dein gerät neu um den Update Vorgang abzuschließen! "</string>
 <string name="preferencesTitle_DeepXposedLogging">"Tiefes Xposed Logging"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Aktiviere erweitertes logging, nach der Aktivierung neu starten um Änderung zu sehen."</string>
@@ -175,7 +139,6 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="screenrecord_toast_processing">"Es kann keine Bildschirm Aufnahme gestartet werden wenn noch eine verarbeitet wird"</string>
 <string name="screenrecord_toast_saved">"Aufnahme gespeichert als %s"</string>
 <string name="screenrecord_toast_save_error">"Fehler beim Speichern der Aufnahme"</string>
-<string name="powerMenuMain_Flashlight">"Taschenlampe einschalten"</string>
 <string name="powerMenuMain_FlashlightOff">"Taschenlampe ausschalten"</string>
 <string name="powerMenuMain_FlashlightDesc">"Wird nach [AUTOOFF] ausgeschaltet."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Automatisches ausschalten deaktiviert."</string>
@@ -194,17 +157,49 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="quick_settings_torch_on">"Taschenlampe an"</string>
 <string name="quick_settings_torch_off">"Taschenlampe aus"</string>
 <string name="quick_settings_torch_off_notif">"Zum ausschalten der Taschenlampe hier drücken"</string>
+<string name="powerMenuMain_AirplaneMode">"Flugmodus"</string>
+<string name="powerMenuMain_RestartUI">"System UI Neu starten"</string>
 
-		<!-- Permissions Screen -->
-		<string name="permissionsScreen_Title">"Berechtigungen"</string>
-		<string name="permissionsScreen_NotAllGrantedTitle">"Nich alle gewährt."</string>
-		<string name="permissionsScreen_NotAllGranted">"Nicht alle Berechtigungen gewährt, manche Dinge werden nicht funktionieren..."</string>
-		<string name="permissionsScreen_ClickToRequest">"Klicke hier um die Berechtigung anzufordern."</string>
-		<string name="permissionsScreen_DontAskAgain">"Nicht erneut fragen"</string>
+<!-- Preferences: Colors -->
+<string name="colorsType_Background">"Hintergrund Farbe"</string>
+<string name="colorsType_Text">"Text Farbe"</string>
+<string name="colorsCategory_Reveal">"Reveal Hintergründe"</string>
+<string name="colorsDesc_Reveal">"Die Farbe der General Animation."</string>
+<string name="colorsDesc_ActionReveal">"Die Farbe der ee Tal Animation wenn auf eine Neu starten/Ausschalten Option geklickt wurde."</string>
+<string name="colorsCategory_Main">"Dialog Farben"</string>
+<string name="colorsDesc_Dialog">"Die Farbe des Dialogs."</string>
+<string name="colorsCategory_Shutdown">"Ausschalten Farben"</string>
+<string name="colorsDesc_DialogShutdown">"Die Farben des Dialogs wenn auf ausschalten geklickt wurde."</string>
+<string name="colorsCategory_Reboot">"Neu starten Farben"</string>
+<string name="colorsDesc_DialogReboot">"Die Farben des Dialogs wenn auf neu starten geklickt wurde."</string>
+<string name="colorsCategory_SoftReboot">"Schneller Neustart Farben"</string>
+<string name="colorsDesc_DialogSoftReboot">"Die Farben des Dialogs wenn auf Schneller Neustart geklickt wurde."</string>
+<string name="colorsCategory_Screenshot">"Bildschirm Foto Farben"</string>
+<string name="colorsDesc_DialogScreenshot">"Die Farben des Bildschirm Foto Knopfes."</string>
+<string name="colorsCategory_Screenrecord">"Bildschirm Aufnahme Farben"</string>
+<string name="colorsDesc_DialogScreenrecord">"Die Farben des Bildschirm Aufnahme Knopfes."</string>
+<string name="colorsCategory_Flashlight">"Taschenlampen Farben"</string>
+<string name="colorsDesc_DialogFlashlight">"Die Farben des Taschenlampen Knopfes."</string>
+<string name="colorsCategory_ExpandedDesktop">"Erweiterter Desktop Farben"</string>
+<string name="colorsDesc_DialogExpandedDesktop">"Die Farben des Erweiterten Desktop Knopfes."</string>
+<string name="colorsCategory_Recovery">"Recovery Farben"</string>
+<string name="colorsDesc_DialogRecovery">"Die Farben des Dialogs wenn auf Recovery geklickt wurde."</string>
+<string name="colorsCategory_Bootloader">"Bootloader Farben"</string>
+<string name="colorsDesc_DialogBootloader">"Die Farben des Dialogs wenn auf Bootloader geklickt wurde."</string>
+<string name="colorsCategory_SafeMode">"Abgesicherter Modus Farben"</string>
+<string name="colorsDesc_DialogSafeMode">"Die Farben des Dialogs wenn auf Abgesicherter Modus geklickt wurde."</string>
+<string name="powerMenuMain_Flashlight">"Taschenlampe Einschalten"</string>
+<string name="visibilityOrderDesc_AirplaneMode">"Schalte den Flug Modus über das Ausschaltmenü ein oder aus."</string>
+<string name="visibilityOrderDesc_RestartUI">"Starte die System UI über das Ausschaltmenü neu."</string>
 
-		<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Externer Speicher Lesen/Schreiben"</string>
-		<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benötigt für zukünftige Funktionen (kleiner Tip: eigene Bilder)."</string>
-		<string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
-		<string name="permissionsScreenDesc_android.permission.CAMERA">"Wird benötigt um die Taschenlampe ein/aus zu schalten."</string>
-		
+<!-- Permissions Screen -->
+<string name="permissionsScreen_Title">"Berechtigungen"</string>
+<string name="permissionsScreen_NotAllGrantedTitle">"Nicht alle gewährt."</string>
+<string name="permissionsScreen_NotAllGranted">"Du hast nicht alle Berechtigungen gewährt, manche Dinge werden nicht funktionieren..."</string>
+<string name="permissionsScreen_ClickToRequest">"Klicke um die Berechtigung anzufragen."</string>
+<string name="permissionsScreen_DontAskAgain">"Nicht erneut Fragen"</string>
+<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Externer Speicher Lesen/Screiben"</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benötigt für zukünftige Funktionen (kleiner tipp: eigene Bilder)."</string>
+<string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Benötigt für die Taschenlampe."</string>
 </resources>
