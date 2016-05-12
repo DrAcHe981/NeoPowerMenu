@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:clickable="true"
+		android:background="?android:attr/selectableItemBackground"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:id="@+id/colorslistitemLinearLayout_Root">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="horizontal">
+
+			<TextView
+				android:layout_height="match_parent"
+				android:layout_width="45dp"
+				android:background="#FFFFFF"
+				android:id="@+id/colorslistitemTextView_Preview"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				android:layout_marginLeft="10dp"/>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:minHeight="60dp"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:layout_marginLeft="10dp">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Text"
+					android:layout_weight="1.0"
+					android:gravity="center_vertical"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:paddingRight="10dp"
+					android:textColor="#FFFFFF"
+					android:id="@+id/colorslistitemTextView_Text"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Desc"
+					android:layout_weight="1.0"
+					android:gravity="center_vertical"
+					android:paddingLeft="5dp"
+					android:paddingRight="10dp"
+					android:id="@+id/colorslistitemTextView_Desc"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<TextView
+			android:layout_height="2dp"
+			android:layout_width="match_parent"
+			android:background="@color/colorAccentDarkTheme"
+			android:layout_marginRight="5dp"
+			android:layout_marginLeft="5dp"
+			android:alpha="0.3"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

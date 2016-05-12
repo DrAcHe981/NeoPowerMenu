@@ -7,20 +7,58 @@
 	android:layout_margin="5dp"
 	android:padding="5dp">
 
-	<TextView
+	<LinearLayout
 		android:layout_height="wrap_content"
-		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="match_parent"
-		android:text="@string/presetSaveDialog_InfoText"
-		android:gravity="center_vertical"/>
+		android:orientation="vertical"
+		android:id="@+id/inputdialogLinearLayout_Name">
 
-	<EditText
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="match_parent"
+			android:text="@string/presetSaveDialog_InfoText"
+			android:gravity="center_vertical"/>
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:ems="10"
+			android:maxLines="1"
+			android:singleLine="true"
+			android:id="@+id/inputdialogEditText1"/>
+
+	</LinearLayout>
+
+	<LinearLayout
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:ems="10"
-		android:maxLines="1"
-		android:singleLine="true"
-		android:id="@+id/inputdialogEditText1"/>
+		android:orientation="vertical"
+		android:id="@+id/inputdialogLinearLayout_Creator">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="match_parent"
+			android:text="@string/presetSaveDialog_CreatorNameInfo"
+			android:gravity="center_vertical"/>
+
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:ems="10"
+			android:maxLines="1"
+			android:singleLine="true"
+			android:id="@+id/inputdialogEditText2"/>
+
+	</LinearLayout>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="@string/Dialog_Rename"
+		android:id="@+id/inputdialogButton_Rename"
+		android:visibility="gone"/>
 
 	<TextView
 		android:layout_height="wrap_content"

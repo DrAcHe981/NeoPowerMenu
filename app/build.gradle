@@ -9,8 +9,8 @@ android {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 12
-        versionName "1.4-pre9"
+        versionCode 18
+        versionName "1.4.2"
     }
 
     buildTypes {
@@ -30,11 +30,11 @@ android {
 }
 		
 dependencies {
+	compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
 	compile 'com.android.support:support-v4:+'
 	compile 'com.larswerkman:HoloColorPicker:1.5'
     compile files('lib/XposedBridgeApi-20150213.jar')
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'eu.chainfire:libsuperuser:1.0.0.+'
-    compile 'com.android.support:design:23.1.0'
     compile fileTree(dir: 'deps', include: ['*.jar'])
 }

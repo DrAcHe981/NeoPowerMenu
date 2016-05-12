@@ -12,111 +12,100 @@
 		android:layout_height="match_parent"
 		android:orientation="vertical">
 
-		<android.support.v7.widget.Toolbar
-			android:id="@+id/toolbar"
-			android:layout_width="match_parent"
+		<LinearLayout
 			android:layout_height="wrap_content"
-			android:background="?colorPrimary"
-			android:minHeight="?attr/actionBarSize"
-			app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-			app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+			android:layout_width="match_parent"
+			android:orientation="vertical">
+
+			<RelativeLayout
+				android:layout_height="45dp"
+				android:layout_width="match_parent"
+				android:background="@color/colorPrimaryDarkTheme">
+
+				<LinearLayout
+					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:background="?selectableItemBackgroundBorderless"
+					android:id="@+id/mainLinearLayout_Button"
+					android:layout_alignParentRight="true"
+					android:gravity="center_vertical"
+					android:paddingRight="10dp"
+					android:paddingLeft="10dp"
+					android:visibility="visible">
+
+					<ImageView
+						android:layout_height="35dp"
+						android:layout_width="35dp"
+						android:src="@drawable/ic_editor_publish"
+						android:padding="3dp"
+						android:id="@+id/mainImageView_Button"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="wrap_content"
+						android:text="Text"
+						android:id="@+id/mainTextView_Button"
+						android:ellipsize="marquee"
+						android:marqueeRepeatLimit="marquee_forever"
+						android:focusable="true"
+						android:focusableInTouchMode="true"
+						android:singleLine="true"
+						android:textColor="#FFFFFF"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:layout_toLeftOf="@id/mainLinearLayout_Button"
+					android:layout_alignParentLeft="true"
+					android:layout_marginLeft="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceLarge"
+						android:layout_width="match_parent"
+						android:text="@string/app_name"
+						android:gravity="bottom"
+						android:textColor="#FFFFFF"
+						android:id="@+id/mainTextView_Title"
+						android:ellipsize="marquee"
+						android:marqueeRepeatLimit="marquee_forever"
+						android:focusable="true"
+						android:focusableInTouchMode="true"
+						android:singleLine="true"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="v2.0"
+						android:layout_marginLeft="5dp"
+						android:gravity="top"
+						android:id="@+id/mainTextView_Version"
+						android:ellipsize="marquee"
+						android:marqueeRepeatLimit="marquee_forever"
+						android:focusable="true"
+						android:focusableInTouchMode="true"
+						android:singleLine="true"/>
+
+				</LinearLayout>
+
+			</RelativeLayout>
+
+			<TextView
+				android:layout_height="2dp"
+				android:layout_width="match_parent"
+				android:background="@color/colorPrimaryDarkDarkTheme"/>
+
+		</LinearLayout>
 
 		<FrameLayout
 			android:id="@+id/pref_container"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"/>
-
-	</LinearLayout>
-
-	<LinearLayout
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:orientation="horizontal"
-		android:layout_gravity="bottom|left"
-		android:layout_marginLeft="3dp"
-		android:id="@+id/activitymainLinearLayout_ShowPreviw">
-
-		<LinearLayout
-			android:layout_height="45dp"
-			android:layout_width="wrap_content"
-			android:orientation="horizontal"
-			android:gravity="center|center_vertical|center_horizontal"
-			android:background="@color/colorPrimaryDarkDarkTheme"
-			android:layout_gravity="center_vertical">
-
-			<RelativeLayout
-				android:layout_height="match_parent"
-				android:layout_width="45dp"
-				android:background="@color/colorPrimaryDarkTheme"
-				android:layout_marginTop="1dp"
-				android:layout_gravity="center|center_vertical"
-				android:layout_marginLeft="2dp">
-
-				<TextView
-					android:layout_height="2dp"
-					android:layout_width="match_parent"
-					android:background="@color/colorAccentDarkTheme"
-					android:alpha="0.888888888888"
-					android:layout_marginLeft="6dp"
-					android:layout_marginRight="6dp"
-					android:id="@+id/listitemhandleleftTextView1"
-					android:layout_centerInParent="true"/>
-
-				<TextView
-					android:layout_height="2dp"
-					android:layout_width="match_parent"
-					android:background="@color/colorAccentDarkTheme"
-					android:layout_marginRight="9dp"
-					android:layout_marginLeft="9dp"
-					android:alpha="0.66666666666"
-					android:id="@+id/listitemhandleleftTextView2"
-					android:layout_above="@id/listitemhandleleftTextView1"
-					android:layout_marginBottom="5dp"/>
-
-				<TextView
-					android:layout_height="2dp"
-					android:layout_width="match_parent"
-					android:background="@color/colorAccentDarkTheme"
-					android:layout_marginRight="15dp"
-					android:layout_marginLeft="15dp"
-					android:alpha="0.33333333333"
-					android:layout_above="@id/listitemhandleleftTextView2"
-					android:layout_marginBottom="5dp"/>
-
-				<TextView
-					android:layout_height="2dp"
-					android:layout_width="match_parent"
-					android:background="@color/colorAccentDarkTheme"
-					android:layout_marginRight="9dp"
-					android:layout_marginLeft="9dp"
-					android:alpha="0.66666666666"
-					android:layout_below="@id/listitemhandleleftTextView1"
-					android:layout_marginTop="5dp"
-					android:id="@+id/listitemhandleleftTextView3"/>
-
-				<TextView
-					android:layout_height="2dp"
-					android:layout_width="match_parent"
-					android:background="@color/colorAccentDarkTheme"
-					android:layout_marginRight="15dp"
-					android:layout_marginLeft="15dp"
-					android:alpha="0.33333333333"
-					android:layout_below="@id/listitemhandleleftTextView3"
-					android:layout_marginTop="5dp"/>
-
-			</RelativeLayout>
-
-			<TextView
-				android:background="?android:attr/selectableItemBackground"
-				android:layout_height="match_parent"
-				android:layout_width="wrap_content"
-				android:text="@string/PreviewPowerMenu"
-				android:gravity="center|center_vertical|center_horizontal"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:paddingLeft="5dp"
-				android:paddingRight="5dp"/>
-
-		</LinearLayout>
 
 	</LinearLayout>
 

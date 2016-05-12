@@ -306,6 +306,56 @@
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
+				android:id="@+id/activitypreferencesLinearLayout_Advanced">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:minHeight="60dp"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preferencesTitle_Advanced"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activitypreferencesTextView_AdvancedTitle"
+						android:textColor="#FFFFFF"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preferencesDesc_Advanced"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activitypreferencesTextView_AdvancedDesc"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
 				android:id="@+id/activitypreferencesLinearLayout_HideLauncherIcon">
 
 				<LinearLayout
@@ -365,6 +415,68 @@
 			</LinearLayout>
 
 			<LinearLayout
+				android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitypreferencesLinearLayout_DeepXposedLogging">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal">
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:minHeight="60dp"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp"
+						android:layout_weight="1.0">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/preferencesTitle_DeepXposedLogging"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingLeft="10dp"
+							android:paddingRight="10dp"
+							android:textColor="#FFFFFF"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/preferencesDesc_DeepXposedLogging"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="15dp"
+							android:paddingRight="10dp"/>
+
+					</LinearLayout>
+
+					<Switch
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_gravity="center_vertical"
+						android:id="@+id/activitypreferencesSwitch_DeepXposedLogging"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
 				android:orientation="vertical"
@@ -410,7 +522,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_Source"
+						android:text="@string/preferencesTitle_NeoSource"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
@@ -422,12 +534,62 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_Source"
+						android:text="@string/preferencesDesc_NeoSource"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"
 						android:paddingRight="10dp"
 						android:id="@+id/activitypreferencesTextView_SourceDesc"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitypreferencesLinearLayout_OrigSource">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:minHeight="60dp"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preferencesTitle_OrigSource"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activitypreferencesTextView_OrigSourceTitle"
+						android:textColor="#FFFFFF"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preferencesDesc_OrigSource"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activitypreferencesTextView_OrigSourceDesc"/>
 
 				</LinearLayout>
 
@@ -590,11 +752,6 @@
 					android:alpha="0.3"/>
 
 			</LinearLayout>
-
-			<LinearLayout
-				android:layout_height="75dp"
-				android:layout_width="match_parent"
-				android:orientation="vertical"/>
 
 		</LinearLayout>
 

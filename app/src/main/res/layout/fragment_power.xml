@@ -22,150 +22,25 @@
 			android:layout_height="wrap_content"
 			android:orientation="vertical">
 
-			<LinearLayout
+			<ScrollView
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
-				android:orientation="vertical"
-				android:id="@+id/ListContainer"/>
-
-			<LinearLayout
-				android:id="@+id/power"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:background="?android:attr/selectableItemBackground"
-				android:clickable="true"
-				android:layoutAnimation="@anim/layout_controller_push_up_in"
-				android:orientation="horizontal"
-				android:visibility="gone">
-
-				<ImageView
-					android:id="@+id/ipower"
-					android:layout_width="40dp"
-					android:layout_height="40dp"
-					android:layout_margin="15dp"/>
-
-				<TextView
-					style="@style/TextAppearance.AppCompat.Body1"
-					android:layout_width="match_parent"
-					android:layout_height="36dp"
-					android:layout_gravity="center_vertical"
-					android:layout_marginLeft="10dp"
-					android:text="@string/powerMenuMain_Shutdown"
-					android:textSize="18sp"
-					android:id="@+id/powerText"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:id="@+id/reboot"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:background="?android:attr/selectableItemBackground"
-				android:clickable="true"
-				android:layoutAnimation="@anim/layout_controller_push_up_in"
-				android:orientation="horizontal"
-				android:visibility="gone">
-
-				<ImageView
-					android:id="@+id/ireboot"
-					android:layout_width="40dp"
-					android:layout_height="40dp"
-					android:layout_margin="15dp"/>
-
-				<TextView
-					style="@style/TextAppearance.AppCompat.Body1"
-					android:layout_width="match_parent"
-					android:layout_height="36dp"
-					android:layout_gravity="center_vertical"
-					android:layout_marginLeft="10dp"
-					android:text="@string/powerMenuMain_Reboot"
-					android:textSize="18sp"
-					android:id="@+id/rebootText"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:id="@+id/soft_reboot"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:background="?android:attr/selectableItemBackground"
-				android:clickable="true"
-				android:layoutAnimation="@anim/layout_controller_push_up_in"
-				android:orientation="horizontal"
-				android:visibility="gone">
-
-				<ImageView
-					android:id="@+id/isoftreboot"
-					android:layout_width="40dp"
-					android:layout_height="40dp"
-					android:layout_margin="15dp"/>
+				android:layout_weight="1.0">
 
 				<LinearLayout
-					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center_vertical"
-					android:orientation="vertical">
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:id="@+id/ListContainer">
 
-					<TextView
-						style="@style/TextAppearance.AppCompat.Body1"
-						android:layout_width="match_parent"
-						android:layout_height="36dp"
-						android:layout_gravity="center_vertical"
-						android:layout_marginLeft="10dp"
-						android:text="@string/powerMenuMain_SoftReboot"
-						android:textSize="18sp"
-						android:id="@+id/soft_rebootText"/>
-
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_gravity="center_vertical"
-						android:layout_marginTop="-9dp"
-						android:layoutAnimation="@anim/layout_controller_push_up_in">
-
-						<TextView
-							style="@style/TextAppearance.AppCompat.Body1"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginLeft="10dp"
-							android:text="@string/powerMenuMain_SoftRebootDesc"
-							android:textSize="9sp"
-							android:textStyle="bold"
-							android:id="@+id/soft_rebootDescText"/>
-
-					</LinearLayout>
+					<View
+						android:background="@color/transparent"
+						android:layout_height="0dp"
+						android:layout_width="wrap_content"/>
 
 				</LinearLayout>
 
-			</LinearLayout>
-
-			<LinearLayout
-				android:id="@+id/screenshot"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:background="?android:attr/selectableItemBackground"
-				android:clickable="true"
-				android:layoutAnimation="@anim/layout_controller_push_up_in"
-				android:orientation="horizontal"
-				android:visibility="gone">
-
-				<ImageView
-					android:id="@+id/iscreenshot"
-					android:layout_width="40dp"
-					android:layout_height="40dp"
-					android:layout_margin="15dp"/>
-
-				<TextView
-					style="@style/TextAppearance.AppCompat.Body1"
-					android:layout_width="match_parent"
-					android:layout_height="36dp"
-					android:layout_gravity="center_vertical"
-					android:layout_marginLeft="10dp"
-					android:text="@string/powerMenuMain_Screenshot"
-					android:textSize="18sp"
-					android:id="@+id/screenshotText"/>
-
-			</LinearLayout>
+			</ScrollView>
 
 			<View
 				android:layout_width="match_parent"
@@ -195,14 +70,26 @@
 					android:orientation="vertical"
 					android:paddingTop="15dp">
 
-					<ImageView
-						android:id="@+id/irecovery"
-						android:layout_width="40dp"
-						android:layout_height="40dp"
-						android:layout_gravity="center"
-						android:layout_weight="1"
-						android:contentDescription="@string/app_name"
-						android:gravity="center"/>
+					<RelativeLayout
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_gravity="center_horizontal">
+
+						<ImageView
+							android:id="@+id/irecovery"
+							android:layout_width="45dp"
+							android:layout_height="45dp"
+							android:contentDescription="@string/app_name"
+							android:gravity="center"/>
+
+						<ImageView
+							android:layout_height="45dp"
+							android:layout_width="45dp"
+							android:src="@drawable/ic_hardware_memory"
+							android:id="@+id/irecovery2"
+							android:padding="5dp"/>
+
+					</RelativeLayout>
 
 					<TextView
 						style="@style/TextAppearance.AppCompat.Body1"
@@ -228,14 +115,26 @@
 					android:orientation="vertical"
 					android:paddingTop="15dp">
 
-					<ImageView
-						android:id="@+id/ibootloader"
-						android:layout_width="40dp"
-						android:layout_height="40dp"
-						android:layout_gravity="center"
-						android:layout_weight="1"
-						android:contentDescription="@string/app_name"
-						android:gravity="center"/>
+					<RelativeLayout
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_gravity="center_horizontal">
+
+						<ImageView
+							android:id="@+id/ibootloader"
+							android:layout_width="45dp"
+							android:layout_height="45dp"
+							android:contentDescription="@string/app_name"
+							android:gravity="center"/>
+
+						<ImageView
+							android:layout_height="45dp"
+							android:layout_width="45dp"
+							android:src="@drawable/ic_action_settings_backup_restore"
+							android:id="@+id/ibootloader2"
+							android:padding="5dp"/>
+
+					</RelativeLayout>
 
 					<TextView
 						style="@style/TextAppearance.AppCompat.Body1"
@@ -261,14 +160,26 @@
 					android:orientation="vertical"
 					android:paddingTop="15dp">
 
-					<ImageView
-						android:id="@+id/isafe"
-						android:layout_width="40dp"
-						android:layout_height="40dp"
-						android:layout_gravity="center"
-						android:layout_weight="1"
-						android:contentDescription="@string/app_name"
-						android:gravity="center"/>
+					<RelativeLayout
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_gravity="center_horizontal">
+
+						<ImageView
+							android:id="@+id/isafe"
+							android:layout_width="45dp"
+							android:layout_height="45dp"
+							android:contentDescription="@string/app_name"
+							android:gravity="center"/>
+
+						<ImageView
+							android:layout_height="45dp"
+							android:layout_width="45dp"
+							android:src="@drawable/ic_notification_sync_problem"
+							android:id="@+id/isafe2"
+							android:padding="5dp"/>
+
+					</RelativeLayout>
 
 					<TextView
 						style="@style/TextAppearance.AppCompat.Body1"
@@ -304,11 +215,22 @@
 			android:gravity="center"
 			android:orientation="horizontal">
 
-			<ProgressBar
-				android:id="@+id/progress"
-				android:layout_width="wrap_content"
+			<RelativeLayout
 				android:layout_height="wrap_content"
-				android:indeterminate="true"/>
+				android:layout_width="wrap_content">
+
+				<ImageView
+					android:layout_height="50dp"
+					android:layout_width="50dp"
+					android:id="@+id/progressbg"/>
+
+				<ProgressBar
+					android:id="@+id/progress"
+					android:layout_width="50dp"
+					android:layout_height="50dp"
+					android:indeterminate="true"/>
+
+			</RelativeLayout>
 
 			<LinearLayout
 				android:layout_width="wrap_content"

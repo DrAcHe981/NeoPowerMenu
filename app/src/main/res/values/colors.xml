@@ -11,6 +11,7 @@
     <color name="colorPrimaryDarkTheme">#263238</color>
     <color name="colorPrimaryDarkDarkTheme">#21272b</color>
     <color name="colorAccentDarkTheme">#cc3333</color>
+    <color name="colorAccentDarkThemeTrans">#82cc3333</color>
 
     <color name="colorPrimaryBlack">#000000</color>
     <color name="colorPrimaryDarkBlack">#000000</color>
