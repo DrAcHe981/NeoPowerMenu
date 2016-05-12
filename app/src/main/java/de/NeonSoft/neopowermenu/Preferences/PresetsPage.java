@@ -14,7 +14,6 @@ public class PresetsPage extends Fragment
     // Store instance variables
     private String title;
     private int page;
-		public static LinearLayout progress;
 		public static PresetsAdapter adapter;
 		
     // newInstance constructor for creating fragment with arguments
@@ -40,9 +39,6 @@ public class PresetsPage extends Fragment
 				
 				TextView message = (TextView) view.findViewById(R.id.presetsmanagerlistholderTextView_Message);
 				message.setVisibility(View.GONE);
-				
-				progress = (LinearLayout) view.findViewById(R.id.presetsmanagerlistholderLinearLayout_Progress);
-				progress.setVisibility(View.GONE);
 				
 				if(title.equalsIgnoreCase("Local")) {
 				File presetsFolder = new File(getActivity().getFilesDir().getPath()+"/presets/");

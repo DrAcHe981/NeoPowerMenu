@@ -5,15 +5,17 @@ import android.content.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
 import android.os.*;
-import android.provider.*;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
+import android.view.ViewGroup.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.services.*;
 import eu.chainfire.libsuperuser.*;
+
+import android.view.View.OnClickListener;
 
 /**
  * Created by naman on 20/03/15.
@@ -37,6 +39,7 @@ public class XposedDialog extends DialogFragment
 
 		View.OnClickListener powerOnClickListener,rebootOnClickListener,soft_rebootOnClickListener,screenshotOnClickListener,screenrecordOnClickListener,flashlightOnClickListener,expandedDesktopOnClickListener;
 
+		FrameLayout dialogMain;
 		LinearLayout ListContainer;
 
     LinearLayout recovery, bootloader, safemode;
@@ -81,11 +84,13 @@ public class XposedDialog extends DialogFragment
 
 				mContext = getDialog().getContext();
 				
+				if(!XposedMainActivity.sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
 				boolean_DialogGravityTop = XposedMainActivity.preferences.getBoolean("DialogGravityTop",false);
 				boolean_DialogGravityLeft = XposedMainActivity.preferences.getBoolean("DialogGravityLeft",false);
 				boolean_DialogGravityRight = XposedMainActivity.preferences.getBoolean("DialogGravityRight",false);
 				boolean_DialogGravityBottom = XposedMainActivity.preferences.getBoolean("DialogGravityBottom",false);
-				
+				}
+				dialogMain = (FrameLayout) view.findViewById(R.id.fragmentpowerFrameLayout_Main);
         revealView = (CircularRevealView) view.findViewById(R.id.reveal);
 				backgroundColor = Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Backgroundcolor", "#ffffff"));
 				ListContainer = (LinearLayout) view.findViewById(R.id.ListContainer);
@@ -112,6 +117,10 @@ public class XposedDialog extends DialogFragment
 				bootloaderText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 				safemodeText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 
+				if(XposedMainActivity.sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
+						LayoutParams fllp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+						dialogMain.setLayoutParams(fllp);
+				}
 				//TextDrawable progressbgd = TextDrawable.builder().buildRound("",Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Backgroundcolor","#ffffff")));
 				//progressbg.setImageDrawable(progressbgd);
         progress.getIndeterminateDrawable().setColorFilter(
@@ -530,7 +539,7 @@ public class XposedDialog extends DialogFragment
 						else if (position == XposedMainActivity.preferences.getInt("FlashlightPosition", 5) && XposedMainActivity.preferences.getBoolean("FlashlightEnabled", false))
 						{
 								root.setOnClickListener(flashlightOnClickListener);
-								text.setText((TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? getString(R.string.powerMenuMain_FlashlightOn) : getString(R.string.powerMenuMain_FlashlightOff));
+								text.setText((TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? getString(R.string.powerMenuMain_Flashlight) : getString(R.string.powerMenuMain_FlashlightOff));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 								desc.setVisibility(View.VISIBLE);
 								if (XposedMainActivity.preferences.getLong("FlashlightAutoOff", 1000*60*10) == 0)
@@ -542,7 +551,7 @@ public class XposedDialog extends DialogFragment
 										desc.setText(getString(R.string.powerMenuMain_FlashlightDesc).replace("[AUTOOFF]", helper.getTimeString(XposedMainActivity.preferences.getLong("FlashlightAutoOff", 1000*60*10), true)));
 								}
 								desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
-								createCircleIcon(icon,icon2,(TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? getString(R.string.powerMenuMain_FlashlightOn) : getString(R.string.powerMenuMain_FlashlightOff),getResources().getDrawable((TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? R.drawable.ic_qs_torch_on : R.drawable.ic_qs_torch_off),XposedMainActivity.preferences.getString("DialogFlashlight_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogFlashlight_Textcolor","#ffffff"));
+								createCircleIcon(icon,icon2,(TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? getString(R.string.powerMenuMain_Flashlight) : getString(R.string.powerMenuMain_FlashlightOff),getResources().getDrawable((TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? R.drawable.ic_qs_torch_on : R.drawable.ic_qs_torch_off),XposedMainActivity.preferences.getString("DialogFlashlight_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogFlashlight_Textcolor","#ffffff"));
 						}
 						else if (position == XposedMainActivity.preferences.getInt("ExpandedDesktopPosition", 6) && XposedMainActivity.preferences.getBoolean("ExpandedDesktopEnabled", false))
 						{

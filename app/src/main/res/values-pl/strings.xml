@@ -6,9 +6,6 @@
 
 
 "</string>
-
-<!-- Change this to your website! -->
-<string name="TranslatorWebsite">"None"</string>
 <string name="PreviewPowerMenu">"Podgląd"</string>
 
 <!-- Power Menu -->
@@ -68,13 +65,9 @@ Sprawdź źródła na GitHub"</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Kolejność i widoczność"</string>
-<string name="visibilityOrderTitle_Shutdown">"Wyłączanie"</string>
 <string name="visibilityOrderDesc_Shutdown">"Wyłącz urządzenie."</string>
-<string name="visibilityOrderTitle_Reboot">"Uruchom ponownie"</string>
 <string name="visibilityOrderDesc_Reboot">"Uruchom urządzenie ponownie."</string>
-<string name="visibilityOrderTitle_SoftReboot">"Szybki Restart"</string>
 <string name="visibilityOrderDesc_SoftReboot">"Szybki restart UI poprzez zabicie procesu zygote."</string>
-<string name="visibilityOrderTitle_Screenshot">"Zrzut ekranu"</string>
 <string name="visibilityOrderDesc_Screenshot">"Zrób zrzut ekranu przez menu zasilania"</string>
 <string name="visibilityOrder_Enabled">"Włączone:"</string>
 <string name="category_Preset">"Szablony"</string>

@@ -5,9 +5,6 @@
 <string name="ShareMessage">"Cheque esse lindo aplicativo para customizar seu Menu de Energia!
 
 "</string>
-
-<!-- Change this to your website! -->
-<string name="TranslatorWebsite">"http://www.Neon-Soft.de"</string>
 <string name="PreviewPowerMenu">"Prever"</string>
 
 <!-- Power Menu -->
@@ -64,13 +61,9 @@ Essa configuração só está acessível no Xposed Installer."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidade e Ordem"</string>
-<string name="visibilityOrderTitle_Shutdown">"Desligar"</string>
 <string name="visibilityOrderDesc_Shutdown">"Desligar o dispositivo."</string>
-<string name="visibilityOrderTitle_Reboot">"Reiniciar"</string>
 <string name="visibilityOrderDesc_Reboot">"Reiniciar o dispositivo."</string>
-<string name="visibilityOrderTitle_SoftReboot">"Reiniciar Rápido"</string>
 <string name="visibilityOrderDesc_SoftReboot">"Simplismente reinicia o Android UI matando o processo \"zygote\"."</string>
-<string name="visibilityOrderTitle_Screenshot">"Captura de tela"</string>
 <string name="visibilityOrderDesc_Screenshot">"Captura de tela sobre o Menu de energia."</string>
 <string name="visibilityOrder_Enabled">"Ativado:"</string>
 <string name="category_Preset">"Pré-ajuste"</string>
@@ -180,7 +173,6 @@ Isso não pode  ser desfeito!"</string>
 <string name="preferencesDesc_RootXposed5">"Por favor,reinicie seu dispositivo para concluir o processo de atualização!"</string>
 <string name="preferencesTitle_DeepXposedLogging">"Logs do xposed"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Ativar logs avançados no xposed,após ativar, reinicie para ver as mudanças."</string>
-<string name="visibilityOrderTitle_Screenrecord">"Gravação de tela"</string>
 <string name="visibilityOrderDesc_Screenrecord">"Gravar a tela através do Menu de Energia."</string>
 
 <!-- Screen recording -->
@@ -197,9 +189,7 @@ Isso não pode  ser desfeito!"</string>
 <string name="powerMenuMain_FlashlightDesc">"Desligando após [AUTOOFF]."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Desligar automático desativado."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Área de trabalho expandida"</string>
-<string name="visibilityOrderTitle_Flashlight">"Lanterna"</string>
 <string name="visibilityOrderDesc_Flashlight">"Alternar a lanterna através do Menu de Energia"</string>
-<string name="visibilityOrderTitle_ExpandedDesktop">"Área de trabalho expandida"</string>
 <string name="visibilityOrderDesc_ExpandedDesktop">"Alternar o modo da Área de Trabalho expandida do GravityBox através do Menu de Energia (GravityBox precisa estar instalado)."</string>
 <string name="advancedPrefsTitle_DialogGravity">"Posição do diálogo"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Mudar a posição do diálogo."</string>
@@ -230,11 +220,4 @@ Isso não pode  ser desfeito!"</string>
 <string name="DialogExpandedDesktop_Textcolor">"Cor do texto da área de trabalho expandida"</string>
 <string name="DialogExpandedDesktop_TextcolorDesc">"Cor do texto da letra do círculo da área de trabalho expandida."</string>
 
-<!-- Dialog -->
-<string name="permissionRequestTitle">"Permissões"</string>
-<string name="permissionRequestMsg">"Câmera: Para alternar lanterna.
-Leitura/Gravação de armazenamento: para funções futuras (pequena dica: imagens personalizadas).
-
-Essas permissões são necessárias para funcionar corretamente ...
-Clique em OK para mostrar a caixa de diálogo novamente, clique em Cancelar para sair do aplicativo."</string>
 </resources>

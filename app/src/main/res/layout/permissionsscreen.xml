@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:orientation="vertical"
+		android:layout_gravity="center_horizontal"
+		android:layout_marginTop="10dp">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:text="@string/permissionsScreen_Title"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:gravity="center|center_vertical|center_horizontal"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"/>
+
+		<TextView
+			android:layout_height="2dp"
+			android:layout_width="match_parent"
+			android:background="@color/colorAccentDarkTheme"
+			android:layout_marginRight="5dp"
+			android:layout_marginLeft="5dp"
+			android:alpha="0.5"
+			android:minWidth="200dp"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:layout_weight="1.0">
+
+		<View
+			android:layout_height="wrap_content"
+			android:layout_width="0dp"/>
+
+		<ListView
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:id="@+id/permissionsscreenListView_permissions"
+			android:dividerHeight="0dp"
+			android:divider="@color/transparent"/>
+
+	</LinearLayout>
+
+	<CheckBox
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/permissionsscreenCheckBox_DontAskAgain"
+		android:text="@string/permissionsScreen_DontAskAgain"
+		android:layout_marginLeft="5dp"
+		android:layout_marginRight="5dp"/>
+
+</LinearLayout>
+

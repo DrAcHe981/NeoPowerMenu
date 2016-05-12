@@ -5,9 +5,6 @@
 <string name="ShareMessage">"Schau dir diese wundervolle App an und passe das Ausschaltmenü deines gerooteten Geräts nach deinen Wünschen an!
 
 "</string>
-
-<!-- Change this to your website! -->
-<string name="TranslatorWebsite">"http://www.neon-soft.de"</string>
 <string name="PreviewPowerMenu">"Vorschau"</string>
 
 <!-- Power Menu -->
@@ -37,7 +34,6 @@ Bitte aktiviere das Modul im Xposed installer."</string>
 <string name="preferencesDesc_RootXposed4">"Die App sollte wie geplant funktionieren!"</string>
 <string name="preferencesCategory_General">"Allgemein"</string>
 <string name="preferencesTitle_Style">"Aussehen"</string>
-<string name="preferencesDesc_Style">"[STYLENAME] (Mehr werden folgen)"</string>
 <string name="preferencesTitle_Theme">"Design"</string>
 <string name="preferencesDesc_Theme">"Ändere die Farben."</string>
 <string name="preferencesTitle_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
@@ -64,15 +60,40 @@ Finde die Source auf GitHub."</string>
 <string name="preferencesTitle_About">"Skript von Neon-Soft / DrAcHe981"</string>
 <string name="preferencesDesc_About">"basierend auf der Source von Naman Dwivedi (naman14)."</string>
 
+		<!-- Preferences: Colors -->
+		<string name="colorsType_Background">"Hintergrund Farbe"</string>
+		<string name="colorsType_Text">"Text Farbe"</string>
+		<string name="colorsCategory_Reveal">"Reveal Hintergründe"</string>
+		<string name="colorsDesc_Reveal">"Die Farbe der Reveal Animation."</string>
+		<string name="colorsDesc_ActionReveal">"Die Farbe der Reveal Animation wenn auf eine Neustart/Ausschalten Option geklickt wurde."</string>
+		<string name="colorsCategory_Main">"Dialog Farben"</string>
+		<string name="colorsDesc_Dialog">"Die Farben des Dialogs."</string>
+		<string name="colorsCategory_Shutdown">"Ausschalten Farben"</string>
+		<string name="colorsDesc_DialogShutdown">"Die Farben des Dialogs wenn auf Ausschalten geklickt wurde."</string>
+		<string name="colorsCategory_Reboot">"Neu Starten Farben"</string>
+		<string name="colorsDesc_DialogReboot">"Die Farben des Dialogs wenn auf Neustarten geklickt wurde."</string>
+		<string name="colorsCategory_SoftReboot">"Schneller Neustart Farben"</string>
+		<string name="colorsDesc_DialogSoftReboot">"Die Farben des Dialogs wenn auf Schneller Neustart geklickt wurde."</string>
+		<string name="colorsCategory_Screenshot">"Bildschirmfoto Farben"</string>
+		<string name="colorsDesc_DialogScreenshot">"Die Farben des Bildschirmfoto Knopfes."</string>
+		<string name="colorsCategory_Screenrecord">"Bildschirmaufnahme Farben"</string>
+		<string name="colorsDesc_DialogScreenrecord">"Die Farben des Bildschirmaufnahme Knopfes."</string>
+		<string name="colorsCategory_Flashlight">"Taschenlampe Farben"</string>
+		<string name="colorsDesc_DialogFlashlight">"Die Farben des Taschenlampen Knopfes."</string>
+		<string name="colorsCategory_ExpandedDesktop">"Erweiterter Desktop Farben"</string>
+		<string name="colorsDesc_DialogExpandedDesktop">"Die Farben des Erweiterten Desktop Knopfes."</string>
+		<string name="colorsCategory_Recovery">"Recovery Farben"</string>
+		<string name="colorsDesc_DialogRecovery">"Die Farben des Dialogs wenn auf Recovery geklickt wurde."</string>
+		<string name="colorsCategory_Bootloader">"Bootloader Farben"</string>
+		<string name="colorsDesc_DialogBootloader">"Die Farben des Dialogs wenn auf Bootloader geklickt wurde."</string>
+		<string name="colorsCategory_SafeMode">"Abgesicherter Modus Farben"</string>
+		<string name="colorsDesc_DialogSafeMode">"Die Farben des Dialogs wenn auf Abgesicherter Modus geklickt wurde."</string>
+		
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
-<string name="visibilityOrderTitle_Shutdown">"Ausschalten"</string>
 <string name="visibilityOrderDesc_Shutdown">"Schalte dein Gerät aus."</string>
-<string name="visibilityOrderTitle_Reboot">"Neustarten"</string>
 <string name="visibilityOrderDesc_Reboot">"Starte dein Gerät neu."</string>
-<string name="visibilityOrderTitle_SoftReboot">"Schneller Neustart"</string>
 <string name="visibilityOrderDesc_SoftReboot">"Startet die Android UI neu, indem der Zygote-Prozess gestoppt wird."</string>
-<string name="visibilityOrderTitle_Screenshot">"Bildschirmfoto"</string>
 <string name="visibilityOrderDesc_Screenshot">"Mache Bildschirmfotos über das Auschaltmenü."</string>
 <string name="visibilityOrder_Enabled">"Aktiviert:"</string>
 <string name="category_Preset">"Voreinstellungen"</string>
@@ -80,45 +101,6 @@ Finde die Source auf GitHub."</string>
 <string name="preset_LoadDesc">"Lade eine gespeicherte Konfiguration."</string>
 <string name="preset_Save">"Speichere Voreinstellung"</string>
 <string name="preset_SaveDesc">"Speichere deine aktuelle Konfiguration."</string>
-
-<!-- Preferences: Background colors -->
-<string name="category_Reveal">"Reveal Hintergründe"</string>
-<string name="category_Backgrounds">"Hintergrundfarben"</string>
-<string name="Dialog_Backgroundcolor">"Hintergrundfarbe"</string>
-<string name="Dialog_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs."</string>
-<string name="DialogShutdown_Backgroundcolor">"Ausschalten Hintergrundfarbe"</string>
-<string name="DialogShutdown_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs, wenn auf Ausschalten geklickt wurde."</string>
-<string name="DialogReboot_Backgroundcolor">"Neustarten Hintergrundfarbe"</string>
-<string name="DialogReboot_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs, wenn auf Neustarten geklickt wurde."</string>
-<string name="DialogSoftReboot_Backgroundcolor">"Soft Reboot Hintergrundfarbe"</string>
-<string name="DialogSoftReboot_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs, wenn auf Schneller Neustart geklickt wurde."</string>
-<string name="DialogScreenshot_Backgroundcolor">"Bildschirmfoto Hintergrundfarbe"</string>
-<string name="DialogScreenshot_BackgroundcolorDesc">"Die Hintergrundfarbe des Bildschirmfoto Kreises."</string>
-<string name="DialogRecovery_Backgroundcolor">"Recovery Hintergrundfarbe"</string>
-<string name="DialogRecovery_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs, wenn auf Recovery geklickt wurde."</string>
-<string name="DialogBootloader_Backgroundcolor">"Bootloader Hintergrundfarbe"</string>
-<string name="DialogBootloader_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs, wenn auf Bootloader geklickt wurde."</string>
-<string name="DialogSafeMode_Backgroundcolor">"Abgesicherter Modus Hintergrundfarbe"</string>
-<string name="DialogSafeMode_BackgroundcolorDesc">"Die Hintergrundfarbe des Dialogs, auf Abgesicherter Modus geklickt wurde."</string>
-
-<!-- Preferences: Text colors -->
-<string name="category_Texts">"Textfarben"</string>
-<string name="Dialog_Textcolor">"Textfarbe"</string>
-<string name="Dialog_TextcolorDesc">"Die Textfarbe des Dialogs."</string>
-<string name="DialogShutdown_Textcolor">"Ausschalten Textfarbe"</string>
-<string name="DialogShutdown_TextcolorDesc">"Die Textfarbe des Dialogs, wenn auf Ausschalten geklickt wurde."</string>
-<string name="DialogReboot_Textcolor">"Neustarten Textfarbe"</string>
-<string name="DialogReboot_TextcolorDesc">"Die Textfarbe des Dialogs, wenn auf Neustarten geklickt wurde."</string>
-<string name="DialogSoftReboot_Textcolor">"Schneller Neustart Textfarbe"</string>
-<string name="DialogSoftReboot_TextcolorDesc">"Die Textfarbe des Dialogs, wenn auf Schneller Neustart geklickt wurde."</string>
-<string name="DialogScreenshot_Textcolor">"Bildschirmfoto Textfarbe"</string>
-<string name="DialogScreenshot_TextcolorDesc">"Die Textfarbe des Bildschirmfoto Kreises."</string>
-<string name="DialogRecovery_Textcolor">"Recovery Textfarbe"</string>
-<string name="DialogRecovery_TextcolorDesc">"Die Textfarbe des Dialogs, wenn auf Recovery geklickt wurde."</string>
-<string name="DialogBootloader_Textcolor">"Bootloader Textfarbe"</string>
-<string name="DialogBootloader_TextcolorDesc">"Die Textfarbe des Dialogs, wenn auf Bootloader geklickt wurde."</string>
-<string name="DialogSafeMode_Textcolor">"Abgesicherter Modus Textfarbe"</string>
-<string name="DialogSafeMode_TextcolorDesc">"Die Textfarbe des Dialogs, wenn auf Abgesicherter Modus geklickt wurde."</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Lokale Voreinstellungen"</string>
@@ -159,7 +141,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="Dialog_Load">"Laden"</string>
 <string name="Dialog_Save">"Speichern"</string>
 <string name="Dialog_Ignore">"Ignorieren"</string>
-<string name="Dialog_SelectColor">"Farbe wählen"</string>
+<string name="Dialog_SelectFarben">"Farbe wählen"</string>
 <string name="ColorPicker_Value">"Wert:"</string>
 <string name="ColorPicker_Saturation">"Sättigung:"</string>
 <string name="ColorPicker_Opacity">"Transparenz:"</string>
@@ -178,11 +160,10 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="ToggleHide">"Verstecken"</string>
 <string name="presetsManager_Title">"Voreinstellungen"</string>
 <string name="powerMenuMain_Screenrecord">"Bildschirmaufnahme"</string>
-<string name="preferencesTitle_RootXposed5">"Aktiviert Modul Version ist zu niedrig... "</string>
+<string name="preferencesTitle_RootXposed5">"Aktivierte Modul Version ist zu niedrig... "</string>
 <string name="preferencesDesc_RootXposed5">"Bitte starte dein gerät neu um den Update Vorgang abzuschließen! "</string>
 <string name="preferencesTitle_DeepXposedLogging">"Tiefes Xposed Logging"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Aktiviere erweitertes logging, nach der Aktivierung neu starten um Änderung zu sehen."</string>
-<string name="visibilityOrderTitle_Screenrecord">"Bildschirmaufnahme"</string>
 <string name="visibilityOrderDesc_Screenrecord">"Mach Bildschirm Aufnahmen über das Ausschaltmenü. "</string>
 
 <!-- Screen recording -->
@@ -194,14 +175,12 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="screenrecord_toast_processing">"Es kann keine Bildschirm Aufnahme gestartet werden wenn noch eine verarbeitet wird"</string>
 <string name="screenrecord_toast_saved">"Aufnahme gespeichert als %s"</string>
 <string name="screenrecord_toast_save_error">"Fehler beim Speichern der Aufnahme"</string>
-<string name="powerMenuMain_FlashlightOn">"Taschenlampe einschalten"</string>
+<string name="powerMenuMain_Flashlight">"Taschenlampe einschalten"</string>
 <string name="powerMenuMain_FlashlightOff">"Taschenlampe ausschalten"</string>
 <string name="powerMenuMain_FlashlightDesc">"Wird nach [AUTOOFF] ausgeschaltet."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Automatisches ausschalten deaktiviert."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Erweiterter Desktop"</string>
-<string name="visibilityOrderTitle_Flashlight">"Taschenlampe"</string>
 <string name="visibilityOrderDesc_Flashlight">"Schalte die Taschenlampe über das Ausschaltmenü ein oder aus."</string>
-<string name="visibilityOrderTitle_ExpandedDesktop">"Erweiterter Desktop"</string>
 <string name="visibilityOrderDesc_ExpandedDesktop">"Schalte den Erweiterten Desktop von GravityBox über das Ausschaltmenü an oder aus (GravityBox muss hierfür installiert sein)."</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Ändere die Position des Dialogs."</string>
@@ -215,28 +194,17 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="quick_settings_torch_on">"Taschenlampe an"</string>
 <string name="quick_settings_torch_off">"Taschenlampe aus"</string>
 <string name="quick_settings_torch_off_notif">"Zum ausschalten der Taschenlampe hier drücken"</string>
-<string name="RevealBackground">"Reveal Hintergrund Farbe"</string>
-<string name="RevealBackgroundDesc">"Die Hintergrundfarbe des Reveal-Effekts."</string>
-<string name="ActionRevealBackground">"Aktions Reveal Hintergrundfarbe"</string>
-<string name="ActionRevealBackgroundDesc">"Die Hintergrundfarbe des Reveal-Effekts, wenn auf eine Neustart/Ausschalt Option geklickt wurde."</string>
-<string name="DialogScreenrecord_Backgroundcolor">"Bildschirm Aufnahme Hintergrund Farbe"</string>
-<string name="DialogScreenrecord_BackgroundcolorDesc">"Die Hintergrund Farbe Bildschirm Aufnahme Kreises."</string>
-<string name="DialogFlashlight_Backgroundcolor">"Taschenlampe Hintergrund Farbe"</string>
-<string name="DialogFlashlight_BackgroundcolorDesc">"Die Hintergrund Farbe des Taschenlampen Kreises."</string>
-<string name="DialogExpandedDesktop_Backgroundcolor">"Erweiterter Desktop Hintergrund Farbe"</string>
-<string name="DialogExpandedDesktop_BackgroundcolorDesc">"Die Farbe des Erweiterten Desktop Kreises."</string>
-<string name="DialogScreenrecord_Textcolor">"Bildschirm Aufnahme Text Farbe"</string>
-<string name="DialogScreenrecord_TextcolorDesc">"Die Farbe des Buchstabens auf dem Bildschirm Aufnahme Kreis."</string>
-<string name="DialogFlashlight_Textcolor">"Taschenlampe Text Farbe"</string>
-<string name="DialogFlashlight_TextcolorDesc">"Die Farbe des Buchstabens auf dem Taschenlampen Kreis."</string>
-<string name="DialogExpandedDesktop_Textcolor">"Erweiterter Desktop Text Farbe"</string>
-<string name="DialogExpandedDesktop_TextcolorDesc">"Die Farbe des Buchstabens auf dem Erweiterten Desktop Kreis."</string>
 
-<!-- Dialog -->
-<string name="permissionRequestTitle">"Berechtigungen"</string>
-<string name="permissionRequestMsg">"Kamera: um die Taschenlampe ein/aus zu schalten. 
-Speicher lesen/schreiben: Für zukünftige Funktionen (kleiner Tipp: eigene Bilder).
+		<!-- Permissions Screen -->
+		<string name="permissionsScreen_Title">"Berechtigungen"</string>
+		<string name="permissionsScreen_NotAllGrantedTitle">"Nich alle gewährt."</string>
+		<string name="permissionsScreen_NotAllGranted">"Nicht alle Berechtigungen gewährt, manche Dinge werden nicht funktionieren..."</string>
+		<string name="permissionsScreen_ClickToRequest">"Klicke hier um die Berechtigung anzufordern."</string>
+		<string name="permissionsScreen_DontAskAgain">"Nicht erneut fragen"</string>
 
-Diese Berechtigungen werden benötigt damit alles funktioniert... 
-Klick auf Ok um den Dialog erneut anzuzeigen, Klick auf Abbrechen um die app zu beenden. "</string>
+		<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Externer Speicher Lesen/Schreiben"</string>
+		<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benötigt für zukünftige Funktionen (kleiner Tip: eigene Bilder)."</string>
+		<string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
+		<string name="permissionsScreenDesc_android.permission.CAMERA">"Wird benötigt um die Taschenlampe ein/aus zu schalten."</string>
+		
 </resources>

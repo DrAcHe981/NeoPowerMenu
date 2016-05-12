@@ -30,23 +30,67 @@ public class PreferencesColorFragment extends Fragment
 		AlertDialog savePresetDialog;
 		File[] presetsFiles;
 		String[] presetsList;
-		String[] lightPreset = {"","",
-				"","#8800bcd4","#880097a7",
-				"","#fff5f5f5","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
-				"","#000000","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] darkPreset = {"","",
-				"","#88121212","#8821272b",
-				"","#ff212121","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
-				"","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] blackPreset = {"","",
-				"","#88000000","#88000000",
-				"","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000",
-				"","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[][] ColorNames = {{ColorsListAdapter.TYPE_LOAD,""},{ColorsListAdapter.TYPE_SAVE,""},
-				{ColorsListAdapter.TYPE_HEADER,"Reveal"},{ColorsListAdapter.TYPE_ITEM,"RevealBackground"},{ColorsListAdapter.TYPE_ITEM,"ActionRevealBackground"},
-				{ColorsListAdapter.TYPE_HEADER,"Backgrounds"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogReboot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSoftReboot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenshot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Backgroundcolor"},
-				{ColorsListAdapter.TYPE_HEADER,"Texts"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogReboot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSoftReboot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenshot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Textcolor"}};
 		
+		public static String[] lightPreset = {
+				"Load","Save",
+				"Reveal","#8800bcd4","#ff0097a7",
+				"Main","#fff5f5f5","#000000",
+				"Shutdown","#ffd32f2f","#ffffff",
+				"Reboot","#ff3f51b5","#ffffff",
+				"SoftReboot","#ffe91e63","#ffffff",
+				"Screenshot","#ff3f51b5","#ffffff",
+				"Screenrecord","#ff3f51b5","#ffffff",
+				"Flashlight","#ff3f51b5","#ffffff",
+				"ExpandedDesktop","#ff3f51b5","#ffffff",
+				"Recovery","#ff8bc34a","#ffffff",
+				"Bootloader","#ff277b71","#ffffff",
+				"SafeMode","#ff009698","#ffffff"};
+
+		public static String[] darkPreset = {
+				"Load","Save",
+				"Reveal","#88121212","#ff21272b",
+				"Main","#ff212121","#ffffff",
+				"Shutdown","#ffd32f2f","#ffffff",
+				"Reboot","#ff3f51b5","#ffffff",
+				"SoftReboot","#ffe91e63","#ffffff",
+				"Screenshot","#ff3f51b5","#ffffff",
+				"Screenrecord","#ff3f51b5","#ffffff",
+				"Flashlight","#ff3f51b5","#ffffff",
+				"ExpandedDesktop","#ff3f51b5","#ffffff",
+				"Recovery","#ff8bc34a","#ffffff",
+				"Bootloader","#ff277b71","#ffffff",
+				"SafeMode","#ff009698","#ffffff"};
+
+		public static String[] blackPreset = {
+				"Load","Save",
+				"Reveal","#88000000","#ff000000",
+				"Main","#ff000000","#ffffff",
+				"Shutdown","#ff000000","#ffffff",
+				"Reboot","#ff000000","#ffffff",
+				"SoftReboot","#ff000000","#ffffff",
+				"Screenshot","#ff000000","#ffffff",
+				"Screenrecord","#ff000000","#ffffff",
+				"Flashlight","#ff000000","#ffffff",
+				"ExpandedDesktop","#ff000000","#ffffff",
+				"Recovery","#ff000000","#ffffff",
+				"Bootloader","#ff000000","#ffffff",
+				"SafeMode","#ff000000","#ffffff"};
+				
+		public static String[][] ColorNames = {
+				{ColorsListAdapter.TYPE_LOAD,"Load"},{ColorsListAdapter.TYPE_SAVE,"Save"},
+				{ColorsListAdapter.TYPE_HEADER,"Reveal"},{ColorsListAdapter.TYPE_ITEM,"Reveal_Background"},{ColorsListAdapter.TYPE_ITEM,"ActionReveal_Background"},
+				{ColorsListAdapter.TYPE_HEADER,"Main"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"Shutdown"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"Reboot"},{ColorsListAdapter.TYPE_ITEM,"DialogReboot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogReboot_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"SoftReboot"},{ColorsListAdapter.TYPE_ITEM,"DialogSoftReboot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSoftReboot_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"Screenshot"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenshot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenshot_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"Screenrecord"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"Flashlight"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"ExpandedDesktop"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"Recovery"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"Bootloader"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"SafeMode"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Textcolor"}};
+				
 		static ColorPicker picker;
 		static boolean hexChangeViaWheel;
 		

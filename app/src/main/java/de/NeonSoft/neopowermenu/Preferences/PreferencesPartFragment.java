@@ -24,8 +24,7 @@ public class PreferencesPartFragment extends Fragment
 		Context mContext;
 
     private String Urlgithub = "https://github.com/DrAcHe981/NeoPowerMenu";
-    private String Urloriggithub = "https://github.com/naman14/MaterialPowerMenu";
-
+    
 		private String ActiveStyle = "Material";
 		private int ActiveStyleId = 0;
 		
@@ -54,7 +53,6 @@ public class PreferencesPartFragment extends Fragment
 		private static Switch Switch_DeepXposedLogging;
 		
 		private static LinearLayout LinearLayout_Source;
-		private static LinearLayout LinearLayout_OrigSource;
 
 		private static LinearLayout LinearLayout_Share;
 
@@ -68,7 +66,6 @@ public class PreferencesPartFragment extends Fragment
 		
 		private static ProgressDialog pd = null;
 
-		private static final int MY_PERMISSIONS_REQUEST = 101;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -90,7 +87,7 @@ public class PreferencesPartFragment extends Fragment
 				LinearLayout_Style = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Style);
 				TextView_StyleTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_StyleTitle);
 				TextView_StyleDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_StyleDesc);
-				TextView_StyleDesc.setText(getString(R.string.preferencesDesc_Style).replace("[STYLENAME]", ActiveStyle));
+				TextView_StyleDesc.setText(ActiveStyle);
 
 				LinearLayout_Theme = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Theme);
 
@@ -111,7 +108,6 @@ public class PreferencesPartFragment extends Fragment
 				Switch_DeepXposedLogging.setFocusable(false);
 				
 				LinearLayout_Source = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Source);
-				LinearLayout_OrigSource = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_OrigSource);
 				
 				LinearLayout_Share = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Share);
 
@@ -127,8 +123,9 @@ public class PreferencesPartFragment extends Fragment
 										// TODO: Implement this method
 										AlertDialog.Builder alertdb = new AlertDialog.Builder(getActivity());
 										alertdb.setTitle(R.string.preferencesTitle_Style);
-										String[] styleList = new String[1];
+										String[] styleList = new String[2];
 										styleList[0] = "Material";
+										styleList[1] = "Material (Fullscreen)";
 										for (int i=0;i < styleList.length;i++)
 										{
 												if (styleList[i].equalsIgnoreCase(ActiveStyle))
@@ -158,7 +155,7 @@ public class PreferencesPartFragment extends Fragment
 																		String selectedName = (ad).getListView().getItemAtPosition(selectedPosition).toString();
 																		MainActivity.preferences.edit().putString("DialogTheme", selectedName).commit();
 																		ActiveStyle = selectedName;
-																		TextView_StyleDesc.setText(getString(R.string.preferencesDesc_Style).replace("[STYLENAME]", ActiveStyle));
+																		TextView_StyleDesc.setText(ActiveStyle);
 																}
 																catch (Throwable t)
 																{
@@ -205,7 +202,7 @@ public class PreferencesPartFragment extends Fragment
 										hideicon = !hideicon;
 										String packageName = getActivity().getPackageName();
 										ComponentName componentSettings = new ComponentName(packageName, packageName + ".SettingsActivity");
-										if (hideicon)
+										if (!hideicon)
 										{
 												getActivity().getPackageManager().setComponentEnabledSetting(componentSettings, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
 										}
@@ -237,18 +234,6 @@ public class PreferencesPartFragment extends Fragment
 										// TODO: Implement this method
 										Intent i = new Intent(Intent.ACTION_VIEW);
 										i.setData(Uri.parse(Urlgithub));
-										startActivity(i);
-								}
-						});
-						
-				LinearLayout_OrigSource.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// TODO: Implement this method
-										Intent i = new Intent(Intent.ACTION_VIEW);
-										i.setData(Uri.parse(Urloriggithub));
 										startActivity(i);
 								}
 						});
@@ -329,112 +314,14 @@ public class PreferencesPartFragment extends Fragment
 				{
 						rootAvailable();
 				}
-
-				getPermissions();
+				
+				MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+				
 				return InflatedView;
 		}
 
 
 
-		public void getPermissions()
-		{
-				try {
-						if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
-						{
-// Here, thisActivity is the current activity
-								if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-								{
-// Should we show an explanation?
-										if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),Manifest.permission.WRITE_EXTERNAL_STORAGE))
-										{
-
-// Show an expanation to the user *asynchronously* -- don't block
-// this thread waiting for the user's response! After the user
-// sees the explanation, try again to request the permission.
-												showPermissionDialog(MY_PERMISSIONS_REQUEST);
-												return;
-										}
-										else
-										{
-
-// No explanation needed, we can request the permission.
-
-												requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST);
-												return;
-												// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-												// app-defined int constant. The callback method gets the
-												// result of the request.
-										}
-								}
-						}
-				} catch (Throwable t) {
-						Toast.makeText(getActivity(),"getPermission failed: "+t,Toast.LENGTH_LONG).show();
-				}
-		}
-
-
-		@Override
-		public void onRequestPermissionsResult(int requestCode,
-																					 String permissions[], int[] grantResults)
-		{
-				switch (requestCode)
-				{
-						case MY_PERMISSIONS_REQUEST: {
-										// If request is cancelled, the result arrays are empty.
-										if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-										{
-
-												// permission was granted, yay! Do the
-												// contacts-related task you need to do.
-												getPermissions();
-
-										}
-										else
-										{
-												if (adb==null) {
-														showPermissionDialog(MY_PERMISSIONS_REQUEST);
-												}
-												// permission denied, boo! Disable the
-												// functionality that depends on this permission.
-
-										}
-										return;
-								}
-
-								// other 'case' lines to check for other
-								// permissions this app might request
-				}
-		}
-
-		public void showPermissionDialog(int permission) {
-				switch (permission) {
-						case MY_PERMISSIONS_REQUEST:
-								adb = new AlertDialog.Builder(getActivity());
-								adb.setTitle(R.string.permissionRequestTitle);
-								adb.setMessage(R.string.permissionRequestMsg);
-								adb.setPositiveButton(R.string.Dialog_Ok, new DialogInterface.OnClickListener() {
-
-												@Override
-												public void onClick(DialogInterface p1, int p2)
-												{
-														// TODO: Implement this method
-														adb = null;
-														requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST);
-												}
-										});
-								adb.setNegativeButton(R.string.Dialog_Cancel, new DialogInterface.OnClickListener() {
-
-												@Override
-												public void onClick(DialogInterface p1, int p2)
-												{
-														// TODO: Implement this method
-													getActivity().finish();
-												}
-										});
-								adb.show();
-								break;
-				}
-		}
 		
 		private void checkState() {
 				try{
@@ -448,8 +335,13 @@ public class PreferencesPartFragment extends Fragment
 										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed4);
 								}
 						} else if (helper.ModuleState()==-1) {
-								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed3);
-								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed3);
+								if (!MainActivity.RootAvailable) {
+										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed1);
+										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed1);
+								} else {
+										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed3);
+										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed3);
+								}
 						} else {
 								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
 								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);

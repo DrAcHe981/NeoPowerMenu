@@ -3,7 +3,9 @@ package de.NeonSoft.neopowermenu.xposed;
 import android.content.*;
 import android.content.pm.*;
 import android.content.res.*;
+import android.graphics.*;
 import android.os.*;
+import android.view.*;
 import de.NeonSoft.neopowermenu.*;
 import de.robv.android.xposed.*;
 import java.util.*;
@@ -20,6 +22,20 @@ public class XposedUtils
 				XposedBridge.log("[NeoPowerMenu] "+message);
 		}
 
+    public static Point getLocationInView(View src, View target)
+		{
+        final int[] l0 = new int[2];
+        src.getLocationOnScreen(l0);
+
+        final int[] l1 = new int[2];
+        target.getLocationOnScreen(l1);
+
+        l1[0] = l1[0] - l0[0] + target.getWidth() / 2;
+        l1[1] = l1[1] - l0[1] + target.getHeight() / 2;
+
+        return new Point(l1[0], l1[1]);
+    }
+		
     public static boolean isAppInstalled(Context context, String appUri) {
         try {
             PackageManager pm = context.getPackageManager();

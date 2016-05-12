@@ -1,4 +1,4 @@
-package de.NeonSoft.neopowermenu.xposed.service;
+package de.NeonSoft.neopowermenu.services;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -394,7 +394,7 @@ public class ScreenRecordingService extends Service
 
 										try {
 												copyFileUsingStream(input, output);
-												//input.delete();
+												input.delete();
 												Toast.makeText(ScreenRecordingService.this,
 																			 String.format(getString(R.string.screenrecord_toast_saved), 
 																										 output.getPath()), Toast.LENGTH_SHORT).show();

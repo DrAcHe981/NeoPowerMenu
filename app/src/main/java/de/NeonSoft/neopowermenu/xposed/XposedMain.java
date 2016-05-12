@@ -1,18 +1,14 @@
 package de.NeonSoft.neopowermenu.xposed;
 
-import android.app.*;
-import android.bluetooth.*;
 import android.content.*;
-import android.nfc.*;
 import android.os.*;
-import android.os.storage.*;
 import android.util.*;
 import android.widget.*;
-import com.android.internal.telephony.*;
 import de.NeonSoft.neopowermenu.*;
-import de.NeonSoft.neopowermenu.xposed.service.*;
+import de.NeonSoft.neopowermenu.services.*;
 import de.robv.android.xposed.*;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.*;
+import java.util.*;
 
 /**
  * Created by naman on 20/03/15.
@@ -34,6 +30,11 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_SHUTDOWNTHREAD = "com.android.server.power.ShutdownThread";
     private static final String CLASS_SHUTDOWNTHREAD_MARSHMALLOW = "com.android.server.power.ShutdownThread";
 
+    private static final String CLASS_PACKAGE_MANAGER_SERVICE = "com.android.server.pm.PackageManagerService";
+    private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
+    private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
+    private static final String PERM_ACCESS_SURFACE_FLINGER = "android.permission.ACCESS_SURFACE_FLINGER";
+		
 		public static final String NPM_ACTION_BROADCAST_SHUTDOWN = "de.NeonSoft.neopowermenu.action.Shutdown";
 		public static final String NPM_ACTION_BROADCAST_REBOOT = "de.NeonSoft.neopowermenu.action.Reboot";
 		public static final String NPM_ACTION_BROADCAST_REBOOTRECOVERY = "de.NeonSoft.neopowermenu.action.RebootRecovery";
@@ -60,7 +61,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static ShutdownThread sInstance = new ShutdownThread();
 		
 		/*<!-- Internal Hook version to check if reboot is needed --!>*/
-		private static final int XposedHookVersion = 17;
+		private static final int XposedHookVersion = 18;
 
 		
 		Object mPhoneWindowManager;
@@ -72,7 +73,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				XposedUtils.log("~~{ Module Infos }~~");
         preferences = new XSharedPreferences(PACKAGE_NAME);
         //preferences.makeWorldReadable();
-				DeepXposedLogging = true;//preferences.getBoolean("DeepXposedLogging",false);
+				DeepXposedLogging = preferences.getBoolean("DeepXposedLogging",false);
 				XposedUtils.log("Module Path: " + startupParam.modulePath);
 				XposedUtils.log("Hook version: " + XposedHookVersion);
 				XposedUtils.log("Deep Logging: " + DeepXposedLogging);
@@ -92,34 +93,91 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     @Override
     public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable
 		{
-				if (lpparam.packageName.equals("android"))
+				if (lpparam.packageName.equals("android") &&
+						lpparam.processName.equals("android"))
 				{
 						if (DeepXposedLogging) XposedUtils.log("Loading Power Menu...");
 
 						String usedGADClass;
 						String usedPWMClass;
 						String usedSDClass;
+						String usedPMClass;
 						if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
 						{
 								usedGADClass = CLASS_GLOBAL_ACTIONS_MARSHMALLOW;
 								usedPWMClass = CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW;
 								usedSDClass = CLASS_SHUTDOWNTHREAD_MARSHMALLOW;
+								usedPMClass = CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW;
 						}
 						else
 						{
 								usedGADClass = CLASS_GLOBAL_ACTIONS;
 								usedPWMClass = CLASS_PHONE_WINDOW_MANAGER;
 								usedSDClass = CLASS_SHUTDOWNTHREAD;
+								usedPMClass = CLASS_PACKAGE_MANAGER_SERVICE;
 						}
 
 						if (DeepXposedLogging) XposedUtils.log("Detected " + android.os.Build.VERSION.RELEASE + ", injecting to: ");
 						if (DeepXposedLogging) XposedUtils.log(usedGADClass);
 						if (DeepXposedLogging) XposedUtils.log(usedPWMClass);
 						if (DeepXposedLogging) XposedUtils.log(usedSDClass);
+						if (DeepXposedLogging) XposedUtils.log(usedPMClass);
 						final Class<?> phoneWindowManagerClass = XposedHelpers.findClass(usedPWMClass, lpparam.classLoader);
 						final Class<?> globalActionsClass = XposedHelpers.findClass(usedGADClass, lpparam.classLoader);
 						final Class<?> ShutdownThreadClass = XposedHelpers.findClass(usedSDClass, lpparam.classLoader);
 
+            final Class<?> pmServiceClass = XposedHelpers.findClass(usedPMClass, lpparam.classLoader);
+
+						if(DeepXposedLogging) XposedUtils.log("Getting permissions...");
+            XposedHelpers.findAndHookMethod(pmServiceClass, "grantPermissionsLPw",
+								CLASS_PACKAGE_PARSER_PACKAGE, boolean.class, String.class, new XC_MethodHook() {
+										@SuppressWarnings("unchecked")
+										@Override
+										protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+												final String pkgName = (String) XposedHelpers.getObjectField(param.args[0], "packageName");
+
+												// NeoPowetMenu
+												if (PACKAGE_NAME.equals(pkgName)) {
+														if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.M) {
+																final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
+																final Object ps = XposedHelpers.callMethod(extras, "getPermissionsState");
+																final List<String> grantedPerms =
+																		(List<String>) XposedHelpers.getObjectField(param.args[0], "requestedPermissions");
+																final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
+																final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
+
+																// Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
+																if (!(boolean)XposedHelpers.callMethod(ps,"hasInstallPermission", PERM_ACCESS_SURFACE_FLINGER)) {
+																		final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
+																																																	PERM_ACCESS_SURFACE_FLINGER);
+																		int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
+																		if (DeepXposedLogging) XposedUtils.log("Permission added: " + pAccessSurfaceFlinger + "; ret=" + ret);
+																}
+
+														} else {
+																final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
+																final Set<String> grantedPerms =
+																		(Set<String>) XposedHelpers.getObjectField(extras, "grantedPermissions");
+																final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
+																final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
+
+																// Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
+																if (!grantedPerms.contains(PERM_ACCESS_SURFACE_FLINGER)) {
+																		final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
+																																																	PERM_ACCESS_SURFACE_FLINGER);
+																		grantedPerms.add(PERM_ACCESS_SURFACE_FLINGER);
+																		int[] gpGids = (int[]) XposedHelpers.getObjectField(extras, "gids");
+																		int[] bpGids = (int[]) XposedHelpers.getObjectField(pAccessSurfaceFlinger, "gids");
+																		gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(), 
+																																										"appendInts", gpGids, bpGids);
+																		
+																		if (DeepXposedLogging) XposedUtils.log("Permission added: " + pAccessSurfaceFlinger);
+																}
+														}
+												}
+										}
+								});
+						if (DeepXposedLogging) XposedUtils.log("Permission request hooked.");
 						if (DeepXposedLogging) XposedUtils.log("Hooking (replace) "+usedGADClass+" Constructor...");
 						XposedBridge.hookAllConstructors(globalActionsClass, new XC_MethodReplacement() {
 										@Override

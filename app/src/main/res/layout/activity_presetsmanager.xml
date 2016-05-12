@@ -4,70 +4,75 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-		android:orientation="vertical"
-		android:background="@color/window_background_dark">
+	android:orientation="vertical"
+	android:background="@color/window_background_dark">
 
-	<LinearLayout
+	<RelativeLayout
 		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:orientation="vertical"
-		android:layout_gravity="center_horizontal"
-		android:layout_marginTop="10dp"
-		android:visibility="gone">
+		android:layout_width="wrap_content">
 
-		<TextView
+		<com.ogaclejapan.smarttablayout.SmartTabLayout
+			android:id="@+id/tabs"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_width="match_parent"
-			android:text="@string/presetsManager_Title"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:gravity="center|center_vertical|center_horizontal"
-			android:paddingLeft="10dp"
-			android:paddingRight="10dp"/>
-
-		<TextView
-			android:layout_height="2dp"
-			android:layout_width="match_parent"
-			android:background="@color/colorAccentDarkTheme"
-			android:layout_marginRight="5dp"
-			android:layout_marginLeft="5dp"
-			android:alpha="0.5"
-			android:minWidth="200dp"/>
-
-	</LinearLayout>
-
-	<com.ogaclejapan.smarttablayout.SmartTabLayout
-		android:id="@+id/tabs"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:stl_indicatorAlwaysInCenter="true"
-		app:stl_indicatorWithoutPadding="false"
-		app:stl_indicatorInFront="false"
-		app:stl_indicatorInterpolation="smart"
-		app:stl_indicatorGravity="bottom"
-		app:stl_indicatorColor="@color/colorAccentDarkThemeTrans"
-		app:stl_indicatorThickness="2dp"
-		app:stl_indicatorWidth="auto"
-		app:stl_indicatorCornerRadius="0dp"
-		app:stl_overlineColor="#4D000000"
-		app:stl_overlineThickness="0dp"
-		app:stl_underlineColor="#4D000000"
-		app:stl_underlineThickness="0dp"
-		app:stl_dividerColor="#4D000000"
-		app:stl_dividerThickness="0dp"
-		app:stl_defaultTabBackground="?attr/selectableItemBackground"
-		app:stl_defaultTabTextAllCaps="false"
-		app:stl_defaultTabTextColor="#ffffff"
-		app:stl_defaultTabTextHorizontalPadding="16dp"
-		app:stl_defaultTabTextMinWidth="0dp"
-		app:stl_distributeEvenly="false"
-		app:stl_clickable="true"
+			app:stl_indicatorAlwaysInCenter="true"
+			app:stl_indicatorWithoutPadding="false"
+			app:stl_indicatorInFront="false"
+			app:stl_indicatorInterpolation="smart"
+			app:stl_indicatorGravity="bottom"
+			app:stl_indicatorColor="@color/colorAccentDarkThemeTrans"
+			app:stl_indicatorThickness="2dp"
+			app:stl_indicatorWidth="auto"
+			app:stl_indicatorCornerRadius="0dp"
+			app:stl_overlineColor="#4D000000"
+			app:stl_overlineThickness="0dp"
+			app:stl_underlineColor="#4D000000"
+			app:stl_underlineThickness="0dp"
+			app:stl_dividerColor="#4D000000"
+			app:stl_dividerThickness="0dp"
+			app:stl_defaultTabBackground="?attr/selectableItemBackground"
+			app:stl_defaultTabTextAllCaps="false"
+			app:stl_defaultTabTextColor="#ffffff"
+			app:stl_defaultTabTextHorizontalPadding="16dp"
+			app:stl_defaultTabTextMinWidth="0dp"
+			app:stl_distributeEvenly="false"
+			app:stl_clickable="true"
 			app:stl_titleOffset="auto_center"
-		app:stl_drawDecorationAfterTab="true"/>
+			app:stl_drawDecorationAfterTab="true"/>
 
-	<android.support.v4.view.ViewPager
-		android:layout_height="match_parent"
-		android:layout_width="match_parent"
-		android:id="@+id/pager"/>
+		<android.support.v4.view.ViewPager
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:id="@+id/pager"
+			android:layout_below="@id/tabs"/>
+
+		<RelativeLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:background="#CC000000"
+			android:visibility="gone"
+			android:id="@+id/presetsmanagerlistholderRelativeLayout_Progress">
+
+			<ProgressBar
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:id="@+id/presetsmanagerlistholderProgressBar_Progress"
+				android:layout_centerInParent="true"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:text="Loading..."
+				android:id="@+id/presetsmanagerlistholderTextView_LoadMsg"
+				android:textColor="#FFFFFF"
+				android:gravity="center|center_vertical|center_horizontal"
+				android:layout_centerInParent="true"
+				android:layout_below="@id/presetsmanagerlistholderProgressBar_Progress"/>
+
+		</RelativeLayout>
+
+	</RelativeLayout>
 
 </LinearLayout>
 

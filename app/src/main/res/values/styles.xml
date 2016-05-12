@@ -45,7 +45,12 @@
         <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
 		
-		<style name="TransparentApp">
+		<style name="TransparentApp" parent="Theme.AppCompat.NoActionBar">
+        <item name="accentColor">@color/transparent</item>
+        <item name="iconColor">@android:color/white</item>
+        <item name="colorPrimary">@color/colorPrimaryDarkTheme</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/colorAccentDarkTheme</item>
         <item name="android:windowFrame">@color/transparent</item>
         <item name="android:windowTitleStyle">@null</item>
         <item name="android:windowBackground">@color/transparent</item>

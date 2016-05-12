@@ -19,6 +19,7 @@ import de.NeonSoft.neopowermenu.Preferences.*;
 import de.NeonSoft.neopowermenu.xposed.*;
 import java.io.*;
 import java.net.*;
+import de.NeonSoft.neopowermenu.permissionsScreen.*;
 
 public class MainActivity extends AppCompatActivity {
 		
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 		int versionCode = -1;
 		
 		/*<!-- Internal needed Hook version to check if reboot is needed --!>*/
-		public static int neededModuleActiveVersion = 17;
+		public static int neededModuleActiveVersion = 18;
 		
 		public static URL ImportUrl = null;
 		
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 		static Animation anim_fade_slide_out_right;
 		static Animation anim_fade_slide_in_right;
 
-		OnClickListener previewOnClickListener;
+		public static OnClickListener previewOnClickListener;
 		
 		AlertDialog.Builder adb;
 		
@@ -115,15 +116,17 @@ public class MainActivity extends AppCompatActivity {
 
 				TextView_ActionBarVersion.setText(versionName+" ("+versionCode+")");
 
-        android.support.v4.app.Fragment fragment = new PreferencesPartFragment();
         fragmentManager = getSupportFragmentManager();
+				if(preferences.getBoolean("DontAskPermissionsAgain",false) || permissionsScreen.checkPermissions(MainActivity.this,new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA})) {
+        android.support.v4.app.Fragment fragment = new PreferencesPartFragment();
         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-						.replace(R.id.pref_container, fragment).commit();
-
-						
+								.replace(R.id.pref_container, fragment).commit();
 						if (ImportUrl!=null) {
 								fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPresetsFragment()).commit();
 						}
+				} else {
+						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new permissionsScreen()).commit();
+				}
 						previewOnClickListener = new OnClickListener() {
 
 								@Override
@@ -217,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesColorFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("Advanced")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
-				} else if (visibleFragment.equalsIgnoreCase("Main")) {
+				} else if (visibleFragment.equalsIgnoreCase("Main") || visibleFragment.equalsIgnoreCase("permissions")) {
 						super.onBackPressed();
 				}
 		}
@@ -235,7 +238,9 @@ public class MainActivity extends AppCompatActivity {
 		public void onResume()
 		{
 				// TODO: Implement this method
-				setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+				if(!visibleFragment.equalsIgnoreCase("permissions")) {
+						setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+				}
 				super.onResume();
 		}
 		@Override

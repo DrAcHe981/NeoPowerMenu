@@ -19,20 +19,27 @@ import android.util.*;
 public class XposedMainActivity extends Activity implements DialogInterface.OnDismissListener {
 
 		public static SharedPreferences preferences;
-    private CircularRevealView revealView;
-		private TextView PreviewLabel;
-    private int backgroundColor;
+    private static CircularRevealView revealView;
+		private static TextView PreviewLabel;
+    private static int backgroundColor;
 		public static boolean mKeyguardShowing = false;
 		public static boolean previewMode = false;
     android.os.Handler handler;
-    int maxX, maxY;
+    static int maxX, maxY;
 		public static Context mContext;
+		public static boolean doubleToConfirm = false;
 
+		public static boolean HookShutdownThread = false;
+
+		public static String sStyleName = "Material";
+		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 				mContext =getApplicationContext();
 				preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
+				
+				sStyleName = preferences.getString("DialogTheme","Material");
 				
         setTheme(R.style.TransparentApp);
 				getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -72,7 +79,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         maxX = mdispSize.x;
         maxY = mdispSize.y;
 
-        final int color = Color.parseColor(preferences.getString("RevealBackground","#8800bcd4"));
+        final int color = Color.parseColor(preferences.getString("Reveal_Backgroundcolor","#8800bcd4"));
         final Point p = new Point(maxX / 2, maxY / 2);
 
         handler = new Handler();
@@ -99,7 +106,11 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				try {
         FragmentManager fm = getFragmentManager();
         XposedDialog powerDialog = new XposedDialog();
+				if(sStyleName.equalsIgnoreCase("Material")) {
 						powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
+						} else if (sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
+								powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.TransparentApp);
+						}
 						//fm.beginTransaction().add(R.id.powerfragment_holder,powerDialog).commit();
 						//powerDialog.setStyle(DialogFragment.STYLE_NO_FRAME, R.style.ThemeDialogBaseLight);
         powerDialog.show(fm, "fragment_power");
@@ -108,8 +119,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				}
     }
 
-    public void revealFromTop() {
-        final int color = Color.parseColor(preferences.getString("ActionRevealBackground","#ffffffff"));
+    public static void revealFromTop() {
+        final int color = Color.parseColor(preferences.getString("ActionReveal_Backgroundcolor","#ffffffff"));
 
         final Point p = new Point(maxX / 2, maxY / 2);
 
@@ -118,7 +129,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     }
 
-    public void revealToTop() {
+    public static void revealToTop() {
         final int color = Color.parseColor("#8800bcd4");
 
         final Point p = new Point(maxX / 2, maxY / 2);

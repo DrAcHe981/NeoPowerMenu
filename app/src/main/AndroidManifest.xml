@@ -30,6 +30,10 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
 						android:configChanges="orientation|screenSize">
+            <!--intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
@@ -61,7 +65,7 @@
 						<!-- Register to handle file opening -->
 						<intent-filter>
 								<data android:scheme="file"
-										android:mimeType="*/*"
+										android:mimeType="text/*"
 										android:pathPattern=".*\\.nps"/>
 
 								<action android:name="android.intent.action.VIEW" />
@@ -87,14 +91,10 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
 						android:configChanges="orientation|screenSize">
-            <intent-filter>
-                <action android:name="android.intent.action.CREATE_SHORTCUT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
 
         </activity>
 				<service
-						android:name=".xposed.service.ScreenRecordingService"
+						android:name=".services.ScreenRecordingService"
 						android:exported="true"
 						android:label="@string/app_name">
 				</service>

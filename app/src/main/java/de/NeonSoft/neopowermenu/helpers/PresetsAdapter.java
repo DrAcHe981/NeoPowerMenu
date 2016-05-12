@@ -11,22 +11,13 @@ import android.view.View.*;
 import android.content.*;
 import android.net.*;
 import java.nio.*;
+import android.os.*;
+import android.view.animation.*;
 
 public class PresetsAdapter extends ArrayAdapter<String>
 {
-
-		String[] lightPreset = {"#8800bcd4","#880097a7",
-				"#fff5f5f5","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
-				"#000000","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] darkPreset = {"#88121212","#8821272b",
-				"#ff212121","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
-				"#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] blackPreset = {"#88000000","#88000000",
-				"#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000",
-				"#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] ColorNames = {"RevealBackground","ActionRevealBackground",
-				"Dialog_Backgroundcolor","DialogShutdown_Backgroundcolor","DialogReboot_Backgroundcolor","DialogSoftReboot_Backgroundcolor","DialogScreenshot_Backgroundcolor","DialogScreenrecord_Backgroundcolor","DialogFlashlight_Backgroundcolor","DialogExpandedDesktop_Backgroundcolor","DialogRecovery_Backgroundcolor","DialogBootloader_Backgroundcolor","DialogSafeMode_Backgroundcolor",
-				"Dialog_Textcolor","DialogShutdown_Textcolor","DialogReboot_Textcolor","DialogSoftReboot_Textcolor","DialogScreenshot_Textcolor","DialogScreenrecord_Textcolor","DialogFlashlight_Textcolor","DialogExpandedDesktop_Textcolor","DialogRecovery_Textcolor","DialogBootloader_Textcolor","DialogSafeMode_Textcolor"};
+		
+		public static String selectedName = "";
 		
 		private final Activity context;
 		private final ArrayList<String> itemsTitle;
@@ -128,7 +119,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														// TODO: Implement this method
 														try
 														{
-																PresetsPage.progress.setVisibility(View.VISIBLE);
+																PreferencesPresetsFragment.progress.setVisibility(View.VISIBLE);
 														Intent shareIntent = new Intent(Intent.ACTION_SEND);
 														shareIntent.setType("text/rtf");
 																File prefile = new File(context.getFilesDir().getPath()+"/presets/"+itemsTitle.get(position)+".nps");
@@ -154,7 +145,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																
 														shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(tmpfile));
 																context.startActivity(shareIntent.createChooser(shareIntent,itemsTitle.get(position)));
-																PresetsPage.progress.setVisibility(View.GONE);
+																PreferencesPresetsFragment.progress.setVisibility(View.GONE);
 														}
 														catch (Throwable e)
 														{}
@@ -176,58 +167,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										try
-										{
-										String selectedName = itemsTitle.get(position);
-										if (position >= 3)
-										{
-														File presetFile = new File(context.getFilesDir().getPath()+"/presets/"+itemsTitle.get(position)+".nps");
-														FileInputStream fIn = new FileInputStream(presetFile);
-														BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
-														String aDataRow = ""; 
-														String aBuffer = ""; 
-														for (int i = 0;i < lightPreset.length;i++)
-														{
-																MainActivity.preferences.edit().putString(ColorNames[i], lightPreset[i]).commit();
-														}
-														while ((aDataRow = myReader.readLine()) != null)
-														{ 
-																aBuffer += aDataRow + "\n";
-																String aData[] = aDataRow.split("=");
-																if (!aData[0].equalsIgnoreCase("AppVersion"))
-																{
-																		MainActivity.preferences.edit().putString(aData[0], aData[1]).commit();
-																}
-														}
-										}
-										else
-										{
-												String[] preset = lightPreset;
-												if (position == 0)
-												{
-														preset = lightPreset;
-												}
-												else if (position == 1)
-												{
-														preset = darkPreset;
-												}
-												else if (position == 2)
-												{
-														preset = blackPreset;
-												}
-												for (int i = 0;i < preset.length;i++)
-												{
-														MainActivity.preferences.edit().putString(ColorNames[i], preset[i]).commit();
-												}
-										}
-										MainActivity.preferences.edit().putString("lastUsedPreset", itemsTitle.get(position)).commit();
-												Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetLoad_PresetLoaded).replace("[PRESETNAME]",selectedName),Toast.LENGTH_SHORT).show();
-										}
-										catch (Throwable e)
-										{
-												Toast.makeText(context.getApplicationContext(),"Failed to load: "+e,Toast.LENGTH_SHORT).show();
-										}
-										notifyDataSetChanged();
+										selectedName = itemsTitle.get(position);
+										new loadPreset().execute(selectedName);
 								}
 						});
 					}
@@ -274,4 +215,119 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				notifyDataSetChanged();
 		}
 
+		
+		class loadPreset extends AsyncTask<String, String, String>
+		{
+
+				@Override
+				protected void onPreExecute()
+				{
+						// TODO: Implement this method
+						PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
+						PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_in));
+						super.onPreExecute();
+				}
+				
+				@Override
+				protected String doInBackground(String[] p1)
+				{
+						// TODO: Implement this method
+						try
+						{
+								if (!p1[0].equalsIgnoreCase(context.getString(R.string.presetLoadDialog_BuiltInLight)) && !p1[0].equalsIgnoreCase(context.getString(R.string.presetLoadDialog_BuiltInDark)) && !p1[0].equalsIgnoreCase(context.getString(R.string.presetLoadDialog_BuiltInBlack)))
+								{
+										File presetFile = new File(context.getFilesDir().getPath()+"/presets/"+p1[0]+".nps");
+										FileInputStream fIn = new FileInputStream(presetFile);
+										BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
+										String aDataRow = ""; 
+										String aBuffer = ""; 
+										for (int i = 0;i < PreferencesColorFragment.ColorNames.length;i++)
+										{
+												String[] loadColor = PreferencesColorFragment.ColorNames[i][1].split("_");
+												if(loadColor.length>1) {
+														if (loadColor[1].contains("Background"))
+														{
+																MainActivity.preferences.edit().putString(loadColor[0]+"_Backgroundcolor", PreferencesColorFragment.lightPreset[i]).commit();
+														} else if (loadColor[1].contains("Text")) {
+																MainActivity.preferences.edit().putString(loadColor[0]+"_Textcolor", PreferencesColorFragment.lightPreset[i]).commit();
+														}
+														publishProgress("Reset to default...");
+												}
+										}
+
+										while ((aDataRow = myReader.readLine()) != null)
+										{ 
+												aBuffer += aDataRow + "\n";
+												String aData[] = aDataRow.split("=");
+												String[] loadColor = aData[0].split("_");
+												if (!aData[0].equalsIgnoreCase("AppVersion") && !aData[0].equalsIgnoreCase("Creator"))
+												{
+														MainActivity.preferences.edit().putString(aData[0], aData[1]).commit();
+														publishProgress(loadColor[0] +": "+aData[1]);
+												}
+										}
+								}
+								else
+								{
+										String[] preset = PreferencesColorFragment.lightPreset;
+										if (p1[0].equalsIgnoreCase(context.getString(R.string.presetLoadDialog_BuiltInLight)))
+										{
+												preset = PreferencesColorFragment.lightPreset;
+										}
+										else if (p1[0].equalsIgnoreCase(context.getString(R.string.presetLoadDialog_BuiltInDark)))
+										{
+												preset = PreferencesColorFragment.darkPreset;
+										}
+										else if (p1[0].equalsIgnoreCase(context.getString(R.string.presetLoadDialog_BuiltInBlack)))
+										{
+												preset = PreferencesColorFragment.blackPreset;
+										}
+										for (int i = 0;i < PreferencesColorFragment.ColorNames.length;i++)
+										{
+												String[] loadColor = PreferencesColorFragment.ColorNames[i][1].split("_");
+												if(loadColor.length>1) {
+														if (loadColor[1].contains("Background"))
+														{
+																MainActivity.preferences.edit().putString(loadColor[0]+"_Backgroundcolor", preset[i]).commit();
+														} else if (loadColor[1].contains("Text")) {
+																MainActivity.preferences.edit().putString(loadColor[0]+"_Textcolor", preset[i]).commit();
+														}
+														publishProgress(loadColor[0] +": "+preset[i]);
+												}
+										}
+								}
+								return "success";
+						}
+						catch (Throwable e)
+						{
+								return e.toString();
+						}
+				}
+
+				@Override
+				protected void onProgressUpdate(String[] p1)
+				{
+						// TODO: Implement this method
+						super.onProgressUpdate(p1);
+						PreferencesPresetsFragment.LoadingMsg.setText("Loading...\n"+p1[0]);
+				}
+				
+				@Override
+				protected void onPostExecute(String p1)
+				{
+						// TODO: Implement this method
+						super.onPostExecute(p1);
+						if(p1.equalsIgnoreCase("success")) {
+								MainActivity.preferences.edit().putString("lastUsedPreset", selectedName).commit();
+								Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetLoad_PresetLoaded).replace("[PRESETNAME]",selectedName),Toast.LENGTH_SHORT).show();
+						} else {
+								Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetsManager_ImportFailed)+"\n"+p1,Toast.LENGTH_SHORT).show();
+						}
+						PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_out));
+						PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
+						notifyDataSetChanged();
+				}
+				
+		}
+		
 }

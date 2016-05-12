@@ -19,6 +19,7 @@ import android.support.v4.app.FragmentManager;
 import de.NeonSoft.neopowermenu.R;
 import android.view.View.*;
 import android.util.*;
+import android.view.animation.*;
 
 public class PreferencesPresetsFragment extends Fragment
 {
@@ -28,7 +29,10 @@ public class PreferencesPresetsFragment extends Fragment
 		public static String sCreator = "< unknown >";
 		public static String newUrl;
 		public static boolean Importcancled = false;
-		
+
+		public static RelativeLayout progressHolder;
+		public static ProgressBar progress;
+		public static TextView LoadingMsg;
 		
 		public static Activity mContext;
 		
@@ -53,6 +57,20 @@ public class PreferencesPresetsFragment extends Fragment
 				tabsStrip.setCustomTabView(R.layout.customtab,R.id.customTabText);
 				
         tabsStrip.setViewPager(vpPager);
+
+				progressHolder = (RelativeLayout) InflatedView.findViewById(R.id.presetsmanagerlistholderRelativeLayout_Progress);
+				progressHolder.setVisibility(View.GONE);
+				progress = (ProgressBar) InflatedView.findViewById(R.id.presetsmanagerlistholderProgressBar_Progress);
+				LoadingMsg = (TextView) InflatedView.findViewById(R.id.presetsmanagerlistholderTextView_LoadMsg);
+				
+				progressHolder.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// Just prevent touch trough...
+								}
+						});
 				
 				return InflatedView;
 		}
@@ -197,7 +215,8 @@ public class PreferencesPresetsFragment extends Fragment
 				protected void onPreExecute()
 				{
 						// TODO: Implement this method
-						PresetsPage.progress.setVisibility(View.VISIBLE);
+						progressHolder.setVisibility(View.VISIBLE);
+						progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 						super.onPreExecute();
 				}
 				
@@ -231,6 +250,8 @@ public class PreferencesPresetsFragment extends Fragment
 								//aBuffer += aDataRow + "\n";
 								myWriter.write(aDataRow + "\n");
 								String[] aData = aDataRow.split("=");
+								String[] loadColor = aData[0].split("_");
+								publishProgress(loadColor[0] +": "+aData[1]);
 								if (aData[0].equalsIgnoreCase("Creator")) {
 										presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
 								}
@@ -251,6 +272,7 @@ public class PreferencesPresetsFragment extends Fragment
 				{
 						// TODO: Implement this method
 						super.onProgressUpdate(values);
+						LoadingMsg.setText("Loading...\n"+values[0]);
 				}
 				
 				@Override
@@ -258,7 +280,8 @@ public class PreferencesPresetsFragment extends Fragment
 				{
 						// TODO: Implement this method
 						super.onPostExecute(result);
-						PresetsPage.progress.setVisibility(View.GONE);
+						progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
+						progressHolder.setVisibility(View.GONE);
 						if (result.equalsIgnoreCase("true")) {
 								if(newPresetAdded) {
 										adapter.insert(presetInfo);

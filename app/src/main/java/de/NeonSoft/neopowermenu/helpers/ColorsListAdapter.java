@@ -43,6 +43,8 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 				// TODO: Implement this method
 				LinearLayout root;
 				final TextView Title,Preview,Desc;
+				final String[] loadColor;
+				final String colorType;
 				String rowType = getItemType(p1);
 						switch (rowType) {
 								case TYPE_LOAD:
@@ -159,7 +161,15 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																										fw.append("Creator=a "+android.os.Build.MANUFACTURER+" " +android.os.Build.MODEL+ " user\n");
 																								}
 																								for (int i=0;i<colorNamesArray.length;i++) {
-																										fw.append(colorNamesArray[i][1]+"="+MainActivity.preferences.getString(colorNamesArray[i][1],"#ffffffff")+"\n");
+																										String[] loadColor = colorNamesArray[i][1].split("_");
+																										if(loadColor.length>1) {
+																												if (loadColor[1].contains("Background"))
+																												{
+																														fw.append(loadColor[0]+"_Backgroundcolor="+MainActivity.preferences.getString(loadColor[0]+"_Backgroundcolor","#ffffffff")+"\n");
+																												} else if (loadColor[1].contains("Text")) {
+																														fw.append(loadColor[0]+"_Textcolor="+MainActivity.preferences.getString(loadColor[0]+"_Textcolor","#ffffff")+"\n");
+																												}
+																										}
 																								}
 																								fw.close();
 																								MainActivity.preferences.edit().putString("lastUsedPreset",Input.getText().toString()).commit();
@@ -177,31 +187,41 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 										break;
 								case TYPE_ITEM:
 										InflatedView = mInflater.inflate(R.layout.colorslistitem,null);
-
+										
+										loadColor = colorNamesArray[p1][1].split("_");
+										
 										root = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Root);
 										Preview = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Preview);
 										Title = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Text);
 										Desc = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Desc);
 										String currentColor = "#ff0000";
+										colorType = "";
 										try {
-												currentColor = MainActivity.preferences.getString(colorNamesArray[p1][1],defaultColors[p1]);
+												String title = "";
+												if(loadColor[1].contains("Background")) {
+														colorType = "_Backgroundcolor";
+														title = context.getString(R.string.colorsType_Background);
+														try {
+																String Description = context.getResources().getString(context.getResources().getIdentifier("colorsDesc_"+loadColor[0],"string",MainActivity.class.getPackage().getName()));
+																Desc.setText(Description);
+														} catch (Throwable t) {
+																Desc.setText("String Resource for colorsDesc_" + loadColor[0]+" not found.");
+														}
+												} else {
+														colorType = "_Textcolor";
+														Desc.setVisibility(View.GONE);
+														title = context.getString(R.string.colorsType_Text);//context.getResources().getString(context.getResources().getIdentifier(colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
+												}
+												Title.setText(title);
+										} catch (Throwable t) {
+												Title.setText("String Resource for "+ loadColor[0]+" not found.");
+										}
+										try {
+												currentColor = MainActivity.preferences.getString(loadColor[0]+colorType,defaultColors[p1]);
 										} catch (Throwable t) {
 												Preview.setText("Error");
 										}
-										
 										Preview.setBackgroundColor(Color.parseColor(currentColor));
-										try {
-												String title = context.getResources().getString(context.getResources().getIdentifier(colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
-												Title.setText(title);
-										} catch (Throwable t) {
-												Title.setText("String Resource for "+ colorNamesArray[p1][1]+" not found.");
-										}
-										try {
-												String Description = context.getResources().getString(context.getResources().getIdentifier(colorNamesArray[p1][1].toString()+"Desc","string",MainActivity.class.getPackage().getName()));
-												Desc.setText(Description);
-										} catch (Throwable t) {
-												Desc.setText("String Resource for " + colorNamesArray[p1][1]+"Desc not found.");
-										}
 
 										root.setOnClickListener(new OnClickListener() {
 
@@ -209,7 +229,8 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 														public void onClick(View view)
 														{
 																// TODO: Implement this method
-																PreferencesColorFragment.showColorPicker(Preview,colorNamesArray[p1][1].toString(),MainActivity.preferences.getString(colorNamesArray[p1][1].toString(),defaultColors[p1].toString()),(defaultColors[p1].toString().length()==7) ? false : true);
+																//Toast.makeText(context,"Loaded color: "+loadColor[0]+colorType,Toast.LENGTH_LONG).show();
+																PreferencesColorFragment.showColorPicker(Preview,loadColor[0]+colorType,MainActivity.preferences.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
 														}
 												});
 										break;
@@ -217,10 +238,10 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 										InflatedView = mInflater.inflate(R.layout.listheader,null);
 										Title = (TextView) InflatedView.findViewById(R.id.listheaderTextView_Title);
 										try {
-												String title = context.getResources().getString(context.getResources().getIdentifier("category_"+colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
+												String title = context.getResources().getString(context.getResources().getIdentifier("colorsCategory_"+colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
 												Title.setText(title);
 										} catch (Throwable t) {
-												Title.setText("String Resource for catehory_"+ colorNamesArray[p1][1]+" not found.");
+												Title.setText("String Resource for colorsCategory_"+ colorNamesArray[p1][1]+" not found.");
 										}
 										InflatedView.setEnabled(false);
 										break;
