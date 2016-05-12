@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">"NeoPowerMenu"</string>
-<string name="action_settings">"Ustawienia"</string>
 <string name="ShareMessage">"Sprawdź tą świetną aplikację, która odmieni menu zasilania twojego zrootowanego urządzenia!
 
 
@@ -35,7 +34,6 @@ Aktywuj moduł w Xposed Installer."</string>
 <string name="preferencesDesc_RootXposed4">"Aplikacja powinna śmigać!"</string>
 <string name="preferencesCategory_General">"Ogólne"</string>
 <string name="preferencesTitle_Style">"Styl"</string>
-<string name="preferencesDesc_Style">"[STYLENAME] (Więcej wkrótce)"</string>
 <string name="preferencesTitle_Theme">"Motyw"</string>
 <string name="preferencesDesc_Theme">"Zmień wygląd i odczucia."</string>
 <string name="preferencesTitle_VisibilityOrder">"Widoczność i kolejność"</string>
@@ -50,9 +48,6 @@ Ustawienia będą dostępne jedynie przez Xposed Installer.
 <string name="preferencesCategory_About">"O aplikacji"</string>
 <string name="preferencesTitle_NeoSource">"Źródło"</string>
 <string name="preferencesDesc_NeoSource">"Aplikacja ma otwarte źródło.
-Sprawdź źródła na GitHub"</string>
-<string name="preferencesTitle_OrigSource">"Orginalne źródło"</string>
-<string name="preferencesDesc_OrigSource">"Orginalna aplikacja Material Power Menu ma otwarte źródła.
 Sprawdź źródła na GitHub"</string>
 <string name="preferencesTitle_Share">"Udostępnij"</string>
 <string name="preferencesDesc_Share">"Lubisz tą aplikację? Podziel się nią ze znajomymi!"</string>
@@ -75,46 +70,6 @@ Sprawdź źródła na GitHub"</string>
 <string name="preset_LoadDesc">"Wczytaj gotową konfigurację."</string>
 <string name="preset_Save">"Zapisz szablon"</string>
 <string name="preset_SaveDesc">"Zapisz swoją obecną konfigurację."</string>
-
-<!-- Preferences: Background colors -->
-<string name="category_Reveal">"Tła odsłaniania"</string>
-<string name="category_Backgrounds">"Kolory tła"</string>
-<string name="Dialog_Backgroundcolor">"Kolor tła"</string>
-<string name="Dialog_BackgroundcolorDesc">"Kolor tła komunikatu."</string>
-<string name="DialogShutdown_Backgroundcolor">"Kolor tła Wyłączenia"</string>
-<string name="DialogShutdown_BackgroundcolorDesc">"Kolor tła komunikatu, który wyświetla się po wybraniu Wyłączenia."</string>
-<string name="DialogReboot_Backgroundcolor">"Kolor tła Ponownego Uruchomienia"</string>
-<string name="DialogReboot_BackgroundcolorDesc">"Kolor tła komunikatu, który wyświetla się po wybraniu Ponownego Uruchomienia."</string>
-<string name="DialogSoftReboot_Backgroundcolor">"Kolor tła Szybkiego Restartu"</string>
-<string name="DialogSoftReboot_BackgroundcolorDesc">"Kolor tła komunikatu, który wyświetla się po wybraniu Szybkiego Restartu."</string>
-<string name="DialogScreenshot_Backgroundcolor">"Kolor tła zrzutu ekranu"</string>
-<string name="DialogScreenshot_BackgroundcolorDesc">"Kolor tła koła zrzutu ekranu."</string>
-<string name="DialogRecovery_Backgroundcolor">"Kolor tła Recovery"</string>
-<string name="DialogRecovery_BackgroundcolorDesc">"Kolor tła komunikatu, który wyświetla się po wybraniu Recovery."</string>
-<string name="DialogBootloader_Backgroundcolor">"Kolor tła Bootloadera"</string>
-<string name="DialogBootloader_BackgroundcolorDesc">"Kolor tła komunikatu, który wyświetla się po wybraniu Bootloadera."</string>
-<string name="DialogSafeMode_Backgroundcolor">"Kolor tła Trybu Bezpiecznego"</string>
-<string name="DialogSafeMode_BackgroundcolorDesc">"Kolor tła komunikatu, który wyświetla się po wybraniu Trybu Bezpiecznego."</string>
-
-<!-- Preferences: Text colors -->
-<string name="category_Texts">"Kolory tekstu"</string>
-<string name="Dialog_Textcolor">"Kolor tekstu"</string>
-<string name="Dialog_TextcolorDesc">"Kolor tekstu komunikatu."</string>
-<string name="DialogShutdown_Textcolor">"Kolor tekstu Wyłączenia"</string>
-<string name="DialogShutdown_TextcolorDesc">"Kolor tekstu komunikatu, który wyświetla się po wybraniu Wyłączenia."</string>
-<string name="DialogReboot_Textcolor">"Kolor teksktu Ponownego Uruchomienia"</string>
-<string name="DialogReboot_TextcolorDesc">"Kolor tekstu komunikatu, który wyświetla się po wybraniu Ponownego Uruchomienia."</string>
-<string name="DialogSoftReboot_Textcolor">"Kolor tekstu Szybkiego Restartu"</string>
-<string name="DialogSoftReboot_TextcolorDesc">"Kolor tekstu komunikatu, który wyświetla się po wybraniu Szybkiego Restartu."</string>
-<string name="DialogScreenshot_Textcolor">"Kolor tekstu zrzutu ekranu"</string>
-<string name="DialogScreenshot_TextcolorDesc">"Tekst litery w kole zrzutu ekranu."</string>
-<string name="DialogRecovery_Textcolor">"Kolor tekstu Recovery"</string>
-<string name="DialogRecovery_TextcolorDesc">"Kolor tekstu komunikatu, który wyświetla się po wybraniu Recovery.
-"</string>
-<string name="DialogBootloader_Textcolor">"Kolor tekstu Bootloadera"</string>
-<string name="DialogBootloader_TextcolorDesc">"Kolor tekstu komunikatu, który wyświetla się po wybraniu Bootloadera."</string>
-<string name="DialogSafeMode_Textcolor">"Kolor tekstu Trybu Bezpiecznego"</string>
-<string name="DialogSafeMode_TextcolorDesc">"Kolor tekstu komunikatu, który wyświetla się po wybraniu Trybu Bezpiecznego."</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Lokalne szablony"</string>
@@ -164,13 +119,44 @@ Tego nie można cofnąć!"</string>
 <string name="presetLoadDialog_BuiltInDark">"Ciemny"</string>
 <string name="presetLoadDialog_BuiltInBlack">"Czarny"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] usunięty!"</string>
-<string name="presetLoad_CantDelBuiltIn">"Wbudowane szablony nie mogą zostać usunięte!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] załadowany!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Szablon stworzony przez:"</string>
 <string name="presetSaveDialog_InfoText">"Nazwij swój szablon:"</string>
 <string name="presetSaveDialog_OverwriteText">"Plik o takiej nazwie istnieje i zostanie nadpisany!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] zapisany!"</string>
-<string name="ToggleShow">"Pokaż"</string>
-<string name="ToggleHide">"Ukryj"</string>
 <string name="presetsManager_Title">"Szablony"</string>
+<string name="powerMenuMain_Screenrecord">"Nagrywanie ekranu"</string>
+<string name="preferencesTitle_RootXposed5">"Wersja Xposed jest zbyt stara"</string>
+<string name="preferencesDesc_RootXposed5">"Uruchom urządzenie ponownie, by dokończyć proces aktualizacji."</string>
+<string name="preferencesTitle_DeepXposedLogging">"Zaawansowane logi Xposed"</string>
+<string name="preferencesDesc_DeepXposedLogging">"Włącz zaawansowane logi Xposed, zmiany będą widoczne po restarcie."</string>
+<string name="visibilityOrderDesc_Screenrecord">"Nagraj ekran poprzez menu zasilania."</string>
+
+<!-- Screen recording -->
+<string name="screenrecord_notif_ticker">"Nagrywanie ekranu rozpoczęte"</string>
+<string name="screenrecord_notif_title">"Nagrywanie ekranu"</string>
+<string name="screenrecord_notif_stop">"Zatrzymaj"</string>
+<string name="screenrecord_notif_pointer">"Przełącz widok kursora"</string>
+<string name="screenrecord_toast_error">"Nie można nagrać ekranu"</string>
+<string name="screenrecord_toast_processing">"Nie można nagrać ekranu, ponieważ poprzednie nagranie jest nadal przetwarzane."</string>
+<string name="screenrecord_toast_saved">"Zapisano nagranie jako %s"</string>
+<string name="screenrecord_toast_save_error">"Nie można zapisać nagrania"</string>
+<string name="powerMenuMain_FlashlightOff">"Wyłącz latarkę"</string>
+<string name="powerMenuMain_FlashlightDesc">"Latarka wyłączy się automatycznie po [AUTOOF]."</string>
+<string name="powerMenuMain_FlashlightDescDisabled">"Automatyczne wyłączenie latarki wyłączone."</string>
+<string name="powerMenuMain_ExpandedDesktop">"Rozszerzony pulpit"</string>
+<string name="visibilityOrderDesc_Flashlight">"Włącz latarkę w menu zasilania"</string>
+<string name="visibilityOrderDesc_ExpandedDesktop">"Włącz modyfikację rozszerzonego pulpitu z GravityBoxa (wymaga GravityBox)."</string>
+<string name="advancedPrefsTitle_DialogGravity">"Pozycja okna"</string>
+<string name="advancedPrefsDesc_DialogGravity">"Zmień pozycję okna menu zasilania."</string>
+<string name="advancedPrefs_DialogGravityTop">"Góra"</string>
+<string name="advancedPrefs_DialogGravityLeft">"Lewo"</string>
+<string name="advancedPrefs_DialogGravityCenter">"Środek"</string>
+<string name="advancedPrefs_DialogGravityRight">"Prawo"</string>
+<string name="advancedPrefs_DialogGravityBottom">"Dół"</string>
+
+<!-- Torch -->
+<string name="quick_settings_torch_on">"Latarka włączona"</string>
+<string name="quick_settings_torch_off">"Latarka wyłączona"</string>
+<string name="quick_settings_torch_off_notif">"Dotknij aby wyłączyć"</string>
 </resources>
