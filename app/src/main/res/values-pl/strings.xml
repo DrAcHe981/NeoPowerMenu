@@ -101,7 +101,6 @@ Tego nie można cofnąć!"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Opóźnienie między animacją i pojawieniem się menu zasilania"</string>
 
 <!-- Dialog -->
-<string name="Dialog_WaitForRoot">"Czekam na roota..."</string>
 <string name="Dialog_Ok">"Ok"</string>
 <string name="Dialog_Yes">"Tak"</string>
 <string name="Dialog_Rename">"Zmień nazwę"</string>
@@ -124,7 +123,6 @@ Tego nie można cofnąć!"</string>
 <string name="presetSaveDialog_InfoText">"Nazwij swój szablon:"</string>
 <string name="presetSaveDialog_OverwriteText">"Plik o takiej nazwie istnieje i zostanie nadpisany!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] zapisany!"</string>
-<string name="presetsManager_Title">"Szablony"</string>
 <string name="powerMenuMain_Screenrecord">"Nagrywanie ekranu"</string>
 <string name="preferencesTitle_RootXposed5">"Wersja Xposed jest zbyt stara"</string>
 <string name="preferencesDesc_RootXposed5">"Uruchom urządzenie ponownie, by dokończyć proces aktualizacji."</string>
@@ -159,4 +157,5 @@ Tego nie można cofnąć!"</string>
 <string name="quick_settings_torch_on">"Latarka włączona"</string>
 <string name="quick_settings_torch_off">"Latarka wyłączona"</string>
 <string name="quick_settings_torch_off_notif">"Dotknij aby wyłączyć"</string>
+<string name="powerMenuMain_AirplaneMode">"Tryb samolotowy"</string>
 </resources>
