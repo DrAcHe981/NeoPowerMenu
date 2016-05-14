@@ -39,11 +39,14 @@ Please activate the module in the Xposed installer."</string>
 <string name="preferencesDesc_VisibilityOrder">"Select the items you want to show and order them as you wish."</string>
 <string name="preferencesCategory_Other">"Other"</string>
 <string name="preferencesTitle_Advanced">"Advanced Settings"</string>
-<string name="preferencesDesc_Advanced">"Change advanced settings like delays, gravity or speed."</string>
+		<string name="preferencesDesc_Advanced">"Change advanced settings like delays, gravity or speed."</string>
+		<string name="preferencesTitle_Permissions">"Permissions"</string>
+<string name="preferencesDesc_Permissions">"Show the used Permissions and see for what they are used.
+Grant additional permissions that are not added on first start (Android 6.0+)."</string>
 <string name="preferencesTitle_HideLauncherIcon">"Hide app in launcher"</string>
 <string name="preferencesDesc_HideLauncherIcon">"Hides the app icon in the launcher, it can take up to a reboot to hide the icon.
 This Settings screen will only be accessible via the Xposed Installer then."</string>
-<string name="preferencesCategory_About">"About"</string>
+		<string name="preferencesCategory_About">"About"</string>
 <string name="preferencesTitle_NeoSource">"Source"</string>
 <string name="preferencesDesc_NeoSource">"NeoPowerMenu is open source.
 Check out the source on GitHub."</string>
@@ -64,6 +67,7 @@ Check out the source on GitHub."</string>
 <string name="visibilityOrderDesc_SoftReboot">"Simply restarts the Android UI by killing the zygote process"</string>
 <string name="visibilityOrderDesc_Screenshot">"Take Screenshots via the Power Menu."</string>
 <string name="visibilityOrder_Enabled">"Enabled:"</string>
+		<string name="visibilityOrder_HideDesc">"Hide description"</string>
 <string name="category_Preset">"Presets"</string>
 <string name="preset_Load">"Load preset"</string>
 <string name="preset_LoadDesc">"Load a saved configuration"</string>
@@ -100,7 +104,6 @@ This can't be undone!"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Delay between showing the reveal animation and the power menu."</string>
 
 <!-- Dialog -->
-<string name="Dialog_WaitForRoot">"Waiting for Root..."</string>
 <string name="Dialog_Ok">"Ok"</string>
 <string name="Dialog_Yes">"Yes"</string>
 <string name="Dialog_Rename">"Rename"</string>
@@ -123,7 +126,6 @@ This can't be undone!"</string>
 <string name="presetSaveDialog_InfoText">"Set a name for the preset:"</string>
 <string name="presetSaveDialog_OverwriteText">"Already existing, preset will be overwritten!"</string>
 <string name="presetSave_PresetSaved">"Saved [PRESETNAME]!"</string>
-<string name="presetsManager_Title">"Presets"</string>
 <string name="powerMenuMain_Screenrecord">"Screenrecord"</string>
 <string name="preferencesTitle_RootXposed5">"Hooked Module version is to low..."</string>
 <string name="preferencesDesc_RootXposed5">"Please restart your device to complete the update process!"</string>
@@ -162,13 +164,14 @@ This can't be undone!"</string>
 <string name="powerMenuMain_RestartUI">"Restart System UI"</string>
 
 <!-- Preferences: Colors -->
+		<string name="colorsCategory_Presets">"Presets"</string>
 <string name="colorsType_Background">"Background color"</string>
 <string name="colorsType_Text">"Text color"</string>
 <string name="colorsCategory_Reveal">"Reveal backgrounds"</string>
 <string name="colorsDesc_Reveal">"The color of the reveal animation."</string>
 <string name="colorsDesc_ActionReveal">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsCategory_Main">"Dialog colors"</string>
-<string name="colorsDesc_Dialog">"The colors of the dialog."</string>
+<string name="colorsDesc_DialogMain">"The colors of the dialog."</string>
 <string name="colorsCategory_Shutdown">"Shutdown colors"</string>
 <string name="colorsDesc_DialogShutdown">"The colors of the dialog when clicked on Shutdown."</string>
 <string name="colorsCategory_Reboot">"Reboot colors"</string>
@@ -180,9 +183,13 @@ This can't be undone!"</string>
 <string name="colorsCategory_Screenrecord">"Screenrecord colors"</string>
 <string name="colorsDesc_DialogScreenrecord">"The colors from the Screenrecord button."</string>
 <string name="colorsCategory_Flashlight">"Torch colors"</string>
-<string name="colorsDesc_DialogFlashlight">"The colors from the Torch toggle."</string>
+<string name="colorsDesc_DialogFlashlight">"The colors from the Torch button."</string>
 <string name="colorsCategory_ExpandedDesktop">"Expanded Desktop colors"</string>
-<string name="colorsDesc_DialogExpandedDesktop">"The colors from the Expanded Desktop toggle."</string>
+		<string name="colorsDesc_DialogExpandedDesktop">"The colors from the Expanded Desktop button."</string>
+		<string name="colorsCategory_AirplaneMode">"Airplane Mode colors"</string>
+		<string name="colorsDesc_DialogAirplaneMode">"The colors from the Airplane Mode button."</string>
+		<string name="colorsCategory_RestartUI">"Restart System UI colors"</string>
+		<string name="colorsDesc_DialogRestartUI">"The colors from the Restart System UI button."</string>
 <string name="colorsCategory_Recovery">"Recovery colors"</string>
 <string name="colorsDesc_DialogRecovery">"The colors of the dialog when clicked on Recovery."</string>
 <string name="colorsCategory_Bootloader">"Bootloader colors"</string>
@@ -202,5 +209,13 @@ This can't be undone!"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Needed for future functions (little tip: custom images)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
-<string name="permissionsScreenDesc_android.permission.CAMERA">"Needed to toggle the Torch."</string>
+		<string name="permissionsScreenDesc_android.permission.CAMERA">"Needed to toggle the Torch."</string>
+		<string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
+		<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Needed for the screen recorder to record the screen."</string>
+		<string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
+		<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Needed to Record audio with the screen recorder."</string>
+		<string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
+		<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Needed to display the Power Menu on top of everything."</string>
+		<string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
+		<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Needed to prevent killing of the torch and screenrecord service."</string>
 </resources>

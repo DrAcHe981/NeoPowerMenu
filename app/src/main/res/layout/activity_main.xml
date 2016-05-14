@@ -30,16 +30,9 @@
 					android:id="@+id/mainLinearLayout_Button"
 					android:layout_alignParentRight="true"
 					android:gravity="center_vertical"
-					android:paddingRight="10dp"
+					android:paddingRight="3dp"
 					android:paddingLeft="10dp"
 					android:visibility="visible">
-
-					<ImageView
-						android:layout_height="35dp"
-						android:layout_width="35dp"
-						android:src="@drawable/ic_editor_publish"
-						android:padding="3dp"
-						android:id="@+id/mainImageView_Button"/>
 
 					<TextView
 						android:layout_height="wrap_content"
@@ -53,6 +46,13 @@
 						android:focusableInTouchMode="true"
 						android:singleLine="true"
 						android:textColor="#FFFFFF"/>
+
+					<ImageView
+						android:layout_height="35dp"
+						android:layout_width="35dp"
+						android:src="@drawable/ic_content_send"
+						android:padding="3dp"
+						android:id="@+id/mainImageView_Button"/>
 
 				</LinearLayout>
 
@@ -96,7 +96,7 @@
 			</RelativeLayout>
 
 			<TextView
-				android:layout_height="2dp"
+				android:layout_height="1dp"
 				android:layout_width="match_parent"
 				android:background="@color/colorPrimaryDarkDarkTheme"/>
 

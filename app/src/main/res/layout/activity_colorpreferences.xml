@@ -11,38 +11,6 @@
 		android:layout_height="match_parent"
 		android:orientation="vertical">
 
-		<View
-			android:layout_height="0dp"
-			android:layout_width="wrap_content"
-			android:background="@color/transparent"/>
-
-		<LinearLayout
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:orientation="vertical"
-			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="10dp">
-
-			<TextView
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:text="@string/category_Preset"
-				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:gravity="center|center_vertical|center_horizontal"
-				android:paddingLeft="10dp"
-				android:paddingRight="10dp"/>
-
-			<TextView
-				android:layout_height="2dp"
-				android:layout_width="match_parent"
-				android:background="@color/colorAccentDarkTheme"
-				android:layout_marginRight="5dp"
-				android:layout_marginLeft="5dp"
-				android:alpha="0.5"
-				android:minWidth="200dp"/>
-
-		</LinearLayout>
-
 		<ListView
 			android:layout_height="match_parent"
 			android:layout_width="match_parent"

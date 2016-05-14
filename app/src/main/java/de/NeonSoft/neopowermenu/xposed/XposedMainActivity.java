@@ -12,6 +12,7 @@ import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import android.util.*;
+import android.animation.*;
 
 /**
  * Created by naman on 20/03/15.
@@ -32,6 +33,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		public static boolean HookShutdownThread = false;
 
 		public static String sStyleName = "Material";
+		XposedDialog powerDialog;
 		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,13 +84,33 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         final int color = Color.parseColor(preferences.getString("Reveal_Backgroundcolor","#8800bcd4"));
         final Point p = new Point(maxX / 2, maxY / 2);
 
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+				
+				BroadcastReceiver mReceiver = new BroadcastReceiver() {
+
+						@Override
+						public void onReceive(Context p1, Intent p2)
+						{
+								// TODO: Implement this method
+								if(p2.getAction().equalsIgnoreCase(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+										powerDialog.dismiss();
+								} else if(p2.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_OFF)) {
+										finish();
+								}
+						}
+				};
+				
+				registerReceiver(mReceiver,filter);
+				
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                revealView.reveal(p.x, p.y, color, 2, 440, null);
+                revealView.reveal(p.x, p.y, color, 0, 340, null);
             }
-        }, 100);
+        }, 50);
 
 
         handler = new Handler();
@@ -97,15 +119,23 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             public void run() {
                 showPowerDialog();
             }
-        }, 440);
+        }, 240);
 
 
     }
 
+		@Override
+		protected void onPause()
+		{
+				// TODO: Implement this method
+				super.onPause();
+				powerDialog.dismiss();
+		}
+		
     private void showPowerDialog() {
 				try {
         FragmentManager fm = getFragmentManager();
-        XposedDialog powerDialog = new XposedDialog();
+        powerDialog = new XposedDialog();
 				if(sStyleName.equalsIgnoreCase("Material")) {
 						powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
 						} else if (sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
@@ -124,7 +154,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         final Point p = new Point(maxX / 2, maxY / 2);
 
-        revealView.reveal(p.x, p.y, color, 2, 440, null);
+        revealView.reveal(p.x, p.y, color, 0, 340, null);
 
 
     }
@@ -134,7 +164,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         final Point p = new Point(maxX / 2, maxY / 2);
 
-        revealView.reveal(p.x, p.y, color, 2, 440, null);
+        revealView.reveal(p.x, p.y, color, 0, 340, null);
 
 
     }
@@ -148,7 +178,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
+                revealView.hide(p.x, p.y, backgroundColor, 0, 340, null);
             }
         }, 300);
         handler = new Handler();

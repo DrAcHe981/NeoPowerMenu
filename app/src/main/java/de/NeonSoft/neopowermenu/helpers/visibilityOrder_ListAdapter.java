@@ -5,6 +5,7 @@ import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import java.util.*;
 import java.io.*;
+import android.widget.CompoundButton.*;
 
 public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 {
@@ -33,8 +34,26 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 				
 				TextView ItemTitle = (TextView) rowView.findViewById(R.id.title);
 				TextView ItemDesc = (TextView) rowView.findViewById(R.id.text);
+				LinearLayout ItemCheckBoxHolder = (LinearLayout) rowView.findViewById(R.id.listitemhandleleftLinearLayout_HideDesc);
+				final CheckBox ItemCheckBox = (CheckBox) rowView.findViewById(R.id.hideDescCheckBox);
+				ItemCheckBox.setClickable(false);
+				ItemCheckBox.setFocusable(false);
 				Switch ItemSwitch = (Switch) rowView.findViewById(R.id.Switch);
 
+				if (this.itemsTitle.get(position).equalsIgnoreCase("SoftReboot") || this.itemsTitle.get(position).equalsIgnoreCase("Screenshot") || this.itemsTitle.get(position).equalsIgnoreCase("Flashlight")) {
+						ItemCheckBox.setChecked(MainActivity.preferences.getBoolean(this.itemsTitle.get(position)+"_HideDesc",false));
+						ItemCheckBoxHolder.setVisibility(View.VISIBLE);
+						ItemCheckBoxHolder.setOnClickListener(new OnClickListener() {
+
+										@Override
+										public void onClick(View p1)
+										{
+												ItemCheckBox.setChecked(!ItemCheckBox.isChecked());
+												MainActivity.preferences.edit().putBoolean(itemsTitle.get(position)+"_HideDesc",ItemCheckBox.isChecked()).commit();
+										}
+								});
+				}
+				
 				try {
 						String titleStr = context.getResources().getString(context.getResources().getIdentifier("powerMenuMain_"+this.itemsTitle.get(position),"string",MainActivity.class.getPackage().getName()));
 						ItemTitle.setText(titleStr);

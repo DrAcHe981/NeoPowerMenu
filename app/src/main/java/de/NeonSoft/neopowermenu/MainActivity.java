@@ -69,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
 				
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+				{
+						getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+						getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDarkDarkTheme));
+						getWindow().setNavigationBarColor(getResources().getColor(R.color.window_background_dark));
+				}
 				
 				anim_fade_out = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
 				anim_fade_in = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
@@ -154,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
 								ImageView_ActionBarButton.setImageResource(iImgResId);
 								ImageView_ActionBarButton.setVisibility(View.VISIBLE);
 						} else {
+								ImageView_ActionBarButton_Icon = -1;
 								ImageView_ActionBarButton.setVisibility(View.GONE);
 						}
 						LinearLayout_ActionBarButton.setOnClickListener(onclkl);
@@ -220,7 +227,9 @@ public class MainActivity extends AppCompatActivity {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesColorFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("Advanced")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
-				} else if (visibleFragment.equalsIgnoreCase("Main") || visibleFragment.equalsIgnoreCase("permissions")) {
+				} else if (visibleFragment.equalsIgnoreCase("permissions")) {
+						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
+				} else if (visibleFragment.equalsIgnoreCase("Main") || visibleFragment.equalsIgnoreCase("permissionsAutoStart")) {
 						super.onBackPressed();
 				}
 		}

@@ -17,6 +17,7 @@ import eu.chainfire.libsuperuser.*;
 import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import de.NeonSoft.neopowermenu.R;
+import de.NeonSoft.neopowermenu.permissionsScreen.*;
 
 public class PreferencesPartFragment extends Fragment
 {
@@ -33,6 +34,7 @@ public class PreferencesPartFragment extends Fragment
 
 		private View InflatedView;
 
+		private static ProgressBar ProgressBar_RootWait;
 		private static TextView TextView_ModuleStateTitle;
 		private static TextView TextView_ModuleStateDesc;
 
@@ -45,6 +47,8 @@ public class PreferencesPartFragment extends Fragment
 		private static LinearLayout LinearLayout_VisibilityOrder;
 
 		private static LinearLayout LinearLayout_Advanced;
+		
+		private static LinearLayout LinearLayout_Permissions;
 		
 		private static LinearLayout LinearLayout_HideLauncherIcon;
 		private static Switch Switch_HideLauncherIcon;
@@ -64,9 +68,6 @@ public class PreferencesPartFragment extends Fragment
 		private static AlertDialog.Builder adb;
 		private static AlertDialog ad;
 		
-		private static ProgressDialog pd = null;
-
-		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -81,6 +82,7 @@ public class PreferencesPartFragment extends Fragment
 				
 				InflatedView = inflater.inflate(R.layout.activity_preferences, container, false);
 
+				ProgressBar_RootWait = (ProgressBar) InflatedView.findViewById(R.id.activitypreferencesProgressBar_ModuleState);
 				TextView_ModuleStateTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ModuleStateTitle);
 				TextView_ModuleStateDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ModuleStateDesc);
 
@@ -94,6 +96,8 @@ public class PreferencesPartFragment extends Fragment
 				LinearLayout_VisibilityOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_VisibilityOrder);
 
 				LinearLayout_Advanced = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Advanced);
+				
+				LinearLayout_Permissions = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Permissions);
 				
 				LinearLayout_HideLauncherIcon = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_HideLauncherIcon);
 				Switch_HideLauncherIcon = (Switch) InflatedView.findViewById(R.id.activitypreferencesSwitch_HideLauncherIcon);
@@ -193,6 +197,19 @@ public class PreferencesPartFragment extends Fragment
 										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesAdvancedFragment()).commit();
 								}
 						});
+
+				LinearLayout_Permissions.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										Bundle args = new Bundle();
+										args.putBoolean("AutoStart",false);
+										permissionsScreen permScreen = new permissionsScreen();
+										permScreen.setArguments(args);
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,permScreen).commit();
+								}
+						});
 						
 				LinearLayout_HideLauncherIcon.setOnClickListener(new OnClickListener() {
 
@@ -284,45 +301,12 @@ public class PreferencesPartFragment extends Fragment
 						});
 
 				checkState();
-				if (!MainActivity.RootAvailable)
-				{
-						pd = new ProgressDialog(getActivity());
-						pd.setMessage(getString(R.string.Dialog_WaitForRoot));
-						pd.setIndeterminate(true);
-						pd.setCancelable(false);
-						pd.setCanceledOnTouchOutside(false);
-						pd.setButton(pd.BUTTON_NEGATIVE, getString(R.string.Dialog_Cancel), new DialogInterface.OnClickListener() {
-
-																 @Override
-																 public void onClick(DialogInterface p1, int p2)
-																 {
-																		 pd.dismiss();
-																		 getActivity().finish();
-																 }
-														 });
-						pd.setButton(pd.BUTTON_NEUTRAL, getString(R.string.Dialog_Ignore), new DialogInterface.OnClickListener() {
-
-										@Override
-										public void onClick(DialogInterface p1, int p2)
-										{
-												pd.dismiss();
-										}
-								});
-						pd.show();
-				}
-				else if (MainActivity.RootAvailable)
-				{
-						rootAvailable();
-				}
 				
 				MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 				
 				return InflatedView;
 		}
 
-
-
-		
 		private void checkState() {
 				try{
 						if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)
@@ -333,6 +317,7 @@ public class PreferencesPartFragment extends Fragment
 								} else {
 										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed4);
 										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed4);
+										ProgressBar_RootWait.setVisibility(View.GONE);
 								}
 						} else if (helper.ModuleState()==-1) {
 								if (!MainActivity.RootAvailable) {
@@ -341,6 +326,7 @@ public class PreferencesPartFragment extends Fragment
 								} else {
 										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed3);
 										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed3);
+										ProgressBar_RootWait.setVisibility(View.GONE);
 								}
 						} else {
 								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
@@ -385,12 +371,7 @@ public class PreferencesPartFragment extends Fragment
 		{
 				if (TextView_ModuleStateTitle != null)
 				{
-						if (pd != null)
-						{
-								MainActivity.RootAvailable = true;
-								pd.dismiss();
-								pd = null;
-						}
+						MainActivity.RootAvailable = true;
 						checkState();
 				}
 		}

@@ -30,23 +30,33 @@ public class permissionsScreen extends Fragment
 		public static PermissionsAdapter adapter;
 		private static CheckBox CheckBox_DontAskAgain;
 		
+		private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA,Manifest.permission.WAKE_LOCK,Manifest.permission.ACCESS_SURFACE_FLINGER,Manifest.permission.RECORD_AUDIO,Manifest.permission.SYSTEM_ALERT_WINDOW};
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 				// TODO: Implement this method
-				MainActivity.visibleFragment = "permissions";
+				if(getArguments().getBoolean("AutoStart",true)) {
+				MainActivity.visibleFragment = "permissionsAutoStart";
+				} else {
+						MainActivity.visibleFragment = "permissions";
+				}
 				View InflatedView = inflater.inflate(R.layout.permissionsscreen,null);
 				
 				mActivity = getActivity();
 				mFragment = getActivity();
 				
 				ListView_Permissions = (ListView) InflatedView.findViewById(R.id.permissionsscreenListView_permissions);
-				adapter = new PermissionsAdapter(mActivity,new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA});
+				adapter = new PermissionsAdapter(mActivity,permissions);
 				ListView_Permissions.setAdapter(adapter);
 				
 				CheckBox_DontAskAgain = (CheckBox) InflatedView.findViewById(R.id.permissionsscreenCheckBox_DontAskAgain);
 				
-				MainActivity.setActionBarButton(getString(R.string.Dialog_Ok), -1, new OnClickListener() {
+				if(!getArguments().getBoolean("AutoStart",true)) {
+						CheckBox_DontAskAgain.setVisibility(View.GONE);
+				}
+				
+				MainActivity.setActionBarButton(getString(R.string.Dialog_Ok), R.drawable.ic_content_send, new OnClickListener() {
 
 								@Override
 								public void onClick(View p1)

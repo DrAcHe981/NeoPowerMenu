@@ -56,33 +56,47 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
-					android:layout_width="match_parent"
-					android:orientation="vertical"
-					android:paddingTop="5dp"
-					android:paddingBottom="5dp">
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:gravity="center_vertical">
 
-					<TextView
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_RootXposed1"
-						android:layout_weight="1.0"
-						android:gravity="center_vertical"
-						android:textAppearance="?android:attr/textAppearanceMedium"
-						android:paddingLeft="10dp"
-						android:paddingRight="10dp"
-						android:id="@+id/activitypreferencesTextView_ModuleStateTitle"
-						android:textColor="#FFFFFF"/>
+					<ProgressBar
+						android:layout_height="50dp"
+						android:layout_width="50dp"
+						android:layout_marginLeft="5dp"
+						android:id="@+id/activitypreferencesProgressBar_ModuleState"/>
 
-					<TextView
+					<LinearLayout
 						android:layout_height="wrap_content"
+						android:minHeight="60dp"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_RootXposed1"
-						android:layout_weight="1.0"
-						android:gravity="center_vertical"
-						android:paddingLeft="15dp"
-						android:paddingRight="10dp"
-						android:id="@+id/activitypreferencesTextView_ModuleStateDesc"/>
+						android:orientation="vertical"
+						android:paddingTop="5dp"
+						android:paddingBottom="5dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/preferencesTitle_RootXposed1"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:paddingLeft="10dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitypreferencesTextView_ModuleStateTitle"
+							android:textColor="#FFFFFF"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/preferencesDesc_RootXposed1"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="15dp"
+							android:paddingRight="10dp"
+							android:id="@+id/activitypreferencesTextView_ModuleStateDesc"/>
+
+					</LinearLayout>
 
 				</LinearLayout>
 
@@ -337,6 +351,54 @@
 						android:paddingLeft="15dp"
 						android:paddingRight="10dp"
 						android:id="@+id/activitypreferencesTextView_AdvancedDesc"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activitypreferencesLinearLayout_Permissions">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:minHeight="60dp"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preferencesTitle_Permissions"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:textColor="#FFFFFF"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preferencesDesc_Permissions"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="10dp"/>
 
 				</LinearLayout>
 

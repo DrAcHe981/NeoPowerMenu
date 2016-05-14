@@ -152,6 +152,41 @@
 					android:paddingLeft="5dp"
 					android:id="@+id/text"/>
 
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:gravity="right"
+					android:layout_below="@id/listitemhandleleftLinearLayout2"
+					android:layout_alignRight="@id/listitemhandleleftLinearLayout2">
+
+					<LinearLayout
+						android:background="?android:attr/selectableItemBackground"
+						android:layout_height="35dp"
+						android:layout_width="wrap_content"
+						android:orientation="horizontal"
+						android:gravity="center_vertical"
+						android:paddingRight="5dp"
+						android:paddingLeft="5dp"
+						android:id="@+id/listitemhandleleftLinearLayout_HideDesc"
+						android:visibility="gone">
+
+						<CheckBox
+							android:layout_height="match_parent"
+							android:layout_width="wrap_content"
+							android:gravity="center_vertical"
+							android:id="@+id/hideDescCheckBox"/>
+
+						<TextView
+							android:layout_height="match_parent"
+							android:layout_width="wrap_content"
+							android:text="@string/visibilityOrder_HideDesc"
+							android:gravity="center_vertical"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
 			</LinearLayout>
 
 			<TextView

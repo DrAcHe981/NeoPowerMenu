@@ -500,16 +500,18 @@ public class XposedDialog extends DialogFragment
 								root.setOnClickListener(rebootOnClickListener);
 								text.setText(getString(R.string.powerMenuMain_Reboot));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
-								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_Reboot),getResources().getDrawable(R.drawable.ic_av_replay1),XposedMainActivity.preferences.getString("DialogReboot_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogReboot_Textcolor","#ffffff"));
+								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_Reboot),getResources().getDrawable(R.drawable.ic_av_loop),XposedMainActivity.preferences.getString("DialogReboot_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogReboot_Textcolor","#ffffff"));
 						}
 						else if (position == XposedMainActivity.preferences.getInt("SoftRebootPosition", 2) && XposedMainActivity.preferences.getBoolean("SoftRebootEnabled", true))
 						{
 								root.setOnClickListener(soft_rebootOnClickListener);
 								text.setText(getString(R.string.powerMenuMain_SoftReboot));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
-								desc.setVisibility(View.VISIBLE);
-								desc.setText(R.string.powerMenuMain_SoftRebootDesc);
-								desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								if(!XposedMainActivity.preferences.getBoolean("SoftReboot_HideDesc",false)) {
+										desc.setVisibility(View.VISIBLE);
+										desc.setText(R.string.powerMenuMain_SoftRebootDesc);
+										desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								}
 								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_SoftReboot),getResources().getDrawable(R.drawable.ic_action_history),XposedMainActivity.preferences.getString("DialogSoftReboot_Backgroundcolor","#ffe91e63"),XposedMainActivity.preferences.getString("DialogSoftReboot_Textcolor","#ffffff"));
 						}
 						else if (position == XposedMainActivity.preferences.getInt("ScreenshotPosition", 3) && XposedMainActivity.preferences.getBoolean("ScreenshotEnabled", false))
@@ -517,6 +519,7 @@ public class XposedDialog extends DialogFragment
 								root.setOnClickListener(screenshotOnClickListener);
 								text.setText(getString(R.string.powerMenuMain_Screenshot));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								if(!XposedMainActivity.preferences.getBoolean("Screenshot_HideDesc",false)) {
 								desc.setVisibility(View.VISIBLE);
 								if (XposedMainActivity.preferences.getLong("ScreenshotDelay", 1000) == 0)
 								{
@@ -527,6 +530,7 @@ public class XposedDialog extends DialogFragment
 										desc.setText(getString(R.string.powerMenuMain_ScreenshotDesc).replace("[SCREENSHOTDELAY]", helper.getTimeString(XposedMainActivity.preferences.getLong("ScreenshotDelay", 1000), true)));
 								}
 								desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								}
 								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_Screenshot),getResources().getDrawable(R.drawable.ic_device_now_wallpaper),XposedMainActivity.preferences.getString("DialogScreenshot_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogScreenshot_Textcolor","#ffffff"));
 						}
 						else if (position == XposedMainActivity.preferences.getInt("ScreenrecordPosition", 4) && XposedMainActivity.preferences.getBoolean("ScreenrecordEnabled", false))
@@ -541,6 +545,7 @@ public class XposedDialog extends DialogFragment
 								root.setOnClickListener(flashlightOnClickListener);
 								text.setText((TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? getString(R.string.powerMenuMain_Flashlight) : getString(R.string.powerMenuMain_FlashlightOff));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								if(!XposedMainActivity.preferences.getBoolean("Flashlight_HideDesc",false)) {
 								desc.setVisibility(View.VISIBLE);
 								if (XposedMainActivity.preferences.getLong("FlashlightAutoOff", 1000*60*10) == 0)
 								{
@@ -551,6 +556,7 @@ public class XposedDialog extends DialogFragment
 										desc.setText(getString(R.string.powerMenuMain_FlashlightDesc).replace("[AUTOOFF]", helper.getTimeString(XposedMainActivity.preferences.getLong("FlashlightAutoOff", 1000*60*10), true)));
 								}
 								desc.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								}
 								createCircleIcon(icon,icon2,(TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? getString(R.string.powerMenuMain_Flashlight) : getString(R.string.powerMenuMain_FlashlightOff),getResources().getDrawable((TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) ? R.drawable.ic_qs_torch_on : R.drawable.ic_qs_torch_off),XposedMainActivity.preferences.getString("DialogFlashlight_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogFlashlight_Textcolor","#ffffff"));
 						}
 						else if (position == XposedMainActivity.preferences.getInt("ExpandedDesktopPosition", 6) && XposedMainActivity.preferences.getBoolean("ExpandedDesktopEnabled", false))

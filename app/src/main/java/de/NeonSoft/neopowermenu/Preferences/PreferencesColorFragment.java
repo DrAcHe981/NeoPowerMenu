@@ -32,7 +32,7 @@ public class PreferencesColorFragment extends Fragment
 		String[] presetsList;
 		
 		public static String[] lightPreset = {
-				"Load","Save",
+				"Presets","Load","Save",
 				"Reveal","#8800bcd4","#ff0097a7",
 				"Main","#fff5f5f5","#000000",
 				"Shutdown","#ffd32f2f","#ffffff",
@@ -42,12 +42,14 @@ public class PreferencesColorFragment extends Fragment
 				"Screenrecord","#ff3f51b5","#ffffff",
 				"Flashlight","#ff3f51b5","#ffffff",
 				"ExpandedDesktop","#ff3f51b5","#ffffff",
+				"AirplaneMode","#ff3f51b5","#ffffff",
+				"RestartUI","#ff3f51b5","#ffffff",
 				"Recovery","#ff8bc34a","#ffffff",
 				"Bootloader","#ff277b71","#ffffff",
 				"SafeMode","#ff009698","#ffffff"};
 
 		public static String[] darkPreset = {
-				"Load","Save",
+				"Presets","Load","Save",
 				"Reveal","#88121212","#ff21272b",
 				"Main","#ff212121","#ffffff",
 				"Shutdown","#ffd32f2f","#ffffff",
@@ -57,12 +59,14 @@ public class PreferencesColorFragment extends Fragment
 				"Screenrecord","#ff3f51b5","#ffffff",
 				"Flashlight","#ff3f51b5","#ffffff",
 				"ExpandedDesktop","#ff3f51b5","#ffffff",
+				"AirplaneMode","#ff3f51b5","#ffffff",
+				"RestartUI","#ff3f51b5","#ffffff",
 				"Recovery","#ff8bc34a","#ffffff",
 				"Bootloader","#ff277b71","#ffffff",
 				"SafeMode","#ff009698","#ffffff"};
 
 		public static String[] blackPreset = {
-				"Load","Save",
+				"Presets","Load","Save",
 				"Reveal","#88000000","#ff000000",
 				"Main","#ff000000","#ffffff",
 				"Shutdown","#ff000000","#ffffff",
@@ -72,12 +76,14 @@ public class PreferencesColorFragment extends Fragment
 				"Screenrecord","#ff000000","#ffffff",
 				"Flashlight","#ff000000","#ffffff",
 				"ExpandedDesktop","#ff000000","#ffffff",
+				"AirplaneMode","#ff000000","#ffffff",
+				"RestartUI","#ff000000","#ffffff",
 				"Recovery","#ff000000","#ffffff",
 				"Bootloader","#ff000000","#ffffff",
 				"SafeMode","#ff000000","#ffffff"};
 				
 		public static String[][] ColorNames = {
-				{ColorsListAdapter.TYPE_LOAD,"Load"},{ColorsListAdapter.TYPE_SAVE,"Save"},
+				{ColorsListAdapter.TYPE_HEADER,"Presets"},{ColorsListAdapter.TYPE_LOAD,"Load"},{ColorsListAdapter.TYPE_SAVE,"Save"},
 				{ColorsListAdapter.TYPE_HEADER,"Reveal"},{ColorsListAdapter.TYPE_ITEM,"Reveal_Background"},{ColorsListAdapter.TYPE_ITEM,"ActionReveal_Background"},
 				{ColorsListAdapter.TYPE_HEADER,"Main"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"Shutdown"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Textcolor"},
@@ -87,6 +93,8 @@ public class PreferencesColorFragment extends Fragment
 				{ColorsListAdapter.TYPE_HEADER,"Screenrecord"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"Flashlight"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"ExpandedDesktop"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"AirplaneMode"},{ColorsListAdapter.TYPE_ITEM,"DialogAirplaneMode_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogAirplaneMode_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"RestartUI"},{ColorsListAdapter.TYPE_ITEM,"DialogRestartUI_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRestartUI_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"Recovery"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"Bootloader"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"SafeMode"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Textcolor"}};
