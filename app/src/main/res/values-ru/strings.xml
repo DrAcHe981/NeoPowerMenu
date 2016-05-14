@@ -99,7 +99,6 @@
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Задержка между эффектом заполнения и появлением Меню выключения."</string>
 
 <!-- Dialog -->
-<string name="Dialog_WaitForRoot">"Ожидание root-доступа..."</string>
 <string name="Dialog_Ok">"Oк"</string>
 <string name="Dialog_Yes">"Да"</string>
 <string name="Dialog_Rename">"Переименовать"</string>
@@ -122,7 +121,6 @@
 <string name="presetSaveDialog_InfoText">"Установите имя для шаблона:"</string>
 <string name="presetSaveDialog_OverwriteText">"Уже существует, шаблон будет перезаписан!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] сохранён!"</string>
-<string name="presetsManager_Title">"Шаблоны"</string>
 <string name="powerMenuMain_Screenrecord">"Запись экрана"</string>
 <string name="preferencesTitle_RootXposed5">"Установленная версия модуля слишком старая..."</string>
 <string name="preferencesDesc_RootXposed5">"Пожалуйста, перезагрузите устройство, чтобы закончить процесс обновления!"</string>
@@ -167,7 +165,6 @@
 <string name="colorsDesc_Reveal">"Цвет анимации появления"</string>
 <string name="colorsDesc_ActionReveal">"Цвет анимации фона при нажатии на Перезагрузку/Выключение"</string>
 <string name="colorsCategory_Main">"Цвета в окне"</string>
-<string name="colorsDesc_Dialog">"Цвета диалогового окна"</string>
 <string name="colorsCategory_Shutdown">"Цвета Выключения"</string>
 <string name="colorsDesc_DialogShutdown">"Цвета диалогового окна при нажатии на Выключение"</string>
 <string name="colorsCategory_Reboot">"Цвета Перезагрузки"</string>
@@ -202,4 +199,23 @@
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Нужно для будущих функций(например, пользовательские изображения)"</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Камера"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Нужно для включения Фонарика"</string>
+<string name="preferencesTitle_Permissions"></string>
+<string name="preferencesDesc_Permissions"></string>
+<string name="visibilityOrder_HideDesc"></string>
+
+<!-- Preferences: Colors -->
+<string name="colorsCategory_Presets"></string>
+<string name="colorsDesc_DialogMain"></string>
+<string name="colorsCategory_AirplaneMode"></string>
+<string name="colorsDesc_DialogAirplaneMode"></string>
+<string name="colorsCategory_RestartUI"></string>
+<string name="colorsDesc_DialogRestartUI"></string>
+<string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER"></string>
+<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER"></string>
+<string name="permissionsScreenTitle_android.permission.RECORD_AUDIO"></string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO"></string>
+<string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW"></string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW"></string>
+<string name="permissionsScreenTitle_android.permission.WAKE_LOCK"></string>
+<string name="permissionsScreenDesc_android.permission.WAKE_LOCK"></string>
 </resources>
