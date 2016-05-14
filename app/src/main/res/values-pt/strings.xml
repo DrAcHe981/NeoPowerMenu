@@ -98,7 +98,6 @@ Isso não pode  ser desfeito!"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Atraso entre mostrar a animação de revelar e o menu de energia."</string>
 
 <!-- Dialog -->
-<string name="Dialog_WaitForRoot">"Esperando acesso Root..."</string>
 <string name="Dialog_Ok">"Ok"</string>
 <string name="Dialog_Yes">"Sim"</string>
 <string name="Dialog_Rename">"Renomear"</string>
@@ -121,7 +120,6 @@ Isso não pode  ser desfeito!"</string>
 <string name="presetSaveDialog_InfoText">"Escolha um nome para o pré-ajuste"</string>
 <string name="presetSaveDialog_OverwriteText">"Já existe,pré-ajuste será sobrescrito!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] salvo!"</string>
-<string name="presetsManager_Title">"Pré-ajustes"</string>
 <string name="powerMenuMain_Screenrecord">"Gravação de tela"</string>
 <string name="preferencesTitle_RootXposed5">"A versão do módulo é muito antiga..."</string>
 <string name="preferencesDesc_RootXposed5">"Por favor,reinicie seu dispositivo para concluir o processo de atualização!"</string>
@@ -166,7 +164,6 @@ Isso não pode  ser desfeito!"</string>
 <string name="colorsDesc_Reveal">"Cor da animação revelar."</string>
 <string name="colorsDesc_ActionReveal">"Cor da animação revelar ao clicar na opção Reiniciar/Desligar."</string>
 <string name="colorsCategory_Main">"Cores da caixa de diálogo"</string>
-<string name="colorsDesc_Dialog">"Cores da caixa de diálogo."</string>
 <string name="colorsCategory_Shutdown">"Cores do Desligar"</string>
 <string name="colorsDesc_DialogShutdown">"Cor da caixa de diálogo ao clicar em Desligar."</string>
 <string name="colorsCategory_Reboot">"Cores do Reiniciar"</string>
