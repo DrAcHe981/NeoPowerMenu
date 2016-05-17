@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 		int versionCode = -1;
 		
 		/*<!-- Internal needed Hook version to check if reboot is needed --!>*/
-		public static int neededModuleActiveVersion = 18;
+		public static int neededModuleActiveVersion = 19;
 		
 		public static URL ImportUrl = null;
 		

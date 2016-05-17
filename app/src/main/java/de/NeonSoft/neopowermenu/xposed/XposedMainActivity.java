@@ -35,6 +35,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		public static String sStyleName = "Material";
 		XposedDialog powerDialog;
 		
+		BroadcastReceiver mReceiver;
+		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -88,7 +90,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         filter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
 				
-				BroadcastReceiver mReceiver = new BroadcastReceiver() {
+				mReceiver = new BroadcastReceiver() {
 
 						@Override
 						public void onReceive(Context p1, Intent p2)
@@ -129,7 +131,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		{
 				// TODO: Implement this method
 				super.onPause();
-				powerDialog.dismiss();
+				//powerDialog.dismiss();
 		}
 		
     private void showPowerDialog() {

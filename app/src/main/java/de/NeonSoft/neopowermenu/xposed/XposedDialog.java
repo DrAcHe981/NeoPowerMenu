@@ -14,6 +14,7 @@ import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.services.*;
 import eu.chainfire.libsuperuser.*;
+import java.io.*;
 
 import android.view.View.OnClickListener;
 
@@ -37,7 +38,7 @@ public class XposedDialog extends DialogFragment
 		
 		private boolean HookShutdownThread = false;
 
-		View.OnClickListener powerOnClickListener,rebootOnClickListener,soft_rebootOnClickListener,screenshotOnClickListener,screenrecordOnClickListener,flashlightOnClickListener,expandedDesktopOnClickListener;
+		View.OnClickListener powerOnClickListener,rebootOnClickListener,soft_rebootOnClickListener,screenshotOnClickListener,screenrecordOnClickListener,flashlightOnClickListener,expandedDesktopOnClickListener,airplaneModeOnClickListener,restartUIOnClickListener;
 
 		FrameLayout dialogMain;
 		LinearLayout ListContainer;
@@ -62,7 +63,8 @@ public class XposedDialog extends DialogFragment
     private static final String REBOOT_BOOTLOADER_CMD = "reboot bootloader";
     private static final String[] REBOOT_SAFE_MODE
 		= new String[]{"setprop persist.sys.safemode 1", REBOOT_SOFT_REBOOT_CMD};
-
+		private static final String RESTARTSYSTEMUI = "am startservice -n com.android.systemui/.SystemUIService";
+		
     private static final int BG_PRIO = android.os.Process.THREAD_PRIORITY_BACKGROUND;
     private static final int RUNNABLE_DELAY_MS = 5000;
 
@@ -346,7 +348,33 @@ public class XposedDialog extends DialogFragment
 								}
 						}
 				};
+				airplaneModeOnClickListener = new OnClickListener() {
 
+						@Override
+						public void onClick(View p1)
+						{
+								if(!XposedMainActivity.previewMode) {
+										dismiss();
+										Intent launchIntent = new Intent(XposedMain.NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
+										mContext.sendBroadcast(launchIntent);
+								}
+						}
+						
+				};
+				restartUIOnClickListener = new OnClickListener() {
+
+						@Override
+						public void onClick(View v)
+						{
+								if (!XposedMainActivity.previewMode)
+								{
+										dismiss();
+										Intent launchIntent = new Intent(XposedMain.NPM_ACTION_BROADCAST_KILLSYSTEMUI);
+										mContext.sendBroadcast(launchIntent);
+								}
+						}
+				};
+				
         recovery.setOnClickListener(new View.OnClickListener() {
 								@Override
 								public void onClick(View v)
@@ -477,7 +505,7 @@ public class XposedDialog extends DialogFragment
 						});
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
-				for (int position = 0;position < 7;position++)
+				for (int position = 0;position < 9;position++)
 				{
 						View InflatedItem = inflater.inflate(R.layout.powermenu_listitem, null);
 						LinearLayout root = (LinearLayout) InflatedItem.findViewById(R.id.powermenuitemRoot);
@@ -565,6 +593,20 @@ public class XposedDialog extends DialogFragment
 								text.setText(getString(R.string.powerMenuMain_ExpandedDesktop));
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_ExpandedDesktop),getResources().getDrawable(R.drawable.ic_action_launch),XposedMainActivity.preferences.getString("DialogExpandedDesktop_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogExpandedDesktop_Textcolor","#ffffff"));
+						} 
+						else if (position == XposedMainActivity.preferences.getInt("AirplaneModePosition",7) && XposedMainActivity.preferences.getBoolean("AirplaneModeEnabled",false))
+						{
+								root.setOnClickListener(airplaneModeOnClickListener);
+								text.setText(getString(R.string.powerMenuMain_AirplaneMode));
+								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_AirplaneMode),getResources().getDrawable(R.drawable.ic_action_launch),XposedMainActivity.preferences.getString("DialogAirplaneMode_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogAirplaneMode_Textcolor","#ffffff"));
+						}
+						else if (position == XposedMainActivity.preferences.getInt("RestartUIPosition",8) && XposedMainActivity.preferences.getBoolean("RestartUIEnabled",false))
+						{
+								root.setOnClickListener(restartUIOnClickListener);
+								text.setText(getString(R.string.powerMenuMain_RestartUI));
+								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								createCircleIcon(icon,icon2,getString(R.string.powerMenuMain_RestartUI),getResources().getDrawable(R.drawable.ic_action_launch),XposedMainActivity.preferences.getString("DialogRestartUI_Backgroundcolor","#ff3f51b5"),XposedMainActivity.preferences.getString("DialogRestartUI_Textcolor","#ffffff"));
 						}
 						if (!text.getText().toString().equalsIgnoreCase("Text"))
 						{
@@ -754,6 +796,6 @@ public class XposedDialog extends DialogFragment
             Log.e("TorchService","Error toggling Torch: " + t.getMessage());
         }
     }
-
+		
 }
 

@@ -1,7 +1,9 @@
 package de.NeonSoft.neopowermenu.xposed;
 
+import android.app.*;
 import android.content.*;
 import android.os.*;
+import android.provider.*;
 import android.util.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
@@ -35,12 +37,16 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
     private static final String PERM_ACCESS_SURFACE_FLINGER = "android.permission.ACCESS_SURFACE_FLINGER";
 		
+		private static final String CLASS_SYSTEMUI = "com.android.systemui.SystemUIApplication";
+		
 		public static final String NPM_ACTION_BROADCAST_SHUTDOWN = "de.NeonSoft.neopowermenu.action.Shutdown";
 		public static final String NPM_ACTION_BROADCAST_REBOOT = "de.NeonSoft.neopowermenu.action.Reboot";
 		public static final String NPM_ACTION_BROADCAST_REBOOTRECOVERY = "de.NeonSoft.neopowermenu.action.RebootRecovery";
 		public static final String NPM_ACTION_BROADCAST_REBOOTBOOTLOADER = "de.NeonSoft.neopowermenu.action.RebootBootloader";
 		public static final String NPM_ACTION_BROADCAST_SCREENSHOT = "de.NeonSoft.neopowermenu.action.takeScreenshot";
 		public static final String NPM_ACTION_BROADCAST_SCREENRECORD = "de.NeonSoft.neopowermenu.action.takeScreenrecord";
+		public static final String NPM_ACTION_BROADCAST_KILLSYSTEMUI = "de.NeonSoft.neopowermenu.action.killSystemUI";
+		public static final String NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE = "de.NeonSoft.neopowermenu.action.toggleAirplaneMode";
 
     private static final int MESSAGE_DISMISS = 0;
 		
@@ -61,7 +67,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static ShutdownThread sInstance = new ShutdownThread();
 		
 		/*<!-- Internal Hook version to check if reboot is needed --!>*/
-		private static final int XposedHookVersion = 18;
+		private static final int XposedHookVersion = 19;
 
 		
 		Object mPhoneWindowManager;
@@ -93,6 +99,40 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     @Override
     public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable
 		{
+				if (lpparam.packageName.equalsIgnoreCase("com.android.systemui")) {
+						if( DeepXposedLogging) XposedUtils.log("Hooking (after) "+CLASS_SYSTEMUI+"#onCreate...");
+						XposedHelpers.findAndHookMethod(CLASS_SYSTEMUI,lpparam.classLoader,"onCreate",new XC_MethodHook() {
+								@Override
+								public void afterHookedMethod(MethodHookParam param) throws Throwable {
+
+										Application mNPMApp = (Application) param.thisObject;
+										final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
+										BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
+
+												@Override
+												public void onReceive(Context p1, Intent p2)
+												{
+														//Toast.makeText(p1,"Received NPM Broadcast: "+p2.getAction(),Toast.LENGTH_LONG).show();
+														switch (p2.getAction()) {
+								case NPM_ACTION_BROADCAST_KILLSYSTEMUI:
+										mNPMHandler.postDelayed(new Runnable() {
+														@Override
+														public void run() {
+																android.os.Process.sendSignal(android.os.Process.myPid(), android.os.Process.SIGNAL_KILL);
+														}
+												}, 100);
+										break;
+										}
+										}
+										};
+										IntentFilter filter = new IntentFilter();
+										filter.addAction(NPM_ACTION_BROADCAST_KILLSYSTEMUI);
+										filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+										mNPMApp.registerReceiver(mNPMReceiver,filter);
+								}
+								});
+						if( DeepXposedLogging) XposedUtils.log("Registered receiver for UI events.");
+				} else
 				if (lpparam.packageName.equals("android") &&
 						lpparam.processName.equals("android"))
 				{
@@ -136,7 +176,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 												final String pkgName = (String) XposedHelpers.getObjectField(param.args[0], "packageName");
 
-												// NeoPowetMenu
+												// NeoPowerMenu
 												if (PACKAGE_NAME.equals(pkgName)) {
 														if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.M) {
 																final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
@@ -319,6 +359,22 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																		catch (RemoteException e)
 																		{}
 																}
+																else if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE)) {
+																		// read the airplane mode setting
+																		boolean isEnabled = Settings.Global.getInt(
+																				mContext.getContentResolver(), 
+																				Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
+
+// toggle airplane mode
+																		Settings.Global.putInt(
+																				mContext.getContentResolver(),
+																				Settings.Global.AIRPLANE_MODE_ON, isEnabled ? 0 : 1);
+
+// Post an intent to reload
+																		Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+																		intent.putExtra("state", !isEnabled);
+																		mContext.sendBroadcast(intent);
+																}
 														}
 												};
 												IntentFilter filter = new IntentFilter();
@@ -328,6 +384,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 												filter.addAction(NPM_ACTION_BROADCAST_REBOOTBOOTLOADER);
 												filter.addAction(NPM_ACTION_BROADCAST_SCREENSHOT);
 												filter.addAction(NPM_ACTION_BROADCAST_SCREENRECORD);
+												filter.addAction(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
 												filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
 												mContext.registerReceiver(mNPMReceiver, filter, null, null);
 												return null;

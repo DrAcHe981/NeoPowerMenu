@@ -108,7 +108,7 @@ public class permissionsScreen extends Fragment
 				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
 				{
 						for(int i = 0;i<permissions.length;i++) {
-								if (ContextCompat.checkSelfPermission(mActivity,permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+								if(!permissions[i].equalsIgnoreCase(Manifest.permission.ACCESS_SURFACE_FLINGER) && ContextCompat.checkSelfPermission(mActivity,permissions[i]) != PackageManager.PERMISSION_GRANTED) {
 										return false;
 								}
 						}

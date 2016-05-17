@@ -128,8 +128,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment
 				arrayEnabledStates[MainActivity.preferences.getInt("ScreenrecordPosition",4)] = XposedUtils.isExynosDevice() ? "false" : "true";
 				arrayEnabledStates[MainActivity.preferences.getInt("FlashlightPosition",5)] = XposedUtils.hasFlash(getActivity()) ? "true" : "false";
 				arrayEnabledStates[MainActivity.preferences.getInt("ExpandedDesktopPosition",6)] = (XposedUtils.isAppInstalled(getActivity(),"com.ceco.kitkat.gravitybox") || XposedUtils.isAppInstalled(getActivity(),"com.ceco.lollipop.gravitybox") || XposedUtils.isAppInstalled(getActivity(),"com.ceco.marshmallow.gravitybox")) ? "true" : "false";
-				arrayEnabledStates[MainActivity.preferences.getInt("AirplaneModePosition",7)] = "false";
-				arrayEnabledStates[MainActivity.preferences.getInt("RestartUIPosition",8)] = "false";
+				arrayEnabledStates[MainActivity.preferences.getInt("AirplaneModePosition",7)] = "true";
+				arrayEnabledStates[MainActivity.preferences.getInt("RestartUIPosition",8)] = "true";
 				listEnabledStates = new ArrayList<String>(Arrays.asList(arrayEnabledStates));
 				
         adapter = new visibilityOrder_ListAdapter(getActivity(),listTitles,listEnabledStates);
