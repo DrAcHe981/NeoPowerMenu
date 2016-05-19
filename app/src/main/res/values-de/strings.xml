@@ -201,7 +201,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Benötigt für die Taschenlampe."</string>
 <string name="preferencesTitle_Permissions">"Berechtigungen"</string>
 <string name="preferencesDesc_Permissions">"Zeige die benutzten Berechtigungen und wofür die genutzt werden. 
-Erlaube weiterer Berechtigungen die nicht beim ersten Start erlaubt wurden (Android 6.0+)."</string>
+Erlaube weitere Berechtigungen die nicht beim ersten Start erlaubt wurden (Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Verstecke Beschreibung"</string>
 
 <!-- Preferences: Colors -->
@@ -216,7 +216,7 @@ Erlaube weiterer Berechtigungen die nicht beim ersten Start erlaubt wurden (Andr
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ton aufnehmen"</string>
 <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Benötigt um mit der Bildschirm Aufnahme Ton aufzunehmen."</string>
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Warnungs Fenster"</string>
-<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt um das Asusschalt Menü unter allen anderen anzuzeigen."</string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt um das Asusschalt Menü über allem anderen anzuzeigen."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benötigt um zu verhindern das der Taschenlampen Service und der Bildschirm Aufnahme Service beendet werden."</string>
 </resources>
