@@ -15,6 +15,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment
 
     private visibilityOrder_ListAdapter adapter;
 		
+		private String[][] items;
     private String[] arrayTitles;
     private ArrayList<String> listTitles;
 		private String[] arrayEnabledStates;
@@ -71,67 +72,36 @@ public class PreferencesVisibilityOrderFragment extends Fragment
         lv.setDragScrollProfile(ssProfile);
 				lv.setFastScrollEnabled(true);
 				
-				if (MainActivity.preferences.getInt("ShutdownPosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("ShutdownEnabled",true).commit();
-						MainActivity.preferences.edit().putInt("ShutdownPosition",0).commit();
+				items = new String[][] {
+						{"Shutdown","true"},
+						{"Reboot","true"},
+						{"SoftReboot","true"},
+						{"Screenshot","true"},
+						{"Screenrecord",XposedUtils.isExynosDevice() ? "false" : "true"},
+						{"Flashlight",XposedUtils.hasFlash(getActivity()) ? "true" : "false"},
+						{"ExpandedDesktop",(XposedUtils.isAppInstalled(getActivity(),"com.ceco.kitkat.gravitybox") || XposedUtils.isAppInstalled(getActivity(),"com.ceco.lollipop.gravitybox") || XposedUtils.isAppInstalled(getActivity(),"com.ceco.marshmallow.gravitybox")) ? "true" : "false"},
+						{"AirplaneMode","true"},
+						{"RestartUI","true"},
+						{"SoundMode","true"}};
+
+        arrayTitles = new String[items.length];
+				arrayEnabledStates = new String[items.length];
+				
+				for (int i=0;i<items.length;i++) {
+				if (MainActivity.preferences.getInt(items[i][0]+"Position",-1)==-1) {
+						if (items[i][0].equalsIgnoreCase("Shutdown") || items[i][0].equalsIgnoreCase("Reboot") || items[i][0].equalsIgnoreCase("SoftReboot")) {
+								MainActivity.preferences.edit().putBoolean(items[i][0]+"Enabled",true).commit();
+						} else {
+								MainActivity.preferences.edit().putBoolean(items[i][0]+"Enabled",false).commit();
+						}
+						MainActivity.preferences.edit().putInt(items[i][0]+"Position",i).commit();
 				}
-				if (MainActivity.preferences.getInt("RebootPosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("RebootEnabled",true).commit();
-						MainActivity.preferences.edit().putInt("RebootPosition",1).commit();
-				}
-				if (MainActivity.preferences.getInt("SoftRebootPosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("SoftRebootEnabled",true).commit();
-						MainActivity.preferences.edit().putInt("SoftRebootPosition",2).commit();
-				}
-				if (MainActivity.preferences.getInt("ScreenshotPosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("ScreenshotEnabled",false).commit();
-						MainActivity.preferences.edit().putInt("ScreenshotPosition",3).commit();
-				}
-				if (MainActivity.preferences.getInt("ScreenrecordPosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("ScreenrecordEnabled",false).commit();
-						MainActivity.preferences.edit().putInt("ScreenrecordPosition",4).commit();
-				}
-				if (MainActivity.preferences.getInt("FlashlightPosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("FlashlightEnabled",false).commit();
-						MainActivity.preferences.edit().putInt("FlashlightPosition",5).commit();
-				}
-				if (MainActivity.preferences.getInt("ExpandedDesktopPosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("ExpandedDesktopEnabled",false).commit();
-						MainActivity.preferences.edit().putInt("ExpandedDesktopPosition",6).commit();
-				}
-				if (MainActivity.preferences.getInt("AirplaneModePosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("AirplaneModeEnabled",false).commit();
-						MainActivity.preferences.edit().putInt("AirplaneModePosition",7).commit();
-				}
-				if (MainActivity.preferences.getInt("RestartUIPosition",-1)==-1) {
-						MainActivity.preferences.edit().putBoolean("RestartUIEnabled",false).commit();
-						MainActivity.preferences.edit().putInt("RestartUIPosition",8).commit();
+				arrayTitles[MainActivity.preferences.getInt(items[i][0]+"Position",i)] = items[i][0];
+				arrayEnabledStates[MainActivity.preferences.getInt(items[i][0]+"Position",i)] = items[i][1];
 				}
 				
-        arrayTitles = new String[9];
-				arrayTitles[MainActivity.preferences.getInt("ShutdownPosition",0)] = "Shutdown";
-				arrayTitles[MainActivity.preferences.getInt("RebootPosition",1)] = "Reboot";
-				arrayTitles[MainActivity.preferences.getInt("SoftRebootPosition",2)] = "SoftReboot";
-				arrayTitles[MainActivity.preferences.getInt("ScreenshotPosition",3)] = "Screenshot";
-				arrayTitles[MainActivity.preferences.getInt("ScreenrecordPosition",4)] = "Screenrecord";
-				arrayTitles[MainActivity.preferences.getInt("FlashlightPosition",5)] = "Flashlight";
-				arrayTitles[MainActivity.preferences.getInt("ExpandedDesktopPosition",6)] = "ExpandedDesktop";
-				arrayTitles[MainActivity.preferences.getInt("AirplaneModePosition",7)] = "AirplaneMode";
-				arrayTitles[MainActivity.preferences.getInt("RestartUIPosition",8)] = "RestartUI";
         listTitles = new ArrayList<String>(Arrays.asList(arrayTitles));
-					
-				arrayEnabledStates = new String[9];
-				arrayEnabledStates[MainActivity.preferences.getInt("ShutdownPosition",0)] = "true";
-				arrayEnabledStates[MainActivity.preferences.getInt("RebootPosition",1)] = "true";
-				arrayEnabledStates[MainActivity.preferences.getInt("SoftRebootPosition",2)] = "true";
-				arrayEnabledStates[MainActivity.preferences.getInt("ScreenshotPosition",3)] = "true";
-				arrayEnabledStates[MainActivity.preferences.getInt("ScreenrecordPosition",4)] = XposedUtils.isExynosDevice() ? "false" : "true";
-				arrayEnabledStates[MainActivity.preferences.getInt("FlashlightPosition",5)] = XposedUtils.hasFlash(getActivity()) ? "true" : "false";
-				arrayEnabledStates[MainActivity.preferences.getInt("ExpandedDesktopPosition",6)] = (XposedUtils.isAppInstalled(getActivity(),"com.ceco.kitkat.gravitybox") || XposedUtils.isAppInstalled(getActivity(),"com.ceco.lollipop.gravitybox") || XposedUtils.isAppInstalled(getActivity(),"com.ceco.marshmallow.gravitybox")) ? "true" : "false";
-				arrayEnabledStates[MainActivity.preferences.getInt("AirplaneModePosition",7)] = "true";
-				arrayEnabledStates[MainActivity.preferences.getInt("RestartUIPosition",8)] = "true";
 				listEnabledStates = new ArrayList<String>(Arrays.asList(arrayEnabledStates));
-				
         adapter = new visibilityOrder_ListAdapter(getActivity(),listTitles,listEnabledStates);
 				
         lv.setAdapter(adapter);

@@ -40,7 +40,8 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 				ItemCheckBox.setFocusable(false);
 				Switch ItemSwitch = (Switch) rowView.findViewById(R.id.Switch);
 
-				if (this.itemsTitle.get(position).equalsIgnoreCase("SoftReboot") || this.itemsTitle.get(position).equalsIgnoreCase("Screenshot") || this.itemsTitle.get(position).equalsIgnoreCase("Flashlight")) {
+				try {
+				if (!context.getResources().getString(context.getResources().getIdentifier("powerMenuMain_"+this.itemsTitle.get(position)+"Desc","string",MainActivity.class.getPackage().getName())).equalsIgnoreCase("")) {
 						ItemCheckBox.setChecked(MainActivity.preferences.getBoolean(this.itemsTitle.get(position)+"_HideDesc",false));
 						ItemCheckBoxHolder.setVisibility(View.VISIBLE);
 						ItemCheckBoxHolder.setOnClickListener(new OnClickListener() {
@@ -52,6 +53,10 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 												MainActivity.preferences.edit().putBoolean(itemsTitle.get(position)+"_HideDesc",ItemCheckBox.isChecked()).commit();
 										}
 								});
+				}
+				}
+				catch (Throwable t) {
+						
 				}
 				
 				try {

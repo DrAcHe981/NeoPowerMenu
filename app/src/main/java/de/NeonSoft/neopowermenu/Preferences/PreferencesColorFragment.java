@@ -44,6 +44,7 @@ public class PreferencesColorFragment extends Fragment
 				"ExpandedDesktop","#ff3f51b5","#ffffff",
 				"AirplaneMode","#ff3f51b5","#ffffff",
 				"RestartUI","#ff3f51b5","#ffffff",
+				"SoundMode","#ff3f51b5","#ffffff",
 				"Recovery","#ff8bc34a","#ffffff",
 				"Bootloader","#ff277b71","#ffffff",
 				"SafeMode","#ff009698","#ffffff"};
@@ -61,6 +62,7 @@ public class PreferencesColorFragment extends Fragment
 				"ExpandedDesktop","#ff3f51b5","#ffffff",
 				"AirplaneMode","#ff3f51b5","#ffffff",
 				"RestartUI","#ff3f51b5","#ffffff",
+				"SoundMode","#ff3f51b5","#ffffff",
 				"Recovery","#ff8bc34a","#ffffff",
 				"Bootloader","#ff277b71","#ffffff",
 				"SafeMode","#ff009698","#ffffff"};
@@ -78,6 +80,7 @@ public class PreferencesColorFragment extends Fragment
 				"ExpandedDesktop","#ff000000","#ffffff",
 				"AirplaneMode","#ff000000","#ffffff",
 				"RestartUI","#ff000000","#ffffff",
+				"SoundMode","#ff000000","#ffffff",
 				"Recovery","#ff000000","#ffffff",
 				"Bootloader","#ff000000","#ffffff",
 				"SafeMode","#ff000000","#ffffff"};
@@ -95,6 +98,7 @@ public class PreferencesColorFragment extends Fragment
 				{ColorsListAdapter.TYPE_HEADER,"ExpandedDesktop"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"AirplaneMode"},{ColorsListAdapter.TYPE_ITEM,"DialogAirplaneMode_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogAirplaneMode_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"RestartUI"},{ColorsListAdapter.TYPE_ITEM,"DialogRestartUI_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRestartUI_Textcolor"},
+				{ColorsListAdapter.TYPE_HEADER,"SoundMode"},{ColorsListAdapter.TYPE_ITEM,"DialogSoundMode_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSoundMode_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"Recovery"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"Bootloader"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Textcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"SafeMode"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Textcolor"}};
