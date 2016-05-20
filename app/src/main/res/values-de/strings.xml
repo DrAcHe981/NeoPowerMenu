@@ -219,4 +219,13 @@ Erlaube weitere Berechtigungen die nicht beim ersten Start erlaubt wurden (Andro
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt um das Asusschalt Menü über allem anderen anzuzeigen."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benötigt um zu verhindern das der Taschenlampen Service und der Bildschirm Aufnahme Service beendet werden."</string>
+<string name="powerMenuMain_SoundMode">"Sound Modus"</string>
+<string name="powerMenuMain_SoundModeDesc">"Aktueller Modus: [SOUNDMODE]"</string>
+<string name="SoundMode_Normal">"Normal"</string>
+<string name="SoundMode_Vibrate">"Vibration"</string>
+<string name="SoundMode_Silent">"Kein Ton"</string>
+<string name="colorsCategory_SoundMode">"Sound Modus Farben"</string>
+<string name="colorsDesc_DialogSoundMode">"Die Farben des Sound Modus Knopfes."</string>
+<string name="visibilityOrderDesc_SoundMode">"Ändere den Sound Modus über das Ausschalt Menü.
+Wechsel Reihenfolge : Normal -&gt; Vibration -&gt; Kein Ton -&gt; Normal..."</string>
 </resources>
