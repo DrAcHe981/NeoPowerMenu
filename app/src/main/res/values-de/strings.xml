@@ -226,6 +226,6 @@ Erlaube weitere Berechtigungen die nicht beim ersten Start erlaubt wurden (Andro
 <string name="SoundMode_Silent">"Kein Ton"</string>
 <string name="colorsCategory_SoundMode">"Sound Modus Farben"</string>
 <string name="colorsDesc_DialogSoundMode">"Die Farben des Sound Modus Knopfes."</string>
-<string name="visibilityOrderDesc_SoundMode">"Ändere den Sound Modus über das Ausschalt Menü.
+<string name="visibilityOrderDesc_SoundMode">"Ändere den Sound Modus über das Ausschaltmenü.
 Wechsel Reihenfolge : Normal -&gt; Vibration -&gt; Kein Ton -&gt; Normal..."</string>
 </resources>
