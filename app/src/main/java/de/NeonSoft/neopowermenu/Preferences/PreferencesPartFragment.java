@@ -277,26 +277,7 @@ public class PreferencesPartFragment extends Fragment
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										adb = new AlertDialog.Builder(getActivity());
-										adb.setTitle("About");
-
-										adb.setMessage("NeoPowerMenu by Neon-Soft / DrAcHe981\n" + 
-																	 "based on a Source from Naman Dwivedi (naman14)\n\n" +
-																	 "< Used Librarys >\n" +
-																	 "> HoloColorPicker from Lars Werkman\n" +
-																	 "An Android Holo themed colorpicker designed by Marie Schweiz\n\n" +
-																	 "Licensed under the Apache License, Version 2.0\n\n" +
-																	 "> DragSortListView from Bauerca\n" +
-																	 "DragSortListView (DSLV) is an extension of the Android ListView that enables drag-and-drop reordering of list items.\n\n" +
-																	 "Licensed under the Apache License, Version 2.0\n\n" +
-																	 "> libsuperuser from Chainfire / ChainsDD\n\n" +
-																	 "Licensed under the Apache License, Version 2.0\n\n" +
-																	 "");
-
-										adb.setPositiveButton(R.string.Dialog_Ok, null);
-
-										ad = adb.create();
-										ad.show();
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new AboutFragment()).commit();
 								}
 						});
 

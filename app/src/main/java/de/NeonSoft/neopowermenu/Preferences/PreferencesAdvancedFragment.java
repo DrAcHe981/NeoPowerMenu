@@ -20,11 +20,6 @@ public class PreferencesAdvancedFragment extends Fragment
 		Switch Switch_ShowOnLockScreen;
 		boolean boolean_ShowOnLockScreen;
 		
-		LinearLayout LinearLayout_PowerMenuSlideUpDelay;
-		SeekBar SeekBar_PowerMenuSlideUpDelay;
-		TextView TextView_PowerMenuSlideUpDelay;
-		long Long_PowerMenuSlideUpDelay;
-		
 		LinearLayout LinearLayout_ScreenshotDelay;
 		SeekBar SeekBar_ScreenshotDelay;
 		TextView TextView_ScreenshotDelayTime;
@@ -88,47 +83,6 @@ public class PreferencesAdvancedFragment extends Fragment
 										boolean_ShowOnLockScreen = !boolean_ShowOnLockScreen;
 										MainActivity.preferences.edit().putBoolean("ShowOnLockScreen",boolean_ShowOnLockScreen).commit();
 										Switch_ShowOnLockScreen.setChecked(boolean_ShowOnLockScreen);
-								}
-						});
-				
-				LinearLayout_PowerMenuSlideUpDelay = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_PowerMenuSlideUpDelay);
-				SeekBar_PowerMenuSlideUpDelay = (SeekBar) InflatedView.findViewById(R.id.activityadvancedSeekBar_PowerMenuSlideUpDelay);
-				TextView_PowerMenuSlideUpDelay = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_PowerMenuSlideUpDelayTime);
-
-				SeekBar_PowerMenuSlideUpDelay.setEnabled(false);
-				
-				SeekBar_PowerMenuSlideUpDelay.setMax(150);
-				SeekBar_PowerMenuSlideUpDelay.setProgress((int) (Long_PowerMenuSlideUpDelay/1000));
-				if(Long_ScreenshotDelay == 0 ) {
-						TextView_PowerMenuSlideUpDelay.setText(R.string.advancedPrefs_DelayZero);
-				} else {
-				TextView_PowerMenuSlideUpDelay.setText(helper.getTimeString(Long_PowerMenuSlideUpDelay,true));
-				}
-				SeekBar_PowerMenuSlideUpDelay.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-
-								@Override
-								public void onProgressChanged(SeekBar p1, int p2, boolean p3)
-								{
-										// TODO: Implement this method
-										Long_PowerMenuSlideUpDelay = (p2*1000);
-										if(Long_ScreenshotDelay == 0 ) {
-												TextView_PowerMenuSlideUpDelay.setText(R.string.advancedPrefs_DelayZero);
-										} else {
-										TextView_PowerMenuSlideUpDelay.setText(helper.getTimeString(Long_PowerMenuSlideUpDelay,true));
-										}
-								}
-
-								@Override
-								public void onStartTrackingTouch(SeekBar p1)
-								{
-										// TODO: Implement this method
-								}
-
-								@Override
-								public void onStopTrackingTouch(SeekBar p1)
-								{
-										// TODO: Implement this method
-										MainActivity.preferences.edit().putLong("PowerMenuSlideUpDelay",Long_PowerMenuSlideUpDelay).commit();
 								}
 						});
 						

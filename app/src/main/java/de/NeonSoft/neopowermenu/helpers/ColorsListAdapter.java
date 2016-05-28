@@ -41,21 +41,22 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 		public View getView(final int p1, View InflatedView, ViewGroup p3)
 		{
 				// TODO: Implement this method
-				LinearLayout root;
+				LinearLayout root, previewLayout;
 				final TextView Title,Preview,Desc;
 				final String[] loadColor;
 				final String colorType;
+				InflatedView = mInflater.inflate(R.layout.colorslistitem,null);
+
+				root = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Root);
+				previewLayout = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Preview);
+				Preview = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Preview);
+				Title = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Text);
+				Desc = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Desc);
+				
 				String rowType = getItemType(p1);
 						switch (rowType) {
 								case TYPE_LOAD:
-										InflatedView = mInflater.inflate(R.layout.colorslistitem,null);
-
-										root = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Root);
-										Preview = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Preview);
-										Title = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Text);
-										Desc = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Desc);
-
-										Preview.setVisibility(View.GONE);
+										previewLayout.setVisibility(View.GONE);
 										Title.setText(R.string.preset_Load);
 										Desc.setText(R.string.preset_LoadDesc);
 										root.setOnClickListener(new OnClickListener() {
@@ -69,14 +70,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 												});
 										break;
 								case TYPE_SAVE:
-										InflatedView = mInflater.inflate(R.layout.colorslistitem,null);
-
-										root = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Root);
-										Preview = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Preview);
-										Title = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Text);
-										Desc = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Desc);
-										
-										Preview.setVisibility(View.GONE);
+										previewLayout.setVisibility(View.GONE);
 										Title.setText(R.string.preset_Save);
 										Desc.setText(R.string.preset_SaveDesc);
 										root.setOnClickListener(new OnClickListener() {
@@ -87,7 +81,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																// TODO: Implement this method
 																final AlertDialog.Builder alertdb = new AlertDialog.Builder(context);
 
-																alertdb.setTitle(R.string.preset_Save);
+																//alertdb.setTitle(R.string.preset_Save);
 																View inflatedView = MainActivity.inflater.inflate(R.layout.inputdialog,null);
 																final EditText Input = (EditText) inflatedView.findViewById(R.id.inputdialogEditText1);
 																final EditText Input2 = (EditText) inflatedView.findViewById(R.id.inputdialogEditText2);
@@ -186,14 +180,8 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 												});
 										break;
 								case TYPE_ITEM:
-										InflatedView = mInflater.inflate(R.layout.colorslistitem,null);
-										
 										loadColor = colorNamesArray[p1][1].split("_");
 										
-										root = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Root);
-										Preview = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Preview);
-										Title = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Text);
-										Desc = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Desc);
 										Desc.setVisibility(View.GONE);
 										String currentColor = "#ff0000";
 										colorType = "";

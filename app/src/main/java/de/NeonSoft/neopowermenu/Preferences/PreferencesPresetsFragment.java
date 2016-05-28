@@ -37,7 +37,15 @@ public class PreferencesPresetsFragment extends Fragment
 		public static Activity mContext;
 		
 		View InflatedView;
+		public static ViewPager vpPager;
 		public static MyPagerAdapter adapterViewPager;
+		
+		public static PresetsAdapter localAdapter;
+		public static PresetsAdapter onlineAdapter;
+		public static ListView onlineList;
+		public static TextView onlineMSG;
+
+		public static boolean onlineRequestIsRunning;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -49,10 +57,57 @@ public class PreferencesPresetsFragment extends Fragment
 				
 				InflatedView = inflater.inflate(R.layout.activity_presetsmanager, container, false);
 				
-        ViewPager vpPager = (ViewPager) InflatedView.findViewById(R.id.pager);
-        adapterViewPager = new MyPagerAdapter(MainActivity.fragmentManager, new String[] {getString(R.string.presetsManager_TitleLocal),getString(R.string.presetsManager_TitleOnline)});
+        vpPager = (ViewPager) InflatedView.findViewById(R.id.pager);
+        adapterViewPager = new MyPagerAdapter(MainActivity.fragmentManager, new String[] {getString(R.string.presetsManager_TitleAccount),getString(R.string.presetsManager_TitleLocal),getString(R.string.presetsManager_TitleOnline)});
         vpPager.setAdapter(adapterViewPager);
 
+				vpPager.setCurrentItem(1);
+				
+				vpPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+								@Override
+								public void onPageScrolled(int p1, float p2, int p3)
+								{
+										// TODO: Implement this method
+								}
+
+								@Override
+								public void onPageSelected(int p1)
+								{
+										// TODO: Implement this method
+										if(adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleOnline))) {
+												MainActivity.visibleFragment = "PresetsManagerOnline";
+												MainActivity.setActionBarButton("Refresh", R.drawable.ic_action_autorenew, new OnClickListener() {
+
+																@Override
+																public void onClick(View p1)
+																{
+																		// TODO: Implement this method
+																		new getOnlinePresets().execute();
+																}
+														});
+										} else if(adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleAccount))) {
+												MainActivity.visibleFragment = "PresetsManagerAccount";
+												if(LoginFragment.loginFragmentMode.equalsIgnoreCase("login")) {
+														MainActivity.setActionBarButton(getString(R.string.login_Title),R.drawable.ic_content_send,LoginFragment.loginOnClickListener);
+												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("register")) {
+														MainActivity.setActionBarButton(getString(R.string.login_TitleRegister),R.drawable.ic_content_send,LoginFragment.registerOnClickListener);
+												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("logout")) {
+														MainActivity.setActionBarButton(getString(R.string.login_TitleLogout),R.drawable.ic_content_send,LoginFragment.logoutOnClickListener);
+												}
+										} else {
+												MainActivity.visibleFragment = "PresetsManager";
+												MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+										}
+								}
+
+								@Override
+								public void onPageScrollStateChanged(int p1)
+								{
+										// TODO: Implement this method
+								}
+						});
+				
         SmartTabLayout tabsStrip = (SmartTabLayout) InflatedView.findViewById(R.id.tabs);
 				tabsStrip.setCustomTabView(R.layout.customtab,R.id.customTabText);
 				
@@ -75,7 +130,7 @@ public class PreferencesPresetsFragment extends Fragment
 				return InflatedView;
 		}
 
-		public static boolean ImportPreset(final URL url,final PresetsAdapter adapter) {
+		public static boolean ImportPreset(final URL url,final PresetsAdapter adapter,String name, String creator) {
 				Importcancled = false;
 				sCreator = "< unknown >";
 				try {
@@ -90,7 +145,7 @@ public class PreferencesPresetsFragment extends Fragment
 						}
 						newUrl = fUrl;
 						File prefile = new File(newUrl);
-						Filename = prefile.getName();
+						Filename = (name!=null && !name.isEmpty()) ? name+".nps" : prefile.getName();
 						FileInputStream fIn = new FileInputStream(prefile);
 						BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
 						String aDataRow = ""; 
@@ -108,10 +163,12 @@ public class PreferencesPresetsFragment extends Fragment
 						}
 				}
 				AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
-				adb.setTitle(Filename.split(".nps")[0]);
-						adb.setMessage(Filename.split(".nps")[0]+"\n"+mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",sCreator)+"\n\n"+mContext.getString(R.string.presetsManager_ImportMsg));
+				//adb.setTitle((name!=null && !name.isEmpty()) ? name : Filename.split(".nps")[0]);
 				
 						View view = mContext.getLayoutInflater().inflate(R.layout.inputdialog,null);
+						final TextView Text = (TextView) view.findViewById(R.id.inputdialogTextView1);
+						Text.setVisibility(View.VISIBLE);
+						Text.setText(((name!=null && !name.isEmpty()) ? name : Filename.split(".nps")[0])+"\n"+mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",(creator!=null && !creator.isEmpty()) ? creator : sCreator)+"\n\n"+mContext.getString(R.string.presetsManager_ImportMsg));
 						final LinearLayout Name = (LinearLayout) view.findViewById(R.id.inputdialogLinearLayout_Name);
 						Name.setVisibility(View.GONE);
 						final EditText Input = (EditText) view.findViewById(R.id.inputdialogEditText1);
@@ -159,14 +216,14 @@ public class PreferencesPresetsFragment extends Fragment
 														Rename.setText(R.string.Dialog_Save);
 												} else {
 														Filename = Input.getText().toString()+".nps";
-														importad.setTitle(Input.getText().toString());
-														importad.setMessage(Input.getText().toString()+"\n"+mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",sCreator)+"\n\n"+mContext.getString(R.string.presetsManager_ImportMsg));
+														//importad.setTitle(Input.getText().toString());
+														Text.setText(Input.getText().toString()+"\n"+mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",sCreator)+"\n\n"+mContext.getString(R.string.presetsManager_ImportMsg));
 														Name.setVisibility(View.GONE);
 														Rename.setText(R.string.Dialog_Rename);
 												}
 										}
 								});
-						Input.setText(Filename.split(".nps")[0]);
+				Input.setText((name!=null && !name.isEmpty()) ? name : Filename.split(".nps")[0]);
 				
 				adb.setView(view);
 				
@@ -176,6 +233,12 @@ public class PreferencesPresetsFragment extends Fragment
 								public void onClick(DialogInterface p1, int p2)
 								{
 										// TODO: Implement this method
+										if(Rename.getText().toString().equalsIgnoreCase(mContext.getString(R.string.Dialog_Save))) {
+												Filename = Input.getText().toString()+".nps";
+												//importad.setTitle(Input.getText().toString());
+												Text.setText(Input.getText().toString()+"\n"+mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",sCreator)+"\n\n"+mContext.getString(R.string.presetsManager_ImportMsg));
+												Name.setVisibility(View.GONE);
+										}
 										new ImportPreset().execute(newUrl,Filename,adapter);
 								}
 						});
@@ -248,8 +311,12 @@ public class PreferencesPresetsFragment extends Fragment
 						while ((aDataRow = myReader.readLine()) != null)
 						{ 
 								//aBuffer += aDataRow + "\n";
-								myWriter.write(aDataRow + "\n");
 								String[] aData = aDataRow.split("=");
+								if(p1.length>=4 && aData[0].equalsIgnoreCase("creator")) {
+										myWriter.write(aData[0]+"="+p1[3]);
+								} else {
+										myWriter.write(aDataRow + "\n");
+								}
 								String[] loadColor = aData[0].split("_");
 								publishProgress(loadColor[0] +": "+aData[1]);
 								if (aData[0].equalsIgnoreCase("Creator")) {
@@ -315,15 +382,17 @@ public class PreferencesPresetsFragment extends Fragment
 				@Override
 				public Fragment getItem(int position) {
 						switch (position) {
-								case 0: // Fragment # 0 - This will show FirstFragment
+								case 0:
+										return new LoginFragment();
+								case 1: // Fragment # 0 - This will show FirstFragment
 										return new PresetsPage(0, "Local");
-								case 1: // Fragment # 0 - This will show FirstFragment different title
+								case 2: // Fragment # 0 - This will show FirstFragment different title
 										return new PresetsPage(1, "Online");
 								default:
 										return null;
 						}
 				}
-
+				
 				// Returns the page title for the top indicator
 				@Override
 				public CharSequence getPageTitle(int position) {

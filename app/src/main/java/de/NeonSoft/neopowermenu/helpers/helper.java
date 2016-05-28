@@ -6,6 +6,8 @@ import android.os.*;
 import android.preference.*;
 import android.view.*;
 import de.NeonSoft.neopowermenu.*;
+import java.security.*;
+import android.text.*;
 
 public class helper
 {
@@ -94,4 +96,40 @@ public class helper
 				}
 				return duration_string;
 		}
+
+		public static String getSizeString(long bytes, boolean si)
+		{
+				if (bytes <= 0) return "0b";
+				int unit = si ? 1024 : 1000;
+				if (bytes < unit) return bytes + " B";
+				int exp = (int) (Math.log(bytes) / Math.log(unit));
+				String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp - 1) + (si ? "" : "i");
+				return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
+		}
+		
+		public static String md5Crypto(String input) {
+				try {
+						MessageDigest digest = MessageDigest.getInstance("MD5");
+						digest.update(input.getBytes());
+						byte messageDigest[] = digest.digest();
+						
+						StringBuffer hexString = new StringBuffer();
+						for(int i=0;i< messageDigest.length;i++) {
+								String h = Integer.toHexString(0xFF & messageDigest[i]);
+								while (h.length() < 2) {
+										h = "0" + h;
+								}
+								hexString.append(h);
+						}
+						return hexString.toString();
+				} catch (NoSuchAlgorithmException e) {
+						e.printStackTrace();
+				}
+				return "null";
+		}
+		
+		public static boolean isValidEmail(String input) {
+				return !TextUtils.isEmpty(input) && android.util.Patterns.EMAIL_ADDRESS.matcher(input).matches();
+		}
+		
 }

@@ -108,45 +108,6 @@
 			android:layout_width="wrap_content"
 			android:orientation="vertical"
 			android:background="@color/colorPrimaryDarkDarkTheme"
-			android:id="@+id/dialoggravitychooserLinearLayout_DialogGravityCenter"
-			android:layout_centerInParent="true"
-			android:visibility="gone">
-
-			<LinearLayout
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:orientation="vertical"
-				android:background="@color/colorPrimaryDarkTheme"
-				android:layout_marginBottom="1dp"
-				android:layout_marginRight="1dp"
-				android:layout_marginLeft="1dp"
-				android:layout_marginTop="1dp"
-				android:gravity="center"
-				android:padding="2dp"
-				android:minWidth="65dp">
-
-				<TextView
-					android:layout_height="wrap_content"
-					android:layout_width="wrap_content"
-					android:text="@string/advancedPrefs_DialogGravityCenter"
-					android:layout_gravity="center_horizontal"
-					android:textColor="#FFFFFF"
-					android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-				<Switch
-					android:layout_height="wrap_content"
-					android:layout_width="wrap_content"
-					android:id="@+id/dialoggravitychooserSwitch_DialogGravityCenter"/>
-
-			</LinearLayout>
-
-		</LinearLayout>
-
-		<LinearLayout
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:orientation="vertical"
-			android:background="@color/colorPrimaryDarkDarkTheme"
 			android:id="@+id/dialoggravitychooserLinearLayout_DialogGravityRight"
 			android:layout_alignParentRight="true"
 			android:layout_centerVertical="true">

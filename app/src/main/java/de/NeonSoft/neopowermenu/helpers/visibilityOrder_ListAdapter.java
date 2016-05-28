@@ -34,6 +34,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 				
 				TextView ItemTitle = (TextView) rowView.findViewById(R.id.title);
 				TextView ItemDesc = (TextView) rowView.findViewById(R.id.text);
+				ItemDesc.setVisibility(View.GONE);
 				LinearLayout ItemCheckBoxHolder = (LinearLayout) rowView.findViewById(R.id.listitemhandleleftLinearLayout_HideDesc);
 				final CheckBox ItemCheckBox = (CheckBox) rowView.findViewById(R.id.hideDescCheckBox);
 				ItemCheckBox.setClickable(false);
@@ -64,12 +65,6 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 						ItemTitle.setText(titleStr);
 				} catch (Throwable t) {
 						ItemTitle.setText("Failed to get String resource for powerMenuMain_"+this.itemsTitle.get(position));
-				}
-				try {
-						String descStr = context.getResources().getString(context.getResources().getIdentifier("visibilityOrderDesc_"+this.itemsTitle.get(position),"string",MainActivity.class.getPackage().getName()));
-						ItemDesc.setText(descStr);
-				} catch (Throwable t) {
-						ItemDesc.setText("Failed to get String resource for visibilityOrderDesc_"+this.itemsTitle.get(position));
 				}
 				//ItemTitle.setText(this.itemsTitle.get(position));
 				//ItemDesc.setText(this.itemsDesc.get(position));

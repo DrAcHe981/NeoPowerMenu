@@ -68,7 +68,7 @@
 
 					<LinearLayout
 						android:layout_height="wrap_content"
-						android:minHeight="60dp"
+						android:minHeight="50dp"
 						android:layout_width="match_parent"
 						android:orientation="vertical"
 						android:paddingTop="5dp"
@@ -147,7 +147,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"
@@ -197,7 +197,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"
@@ -247,7 +247,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"
@@ -324,7 +324,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"
@@ -374,7 +374,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"
@@ -427,7 +427,7 @@
 
 					<LinearLayout
 						android:layout_height="wrap_content"
-						android:minHeight="60dp"
+						android:minHeight="50dp"
 						android:layout_width="match_parent"
 						android:orientation="vertical"
 						android:paddingTop="5dp"
@@ -491,7 +491,7 @@
 
 					<LinearLayout
 						android:layout_height="wrap_content"
-						android:minHeight="60dp"
+						android:minHeight="50dp"
 						android:layout_width="match_parent"
 						android:orientation="vertical"
 						android:paddingTop="5dp"
@@ -575,7 +575,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"
@@ -625,7 +625,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"
@@ -675,7 +675,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"
@@ -725,7 +725,7 @@
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:minHeight="60dp"
+					android:minHeight="50dp"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingTop="5dp"

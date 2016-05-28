@@ -12,7 +12,7 @@
 		android:orientation="horizontal">
 
 		<LinearLayout
-			android:layout_height="45dp"
+			android:layout_height="40dp"
 			android:layout_width="40dp"
 			android:orientation="vertical"
 			android:gravity="center|center_vertical|center_horizontal"
@@ -112,7 +112,8 @@
 					android:text="@string/visibilityOrder_Enabled"
 					android:layout_weight="1.0"
 					android:gravity="bottom|center_horizontal"
-					android:textColor="#FFFFFF"/>
+					android:textColor="#FFFFFF"
+					android:visibility="gone"/>
 
 				<Switch
 					android:layout_height="wrap_content"
@@ -124,10 +125,10 @@
 
 			<LinearLayout
 				android:layout_height="wrap_content"
-				android:minHeight="60dp"
+				android:minHeight="50dp"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
-				android:paddingLeft="5dp"
+				android:paddingLeft="10dp"
 				android:layout_toLeftOf="@id/listitemhandleleftLinearLayout1"
 				android:layout_alignParentLeft="true"
 				android:layout_marginRight="10dp"
@@ -138,7 +139,7 @@
 					android:layout_width="match_parent"
 					android:text="Title/Primary Text"
 					android:layout_weight="1.0"
-					android:gravity="bottom"
+					android:gravity="center_vertical"
 					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:textColor="#FFFFFF"
 					android:id="@+id/title"/>
@@ -150,13 +151,14 @@
 					android:layout_weight="1.0"
 					android:gravity="top"
 					android:paddingLeft="5dp"
-					android:id="@+id/text"/>
+					android:id="@+id/text"
+					android:visibility="gone"/>
 
 				<LinearLayout
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
 					android:orientation="horizontal"
-					android:gravity="right"
+					android:gravity="left"
 					android:layout_below="@id/listitemhandleleftLinearLayout2"
 					android:layout_alignRight="@id/listitemhandleleftLinearLayout2">
 
@@ -188,18 +190,6 @@
 				</LinearLayout>
 
 			</LinearLayout>
-
-			<TextView
-				android:layout_height="wrap_content"
-				android:layout_width="2dp"
-				android:background="@color/colorAccentDarkTheme"
-				android:alpha="0.3"
-				android:layout_toLeftOf="@id/listitemhandleleftLinearLayout1"
-				android:layout_marginBottom="5dp"
-				android:layout_marginTop="5dp"
-				android:layout_marginRight="5dp"
-				android:layout_alignTop="@id/listitemhandleleftLinearLayout2"
-				android:layout_alignBottom="@id/listitemhandleleftLinearLayout2"/>
 
 			<TextView
 				android:layout_height="2dp"

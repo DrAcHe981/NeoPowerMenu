@@ -271,7 +271,7 @@ public class PreferencesColorFragment extends Fragment
 								}
 						});
 				alertdb.setView(inflatedLayout);
-				alertdb.setTitle(R.string.Dialog_SelectColor);
+				//alertdb.setTitle(R.string.Dialog_SelectColor);
 				alertdb.setNegativeButton(R.string.Dialog_Cancel, new AlertDialog.OnClickListener() {
 
 								@Override

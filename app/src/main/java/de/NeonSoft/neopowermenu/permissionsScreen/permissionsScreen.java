@@ -30,7 +30,7 @@ public class permissionsScreen extends Fragment
 		public static PermissionsAdapter adapter;
 		private static CheckBox CheckBox_DontAskAgain;
 		
-		private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA,Manifest.permission.WAKE_LOCK,Manifest.permission.ACCESS_SURFACE_FLINGER,Manifest.permission.RECORD_AUDIO,Manifest.permission.SYSTEM_ALERT_WINDOW};
+		public static String[] permissions = {Manifest.permission.INTERNET,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA,Manifest.permission.WAKE_LOCK,Manifest.permission.ACCESS_SURFACE_FLINGER,Manifest.permission.RECORD_AUDIO,Manifest.permission.SYSTEM_ALERT_WINDOW};
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -64,7 +64,6 @@ public class permissionsScreen extends Fragment
 										// TODO: Implement this method
 										if(!adapter.isAllChecked()) {
 												PermissionsDialog = new AlertDialog.Builder(getActivity());
-												PermissionsDialog.setTitle(R.string.permissionsScreen_NotAllGrantedTitle);
 												PermissionsDialog.setMessage(R.string.permissionsScreen_NotAllGranted);
 												PermissionsDialog.setPositiveButton(R.string.Dialog_Ok, new DialogInterface.OnClickListener() {
 

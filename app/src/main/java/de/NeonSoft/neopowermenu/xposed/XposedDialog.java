@@ -91,7 +91,12 @@ public class XposedDialog extends DialogFragment
 
 				//doubleToConfirm = XposedMainActivity.preferences.getBoolean("DoubleTouchToConfirm",true);
 
-        View view = inflater.inflate(R.layout.fragment_power,container,false);
+        View view;
+				if(XposedMainActivity.sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
+						view = inflater.inflate(R.layout.fragment_powerfullscreen,container,false);
+				} else {
+						view = inflater.inflate(R.layout.fragment_power,container,false);
+				}
 
 				mContext = getDialog().getContext();
 
@@ -131,10 +136,10 @@ public class XposedDialog extends DialogFragment
 				bootloaderText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 				safemodeText.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 
-				if(XposedMainActivity.sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
+				/*if(XposedMainActivity.sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
 						LayoutParams fllp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
 						dialogMain.setLayoutParams(fllp);
-				}
+				}*/
 				//TextDrawable progressbgd = TextDrawable.builder().buildRound("",Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Backgroundcolor","#ffffff")));
 				//progressbg.setImageDrawable(progressbgd);
         progress.getIndeterminateDrawable().setColorFilter(

@@ -5,6 +5,8 @@
 
 "</string>
 <string name="PreviewPowerMenu">"Preview"</string>
+<string name="welcomeMsg">"Welcome to NeoPowerMenu!
+Your user Id has been generated, you are ready to upload presets!"</string>
 
 <!-- Power Menu -->
 <string name="powerMenuMain_Shutdown">"Power Off"</string>
@@ -67,11 +69,6 @@ Check out the source on GitHub."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibility and order"</string>
-<string name="visibilityOrderDesc_Shutdown">"Power Off the device."</string>
-<string name="visibilityOrderDesc_Reboot">"Reboot the device."</string>
-<string name="visibilityOrderDesc_SoftReboot">"Simply restarts the Android UI by killing the zygote process"</string>
-<string name="visibilityOrderDesc_Screenshot">"Take Screenshots via the Power Menu."</string>
-<string name="visibilityOrder_Enabled">"Enabled:"</string>
 		<string name="visibilityOrder_HideDesc">"Hide description"</string>
 <string name="category_Preset">"Presets"</string>
 <string name="preset_Load">"Load preset"</string>
@@ -80,14 +77,28 @@ Check out the source on GitHub."</string>
 <string name="preset_SaveDesc">"Save your current configuration"</string>
 
 <!-- Preferences: Preset Manager -->
+		<string name="presetsManager_TitleAccount">"Account"</string>
 <string name="presetsManager_TitleLocal">"Local Presets"</string>
 <string name="presetsManager_TitleOnline">"Online Presets"</string>
-<string name="presetsManager_Active">"Active:"</string>
 <string name="presetsManager_Creator">"Creator: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Built-in"</string>
 <string name="presetsManager_Delete">"Delete"</string>
 <string name="presetsManager_SureToDelete">"Are you sure you want to delete [PRESETNAME]?
 This can't be undone!"</string>
+		<string name="presetsManager_Upload">"Upload"</string>
+		<string name="presetsManager_UploadMsg">"This Preset will be uploaded to the public server, visible to all other users.
+
+This is your last chance to adjust the name or the creator before uploading..."</string>
+		<string name="presetsManager_UploadComplete">"Upload complete!"</string>
+		<string name="presetsManager_UploadFailedSameName">"This name is already used, please choose another one."</string>
+		<string name="presetsManager_UploadFailedNoAccess">"This creator name is protected, choose another or log in."</string>
+		<string name="presetsManager_UploadFailed">"Upload failed!"</string>
+		<string name="presetsManager_Downloading">"Downloading..."</string>
+		<string name="presetsManager_DownloadFailed">"Download failed!"</string>
+		<string name="presetsManager_CantConnecttoServer">"Can't connect to the server!
+Please check your network connection or try it again later."</string>
+		<string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
+Please try it again later, when nothing changes: please report it to the developer."</string>
 <string name="presetsManager_Share">"Share"</string>
 <string name="presetsManager_NJI">"This Feature is currently not implemented..."</string>
 <string name="presetsManager_ImportMsg">"Would you like to import this preset?"</string>
@@ -105,8 +116,6 @@ This can't be undone!"</string>
 <string name="advancedPrefs_DelayZero">"Almost instant"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Screenshot delay"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Delay between click and screenshot."</string>
-<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Power Menu delay"</string>
-<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Delay between showing the reveal animation and the power menu."</string>
 
 <!-- Dialog -->
 <string name="Dialog_Ok">"Ok"</string>
@@ -136,13 +145,11 @@ This can't be undone!"</string>
 <string name="preferencesDesc_RootXposed5">"Please restart your device to complete the update process!"</string>
 <string name="preferencesTitle_DeepXposedLogging">"Deep Xposed logging"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Enable advanced Xposed logging, after enabling reboot to see changes."</string>
-<string name="visibilityOrderDesc_Screenrecord">"Take Screenrecords via the Power Menu."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Screen is being recorded"</string>
 <string name="screenrecord_notif_title">"Recording screen"</string>
 <string name="screenrecord_notif_stop">"Stop"</string>
-<string name="screenrecord_notif_pointer">"Toggle pointer"</string>
 <string name="screenrecord_toast_error">"Unable to record screen"</string>
 <string name="screenrecord_toast_processing">"Cannot start new recording as previous recording is still being processed"</string>
 <string name="screenrecord_toast_saved">"Recording saved as %s"</string>
@@ -151,13 +158,10 @@ This can't be undone!"</string>
 <string name="powerMenuMain_FlashlightDesc">"Turning off after [AUTOOFF]."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Automatic turn off disabled."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Expanded Desktop"</string>
-<string name="visibilityOrderDesc_Flashlight">"Toggle the Torch via the Power Menu."</string>
-<string name="visibilityOrderDesc_ExpandedDesktop">"Toggle the Expanded Desktop mode from GravityBox via the Power Menu (needs GravityBox to be installed)."</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Change the Dialog position."</string>
 <string name="advancedPrefs_DialogGravityTop">"Top"</string>
 <string name="advancedPrefs_DialogGravityLeft">"Left"</string>
-<string name="advancedPrefs_DialogGravityCenter">"Center"</string>
 <string name="advancedPrefs_DialogGravityRight">"Right"</string>
 <string name="advancedPrefs_DialogGravityBottom">"Bottom"</string>
 
@@ -204,17 +208,14 @@ This can't be undone!"</string>
 <string name="colorsCategory_SafeMode">"Safe Mode colors"</string>
 <string name="colorsDesc_DialogSafeMode">"The colors of the dialog when clicked on Safe Mode."</string>
 <string name="powerMenuMain_Flashlight">"Turn Torch On"</string>
-<string name="visibilityOrderDesc_AirplaneMode">"Toggle the Airplane mode via the Power Menu."</string>
-<string name="visibilityOrderDesc_RestartUI">"Restart the System UI via the Power Menu."</string>
-<string name="visibilityOrderDesc_SoundMode">"Toggle the Sound Mode via the Power Menu.
-Toggle order: Normal -> Vibrate -> Silent -> Normal..."</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Permissions"</string>
-<string name="permissionsScreen_NotAllGrantedTitle">"Not all granted."</string>
 <string name="permissionsScreen_NotAllGranted">"Not all permissions are granted, some functions may not work..."</string>
 <string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
-<string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
+		<string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
+		<string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+		<string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download or upload presets from the public server."</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Needed for future functions (little tip: custom images)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
@@ -227,4 +228,36 @@ Toggle order: Normal -> Vibrate -> Silent -> Normal..."</string>
 		<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Needed to display the Power Menu on top of everything."</string>
 		<string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
 		<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Needed to prevent killing of the torch and screenrecord service."</string>
+		
+		<!-- Login page -->
+		<string name="login_Title">"Login"</string>
+		<string name="login_TitleRegister">"Register"</string>
+		<string name="login_Info">"The user names from registered users are protected so no one can upload as them, here you can login or create an new account.
+This is not required if you dont want to!
+I will never share any private data!"</string>
+		<string name="login_UsernameEmail">"Username or E-mail:"</string>
+		<string name="login_Username">"Username:"</string>
+		<string name="login_Email">"E-mail:"</string>
+		<string name="login_RetypeEmail">"Retype E-mail:"</string>
+		<string name="login_PasswordOverEmail">"You can set your password over the link in the activation e-mail (the e-mail is only available in english)."</string>
+		<string name="login_Password">"Password:"</string>
+		<string name="login_KeepLogin">"Keep me logged in."</string>
+		<string name="login_Register">"Need an account?
+Click here to create a new Account!"</string>
+		<string name="login_LoggedIn">"Logged in!"</string>
+		<string name="login_LoginFailedWithReason">"Login failed: "</string>
+		<string name="login_LoginFailedWrongData">"Login failed, wrong e-mail or password!"</string>
+		<string name="login_RegisterFailedNameUsed">"Sorry the choosen name or email adress is already in use."</string>
+		<string name="login_RegisterSuccess">"Registration succesfull, you will receive an email to activate your account!"</string>
+		<string name="login_Processing">"Processing..."</string>
+		<string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
+		<string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]
+Stars given: [STARSGIVEN]
+Stars received: [STARSRECEIVED]
+Top 5 presets:
+[TOP5PRESETS]"</string>
+		<string name="login_StatisticsFailed">"Failed to get statistics..."</string>
+		<string name="login_ReloadStatistics">"Reload statistics"</string>
+		<string name="login_TitleLogout">"Logout"</string>
+		<string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
 </resources>

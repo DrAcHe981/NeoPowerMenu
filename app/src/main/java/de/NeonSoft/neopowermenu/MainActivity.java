@@ -1,32 +1,33 @@
 package de.NeonSoft.neopowermenu;
 
-import android.*;
 import android.content.*;
 import android.content.pm.*;
 import android.content.res.*;
 import android.net.*;
 import android.os.*;
 import android.support.v4.app.*;
-import android.support.v4.content.*;
 import android.support.v7.app.*;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.view.animation.*;
 import android.widget.*;
-import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
+import de.NeonSoft.neopowermenu.helpers.*;
+import de.NeonSoft.neopowermenu.permissionsScreen.*;
 import de.NeonSoft.neopowermenu.xposed.*;
 import java.io.*;
 import java.net.*;
-import de.NeonSoft.neopowermenu.permissionsScreen.*;
+import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
+
+		public static boolean LOCALTESTSERVER = true; // use local server "127.0.0.1:8080 or online www.Neon-Soft.de
+		public static int TIMEOUT_MILLISEC = 10000; // = 10 seconds
 		
 		public static SharedPreferences preferences;
 		public static Context context;
 		public static LayoutInflater inflater;
-		private LinearLayout LinearLayout_ShowPreview;
 		public static boolean RootAvailable;
 		public static android.support.v4.app.FragmentManager fragmentManager;
 		public static String visibleFragment = "Main";
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 		
     public static final int BG_PRIO = android.os.Process.THREAD_PRIORITY_BACKGROUND;
 
-		String versionName = "1.0";
+		public static String versionName = "v1.0";
 		int versionCode = -1;
 		
 		/*<!-- Internal needed Hook version to check if reboot is needed --!>*/
@@ -59,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
 		
 		AlertDialog.Builder adb;
 		
+		// Session data
+		public static boolean loggedIn = false;
+		public static String usernameemail = "null";
+		public static String password = "null";
+		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -69,6 +75,72 @@ public class MainActivity extends AppCompatActivity {
 				
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+				
+				if(preferences.getString("userUniqeId","null").equalsIgnoreCase("null")) {
+						Date date = new Date();
+						preferences.edit().putString("userUniqeId",helper.md5Crypto(Build.MANUFACTURER+"-"+Build.MODEL+"-"+date.getYear()+"."+date.getMonth()+"."+date.getDay()+"-"+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds())).commit();
+						Toast.makeText(getApplicationContext(),getString(R.string.welcomeMsg),Toast.LENGTH_LONG).show();
+				}
+				
+				if(preferences.getBoolean("autoLogin",false)) {
+						uploadHelper uH = new uploadHelper(getApplicationContext(), new uploadHelper.uploadHelperInterface() {
+
+										@Override
+										public void onUploadStarted(boolean state)
+										{
+												// TODO: Implement this method
+										}
+
+										@Override
+										public void onPublishUploadProgress(long nowSize, long totalSize)
+										{
+												// TODO: Implement this method
+										}
+
+										@Override
+										public void onUploadComplete()
+										{
+												// TODO: Implement this method
+												Toast.makeText(getApplicationContext(),getString(R.string.login_LoggedIn),Toast.LENGTH_SHORT).show();
+												loggedIn = true;
+												usernameemail = preferences.getString("ueel","null");
+												password = preferences.getString("pd","null");
+										}
+
+										@Override
+										public void onUploadFailed(String reason)
+										{
+												// TODO: Implement this method
+												if (reason.contains("user with this data not found"))
+												{
+														Toast.makeText(getApplicationContext(), getString(R.string.login_LoginFailedWrongData), Toast.LENGTH_LONG).show();
+												}
+												else if (reason.contains("Cannot connect to the DB"))
+												{
+														Toast.makeText(getApplicationContext(), getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
+												}
+												else if (reason.contains("Connection refused"))
+												{
+														Toast.makeText(getApplicationContext(), getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
+												}
+												else
+												{
+														Toast.makeText(getApplicationContext(), getString(R.string.login_LoginFailedWithReason)+"\n" + reason, Toast.LENGTH_LONG).show();
+												}
+										}
+								});
+						uH.setServerUrl("http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice3.php");
+						uH.setAdditionalUploadPosts(new String[][] {{"action","login"},{(preferences.getString("ueel","null").contains("@") ? "email" : "name"),preferences.getString("ueel","null")},{"password",preferences.getString("pd","null")}});
+						try
+						{
+								new File(getFilesDir().getPath() + "/tmp").createNewFile();
+						}
+						catch (IOException e)
+						{}
+						uH.setLocalUrl(getFilesDir().getPath() + "/tmp");
+						uH.startUpload();
+				}
+				
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
 				{
 						getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -123,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 				TextView_ActionBarVersion.setText(versionName+" ("+versionCode+")");
 
         fragmentManager = getSupportFragmentManager();
-				if(preferences.getBoolean("DontAskPermissionsAgain",false) || permissionsScreen.checkPermissions(MainActivity.this,new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA})) {
+				if(preferences.getBoolean("DontAskPermissionsAgain",false) || permissionsScreen.checkPermissions(MainActivity.this,permissionsScreen.permissions)) {
         android.support.v4.app.Fragment fragment = new PreferencesPartFragment();
         fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
 								.replace(R.id.pref_container, fragment).commit();
@@ -175,6 +247,10 @@ public class MainActivity extends AppCompatActivity {
 						//Toast.makeText(context,"ActionBarButton already set with this data.",Toast.LENGTH_SHORT).show();
 				}
 		}
+		
+		public static void setActionBarButtonListener(OnClickListener listener) {
+				LinearLayout_ActionBarButton.setOnClickListener(listener);
+		}
 
 		public static void setActionBarButtonText(String sText) {
 				if(!sText.equalsIgnoreCase(TextView_ActionBarButton.getText().toString())) {
@@ -223,13 +299,22 @@ public class MainActivity extends AppCompatActivity {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
-				} else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
+				} else if (visibleFragment.equalsIgnoreCase("PresetsManager") || visibleFragment.equalsIgnoreCase("PresetsManagerOnline")) {
+						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesColorFragment()).commit();
+				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("login") || LoginFragment.loginFragmentMode.equalsIgnoreCase("logout"))) {
+						PreferencesPresetsFragment.vpPager.setCurrentItem(1,true);
+				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && LoginFragment.loginFragmentMode.equalsIgnoreCase("register")) {
+						LoginFragment.returnToLogin();
 				} else if (visibleFragment.equalsIgnoreCase("Advanced")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("permissions")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
+				} else if (visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login")) {
+						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("Main") || visibleFragment.equalsIgnoreCase("permissionsAutoStart")) {
+						finish();
 						super.onBackPressed();
 				}
 		}
@@ -247,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
 		public void onResume()
 		{
 				// TODO: Implement this method
-				if(!visibleFragment.equalsIgnoreCase("permissions")) {
+				if(!visibleFragment.equalsIgnoreCase("permissions") && !visibleFragment.equalsIgnoreCase("permissionsAutoStart") && !visibleFragment.equalsIgnoreCase("PresetsManagerOnline") && !visibleFragment.equalsIgnoreCase("PresetsManagerAccount")) {
 						setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
 				}
 				super.onResume();
