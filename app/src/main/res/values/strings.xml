@@ -5,8 +5,6 @@
 
 "</string>
 <string name="PreviewPowerMenu">"Preview"</string>
-<string name="welcomeMsg">"Welcome to NeoPowerMenu!
-Your user Id has been generated, you are ready to upload presets!"</string>
 
 <!-- Power Menu -->
 <string name="powerMenuMain_Shutdown">"Power Off"</string>
@@ -15,11 +13,6 @@ Your user Id has been generated, you are ready to upload presets!"</string>
 <string name="powerMenuMain_SoftRebootDesc">"Simply restarts the Android UI by killing the zygote process"</string>
 <string name="powerMenuMain_Screenshot">"Screenshot"</string>
 <string name="powerMenuMain_ScreenshotDesc">"Screenshot delay: [SCREENSHOTDELAY]"</string>
-		<string name="powerMenuMain_SoundMode">"Sound Mode"</string>
-		<string name="powerMenuMain_SoundModeDesc">"Current mode: [SOUNDMODE]"</string>
-		<string name="SoundMode_Normal">"Normal"</string>
-		<string name="SoundMode_Vibrate">"Vibrate"</string>
-		<string name="SoundMode_Silent">"Silent"</string>
 <string name="powerMenuBottom_Recovery">"Recovery"</string>
 <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
 <string name="powerMenuBottom_SafeMode">"Safe Mode"</string>
@@ -46,14 +39,11 @@ Please activate the module in the Xposed installer."</string>
 <string name="preferencesDesc_VisibilityOrder">"Select the items you want to show and order them as you wish."</string>
 <string name="preferencesCategory_Other">"Other"</string>
 <string name="preferencesTitle_Advanced">"Advanced Settings"</string>
-		<string name="preferencesDesc_Advanced">"Change advanced settings like delays, gravity or speed."</string>
-		<string name="preferencesTitle_Permissions">"Permissions"</string>
-<string name="preferencesDesc_Permissions">"Show the used Permissions and see for what they are used.
-Grant additional permissions that are not added on first start (Android 6.0+)."</string>
+<string name="preferencesDesc_Advanced">"Change advanced settings like delays, gravity or speed."</string>
 <string name="preferencesTitle_HideLauncherIcon">"Hide app in launcher"</string>
 <string name="preferencesDesc_HideLauncherIcon">"Hides the app icon in the launcher, it can take up to a reboot to hide the icon.
 This Settings screen will only be accessible via the Xposed Installer then."</string>
-		<string name="preferencesCategory_About">"About"</string>
+<string name="preferencesCategory_About">"About"</string>
 <string name="preferencesTitle_NeoSource">"Source"</string>
 <string name="preferencesDesc_NeoSource">"NeoPowerMenu is open source.
 Check out the source on GitHub."</string>
@@ -69,7 +59,6 @@ Check out the source on GitHub."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibility and order"</string>
-		<string name="visibilityOrder_HideDesc">"Hide description"</string>
 <string name="category_Preset">"Presets"</string>
 <string name="preset_Load">"Load preset"</string>
 <string name="preset_LoadDesc">"Load a saved configuration"</string>
@@ -77,7 +66,6 @@ Check out the source on GitHub."</string>
 <string name="preset_SaveDesc">"Save your current configuration"</string>
 
 <!-- Preferences: Preset Manager -->
-		<string name="presetsManager_TitleAccount">"Account"</string>
 <string name="presetsManager_TitleLocal">"Local Presets"</string>
 <string name="presetsManager_TitleOnline">"Online Presets"</string>
 <string name="presetsManager_Creator">"Creator: [CREATORNAME]"</string>
@@ -85,20 +73,6 @@ Check out the source on GitHub."</string>
 <string name="presetsManager_Delete">"Delete"</string>
 <string name="presetsManager_SureToDelete">"Are you sure you want to delete [PRESETNAME]?
 This can't be undone!"</string>
-		<string name="presetsManager_Upload">"Upload"</string>
-		<string name="presetsManager_UploadMsg">"This Preset will be uploaded to the public server, visible to all other users.
-
-This is your last chance to adjust the name or the creator before uploading..."</string>
-		<string name="presetsManager_UploadComplete">"Upload complete!"</string>
-		<string name="presetsManager_UploadFailedSameName">"This name is already used, please choose another one."</string>
-		<string name="presetsManager_UploadFailedNoAccess">"This creator name is protected, choose another or log in."</string>
-		<string name="presetsManager_UploadFailed">"Upload failed!"</string>
-		<string name="presetsManager_Downloading">"Downloading..."</string>
-		<string name="presetsManager_DownloadFailed">"Download failed!"</string>
-		<string name="presetsManager_CantConnecttoServer">"Can't connect to the server!
-Please check your network connection or try it again later."</string>
-		<string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
-Please try it again later, when nothing changes: please report it to the developer."</string>
 <string name="presetsManager_Share">"Share"</string>
 <string name="presetsManager_NJI">"This Feature is currently not implemented..."</string>
 <string name="presetsManager_ImportMsg">"Would you like to import this preset?"</string>
@@ -173,14 +147,12 @@ Please try it again later, when nothing changes: please report it to the develop
 <string name="powerMenuMain_RestartUI">"Restart System UI"</string>
 
 <!-- Preferences: Colors -->
-		<string name="colorsCategory_Presets">"Presets"</string>
 <string name="colorsType_Background">"Background color"</string>
 <string name="colorsType_Text">"Text color"</string>
 <string name="colorsCategory_Reveal">"Reveal backgrounds"</string>
 <string name="colorsDesc_Reveal">"The color of the reveal animation."</string>
 <string name="colorsDesc_ActionReveal">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsCategory_Main">"Dialog colors"</string>
-<string name="colorsDesc_DialogMain">"The colors of the dialog."</string>
 <string name="colorsCategory_Shutdown">"Shutdown colors"</string>
 <string name="colorsDesc_DialogShutdown">"The colors of the dialog when clicked on Shutdown."</string>
 <string name="colorsCategory_Reboot">"Reboot colors"</string>
@@ -192,15 +164,9 @@ Please try it again later, when nothing changes: please report it to the develop
 <string name="colorsCategory_Screenrecord">"Screenrecord colors"</string>
 <string name="colorsDesc_DialogScreenrecord">"The colors from the Screenrecord button."</string>
 <string name="colorsCategory_Flashlight">"Torch colors"</string>
-<string name="colorsDesc_DialogFlashlight">"The colors from the Torch button."</string>
+<string name="colorsDesc_DialogFlashlight">"The colors from the Torch toggle."</string>
 <string name="colorsCategory_ExpandedDesktop">"Expanded Desktop colors"</string>
-		<string name="colorsDesc_DialogExpandedDesktop">"The colors from the Expanded Desktop button."</string>
-		<string name="colorsCategory_AirplaneMode">"Airplane Mode colors"</string>
-		<string name="colorsDesc_DialogAirplaneMode">"The colors from the Airplane Mode button."</string>
-		<string name="colorsCategory_RestartUI">"Restart System UI colors"</string>
-		<string name="colorsDesc_DialogRestartUI">"The colors from the Restart System UI button."</string>
-		<string name="colorsCategory_SoundMode">"Sound Mode colors"</string>
-		<string name="colorsDesc_DialogSoundMode">"The colors from the Sound Mode button."</string>
+<string name="colorsDesc_DialogExpandedDesktop">"The colors from the Expanded Desktop toggle."</string>
 <string name="colorsCategory_Recovery">"Recovery colors"</string>
 <string name="colorsDesc_DialogRecovery">"The colors of the dialog when clicked on Recovery."</string>
 <string name="colorsCategory_Bootloader">"Bootloader colors"</string>
@@ -213,51 +179,89 @@ Please try it again later, when nothing changes: please report it to the develop
 <string name="permissionsScreen_Title">"Permissions"</string>
 <string name="permissionsScreen_NotAllGranted">"Not all permissions are granted, some functions may not work..."</string>
 <string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
-		<string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
-		<string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
-		<string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download or upload presets from the public server."</string>
+<string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Needed for future functions (little tip: custom images)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
-		<string name="permissionsScreenDesc_android.permission.CAMERA">"Needed to toggle the Torch."</string>
-		<string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
-		<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Needed for the screen recorder to record the screen."</string>
-		<string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
-		<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Needed to Record audio with the screen recorder."</string>
-		<string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
-		<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Needed to display the Power Menu on top of everything."</string>
-		<string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
-		<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Needed to prevent killing of the torch and screenrecord service."</string>
-		
-		<!-- Login page -->
-		<string name="login_Title">"Login"</string>
-		<string name="login_TitleRegister">"Register"</string>
-		<string name="login_Info">"The user names from registered users are protected so no one can upload as them, here you can login or create an new account.
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Needed to toggle the Torch."</string>
+<string name="preferencesTitle_Permissions">"Permissions"</string>
+<string name="preferencesDesc_Permissions">"Show the used Permissions and see for what they are used.
+Grant additional permissions that are not added on first start (Android 6.0+)."</string>
+<string name="visibilityOrder_HideDesc">"Hide description"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsCategory_Presets">"Presets"</string>
+<string name="colorsDesc_DialogMain">"The colors of the dialog."</string>
+<string name="colorsCategory_AirplaneMode">"Airplane Mode colors"</string>
+<string name="colorsDesc_DialogAirplaneMode">"The colors from the Airplane Mode button."</string>
+<string name="colorsCategory_RestartUI">"Restart System UI colors"</string>
+<string name="colorsDesc_DialogRestartUI">"The colors from the Restart System UI button."</string>
+<string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
+<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Needed for the screen recorder to record the screen."</string>
+<string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Needed to Record audio with the screen recorder."</string>
+<string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Needed to display the Power Menu on top of everything."</string>
+<string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
+<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Needed to prevent killing of the torch and screenrecord service."</string>
+<string name="powerMenuMain_SoundMode">"Sound Mode"</string>
+<string name="powerMenuMain_SoundModeDesc">"Current mode: [SOUNDMODE]"</string>
+<string name="SoundMode_Normal">"Normal"</string>
+<string name="SoundMode_Vibrate">"Vibrate"</string>
+<string name="SoundMode_Silent">"Silent"</string>
+<string name="colorsCategory_SoundMode">"Sound Mode colors"</string>
+<string name="colorsDesc_DialogSoundMode">"The colors from the Sound Mode button."</string>
+<string name="welcomeMsg">"Welcome to NeoPowerMenu!
+Your user Id has been generated, you are ready to upload presets!"</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleAccount">"Account"</string>
+<string name="presetsManager_Upload">"Upload"</string>
+<string name="presetsManager_UploadMsg">"This Preset will be uploaded to the public server, visible to all other users.
+
+This is your last chance to adjust the name or the creator before uploading..."</string>
+<string name="presetsManager_UploadComplete">"Upload complete!"</string>
+<string name="presetsManager_UploadFailedSameName">"This name is already used, please choose another one."</string>
+<string name="presetsManager_UploadFailedNoAccess">"This creator name is protected, choose another or log in."</string>
+<string name="presetsManager_UploadFailed">"Upload failed!"</string>
+<string name="presetsManager_Downloading">"Downloading..."</string>
+<string name="presetsManager_DownloadFailed">"Download failed!"</string>
+<string name="presetsManager_CantConnecttoServer">"Can't connect to the server!
+Please check your network connection or try it again later."</string>
+<string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
+Please try it again later, when nothing changes: please report it to the developer."</string>
+<string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download or upload presets from the public server."</string>
+
+<!-- Login page -->
+<string name="login_Title">"Login"</string>
+<string name="login_TitleRegister">"Register"</string>
+<string name="login_Info">"The user names from registered users are protected so no one can upload as them, here you can login or create an new account.
 This is not required if you dont want to!
 I will never share any private data!"</string>
-		<string name="login_UsernameEmail">"Username or E-mail:"</string>
-		<string name="login_Username">"Username:"</string>
-		<string name="login_Email">"E-mail:"</string>
-		<string name="login_RetypeEmail">"Retype E-mail:"</string>
-		<string name="login_PasswordOverEmail">"You can set your password over the link in the activation e-mail (the e-mail is only available in english)."</string>
-		<string name="login_Password">"Password:"</string>
-		<string name="login_KeepLogin">"Keep me logged in."</string>
-		<string name="login_Register">"Need an account?
+<string name="login_UsernameEmail">"Username or E-mail:"</string>
+<string name="login_Username">"Username:"</string>
+<string name="login_Email">"E-mail:"</string>
+<string name="login_RetypeEmail">"Retype E-mail:"</string>
+<string name="login_PasswordOverEmail">"You can set your password over the link in the activation e-mail (the e-mail is only available in english)."</string>
+<string name="login_Password">"Password:"</string>
+<string name="login_KeepLogin">"Keep me logged in."</string>
+<string name="login_Register">"Need an account?
 Click here to create a new Account!"</string>
-		<string name="login_LoggedIn">"Logged in!"</string>
-		<string name="login_LoginFailedWithReason">"Login failed: "</string>
-		<string name="login_LoginFailedWrongData">"Login failed, wrong e-mail or password!"</string>
-		<string name="login_RegisterFailedNameUsed">"Sorry the choosen name or email adress is already in use."</string>
-		<string name="login_RegisterSuccess">"Registration succesfull, you will receive an email to activate your account!"</string>
-		<string name="login_Processing">"Processing..."</string>
-		<string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
-		<string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]
+<string name="login_LoggedIn">"Logged in!"</string>
+<string name="login_LoginFailedWithReason">"Login failed: "</string>
+<string name="login_LoginFailedWrongData">"Login failed, wrong e-mail or password!"</string>
+<string name="login_RegisterFailedNameUsed">"Sorry the choosen name or email adress is already in use."</string>
+<string name="login_RegisterSuccess">"Registration succesfull, you will receive an email to activate your account!"</string>
+<string name="login_Processing">"Processing..."</string>
+<string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
+<string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]
 Stars given: [STARSGIVEN]
 Stars received: [STARSRECEIVED]
 Top 5 presets:
 [TOP5PRESETS]"</string>
-		<string name="login_StatisticsFailed">"Failed to get statistics..."</string>
-		<string name="login_ReloadStatistics">"Reload statistics"</string>
-		<string name="login_TitleLogout">"Logout"</string>
-		<string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
+<string name="login_StatisticsFailed">"Failed to get statistics..."</string>
+<string name="login_ReloadStatistics">"Reload statistics"</string>
+<string name="login_TitleLogout">"Logout"</string>
+<string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
 </resources>
