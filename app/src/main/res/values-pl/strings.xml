@@ -60,11 +60,6 @@ Sprawdź źródła na GitHub"</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Kolejność i widoczność"</string>
-<string name="visibilityOrderDesc_Shutdown">"Wyłącz urządzenie."</string>
-<string name="visibilityOrderDesc_Reboot">"Uruchom urządzenie ponownie."</string>
-<string name="visibilityOrderDesc_SoftReboot">"Szybki restart UI poprzez zabicie procesu zygote."</string>
-<string name="visibilityOrderDesc_Screenshot">"Zrób zrzut ekranu przez menu zasilania"</string>
-<string name="visibilityOrder_Enabled">"Włączone:"</string>
 <string name="category_Preset">"Szablony"</string>
 <string name="preset_Load">"Wczytaj szablon"</string>
 <string name="preset_LoadDesc">"Wczytaj gotową konfigurację."</string>
@@ -74,7 +69,6 @@ Sprawdź źródła na GitHub"</string>
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Lokalne szablony"</string>
 <string name="presetsManager_TitleOnline">"Szablony online"</string>
-<string name="presetsManager_Active">"Aktywny:"</string>
 <string name="presetsManager_Creator">"Twórca: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Wbudowany"</string>
 <string name="presetsManager_Delete">"Usuń"</string>
@@ -97,8 +91,6 @@ Tego nie można cofnąć!"</string>
 <string name="advancedPrefs_DelayZero">"Prawie natychmiast"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Opóźnienie zrzutu ekranu"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Czas między dotknięciem a zrzutem ekranu."</string>
-<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Opóźnienie menu zasilania"</string>
-<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Opóźnienie między animacją i pojawieniem się menu zasilania"</string>
 
 <!-- Dialog -->
 <string name="Dialog_Ok">"Ok"</string>
@@ -128,13 +120,11 @@ Tego nie można cofnąć!"</string>
 <string name="preferencesDesc_RootXposed5">"Uruchom urządzenie ponownie, by dokończyć proces aktualizacji."</string>
 <string name="preferencesTitle_DeepXposedLogging">"Zaawansowane logi Xposed"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Włącz zaawansowane logi Xposed, zmiany będą widoczne po restarcie."</string>
-<string name="visibilityOrderDesc_Screenrecord">"Nagraj ekran poprzez menu zasilania."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Nagrywanie ekranu rozpoczęte"</string>
 <string name="screenrecord_notif_title">"Nagrywanie ekranu"</string>
 <string name="screenrecord_notif_stop">"Zatrzymaj"</string>
-<string name="screenrecord_notif_pointer">"Przełącz widok kursora"</string>
 <string name="screenrecord_toast_error">"Nie można nagrać ekranu"</string>
 <string name="screenrecord_toast_processing">"Nie można nagrać ekranu, ponieważ poprzednie nagranie jest nadal przetwarzane."</string>
 <string name="screenrecord_toast_saved">"Zapisano nagranie jako %s"</string>
@@ -143,13 +133,10 @@ Tego nie można cofnąć!"</string>
 <string name="powerMenuMain_FlashlightDesc">"Latarka wyłączy się automatycznie po [AUTOOF]."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Automatyczne wyłączenie latarki wyłączone."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Rozszerzony pulpit"</string>
-<string name="visibilityOrderDesc_Flashlight">"Włącz latarkę w menu zasilania"</string>
-<string name="visibilityOrderDesc_ExpandedDesktop">"Włącz modyfikację rozszerzonego pulpitu z GravityBoxa (wymaga GravityBox)."</string>
 <string name="advancedPrefsTitle_DialogGravity">"Pozycja okna"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Zmień pozycję okna menu zasilania."</string>
 <string name="advancedPrefs_DialogGravityTop">"Góra"</string>
 <string name="advancedPrefs_DialogGravityLeft">"Lewo"</string>
-<string name="advancedPrefs_DialogGravityCenter">"Środek"</string>
 <string name="advancedPrefs_DialogGravityRight">"Prawo"</string>
 <string name="advancedPrefs_DialogGravityBottom">"Dół"</string>
 
@@ -158,4 +145,12 @@ Tego nie można cofnąć!"</string>
 <string name="quick_settings_torch_off">"Latarka wyłączona"</string>
 <string name="quick_settings_torch_off_notif">"Dotknij aby wyłączyć"</string>
 <string name="powerMenuMain_AirplaneMode">"Tryb samolotowy"</string>
+<string name="powerMenuMain_RestartUI">"Zrestartuj Ui Systemu"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsType_Background">"Kolor tła"</string>
+<string name="colorsType_Text">"Kolor tekstu"</string>
+<string name="colorsCategory_Reveal">"Główne tło"</string>
+<string name="colorsDesc_Reveal">"Kolor animacji głównego tła."</string>
+<string name="colorsDesc_ActionReveal">"Kolor animacji głównego tła po naciśnięciu na opcję Uruchom ponownie/Wyłącz."</string>
 </resources>
