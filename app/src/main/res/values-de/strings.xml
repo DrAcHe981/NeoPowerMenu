@@ -58,11 +58,6 @@ Finde die Source auf GitHub."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
-<string name="visibilityOrderDesc_Shutdown">"Schalte dein Gerät aus."</string>
-<string name="visibilityOrderDesc_Reboot">"Starte dein Gerät neu."</string>
-<string name="visibilityOrderDesc_SoftReboot">"Startet die Android UI neu, indem der Zygote-Prozess gestoppt wird."</string>
-<string name="visibilityOrderDesc_Screenshot">"Mache Bildschirmfotos über das Auschaltmenü."</string>
-<string name="visibilityOrder_Enabled">"Aktiviert:"</string>
 <string name="category_Preset">"Voreinstellungen"</string>
 <string name="preset_Load">"Lade Voreinstellung"</string>
 <string name="preset_LoadDesc">"Lade eine gespeicherte Konfiguration."</string>
@@ -72,7 +67,6 @@ Finde die Source auf GitHub."</string>
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Lokale Voreinstellungen"</string>
 <string name="presetsManager_TitleOnline">"Online Voreinstellungen"</string>
-<string name="presetsManager_Active">"Aktiv:"</string>
 <string name="presetsManager_Creator">"Ersteller: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Eingebaut"</string>
 <string name="presetsManager_Delete">"Löschen"</string>
@@ -95,8 +89,6 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="advancedPrefs_DelayZero">"Fast sofort"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Bildschirmfoto Verzögerung"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Verzögerung zwischen dem Klick und dem Screenshot."</string>
-<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Ausschaltmenü Verzögerung"</string>
-<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Verzögerung zwischen der Reveal-Animation und dem Erscheinen des Ausschaltmenüs."</string>
 
 <!-- Dialog -->
 <string name="Dialog_Ok">"Ok"</string>
@@ -126,13 +118,11 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="preferencesDesc_RootXposed5">"Bitte starte dein Gerät neu, um den Updatevorgang abzuschließen!"</string>
 <string name="preferencesTitle_DeepXposedLogging">"Tiefes Xposed Logging"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Aktiviere erweitertes Logging, nach der Aktivierung neu starten um Änderung zu sehen."</string>
-<string name="visibilityOrderDesc_Screenrecord">"Mache Bildschirmaufnahmen über das Ausschaltmenü."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Bildschirmaufnahme läuft"</string>
 <string name="screenrecord_notif_title">"Bildschirmaufnahme"</string>
 <string name="screenrecord_notif_stop">"Stop"</string>
-<string name="screenrecord_notif_pointer">"Pointer an/aus"</string>
 <string name="screenrecord_toast_error">"Bildschirmaufnahme nicht möglich"</string>
 <string name="screenrecord_toast_processing">"Es kann keine Bildschirmaufnahme gestartet werden, wenn eine andere verarbeitet wird"</string>
 <string name="screenrecord_toast_saved">"Aufnahme gespeichert als %s"</string>
@@ -141,13 +131,10 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="powerMenuMain_FlashlightDesc">"Wird nach [AUTOOFF] ausgeschaltet."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Automatisches Ausschalten deaktiviert."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Erweiterter Desktop"</string>
-<string name="visibilityOrderDesc_Flashlight">"Schalte die Taschenlampe über das Ausschaltmenü ein oder aus."</string>
-<string name="visibilityOrderDesc_ExpandedDesktop">"Schalte den Erweiterten Desktop von GravityBox über das Ausschaltmenü an oder aus (GravityBox muss hierfür installiert sein)."</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Ändere die Position des Dialogs."</string>
 <string name="advancedPrefs_DialogGravityTop">"Oben"</string>
 <string name="advancedPrefs_DialogGravityLeft">"Links"</string>
-<string name="advancedPrefs_DialogGravityCenter">"Mitte"</string>
 <string name="advancedPrefs_DialogGravityRight">"Rechts"</string>
 <string name="advancedPrefs_DialogGravityBottom">"Unten"</string>
 
@@ -186,12 +173,9 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="colorsCategory_SafeMode">"Abgesicherter Modus Farben"</string>
 <string name="colorsDesc_DialogSafeMode">"Die Farben des Dialogs, wenn auf Abgesicherter Modus geklickt wurde."</string>
 <string name="powerMenuMain_Flashlight">"Taschenlampe Einschalten"</string>
-<string name="visibilityOrderDesc_AirplaneMode">"Schalte den Flug Modus über das Ausschaltmenü ein oder aus."</string>
-<string name="visibilityOrderDesc_RestartUI">"Starte die System UI über das Ausschaltmenü neu."</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Berechtigungen"</string>
-<string name="permissionsScreen_NotAllGrantedTitle">"Nicht alle gewährt."</string>
 <string name="permissionsScreen_NotAllGranted">"Du hast nicht alle Berechtigungen gewährt, manche Dinge werden nicht funktionieren..."</string>
 <string name="permissionsScreen_ClickToRequest">"Klicke, um die Berechtigung anzufragen."</string>
 <string name="permissionsScreen_DontAskAgain">"Nicht erneut Fragen"</string>
@@ -226,6 +210,4 @@ Erlaube weitere Berechtigungen die nicht beim ersten Start erlaubt wurden (Andro
 <string name="SoundMode_Silent">"Kein Ton"</string>
 <string name="colorsCategory_SoundMode">"Sound Modus Farben"</string>
 <string name="colorsDesc_DialogSoundMode">"Die Farben des Sound Modus Knopfes."</string>
-<string name="visibilityOrderDesc_SoundMode">"Ändere den Sound Modus über das Ausschaltmenü.
-Wechsel Reihenfolge : Normal -&gt; Vibration -&gt; Kein Ton -&gt; Normal..."</string>
 </resources>
