@@ -58,11 +58,6 @@
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Отображение и порядок"</string>
-<string name="visibilityOrderDesc_Shutdown">"Выключает устройство."</string>
-<string name="visibilityOrderDesc_Reboot">"Перезагружает устройство."</string>
-<string name="visibilityOrderDesc_SoftReboot">"Просто перезапускает Android UI путём убийства основного процесса."</string>
-<string name="visibilityOrderDesc_Screenshot">"Делайте снимки экрана из меню выключения."</string>
-<string name="visibilityOrder_Enabled">"Включено:"</string>
 <string name="category_Preset">"Шаблоны"</string>
 <string name="preset_Load">"Загрузить шаблон"</string>
 <string name="preset_LoadDesc">"Загрузить сохранённую конфигурацию"</string>
@@ -72,7 +67,6 @@
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Шаблоны на устройстве"</string>
 <string name="presetsManager_TitleOnline">"Шаблоны онлайн"</string>
-<string name="presetsManager_Active">"Активный:"</string>
 <string name="presetsManager_Creator">"Создатель: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Встроенный"</string>
 <string name="presetsManager_Delete">"Удалить"</string>
@@ -95,8 +89,6 @@
 <string name="advancedPrefs_DelayZero">"почти мгновенно"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Задержка Снимка экрана"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Задержка между нажатием и съёмкой."</string>
-<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Задержка Меню выключения"</string>
-<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Задержка между эффектом заполнения и появлением Меню выключения."</string>
 
 <!-- Dialog -->
 <string name="Dialog_Ok">"Oк"</string>
@@ -126,13 +118,11 @@
 <string name="preferencesDesc_RootXposed5">"Пожалуйста, перезагрузите устройство, чтобы закончить процесс обновления!"</string>
 <string name="preferencesTitle_DeepXposedLogging">"Подробное логгирование Xposed"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Разрешить подробное логгирование Xposed, после разрешения перезагрузить, чтобы увидеть изменения"</string>
-<string name="visibilityOrderDesc_Screenrecord">"Снимает запись экрана через Меню выключения."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Экран записывается"</string>
 <string name="screenrecord_notif_title">"Запись экрана"</string>
 <string name="screenrecord_notif_stop">"Стоп"</string>
-<string name="screenrecord_notif_pointer">"Переключить указатель"</string>
 <string name="screenrecord_toast_error">"Невозможно записать экран"</string>
 <string name="screenrecord_toast_processing">"Невозможно начать новую запись, так как старая ещё обрабатывается"</string>
 <string name="screenrecord_toast_saved">"Запись сохранена как %s"</string>
@@ -141,13 +131,10 @@
 <string name="powerMenuMain_FlashlightDesc">"Выключение после"</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Автоматическое выключение отключено."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Расширенный экран"</string>
-<string name="visibilityOrderDesc_Flashlight">"Включение фонарика через Меню выключения"</string>
-<string name="visibilityOrderDesc_ExpandedDesktop">"Включение расширенного экрана из GravityBox в Меню выключения(GravityBox должен быть установлен)"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Позиция диалогового окна"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Изменить позицию диалогового окна"</string>
 <string name="advancedPrefs_DialogGravityTop">"Сверху"</string>
 <string name="advancedPrefs_DialogGravityLeft">"Слева"</string>
-<string name="advancedPrefs_DialogGravityCenter">"В центре"</string>
 <string name="advancedPrefs_DialogGravityRight">"Справа"</string>
 <string name="advancedPrefs_DialogGravityBottom">"Снизу"</string>
 
@@ -186,12 +173,9 @@
 <string name="colorsCategory_SafeMode">"Цвета Безопасного режима"</string>
 <string name="colorsDesc_DialogSafeMode">"Цвета диалогового окна при нажатии на Безопасный режим"</string>
 <string name="powerMenuMain_Flashlight">"Включить Фонарик"</string>
-<string name="visibilityOrderDesc_AirplaneMode">"Включите Режим полёта через Меню выключения"</string>
-<string name="visibilityOrderDesc_RestartUI">"Перезапустите System UI через Меню выключения"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Разрешения"</string>
-<string name="permissionsScreen_NotAllGrantedTitle">"Не все предоставлены"</string>
 <string name="permissionsScreen_NotAllGranted">"Не все разрешения предоставлены, некоторые функции могут не работать..."</string>
 <string name="permissionsScreen_ClickToRequest">"Нажмите, чтобы запросить разрешения"</string>
 <string name="permissionsScreen_DontAskAgain">"Не спрашивать снова"</string>
@@ -199,4 +183,83 @@
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Нужно для будущих функций(например, пользовательские изображения)"</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Камера"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Нужно для включения Фонарика"</string>
+<string name="preferencesTitle_Permissions">"Разрешения"</string>
+<string name="preferencesDesc_Permissions">"Показывает используемые разрешения и для чего они используются.
+Предоставляет дополнительные разрешения, если они не были предоставлены во время первого запуска(Android 6.0+)."</string>
+<string name="visibilityOrder_HideDesc">"Спрятать описание"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsCategory_Presets">"Шаблоны"</string>
+<string name="colorsDesc_DialogMain">"Цвета диалогового окна"</string>
+<string name="colorsCategory_AirplaneMode">"Цвета Режима полёта"</string>
+<string name="colorsDesc_DialogAirplaneMode">"Цвета кнопки Режима полёта"</string>
+<string name="colorsCategory_RestartUI">"Цвета Перезапуска System UI"</string>
+<string name="colorsDesc_DialogRestartUI">"Цвета кнопки Перезапуска System UI"</string>
+<string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Доступ к Surfaceflinger"</string>
+<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Процесс, необходимый для Записи экрана"</string>
+<string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Запись звука"</string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Необходимо для Записи экрана со звуком"</string>
+<string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Процесс, необходимый для отображения Меню выключения поверх всего"</string>
+<string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Блокировка спящего режима"</string>
+<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Необходимо, чтобы предотвратить выключения Фонарика и сервиса Записи экрана"</string>
+<string name="powerMenuMain_SoundMode">"Звуковой режим"</string>
+<string name="powerMenuMain_SoundModeDesc">"Текущий режим: [SOUNDMODE]"</string>
+<string name="SoundMode_Normal">"Нормальный"</string>
+<string name="SoundMode_Vibrate">"Вибрация"</string>
+<string name="SoundMode_Silent">"Тихий"</string>
+<string name="colorsCategory_SoundMode">"Цвета Звукового режима"</string>
+<string name="colorsDesc_DialogSoundMode">"Цвета кнопки Звукового режима"</string>
+<string name="welcomeMsg">"Войдите или создайте аккаунт на Neon-Soft.de.
+Это защитит ваше имя пользователя на сервере шаблонов."</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleAccount">"Регистрация"</string>
+<string name="presetsManager_Upload">"И меня зарегистрированных пользователей защищены, поэтому никто не может загружать шаблоны под их именем. Здесь Вы можете войти или создать новый аккаунт.
+Это не обязательно, если вы не хотите!
+Я никогда не разглашу никакую личную информацию!"</string>
+<string name="presetsManager_UploadMsg">"Имя пользователя или E-mail:"</string>
+<string name="presetsManager_UploadComplete">"Имя пользователя:"</string>
+<string name="presetsManager_UploadFailedSameName">"E-mail:"</string>
+<string name="presetsManager_UploadFailedNoAccess">"Повторите E-mail:"</string>
+<string name="presetsManager_UploadFailed">"Вы можете создать пароль по ссылке в электронном письме активации(электронное письмо доступно только на английском языке)."</string>
+<string name="presetsManager_Downloading">"Пароль:"</string>
+<string name="presetsManager_DownloadFailed">"Не выходить из аккаунта."</string>
+<string name="presetsManager_CantConnecttoServer">"Нужен аккаунт?
+Нажмите сюда, чтобы создать его!"</string>
+<string name="presetsManager_CantConnecttoDB">"Вход выполнен!"</string>
+<string name="permissionsScreenTitle_android.permission.INTERNET">"Ошибка входа: "</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Ошибка входа, неверный E-mail или пароль!"</string>
+
+<!-- Login page -->
+<string name="login_Title">"Извините, выбранное имя или E-mail уже используется."</string>
+<string name="login_TitleRegister">"Регистрация"</string>
+<string name="login_Info">"Имена зарегистрированных пользователей защищены, так что никто не может загружать от их имени. Здесь Вы можете войти или создать аккаунт.
+Это не обязательно, если Вы не хотите!
+Я никогда не разглашу никакой личной информации!"</string>
+<string name="login_UsernameEmail">"Имя пользователя или E-mail:"</string>
+<string name="login_Username">"Имя пользователя:"</string>
+<string name="login_Email">"E-mail:"</string>
+<string name="login_RetypeEmail">"Повторите E-mail:"</string>
+<string name="login_PasswordOverEmail">"Вы можете создать свой пароль по ссылке в электронном письме активации (электронное письмо доступно только на английском языке)."</string>
+<string name="login_Password">"Пароль:"</string>
+<string name="login_KeepLogin">"Не выходить из аккаунта."</string>
+<string name="login_Register">"Нужен аккаунт?
+Нажмите сюда, чтобы создать его!"</string>
+<string name="login_LoggedIn">"Вход выполнен!"</string>
+<string name="login_LoginFailedWithReason">"Вход не выполнен: "</string>
+<string name="login_LoginFailedWrongData">"Вход не выполнен, неверный пароль или E-mail!"</string>
+<string name="login_RegisterFailedNameUsed">"Извините, это имя или E-mail уже занято."</string>
+<string name="login_RegisterSuccess">"Регистрация завершена, вы получите электронное письмо, чтобы активировать аккаунт."</string>
+<string name="login_Processing">"Обработка..."</string>
+<string name="login_TitleStatistics">"Статистика для [USERNAMEEMAIL]"</string>
+<string name="login_Statistics">"Шаблонов загружено: [UPLOADCOUNT]
+Звёзд дано: [STARSGIVEN]
+Звёзд получено: [STARSRECEIVED]
+Топ 5 шаблонов:
+[TOP5PRESETS] "</string>
+<string name="login_StatisticsFailed">"Ошибка в получении статистики..."</string>
+<string name="login_ReloadStatistics">"Перезагрузить статистику"</string>
+<string name="login_TitleLogout">"Выйти"</string>
+<string name="login_pleaseCheckInput">"Что-то пошло не так, пожалуйста, проверьте введённые данные."</string>
 </resources>
