@@ -1,4 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-		<resources>
-				<string name="app_name">"NeoPpwerMenu"</string>
-		</resources>
+<resources>
+<string name="app_name">"NeoPowerMenu"</string>
+<string name="PreviewPowerMenu">"Preview"</string>
+
+<!-- Power Menu -->
+<string name="powerMenuMain_Shutdown">"Inchidere Telefon"</string>
+<string name="powerMenuMain_Reboot">"Repornire Telefon"</string>
+<string name="powerMenuMain_SoftReboot">"Repornire Soft"</string>
+<string name="powerMenuMain_SoftRebootDesc">"Restarteaza Interfata Android "</string>
+<string name="powerMenuMain_Screenshot">"ScreenShot"</string>
+<string name="powerMenuMain_ScreenshotDesc">"Interval timp intre capturi ecran"</string>
+<string name="powerMenuBottom_Recovery">"Mod Recovery"</string>
+<string name="powerMenuBottom_Bootloader">"Mod Bootloader"</string>
+<string name="powerMenuBottom_SafeMode">"Modul Safe"</string>
+<string name="powerMenu_Shuttingdown">"Inchidere telefon..."</string>
+<string name="powerMenu_Rebooting">"Repornire telefon..."</string>
+
+<!-- Preferences: Main -->
+<string name="preferencesCategory_RootXposed">"Root si Xposed"</string>
+<string name="preferencesTitle_RootXposed1">"Atat accesul Root cat si modul Xposed nu sunt prezente pe telefon."</string>
+<string name="preferencesDesc_RootXposed1">"Accesul Root pentru telefon si instalarea modului Xposed sunt necesare pentru functionarea acestui mod."</string>
+<string name="preferencesTitle_RootXposed2">"Modul Xposed este functional,insa telefonul nu prezinta acces Root."</string>
+<string name="preferencesDesc_RootXposed2">"Dar...pentru a utiliza acest mod aveti nevoie de Root...Va rugam sa permiteti accesul root."</string>
+<string name="preferencesTitle_RootXposed3">"Acces Root prezent, modul Xposed nu este instalat."</string>
+<string name="preferencesTitle_RootXposed4">"Acces Root si mod Xposed functional."</string>
+<string name="preferencesDesc_RootXposed4">"Aplicatia ar trebui sa functioneze!"</string>
+<string name="preferencesCategory_General">"General"</string>
+<string name="preferencesTitle_Style">"Stil"</string>
+<string name="preferencesTitle_Theme">"Teme"</string>
+<string name="preferencesDesc_Theme">"Schimba modul de vizualiare"</string>
+<string name="preferencesTitle_VisibilityOrder">"Vizibilitate si ordine"</string>
+<string name="preferencesCategory_Other">"Altele"</string>
+<string name="preferencesTitle_Advanced">"Setari avansate"</string>
+<string name="preferencesCategory_About">"Despre"</string>
+<string name="preferencesTitle_NeoSource">"Sursa"</string>
+<string name="preferencesTitle_Share">"Share"</string>
+<string name="preferencesDesc_Share">"Iti place aplicatia? Da-o si prietenilor tai!"</string>
+<string name="preferencesTitle_Translator">"Tradus de:"</string>
+
+<!-- Add your name here to get language credits -->
+<string name="preferencesDesc_Translator">"Robin G.  (DrAcHe981)
+~ Sorry when my English is not the best ^^"</string>
+
+<!-- Preferences: Visibility and order -->
+<string name="visibilityOrderCategory_VisibilityOrder">"Visibilitate si ordine"</string>
+<string name="presetsManager_Creator">"Creator:"</string>
+<string name="presetsManager_Delete">"Sterge"</string>
+<string name="presetsManager_Share">"Share"</string>
+<string name="presetsManager_ImportFailed">"Importare esuata"</string>
+
+<!-- Dialog -->
+<string name="Dialog_Ok">"Ok"</string>
+<string name="Dialog_Yes">"Da"</string>
+<string name="Dialog_Rename">"Redenumire"</string>
+<string name="Dialog_Cancel">"Opreste"</string>
+<string name="Dialog_Delete">"Sterge"</string>
+<string name="Dialog_Load">"Incarca"</string>
+<string name="Dialog_Save">"Salveaza"</string>
+<string name="Dialog_Ignore">"Ignora"</string>
+<string name="Dialog_SelectColor">"Selecteaza culoarea"</string>
+<string name="ColorPicker_Value">"Valoare"</string>
+<string name="ColorPicker_Saturation">"Saturatie"</string>
+<string name="ColorPicker_Opacity">"Opacitate"</string>
+<string name="presetLoadDialog_BuiltInLight">"Luminos"</string>
+<string name="presetLoadDialog_BuiltInDark">"Inchis"</string>
+<string name="presetLoadDialog_BuiltInBlack">"Negru"</string>
+<string name="presetLoad_PresetDeleted">"Sters"</string>
+<string name="presetLoad_PresetLoaded">"Incaract"</string>
+<string name="presetSaveDialog_CreatorNameInfo">"Acest preset a fost creat de:"</string>
+<string name="presetSaveDialog_InfoText">"Pune un nume acestui preset:"</string>
+<string name="presetSave_PresetSaved">"Salvat"</string>
+<string name="powerMenuMain_Screenrecord">"Inregistrare Ecran"</string>
+<string name="screenrecord_notif_title">"Se Inregistreaza ecarnul...."</string>
+<string name="screenrecord_notif_stop">"Stop"</string>
+<string name="screenrecord_toast_error">"Imposibil de inregistrat ecranul"</string>
+<string name="screenrecord_toast_saved">"Inregistare salvata ca "</string>
+<string name="powerMenuMain_FlashlightOff">"Opreste lanterna"</string>
+<string name="powerMenuMain_FlashlightDesc">"Inchidere dupa"</string>
+<string name="powerMenuMain_FlashlightDescDisabled">"Inchidere automata"</string>
+<string name="advancedPrefs_DialogGravityTop">"Sus"</string>
+<string name="advancedPrefs_DialogGravityLeft">"Stanga"</string>
+<string name="advancedPrefs_DialogGravityRight">"Dreapta"</string>
+<string name="advancedPrefs_DialogGravityBottom">"Jos"</string>
+
+<!-- Torch -->
+<string name="quick_settings_torch_on">"Lanterna pornita"</string>
+<string name="quick_settings_torch_off">"Lanterna oprita"</string>
+<string name="quick_settings_torch_off_notif">"Apasa pentru a inchide"</string>
+<string name="powerMenuMain_AirplaneMode">"Mod avion"</string>
+<string name="powerMenuMain_RestartUI">"Restart System UI"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsType_Background">"Culoare fundal"</string>
+<string name="colorsType_Text">"Culoare text"</string>
+<string name="colorsCategory_Reveal">"Afisare background"</string>
+<string name="colorsCategory_SoftReboot">"Culori buton Repornire Soft"</string>
+<string name="colorsCategory_Screenshot">"Culori buton ScreenShot"</string>
+<string name="colorsCategory_Flashlight">"Culori buton Lanterna"</string>
+<string name="colorsCategory_SafeMode">"Culori buton Safe Mod"</string>
+<string name="powerMenuMain_Flashlight">"Porneste lanterna"</string>
+
+<!-- Permissions Screen -->
+<string name="permissionsScreen_Title">"Permisiuni"</string>
+<string name="permissionsScreen_DontAskAgain">"Nu intreba din nou"</string>
+<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Citire/Scriere memoire externa"</string>
+<string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
+<string name="preferencesTitle_Permissions">"Permisiuni"</string>
+<string name="visibilityOrder_HideDesc">"Ascunde descriere"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsCategory_Presets">"Preset-uri"</string>
+<string name="colorsCategory_AirplaneMode">"Culori buton Mod Avion"</string>
+<string name="colorsCategory_RestartUI">"Culori buton Restart System UI"</string>
+<string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Inregistrare audio"</string>
+<string name="powerMenuMain_SoundMode">"Mod Sunet"</string>
+<string name="powerMenuMain_SoundModeDesc">"Modul curent:"</string>
+<string name="SoundMode_Normal">"Mod normal"</string>
+<string name="SoundMode_Vibrate">"Mod vibratii"</string>
+<string name="SoundMode_Silent">"Silentios"</string>
+<string name="colorsCategory_SoundMode">"Culori buton Mod Sunet"</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleAccount">"Cont"</string>
+<string name="presetsManager_Upload">"Upload"</string>
+<string name="presetsManager_UploadComplete">"Upload complet!"</string>
+<string name="presetsManager_UploadFailed">"Upload esuat!"</string>
+<string name="presetsManager_Downloading">"Se downloadeaza..."</string>
+<string name="presetsManager_DownloadFailed">"Downloadare esuata!"</string>
+<string name="permissionsScreenTitle_android.permission.INTERNET">"Interent"</string>
+
+<!-- Login page -->
+<string name="login_Title">"Login"</string>
+<string name="login_TitleRegister">"Inregistare"</string>
+<string name="login_UsernameEmail">"Nume utilizator sau E-mail"</string>
+<string name="login_Username">"Nume utilizator"</string>
+<string name="login_Email">"E-mail"</string>
+<string name="login_RetypeEmail">"Reintroducere e-mail"</string>
+<string name="login_Password">"Parola"</string>
+<string name="login_Register">"Ai nevoie de un cont?
+Apasa aici pentru a-ti crea unul!"</string>
+<string name="login_LoggedIn">"Logare reusita!"</string>
+<string name="login_LoginFailedWithReason">"Logare esuata!"</string>
+<string name="login_LoginFailedWrongData">"Logare esuata, parola sau e-mail gresit!"</string>
+<string name="login_Processing">"Se proceseaza..."</string>
+<string name="login_TitleStatistics">"Statstici pentru..."</string>
+<string name="login_StatisticsFailed">"Esuare preluare statistici"</string>
+<string name="login_ReloadStatistics">"Reincarcare statistici"</string>
+<string name="login_TitleLogout">"Iesire cont"</string>
+</resources>
