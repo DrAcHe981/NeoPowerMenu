@@ -51,6 +51,14 @@
 					android:id="@+id/presetmanagerlistitemLinearLayout_Online"
 					android:visibility="gone">
 
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="wrap_content"
+						android:text="@string/presetsManager_Stars"
+						android:id="@+id/presetmanagerlistitemTextView_Stars"
+						android:textColor="#FFFFFF"/>
+
 					<ImageView
 						android:layout_height="35dp"
 						android:layout_width="35dp"
@@ -104,7 +112,8 @@
 				android:gravity="left"
 				android:id="@+id/presetmanagerlistitemLinearLayout_BottomBar"
 				android:layout_below="@id/listitemhandleleftLinearLayout2"
-				android:layout_alignRight="@id/listitemhandleleftLinearLayout2">
+				android:layout_alignRight="@id/listitemhandleleftLinearLayout2"
+				android:paddingLeft="5dp">
 
 				<LinearLayout
 					android:background="?android:attr/selectableItemBackground"
@@ -112,8 +121,7 @@
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
 					android:id="@+id/presetmanagerlistitemLinearLayout_Upload"
-					android:gravity="center_vertical"
-					android:paddingLeft="5dp">
+					android:gravity="center_vertical">
 
 					<ImageView
 						android:layout_height="35dp"
@@ -145,8 +153,7 @@
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
 					android:id="@+id/presetmanagerlistitemLinearLayout_Share"
-					android:gravity="center_vertical"
-					android:paddingLeft="5dp">
+					android:gravity="center_vertical">
 
 					<ImageView
 						android:layout_height="30dp"
@@ -177,10 +184,42 @@
 					android:layout_height="match_parent"
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
+					android:id="@+id/presetmanagerlistitemLinearLayout_Star"
+					android:gravity="center_vertical">
+
+					<ImageView
+						android:layout_height="35dp"
+						android:layout_width="35dp"
+						android:src="@drawable/ic_action_star_10"
+						android:padding="3dp"
+						android:id="@+id/presetmanagerlistitemImageView_Star"/>
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="wrap_content"
+						android:text="@string/presetsManager_giveStar"
+						android:gravity="center_vertical"
+						android:id="@+id/presetmanagerlistitemTextView_StarText"/>
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="2dp"
+						android:background="@color/colorAccentDarkTheme"
+						android:alpha="0.3"
+						android:layout_marginTop="5dp"
+						android:layout_marginBottom="5dp"
+						android:layout_marginLeft="5dp"
+						android:visibility="gone"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:background="?android:attr/selectableItemBackground"
+					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
 					android:id="@+id/presetmanagerlistitemLinearLayout_Delete"
-					android:gravity="center_vertical"
-					android:paddingRight="5dp"
-					android:paddingLeft="5dp">
+					android:gravity="center_vertical">
 
 					<ImageView
 						android:layout_height="30dp"

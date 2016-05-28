@@ -28,19 +28,20 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 		protected void onPreExecute()
 		{
 				// TODO: Implement this method
-				super.onPreExecute();
 				if(PreferencesPresetsFragment.onlineRequestIsRunning) {
 						cancel(true);
+						return;
 				}
 				PreferencesPresetsFragment.onlineRequestIsRunning = true;
 				PreferencesPresetsFragment.onlineList.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_out));
 				PreferencesPresetsFragment.onlineList.setVisibility(View.GONE);
 				if(PreferencesPresetsFragment.onlineAdapter!=null) {
-				PreferencesPresetsFragment.onlineAdapter.removeAll();
+						PreferencesPresetsFragment.onlineAdapter.removeAll();
 				}
 				PreferencesPresetsFragment.onlineMSG.setText("Loading...");
 				PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);
 				PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_in));
+				super.onPreExecute();
 		}
 
 		@Override
@@ -101,7 +102,7 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 
 										mylist.add(map);
 										onlineTitles[i] = jObject.getString("_presetName");
-										onlineCreator[i] = jObject.getString("_presetCreator")+",=,"+jObject.getString("_presetAppVersion");
+										onlineCreator[i] = jObject.getString("_presetCreator")+",=,"+jObject.getString("_presetAppVersion")+",=,"+jObject.getString("_presetStars");
 										onlineEnabled[i] = "false";
 										onlineLocal[i] = "false";
 										PresetsPage.onlineIds[i] = jObject.getString("_creatorUniqeId");

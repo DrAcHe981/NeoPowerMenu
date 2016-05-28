@@ -230,6 +230,9 @@ This is your last chance to adjust the name or the creator before uploading..."<
 Please check your network connection or try it again later."</string>
 <string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
 Please try it again later, when nothing changes: please report it to the developer."</string>
+		<string name="presetsManager_Stars">"Stars: [STARS]"</string>
+		<string name="presetsManager_giveStar">"Give Star"</string>
+		<string name="presetsManager_removeStar">"Remove Star"</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
 <string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download or upload presets from the public server."</string>
 
@@ -256,12 +259,14 @@ Click here to create a new Account!"</string>
 <string name="login_Processing">"Processing..."</string>
 <string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
 <string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]
+
 Stars given: [STARSGIVEN]
 Stars received: [STARSRECEIVED]
+
 Top 5 presets:
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Failed to get statistics..."</string>
-<string name="login_ReloadStatistics">"Reload statistics"</string>
+<string name="login_ReloadStatistics">"Click here to reload the statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
 </resources>

@@ -89,11 +89,11 @@ public class PreferencesPresetsFragment extends Fragment
 										} else if(adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleAccount))) {
 												MainActivity.visibleFragment = "PresetsManagerAccount";
 												if(LoginFragment.loginFragmentMode.equalsIgnoreCase("login")) {
-														MainActivity.setActionBarButton(getString(R.string.login_Title),R.drawable.ic_content_send,LoginFragment.loginOnClickListener);
+														MainActivity.setActionBarButton(getString(R.string.login_Title),R.drawable.ic_action_import,LoginFragment.loginOnClickListener);
 												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("register")) {
-														MainActivity.setActionBarButton(getString(R.string.login_TitleRegister),R.drawable.ic_content_send,LoginFragment.registerOnClickListener);
+														MainActivity.setActionBarButton(getString(R.string.login_TitleRegister),R.drawable.ic_action_import,LoginFragment.registerOnClickListener);
 												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("logout")) {
-														MainActivity.setActionBarButton(getString(R.string.login_TitleLogout),R.drawable.ic_content_send,LoginFragment.logoutOnClickListener);
+														MainActivity.setActionBarButton(getString(R.string.login_TitleLogout),R.drawable.ic_action_export,LoginFragment.logoutOnClickListener);
 												}
 										} else {
 												MainActivity.visibleFragment = "PresetsManager";

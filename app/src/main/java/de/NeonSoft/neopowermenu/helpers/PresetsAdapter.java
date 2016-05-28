@@ -58,6 +58,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				RadioButton ItemSwitch = (RadioButton) rowView.findViewById(R.id.Active);
 				ItemSwitch.setClickable(false);
 				ItemSwitch.setFocusable(false);
+				final TextView StarsCount = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_Stars);
 				final LinearLayout OnlineButton = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Online);
 				OnlineButton.setVisibility(View.GONE);
 				final ProgressBar Progress = (ProgressBar) rowView.findViewById(R.id.presetmanagerlistitemProgressBar_Download);
@@ -66,6 +67,10 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				BottomBar.setVisibility(View.GONE);
 				final LinearLayout Upload = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Upload);
 				LinearLayout Share = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Share);
+				final LinearLayout Star = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Star);
+				Star.setVisibility(View.GONE);
+				final ImageView StarImage = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_Star);
+				final TextView StarText = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_StarText);
 				LinearLayout Delete = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Delete);
 
 				ItemTitle.setText(this.itemsTitle.get(position));
@@ -74,6 +79,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				if (split.length > 1)
 				{
 						desc = context.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", split[0]) + "\n" + context.getString(R.string.app_name) + " " + split[1];
+						StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]",split[2]));
 				}
 				ItemDesc.setText(desc);
 				if (itemsLocal.get(position).equalsIgnoreCase("true") || itemsLocal.get(position).equalsIgnoreCase("pre"))
@@ -332,11 +338,15 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						OnlineButton.setVisibility(View.VISIBLE);
 						try
 						{
+								BottomBar.setVisibility(View.VISIBLE);
+								Upload.setVisibility(View.GONE);
+								Share.setVisibility(View.GONE);
+								if(MainActivity.preferences.getString("ratedFor","").contains(itemsTitle.get(position))) {
+										StarImage.setImageResource(R.drawable.ic_action_star_0);
+										StarText.setText(context.getString(R.string.presetsManager_removeStar));
+								}
 								if (PresetsPage.onlineIds[position].equalsIgnoreCase(MainActivity.preferences.getString("userUniqeId", "null")))
 								{
-										BottomBar.setVisibility(View.VISIBLE);
-										Upload.setVisibility(View.GONE);
-										Share.setVisibility(View.GONE);
 										Delete.setOnClickListener(new OnClickListener() {
 
 														@Override
@@ -404,6 +414,84 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																adb.setNegativeButton(R.string.Dialog_Cancel, null);
 
 																adb.show();
+														}
+												});
+								} else {
+										Star.setVisibility(View.VISIBLE);
+										Delete.setVisibility(View.GONE);
+										Star.setOnClickListener(new OnClickListener() {
+
+														@Override
+														public void onClick(View p1)
+														{
+																// TODO: Implement this method
+																uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
+
+																				@Override
+																				public void onUploadStarted(boolean state)
+																				{
+																						// TODO: Implement this method
+																						PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.login_Processing));
+																						PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
+																						PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
+																				}
+
+																				@Override
+																				public void onPublishUploadProgress(long nowSize, long totalSize)
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onUploadComplete()
+																				{
+																						// TODO: Implement this method
+																						if (StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_giveStar))) {
+																								StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]",""+(Integer.parseInt(StarsCount.getText().toString().split(": ")[1])+1)));
+																								StarImage.setImageResource(R.drawable.ic_action_star_0);
+																								StarText.setText(context.getString(R.string.presetsManager_removeStar));
+																								MainActivity.preferences.edit().putString("ratedFor",MainActivity.preferences.getString("ratedFor","")+itemsTitle.get(position)+",").commit();
+																						} else {
+																								StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]",""+(Integer.parseInt(StarsCount.getText().toString().split(": ")[1])-1)));
+																								StarImage.setImageResource(R.drawable.ic_action_star_10);
+																								StarText.setText(context.getString(R.string.presetsManager_giveStar));
+																								MainActivity.preferences.edit().putString("ratedFor",MainActivity.preferences.getString("ratedFor","").replace(itemsTitle.get(position)+",","")).commit();
+																						}
+																						LoginFragment.getStatistics();
+																						PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
+																						PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
+																				}
+
+																				@Override
+																				public void onUploadFailed(String reason)
+																				{
+																						// TODO: Implement this method
+																						PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
+																						PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
+																						if (reason.contains("Cannot connect to the DB"))
+																						{
+																								Toast.makeText(context, context.getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
+																						}
+																						else if (reason.contains("Connection refused"))
+																						{
+																								Toast.makeText(context, context.getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
+																						}
+																						else
+																						{
+																								Toast.makeText(context, context.getString(R.string.login_LoginFailedWithReason)+"\n" + reason, Toast.LENGTH_LONG).show();
+																						}
+																				}
+																		});
+																uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+																uH.setAdditionalUploadPosts(new String[][] {{"action",(StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_giveStar)) ? "givestar" : "removestar")},{(MainActivity.usernameemail.contains("@") ? "userEmail" : "userName"),MainActivity.usernameemail},{"name",itemsTitle.get(position)}});
+																try
+																{
+																		new File(context.getFilesDir().getPath() + "/tmp").createNewFile();
+																}
+																catch (IOException e)
+																{}
+																uH.setLocalUrl(context.getFilesDir().getPath() + "/tmp");
+																uH.startUpload();
 														}
 												});
 								}

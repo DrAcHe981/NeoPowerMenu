@@ -203,14 +203,15 @@
 					android:layout_marginTop="10dp">
 
 					<TextView
-						android:layout_height="wrap_content"
+						android:layout_height="match_parent"
 						android:layout_width="match_parent"
 						android:text="@string/login_TitleStatistics"
 						android:textAppearance="?android:attr/textAppearanceLarge"
 						android:gravity="center|center_vertical|center_horizontal"
 						android:paddingLeft="10dp"
 						android:paddingRight="10dp"
-						android:id="@+id/activityloginTextView_TitleStatistics"/>
+						android:id="@+id/activityloginTextView_TitleStatistics"
+						android:layout_weight="1.0"/>
 
 					<TextView
 						android:layout_height="2dp"
@@ -224,21 +225,23 @@
 				</LinearLayout>
 
 				<TextView
+					android:id="@+id/activityloginTextView_ReloadStatistics"
+					android:background="?android:attr/selectableItemBackground"
+					android:clickable="true"
+					android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="match_parent"
+					android:text="@string/login_ReloadStatistics"
+					android:gravity="center|center_vertical|center_horizontal"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp"/>
+
+				<TextView
 					android:layout_height="wrap_content"
 					android:textAppearance="?android:attr/textAppearanceSmall"
 					android:layout_width="wrap_content"
 					android:text="@string/login_Statistics"
 					android:id="@+id/activityloginTextView_Statistics"/>
-
-					<TextView
-							android:id="@+id/activityloginTextView_ReloadStatistics"
-							android:background="?android:attr/selectableItemBackground"
-							android:clickable="true"
-					android:layout_height="wrap_content"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:layout_width="match_parent"
-					android:text="@string/login_ReloadStatistics"
-					android:gravity="center|center_vertical|center_horizontal"/>
 
 			</LinearLayout>
 

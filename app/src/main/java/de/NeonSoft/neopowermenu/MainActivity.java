@@ -22,7 +22,7 @@ import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
 
-		public static boolean LOCALTESTSERVER = true; // use local server "127.0.0.1:8080 or online www.Neon-Soft.de
+		public static boolean LOCALTESTSERVER = false; // use local server "127.0.0.1:8080 or online www.Neon-Soft.de
 		public static int TIMEOUT_MILLISEC = 10000; // = 10 seconds
 		
 		public static SharedPreferences preferences;
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 		
 		// Session data
 		public static boolean loggedIn = false;
-		public static String usernameemail = "null";
-		public static String password = "null";
+		public static String usernameemail = "";
+		public static String password = "";
 		
     @Override
     protected void onCreate(Bundle savedInstanceState) {

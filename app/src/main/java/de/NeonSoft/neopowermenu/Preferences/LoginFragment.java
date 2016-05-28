@@ -124,8 +124,7 @@ public class LoginFragment extends Fragment
 														getStatistics();
 														LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
 														LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-														MainActivity.setActionBarButtonText(getString(R.string.login_TitleLogout));
-														MainActivity.setActionBarButtonListener(logoutOnClickListener);
+														MainActivity.setActionBarButton(mContext.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
 												}
 
 												@Override
@@ -263,8 +262,7 @@ public class LoginFragment extends Fragment
 								LinearLayout_LoggedInContainer.setVisibility(View.GONE);
 								LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 								LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-								MainActivity.setActionBarButtonText(getString(R.string.login_Title));
-								MainActivity.setActionBarButtonListener(loginOnClickListener);
+								MainActivity.setActionBarButton(mContext.getString(R.string.login_Title),R.drawable.ic_action_import,loginOnClickListener);
 								loginFragmentMode = "login";
 						}
 				};
@@ -322,14 +320,15 @@ public class LoginFragment extends Fragment
 				return InflatedView;
 		}
 
-		public void getStatistics() {
+		public static void getStatistics() {
 				uploadHelper uH = new uploadHelper(mContext, new uploadHelper.uploadHelperInterface() {
 
 								@Override
 								public void onUploadStarted(boolean state)
 								{
 										// TODO: Implement this method
-										TextView_Statistics.setText(getString(R.string.login_Processing));
+										TextView_Statistics.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
+										TextView_Statistics.setVisibility(View.GONE);
 								}
 
 								@Override
@@ -350,10 +349,12 @@ public class LoginFragment extends Fragment
 										// TODO: Implement this method
 										if(reason.contains("Statistics:")) {
 												String[] stats = reason.split(",");
-												TextView_Statistics.setText(getString(R.string.login_Statistics).replace("[UPLOADCOUNT]",stats[1]).replace("[STARSGIVEN]",stats[2]).replace("[STARSRECEIVED]",stats[3]).replace("[TOP5PRESETS]",stats[4]));
+												TextView_Statistics.setText(mContext.getString(R.string.login_Statistics).replace("[UPLOADCOUNT]",stats[1]).replace("[STARSGIVEN]",stats[2]).replace("[STARSRECEIVED]",stats[3]).replace("[TOP5PRESETS]",stats[4]));
 										} else {
-												TextView_Statistics.setText(getString(R.string.login_StatisticsFailed));
+												TextView_Statistics.setText(mContext.getString(R.string.login_StatisticsFailed));
 										}
+										TextView_Statistics.setVisibility(View.VISIBLE);
+										TextView_Statistics.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 								}
 						});
 				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
