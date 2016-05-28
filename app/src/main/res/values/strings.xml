@@ -22,7 +22,7 @@
 <!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root and Xposed"</string>
 <string name="preferencesTitle_RootXposed1">"Root and Xposed not available"</string>
-<string name="preferencesDesc_RootXposed1">"Root and Xposed are needed for this module to work."</string>
+<string name="preferencesDesc_RootXposed1">"Root and Xposed are required for this module to work."</string>
 <string name="preferencesTitle_RootXposed2">"Xposed working, Root not"</string>
 <string name="preferencesDesc_RootXposed2">"But Root is needed to Power off or Reboot...
 Please allow root access."</string>
@@ -74,7 +74,7 @@ Check out the source on GitHub."</string>
 <string name="presetsManager_SureToDelete">"Are you sure you want to delete [PRESETNAME]?
 This can't be undone!"</string>
 <string name="presetsManager_Share">"Share"</string>
-<string name="presetsManager_NJI">"This Feature is currently not implemented..."</string>
+<string name="presetsManager_NJI">"This feature is currently not implemented..."</string>
 <string name="presetsManager_ImportMsg">"Would you like to import this preset?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] imported successfully."</string>
 <string name="presetsManager_ImportFailed">"Import failed..."</string>
@@ -160,13 +160,13 @@ This can't be undone!"</string>
 <string name="colorsCategory_SoftReboot">"Soft Reboot colors"</string>
 <string name="colorsDesc_DialogSoftReboot">"The colors of the dialog when clicked on Soft Reboot."</string>
 <string name="colorsCategory_Screenshot">"Screenshot colors"</string>
-<string name="colorsDesc_DialogScreenshot">"The colors from the Screenshot button."</string>
+<string name="colorsDesc_DialogScreenshot">"The colors of the Screenshot button."</string>
 <string name="colorsCategory_Screenrecord">"Screenrecord colors"</string>
-<string name="colorsDesc_DialogScreenrecord">"The colors from the Screenrecord button."</string>
+<string name="colorsDesc_DialogScreenrecord">"The colors from of Screenrecord button."</string>
 <string name="colorsCategory_Flashlight">"Torch colors"</string>
-<string name="colorsDesc_DialogFlashlight">"The colors from the Torch toggle."</string>
+<string name="colorsDesc_DialogFlashlight">"The colors of the Torch toggle."</string>
 <string name="colorsCategory_ExpandedDesktop">"Expanded Desktop colors"</string>
-<string name="colorsDesc_DialogExpandedDesktop">"The colors from the Expanded Desktop toggle."</string>
+<string name="colorsDesc_DialogExpandedDesktop">"The colors of the Expanded Desktop toggle."</string>
 <string name="colorsCategory_Recovery">"Recovery colors"</string>
 <string name="colorsDesc_DialogRecovery">"The colors of the dialog when clicked on Recovery."</string>
 <string name="colorsCategory_Bootloader">"Bootloader colors"</string>
@@ -181,9 +181,9 @@ This can't be undone!"</string>
 <string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
 <string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
-<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Needed for future functions (little tip: custom images)."</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Required for future functions (little tip: custom images)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
-<string name="permissionsScreenDesc_android.permission.CAMERA">"Needed to toggle the Torch."</string>
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Required to toggle the Torch."</string>
 <string name="preferencesTitle_Permissions">"Permissions"</string>
 <string name="preferencesDesc_Permissions">"Show the used Permissions and see for what they are used.
 Grant additional permissions that are not added on first start (Android 6.0+)."</string>
