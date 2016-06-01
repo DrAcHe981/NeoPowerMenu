@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">"NeoPowerMenu"</string>
+<string name="ShareMessage">"Aceasta aplicatie minunata iti va schimba cu totul modul in care ai vazut pana acum banalul meniu de oprire :)"</string>
 <string name="PreviewPowerMenu">"Preview"</string>
 
 <!-- Power Menu -->
@@ -9,7 +10,7 @@
 <string name="powerMenuMain_SoftReboot">"Repornire Soft"</string>
 <string name="powerMenuMain_SoftRebootDesc">"Restarteaza Interfata Android "</string>
 <string name="powerMenuMain_Screenshot">"ScreenShot"</string>
-<string name="powerMenuMain_ScreenshotDesc">"Interval timp intre capturi ecran"</string>
+<string name="powerMenuMain_ScreenshotDesc">"Interval timp intre capturi ecran: [SCREENSHOTDELAY] "</string>
 <string name="powerMenuBottom_Recovery">"Mod Recovery"</string>
 <string name="powerMenuBottom_Bootloader">"Mod Bootloader"</string>
 <string name="powerMenuBottom_SafeMode">"Modul Safe"</string>
@@ -23,6 +24,7 @@
 <string name="preferencesTitle_RootXposed2">"Modul Xposed este functional,insa telefonul nu prezinta acces Root."</string>
 <string name="preferencesDesc_RootXposed2">"Dar...pentru a utiliza acest mod aveti nevoie de Root...Va rugam sa permiteti accesul root."</string>
 <string name="preferencesTitle_RootXposed3">"Acces Root prezent, modul Xposed nu este instalat."</string>
+<string name="preferencesDesc_RootXposed3">"Dar mdoul Xposed este necesar pentru a inlocui meniul de oprire.Activeaza modulul in Xposed."</string>
 <string name="preferencesTitle_RootXposed4">"Acces Root si mod Xposed functional."</string>
 <string name="preferencesDesc_RootXposed4">"Aplicatia ar trebui sa functioneze!"</string>
 <string name="preferencesCategory_General">"General"</string>
@@ -30,10 +32,16 @@
 <string name="preferencesTitle_Theme">"Teme"</string>
 <string name="preferencesDesc_Theme">"Schimba modul de vizualiare"</string>
 <string name="preferencesTitle_VisibilityOrder">"Vizibilitate si ordine"</string>
+<string name="preferencesDesc_VisibilityOrder">"Selecteaza elementele pe care vrei sa le vezi in ordinea dorita"</string>
 <string name="preferencesCategory_Other">"Altele"</string>
 <string name="preferencesTitle_Advanced">"Setari avansate"</string>
+<string name="preferencesDesc_Advanced">"Schimba setarile avansate cum ar fi intarzieri,gravitatie sau viteza"</string>
+<string name="preferencesTitle_HideLauncherIcon">"Ascunde aplicatia din lista de aplicatii"</string>
+<string name="preferencesDesc_HideLauncherIcon">"Ascunde aplicatia in lista de aplicatii (necesita posibil o restartare a telefonului).
+Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</string>
 <string name="preferencesCategory_About">"Despre"</string>
 <string name="preferencesTitle_NeoSource">"Sursa"</string>
+<string name="preferencesDesc_NeoSource">"NeoPowerMenu este open-source. Vezi sursa pe GitHub"</string>
 <string name="preferencesTitle_Share">"Share"</string>
 <string name="preferencesDesc_Share">"Iti place aplicatia? Da-o si prietenilor tai!"</string>
 <string name="preferencesTitle_Translator">"Tradus de:"</string>
@@ -41,13 +49,41 @@
 <!-- Add your name here to get language credits -->
 <string name="preferencesDesc_Translator">"Robin G.  (DrAcHe981)
 ~ Sorry when my English is not the best ^^"</string>
+<string name="preferencesTitle_About">"Codul de Neon-Soft/DrAcHe981"</string>
+<string name="preferencesDesc_About">"bazat pe sursa lui Naman Dwivedi (naman14)"</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibilitate si ordine"</string>
-<string name="presetsManager_Creator">"Creator:"</string>
+<string name="category_Preset">"Presetari"</string>
+<string name="preset_Load">"Incarca presetare"</string>
+<string name="preset_LoadDesc">"Incarca o presetare deja salvat"</string>
+<string name="preset_Save">"Salveaza presetare"</string>
+<string name="preset_SaveDesc">"Salveaza configuratia curenta"</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleLocal">"Presetari locale"</string>
+<string name="presetsManager_TitleOnline">"Presetari online"</string>
+<string name="presetsManager_Creator">"Creator: [CREATORNAME] "</string>
+<string name="presetsManager_BuiltIn">"Integrat"</string>
 <string name="presetsManager_Delete">"Sterge"</string>
+<string name="presetsManager_SureToDelete">"Esti sigur ca vrei sa stergi  [PRESETNAME] ? Acest lucru este permanent!"</string>
 <string name="presetsManager_Share">"Share"</string>
+<string name="presetsManager_NJI">"Aceasta optiune nu este inca implementata"</string>
+<string name="presetsManager_ImportMsg">"Vrei sa importezi acesta presetare?"</string>
+<string name="presetsManager_ImportSuccess">"[PRESETNAME] importat cu succes"</string>
 <string name="presetsManager_ImportFailed">"Importare esuata"</string>
+
+<!-- Preferences: Advanced -->
+<string name="advancedPrefsCategory_PowerMenu">"Meniu de oprire"</string>
+<string name="advancedPrefsTitle_UseGraphics">"Foloseste reprezentare Grafica"</string>
+<string name="advancedPrefsDesc_UseGraphics">"Foloseste reprezentare Grafica in locul Literelor"</string>
+<string name="advancedPrefsCategory_LockScreen">"Ecran blocare"</string>
+<string name="advancedPrefsTitle_ShowOnLockScreen">"Arata pe ercanul de blocare"</string>
+<string name="advancedPrefsDesc_ShowOnLockScreen">"Arata meniul de oprire pe ecranul de blocare (cand nu este activat nu va fi afisat nimic)."</string>
+<string name="advancedPrefsCategory_Delays">"Intarzieri"</string>
+<string name="advancedPrefs_DelayZero">"Aproape instant"</string>
+<string name="advancedPrefsTitle_ScreenshotDelay">"Intarzieri intre screenshots"</string>
+<string name="advancedPrefsDesc_ScreenshotDelay">"Intarzieri intre apasare si realizarea screenshot-ului"</string>
 
 <!-- Dialog -->
 <string name="Dialog_Ok">"Ok"</string>
@@ -62,22 +98,36 @@
 <string name="ColorPicker_Value">"Valoare"</string>
 <string name="ColorPicker_Saturation">"Saturatie"</string>
 <string name="ColorPicker_Opacity">"Opacitate"</string>
+<string name="ColorPicker_Hex">"Paletar de culori"</string>
 <string name="presetLoadDialog_BuiltInLight">"Luminos"</string>
 <string name="presetLoadDialog_BuiltInDark">"Inchis"</string>
 <string name="presetLoadDialog_BuiltInBlack">"Negru"</string>
 <string name="presetLoad_PresetDeleted">"Sters"</string>
 <string name="presetLoad_PresetLoaded">"Incaract"</string>
-<string name="presetSaveDialog_CreatorNameInfo">"Acest preset a fost creat de:"</string>
-<string name="presetSaveDialog_InfoText">"Pune un nume acestui preset:"</string>
-<string name="presetSave_PresetSaved">"Salvat"</string>
+<string name="presetSaveDialog_CreatorNameInfo">"Acesta presetare a fost creata de:"</string>
+<string name="presetSaveDialog_InfoText">"Pune un nume acestei presetari:"</string>
+<string name="presetSaveDialog_OverwriteText">"Deja existent,pressetarea va fi inlocuit!"</string>
+<string name="presetSave_PresetSaved">"Salvat [PRESETNAME]! "</string>
 <string name="powerMenuMain_Screenrecord">"Inregistrare Ecran"</string>
+<string name="preferencesTitle_RootXposed5">"Versiunea Modului este prea veche..."</string>
+<string name="preferencesDesc_RootXposed5">"Restarteaza telefonul pentru a finaliza procesul de actualizare!"</string>
+<string name="preferencesTitle_DeepXposedLogging">"Permite logs-uri Xposed avansat."</string>
+<string name="preferencesDesc_DeepXposedLogging">"Permite logs-uri Xposed avansate (dupa activare restarteaza telefonul pentru a vedea schimbarile)"</string>
+
+<!-- Screen recording -->
+<string name="screenrecord_notif_ticker">"Ecranul este inregistrat"</string>
 <string name="screenrecord_notif_title">"Se Inregistreaza ecarnul...."</string>
 <string name="screenrecord_notif_stop">"Stop"</string>
 <string name="screenrecord_toast_error">"Imposibil de inregistrat ecranul"</string>
-<string name="screenrecord_toast_saved">"Inregistare salvata ca "</string>
+<string name="screenrecord_toast_processing">"Nu se poate incepe o noua inregistrare in timp ce inregistrati!"</string>
+<string name="screenrecord_toast_saved">"Inregistrare salvata ca %s"</string>
+<string name="screenrecord_toast_save_error">"Imposibil de salvat inregistrarea in formatul curent"</string>
 <string name="powerMenuMain_FlashlightOff">"Opreste lanterna"</string>
-<string name="powerMenuMain_FlashlightDesc">"Inchidere dupa"</string>
+<string name="powerMenuMain_FlashlightDesc">"Inchidere dupa  [AUTOOFF]."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Inchidere automata"</string>
+<string name="powerMenuMain_ExpandedDesktop">"Ecran extins"</string>
+<string name="advancedPrefsTitle_DialogGravity">"Pozitie meniu"</string>
+<string name="advancedPrefsDesc_DialogGravity">"Schimba pozitia meniului"</string>
 <string name="advancedPrefs_DialogGravityTop">"Sus"</string>
 <string name="advancedPrefs_DialogGravityLeft">"Stanga"</string>
 <string name="advancedPrefs_DialogGravityRight">"Dreapta"</string>
@@ -93,58 +143,82 @@
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Culoare fundal"</string>
 <string name="colorsType_Text">"Culoare text"</string>
-<string name="colorsCategory_Reveal">"Afisare background"</string>
-<string name="colorsCategory_SoftReboot">"Culori buton Repornire Soft"</string>
-<string name="colorsCategory_Screenshot">"Culori buton ScreenShot"</string>
-<string name="colorsCategory_Flashlight">"Culori buton Lanterna"</string>
-<string name="colorsCategory_SafeMode">"Culori buton Safe Mod"</string>
 <string name="powerMenuMain_Flashlight">"Porneste lanterna"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Permisiuni"</string>
+<string name="permissionsScreen_NotAllGranted">"Nu toate permisiunile acceptate, unele elemente nu vor functiona..."</string>
+<string name="permissionsScreen_ClickToRequest">"Apasa pentru a cere permisiuni."</string>
 <string name="permissionsScreen_DontAskAgain">"Nu intreba din nou"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Citire/Scriere memoire externa"</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Necesar pentru functii viitoare (mic exemplu: imagini diferite)"</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Necesar pentru a folosi Lanterna"</string>
 <string name="preferencesTitle_Permissions">"Permisiuni"</string>
+<string name="preferencesDesc_Permissions">"Arata permisiunile folosite si vezi pentru ce sunt utilizate. Acorda alte permisiuni daca nu sunt deja activate de la inceput (Android 6.0+)"</string>
 <string name="visibilityOrder_HideDesc">"Ascunde descriere"</string>
 
 <!-- Preferences: Colors -->
-<string name="colorsCategory_Presets">"Preset-uri"</string>
-<string name="colorsCategory_AirplaneMode">"Culori buton Mod Avion"</string>
-<string name="colorsCategory_RestartUI">"Culori buton Restart System UI"</string>
+<string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Acces Suprafata Flinger"</string>
+<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Necesar pentru a captura ecranul"</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Inregistrare audio"</string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Necesar pentru  inregistrare audio in timpul capturii de ecarn"</string>
+<string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Ferastra Avertizare Sistem"</string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Necesar pentru a vedea meniul de alimentare deasupra orcarui element"</string>
+<string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Blocare trezire"</string>
+<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Necear pentru a preveni oprirea serviciului lanterna si a capturii de ecarn"</string>
 <string name="powerMenuMain_SoundMode">"Mod Sunet"</string>
 <string name="powerMenuMain_SoundModeDesc">"Modul curent:"</string>
 <string name="SoundMode_Normal">"Mod normal"</string>
 <string name="SoundMode_Vibrate">"Mod vibratii"</string>
 <string name="SoundMode_Silent">"Silentios"</string>
-<string name="colorsCategory_SoundMode">"Culori buton Mod Sunet"</string>
+<string name="welcomeMsg">"Bun venit in Meniul NeoPower! ID-ul user-ului tau a fost generat, poti de acum sa trimiti presetarile tale!"</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Cont"</string>
 <string name="presetsManager_Upload">"Upload"</string>
+<string name="presetsManager_UploadMsg">"Aceasta presetare va fi incarcata pe serverul public, fiind vizibila altor utilizatori.
+Este ultima sansa de a schimba numele creatorului!"</string>
 <string name="presetsManager_UploadComplete">"Upload complet!"</string>
+<string name="presetsManager_UploadFailedSameName">"Nume deja folosit, te rugam sa incerci altul."</string>
+<string name="presetsManager_UploadFailedNoAccess">"Numele creatorului este protejat, incearca altul pentru a te loga"</string>
 <string name="presetsManager_UploadFailed">"Upload esuat!"</string>
 <string name="presetsManager_Downloading">"Se downloadeaza..."</string>
 <string name="presetsManager_DownloadFailed">"Downloadare esuata!"</string>
-<string name="permissionsScreenTitle_android.permission.INTERNET">"Interent"</string>
+<string name="presetsManager_CantConnecttoServer">"Nu se poate conecta la server! Verifica conexiunea de interent si incearca mai tarziu"</string>
+<string name="presetsManager_CantConnecttoDB">"Nu se poate conecta la baza de date! Incearca mai tarziu sau raporteaza developer-ului"</string>
+<string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Trebuie downloadate sau incarcate presetari de pe serverul public"</string>
 
 <!-- Login page -->
 <string name="login_Title">"Login"</string>
 <string name="login_TitleRegister">"Inregistare"</string>
+<string name="login_Info">"Numele utilizatorilor sunt protejate, deci nimeni nu le va putea fura sau folosi cu exceptia detinatorilor acelor conturi. Aici poti sa te loghezi sau sa-ti faci un cont nou. Nu este necesar daca nu vrei! Nu voi impartasi nicio informatie privata!"</string>
 <string name="login_UsernameEmail">"Nume utilizator sau E-mail"</string>
 <string name="login_Username">"Nume utilizator"</string>
 <string name="login_Email">"E-mail"</string>
 <string name="login_RetypeEmail">"Reintroducere e-mail"</string>
+<string name="login_PasswordOverEmail">"Poti sa-ti setezi parola din link-ul din e-mailul de activare (e-mailul este valabil doar in engleza)"</string>
 <string name="login_Password">"Parola"</string>
+<string name="login_KeepLogin">"Tine-ma logat."</string>
 <string name="login_Register">"Ai nevoie de un cont?
 Apasa aici pentru a-ti crea unul!"</string>
 <string name="login_LoggedIn">"Logare reusita!"</string>
 <string name="login_LoginFailedWithReason">"Logare esuata!"</string>
 <string name="login_LoginFailedWrongData">"Logare esuata, parola sau e-mail gresit!"</string>
+<string name="login_RegisterFailedNameUsed">"Ne pare rau, nume sau adresa email deja folosite"</string>
+<string name="login_RegisterSuccess">"Inregistrare completa, vei primi un email pentru a-ti activa contul!"</string>
 <string name="login_Processing">"Se proceseaza..."</string>
-<string name="login_TitleStatistics">"Statstici pentru..."</string>
+<string name="login_TitleStatistics">"Statstici pentru [USERNAMEEMAIL]"</string>
+<string name="login_Statistics">"Presetare incarcata : [UPLOADCOUNT]
+Stele date : [STARSGIVEN]
+Stele primite : [STARSRECEIVED]
+Top 5 presetari: [TOP5PRESETS] "</string>
 <string name="login_StatisticsFailed">"Esuare preluare statistici"</string>
 <string name="login_ReloadStatistics">"Reincarcare statistici"</string>
 <string name="login_TitleLogout">"Iesire cont"</string>
+<string name="login_pleaseCheckInput">"Ceva nu este bine. Verifica datele introduse"</string>
+<string name="presetsManager_Stars">"Stele : [STARS]"</string>
+<string name="presetsManager_giveStar">"Ofera Stele"</string>
+<string name="presetsManager_removeStar">"Sterge Stele"</string>
 </resources>
