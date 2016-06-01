@@ -22,7 +22,7 @@
 <!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root and Xposed"</string>
 <string name="preferencesTitle_RootXposed1">"Root and Xposed not available"</string>
-<string name="preferencesDesc_RootXposed1">"Root and Xposed are required for this module to work."</string>
+<string name="preferencesDesc_RootXposed1">"Root and Xposed are needed for this module to work."</string>
 <string name="preferencesTitle_RootXposed2">"Xposed working, Root not"</string>
 <string name="preferencesDesc_RootXposed2">"But Root is needed to Power off or Reboot...
 Please allow root access."</string>
@@ -74,7 +74,7 @@ Check out the source on GitHub."</string>
 <string name="presetsManager_SureToDelete">"Are you sure you want to delete [PRESETNAME]?
 This can't be undone!"</string>
 <string name="presetsManager_Share">"Share"</string>
-<string name="presetsManager_NJI">"This feature is currently not implemented..."</string>
+<string name="presetsManager_NJI">"This Feature is currently not implemented..."</string>
 <string name="presetsManager_ImportMsg">"Would you like to import this preset?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] imported successfully."</string>
 <string name="presetsManager_ImportFailed">"Import failed..."</string>
@@ -149,30 +149,6 @@ This can't be undone!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Background color"</string>
 <string name="colorsType_Text">"Text color"</string>
-<string name="colorsCategory_Reveal">"Reveal backgrounds"</string>
-<string name="colorsDesc_Reveal">"The color of the reveal animation."</string>
-<string name="colorsDesc_ActionReveal">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
-<string name="colorsCategory_Main">"Dialog colors"</string>
-<string name="colorsCategory_Shutdown">"Shutdown colors"</string>
-<string name="colorsDesc_DialogShutdown">"The colors of the dialog when clicked on Shutdown."</string>
-<string name="colorsCategory_Reboot">"Reboot colors"</string>
-<string name="colorsDesc_DialogReboot">"The colors of the dialog when clicked on Reboot."</string>
-<string name="colorsCategory_SoftReboot">"Soft Reboot colors"</string>
-<string name="colorsDesc_DialogSoftReboot">"The colors of the dialog when clicked on Soft Reboot."</string>
-<string name="colorsCategory_Screenshot">"Screenshot colors"</string>
-<string name="colorsDesc_DialogScreenshot">"The colors of the Screenshot button."</string>
-<string name="colorsCategory_Screenrecord">"Screenrecord colors"</string>
-<string name="colorsDesc_DialogScreenrecord">"The colors from of Screenrecord button."</string>
-<string name="colorsCategory_Flashlight">"Torch colors"</string>
-<string name="colorsDesc_DialogFlashlight">"The colors of the Torch toggle."</string>
-<string name="colorsCategory_ExpandedDesktop">"Expanded Desktop colors"</string>
-<string name="colorsDesc_DialogExpandedDesktop">"The colors of the Expanded Desktop toggle."</string>
-<string name="colorsCategory_Recovery">"Recovery colors"</string>
-<string name="colorsDesc_DialogRecovery">"The colors of the dialog when clicked on Recovery."</string>
-<string name="colorsCategory_Bootloader">"Bootloader colors"</string>
-<string name="colorsDesc_DialogBootloader">"The colors of the dialog when clicked on Bootloader."</string>
-<string name="colorsCategory_SafeMode">"Safe Mode colors"</string>
-<string name="colorsDesc_DialogSafeMode">"The colors of the dialog when clicked on Safe Mode."</string>
 <string name="powerMenuMain_Flashlight">"Turn Torch On"</string>
 
 <!-- Permissions Screen -->
@@ -181,21 +157,15 @@ This can't be undone!"</string>
 <string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
 <string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
-<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Required for future functions (little tip: custom images)."</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Needed for future functions (little tip: custom images)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
-<string name="permissionsScreenDesc_android.permission.CAMERA">"Required to toggle the Torch."</string>
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Needed to toggle the Torch."</string>
 <string name="preferencesTitle_Permissions">"Permissions"</string>
 <string name="preferencesDesc_Permissions">"Show the used Permissions and see for what they are used.
 Grant additional permissions that are not added on first start (Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Hide description"</string>
 
 <!-- Preferences: Colors -->
-<string name="colorsCategory_Presets">"Presets"</string>
-<string name="colorsDesc_DialogMain">"The colors of the dialog."</string>
-<string name="colorsCategory_AirplaneMode">"Airplane Mode colors"</string>
-<string name="colorsDesc_DialogAirplaneMode">"The colors from the Airplane Mode button."</string>
-<string name="colorsCategory_RestartUI">"Restart System UI colors"</string>
-<string name="colorsDesc_DialogRestartUI">"The colors from the Restart System UI button."</string>
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Needed for the screen recorder to record the screen."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
@@ -209,8 +179,6 @@ Grant additional permissions that are not added on first start (Android 6.0+)."<
 <string name="SoundMode_Normal">"Normal"</string>
 <string name="SoundMode_Vibrate">"Vibrate"</string>
 <string name="SoundMode_Silent">"Silent"</string>
-<string name="colorsCategory_SoundMode">"Sound Mode colors"</string>
-<string name="colorsDesc_DialogSoundMode">"The colors from the Sound Mode button."</string>
 <string name="welcomeMsg">"Welcome to NeoPowerMenu!
 Your user Id has been generated, you are ready to upload presets!"</string>
 
@@ -230,9 +198,6 @@ This is your last chance to adjust the name or the creator before uploading..."<
 Please check your network connection or try it again later."</string>
 <string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
 Please try it again later, when nothing changes: please report it to the developer."</string>
-		<string name="presetsManager_Stars">"Stars: [STARS]"</string>
-		<string name="presetsManager_giveStar">"Give Star"</string>
-		<string name="presetsManager_removeStar">"Remove Star"</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
 <string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download or upload presets from the public server."</string>
 
@@ -259,14 +224,25 @@ Click here to create a new Account!"</string>
 <string name="login_Processing">"Processing..."</string>
 <string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
 <string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]
-
 Stars given: [STARSGIVEN]
 Stars received: [STARSRECEIVED]
-
 Top 5 presets:
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Failed to get statistics..."</string>
-<string name="login_ReloadStatistics">"Click here to reload the statistics"</string>
+<string name="login_ReloadStatistics">"Reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsPartTitle">"[PART] colors"</string>
+<string name="colorsPartDescDialog">"The colors of the dialog when clicked on [BUTTON]."</string>
+<string name="colorsPartDescButton">"The colors from the [BUTTON] button."</string>
+<string name="colorsPartPresets">"Presets"</string>
+<string name="colorsPartReveal">"Reveal"</string>
+<string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
+<string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
+<string name="colorsPartMain">"Dialog"</string>
+<string name="presetsManager_Stars">"Stars: [STARS]"</string>
+<string name="presetsManager_giveStar">"Give Star"</string>
+<string name="presetsManager_removeStar">"Remove Star"</string>
 </resources>
