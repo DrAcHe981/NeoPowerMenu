@@ -147,15 +147,6 @@ This can't be undone!"</string>
 <string name="powerMenuMain_RestartUI">"Restart System UI"</string>
 
 <!-- Preferences: Colors -->
-		<string name="colorsPartTitle">"[PART] colors"</string>
-		<string name="colorsPartDescDialog">"The colors of the dialog when clicked on [BUTTON]."</string>
-		<string name="colorsPartDescButton">"The colors from the [BUTTON] button."</string>
-		<string name="colorsPartPresets">"Presets"</string>
-		<string name="colorsPartReveal">"Reveal"</string>
-		<string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
-		<string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
-		<string name="colorsPartMain">"Dialog"</string>
-		
 <string name="colorsType_Background">"Background color"</string>
 <string name="colorsType_Text">"Text color"</string>
 <string name="powerMenuMain_Flashlight">"Turn Torch On"</string>
@@ -260,4 +251,5 @@ Top 5 presets:
 <string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
 <string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsPartMain">"Dialog"</string>
+<string name="presetsManager_Refresh">"Refresh"</string>
 </resources>
