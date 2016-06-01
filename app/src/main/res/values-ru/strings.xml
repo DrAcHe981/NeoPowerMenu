@@ -148,30 +148,6 @@
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Цвет фона"</string>
 <string name="colorsType_Text">"Цвет текста"</string>
-<string name="colorsCategory_Reveal">"Фон появления"</string>
-<string name="colorsDesc_Reveal">"Цвет анимации появления"</string>
-<string name="colorsDesc_ActionReveal">"Цвет анимации фона при нажатии на Перезагрузку/Выключение"</string>
-<string name="colorsCategory_Main">"Цвета в окне"</string>
-<string name="colorsCategory_Shutdown">"Цвета Выключения"</string>
-<string name="colorsDesc_DialogShutdown">"Цвета диалогового окна при нажатии на Выключение"</string>
-<string name="colorsCategory_Reboot">"Цвета Перезагрузки"</string>
-<string name="colorsDesc_DialogReboot">"Цвета диалогового окна при нажатии на Перезагрузку"</string>
-<string name="colorsCategory_SoftReboot">"Цвета Мягкой перезагрузки"</string>
-<string name="colorsDesc_DialogSoftReboot">"Цвета диалогового окна при нажатии на Мягкую перезагрузку"</string>
-<string name="colorsCategory_Screenshot">"Цвета Снимка экрана"</string>
-<string name="colorsDesc_DialogScreenshot">"Цвета диалогового окна при нажатии на Снимок экрана"</string>
-<string name="colorsCategory_Screenrecord">"Цвета Записи экрана"</string>
-<string name="colorsDesc_DialogScreenrecord">"Цвета диалогового окна при нажатии на Запись экрана"</string>
-<string name="colorsCategory_Flashlight">"Цвета Фонарика"</string>
-<string name="colorsDesc_DialogFlashlight">"Цвета диалогового окна при нажатии на переключатель Фонарика"</string>
-<string name="colorsCategory_ExpandedDesktop">"Цвета Расширенного экрана"</string>
-<string name="colorsDesc_DialogExpandedDesktop">"Цвета диалогового окна при нажатии на переключатель Расширенного экрана"</string>
-<string name="colorsCategory_Recovery">"Цвета Рекавери"</string>
-<string name="colorsDesc_DialogRecovery">"Цвета диалогового окна при нажатии на Рекавери"</string>
-<string name="colorsCategory_Bootloader">"Цвета Загрузчика"</string>
-<string name="colorsDesc_DialogBootloader">"Цвета диалогового окна при нажатии на Загрузчик"</string>
-<string name="colorsCategory_SafeMode">"Цвета Безопасного режима"</string>
-<string name="colorsDesc_DialogSafeMode">"Цвета диалогового окна при нажатии на Безопасный режим"</string>
 <string name="powerMenuMain_Flashlight">"Включить Фонарик"</string>
 
 <!-- Permissions Screen -->
@@ -189,12 +165,6 @@
 <string name="visibilityOrder_HideDesc">"Спрятать описание"</string>
 
 <!-- Preferences: Colors -->
-<string name="colorsCategory_Presets">"Шаблоны"</string>
-<string name="colorsDesc_DialogMain">"Цвета диалогового окна"</string>
-<string name="colorsCategory_AirplaneMode">"Цвета Режима полёта"</string>
-<string name="colorsDesc_DialogAirplaneMode">"Цвета кнопки Режима полёта"</string>
-<string name="colorsCategory_RestartUI">"Цвета Перезапуска System UI"</string>
-<string name="colorsDesc_DialogRestartUI">"Цвета кнопки Перезапуска System UI"</string>
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Доступ к Surfaceflinger"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Процесс, необходимый для Записи экрана"</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Запись звука"</string>
@@ -208,8 +178,6 @@
 <string name="SoundMode_Normal">"Нормальный"</string>
 <string name="SoundMode_Vibrate">"Вибрация"</string>
 <string name="SoundMode_Silent">"Тихий"</string>
-<string name="colorsCategory_SoundMode">"Цвета Звукового режима"</string>
-<string name="colorsDesc_DialogSoundMode">"Цвета кнопки Звукового режима"</string>
 <string name="welcomeMsg">"Войдите или создайте аккаунт на Neon-Soft.de.
 Это защитит ваше имя пользователя на сервере шаблонов."</string>
 

@@ -143,30 +143,6 @@ Isso não pode ser desfeito!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Cor de fundo"</string>
 <string name="colorsType_Text">"Cor do texto "</string>
-<string name="colorsCategory_Reveal">"Revelar fundo"</string>
-<string name="colorsDesc_Reveal">"Cor da animação revelar."</string>
-<string name="colorsDesc_ActionReveal">"Cor da animação revelar só clicar em Reiniciar/Desligar."</string>
-<string name="colorsCategory_Main">"Cores da caixa de diálogo"</string>
-<string name="colorsCategory_Shutdown">"Cores de Desligar"</string>
-<string name="colorsDesc_DialogShutdown">"Cor da caixa de diálogo ao clicar em Desligar."</string>
-<string name="colorsCategory_Reboot">"Cores de Reiniciar"</string>
-<string name="colorsDesc_DialogReboot">"Cores da caixa de diálogo ao clicar em Reiniciar."</string>
-<string name="colorsCategory_SoftReboot">"Cores do Reiniciar Rápido."</string>
-<string name="colorsDesc_DialogSoftReboot">"Cores da caixa de diálogo ao clicar em Reiniciar Rápido."</string>
-<string name="colorsCategory_Screenshot">"Cores da Captura de Tela"</string>
-<string name="colorsDesc_DialogScreenshot">"Cores do botão de Captura de Tela."</string>
-<string name="colorsCategory_Screenrecord">"Cores da Gravação de Tela"</string>
-<string name="colorsDesc_DialogScreenrecord">"Cores do botão da Gravação de Tela."</string>
-<string name="colorsCategory_Flashlight">"Cores da Lanterna"</string>
-<string name="colorsDesc_DialogFlashlight">"Cores do botão da Lanterna"</string>
-<string name="colorsCategory_ExpandedDesktop">"Cores da Área de trabalho expandida"</string>
-<string name="colorsDesc_DialogExpandedDesktop">"Cores do botão da Área de trabalho expandida."</string>
-<string name="colorsCategory_Recovery">"Cores do Modo de Recuperação"</string>
-<string name="colorsDesc_DialogRecovery">"Cores da caixa de diálogo ao clicar em Modo de Recuperação."</string>
-<string name="colorsCategory_Bootloader">"Cores do Bootloader"</string>
-<string name="colorsDesc_DialogBootloader">"Cores da caixa de diálogo ao clicar em Bootloader."</string>
-<string name="colorsCategory_SafeMode">"Cores do Modo de Segurança"</string>
-<string name="colorsDesc_DialogSafeMode">"Cores da caixa de diálogo ao clicar em Modo de Segurança."</string>
 <string name="powerMenuMain_Flashlight">"Ligar Lanterna"</string>
 
 <!-- Permissions Screen -->
@@ -184,12 +160,6 @@ Conceder permissões adicionais que não são adicionadas na primeira inicializa
 <string name="visibilityOrder_HideDesc">"Ocultar descrição"</string>
 
 <!-- Preferences: Colors -->
-<string name="colorsCategory_Presets">"Pré-ajustes"</string>
-<string name="colorsDesc_DialogMain">"Cores da caixa de diálogo."</string>
-<string name="colorsCategory_AirplaneMode">"Cores do Modo avião"</string>
-<string name="colorsDesc_DialogAirplaneMode">"Cores do botão do Modo avião."</string>
-<string name="colorsCategory_RestartUI">"Cores do Reiniciar System UI"</string>
-<string name="colorsDesc_DialogRestartUI">"Cores do botão do Reiniciar System UI."</string>
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Acessar SurfaceFlinger"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Necessário para o gravador de tela gravar a tela."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Gravar Áudio"</string>
@@ -203,8 +173,6 @@ Conceder permissões adicionais que não são adicionadas na primeira inicializa
 <string name="SoundMode_Normal">"Normal"</string>
 <string name="SoundMode_Vibrate">"Vibrar"</string>
 <string name="SoundMode_Silent">"Silencioso"</string>
-<string name="colorsCategory_SoundMode">"Cores do modo de som"</string>
-<string name="colorsDesc_DialogSoundMode">"Cores do botão do modo de som"</string>
 <string name="welcomeMsg">"Bem vindo(a) ao NeoPowerMenu!
 Seu ID de usuário foi gerado,você está pronto para enviar Pré-ajustes!"</string>
 

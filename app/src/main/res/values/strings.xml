@@ -207,9 +207,6 @@ This is your last chance to adjust the name or the creator before uploading..."<
 Please check your network connection or try it again later."</string>
 <string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
 Please try it again later, when nothing changes: please report it to the developer."</string>
-		<string name="presetsManager_Stars">"Stars: [STARS]"</string>
-		<string name="presetsManager_giveStar">"Give Star"</string>
-		<string name="presetsManager_removeStar">"Remove Star"</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
 <string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download or upload presets from the public server."</string>
 
@@ -235,6 +232,8 @@ Click here to create a new Account!"</string>
 <string name="login_RegisterSuccess">"Registration succesfull, you will receive an email to activate your account!"</string>
 <string name="login_Processing">"Processing..."</string>
 <string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
+
+<!-- Fuzzy -->
 <string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]
 
 Stars given: [STARSGIVEN]
@@ -243,7 +242,22 @@ Stars received: [STARSRECEIVED]
 Top 5 presets:
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Failed to get statistics..."</string>
-<string name="login_ReloadStatistics">"Click here to reload the statistics"</string>
+
+<!-- Fuzzy -->
+<string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
+<string name="presetsManager_Stars">"Stars: [STARS]"</string>
+<string name="presetsManager_giveStar">"Give Star"</string>
+<string name="presetsManager_removeStar">"Remove Star"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsPartTitle">"[PART] colors"</string>
+<string name="colorsPartDescDialog">"The colors of the dialog when clicked on [BUTTON]."</string>
+<string name="colorsPartDescButton">"The colors from the [BUTTON] button."</string>
+<string name="colorsPartPresets">"Presets"</string>
+<string name="colorsPartReveal">"Reveal"</string>
+<string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
+<string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
+<string name="colorsPartMain">"Dialog"</string>
 </resources>
