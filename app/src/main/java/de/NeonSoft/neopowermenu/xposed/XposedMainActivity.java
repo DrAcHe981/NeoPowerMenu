@@ -106,13 +106,13 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				Bitmap lastBlurredBitmap = BlurTask.getLastBlurredBitmap();
 				
 				if(lastBlurredBitmap!= null) {
-						Toast.makeText(mContext,"Found previous blur, using it!",Toast.LENGTH_SHORT).show();
+						//Toast.makeText(mContext,"Found previous blur, using it!",Toast.LENGTH_SHORT).show();
 						BitmapDrawable blurredDrawable = new BitmapDrawable(lastBlurredBitmap);
 						blurredDrawable.setColorFilter(mColorFilter);
 						mActivityRootView.setBackground(blurredDrawable);
 				} else {
-						Toast.makeText(mContext,"Starting new blur task...",Toast.LENGTH_SHORT).show();
-						startBlurTask();
+						//Toast.makeText(mContext,"Starting new blur task...",Toast.LENGTH_SHORT).show();
+						//startBlurTask();
 				}
 				
         revealView = (CircularRevealView) findViewById(R.id.reveal);

@@ -39,7 +39,7 @@ public class XposedDialog extends DialogFragment
 
 		boolean firstTouch = false;
 		View firstTouchOn = null;
-		boolean doubleToConfirm = true;
+		boolean doubleToConfirm = false;
 		
 		private boolean HookShutdownThread = false;
 
@@ -153,6 +153,7 @@ public class XposedDialog extends DialogFragment
             @Override
             public void onClick(View v)
 						{
+								if(doubleToConfirm) {
 								if(!firstTouch && firstTouchOn != v) {
 										firstTouch = true;
 										firstTouchOn = v;
@@ -173,6 +174,8 @@ public class XposedDialog extends DialogFragment
 														//child.setEnabled(true);
 												//}
 										}
+										}
+										return;
 								} else {
 								canDismiss = false;
 
@@ -219,6 +222,7 @@ public class XposedDialog extends DialogFragment
 						@Override
 						public void onClick(View v)
 						{
+								if(doubleToConfirm) {
 								if(!firstTouch && firstTouchOn != v) {
 										firstTouch = true;
 										firstTouchOn = v;
@@ -239,6 +243,8 @@ public class XposedDialog extends DialogFragment
 												//child.setEnabled(true);
 												//}
 										}
+								}
+								return;
 								} else {
 								canDismiss = false;
 
@@ -285,6 +291,7 @@ public class XposedDialog extends DialogFragment
             @Override
             public void onClick(View v)
 						{
+								if(doubleToConfirm) {
 								if(!firstTouch && firstTouchOn != v) {
 										firstTouch = true;
 										firstTouchOn = v;
@@ -305,6 +312,8 @@ public class XposedDialog extends DialogFragment
 												//child.setEnabled(true);
 												//}
 										}
+								}
+								return;
 								} else {
 								canDismiss = false;
 

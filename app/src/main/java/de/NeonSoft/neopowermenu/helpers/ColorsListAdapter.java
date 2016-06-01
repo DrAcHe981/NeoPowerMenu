@@ -192,11 +192,15 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 														title = context.getString(R.string.colorsType_Background);
 														if(loadColor[0].contains("Reveal")) {
 																try {
-																String Description = context.getResources().getString(context.getResources().getIdentifier("colorsDesc_"+loadColor[0],"string",MainActivity.class.getPackage().getName()));
+																		String descCode = "Desc";
+																		if(loadColor[0].contains("Action")) {
+																				descCode = "Desc1";
+																		}
+																String Description = context.getResources().getString(context.getResources().getIdentifier("colorsPartReveal"+descCode,"string",MainActivity.class.getPackage().getName()));
 																Desc.setText(Description);
 																Desc.setVisibility(View.VISIBLE);
 														} catch (Throwable t) {
-																Desc.setText("String Resource for colorsDesc_" + loadColor[0]+" not found.");
+																Desc.setText("String Resource for colorsPart" + loadColor[0]+" not found.");
 														}
 														}
 												} else {
