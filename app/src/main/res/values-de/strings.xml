@@ -221,7 +221,7 @@ Klicke hier um ein Konto zu erstellen!"</string>
 <string name="login_RegisterFailedNameUsed">"Tut uns leid, der gewählte Name oder die gewählte E-mail Adresse ist bereits vergeben."</string>
 <string name="login_RegisterSuccess">"Registrierung erfolgreich, du wirst eine E-mail zum Aktivieren erhalten!"</string>
 <string name="login_Processing">"Verarbeite..."</string>
-<string name="login_TitleStatistics">"Statistiken für [USERNAME]"</string>
+<string name="login_TitleStatistics">"Statistiken für [USERNAMEEMAIL]"</string>
 <string name="login_Statistics">"Voreinstellungen hoch geladen: [UPLOADCOUNT]
 
 Sterne vergeben: [STARSGIVEN]

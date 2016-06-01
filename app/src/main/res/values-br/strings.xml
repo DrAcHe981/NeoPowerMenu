@@ -218,8 +218,10 @@ Clique aqui para criar uma nova!"</string>
 <string name="login_Processing">"Processando..."</string>
 <string name="login_TitleStatistics">"Estatísticas para [USERNAMEEMAIL]"</string>
 <string name="login_Statistics">"Pré-ajustes enviados: [UPLOADCOUNT]
+
 Estrelas dadas: [STARGIVEN]
 Estrelas recebidas: [STARSRECEIVED]
+
 Top 5 Pré-ajustes:
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Falha ao receber estatísticas..."</string>

@@ -222,8 +222,10 @@
 <string name="login_Processing">"Обработка..."</string>
 <string name="login_TitleStatistics">"Статистика для [USERNAMEEMAIL]"</string>
 <string name="login_Statistics">"Шаблонов загружено: [UPLOADCOUNT]
+
 Звёзд дано: [STARSGIVEN]
 Звёзд получено: [STARSRECEIVED]
+
 Топ 5 шаблонов:
 [TOP5PRESETS] "</string>
 <string name="login_StatisticsFailed">"Ошибка в получении статистики..."</string>

@@ -211,9 +211,12 @@ Apasa aici pentru a-ti crea unul!"</string>
 <string name="login_Processing">"Se proceseaza..."</string>
 <string name="login_TitleStatistics">"Statstici pentru [USERNAMEEMAIL]"</string>
 <string name="login_Statistics">"Presetare incarcata : [UPLOADCOUNT]
+
 Stele date : [STARSGIVEN]
 Stele primite : [STARSRECEIVED]
-Top 5 presetari: [TOP5PRESETS] "</string>
+
+Top 5 presetari:
+[TOP5PRESETS] "</string>
 <string name="login_StatisticsFailed">"Esuare preluare statistici"</string>
 <string name="login_ReloadStatistics">"Reincarcare statistici"</string>
 <string name="login_TitleLogout">"Iesire cont"</string>
