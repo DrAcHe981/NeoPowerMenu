@@ -148,30 +148,6 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Hintergrundfarbe"</string>
 <string name="colorsType_Text">"Text Farbe"</string>
-<string name="colorsCategory_Reveal">"Reveal Hintergründe"</string>
-<string name="colorsDesc_Reveal">"Die Farbe der Reveal Animation."</string>
-<string name="colorsDesc_ActionReveal">"Die Farbe der Reveal Animation wenn auf eine Neu starten/Ausschalten Option geklickt wurde."</string>
-<string name="colorsCategory_Main">"Dialog Farben"</string>
-<string name="colorsCategory_Shutdown">"Ausschalten Farben"</string>
-<string name="colorsDesc_DialogShutdown">"Die Farben des Dialogs, wenn auf Ausschalten geklickt wurde."</string>
-<string name="colorsCategory_Reboot">"Neu starten Farben"</string>
-<string name="colorsDesc_DialogReboot">"Die Farben des Dialogs, wenn auf Neu starten geklickt wurde."</string>
-<string name="colorsCategory_SoftReboot">"Schneller Neustart Farben"</string>
-<string name="colorsDesc_DialogSoftReboot">"Die Farben des Dialogs, wenn auf Schneller Neustart geklickt wurde."</string>
-<string name="colorsCategory_Screenshot">"Bildschirm Foto Farben"</string>
-<string name="colorsDesc_DialogScreenshot">"Die Farben des Bildschirm Foto Knopfes."</string>
-<string name="colorsCategory_Screenrecord">"Bildschirm Aufnahme Farben"</string>
-<string name="colorsDesc_DialogScreenrecord">"Die Farben des Bildschirm Aufnahme Knopfes."</string>
-<string name="colorsCategory_Flashlight">"Taschenlampen Farben"</string>
-<string name="colorsDesc_DialogFlashlight">"Die Farben des Taschenlampen Knopfes."</string>
-<string name="colorsCategory_ExpandedDesktop">"Erweiterter Desktop Farben"</string>
-<string name="colorsDesc_DialogExpandedDesktop">"Die Farben des Erweiterten Desktop Knopfes."</string>
-<string name="colorsCategory_Recovery">"Recovery Farben"</string>
-<string name="colorsDesc_DialogRecovery">"Die Farben des Dialogs, wenn auf Recovery geklickt wurde."</string>
-<string name="colorsCategory_Bootloader">"Bootloader Farben"</string>
-<string name="colorsDesc_DialogBootloader">"Die Farben des Dialogs, wenn auf Bootloader geklickt wurde."</string>
-<string name="colorsCategory_SafeMode">"Abgesicherter Modus Farben"</string>
-<string name="colorsDesc_DialogSafeMode">"Die Farben des Dialogs, wenn auf Abgesicherter Modus geklickt wurde."</string>
 <string name="powerMenuMain_Flashlight">"Taschenlampe Einschalten"</string>
 
 <!-- Permissions Screen -->
@@ -189,12 +165,6 @@ Erlaube weitere Berechtigungen die nicht beim ersten Start erlaubt wurden (Andro
 <string name="visibilityOrder_HideDesc">"Verstecke Beschreibung"</string>
 
 <!-- Preferences: Colors -->
-<string name="colorsCategory_Presets">"Voreinstellungen"</string>
-<string name="colorsDesc_DialogMain">"Die Farben des Dialogs."</string>
-<string name="colorsCategory_AirplaneMode">"Flug Modus Farben"</string>
-<string name="colorsDesc_DialogAirplaneMode">"Die Farben des Flug Modus Knopfes."</string>
-<string name="colorsCategory_RestartUI">"System UI neu starten Farben"</string>
-<string name="colorsDesc_DialogRestartUI">"Die Farben des System UI neu starten Knopfes."</string>
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Surface Flinger Zugriff"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Wird für die Bildschirm Aufnahme benötigt."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ton aufnehmen"</string>
@@ -208,6 +178,74 @@ Erlaube weitere Berechtigungen die nicht beim ersten Start erlaubt wurden (Andro
 <string name="SoundMode_Normal">"Normal"</string>
 <string name="SoundMode_Vibrate">"Vibration"</string>
 <string name="SoundMode_Silent">"Kein Ton"</string>
-<string name="colorsCategory_SoundMode">"Sound Modus Farben"</string>
-<string name="colorsDesc_DialogSoundMode">"Die Farben des Sound Modus Knopfes."</string>
+<string name="welcomeMsg">"Willkommen bei NeoPowerMenu! 
+Deine Nutzer Id wurde generiert, du bist bereit zum Hochladen von Voreinstellungen!"</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleAccount">"Konto"</string>
+<string name="presetsManager_Upload">"Hochladen"</string>
+<string name="presetsManager_UploadMsg">"Diese Voreinstellungen wird auf den öffentlichen Server hochgeladen, sichtbar für alle Nutzer. 
+
+Dies ist deine letzte Chance den Namen oder den Ersteller anzupassen..."</string>
+<string name="presetsManager_UploadComplete">"Hochladen abgeschlossen!"</string>
+<string name="presetsManager_UploadFailedSameName">"Dieser Name wird bereits genutzt, bitte wähle einen anderen."</string>
+<string name="presetsManager_UploadFailedNoAccess">"Dieser Ersteller Name ist geschützt, wähle einen anderen oder melde dich an."</string>
+<string name="presetsManager_UploadFailed">"Hochladen fehlgeschlagen!"</string>
+<string name="presetsManager_Downloading">"Runterladen..."</string>
+<string name="presetsManager_DownloadFailed">"Download fehlgeschlagen!"</string>
+<string name="presetsManager_CantConnecttoServer">"Es kann keine Verbindung zum Server hergestellt werden! 
+Bitte überprüfe deine Verbindung oder Versuch es später erneut."</string>
+<string name="presetsManager_CantConnecttoDB">"Es kann keine Verbindung zur Datenbank hergestellt werden! 
+Bitte Versuch es später erneut, wenn sich nichts ändert: melde es bitte dem Entwickler."</string>
+<string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Wird benötigt um Voreinstellungen vom öffentlichen server runter oder hochzuladen."</string>
+
+<!-- Login page -->
+<string name="login_Title">"Anmelden"</string>
+<string name="login_TitleRegister">"Registrieren"</string>
+<string name="login_Info">"Die Nutzer Namen von registrierten Nutzern sind geschützt damit keiner unter dem Namen Hochladen kann, hier kannst du dich anmelden oder ein Konto erstellen. 
+Dies wird nicht benötigt wenn du nicht möchtest! 
+I werde niemals irgendwelche privaten Daten Teilen!"</string>
+<string name="login_UsernameEmail">"Nutzer Name oder E-mail:"</string>
+<string name="login_Username">"Nutzer Name:"</string>
+<string name="login_Email">"E-mail:"</string>
+<string name="login_RetypeEmail">"E-mail wiederholen:"</string>
+<string name="login_PasswordOverEmail">"Du kannst dein Passwort über den Link in der E-mail setzen (Die E-mail ist nur in Englisch verfügbar)."</string>
+<string name="login_Password">"Passwort:"</string>
+<string name="login_KeepLogin">"Angemeldet blieben."</string>
+<string name="login_Register">"Kein Konto? 
+Klicke hier um ein Konto zu erstellen!"</string>
+<string name="login_LoggedIn">"Angemeldet!"</string>
+<string name="login_LoginFailedWithReason">"Anmelden fehlgeschlagen: "</string>
+<string name="login_LoginFailedWrongData">"Anmelden fehlgeschlagen, falsche E-mail or Passwort!"</string>
+<string name="login_RegisterFailedNameUsed">"Tut uns leid, der gewählte Name oder die gewählte E-mail Adresse ist bereits vergeben."</string>
+<string name="login_RegisterSuccess">"Registrierung erfolgreich, du wirst eine E-mail zum Aktivieren erhalten!"</string>
+<string name="login_Processing">"Verarbeite..."</string>
+<string name="login_TitleStatistics">"Statistiken für [USERNAME]"</string>
+<string name="login_Statistics">"Voreinstellungen hoch geladen: [UPLOADCOUNT]
+
+Sterne vergeben: [STARSGIVEN]
+Sterne erhalten: [STARSRECEIVED]
+
+Top 5 Voreinstellungen: 
+[TOP5PRESETS]"</string>
+<string name="login_StatisticsFailed">"Abrufen der Statistiken fehlgeschalagen..."</string>
+
+<!-- Fuzzy -->
+<string name="login_ReloadStatistics">"Hier klicken um die Statistiken neu zu laden"</string>
+<string name="login_TitleLogout">"Abmelden"</string>
+<string name="login_pleaseCheckInput">"Irgendwas ist schief gelaufen, bitte überprüfe deine Eingabe."</string>
+<string name="presetsManager_Stars">"Sterne: [STARS]"</string>
+<string name="presetsManager_giveStar">"Stern geben"</string>
+<string name="presetsManager_removeStar">"Stern Entfernen"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsPartTitle">"[PART] farben"</string>
+<string name="colorsPartDescDialog">"Die farben des Dialogs wenn auf [BUTTON] geklickt wurde."</string>
+<string name="colorsPartDescButton">"Die Farben des [BUTTON] Knopfes."</string>
+<string name="colorsPartPresets">"Voreinstellungen"</string>
+<string name="colorsPartReveal">"Reveal"</string>
+<string name="colorsPartRevealDesc">"Die Farbe der Reveal Animation."</string>
+<string name="colorsPartRevealDesc1">"Die Farbe der Reveal Animation wenn auf eine neu starten/ausschalten Option geklickt wurde."</string>
+<string name="colorsPartMain">"Dialog"</string>
 </resources>
