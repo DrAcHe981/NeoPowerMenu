@@ -18,7 +18,6 @@ import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.services.*;
 import de.NeonSoft.neopowermenu.xposed.*;
 import eu.chainfire.libsuperuser.*;
-import fr.tvbarthel.lib.blurdialogfragment.*;
 
 import de.NeonSoft.neopowermenu.R;
 

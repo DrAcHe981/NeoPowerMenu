@@ -1,13 +1,10 @@
 package de.NeonSoft.neopowermenu.helpers;
 
-import android.app.*;
-import android.graphics.*;
+import android.content.*;
 import android.graphics.drawable.*;
 import android.os.*;
 import android.text.*;
-import android.util.*;
 import android.view.*;
-import java.lang.reflect.*;
 import java.security.*;
 import de.NeonSoft.neopowermenu.*;
 
@@ -41,8 +38,8 @@ public class helper
 				return active;
 		}
 		
-		public static String activeParts() {
-				String activeParts = MainActivity.preferences.getString("activeParts","none");
+		public static String activeParts(Context context) {
+				String activeParts = context.getString(R.string.presetsManager_NJI);
 				return activeParts;
 		}
 		

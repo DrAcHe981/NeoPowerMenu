@@ -93,7 +93,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				XposedUtils.log("SDK Version: " + Build.VERSION.SDK_INT);
         XposedUtils.log("ROM: " + Build.DISPLAY);
 				XposedUtils.log("Zygote init complete.");
-				preferences.edit().remove("activeParts");
+				//preferences.edit().remove("activeParts");
     }
 
 
@@ -232,7 +232,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																}
 														}
 												}
-												preferences.edit().putString("activeParts", preferences.getString("activeParts","") + "permissionGranter,").commit();
+												//preferences.edit().putString("activeParts", preferences.getString("activeParts","") + "permissionGranter,").commit();
 										}
 								});
 						if (DeepXposedLogging) XposedUtils.log("Permission request hooked.");
@@ -407,7 +407,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 												filter.addAction(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
 												filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
 												mContext.registerReceiver(mNPMReceiver, filter, null, null);
-												preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#constructor,").commit();
+												//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#constructor,").commit();
 												return null;
 										}
 								});
@@ -418,7 +418,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										protected Object replaceHookedMethod(final MethodHookParam methodHookParam) throws Throwable
 										{
 												showDialog();
-												preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#showDialog,").commit();
+												//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#showDialog,").commit();
 												return null;
 										}
 
@@ -430,7 +430,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										protected Object replaceHookedMethod(final MethodHookParam methodHookParam) throws Throwable
 										{
 
-												preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#createDialog,").commit();
+												//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#createDialog,").commit();
 												return null;
 										}
 
@@ -443,7 +443,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam param) throws Throwable
 										{
 												// TODO: Implement this method
-												preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#onAiplaneModeChanged,").commit();
+												//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#onAiplaneModeChanged,").commit();
 												return null;
 										}
 								});
@@ -461,7 +461,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 														if (sIsStarted == true) XposedUtils.log("sIsStarted is true,thats not normal for fresh created...");
 														sInstance = (ShutdownThread) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sInstance");
 														if (sInstance == null) XposedUtils.log("sInstance is null,reboot will crash...");
-														preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "ShutdownThread#constructor,").commit();
+														//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "ShutdownThread#constructor,").commit();
 												} 
 										});
 								if (DeepXposedLogging) XposedUtils.log("Getting needed values...");
@@ -533,7 +533,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 														{
 																XposedUtils.log("ShutdownThread Failed: " + t.toString());
 														}
-														preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "ShutdownThread#beginShutdownSequence,").commit();
+														//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "ShutdownThread#beginShutdownSequence,").commit();
 														return null;
 												}
 										});

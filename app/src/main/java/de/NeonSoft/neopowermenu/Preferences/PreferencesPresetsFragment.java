@@ -77,7 +77,7 @@ public class PreferencesPresetsFragment extends Fragment
 										// TODO: Implement this method
 										if(adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleOnline))) {
 												MainActivity.visibleFragment = "PresetsManagerOnline";
-												MainActivity.setActionBarButton("Refresh", R.drawable.ic_action_autorenew, new OnClickListener() {
+												MainActivity.setActionBarButton(getString(R.string.presetsManager_Refresh), R.drawable.ic_action_autorenew, new OnClickListener() {
 
 																@Override
 																public void onClick(View p1)
