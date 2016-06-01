@@ -150,7 +150,4 @@ Tego nie można cofnąć!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Kolor tła"</string>
 <string name="colorsType_Text">"Kolor tekstu"</string>
-<string name="colorsCategory_Reveal">"Główne tło"</string>
-<string name="colorsDesc_Reveal">"Kolor animacji głównego tła."</string>
-<string name="colorsDesc_ActionReveal">"Kolor animacji głównego tła po naciśnięciu na opcję Uruchom ponownie/Wyłącz."</string>
 </resources>
