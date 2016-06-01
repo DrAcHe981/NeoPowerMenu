@@ -5,21 +5,22 @@ import android.content.*;
 import android.content.res.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
+import android.media.*;
 import android.os.*;
 import android.provider.*;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
-import android.view.ViewGroup.*;
 import android.widget.*;
+import com.android.internal.os.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.services.*;
+import de.NeonSoft.neopowermenu.xposed.*;
 import eu.chainfire.libsuperuser.*;
+import fr.tvbarthel.lib.blurdialogfragment.*;
 
-import android.view.View.OnClickListener;
-import de.NeonSoft.neopowermenu.Preferences.*;
-import android.media.*;
+import de.NeonSoft.neopowermenu.R;
 
 /**
  * Created by naman on 20/03/15.
@@ -36,8 +37,9 @@ public class XposedDialog extends DialogFragment
 		public static NotificationManager nfm;
 		public static Notification.Builder notifyb;
 
-		View singleTouch = null;
-		boolean doubleToConfirm = false;
+		boolean firstTouch = false;
+		View firstTouchOn = null;
+		boolean doubleToConfirm = true;
 		
 		private boolean HookShutdownThread = false;
 
@@ -151,6 +153,27 @@ public class XposedDialog extends DialogFragment
             @Override
             public void onClick(View v)
 						{
+								if(!firstTouch && firstTouchOn != v) {
+										firstTouch = true;
+										firstTouchOn = v;
+										for(int i =0;i<ListContainer.getChildCount();i++) {
+												View child = ListContainer.getChildAt(i);
+												if(child!=v) {
+														child.setAlpha((float) .3);
+														//child.setEnabled(false);
+												}
+										}
+								} else if (firstTouch && firstTouchOn!=v) {
+										firstTouch = false;
+										firstTouchOn = null;
+										for(int i =0;i<ListContainer.getChildCount();i++) {
+												View child = ListContainer.getChildAt(i);
+												//if(child!=v) {
+														child.setAlpha((float) 1);
+														//child.setEnabled(true);
+												//}
+										}
+								} else {
 								canDismiss = false;
 
                 final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogShutdown_Backgroundcolor", "#d32f2f"));
@@ -190,11 +213,33 @@ public class XposedDialog extends DialogFragment
 										}
 								}
             }
+						}
         };
         rebootOnClickListener = new View.OnClickListener() {
 						@Override
 						public void onClick(View v)
 						{
+								if(!firstTouch && firstTouchOn != v) {
+										firstTouch = true;
+										firstTouchOn = v;
+										for(int i =0;i<ListContainer.getChildCount();i++) {
+												View child = ListContainer.getChildAt(i);
+												if(child!=v) {
+														child.setAlpha((float) .3);
+														//child.setEnabled(false);
+												}
+										}
+								} else if (firstTouch && firstTouchOn!=v) {
+										firstTouch = false;
+										firstTouchOn = null;
+										for(int i =0;i<ListContainer.getChildCount();i++) {
+												View child = ListContainer.getChildAt(i);
+												//if(child!=v) {
+												child.setAlpha((float) 1);
+												//child.setEnabled(true);
+												//}
+										}
+								} else {
 								canDismiss = false;
 
 								final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogReboot_Backgroundcolor", "#3f51b5"));
@@ -234,11 +279,33 @@ public class XposedDialog extends DialogFragment
 										}
 								}
 						}
+						}
 				};
         soft_rebootOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v)
 						{
+								if(!firstTouch && firstTouchOn != v) {
+										firstTouch = true;
+										firstTouchOn = v;
+										for(int i =0;i<ListContainer.getChildCount();i++) {
+												View child = ListContainer.getChildAt(i);
+												if(child!=v) {
+														child.setAlpha((float) .3);
+														//child.setEnabled(false);
+												}
+										}
+								} else if (firstTouch && firstTouchOn!=v) {
+										firstTouch = false;
+										firstTouchOn = null;
+										for(int i =0;i<ListContainer.getChildCount();i++) {
+												View child = ListContainer.getChildAt(i);
+												//if(child!=v) {
+												child.setAlpha((float) 1);
+												//child.setEnabled(true);
+												//}
+										}
+								} else {
 								canDismiss = false;
 
                 final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogSoftReboot_Backgroundcolor", "#e91e63"));
@@ -278,6 +345,7 @@ public class XposedDialog extends DialogFragment
 										}
 								}
             }
+						}
         };
 
 				screenshotOnClickListener = new View.OnClickListener() {
@@ -286,6 +354,17 @@ public class XposedDialog extends DialogFragment
 						public void onClick(View p1)
 						{
 								// TODO: Implement this method
+								if (firstTouch && firstTouchOn!=p1) {
+								firstTouch = false;
+								firstTouchOn = null;
+								for(int i =0;i<ListContainer.getChildCount();i++) {
+										View child = ListContainer.getChildAt(i);
+										//if(child!=v) {
+										child.setAlpha((float) 1);
+										//child.setEnabled(true);
+										//}
+								}
+						} else {
 								if (!XposedMainActivity.previewMode)
 								{
 										dismiss();
@@ -302,6 +381,7 @@ public class XposedDialog extends DialogFragment
 														}
 												}, XposedMainActivity.preferences.getLong("ScreenshotDelay", 1000));
 								}
+						}
 						}
 				};
 				

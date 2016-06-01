@@ -191,7 +191,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 														colorType = "_Backgroundcolor";
 														title = context.getString(R.string.colorsType_Background);
 														if(loadColor[0].contains("Reveal")) {
-														try {
+																try {
 																String Description = context.getResources().getString(context.getResources().getIdentifier("colorsDesc_"+loadColor[0],"string",MainActivity.class.getPackage().getName()));
 																Desc.setText(Description);
 																Desc.setVisibility(View.VISIBLE);
@@ -229,19 +229,57 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 										InflatedView = mInflater.inflate(R.layout.listheader,null);
 										Title = (TextView) InflatedView.findViewById(R.id.listheaderTextView_Title);
 										Desc = (TextView) InflatedView.findViewById(R.id.listheaderTextView_Desc);
+										String mainString = "";
+										if(colorNamesArray[p1][1].equalsIgnoreCase("Presets") || colorNamesArray[p1][1].equalsIgnoreCase("Reveal") || colorNamesArray[p1][1].equalsIgnoreCase("Main")) {
+												try {
+														mainString = context.getResources().getString(context.getResources().getIdentifier("colorsPart"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
+														String title = (colorNamesArray[p1][1].equalsIgnoreCase("Presets") ? mainString : context.getString(R.string.colorsPartTitle).replace("[PART]",mainString));//getResources().getString(context.getResources().getIdentifier("colorsCategory_"+colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
+														Title.setText(title);
+												} catch (Throwable t1) {
+														Title.setText("String Resource for colorsPart"+ colorNamesArray[p1][1]+" not found.");
+												}
+										} else {
 										try {
-												String title = context.getResources().getString(context.getResources().getIdentifier("colorsCategory_"+colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
+												mainString = context.getResources().getString(context.getResources().getIdentifier("powerMenuMain_"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
+												String title = context.getString(R.string.colorsPartTitle).replace("[PART]",mainString);//getResources().getString(context.getResources().getIdentifier("colorsCategory_"+colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
 												Title.setText(title);
 										} catch (Throwable t) {
-												Title.setText("String Resource for colorsCategory_"+ colorNamesArray[p1][1]+" not found.");
+												try {
+														mainString = context.getResources().getString(context.getResources().getIdentifier("powerMenuBottom_"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
+														String title = context.getString(R.string.colorsPartTitle).replace("[PART]",mainString);//getResources().getString(context.getResources().getIdentifier("colorsCategory_"+colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
+														Title.setText(title);
+												} catch (Throwable t1) {
+														Title.setText("String Resource for "+ colorNamesArray[p1][1]+" not found.");
+												}
+										}
 										}
 										try {
-												String Description = context.getResources().getString(context.getResources().getIdentifier("colorsDesc_Dialog"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
+												String Description = "";
+												mainString = context.getResources().getString(context.getResources().getIdentifier("powerMenuMain_"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
+												if(mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Shutdown)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Reboot)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_SoftReboot))) {
+												Description = context.getString(R.string.colorsPartDescDialog).replace("[BUTTON]",mainString);
+												} else {
+														Description = context.getString(R.string.colorsPartDescButton).replace("[BUTTON]",mainString);
+												}
+												//String Description = context.getResources().getString(context.getResources().getIdentifier("colorsDesc_Dialog"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
 												Desc.setText(Description);
 												Desc.setVisibility(View.VISIBLE);
 										} catch (Throwable t) {
-												Desc.setVisibility(View.GONE);
-												Desc.setText("String Resource for colorsDesc_Dialog" + colorNamesArray[p1][1]+" not found.");
+												try {
+														String Description = "";
+														mainString = context.getResources().getString(context.getResources().getIdentifier("powerMenuBottom_"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
+														if(mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Shutdown)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Reboot)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_SoftReboot))) {
+																Description = context.getString(R.string.colorsPartDescDialog).replace("[BUTTON]",mainString);
+														} else {
+																Description = context.getString(R.string.colorsPartDescButton).replace("[BUTTON]",mainString);
+														}
+														//String Description = context.getResources().getString(context.getResources().getIdentifier("colorsDesc_Dialog"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
+														Desc.setText(Description);
+														Desc.setVisibility(View.VISIBLE);
+												} catch (Throwable t1) {
+														Desc.setVisibility(View.GONE);
+														Desc.setText("String Resource for " + colorNamesArray[p1][1]+" not found.");
+												}
 										}
 										InflatedView.setEnabled(false);
 										break;

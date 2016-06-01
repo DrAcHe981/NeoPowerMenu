@@ -1,13 +1,15 @@
 package de.NeonSoft.neopowermenu.helpers;
 
-import android.content.*;
+import android.app.*;
+import android.graphics.*;
 import android.graphics.drawable.*;
 import android.os.*;
-import android.preference.*;
-import android.view.*;
-import de.NeonSoft.neopowermenu.*;
-import java.security.*;
 import android.text.*;
+import android.util.*;
+import android.view.*;
+import java.lang.reflect.*;
+import java.security.*;
+import de.NeonSoft.neopowermenu.*;
 
 public class helper
 {
@@ -37,6 +39,11 @@ public class helper
 		public static int ModuleState() {
 				int active = -1;
 				return active;
+		}
+		
+		public static String activeParts() {
+				String activeParts = MainActivity.preferences.getString("activeParts","none");
+				return activeParts;
 		}
 		
 		public static String getTimeString(long InputMilliSeconds,boolean withTxt)
@@ -131,5 +138,5 @@ public class helper
 		public static boolean isValidEmail(String input) {
 				return !TextUtils.isEmpty(input) && android.util.Patterns.EMAIL_ADDRESS.matcher(input).matches();
 		}
-		
+
 }

@@ -10,6 +10,8 @@ android {
         targetSdkVersion 23
         versionCode 19
         versionName "1.5-pre1"
+				renderscriptTargetApi 18
+    		renderscriptSupportModeEnabled true
     }
 
     buildTypes {
@@ -29,6 +31,8 @@ android {
 }
 		
 dependencies {
+	//compile 'com.faradaj:blur-behind:1.1';
+	//compile 'fr.tvbarthel.blurdialogfragment:lib:2.1.6'
 	//compile 'com.mikepenz:aboutlibraries:5.6.6';
 	compile 'org.apache.commons:commons-lang3:3.0'
 	compile 'org.apache.httpcomponents:httpclient:4.5.2'

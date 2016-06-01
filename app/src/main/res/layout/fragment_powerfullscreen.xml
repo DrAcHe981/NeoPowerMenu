@@ -27,18 +27,20 @@
 
 			<ScrollView
 				android:layout_height="wrap_content"
-				android:layout_width="match_parent">
+				android:layout_width="match_parent"
+				android:fillViewport="true">
 
 				<LinearLayout
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
-					android:id="@+id/ListContainer">
+					android:id="@+id/ListContainer"
+					android:padding="8dp">
 
 					<View
-						android:background="@color/transparent"
 						android:layout_height="0dp"
-						android:layout_width="wrap_content"/>
+						android:layout_width="wrap_content"
+						android:background="@color/transparent"/>
 
 				</LinearLayout>
 
@@ -110,7 +112,7 @@
 					android:id="@+id/bootloader"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center"
+					android:layout_gravity="center_horizontal"
 					android:layout_weight="1"
 					android:background="?selectableItemBackgroundBorderless"
 					android:clickable="true"
@@ -206,7 +208,7 @@
 		android:id="@+id/frame2"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_gravity="center"
+		android:layout_gravity="center|center_vertical|center_horizontal"
 		android:visibility="gone">
 
 		<LinearLayout

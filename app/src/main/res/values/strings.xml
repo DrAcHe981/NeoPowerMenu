@@ -147,32 +147,17 @@ This can't be undone!"</string>
 <string name="powerMenuMain_RestartUI">"Restart System UI"</string>
 
 <!-- Preferences: Colors -->
+		<string name="colorsPartTitle">"[PART] colors"</string>
+		<string name="colorsPartDescDialog">"The colors of the dialog when clicked on [BUTTON]."</string>
+		<string name="colorsPartDescButton">"The colors from the [BUTTON] button."</string>
+		<string name="colorsPartPresets">"Presets"</string>
+		<string name="colorsPartReveal">"Reveal"</string>
+		<string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
+		<string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
+		<string name="colorsPartMain">"Dialog"</string>
+		
 <string name="colorsType_Background">"Background color"</string>
 <string name="colorsType_Text">"Text color"</string>
-<string name="colorsCategory_Reveal">"Reveal backgrounds"</string>
-<string name="colorsDesc_Reveal">"The color of the reveal animation."</string>
-<string name="colorsDesc_ActionReveal">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
-<string name="colorsCategory_Main">"Dialog colors"</string>
-<string name="colorsCategory_Shutdown">"Shutdown colors"</string>
-<string name="colorsDesc_DialogShutdown">"The colors of the dialog when clicked on Shutdown."</string>
-<string name="colorsCategory_Reboot">"Reboot colors"</string>
-<string name="colorsDesc_DialogReboot">"The colors of the dialog when clicked on Reboot."</string>
-<string name="colorsCategory_SoftReboot">"Soft Reboot colors"</string>
-<string name="colorsDesc_DialogSoftReboot">"The colors of the dialog when clicked on Soft Reboot."</string>
-<string name="colorsCategory_Screenshot">"Screenshot colors"</string>
-<string name="colorsDesc_DialogScreenshot">"The colors of the Screenshot button."</string>
-<string name="colorsCategory_Screenrecord">"Screenrecord colors"</string>
-<string name="colorsDesc_DialogScreenrecord">"The colors from of Screenrecord button."</string>
-<string name="colorsCategory_Flashlight">"Torch colors"</string>
-<string name="colorsDesc_DialogFlashlight">"The colors of the Torch toggle."</string>
-<string name="colorsCategory_ExpandedDesktop">"Expanded Desktop colors"</string>
-<string name="colorsDesc_DialogExpandedDesktop">"The colors of the Expanded Desktop toggle."</string>
-<string name="colorsCategory_Recovery">"Recovery colors"</string>
-<string name="colorsDesc_DialogRecovery">"The colors of the dialog when clicked on Recovery."</string>
-<string name="colorsCategory_Bootloader">"Bootloader colors"</string>
-<string name="colorsDesc_DialogBootloader">"The colors of the dialog when clicked on Bootloader."</string>
-<string name="colorsCategory_SafeMode">"Safe Mode colors"</string>
-<string name="colorsDesc_DialogSafeMode">"The colors of the dialog when clicked on Safe Mode."</string>
 <string name="powerMenuMain_Flashlight">"Turn Torch On"</string>
 
 <!-- Permissions Screen -->
@@ -190,12 +175,6 @@ Grant additional permissions that are not added on first start (Android 6.0+)."<
 <string name="visibilityOrder_HideDesc">"Hide description"</string>
 
 <!-- Preferences: Colors -->
-<string name="colorsCategory_Presets">"Presets"</string>
-<string name="colorsDesc_DialogMain">"The colors of the dialog."</string>
-<string name="colorsCategory_AirplaneMode">"Airplane Mode colors"</string>
-<string name="colorsDesc_DialogAirplaneMode">"The colors from the Airplane Mode button."</string>
-<string name="colorsCategory_RestartUI">"Restart System UI colors"</string>
-<string name="colorsDesc_DialogRestartUI">"The colors from the Restart System UI button."</string>
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Needed for the screen recorder to record the screen."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
@@ -209,8 +188,6 @@ Grant additional permissions that are not added on first start (Android 6.0+)."<
 <string name="SoundMode_Normal">"Normal"</string>
 <string name="SoundMode_Vibrate">"Vibrate"</string>
 <string name="SoundMode_Silent">"Silent"</string>
-<string name="colorsCategory_SoundMode">"Sound Mode colors"</string>
-<string name="colorsDesc_DialogSoundMode">"The colors from the Sound Mode button."</string>
 <string name="welcomeMsg">"Welcome to NeoPowerMenu!
 Your user Id has been generated, you are ready to upload presets!"</string>
 

@@ -33,7 +33,8 @@
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
-					android:id="@+id/ListContainer">
+					android:id="@+id/ListContainer"
+					android:padding="8dp">
 
 					<View
 						android:background="@color/transparent"
@@ -79,14 +80,14 @@
 
 						<ImageView
 							android:id="@+id/irecovery"
-							android:layout_width="45dp"
-							android:layout_height="45dp"
+							android:layout_width="40dp"
+							android:layout_height="40dp"
 							android:contentDescription="@string/app_name"
 							android:gravity="center"/>
 
 						<ImageView
-							android:layout_height="45dp"
-							android:layout_width="45dp"
+							android:layout_height="40dp"
+							android:layout_width="40dp"
 							android:src="@drawable/ic_hardware_memory"
 							android:id="@+id/irecovery2"
 							android:padding="5dp"/>
@@ -110,7 +111,7 @@
 					android:id="@+id/bootloader"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center"
+					android:layout_gravity="center_horizontal"
 					android:layout_weight="1"
 					android:background="?selectableItemBackgroundBorderless"
 					android:clickable="true"
@@ -124,14 +125,14 @@
 
 						<ImageView
 							android:id="@+id/ibootloader"
-							android:layout_width="45dp"
-							android:layout_height="45dp"
+							android:layout_width="40dp"
+							android:layout_height="40dp"
 							android:contentDescription="@string/app_name"
 							android:gravity="center"/>
 
 						<ImageView
-							android:layout_height="45dp"
-							android:layout_width="45dp"
+							android:layout_height="40dp"
+							android:layout_width="40dp"
 							android:src="@drawable/ic_action_settings_backup_restore"
 							android:id="@+id/ibootloader2"
 							android:padding="5dp"/>
@@ -169,14 +170,14 @@
 
 						<ImageView
 							android:id="@+id/isafe"
-							android:layout_width="45dp"
-							android:layout_height="45dp"
+							android:layout_width="40dp"
+							android:layout_height="40dp"
 							android:contentDescription="@string/app_name"
 							android:gravity="center"/>
 
 						<ImageView
-							android:layout_height="45dp"
-							android:layout_width="45dp"
+							android:layout_height="40dp"
+							android:layout_width="40dp"
 							android:src="@drawable/ic_notification_sync_problem"
 							android:id="@+id/isafe2"
 							android:padding="5dp"/>

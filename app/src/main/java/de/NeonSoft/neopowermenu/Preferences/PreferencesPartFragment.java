@@ -127,9 +127,9 @@ public class PreferencesPartFragment extends Fragment
 										// TODO: Implement this method
 										AlertDialog.Builder alertdb = new AlertDialog.Builder(getActivity());
 										alertdb.setTitle(R.string.preferencesTitle_Style);
-										String[] styleList = new String[2];
+										String[] styleList = new String[1];
 										styleList[0] = "Material";
-										styleList[1] = "Material (Fullscreen)";
+										//styleList[1] = "Material (Fullscreen)";
 										for (int i=0;i < styleList.length;i++)
 										{
 												if (styleList[i].equalsIgnoreCase(ActiveStyle))
