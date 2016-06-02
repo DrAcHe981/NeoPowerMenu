@@ -205,7 +205,7 @@ Bitte Versuch es später erneut, wenn sich nichts ändert: melde es bitte dem En
 <string name="login_TitleRegister">"Registrieren"</string>
 <string name="login_Info">"Die Nutzer Namen von registrierten Nutzern sind geschützt damit keiner unter dem Namen Hochladen kann, hier kannst du dich anmelden oder ein Konto erstellen. 
 Dies wird nicht benötigt wenn du nicht möchtest! 
-I werde niemals irgendwelche privaten Daten Teilen!"</string>
+Ich werde niemals irgendwelche privaten Daten Teilen!"</string>
 <string name="login_UsernameEmail">"Nutzer Name oder E-mail:"</string>
 <string name="login_Username">"Nutzer Name:"</string>
 <string name="login_Email">"E-mail:"</string>
