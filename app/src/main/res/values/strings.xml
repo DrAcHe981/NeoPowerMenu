@@ -85,7 +85,7 @@ This can't be undone!"</string>
 <string name="advancedPrefsDesc_UseGraphics">"Use Graphics instead of the Letter circles."</string>
 <string name="advancedPrefsCategory_LockScreen">"Lockscreen"</string>
 <string name="advancedPrefsTitle_ShowOnLockScreen">"Show on lockscreen"</string>
-<string name="advancedPrefsDesc_ShowOnLockScreen">"Show the Power Menu on the lockscreen, when disabled nothing will show."</string>
+<string name="advancedPrefsDesc_ShowOnLockScreen">"Show the Power Menu on the lockscreen, when disabled nothing will show up."</string>
 <string name="advancedPrefsCategory_Delays">"Delays"</string>
 <string name="advancedPrefs_DelayZero">"Almost instant"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Screenshot delay"</string>
@@ -157,11 +157,11 @@ This can't be undone!"</string>
 <string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
 <string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
-<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Required for future functions (little tip: custom images)."</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Required for future functions (tip: custom images)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Required to toggle the Torch."</string>
 <string name="preferencesTitle_Permissions">"Permissions"</string>
-<string name="preferencesDesc_Permissions">"Show the used Permissions and see for what they are used.
+<string name="preferencesDesc_Permissions">"Show the used Permissions and what they are used for.
 Grant additional permissions that are not added on first start (Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Hide description"</string>
 
@@ -169,37 +169,37 @@ Grant additional permissions that are not added on first start (Android 6.0+)."<
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Needed for the screen recorder to record the screen."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
-<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Needed to Record audio with the screen recorder."</string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Needed to record audio with the screen recorder."</string>
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Needed to display the Power Menu on top of everything."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
-<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Needed to prevent killing of the torch and screenrecord service."</string>
+<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Needed to prevent the torch and screenrecord service from getting killed."</string>
 <string name="powerMenuMain_SoundMode">"Sound Mode"</string>
 <string name="powerMenuMain_SoundModeDesc">"Current mode: [SOUNDMODE]"</string>
 <string name="SoundMode_Normal">"Normal"</string>
 <string name="SoundMode_Vibrate">"Vibrate"</string>
 <string name="SoundMode_Silent">"Silent"</string>
 <string name="welcomeMsg">"Welcome to NeoPowerMenu!
-Your user Id has been generated, you are ready to upload presets!"</string>
+Your user id has been generated, you are ready to upload presets!"</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Account"</string>
 <string name="presetsManager_Upload">"Upload"</string>
-<string name="presetsManager_UploadMsg">"This Preset will be uploaded to the public server, visible to all other users.
+<string name="presetsManager_UploadMsg">"This preset will be uploaded to the public server, visible to all other users.
 
-This is your last chance to adjust the name or the creator before uploading..."</string>
+This is your last chance to change the name or the creator before uploading..."</string>
 <string name="presetsManager_UploadComplete">"Upload complete!"</string>
 <string name="presetsManager_UploadFailedSameName">"This name is already used, please choose another one."</string>
-<string name="presetsManager_UploadFailedNoAccess">"This creator name is protected, choose another or log in."</string>
+<string name="presetsManager_UploadFailedNoAccess">"This creator name is protected, choose another one or log in."</string>
 <string name="presetsManager_UploadFailed">"Upload failed!"</string>
 <string name="presetsManager_Downloading">"Downloading..."</string>
 <string name="presetsManager_DownloadFailed">"Download failed!"</string>
 <string name="presetsManager_CantConnecttoServer">"Can't connect to the server!
-Please check your network connection or try it again later."</string>
+Please check your network connection or try again later."</string>
 <string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
-Please try it again later, when nothing changes: please report it to the developer."</string>
+Please try again later, when nothing changes: please report it to the developer."</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
-<string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download or upload presets from the public server."</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Required to download or upload presets from/to the public server."</string>
 
 <!-- Login page -->
 <string name="login_Title">"Login"</string>
@@ -210,16 +210,16 @@ I will never share any private data!"</string>
 <string name="login_UsernameEmail">"Username or E-mail:"</string>
 <string name="login_Username">"Username:"</string>
 <string name="login_Email">"E-mail:"</string>
-<string name="login_RetypeEmail">"Retype E-mail:"</string>
-<string name="login_PasswordOverEmail">"You can set your password over the link in the activation e-mail (the e-mail is only available in english)."</string>
+<string name="login_RetypeEmail">"Repeat E-mail:"</string>
+<string name="login_PasswordOverEmail">"You can set your password via the link in the activation e-mail (the e-mail is only available in english)."</string>
 <string name="login_Password">"Password:"</string>
 <string name="login_KeepLogin">"Keep me logged in."</string>
 <string name="login_Register">"Need an account?
-Click here to create a new Account!"</string>
+Click here to create a new account!"</string>
 <string name="login_LoggedIn">"Logged in!"</string>
 <string name="login_LoginFailedWithReason">"Login failed: "</string>
 <string name="login_LoginFailedWrongData">"Login failed, wrong e-mail or password!"</string>
-<string name="login_RegisterFailedNameUsed">"Sorry the choosen name or email adress is already in use."</string>
+<string name="login_RegisterFailedNameUsed">"The choosen name or email adress is already in use."</string>
 <string name="login_RegisterSuccess">"Registration succesfull, you will receive an email to activate your account!"</string>
 <string name="login_Processing">"Processing..."</string>
 <string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
