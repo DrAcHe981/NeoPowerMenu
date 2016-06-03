@@ -221,6 +221,8 @@
 <string name="login_RegisterSuccess">"Регистрация завершена, вы получите электронное письмо, чтобы активировать аккаунт."</string>
 <string name="login_Processing">"Обработка..."</string>
 <string name="login_TitleStatistics">"Статистика для [USERNAMEEMAIL]"</string>
+
+<!-- Fuzzy -->
 <string name="login_Statistics">"Шаблонов загружено: [UPLOADCOUNT]
 
 Звёзд дано: [STARSGIVEN]
@@ -229,7 +231,23 @@
 Топ 5 шаблонов:
 [TOP5PRESETS] "</string>
 <string name="login_StatisticsFailed">"Ошибка в получении статистики..."</string>
+
+<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Перезагрузить статистику"</string>
 <string name="login_TitleLogout">"Выйти"</string>
 <string name="login_pleaseCheckInput">"Что-то пошло не так, пожалуйста, проверьте введённые данные."</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsPartTitle">"Цвета \"[PART]\""</string>
+<string name="colorsPartDescDialog">"Цвета диалогового окна при нажатии на \"[BUTTON]\"."</string>
+<string name="colorsPartDescButton">"Цвета кнопки \"[BUTTON]\""</string>
+<string name="colorsPartPresets">"Шаблоны"</string>
+<string name="colorsPartReveal">"Задний фон"</string>
+<string name="colorsPartRevealDesc">"Цвет анимации заднего фона при  появлении меню."</string>
+<string name="colorsPartRevealDesc1">"Цвет анимации заднего фона при нажатии на Выключение/Перезагрузку."</string>
+<string name="colorsPartMain">"Диалоговое окно"</string>
+<string name="presetsManager_Stars">"Звёзды: [STARS]"</string>
+<string name="presetsManager_giveStar">"Дать звезду"</string>
+<string name="presetsManager_removeStar">"Убрать звезду"</string>
+<string name="presetsManager_Refresh">"Обновить"</string>
 </resources>
