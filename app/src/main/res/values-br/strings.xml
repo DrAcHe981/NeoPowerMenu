@@ -217,6 +217,8 @@ Clique aqui para criar uma nova!"</string>
 <string name="login_RegisterSuccess">"Registrado com sucesso,você receberá um e-mail para ativar sua conta!"</string>
 <string name="login_Processing">"Processando..."</string>
 <string name="login_TitleStatistics">"Estatísticas para [USERNAMEEMAIL]"</string>
+
+<!-- Fuzzy -->
 <string name="login_Statistics">"Pré-ajustes enviados: [UPLOADCOUNT]
 
 Estrelas dadas: [STARGIVEN]
@@ -225,7 +227,23 @@ Estrelas recebidas: [STARSRECEIVED]
 Top 5 Pré-ajustes:
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Falha ao receber estatísticas..."</string>
+
+<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Atualizar estatísticas"</string>
 <string name="login_TitleLogout">"Sair"</string>
 <string name="login_pleaseCheckInput">"Algo deu errado, por favor, verifique a sua entrada."</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsPartTitle">"[PART] cores"</string>
+<string name="colorsPartDescDialog">"Cores da caixa de diálogo ao clicar em [BUTTON]."</string>
+<string name="colorsPartDescButton">"Cores do [BUTTON] botão."</string>
+<string name="colorsPartPresets">"Pré-ajustes"</string>
+<string name="colorsPartReveal">"Revelar"</string>
+<string name="colorsPartRevealDesc">"Cor da animação revelar"</string>
+<string name="colorsPartRevealDesc1">"Cor da animação revelar ao clicar na opção Reiniciar/Desligar"</string>
+<string name="colorsPartMain">"Caixa de diálogo"</string>
+<string name="presetsManager_Stars">"Estrelas: [STARS]"</string>
+<string name="presetsManager_giveStar">"Dar estrelas"</string>
+<string name="presetsManager_removeStar">"Remover estrelas"</string>
+<string name="presetsManager_Refresh">"Atualizar"</string>
 </resources>
