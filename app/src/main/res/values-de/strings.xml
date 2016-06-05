@@ -49,12 +49,9 @@ Diese Einstellungen können dann nur noch über den Xposed Installer geöffnet w
 Finde die Source auf GitHub."</string>
 <string name="preferencesTitle_Share">"Teilen"</string>
 <string name="preferencesDesc_Share">"Du magst die App? Teile sie mit deinen Freunden."</string>
-<string name="preferencesTitle_Translator">"Übersetzung von"</string>
-
-<!-- Add your name here to get language credits -->
-<string name="preferencesDesc_Translator">"Robin G. (DrAcHe981)"</string>
 <string name="preferencesTitle_About">"Skript von Neon-Soft / DrAcHe981"</string>
-<string name="preferencesDesc_About">"basierend auf der Source von Naman Dwivedi (naman14)."</string>
+<string name="preferencesDesc_About">"basierend auf der Source von Naman Dwivedi (naman14).
+Klicke hier für mehr Infos."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
@@ -222,6 +219,8 @@ Klicke hier, um ein Konto zu erstellen!"</string>
 <string name="login_RegisterSuccess">"Registrierung erfolgreich, du wirst eine E-mail zum Aktivieren erhalten!"</string>
 <string name="login_Processing">"Verarbeite..."</string>
 <string name="login_TitleStatistics">"Statistiken für [USERNAMEEMAIL]"</string>
+
+<!-- Fuzzy -->
 <string name="login_Statistics">"Voreinstellungen hoch geladen: [UPLOADCOUNT]
 
 Sterne vergeben: [STARSGIVEN]
@@ -230,8 +229,6 @@ Sterne erhalten: [STARSRECEIVED]
 Top 5 Voreinstellungen: 
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Abrufen der Statistiken fehlgeschalagen..."</string>
-
-<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Hier klicken, um die Statistiken neu zu laden"</string>
 <string name="login_TitleLogout">"Abmelden"</string>
 <string name="login_pleaseCheckInput">"Etwas ist schiefgelaufen, bitte überprüfe deine Eingabe."</string>
