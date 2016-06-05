@@ -224,4 +224,15 @@ Top 5 presetari:
 <string name="presetsManager_Stars">"Stele : [STARS]"</string>
 <string name="presetsManager_giveStar">"Ofera Stele"</string>
 <string name="presetsManager_removeStar">"Sterge Stele"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsPartTitle">"[PART] culori"</string>
+<string name="colorsPartDescDialog">"Culorile casetei la apasara butonului  [BUTTON]."</string>
+<string name="colorsPartDescButton">"Culorile  butonului [BUTTON] ."</string>
+<string name="colorsPartPresets">"Presetari"</string>
+<string name="colorsPartReveal">"Dezvaluire"</string>
+<string name="colorsPartRevealDesc">"Culorile animatiei de dezvaluire"</string>
+<string name="colorsPartRevealDesc1">"Culori animatie dezvaluire la apasarea butonului Inchidere/Repornire"</string>
+<string name="colorsPartMain">"Caseta"</string>
+<string name="presetsManager_Refresh">"Innoire"</string>
 </resources>

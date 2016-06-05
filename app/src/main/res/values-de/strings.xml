@@ -155,66 +155,66 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="permissionsScreen_NotAllGranted">"Du hast nicht alle Berechtigungen gewährt, manche Dinge werden nicht funktionieren..."</string>
 <string name="permissionsScreen_ClickToRequest">"Klicke, um die Berechtigung anzufragen."</string>
 <string name="permissionsScreen_DontAskAgain">"Nicht erneut Fragen"</string>
-<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Externer Speicher Lesen/Screiben"</string>
+<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Externer Speicher Lesen/Schreiben"</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benötigt für zukünftige Funktionen (kleiner Tipp: eigene Bilder)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Benötigt für die Taschenlampe."</string>
 <string name="preferencesTitle_Permissions">"Berechtigungen"</string>
-<string name="preferencesDesc_Permissions">"Zeige die benutzten Berechtigungen und wofür die genutzt werden. 
-Erlaube weitere Berechtigungen die nicht beim ersten Start erlaubt wurden (Android 6.0+)."</string>
+<string name="preferencesDesc_Permissions">"Zeige die benutzten Berechtigungen und wofür diese genutzt werden. 
+Erlaube weitere Berechtigungen, die nicht beim ersten Start erlaubt wurden (Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Verstecke Beschreibung"</string>
 
 <!-- Preferences: Colors -->
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Surface Flinger Zugriff"</string>
-<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Wird für die Bildschirm Aufnahme benötigt."</string>
+<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Wird für die Bildschirmaufnahme benötigt."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ton aufnehmen"</string>
-<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Benötigt um mit der Bildschirm Aufnahme Ton aufzunehmen."</string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Benötigt, um bei der Bildschirmaufnahme Ton mit aufzunehmen."</string>
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Warnungs Fenster"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt um das Asusschalt Menü über allem anderen anzuzeigen."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
-<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benötigt um zu verhindern das der Taschenlampen Service und der Bildschirm Aufnahme Service beendet werden."</string>
+<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benötigt, um zu verhindern, dass der Taschenlampen-Service und der Bildschirmaufnahme-Service beendet werden."</string>
 <string name="powerMenuMain_SoundMode">"Sound Modus"</string>
 <string name="powerMenuMain_SoundModeDesc">"Aktueller Modus: [SOUNDMODE]"</string>
 <string name="SoundMode_Normal">"Normal"</string>
 <string name="SoundMode_Vibrate">"Vibration"</string>
 <string name="SoundMode_Silent">"Kein Ton"</string>
 <string name="welcomeMsg">"Willkommen bei NeoPowerMenu! 
-Deine Nutzer Id wurde generiert, du bist bereit zum Hochladen von Voreinstellungen!"</string>
+Deine Nutzer-Id wurde generiert, du bist bereit zum Hochladen von Voreinstellungen!"</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Konto"</string>
 <string name="presetsManager_Upload">"Hochladen"</string>
 <string name="presetsManager_UploadMsg">"Diese Voreinstellungen wird auf den öffentlichen Server hochgeladen, sichtbar für alle Nutzer. 
 
-Dies ist deine letzte Chance den Namen oder den Ersteller anzupassen..."</string>
+Dies ist deine letzte Chance, den Namen oder den Ersteller anzupassen..."</string>
 <string name="presetsManager_UploadComplete">"Hochladen abgeschlossen!"</string>
 <string name="presetsManager_UploadFailedSameName">"Dieser Name wird bereits genutzt, bitte wähle einen anderen."</string>
-<string name="presetsManager_UploadFailedNoAccess">"Dieser Ersteller Name ist geschützt, wähle einen anderen oder melde dich an."</string>
+<string name="presetsManager_UploadFailedNoAccess">"Dieser Erstellername ist geschützt, wähle einen anderen oder melde dich an."</string>
 <string name="presetsManager_UploadFailed">"Hochladen fehlgeschlagen!"</string>
 <string name="presetsManager_Downloading">"Runterladen..."</string>
 <string name="presetsManager_DownloadFailed">"Download fehlgeschlagen!"</string>
 <string name="presetsManager_CantConnecttoServer">"Es kann keine Verbindung zum Server hergestellt werden! 
 Bitte überprüfe deine Verbindung oder Versuch es später erneut."</string>
 <string name="presetsManager_CantConnecttoDB">"Es kann keine Verbindung zur Datenbank hergestellt werden! 
-Bitte Versuch es später erneut, wenn sich nichts ändert: melde es bitte dem Entwickler."</string>
+Bitte Versuch es später erneut, wenn sich nichts ändert: Melde es bitte dem Entwickler."</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
-<string name="permissionsScreenDesc_android.permission.INTERNET">"Wird benötigt um Voreinstellungen vom öffentlichen server runter oder hochzuladen."</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Wird benötigt, um Voreinstellungen vom öffentlichen Server runter oder hochzuladen."</string>
 
 <!-- Login page -->
 <string name="login_Title">"Anmelden"</string>
 <string name="login_TitleRegister">"Registrieren"</string>
-<string name="login_Info">"Die Nutzer Namen von registrierten Nutzern sind geschützt damit keiner unter dem Namen Hochladen kann, hier kannst du dich anmelden oder ein Konto erstellen. 
-Dies wird nicht benötigt wenn du nicht möchtest! 
-Ich werde niemals irgendwelche privaten Daten Teilen!"</string>
-<string name="login_UsernameEmail">"Nutzer Name oder E-mail:"</string>
-<string name="login_Username">"Nutzer Name:"</string>
+<string name="login_Info">"Die Nutzernamen von registrierten Nutzern sind geschützt, damit keiner unter dem Namen hochladen kann, hier kannst du dich anmelden oder ein Konto erstellen. 
+Dies wird nicht benötigt, wenn du nicht möchtest! 
+Ich werde niemals irgendwelche privaten Daten teilen!"</string>
+<string name="login_UsernameEmail">"Nutzername oder E-mail:"</string>
+<string name="login_Username">"Nutzername:"</string>
 <string name="login_Email">"E-mail:"</string>
 <string name="login_RetypeEmail">"E-mail wiederholen:"</string>
 <string name="login_PasswordOverEmail">"Du kannst dein Passwort über den Link in der E-mail setzen (Die E-mail ist nur in Englisch verfügbar)."</string>
 <string name="login_Password">"Passwort:"</string>
-<string name="login_KeepLogin">"Angemeldet blieben."</string>
+<string name="login_KeepLogin">"Angemeldet bleiben."</string>
 <string name="login_Register">"Kein Konto? 
-Klicke hier um ein Konto zu erstellen!"</string>
+Klicke hier, um ein Konto zu erstellen!"</string>
 <string name="login_LoggedIn">"Angemeldet!"</string>
 <string name="login_LoginFailedWithReason">"Anmelden fehlgeschlagen: "</string>
 <string name="login_LoginFailedWrongData">"Anmelden fehlgeschlagen, falsche E-mail or Passwort!"</string>
@@ -232,16 +232,16 @@ Top 5 Voreinstellungen:
 <string name="login_StatisticsFailed">"Abrufen der Statistiken fehlgeschalagen..."</string>
 
 <!-- Fuzzy -->
-<string name="login_ReloadStatistics">"Hier klicken um die Statistiken neu zu laden"</string>
+<string name="login_ReloadStatistics">"Hier klicken, um die Statistiken neu zu laden"</string>
 <string name="login_TitleLogout">"Abmelden"</string>
-<string name="login_pleaseCheckInput">"Irgendwas ist schief gelaufen, bitte überprüfe deine Eingabe."</string>
+<string name="login_pleaseCheckInput">"Etwas ist schiefgelaufen, bitte überprüfe deine Eingabe."</string>
 <string name="presetsManager_Stars">"Sterne: [STARS]"</string>
 <string name="presetsManager_giveStar">"Stern geben"</string>
 <string name="presetsManager_removeStar">"Stern Entfernen"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] farben"</string>
-<string name="colorsPartDescDialog">"Die farben des Dialogs wenn auf [BUTTON] geklickt wurde."</string>
+<string name="colorsPartDescDialog">"Die Farben des Dialogs, wenn auf [BUTTON] geklickt wurde."</string>
 <string name="colorsPartDescButton">"Die Farben des [BUTTON] Knopfes."</string>
 <string name="colorsPartPresets">"Voreinstellungen"</string>
 <string name="colorsPartReveal">"Reveal"</string>
