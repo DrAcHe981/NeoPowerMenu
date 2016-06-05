@@ -49,10 +49,6 @@
 Исходники на Github."</string>
 <string name="preferencesTitle_Share">"Поделиться"</string>
 <string name="preferencesDesc_Share">"Понравилось приложение? Поделитесь им среди своих друзей."</string>
-<string name="preferencesTitle_Translator">"Переведено на русский:"</string>
-
-<!-- Add your name here to get language credits -->
-<string name="preferencesDesc_Translator">"Смирнов Ярослав/Smirnov Yaroslav (Smirnaff)"</string>
 <string name="preferencesTitle_About">"Создано Neon-Soft / DrAcHe981"</string>
 <string name="preferencesDesc_About">"Основано на исходном коде Naman Dwivedi(naman14)."</string>
 
