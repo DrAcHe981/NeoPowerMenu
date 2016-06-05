@@ -44,10 +44,6 @@
 Cheque a fonte no GitHub."</string>
 <string name="preferencesTitle_Share">"Compartilhar"</string>
 <string name="preferencesDesc_Share">"Gostou do aplicativo? Compartilhe com seus amigos."</string>
-<string name="preferencesTitle_Translator">"Tradução por"</string>
-
-<!-- Add your name here to get language credits -->
-<string name="preferencesDesc_Translator">"DeluxeMark"</string>
 <string name="preferencesTitle_About">"Código por Neon-Doft/DrAcHe981"</string>
 <string name="preferencesDesc_About">"Baseado em um código de Naman Dwivedi (naman14)."</string>
 
