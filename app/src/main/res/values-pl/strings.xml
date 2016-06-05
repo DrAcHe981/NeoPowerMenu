@@ -51,11 +51,9 @@ Ustawienia będą dostępne jedynie przez Xposed Installer.
 Sprawdź źródła na GitHub"</string>
 <string name="preferencesTitle_Share">"Udostępnij"</string>
 <string name="preferencesDesc_Share">"Lubisz tą aplikację? Podziel się nią ze znajomymi!"</string>
-<string name="preferencesTitle_Translator">"Tłumaczenie: "</string>
-
-<!-- Add your name here to get language credits -->
-<string name="preferencesDesc_Translator">"Witoslavski (@forum.android.com.pl)"</string>
 <string name="preferencesTitle_About">"Kod: Neon-Soft / DrAcHe981"</string>
+
+<!-- Fuzzy -->
 <string name="preferencesDesc_About">"Oparte na źródle od Naman Dwivedi(naman14)."</string>
 
 <!-- Preferences: Visibility and order -->
@@ -86,6 +84,8 @@ Tego nie można cofnąć!"</string>
 <string name="advancedPrefsDesc_UseGraphics">"Użyj grafiki zamiast koła z literą."</string>
 <string name="advancedPrefsCategory_LockScreen">"Ekran blokady"</string>
 <string name="advancedPrefsTitle_ShowOnLockScreen">"Pokaż na ekranie blokady"</string>
+
+<!-- Fuzzy -->
 <string name="advancedPrefsDesc_ShowOnLockScreen">"Pokaż na ekranie blokady, jeżeli wyłączysz nic się nie pokaże."</string>
 <string name="advancedPrefsCategory_Delays">"Opóźnienia"</string>
 <string name="advancedPrefs_DelayZero">"Prawie natychmiast"</string>
