@@ -44,12 +44,9 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="preferencesDesc_NeoSource">"NeoPowerMenu este open-source. Vezi sursa pe GitHub"</string>
 <string name="preferencesTitle_Share">"Share"</string>
 <string name="preferencesDesc_Share">"Iti place aplicatia? Da-o si prietenilor tai!"</string>
-<string name="preferencesTitle_Translator">"Tradus de:"</string>
-
-<!-- Add your name here to get language credits -->
-<string name="preferencesDesc_Translator">"Robin G.  (DrAcHe981)
-~ Sorry when my English is not the best ^^"</string>
 <string name="preferencesTitle_About">"Codul de Neon-Soft/DrAcHe981"</string>
+
+<!-- Fuzzy -->
 <string name="preferencesDesc_About">"bazat pe sursa lui Naman Dwivedi (naman14)"</string>
 
 <!-- Preferences: Visibility and order -->
@@ -79,6 +76,8 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="advancedPrefsDesc_UseGraphics">"Foloseste reprezentare Grafica in locul Literelor"</string>
 <string name="advancedPrefsCategory_LockScreen">"Ecran blocare"</string>
 <string name="advancedPrefsTitle_ShowOnLockScreen">"Arata pe ercanul de blocare"</string>
+
+<!-- Fuzzy -->
 <string name="advancedPrefsDesc_ShowOnLockScreen">"Arata meniul de oprire pe ecranul de blocare (cand nu este activat nu va fi afisat nimic)."</string>
 <string name="advancedPrefsCategory_Delays">"Intarzieri"</string>
 <string name="advancedPrefs_DelayZero">"Aproape instant"</string>
@@ -151,10 +150,14 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="permissionsScreen_ClickToRequest">"Apasa pentru a cere permisiuni."</string>
 <string name="permissionsScreen_DontAskAgain">"Nu intreba din nou"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Citire/Scriere memoire externa"</string>
+
+<!-- Fuzzy -->
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Necesar pentru functii viitoare (mic exemplu: imagini diferite)"</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Necesar pentru a folosi Lanterna"</string>
 <string name="preferencesTitle_Permissions">"Permisiuni"</string>
+
+<!-- Fuzzy -->
 <string name="preferencesDesc_Permissions">"Arata permisiunile folosite si vezi pentru ce sunt utilizate. Acorda alte permisiuni daca nu sunt deja activate de la inceput (Android 6.0+)"</string>
 <string name="visibilityOrder_HideDesc">"Ascunde descriere"</string>
 
@@ -162,32 +165,48 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Acces Suprafata Flinger"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Necesar pentru a captura ecranul"</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Inregistrare audio"</string>
+
+<!-- Fuzzy -->
 <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Necesar pentru  inregistrare audio in timpul capturii de ecarn"</string>
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Ferastra Avertizare Sistem"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Necesar pentru a vedea meniul de alimentare deasupra orcarui element"</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Blocare trezire"</string>
+
+<!-- Fuzzy -->
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Necear pentru a preveni oprirea serviciului lanterna si a capturii de ecarn"</string>
 <string name="powerMenuMain_SoundMode">"Mod Sunet"</string>
 <string name="powerMenuMain_SoundModeDesc">"Modul curent:"</string>
 <string name="SoundMode_Normal">"Mod normal"</string>
 <string name="SoundMode_Vibrate">"Mod vibratii"</string>
 <string name="SoundMode_Silent">"Silentios"</string>
+
+<!-- Fuzzy -->
 <string name="welcomeMsg">"Bun venit in Meniul NeoPower! ID-ul user-ului tau a fost generat, poti de acum sa trimiti presetarile tale!"</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Cont"</string>
 <string name="presetsManager_Upload">"Upload"</string>
+
+<!-- Fuzzy -->
 <string name="presetsManager_UploadMsg">"Aceasta presetare va fi incarcata pe serverul public, fiind vizibila altor utilizatori.
 Este ultima sansa de a schimba numele creatorului!"</string>
 <string name="presetsManager_UploadComplete">"Upload complet!"</string>
 <string name="presetsManager_UploadFailedSameName">"Nume deja folosit, te rugam sa incerci altul."</string>
+
+<!-- Fuzzy -->
 <string name="presetsManager_UploadFailedNoAccess">"Numele creatorului este protejat, incearca altul pentru a te loga"</string>
 <string name="presetsManager_UploadFailed">"Upload esuat!"</string>
 <string name="presetsManager_Downloading">"Se downloadeaza..."</string>
 <string name="presetsManager_DownloadFailed">"Downloadare esuata!"</string>
+
+<!-- Fuzzy -->
 <string name="presetsManager_CantConnecttoServer">"Nu se poate conecta la server! Verifica conexiunea de interent si incearca mai tarziu"</string>
+
+<!-- Fuzzy -->
 <string name="presetsManager_CantConnecttoDB">"Nu se poate conecta la baza de date! Incearca mai tarziu sau raporteaza developer-ului"</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+
+<!-- Fuzzy -->
 <string name="permissionsScreenDesc_android.permission.INTERNET">"Trebuie downloadate sau incarcate presetari de pe serverul public"</string>
 
 <!-- Login page -->
@@ -197,19 +216,29 @@ Este ultima sansa de a schimba numele creatorului!"</string>
 <string name="login_UsernameEmail">"Nume utilizator sau E-mail"</string>
 <string name="login_Username">"Nume utilizator"</string>
 <string name="login_Email">"E-mail"</string>
+
+<!-- Fuzzy -->
 <string name="login_RetypeEmail">"Reintroducere e-mail"</string>
+
+<!-- Fuzzy -->
 <string name="login_PasswordOverEmail">"Poti sa-ti setezi parola din link-ul din e-mailul de activare (e-mailul este valabil doar in engleza)"</string>
 <string name="login_Password">"Parola"</string>
 <string name="login_KeepLogin">"Tine-ma logat."</string>
+
+<!-- Fuzzy -->
 <string name="login_Register">"Ai nevoie de un cont?
 Apasa aici pentru a-ti crea unul!"</string>
 <string name="login_LoggedIn">"Logare reusita!"</string>
 <string name="login_LoginFailedWithReason">"Logare esuata!"</string>
 <string name="login_LoginFailedWrongData">"Logare esuata, parola sau e-mail gresit!"</string>
+
+<!-- Fuzzy -->
 <string name="login_RegisterFailedNameUsed">"Ne pare rau, nume sau adresa email deja folosite"</string>
 <string name="login_RegisterSuccess">"Inregistrare completa, vei primi un email pentru a-ti activa contul!"</string>
 <string name="login_Processing">"Se proceseaza..."</string>
 <string name="login_TitleStatistics">"Statstici pentru [USERNAMEEMAIL]"</string>
+
+<!-- Fuzzy -->
 <string name="login_Statistics">"Presetare incarcata : [UPLOADCOUNT]
 
 Stele date : [STARSGIVEN]
