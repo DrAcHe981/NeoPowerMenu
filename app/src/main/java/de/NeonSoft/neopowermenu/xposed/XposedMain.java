@@ -18,7 +18,7 @@ import java.util.*;
 public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 {
 
-    private static final String TAG = TAG;
+    private static final String TAG = "NPM";
 		private XSharedPreferences preferences;
 		private boolean DeepXposedLogging = false;
 		private boolean HookShutdownThread = false;
@@ -76,15 +76,16 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     @Override
     public void initZygote(StartupParam startupParam) throws Throwable
 		{
+        preferences = new XSharedPreferences(PACKAGE_NAME);
+        //preferences.makeWorldReadable();
+				DeepXposedLogging = preferences.getBoolean("DeepXposedLogging", false);
 				XposedUtils.log("Zygote init...");
 				XposedUtils.log("~~{ Module Infos }~~");
-        preferences = new XSharedPreferences(PACKAGE_NAME);
-        preferences.makeWorldReadable();
-				DeepXposedLogging = preferences.getBoolean("DeepXposedLogging", false);
 				XposedUtils.log("Module Path: " + startupParam.modulePath);
 				XposedUtils.log("Hook version: " + XposedHookVersion);
-				XposedUtils.log("Deep Logging: " + DeepXposedLogging);
-				XposedUtils.log("~~{ Device Infos }~~");
+				XposedUtils.log("Deep Logging: " + (DeepXposedLogging ? "active, logging everything." : "not active, logging only fatal errors."));
+				if(DeepXposedLogging) {
+						XposedUtils.log("~~{ Device Infos }~~");
         XposedUtils.log("Hardware: " + Build.HARDWARE);
         XposedUtils.log("Product: " + Build.PRODUCT);
 				XposedUtils.log("Manufacturer: " + Build.MANUFACTURER);
@@ -92,6 +93,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				XposedUtils.log("Android Version: " + Build.VERSION.RELEASE);
 				XposedUtils.log("SDK Version: " + Build.VERSION.SDK_INT);
         XposedUtils.log("ROM: " + Build.DISPLAY);
+				}
 				XposedUtils.log("Zygote init complete.");
 				//preferences.edit().remove("activeParts");
     }
