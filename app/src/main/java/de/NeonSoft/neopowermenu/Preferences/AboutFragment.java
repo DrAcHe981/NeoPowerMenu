@@ -34,19 +34,19 @@ public class AboutFragment extends Fragment
 																				"based on a Source from Naman Dwivedi (naman14).\n\n" +
 																				"Translators:\n" +
 																				"> English:\n" +
-																				"Robin G. (DrAcHe981), mrwasdennnoch @xda\n" +
+																				"Robin G. (DrAcHe981 @xda), MrWasdennnoch (@xda)\n\n" +
 																				"> German:\n" +
-																				"Robin G. (DrAcHe981), mrwasdennnoch @xda\n" +
+																				"Robin G. (DrAcHe981 @xda), MrWasdennnoch (@xda)\n\n" +
 																				"> Polish:\n" +
-																				"Witoslavski (@forum.android.com.pl)\n" +
-																				"> Portuguese:\n" +
-																				"DeluxeMark™\n" +
+																				"Witoslavski (@forum.android.com.pl), tmacher (@xda)\n\n" +
+																				"> Portuguese (BR):\n" +
+																				"DeluxeMark™ (@xda), RhaySF\n\n" +
 																				"> Russia:\n" +
-																				"Smirnov Yaroslav (Smirnaff)\n" +
+																				"Smirnov Yaroslav (Smirnaff @xda)\n\n" +
 																				"> Dutch:\n" +
-																				"\n" +
+																				"mike2nl (@xda)\n\n" +
 																				"> Romanian:\n" +
-																				"\n\n" +
+																				"azZA_09 (@xda)\n\n" +
 																				"Special Thanks:\n" +
 																				" You for using my Module.\n" +
 																				" Naman Dwivedi (naman14) for the original source.\n" + 

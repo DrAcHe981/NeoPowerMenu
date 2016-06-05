@@ -60,8 +60,6 @@ public class PreferencesPartFragment extends Fragment
 
 		private static LinearLayout LinearLayout_Share;
 
-		private static LinearLayout LinearLayout_Translator;
-
 		private static LinearLayout LinearLayout_About;
 		
 
@@ -114,8 +112,6 @@ public class PreferencesPartFragment extends Fragment
 				LinearLayout_Source = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Source);
 				
 				LinearLayout_Share = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Share);
-
-				LinearLayout_Translator = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Translator);
 
 				LinearLayout_About = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_About);
 

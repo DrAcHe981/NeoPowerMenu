@@ -49,13 +49,9 @@ This Settings screen will only be accessible via the Xposed Installer then."</st
 Check out the source on GitHub."</string>
 <string name="preferencesTitle_Share">"Share"</string>
 <string name="preferencesDesc_Share">"Like the app? Share it with your friends."</string>
-<string name="preferencesTitle_Translator">"Translation by"</string>
-
-<!-- Add your name here to get language credits -->
-<string name="preferencesDesc_Translator">"Robin G. (DrAcHe981)
-~ Sorry when my English is not the best ^^"</string>
 <string name="preferencesTitle_About">"Code by Neon-Soft / DrAcHe981"</string>
-<string name="preferencesDesc_About">"based on the source of Naman Dwivedi (naman14)."</string>
+<string name="preferencesDesc_About">"based on the source of Naman Dwivedi (naman14).
+Click here to get more infos."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibility and order"</string>
