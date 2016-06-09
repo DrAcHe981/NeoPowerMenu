@@ -232,6 +232,7 @@ Top 5 presets:
 <string name="login_StatisticsFailed">"Failed to get statistics..."</string>
 
 <!-- Fuzzy -->
+<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
@@ -249,4 +250,7 @@ Top 5 presets:
 <string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsPartMain">"Dialog"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
+<string name="presetsManager_OrderBy">"Order by"</string>
+<string name="presetsManager_OrderNames">"Name/Stars/Creator/Own"</string>
+<string name="presetsManager_OrderAscDesc">"Ascending/Descending"</string>
 </resources>
