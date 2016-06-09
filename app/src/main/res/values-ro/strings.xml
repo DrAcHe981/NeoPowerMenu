@@ -247,6 +247,8 @@ Stele primite : [STARSRECEIVED]
 Top 5 presetari:
 [TOP5PRESETS] "</string>
 <string name="login_StatisticsFailed">"Esuare preluare statistici"</string>
+
+<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Reincarcare statistici"</string>
 <string name="login_TitleLogout">"Iesire cont"</string>
 <string name="login_pleaseCheckInput">"Ceva nu este bine. Verifica datele introduse"</string>

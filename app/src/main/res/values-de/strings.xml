@@ -167,7 +167,7 @@ Erlaube weitere Berechtigungen, die nicht beim ersten Start erlaubt wurden (Andr
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ton aufnehmen"</string>
 <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Benötigt, um bei der Bildschirmaufnahme Ton mit aufzunehmen."</string>
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Warnungs Fenster"</string>
-<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt um das Asusschalt Menü über allem anderen anzuzeigen."</string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt um das Ausschalt Menü über allem anderen anzuzeigen."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benötigt, um zu verhindern, dass der Taschenlampen-Service und der Bildschirmaufnahme-Service beendet werden."</string>
 <string name="powerMenuMain_SoundMode">"Sound Modus"</string>
@@ -229,6 +229,8 @@ Sterne erhalten: [STARSRECEIVED]
 Top 5 Voreinstellungen: 
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Abrufen der Statistiken fehlgeschalagen..."</string>
+
+<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Hier klicken, um die Statistiken neu zu laden"</string>
 <string name="login_TitleLogout">"Abmelden"</string>
 <string name="login_pleaseCheckInput">"Etwas ist schiefgelaufen, bitte überprüfe deine Eingabe."</string>
@@ -245,8 +247,16 @@ Top 5 Voreinstellungen:
 <string name="colorsPartRevealDesc">"Die Farbe der Reveal Animation."</string>
 <string name="colorsPartRevealDesc1">"Die Farbe der Reveal Animation wenn auf eine neu starten/ausschalten Option geklickt wurde."</string>
 <string name="colorsPartMain">"Dialog"</string>
+<<<<<<< HEAD
 		<string name="presetsManager_Refresh">"Aktualisieren"</string>
 		<string name="presetsManager_OrderBy">"Sortieren nach"</string>
 		<string name="presetsManager_OrderNames">"Name/Sterne/Ersteller/Eigene"</string>
 		<string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
 </resources>
+=======
+<string name="presetsManager_Refresh">"Aktualisieren"</string>
+<string name="presetsManager_OrderBy">"Sortieren nach"</string>
+<string name="presetsManager_OrderNames">"Name/Sterne/Ersteller/Eigene"</string>
+<string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
+</resources>
+>>>>>>> branch '1.5' of https://github.com/DrAcHe981/NeoPowerMenu.git
