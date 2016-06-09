@@ -8,8 +8,8 @@ android {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 19
-        versionName "1.5-pre1"
+        versionCode 20
+        versionName "v1.5"
 				renderscriptTargetApi 18
     		renderscriptSupportModeEnabled true
     }

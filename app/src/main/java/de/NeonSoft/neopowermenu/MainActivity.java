@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 		/*<!-- Internal needed Hook version to check if reboot is needed --!>*/
 		public static int neededModuleActiveVersion = 19;
 		
-		public static URL ImportUrl = null;
+		public static String ImportUrl = null;
 		
 		static Animation anim_fade_out;
 		static Animation anim_fade_in;
@@ -83,62 +83,7 @@ public class MainActivity extends AppCompatActivity {
 				}
 				
 				if(preferences.getBoolean("autoLogin",false)) {
-						uploadHelper uH = new uploadHelper(getApplicationContext(), new uploadHelper.uploadHelperInterface() {
-
-										@Override
-										public void onUploadStarted(boolean state)
-										{
-												// TODO: Implement this method
-										}
-
-										@Override
-										public void onPublishUploadProgress(long nowSize, long totalSize)
-										{
-												// TODO: Implement this method
-										}
-
-										@Override
-										public void onUploadComplete()
-										{
-												// TODO: Implement this method
-												Toast.makeText(getApplicationContext(),getString(R.string.login_LoggedIn),Toast.LENGTH_SHORT).show();
-												loggedIn = true;
-												usernameemail = preferences.getString("ueel","null");
-												password = preferences.getString("pd","null");
-										}
-
-										@Override
-										public void onUploadFailed(String reason)
-										{
-												// TODO: Implement this method
-												if (reason.contains("user with this data not found"))
-												{
-														Toast.makeText(getApplicationContext(), getString(R.string.login_LoginFailedWrongData), Toast.LENGTH_LONG).show();
-												}
-												else if (reason.contains("Cannot connect to the DB"))
-												{
-														Toast.makeText(getApplicationContext(), getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
-												}
-												else if (reason.contains("Connection refused"))
-												{
-														Toast.makeText(getApplicationContext(), getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
-												}
-												else
-												{
-														Toast.makeText(getApplicationContext(), getString(R.string.login_LoginFailedWithReason)+"\n" + reason, Toast.LENGTH_LONG).show();
-												}
-										}
-								});
-						uH.setServerUrl("http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice3.php");
-						uH.setAdditionalUploadPosts(new String[][] {{"action","login"},{(preferences.getString("ueel","null").contains("@") ? "email" : "name"),preferences.getString("ueel","null")},{"password",preferences.getString("pd","null")}});
-						try
-						{
-								new File(getFilesDir().getPath() + "/tmp").createNewFile();
-						}
-						catch (IOException e)
-						{}
-						uH.setLocalUrl(getFilesDir().getPath() + "/tmp");
-						uH.startUpload();
+						LoginFragment.performLogin(context,preferences.getString("ueel","null"),preferences.getString("pd","null"),true);
 				}
 				
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -161,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 				{
 						try
 						{
-								ImportUrl = new URL(intentfilterdata.getScheme(), intentfilterdata.getHost(), intentfilterdata.getPath());
+								ImportUrl = intentfilterdata.getScheme()+ "://"+intentfilterdata.getPath();
 						}
 						catch (Exception e)
 						{
@@ -299,10 +244,10 @@ public class MainActivity extends AppCompatActivity {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
-				} else if (visibleFragment.equalsIgnoreCase("PresetsManager") || visibleFragment.equalsIgnoreCase("PresetsManagerOnline")) {
+				} else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
 						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesColorFragment()).commit();
-				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("login") || LoginFragment.loginFragmentMode.equalsIgnoreCase("logout"))) {
+				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerOnline") || (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("login") || LoginFragment.loginFragmentMode.equalsIgnoreCase("logout")))) {
 						PreferencesPresetsFragment.vpPager.setCurrentItem(1,true);
 				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && LoginFragment.loginFragmentMode.equalsIgnoreCase("register")) {
 						LoginFragment.returnToLogin();

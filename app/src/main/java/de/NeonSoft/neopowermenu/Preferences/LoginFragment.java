@@ -1,17 +1,18 @@
 package de.NeonSoft.neopowermenu.Preferences;
 
 import android.app.*;
+import android.content.*;
 import android.os.*;
 import android.support.v4.app.*;
 import android.view.*;
 import android.view.View.*;
+import android.view.animation.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import java.io.*;
 
 import android.support.v4.app.Fragment;
-import android.view.animation.*;
 
 public class LoginFragment extends Fragment
 {
@@ -85,82 +86,7 @@ public class LoginFragment extends Fragment
 												return;
 										}
 								}
-								uploadHelper uH = new uploadHelper(getActivity(), new uploadHelper.uploadHelperInterface() {
-
-												@Override
-												public void onUploadStarted(boolean state)
-												{
-														// TODO: Implement this method
-														PreferencesPresetsFragment.LoadingMsg.setText(getString(R.string.login_Processing));
-														PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
-														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-												}
-
-												@Override
-												public void onPublishUploadProgress(long nowSize, long totalSize)
-												{
-														// TODO: Implement this method
-												}
-
-												@Override
-												public void onUploadComplete()
-												{
-														// TODO: Implement this method
-														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
-														PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
-														Toast.makeText(mContext, getString(R.string.login_LoggedIn), Toast.LENGTH_SHORT).show();
-														MainActivity.loggedIn = true;
-														MainActivity.usernameemail = EditText_UsernameEmail.getText().toString();
-														MainActivity.password = helper.md5Crypto(EditText_Password.getText().toString());
-														if (CheckBox_KeepLogin.isChecked())
-														{
-																MainActivity.preferences.edit().putBoolean("autoLogin", true)
-																		.putString("ueel", MainActivity.usernameemail)
-																		.putString("pd", MainActivity.password).commit();
-														}
-														LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
-														LinearLayout_LoginContainer.setVisibility(View.GONE);
-														TextView_TitleStatistics.setText(getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.usernameemail));
-														getStatistics();
-														LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
-														LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-														MainActivity.setActionBarButton(mContext.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
-												}
-
-												@Override
-												public void onUploadFailed(String reason)
-												{
-														// TODO: Implement this method
-														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
-														PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
-														if (reason.contains("user with this data not found"))
-														{
-																Toast.makeText(mContext, getString(R.string.login_LoginFailedWrongData), Toast.LENGTH_LONG).show();
-														}
-														else if (reason.contains("Cannot connect to the DB"))
-														{
-																Toast.makeText(mContext, getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
-														}
-														else if (reason.contains("Connection refused"))
-														{
-																Toast.makeText(mContext, getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
-														}
-														else
-														{
-																Toast.makeText(mContext, getString(R.string.login_LoginFailedWithReason)+"\n" + reason, Toast.LENGTH_LONG).show();
-														}
-												}
-										});
-								uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
-								uH.setAdditionalUploadPosts(new String[][] {{"action","login"},{(EditText_UsernameEmail.getText().toString().contains("@") ? "email" : "name"),EditText_UsernameEmail.getText().toString()},{"password",helper.md5Crypto(EditText_Password.getText().toString())}});
-								try
-								{
-										new File(mContext.getFilesDir().getPath() + "/tmp").createNewFile();
-								}
-								catch (IOException e)
-								{}
-								uH.setLocalUrl(mContext.getFilesDir().getPath() + "/tmp");
-								uH.startUpload();
+								performLogin(mContext,EditText_UsernameEmail.getText().toString(),helper.md5Crypto(EditText_Password.getText().toString()),false);
 						}
 				};
 
@@ -201,7 +127,7 @@ public class LoginFragment extends Fragment
 														Toast.makeText(mContext, getString(R.string.login_RegisterSuccess), Toast.LENGTH_SHORT).show();
 														LinearLayout_RegisterContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 														LinearLayout_RegisterContainer.setVisibility(View.GONE);
-														EditText_UsernameEmail.setText(EditText_Email.getText().toString());
+														EditText_UsernameEmail.setText(EditText_Username.getText().toString());
 														LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 														LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
 														MainActivity.setActionBarButtonText(getString(R.string.login_Title));
@@ -221,9 +147,9 @@ public class LoginFragment extends Fragment
 														}
 														else if (reason.contains("Cannot connect to the DB"))
 														{
-																Toast.makeText(mContext, getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
+																Toast.makeText(mContext, getString(R.string.presetsManager_CantConnecttoDB), Toast.LENGTH_LONG).show();
 														}
-														else if (reason.contains("Connection refused"))
+														else if (reason.contains("Connection refused") || reason.contains("Unable to resolve host"))
 														{
 																Toast.makeText(mContext, getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
 														}
@@ -298,9 +224,14 @@ public class LoginFragment extends Fragment
 										MainActivity.setActionBarButtonListener(registerOnClickListener);
 										LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 										LinearLayout_LoginContainer.setVisibility(View.GONE);
-										if (!EditText_UsernameEmail.getText().toString().isEmpty() && EditText_UsernameEmail.getText().toString().contains("@"))
+										EditText_Username.setText("");
+										EditText_Email.setText("");
+										EditText_RetypeEmail.setText("");
+										if (!EditText_UsernameEmail.getText().toString().isEmpty() && helper.isValidEmail(EditText_UsernameEmail.getText().toString()))
 										{
 												EditText_Email.setText(EditText_UsernameEmail.getText().toString());
+										} else if (!EditText_UsernameEmail.getText().toString().isEmpty()) {
+												EditText_Username.setText(EditText_UsernameEmail.getText().toString());
 										}
 										LinearLayout_RegisterContainer.setVisibility(View.VISIBLE);
 										LinearLayout_RegisterContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
@@ -320,6 +251,94 @@ public class LoginFragment extends Fragment
 				return InflatedView;
 		}
 
+		public static void performLogin(final Context context,final String usernameemail,final String password,final boolean background) {
+
+				uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
+
+								@Override
+								public void onUploadStarted(boolean state)
+								{
+										// TODO: Implement this method
+										if(!background) {
+												PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.login_Processing));
+												PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
+												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+										}
+								}
+
+								@Override
+								public void onPublishUploadProgress(long nowSize, long totalSize)
+								{
+										// TODO: Implement this method
+								}
+
+								@Override
+								public void onUploadComplete()
+								{
+										// TODO: Implement this method
+										if(!background) {
+												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+												PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
+										}
+										Toast.makeText(context, context.getString(R.string.login_LoggedIn), Toast.LENGTH_SHORT).show();
+										MainActivity.loggedIn = true;
+										MainActivity.usernameemail = usernameemail;
+										MainActivity.password = password;
+										if(!background) {
+												if (CheckBox_KeepLogin.isChecked())
+												{
+														MainActivity.preferences.edit().putBoolean("autoLogin", true)
+																.putString("ueel", MainActivity.usernameemail)
+																.putString("pd", MainActivity.password).commit();
+												}
+												LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+												LinearLayout_LoginContainer.setVisibility(View.GONE);
+												TextView_TitleStatistics.setText(context.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.usernameemail));
+												getStatistics();
+												LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
+												LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+												MainActivity.setActionBarButton(context.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
+										}
+								}
+
+								@Override
+								public void onUploadFailed(String reason)
+								{
+										// TODO: Implement this method
+										if(!background) {
+												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+												PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
+										}
+										if (reason.contains("user with this data not found"))
+										{
+												Toast.makeText(context, context.getString(R.string.login_LoginFailedWrongData), Toast.LENGTH_LONG).show();
+										}
+										else if (reason.contains("Cannot connect to the DB"))
+										{
+												Toast.makeText(context, context.getString(R.string.presetsManager_CantConnecttoDB), Toast.LENGTH_LONG).show();
+										}
+										else if (reason.contains("Connection refused") || reason.contains("Unable to resolve host"))
+										{
+												Toast.makeText(context, context.getString(R.string.presetsManager_CantConnecttoServer), Toast.LENGTH_LONG).show();
+										}
+										else
+										{
+												Toast.makeText(context, context.getString(R.string.login_LoginFailedWithReason)+"\n" + reason, Toast.LENGTH_LONG).show();
+										}
+								}
+						});
+				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+				uH.setAdditionalUploadPosts(new String[][] {{"action","login"},{(helper.isValidEmail(usernameemail) ? "email" : "name"),usernameemail},{"password",password}});
+				try
+				{
+						new File(context.getFilesDir().getPath() + "/tmp").createNewFile();
+				}
+				catch (IOException e)
+				{}
+				uH.setLocalUrl(context.getFilesDir().getPath() + "/tmp");
+				uH.startUpload();
+		}
+		
 		public static void getStatistics() {
 				uploadHelper uH = new uploadHelper(mContext, new uploadHelper.uploadHelperInterface() {
 

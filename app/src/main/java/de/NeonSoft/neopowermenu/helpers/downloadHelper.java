@@ -83,6 +83,7 @@ public class downloadHelper
 										try
 										{
 												String name = p1[0].split("/")[p1[0].split("/").length-1];
+												Log.i("NPM","Initializing download: \nServer: "+p1[0]+"\nFile Name: "+name);
 												URL url = new URL(p1[0].replace(" ", "%20"));
 												file = p1[1]+"/"+name;
 												if(new File(file).exists()) {
@@ -92,7 +93,7 @@ public class downloadHelper
 												connection.setConnectTimeout(CONNECT_TIMEOUT);
 												connection.setReadTimeout(READ_TIMEOUT);
 												connection.connect();
-												Log.i("Starting download", url.toString());
+												//Log.i("Starting download", url.toString());
 												int lenghtOfFile = connection.getContentLength();
 												if (lenghtOfFile > 0)
 												{
@@ -116,21 +117,21 @@ public class downloadHelper
 										catch (ConnectException ce)
 										{
 												//return "Download Failed";
-												Log.e("Download Error: ", ce.toString());
+												Log.e("NPM","Download Error: "+ce.toString());
 												return "Connect Exception: "+ce.toString();
 										}
 								}
 								catch (IOException ioe)
 								{
 										//return "Download Failed";
-										Log.e("Download Error: ", ioe.toString());
+										Log.e("NPM","Download Error: "+ioe.toString());
 										return "IO Exception: " + ioe.toString();
 								}
 						}
 						catch (Throwable e)
 						{
 								//return "Download Failed";
-								Log.e("Download Error: ", e.toString());
+								Log.e("NPM","Download Error: "+e.toString());
 								return "Download failed: " + e.toString();
 						}
 						return null;

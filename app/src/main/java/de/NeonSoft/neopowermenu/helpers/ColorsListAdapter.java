@@ -260,7 +260,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 										try {
 												String Description = "";
 												mainString = context.getResources().getString(context.getResources().getIdentifier("powerMenuMain_"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
-												if(mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Shutdown)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Reboot)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_SoftReboot))) {
+												if(mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Shutdown)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Reboot)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_SoftReboot)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuBottom_Recovery)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuBottom_Bootloader)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuBottom_SafeMode))) {
 												Description = context.getString(R.string.colorsPartDescDialog).replace("[BUTTON]",mainString);
 												} else {
 														Description = context.getString(R.string.colorsPartDescButton).replace("[BUTTON]",mainString);
@@ -272,7 +272,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 												try {
 														String Description = "";
 														mainString = context.getResources().getString(context.getResources().getIdentifier("powerMenuBottom_"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
-														if(mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Shutdown)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Reboot)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_SoftReboot))) {
+														if(mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Shutdown)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_Reboot)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuMain_SoftReboot)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuBottom_Recovery)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuBottom_Bootloader)) || mainString.equalsIgnoreCase(context.getString(R.string.powerMenuBottom_SafeMode))) {
 																Description = context.getString(R.string.colorsPartDescDialog).replace("[BUTTON]",mainString);
 														} else {
 																Description = context.getString(R.string.colorsPartDescButton).replace("[BUTTON]",mainString);

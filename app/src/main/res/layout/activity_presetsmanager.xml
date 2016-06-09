@@ -72,6 +72,25 @@
 
 		</RelativeLayout>
 
+		<LinearLayout
+			android:visibility="gone"
+			android:layout_height="37dp"
+			android:layout_width="50dp"
+			android:orientation="vertical"
+			android:layout_alignParentRight="true"
+			android:id="@+id/activitypresetsmanagerLinearLayout_Order"
+			android:background="@color/colorPrimaryDarkDarkTheme">
+
+				<ImageView
+					android:background="?selectableItemBackgroundBorderless"
+					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:src="@drawable/ic_action_sort_1"
+					android:id="@+id/activitypresetsmanagerImageView_Order"
+					android:padding="3dp"/>
+
+		</LinearLayout>
+
 	</RelativeLayout>
 
 </LinearLayout>

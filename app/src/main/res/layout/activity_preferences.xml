@@ -61,9 +61,9 @@
 					android:gravity="center_vertical">
 
 					<ProgressBar
-						android:layout_height="50dp"
-						android:layout_width="50dp"
-						android:layout_marginLeft="5dp"
+						android:layout_height="35dp"
+						android:layout_width="35dp"
+						android:layout_marginLeft="10dp"
 						android:id="@+id/activitypreferencesProgressBar_ModuleState"/>
 
 					<LinearLayout

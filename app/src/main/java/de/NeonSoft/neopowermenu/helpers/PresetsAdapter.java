@@ -341,7 +341,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 								BottomBar.setVisibility(View.VISIBLE);
 								Upload.setVisibility(View.GONE);
 								Share.setVisibility(View.GONE);
-								if(MainActivity.preferences.getString("ratedFor","").contains(itemsTitle.get(position))) {
+								if(MainActivity.preferences.getString("ratedFor","").contains(itemsTitle.get(position)+",")) {
 										StarImage.setImageResource(R.drawable.ic_action_star_0);
 										StarText.setText(context.getString(R.string.presetsManager_removeStar));
 								}
@@ -515,9 +515,10 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																		{
 																				// TODO: Implement this method
 																				oldText = ItemDesc.getText().toString();
+																				ItemDesc.setText(context.getString(R.string.presetsManager_Downloading));
 																				Progress.setProgress(0);
 																				OnlineButton.setEnabled(false);
-																				OnlineButton.setAlpha((float) .5);
+																				OnlineButton.setAlpha((float) .3);
 																		}
 
 																		@Override
@@ -538,11 +539,11 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				OnlineButton.setAlpha((float) 1);
 																				try
 																				{
-																						PreferencesPresetsFragment.ImportPreset(new URL("file://" + context.getFilesDir().getPath() + "/download/" + split[0] + "_" + itemsTitle.get(position) + ".nps"), PreferencesPresetsFragment.localAdapter, itemsTitle.get(position), null);
+																						PreferencesPresetsFragment.ImportPreset("file://" + context.getFilesDir().getPath() + "/download/" + split[0] + "_" + itemsTitle.get(position).replace("'","\\\'").replace("\"","\\\"") + ".nps", PreferencesPresetsFragment.localAdapter, itemsTitle.get(position), null);
 																				}
 																				catch (Exception e)
 																				{
-																						new File(context.getFilesDir().getPath() + "/download/" + itemsTitle.get(position) + ".nps").delete();
+																						new File(context.getFilesDir().getPath() + "/download/" + itemsTitle.get(position).replace("'","\\'").replace("\"","\\\"") + ".nps").delete();
 																						Toast.makeText(context, context.getString(R.string.presetsManager_ImportFailed) + "\n" + e.toString(), Toast.LENGTH_LONG).show();
 																						Log.e("NPM", e.toString());
 																				}
@@ -559,7 +560,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				Toast.makeText(context, context.getString(R.string.presetsManager_DownloadFailed) + "\n" + reason, Toast.LENGTH_LONG).show();
 																		}
 																});
-														dH.setUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position) + ".nps");
+														dH.setUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position).replace("'","\\'").replace("\"","\\\"") + ".nps");
 														dH.setLocalUrl(context.getFilesDir().getPath() + "/download");
 														dH.startDownload();
 												}

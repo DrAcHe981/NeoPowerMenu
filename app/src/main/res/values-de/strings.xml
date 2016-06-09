@@ -245,5 +245,8 @@ Top 5 Voreinstellungen:
 <string name="colorsPartRevealDesc">"Die Farbe der Reveal Animation."</string>
 <string name="colorsPartRevealDesc1">"Die Farbe der Reveal Animation wenn auf eine neu starten/ausschalten Option geklickt wurde."</string>
 <string name="colorsPartMain">"Dialog"</string>
-<string name="presetsManager_Refresh">"Aktualisieren"</string>
+		<string name="presetsManager_Refresh">"Aktualisieren"</string>
+		<string name="presetsManager_OrderBy">"Sortieren nach"</string>
+		<string name="presetsManager_OrderNames">"Name/Sterne/Ersteller/Eigene"</string>
+		<string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
 </resources>

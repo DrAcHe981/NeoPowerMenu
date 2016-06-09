@@ -48,6 +48,23 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 		protected String[] doInBackground(String[] p1)
 		{
 				// TODO: Implement this method
+				String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[0]+" ("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")";
+				if(p1!=null && p1.length>0) {
+						orderBy = p1[0];
+				}
+				String orderName = "_presetName";
+				String orderDirection = "ASC";
+				if(orderBy.contains("("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[1]+")")) {
+						orderDirection = "DESC";
+				}
+				if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[1])) {
+						orderName = "_presetStars";
+				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[2])) {
+						orderName = "_presetCreator";
+				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[3])) {
+						orderName = "own";
+				}
+				
 				String[] Errorstring;
 				try
 				{
@@ -60,7 +77,7 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 						p.setParameter("user", "1");
 
 						HttpClient httpclient = new DefaultHttpClient(p);
-						String url = "http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&format=json&userId="+MainActivity.preferences.getString("userUniqeId","null");
+						String url = "http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&format=json&userId="+MainActivity.preferences.getString("userUniqeId","null")+"&sortBy="+orderName+"&sortDir="+orderDirection;
 						HttpPost httppost = new HttpPost(url);
 
 						try
@@ -142,7 +159,7 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 						PreferencesPresetsFragment.onlineMSG.setText("");
 						for(int i=0;i<result.length;i++) {
 								Log.e("NPM",result[i]);
-								if(result[i].contains("Connection to") && result[i].contains("refused")) {
+								if((result[i].contains("Connection to") && result[i].contains("refused")) || result[i].contains("Unable to resolve host")) {
 										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.onlineMSG.getText()+"\n"+PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoServer));
 								} else if (result[i].contains("Cannot connect to the DB")) {
 										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.onlineMSG.getText()+"\n"+PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoDB));

@@ -66,7 +66,7 @@
 
 					<TextView
 						android:layout_height="wrap_content"
-						android:textAppearance="?android:attr/textAppearanceLarge"
+						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="match_parent"
 						android:text="@string/app_name"
 						android:gravity="bottom"
@@ -76,7 +76,8 @@
 						android:marqueeRepeatLimit="marquee_forever"
 						android:focusable="true"
 						android:focusableInTouchMode="true"
-						android:singleLine="true"/>
+						android:singleLine="true"
+						android:layout_weight="1.0"/>
 
 					<TextView
 						android:layout_height="wrap_content"
@@ -89,7 +90,8 @@
 						android:marqueeRepeatLimit="marquee_forever"
 						android:focusable="true"
 						android:focusableInTouchMode="true"
-						android:singleLine="true"/>
+						android:singleLine="true"
+						android:layout_weight="1.0"/>
 
 				</LinearLayout>
 

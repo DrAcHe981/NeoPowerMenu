@@ -249,4 +249,7 @@ Top 5 presets:
 <string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsPartMain">"Dialog"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
+		<string name="presetsManager_OrderBy">"Order by"</string>
+		<string name="presetsManager_OrderNames">"Name/Stars/Creator/Own"</string>
+		<string name="presetsManager_OrderAscDesc">"Ascending/Descending"</string>
 </resources>

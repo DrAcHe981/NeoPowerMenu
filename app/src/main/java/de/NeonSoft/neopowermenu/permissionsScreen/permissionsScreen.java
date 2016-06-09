@@ -36,8 +36,8 @@ public class permissionsScreen extends Fragment
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 				// TODO: Implement this method
-				if(getArguments().getBoolean("AutoStart",true)) {
-				MainActivity.visibleFragment = "permissionsAutoStart";
+				if(getArguments() != null && !getArguments().isEmpty() && getArguments().getBoolean("AutoStart",true)) {
+						MainActivity.visibleFragment = "permissionsAutoStart";
 				} else {
 						MainActivity.visibleFragment = "permissions";
 				}
@@ -52,7 +52,7 @@ public class permissionsScreen extends Fragment
 				
 				CheckBox_DontAskAgain = (CheckBox) InflatedView.findViewById(R.id.permissionsscreenCheckBox_DontAskAgain);
 				
-				if(!getArguments().getBoolean("AutoStart",true)) {
+				if(getArguments() != null && !getArguments().isEmpty() && !getArguments().getBoolean("AutoStart",true)) {
 						CheckBox_DontAskAgain.setVisibility(View.GONE);
 				}
 				

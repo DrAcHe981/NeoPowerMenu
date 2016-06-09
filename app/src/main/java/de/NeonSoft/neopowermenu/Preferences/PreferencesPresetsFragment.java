@@ -44,8 +44,14 @@ public class PreferencesPresetsFragment extends Fragment
 		public static PresetsAdapter onlineAdapter;
 		public static ListView onlineList;
 		public static TextView onlineMSG;
+		public static LinearLayout onlineOrder;
+		
+		private static int onlineOrderSelected = 0;
+		private static String onlineOrderSelectedString = "";
 
 		public static boolean onlineRequestIsRunning;
+		
+		private static AlertDialog ad;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -54,6 +60,7 @@ public class PreferencesPresetsFragment extends Fragment
 				MainActivity.visibleFragment = "PresetsManager";
 
 				mContext = getActivity();
+				onlineOrderSelected = 0;
 				
 				InflatedView = inflater.inflate(R.layout.activity_presetsmanager, container, false);
 				
@@ -83,9 +90,52 @@ public class PreferencesPresetsFragment extends Fragment
 																public void onClick(View p1)
 																{
 																		// TODO: Implement this method
-																		new getOnlinePresets().execute();
+																		new getOnlinePresets().execute("order="+onlineOrderSelectedString);
 																}
 														});
+												onlineOrder.setOnClickListener(new OnClickListener() {
+
+																@Override
+																public void onClick(View p1)
+																{
+																		// TODO: Implement this method
+																		AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
+																		adb.setTitle(R.string.presetsManager_OrderBy);
+																		adb.setSingleChoiceItems(new String[] {getString(R.string.presetsManager_OrderNames).split("/")[0]+" ("+getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")",
+																																						getString(R.string.presetsManager_OrderNames).split("/")[0]+" ("+getString(R.string.presetsManager_OrderAscDesc).split("/")[1]+")",
+																																						getString(R.string.presetsManager_OrderNames).split("/")[1]+" ("+getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")",
+																																						getString(R.string.presetsManager_OrderNames).split("/")[1]+" ("+getString(R.string.presetsManager_OrderAscDesc).split("/")[1]+")",
+																																						getString(R.string.presetsManager_OrderNames).split("/")[2]+" ("+getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")",
+																																						getString(R.string.presetsManager_OrderNames).split("/")[2]+" ("+getString(R.string.presetsManager_OrderAscDesc).split("/")[1]+")",
+																																						getString(R.string.presetsManager_OrderNames).split("/")[3]+" ("+getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")",
+																																						getString(R.string.presetsManager_OrderNames).split("/")[3]+" ("+getString(R.string.presetsManager_OrderAscDesc).split("/")[1]+")"}, onlineOrderSelected, new DialogInterface.OnClickListener() {
+
+																						@Override
+																						public void onClick(DialogInterface p1, int p2)
+																						{
+																								// TODO: Implement this method
+																								ad.dismiss();
+																								onlineOrderSelected = p2;
+																								onlineOrderSelectedString = (ad).getListView().getItemAtPosition(p2).toString();
+																								MainActivity.setActionBarButtonListener(new OnClickListener() {
+
+																												@Override
+																												public void onClick(View p1)
+																												{
+																														// TODO: Implement this method
+																														new getOnlinePresets().execute("order="+onlineOrderSelectedString);
+																												}
+																										});
+																								new getOnlinePresets().execute("order="+(ad).getListView().getItemAtPosition(p2));
+																						}
+																				});
+																				
+																		ad = adb.create();
+																		ad.show();
+																}
+														});
+												onlineOrder.setVisibility(View.VISIBLE);
+												onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.abc_slide_in_top));
 										} else if(adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleAccount))) {
 												MainActivity.visibleFragment = "PresetsManagerAccount";
 												if(LoginFragment.loginFragmentMode.equalsIgnoreCase("login")) {
@@ -95,9 +145,17 @@ public class PreferencesPresetsFragment extends Fragment
 												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("logout")) {
 														MainActivity.setActionBarButton(getString(R.string.login_TitleLogout),R.drawable.ic_action_export,LoginFragment.logoutOnClickListener);
 												}
+												if(onlineOrder.getVisibility()==View.VISIBLE) {
+														onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.abc_slide_out_top));
+														onlineOrder.setVisibility(View.GONE);
+												}
 										} else {
 												MainActivity.visibleFragment = "PresetsManager";
 												MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+												if(onlineOrder.getVisibility()==View.VISIBLE) {
+														onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.abc_slide_out_top));
+														onlineOrder.setVisibility(View.GONE);
+												}
 										}
 								}
 
@@ -127,21 +185,24 @@ public class PreferencesPresetsFragment extends Fragment
 								}
 						});
 				
+				onlineOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypresetsmanagerLinearLayout_Order);
+						
 				return InflatedView;
 		}
 
-		public static boolean ImportPreset(final URL url,final PresetsAdapter adapter,String name, String creator) {
+		public static boolean ImportPreset(final String surl,final PresetsAdapter adapter,String name, String creator) {
 				Importcancled = false;
 				sCreator = "< unknown >";
 				try {
-						String fUrl = url.getFile();
-						if (!fUrl.endsWith(".nps")) {
+						//Log.i("NPM","Showing import dialog for: "+surl);
+						String fUrl = surl;
+						if (!surl.endsWith(".nps")) {
 								MainActivity.ImportUrl = null;
 								Toast.makeText(mContext,"Import failed...\nUnknown file type!",Toast.LENGTH_LONG).show();
 								return false;
 						}
-						if(fUrl.startsWith("file:")) {
-								fUrl = fUrl.replace("file:","");
+						if(surl.startsWith("file:")) {
+								fUrl = surl.replace("file:","");
 						}
 						newUrl = fUrl;
 						File prefile = new File(newUrl);
@@ -256,7 +317,7 @@ public class PreferencesPresetsFragment extends Fragment
 						importad.show();
 						
 				} catch (Throwable e) {
-						
+						Log.e("NPM","Import failed!\n"+e.toString());
 				}
 				MainActivity.ImportUrl = null;
 				if (Importcancled) {
@@ -292,6 +353,7 @@ public class PreferencesPresetsFragment extends Fragment
 								if(p1[0].toString().startsWith("file:")) {
 										p1[0] = p1[0].toString().replace("file:","");
 								}
+								Log.i("NPM","Starting import for: "+p1[0]);
 						File prefile = new File(p1[0].toString());
 						String Filename = (String) p1[1];
 						 tmpfile = new File(mContext.getFilesDir().getPath()+"/presets/"+Filename);
@@ -305,7 +367,7 @@ public class PreferencesPresetsFragment extends Fragment
 						String aDataRow = ""; 
 								//String aBuffer = "";
 								presetInfo[0] = Filename.split(".nps")[0];
-								presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]","< unknown >");
+								presetInfo[1] = "< unknown >";
 								presetInfo[2] = "true";
 								presetInfo[3] = "true";
 						while ((aDataRow = myReader.readLine()) != null)
@@ -320,7 +382,7 @@ public class PreferencesPresetsFragment extends Fragment
 								String[] loadColor = aData[0].split("_");
 								publishProgress(loadColor[0] +": "+aData[1]);
 								if (aData[0].equalsIgnoreCase("Creator")) {
-										presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
+										presetInfo[1] = aData[1];
 								}
 						}
 						myWriter.close();
@@ -328,7 +390,7 @@ public class PreferencesPresetsFragment extends Fragment
 						fOut.close();
 						fIn.close();
 						} catch (Throwable e) {
-								Log.e("[NeoPowerMenu]"," Preset Import failed: " + e.toString());
+								Log.e("NPM"," Preset Import failed: " + e.toString());
 								return e.toString();
 						}
 						return "true";
