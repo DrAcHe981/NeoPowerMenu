@@ -248,14 +248,7 @@ Top 5 presets:
 <string name="presetsManager_giveStar">"Give Star"</string>
 <string name="presetsManager_removeStar">"Remove Star"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
-<<<<<<< HEAD
-		<string name="presetsManager_OrderBy">"Order by"</string>
-		<string name="presetsManager_OrderNames">"Name/Stars/Creator/Own"</string>
-		<string name="presetsManager_OrderAscDesc">"Ascending/Descending"</string>
-</resources>
-=======
 <string name="presetsManager_OrderBy">"Order by"</string>
 <string name="presetsManager_OrderNames">"Name/Stars/Creator/Own"</string>
 <string name="presetsManager_OrderAscDesc">"Ascending/Descending"</string>
 </resources>
->>>>>>> branch '1.5' of https://github.com/DrAcHe981/NeoPowerMenu.git
