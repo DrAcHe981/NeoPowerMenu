@@ -635,6 +635,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 		class loadPreset extends AsyncTask<String, String, String>
 		{
 
+				boolean oldPreset = false;
+				
 				@Override
 				protected void onPreExecute()
 				{
@@ -679,8 +681,19 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												aBuffer += aDataRow + "\n";
 												String aData[] = aDataRow.split("=");
 												String[] loadColor = aData[0].split("_");
-												if (!aData[0].equalsIgnoreCase("AppVersion") && !aData[0].equalsIgnoreCase("Creator"))
+												if (aData[0].equalsIgnoreCase("AppVersion")) {
+														if(aData[1].equalsIgnoreCase("1.4.2")) {
+																//Toast.makeText(MainActivity.context,"Converting old Save names...",Toast.LENGTH_SHORT).show();
+																oldPreset = true;
+														}
+												}
+												else if (!aData[0].equalsIgnoreCase("AppVersion") && !aData[0].equalsIgnoreCase("Creator"))
 												{
+														if(oldPreset && aData[0].equalsIgnoreCase("RevealBackground")) {
+																aData[0] = "Reveal_Background";
+														} else if (oldPreset && aData[0].equalsIgnoreCase("ActionRevealBackground")) {
+																aData[0] = "ActionReveal_Background";
+														}
 														MainActivity.preferences.edit().putString(aData[0], aData[1]).commit();
 														publishProgress(loadColor[0] + ": " + aData[1]);
 												}
