@@ -145,7 +145,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				if (lpparam.packageName.equals("android") &&
 						lpparam.processName.equals("android"))
 				{
-						if (DeepXposedLogging) XposedUtils.log("Loading Power Menu...");
+						//if (DeepXposedLogging) 
+								XposedUtils.log("Loading Power Menu...");
 
 						String usedGADClass;
 						String usedPWMClass;

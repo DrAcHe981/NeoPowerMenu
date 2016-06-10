@@ -334,6 +334,7 @@ public class PreferencesPresetsFragment extends Fragment
 				String[] presetInfo = new String[4];
 				File tmpfile;
 				boolean newPresetAdded = false;
+				boolean oldPreset = false;
 
 				@Override
 				protected void onPreExecute()
@@ -374,10 +375,21 @@ public class PreferencesPresetsFragment extends Fragment
 						{ 
 								//aBuffer += aDataRow + "\n";
 								String[] aData = aDataRow.split("=");
-								if(p1.length>=4 && aData[0].equalsIgnoreCase("creator")) {
+								if (aData[0].equalsIgnoreCase("AppVersion")) {
+										if(aData[1].equalsIgnoreCase("1.4.2")) {
+												//Toast.makeText(MainActivity.context,"Converting old Save names...",Toast.LENGTH_SHORT).show();
+												oldPreset = true;
+										}
+								}
+								else if(p1.length>=4 && aData[0].equalsIgnoreCase("creator")) {
 										myWriter.write(aData[0]+"="+p1[3]);
 								} else {
-										myWriter.write(aDataRow + "\n");
+										if(oldPreset && aData[0].equalsIgnoreCase("RevealBackground")) {
+												aData[0] = "Reveal_Background";
+										} else if (oldPreset && aData[0].equalsIgnoreCase("ActionRevealBackground")) {
+												aData[0] = "ActionReveal_Background";
+										}
+										myWriter.write(aData[0] +"="+ aData[1] + "\n");
 								}
 								String[] loadColor = aData[0].split("_");
 								publishProgress(loadColor[0] +": "+aData[1]);

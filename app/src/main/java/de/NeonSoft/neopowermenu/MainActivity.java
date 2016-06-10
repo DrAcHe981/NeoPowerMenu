@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 				TextView_ActionBarButton_Text = "none";
 				LinearLayout_ActionBarButton.setVisibility(View.GONE);
 
-				TextView_ActionBarVersion.setText(versionName+" ("+versionCode+")");
+				TextView_ActionBarVersion.setText("v"+versionName+" ("+versionCode+")");
 
         fragmentManager = getSupportFragmentManager();
 				if(preferences.getBoolean("DontAskPermissionsAgain",false) || permissionsScreen.checkPermissions(MainActivity.this,permissionsScreen.permissions)) {
