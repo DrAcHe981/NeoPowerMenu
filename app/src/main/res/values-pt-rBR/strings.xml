@@ -196,7 +196,7 @@ Por favor, tente novamente mais tarde, quando nada mudar: por favor informe ao d
 <string name="login_TitleRegister">"Registrar"</string>
 <string name="login_Info">"Os nomes de usuários registrados são protegidos de modo que ninguém pode fazer o envios com eles, aqui você pode fazer login ou criar uma conta nova.
 Isso não é necessário se você não quiser!
-Eu nunca vou compartilhar quaisquer dados privados!"</string>
+Nunca compartilharemos quaisquer dados privados!"</string>
 <string name="login_UsernameEmail">"Usuário ou E-mail:"</string>
 <string name="login_Username">"Usuário:"</string>
 <string name="login_Email">"E-mail:"</string>
@@ -204,7 +204,7 @@ Eu nunca vou compartilhar quaisquer dados privados!"</string>
 <string name="login_PasswordOverEmail">"Você pode definir sua senha sobre o link no e-mail de ativação (O e-mail só estará disponível em inglês)."</string>
 <string name="login_Password">"Senha:"</string>
 <string name="login_KeepLogin">"Manter-me logado."</string>
-<string name="login_Register">"Precisa dr uma conta?
+<string name="login_Register">"Precisa de uma conta?
 Clique aqui para criar uma nova!"</string>
 <string name="login_LoggedIn">"Logado!"</string>
 <string name="login_LoginFailedWithReason">"Falha ao entrar:"</string>
@@ -230,9 +230,9 @@ Top 5 Pré-ajustes:
 <string name="login_pleaseCheckInput">"Algo deu errado, por favor, verifique a sua entrada."</string>
 
 <!-- Preferences: Colors -->
-<string name="colorsPartTitle">"[PART] cores"</string>
+<string name="colorsPartTitle">"Cores [PART]"</string>
 <string name="colorsPartDescDialog">"Cores da caixa de diálogo ao clicar em [BUTTON]."</string>
-<string name="colorsPartDescButton">"Cores do [BUTTON] botão."</string>
+<string name="colorsPartDescButton">"Cores do botão [BUTTON]."</string>
 <string name="colorsPartPresets">"Pré-ajustes"</string>
 <string name="colorsPartReveal">"Revelar"</string>
 <string name="colorsPartRevealDesc">"Cor da animação revelar"</string>
