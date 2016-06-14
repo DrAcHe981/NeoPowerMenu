@@ -15,30 +15,33 @@
 		android:orientation="horizontal">
 
 		<RelativeLayout
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_width="wrap_content"
 			android:layout_margin="6dp">
 
 			<ImageView
 				android:id="@+id/powermenuIcon"
 				android:layout_width="40dp"
-				android:layout_height="40dp"/>
+				android:layout_height="40dp"
+				android:layout_centerInParent="true"/>
 
 			<ImageView
 				android:layout_height="40dp"
 				android:layout_width="40dp"
 				android:src="@drawable/poweroff1"
 				android:id="@+id/powermenuIcon2"
-				android:padding="5dp"/>
+				android:padding="5dp"
+				android:layout_centerInParent="true"/>
 
 		</RelativeLayout>
 
 		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="40dp"
+			android:layout_height="wrap_content"
 			android:layout_gravity="center_vertical"
 			android:orientation="vertical"
-			android:gravity="center_vertical">
+			android:gravity="center_vertical"
+			android:minHeight="50dp">
 
 			<TextView
 				style="@style/TextAppearance.AppCompat.Body1"

@@ -2,21 +2,23 @@ package de.NeonSoft.neopowermenu.permissionsScreen;
 
 import android.*;
 import android.app.*;
-import android.content.*;
 import android.content.pm.*;
 import android.os.*;
 import android.support.v4.app.*;
 import android.support.v4.content.*;
 import android.view.*;
+import android.view.View.*;
 import android.widget.*;
+import android.widget.CompoundButton.*;
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.Preferences.*;
+import de.NeonSoft.neopowermenu.helpers.*;
+import java.util.*;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View.OnClickListener;
 import de.NeonSoft.neopowermenu.R;
-import android.view.View.*;
-import de.NeonSoft.neopowermenu.Preferences.*;
-import android.widget.CompoundButton.*;
 
 public class permissionsScreen extends Fragment
 {
@@ -63,26 +65,42 @@ public class permissionsScreen extends Fragment
 								{
 										// TODO: Implement this method
 										if(!adapter.isAllChecked()) {
-												PermissionsDialog = new AlertDialog.Builder(getActivity());
-												PermissionsDialog.setMessage(R.string.permissionsScreen_NotAllGranted);
-												PermissionsDialog.setPositiveButton(R.string.Dialog_Ok, new DialogInterface.OnClickListener() {
+												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
 
 																@Override
-																public void onClick(DialogInterface p1, int p2)
-																{
-																		// TODO: Implement this method
-																		MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
-																}
-														});
-												PermissionsDialog.setNegativeButton(R.string.Dialog_Cancel, new DialogInterface.OnClickListener() {
-
-																@Override
-																public void onClick(DialogInterface p1, int p2)
+																public void onListItemClick(int position, String text)
 																{
 																		// TODO: Implement this method
 																}
+
+																@Override
+																public void onNegativeClick()
+																{
+																		// TODO: Implement this method
+																}
+
+																@Override
+																public void onNeutralClick()
+																{
+																		// TODO: Implement this method
+																}
+
+																@Override
+																public void onPositiveClick(ArrayList<String> resultData)
+																{
+																		// TODO: Implement this method
+																		MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+																}
+
+																@Override
+																public void onTouchOutside()
+																{
+																		// TODO: Implement this method
+																}
 														});
-												PermissionsDialog.show();
+														dialogFragment.setDialogText(getActivity().getString(R.string.permissionsScreen_NotAllGranted));
+												dialogFragment.setDialogPositiveButton(getActivity().getString(R.string.Dialog_Ok));
+												MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 										} else {
 												MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 										}

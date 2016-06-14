@@ -123,7 +123,7 @@ public class PresetsPage extends Fragment
 				{
 						PreferencesPresetsFragment.onlineList = list;
 						PreferencesPresetsFragment.onlineMSG = message;
-						new getOnlinePresets().execute();
+						new getOnlinePresets().execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
 						//message.setVisibility(View.VISIBLE);
 				}
         return view;

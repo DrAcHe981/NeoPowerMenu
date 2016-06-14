@@ -1,6 +1,5 @@
 package de.NeonSoft.neopowermenu.helpers;
 import android.app.*;
-import android.content.*;
 import android.content.pm.*;
 import android.graphics.*;
 import android.text.*;
@@ -11,6 +10,7 @@ import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
 import java.io.*;
+import java.util.*;
 
 public class ColorsListAdapter extends ArrayAdapter<String>
 {
@@ -79,63 +79,33 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 														public void onClick(View p1)
 														{
 																// TODO: Implement this method
-																final AlertDialog.Builder alertdb = new AlertDialog.Builder(context);
-
-																//alertdb.setTitle(R.string.preset_Save);
-																View inflatedView = MainActivity.inflater.inflate(R.layout.inputdialog,null);
-																final EditText Input = (EditText) inflatedView.findViewById(R.id.inputdialogEditText1);
-																final EditText Input2 = (EditText) inflatedView.findViewById(R.id.inputdialogEditText2);
-																final TextView OverwriteInfo = (TextView) inflatedView.findViewById(R.id.inputdialogTextViewOverwrite);
-																Input.addTextChangedListener(new TextWatcher() {
+																final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
-																				public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
+																				public void onListItemClick(int position, String text)
 																				{
 																						// TODO: Implement this method
 																				}
 
 																				@Override
-																				public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
-																				{
-																						// TODO: Implement this method
-																						if (!p1.toString().equalsIgnoreCase("")) {
-																								File checkFile = new File(context.getFilesDir()+"/presets/"+p1+".nps");
-																								if (checkFile.exists()) {
-																										OverwriteInfo.setVisibility(View.VISIBLE);
-																								} else {
-																										OverwriteInfo.setVisibility(View.GONE);
-																								}
-																						}
-																				}
-
-																				@Override
-																				public void afterTextChanged(Editable p1)
-																				{
-																						// TODO: Implement this method
-																				}
-																		});
-																Input.setText(MainActivity.preferences.getString("lastUsedPreset",""));
-																Input2.setText(MainActivity.preferences.getString("lastPresetCreatedBy",""));
-																alertdb.setView(inflatedView);
-																alertdb.setCancelable(true);
-																alertdb.setNegativeButton(R.string.Dialog_Cancel, new AlertDialog.OnClickListener() {
-
-																				@Override
-																				public void onClick(DialogInterface p1, int p2)
+																				public void onNegativeClick()
 																				{
 																						// TODO: Implement this method
 																				}
 
-																		});
-																alertdb.setPositiveButton(R.string.Dialog_Save,new AlertDialog.OnClickListener() {
+																				@Override
+																				public void onNeutralClick()
+																				{
+																						// TODO: Implement this method
+																				}
 
 																				@Override
-																				public void onClick(DialogInterface p1, int p2)
+																				public void onPositiveClick(ArrayList<String> resultData)
 																				{
 																						// TODO: Implement this method
 																						try
 																						{
-																								File presetFile = new File(context.getFilesDir().getPath()+"/presets/"+Input.getText().toString()+".nps");
+																								File presetFile = new File(context.getFilesDir().getPath()+"/presets/"+resultData.get(0)+".nps");
 																								presetFile.createNewFile();
 																								FileWriter fw = new FileWriter(presetFile);
 																								String versionName = "1.0";
@@ -148,9 +118,9 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																										Log.e("tag", e.getMessage());
 																								}
 																								fw.append("AppVersion="+versionName+"\n");
-																								if (!Input2.getText().toString().equalsIgnoreCase("")){
-																										MainActivity.preferences.edit().putString("lastPresetCreatedBy",Input2.getText().toString()).commit();
-																										fw.append("Creator="+Input2.getText().toString()+"\n");
+																								if (!resultData.get(1).equalsIgnoreCase("")){
+																										MainActivity.preferences.edit().putString("lastPresetCreatedBy",resultData.get(1)).commit();
+																										fw.append("Creator="+resultData.get(1)+"\n");
 																								} else {
 																										fw.append("Creator=a "+android.os.Build.MANUFACTURER+" " +android.os.Build.MODEL+ " user\n");
 																								}
@@ -166,16 +136,52 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																										}
 																								}
 																								fw.close();
-																								MainActivity.preferences.edit().putString("lastUsedPreset",Input.getText().toString()).commit();
-																								Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",Input.getText().toString()),Toast.LENGTH_SHORT).show();
+																								MainActivity.preferences.edit().putString("lastUsedPreset",resultData.get(0)).commit();
+																								Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",resultData.get(0)),Toast.LENGTH_SHORT).show();
 																						}
 																						catch (IOException e)
 																						{}
 																				}
-																		});
-																savePresetDialog = alertdb.create();
 
-																savePresetDialog.show();
+																				@Override
+																				public void onTouchOutside()
+																				{
+																						// TODO: Implement this method
+																				}
+																		});
+																		dialogFragment.setDialogText("");
+																dialogFragment.setDialogInput1(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastUsedPreset",""),false,new TextWatcher() {
+
+																				@Override
+																				public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
+																				{
+																						// TODO: Implement this method
+																						if (!p1.toString().equalsIgnoreCase("")) {
+																								File checkFile = new File(context.getFilesDir()+"/presets/"+p1+".nps");
+																								if (!checkFile.exists()) {
+																										dialogFragment.setDialogText("");
+																								} else {
+																										dialogFragment.setDialogText(context.getString(R.string.presetSaveDialog_OverwriteText));
+																								}
+																						}
+																				}
+
+																				@Override
+																				public void afterTextChanged(Editable p1)
+																				{
+																						// TODO: Implement this method
+																				}}
+																);
+																dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastPresetCreatedBy",""),true,null);
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Save));
+																MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 														}
 												});
 										break;
@@ -224,8 +230,45 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 														public void onClick(View view)
 														{
 																// TODO: Implement this method
-																//Toast.makeText(context,"Loaded color: "+loadColor[0]+colorType,Toast.LENGTH_LONG).show();
-																PreferencesColorFragment.showColorPicker(Preview,loadColor[0]+colorType,MainActivity.preferences.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
+																final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+
+																				@Override
+																				public void onListItemClick(int position, String text)
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onNegativeClick()
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onNeutralClick()
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onPositiveClick(ArrayList<String> resultData)
+																				{
+																						// TODO: Implement this method
+																						MainActivity.preferences.edit().putString(loadColor[0]+colorType,resultData.get(0)).commit();
+																						Preview.setBackgroundColor(Color.parseColor(resultData.get(0)));
+																				}
+
+																				@Override
+																				public void onTouchOutside()
+																				{
+																						// TODO: Implement this method
+																				}
+																		});
+																dialogFragment.setDialogText("");
+																dialogFragment.setDialogColorPicker(MainActivity.preferences.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Save));
+																MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 														}
 												});
 										break;

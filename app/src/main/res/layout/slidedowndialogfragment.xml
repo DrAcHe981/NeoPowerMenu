@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<RelativeLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="vertical">
+
+		<TextView
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:id="@+id/activitymainTextView_DialogBg"
+			android:background="#CC000000"/>
+
+		<LinearLayout
+			android:id="@+id/activitymainLinearLayout_DialogRoot"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:background="@color/colorPrimaryDarkDarkTheme">
+
+			<ScrollView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_weight="1.0"
+				android:fillViewport="true">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:paddingBottom="10dp"
+					android:paddingTop="10dp">
+
+					<View
+						android:background="@color/transparent"
+						android:layout_height="0dp"
+						android:layout_width="wrap_content"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="match_parent"
+						android:text="Text"
+						android:id="@+id/activitymainTextView_DialogText"
+						android:textColor="#FFFFFF"
+						android:layout_marginLeft="10dp"
+						android:layout_marginRight="10dp"
+						android:layout_marginBottom="5dp"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/activitymainLinearLayout_DialogList"
+						android:layout_marginRight="10dp"
+						android:layout_marginLeft="10dp"
+						android:visibility="gone">
+
+						<ListView
+							android:layout_height="145dp"
+							android:layout_width="match_parent"
+							android:id="@+id/activitymainListView_DialogList"
+							android:divider="@color/colorAccentDarkThemeTrans"
+							android:dividerHeight="1dp"
+							android:layout_weight="1.0"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/activitymainLinearLayout_DialogInput1"
+						android:layout_marginRight="10dp"
+						android:layout_marginLeft="10dp"
+						android:visibility="visible">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:textAppearance="?android:attr/textAppearanceSmall"
+							android:layout_width="match_parent"
+							android:text="@string/presetSaveDialog_InfoText"
+							android:gravity="center_vertical"
+							android:id="@+id/activitymainTextView_DialogInput1Text"/>
+
+						<EditText
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:ems="10"
+							android:maxLines="1"
+							android:singleLine="true"
+							android:id="@+id/activitymainEditText_DialogInput1"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/activitymainLinearLayout_DialogInput2"
+						android:layout_marginRight="10dp"
+						android:layout_marginLeft="10dp"
+						android:visibility="gone">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:textAppearance="?android:attr/textAppearanceSmall"
+							android:layout_width="match_parent"
+							android:text="@string/presetSaveDialog_CreatorNameInfo"
+							android:gravity="center_vertical"
+							android:id="@+id/activitymainTextView_DialogInput2Text"/>
+
+						<EditText
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:ems="10"
+							android:maxLines="1"
+							android:singleLine="true"
+							android:id="@+id/activitymainEditText_DialogInput2"/>
+
+					</LinearLayout>
+
+					<LinearLayout
+						android:layout_height="match_parent"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:id="@+id/activitymainLinearLayout_DialogColorPicker"
+						android:visibility="gone">
+
+						<LinearLayout
+							android:layout_height="match_parent"
+							android:layout_width="match_parent"
+							android:orientation="horizontal"
+							android:gravity="center|center_vertical|center_horizontal"
+							android:layout_weight="1.0">
+
+							<com.larswerkman.holocolorpicker.ValueBar
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_gravity="center"
+								android:layout_weight="1.0"
+								android:visibility="visible"
+								app:bar_orientation_horizontal="false"
+								android:id="@+id/activitymainValueBar_DialogValueBar"/>
+
+							<com.larswerkman.holocolorpicker.SaturationBar
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_gravity="center"
+								android:layout_weight="1.0"
+								android:visibility="visible"
+								app:bar_orientation_horizontal="false"
+								android:id="@+id/activitymainSaturationBar_DialogSaturationBar"/>
+
+							<com.larswerkman.holocolorpicker.OpacityBar
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_gravity="center"
+								android:visibility="gone"
+								android:layout_weight="1.0"
+								app:bar_orientation_horizontal="false"
+								android:id="@+id/activitymainOpacityBar_DialogOpacityBar"/>
+
+							<com.larswerkman.holocolorpicker.ColorPicker
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:id="@+id/activitymainColorPicker_DialogColorPicker"
+								android:layout_weight="1.0"
+								android:layout_gravity="center"/>
+
+						</LinearLayout>
+
+						<LinearLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:orientation="horizontal"
+							android:layout_marginRight="10dp"
+							android:layout_marginLeft="10dp">
+
+							<TextView
+								android:layout_height="match_parent"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:layout_width="wrap_content"
+								android:text="@string/ColorPicker_Hex"
+								android:gravity="center_vertical"/>
+
+							<EditText
+								android:layout_height="match_parent"
+								android:layout_width="wrap_content"
+								android:ems="10"
+								android:layout_weight="1.0"
+								android:lines="1"
+								android:singleLine="true"
+								android:id="@+id/activitymainEditText_DialogHexInput"/>
+
+						</LinearLayout>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</ScrollView>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:id="@+id/activitymainLinearLayout_DialogButtons"
+				android:gravity="right"
+				android:layout_marginRight="10dp">
+
+				<LinearLayout
+					android:background="?selectableItemBackgroundBorderless"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:id="@+id/activitymainLinearLayout_DialogButtonNegative"
+					android:layout_marginRight="5dp"
+					android:visibility="visible">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="wrap_content"
+						android:text="@string/Dialog_Cancel"
+						android:id="@+id/activitymainTextView_DialogButtonNegativeText"
+						android:layout_margin="10dp"
+						android:textColor="#FFFFFF"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:background="?selectableItemBackgroundBorderless"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:id="@+id/activitymainLinearLayout_DialogButtonNeutral"
+					android:layout_marginRight="5dp"
+					android:visibility="visible">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="wrap_content"
+						android:text="@string/Dialog_Rename"
+						android:id="@+id/activitymainTextView_DialogButtonNeutralText"
+						android:layout_margin="10dp"
+						android:textColor="#FFFFFF"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:background="?selectableItemBackgroundBorderless"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:id="@+id/activitymainLinearLayout_DialogButtonPositive">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="wrap_content"
+						android:text="@string/Dialog_Ok"
+						android:id="@+id/activitymainTextView_DialogButtonPositiveText"
+						android:layout_margin="10dp"
+						android:textColor="#FFFFFF"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<TextView
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:id="@+id/activitymainTextView_DialogTouchOutside"
+			android:layout_below="@id/activitymainLinearLayout_DialogRoot"/>
+
+	</RelativeLayout>
+
+</LinearLayout>
+

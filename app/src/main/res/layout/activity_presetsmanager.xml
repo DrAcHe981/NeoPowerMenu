@@ -73,21 +73,69 @@
 		</RelativeLayout>
 
 		<LinearLayout
+			android:visibility="visible"
+			android:layout_height="38dp"
+			android:layout_width="50dp"
+			android:orientation="horizontal"
+			android:id="@+id/activitypresetsmanagerLinearLayout_SearchIcon"
+			android:background="@color/colorPrimaryDarkDarkTheme"
+			android:layout_alignParentLeft="true">
+
+			<ImageView
+				android:background="?selectableItemBackgroundBorderless"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:src="@drawable/ic_action_search"
+				android:id="@+id/activitypresetsmanagerImageView_Search"
+				android:padding="3dp"/>
+
+		</LinearLayout>
+
+		<LinearLayout
 			android:visibility="gone"
-			android:layout_height="37dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:id="@+id/activitypresetsmanagerLinearLayout_SearchBar"
+			android:background="@color/colorPrimaryDarkDarkTheme">
+
+			<EditText
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:ems="10"
+				android:id="@+id/activitypresetsmanagerEditText_Search"
+				android:layout_weight="1.0"
+				android:singleLine="true"
+				android:textColor="#FFFFFF"
+				android:layout_marginLeft="5dp"
+				android:hint="Search for Name or Creator"/>
+
+			<ImageView
+				android:background="?selectableItemBackgroundBorderless"
+				android:layout_height="match_parent"
+				android:layout_width="50dp"
+				android:src="@drawable/ic_action_search"
+				android:id="@+id/activitypresetsmanagerImageView_StartSearch"
+				android:padding="3dp"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:visibility="gone"
+			android:layout_height="38dp"
 			android:layout_width="50dp"
 			android:orientation="vertical"
 			android:layout_alignParentRight="true"
 			android:id="@+id/activitypresetsmanagerLinearLayout_Order"
 			android:background="@color/colorPrimaryDarkDarkTheme">
 
-				<ImageView
-					android:background="?selectableItemBackgroundBorderless"
-					android:layout_height="match_parent"
-					android:layout_width="match_parent"
-					android:src="@drawable/ic_action_sort_1"
-					android:id="@+id/activitypresetsmanagerImageView_Order"
-					android:padding="3dp"/>
+			<ImageView
+				android:background="?selectableItemBackgroundBorderless"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:src="@drawable/ic_action_sort_1"
+				android:id="@+id/activitypresetsmanagerImageView_Order"
+				android:padding="3dp"/>
 
 		</LinearLayout>
 

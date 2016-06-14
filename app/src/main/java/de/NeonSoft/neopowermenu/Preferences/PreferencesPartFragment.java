@@ -1,23 +1,25 @@
 package de.NeonSoft.neopowermenu.Preferences;
-import android.*;
 import android.app.*;
 import android.content.*;
 import android.content.pm.*;
 import android.net.*;
 import android.os.*;
 import android.support.v4.app.*;
-import android.support.v4.content.*;
+import android.text.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+import android.widget.AdapterView.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
+import de.NeonSoft.neopowermenu.permissionsScreen.*;
 import eu.chainfire.libsuperuser.*;
+import java.io.*;
+import java.util.*;
 
 import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
-import de.NeonSoft.neopowermenu.R;
-import de.NeonSoft.neopowermenu.permissionsScreen.*;
+import android.view.View.OnClickListener;
 
 public class PreferencesPartFragment extends Fragment
 {
@@ -121,8 +123,6 @@ public class PreferencesPartFragment extends Fragment
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										AlertDialog.Builder alertdb = new AlertDialog.Builder(getActivity());
-										alertdb.setTitle(R.string.preferencesTitle_Style);
 										String[] styleList = new String[1];
 										styleList[0] = "Material";
 										//styleList[1] = "Material (Fullscreen)";
@@ -134,36 +134,44 @@ public class PreferencesPartFragment extends Fragment
 														//presetsList[i] = "(Active) "+ presetsFiles[i].getName().split(".nps")[0];
 												}
 										}
-										alertdb.setSingleChoiceItems(styleList, ActiveStyleId, null);
-										alertdb.setNegativeButton(R.string.Dialog_Cancel, new AlertDialog.OnClickListener() {
+										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
-														public void onClick(DialogInterface p1, int p2)
+														public void onListItemClick(int position, String text)
+														{
+																// TODO: Implement this method
+																MainActivity.preferences.edit().putString("DialogTheme", text).commit();
+																ActiveStyle = text;
+																TextView_StyleDesc.setText(ActiveStyle);
+														}
+
+														@Override
+														public void onNegativeClick()
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onNeutralClick()
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onPositiveClick(ArrayList<String> resultData)
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onTouchOutside()
 														{
 																// TODO: Implement this method
 														}
 												});
-										alertdb.setPositiveButton(R.string.Dialog_Ok, new AlertDialog.OnClickListener() {
-
-														@Override
-														public void onClick(DialogInterface p1, int p2)
-														{
-																// TODO: Implement this method
-																try
-																{
-																		int selectedPosition = (ad).getListView().getCheckedItemPosition();
-																		String selectedName = (ad).getListView().getItemAtPosition(selectedPosition).toString();
-																		MainActivity.preferences.edit().putString("DialogTheme", selectedName).commit();
-																		ActiveStyle = selectedName;
-																		TextView_StyleDesc.setText(ActiveStyle);
-																}
-																catch (Throwable t)
-																{
-																}
-														}
-												});
-										ad = alertdb.create();
-										ad.show();
+										dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId,true);
+										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
+										MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 								}
 						});
 
@@ -280,6 +288,78 @@ public class PreferencesPartFragment extends Fragment
 				checkState();
 				
 				MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+				
+				/*final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
+
+								@Override
+								public void onListItemClick(int position, String text)
+								{
+										// TODO: Implement this method
+										Toast.makeText(mContext,"onListItemClick: "+position+" / "+ text,Toast.LENGTH_SHORT).show();
+								}
+
+								@Override
+								public void onNegativeClick()
+								{
+										// TODO: Implement this method
+										Toast.makeText(mContext,"onNegativeClick",Toast.LENGTH_SHORT).show();
+								}
+
+								@Override
+								public void onNeutralClick()
+								{
+										// TODO: Implement this method
+										Toast.makeText(mContext,"onNeutralClick",Toast.LENGTH_SHORT).show();
+								}
+
+								@Override
+								public void onPositiveClick(ArrayList<String> resultData)
+								{
+										// TODO: Implement this method
+										Toast.makeText(mContext,"onPositiveClick: "+resultData.toString(),Toast.LENGTH_SHORT).show();
+								}
+
+								@Override
+								public void onTouchOutside()
+								{
+										// TODO: Implement this method
+										Toast.makeText(mContext,"onTouchOutside",Toast.LENGTH_SHORT).show();
+								}
+						});*/
+				//dialogFragment.setDialogText("This is a dialog Test\nThis one will not close on touch outside");
+				//dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,new String[] {"Item 1","Item 2","Item 3"},1,false);
+				/*dialogFragment.setDialogInput1(mContext.getString(R.string.presetSaveDialog_InfoText), "Test", new TextWatcher() {
+
+								@Override
+								public void afterTextChanged(Editable p1)
+								{
+										// TODO: Implement this method
+								}
+
+								@Override
+								public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
+								{
+										// TODO: Implement this method
+								}
+
+								@Override
+								public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
+								{
+										// TODO: Implement this method
+										if (!p1.toString().equalsIgnoreCase("")) {
+												File checkFile = new File(mContext.getFilesDir()+"/presets/"+p1+".nps");
+												if (!checkFile.exists()) {
+														dialogFragment.setDialogText("This is a dialog Test\nThis one will not close on touch outside");
+												} else {
+														dialogFragment.setDialogText("This is a dialog Test\nThis one will not close on touch outside\n\n"+mContext.getString(R.string.presetSaveDialog_OverwriteText));
+												}
+										}
+								}
+						});
+				dialogFragment.setDialogInput2(mContext.getString(R.string.presetSaveDialog_CreatorNameInfo),"Test 2",null);*/
+				//dialogFragment.setDialogColorPicker("#cc123456",true);
+				//dialogFragment.setDialogCloseOnTouchOutside(false);
+				//MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"TestDialog").commit();
 				
 				return InflatedView;
 		}

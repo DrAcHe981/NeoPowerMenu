@@ -93,25 +93,30 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												public void onClick(View p1)
 												{
 														// TODO: Implement this method
-														AlertDialog.Builder adb = new AlertDialog.Builder(context);
-
-														View view = context.getLayoutInflater().inflate(R.layout.inputdialog, null);
-														TextView Text = (TextView) view.findViewById(R.id.inputdialogTextView1);
-														Text.setVisibility(View.VISIBLE);
-														Text.setText(context.getString(R.string.presetsManager_UploadMsg));
-														final EditText Input = (EditText) view.findViewById(R.id.inputdialogEditText1);
-														final EditText Input2 = (EditText) view.findViewById(R.id.inputdialogEditText2);
-														Input.setText(itemsTitle.get(position));
-														Input2.setText(itemsDesc.get(position));
-
-														adb.setView(view);
-
-														adb.setPositiveButton(R.string.Dialog_Ok, new DialogInterface.OnClickListener() {
+														slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
 
 																		@Override
-																		public void onClick(DialogInterface p1, int p2)
+																		public void onListItemClick(int position, String text)
 																		{
 																				// TODO: Implement this method
+																		}
+
+																		@Override
+																		public void onNegativeClick()
+																		{
+																				// TODO: Implement this method
+																		}
+
+																		@Override
+																		public void onNeutralClick()
+																		{
+																				// TODO: Implement this method
+																		}
+
+																		@Override
+																		public void onPositiveClick(ArrayList<String> resultData)
+																		{
+																				// TODO: Implement this method{
 																				final String appVersion;
 																				appVersion = MainActivity.versionName.replace("v", "");
 																				try
@@ -158,7 +163,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										Progress.setProgress(0);
 																										Upload.setEnabled(true);
 																										Upload.setAlpha((float) 1);
-																										new getOnlinePresets().execute();
+																										new getOnlinePresets().execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
 																										Toast.makeText(context, context.getString(R.string.presetsManager_UploadComplete), Toast.LENGTH_SHORT).show();
 																								}
 
@@ -170,35 +175,81 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										Upload.setEnabled(true);
 																										Upload.setAlpha((float) 1);
 																										if (reason.contains("no access")) {
-																												AlertDialog.Builder adb = new AlertDialog.Builder(context);
-
-																												View view = context.getLayoutInflater().inflate(R.layout.inputdialog, null);
-																												TextView Text = (TextView) view.findViewById(R.id.inputdialogTextView1);
-																												Text.setVisibility(View.VISIBLE);
-																												Text.setText(context.getString(R.string.presetsManager_UploadFailedNoAccess));
-																												final LinearLayout Name = (LinearLayout) view.findViewById(R.id.inputdialogLinearLayout_Name);
-																												Name.setVisibility(View.GONE);
-																												final LinearLayout Creator = (LinearLayout) view.findViewById(R.id.inputdialogLinearLayout_Creator);
-																												Creator.setVisibility(View.GONE);
-
-																												adb.setView(view);
-																												adb.setPositiveButton(context.getString(R.string.login_Title), new DialogInterface.OnClickListener() {
+																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
 
 																																@Override
-																																public void onClick(DialogInterface p1, int p2)
+																																public void onListItemClick(int position, String text)
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onNegativeClick()
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onNeutralClick()
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onPositiveClick(ArrayList<String> resultData)
 																																{
 																																		// TODO: Implement this method
 																																		PreferencesPresetsFragment.vpPager.setCurrentItem(0,true);
 																																}
+
+																																@Override
+																																public void onTouchOutside()
+																																{
+																																		// TODO: Implement this method
+																																}
 																														});
-																												adb.setNegativeButton(context.getString(R.string.Dialog_Cancel),null);
-																												
-																												adb.show();
-																												//Toast.makeText(context, context.getString(R.string.presetsManager_UploadFailedNoAccess),Toast.LENGTH_SHORT).show();
+																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedNoAccess));
+																												dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
+																												dialogFragment.setDialogPositiveButton(context.getString(R.string.login_Title));
+																												MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 																										}
 																										else if (reason.contains("Preset name exists."))
 																										{
-																												Toast.makeText(context, context.getString(R.string.presetsManager_UploadFailedSameName), Toast.LENGTH_LONG).show();
+																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+
+																																@Override
+																																public void onListItemClick(int position, String text)
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onNegativeClick()
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onNeutralClick()
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onPositiveClick(ArrayList<String> resultData)
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onTouchOutside()
+																																{
+																																		// TODO: Implement this method
+																																}
+																														});
+																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedSameName));
+																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
+																												MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 																										}
 																										else if (reason.contains("Cannot connect to the DB"))
 																										{
@@ -210,21 +261,63 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										}
 																										else
 																										{
-																												Toast.makeText(context, context.getString(R.string.presetsManager_UploadFailed) + "\n" + reason, Toast.LENGTH_LONG).show();
+																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+
+																																@Override
+																																public void onListItemClick(int position, String text)
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onNegativeClick()
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onNeutralClick()
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onPositiveClick(ArrayList<String> resultData)
+																																{
+																																		// TODO: Implement this method
+																																}
+
+																																@Override
+																																public void onTouchOutside()
+																																{
+																																		// TODO: Implement this method
+																																}
+																														});
+																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailed)+"\n"+reason);
+																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
+																												MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 																										}
 																								}
 																						});
 																				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
 																				uH.setLocalUrl(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps");
-																				uH.uploadAs(Input.getText().toString() + ".nps");
-																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",Input.getText().toString()},{"presetCreator",Input2.getText().toString()},{"presetAppVersion","v" + appVersion},{MainActivity.usernameemail.contains("@") ? "userEmail" : "userName",MainActivity.usernameemail},{"userId",MainActivity.preferences.getString("userUniqeId", "null")}});
+																				uH.uploadAs(resultData.get(0) + ".nps");
+																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",resultData.get(0)},{"presetCreator",resultData.get(1)},{"presetAppVersion","v" + appVersion},{MainActivity.usernameemail.contains("@") ? "userEmail" : "userName",MainActivity.usernameemail},{"userId",MainActivity.preferences.getString("userUniqeId", "null")}});
 																				uH.startUpload();
 																		}
-																});
-														adb.setNegativeButton(R.string.Dialog_Cancel, null);
 
-														uploadad = adb.create();
-														uploadad.show();
+																		@Override
+																		public void onTouchOutside()
+																		{
+																				// TODO: Implement this method
+																		}
+																});
+														dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadMsg));
+														dialogFragment.setDialogInput1(context.getString(R.string.presetSaveDialog_InfoText),itemsTitle.get(position),false,null);
+														dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_CreatorNameInfo),itemsDesc.get(position),false,null);
+														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
+														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
+														MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 												}
 										});
 								Delete.setOnClickListener(new OnClickListener() {
@@ -233,21 +326,28 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												public void onClick(View p1)
 												{
 														// TODO: Implement this method
-														AlertDialog.Builder adb = new AlertDialog.Builder(context);
-														View view = context.getLayoutInflater().inflate(R.layout.inputdialog, null);
-														TextView Text = (TextView) view.findViewById(R.id.inputdialogTextView1);
-														Text.setVisibility(View.VISIBLE);
-														Text.setText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
-														final LinearLayout Name = (LinearLayout) view.findViewById(R.id.inputdialogLinearLayout_Name);
-														Name.setVisibility(View.GONE);
-														final LinearLayout Creator = (LinearLayout) view.findViewById(R.id.inputdialogLinearLayout_Creator);
-														Creator.setVisibility(View.GONE);
-
-														adb.setView(view);
-														adb.setPositiveButton(R.string.Dialog_Delete, new DialogInterface.OnClickListener() {
+														slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
 
 																		@Override
-																		public void onClick(DialogInterface p1, int p2)
+																		public void onListItemClick(int position, String text)
+																		{
+																				// TODO: Implement this method
+																		}
+
+																		@Override
+																		public void onNegativeClick()
+																		{
+																				// TODO: Implement this method
+																		}
+
+																		@Override
+																		public void onNeutralClick()
+																		{
+																				// TODO: Implement this method
+																		}
+
+																		@Override
+																		public void onPositiveClick(ArrayList<String> resultData)
 																		{
 																				// TODO: Implement this method
 																				try
@@ -267,10 +367,17 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				}
 																				notifyDataSetChanged();
 																		}
-																});
-														adb.setNegativeButton(R.string.Dialog_Cancel, null);
 
-														adb.show();
+																		@Override
+																		public void onTouchOutside()
+																		{
+																				// TODO: Implement this method
+																		}
+																});
+																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
+														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
+														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Delete));
+														MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 												}
 										});
 								Share.setOnClickListener(new OnClickListener() {
@@ -353,21 +460,28 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														public void onClick(View p1)
 														{
 																// TODO: Implement this method
-																AlertDialog.Builder adb = new AlertDialog.Builder(context);
-																View view = context.getLayoutInflater().inflate(R.layout.inputdialog, null);
-																TextView Text = (TextView) view.findViewById(R.id.inputdialogTextView1);
-																Text.setVisibility(View.VISIBLE);
-																Text.setText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
-																final LinearLayout Name = (LinearLayout) view.findViewById(R.id.inputdialogLinearLayout_Name);
-																Name.setVisibility(View.GONE);
-																final LinearLayout Creator = (LinearLayout) view.findViewById(R.id.inputdialogLinearLayout_Creator);
-																Creator.setVisibility(View.GONE);
-
-																adb.setView(view);
-																adb.setPositiveButton(R.string.Dialog_Delete, new DialogInterface.OnClickListener() {
+																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
-																				public void onClick(DialogInterface p1, int p2)
+																				public void onListItemClick(int position, String text)
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onNegativeClick()
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onNeutralClick()
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onPositiveClick(ArrayList<String> resultData)
 																				{
 																						// TODO: Implement this method
 																						uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
@@ -376,6 +490,9 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										public void onUploadStarted(boolean state)
 																										{
 																												// TODO: Implement this method
+																												PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.login_Processing));
+																												PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
+																												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
 																										}
 
 																										@Override
@@ -388,14 +505,18 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										public void onUploadComplete()
 																										{
 																												// TODO: Implement this method
+																												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
+																												PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
 																												Toast.makeText(context, context.getString(R.string.presetLoad_PresetDeleted).replace("[PRESETNAME]", itemsTitle.get(position)), Toast.LENGTH_SHORT).show();
-																												new getOnlinePresets().execute();
+																												new getOnlinePresets().execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
 																										}
 
 																										@Override
 																										public void onUploadFailed(String reason)
 																										{
 																												// TODO: Implement this method
+																												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
+																												PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
 																												Toast.makeText(context, "Failed to delete.\n" + reason, Toast.LENGTH_LONG).show();
 																										}
 																								});
@@ -410,10 +531,17 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						uH.setLocalUrl(context.getFilesDir().getPath() + "/tmp");
 																						uH.startUpload();
 																				}
-																		});
-																adb.setNegativeButton(R.string.Dialog_Cancel, null);
 
-																adb.show();
+																				@Override
+																				public void onTouchOutside()
+																				{
+																						// TODO: Implement this method
+																				}
+																		});
+																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Delete));
+																MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
 														}
 												});
 								} else {
@@ -498,6 +626,13 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						}
 						catch (Throwable t)
 						{}
+						if(PreferencesPresetsFragment.DownloadingActiveFor.contains(itemsTitle.get(position) + ",")) {
+								//oldText = ItemDesc.getText().toString();
+								ItemDesc.setText(context.getString(R.string.presetsManager_Downloading));
+								Progress.setProgress(0);
+								OnlineButton.setEnabled(false);
+								OnlineButton.setAlpha((float) .3);
+						}
 						root.setOnClickListener(new OnClickListener() {
 
 										@Override
@@ -519,6 +654,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				Progress.setProgress(0);
 																				OnlineButton.setEnabled(false);
 																				OnlineButton.setAlpha((float) .3);
+																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor + itemsTitle.get(position) + ",";
 																		}
 
 																		@Override
@@ -547,6 +683,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						Toast.makeText(context, context.getString(R.string.presetsManager_ImportFailed) + "\n" + e.toString(), Toast.LENGTH_LONG).show();
 																						Log.e("NPM", e.toString());
 																				}
+																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor.replace(itemsTitle.get(position) + ",","");
 																		}
 
 																		@Override
@@ -558,6 +695,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				OnlineButton.setEnabled(true);
 																				OnlineButton.setAlpha((float) 1);
 																				Toast.makeText(context, context.getString(R.string.presetsManager_DownloadFailed) + "\n" + reason, Toast.LENGTH_LONG).show();
+																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor.replace(itemsTitle.get(position) + ",","");
 																		}
 																});
 														dH.setUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position).replace("'","\\'").replace("\"","\\\"") + ".nps");

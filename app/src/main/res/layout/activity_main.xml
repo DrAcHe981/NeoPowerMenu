@@ -18,7 +18,7 @@
 			android:orientation="vertical">
 
 			<RelativeLayout
-				android:layout_height="45dp"
+				android:layout_height="?android:attr/actionBarSize"
 				android:layout_width="match_parent"
 				android:background="@color/colorPrimaryDarkTheme">
 
@@ -91,7 +91,8 @@
 						android:focusable="true"
 						android:focusableInTouchMode="true"
 						android:singleLine="true"
-						android:layout_weight="1.0"/>
+						android:layout_weight="1.0"
+						android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 				</LinearLayout>
 
@@ -105,9 +106,15 @@
 		</LinearLayout>
 
 		<FrameLayout
-			android:id="@+id/pref_container"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"/>
+			android:layout_height="match_parent"
+			android:layout_width="match_parent">
+
+			<FrameLayout
+				android:id="@+id/pref_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"/>
+
+		</FrameLayout>
 
 	</LinearLayout>
 

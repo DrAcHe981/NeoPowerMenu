@@ -15,8 +15,9 @@ import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.*;
 import org.apache.http.params.*;
 import org.json.*;
+import android.view.View.*;
 
-public class getOnlinePresets extends AsyncTask<String, String[], String[]>
+public class getOnlinePresets extends AsyncTask<String, String, String>
 {
 
 		private String[] onlineTitles;
@@ -45,12 +46,23 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 		}
 
 		@Override
-		protected String[] doInBackground(String[] p1)
+		protected String doInBackground(String[] p1)
 		{
 				// TODO: Implement this method
 				String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[0]+" ("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")";
+				String searchFor = "";
 				if(p1!=null && p1.length>0) {
-						orderBy = p1[0];
+						for(int i = 0;i<p1.length;i++) {
+						if(p1[i].contains("order=")) {
+								orderBy = p1[i];
+						} else if (p1[i].contains("search=")) {
+								searchFor = p1[i];
+						}
+						}
+				}
+				String searchTerm = "";
+				if(!searchFor.isEmpty()) {
+						searchTerm = searchFor.split("ch=")[1];
 				}
 				String orderName = "_presetName";
 				String orderDirection = "ASC";
@@ -65,7 +77,6 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 						orderName = "own";
 				}
 				
-				String[] Errorstring;
 				try
 				{
 						HttpParams httpParams = new BasicHttpParams();
@@ -77,7 +88,7 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 						p.setParameter("user", "1");
 
 						HttpClient httpclient = new DefaultHttpClient(p);
-						String url = "http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&format=json&userId="+MainActivity.preferences.getString("userUniqeId","null")+"&sortBy="+orderName+"&sortDir="+orderDirection;
+						String url = "http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&format=json&userId="+MainActivity.preferences.getString("userUniqeId","null")+"&sortBy="+orderName+"&sortDir="+orderDirection+(searchTerm.isEmpty() ? "" : "&searchFor="+searchTerm);
 						HttpPost httppost = new HttpPost(url);
 
 						try
@@ -91,7 +102,7 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 								ResponseHandler<String> responseHandler = new BasicResponseHandler();
 								String responseBody = httpclient.execute(httppost, responseHandler);
 								if(responseBody.contains("Cannot connect to the DB")) {
-										return new String[] {"Request failed: ","Cannot connect to the DB"};
+										return "Request failed: Cannot connect to the DB";
 								}
 								JSONObject json = new JSONObject(responseBody);
 								JSONArray jArray = json.getJSONArray("presets");
@@ -130,43 +141,75 @@ public class getOnlinePresets extends AsyncTask<String, String[], String[]>
 						catch (ClientProtocolException e)
 						{
 								// TODO Auto-generated catch block
-								Errorstring = new String[]{ e.toString()};
-								return Errorstring;
+								return e.toString();
+								//return Errorstring;
 						}
 						catch (IOException e)
 						{
 								// TODO Auto-generated catch block
-								Errorstring = new String[]{ e.toString()};
-								return Errorstring;
+								return e.toString();
+								//return Errorstring;
 						}
 
 				}
 				catch (Throwable t)
 				{
-						Errorstring = new String[]{t.toString()};
-						return Errorstring;
+						return t.toString();
+						//return Errorstring;
 				}
 				return  null;
 		}
 
 		@Override
-		protected void onPostExecute(String[] result)
+		protected void onPostExecute(String result)
 		{
 				// TODO: Implement this method
 				super.onPostExecute(result);
 				if (result != null)
 				{
-						PreferencesPresetsFragment.onlineMSG.setText("");
-						for(int i=0;i<result.length;i++) {
-								Log.e("NPM",result[i]);
-								if((result[i].contains("Connection to") && result[i].contains("refused")) || result[i].contains("Unable to resolve host")) {
-										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.onlineMSG.getText()+"\n"+PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoServer));
-								} else if (result[i].contains("Cannot connect to the DB")) {
-										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.onlineMSG.getText()+"\n"+PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoDB));
+								Log.e("NPM",result);
+								if((result.contains("Connection to") && result.contains("refused")) || result.contains("Unable to resolve host")) {
+										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoServer));
+								} else if (result.contains("Cannot connect to the DB")) {
+										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoDB));
 								} else {
-										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.onlineMSG.getText()+"\n"+result[i]);
+										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(PreferencesPresetsFragment.mContext, new slideDownDialogFragment.slideDownDialogInterface() {
+
+														@Override
+														public void onListItemClick(int position, String text)
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onNegativeClick()
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onNeutralClick()
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onPositiveClick(ArrayList<String> resultData)
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onTouchOutside()
+														{
+																// TODO: Implement this method
+														}
+												});
+										dialogFragment.setDialogText(result);
+										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Ok));
+										MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+										PreferencesPresetsFragment.onlineMSG.setText(result);
 								}
-						}
 						PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);
 						PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_in));
 						//Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
