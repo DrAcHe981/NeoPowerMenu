@@ -219,14 +219,12 @@ Click here to create a new Account!"</string>
 <string name="login_RegisterSuccess">"Registration succesfull, you will receive an email to activate your account!"</string>
 <string name="login_Processing">"Processing..."</string>
 <string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
-
-<!-- Fuzzy -->
 <string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]
 
 Stars given: [STARSGIVEN]
 Stars received: [STARSRECEIVED]
 
-Top 5 presets:
+Your presets (ordered by stars):
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Failed to get statistics..."</string>
 
