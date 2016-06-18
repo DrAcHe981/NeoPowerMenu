@@ -234,6 +234,5 @@ Clique aqui para criar uma nova!"</string>
 <string name="presetsManager_removeStar">"Remover estrelas"</string>
 <string name="presetsManager_Refresh">"Atualizar"</string>
 <string name="presetsManager_OrderBy">"Ordenar por"</string>
-<string name="presetsManager_OrderNames">"Nome/Estrelas/Criador/Próprio"</string>
 <string name="presetsManager_OrderAscDesc">"Ascendente/Descendente"</string>
 </resources>
