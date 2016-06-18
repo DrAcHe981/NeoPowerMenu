@@ -249,7 +249,6 @@ Your presets (ordered by stars):
 <string name="presetsManager_OrderBy">"Order by"</string>
 <string name="presetsManager_OrderNames">"Name/Time/Stars/Creator/Own"</string>
 <string name="presetsManager_OrderAscDesc">"Ascending/Descending"</string>
-
-		<string name="visibilityOrder_Add">"Add normal item/Add multi item"</string>
-		<string name="visibilityOrder_SelectMulti">"Please select three items:"</string>
+<string name="visibilityOrder_Add">"Add normal item/Add multi item"</string>
+<string name="visibilityOrder_SelectMulti">"Please select three items:"</string>
 </resources>
