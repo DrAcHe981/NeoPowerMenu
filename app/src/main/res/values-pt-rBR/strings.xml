@@ -139,7 +139,6 @@ Isso não pode ser desfeito!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Cor de fundo"</string>
 <string name="colorsType_Text">"Cor do texto "</string>
-<string name="powerMenuMain_Flashlight">"Ligar Lanterna"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Permissões"</string>
