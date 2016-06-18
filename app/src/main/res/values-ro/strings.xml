@@ -237,14 +237,11 @@ Apasa aici pentru a-ti crea unul!"</string>
 <string name="login_RegisterSuccess">"Inregistrare completa, vei primi un email pentru a-ti activa contul!"</string>
 <string name="login_Processing">"Se proceseaza..."</string>
 <string name="login_TitleStatistics">"Statstici pentru [USERNAMEEMAIL]"</string>
+<string name="login_Statistics">"Presetae incarcata: : [UPLOADCOUNT]
+Stele oferite:  [STARSGIVEN]
+Stale primite:  [STARSRECEIVED]
 
-<!-- Fuzzy -->
-<string name="login_Statistics">"Presetare incarcata : [UPLOADCOUNT]
-
-Stele date : [STARSGIVEN]
-Stele primite : [STARSRECEIVED]
-
-Top 5 presetari:
+Presetarile tale (in functie de numarul de stele)
 [TOP5PRESETS] "</string>
 <string name="login_StatisticsFailed">"Esuare preluare statistici"</string>
 
@@ -266,4 +263,6 @@ Top 5 presetari:
 <string name="colorsPartRevealDesc1">"Culori animatie dezvaluire la apasarea butonului Inchidere/Repornire"</string>
 <string name="colorsPartMain">"Caseta"</string>
 <string name="presetsManager_Refresh">"Innoire"</string>
+<string name="presetsManager_OrderBy">"Ordonat in functie de"</string>
+<string name="presetsManager_OrderAscDesc">"Crescator/Descrescator"</string>
 </resources>
