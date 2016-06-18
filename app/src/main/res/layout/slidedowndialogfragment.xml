@@ -15,20 +15,22 @@
 		<TextView
 			android:layout_height="match_parent"
 			android:layout_width="match_parent"
-			android:id="@+id/activitymainTextView_DialogBg"
+			android:id="@+id/slidedowndialogfragmentTextView_DialogBg"
 			android:background="#CC000000"/>
 
 		<LinearLayout
-			android:id="@+id/activitymainLinearLayout_DialogRoot"
+			android:id="@+id/slidedowndialogfragmentLinearLayout_DialogRoot"
 			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
 			android:orientation="vertical"
-			android:background="@color/colorPrimaryDarkDarkTheme">
+			android:background="@color/colorPrimaryDarkDarkTheme"
+			android:paddingTop="10dp"
+			android:animateLayoutChanges="true">
 
 			<ScrollView
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
-				android:layout_weight="1.0"
+				android:layout_weight="0"
 				android:fillViewport="true">
 
 				<LinearLayout
@@ -36,7 +38,8 @@
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:paddingBottom="10dp"
-					android:paddingTop="10dp">
+					android:id="@+id/slidedowndialogfragmentLinearLayout_MainContainer"
+					android:background="@color/colorPrimaryDarkDarkTheme">
 
 					<View
 						android:background="@color/transparent"
@@ -48,7 +51,7 @@
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="match_parent"
 						android:text="Text"
-						android:id="@+id/activitymainTextView_DialogText"
+						android:id="@+id/slidedowndialogfragmentTextView_DialogText"
 						android:textColor="#FFFFFF"
 						android:layout_marginLeft="10dp"
 						android:layout_marginRight="10dp"
@@ -58,29 +61,10 @@
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
 						android:orientation="vertical"
-						android:id="@+id/activitymainLinearLayout_DialogList"
+						android:id="@+id/slidedowndialogfragmentLinearLayout_DialogInput1"
 						android:layout_marginRight="10dp"
 						android:layout_marginLeft="10dp"
 						android:visibility="gone">
-
-						<ListView
-							android:layout_height="145dp"
-							android:layout_width="match_parent"
-							android:id="@+id/activitymainListView_DialogList"
-							android:divider="@color/colorAccentDarkThemeTrans"
-							android:dividerHeight="1dp"
-							android:layout_weight="1.0"/>
-
-					</LinearLayout>
-
-					<LinearLayout
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:orientation="vertical"
-						android:id="@+id/activitymainLinearLayout_DialogInput1"
-						android:layout_marginRight="10dp"
-						android:layout_marginLeft="10dp"
-						android:visibility="visible">
 
 						<TextView
 							android:layout_height="wrap_content"
@@ -88,7 +72,7 @@
 							android:layout_width="match_parent"
 							android:text="@string/presetSaveDialog_InfoText"
 							android:gravity="center_vertical"
-							android:id="@+id/activitymainTextView_DialogInput1Text"/>
+							android:id="@+id/slidedowndialogfragmentTextView_DialogInput1Text"/>
 
 						<EditText
 							android:layout_height="wrap_content"
@@ -96,7 +80,7 @@
 							android:ems="10"
 							android:maxLines="1"
 							android:singleLine="true"
-							android:id="@+id/activitymainEditText_DialogInput1"/>
+							android:id="@+id/slidedowndialogfragmentEditText_DialogInput1"/>
 
 					</LinearLayout>
 
@@ -104,7 +88,7 @@
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
 						android:orientation="vertical"
-						android:id="@+id/activitymainLinearLayout_DialogInput2"
+						android:id="@+id/slidedowndialogfragmentLinearLayout_DialogInput2"
 						android:layout_marginRight="10dp"
 						android:layout_marginLeft="10dp"
 						android:visibility="gone">
@@ -115,7 +99,7 @@
 							android:layout_width="match_parent"
 							android:text="@string/presetSaveDialog_CreatorNameInfo"
 							android:gravity="center_vertical"
-							android:id="@+id/activitymainTextView_DialogInput2Text"/>
+							android:id="@+id/slidedowndialogfragmentTextView_DialogInput2Text"/>
 
 						<EditText
 							android:layout_height="wrap_content"
@@ -123,7 +107,7 @@
 							android:ems="10"
 							android:maxLines="1"
 							android:singleLine="true"
-							android:id="@+id/activitymainEditText_DialogInput2"/>
+							android:id="@+id/slidedowndialogfragmentEditText_DialogInput2"/>
 
 					</LinearLayout>
 
@@ -131,7 +115,7 @@
 						android:layout_height="match_parent"
 						android:layout_width="match_parent"
 						android:orientation="vertical"
-						android:id="@+id/activitymainLinearLayout_DialogColorPicker"
+						android:id="@+id/slidedowndialogfragmentLinearLayout_DialogColorPicker"
 						android:visibility="gone">
 
 						<LinearLayout
@@ -148,7 +132,7 @@
 								android:layout_weight="1.0"
 								android:visibility="visible"
 								app:bar_orientation_horizontal="false"
-								android:id="@+id/activitymainValueBar_DialogValueBar"/>
+								android:id="@+id/slidedowndialogfragmentValueBar_DialogValueBar"/>
 
 							<com.larswerkman.holocolorpicker.SaturationBar
 								android:layout_width="match_parent"
@@ -157,7 +141,7 @@
 								android:layout_weight="1.0"
 								android:visibility="visible"
 								app:bar_orientation_horizontal="false"
-								android:id="@+id/activitymainSaturationBar_DialogSaturationBar"/>
+								android:id="@+id/slidedowndialogfragmentSaturationBar_DialogSaturationBar"/>
 
 							<com.larswerkman.holocolorpicker.OpacityBar
 								android:layout_width="match_parent"
@@ -166,12 +150,12 @@
 								android:visibility="gone"
 								android:layout_weight="1.0"
 								app:bar_orientation_horizontal="false"
-								android:id="@+id/activitymainOpacityBar_DialogOpacityBar"/>
+								android:id="@+id/slidedowndialogfragmentOpacityBar_DialogOpacityBar"/>
 
 							<com.larswerkman.holocolorpicker.ColorPicker
 								android:layout_width="match_parent"
 								android:layout_height="match_parent"
-								android:id="@+id/activitymainColorPicker_DialogColorPicker"
+								android:id="@+id/slidedowndialogfragmentColorPicker_DialogColorPicker"
 								android:layout_weight="1.0"
 								android:layout_gravity="center"/>
 
@@ -198,7 +182,7 @@
 								android:layout_weight="1.0"
 								android:lines="1"
 								android:singleLine="true"
-								android:id="@+id/activitymainEditText_DialogHexInput"/>
+								android:id="@+id/slidedowndialogfragmentEditText_DialogHexInput"/>
 
 						</LinearLayout>
 
@@ -211,17 +195,49 @@
 			<LinearLayout
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/slidedowndialogfragmentLinearLayout_DialogList"
+				android:layout_marginRight="10dp"
+				android:layout_marginLeft="10dp"
+				android:visibility="visible"
+				android:layout_weight="1.0">
+
+				<ListView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:id="@+id/slidedowndialogfragmentListView_DialogList"
+					android:divider="@color/colorAccentDarkThemeTrans"
+					android:dividerHeight="1dp"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="match_parent"
+				android:text="@string/presetSaveDialog_OverwriteText"
+				android:id="@+id/slidedowndialogfragmentTextView_OverwriteInfo"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:layout_marginBottom="5dp"
+				android:visibility="gone"
+				android:layout_weight="0"/>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
 				android:orientation="horizontal"
-				android:id="@+id/activitymainLinearLayout_DialogButtons"
+				android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtons"
 				android:gravity="right"
-				android:layout_marginRight="10dp">
+				android:layout_marginRight="10dp"
+				android:layout_weight="0">
 
 				<LinearLayout
 					android:background="?selectableItemBackgroundBorderless"
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
-					android:id="@+id/activitymainLinearLayout_DialogButtonNegative"
+					android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonNegative"
 					android:layout_marginRight="5dp"
 					android:visibility="visible">
 
@@ -230,7 +246,7 @@
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
 						android:text="@string/Dialog_Cancel"
-						android:id="@+id/activitymainTextView_DialogButtonNegativeText"
+						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNegativeText"
 						android:layout_margin="10dp"
 						android:textColor="#FFFFFF"/>
 
@@ -241,7 +257,7 @@
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
-					android:id="@+id/activitymainLinearLayout_DialogButtonNeutral"
+					android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonNeutral"
 					android:layout_marginRight="5dp"
 					android:visibility="visible">
 
@@ -250,7 +266,7 @@
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
 						android:text="@string/Dialog_Rename"
-						android:id="@+id/activitymainTextView_DialogButtonNeutralText"
+						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNeutralText"
 						android:layout_margin="10dp"
 						android:textColor="#FFFFFF"/>
 
@@ -261,14 +277,14 @@
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
-					android:id="@+id/activitymainLinearLayout_DialogButtonPositive">
+					android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonPositive">
 
 					<TextView
 						android:layout_height="wrap_content"
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
 						android:text="@string/Dialog_Ok"
-						android:id="@+id/activitymainTextView_DialogButtonPositiveText"
+						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonPositiveText"
 						android:layout_margin="10dp"
 						android:textColor="#FFFFFF"/>
 
@@ -281,8 +297,8 @@
 		<TextView
 			android:layout_height="match_parent"
 			android:layout_width="match_parent"
-			android:id="@+id/activitymainTextView_DialogTouchOutside"
-			android:layout_below="@id/activitymainLinearLayout_DialogRoot"/>
+			android:id="@+id/slidedowndialogfragmentTextView_DialogTouchOutside"
+			android:layout_below="@id/slidedowndialogfragmentLinearLayout_DialogRoot"/>
 
 	</RelativeLayout>
 

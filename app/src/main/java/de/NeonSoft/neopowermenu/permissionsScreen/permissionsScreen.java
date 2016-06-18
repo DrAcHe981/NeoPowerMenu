@@ -100,7 +100,7 @@ public class permissionsScreen extends Fragment
 														});
 														dialogFragment.setDialogText(getActivity().getString(R.string.permissionsScreen_NotAllGranted));
 												dialogFragment.setDialogPositiveButton(getActivity().getString(R.string.Dialog_Ok));
-												MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+												MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 										} else {
 												MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 										}

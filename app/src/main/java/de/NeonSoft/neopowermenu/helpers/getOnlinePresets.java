@@ -70,10 +70,12 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 						orderDirection = "DESC";
 				}
 				if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[1])) {
+						orderName = "_presetTimestamp";
+				} else if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[2])) {
 						orderName = "_presetStars";
-				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[2])) {
-						orderName = "_presetCreator";
 				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[3])) {
+						orderName = "_presetCreator";
+				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[4])) {
 						orderName = "own";
 				}
 				
@@ -207,7 +209,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 												});
 										dialogFragment.setDialogText(result);
 										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Ok));
-										MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+										MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 										PreferencesPresetsFragment.onlineMSG.setText(result);
 								}
 						PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);

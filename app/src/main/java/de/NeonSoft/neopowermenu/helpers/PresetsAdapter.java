@@ -211,7 +211,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedNoAccess));
 																												dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.login_Title));
-																												MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+																												MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 																										}
 																										else if (reason.contains("Preset name exists."))
 																										{
@@ -249,7 +249,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedSameName));
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-																												MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+																												MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 																										}
 																										else if (reason.contains("Cannot connect to the DB"))
 																										{
@@ -295,7 +295,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailed)+"\n"+reason);
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-																												MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+																												MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 																										}
 																								}
 																						});
@@ -317,7 +317,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_CreatorNameInfo),itemsDesc.get(position),false,null);
 														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-														MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+														MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 												}
 										});
 								Delete.setOnClickListener(new OnClickListener() {
@@ -377,7 +377,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
 														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Delete));
-														MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+														MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 												}
 										});
 								Share.setOnClickListener(new OnClickListener() {
@@ -541,7 +541,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
 																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Delete));
-																MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+																MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 														}
 												});
 								} else {

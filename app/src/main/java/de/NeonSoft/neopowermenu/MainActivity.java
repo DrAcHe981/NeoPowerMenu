@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 		public static int TIMEOUT_MILLISEC = 10000; // = 10 seconds
 		
 		public static SharedPreferences preferences;
+		public static SharedPreferences orderPrefs;
 		public static Context context;
 		public static Activity activity;
 		public static IBinder windowToken;
@@ -50,43 +51,6 @@ public class MainActivity extends AppCompatActivity {
 		private static int ImageView_ActionBarButton_Icon = 0;
 		private static TextView TextView_ActionBarButton;
 		private static String TextView_ActionBarButton_Text = "none";
-		
-		private static TextView TextView_DialogBg;
-		private static LinearLayout LinearLayout_DialogRoot;
-		private static TextView TextView_DialogText;
-		
-		private static LinearLayout LinearLayout_DialogListView;
-		private static ListView ListView_DialogListView;
-		
-		private static LinearLayout LinearLayout_DialogInput1;
-		private static TextView TextView_DialogInput1Text;
-		private static EditText EditText_DialogInput1;
-		private static TextWatcher TextWatcher_DialogInput1;
-		
-		private static LinearLayout LinearLayout_DialogInput2;
-		private static TextView TextView_DialogInput2Text;
-		private static EditText EditText_DialogInput2;
-		private static TextWatcher TextWatcher_DialogInput2;
-
-		private static boolean DialogColorPicker_HexChangeViaWheel = false;
-		
-		private static LinearLayout LinearLayout_DialogColorPicker;
-		private static ColorPicker ColorPicker_DialogColorPicker;
-		private static ValueBar ValueBar_DialogValueBar;
-		private static SaturationBar SaturationBar_DialogSaturationBar;
-		private static OpacityBar OpacityBar_DialogOpacityBar;
-		private static EditText EditText_DialogHexInput;
-		
-		private static LinearLayout LinearLayout_DialogNegativeButton;
-		private static TextView TextView_DialogNegativeButtonText;
-
-		private static LinearLayout LinearLayout_DialogNeutralButton;
-		private static TextView TextView_DialogNeutralButtonText;
-
-		private static LinearLayout LinearLayout_DialogPositiveButton;
-		private static TextView TextView_DialogPositiveButtonText;
-		
-		private static TextView TextView_DialogTouchOutside;
 		
     public static final int BG_PRIO = android.os.Process.THREAD_PRIORITY_BACKGROUND;
 
@@ -118,7 +82,24 @@ public class MainActivity extends AppCompatActivity {
 				context = getApplicationContext();
 				activity = getParent();
         preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
+				orderPrefs = getSharedPreferences("visibilityOrder",Context.MODE_WORLD_READABLE);
 
+				int i = 0;
+				while (orderPrefs.getInt(i+"_item_type",-1) != -1) {
+						i++;
+				}
+				if(i==0) {
+						orderPrefs.edit().putInt("0_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
+						orderPrefs.edit().putString("0_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[0]).commit();
+						orderPrefs.edit().putInt("1_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
+						orderPrefs.edit().putString("1_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[1]).commit();
+						orderPrefs.edit().putInt("2_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
+						orderPrefs.edit().putString("2_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[2]).commit();
+						orderPrefs.edit().putInt("3_item_type",visibilityOrderNew_ListAdapter.TYPE_MULTI).commit();
+						orderPrefs.edit().putString("3_item1_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[10]).commit();
+						orderPrefs.edit().putString("3_item2_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[11]).commit();
+						orderPrefs.edit().putString("3_item3_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[12]).commit();
+				}
         setTheme(R.style.ThemeBaseDark);
 				
         super.onCreate(savedInstanceState);
@@ -134,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
 						getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDarkDarkTheme));
 						getWindow().setNavigationBarColor(getResources().getColor(R.color.window_background_dark));
 				}
+				//getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 				
 				anim_fade_out = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
 				anim_fade_in = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
@@ -181,57 +163,6 @@ public class MainActivity extends AppCompatActivity {
 
 				TextView_ActionBarVersion.setText("v"+versionName+" ("+versionCode+")");
 				
-				TextView_DialogBg = (TextView) this.findViewById(R.id.activitymainTextView_DialogBg);
-				LinearLayout_DialogRoot = (LinearLayout) this.findViewById(R.id.activitymainLinearLayout_DialogRoot);
-				TextView_DialogText = (TextView) this.findViewById(R.id.activitymainTextView_DialogText);
-				TextView_DialogBg.setVisibility(View.GONE);
-				TextView_DialogBg.setOnClickListener(new OnClickListener() {
-
-								@Override
-								public void onClick(View p1)
-								{
-										// Just to prevent touch trough
-								}
-						});
-				LinearLayout_DialogRoot.setVisibility(View.GONE);
-				
-				LinearLayout_DialogListView = (LinearLayout) this.findViewById(R.id.activitymainLinearLayout_DialogList);
-				ListView_DialogListView = (ListView) this.findViewById(R.id.activitymainListView_DialogList);
-				ListView_DialogListView.setFastScrollEnabled(true);
-				LinearLayout_DialogListView.setVisibility(View.GONE);
-				
-				LinearLayout_DialogInput1 = (LinearLayout) this.findViewById(R.id.activitymainLinearLayout_DialogInput1);
-				TextView_DialogInput1Text = (TextView) this.findViewById(R.id.activitymainTextView_DialogInput1Text);
-				EditText_DialogInput1 = (EditText) this.findViewById(R.id.activitymainEditText_DialogInput1);
-				LinearLayout_DialogInput1.setVisibility(View.GONE);
-				
-				LinearLayout_DialogInput2 = (LinearLayout) this.findViewById(R.id.activitymainLinearLayout_DialogInput2);
-				TextView_DialogInput2Text = (TextView) this.findViewById(R.id.activitymainTextView_DialogInput2Text);
-				EditText_DialogInput2 = (EditText) this.findViewById(R.id.activitymainEditText_DialogInput2);
-				LinearLayout_DialogInput2.setVisibility(View.GONE);
-				
-				LinearLayout_DialogColorPicker = (LinearLayout) this.findViewById(R.id.activitymainLinearLayout_DialogColorPicker);
-				ColorPicker_DialogColorPicker = (ColorPicker) this.findViewById(R.id.activitymainColorPicker_DialogColorPicker);
-				ValueBar_DialogValueBar = (ValueBar) this.findViewById(R.id.activitymainValueBar_DialogValueBar);
-				SaturationBar_DialogSaturationBar = (SaturationBar) this.findViewById(R.id.activitymainSaturationBar_DialogSaturationBar);
-				OpacityBar_DialogOpacityBar = (OpacityBar) this.findViewById(R.id.activitymainOpacityBar_DialogOpacityBar);
-				EditText_DialogHexInput = (EditText) this.findViewById(R.id.activitymainEditText_DialogHexInput);
-				LinearLayout_DialogColorPicker.setVisibility(View.GONE);
-				
-				LinearLayout_DialogNegativeButton = (LinearLayout) this.findViewById(R.id.activitymainLinearLayout_DialogButtonNegative);
-				TextView_DialogNegativeButtonText = (TextView) this.findViewById(R.id.activitymainTextView_DialogButtonNegativeText);
-				LinearLayout_DialogNegativeButton.setVisibility(View.GONE);
-				
-				LinearLayout_DialogNeutralButton = (LinearLayout) this.findViewById(R.id.activitymainLinearLayout_DialogButtonNeutral);
-				TextView_DialogNeutralButtonText = (TextView) this.findViewById(R.id.activitymainTextView_DialogButtonNeutralText);
-				LinearLayout_DialogNeutralButton.setVisibility(View.GONE);
-
-				LinearLayout_DialogPositiveButton = (LinearLayout) this.findViewById(R.id.activitymainLinearLayout_DialogButtonPositive);
-				TextView_DialogPositiveButtonText = (TextView) this.findViewById(R.id.activitymainTextView_DialogButtonPositiveText);
-				
-				TextView_DialogTouchOutside = (TextView) this.findViewById(R.id.activitymainTextView_DialogTouchOutside);
-				TextView_DialogTouchOutside.setVisibility(View.GONE);
-
         fragmentManager = getSupportFragmentManager();
 				
 				if(preferences.getBoolean("DontAskPermissionsAgain",false) || permissionsScreen.checkPermissions(MainActivity.this,permissionsScreen.permissions)) {
@@ -291,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
 								});
 						dialogFragment.setDialogText(getString(R.string.welcomeMsg));
 						dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
-						MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+						MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 				}
 						//MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
     }
@@ -373,23 +304,17 @@ public class MainActivity extends AppCompatActivity {
 		@Override
 		public void onBackPressed()
 		{
-				if(fragmentManager.findFragmentByTag("slideDownDialog")!=null) {
+				if(fragmentManager.findFragmentByTag(slideDownDialogFragment.dialogTag)!=null) {
 						Intent intent = new Intent();
 						intent.setAction("de.NeonSoft.neopowermenu.closeDialogs");
 						context.sendBroadcast(intent);
 						return;
 				}
-				if(LinearLayout_DialogRoot.getVisibility() == View.VISIBLE) {
-						if(LinearLayout_DialogNegativeButton.getVisibility() == View.VISIBLE) {
-								LinearLayout_DialogNegativeButton.callOnClick();
-						} else {
-								LinearLayout_DialogPositiveButton.callOnClick();
-						}
-						return;
-				}
 				if (visibleFragment.equalsIgnoreCase("CustomColors")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
+						PreferencesVisibilityOrderFragmentNew.adapter.outputSorting();
+						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
 						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
@@ -428,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
 		public void onResume()
 		{
 				// TODO: Implement this method
-				if(!visibleFragment.equalsIgnoreCase("permissions") && !visibleFragment.equalsIgnoreCase("permissionsAutoStart") && !visibleFragment.equalsIgnoreCase("PresetsManagerOnline") && !visibleFragment.equalsIgnoreCase("PresetsManagerAccount")) {
+				if(!visibleFragment.equalsIgnoreCase("permissions") && !visibleFragment.equalsIgnoreCase("permissionsAutoStart") && !visibleFragment.equalsIgnoreCase("PresetsManagerOnline") && !visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && !visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
 						setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
 				}
 				super.onResume();

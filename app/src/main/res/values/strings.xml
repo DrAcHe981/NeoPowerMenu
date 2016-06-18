@@ -145,7 +145,7 @@ This can't be undone!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Background color"</string>
 <string name="colorsType_Text">"Text color"</string>
-<string name="powerMenuMain_Flashlight">"Turn Torch On"</string>
+<string name="powerMenuMain_Flashlight">"Torch"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Permissions"</string>
@@ -247,6 +247,9 @@ Your presets (ordered by stars):
 <string name="presetsManager_removeStar">"Remove Star"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
 <string name="presetsManager_OrderBy">"Order by"</string>
-<string name="presetsManager_OrderNames">"Name/Stars/Creator/Own"</string>
+<string name="presetsManager_OrderNames">"Name/Time/Stars/Creator/Own"</string>
 <string name="presetsManager_OrderAscDesc">"Ascending/Descending"</string>
+
+		<string name="visibilityOrder_Add">"Add normal item/Add multi item"</string>
+		<string name="visibilityOrder_SelectMulti">"Please select three items:"</string>
 </resources>

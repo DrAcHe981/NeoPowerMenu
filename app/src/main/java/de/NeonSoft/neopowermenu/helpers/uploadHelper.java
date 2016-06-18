@@ -208,9 +208,9 @@ public class uploadHelper
 								result.append("&");
 						}
 
-						result.append(URLEncoder.encode(params[x][0].replace("'","\\'").replace("\"","\\\""), "UTF-8"));
+						result.append(URLEncoder.encode(params[x][0].replace("'","\\'").replace("\"","\\\"").replace("\\","\\\\").replace("/",""), "UTF-8"));
 						result.append("=");
-						result.append(URLEncoder.encode(params[x][1].replace("'","\\'").replace("\"","\\\""), "UTF-8"));
+						result.append(URLEncoder.encode(params[x][1].replace("'","\\'").replace("\"","\\\"").replace("\\","\\\\").replace("/",""), "UTF-8"));
 				}
 
 				return result.toString();

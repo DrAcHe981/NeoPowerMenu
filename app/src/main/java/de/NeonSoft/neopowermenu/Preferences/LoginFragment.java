@@ -20,6 +20,8 @@ public class LoginFragment extends Fragment
 		static Activity mContext;
 		public static String loginFragmentMode = "login";
 
+		static TextView TextView_AccountInfo;
+		
 		// LoginContainer
 		static LinearLayout LinearLayout_LoginContainer;
 		static EditText EditText_UsernameEmail, EditText_Password;
@@ -45,6 +47,8 @@ public class LoginFragment extends Fragment
 				//loginFragmentMode = "login";
 				View InflatedView = inflater.inflate(R.layout.activity_login, container, false);
 
+				TextView_AccountInfo = (TextView) InflatedView.findViewById(R.id.activityloginTextView_AccountInfo);
+				
 				// LoginContainer
 				LinearLayout_LoginContainer = (LinearLayout) InflatedView.findViewById(R.id.activityloginLinearLayout_LoginContainer);
 				LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
@@ -188,25 +192,14 @@ public class LoginFragment extends Fragment
 								LinearLayout_LoggedInContainer.setVisibility(View.GONE);
 								LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 								LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+								TextView_AccountInfo.setVisibility(View.VISIBLE);
+								TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
 								MainActivity.setActionBarButton(mContext.getString(R.string.login_Title),R.drawable.ic_action_import,loginOnClickListener);
 								loginFragmentMode = "login";
 						}
 				};
 
-				if (MainActivity.loggedIn)
-				{
-						loginFragmentMode = "logout";
-						LinearLayout_LoginContainer.setVisibility(View.GONE);
-						TextView_TitleStatistics.setText(getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.usernameemail));
-						getStatistics();
-						LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
-						//MainActivity.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_content_send, logoutOnClickListener);
-				}
-				else
-				{
-						loginFragmentMode = "login";
-						//MainActivity.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
-				}
+				checkState();
 				
 				if(MainActivity.preferences.getBoolean("autoLogin",false)) {
 						EditText_UsernameEmail.setText(MainActivity.preferences.getString("ueel","null"));
@@ -251,6 +244,27 @@ public class LoginFragment extends Fragment
 				return InflatedView;
 		}
 
+		public static void checkState() {
+				if (MainActivity.loggedIn)
+				{
+						loginFragmentMode = "logout";
+						if(TextView_AccountInfo.getVisibility()==View.VISIBLE ) TextView_AccountInfo.setVisibility(View.GONE);
+						if(LinearLayout_LoginContainer.getVisibility()==View.VISIBLE) LinearLayout_LoginContainer.setVisibility(View.GONE);
+						TextView_TitleStatistics.setText(mContext.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.usernameemail));
+						getStatistics();
+						if(LinearLayout_LoggedInContainer.getVisibility()==View.GONE) LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
+						//MainActivity.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_content_send, logoutOnClickListener);
+				}
+				else
+				{
+						loginFragmentMode = "login";
+						if(TextView_AccountInfo.getVisibility()==View.GONE ) TextView_AccountInfo.setVisibility(View.VISIBLE);
+						if(LinearLayout_LoginContainer.getVisibility()==View.GONE) LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
+						if(LinearLayout_LoggedInContainer.getVisibility()==View.VISIBLE) LinearLayout_LoggedInContainer.setVisibility(View.GONE);
+						//MainActivity.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
+				}
+		}
+		
 		public static void performLogin(final Context context,final String usernameemail,final String password,final boolean background) {
 
 				uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
@@ -291,6 +305,8 @@ public class LoginFragment extends Fragment
 																.putString("ueel", MainActivity.usernameemail)
 																.putString("pd", MainActivity.password).commit();
 												}
+												TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+												TextView_AccountInfo.setVisibility(View.GONE);
 												LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 												LinearLayout_LoginContainer.setVisibility(View.GONE);
 												TextView_TitleStatistics.setText(context.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.usernameemail));

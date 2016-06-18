@@ -1,4 +1,5 @@
 package de.NeonSoft.neopowermenu.helpers;
+import android.animation.*;
 import android.app.*;
 import android.content.*;
 import android.graphics.*;
@@ -23,6 +24,8 @@ import de.NeonSoft.neopowermenu.R;
 public class slideDownDialogFragment extends Fragment
 {
 
+		public static String dialogTag = "slideDownDialog";
+	
 		 private Activity mContext;
 		private slideDownDialogInterface mInterface;
 		private Fragment mFragment;
@@ -31,6 +34,7 @@ public class slideDownDialogFragment extends Fragment
 		 private String dialogText = "";
 	
 		 private int dialogListMode;
+		 private int dialogListLimit = 0;
 		 private String[] dialogListItems;
 		 private int dialogListDefault = 0;
 		 private boolean dialogListClose = true;
@@ -48,6 +52,8 @@ public class slideDownDialogFragment extends Fragment
 		private String dialogColorPickerdefaultValue;
 		private boolean dialogColorPickershowOpacityBar;
 		
+		private TextView TextView_OverwriteInfo;
+		
 		 private String negativeButtonText = null;
 		 private String neutralButtonText = null;
 		 private String positiveButtonText = "Ok";
@@ -57,6 +63,7 @@ public class slideDownDialogFragment extends Fragment
 
 		TextView TextView_DialogBg;
 		LinearLayout LinearLayout_DialogRoot;
+		LinearLayout LinearLayout_MainContainer;
 		TextView TextView_DialogText;
 
 		LinearLayout LinearLayout_DialogListView;
@@ -81,6 +88,8 @@ public class slideDownDialogFragment extends Fragment
 		OpacityBar OpacityBar_DialogOpacityBar;
 		EditText EditText_DialogHexInput;
 
+		LinearLayout LinearLayout_Buttons;
+		
 		LinearLayout LinearLayout_DialogNegativeButton;
 		TextView TextView_DialogNegativeButtonText;
 
@@ -112,6 +121,9 @@ public class slideDownDialogFragment extends Fragment
 				dialogListDefault = defaultsel;
 				dialogListClose = closeonsel;
 		}
+		public void setDialogListLimit(int limit) {
+				dialogListLimit = limit;
+		}
 		
 		public void setDialogInput1(String descText,String defaultText,boolean allowEmpty,TextWatcher watcher) {
 				dialogInput1descText = descText;
@@ -129,6 +141,10 @@ public class slideDownDialogFragment extends Fragment
 		public void setDialogColorPicker(String defaultColor,boolean showOpacityBar) {
 				dialogColorPickerdefaultValue = defaultColor;
 				dialogColorPickershowOpacityBar = showOpacityBar;
+		}
+		
+		public void setOverwriteInfo(boolean enabled) {
+				TextView_OverwriteInfo.setVisibility(enabled ? View.VISIBLE : View.GONE);
 		}
 		
 		public void setDialogNegativeButton(String text) {
@@ -160,9 +176,30 @@ public class slideDownDialogFragment extends Fragment
 						mFragment = this;
 						View InflatedView = inflater.inflate(R.layout.slidedowndialogfragment,container,false);
 
-						TextView_DialogBg = (TextView) InflatedView.findViewById(R.id.activitymainTextView_DialogBg);
-						LinearLayout_DialogRoot = (LinearLayout) InflatedView.findViewById(R.id.activitymainLinearLayout_DialogRoot);
-						TextView_DialogText = (TextView) InflatedView.findViewById(R.id.activitymainTextView_DialogText);
+						final LayoutTransition transitioner = new LayoutTransition();
+						ObjectAnimator customAppearingAnim = ObjectAnimator.ofFloat(null, "rotationY", 0f, 0f).
+								setDuration(transitioner.getDuration(LayoutTransition.APPEARING));
+						customAppearingAnim.addListener(new AnimatorListenerAdapter() {
+										public void onAnimationEnd(Animator anim) {
+												View view = (View) ((ObjectAnimator) anim).getTarget();
+												view.setRotationY(0f);
+										}
+								});
+						ObjectAnimator customDisappearingAnim = ObjectAnimator.ofFloat(null, "rotationX", 0f, 0f).
+								setDuration(transitioner.getDuration(LayoutTransition.DISAPPEARING));
+						customDisappearingAnim.addListener(new AnimatorListenerAdapter() {
+										public void onAnimationEnd(Animator anim) {
+												View view = (View) ((ObjectAnimator) anim).getTarget();
+												view.setRotationX(0f);
+										}
+								});
+								
+						TextView_DialogBg = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogBg);
+						LinearLayout_DialogRoot = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogRoot);
+						LinearLayout_MainContainer = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_MainContainer);
+						//LinearLayout_DialogRoot.setLayoutTransition(transitioner);
+						//LinearLayout_MainContainer.setLayoutTransition(transitioner);
+						TextView_DialogText = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogText);
 						TextView_DialogBg.setVisibility(View.GONE);
 						TextView_DialogBg.setOnClickListener(new OnClickListener() {
 
@@ -174,41 +211,46 @@ public class slideDownDialogFragment extends Fragment
 								});
 						LinearLayout_DialogRoot.setVisibility(View.GONE);
 
-						LinearLayout_DialogListView = (LinearLayout) InflatedView.findViewById(R.id.activitymainLinearLayout_DialogList);
-						ListView_DialogListView = (ListView) InflatedView.findViewById(R.id.activitymainListView_DialogList);
+						LinearLayout_DialogListView = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogList);
+						ListView_DialogListView = (ListView) InflatedView.findViewById(R.id.slidedowndialogfragmentListView_DialogList);
 						ListView_DialogListView.setFastScrollEnabled(true);
 						LinearLayout_DialogListView.setVisibility(View.GONE);
 
-						LinearLayout_DialogInput1 = (LinearLayout) InflatedView.findViewById(R.id.activitymainLinearLayout_DialogInput1);
-						TextView_DialogInput1Text = (TextView) InflatedView.findViewById(R.id.activitymainTextView_DialogInput1Text);
-						EditText_DialogInput1 = (EditText) InflatedView.findViewById(R.id.activitymainEditText_DialogInput1);
+						LinearLayout_DialogInput1 = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogInput1);
+						TextView_DialogInput1Text = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogInput1Text);
+						EditText_DialogInput1 = (EditText) InflatedView.findViewById(R.id.slidedowndialogfragmentEditText_DialogInput1);
 						LinearLayout_DialogInput1.setVisibility(View.GONE);
 
-						LinearLayout_DialogInput2 = (LinearLayout) InflatedView.findViewById(R.id.activitymainLinearLayout_DialogInput2);
-						TextView_DialogInput2Text = (TextView) InflatedView.findViewById(R.id.activitymainTextView_DialogInput2Text);
-						EditText_DialogInput2 = (EditText) InflatedView.findViewById(R.id.activitymainEditText_DialogInput2);
+						LinearLayout_DialogInput2 = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogInput2);
+						TextView_DialogInput2Text = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogInput2Text);
+						EditText_DialogInput2 = (EditText) InflatedView.findViewById(R.id.slidedowndialogfragmentEditText_DialogInput2);
 						LinearLayout_DialogInput2.setVisibility(View.GONE);
 
-						LinearLayout_DialogColorPicker = (LinearLayout) InflatedView.findViewById(R.id.activitymainLinearLayout_DialogColorPicker);
-						ColorPicker_DialogColorPicker = (ColorPicker) InflatedView.findViewById(R.id.activitymainColorPicker_DialogColorPicker);
-						ValueBar_DialogValueBar = (ValueBar) InflatedView.findViewById(R.id.activitymainValueBar_DialogValueBar);
-						SaturationBar_DialogSaturationBar = (SaturationBar) InflatedView.findViewById(R.id.activitymainSaturationBar_DialogSaturationBar);
-						OpacityBar_DialogOpacityBar = (OpacityBar) InflatedView.findViewById(R.id.activitymainOpacityBar_DialogOpacityBar);
-						EditText_DialogHexInput = (EditText) InflatedView.findViewById(R.id.activitymainEditText_DialogHexInput);
+						LinearLayout_DialogColorPicker = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogColorPicker);
+						ColorPicker_DialogColorPicker = (ColorPicker) InflatedView.findViewById(R.id.slidedowndialogfragmentColorPicker_DialogColorPicker);
+						ValueBar_DialogValueBar = (ValueBar) InflatedView.findViewById(R.id.slidedowndialogfragmentValueBar_DialogValueBar);
+						SaturationBar_DialogSaturationBar = (SaturationBar) InflatedView.findViewById(R.id.slidedowndialogfragmentSaturationBar_DialogSaturationBar);
+						OpacityBar_DialogOpacityBar = (OpacityBar) InflatedView.findViewById(R.id.slidedowndialogfragmentOpacityBar_DialogOpacityBar);
+						EditText_DialogHexInput = (EditText) InflatedView.findViewById(R.id.slidedowndialogfragmentEditText_DialogHexInput);
 						LinearLayout_DialogColorPicker.setVisibility(View.GONE);
 
-						LinearLayout_DialogNegativeButton = (LinearLayout) InflatedView.findViewById(R.id.activitymainLinearLayout_DialogButtonNegative);
-						TextView_DialogNegativeButtonText = (TextView) InflatedView.findViewById(R.id.activitymainTextView_DialogButtonNegativeText);
+						TextView_OverwriteInfo = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_OverwriteInfo);
+						TextView_OverwriteInfo.setVisibility(View.GONE);
+						
+						LinearLayout_Buttons = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtons);
+						
+						LinearLayout_DialogNegativeButton = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtonNegative);
+						TextView_DialogNegativeButtonText = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogButtonNegativeText);
 						LinearLayout_DialogNegativeButton.setVisibility(View.GONE);
 
-						LinearLayout_DialogNeutralButton = (LinearLayout) InflatedView.findViewById(R.id.activitymainLinearLayout_DialogButtonNeutral);
-						TextView_DialogNeutralButtonText = (TextView) InflatedView.findViewById(R.id.activitymainTextView_DialogButtonNeutralText);
+						LinearLayout_DialogNeutralButton = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtonNeutral);
+						TextView_DialogNeutralButtonText = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogButtonNeutralText);
 						LinearLayout_DialogNeutralButton.setVisibility(View.GONE);
 
-						LinearLayout_DialogPositiveButton = (LinearLayout) InflatedView.findViewById(R.id.activitymainLinearLayout_DialogButtonPositive);
-						TextView_DialogPositiveButtonText = (TextView) InflatedView.findViewById(R.id.activitymainTextView_DialogButtonPositiveText);
+						LinearLayout_DialogPositiveButton = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtonPositive);
+						TextView_DialogPositiveButtonText = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogButtonPositiveText);
 
-						TextView_DialogTouchOutside = (TextView) InflatedView.findViewById(R.id.activitymainTextView_DialogTouchOutside);
+						TextView_DialogTouchOutside = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogTouchOutside);
 						TextView_DialogTouchOutside.setVisibility(View.GONE);
 
 
@@ -237,16 +279,24 @@ public class slideDownDialogFragment extends Fragment
 						mContext.registerReceiver(br, filter);
 						
 						if(dialogListItems != null && dialogListItems.length > 0) {
-								ListView_DialogListView.setAdapter(new ArrayAdapter<String>(mContext,(dialogListMode==ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : android.R.layout.simple_list_item_single_choice),dialogListItems));
+								ListView_DialogListView.setAdapter(new ArrayAdapter<String>(mContext,(dialogListMode==ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode==ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)),dialogListItems));
 								ListView_DialogListView.setChoiceMode(dialogListMode);
-								ListView_DialogListView.setItemChecked(dialogListDefault,true);
-								ListView_DialogListView.setSelection(dialogListDefault);
+								if(dialogListDefault>-1) {
+										ListView_DialogListView.setItemChecked(dialogListDefault,true);
+										ListView_DialogListView.setSelection(dialogListDefault);
+								}
 								ListView_DialogListView.setOnItemClickListener(new OnItemClickListener() {
 
 												@Override
 												public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
 												{
 														// TODO: Implement this method
+														if(dialogListLimit > 0) {
+																if(ListView_DialogListView.getCheckedItemCount()>dialogListLimit) {
+																		ListView_DialogListView.setItemChecked(p3,false);
+																		return;
+																}
+														}
 														mInterface.onListItemClick(p3,ListView_DialogListView.getItemAtPosition(p3).toString());
 														if(dialogListClose) {
 																closeDialog();
@@ -421,6 +471,24 @@ public class slideDownDialogFragment extends Fragment
 										{
 												// TODO: Implement this method
 												ArrayList<String> resultData = new ArrayList<String>();
+												if(dialogListItems!=null) {
+														if(dialogListLimit>0 && ListView_DialogListView.getCheckedItemCount() < dialogListLimit) {
+																return;
+														}
+														if(dialogListMode==ListView.CHOICE_MODE_SINGLE) {
+																resultData.add(dialogListItems[ListView_DialogListView.getCheckedItemPosition()]);
+														} else if(dialogListMode==ListView.CHOICE_MODE_MULTIPLE) {
+																String string = "";
+																int checked = 0;
+																for(int i = 0;i<dialogListItems.length;i++) {
+																		if(ListView_DialogListView.isItemChecked(i)) {
+																				checked++;
+																				string = string + i + ((checked>=ListView_DialogListView.getCheckedItemCount()) ? "" : ",");
+																		}
+																}
+																resultData.add(string);
+														}
+												}
 												if(dialogInput1descText!=null) {
 														if(!dialogInput1allowEmpty&&EditText_DialogInput1.getText().toString().isEmpty()) {
 																return;
@@ -459,6 +527,10 @@ public class slideDownDialogFragment extends Fragment
 						LinearLayout_DialogRoot.setVisibility(View.VISIBLE);
 						LinearLayout_DialogRoot.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.abc_slide_in_top));
 
+						if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP) {
+								//mContext.getWindow().setNavigationBarColor(Color.parseColor(String.format("#%08X", (0xCC000000 & mContext.getResources().getColor(R.color.window_background_dark)))));
+						}
+						
 						return InflatedView;
 				}
 		
@@ -484,6 +556,9 @@ public class slideDownDialogFragment extends Fragment
 										// TODO: Implement this method
 										mContext.unregisterReceiver(br);
 										MainActivity.fragmentManager.beginTransaction().remove(mFragment).commit();
+										if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP) {
+												//mContext.getWindow().setNavigationBarColor(mContext.getResources().getColor(R.color.window_background_dark));
+										}
 								}
 
 								@Override

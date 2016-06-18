@@ -171,7 +171,7 @@ public class PreferencesPartFragment extends Fragment
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId,true);
 										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-										MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+										MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 								}
 						});
 
@@ -189,7 +189,7 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesVisibilityOrderFragment()).commit();
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesVisibilityOrderFragmentNew()).commit();
 								}
 						});
 

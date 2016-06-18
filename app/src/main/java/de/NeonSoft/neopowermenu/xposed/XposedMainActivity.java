@@ -23,6 +23,7 @@ import de.NeonSoft.neopowermenu.helpers.BlurUtils.BlurTaskCallback;
 public class XposedMainActivity extends Activity implements DialogInterface.OnDismissListener {
 
 		public static SharedPreferences preferences;
+		public static SharedPreferences orderPrefs;
     private static CircularRevealView revealView;
 		private static TextView PreviewLabel;
     private static int backgroundColor;
@@ -57,6 +58,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
 				mContext =getApplicationContext();
 				preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
+				orderPrefs = getSharedPreferences("visibilityOrder",Context.MODE_WORLD_READABLE);
 				
 				mBlurScale = preferences.getInt("blurScale",20);
 				mBlurRadius = preferences.getInt("blurRadius",3);

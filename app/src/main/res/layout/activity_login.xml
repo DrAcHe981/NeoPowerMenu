@@ -12,7 +12,8 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:orientation="vertical">
+				android:orientation="vertical"
+				android:animateLayoutChanges="true">
 
 			<View
 				android:background="@color/transparent"
@@ -27,7 +28,8 @@
 				android:layout_marginBottom="10dp"
 				android:paddingLeft="10dp"
 				android:paddingRight="10dp"
-				android:layout_marginTop="5dp"/>
+				android:layout_marginTop="5dp"
+				android:id="@+id/activityloginTextView_AccountInfo"/>
 
 			<LinearLayout
 				android:layout_height="match_parent"

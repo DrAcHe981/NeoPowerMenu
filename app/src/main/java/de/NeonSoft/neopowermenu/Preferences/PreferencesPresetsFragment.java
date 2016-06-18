@@ -240,9 +240,11 @@ public class PreferencesPresetsFragment extends Fragment
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")"}, onlineOrderSelected,true);
+																																		 getString(R.string.presetsManager_OrderNames).split("/")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")"}, onlineOrderSelected,true);
 																		dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-																		MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+																		MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 																		if (onlineOrder.getVisibility() == View.VISIBLE)
 																		{
 																				onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
@@ -319,6 +321,7 @@ public class PreferencesPresetsFragment extends Fragment
 														onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
 														onlineOrder.setVisibility(View.GONE);
 												}
+												LoginFragment.checkState();
 										}
 										else
 										{
@@ -470,11 +473,13 @@ public class PreferencesPresetsFragment extends Fragment
 										{
 												// TODO: Implement this method
 												if (!p1.toString().equalsIgnoreCase("")) {
-														File checkFile = new File(mContext.getFilesDir()+"/presets/"+p1+".nps");
+														File checkFile = new File(mContext.getFilesDir()+"/presets/"+p1.toString().replace("/","")+".nps");
 														if (!checkFile.exists()) {
-																dialogFragment.setDialogText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : sCreator) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
+																dialogFragment.setOverwriteInfo(false);
+																//dialogFragment.setDialogText("");
 														} else {
-																dialogFragment.setDialogText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : sCreator) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg)+"\n\n"+mContext.getString(R.string.presetSaveDialog_OverwriteText));
+																dialogFragment.setOverwriteInfo(true);
+																//dialogFragment.setDialogText(context.getString(R.string.presetSaveDialog_OverwriteText));
 														}
 												}
 										}
@@ -487,7 +492,7 @@ public class PreferencesPresetsFragment extends Fragment
 						);
 						dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Cancel));
 						dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Save));
-						MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"slideDownDialog").commit();
+						MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
 
 				}
 				catch (Throwable e)

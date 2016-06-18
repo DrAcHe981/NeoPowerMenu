@@ -145,7 +145,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Hintergrundfarbe"</string>
 <string name="colorsType_Text">"Text Farbe"</string>
-<string name="powerMenuMain_Flashlight">"Taschenlampe Einschalten"</string>
+<string name="powerMenuMain_Flashlight">"Taschenlampe"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Berechtigungen"</string>
@@ -249,6 +249,9 @@ Top 5 Voreinstellungen:
 <string name="colorsPartMain">"Dialog"</string>
 <string name="presetsManager_Refresh">"Aktualisieren"</string>
 <string name="presetsManager_OrderBy">"Sortieren nach"</string>
-<string name="presetsManager_OrderNames">"Name/Sterne/Ersteller/Eigene"</string>
-<string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
+<string name="presetsManager_OrderNames">"Name/Zeit/Sterne/Ersteller/Eigene"</string>
+		<string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
+		
+		<string name="visibilityOrder_Add">"Normales Item hinzufügen/Multi Item hinzufügen"</string>
+		<string name="visibilityOrder_SelectMulti">"Bitte wähle drei Items:"</string>
 </resources>
