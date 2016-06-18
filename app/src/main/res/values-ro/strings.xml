@@ -142,7 +142,6 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Culoare fundal"</string>
 <string name="colorsType_Text">"Culoare text"</string>
-<string name="powerMenuMain_Flashlight">"Porneste lanterna"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Permisiuni"</string>
