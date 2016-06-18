@@ -144,7 +144,6 @@
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Цвет фона"</string>
 <string name="colorsType_Text">"Цвет текста"</string>
-<string name="powerMenuMain_Flashlight">"Включить Фонарик"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Разрешения"</string>
