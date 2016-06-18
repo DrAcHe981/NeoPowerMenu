@@ -13,7 +13,7 @@
 <string name="powerMenuMain_ScreenshotDesc">"Interval timp intre capturi ecran: [SCREENSHOTDELAY] "</string>
 <string name="powerMenuBottom_Recovery">"Mod Recovery"</string>
 <string name="powerMenuBottom_Bootloader">"Mod Bootloader"</string>
-<string name="powerMenuBottom_SafeMode">"Modul Safe"</string>
+<string name="powerMenuBottom_SafeMode">"Mod Safe"</string>
 <string name="powerMenu_Shuttingdown">"Inchidere telefon..."</string>
 <string name="powerMenu_Rebooting">"Repornire telefon..."</string>
 
@@ -142,6 +142,7 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Culoare fundal"</string>
 <string name="colorsType_Text">"Culoare text"</string>
+<string name="powerMenuMain_Flashlight">"Lanterna"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Permisiuni"</string>
@@ -263,5 +264,8 @@ Presetarile tale (in functie de numarul de stele)
 <string name="colorsPartMain">"Caseta"</string>
 <string name="presetsManager_Refresh">"Innoire"</string>
 <string name="presetsManager_OrderBy">"Ordonat in functie de"</string>
+<string name="presetsManager_OrderNames">"Nume/Timp/Stele/Creator/Personal"</string>
 <string name="presetsManager_OrderAscDesc">"Crescator/Descrescator"</string>
+<string name="visibilityOrder_Add">"Adauga element normal/ Adauga element multiplu"</string>
+<string name="visibilityOrder_SelectMulti">"Selecteaza trei elemente"</string>
 </resources>
