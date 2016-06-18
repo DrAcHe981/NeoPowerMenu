@@ -217,6 +217,13 @@
 <string name="login_RegisterSuccess">"Регистрация завершена, вы получите электронное письмо, чтобы активировать аккаунт."</string>
 <string name="login_Processing">"Обработка..."</string>
 <string name="login_TitleStatistics">"Статистика для [USERNAMEEMAIL]"</string>
+<string name="login_Statistics">"Шаблонов загружено: [UPLOADCOUNT]
+
+Звёзд дано: [STARSGIVEN]
+Звёзд получено: [STARSRECIEVED]
+
+Ваши шаблоны (сортированы по Звёздам):
+[TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Ошибка в получении статистики..."</string>
 
 <!-- Fuzzy -->
@@ -238,6 +245,5 @@
 <string name="presetsManager_removeStar">"Убрать звезду"</string>
 <string name="presetsManager_Refresh">"Обновить"</string>
 <string name="presetsManager_OrderBy">"Сортировать по"</string>
-<string name="presetsManager_OrderNames">"Имени/Звёздам/Автору/Собственному"</string>
 <string name="presetsManager_OrderAscDesc">"По возрастанию/По убыванию"</string>
 </resources>
