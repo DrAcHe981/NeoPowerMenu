@@ -144,6 +144,7 @@
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Цвет фона"</string>
 <string name="colorsType_Text">"Цвет текста"</string>
+<string name="powerMenuMain_Flashlight">"Фонарик"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Разрешения"</string>
@@ -244,5 +245,8 @@
 <string name="presetsManager_removeStar">"Убрать звезду"</string>
 <string name="presetsManager_Refresh">"Обновить"</string>
 <string name="presetsManager_OrderBy">"Сортировать по"</string>
+<string name="presetsManager_OrderNames">"Название/Время/Звёзды/Создатель/Собственные"</string>
 <string name="presetsManager_OrderAscDesc">"По возрастанию/По убыванию"</string>
+<string name="visibilityOrder_Add">"Добавить обычный элемент/Добавить несколько элементов"</string>
+<string name="visibilityOrder_SelectMulti">"Пожалуйста, выберите три элемента."</string>
 </resources>
