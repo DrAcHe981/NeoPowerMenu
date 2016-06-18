@@ -219,8 +219,6 @@ Klicke hier, um ein Konto zu erstellen!"</string>
 <string name="login_RegisterSuccess">"Registrierung erfolgreich, du wirst eine E-mail zum Aktivieren erhalten!"</string>
 <string name="login_Processing">"Verarbeite..."</string>
 <string name="login_TitleStatistics">"Statistiken für [USERNAMEEMAIL]"</string>
-
-<!-- Fuzzy -->
 <string name="login_Statistics">"Voreinstellungen hoch geladen: [UPLOADCOUNT]
 
 Sterne vergeben: [STARSGIVEN]
@@ -250,8 +248,7 @@ Top 5 Voreinstellungen:
 <string name="presetsManager_Refresh">"Aktualisieren"</string>
 <string name="presetsManager_OrderBy">"Sortieren nach"</string>
 <string name="presetsManager_OrderNames">"Name/Zeit/Sterne/Ersteller/Eigene"</string>
-		<string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
-		
-		<string name="visibilityOrder_Add">"Normales Item hinzufügen/Multi Item hinzufügen"</string>
-		<string name="visibilityOrder_SelectMulti">"Bitte wähle drei Items:"</string>
+<string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
+<string name="visibilityOrder_Add">"Normales Item hinzufügen/Multi Item hinzufügen"</string>
+<string name="visibilityOrder_SelectMulti">"Bitte wähle drei Items:"</string>
 </resources>
