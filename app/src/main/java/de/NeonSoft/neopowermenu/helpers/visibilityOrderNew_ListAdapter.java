@@ -146,7 +146,8 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 					item1.setText(string);
 
 					TextView item2 = (TextView) InflatedView.findViewById(R.id.visibilityordermulti_item2);
-					string = "Failed to get String resource for "+ items[1];
+					if(items.length>=2) {
+							string = "Failed to get String resource for "+ items[1];
 					try {
 							string = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuMain_"+items[1],"string",MainActivity.class.getPackage().getName()));
 					}
@@ -158,9 +159,13 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 							}
 					}
 					item2.setText(string);
+					} else {
+							item2.setText(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[0]);
+					}
 
 					TextView item3 = (TextView) InflatedView.findViewById(R.id.visibilityordermulti_item3);
-					string = "Failed to get String resource for "+ items[2];
+					if(items.length==3) {
+							string = "Failed to get String resource for "+ items[2];
 					try {
 							string = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuMain_"+items[2],"string",MainActivity.class.getPackage().getName()));
 					}
@@ -172,6 +177,9 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 							}
 					}
 					item3.setText(string);
+					} else {
+							item3.setText(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[0]);
+					}
 					
 					LinearLayout ItemCheckBoxHolder = (LinearLayout) InflatedView.findViewById(R.id.visibilityordermulti_LinearLayout_HideDesc);
 					final CheckBox ItemCheckBox = (CheckBox) InflatedView.findViewById(R.id.visibilityordermulti_hideDescCheckBox);
@@ -233,7 +241,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															{
 																	// TODO: Implement this method
 																	removeAt(position);
-																	insertAt(position,new Object[] {TYPE_MULTI,PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]+","+items[1]+","+items[2]});
+																	insertAt(position,new Object[] {TYPE_MULTI,PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]+","+(items.length >= 2 ? items[1] : "Empty")+","+(items.length == 3 ? items[2] : "Empty")});
 															}
 
 															@Override
@@ -285,7 +293,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															{
 																	// TODO: Implement this method
 																	removeAt(position);
-																	insertAt(position,new Object[] {TYPE_MULTI,items[0]+","+PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]+","+items[2]});
+																	insertAt(position,new Object[] {TYPE_MULTI,items[0]+","+PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]+","+(items.length == 3 ? items[2] : "Empty")});
 															}
 
 															@Override
@@ -313,11 +321,13 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															}
 													});
 											int selItem = 0;
+											if(items.length>=2) {
 											for(int i = 0;i< PreferencesVisibilityOrderFragmentNew.PowerMenuItems.length;i++) {
 													if(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[i].equalsIgnoreCase(items[1])) {
 															selItem = i;
 															break;
 													}
+											}
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
@@ -337,7 +347,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															{
 																	// TODO: Implement this method
 																	removeAt(position);
-																	insertAt(position,new Object[] {TYPE_MULTI,items[0]+","+items[1]+","+PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]});
+																	insertAt(position,new Object[] {TYPE_MULTI,items[0]+","+(items.length >= 2 ? items[1] : "Empty")+","+PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]});
 															}
 
 															@Override
@@ -365,11 +375,13 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															}
 													});
 											int selItem = 0;
+											if(items.length==3) {
 											for(int i = 0;i< PreferencesVisibilityOrderFragmentNew.PowerMenuItems.length;i++) {
 													if(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[i].equalsIgnoreCase(items[2])) {
 															selItem = i;
 															break;
 													}
+											}
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
@@ -416,8 +428,8 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 						} else if(itemsType.get(i) == TYPE_MULTI) {
 								String [] split = itemsTitle.get(i).split(",");
 								MainActivity.orderPrefs.edit().putString(i+"_item1_title",split[0]).commit();
-								MainActivity.orderPrefs.edit().putString(i+"_item2_title",split[1]).commit();
-								MainActivity.orderPrefs.edit().putString(i+"_item3_title",split[2]).commit();
+								MainActivity.orderPrefs.edit().putString(i+"_item2_title",(split.length >= 2 ? split[1] : "Empty")).commit();
+								MainActivity.orderPrefs.edit().putString(i+"_item3_title",(split.length == 3 ? split[2] : "Empty")).commit();
 						}
 				}
 		}

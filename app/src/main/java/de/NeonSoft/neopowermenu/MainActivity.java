@@ -325,7 +325,7 @@ public class MainActivity extends AppCompatActivity {
 						} else {
 								PreferencesPresetsFragment.vpPager.setCurrentItem(1,true);
 						}
-				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && LoginFragment.loginFragmentMode.equalsIgnoreCase("register")) {
+				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("register") || LoginFragment.loginFragmentMode.equalsIgnoreCase("recover"))) {
 						LoginFragment.returnToLogin();
 				} else if (visibleFragment.equalsIgnoreCase("Advanced")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();

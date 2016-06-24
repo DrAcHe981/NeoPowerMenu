@@ -35,6 +35,7 @@ public class slideDownDialogFragment extends Fragment
 	
 		 private int dialogListMode;
 		 private int dialogListLimit = 0;
+		 private boolean dialogListLimitMin = false;
 		 private String[] dialogListItems;
 		 private int dialogListDefault = 0;
 		 private boolean dialogListClose = true;
@@ -121,8 +122,9 @@ public class slideDownDialogFragment extends Fragment
 				dialogListDefault = defaultsel;
 				dialogListClose = closeonsel;
 		}
-		public void setDialogListLimit(int limit) {
+		public void setDialogListLimit(int limit, boolean alsoMin) {
 				dialogListLimit = limit;
+				dialogListLimitMin = alsoMin;
 		}
 		
 		public void setDialogInput1(String descText,String defaultText,boolean allowEmpty,TextWatcher watcher) {
@@ -472,7 +474,10 @@ public class slideDownDialogFragment extends Fragment
 												// TODO: Implement this method
 												ArrayList<String> resultData = new ArrayList<String>();
 												if(dialogListItems!=null) {
-														if(dialogListLimit>0 && ListView_DialogListView.getCheckedItemCount() < dialogListLimit) {
+														if(ListView_DialogListView.getCheckedItemCount() < 1) {
+																return;
+														}
+														if(dialogListLimitMin && dialogListLimit>0 && ListView_DialogListView.getCheckedItemCount() < dialogListLimit) {
 																return;
 														}
 														if(dialogListMode==ListView.CHOICE_MODE_SINGLE) {

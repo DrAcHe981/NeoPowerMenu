@@ -18,6 +18,7 @@
 <string name="powerMenuBottom_SafeMode">"Safe Mode"</string>
 <string name="powerMenu_Shuttingdown">"Shutting down..."</string>
 <string name="powerMenu_Rebooting">"Rebooting..."</string>
+		<string name="powerMenuMain_Empty">"Empty"</string>
 
 <!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root and Xposed"</string>
@@ -227,11 +228,13 @@ Stars received: [STARSRECEIVED]
 Your presets (ordered by stars):
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Failed to get statistics..."</string>
-
-<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
+		<string name="login_Recover">"Recover"</string>
+		<string name="login_RecoverAccount">"Can't acces account?
+Click here for recovering options."</string>
+		<string name="login_RecoverPassword">"Reset Password"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>

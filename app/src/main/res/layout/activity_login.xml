@@ -12,8 +12,8 @@
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-				android:orientation="vertical"
-				android:animateLayoutChanges="true">
+			android:orientation="vertical"
+			android:animateLayoutChanges="true">
 
 			<View
 				android:background="@color/transparent"
@@ -37,7 +37,7 @@
 				android:orientation="vertical"
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="10dp"
-				android:visibility="gone"
+				android:visibility="visible"
 				android:id="@+id/activityloginLinearLayout_LoginContainer">
 
 				<LinearLayout
@@ -107,6 +107,22 @@
 						android:layout_width="match_parent"
 						android:text="@string/login_Register"
 						android:gravity="center_horizontal"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:id="@+id/activityloginLinearLayout_RecoverButton"
+					android:layout_marginTop="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="match_parent"
+						android:text="@string/login_RecoverAccount"
+						android:gravity="center"/>
 
 				</LinearLayout>
 
@@ -192,10 +208,88 @@
 				android:layout_height="match_parent"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
+				android:id="@+id/activityloginLinearLayout_RecoverAccount"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:visibility="gone">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="5dp">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="match_parent"
+						android:text="@string/login_RecoverPassword"
+						android:textAppearance="?android:attr/textAppearanceLarge"
+						android:gravity="center|center_vertical|center_horizontal"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:layout_weight="1.0"/>
+
+					<TextView
+						android:layout_height="2dp"
+						android:layout_width="match_parent"
+						android:background="@color/colorAccentDarkTheme"
+						android:layout_marginRight="5dp"
+						android:layout_marginLeft="5dp"
+						android:alpha="0.5"
+						android:minWidth="200dp"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_Username"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:ems="10"
+						android:id="@+id/activityloginEditText_RecoverUsername"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_Email"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:ems="10"
+						android:id="@+id/activityloginEditText_RecoverEmail"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
 				android:id="@+id/activityloginLinearLayout_LoggedInContainer"
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="10dp"
-				android:visibility="visible">
+				android:visibility="gone">
 
 				<LinearLayout
 					android:layout_height="wrap_content"

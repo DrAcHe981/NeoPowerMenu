@@ -673,6 +673,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				ItemDesc.setText(oldText);
 																				OnlineButton.setEnabled(true);
 																				OnlineButton.setAlpha((float) 1);
+																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor.replace(itemsTitle.get(position) + ",","");
 																				try
 																				{
 																						PreferencesPresetsFragment.ImportPreset("file://" + context.getFilesDir().getPath() + "/download/" + split[0] + "_" + itemsTitle.get(position).replace("'","\\\'").replace("\"","\\\"") + ".nps", PreferencesPresetsFragment.localAdapter, itemsTitle.get(position), null);
@@ -683,7 +684,6 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						Toast.makeText(context, context.getString(R.string.presetsManager_ImportFailed) + "\n" + e.toString(), Toast.LENGTH_LONG).show();
 																						Log.e("NPM", e.toString());
 																				}
-																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor.replace(itemsTitle.get(position) + ",","");
 																		}
 
 																		@Override

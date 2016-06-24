@@ -208,7 +208,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																		final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
 																																																	PERM_ACCESS_SURFACE_FLINGER);
 																		int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
-																		if (DeepXposedLogging) XposedUtils.log("Permission added: " + pAccessSurfaceFlinger + "; ret=" + ret);
+																		if (DeepXposedLogging) XposedUtils.log("Permission added: " + PERM_ACCESS_SURFACE_FLINGER + " ("+pAccessSurfaceFlinger+") ; ret=" + ret);
 																}
 
 														}
@@ -231,7 +231,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																		gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(), 
 																																										"appendInts", gpGids, bpGids);
 
-																		if (DeepXposedLogging) XposedUtils.log("Permission added: " + pAccessSurfaceFlinger);
+																		if (DeepXposedLogging) XposedUtils.log("Permission added: "+PERM_ACCESS_SURFACE_FLINGER+" (" + pAccessSurfaceFlinger + ")");
 																}
 														}
 												}
@@ -432,7 +432,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 										@Override
 										protected Object replaceHookedMethod(final MethodHookParam methodHookParam) throws Throwable
 										{
-
+												mContext = (Context) methodHookParam.args[0];
 												//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#createDialog,").commit();
 												return null;
 										}

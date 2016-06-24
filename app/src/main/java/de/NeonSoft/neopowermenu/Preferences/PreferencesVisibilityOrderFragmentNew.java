@@ -19,6 +19,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 		public static visibilityOrderNew_ListAdapter adapter;
 
 		public static String[] PowerMenuItems = new String[] {
+				"Empty",
 				"Shutdown",
 				"Reboot",
 				"SoftReboot",
@@ -76,6 +77,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 				MainActivity.visibleFragment = "VisibilityOrder";
 
 				PowerMenuItemsTexts = new String[] {
+						getString(R.string.powerMenuMain_Empty),
 						getString(R.string.powerMenuMain_Shutdown),
 						getString(R.string.powerMenuMain_Reboot),
 						getString(R.string.powerMenuMain_SoftReboot),
@@ -205,6 +207,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 																for(int i = 0;i < split.length;i++) {
 																		splitStr = splitStr + PowerMenuItems[Integer.parseInt(split[i])] + (i >= split.length ? "" : ",");
 																}
+																//Toast.makeText(getActivity(),"Adding "+split.length+" items: "+splitStr,Toast.LENGTH_LONG).show();
 																adapter.addItem(visibilityOrderNew_ListAdapter.TYPE_MULTI,splitStr);
 														}
 
@@ -216,7 +219,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 												});
 												dialogFragment.setDialogText(getString(R.string.visibilityOrder_SelectMulti));
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_MULTIPLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,-1,false);
-										dialogFragment.setDialogListLimit(3);
+										dialogFragment.setDialogListLimit(3,false);
 										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Cancel));
 										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
 										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).add(R.id.dialog_container,dialogFragment,dialogFragment.dialogTag).commit();

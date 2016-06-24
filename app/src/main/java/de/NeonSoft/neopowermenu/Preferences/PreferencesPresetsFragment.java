@@ -306,6 +306,8 @@ public class PreferencesPresetsFragment extends Fragment
 												else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("logout"))
 												{
 														MainActivity.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
+												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("recover")) {
+														MainActivity.setActionBarButton(getString(R.string.login_Recover),R.drawable.ic_action_settings_backup_restore ,LoginFragment.recoverOnClickListener);
 												}
 												if(onlineSearch.getVisibility() == View.VISIBLE) {
 														onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));

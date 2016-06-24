@@ -179,6 +179,7 @@ public class XposedDialog extends DialogFragment
 								TextView desc = (TextView) inflated.findViewById(R.id.powermenunormal_text2);
 								desc.setVisibility(View.GONE);
 								
+								if(!title.equalsIgnoreCase("Empty")) {
 								String string = "Failed to get String resource for "+ title;
 								try {
 										string = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuMain_"+title,"string",MainActivity.class.getPackage().getName()));
@@ -192,6 +193,7 @@ public class XposedDialog extends DialogFragment
 								}
 								text.setText(string);
 								text.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
+								
 								if(!XposedMainActivity.preferences.getBoolean(title+"_HideDesc",false)) {
 								String descString = "Failed to get String resource for "+ title;
 								try {
@@ -238,7 +240,9 @@ public class XposedDialog extends DialogFragment
 														performMenuClick(title,p1);
 												}
 										});
-								
+								} else {
+										root.setVisibility(View.INVISIBLE);
+								}
 						} else if (type == visibilityOrderNew_ListAdapter.TYPE_MULTI) {
 								inflated = inflater.inflate(R.layout.powermenu_multi, null, false);
 								
@@ -249,6 +253,7 @@ public class XposedDialog extends DialogFragment
 										icon2.setVisibility(View.GONE);
 										TextView text = (TextView) inflated.findViewById(R.id.powermenumulti_item1text);
 
+										if(!title.equalsIgnoreCase("Empty")) {
 										String string = "Failed to get String resource for "+ title;
 										try {
 												string = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuMain_"+title,"string",MainActivity.class.getPackage().getName()));
@@ -274,13 +279,17 @@ public class XposedDialog extends DialogFragment
 														performMenuClick(title,p1);
 												}
 										});
+						} else {
+								root.setVisibility(View.GONE);
+						}
+										
 								final String title2 = XposedMainActivity.orderPrefs.getString(i+"_item2_title","null");
 								LinearLayout root2 = (LinearLayout) inflated.findViewById(R.id.powermenumulti_item2);
 								ImageView iconitem2 = (ImageView) inflated.findViewById(R.id.powermenumulti_item2icon);
 								ImageView icon2item2 = (ImageView) inflated.findViewById(R.id.powermenumulti_item2icon2);
 								icon2item2.setVisibility(View.GONE);
 								TextView text2 = (TextView) inflated.findViewById(R.id.powermenumulti_item2text);
-
+								if(!title2.equalsIgnoreCase("Empty")) {
 								String string2 = "Failed to get String resource for "+ title2;
 								try {
 										string2 = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuMain_"+title2,"string",MainActivity.class.getPackage().getName()));
@@ -295,7 +304,7 @@ public class XposedDialog extends DialogFragment
 								text2.setText(string2);
 								text2.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 
-								createCircleIcon(iconitem2,icon2item2,string2,XposedMainActivity.preferences.getString("Dialog"+title2+"_Backgroundcolor","#ff000000"),XposedMainActivity.preferences.getString("Dialog"+title+"_Textcolor","#ffffff"));
+								createCircleIcon(iconitem2,icon2item2,string2,XposedMainActivity.preferences.getString("Dialog"+title2+"_Backgroundcolor","#ff000000"),XposedMainActivity.preferences.getString("Dialog"+title2+"_Textcolor","#ffffff"));
 
 								root2.setOnClickListener(new OnClickListener() {
 
@@ -306,6 +315,10 @@ public class XposedDialog extends DialogFragment
 														performMenuClick(title2,p1);
 												}
 										});
+								} else {
+										root2.setVisibility(View.GONE);
+								}
+								
 								final String title3 = XposedMainActivity.orderPrefs.getString(i+"_item3_title","null");
 								LinearLayout root3 = (LinearLayout) inflated.findViewById(R.id.powermenumulti_item3);
 								ImageView iconitem3 = (ImageView) inflated.findViewById(R.id.powermenumulti_item3icon);
@@ -313,6 +326,7 @@ public class XposedDialog extends DialogFragment
 								icon2item3.setVisibility(View.GONE);
 								TextView text3 = (TextView) inflated.findViewById(R.id.powermenumulti_item3text);
 
+								if(!title3.equalsIgnoreCase("Empty")) {
 								String string3 = "Failed to get String resource for "+ title3;
 								try {
 										string3 = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuMain_"+title3,"string",MainActivity.class.getPackage().getName()));
@@ -327,7 +341,7 @@ public class XposedDialog extends DialogFragment
 								text3.setText(string3);
 								text3.setTextColor(Color.parseColor(XposedMainActivity.preferences.getString("Dialog_Textcolor", "#000000")));
 
-								createCircleIcon(iconitem3,icon2item3,string3,XposedMainActivity.preferences.getString("Dialog"+title3+"_Backgroundcolor","#ff000000"),XposedMainActivity.preferences.getString("Dialog"+title+"_Textcolor","#ffffff"));
+								createCircleIcon(iconitem3,icon2item3,string3,XposedMainActivity.preferences.getString("Dialog"+title3+"_Backgroundcolor","#ff000000"),XposedMainActivity.preferences.getString("Dialog"+title3+"_Textcolor","#ffffff"));
 
 								root3.setOnClickListener(new OnClickListener() {
 
@@ -337,7 +351,10 @@ public class XposedDialog extends DialogFragment
 														// TODO: Implement this method
 														performMenuClick(title3,p1);
 												}
-										});
+												});
+								} else {
+										root3.setVisibility(View.GONE);
+								}
 						}
 						ListContainer.addView(inflated);
 						i++;
