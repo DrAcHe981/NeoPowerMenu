@@ -253,7 +253,7 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="visibilityOrder_SelectMulti">"Bitte wähle drei Items:"</string>
 <string name="powerMenuMain_Empty">"Leer"</string>
 <string name="login_Recover">"Wiederherstellen"</string>
-<string name="login_RecoverAccount">"Kein Zugriff auf sein Konto? 
+<string name="login_RecoverAccount">"Kein Zugriff auf dein Konto? 
 Klicke hier für Wiederherstellungs Optionen."</string>
 <string name="login_RecoverPassword">"Passwort zurücksetzen"</string>
 <string name="preferencesTitle_Graphics">"Grafiken"</string>
