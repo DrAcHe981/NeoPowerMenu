@@ -139,6 +139,7 @@ Isso não pode ser desfeito!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Cor de fundo"</string>
 <string name="colorsType_Text">"Cor do texto "</string>
+<string name="powerMenuMain_Flashlight">"Lanterna"</string>
 
 <!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Permissões"</string>
@@ -212,6 +213,13 @@ Clique aqui para criar uma nova!"</string>
 <string name="login_RegisterSuccess">"Registrado com sucesso,você receberá um e-mail para ativar sua conta!"</string>
 <string name="login_Processing">"Processando..."</string>
 <string name="login_TitleStatistics">"Estatísticas para [USERNAMEEMAIL]"</string>
+<string name="login_Statistics">"Pré-ajustes carregados: [UPLOADCOUNT]
+
+Estrelas dadas: [STARSGIVEN]
+Estrelas recebidas: [STARSRECEIVED]
+
+Seus pré-ajustes (ordenados por estrelas):
+[TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Falha ao receber estatísticas..."</string>
 
 <!-- Fuzzy -->
@@ -233,5 +241,8 @@ Clique aqui para criar uma nova!"</string>
 <string name="presetsManager_removeStar">"Remover estrelas"</string>
 <string name="presetsManager_Refresh">"Atualizar"</string>
 <string name="presetsManager_OrderBy">"Ordenar por"</string>
+<string name="presetsManager_OrderNames">"Nome/hora/estrelas/criador/seus"</string>
 <string name="presetsManager_OrderAscDesc">"Ascendente/Descendente"</string>
+<string name="visibilityOrder_Add">"Adicionar item normal/Adicionar multi item"</string>
+<string name="visibilityOrder_SelectMulti">"Por favor selecione três itens:"</string>
 </resources>
