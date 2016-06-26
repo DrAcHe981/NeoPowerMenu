@@ -256,4 +256,8 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="login_RecoverAccount">"Kein Zugriff auf sein Konto? 
 Klicke hier für Wiederherstellungs Optionen."</string>
 <string name="login_RecoverPassword">"Passwort zurücksetzen"</string>
+<string name="preferencesTitle_Graphics">"Grafiken"</string>
+<string name="preferencesDesc_Graphics">"Ändere die Grafiken, nutze eigene oder vordefinierte Grafiken."</string>
+<string name="login_RecoverSuccess">"Du wirst eine email mit Infos zum zurücksetzen deines Passwords erhalten."</string>
+<string name="login_RecoverNotFound">"Keinen Benutzer mit diesen Daten gefunden."</string>
 </resources>
