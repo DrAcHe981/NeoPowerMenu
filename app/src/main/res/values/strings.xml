@@ -18,7 +18,6 @@
 <string name="powerMenuBottom_SafeMode">"Safe Mode"</string>
 <string name="powerMenu_Shuttingdown">"Shutting down..."</string>
 <string name="powerMenu_Rebooting">"Rebooting..."</string>
-		<string name="powerMenuMain_Empty">"Empty"</string>
 
 <!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root and Xposed"</string>
@@ -230,16 +229,12 @@ Stars received: [STARSRECEIVED]
 Your presets (ordered by stars):
 [TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Failed to get statistics..."</string>
+
+<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
-		<string name="login_Recover">"Recover"</string>
-		<string name="login_RecoverAccount">"Can't acces account?
-Click here for recovering options."</string>
-		<string name="login_RecoverPassword">"Reset Password"</string>
-		<string name="login_RecoverNotFound">"Can't find any user with this data."</string>
-		<string name="login_RecoverSuccess">"You will receive an email with infos to reset your password. "</string>
-		
+
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
 <string name="colorsPartDescDialog">"The colors of the dialog when clicked on [BUTTON]."</string>
@@ -258,4 +253,9 @@ Click here for recovering options."</string>
 <string name="presetsManager_OrderAscDesc">"Ascending/Descending"</string>
 <string name="visibilityOrder_Add">"Add normal item/Add multi item"</string>
 <string name="visibilityOrder_SelectMulti">"Please select three items:"</string>
+<string name="powerMenuMain_Empty">"Empty"</string>
+<string name="login_Recover">"Recover"</string>
+<string name="login_RecoverAccount">"Can't access account?
+Click here for recovering options."</string>
+<string name="login_RecoverPassword">"Reset Password"</string>
 </resources>

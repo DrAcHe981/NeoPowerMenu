@@ -150,4 +150,43 @@ Tego nie można cofnąć!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Kolor tła"</string>
 <string name="colorsType_Text">"Kolor tekstu"</string>
+<string name="powerMenuMain_Flashlight">"Latarka"</string>
+
+<!-- Permissions Screen -->
+<string name="permissionsScreen_Title">"Uprawnienia"</string>
+<string name="permissionsScreen_NotAllGranted">"Nie wszystkie uprawnienia są przyznane, niektóre funkcje mogą nie działać ..."</string>
+<string name="permissionsScreen_DontAskAgain">"Nie pytaj ponownie"</string>
+<string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
+<string name="preferencesTitle_Permissions">"Uprawnienia"</string>
+<string name="visibilityOrder_HideDesc">"Ukryj opis"</string>
+<string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Nagraj dźwięk"</string>
+<string name="SoundMode_Normal">"Normalny"</string>
+<string name="SoundMode_Vibrate">"Wibracja"</string>
+<string name="SoundMode_Silent">"Cichy"</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleAccount">"Konto"</string>
+<string name="presetsManager_UploadComplete">"Wysyłanie zakończone!"</string>
+<string name="presetsManager_UploadFailed">"Przesyłanie nie powiodło się!"</string>
+<string name="presetsManager_Downloading">"Pobieranie..."</string>
+<string name="presetsManager_DownloadFailed">"Pobieranie nie udane!"</string>
+<string name="presetsManager_CantConnecttoServer">"Nie można połączyć się z serwerem!
+Proszę sprawdzić połączenie sieciowe lub spróbować ponownie później."</string>
+<string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+<string name="login_UsernameEmail">"Nazwa użytkownika lub email:"</string>
+<string name="login_Username">"Nazwa użytkownika:"</string>
+<string name="login_Email">"E-mail:"</string>
+<string name="login_RetypeEmail">"Wpisz ponownie email:"</string>
+<string name="login_Password">"Hasło"</string>
+<string name="login_KeepLogin">"Nie wylogowuj mnie ."</string>
+<string name="login_LoggedIn">"Zalogowany!"</string>
+<string name="login_LoginFailedWithReason">"Logowanie nie powiodło się: ␣"</string>
+<string name="login_LoginFailedWrongData">"Logowanie nie powiodło się, niepoprawny email lub hasło!"</string>
+<string name="login_RegisterFailedNameUsed">"Niestety wybrana nazwa lub adres e-mail jest już w użyciu."</string>
+<string name="login_Processing">"Przetwarzanie..."</string>
+<string name="login_StatisticsFailed">"Nie udało się uzyskać statystyk ..."</string>
+
+<!-- Fuzzy -->
+<string name="login_ReloadStatistics">"Kliknij tutaj, aby odświeżyć statystyki"</string>
+<string name="login_TitleLogout">"Wyloguj"</string>
 </resources>
