@@ -46,6 +46,8 @@ public class PreferencesPartFragment extends Fragment
 
 		private static LinearLayout LinearLayout_Theme;
 
+		private static LinearLayout LinearLayout_Graphics;
+		
 		private static LinearLayout LinearLayout_VisibilityOrder;
 
 		private static LinearLayout LinearLayout_Advanced;
@@ -63,10 +65,6 @@ public class PreferencesPartFragment extends Fragment
 		private static LinearLayout LinearLayout_Share;
 
 		private static LinearLayout LinearLayout_About;
-		
-
-		private static AlertDialog.Builder adb;
-		private static AlertDialog ad;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -93,6 +91,10 @@ public class PreferencesPartFragment extends Fragment
 
 				LinearLayout_Theme = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Theme);
 
+				LinearLayout_Graphics =(LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Graphics);
+				LinearLayout_Graphics.setAlpha((float) .3);
+				LinearLayout_Graphics.setEnabled(false);
+				
 				LinearLayout_VisibilityOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_VisibilityOrder);
 
 				LinearLayout_Advanced = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Advanced);
@@ -184,6 +186,15 @@ public class PreferencesPartFragment extends Fragment
 								}
 						});
 
+				LinearLayout_Graphics.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										MainActivity.fragmentManager.beginTransaction().setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesGraphicsFragment()).commit();
+								}
+						});
+						
 				LinearLayout_VisibilityOrder.setOnClickListener(new OnClickListener() {
 
 								@Override

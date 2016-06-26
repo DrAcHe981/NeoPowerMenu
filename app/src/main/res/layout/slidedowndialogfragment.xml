@@ -188,6 +188,22 @@
 
 					</LinearLayout>
 
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:orientation="horizontal"
+						android:id="@+id/slidedowndialogfragmentLinearLayout_CheckBox"
+						android:layout_marginLeft="10dp"
+						android:layout_marginRight="10dp">
+
+						<CheckBox
+							android:layout_height="match_parent"
+							android:layout_width="match_parent"
+							android:id="@+id/slidedowndialogfragmentCheckBox_CheckBox"
+							android:text="Text"/>
+
+					</LinearLayout>
+
 				</LinearLayout>
 
 			</ScrollView>
@@ -199,7 +215,7 @@
 				android:id="@+id/slidedowndialogfragmentLinearLayout_DialogList"
 				android:layout_marginRight="10dp"
 				android:layout_marginLeft="10dp"
-				android:visibility="visible"
+				android:visibility="gone"
 				android:layout_weight="1.0">
 
 				<ListView

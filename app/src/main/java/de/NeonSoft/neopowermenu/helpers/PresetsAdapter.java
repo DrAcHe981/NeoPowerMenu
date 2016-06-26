@@ -14,6 +14,7 @@ import de.NeonSoft.neopowermenu.Preferences.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import android.text.*;
 
 public class PresetsAdapter extends ArrayAdapter<String>
 {
@@ -118,6 +119,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																		{
 																				// TODO: Implement this method{
 																				final String appVersion;
+																				final String presetCreator = resultData.get(1);
 																				appVersion = MainActivity.versionName.replace("v", "");
 																				try
 																				{
@@ -199,7 +201,53 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																public void onPositiveClick(ArrayList<String> resultData)
 																																{
 																																		// TODO: Implement this method
-																																		PreferencesPresetsFragment.vpPager.setCurrentItem(0,true);
+																																		if(!MainActivity.loggedIn) {
+																																		slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface(){
+
+																																						@Override
+																																						public void onListItemClick(int position, String text)
+																																						{
+																																								// TODO: Implement this method
+																																						}
+
+																																						@Override
+																																						public void onNegativeClick()
+																																						{
+																																								// TODO: Implement this method
+																																						}
+
+																																						@Override
+																																						public void onNeutralClick()
+																																						{
+																																								// TODO: Implement this method
+																																								PreferencesPresetsFragment.vpPager.setCurrentItem(0,true);
+																																						}
+
+																																						@Override
+																																						public void onPositiveClick(ArrayList<String> resultData)
+																																						{
+																																								// TODO: Implement this method
+																																								LoginFragment.performLogin(context,resultData.get(0),helper.md5Crypto(resultData.get(1)),resultData.get(2).equalsIgnoreCase("true") ? true : false,false);
+																																						}
+
+																																						@Override
+																																						public void onTouchOutside()
+																																						{
+																																								// TODO: Implement this method
+																																						}
+																																				});
+																																		dialogFragment.setDialogText("");
+																																		dialogFragment.setDialogInput1(context.getString(R.string.login_UsernameEmail), presetCreator,false,null);
+																																		dialogFragment.setDialogInput2(context.getString(R.string.login_Password),"",false,null);
+																																		dialogFragment.setDialogInputMode(2,InputType.TYPE_TEXT_VARIATION_PASSWORD);
+																																		dialogFragment.setDialogCheckBox(context.getString(R.string.login_KeepLogin));
+																																		dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
+																																		//dialogFragment.setDialogNeutralButton(context.getString(R.string.login_TitleRegister));
+																																		dialogFragment.setDialogPositiveButton(context.getString(R.string.login_Title));
+																																		MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container, dialogFragment, slideDownDialogFragment.dialogTag).commit();
+																																		} else {
+																																				PreferencesPresetsFragment.vpPager.setCurrentItem(0,true);
+																																		}
 																																}
 
 																																@Override

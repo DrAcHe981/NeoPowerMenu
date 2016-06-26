@@ -104,7 +104,7 @@ public class LoginFragment extends Fragment
 												return;
 										}
 								}
-								performLogin(mContext,EditText_UsernameEmail.getText().toString(),helper.md5Crypto(EditText_Password.getText().toString()),false);
+								performLogin(mContext,EditText_UsernameEmail.getText().toString(),helper.md5Crypto(EditText_Password.getText().toString()),CheckBox_KeepLogin.isChecked(),false);
 						}
 				};
 
@@ -258,7 +258,7 @@ public class LoginFragment extends Fragment
 														// TODO: Implement this method
 														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 														PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
-														Toast.makeText(mContext, getString(R.string.login_RegisterSuccess), Toast.LENGTH_SHORT).show();
+														Toast.makeText(mContext, getString(R.string.login_RecoverSuccess), Toast.LENGTH_SHORT).show();
 														LinearLayout_RecoverAccountContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 														LinearLayout_RecoverAccountContainer.setVisibility(View.GONE);
 														EditText_UsernameEmail.setText(EditText_RecoverUsername.getText().toString());
@@ -276,9 +276,9 @@ public class LoginFragment extends Fragment
 														// TODO: Implement this method
 														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 														PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
-														if (reason.contains("not matching data"))
+														if (reason.contains("cant find any user with this data"))
 														{
-																Toast.makeText(mContext, getString(R.string.login_RegisterFailedNameUsed), Toast.LENGTH_LONG).show();
+																Toast.makeText(mContext, getString(R.string.login_RecoverNotFound), Toast.LENGTH_LONG).show();
 														}
 														else if (reason.contains("Cannot connect to the DB"))
 														{
@@ -430,6 +430,10 @@ public class LoginFragment extends Fragment
 								}
 						});
 
+						if(MainActivity.loggedIn) {
+								loginFragmentMode = "logout";
+						}
+						
 				return InflatedView;
 		}
 
@@ -468,7 +472,7 @@ public class LoginFragment extends Fragment
 				}
 		}
 		
-		public static void performLogin(final Context context,final String usernameemail,final String password,final boolean background) {
+		public static void performLogin(final Context context,final String usernameemail,final String password,final boolean keeplogin,final boolean background) {
 
 				uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
 
@@ -501,13 +505,13 @@ public class LoginFragment extends Fragment
 										MainActivity.loggedIn = true;
 										MainActivity.usernameemail = usernameemail;
 										MainActivity.password = password;
+										if (keeplogin)
+										{
+												MainActivity.preferences.edit().putBoolean("autoLogin", true)
+														.putString("ueel", MainActivity.usernameemail)
+														.putString("pd", MainActivity.password).commit();
+										}
 										if(!background) {
-												if (CheckBox_KeepLogin.isChecked())
-												{
-														MainActivity.preferences.edit().putBoolean("autoLogin", true)
-																.putString("ueel", MainActivity.usernameemail)
-																.putString("pd", MainActivity.password).commit();
-												}
 												TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 												TextView_AccountInfo.setVisibility(View.GONE);
 												LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
@@ -516,7 +520,8 @@ public class LoginFragment extends Fragment
 												getStatistics();
 												LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
 												LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-												MainActivity.setActionBarButton(context.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
+												if(MainActivity.visibleFragment.equalsIgnoreCase("account")) MainActivity.setActionBarButton(context.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
+												loginFragmentMode = "logout";
 										}
 								}
 

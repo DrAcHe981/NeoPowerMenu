@@ -44,16 +44,20 @@ public class slideDownDialogFragment extends Fragment
 		 private String dialogInput1defaultText;
 		 private boolean dialogInput1allowEmpty;
 		private TextWatcher dialogInput1textWatcher;
+		private int dialogInput1mode = InputType.TYPE_TEXT_VARIATION_NORMAL;
 
 		private String dialogInput2descText;
 		private String dialogInput2defaultText;
 		private boolean dialogInput2allowEmpty;
 		private TextWatcher dialogInput2textWatcher;
+		private int dialogInput2mode = InputType.TYPE_TEXT_VARIATION_NORMAL;
 		 
 		private String dialogColorPickerdefaultValue;
 		private boolean dialogColorPickershowOpacityBar;
 		
 		private TextView TextView_OverwriteInfo;
+		
+		private String dialogCheckBoxtext;
 		
 		 private String negativeButtonText = null;
 		 private String neutralButtonText = null;
@@ -89,6 +93,9 @@ public class slideDownDialogFragment extends Fragment
 		OpacityBar OpacityBar_DialogOpacityBar;
 		EditText EditText_DialogHexInput;
 
+		LinearLayout LinearLayout_DialogCheckBox;
+		CheckBox CheckBox_DialogCheckBox;
+		
 		LinearLayout LinearLayout_Buttons;
 		
 		LinearLayout LinearLayout_DialogNegativeButton;
@@ -139,6 +146,15 @@ public class slideDownDialogFragment extends Fragment
 				dialogInput2allowEmpty = allowEmpty;
 				dialogInput2textWatcher = watcher;
 		}
+		public void setDialogInputMode(int input, int mode) {
+				if (input == 1) {
+						dialogInput1mode = mode;
+						if(EditText_DialogInput1 != null) EditText_DialogInput1.setInputType(InputType.TYPE_CLASS_TEXT | mode);
+				} else if (input == 2) {
+						dialogInput2mode = mode;
+						if(EditText_DialogInput2 != null) EditText_DialogInput2.setInputType(InputType.TYPE_CLASS_TEXT | mode);
+				}
+		}
 		
 		public void setDialogColorPicker(String defaultColor,boolean showOpacityBar) {
 				dialogColorPickerdefaultValue = defaultColor;
@@ -147,6 +163,10 @@ public class slideDownDialogFragment extends Fragment
 		
 		public void setOverwriteInfo(boolean enabled) {
 				TextView_OverwriteInfo.setVisibility(enabled ? View.VISIBLE : View.GONE);
+		}
+		
+		public void setDialogCheckBox(String text) {
+				dialogCheckBoxtext = text;
 		}
 		
 		public void setDialogNegativeButton(String text) {
@@ -239,6 +259,10 @@ public class slideDownDialogFragment extends Fragment
 						TextView_OverwriteInfo = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_OverwriteInfo);
 						TextView_OverwriteInfo.setVisibility(View.GONE);
 						
+						LinearLayout_DialogCheckBox = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_CheckBox);
+						CheckBox_DialogCheckBox = (CheckBox) InflatedView.findViewById(R.id.slidedowndialogfragmentCheckBox_CheckBox);
+						LinearLayout_DialogCheckBox.setVisibility(View.GONE);
+						
 						LinearLayout_Buttons = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtons);
 						
 						LinearLayout_DialogNegativeButton = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtonNegative);
@@ -312,12 +336,14 @@ public class slideDownDialogFragment extends Fragment
 								TextView_DialogInput1Text.setText(dialogInput1descText);
 								if(dialogInput1textWatcher!=null) EditText_DialogInput1.addTextChangedListener(dialogInput1textWatcher);
 								EditText_DialogInput1.setText(dialogInput1defaultText);
+								EditText_DialogInput1.setInputType(InputType.TYPE_CLASS_TEXT | dialogInput1mode);
 								LinearLayout_DialogInput1.setVisibility(View.VISIBLE);
 						}
 						if(dialogInput2descText!=null) {
 								TextView_DialogInput2Text.setText(dialogInput2descText);
 								if(dialogInput2textWatcher!=null) EditText_DialogInput2.addTextChangedListener(dialogInput2textWatcher);
 								EditText_DialogInput2.setText(dialogInput2defaultText);
+								EditText_DialogInput2.setInputType(InputType.TYPE_CLASS_TEXT | dialogInput2mode);
 								LinearLayout_DialogInput2.setVisibility(View.VISIBLE);
 						}
 						
@@ -437,6 +463,11 @@ public class slideDownDialogFragment extends Fragment
 										LinearLayout_DialogColorPicker.setVisibility(View.VISIBLE);
 						}
 						
+						if(dialogCheckBoxtext != null && !dialogCheckBoxtext.isEmpty()) {
+								LinearLayout_DialogCheckBox.setVisibility(View.VISIBLE);
+								CheckBox_DialogCheckBox.setText(dialogCheckBoxtext);
+						}
+						
 						if(negativeButtonText != null && !negativeButtonText.isEmpty()) {
 								TextView_DialogNegativeButtonText.setText(negativeButtonText);
 								LinearLayout_DialogNegativeButton.setOnClickListener(new OnClickListener() {
@@ -508,6 +539,9 @@ public class slideDownDialogFragment extends Fragment
 												}
 												if(dialogColorPickerdefaultValue!=null) {
 														resultData.add(EditText_DialogHexInput.getText().toString());
+												}
+												if(dialogCheckBoxtext != null) {
+														resultData.add(CheckBox_DialogCheckBox.isChecked() ? "true" : "false");
 												}
 												mInterface.onPositiveClick(resultData);
 												closeDialog();

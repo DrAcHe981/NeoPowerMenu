@@ -110,12 +110,14 @@
 
 				</LinearLayout>
 
-				<LinearLayout
+					<LinearLayout
+							android:background="?android:attr/selectableItemBackground"
+							android:clickable="true"
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
 					android:id="@+id/activityloginLinearLayout_RecoverButton"
-					android:layout_marginTop="5dp">
+					android:layout_marginTop="10dp">
 
 					<TextView
 						android:layout_height="wrap_content"

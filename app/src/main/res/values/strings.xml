@@ -36,6 +36,8 @@ Please activate the module in the Xposed installer."</string>
 <string name="preferencesTitle_Style">"Style"</string>
 <string name="preferencesTitle_Theme">"Theme"</string>
 <string name="preferencesDesc_Theme">"Change the look and feel."</string>
+		<string name="preferencesTitle_Graphics">"Graphics"</string>
+		<string name="preferencesDesc_Graphics">"Change the graphics, use custom or predefined graphics."</string>
 <string name="preferencesTitle_VisibilityOrder">"Visibility and Order"</string>
 <string name="preferencesDesc_VisibilityOrder">"Select the items you want to show and order them as you wish."</string>
 <string name="preferencesCategory_Other">"Other"</string>
@@ -235,7 +237,9 @@ Your presets (ordered by stars):
 		<string name="login_RecoverAccount">"Can't acces account?
 Click here for recovering options."</string>
 		<string name="login_RecoverPassword">"Reset Password"</string>
-
+		<string name="login_RecoverNotFound">"Can't find any user with this data."</string>
+		<string name="login_RecoverSuccess">"You will receive an email with infos to reset your password. "</string>
+		
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
 <string name="colorsPartDescDialog">"The colors of the dialog when clicked on [BUTTON]."</string>

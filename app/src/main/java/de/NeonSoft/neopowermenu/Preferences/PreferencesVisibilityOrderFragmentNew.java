@@ -8,6 +8,7 @@ import de.NeonSoft.neopowermenu.DSLV.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import java.util.*;
 import android.view.View.*;
+import com.android.internal.os.*;
 
 public class PreferencesVisibilityOrderFragmentNew extends Fragment
 {
@@ -18,6 +19,8 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 		DragSortListView DSLV_List;
 		public static visibilityOrderNew_ListAdapter adapter;
 
+		public static LinearLayout LinearLayout_Progress;
+		
 		public static String[] PowerMenuItems = new String[] {
 				"Empty",
 				"Shutdown",
@@ -126,6 +129,18 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 				adapter = new visibilityOrderNew_ListAdapter(getActivity(),types,items);
 				
 				DSLV_List.setAdapter(adapter);
+				
+				LinearLayout_Progress = (LinearLayout) InflatedView.findViewById(R.id.activityvisibilityorderLinearLayout_Saving);
+				LinearLayout_Progress.setVisibility(View.GONE);
+				
+				LinearLayout_Progress.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+								}
+						});
 				
 				TextView_AddNormalItem.setOnClickListener(new OnClickListener() {
 

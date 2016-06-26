@@ -62,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
 		
 		public static String ImportUrl = null;
 		
-		static Animation anim_fade_out;
-		static Animation anim_fade_in;
-		static Animation anim_fade_slide_out_right;
-		static Animation anim_fade_slide_in_right;
+		public static Animation anim_fade_out;
+		public static Animation anim_fade_in;
+		public static Animation anim_fade_slide_out_right;
+		public static Animation anim_fade_slide_in_right;
 
 		public static OnClickListener previewOnClickListener;
 		
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 				
 				if(preferences.getBoolean("autoLogin",false)) {
-						LoginFragment.performLogin(context,preferences.getString("ueel","null"),preferences.getString("pd","null"),true);
+						LoginFragment.performLogin(context,preferences.getString("ueel","null"),preferences.getString("pd","null"),true,true);
 				}
 				
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -313,9 +313,7 @@ public class MainActivity extends AppCompatActivity {
 				if (visibleFragment.equalsIgnoreCase("CustomColors")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
-						PreferencesVisibilityOrderFragmentNew.adapter.outputSorting();
-						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
+						new saveSorting().execute();
 				} else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
 						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesColorFragment()).commit();
@@ -384,6 +382,39 @@ public class MainActivity extends AppCompatActivity {
 								// other 'case' lines to check for other
 								// permissions this app might request
 				}
+		}
+		
+		class saveSorting extends AsyncTask<String, String, String>
+		{
+
+				@Override
+				protected void onPreExecute()
+				{
+						// TODO: Implement this method
+						super.onPreExecute();
+						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.setVisibility(View.VISIBLE);
+						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_in);
+				}
+				
+				@Override
+				protected String doInBackground(String[] p1)
+				{
+						// TODO: Implement this method
+						PreferencesVisibilityOrderFragmentNew.adapter.outputSorting();
+						return null;
+				}
+
+				@Override
+				protected void onPostExecute(String p1)
+				{
+						// TODO: Implement this method
+						super.onPostExecute(p1);
+						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
+						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.setVisibility(View.GONE);
+						setActionBarButton(context.getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
+				}
+				
 		}
 		
 }
