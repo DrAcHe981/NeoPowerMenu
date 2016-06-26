@@ -258,4 +258,6 @@ Your presets (ordered by stars):
 <string name="login_RecoverAccount">"Can't access account?
 Click here for recovering options."</string>
 <string name="login_RecoverPassword">"Reset Password"</string>
+		<string name="login_RecoverSuccess">"You will receive a email with infos to reset your password."</string>
+		<string name="login_RecoverNotFound">"No user with this data found."</string>
 </resources>
