@@ -251,4 +251,9 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
 <string name="visibilityOrder_Add">"Normales Item hinzufügen/Multi Item hinzufügen"</string>
 <string name="visibilityOrder_SelectMulti">"Bitte wähle drei Items:"</string>
+<string name="powerMenuMain_Empty">"Leer"</string>
+<string name="login_Recover">"Wiederherstellen"</string>
+<string name="login_RecoverAccount">"Kein Zugriff auf sein Konto? 
+Klicke hier für Wiederherstellungs Optionen."</string>
+<string name="login_RecoverPassword">"Passwort zurücksetzen"</string>
 </resources>
