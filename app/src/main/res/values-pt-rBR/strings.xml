@@ -245,4 +245,13 @@ Seus pré-ajustes (ordenados por estrelas):
 <string name="presetsManager_OrderAscDesc">"Ascendente/Descendente"</string>
 <string name="visibilityOrder_Add">"Adicionar item normal/Adicionar multi item"</string>
 <string name="visibilityOrder_SelectMulti">"Por favor selecione três itens:"</string>
+<string name="powerMenuMain_Empty">"Vazio"</string>
+<string name="login_Recover">"Recuperar"</string>
+<string name="login_RecoverAccount">"Não consegue acessar a conta?
+Clique aqui para opções de recuperação."</string>
+<string name="login_RecoverPassword">"Redefinir senha"</string>
+<string name="preferencesTitle_Graphics">"Ícones"</string>
+<string name="preferencesDesc_Graphics">"Mudar os ícones,usar customizados ou ícones predefinidos."</string>
+<string name="login_RecoverSuccess">"Você receberá um email com as informações para redefinir sua senha."</string>
+<string name="login_RecoverNotFound">"Nenhum usuário com esses dados foram encontrados."</string>
 </resources>
