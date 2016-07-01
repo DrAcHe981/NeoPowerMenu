@@ -35,8 +35,6 @@ Please activate the module in the Xposed installer."</string>
 <string name="preferencesTitle_Style">"Style"</string>
 <string name="preferencesTitle_Theme">"Theme"</string>
 <string name="preferencesDesc_Theme">"Change the look and feel."</string>
-		<string name="preferencesTitle_Graphics">"Graphics"</string>
-		<string name="preferencesDesc_Graphics">"Change the graphics, use custom or predefined graphics."</string>
 <string name="preferencesTitle_VisibilityOrder">"Visibility and Order"</string>
 <string name="preferencesDesc_VisibilityOrder">"Select the items you want to show and order them as you wish."</string>
 <string name="preferencesCategory_Other">"Other"</string>
@@ -52,8 +50,10 @@ Check out the source on GitHub."</string>
 <string name="preferencesTitle_Share">"Share"</string>
 <string name="preferencesDesc_Share">"Like the app? Share it with your friends."</string>
 <string name="preferencesTitle_About">"Code by Neon-Soft / DrAcHe981"</string>
+
+<!-- Information has no plural in English ;) -->
 <string name="preferencesDesc_About">"based on the source of Naman Dwivedi (naman14).
-Click here to get more infos."</string>
+Click here to get more info."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibility and order"</string>
@@ -159,19 +159,21 @@ This can't be undone!"</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Required to toggle the Torch."</string>
 <string name="preferencesTitle_Permissions">"Permissions"</string>
-<string name="preferencesDesc_Permissions">"Show the used Permissions and see for what they are used.
+<string name="preferencesDesc_Permissions">"Show the requested permissions and see for what they are used for.
 Grant additional permissions that are not added on first start (Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Hide description"</string>
 
 <!-- Preferences: Colors -->
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
-<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Needed for the screen recorder to record the screen."</string>
+<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Required for the screen recorder to record the screen."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
-<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Needed to Record audio with the screen recorder."</string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Required to Record audio with the screen recorder."</string>
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
-<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Needed to display the Power Menu on top of everything."</string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Required to display the Power Menu on top of everything."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
-<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Needed to prevent killing of the torch and screenrecord service."</string>
+
+<!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
+<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Required to prevent killing of the torch and screenrecord service."</string>
 <string name="powerMenuMain_SoundMode">"Sound Mode"</string>
 <string name="powerMenuMain_SoundModeDesc">"Current mode: [SOUNDMODE]"</string>
 <string name="SoundMode_Normal">"Normal"</string>
@@ -187,23 +189,23 @@ Your user Id has been generated, you are ready to upload presets!"</string>
 
 This is your last chance to adjust the name or the creator before uploading..."</string>
 <string name="presetsManager_UploadComplete">"Upload complete!"</string>
-<string name="presetsManager_UploadFailedSameName">"This name is already used, please choose another one."</string>
-<string name="presetsManager_UploadFailedNoAccess">"This creator name is protected, choose another or log in."</string>
+<string name="presetsManager_UploadFailedSameName">"This name is already in use, please choose another one."</string>
+<string name="presetsManager_UploadFailedNoAccess">"This creator name is protected, choose another one or log in."</string>
 <string name="presetsManager_UploadFailed">"Upload failed!"</string>
 <string name="presetsManager_Downloading">"Downloading..."</string>
 <string name="presetsManager_DownloadFailed">"Download failed!"</string>
 <string name="presetsManager_CantConnecttoServer">"Can't connect to the server!
 Please check your network connection or try it again later."</string>
 <string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
-Please try it again later, when nothing changes: please report it to the developer."</string>
+Please try it again later, when nothing changes: Please report it to the developer."</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
-<string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download or upload presets from the public server."</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download/upload presets from/to the public server."</string>
 
 <!-- Login page -->
 <string name="login_Title">"Login"</string>
 <string name="login_TitleRegister">"Register"</string>
-<string name="login_Info">"The user names from registered users are protected so no one can upload as them, here you can login or create an new account.
-This is not required if you dont want to!
+<string name="login_Info">"The user names of registered users are protected so no one can upload in their name, here you can log in or create an new account.
+This is not required if you don't want to!
 I will never share any private data!"</string>
 <string name="login_UsernameEmail">"Username or E-mail:"</string>
 <string name="login_Username">"Username:"</string>
@@ -217,8 +219,8 @@ Click here to create a new Account!"</string>
 <string name="login_LoggedIn">"Logged in!"</string>
 <string name="login_LoginFailedWithReason">"Login failed: "</string>
 <string name="login_LoginFailedWrongData">"Login failed, wrong e-mail or password!"</string>
-<string name="login_RegisterFailedNameUsed">"Sorry the choosen name or email adress is already in use."</string>
-<string name="login_RegisterSuccess">"Registration succesfull, you will receive an email to activate your account!"</string>
+<string name="login_RegisterFailedNameUsed">"Sorry, the choosen name or email adress is already in use."</string>
+<string name="login_RegisterSuccess">"Registration successful, you will receive an email to activate your account!"</string>
 <string name="login_Processing">"Processing..."</string>
 <string name="login_TitleStatistics">"Statistics for [USERNAMEEMAIL]"</string>
 <string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]
@@ -234,19 +236,19 @@ Your presets (ordered by stars):
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
+<string name="presetsManager_Stars">"Stars: [STARS]"</string>
+<string name="presetsManager_giveStar">"Give Star"</string>
+<string name="presetsManager_removeStar">"Remove Star"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
 <string name="colorsPartDescDialog">"The colors of the dialog when clicked on [BUTTON]."</string>
-<string name="colorsPartDescButton">"The colors from the [BUTTON] button."</string>
+<string name="colorsPartDescButton">"The colors of the [BUTTON] button."</string>
 <string name="colorsPartPresets">"Presets"</string>
 <string name="colorsPartReveal">"Reveal"</string>
 <string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
 <string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsPartMain">"Dialog"</string>
-<string name="presetsManager_Stars">"Stars: [STARS]"</string>
-<string name="presetsManager_giveStar">"Give Star"</string>
-<string name="presetsManager_removeStar">"Remove Star"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
 <string name="presetsManager_OrderBy">"Order by"</string>
 <string name="presetsManager_OrderNames">"Name/Time/Stars/Creator/Own"</string>
@@ -255,9 +257,11 @@ Your presets (ordered by stars):
 <string name="visibilityOrder_SelectMulti">"Please select three items:"</string>
 <string name="powerMenuMain_Empty">"Empty"</string>
 <string name="login_Recover">"Recover"</string>
-<string name="login_RecoverAccount">"Can't access account?
+<string name="login_RecoverAccount">"Can't access your account?
 Click here for recovering options."</string>
 <string name="login_RecoverPassword">"Reset Password"</string>
-		<string name="login_RecoverSuccess">"You will receive a email with infos to reset your password."</string>
-		<string name="login_RecoverNotFound">"No user with this data found."</string>
+<string name="preferencesTitle_Graphics">"Graphics"</string>
+<string name="preferencesDesc_Graphics">"Change the graphics, use custom or predefined graphics."</string>
+<string name="login_RecoverSuccess">"You will receive a email with with instructions on how to reset your password."</string>
+<string name="login_RecoverNotFound">"No user with this data found."</string>
 </resources>
