@@ -114,7 +114,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="preferencesTitle_RootXposed5">"Aktivierte Modulversion ist zu niedrig..."</string>
 <string name="preferencesDesc_RootXposed5">"Bitte starte dein Gerät neu, um den Updatevorgang abzuschließen!"</string>
 <string name="preferencesTitle_DeepXposedLogging">"Tiefes Xposed Logging"</string>
-<string name="preferencesDesc_DeepXposedLogging">"Aktiviere erweitertes Logging, nach der Aktivierung neu starten um Änderung zu sehen."</string>
+<string name="preferencesDesc_DeepXposedLogging">"Aktiviere erweitertes Logging, nach der Aktivierung neu starten, um Änderung zu sehen."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Bildschirmaufnahme läuft"</string>
@@ -138,7 +138,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Taschenlampe an"</string>
 <string name="quick_settings_torch_off">"Taschenlampe aus"</string>
-<string name="quick_settings_torch_off_notif">"Zum ausschalten der Taschenlampe hier drücken"</string>
+<string name="quick_settings_torch_off_notif">"Zum Ausschalten der Taschenlampe hier drücken"</string>
 <string name="powerMenuMain_AirplaneMode">"Flugmodus"</string>
 <string name="powerMenuMain_RestartUI">"System UI neu starten"</string>
 
@@ -167,7 +167,7 @@ Erlaube weitere Berechtigungen, die nicht beim ersten Start erlaubt wurden (Andr
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ton aufnehmen"</string>
 <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Benötigt, um bei der Bildschirmaufnahme Ton mit aufzunehmen."</string>
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Warnungs Fenster"</string>
-<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt um das Ausschalt Menü über allem anderen anzuzeigen."</string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt, um das Ausschalt Menü über allem anderen anzuzeigen."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benötigt, um zu verhindern, dass der Taschenlampen-Service und der Bildschirmaufnahme-Service beendet werden."</string>
 <string name="powerMenuMain_SoundMode">"Sound Modus"</string>
@@ -191,9 +191,9 @@ Dies ist deine letzte Chance, den Namen oder den Ersteller anzupassen..."</strin
 <string name="presetsManager_Downloading">"Runterladen..."</string>
 <string name="presetsManager_DownloadFailed">"Download fehlgeschlagen!"</string>
 <string name="presetsManager_CantConnecttoServer">"Es kann keine Verbindung zum Server hergestellt werden! 
-Bitte überprüfe deine Verbindung oder Versuch es später erneut."</string>
+Bitte überprüfe deine Verbindung oder versuche es später erneut."</string>
 <string name="presetsManager_CantConnecttoDB">"Es kann keine Verbindung zur Datenbank hergestellt werden! 
-Bitte Versuch es später erneut, wenn sich nichts ändert: Melde es bitte dem Entwickler."</string>
+Bitte versuche es später erneut, wenn sich nichts ändert: Melde es bitte dem Entwickler."</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
 <string name="permissionsScreenDesc_android.permission.INTERNET">"Wird benötigt, um Voreinstellungen vom öffentlichen Server runter oder hochzuladen."</string>
 
@@ -219,7 +219,7 @@ Klicke hier, um ein Konto zu erstellen!"</string>
 <string name="login_RegisterSuccess">"Registrierung erfolgreich, du wirst eine E-mail zum Aktivieren erhalten!"</string>
 <string name="login_Processing">"Verarbeite..."</string>
 <string name="login_TitleStatistics">"Statistiken für [USERNAMEEMAIL]"</string>
-<string name="login_Statistics">"Voreinstellungen hoch geladen: [UPLOADCOUNT]
+<string name="login_Statistics">"Voreinstellungen hochgeladen: [UPLOADCOUNT]
 
 Sterne vergeben: [STARSGIVEN]
 Sterne erhalten: [STARSRECEIVED]
@@ -231,10 +231,10 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Hier klicken, um die Statistiken neu zu laden"</string>
 <string name="login_TitleLogout">"Abmelden"</string>
-<string name="login_pleaseCheckInput">"Etwas ist schiefgelaufen, bitte überprüfe deine Eingabe."</string>
+<string name="login_pleaseCheckInput">"Etwas ist fehlgeschlagen, bitte überprüfe deine Eingabe."</string>
 <string name="presetsManager_Stars">"Sterne: [STARS]"</string>
 <string name="presetsManager_giveStar">"Stern geben"</string>
-<string name="presetsManager_removeStar">"Stern Entfernen"</string>
+<string name="presetsManager_removeStar">"Stern entfernen"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] farben"</string>
@@ -242,8 +242,8 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="colorsPartDescButton">"Die Farben des [BUTTON] Knopfes."</string>
 <string name="colorsPartPresets">"Voreinstellungen"</string>
 <string name="colorsPartReveal">"Reveal"</string>
-<string name="colorsPartRevealDesc">"Die Farbe der Reveal Animation."</string>
-<string name="colorsPartRevealDesc1">"Die Farbe der Reveal Animation wenn auf eine neu starten/ausschalten Option geklickt wurde."</string>
+<string name="colorsPartRevealDesc">"Die Farbe der Reveal-Animation."</string>
+<string name="colorsPartRevealDesc1">"Die Farbe der Reveal-Animation, wenn auf eine Neu starten/Ausschalten Option geklickt wurde."</string>
 <string name="colorsPartMain">"Dialog"</string>
 <string name="presetsManager_Refresh">"Aktualisieren"</string>
 <string name="presetsManager_OrderBy">"Sortieren nach"</string>
@@ -254,10 +254,10 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="powerMenuMain_Empty">"Leer"</string>
 <string name="login_Recover">"Wiederherstellen"</string>
 <string name="login_RecoverAccount">"Kein Zugriff auf dein Konto? 
-Klicke hier für Wiederherstellungs Optionen."</string>
+Klicke hier für Wiederherstellungsoptionen."</string>
 <string name="login_RecoverPassword">"Passwort zurücksetzen"</string>
 <string name="preferencesTitle_Graphics">"Grafiken"</string>
 <string name="preferencesDesc_Graphics">"Ändere die Grafiken, nutze eigene oder vordefinierte Grafiken."</string>
-<string name="login_RecoverSuccess">"Du wirst eine email mit Infos zum zurücksetzen deines Passwords erhalten."</string>
+<string name="login_RecoverSuccess">"Du wirst eine E-mail mit Infos zum Zurücksetzen deines Passworts erhalten."</string>
 <string name="login_RecoverNotFound">"Keinen Benutzer mit diesen Daten gefunden."</string>
 </resources>
