@@ -249,4 +249,13 @@
 <string name="presetsManager_OrderAscDesc">"По возрастанию/По убыванию"</string>
 <string name="visibilityOrder_Add">"Добавить обычный элемент/Добавить несколько элементов"</string>
 <string name="visibilityOrder_SelectMulti">"Пожалуйста, выберите три элемента."</string>
+<string name="powerMenuMain_Empty">"Пусто"</string>
+<string name="login_Recover">"Восстановить"</string>
+<string name="login_RecoverAccount">"Нет доступа к аккаунта?
+Нажмите сюда для восстановления."</string>
+<string name="login_RecoverPassword">"Сбросить пароль"</string>
+<string name="preferencesTitle_Graphics">"Графика"</string>
+<string name="preferencesDesc_Graphics">"Изменить графику, использовать кастомную или предустановленных графику."</string>
+<string name="login_RecoverSuccess">"Вы получите E-mail с информацией о сбросе пароля."</string>
+<string name="login_RecoverNotFound">"Пользователя с этими данными не найдено."</string>
 </resources>
