@@ -43,6 +43,10 @@ public class permissionsScreen extends Fragment
 				} else {
 						MainActivity.visibleFragment = "permissions";
 				}
+				
+				MainActivity.actionbar.setActionBarTitle(getString(R.string.preferencesTitle_Permissions));
+				MainActivity.actionbar.setActionBarSubTitle(getString(R.string.preferencesDesc_Permissions));
+				
 				View InflatedView = inflater.inflate(R.layout.permissionsscreen,null);
 				
 				mActivity = getActivity();
@@ -58,14 +62,15 @@ public class permissionsScreen extends Fragment
 						CheckBox_DontAskAgain.setVisibility(View.GONE);
 				}
 				
-				MainActivity.setActionBarButton(getString(R.string.Dialog_Ok), R.drawable.ic_content_send, new OnClickListener() {
+				MainActivity.actionbar.setActionBarButton(getString(R.string.Dialog_Ok), R.drawable.ic_content_send, new OnClickListener() {
 
 								@Override
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
 										if(!adapter.isAllChecked()) {
-												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
+												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
+												dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																@Override
 																public void onListItemClick(int position, String text)
@@ -100,7 +105,7 @@ public class permissionsScreen extends Fragment
 														});
 														dialogFragment.setDialogText(getActivity().getString(R.string.permissionsScreen_NotAllGranted));
 												dialogFragment.setDialogPositiveButton(getActivity().getString(R.string.Dialog_Ok));
-												MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+												dialogFragment.showDialog();
 										} else {
 												MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 										}

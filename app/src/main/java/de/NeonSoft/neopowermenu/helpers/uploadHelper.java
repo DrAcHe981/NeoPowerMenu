@@ -5,6 +5,7 @@ import android.util.*;
 import java.io.*;
 import java.net.*;
 import android.widget.*;
+import java.util.*;
 
 public class uploadHelper
 {
@@ -20,8 +21,45 @@ public class uploadHelper
 		private FileInputStream fileInputStream;
 		private DataOutputStream dos;
 		
-		public uploadHelper(Context context,uploadHelperInterface listener) {
+		private boolean isRunning = false;
+		private AsyncTask ulTask;
+
+		long total = 0;
+		long dltotalsize = 0;
+		long dlnowsize = 0;
+		Timer timer = new Timer();
+		
+		public uploadHelper(Context context) {
 				this.mContext = context;
+				this.mInterface = new uploadHelperInterface() {
+
+						@Override
+						public void onUploadStarted(boolean state)
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onPublishUploadProgress(long nowSize, long totalSize)
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onUploadComplete()
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onUploadFailed(String reason)
+						{
+								// TODO: Implement this method
+						}
+				};
+		}
+		
+		public void setInterface(uploadHelperInterface listener) {
 				this.mInterface = listener;
 		}
 		
@@ -53,6 +91,18 @@ public class uploadHelper
 				}
 		}
 		
+		public boolean stopUpload(boolean force) {
+				return ulTask.cancel(force);
+		}
+		
+		public boolean isRunning() {
+				return isRunning;
+		}
+
+		public long[] getSizes() {
+				return new long[] {dlnowsize,dltotalsize};
+		}
+		
 		public interface uploadHelperInterface {
 				void onUploadStarted(boolean state);
 				void onPublishUploadProgress(long nowSize,long totalSize);
@@ -63,16 +113,24 @@ public class uploadHelper
 		class uploadAsync extends AsyncTask<String, String, String>
 		{
 				
-				long dltotalsize;
-				long dlnowsize;
-				int oldPercent;
-				
 				@Override
 				protected void onPreExecute()
 				{
 						// TODO: Implement this method
 						super.onPreExecute();
 						mInterface.onUploadStarted(true);
+						timer.scheduleAtFixedRate(new TimerTask() {
+
+										@Override
+										public void run()
+										{
+												// TODO: Implement this method
+												if(dlnowsize > 0 && dltotalsize > 0) {
+														mInterface.onPublishUploadProgress(dlnowsize,dltotalsize);
+												}
+										}
+								}, 0, 50L);
+								isRunning = true;
 				}
 
 				@Override
@@ -96,7 +154,7 @@ public class uploadHelper
 						Log.i("NPM","Initializing upload: \nServer: "+p1[0]+"\nFile Name: "+uploadFileName);
 						File sourceFile = new File(p1[1]);
 						if (!sourceFile.isFile()) {
-								Log.e("uploadFile", "Source File not exist :" +p1[1] + "" + uploadFileName);
+								Log.e("NPM", "Source File not exist :" +p1[1] + "" + uploadFileName);
 								return "file not found";
 						} else {
 								try {
@@ -125,11 +183,10 @@ public class uploadHelper
 										// read file and write it into form...
 										bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 										dltotalsize = sourceFile.length();
-										long total = 0;
+										total = 0;
 										while ((count = bytesRead) > 0) {
 												total += count;
 												dlnowsize = total;
-												publishProgress("" + ((total * 100) / sourceFile.length()),""+dlnowsize,""+dltotalsize);
 												dos.write(buffer, 0, bufferSize);
 												bytesAvailable = fileInputStream.available();
 												bufferSize = Math.min(bytesAvailable, maxBufferSize);
@@ -175,10 +232,28 @@ public class uploadHelper
 								}
 
 								@Override
+								protected void onCancelled(String p1)
+								{
+										// TODO: Implement this method
+										super.onCancelled(p1);
+										timer.cancel();
+										try {
+												//close the streams //
+												fileInputStream.close();
+												dos.flush();
+												dos.close();
+										} catch (Throwable t) {
+										}
+										mInterface.onUploadFailed("canceled");
+										isRunning = false;
+								}
+
+								@Override
 								protected void onPostExecute(String p1)
 								{
 										// TODO: Implement this method
 										super.onPostExecute(p1);
+										timer.cancel();
 										try {
 												//close the streams //
 												fileInputStream.close();
@@ -191,6 +266,7 @@ public class uploadHelper
 										} else {
 												mInterface.onUploadFailed(p1);
 										}
+										isRunning = false;
 								}
 		}
 		

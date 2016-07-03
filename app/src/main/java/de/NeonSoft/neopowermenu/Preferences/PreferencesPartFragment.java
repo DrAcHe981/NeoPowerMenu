@@ -33,7 +33,7 @@ public class PreferencesPartFragment extends Fragment
 		
 		private boolean hideicon = false;
 		private boolean DeepXposedLogging = false;
-
+		
 		private View InflatedView;
 
 		private static ProgressBar ProgressBar_RootWait;
@@ -53,7 +53,7 @@ public class PreferencesPartFragment extends Fragment
 		private static LinearLayout LinearLayout_Advanced;
 		
 		private static LinearLayout LinearLayout_Permissions;
-		
+
 		private static LinearLayout LinearLayout_HideLauncherIcon;
 		private static Switch Switch_HideLauncherIcon;
 		
@@ -73,6 +73,9 @@ public class PreferencesPartFragment extends Fragment
 				MainActivity.visibleFragment = "Main";
 	
 				mContext = getActivity();
+
+				MainActivity.actionbar.setActionBarTitle(mContext.getString(R.string.app_name));
+				MainActivity.actionbar.setActionBarSubTitle("v"+MainActivity.versionName+" ("+ MainActivity.versionCode+")");
 				
 				ActiveStyle = MainActivity.preferences.getString("DialogTheme", "Material");
 				hideicon = MainActivity.preferences.getBoolean("HideLauncherIcon",false);
@@ -136,7 +139,8 @@ public class PreferencesPartFragment extends Fragment
 														//presetsList[i] = "(Active) "+ presetsFiles[i].getName().split(".nps")[0];
 												}
 										}
-										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
+										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
+										dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
 														public void onListItemClick(int position, String text)
@@ -173,7 +177,7 @@ public class PreferencesPartFragment extends Fragment
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId,true);
 										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-										MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+										dialogFragment.showDialog();
 								}
 						});
 
@@ -298,79 +302,7 @@ public class PreferencesPartFragment extends Fragment
 
 				checkState();
 				
-				MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
-				
-				/*final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
-
-								@Override
-								public void onListItemClick(int position, String text)
-								{
-										// TODO: Implement this method
-										Toast.makeText(mContext,"onListItemClick: "+position+" / "+ text,Toast.LENGTH_SHORT).show();
-								}
-
-								@Override
-								public void onNegativeClick()
-								{
-										// TODO: Implement this method
-										Toast.makeText(mContext,"onNegativeClick",Toast.LENGTH_SHORT).show();
-								}
-
-								@Override
-								public void onNeutralClick()
-								{
-										// TODO: Implement this method
-										Toast.makeText(mContext,"onNeutralClick",Toast.LENGTH_SHORT).show();
-								}
-
-								@Override
-								public void onPositiveClick(ArrayList<String> resultData)
-								{
-										// TODO: Implement this method
-										Toast.makeText(mContext,"onPositiveClick: "+resultData.toString(),Toast.LENGTH_SHORT).show();
-								}
-
-								@Override
-								public void onTouchOutside()
-								{
-										// TODO: Implement this method
-										Toast.makeText(mContext,"onTouchOutside",Toast.LENGTH_SHORT).show();
-								}
-						});*/
-				//dialogFragment.setDialogText("This is a dialog Test\nThis one will not close on touch outside");
-				//dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,new String[] {"Item 1","Item 2","Item 3"},1,false);
-				/*dialogFragment.setDialogInput1(mContext.getString(R.string.presetSaveDialog_InfoText), "Test", new TextWatcher() {
-
-								@Override
-								public void afterTextChanged(Editable p1)
-								{
-										// TODO: Implement this method
-								}
-
-								@Override
-								public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
-								{
-										// TODO: Implement this method
-								}
-
-								@Override
-								public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
-								{
-										// TODO: Implement this method
-										if (!p1.toString().equalsIgnoreCase("")) {
-												File checkFile = new File(mContext.getFilesDir()+"/presets/"+p1+".nps");
-												if (!checkFile.exists()) {
-														dialogFragment.setDialogText("This is a dialog Test\nThis one will not close on touch outside");
-												} else {
-														dialogFragment.setDialogText("This is a dialog Test\nThis one will not close on touch outside\n\n"+mContext.getString(R.string.presetSaveDialog_OverwriteText));
-												}
-										}
-								}
-						});
-				dialogFragment.setDialogInput2(mContext.getString(R.string.presetSaveDialog_CreatorNameInfo),"Test 2",null);*/
-				//dialogFragment.setDialogColorPicker("#cc123456",true);
-				//dialogFragment.setDialogCloseOnTouchOutside(false);
-				//MainActivity.fragmentManager.beginTransaction().add(R.id.pref_container,dialogFragment,"TestDialog").commit();
+				MainActivity.actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 				
 				return InflatedView;
 		}
@@ -385,6 +317,7 @@ public class PreferencesPartFragment extends Fragment
 								} else {
 										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed4);
 										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed4);
+										//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
 										ProgressBar_RootWait.setVisibility(View.GONE);
 								}
 						} else if (helper.ModuleState()==-1) {
@@ -394,19 +327,30 @@ public class PreferencesPartFragment extends Fragment
 								} else {
 										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed3);
 										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed3);
+										//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
 										ProgressBar_RootWait.setVisibility(View.GONE);
+										/*slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
+										//dialogFragment.set
+										dialogFragment.setDialogText(getString(R.string.preferencesDesc_RootXposed3));
+										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Ignore));
+										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
+										dialogFragment.showDialog();*/
 								}
 						} else {
 								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
 								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
 								TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
 								TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+								//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
+								ProgressBar_RootWait.setVisibility(View.GONE);
 						}
 				} catch (Throwable t) {
 						TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
 						TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
 						TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
 						TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+						//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
+						ProgressBar_RootWait.setVisibility(View.GONE);
 				}
 		}
 		

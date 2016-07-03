@@ -119,7 +119,8 @@ public class LoginFragment extends Fragment
 										Toast.makeText(getActivity(), getString(R.string.login_pleaseCheckInput), Toast.LENGTH_SHORT).show();
 										return;
 								}
-								uploadHelper uH = new uploadHelper(getActivity(), new uploadHelper.uploadHelperInterface() {
+								uploadHelper uH = new uploadHelper(getActivity());
+								uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 												@Override
 												public void onUploadStarted(boolean state)
@@ -148,8 +149,8 @@ public class LoginFragment extends Fragment
 														EditText_UsernameEmail.setText(EditText_Username.getText().toString());
 														LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 														LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-														MainActivity.setActionBarButtonText(getString(R.string.login_Title));
-														MainActivity.setActionBarButtonListener(loginOnClickListener);
+														MainActivity.actionbar.setActionBarButtonText(getString(R.string.login_Title));
+														MainActivity.actionbar.setActionBarButtonListener(loginOnClickListener);
 														loginFragmentMode = "login";
 												}
 
@@ -173,7 +174,8 @@ public class LoginFragment extends Fragment
 														}
 														else
 														{
-																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, new slideDownDialogFragment.slideDownDialogInterface() {
+																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext,MainActivity.fragmentManager);
+																dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
 																				public void onListItemClick(int position, String text)
@@ -207,7 +209,7 @@ public class LoginFragment extends Fragment
 																		});
 																dialogFragment.setDialogText("Register failed: \n"+reason);
 																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-																MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+																dialogFragment.showDialog();
 														}
 												}
 										});
@@ -235,7 +237,8 @@ public class LoginFragment extends Fragment
 										Toast.makeText(getActivity(), getString(R.string.login_pleaseCheckInput), Toast.LENGTH_SHORT).show();
 										return;
 								}
-								uploadHelper uH = new uploadHelper(getActivity(), new uploadHelper.uploadHelperInterface() {
+								uploadHelper uH = new uploadHelper(getActivity());
+								uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 												@Override
 												public void onUploadStarted(boolean state)
@@ -264,9 +267,9 @@ public class LoginFragment extends Fragment
 														EditText_UsernameEmail.setText(EditText_RecoverUsername.getText().toString());
 														LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 														LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-														MainActivity.setActionBarButtonText(getString(R.string.login_Title));
-														MainActivity.setActionBarButtonListener(loginOnClickListener);
-														MainActivity.setActionBarButtonIcon(R.drawable.ic_action_import);
+														MainActivity.actionbar.setActionBarButtonText(getString(R.string.login_Title));
+														MainActivity.actionbar.setActionBarButtonListener(loginOnClickListener);
+														MainActivity.actionbar.setActionBarButtonIcon(R.drawable.ic_action_import);
 														loginFragmentMode = "login";
 												}
 
@@ -290,7 +293,8 @@ public class LoginFragment extends Fragment
 														}
 														else
 														{
-																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, new slideDownDialogFragment.slideDownDialogInterface() {
+																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
+																dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
 																				public void onListItemClick(int position, String text)
@@ -324,7 +328,7 @@ public class LoginFragment extends Fragment
 																		});
 																dialogFragment.setDialogText("Reset failed: \n"+reason);
 																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-																MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+																dialogFragment.showDialog();
 														}
 												}
 										});
@@ -360,7 +364,7 @@ public class LoginFragment extends Fragment
 								LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
 								TextView_AccountInfo.setVisibility(View.VISIBLE);
 								TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-								MainActivity.setActionBarButton(mContext.getString(R.string.login_Title),R.drawable.ic_action_import,loginOnClickListener);
+								MainActivity.actionbar.setActionBarButton(mContext.getString(R.string.login_Title),R.drawable.ic_action_import,loginOnClickListener);
 								loginFragmentMode = "login";
 						}
 				};
@@ -379,8 +383,8 @@ public class LoginFragment extends Fragment
 								{
 										// TODO: Implement this method
 										loginFragmentMode = "register";
-										MainActivity.setActionBarButtonText(getString(R.string.login_TitleRegister));
-										MainActivity.setActionBarButtonListener(registerOnClickListener);
+										MainActivity.actionbar.setActionBarButtonText(getString(R.string.login_TitleRegister));
+										MainActivity.actionbar.setActionBarButtonListener(registerOnClickListener);
 										LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 										LinearLayout_LoginContainer.setVisibility(View.GONE);
 										EditText_Username.setText("");
@@ -404,7 +408,7 @@ public class LoginFragment extends Fragment
 								{
 										// TODO: Implement this method
 										loginFragmentMode = "recover";
-										MainActivity.setActionBarButton(getString(R.string.login_Recover), R.drawable.ic_action_settings_backup_restore, recoverOnClickListener);
+										MainActivity.actionbar.setActionBarButton(getString(R.string.login_Recover), R.drawable.ic_action_settings_backup_restore, recoverOnClickListener);
 										LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 										LinearLayout_LoginContainer.setVisibility(View.GONE);
 										EditText_RecoverUsername.setText("");
@@ -446,7 +450,7 @@ public class LoginFragment extends Fragment
 						TextView_TitleStatistics.setText(mContext.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.usernameemail));
 						getStatistics();
 						if(LinearLayout_LoggedInContainer.getVisibility()==View.GONE) LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
-						//MainActivity.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_content_send, logoutOnClickListener);
+						//MainActivity.actionbar.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_content_send, logoutOnClickListener);
 				}
 				else if (loginFragmentMode.equalsIgnoreCase("register"))
 				{
@@ -454,7 +458,7 @@ public class LoginFragment extends Fragment
 						if(TextView_AccountInfo.getVisibility()==View.GONE ) TextView_AccountInfo.setVisibility(View.VISIBLE);
 						if(LinearLayout_RegisterContainer.getVisibility()==View.GONE) LinearLayout_RegisterContainer.setVisibility(View.VISIBLE);
 						if(LinearLayout_LoginContainer.getVisibility()==View.VISIBLE) LinearLayout_LoginContainer.setVisibility(View.GONE);
-						//MainActivity.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
+						//MainActivity.actionbar.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
 				}
 				else if (loginFragmentMode.equalsIgnoreCase("recover"))
 				{
@@ -462,19 +466,20 @@ public class LoginFragment extends Fragment
 						if(TextView_AccountInfo.getVisibility()==View.GONE ) TextView_AccountInfo.setVisibility(View.VISIBLE);
 						if(LinearLayout_RecoverAccountContainer.getVisibility()==View.GONE) LinearLayout_RecoverAccountContainer.setVisibility(View.VISIBLE);
 						if(LinearLayout_LoginContainer.getVisibility()==View.VISIBLE) LinearLayout_LoginContainer.setVisibility(View.GONE);
-						//MainActivity.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
+						//MainActivity.actionbar.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
 				} else {
 						loginFragmentMode = "login";
 						if(TextView_AccountInfo.getVisibility()==View.GONE ) TextView_AccountInfo.setVisibility(View.VISIBLE);
 						if(LinearLayout_LoginContainer.getVisibility()==View.GONE) LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 						if(LinearLayout_LoggedInContainer.getVisibility()==View.VISIBLE) LinearLayout_LoggedInContainer.setVisibility(View.GONE);
-						//MainActivity.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
+						//MainActivity.actionbar.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
 				}
 		}
 		
 		public static void performLogin(final Context context,final String usernameemail,final String password,final boolean keeplogin,final boolean background) {
 
-				uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
+				uploadHelper uH = new uploadHelper(context);
+				uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 								@Override
 								public void onUploadStarted(boolean state)
@@ -520,7 +525,7 @@ public class LoginFragment extends Fragment
 												getStatistics();
 												LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
 												LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-												if(MainActivity.visibleFragment.equalsIgnoreCase("account")) MainActivity.setActionBarButton(context.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
+												if(MainActivity.visibleFragment.equalsIgnoreCase("account")) MainActivity.actionbar.setActionBarButton(context.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
 												loginFragmentMode = "logout";
 										}
 								}
@@ -532,7 +537,6 @@ public class LoginFragment extends Fragment
 										if(!background) {
 												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 												PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
-										}
 										if (reason.contains("user with this data not found"))
 										{
 												Toast.makeText(context, context.getString(R.string.login_LoginFailedWrongData), Toast.LENGTH_LONG).show();
@@ -549,6 +553,7 @@ public class LoginFragment extends Fragment
 										{
 												Toast.makeText(context, context.getString(R.string.login_LoginFailedWithReason)+"\n" + reason, Toast.LENGTH_LONG).show();
 										}
+										}
 								}
 						});
 				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
@@ -564,7 +569,8 @@ public class LoginFragment extends Fragment
 		}
 		
 		public static void getStatistics() {
-				uploadHelper uH = new uploadHelper(mContext, new uploadHelper.uploadHelperInterface() {
+				uploadHelper uH = new uploadHelper(mContext);
+				uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 								@Override
 								public void onUploadStarted(boolean state)
@@ -615,9 +621,9 @@ public class LoginFragment extends Fragment
 		public static void returnToLogin()
 		{
 				loginFragmentMode = "login";
-				MainActivity.setActionBarButtonText(mContext.getString(R.string.login_Title));
-				MainActivity.setActionBarButtonListener(loginOnClickListener);
-				MainActivity.setActionBarButtonIcon(R.drawable.ic_action_import);
+				MainActivity.actionbar.setActionBarButtonText(mContext.getString(R.string.login_Title));
+				MainActivity.actionbar.setActionBarButtonListener(loginOnClickListener);
+				MainActivity.actionbar.setActionBarButtonIcon(R.drawable.ic_action_import);
 				if(LinearLayout_RegisterContainer.getVisibility()==View.VISIBLE) {
 				LinearLayout_RegisterContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 				LinearLayout_RegisterContainer.setVisibility(View.GONE);

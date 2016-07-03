@@ -58,7 +58,7 @@
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
-					android:gravity="center_vertical">
+						android:gravity="center_vertical">
 
 					<ProgressBar
 						android:layout_height="35dp"
@@ -459,7 +459,7 @@
 					android:alpha="0.3"/>
 
 			</LinearLayout>
-
+				
 			<LinearLayout
 				android:background="?android:attr/selectableItemBackground"
 				android:clickable="true"

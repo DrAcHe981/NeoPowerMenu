@@ -153,15 +153,15 @@ public class XposedDialog extends DialogFragment
 				}
 				if(i==0) {
 						XposedMainActivity.orderPrefs.edit().putInt("0_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
-						XposedMainActivity.orderPrefs.edit().putString("0_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[0]).commit();
+						XposedMainActivity.orderPrefs.edit().putString("0_item_title","Shutdown").commit();
 						XposedMainActivity.orderPrefs.edit().putInt("1_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
-						XposedMainActivity.orderPrefs.edit().putString("1_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[1]).commit();
+						XposedMainActivity.orderPrefs.edit().putString("1_item_title","Reboot").commit();
 						XposedMainActivity.orderPrefs.edit().putInt("2_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
-						XposedMainActivity.orderPrefs.edit().putString("2_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[2]).commit();
+						XposedMainActivity.orderPrefs.edit().putString("2_item_title","SoftReboot").commit();
 						XposedMainActivity.orderPrefs.edit().putInt("3_item_type",visibilityOrderNew_ListAdapter.TYPE_MULTI).commit();
-						XposedMainActivity.orderPrefs.edit().putString("3_item1_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[10]).commit();
-						XposedMainActivity.orderPrefs.edit().putString("3_item2_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[11]).commit();
-						XposedMainActivity.orderPrefs.edit().putString("3_item3_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[12]).commit();
+						XposedMainActivity.orderPrefs.edit().putString("3_item1_title","Recovery").commit();
+						XposedMainActivity.orderPrefs.edit().putString("3_item2_title","Bootloader").commit();
+						XposedMainActivity.orderPrefs.edit().putString("3_item3_title","SafeMode").commit();
 				}
 				i = 0;
 				while (XposedMainActivity.orderPrefs.getInt(i+"_item_type",-1) != -1) {
@@ -416,7 +416,7 @@ public class XposedDialog extends DialogFragment
 		}
 		
 		private void performMenuClick(String name,View v) {
-				if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[0])) {
+				if(name.equalsIgnoreCase("Shutdown")) {
 						if(doubleToConfirm) {
 								if(!firstTouch && firstTouchOn != v) {
 										firstTouch = true;
@@ -480,7 +480,7 @@ public class XposedDialog extends DialogFragment
 										}
 								}
             }
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[1])) {
+				} else if(name.equalsIgnoreCase("Reboot")) {
 						if(doubleToConfirm) {
 								if(!firstTouch && firstTouchOn != v) {
 										firstTouch = true;
@@ -544,7 +544,7 @@ public class XposedDialog extends DialogFragment
 										}
 								}
 						}
-				} else if (name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[2])) {
+				} else if (name.equalsIgnoreCase("SoftReboot")) {
 						if(doubleToConfirm) {
 								if(!firstTouch && firstTouchOn != v) {
 										firstTouch = true;
@@ -608,7 +608,7 @@ public class XposedDialog extends DialogFragment
 										}
 								}
             }
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[3])) {
+				} else if(name.equalsIgnoreCase("Screenshot")) {
 						if (firstTouch && firstTouchOn!=v) {
 								firstTouch = false;
 								firstTouchOn = null;
@@ -633,11 +633,12 @@ public class XposedDialog extends DialogFragment
 																Intent takeScreenshotBC = new Intent();
 																takeScreenshotBC.setAction(XposedMain.NPM_ACTION_BROADCAST_SCREENSHOT);
 																XposedMainActivity.mContext.sendBroadcast(takeScreenshotBC);
+																//Toast.makeText(mContext, "Taking screenshot...",Toast.LENGTH_SHORT).show();
 														}
 												}, XposedMainActivity.preferences.getLong("ScreenshotDelay", 1000));
 								}
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[4])) {
+				} else if(name.equalsIgnoreCase("Screenrecord")) {
 						if (!XposedMainActivity.previewMode)
 						{
 								dismiss();
@@ -651,10 +652,11 @@ public class XposedDialog extends DialogFragment
 														Intent takeScreenrecordBC = new Intent();
 														takeScreenrecordBC.setAction(XposedMain.NPM_ACTION_BROADCAST_SCREENRECORD);
 														XposedMainActivity.mContext.sendBroadcast(takeScreenrecordBC);
+														//Toast.makeText(mContext, "Taking screenrecord...",Toast.LENGTH_SHORT).show();
 												}
 										}, 1000);
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[5])) {
+				} else if(name.equalsIgnoreCase("Flashlight")) {
 						if(!XposedMainActivity.previewMode) {
 								dismiss();
 								final Handler handler = new Handler();
@@ -672,26 +674,26 @@ public class XposedDialog extends DialogFragment
 										}
 								}.start();
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[6])) {
+				} else if(name.equalsIgnoreCase("ExpandedDesktop")) {
 						if(!XposedMainActivity.previewMode) {
 								dismiss();
 								Intent launchIntent = new Intent("gravitybox.intent.action.TOGGLE_EXPANDED_DESKTOP");
 								mContext.sendBroadcast(launchIntent);
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[7])) {
+				} else if(name.equalsIgnoreCase("AirplaneMode")) {
 						if(!XposedMainActivity.previewMode) {
 								dismiss();
 								Intent launchIntent = new Intent(XposedMain.NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
 								mContext.sendBroadcast(launchIntent);
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[8])) {
+				} else if(name.equalsIgnoreCase("RestartUI")) {
 						if (!XposedMainActivity.previewMode)
 						{
 								dismiss();
 								Intent launchIntent = new Intent(XposedMain.NPM_ACTION_BROADCAST_KILLSYSTEMUI);
 								mContext.sendBroadcast(launchIntent);
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[9])) {
+				} else if(name.equalsIgnoreCase("SoundMode")) {
 						if (!XposedMainActivity.previewMode) {
 								dismiss();
 								if(amRingerMode==AudioManager.RINGER_MODE_NORMAL) {
@@ -702,7 +704,7 @@ public class XposedDialog extends DialogFragment
 										am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 								}
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[10])) {
+				} else if(name.equalsIgnoreCase("Recovery")) {
 						canDismiss = false;
 
 						final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogRecovery_Backgroundcolor", "#8bc34a"));
@@ -741,7 +743,7 @@ public class XposedDialog extends DialogFragment
 										new BackgroundThread(REBOOT_RECOVERY_CMD).start();
 								}
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[11])) {
+				} else if(name.equalsIgnoreCase("Bootlooder")) {
 						canDismiss = false;
 
 						final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogBootloader_Backgroundcolor", "#277b71"));
@@ -780,7 +782,7 @@ public class XposedDialog extends DialogFragment
 										new BackgroundThread(REBOOT_BOOTLOADER_CMD).start();
 								}
 						}
-				} else if(name.equalsIgnoreCase(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[12])) {
+				} else if(name.equalsIgnoreCase("SafeMode")) {
 						canDismiss = false;
 
 						final int color = Color.parseColor(XposedMainActivity.preferences.getString("DialogSafeMode_Backgroundcolor", "#009688"));
@@ -894,6 +896,9 @@ public class XposedDialog extends DialogFragment
 		{
 				if (canDismiss || XposedMainActivity.previewMode)
 				{
+						try {
+								mContext.unregisterReceiver(XposedMainActivity.mReceiver);
+						} catch (Throwable t) {}
 						super.onDismiss(dialog);
 						final Activity activity = getActivity();
         		if (activity != null && activity instanceof DialogInterface.OnDismissListener)
@@ -909,6 +914,9 @@ public class XposedDialog extends DialogFragment
 				// TODO: Implement this method
 				if (canDismiss || XposedMainActivity.previewMode)
 				{
+						try {
+								mContext.unregisterReceiver(XposedMainActivity.mReceiver);
+						} catch (Throwable t) {}
 						super.onCancel(dialog);
 						final Activity activity = getActivity();
         		if (activity != null && activity instanceof DialogInterface.OnDismissListener)

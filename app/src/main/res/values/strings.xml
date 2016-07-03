@@ -90,6 +90,7 @@ This can't be undone!"</string>
 <!-- Dialog -->
 <string name="Dialog_Ok">"Ok"</string>
 <string name="Dialog_Yes">"Yes"</string>
+		<string name="Dialog_No">"No"</string>
 <string name="Dialog_Rename">"Rename"</string>
 <string name="Dialog_Cancel">"Cancel"</string>
 <string name="Dialog_Delete">"Delete"</string>

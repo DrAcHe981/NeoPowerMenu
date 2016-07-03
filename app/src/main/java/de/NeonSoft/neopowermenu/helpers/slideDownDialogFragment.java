@@ -21,14 +21,15 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import de.NeonSoft.neopowermenu.R;
 
-public class slideDownDialogFragment extends Fragment
+public class slideDownDialogFragment extends android.support.v4.app.Fragment
 {
 
 		public static String dialogTag = "slideDownDialog";
 	
 		 private Activity mContext;
 		private slideDownDialogInterface mInterface;
-		private Fragment mFragment;
+		private android.support.v4.app.Fragment mFragment;
+		private android.support.v4.app.FragmentManager mFragmentmanager;
 		BroadcastReceiver br;
 		
 		 private String dialogText = "";
@@ -109,9 +110,50 @@ public class slideDownDialogFragment extends Fragment
 
 		TextView TextView_DialogTouchOutside;
 		
-		 
-		public slideDownDialogFragment(Activity context,slideDownDialogInterface listener) {
+
+		public slideDownDialogFragment(Activity context,android.support.v4.app.FragmentManager fragmentmanager) {
 				this.mContext = context;
+				this.mInterface = new slideDownDialogInterface() {
+
+						@Override
+						public void onListItemClick(int position, String text)
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onNegativeClick()
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onNeutralClick()
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onPositiveClick(ArrayList<String> resultData)
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onTouchOutside()
+						{
+								// TODO: Implement this method
+						}
+				};
+				this.mFragmentmanager = fragmentmanager;
+		}
+		public slideDownDialogFragment(Activity context, android.support.v4.app.FragmentManager fragmentmanager, slideDownDialogInterface listener) {
+				this.mContext = context;
+				this.mInterface = listener;
+				this.mFragmentmanager = fragmentmanager;
+		}
+		
+		public void setDialogListener(slideDownDialogInterface listener) {
 				this.mInterface = listener;
 		}
 		
@@ -181,6 +223,20 @@ public class slideDownDialogFragment extends Fragment
 		
 		public void setDialogCloseOnTouchOutside(boolean enabled) {
 				closeOnTouchOutside = enabled;
+		}
+		
+		public void showDialog() {
+				try {
+						if(mFragmentmanager==null) {
+								throw new Throwable("mFragmentmanager is null!");
+						}
+						mFragmentmanager.beginTransaction().add(R.id.dialog_container, this, dialogTag).commit();
+				} catch (Throwable t) {
+						AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
+						adb.setMessage("Failed to show slideDownDialogFragment:\n"+t);
+						adb.setPositiveButton("Ok",null);
+						adb.show();
+				}
 		}
 		
 		public interface slideDownDialogInterface {
@@ -505,7 +561,7 @@ public class slideDownDialogFragment extends Fragment
 												// TODO: Implement this method
 												ArrayList<String> resultData = new ArrayList<String>();
 												if(dialogListItems!=null) {
-														if(ListView_DialogListView.getCheckedItemCount() < 1) {
+														if((dialogListMode != ListView.CHOICE_MODE_NONE && dialogListMode != ListView.CHOICE_MODE_SINGLE) && ListView_DialogListView.getCheckedItemCount() < 1) {
 																return;
 														}
 														if(dialogListLimitMin && dialogListLimit>0 && ListView_DialogListView.getCheckedItemCount() < dialogListLimit) {

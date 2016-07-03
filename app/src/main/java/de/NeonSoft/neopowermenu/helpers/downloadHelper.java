@@ -6,6 +6,7 @@ import android.util.*;
 import android.widget.*;
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
 public class downloadHelper
 {
@@ -16,18 +17,61 @@ public class downloadHelper
 		private String mUrl;
 		private String mLocalUrl;
 		
-		public downloadHelper(Context context,downloadHelperInterface listener) {
+		private boolean isRunning = false;
+		private AsyncTask dlTask;
+
+		URLConnection connection;
+		int CONNECT_TIMEOUT = 5000;
+		int READ_TIMEOUT = 5000;
+		long total = 0;
+		long dltotalsize = 0;
+		long dlnowsize = 0;
+		String file;
+		BufferedInputStream dlinput;
+		FileOutputStream dloutput;
+		Timer timer = new Timer();
+		
+		public downloadHelper(Context context) {
 				this.mContext = context;
-				this.mInterface = listener;
+				this.mInterface = new downloadHelperInterface() {
+
+						@Override
+						public void onDownloadStarted(boolean state)
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onPublishDownloadProgress(long nowSize, long totalSize)
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onDownloadComplete()
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onDownloadFailed(String reason)
+						{
+								// TODO: Implement this method
+						}
+				};
 				this.mLocalUrl = context.getFilesDir().getPath()+"/download";
 				new File(this.mLocalUrl).mkdirs();
 		}
 		
-		void setUrl(String url) {
+		public void setInterface(downloadHelperInterface listener) {
+				this.mInterface = listener;
+		}
+		
+		public void setUrl(String url) {
 				this.mUrl = url;
 		}
 		
-		void setLocalUrl(String url) {
+		public void setLocalUrl(String url) {
 				if(url.endsWith("/")) {
 						url = url.substring(0,url.length()-1);
 				}
@@ -35,12 +79,24 @@ public class downloadHelper
 				new File(this.mLocalUrl).mkdirs();
 		}
 		
-		void startDownload() {
+		public void startDownload() {
 				if (!this.mUrl.isEmpty() && !this.mLocalUrl.isEmpty()) {
-						new downloadAsync().execute(this.mUrl,this.mLocalUrl);
+						dlTask = new downloadAsync().execute(this.mUrl,this.mLocalUrl);
 				} else {
 						Toast.makeText(this.mContext,"Cant start download without url...",Toast.LENGTH_LONG).show();
 				}
+		}
+		
+		public boolean stopDownload(boolean force) {
+				return dlTask.cancel(force);
+		}
+		
+		public boolean isRunning() {
+				return isRunning;
+		}
+		
+		public long[] getSizes() {
+				return new long[] {dlnowsize,dltotalsize};
 		}
 		
 		interface downloadHelperInterface {
@@ -52,16 +108,6 @@ public class downloadHelper
 		
 		class downloadAsync extends AsyncTask<String, String, String>
 		{
-				
-				URLConnection connection;
-				int CONNECT_TIMEOUT = 5000;
-				int READ_TIMEOUT = 5000;
-				long dltotalsize;
-				long dlnowsize;
-				int oldPercent;
-				String file;
-				BufferedInputStream dlinput;
-				FileOutputStream dloutput;
 
 				@Override
 				protected void onPreExecute()
@@ -69,6 +115,18 @@ public class downloadHelper
 						// TODO: Implement this method
 						super.onPreExecute();
 						mInterface.onDownloadStarted(true);
+						timer.scheduleAtFixedRate(new TimerTask() {
+
+										@Override
+										public void run()
+										{
+												// TODO: Implement this method
+												if(dlnowsize > 0 && dltotalsize > 0) {
+														mInterface.onPublishDownloadProgress(dlnowsize,dltotalsize);
+												}
+										}
+								}, 0, 50L);
+								isRunning = true;
 				}
 				
 				@Override
@@ -94,22 +152,17 @@ public class downloadHelper
 												connection.setReadTimeout(READ_TIMEOUT);
 												connection.connect();
 												//Log.i("Starting download", url.toString());
-												int lenghtOfFile = connection.getContentLength();
-												if (lenghtOfFile > 0)
+												dltotalsize = connection.getContentLength();
+												if (dltotalsize > 0)
 												{
-														dltotalsize = ((Number) lenghtOfFile).longValue();
 														dlinput = new BufferedInputStream(url.openStream(), 8192);
 														dloutput = new FileOutputStream(file);
 														byte data[] = new byte[1024];
-														long total = 0;
+														total = 0;
 														while ((count = dlinput.read(data)) != -1)
 														{	
 																total += count;
 																dlnowsize = total;
-																//if (((total * 100) / lenghtOfFile) >= oldPercent+1) {
-																//		oldPercent = (int) ((total * 100) / lenghtOfFile);
-																		publishProgress("" + ((total * 100) / lenghtOfFile), "" + dlnowsize, "" + dltotalsize);
-																//}
 																dloutput.write(data, 0, count);
 														}
 												}
@@ -146,10 +199,31 @@ public class downloadHelper
 				}
 
 				@Override
+				protected void onCancelled(String p1)
+				{
+						// TODO: Implement this method
+						super.onCancelled(p1);
+						timer.cancel();
+						try
+						{
+								dloutput.flush();
+								dloutput.close();
+								dlinput.close();
+						}
+						catch (Throwable t)
+						{
+								Log.e("NPM",t.toString());
+						}
+						mInterface.onDownloadFailed("canceled");
+						isRunning = false;
+				}
+
+				@Override
 				protected void onPostExecute(String p1)
 				{
 						// TODO: Implement this method
 						super.onPostExecute(p1);
+						timer.cancel();
 						try
 						{
 								dloutput.flush();
@@ -171,6 +245,7 @@ public class downloadHelper
 						} else {
 								mInterface.onDownloadFailed(p1);
 						}
+						isRunning = false;
 				}
 				
 		}

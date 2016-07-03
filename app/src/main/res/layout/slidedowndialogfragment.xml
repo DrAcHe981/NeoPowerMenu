@@ -25,7 +25,8 @@
 			android:orientation="vertical"
 			android:background="@color/colorPrimaryDarkDarkTheme"
 			android:paddingTop="10dp"
-			android:animateLayoutChanges="true">
+			android:animateLayoutChanges="true"
+			>
 
 			<ScrollView
 				android:layout_height="wrap_content"
@@ -39,7 +40,8 @@
 					android:orientation="vertical"
 					android:paddingBottom="10dp"
 					android:id="@+id/slidedowndialogfragmentLinearLayout_MainContainer"
-					android:background="@color/colorPrimaryDarkDarkTheme">
+					android:background="@color/colorPrimaryDarkDarkTheme"
+					>
 
 					<View
 						android:background="@color/transparent"
@@ -70,7 +72,7 @@
 							android:layout_height="wrap_content"
 							android:textAppearance="?android:attr/textAppearanceSmall"
 							android:layout_width="match_parent"
-							android:text="@string/presetSaveDialog_InfoText"
+							android:text="Input 1 Text"
 							android:gravity="center_vertical"
 							android:id="@+id/slidedowndialogfragmentTextView_DialogInput1Text"/>
 
@@ -97,7 +99,7 @@
 							android:layout_height="wrap_content"
 							android:textAppearance="?android:attr/textAppearanceSmall"
 							android:layout_width="match_parent"
-							android:text="@string/presetSaveDialog_CreatorNameInfo"
+							android:text="Input 2 Text"
 							android:gravity="center_vertical"
 							android:id="@+id/slidedowndialogfragmentTextView_DialogInput2Text"/>
 
@@ -123,7 +125,8 @@
 							android:layout_width="match_parent"
 							android:orientation="horizontal"
 							android:gravity="center|center_vertical|center_horizontal"
-							android:layout_weight="1.0">
+							android:layout_weight="1.0"
+							>
 
 							<com.larswerkman.holocolorpicker.ValueBar
 								android:layout_width="match_parent"
@@ -216,7 +219,8 @@
 				android:layout_marginRight="10dp"
 				android:layout_marginLeft="10dp"
 				android:visibility="gone"
-				android:layout_weight="1.0">
+				android:layout_weight="1.0"
+				android:background="@color/colorPrimaryDarkDarkTheme">
 
 				<ListView
 					android:layout_height="wrap_content"
@@ -237,7 +241,8 @@
 				android:layout_marginRight="10dp"
 				android:layout_marginBottom="5dp"
 				android:visibility="gone"
-				android:layout_weight="0"/>
+				android:layout_weight="0"
+				android:background="@color/colorPrimaryDarkDarkTheme"/>
 
 			<LinearLayout
 				android:layout_height="wrap_content"
@@ -246,7 +251,8 @@
 				android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtons"
 				android:gravity="right"
 				android:layout_marginRight="10dp"
-				android:layout_weight="0">
+				android:layout_weight="0"
+				>
 
 				<LinearLayout
 					android:background="?selectableItemBackgroundBorderless"
@@ -261,7 +267,7 @@
 						android:layout_height="wrap_content"
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
-						android:text="@string/Dialog_Cancel"
+						android:text="Negative"
 						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNegativeText"
 						android:layout_margin="10dp"
 						android:textColor="#FFFFFF"/>
@@ -281,7 +287,7 @@
 						android:layout_height="wrap_content"
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
-						android:text="@string/Dialog_Rename"
+						android:text="Neutral"
 						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNeutralText"
 						android:layout_margin="10dp"
 						android:textColor="#FFFFFF"/>
@@ -299,7 +305,7 @@
 						android:layout_height="wrap_content"
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
-						android:text="@string/Dialog_Ok"
+						android:text="Positive"
 						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonPositiveText"
 						android:layout_margin="10dp"
 						android:textColor="#FFFFFF"/>

@@ -13,12 +13,16 @@ public class PreferencesAdvancedFragment extends Fragment
 		LinearLayout LinearLayout_UseGraphics;
 		Switch Switch_UseGraphics;
 		boolean boolean_UseGraphics;
+		boolean ExperimentalPWMHook = false;
 		
 		LinearLayout LinearLayout_DialogGravity;
 		
 		LinearLayout LinearLayout_ShowOnLockScreen;
 		Switch Switch_ShowOnLockScreen;
 		boolean boolean_ShowOnLockScreen;
+
+		LinearLayout LinearLayout_ExperimentalPWMHook;
+		Switch Switch_ExperimentalPWMHook;
 		
 		LinearLayout LinearLayout_ScreenshotDelay;
 		SeekBar SeekBar_ScreenshotDelay;
@@ -30,6 +34,10 @@ public class PreferencesAdvancedFragment extends Fragment
 		{
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "Advanced";
+
+				MainActivity.actionbar.setActionBarTitle(getString(R.string.preferencesTitle_Advanced));
+				MainActivity.actionbar.setActionBarSubTitle(getString(R.string.preferencesDesc_Advanced));
+				
 				View InflatedView = inflater.inflate(R.layout.activity_advanced,null);
 
 				boolean_UseGraphics = MainActivity.preferences.getBoolean("UseGraphics",false);
@@ -63,6 +71,25 @@ public class PreferencesAdvancedFragment extends Fragment
 										//MainActivity.fragmentManager.beginTransaction().replace(R.id.pref_container,new GravityChooserDialog()).commit();
 										gcd.setStyle(gcd.STYLE_NO_FRAME,R.style.TransparentApp);
 										gcd.show(MainActivity.fragmentManager,"gravity_chooser");
+								}
+						});
+				
+				ExperimentalPWMHook = MainActivity.preferences.getBoolean("ExperimentalPWMHook", false);
+				LinearLayout_ExperimentalPWMHook = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_ExperimentalPWMHook);
+				Switch_ExperimentalPWMHook = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_ExperimentalPWMHook);
+				
+				Switch_ExperimentalPWMHook.setChecked(ExperimentalPWMHook);
+				Switch_ExperimentalPWMHook.setClickable(false);
+				Switch_ExperimentalPWMHook.setFocusable(false);
+				
+				LinearLayout_ExperimentalPWMHook.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										ExperimentalPWMHook = !ExperimentalPWMHook;
+										MainActivity.preferences.edit().putBoolean("ExperimentalPWMHook",ExperimentalPWMHook).commit();
+										Switch_ExperimentalPWMHook.setChecked(ExperimentalPWMHook);
 								}
 						});
 				

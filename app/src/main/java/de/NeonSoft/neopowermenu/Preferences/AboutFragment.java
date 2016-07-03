@@ -15,7 +15,8 @@ public class AboutFragment extends Fragment
 		{
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "about";
-				MainActivity.hideActionBarButton();
+				
+				MainActivity.actionbar.hideActionBarButton();
 				View InflatedView = inflater.inflate(R.layout.activity_about,container,false);
 				
 				ListView list = (ListView) InflatedView.findViewById(R.id.activityaboutListView1);

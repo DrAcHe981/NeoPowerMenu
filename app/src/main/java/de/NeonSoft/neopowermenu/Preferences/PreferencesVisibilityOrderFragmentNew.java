@@ -79,6 +79,9 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "VisibilityOrder";
 
+				MainActivity.actionbar.setActionBarTitle(getString(R.string.preferencesTitle_VisibilityOrder));
+				MainActivity.actionbar.setActionBarSubTitle(getString(R.string.preferencesDesc_VisibilityOrder));
+				
 				PowerMenuItemsTexts = new String[] {
 						getString(R.string.powerMenuMain_Empty),
 						getString(R.string.powerMenuMain_Shutdown),
@@ -148,7 +151,8 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
+										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
+										dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
 														public void onListItemClick(int position, String text)
@@ -183,7 +187,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_NONE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,0,true);
 										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Cancel));
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).add(R.id.dialog_container,dialogFragment,dialogFragment.dialogTag).commit();
+										dialogFragment.showDialog();
 								}
 						});
 						
@@ -193,7 +197,8 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
+										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
+										dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
 														public void onListItemClick(int position, String text)
@@ -237,11 +242,11 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 										dialogFragment.setDialogListLimit(3,false);
 										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Cancel));
 										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).add(R.id.dialog_container,dialogFragment,dialogFragment.dialogTag).commit();
+										dialogFragment.showDialog();
 								}
 						});
 				
-						MainActivity.hideActionBarButton();
+						MainActivity.actionbar.hideActionBarButton();
 						
 				return InflatedView;
 		}

@@ -34,12 +34,17 @@ public class PresetsAdapter extends ArrayAdapter<String>
 													ArrayList<String> itemsEnabled,
 													ArrayList<String> itemsLocal)
 		{
-				super(context, R.layout.list_item_handle_left, itemsTitle);
+				super(context, R.layout.presetmanager_listitem, itemsTitle);
 				this.context = context;
 				this.itemsTitle = itemsTitle;
 				this.itemsDesc = itemsDesc;
 				this.itemsEnabled = itemsEnabled;
 				this.itemsLocal = itemsLocal;
+				PreferencesPresetsFragment.DownloadingActiveForHelper = new downloadHelper[itemsTitle.size()];
+				PreferencesPresetsFragment.DownloadingActiveForLayout = new LinearLayout[itemsTitle.size()];
+				PreferencesPresetsFragment.DownloadingActiveForOldText = new String[itemsTitle.size()];
+				PreferencesPresetsFragment.DownloadingActiveForLabel = new TextView[itemsTitle.size()];
+				PreferencesPresetsFragment.DownloadingActiveForProgress = new ProgressBar[itemsTitle.size()];
 		}
 
 		@Override
@@ -94,7 +99,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												public void onClick(View p1)
 												{
 														// TODO: Implement this method
-														slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+														slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
+														dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																		@Override
 																		public void onListItemClick(int position, String text)
@@ -140,7 +146,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				catch (Throwable t)
 																				{
 																				}
-																				uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
+																				uploadHelper uH = new uploadHelper(context);
+																				uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 																								@Override
 																								public void onUploadStarted(boolean state)
@@ -155,7 +162,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																								public void onPublishUploadProgress(long nowSize, long totalSize)
 																								{
 																										// TODO: Implement this method
-																										Progress.setProgress(((int) nowSize / (int) totalSize) * 100);
+																												Progress.setProgress((int) (( nowSize * 100) / totalSize));
 																								}
 
 																								@Override
@@ -177,7 +184,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										Upload.setEnabled(true);
 																										Upload.setAlpha((float) 1);
 																										if (reason.contains("no access")) {
-																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
+																												dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																																@Override
 																																public void onListItemClick(int position, String text)
@@ -202,7 +210,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																{
 																																		// TODO: Implement this method
 																																		if(!MainActivity.loggedIn) {
-																																		slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface(){
+																																				slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
+																																				dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface(){
 
 																																						@Override
 																																						public void onListItemClick(int position, String text)
@@ -259,11 +268,12 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedNoAccess));
 																												dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.login_Title));
-																												MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+																												dialogFragment.showDialog();
 																										}
 																										else if (reason.contains("Preset name exists."))
 																										{
-																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
+																												dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																																@Override
 																																public void onListItemClick(int position, String text)
@@ -297,7 +307,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedSameName));
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-																												MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+																												dialogFragment.showDialog();
 																										}
 																										else if (reason.contains("Cannot connect to the DB"))
 																										{
@@ -309,7 +319,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										}
 																										else
 																										{
-																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
+																												dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																																@Override
 																																public void onListItemClick(int position, String text)
@@ -343,7 +354,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailed)+"\n"+reason);
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-																												MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+																												dialogFragment.showDialog();
 																										}
 																								}
 																						});
@@ -365,7 +376,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_CreatorNameInfo),itemsDesc.get(position),false,null);
 														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-														MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+														dialogFragment.showDialog();
 												}
 										});
 								Delete.setOnClickListener(new OnClickListener() {
@@ -374,7 +385,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												public void onClick(View p1)
 												{
 														// TODO: Implement this method
-														slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+														slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
+														dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																		@Override
 																		public void onListItemClick(int position, String text)
@@ -425,7 +437,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
 														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Delete));
-														MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+														dialogFragment.showDialog();
 												}
 										});
 								Share.setOnClickListener(new OnClickListener() {
@@ -508,7 +520,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														public void onClick(View p1)
 														{
 																// TODO: Implement this method
-																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, new slideDownDialogFragment.slideDownDialogInterface() {
+																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
+																dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
 																				public void onListItemClick(int position, String text)
@@ -532,7 +545,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				public void onPositiveClick(ArrayList<String> resultData)
 																				{
 																						// TODO: Implement this method
-																						uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
+																						uploadHelper uH = new uploadHelper(context);
+																						uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 																										@Override
 																										public void onUploadStarted(boolean state)
@@ -589,7 +603,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
 																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Delete));
-																MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+																dialogFragment.showDialog();
 														}
 												});
 								} else {
@@ -601,7 +615,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														public void onClick(View p1)
 														{
 																// TODO: Implement this method
-																uploadHelper uH = new uploadHelper(context, new uploadHelper.uploadHelperInterface() {
+																uploadHelper uH = new uploadHelper(context);
+																uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 																				@Override
 																				public void onUploadStarted(boolean state)
@@ -674,12 +689,16 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						}
 						catch (Throwable t)
 						{}
-						if(PreferencesPresetsFragment.DownloadingActiveFor.contains(itemsTitle.get(position) + ",")) {
+						if(PreferencesPresetsFragment.DownloadingActiveFor.contains("&"+itemsTitle.get(position) + ",")) {
 								//oldText = ItemDesc.getText().toString();
-								ItemDesc.setText(context.getString(R.string.presetsManager_Downloading));
-								Progress.setProgress(0);
+								long[] sizes = PreferencesPresetsFragment.DownloadingActiveForHelper[position].getSizes();
+								ItemDesc.setText(context.getString(R.string.presetsManager_Downloading) + " (" + helper.getSizeString(sizes[0], true) + "/" + helper.getSizeString(sizes[1], true) + " | "+((sizes[0] * 100) / sizes[1])+"%)");
+								Progress.setProgress((int) ((sizes[0] * 100) / sizes[1]));
 								OnlineButton.setEnabled(false);
 								OnlineButton.setAlpha((float) .3);
+								PreferencesPresetsFragment.DownloadingActiveForLayout[position] = OnlineButton;
+								PreferencesPresetsFragment.DownloadingActiveForLabel[position] = ItemDesc;
+								PreferencesPresetsFragment.DownloadingActiveForProgress[position] = Progress;
 						}
 						root.setOnClickListener(new OnClickListener() {
 
@@ -689,39 +708,50 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												// TODO: Implement this method
 												if (OnlineButton.isEnabled())
 												{
-														downloadHelper dH = new downloadHelper(context, new downloadHelper.downloadHelperInterface() {
-
-																		String oldText;
+														final downloadHelper dH = new downloadHelper(context);
+														dH.setInterface(new downloadHelper.downloadHelperInterface() {
 
 																		@Override
 																		public void onDownloadStarted(boolean state)
 																		{
 																				// TODO: Implement this method
-																				oldText = ItemDesc.getText().toString();
+																				try {
+																				PreferencesPresetsFragment.DownloadingActiveForOldText[position] = ItemDesc.getText().toString();
 																				ItemDesc.setText(context.getString(R.string.presetsManager_Downloading));
 																				Progress.setProgress(0);
 																				OnlineButton.setEnabled(false);
 																				OnlineButton.setAlpha((float) .3);
-																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor + itemsTitle.get(position) + ",";
+																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor + "&"+itemsTitle.get(position) + ",";
+																				PreferencesPresetsFragment.DownloadingActiveForHelper[position] = dH;
+																				PreferencesPresetsFragment.DownloadingActiveForLayout[position] = OnlineButton;
+																				PreferencesPresetsFragment.DownloadingActiveForLabel[position] = ItemDesc;
+																				PreferencesPresetsFragment.DownloadingActiveForProgress[position] = Progress;
+																		} catch (Throwable t) {}
 																		}
 
 																		@Override
 																		public void onPublishDownloadProgress(long nowSize, long totalSize)
 																		{
 																				// TODO: Implement this method
-																				ItemDesc.setText(context.getString(R.string.presetsManager_Downloading) + " (" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + ")");
-																				Progress.setProgress((int) (nowSize / totalSize) * 100);
+																				try {
+																				PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.presetsManager_Downloading) + " (" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | "+((nowSize * 100) / totalSize)+"%)");
+																				PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress((int) ((nowSize * 100) / totalSize));
+																				} catch (Throwable t) {}
 																		}
 
 																		@Override
 																		public void onDownloadComplete()
 																		{
 																				// TODO: Implement this method
-																				Progress.setProgress(0);
-																				ItemDesc.setText(oldText);
-																				OnlineButton.setEnabled(true);
-																				OnlineButton.setAlpha((float) 1);
-																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor.replace(itemsTitle.get(position) + ",","");
+																				try {
+																				PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress(0);
+																				PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(PreferencesPresetsFragment.DownloadingActiveForOldText[position]);
+																				PreferencesPresetsFragment.DownloadingActiveForLayout[position].setEnabled(true);
+																				PreferencesPresetsFragment.DownloadingActiveForLayout[position].setAlpha((float) 1);
+																						PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor.replace("&"+itemsTitle.get(position) + ",","");
+																						PreferencesPresetsFragment.DownloadingActiveForHelper[position] = null;
+																				PreferencesPresetsFragment.DownloadingActiveForLabel[position] = null;
+																				PreferencesPresetsFragment.DownloadingActiveForProgress[position] = null;
 																				try
 																				{
 																						PreferencesPresetsFragment.ImportPreset("file://" + context.getFilesDir().getPath() + "/download/" + split[0] + "_" + itemsTitle.get(position).replace("'","\\\'").replace("\"","\\\"") + ".nps", PreferencesPresetsFragment.localAdapter, itemsTitle.get(position), null);
@@ -732,18 +762,24 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						Toast.makeText(context, context.getString(R.string.presetsManager_ImportFailed) + "\n" + e.toString(), Toast.LENGTH_LONG).show();
 																						Log.e("NPM", e.toString());
 																				}
+																		} catch (Throwable t) {}
 																		}
 
 																		@Override
 																		public void onDownloadFailed(String reason)
 																		{
 																				// TODO: Implement this method
-																				Progress.setProgress(0);
-																				ItemDesc.setText(oldText);
-																				OnlineButton.setEnabled(true);
-																				OnlineButton.setAlpha((float) 1);
-																				Toast.makeText(context, context.getString(R.string.presetsManager_DownloadFailed) + "\n" + reason, Toast.LENGTH_LONG).show();
-																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor.replace(itemsTitle.get(position) + ",","");
+																				try {
+																				PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress(0);
+																				PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(PreferencesPresetsFragment.DownloadingActiveForOldText[position]);
+																				PreferencesPresetsFragment.DownloadingActiveForLayout[position].setEnabled(true);
+																				PreferencesPresetsFragment.DownloadingActiveForLayout[position].setAlpha((float) 1);
+																				if(!reason.equalsIgnoreCase("canceled")) Toast.makeText(context, context.getString(R.string.presetsManager_DownloadFailed) + "\n" + reason, Toast.LENGTH_LONG).show();
+																						PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor.replace("&"+itemsTitle.get(position) + ",","");
+																						PreferencesPresetsFragment.DownloadingActiveForHelper[position] = null;
+																				PreferencesPresetsFragment.DownloadingActiveForLabel[position] = null;
+																				PreferencesPresetsFragment.DownloadingActiveForProgress[position] = null;
+																				} catch (Throwable t) {}
 																		}
 																});
 														dH.setUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position).replace("'","\\'").replace("\"","\\\"") + ".nps");

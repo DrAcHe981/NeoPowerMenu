@@ -43,22 +43,17 @@ public class MainActivity extends AppCompatActivity {
 		public static android.support.v4.app.FragmentManager fragmentManager;
 		public static String visibleFragment = "Main";
 
-		private static TextView TextView_ActionBarTitle;
-		private static TextView TextView_ActionBarVersion;
-
-		private static LinearLayout LinearLayout_ActionBarButton;
-		private static ImageView ImageView_ActionBarButton;
-		private static int ImageView_ActionBarButton_Icon = 0;
-		private static TextView TextView_ActionBarButton;
-		private static String TextView_ActionBarButton_Text = "none";
-		
     public static final int BG_PRIO = android.os.Process.THREAD_PRIORITY_BACKGROUND;
 
 		public static String versionName = "v1.0";
-		int versionCode = -1;
+		public static int versionCode = -1;
+		
+		LinearLayout actionBarHolder;
+		
+		public static actionBar actionbar;
 		
 		/*<!-- Internal needed Hook version to check if reboot is needed --!>*/
-		public static int neededModuleActiveVersion = 19;
+		public static int neededModuleActiveVersion = 21;
 		
 		public static String ImportUrl = null;
 		
@@ -90,15 +85,15 @@ public class MainActivity extends AppCompatActivity {
 				}
 				if(i==0) {
 						orderPrefs.edit().putInt("0_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
-						orderPrefs.edit().putString("0_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[0]).commit();
+						orderPrefs.edit().putString("0_item_title","Shutdown").commit();
 						orderPrefs.edit().putInt("1_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
-						orderPrefs.edit().putString("1_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[1]).commit();
+						orderPrefs.edit().putString("1_item_title","Reboot").commit();
 						orderPrefs.edit().putInt("2_item_type",visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
-						orderPrefs.edit().putString("2_item_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[2]).commit();
+						orderPrefs.edit().putString("2_item_title","SoftReboot").commit();
 						orderPrefs.edit().putInt("3_item_type",visibilityOrderNew_ListAdapter.TYPE_MULTI).commit();
-						orderPrefs.edit().putString("3_item1_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[10]).commit();
-						orderPrefs.edit().putString("3_item2_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[11]).commit();
-						orderPrefs.edit().putString("3_item3_title",PreferencesVisibilityOrderFragmentNew.PowerMenuItems[12]).commit();
+						orderPrefs.edit().putString("3_item1_title","Recovery").commit();
+						orderPrefs.edit().putString("3_item2_title","Bootloader").commit();
+						orderPrefs.edit().putString("3_item3_title","SafeMode").commit();
 				}
         setTheme(R.style.ThemeBaseDark);
 				
@@ -150,18 +145,14 @@ public class MainActivity extends AppCompatActivity {
 				{
 						Log.e("Failed to get Version infos: ",e.getMessage());
 				}
-				TextView_ActionBarTitle = (TextView) this.findViewById(R.id.mainTextView_Title);
-				TextView_ActionBarVersion = (TextView) this.findViewById(R.id.mainTextView_Version);
-				TextView_ActionBarVersion.setSelected(true);
-
-				LinearLayout_ActionBarButton = (LinearLayout) this.findViewById(R.id.mainLinearLayout_Button);
-				ImageView_ActionBarButton = (ImageView) this.findViewById(R.id.mainImageView_Button);
-				ImageView_ActionBarButton_Icon = 0;
-				TextView_ActionBarButton = (TextView) this.findViewById(R.id.mainTextView_Button);
-				TextView_ActionBarButton_Text = "none";
-				LinearLayout_ActionBarButton.setVisibility(View.GONE);
-
-				TextView_ActionBarVersion.setText("v"+versionName+" ("+versionCode+")");
+				
+				actionbar = new actionBar(this);
+				
+				actionBarHolder = (LinearLayout) this.findViewById(R.id.actionBar);
+				
+				actionbar.addActionBar(actionBarHolder);
+				
+				actionbar.setActionBarSubTitle("v"+versionName+" ("+versionCode+")");
 				
         fragmentManager = getSupportFragmentManager();
 				
@@ -181,14 +172,15 @@ public class MainActivity extends AppCompatActivity {
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										hideActionBarButton();
+										actionbar.hideActionBarButton();
 										launchPowerMenu();
 								}
 				};
 				if(preferences.getString("userUniqeId","null").equalsIgnoreCase("null")) {
 						Date date = new Date();
 						preferences.edit().putString("userUniqeId",helper.md5Crypto(Build.MANUFACTURER+"-"+Build.MODEL+"-"+date.getYear()+"."+date.getMonth()+"."+date.getDay()+"-"+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds())).commit();
-						slideDownDialogFragment dialogFragment = new slideDownDialogFragment(this, new slideDownDialogFragment.slideDownDialogInterface() {
+						slideDownDialogFragment dialogFragment = new slideDownDialogFragment(this, MainActivity.fragmentManager);
+						dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 										@Override
 										public void onListItemClick(int position, String text)
@@ -222,84 +214,10 @@ public class MainActivity extends AppCompatActivity {
 								});
 						dialogFragment.setDialogText(getString(R.string.welcomeMsg));
 						dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
-						MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+						dialogFragment.showDialog();
 				}
 						//MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
     }
-		
-		public static void setActionBarButton(String sText,int iImgResId,OnClickListener onclkl) {
-				if(LinearLayout_ActionBarButton.getVisibility()==View.GONE || (!sText.equalsIgnoreCase(TextView_ActionBarButton_Text) && ImageView_ActionBarButton_Icon!=iImgResId)) {
-						if(LinearLayout_ActionBarButton.getVisibility()==View.VISIBLE) {
-								LinearLayout_ActionBarButton.startAnimation(anim_fade_out);
-								LinearLayout_ActionBarButton.setVisibility(View.INVISIBLE);
-						}
-						TextView_ActionBarButton.setText(sText);
-						TextView_ActionBarButton_Text = sText;
-						//Toast.makeText(context,"Showing ActionBarButton:\nIcon: "+iImgResId+"\nText: "+sText,Toast.LENGTH_SHORT).show();
-						if (iImgResId>-1) {
-								ImageView_ActionBarButton_Icon = iImgResId;
-								ImageView_ActionBarButton.setImageResource(iImgResId);
-								ImageView_ActionBarButton.setVisibility(View.VISIBLE);
-						} else {
-								ImageView_ActionBarButton_Icon = -1;
-								ImageView_ActionBarButton.setVisibility(View.GONE);
-						}
-						LinearLayout_ActionBarButton.setOnClickListener(onclkl);
-						if(LinearLayout_ActionBarButton.getVisibility()==View.INVISIBLE) {
-								LinearLayout_ActionBarButton.setVisibility(View.VISIBLE);
-								LinearLayout_ActionBarButton.startAnimation(anim_fade_in);
-						} else {
-								LinearLayout_ActionBarButton.setVisibility(View.VISIBLE);
-								LinearLayout_ActionBarButton.startAnimation(anim_fade_slide_in_right);
-						}
-				} else {
-						//Toast.makeText(context,"ActionBarButton already set with this data.",Toast.LENGTH_SHORT).show();
-				}
-		}
-		
-		public static void setActionBarButtonListener(OnClickListener listener) {
-				LinearLayout_ActionBarButton.setOnClickListener(listener);
-		}
-
-		public static void setActionBarButtonText(String sText) {
-				if(!sText.equalsIgnoreCase(TextView_ActionBarButton.getText().toString())) {
-						if(LinearLayout_ActionBarButton.getVisibility()==View.VISIBLE) {
-								LinearLayout_ActionBarButton.startAnimation(anim_fade_out);
-								LinearLayout_ActionBarButton.setVisibility(View.INVISIBLE);
-						}
-						TextView_ActionBarButton.setText(sText);
-						TextView_ActionBarButton_Text = sText;
-						if(LinearLayout_ActionBarButton.getVisibility()==View.INVISIBLE) {
-								LinearLayout_ActionBarButton.setVisibility(View.VISIBLE);
-								LinearLayout_ActionBarButton.startAnimation(anim_fade_in);
-						}
-				}
-		}
-
-		public static void setActionBarButtonIcon(int iImgResId) {
-				if(iImgResId!=ImageView_ActionBarButton_Icon) {
-						if(LinearLayout_ActionBarButton.getVisibility()==View.VISIBLE && ImageView_ActionBarButton.getVisibility()==View.VISIBLE) {
-								ImageView_ActionBarButton.startAnimation(anim_fade_out);
-						}
-						if(iImgResId>-1) {
-								ImageView_ActionBarButton_Icon = iImgResId;
-								ImageView_ActionBarButton.setImageResource(iImgResId);
-								ImageView_ActionBarButton.setVisibility(View.VISIBLE);
-								ImageView_ActionBarButton.startAnimation(anim_fade_in);
-						} else {
-								ImageView_ActionBarButton.setVisibility(View.GONE);
-						}
-				}
-		}
-
-		public static void hideActionBarButton() {
-				if(LinearLayout_ActionBarButton.getVisibility()==View.VISIBLE) {
-						LinearLayout_ActionBarButton.startAnimation(anim_fade_slide_out_right);
-						LinearLayout_ActionBarButton.setVisibility(View.GONE);
-						ImageView_ActionBarButton_Icon = 0;
-						TextView_ActionBarButton_Text = "none";
-				}
-		}
 
 		@Override
 		public void onBackPressed()
@@ -315,7 +233,12 @@ public class MainActivity extends AppCompatActivity {
 				} else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
 						new saveSorting().execute();
 				} else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
-						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+						for(int i = 0; i < PreferencesPresetsFragment.DownloadingActiveForHelper.length; i ++) {
+								if(PreferencesPresetsFragment.DownloadingActiveForHelper[i] != null && PreferencesPresetsFragment.DownloadingActiveForHelper[i].isRunning()) {
+										PreferencesPresetsFragment.DownloadingActiveForHelper[i].stopDownload(true);
+								}
+						}
+						actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesColorFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerOnline") || (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("login") || LoginFragment.loginFragmentMode.equalsIgnoreCase("logout")))) {
 						if(PreferencesPresetsFragment.onlineSearchBar.getVisibility() == View.VISIBLE) {
@@ -330,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
 				} else if (visibleFragment.equalsIgnoreCase("permissions")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login")) {
-						MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+						actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("Main") || visibleFragment.equalsIgnoreCase("permissionsAutoStart")) {
 						finish();
@@ -352,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
 		{
 				// TODO: Implement this method
 				if(!visibleFragment.equalsIgnoreCase("permissions") && !visibleFragment.equalsIgnoreCase("permissionsAutoStart") && !visibleFragment.equalsIgnoreCase("PresetsManagerOnline") && !visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && !visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
-						setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+						actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
 				}
 				super.onResume();
 		}
@@ -411,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
 						super.onPostExecute(p1);
 						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
 						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.setVisibility(View.GONE);
-						setActionBarButton(context.getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+						actionbar.setActionBarButton(context.getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				}
 				

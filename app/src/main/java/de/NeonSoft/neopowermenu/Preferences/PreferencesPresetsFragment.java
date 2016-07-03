@@ -63,9 +63,12 @@ public class PreferencesPresetsFragment extends Fragment
 
 		public static boolean onlineRequestIsRunning;
 
-		private static AlertDialog ad;
-
 		public static String DownloadingActiveFor = "";
+		public static downloadHelper[] DownloadingActiveForHelper;
+		public static LinearLayout[] DownloadingActiveForLayout;
+		public static String[] DownloadingActiveForOldText;
+		public static TextView[] DownloadingActiveForLabel;
+		public static ProgressBar[] DownloadingActiveForProgress;
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -113,7 +116,7 @@ public class PreferencesPresetsFragment extends Fragment
 										if (adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleOnline)))
 										{
 												MainActivity.visibleFragment = "PresetsManagerOnline";
-												MainActivity.setActionBarButton(getString(R.string.presetsManager_Refresh), R.drawable.ic_action_autorenew, new OnClickListener() {
+												MainActivity.actionbar.setActionBarButton(getString(R.string.presetsManager_Refresh), R.drawable.ic_action_autorenew, new OnClickListener() {
 
 																@Override
 																public void onClick(View p1)
@@ -184,7 +187,8 @@ public class PreferencesPresetsFragment extends Fragment
 																				onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
 																				onlineOrder.setVisibility(View.GONE);
 																		}
-																		slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), new slideDownDialogFragment.slideDownDialogInterface() {
+																		slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
+																		dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																						@Override
 																						public void onListItemClick(int position, String text)
@@ -192,7 +196,7 @@ public class PreferencesPresetsFragment extends Fragment
 																								// TODO: Implement this method
 																								onlineOrderSelected = position;
 																								onlineOrderSelectedString = text;
-																								MainActivity.setActionBarButtonListener(new OnClickListener() {
+																								MainActivity.actionbar.setActionBarButtonListener(new OnClickListener() {
 
 																												@Override
 																												public void onClick(View p1)
@@ -244,7 +248,7 @@ public class PreferencesPresetsFragment extends Fragment
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")"}, onlineOrderSelected,true);
 																		dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-																		MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+																		dialogFragment.showDialog();
 																		if (onlineOrder.getVisibility() == View.VISIBLE)
 																		{
 																				onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
@@ -269,7 +273,7 @@ public class PreferencesPresetsFragment extends Fragment
 																								ad.dismiss();
 																								onlineOrderSelected = p2;
 																								onlineOrderSelectedString = (ad).getListView().getItemAtPosition(p2).toString();
-																								MainActivity.setActionBarButtonListener(new OnClickListener() {
+																								MainActivity.actionbar.setActionBarButtonListener(new OnClickListener() {
 
 																												@Override
 																												public void onClick(View p1)
@@ -297,17 +301,17 @@ public class PreferencesPresetsFragment extends Fragment
 												MainActivity.visibleFragment = "PresetsManagerAccount";
 												if (LoginFragment.loginFragmentMode.equalsIgnoreCase("login"))
 												{
-														MainActivity.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_action_import, LoginFragment.loginOnClickListener);
+														MainActivity.actionbar.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_action_import, LoginFragment.loginOnClickListener);
 												}
 												else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("register"))
 												{
-														MainActivity.setActionBarButton(getString(R.string.login_TitleRegister), R.drawable.ic_action_import, LoginFragment.registerOnClickListener);
+														MainActivity.actionbar.setActionBarButton(getString(R.string.login_TitleRegister), R.drawable.ic_action_import, LoginFragment.registerOnClickListener);
 												}
 												else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("logout"))
 												{
-														MainActivity.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
+														MainActivity.actionbar.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
 												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("recover")) {
-														MainActivity.setActionBarButton(getString(R.string.login_Recover),R.drawable.ic_action_settings_backup_restore ,LoginFragment.recoverOnClickListener);
+														MainActivity.actionbar.setActionBarButton(getString(R.string.login_Recover),R.drawable.ic_action_settings_backup_restore ,LoginFragment.recoverOnClickListener);
 												}
 												if(onlineSearch.getVisibility() == View.VISIBLE) {
 														onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
@@ -328,7 +332,7 @@ public class PreferencesPresetsFragment extends Fragment
 										else
 										{
 												MainActivity.visibleFragment = "PresetsManager";
-												MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
+												MainActivity.actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
 												if(onlineSearch.getVisibility() == View.VISIBLE) {
 														onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
 														onlineSearch.setVisibility(View.GONE);
@@ -425,7 +429,8 @@ public class PreferencesPresetsFragment extends Fragment
 										sCreator = aData[1];
 								}
 						}
-						final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, new slideDownDialogFragment.slideDownDialogInterface() {
+						final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
+						dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 										@Override
 										public void onListItemClick(int position, String text)
@@ -494,7 +499,7 @@ public class PreferencesPresetsFragment extends Fragment
 						);
 						dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Cancel));
 						dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Save));
-						MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+						dialogFragment.showDialog();
 
 				}
 				catch (Throwable e)

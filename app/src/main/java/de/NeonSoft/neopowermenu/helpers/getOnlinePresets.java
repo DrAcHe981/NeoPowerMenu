@@ -85,9 +85,9 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 						HttpConnectionParams.setConnectionTimeout(httpParams,
 																											MainActivity.TIMEOUT_MILLISEC);
 						HttpConnectionParams.setSoTimeout(httpParams, MainActivity.TIMEOUT_MILLISEC);
-
+						
 						HttpParams p = new BasicHttpParams();
-						p.setParameter("user", "1");
+						p.setParameter("user", MainActivity.preferences.getString("userUniqeId","null"));
 
 						HttpClient httpclient = new DefaultHttpClient(p);
 						String url = "http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&format=json&userId="+MainActivity.preferences.getString("userUniqeId","null")+"&sortBy="+orderName+"&sortDir="+orderDirection+(searchTerm.isEmpty() ? "" : "&searchFor="+searchTerm);
@@ -175,7 +175,8 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 								} else if (result.contains("Cannot connect to the DB")) {
 										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoDB));
 								} else {
-										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(PreferencesPresetsFragment.mContext, new slideDownDialogFragment.slideDownDialogInterface() {
+										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(PreferencesPresetsFragment.mContext, MainActivity.fragmentManager);
+										dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
 														public void onListItemClick(int position, String text)
@@ -209,7 +210,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 												});
 										dialogFragment.setDialogText(result);
 										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Ok));
-										MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container,dialogFragment,slideDownDialogFragment.dialogTag).commit();
+										dialogFragment.showDialog();
 										PreferencesPresetsFragment.onlineMSG.setText(result);
 								}
 						PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);

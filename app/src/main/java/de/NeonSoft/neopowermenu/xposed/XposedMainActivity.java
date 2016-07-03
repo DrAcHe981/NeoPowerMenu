@@ -39,7 +39,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		public static String sStyleName = "Material";
 		XposedDialog powerDialog;
 		
-		BroadcastReceiver mReceiver;
+		public static BroadcastReceiver mReceiver;
 		
 		private static boolean mBlurEnabled;
 		private static int mBlurScale;
@@ -274,7 +274,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     @Override
     public void onDismiss(final DialogInterface dialog) {
 				if(XposedDialog.canDismiss || previewMode) {
-						mContext.unregisterReceiver(mReceiver);
         final Point p = new Point(maxX / 2, maxY / 2);
 
         handler = new Handler();
