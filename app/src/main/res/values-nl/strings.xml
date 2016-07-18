@@ -1,4 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">"NeoPowerMenu"</string>
+<string name="ShareMessage">"Bekijk deze prachtige app om het power menu van je gerookte android smartphone aan te passen!"</string>
+<string name="PreviewPowerMenu">"Preview"</string>
+
+<!-- Power Menu -->
+<string name="powerMenuMain_Shutdown">"Uitschakelen"</string>
+<string name="powerMenuMain_Reboot">"Opnieuw opstarten"</string>
+<string name="powerMenuMain_SoftReboot">"Systeem opnieuw opstarten"</string>
+<string name="powerMenuMain_SoftRebootDesc">"Herstart de Android interface door het geforceerd stoppen van het zygote proces"</string>
+<string name="powerMenuMain_Screenshot">"Screenshot"</string>
+<string name="powerMenuMain_ScreenshotDesc">"Vertraging screenshot"</string>
+<string name="powerMenuBottom_Recovery">"Recovery"</string>
+<string name="powerMenuBottom_Bootloader">"Bootloader"</string>
+<string name="powerMenuBottom_SafeMode">"Veilige modus"</string>
+<string name="powerMenu_Shuttingdown">"Uitschakelen..."</string>
+<string name="powerMenu_Rebooting">"Opnieuw opstarten..."</string>
+
+<!-- Preferences: Main -->
+<string name="preferencesCategory_RootXposed">"Root en Xposed"</string>
+<string name="preferencesTitle_RootXposed1">"Root en Xposed niet beschikbaar"</string>
+<string name="preferencesDesc_RootXposed1">"Root en Xposed zijn vereist om deze module te gebruiken."</string>
+<string name="preferencesTitle_RootXposed2">"Xposed beschikbaar, maar root niet"</string>
+<string name="preferencesDesc_RootXposed2">"Root toegang is vereist om uit te schakelen of opnieuw te starten... Sta root toegang toe a.u.b."</string>
+<string name="preferencesTitle_RootXposed3">"Root beschikbaar, maar Xposed niet"</string>
+<string name="preferencesDesc_RootXposed3">"Xposed is vereist om het Power Menu aan te passen... Activeer de module in Xposed installer."</string>
+<string name="preferencesTitle_RootXposed4">"Root en Xposed werken"</string>
+<string name="preferencesDesc_RootXposed4">"De app zou prima moeten werken!"</string>
+<string name="preferencesCategory_General">"Algemeen"</string>
+<string name="preferencesTitle_Style">"Stijl"</string>
+<string name="preferencesTitle_Theme">"Thema"</string>
+<string name="preferencesDesc_Theme">"Verander het uiterlijk."</string>
+<string name="preferencesTitle_VisibilityOrder">"Zichtbaarheid en volgorde"</string>
+<string name="preferencesDesc_VisibilityOrder">"Selecteer de items die je wilt laten zien en sorteer ze naar jouw voorkeur."</string>
+<string name="preferencesCategory_Other">"Overig"</string>
+<string name="preferencesTitle_Advanced">"Geavanceerde instellingen"</string>
+<string name="preferencesDesc_Advanced">"Verander geavanceerde instellingen als vertraging, zwaarte of snelheid."</string>
+<string name="preferencesTitle_HideLauncherIcon">"Verberg de app in de launcher."</string>
+<string name="preferencesDesc_HideLauncherIcon">"Verbergt het app icoon in de launcher. Opnieuw opstarten kan nodig zijn om het icoon te verbergen. Dit instellingenscherm zal na het verbergen alleen toegankelijk zijn via de Xposed installer."</string>
+<string name="preferencesCategory_About">"Over"</string>
+<string name="preferencesTitle_NeoSource">"Bron"</string>
+<string name="preferencesDesc_NeoSource">"NeoPowerMenu is open source.
+Bekijk de broncode op GitHub."</string>
+<string name="preferencesTitle_Share">"Deel"</string>
+<string name="preferencesDesc_Share">"Bevalt de app? Deel hem met je vrienden."</string>
+<string name="preferencesTitle_About">"Code door Neon-Soft / DrAcHe981"</string>
+<string name="preferencesDesc_About">"Gebaseerd op code van Naman Dwivedi (naman14). Klik hier voor meer informatie."</string>
+
+<!-- Preferences: Visibility and order -->
+<string name="visibilityOrderCategory_VisibilityOrder">"Zichtbaarheid en sortering"</string>
+<string name="category_Preset">"Presets"</string>
+<string name="preset_Load">"Laad preset"</string>
+<string name="preset_LoadDesc">"Laad een bewaarde configuratie"</string>
+<string name="preset_Save">"Bewaar preset"</string>
+<string name="preset_SaveDesc">"Bewaar je huidige configuratie"</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleLocal">"Lokale presets"</string>
+<string name="presetsManager_TitleOnline">"Online presets"</string>
+<string name="presetsManager_Creator">"Maker: [CREATORNAME]"</string>
+<string name="presetsManager_BuiltIn">"Ingebouwd"</string>
+<string name="presetsManager_Delete">"Verwijder"</string>
+<string name="presetsManager_SureToDelete">"Weet je zeker dat je [PRESETNAME] wilt verwijderen? Dit kan niet ongedaan worden gemaakt."</string>
+<string name="presetsManager_Share">"Deel"</string>
+<string name="presetsManager_NJI">"Deze functie is momenteel nog niet geïmplementeerd..."</string>
+<string name="presetsManager_ImportMsg">"Wil je deze preset importeren?"</string>
+<string name="presetsManager_ImportSuccess">"[PRESETNAME] succesvol geïmporteerd."</string>
+<string name="presetsManager_ImportFailed">"Importeren mislukt..."</string>
+
+<!-- Preferences: Advanced -->
+<string name="advancedPrefsCategory_PowerMenu">"Power Menu"</string>
+<string name="advancedPrefsTitle_UseGraphics">"Gebruik graphics"</string>
+<string name="advancedPrefsDesc_UseGraphics">"Gebruikt graphics in plaats van geletterde cirkels."</string>
+<string name="advancedPrefsCategory_LockScreen">"Lockscreen"</string>
+<string name="advancedPrefsTitle_ShowOnLockScreen">"Toon op lockscreen"</string>
+<string name="advancedPrefsDesc_ShowOnLockScreen">"Toon her power menu op het lockscreen. Wanneer uitgeschakeld zal er niets getoond worden."</string>
+<string name="advancedPrefsCategory_Delays">"Vertraging"</string>
+<string name="advancedPrefs_DelayZero">"Bijna meteen"</string>
+<string name="advancedPrefsTitle_ScreenshotDelay">"Screenshot vertraging"</string>
+<string name="advancedPrefsDesc_ScreenshotDelay">"Vertraging tussen klikken en screenshot."</string>
+
+<!-- Dialog -->
+<string name="Dialog_Ok">"Oké"</string>
+<string name="Dialog_Yes">"Ja"</string>
+<string name="Dialog_Rename">"Hernoem"</string>
+<string name="Dialog_Cancel">"Annuleer"</string>
+<string name="Dialog_Delete">"Verwijder"</string>
+<string name="Dialog_Load">"Laad"</string>
+<string name="Dialog_Save">"Bewaar"</string>
+<string name="Dialog_Ignore">"Negeren"</string>
+<string name="Dialog_SelectColor">"Selecteer kleur"</string>
+<string name="ColorPicker_Value">"Waarde:"</string>
+<string name="ColorPicker_Saturation">"Saturatie:"</string>
+<string name="ColorPicker_Opacity">"Opaciteit:"</string>
+<string name="ColorPicker_Hex">"Hex:"</string>
+<string name="presetLoadDialog_BuiltInLight">"Licht"</string>
+<string name="presetLoadDialog_BuiltInDark">"Donker"</string>
+<string name="presetLoadDialog_BuiltInBlack">"Zwart"</string>
+<string name="presetLoad_PresetDeleted">"Verwijderd [PRESETNAME]!"</string>
+<string name="presetLoad_PresetLoaded">"Geladen [PRESETNAME]!"</string>
+<string name="presetSaveDialog_CreatorNameInfo">"Deze preset is gemaakt door:"</string>
+<string name="presetSaveDialog_InfoText">"Stel een naam in voor de preset:"</string>
+<string name="presetSaveDialog_OverwriteText">"Bestaat al, preset zal worden overschreven!"</string>
+<string name="presetSave_PresetSaved">"Opgeslagen [PRESETNAME]!"</string>
+<string name="powerMenuMain_Screenrecord">"Schermopname"</string>
+<string name="preferencesTitle_RootXposed5">"Module versie is te laag..."</string>
+<string name="preferencesDesc_RootXposed5">"Start het apparaat opnieuw op om de update te voltooien!"</string>
+<string name="preferencesTitle_DeepXposedLogging">"Xposed logging"</string>
+<string name="preferencesDesc_DeepXposedLogging">"Schakel geavanceerde Xposed logging in en start opnieuw op om door te voeren."</string>
+
+<!-- Screen recording -->
+<string name="screenrecord_notif_ticker">"Schermopname gestart"</string>
+<string name="screenrecord_notif_title">"Aan het opnemen"</string>
+<string name="screenrecord_notif_stop">"Stop"</string>
+<string name="screenrecord_toast_error">"Kan schermopnane niet starten"</string>
+<string name="screenrecord_toast_processing">"Kan schermopname niet starten omdat de vorige opname nog wordt verwerkt"</string>
+<string name="screenrecord_toast_saved">"Opname opgeslagen als %s"</string>
+<string name="screenrecord_toast_save_error">"Kan opname niet bewaren in het bestand"</string>
+<string name="powerMenuMain_FlashlightOff">"Schakel zaklamp uit"</string>
+<string name="powerMenuMain_FlashlightDesc">"Uitschakelen over [AUTOOFF]."</string>
+<string name="powerMenuMain_FlashlightDescDisabled">"Automatisch uitzetten uitgeschakeld"</string>
+<string name="powerMenuMain_ExpandedDesktop">"Expanded Desktop"</string>
+<string name="advancedPrefsTitle_DialogGravity">"Positie scherm"</string>
+<string name="advancedPrefsDesc_DialogGravity">"Verander de scherm positie"</string>
+<string name="advancedPrefs_DialogGravityTop">"Top"</string>
+<string name="advancedPrefs_DialogGravityLeft">"Links"</string>
+<string name="advancedPrefs_DialogGravityRight">"Rechts"</string>
+<string name="advancedPrefs_DialogGravityBottom">"Bodem"</string>
+
+<!-- Torch -->
+<string name="quick_settings_torch_on">"Zaklamp aan"</string>
+<string name="quick_settings_torch_off">"Zaklamp uit"</string>
+<string name="quick_settings_torch_off_notif">"Tik om zaklamp uit te schakelen"</string>
+<string name="powerMenuMain_AirplaneMode">"Vliegtuigmodus"</string>
+<string name="powerMenuMain_RestartUI">"Herstart System UI"</string>
+
+<!-- Preferences: Colors -->
+<string name="colorsType_Background">"Achtergrondkleur"</string>
+<string name="colorsType_Text">"Tekstkleur"</string>
+<string name="powerMenuMain_Flashlight">"Zaklamp"</string>
+
+<!-- Permissions Screen -->
+<string name="permissionsScreen_Title">"Machtigingen"</string>
+<string name="permissionsScreen_NotAllGranted">"Niet alle machtigingen zijn toegestaan, sommige functies werken mogelijk niet..."</string>
+<string name="permissionsScreen_ClickToRequest">"Klik om machtigingen op te vragen."</string>
+<string name="permissionsScreen_DontAskAgain">"Niet opnieuw vragen"</string>
+<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Lees/schrijf externe opslag"</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benodigd voor toekomstige functies (bijvoorbeeld: aangepaste afbeeldingen)."</string>
+<string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Benodigd om zaklamp in te schakelen"</string>
+<string name="preferencesTitle_Permissions">"Machtigingen"</string>
+<string name="preferencesDesc_Permissions">"Toon de gevraagde machtigingen en bekijk waar ze voor worden gebruikt.
+Sta machtigingen toe die nog niet zijn toegevoegd bij het eerste gebruik (Android 6.0+)."</string>
+<string name="visibilityOrder_HideDesc">"Verberg beschrijving"</string>
+
+<!-- Preferences: Colors -->
+<string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Toegang tot Surface Flinger"</string>
+<string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Benodigd om schermopname te starten."</string>
+<string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Neem geluiden op"</string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Benodigd om geluiden op te nemen gedurende een schermopname."</string>
+<string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Systeem waarschuwingen scherm"</string>
+<string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benodigd om het Power Menu bodem op andere items te tonen."</string>
+<string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
+<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benodigd op te voorkomen dat de zaklamp en schermopname ongevraagd gesloten worden."</string>
+<string name="powerMenuMain_SoundMode">"Geluidsmodus"</string>
+<string name="powerMenuMain_SoundModeDesc">"Huidige geluidsnodus: [SOUNDMODE]"</string>
+<string name="SoundMode_Normal">"Normaal"</string>
+<string name="SoundMode_Vibrate">"Trillen"</string>
+<string name="SoundMode_Silent">"Stil"</string>
+<string name="welcomeMsg">"Welkom bij NeoPowerMenu!
+Je gebruikersID is toegekend je bent klaar om presets te uploaden!"</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleAccount">"Account"</string>
+<string name="presetsManager_Upload">"Uploaden"</string>
 </resources>
