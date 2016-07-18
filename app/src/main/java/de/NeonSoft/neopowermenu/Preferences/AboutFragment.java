@@ -16,7 +16,7 @@ public class AboutFragment extends Fragment
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "about";
 				
-				MainActivity.actionbar.hideActionBarButton();
+				MainActivity.actionbar.hideButton();
 				View InflatedView = inflater.inflate(R.layout.activity_about,container,false);
 				
 				ListView list = (ListView) InflatedView.findViewById(R.id.activityaboutListView1);
@@ -25,6 +25,8 @@ public class AboutFragment extends Fragment
 																				"User Id",
 																				"Hooked Components",
 																				"Used Librarys",
+																				"CustomActivityOnCrash",
+																				"ACRA",
 																				"SmartTabLayout",
 																				"HoloColorPicker",
 																				"DragSortListView",
@@ -53,13 +55,15 @@ public class AboutFragment extends Fragment
 																				" Naman Dwivedi (naman14) for the original source.\n" + 
 																				" rovo89 and Tungstwenty for Xposed.\n" +
 																				" Igor Da Silva for the concept.",
-																				"Your User Id:\n" + MainActivity.preferences.getString("userUniqeId","not generated") + "\nThis Id is used for the Preset Sever to verify your identity.",
+																				"Your Device Id:\n" + ((MainActivity.deviceUniqeId.isEmpty() || MainActivity.deviceUniqeId.equalsIgnoreCase("none")) ? "Not generated. (this is not normal...)" : MainActivity.deviceUniqeId) + "\nYour Account Id:\n" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "Not logged in." : MainActivity.accountUniqeId) + "\nThe Id's are used by the Preset Sever to verify your identity.",
 																				helper.activeParts(getActivity()),
 																				"This Project uses some public librarys, all (maybe i have forgot some...) used librarys are listed below.",
-																				"SmartTabLayout from Oraclejapan\nLicensed under the Apache License, Version 2.0",
-																				"HoloColorPicker from Lars Werkman.\nAn Android Holo themed colorpicker designed by Marie Schweiz.\nLicensed under the Apache License, Version 2.0",
-																				"DragSortListView from Bauerca (DSLV) is an extension of the Android ListView that enables drag-and-drop reordering of list items.\nLicensed under the Apache License, Version 2.0",
-																				"libsupersu from Chainfire / ChainsDD.\nLicensed under the Apache License, Version 2.0"};
+																				"Copyright 2014 Eduard Ereza Martinez.\nLicensed under the Apache License, Version 2.0",
+																				"Licensed under the Apache License, Version 2.0",
+																				"Copyright Oraclejapan\nLicensed under the Apache License, Version 2.0",
+																				"Copyright Lars Werkman.\nAn Android Holo themed colorpicker designed by Marie Schweiz.\nLicensed under the Apache License, Version 2.0",
+																				"Copyright Bauerca\nDragSortListView is an extension of the Android ListView that enables drag-and-drop reordering of list items.\nLicensed under the Apache License, Version 2.0",
+																				"Copyright 2012-2015 Jorrit Chainfire Jongma.\nLicensed under the Apache License, Version 2.0"};
 				ArrayList<String> textsList = new ArrayList<String>(Arrays.asList(texts));
 				
 				aboutAdapter aa = new aboutAdapter(getActivity(),titlesList,textsList);

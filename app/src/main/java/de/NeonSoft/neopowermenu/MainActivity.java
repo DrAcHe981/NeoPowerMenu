@@ -8,30 +8,30 @@ import android.net.*;
 import android.os.*;
 import android.support.v4.app.*;
 import android.support.v7.app.*;
-import android.text.*;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.view.animation.*;
-import android.view.inputmethod.*;
 import android.widget.*;
+import cat.ereza.customactivityoncrash.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.permissionsScreen.*;
 import de.NeonSoft.neopowermenu.xposed.*;
 import java.io.*;
 import java.util.*;
+import org.acra.*;
+import org.acra.sender.*;
 
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import com.larswerkman.holocolorpicker.*;
-import android.graphics.*;
-import android.widget.AdapterView.*;
 
 public class MainActivity extends AppCompatActivity {
 
 		public static boolean LOCALTESTSERVER = false; // use local server "127.0.0.1:8080 or online www.Neon-Soft.de
 		public static int TIMEOUT_MILLISEC = 10000; // = 10 seconds
+		
+		public static String deviceUniqeId = "none";
 		
 		public static SharedPreferences preferences;
 		public static SharedPreferences orderPrefs;
@@ -70,10 +70,31 @@ public class MainActivity extends AppCompatActivity {
 		public static boolean loggedIn = false;
 		public static String usernameemail = "";
 		public static String password = "";
+		public static String accountUniqeId = "";
 		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+				CustomActivityOnCrash.install(getApplicationContext());
+				CustomActivityOnCrash.setRestartActivityClass(MainActivity.class);
+				/*final Class<? extends ReportSenderFactory>[] myReportSenderFactoryClasses = {ACRAHelper.ACRAHelperFactory.class};
+
+        // Create an ConfigurationBuilder. It is prepopulated with values specified via annotation.
+        // Set the ReportSenderfactories on it and create an ACRAConfiguration
+        try
+				{
+						final ACRAConfiguration config = new ConfigurationBuilder(getApplication())
+								.setReportSenderFactoryClasses(myReportSenderFactoryClasses)
+								.build();
+						ACRA.init(getApplication(), config);
+				}
+				catch (ACRAConfigurationException e)
+				 {}*/
+				ACRA.init(getApplication());
+				//HashMap<String,String> ACRAData = new HashMap<String,String>();
+				//ACRAData.put("my_app_info", "custom data");
+        //ACRA.getErrorReporter().setReportSender(new ACRAHelper(ACRAData));
+				
 				context = getApplicationContext();
 				activity = getParent();
         preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
@@ -152,7 +173,9 @@ public class MainActivity extends AppCompatActivity {
 				
 				actionbar.addActionBar(actionBarHolder);
 				
-				actionbar.setActionBarSubTitle("v"+versionName+" ("+versionCode+")");
+				actionbar.setAnimationsEnabled(false);
+				actionbar.setTitle(getString(R.string.app_name));
+				actionbar.setSubTitle("v"+versionName+" ("+versionCode+")");
 				
         fragmentManager = getSupportFragmentManager();
 				
@@ -172,11 +195,11 @@ public class MainActivity extends AppCompatActivity {
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										actionbar.hideActionBarButton();
+										actionbar.hideButton();
 										launchPowerMenu();
 								}
 				};
-				if(preferences.getString("userUniqeId","null").equalsIgnoreCase("null")) {
+				if((deviceUniqeId = preferences.getString("userUniqeId","none")).equalsIgnoreCase("none")) {
 						Date date = new Date();
 						preferences.edit().putString("userUniqeId",helper.md5Crypto(Build.MANUFACTURER+"-"+Build.MODEL+"-"+date.getYear()+"."+date.getMonth()+"."+date.getDay()+"-"+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds())).commit();
 						slideDownDialogFragment dialogFragment = new slideDownDialogFragment(this, MainActivity.fragmentManager);
@@ -214,9 +237,11 @@ public class MainActivity extends AppCompatActivity {
 								});
 						dialogFragment.setDialogText(getString(R.string.welcomeMsg));
 						dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
-						dialogFragment.showDialog();
+						dialogFragment.showDialog(R.id.dialog_container);
 				}
-						//MainActivity.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+				actionbar.setButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+				actionbar.setAnimationsEnabled(true);
+				//throw new RuntimeException("This is a test crash!");
     }
 
 		@Override
@@ -238,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
 										PreferencesPresetsFragment.DownloadingActiveForHelper[i].stopDownload(true);
 								}
 						}
-						actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+						actionbar.setButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesColorFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("PresetsManagerOnline") || (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("login") || LoginFragment.loginFragmentMode.equalsIgnoreCase("logout")))) {
 						if(PreferencesPresetsFragment.onlineSearchBar.getVisibility() == View.VISIBLE) {
@@ -250,10 +275,12 @@ public class MainActivity extends AppCompatActivity {
 						LoginFragment.returnToLogin();
 				} else if (visibleFragment.equalsIgnoreCase("Advanced")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
+				} else if (visibleFragment.equalsIgnoreCase("Gravity")) {
+						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesAdvancedFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("permissions")) {
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login")) {
-						actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+						actionbar.setButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				} else if (visibleFragment.equalsIgnoreCase("Main") || visibleFragment.equalsIgnoreCase("permissionsAutoStart")) {
 						finish();
@@ -274,8 +301,8 @@ public class MainActivity extends AppCompatActivity {
 		public void onResume()
 		{
 				// TODO: Implement this method
-				if(!visibleFragment.equalsIgnoreCase("permissions") && !visibleFragment.equalsIgnoreCase("permissionsAutoStart") && !visibleFragment.equalsIgnoreCase("PresetsManagerOnline") && !visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && !visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
-						actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+				if(!visibleFragment.equalsIgnoreCase("about") && !visibleFragment.equalsIgnoreCase("permissions") && !visibleFragment.equalsIgnoreCase("permissionsAutoStart") && !visibleFragment.equalsIgnoreCase("PresetsManagerOnline") && !visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && !visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
+						actionbar.setButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
 				}
 				super.onResume();
 		}
@@ -334,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
 						super.onPostExecute(p1);
 						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
 						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.setVisibility(View.GONE);
-						actionbar.setActionBarButton(context.getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
+						actionbar.setButton(context.getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 				}
 				

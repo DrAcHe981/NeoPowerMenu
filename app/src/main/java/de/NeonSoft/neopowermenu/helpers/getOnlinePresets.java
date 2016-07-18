@@ -87,10 +87,10 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 						HttpConnectionParams.setSoTimeout(httpParams, MainActivity.TIMEOUT_MILLISEC);
 						
 						HttpParams p = new BasicHttpParams();
-						p.setParameter("user", MainActivity.preferences.getString("userUniqeId","null"));
+						p.setParameter("user", MainActivity.deviceUniqeId);
 
 						HttpClient httpclient = new DefaultHttpClient(p);
-						String url = "http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&format=json&userId="+MainActivity.preferences.getString("userUniqeId","null")+"&sortBy="+orderName+"&sortDir="+orderDirection+(searchTerm.isEmpty() ? "" : "&searchFor="+searchTerm);
+						String url = "http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&format=json&userId="+MainActivity.deviceUniqeId+""+((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "" : "&accountId="+MainActivity.accountUniqeId)+"&sortBy="+orderName+"&sortDir="+orderDirection+(searchTerm.isEmpty() ? "" : "&searchFor="+searchTerm);
 						HttpPost httppost = new HttpPost(url);
 
 						try
@@ -210,7 +210,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 												});
 										dialogFragment.setDialogText(result);
 										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Ok));
-										dialogFragment.showDialog();
+										dialogFragment.showDialog(R.id.dialog_container);
 										PreferencesPresetsFragment.onlineMSG.setText(result);
 								}
 						PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);

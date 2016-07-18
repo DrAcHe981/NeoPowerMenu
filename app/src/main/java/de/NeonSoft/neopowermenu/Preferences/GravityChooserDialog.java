@@ -35,6 +35,11 @@ public class GravityChooserDialog extends DialogFragment
 		@Override
 		public View onCreateView(LayoutInflater p1, ViewGroup p2, Bundle p3)
 		{
+				MainActivity.visibleFragment = "Gravity";
+				
+				MainActivity.actionbar.setTitle(getString(R.string.advancedPrefsTitle_DialogGravity));
+				MainActivity.actionbar.setSubTitle(getString(R.string.advancedPrefsDesc_DialogGravity));
+				
 				View InflatedView = p1.inflate(R.layout.dialoggravitychooser,p2,false);
 				
 				LinearLayout_ImageHolder = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_ImageHolder);

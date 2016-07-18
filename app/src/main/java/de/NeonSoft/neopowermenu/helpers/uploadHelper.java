@@ -28,6 +28,16 @@ public class uploadHelper
 		long dltotalsize = 0;
 		long dlnowsize = 0;
 		Timer timer = new Timer();
+
+		long mAvgSpeed;
+		long mSpeed;
+		long mETA;
+		int mProgress;
+		/** How much was downloaded last time. */
+		long iMLastDownloadedSize;
+		/** The nanoTime last time. */
+		long iMLastTime;
+		long iMFirstTime;
 		
 		public uploadHelper(Context context) {
 				this.mContext = context;
@@ -46,7 +56,7 @@ public class uploadHelper
 						}
 
 						@Override
-						public void onUploadComplete()
+						public void onUploadComplete(String response)
 						{
 								// TODO: Implement this method
 						}
@@ -102,11 +112,27 @@ public class uploadHelper
 		public long[] getSizes() {
 				return new long[] {dlnowsize,dltotalsize};
 		}
+
+		public int getProgress() {
+				return mProgress;
+		}
+
+		public long getSpeed() {
+				return mSpeed;
+		}
+
+		public long getAvgSpeed() {
+				return mAvgSpeed;
+		}
+
+		public long getETA() {
+				return mETA;
+		}
 		
 		public interface uploadHelperInterface {
 				void onUploadStarted(boolean state);
 				void onPublishUploadProgress(long nowSize,long totalSize);
-				void onUploadComplete();
+				void onUploadComplete(String response);
 				void onUploadFailed(String reason);
 		}
 		
@@ -129,8 +155,11 @@ public class uploadHelper
 														mInterface.onPublishUploadProgress(dlnowsize,dltotalsize);
 												}
 										}
-								}, 0, 50L);
-								isRunning = true;
+								}, 0, 150L);
+						isRunning = true;
+						iMLastDownloadedSize = 0;
+						iMLastTime = System.currentTimeMillis();
+						iMFirstTime = iMLastTime;
 				}
 
 				@Override
@@ -191,6 +220,26 @@ public class uploadHelper
 												bytesAvailable = fileInputStream.available();
 												bufferSize = Math.min(bytesAvailable, maxBufferSize);
 												bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+												long mReaminingSize = dltotalsize - dlnowsize;
+												long mDownloadedSize = dlnowsize;
+												mProgress = (int) ((dlnowsize * 100) / dltotalsize);
+
+												long timeElapsedSinceLastTime = System.currentTimeMillis() - iMLastTime;
+												long timeElapsed = System.currentTimeMillis() - iMFirstTime;
+												iMLastTime = System.currentTimeMillis();
+												// Difference between last time and this time = how much was downloaded since last run.
+												long downloadedSinceLastTime = mDownloadedSize - iMLastDownloadedSize;
+												iMLastDownloadedSize = mDownloadedSize;
+												if (timeElapsedSinceLastTime > 0 && timeElapsed > 0) {
+														// Speed (bytes per second) = downloaded bytes / time in seconds (nanoseconds / 1000000000)
+														mAvgSpeed = (mDownloadedSize) * 1000 / timeElapsed;
+														mSpeed = downloadedSinceLastTime * 1000 / timeElapsedSinceLastTime;
+												}
+
+												if (mAvgSpeed > 0) {
+														// ETA (milliseconds) = remaining byte size / bytes per millisecond (bytes per second * 1000)
+														mETA = (mReaminingSize) * 1000 / mAvgSpeed;
+												}
 										}
 										// send multipart form data necesssary after file data...
 										dos.writeBytes(lineEnd);
@@ -206,7 +255,7 @@ public class uploadHelper
 												while ((errorMsgB = br.readLine()) != null) {
 														errorMsg += errorMsgB+"\n";
 												}
-												Log.i("NPM", "HTTP Error Message is : "+ errorMsg);
+												Log.i("NPM:uH", "HTTP Error Message is : "+ errorMsg);
 												return errorMsg;
 										//}
 										//Log.i("NPM", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
@@ -214,10 +263,10 @@ public class uploadHelper
 										//		return null;
 										//}
 								} catch (MalformedURLException ex) {
-										ex.printStackTrace();
+										Log.e("NPM:uH",ex.toString());
 										return "error: " + ex.toString();
 								} catch (Exception e) {
-										e.printStackTrace();
+										Log.e("NPM:uH",e.toString());
 										return "Exception : " + e.toString();
 								}
 						} // End else block
@@ -262,7 +311,7 @@ public class uploadHelper
 										} catch (Throwable t) {
 										}
 										if(p1.contains("success")) {
-												mInterface.onUploadComplete();
+												mInterface.onUploadComplete(p1);
 										} else {
 												mInterface.onUploadFailed(p1);
 										}

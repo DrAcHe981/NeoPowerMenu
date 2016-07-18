@@ -74,8 +74,8 @@ public class PreferencesPartFragment extends Fragment
 	
 				mContext = getActivity();
 
-				MainActivity.actionbar.setActionBarTitle(mContext.getString(R.string.app_name));
-				MainActivity.actionbar.setActionBarSubTitle("v"+MainActivity.versionName+" ("+ MainActivity.versionCode+")");
+				MainActivity.actionbar.setTitle(getString(R.string.app_name));
+				MainActivity.actionbar.setSubTitle("v"+MainActivity.versionName+" ("+ MainActivity.versionCode+")");
 				
 				ActiveStyle = MainActivity.preferences.getString("DialogTheme", "Material");
 				hideicon = MainActivity.preferences.getBoolean("HideLauncherIcon",false);
@@ -177,7 +177,7 @@ public class PreferencesPartFragment extends Fragment
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId,true);
 										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-										dialogFragment.showDialog();
+										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});
 
@@ -302,7 +302,7 @@ public class PreferencesPartFragment extends Fragment
 
 				checkState();
 				
-				MainActivity.actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
+				MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 				
 				return InflatedView;
 		}

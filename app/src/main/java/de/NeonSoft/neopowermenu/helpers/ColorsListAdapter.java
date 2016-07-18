@@ -166,10 +166,10 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																						if (!p1.toString().equalsIgnoreCase("")) {
 																								File checkFile = new File(context.getFilesDir()+"/presets/"+p1.toString().replace("/","")+".nps");
 																								if (!checkFile.exists()) {
-																										dialogFragment.setOverwriteInfo(false);
+																										dialogFragment.showInputAssistInfo(false);
 																										//dialogFragment.setDialogText("");
 																								} else {
-																										dialogFragment.setOverwriteInfo(true);
+																										dialogFragment.showInputAssistInfo(true);
 																										//dialogFragment.setDialogText(context.getString(R.string.presetSaveDialog_OverwriteText));
 																								}
 																						}
@@ -182,9 +182,10 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																				}}
 																);
 																dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastPresetCreatedBy",""),true,null);
+																dialogFragment.setDialogInputAssistInfo(context.getString(R.string.presetSaveDialog_OverwriteText));
 																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Save));
-																dialogFragment.showDialog();
+																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});
 										break;
@@ -272,7 +273,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																dialogFragment.setDialogColorPicker(MainActivity.preferences.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
 																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Save));
-																dialogFragment.showDialog();
+																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});
 										break;

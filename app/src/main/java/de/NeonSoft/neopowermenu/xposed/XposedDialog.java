@@ -365,6 +365,7 @@ public class XposedDialog extends DialogFragment
     }
 
 		public static void createCircleIcon(ImageView background,ImageView foreground,String text,String color1,String color2) {
+				try {
 				if (XposedMainActivity.preferences.getBoolean("UseGraphics",false)) {
 						GraphicDrawable drawable = GraphicDrawable.builder().buildRound(null, Color.parseColor(color1));
 						background.setImageDrawable(drawable);
@@ -394,9 +395,7 @@ public class XposedDialog extends DialogFragment
 								{
 										foreground.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_device_airplanemode_on));
 								}
-						}
- else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_RestartUI)))
- {
+						} else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_RestartUI))) {
 								foreground.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_alert_error));
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundMode))) {
 								foreground.setImageDrawable(mContext.getResources().getDrawable(amRingerMode==AudioManager.RINGER_MODE_VIBRATE ? R.drawable.ic_notification_vibration : (amRingerMode==AudioManager.RINGER_MODE_SILENT ? R.drawable.ic_av_volume_off : R.drawable.ic_av_volume_up)));
@@ -412,6 +411,9 @@ public class XposedDialog extends DialogFragment
 								.buildRound(text.substring(0, 1), Color.parseColor(color1));
 						background.setImageDrawable(drawable);
 						foreground.setVisibility(View.GONE);
+				}
+				} catch (Throwable t) {
+						Log.e("NPM","Failed to create Circke Icon.",t);
 				}
 		}
 		

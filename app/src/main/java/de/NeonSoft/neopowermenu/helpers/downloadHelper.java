@@ -31,6 +31,16 @@ public class downloadHelper
 		FileOutputStream dloutput;
 		Timer timer = new Timer();
 		
+		long mAvgSpeed;
+		long mSpeed;
+		long mETA;
+		int mProgress;
+		/** How much was downloaded last time. */
+		long iMLastDownloadedSize;
+		/** The nanoTime last time. */
+		long iMLastTime;
+		long iMFirstTime;
+		
 		public downloadHelper(Context context) {
 				this.mContext = context;
 				this.mInterface = new downloadHelperInterface() {
@@ -99,6 +109,22 @@ public class downloadHelper
 				return new long[] {dlnowsize,dltotalsize};
 		}
 		
+		public int getProgress() {
+				return mProgress;
+		}
+		
+		public long getSpeed() {
+				return mSpeed;
+		}
+		
+		public long getAvgSpeed() {
+				return mAvgSpeed;
+		}
+		
+		public long getETA() {
+				return mETA;
+		}
+		
 		interface downloadHelperInterface {
 				void onDownloadStarted(boolean state);
 				void onPublishDownloadProgress(long nowSize,long totalSize);
@@ -125,8 +151,11 @@ public class downloadHelper
 														mInterface.onPublishDownloadProgress(dlnowsize,dltotalsize);
 												}
 										}
-								}, 0, 50L);
+								}, 0, 150L);
 								isRunning = true;
+								iMLastDownloadedSize = 0;
+								iMLastTime = System.currentTimeMillis();
+								iMFirstTime = iMLastTime;
 				}
 				
 				@Override
@@ -164,6 +193,26 @@ public class downloadHelper
 																total += count;
 																dlnowsize = total;
 																dloutput.write(data, 0, count);
+																long mReaminingSize = dltotalsize - dlnowsize;
+																long mDownloadedSize = dlnowsize;
+																mProgress = (int) ((dlnowsize * 100) / dltotalsize);
+
+																long timeElapsedSinceLastTime = System.currentTimeMillis() - iMLastTime;
+																long timeElapsed = System.currentTimeMillis() - iMFirstTime;
+																iMLastTime = System.currentTimeMillis();
+																// Difference between last time and this time = how much was downloaded since last run.
+																long downloadedSinceLastTime = mDownloadedSize - iMLastDownloadedSize;
+																iMLastDownloadedSize = mDownloadedSize;
+																if (timeElapsedSinceLastTime > 0 && timeElapsed > 0) {
+																		// Speed (bytes per second) = downloaded bytes / time in seconds (nanoseconds / 1000000000)
+																		mAvgSpeed = (mDownloadedSize) * 1000 / timeElapsed;
+																		mSpeed = downloadedSinceLastTime * 1000 / timeElapsedSinceLastTime;
+																}
+
+																if (mAvgSpeed > 0) {
+																		// ETA (milliseconds) = remaining byte size / bytes per millisecond (bytes per second * 1000)
+																		mETA = (mReaminingSize) * 1000 / mAvgSpeed;
+																}
 														}
 												}
 										}

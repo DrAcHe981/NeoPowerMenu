@@ -138,7 +138,7 @@ public class LoginFragment extends Fragment
 												}
 
 												@Override
-												public void onUploadComplete()
+												public void onUploadComplete(String response)
 												{
 														// TODO: Implement this method
 														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
@@ -149,8 +149,8 @@ public class LoginFragment extends Fragment
 														EditText_UsernameEmail.setText(EditText_Username.getText().toString());
 														LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 														LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-														MainActivity.actionbar.setActionBarButtonText(getString(R.string.login_Title));
-														MainActivity.actionbar.setActionBarButtonListener(loginOnClickListener);
+														MainActivity.actionbar.setButtonText(getString(R.string.login_Title));
+														MainActivity.actionbar.setButtonListener(loginOnClickListener);
 														loginFragmentMode = "login";
 												}
 
@@ -209,7 +209,7 @@ public class LoginFragment extends Fragment
 																		});
 																dialogFragment.setDialogText("Register failed: \n"+reason);
 																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-																dialogFragment.showDialog();
+																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												}
 										});
@@ -256,7 +256,7 @@ public class LoginFragment extends Fragment
 												}
 
 												@Override
-												public void onUploadComplete()
+												public void onUploadComplete(String response)
 												{
 														// TODO: Implement this method
 														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
@@ -267,9 +267,9 @@ public class LoginFragment extends Fragment
 														EditText_UsernameEmail.setText(EditText_RecoverUsername.getText().toString());
 														LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 														LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-														MainActivity.actionbar.setActionBarButtonText(getString(R.string.login_Title));
-														MainActivity.actionbar.setActionBarButtonListener(loginOnClickListener);
-														MainActivity.actionbar.setActionBarButtonIcon(R.drawable.ic_action_import);
+														MainActivity.actionbar.setButtonText(getString(R.string.login_Title));
+														MainActivity.actionbar.setButtonListener(loginOnClickListener);
+														MainActivity.actionbar.setButtonIcon(R.drawable.ic_action_import);
 														loginFragmentMode = "login";
 												}
 
@@ -328,7 +328,7 @@ public class LoginFragment extends Fragment
 																		});
 																dialogFragment.setDialogText("Reset failed: \n"+reason);
 																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-																dialogFragment.showDialog();
+																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												}
 										});
@@ -355,16 +355,18 @@ public class LoginFragment extends Fragment
 								MainActivity.loggedIn = false;
 								MainActivity.usernameemail = "null";
 								MainActivity.password = "null";
+								MainActivity.accountUniqeId = "none";
 								MainActivity.preferences.edit().putBoolean("autoLogin", false)
 										.remove("ueel")
-										.remove("pd").commit();
+										.remove("pd")
+										.remove("auid").commit();
 								LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 								LinearLayout_LoggedInContainer.setVisibility(View.GONE);
 								LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 								LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
 								TextView_AccountInfo.setVisibility(View.VISIBLE);
 								TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-								MainActivity.actionbar.setActionBarButton(mContext.getString(R.string.login_Title),R.drawable.ic_action_import,loginOnClickListener);
+								MainActivity.actionbar.setButton(mContext.getString(R.string.login_Title),R.drawable.ic_action_import,loginOnClickListener);
 								loginFragmentMode = "login";
 						}
 				};
@@ -383,8 +385,8 @@ public class LoginFragment extends Fragment
 								{
 										// TODO: Implement this method
 										loginFragmentMode = "register";
-										MainActivity.actionbar.setActionBarButtonText(getString(R.string.login_TitleRegister));
-										MainActivity.actionbar.setActionBarButtonListener(registerOnClickListener);
+										MainActivity.actionbar.setButtonText(getString(R.string.login_TitleRegister));
+										MainActivity.actionbar.setButtonListener(registerOnClickListener);
 										LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 										LinearLayout_LoginContainer.setVisibility(View.GONE);
 										EditText_Username.setText("");
@@ -408,7 +410,7 @@ public class LoginFragment extends Fragment
 								{
 										// TODO: Implement this method
 										loginFragmentMode = "recover";
-										MainActivity.actionbar.setActionBarButton(getString(R.string.login_Recover), R.drawable.ic_action_settings_backup_restore, recoverOnClickListener);
+										MainActivity.actionbar.setButton(getString(R.string.login_Recover), R.drawable.ic_action_settings_backup_restore, recoverOnClickListener);
 										LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 										LinearLayout_LoginContainer.setVisibility(View.GONE);
 										EditText_RecoverUsername.setText("");
@@ -499,9 +501,10 @@ public class LoginFragment extends Fragment
 								}
 
 								@Override
-								public void onUploadComplete()
+								public void onUploadComplete(String response)
 								{
 										// TODO: Implement this method
+										String[] responseSplit = response.split(",");
 										if(!background) {
 												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 												PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
@@ -510,11 +513,13 @@ public class LoginFragment extends Fragment
 										MainActivity.loggedIn = true;
 										MainActivity.usernameemail = usernameemail;
 										MainActivity.password = password;
+										MainActivity.accountUniqeId = (responseSplit.length >= 2 ? responseSplit[1] : "none");
 										if (keeplogin)
 										{
 												MainActivity.preferences.edit().putBoolean("autoLogin", true)
 														.putString("ueel", MainActivity.usernameemail)
-														.putString("pd", MainActivity.password).commit();
+														.putString("pd", MainActivity.password)
+														.putString("auid", MainActivity.accountUniqeId).commit();
 										}
 										if(!background) {
 												TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
@@ -525,7 +530,7 @@ public class LoginFragment extends Fragment
 												getStatistics();
 												LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
 												LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-												if(MainActivity.visibleFragment.equalsIgnoreCase("account")) MainActivity.actionbar.setActionBarButton(context.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
+												if(MainActivity.visibleFragment.equalsIgnoreCase("account")) MainActivity.actionbar.setButton(context.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
 												loginFragmentMode = "logout";
 										}
 								}
@@ -587,27 +592,26 @@ public class LoginFragment extends Fragment
 								}
 
 								@Override
-								public void onUploadComplete()
+								public void onUploadComplete(String response)
 								{
 										// TODO: Implement this method
+										String[] stats = response.split(",");
+										TextView_Statistics.setText(mContext.getString(R.string.login_Statistics).replace("[UPLOADCOUNT]",stats[1]).replace("[STARSGIVEN]",stats[2]).replace("[STARSRECEIVED]",stats[3]).replace("[TOP5PRESETS]",stats[4]));
+										TextView_Statistics.setVisibility(View.VISIBLE);
+										TextView_Statistics.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 								}
 
 								@Override
 								public void onUploadFailed(String reason)
 								{
 										// TODO: Implement this method
-										if(reason.contains("Statistics:")) {
-												String[] stats = reason.split(",");
-												TextView_Statistics.setText(mContext.getString(R.string.login_Statistics).replace("[UPLOADCOUNT]",stats[1]).replace("[STARSGIVEN]",stats[2]).replace("[STARSRECEIVED]",stats[3]).replace("[TOP5PRESETS]",stats[4]));
-										} else {
-												TextView_Statistics.setText(mContext.getString(R.string.login_StatisticsFailed));
-										}
+										TextView_Statistics.setText(mContext.getString(R.string.login_StatisticsFailed)+"\nReason: "+reason);
 										TextView_Statistics.setVisibility(View.VISIBLE);
 										TextView_Statistics.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 								}
 						});
 				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
-				uH.setAdditionalUploadPosts(new String[][] {{"action","statistics"},{(MainActivity.usernameemail.contains("@") ? "email" : "name"),MainActivity.usernameemail},{"id",MainActivity.preferences.getString("userUniqeId","null")}});
+				uH.setAdditionalUploadPosts(new String[][] {{"action","statistics"},{(MainActivity.usernameemail.contains("@") ? "email" : "name"),MainActivity.usernameemail},{"deviceId",MainActivity.deviceUniqeId},{"accountId",MainActivity.accountUniqeId}});
 				try
 				{
 						new File(mContext.getFilesDir().getPath() + "/tmp").createNewFile();
@@ -621,9 +625,9 @@ public class LoginFragment extends Fragment
 		public static void returnToLogin()
 		{
 				loginFragmentMode = "login";
-				MainActivity.actionbar.setActionBarButtonText(mContext.getString(R.string.login_Title));
-				MainActivity.actionbar.setActionBarButtonListener(loginOnClickListener);
-				MainActivity.actionbar.setActionBarButtonIcon(R.drawable.ic_action_import);
+				MainActivity.actionbar.setButtonText(mContext.getString(R.string.login_Title));
+				MainActivity.actionbar.setButtonListener(loginOnClickListener);
+				MainActivity.actionbar.setButtonIcon(R.drawable.ic_action_import);
 				if(LinearLayout_RegisterContainer.getVisibility()==View.VISIBLE) {
 				LinearLayout_RegisterContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 				LinearLayout_RegisterContainer.setVisibility(View.GONE);

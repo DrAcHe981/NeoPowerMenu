@@ -76,6 +76,9 @@ public class PreferencesPresetsFragment extends Fragment
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "PresetsManager";
 
+				MainActivity.actionbar.setTitle(getString(R.string.preset_Load));
+				MainActivity.actionbar.setSubTitle(getString(R.string.preset_LoadDesc));
+				
 				mContext = getActivity();
 				onlineSearchTerm = "";
 				onlineOrderSelected = 0;
@@ -116,7 +119,7 @@ public class PreferencesPresetsFragment extends Fragment
 										if (adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleOnline)))
 										{
 												MainActivity.visibleFragment = "PresetsManagerOnline";
-												MainActivity.actionbar.setActionBarButton(getString(R.string.presetsManager_Refresh), R.drawable.ic_action_autorenew, new OnClickListener() {
+												MainActivity.actionbar.setButton(getString(R.string.presetsManager_Refresh), R.drawable.ic_action_autorenew, new OnClickListener() {
 
 																@Override
 																public void onClick(View p1)
@@ -164,6 +167,10 @@ public class PreferencesPresetsFragment extends Fragment
 																				onlineSearchEdit.setText("");
 																				onlineSearchBar.setVisibility(View.VISIBLE);
 																				onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
+																				InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+																				onlineSearchEdit.requestFocus();
+																				IBinder windowToken = onlineSearchEdit.getWindowToken();
+																				inputManager.showSoftInput(onlineSearchEdit, InputMethodManager.SHOW_IMPLICIT);
 																		}
 																		if (onlineOrder.getVisibility() == View.VISIBLE)
 																		{
@@ -196,7 +203,7 @@ public class PreferencesPresetsFragment extends Fragment
 																								// TODO: Implement this method
 																								onlineOrderSelected = position;
 																								onlineOrderSelectedString = text;
-																								MainActivity.actionbar.setActionBarButtonListener(new OnClickListener() {
+																								MainActivity.actionbar.setButtonListener(new OnClickListener() {
 
 																												@Override
 																												public void onClick(View p1)
@@ -248,7 +255,7 @@ public class PreferencesPresetsFragment extends Fragment
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")"}, onlineOrderSelected,true);
 																		dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
-																		dialogFragment.showDialog();
+																		dialogFragment.showDialog(R.id.dialog_container);
 																		if (onlineOrder.getVisibility() == View.VISIBLE)
 																		{
 																				onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
@@ -301,17 +308,17 @@ public class PreferencesPresetsFragment extends Fragment
 												MainActivity.visibleFragment = "PresetsManagerAccount";
 												if (LoginFragment.loginFragmentMode.equalsIgnoreCase("login"))
 												{
-														MainActivity.actionbar.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_action_import, LoginFragment.loginOnClickListener);
+														MainActivity.actionbar.setButton(getString(R.string.login_Title), R.drawable.ic_action_import, LoginFragment.loginOnClickListener);
 												}
 												else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("register"))
 												{
-														MainActivity.actionbar.setActionBarButton(getString(R.string.login_TitleRegister), R.drawable.ic_action_import, LoginFragment.registerOnClickListener);
+														MainActivity.actionbar.setButton(getString(R.string.login_TitleRegister), R.drawable.ic_action_import, LoginFragment.registerOnClickListener);
 												}
 												else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("logout"))
 												{
-														MainActivity.actionbar.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
+														MainActivity.actionbar.setButton(getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
 												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("recover")) {
-														MainActivity.actionbar.setActionBarButton(getString(R.string.login_Recover),R.drawable.ic_action_settings_backup_restore ,LoginFragment.recoverOnClickListener);
+														MainActivity.actionbar.setButton(getString(R.string.login_Recover),R.drawable.ic_action_settings_backup_restore ,LoginFragment.recoverOnClickListener);
 												}
 												if(onlineSearch.getVisibility() == View.VISIBLE) {
 														onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
@@ -321,6 +328,9 @@ public class PreferencesPresetsFragment extends Fragment
 														onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
 														onlineSearchBar.setVisibility(View.GONE);
 														//onlineSearchEdit.setText("");
+														InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+														IBinder windowToken = onlineSearchEdit.getWindowToken();
+														inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
 												}
 												if (onlineOrder.getVisibility() == View.VISIBLE)
 												{
@@ -332,7 +342,7 @@ public class PreferencesPresetsFragment extends Fragment
 										else
 										{
 												MainActivity.visibleFragment = "PresetsManager";
-												MainActivity.actionbar.setActionBarButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
+												MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
 												if(onlineSearch.getVisibility() == View.VISIBLE) {
 														onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
 														onlineSearch.setVisibility(View.GONE);
@@ -341,6 +351,9 @@ public class PreferencesPresetsFragment extends Fragment
 														onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
 														onlineSearchBar.setVisibility(View.GONE);
 														//onlineSearchEdit.setText("");
+														InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+														IBinder windowToken = onlineSearchEdit.getWindowToken();
+														inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
 												}
 												if (onlineOrder.getVisibility() == View.VISIBLE)
 												{
@@ -482,10 +495,10 @@ public class PreferencesPresetsFragment extends Fragment
 												if (!p1.toString().equalsIgnoreCase("")) {
 														File checkFile = new File(mContext.getFilesDir()+"/presets/"+p1.toString().replace("/","")+".nps");
 														if (!checkFile.exists()) {
-																dialogFragment.setOverwriteInfo(false);
+																dialogFragment.showInputAssistInfo(false);
 																//dialogFragment.setDialogText("");
 														} else {
-																dialogFragment.setOverwriteInfo(true);
+																dialogFragment.showInputAssistInfo(true);
 																//dialogFragment.setDialogText(context.getString(R.string.presetSaveDialog_OverwriteText));
 														}
 												}
@@ -497,9 +510,10 @@ public class PreferencesPresetsFragment extends Fragment
 												// TODO: Implement this method
 										}}
 						);
+						dialogFragment.setDialogInputAssistInfo(mContext.getString(R.string.presetSaveDialog_OverwriteText));
 						dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Cancel));
 						dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Save));
-						dialogFragment.showDialog();
+						dialogFragment.showDialog(R.id.dialog_container);
 
 				}
 				catch (Throwable e)

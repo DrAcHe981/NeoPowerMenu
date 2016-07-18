@@ -79,8 +79,8 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "VisibilityOrder";
 
-				MainActivity.actionbar.setActionBarTitle(getString(R.string.preferencesTitle_VisibilityOrder));
-				MainActivity.actionbar.setActionBarSubTitle(getString(R.string.preferencesDesc_VisibilityOrder));
+				MainActivity.actionbar.setTitle(getString(R.string.preferencesTitle_VisibilityOrder));
+				MainActivity.actionbar.setSubTitle(getString(R.string.preferencesDesc_VisibilityOrder));
 				
 				PowerMenuItemsTexts = new String[] {
 						getString(R.string.powerMenuMain_Empty),
@@ -187,7 +187,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_NONE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,0,true);
 										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Cancel));
-										dialogFragment.showDialog();
+										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});
 						
@@ -242,11 +242,11 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 										dialogFragment.setDialogListLimit(3,false);
 										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Cancel));
 										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
-										dialogFragment.showDialog();
+										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});
 				
-						MainActivity.actionbar.hideActionBarButton();
+						MainActivity.actionbar.hideButton();
 						
 				return InflatedView;
 		}

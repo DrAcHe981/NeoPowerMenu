@@ -38,7 +38,7 @@
 			<ImageView
 				android:layout_height="35dp"
 				android:layout_width="35dp"
-				android:src="@drawable/ic_content_send"
+				android:src="@android:drawable/ic_delete"
 				android:padding="3dp"
 				android:id="@+id/actionBar_ButtonIcon"/>
 

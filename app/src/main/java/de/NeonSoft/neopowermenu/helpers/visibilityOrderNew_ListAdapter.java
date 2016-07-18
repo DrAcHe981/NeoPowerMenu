@@ -124,7 +124,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
-											dialogFragment.showDialog();
+											dialogFragment.showDialog(R.id.dialog_container);
 									}
 					});
 					
@@ -161,7 +161,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 					}
 					item2.setText(string);
 					} else {
-							item2.setText(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[0]);
+							item2.setText(PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts[0]);
 					}
 
 					TextView item3 = (TextView) InflatedView.findViewById(R.id.visibilityordermulti_item3);
@@ -179,7 +179,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 					}
 					item3.setText(string);
 					} else {
-							item3.setText(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[0]);
+							item3.setText(PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts[0]);
 					}
 					
 					LinearLayout ItemCheckBoxHolder = (LinearLayout) InflatedView.findViewById(R.id.visibilityordermulti_LinearLayout_HideDesc);
@@ -279,7 +279,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
-											dialogFragment.showDialog();
+											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});
 					item2.setOnClickListener(new OnClickListener() {
@@ -334,7 +334,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
-											dialogFragment.showDialog();
+											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});
 					item3.setOnClickListener(new OnClickListener() {
@@ -389,7 +389,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
-											dialogFragment.showDialog();
+											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});
 			}

@@ -166,7 +166,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																								}
 
 																								@Override
-																								public void onUploadComplete()
+																								public void onUploadComplete(String response)
 																								{
 																										// TODO: Implement this method
 																										Progress.setProgress(0);
@@ -268,7 +268,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedNoAccess));
 																												dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.login_Title));
-																												dialogFragment.showDialog();
+																												dialogFragment.showDialog(R.id.dialog_container);
 																										}
 																										else if (reason.contains("Preset name exists."))
 																										{
@@ -307,7 +307,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedSameName));
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-																												dialogFragment.showDialog();
+																												dialogFragment.showDialog(R.id.dialog_container);
 																										}
 																										else if (reason.contains("Cannot connect to the DB"))
 																										{
@@ -354,14 +354,14 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailed)+"\n"+reason);
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-																												dialogFragment.showDialog();
+																												dialogFragment.showDialog(R.id.dialog_container);
 																										}
 																								}
 																						});
 																				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
 																				uH.setLocalUrl(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps");
 																				uH.uploadAs(resultData.get(0) + ".nps");
-																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",resultData.get(0)},{"presetCreator",resultData.get(1)},{"presetAppVersion","v" + appVersion},{MainActivity.usernameemail.contains("@") ? "userEmail" : "userName",MainActivity.usernameemail},{"userId",MainActivity.preferences.getString("userUniqeId", "null")}});
+																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",resultData.get(0)},{"presetCreator",resultData.get(1)},{"presetAppVersion","v" + appVersion},{MainActivity.usernameemail.contains("@") ? "userEmail" : "userName",MainActivity.usernameemail},{"userId",(MainActivity.accountUniqeId.equals("none") ? MainActivity.deviceUniqeId : MainActivity.accountUniqeId)}});
 																				uH.startUpload();
 																		}
 
@@ -376,7 +376,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_CreatorNameInfo),itemsDesc.get(position),false,null);
 														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Ok));
-														dialogFragment.showDialog();
+														dialogFragment.showDialog(R.id.dialog_container);
 												}
 										});
 								Delete.setOnClickListener(new OnClickListener() {
@@ -437,7 +437,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
 														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Delete));
-														dialogFragment.showDialog();
+														dialogFragment.showDialog(R.id.dialog_container);
 												}
 										});
 								Share.setOnClickListener(new OnClickListener() {
@@ -508,11 +508,11 @@ public class PresetsAdapter extends ArrayAdapter<String>
 								BottomBar.setVisibility(View.VISIBLE);
 								Upload.setVisibility(View.GONE);
 								Share.setVisibility(View.GONE);
-								if(MainActivity.preferences.getString("ratedFor","").contains(itemsTitle.get(position)+",")) {
+								if(MainActivity.preferences.getString("ratedFor","").contains("&"+itemsTitle.get(position)+",")) {
 										StarImage.setImageResource(R.drawable.ic_action_star_0);
 										StarText.setText(context.getString(R.string.presetsManager_removeStar));
 								}
-								if (PresetsPage.onlineIds[position].equalsIgnoreCase(MainActivity.preferences.getString("userUniqeId", "null")))
+								if (PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) || PresetsPage.onlineIds[position].equals(MainActivity.accountUniqeId))
 								{
 										Delete.setOnClickListener(new OnClickListener() {
 
@@ -564,7 +564,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										}
 
 																										@Override
-																										public void onUploadComplete()
+																										public void onUploadComplete(String response)
 																										{
 																												// TODO: Implement this method
 																												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
@@ -583,7 +583,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										}
 																								});
 																						uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php");
-																						uH.setAdditionalUploadPosts(new String[][] {{"action","delete"},{"presetName",itemsTitle.get(position)},{"userId",MainActivity.preferences.getString("userUniqeId", "null")}});
+																						uH.setAdditionalUploadPosts(new String[][] {{"action","delete"},{"presetName",itemsTitle.get(position)},{"userId",(PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) ? MainActivity.deviceUniqeId : MainActivity.accountUniqeId)}});
 																						try
 																						{
 																								new File(context.getFilesDir().getPath() + "/tmp").createNewFile();
@@ -603,7 +603,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
 																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
 																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Delete));
-																dialogFragment.showDialog();
+																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});
 								} else {
@@ -634,19 +634,19 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				}
 
 																				@Override
-																				public void onUploadComplete()
+																				public void onUploadComplete(String response)
 																				{
 																						// TODO: Implement this method
 																						if (StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_giveStar))) {
 																								StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]",""+(Integer.parseInt(StarsCount.getText().toString().split(": ")[1])+1)));
 																								StarImage.setImageResource(R.drawable.ic_action_star_0);
 																								StarText.setText(context.getString(R.string.presetsManager_removeStar));
-																								MainActivity.preferences.edit().putString("ratedFor",MainActivity.preferences.getString("ratedFor","")+itemsTitle.get(position)+",").commit();
+																								MainActivity.preferences.edit().putString("ratedFor",MainActivity.preferences.getString("ratedFor","")+"&"+itemsTitle.get(position)+",").commit();
 																						} else {
 																								StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]",""+(Integer.parseInt(StarsCount.getText().toString().split(": ")[1])-1)));
 																								StarImage.setImageResource(R.drawable.ic_action_star_10);
 																								StarText.setText(context.getString(R.string.presetsManager_giveStar));
-																								MainActivity.preferences.edit().putString("ratedFor",MainActivity.preferences.getString("ratedFor","").replace(itemsTitle.get(position)+",","")).commit();
+																								MainActivity.preferences.edit().putString("ratedFor",MainActivity.preferences.getString("ratedFor","").replace("&"+itemsTitle.get(position)+",","")).commit();
 																						}
 																						LoginFragment.getStatistics();
 																						PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
@@ -692,8 +692,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						if(PreferencesPresetsFragment.DownloadingActiveFor.contains("&"+itemsTitle.get(position) + ",")) {
 								//oldText = ItemDesc.getText().toString();
 								long[] sizes = PreferencesPresetsFragment.DownloadingActiveForHelper[position].getSizes();
-								ItemDesc.setText(context.getString(R.string.presetsManager_Downloading) + " (" + helper.getSizeString(sizes[0], true) + "/" + helper.getSizeString(sizes[1], true) + " | "+((sizes[0] * 100) / sizes[1])+"%)");
-								Progress.setProgress((int) ((sizes[0] * 100) / sizes[1]));
+								PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.presetsManager_Downloading) + " - eta: " + helper.getTimeString(PreferencesPresetsFragment.DownloadingActiveForHelper[position].getETA(),true) + " | speed: "+helper.getSizeString(PreferencesPresetsFragment.DownloadingActiveForHelper[position].getAvgSpeed(),true)+"/s\n" + helper.getSizeString(sizes[0], true) + "/" + helper.getSizeString(sizes[1], true) + " | "+PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress()+"%");
+								Progress.setProgress(PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress());
 								OnlineButton.setEnabled(false);
 								OnlineButton.setAlpha((float) .3);
 								PreferencesPresetsFragment.DownloadingActiveForLayout[position] = OnlineButton;
@@ -716,17 +716,19 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																		{
 																				// TODO: Implement this method
 																				try {
-																				PreferencesPresetsFragment.DownloadingActiveForOldText[position] = ItemDesc.getText().toString();
-																				ItemDesc.setText(context.getString(R.string.presetsManager_Downloading));
+																						PreferencesPresetsFragment.DownloadingActiveForHelper[position] = dH;
+																						PreferencesPresetsFragment.DownloadingActiveForLayout[position] = OnlineButton;
+																						PreferencesPresetsFragment.DownloadingActiveForLabel[position] = ItemDesc;
+																						PreferencesPresetsFragment.DownloadingActiveForProgress[position] = Progress;
+																						PreferencesPresetsFragment.DownloadingActiveForOldText[position] = ItemDesc.getText().toString();
+																						PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.presetsManager_Downloading) + " - eta: " + helper.getTimeString(0,true) + " | speed: "+helper.getSizeString(0,true)+"/s\n" + helper.getSizeString(0, true) + "/" + helper.getSizeString(0, true) + " | 0%");
 																				Progress.setProgress(0);
 																				OnlineButton.setEnabled(false);
 																				OnlineButton.setAlpha((float) .3);
 																				PreferencesPresetsFragment.DownloadingActiveFor = PreferencesPresetsFragment.DownloadingActiveFor + "&"+itemsTitle.get(position) + ",";
-																				PreferencesPresetsFragment.DownloadingActiveForHelper[position] = dH;
-																				PreferencesPresetsFragment.DownloadingActiveForLayout[position] = OnlineButton;
-																				PreferencesPresetsFragment.DownloadingActiveForLabel[position] = ItemDesc;
-																				PreferencesPresetsFragment.DownloadingActiveForProgress[position] = Progress;
-																		} catch (Throwable t) {}
+																				} catch (Throwable t) {
+																						Log.e("NPM","Failed to start download: "+t.toString());
+																					}
 																		}
 
 																		@Override
@@ -734,9 +736,11 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																		{
 																				// TODO: Implement this method
 																				try {
-																				PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.presetsManager_Downloading) + " (" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | "+((nowSize * 100) / totalSize)+"%)");
+																						PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.presetsManager_Downloading) + " - eta: " + helper.getTimeString(dH.getETA(),true) + " | speed: "+helper.getSizeString(dH.getAvgSpeed(),true)+"/s\n" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | "+dH.getProgress()+"%");
 																				PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress((int) ((nowSize * 100) / totalSize));
-																				} catch (Throwable t) {}
+																				} catch (Throwable t) {
+																						Log.e("NPM","Failed to update progress: "+t.toString());
+																				}
 																		}
 
 																		@Override

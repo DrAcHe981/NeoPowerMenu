@@ -33,6 +33,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 		BroadcastReceiver br;
 		
 		 private String dialogText = "";
+		 private float dialogTextSize = -1;
 	
 		 private int dialogListMode;
 		 private int dialogListLimit = 0;
@@ -52,11 +53,12 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 		private boolean dialogInput2allowEmpty;
 		private TextWatcher dialogInput2textWatcher;
 		private int dialogInput2mode = InputType.TYPE_TEXT_VARIATION_NORMAL;
-		 
+
+		private TextView TextView_InputAssistInfo;
+		private String dialogInputAssistInfoString;
+		
 		private String dialogColorPickerdefaultValue;
 		private boolean dialogColorPickershowOpacityBar;
-		
-		private TextView TextView_OverwriteInfo;
 		
 		private String dialogCheckBoxtext;
 		
@@ -66,7 +68,8 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 
 		 private boolean closeOnTouchOutside = true;
 		
-
+		 private boolean hideActive = false;
+		 
 		TextView TextView_DialogBg;
 		LinearLayout LinearLayout_DialogRoot;
 		LinearLayout LinearLayout_MainContainer;
@@ -164,6 +167,12 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 						TextView_DialogText.setVisibility(text.isEmpty() ? View.GONE : View.VISIBLE);
 				}
 		}
+		public void setDialogTextSize(float size) {
+				if(TextView_DialogText!=null) {
+						TextView_DialogText.setTextSize(size);
+				}
+				dialogTextSize = size;
+		}
 		
 		public void setDialogList(int mode, String[] items, int defaultsel, boolean closeonsel) {
 				dialogListMode = mode;
@@ -188,6 +197,18 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 				dialogInput2allowEmpty = allowEmpty;
 				dialogInput2textWatcher = watcher;
 		}
+
+		public void showInputAssistInfo(boolean enabled) {
+				TextView_InputAssistInfo.setVisibility(enabled ? View.VISIBLE : View.GONE);
+		}
+		
+		public void setDialogInputAssistInfo(String text) {
+				if(TextView_InputAssistInfo != null) {
+						TextView_InputAssistInfo.setText("text");
+				}
+				dialogInputAssistInfoString = text;
+		}
+		
 		public void setDialogInputMode(int input, int mode) {
 				if (input == 1) {
 						dialogInput1mode = mode;
@@ -201,10 +222,6 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 		public void setDialogColorPicker(String defaultColor,boolean showOpacityBar) {
 				dialogColorPickerdefaultValue = defaultColor;
 				dialogColorPickershowOpacityBar = showOpacityBar;
-		}
-		
-		public void setOverwriteInfo(boolean enabled) {
-				TextView_OverwriteInfo.setVisibility(enabled ? View.VISIBLE : View.GONE);
 		}
 		
 		public void setDialogCheckBox(String text) {
@@ -225,12 +242,12 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 				closeOnTouchOutside = enabled;
 		}
 		
-		public void showDialog() {
+		public void showDialog(int mDialogContainer) {
 				try {
 						if(mFragmentmanager==null) {
 								throw new Throwable("mFragmentmanager is null!");
 						}
-						mFragmentmanager.beginTransaction().add(R.id.dialog_container, this, dialogTag).commit();
+						mFragmentmanager.beginTransaction().add(mDialogContainer, this, dialogTag).commit();
 				} catch (Throwable t) {
 						AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
 						adb.setMessage("Failed to show slideDownDialogFragment:\n"+t);
@@ -312,8 +329,8 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 						EditText_DialogHexInput = (EditText) InflatedView.findViewById(R.id.slidedowndialogfragmentEditText_DialogHexInput);
 						LinearLayout_DialogColorPicker.setVisibility(View.GONE);
 
-						TextView_OverwriteInfo = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_OverwriteInfo);
-						TextView_OverwriteInfo.setVisibility(View.GONE);
+						TextView_InputAssistInfo = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_OverwriteInfo);
+						TextView_InputAssistInfo.setVisibility(View.GONE);
 						
 						LinearLayout_DialogCheckBox = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_CheckBox);
 						CheckBox_DialogCheckBox = (CheckBox) InflatedView.findViewById(R.id.slidedowndialogfragmentCheckBox_CheckBox);
@@ -337,6 +354,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 
 
 						TextView_DialogText.setText(dialogText);
+						if(dialogTextSize>0) TextView_DialogText.setTextSize(dialogTextSize);
 						TextView_DialogText.setVisibility(dialogText.isEmpty() ? View.GONE : View.VISIBLE);
 						
 						br = new BroadcastReceiver() {
@@ -401,6 +419,9 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 								EditText_DialogInput2.setText(dialogInput2defaultText);
 								EditText_DialogInput2.setInputType(InputType.TYPE_CLASS_TEXT | dialogInput2mode);
 								LinearLayout_DialogInput2.setVisibility(View.VISIBLE);
+						}
+						if(dialogInputAssistInfoString!= null) {
+								TextView_InputAssistInfo.setText(dialogInputAssistInfoString);
 						}
 						
 						if(dialogColorPickerdefaultValue!=null) {
@@ -594,7 +615,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 														resultData.add(EditText_DialogInput2.getText().toString());
 												}
 												if(dialogColorPickerdefaultValue!=null) {
-														resultData.add(EditText_DialogHexInput.getText().toString());
+														resultData.add(String.format((dialogColorPickershowOpacityBar ? "#%08X" : "#%06X"), ((dialogColorPickershowOpacityBar ? 0xFFFFFFFF : 0xFFFFFF) & ColorPicker_DialogColorPicker.getColor())));
 												}
 												if(dialogCheckBoxtext != null) {
 														resultData.add(CheckBox_DialogCheckBox.isChecked() ? "true" : "false");
@@ -630,6 +651,9 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 				}
 		
 		public void closeDialog() {
+				if(!hideActive) {
+						hideActive = true;
+				mContext.unregisterReceiver(br);
 				InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE); 
 				IBinder windowToken = null;
 				if(EditText_DialogInput1.isFocused()) {
@@ -649,8 +673,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 								public void onAnimationEnd(Animation p1)
 								{
 										// TODO: Implement this method
-										mContext.unregisterReceiver(br);
-										MainActivity.fragmentManager.beginTransaction().remove(mFragment).commit();
+										mFragmentmanager.beginTransaction().remove(mFragment).commit();
 										if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP) {
 												//mContext.getWindow().setNavigationBarColor(mContext.getResources().getColor(R.color.window_background_dark));
 										}
@@ -670,6 +693,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 						});
 				LinearLayout_DialogRoot.startAnimation(hideAnim);
 				LinearLayout_DialogRoot.setVisibility(View.GONE);
+				}
 		}
 		
 }

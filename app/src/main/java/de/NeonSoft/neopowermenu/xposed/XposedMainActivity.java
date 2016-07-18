@@ -6,20 +6,22 @@ import android.content.res.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
 import android.os.*;
-import android.preference.*;
+import android.util.*;
 import android.view.*;
 import android.widget.*;
+import cat.ereza.customactivityoncrash.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
-import android.util.*;
-import android.animation.*;
+import de.NeonSoft.neopowermenu.helpers.BlurUtils.*;
+import org.acra.*;
+import org.acra.annotation.*;
 
-import de.NeonSoft.neopowermenu.helpers.BlurUtils.BlurEngine;
-import de.NeonSoft.neopowermenu.helpers.BlurUtils.BlurTaskCallback;
+import de.NeonSoft.neopowermenu.R;
 
 /**
  * Created by naman on 20/03/15.
  */
+
 public class XposedMainActivity extends Activity implements DialogInterface.OnDismissListener {
 
 		public static SharedPreferences preferences;
@@ -55,7 +57,10 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+				CustomActivityOnCrash.install(getApplicationContext());
+				CustomActivityOnCrash.setRestartActivityClass(XposedMainActivity.class);
+				ACRA.init(getApplication());
+				
 				mContext =getApplicationContext();
 				preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
 				orderPrefs = getSharedPreferences("visibilityOrder",Context.MODE_WORLD_READABLE);
@@ -90,7 +95,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 						//Log.d("NeoPowerMenu","Showing Normal");
             getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
         }
-				getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+				//getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         super.onCreate(savedInstanceState);
 
 				//Bitmap map=helper.takeScreenShot(XposedMainActivity.this);
