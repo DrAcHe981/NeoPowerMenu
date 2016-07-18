@@ -50,6 +50,8 @@ Check out the source on GitHub."</string>
 <string name="preferencesTitle_Share">"Share"</string>
 <string name="preferencesDesc_Share">"Like the app? Share it with your friends."</string>
 <string name="preferencesTitle_About">"Code by Neon-Soft / DrAcHe981"</string>
+
+<!-- Information has no plural in English ;) -->
 <string name="preferencesDesc_About">"based on the source of Naman Dwivedi (naman14).
 Click here to get more info."</string>
 
@@ -169,6 +171,8 @@ Grant additional permissions that are not added on first start (Android 6.0+)."<
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Required to display the Power Menu on top of everything."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
+
+<!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Required to prevent killing of the torch and screenrecord service."</string>
 <string name="powerMenuMain_SoundMode">"Sound Mode"</string>
 <string name="powerMenuMain_SoundModeDesc">"Current mode: [SOUNDMODE]"</string>
@@ -232,6 +236,9 @@ Your presets (ordered by stars):
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
+<string name="presetsManager_Stars">"Stars: [STARS]"</string>
+<string name="presetsManager_giveStar">"Give Star"</string>
+<string name="presetsManager_removeStar">"Remove Star"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
@@ -242,9 +249,6 @@ Your presets (ordered by stars):
 <string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
 <string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsPartMain">"Dialog"</string>
-<string name="presetsManager_Stars">"Stars: [STARS]"</string>
-<string name="presetsManager_giveStar">"Give Star"</string>
-<string name="presetsManager_removeStar">"Remove Star"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
 <string name="presetsManager_OrderBy">"Order by"</string>
 <string name="presetsManager_OrderNames">"Name/Time/Stars/Creator/Own"</string>
