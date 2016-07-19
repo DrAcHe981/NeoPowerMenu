@@ -1,3 +1,6 @@
+v1.5.2-1:
+# Fixed a critical bug where nearly every preset upload will fail with the reason "Not yours".
+
 v1.5.2:
 # Reworked Download and upload system, and fixed upload bug. 
 # Fixed color picker invalid color crash. 
