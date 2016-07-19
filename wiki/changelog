@@ -1,0 +1,72 @@
+v1.5.2:
+# Reworked Download and upload system, and fixed upload bug. 
+# Fixed color picker invalid color crash. 
+# Again a try to fix the transparency bug. 
++ Added a custom crash dialog with the ability to directly copy the stacktrace/logcat and automatic crash report to my servers. 
++ Added the ability to moderate your own uploaded presets on every device where you log in with your account. 
+
++ Off-topic: I have created a Google plus community where I will publish test versions and pre-releases. Also you could share your setups with other people. https://plus.google.com/communities/104565492756593392284
+
+v1.5.1:
+
+v1.5:
+
+v1.4.1:
+# Fixed android 6.0+ permission missing bug.
+# Fixed new Items don't get the right color.
+ 
+v1.4:
+[COLOR="Red"]! Reboot is needed to let the huge changes to the Xposed part take effect ![/COLOR]
++ New items added: Torch, Screen record and Expanded Desktop (Uses GravityBox).
++ Change the Dialog gravity, for example: put the dialog to the bottom of the screen. 
++ Added a switch to Replace the Circle letters with graphics. 
+# As always : fixed some bugs. 
+# Updated Languages. 
+ 
+v1.4-pre11:
+[COLOR="Red"]! Reboot is needed to let the huge changes to the Xposed part take effect ![/COLOR]
++ Finally added the Screenshot Button and with this opened the way for the next buttons!
++ Adjust the Screenshot delay in the Advanced Settings
++ Added the option to disable the Power Menu on the Lock Screen
++ More languages:
+> Russian by Smirnov Yaroslav (Smirnaff)
+> Polish by Witoslavski
+> Portuguese by DeluxeMark
+Thx to you all!
+
+# and as always: Fixed some bugs.
+
+v1.4-pre8 
+No new items for now, still need to test some stuff... 
++ Sort the Items as you want 
++ Hide and Show items as you wish 
+# As always: small bugs fixed
+
+v1.4-pre4
++ Basic Multi language support (English, German)
++ Select which items to display (Not Complete)
++ Completely redesigned UI
+# As always: Fixed some bugs
+
+v1.3 
++ full color support added
++ Save and load presets
+# Small bugs fixed 
+
+v1.2-pre2
++ Nearly all Colors can be changed
++ A try to fix the 'IllegalAccesError' on some devices 
+
+v1.2-pre1
++ A bit from the color system added
++ save and restore presets 
+
+v1.1-1
+# A second try to give Android M support 
+
+V1.1 (destroyed everything...) 
+# New icon
+# Maybe support for android M(I have no device to test on)
+
+v1.0
+# Initial Release.
