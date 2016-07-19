@@ -8,8 +8,26 @@ v1.5.2:
 + Off-topic: I have created a Google plus community where I will publish test versions and pre-releases. Also you could share your setups with other people. https://plus.google.com/communities/104565492756593392284
 
 v1.5.1:
+! Reboot needed to let the changes to the xposed part take effect !
++ Added the ability to freely change the "order and visibility", add for example 2 shutdown buttons or more 3 way items.
++ Added experimental phone window manager hook,try this if the normal hook doesn't work for your device.
++ Added the ability to create a homescreen shortcut to open the power menu.
+# Reworked dialogs.
+# Reworked action bar.
+# And as always: small bugs fixed.
 
 v1.5:
+- Removed 'Waiting for root... ' Dialog. (moved it to the Root and Xposed info as an simple progress bar)
+# Reduced opening time. 
+# NPM will now hide when the screen gets turned off and when other system dialogs open. 
+# Reordered Colors list: both colors for one item are now together. 
+# Reworked Visibility and Order list handler. 
+# Reworked permissions system: Not all permissions are needed to work, you can select what you want to grant! ( not granted permissions will cause some functions to stop working...), only Android 6.0+
+# Reworked Presets system, faster loading and saving. 
+# Reworked Presets import, now NeoPowerMenu won't open every file type, to open nps files as themes open them as text files. 
++ Added new items: Airplane Mode, Restart System UI and Sound Mode. 
++ Added the ability to hide item descriptions, for example you can hide the Soft Reboot description. (Checkbox for this is in the visibility and order screen)
++ Added the preset server, feel free to upload your presets!
 
 v1.4.1:
 # Fixed android 6.0+ permission missing bug.
