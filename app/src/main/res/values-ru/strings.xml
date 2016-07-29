@@ -220,7 +220,7 @@
 <string name="login_Statistics">"Шаблонов загружено: [UPLOADCOUNT]
 
 Звёзд дано: [STARSGIVEN]
-Звёзд получено: [STARSRECIEVED]
+Звёзд получено: [STARSRECEIVED]
 
 Ваши шаблоны (сортированы по Звёздам):
 [TOP5PRESETS]"</string>
