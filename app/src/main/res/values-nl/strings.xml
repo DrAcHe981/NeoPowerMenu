@@ -174,4 +174,42 @@ Je gebruikersID is toegekend je bent klaar om presets te uploaden!"</string>
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Account"</string>
 <string name="presetsManager_Upload">"Uploaden"</string>
+<string name="presetsManager_UploadMsg">"Deze preset zal geüpload worden naar een publieke server, zichtbaar voor andere gebruikers.
+
+Dit is je laatste kans om de naam of maker aan te passen voordat de present wordt geüpload..."</string>
+<string name="presetsManager_UploadComplete">"Upload voltooid!"</string>
+<string name="presetsManager_UploadFailedSameName">"Deze naam is al in gebruik, probeer a.u.b. een andere naam."</string>
+<string name="presetsManager_UploadFailedNoAccess">"Deze naam van de maker is beveiligd, kies een andere naam of log in."</string>
+<string name="presetsManager_UploadFailed">"Upload mislukt!"</string>
+<string name="presetsManager_Downloading">"Downloaden..."</string>
+<string name="presetsManager_DownloadFailed">"Download mislukt!"</string>
+<string name="presetsManager_CantConnecttoServer">"Kan niet met de server verbinden!
+Controleer je netwerkverbindinge of probeer het later nog eens."</string>
+<string name="presetsManager_CantConnecttoDB">"Kan niet met de database verbinden!
+Probeer het later nog eens, wanneer het dan nog niet lukt dit graag aan de ontwikkelaar melden."</string>
+<string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Benodigd om presents te downloaden/uploaden van en naar de publieke server."</string>
+
+<!-- Login page -->
+<string name="login_Title">"Login"</string>
+<string name="login_TitleRegister">"Registreer"</string>
+<string name="login_Info">"De gebruikersnamen van geregistreerde gebruikers zijn beschermd zodat niemand een upload in hun na kan doen, hier kun je inloggen of een nieuwe account creëren.
+Dit is niet vereist als je het niet wilt!
+Ik zal nooit privé data delen."</string>
+<string name="login_UsernameEmail">"Gebruikersnaam of E-mail:"</string>
+<string name="login_Username">"Gebruikersnaam:"</string>
+<string name="login_Email">"E-mail:"</string>
+<string name="login_RetypeEmail">"Typ E-mail opnieuw:"</string>
+<string name="login_PasswordOverEmail">"Je kunt een wachtwoord instellen via de activatie E-mail (deze E-mail is alleen in het Engels beschikbaar)."</string>
+<string name="login_Password">"Wachtwoord:"</string>
+<string name="login_KeepLogin">"Hou me ingelogd."</string>
+<string name="login_Register">"Een account nodig?
+Klik hier om een nieuwe account te maken!"</string>
+<string name="login_LoggedIn">"Ingelogd!"</string>
+<string name="login_LoginFailedWithReason">"Inloggen mislukt:"</string>
+<string name="login_LoginFailedWrongData">"Inloggen mislukt, verkeerde E-mail of wachtwoord!"</string>
+<string name="login_RegisterFailedNameUsed">"Sorry, de gekozen naam of E-mail is al in gebruik."</string>
+<string name="login_RegisterSuccess">"Registratie succesvol, je zilt een E-mail ontvangen om je account te activeren!"</string>
+<string name="login_Processing">"Verwerken..."</string>
+<string name="login_TitleStatistics">"Statistieken voor [USERNAMEEMAIL]"</string>
 </resources>
