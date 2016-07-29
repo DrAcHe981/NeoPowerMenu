@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <string name="app_name">"NeoPowerMenu"</string>
-<string name="ShareMessage">"Cheque esse lindo aplicativo para customizar o Menu de Energia de seu aparelho!"</string>
-<string name="PreviewPowerMenu">"Prever"</string>
+<string name="ShareMessage">"Confira esse lindo app para customizar o Menu de Energia de seu aparelho!"</string>
+<string name="PreviewPowerMenu">"PREVER"</string>
 
 <!-- Power Menu -->
 <string name="powerMenuMain_Shutdown">"Desligar"</string>
@@ -10,8 +10,8 @@
 <string name="powerMenuMain_SoftReboot">"Reiniciar Rápido"</string>
 <string name="powerMenuMain_SoftRebootDesc">"Simplesmente reinicia o Android UI matando o processo zygote"</string>
 <string name="powerMenuMain_Screenshot">"Captura de Tela"</string>
-<string name="powerMenuMain_ScreenshotDesc">"Atraso da Captura de Tela: [SCREENSHOTDELAY]"</string>
-<string name="powerMenuBottom_Recovery">"Modo de Recuperação"</string>
+<string name="powerMenuMain_ScreenshotDesc">"Atraso na Captura: [SCREENSHOTDELAY]"</string>
+<string name="powerMenuBottom_Recovery">"Recuperação"</string>
 <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
 <string name="powerMenuBottom_SafeMode">"Modo de Segurança"</string>
 <string name="powerMenu_Shuttingdown">"Desligando..."</string>
@@ -20,21 +20,21 @@
 <!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
 <string name="preferencesTitle_RootXposed1">"Root e Xposed indisponíveis"</string>
-<string name="preferencesDesc_RootXposed1">"Root e Xposed são precisos para o funcionamento fo módulo."</string>
-<string name="preferencesTitle_RootXposed2">"Xposed funcionando,Root não"</string>
-<string name="preferencesDesc_RootXposed2">"Root é necessário para desligar ou reiniciar,por favor permita o acesso root."</string>
-<string name="preferencesTitle_RootXposed3">"Root funcionando,Xposed não"</string>
-<string name="preferencesDesc_RootXposed3">"Xposed é necessário para modificar o Menu de Energia... Por favor ative o módulo no Xposed Installer"</string>
+<string name="preferencesDesc_RootXposed1">"Root e Xposed são necessários para o módulo funcionar."</string>
+<string name="preferencesTitle_RootXposed2">"Xposed funcionando, Root não"</string>
+<string name="preferencesDesc_RootXposed2">"Root é necessário para desligar ou reiniciar, por favor permita o acesso root."</string>
+<string name="preferencesTitle_RootXposed3">"Root funcionando, Xposed não"</string>
+<string name="preferencesDesc_RootXposed3">"Xposed é necessário para substituir o Menu de Energia... Por favor ative o módulo no Xposed Installer"</string>
 <string name="preferencesTitle_RootXposed4">"Root e Xposed funcionando"</string>
 <string name="preferencesDesc_RootXposed4">"O aplicativo deve funcionar corretamente!"</string>
 <string name="preferencesCategory_General">"Geral"</string>
-<string name="preferencesTitle_Style">"Esilo"</string>
+<string name="preferencesTitle_Style">"Estilo"</string>
 <string name="preferencesTitle_Theme">"Tema"</string>
-<string name="preferencesDesc_Theme">"Mudar e prever."</string>
+<string name="preferencesDesc_Theme">"Mudar a aparência e conferir uma prévia."</string>
 <string name="preferencesTitle_VisibilityOrder">"Visibilidade e Ordem"</string>
-<string name="preferencesDesc_VisibilityOrder">"Selecione os itens que deseja e a ordem de cada um."</string>
+<string name="preferencesDesc_VisibilityOrder">"Selecione os itens que deseja ver e a ordem de cada um."</string>
 <string name="preferencesCategory_Other">"Outros"</string>
-<string name="preferencesTitle_Advanced">"Configurações avançadas"</string>
+<string name="preferencesTitle_Advanced">"Configurações Avançadas"</string>
 <string name="preferencesDesc_Advanced">"Alterar configurações avançadas como atraso, gravidade ou velocidade."</string>
 <string name="preferencesTitle_HideLauncherIcon">"Ocultar aplicativo no launcher"</string>
 <string name="preferencesDesc_HideLauncherIcon">"Oculta o aplicativo no launcher,isso pode levar até uma reinicialização para ocultar o ícone. Essa opção de configurações ficará apenas acessível no Xposed Installer."</string>
@@ -49,15 +49,15 @@ Cheque a fonte no GitHub."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Viabilidade e ordem"</string>
-<string name="category_Preset">"Pré-ajustes"</string>
-<string name="preset_Load">"Carregar Pré-ajustes"</string>
+<string name="category_Preset">"Predefinições"</string>
+<string name="preset_Load">"Carregar Predefinição"</string>
 <string name="preset_LoadDesc">"Carregar uma configuração salva"</string>
-<string name="preset_Save">"Salvar Pré-ajustes"</string>
+<string name="preset_Save">"Salvar Predefinição"</string>
 <string name="preset_SaveDesc">"Salvar sua configuração atual"</string>
 
 <!-- Preferences: Preset Manager -->
-<string name="presetsManager_TitleLocal">"Pré-ajustes locais"</string>
-<string name="presetsManager_TitleOnline">"Pré-ajustes online"</string>
+<string name="presetsManager_TitleLocal">"Predefinições Locais"</string>
+<string name="presetsManager_TitleOnline">"Predefinições Online"</string>
 <string name="presetsManager_Creator">"Criador: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Embutido"</string>
 <string name="presetsManager_Delete">"Apagar"</string>
@@ -65,8 +65,8 @@ Cheque a fonte no GitHub."</string>
 Isso não pode ser desfeito!"</string>
 <string name="presetsManager_Share">"Compartilhar"</string>
 <string name="presetsManager_NJI">"Esse recurso não foi implementado ainda..."</string>
-<string name="presetsManager_ImportMsg">"Gostaria de importar este Pré-ajuste?"</string>
-<string name="presetsManager_ImportSuccess">"[PRESETNAME] foi importado com sucesso."</string>
+<string name="presetsManager_ImportMsg">"Gostaria de importar esta predefinição?"</string>
+<string name="presetsManager_ImportSuccess">"[PRESETNAME] foi importada com sucesso."</string>
 <string name="presetsManager_ImportFailed">"Importação falhou"</string>
 
 <!-- Preferences: Advanced -->
@@ -82,7 +82,7 @@ Isso não pode ser desfeito!"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Atraso entre o clique e a Captura de Tela."</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"Ok"</string>
+<string name="Dialog_Ok">"OK"</string>
 <string name="Dialog_Yes">"Sim"</string>
 <string name="Dialog_Rename">"Renomear"</string>
 <string name="Dialog_Cancel">"Cancelar"</string>
@@ -99,11 +99,11 @@ Isso não pode ser desfeito!"</string>
 <string name="presetLoadDialog_BuiltInDark">"Escuro"</string>
 <string name="presetLoadDialog_BuiltInBlack">"Preto"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] apagado!"</string>
-<string name="presetLoad_PresetLoaded">"[PRESETNAME] Carregado!"</string>
-<string name="presetSaveDialog_CreatorNameInfo">"Esse Pré-ajuste foi criado por:"</string>
-<string name="presetSaveDialog_InfoText">"Escolher um nome para o Pré-ajuste:"</string>
-<string name="presetSaveDialog_OverwriteText">"Já existe,Pré-ajuste será sobrescrito!"</string>
-<string name="presetSave_PresetSaved">"[PRESETNAME] salvo!"</string>
+<string name="presetLoad_PresetLoaded">"[PRESETNAME] carregada!"</string>
+<string name="presetSaveDialog_CreatorNameInfo">"Essa predefinição foi criada por:"</string>
+<string name="presetSaveDialog_InfoText">"Escolher um nome para a predefinição:"</string>
+<string name="presetSaveDialog_OverwriteText">"Já existe, a predefinição será sobrescrita!"</string>
+<string name="presetSave_PresetSaved">"[PRESETNAME] salva!"</string>
 <string name="powerMenuMain_Screenrecord">"Gravação de Tela"</string>
 <string name="preferencesTitle_RootXposed5">"Versão do módulo muito antiga..."</string>
 <string name="preferencesDesc_RootXposed5">"Por favor reinicie seu dispositivo para concluir o processo de atualização!"</string>
@@ -111,7 +111,7 @@ Isso não pode ser desfeito!"</string>
 <string name="preferencesDesc_DeepXposedLogging">"Ativar o log avançado do Xposed,após ativar reinicie para ver as mudanças."</string>
 
 <!-- Screen recording -->
-<string name="screenrecord_notif_ticker">"Tela está sendo gravada"</string>
+<string name="screenrecord_notif_ticker">"A tela está sendo gravada"</string>
 <string name="screenrecord_notif_title">"Gravando tela "</string>
 <string name="screenrecord_notif_stop">"Parar"</string>
 <string name="screenrecord_toast_error">"Incapaz de gravar a tela"</string>
@@ -121,10 +121,10 @@ Isso não pode ser desfeito!"</string>
 <string name="powerMenuMain_FlashlightOff">"Desligar lanterna"</string>
 <string name="powerMenuMain_FlashlightDesc">"Desligar após [AUTOOFF]."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Desligamento automático desativado."</string>
-<string name="powerMenuMain_ExpandedDesktop">"Área de trabalho expandida"</string>
-<string name="advancedPrefsTitle_DialogGravity">"Posição da caixa de diálogo"</string>
+<string name="powerMenuMain_ExpandedDesktop">"Área de Trabalho Expandida"</string>
+<string name="advancedPrefsTitle_DialogGravity">"Posição da Caixa de Diálogo"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Mudar a posição da caixa de diálogo."</string>
-<string name="advancedPrefs_DialogGravityTop">"Cima"</string>
+<string name="advancedPrefs_DialogGravityTop">"Topo"</string>
 <string name="advancedPrefs_DialogGravityLeft">"Esquerda"</string>
 <string name="advancedPrefs_DialogGravityRight">"Direita"</string>
 <string name="advancedPrefs_DialogGravityBottom">"Baixo"</string>
@@ -133,7 +133,7 @@ Isso não pode ser desfeito!"</string>
 <string name="quick_settings_torch_on">"Lanterna ligada"</string>
 <string name="quick_settings_torch_off">"Lanterna desligada"</string>
 <string name="quick_settings_torch_off_notif">"Toque para desligar"</string>
-<string name="powerMenuMain_AirplaneMode">"Modo avião"</string>
+<string name="powerMenuMain_AirplaneMode">"Modo Avião"</string>
 <string name="powerMenuMain_RestartUI">"Reiniciar System UI"</string>
 
 <!-- Preferences: Colors -->
@@ -164,23 +164,23 @@ Conceder permissões adicionais que não são adicionadas na primeira inicializa
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Necessário para exibir o Menu de energia no topo de tudo."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wakelock"</string>
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Necessário para evitar o encerramento do  serviço da lanterna e gravação de tela."</string>
-<string name="powerMenuMain_SoundMode">"Modo de som"</string>
+<string name="powerMenuMain_SoundMode">"Modo de Som"</string>
 <string name="powerMenuMain_SoundModeDesc">"Modo de som atual: [SOUNDMODE)"</string>
 <string name="SoundMode_Normal">"Normal"</string>
 <string name="SoundMode_Vibrate">"Vibrar"</string>
 <string name="SoundMode_Silent">"Silencioso"</string>
 <string name="welcomeMsg">"Bem vindo(a) ao NeoPowerMenu!
-Seu ID de usuário foi gerado,você está pronto para enviar Pré-ajustes!"</string>
+Seu ID de usuário foi gerado,você está pronto para enviar predefinições!"</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Conta"</string>
 <string name="presetsManager_Upload">"Enviar"</string>
-<string name="presetsManager_UploadMsg">"Esse pré-ajuste será enviado para o servidor público, visível para todos os usuários.
+<string name="presetsManager_UploadMsg">"Essa predefinições será enviado para o servidor público, visível para todos os usuários.
 
 Essa é a última chance de ajustar o nome ou o criador antes de enviar..."</string>
 <string name="presetsManager_UploadComplete">"Envio completo!"</string>
-<string name="presetsManager_UploadFailedSameName">"Esse nome já está em uso,por favor escolha outro."</string>
-<string name="presetsManager_UploadFailedNoAccess">"Esse nome de criador está protegido,escolha outro ou logue-se."</string>
+<string name="presetsManager_UploadFailedSameName">"Esse nome já está em uso, por favor escolha outro."</string>
+<string name="presetsManager_UploadFailedNoAccess">"Esse nome de criador está protegido, escolha outro ou logue-se."</string>
 <string name="presetsManager_UploadFailed">"Falha no envio"</string>
 <string name="presetsManager_Downloading">"Baixando..."</string>
 <string name="presetsManager_DownloadFailed">"Falha ao baixar!"</string>
@@ -231,7 +231,7 @@ Seus pré-ajustes (ordenados por estrelas):
 <string name="colorsPartTitle">"Cores [PART]"</string>
 <string name="colorsPartDescDialog">"Cores da caixa de diálogo ao clicar em [BUTTON]."</string>
 <string name="colorsPartDescButton">"Cores do botão [BUTTON]."</string>
-<string name="colorsPartPresets">"Pré-ajustes"</string>
+<string name="colorsPartPresets">"Predefinições"</string>
 <string name="colorsPartReveal">"Revelar"</string>
 <string name="colorsPartRevealDesc">"Cor da animação revelar"</string>
 <string name="colorsPartRevealDesc1">"Cor da animação revelar ao clicar na opção Reiniciar/Desligar"</string>
@@ -249,9 +249,9 @@ Seus pré-ajustes (ordenados por estrelas):
 <string name="login_Recover">"Recuperar"</string>
 <string name="login_RecoverAccount">"Não consegue acessar a conta?
 Clique aqui para opções de recuperação."</string>
-<string name="login_RecoverPassword">"Redefinir senha"</string>
+<string name="login_RecoverPassword">"Redefinir Senha"</string>
 <string name="preferencesTitle_Graphics">"Ícones"</string>
 <string name="preferencesDesc_Graphics">"Mudar os ícones,usar customizados ou ícones predefinidos."</string>
 <string name="login_RecoverSuccess">"Você receberá um email com as informações para redefinir sua senha."</string>
-<string name="login_RecoverNotFound">"Nenhum usuário com esses dados foram encontrados."</string>
+<string name="login_RecoverNotFound">"Nenhum usuário com esses dados foi encontrado."</string>
 </resources>
