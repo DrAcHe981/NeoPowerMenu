@@ -154,6 +154,7 @@ public class uploadHelper
 												if(dlnowsize > 0 && dltotalsize > 0) {
 														mInterface.onPublishUploadProgress(dlnowsize,dltotalsize);
 												}
+												//Log.d("NPM:uploadHelper","dlnowsize = "+dlnowsize+", dltotalsize = "+dltotalsize);
 										}
 								}, 0, 150L);
 						isRunning = true;

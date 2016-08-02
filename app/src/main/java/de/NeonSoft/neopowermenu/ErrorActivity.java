@@ -61,7 +61,7 @@ setContentView(de.NeonSoft.neopowermenu.R.layout.customactivityoncrash_error_act
 		actionBar actionbar = new actionBar(this);
 		actionbar.addActionBar(actionBar);
 		actionbar.setAnimationsEnabled(false);
-				actionbar.setTitle(getString(R.string.app_name));
+				actionbar.setTitle("NeoPowerMenu");
 				try
 				{
 						versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
@@ -82,9 +82,10 @@ setContentView(de.NeonSoft.neopowermenu.R.layout.customactivityoncrash_error_act
 		public void onBackPressed()
 		{
 				if(fragmentManager.findFragmentByTag(slideDownDialogFragment.dialogTag)!=null) {
-						Intent intent = new Intent();
+						/*Intent intent = new Intent();
 						intent.setAction("de.NeonSoft.neopowermenu.closeDialogs");
-						thisActivity.sendBroadcast(intent);
+						thisActivity.sendBroadcast(intent);*/
+						slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).cancelDialog();
 						return;
 				}
 				super.onBackPressed();

@@ -123,7 +123,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 													}
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
-											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
+											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
 					});
@@ -278,7 +278,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 													}
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
-											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
+											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});
@@ -333,7 +333,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 											}
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
-											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
+											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});
@@ -388,7 +388,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 											}
 											}
 											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
-											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Cancel));
+											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});

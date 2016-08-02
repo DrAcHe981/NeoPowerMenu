@@ -21,6 +21,9 @@ public class PresetsPage extends Fragment
 		
 		public static String[] onlineIds;
 		
+		public PresetsPage()
+		{
+		}
     // newInstance constructor for creating fragment with arguments
     public PresetsPage(int page, String title)
 		{
@@ -61,15 +64,16 @@ public class PresetsPage extends Fragment
 						String[] presetsListDesc = new String[presetsFiles.length + 3];
 						String[] presetsListEnabled = new String[presetsFiles.length + 3];
 						String[] presetsListLocal = new String[presetsFiles.length + 3];
-						presetsListTitles[0] = getString(R.string.presetLoadDialog_BuiltInLight);
+						String[] builtIn = getString(R.string.presetLoadDialog_BuiltIn).split("/");
+						presetsListTitles[0] = builtIn[0];
 						presetsListDesc[0] = "Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")";
 						presetsListEnabled[0] = "true";
 						presetsListLocal[0] = "pre";
-						presetsListTitles[1] = getString(R.string.presetLoadDialog_BuiltInDark);
+						presetsListTitles[1] = builtIn[1];
 						presetsListDesc[1] = "Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")";
 						presetsListEnabled[1] = "true";
 						presetsListLocal[1] = "pre";
-						presetsListTitles[2] = getString(R.string.presetLoadDialog_BuiltInBlack);
+						presetsListTitles[2] = builtIn[2];
 						presetsListDesc[2] = "Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")";
 						presetsListEnabled[2] = "true";
 						presetsListLocal[2] = "pre";
@@ -78,6 +82,10 @@ public class PresetsPage extends Fragment
 								presetsListDesc[i + 3] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", "<unknown>");
 								presetsListTitles[i + 3] = presetsFiles[i].getName().split(".nps")[0];
 								File tmpfile = new File(getActivity().getFilesDir().getPath() + "/presets/" + presetsFiles[i].getName());
+								if(helper.isValidZip(tmpfile.getPath(),null)) {
+										helper.unzipFile(tmpfile.getPath(),mContext.getFilesDir().getPath()+"/temp/",presetsFiles[i].getName(),null);
+										tmpfile = new File(mContext.getFilesDir().getPath()+"/temp/"+presetsFiles[i].getName());
+								}
 								try
 								{
 										FileInputStream tmpread = new FileInputStream(tmpfile);
@@ -97,11 +105,15 @@ public class PresetsPage extends Fragment
 										{
 												presetsListDesc[i + 3] = aBuffer;
 										}
-
+										tmpread.close();
+										myReader.close();
 								}
 								catch (Throwable e)
 								{
 
+								}
+								if(tmpfile.getPath().startsWith(mContext.getFilesDir().getPath()+"/temp/")) {
+										tmpfile.delete();
 								}
 								presetsListEnabled[i + 3] = "true";
 								presetsListLocal[i + 3] = "true";

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Confira esse lindo app para customizar o Menu de Energia de seu aparelho!"</string>
 <string name="PreviewPowerMenu">"PREVER"</string>
 
@@ -64,7 +63,6 @@ Cheque a fonte no GitHub."</string>
 <string name="presetsManager_SureToDelete">"Tem certeza que quer apagar [PRESETNAME]?
 Isso não pode ser desfeito!"</string>
 <string name="presetsManager_Share">"Compartilhar"</string>
-<string name="presetsManager_NJI">"Esse recurso não foi implementado ainda..."</string>
 <string name="presetsManager_ImportMsg">"Gostaria de importar esta predefinição?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] foi importada com sucesso."</string>
 <string name="presetsManager_ImportFailed">"Importação falhou"</string>
@@ -82,22 +80,12 @@ Isso não pode ser desfeito!"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Atraso entre o clique e a Captura de Tela."</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"OK"</string>
-<string name="Dialog_Yes">"Sim"</string>
-<string name="Dialog_Rename">"Renomear"</string>
-<string name="Dialog_Cancel">"Cancelar"</string>
-<string name="Dialog_Delete">"Apagar"</string>
-<string name="Dialog_Load">"Carregar"</string>
-<string name="Dialog_Save">"Salvar"</string>
-<string name="Dialog_Ignore">"Ignorar"</string>
 <string name="Dialog_SelectColor">"Selecione a cor"</string>
 <string name="ColorPicker_Value">"Valor:"</string>
 <string name="ColorPicker_Saturation">"Saturação:"</string>
 <string name="ColorPicker_Opacity">"Opacidade:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltInLight">"Claro"</string>
-<string name="presetLoadDialog_BuiltInDark">"Escuro"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Preto"</string>
+<string name="presetLoadDialog_BuiltIn">"Claro/Escuro/Preto"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] apagado!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] carregada!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Essa predefinição foi criada por:"</string>
@@ -124,10 +112,7 @@ Isso não pode ser desfeito!"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Área de Trabalho Expandida"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Posição da Caixa de Diálogo"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Mudar a posição da caixa de diálogo."</string>
-<string name="advancedPrefs_DialogGravityTop">"Topo"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Esquerda"</string>
-<string name="advancedPrefs_DialogGravityRight">"Direita"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Baixo"</string>
+<string name="advancedPrefs_DialogGravity">"Topo/Esquerda/Direita/Baixo"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Lanterna ligada"</string>

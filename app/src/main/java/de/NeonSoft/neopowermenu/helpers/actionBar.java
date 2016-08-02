@@ -41,7 +41,7 @@ public class actionBar
 				TextView_ButtonText = (TextView) InflatedView.findViewById(R.id.actionBar_ButtonText);
 				ImageView_ButtonIcon = (ImageView) InflatedView.findViewById(R.id.actionBar_ButtonIcon);
 				
-				TextView_Title.setText(mContext.getString(R.string.app_name));
+				TextView_Title.setText("Title");
 				TextView_Title.setSelected(true);
 				TextView_SubTitle.setVisibility(View.GONE);
 				TextView_SubTitle.setSelected(true);

@@ -5,6 +5,7 @@ import android.content.pm.*;
 import android.content.res.*;
 import android.graphics.*;
 import android.os.*;
+import android.util.*;
 import android.view.*;
 import de.NeonSoft.neopowermenu.*;
 import de.robv.android.xposed.*;
@@ -19,6 +20,7 @@ public class XposedUtils
 		private static Boolean mIsExynosDevice;
 		
 		public static void log(String message) {
+				Log.i("NPM:xposed",message);
 				XposedBridge.log("[NeoPowerMenu] "+message);
 		}
 

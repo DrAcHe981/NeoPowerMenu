@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Schau dir diese wundervolle App an und passe das Ausschaltmenü deines gerooteten Geräts nach deinen Wünschen an!
 
 "</string>
@@ -70,7 +69,6 @@ Klicke hier für mehr Infos."</string>
 <string name="presetsManager_SureToDelete">"Bist du sicher, dass du [PRESETNAME] löschen möchtest?
 Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="presetsManager_Share">"Teilen"</string>
-<string name="presetsManager_NJI">"Diese Funktion ist aktuell noch nicht implementiert..."</string>
 <string name="presetsManager_ImportMsg">"Möchtest du diese Voreinstellungen importieren?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] wurde importiert."</string>
 <string name="presetsManager_ImportFailed">"Import fehlgeschlagen..."</string>
@@ -87,23 +85,14 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Bildschirmfoto Verzögerung"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Verzögerung zwischen dem Klick und dem Screenshot."</string>
 
-<!-- Dialog -->
-<string name="Dialog_Ok">"Ok"</string>
-<string name="Dialog_Yes">"Ja"</string>
-<string name="Dialog_Rename">"Umbenennen"</string>
-<string name="Dialog_Cancel">"Abbrechen"</string>
-<string name="Dialog_Delete">"Löschen"</string>
-<string name="Dialog_Load">"Laden"</string>
-<string name="Dialog_Save">"Speichern"</string>
-<string name="Dialog_Ignore">"Ignorieren"</string>
+		<!-- Dialog -->
+		<string name="Dialog_Buttons">"Ok/Ja/Nein/Umbenennen/Abbrechen/Löschen/Laden/Speichern/Ignorieren"</string>
 <string name="Dialog_SelectColor">"Farbe wählen"</string>
 <string name="ColorPicker_Value">"Wert:"</string>
 <string name="ColorPicker_Saturation">"Sättigung:"</string>
 <string name="ColorPicker_Opacity">"Transparenz:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltInLight">"Hell"</string>
-<string name="presetLoadDialog_BuiltInDark">"Dunkel"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Schwarz"</string>
+<string name="presetLoadDialog_BuiltIn">"Hell/Dunkel/Schwaz"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] wurde gelöscht!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] wurde geladen!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Diese Voreinstellung wurde erstellt von:"</string>
@@ -130,10 +119,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Erweiterter Desktop"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Ändere die Position des Dialogs."</string>
-<string name="advancedPrefs_DialogGravityTop">"Oben"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Links"</string>
-<string name="advancedPrefs_DialogGravityRight">"Rechts"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Unten"</string>
+<string name="advancedPrefs_DialogGravity">"Oben/Links/Rechts/Unten"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Taschenlampe an"</string>
@@ -259,5 +245,10 @@ Klicke hier für Wiederherstellungsoptionen."</string>
 <string name="preferencesTitle_Graphics">"Grafiken"</string>
 <string name="preferencesDesc_Graphics">"Ändere die Grafiken, nutze eigene oder vordefinierte Grafiken."</string>
 <string name="login_RecoverSuccess">"Du wirst eine E-mail mit Infos zum Zurücksetzen deines Passworts erhalten."</string>
-<string name="login_RecoverNotFound">"Keinen Benutzer mit diesen Daten gefunden."</string>
+		<string name="login_RecoverNotFound">"Keinen Benutzer mit diesen Daten gefunden."</string>
+		
+		<string name="graphics_Choose">"Standard wiederherstellen/Aus Voreinstellungen wählen/Aus Gallerie wählen"</string>
+		<string name="graphics_Crop">"Schneiden"</string>
+		<string name="graphics_NoPresetsFound">"Keine Voreinstellungen mit Grafiken gefunden..."</string>
+		<string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern./Diese Voreinstellung enthält Grafiken, möchtest du sie laden?\nDies überscheibt deine aktuellen Grafiken!"</string>
 </resources>

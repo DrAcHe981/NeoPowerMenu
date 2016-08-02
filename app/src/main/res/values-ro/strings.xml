@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Aceasta aplicatie minunata iti va schimba cu totul modul in care ai vazut pana acum banalul meniu de oprire :)"</string>
 <string name="PreviewPowerMenu">"Preview"</string>
 
@@ -65,7 +64,6 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="presetsManager_Delete">"Sterge"</string>
 <string name="presetsManager_SureToDelete">"Esti sigur ca vrei sa stergi  [PRESETNAME] ? Acest lucru este permanent!"</string>
 <string name="presetsManager_Share">"Share"</string>
-<string name="presetsManager_NJI">"Aceasta optiune nu este inca implementata"</string>
 <string name="presetsManager_ImportMsg">"Vrei sa importezi acesta presetare?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] importat cu succes"</string>
 <string name="presetsManager_ImportFailed">"Importare esuata"</string>
@@ -85,22 +83,12 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="advancedPrefsDesc_ScreenshotDelay">"Intarzieri intre apasare si realizarea screenshot-ului"</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"Ok"</string>
-<string name="Dialog_Yes">"Da"</string>
-<string name="Dialog_Rename">"Redenumire"</string>
-<string name="Dialog_Cancel">"Opreste"</string>
-<string name="Dialog_Delete">"Sterge"</string>
-<string name="Dialog_Load">"Incarca"</string>
-<string name="Dialog_Save">"Salveaza"</string>
-<string name="Dialog_Ignore">"Ignora"</string>
 <string name="Dialog_SelectColor">"Selecteaza culoarea"</string>
 <string name="ColorPicker_Value">"Valoare"</string>
 <string name="ColorPicker_Saturation">"Saturatie"</string>
 <string name="ColorPicker_Opacity">"Opacitate"</string>
 <string name="ColorPicker_Hex">"Paletar de culori"</string>
-<string name="presetLoadDialog_BuiltInLight">"Luminos"</string>
-<string name="presetLoadDialog_BuiltInDark">"Inchis"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Negru"</string>
+<string name="presetLoadDialog_BuiltIn">"Luminos/Inchis/Negru"</string>
 <string name="presetLoad_PresetDeleted">"Sters"</string>
 <string name="presetLoad_PresetLoaded">"Incaract"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Acesta presetare a fost creata de:"</string>
@@ -127,10 +115,7 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="powerMenuMain_ExpandedDesktop">"Ecran extins"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Pozitie meniu"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Schimba pozitia meniului"</string>
-<string name="advancedPrefs_DialogGravityTop">"Sus"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Stanga"</string>
-<string name="advancedPrefs_DialogGravityRight">"Dreapta"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Jos"</string>
+<string name="advancedPrefs_DialogGravity">"Sus/Stanga/Dreapta/Jos"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Lanterna pornita"</string>

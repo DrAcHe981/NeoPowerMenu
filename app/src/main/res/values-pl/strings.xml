@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Sprawdź tą świetną aplikację, która odmieni menu zasilania twojego zrootowanego urządzenia!
 
 
@@ -73,7 +72,6 @@ Sprawdź źródła na GitHub"</string>
 <string name="presetsManager_SureToDelete">"Czy jesteś pewien że chcesz usunąć [PRESETNAME]?
 Tego nie można cofnąć!"</string>
 <string name="presetsManager_Share">"Udostępnij"</string>
-<string name="presetsManager_NJI">"Ta funkcja nie jest jeszcze dostępna..."</string>
 <string name="presetsManager_ImportMsg">"Czy chcesz importować ten szablon?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] importowany pomyślnie."</string>
 <string name="presetsManager_ImportFailed">"Importowanie nie powiodło się..."</string>
@@ -93,22 +91,12 @@ Tego nie można cofnąć!"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Czas między dotknięciem a zrzutem ekranu."</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"Ok"</string>
-<string name="Dialog_Yes">"Tak"</string>
-<string name="Dialog_Rename">"Zmień nazwę"</string>
-<string name="Dialog_Cancel">"Anuluj"</string>
-<string name="Dialog_Delete">"Usuń"</string>
-<string name="Dialog_Load">"Wczytaj"</string>
-<string name="Dialog_Save">"Zapisz"</string>
-<string name="Dialog_Ignore">"Ignoruj"</string>
 <string name="Dialog_SelectColor">"Wybierz kolor"</string>
 <string name="ColorPicker_Value">"Wartość:"</string>
 <string name="ColorPicker_Saturation">"Nasycenie:"</string>
 <string name="ColorPicker_Opacity">"Krycie:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltInLight">"Jasny"</string>
-<string name="presetLoadDialog_BuiltInDark">"Ciemny"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Czarny"</string>
+<string name="presetLoadDialog_BuiltIn">"Jasny/Ciemny/Czarny"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] usunięty!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] załadowany!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Szablon stworzony przez:"</string>
@@ -135,10 +123,7 @@ Tego nie można cofnąć!"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Rozszerzony pulpit"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Pozycja okna"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Zmień pozycję okna menu zasilania."</string>
-<string name="advancedPrefs_DialogGravityTop">"Góra"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Lewo"</string>
-<string name="advancedPrefs_DialogGravityRight">"Prawo"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Dół"</string>
+<string name="advancedPrefs_DialogGravity">"Góra/Lewo/Prawo/Dół"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Latarka włączona"</string>

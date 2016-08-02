@@ -1,10 +1,9 @@
 package de.NeonSoft.neopowermenu.helpers;
 
+import android.content.*;
 import android.graphics.*;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
-import android.graphics.drawable.shapes.RectShape;
-import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.drawable.*;
+import android.graphics.drawable.shapes.*;
 
 /**
  * @author DrAcHe981
@@ -12,6 +11,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
  */
 public class GraphicDrawable extends ShapeDrawable {
 
+		private final Context context;
     private final Paint textPaint;
     private final Paint borderPaint;
     private static final float SHADE_FACTOR = 0.9f;
@@ -27,6 +27,8 @@ public class GraphicDrawable extends ShapeDrawable {
     private GraphicDrawable(Builder builder) {
         super(builder.shape);
 
+				context = builder.context;
+				
         // shape properties
         shape = builder.shape;
         height = builder.height;
@@ -82,7 +84,10 @@ public class GraphicDrawable extends ShapeDrawable {
         canvas.translate(r.left, r.top);
 
         // draw graphic
-				//canvas.drawBitmap(graphic,null,r,textPaint);
+				Rect r2 = new Rect();
+				int px = (int) helper.convertDpToPixel(20,context);
+				r2.set(r.left+px,r.top+px,r.right-px,r.bottom-px);
+				if(graphic != null) canvas.drawBitmap(graphic,null,r2,null);
 				
         canvas.restoreToCount(count);
 
@@ -134,6 +139,8 @@ public class GraphicDrawable extends ShapeDrawable {
 
     public static class Builder implements IConfigBuilder, IShapeBuilder, IBuilder {
 
+				public Context context;
+				
 				private Bitmap graphic;
 
         private int color;
@@ -157,8 +164,9 @@ public class GraphicDrawable extends ShapeDrawable {
         private boolean toUpperCase;
 
         public float radius;
-
+				
         private Builder() {
+						context = null;
 						graphic = null;
             color = Color.GRAY;
             textColor = Color.WHITE;
@@ -172,6 +180,11 @@ public class GraphicDrawable extends ShapeDrawable {
             toUpperCase = false;
         }
 
+				public IConfigBuilder setContext(Context context) {
+						this.context = context;
+						return this;
+				}
+				
         public IConfigBuilder width(int width) {
             this.width = width;
             return this;
@@ -269,6 +282,8 @@ public class GraphicDrawable extends ShapeDrawable {
     }
 
     public interface IConfigBuilder {
+				public IConfigBuilder setContext(Context context);
+				
         public IConfigBuilder width(int width);
 
         public IConfigBuilder height(int height);

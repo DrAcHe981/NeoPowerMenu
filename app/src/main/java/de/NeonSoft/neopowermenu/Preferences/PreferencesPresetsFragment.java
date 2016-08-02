@@ -64,6 +64,7 @@ public class PreferencesPresetsFragment extends Fragment
 		public static boolean onlineRequestIsRunning;
 
 		public static String DownloadingActiveFor = "";
+		public static LinearLayout[] DownloadingActiveForRoot;
 		public static downloadHelper[] DownloadingActiveForHelper;
 		public static LinearLayout[] DownloadingActiveForLayout;
 		public static String[] DownloadingActiveForOldText;
@@ -254,7 +255,7 @@ public class PreferencesPresetsFragment extends Fragment
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")"}, onlineOrderSelected,true);
-																		dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
+																		dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
 																		dialogFragment.showDialog(R.id.dialog_container);
 																		if (onlineOrder.getVisibility() == View.VISIBLE)
 																		{
@@ -422,11 +423,25 @@ public class PreferencesPresetsFragment extends Fragment
 								fUrl = surl.replace("file:", "");
 						}
 						newUrl = fUrl;
-						File prefile = new File(newUrl);
+						final File prefile;
+						prefile = new File(newUrl);
 						Filename = (name != null && !name.isEmpty()) ? name + ".nps" : prefile.getName();
+						if(helper.isValidZip(prefile.getPath(),null)) {
+								if(helper.unzipFile(prefile.getPath(),mContext.getFilesDir().getPath()+"/temp/",Filename,null)==null) {
+										prefile = new File(mContext.getFilesDir().getPath()+"/temp/"+Filename);
+								} else {
+										Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
+										return false;
+								}
+						}
 						FileInputStream fIn = new FileInputStream(prefile);
 						BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
 						String aDataRow = ""; 
+						final String[] presetInfo = new String[4];
+						presetInfo[0] = Filename.split(".nps")[0];
+						presetInfo[1] = "< unknown >";
+						presetInfo[2] = "true";
+						presetInfo[3] = "true";
 						while ((aDataRow = myReader.readLine()) != null)
 						{ 
 								//aBuffer += aDataRow + "\n";
@@ -439,7 +454,7 @@ public class PreferencesPresetsFragment extends Fragment
 								}
 								if (aData[0].equalsIgnoreCase("Creator"))
 								{
-										sCreator = aData[1];
+										presetInfo[1] = aData[1];
 								}
 						}
 						final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
@@ -468,8 +483,42 @@ public class PreferencesPresetsFragment extends Fragment
 										public void onPositiveClick(ArrayList<String> resultData)
 										{
 												// TODO: Implement this method
-												Filename = resultData.get(0) + ".nps";
-												new ImportPreset().execute(newUrl, Filename, adapter);
+												String newFilename = resultData.get(0) + ".nps";
+												presetInfo[0] = newFilename.replace(".nps","");
+												final boolean newPresetAdded;
+												if (!new File(mContext.getFilesDir().getPath()+"/presets/"+newFilename).exists())
+												{
+														newPresetAdded = true;
+												} else {
+														newPresetAdded = false;
+												}
+												String FilePath = "";
+												if(helper.isValidZip(newUrl,null)) {
+														helper.unzipFile(newUrl,mContext.getFilesDir().getPath()+"/temp/",Filename,null);
+														FilePath = newUrl;
+												} else {
+														FilePath = prefile.getPath();
+												}
+												if(helper.copyFile(FilePath,mContext.getFilesDir().getPath()+"/presets/"+newFilename)) {
+														new File(mContext.getFilesDir().getPath()+"/temp/"+Filename).renameTo(new File(mContext.getFilesDir().getPath()+"/temp/"+newFilename));
+														helper.removeFromZip(mContext.getFilesDir().getPath()+"/presets/"+ newFilename,Filename,null);
+														helper.zipFile(mContext.getFilesDir().getPath()+"/temp/"+newFilename,mContext.getFilesDir().getPath()+"/presets/"+newFilename,null);
+														File presetsFolder = new File(mContext.getFilesDir().getPath() + "/temp/");
+														File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
+																		public boolean accept(File dir, String name)
+																		{
+																				return true;
+																		}});
+														for(int i = 0; i < presetsFiles.length; i++) {
+																presetsFiles[i].delete();
+														}
+														if (newPresetAdded)
+														{
+																adapter.insert(presetInfo);
+														}
+														Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportSuccess).replace("[PRESETNAME]", newFilename.replace(".nps","")), Toast.LENGTH_SHORT).show();
+												}
+												//new ImportPreset().execute(newUrl, Filename, adapter);
 										}
 
 										@Override
@@ -479,7 +528,7 @@ public class PreferencesPresetsFragment extends Fragment
 												Importcancled = true;
 										}
 								});
-						dialogFragment.setDialogText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : sCreator) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
+						dialogFragment.setDialogText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : presetInfo[1]) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
 						dialogFragment.setDialogInput1(mContext.getString(R.string.presetSaveDialog_InfoText),Filename.replace(".nps",""),false,new TextWatcher() {
 
 										@Override
@@ -511,8 +560,8 @@ public class PreferencesPresetsFragment extends Fragment
 										}}
 						);
 						dialogFragment.setDialogInputAssistInfo(mContext.getString(R.string.presetSaveDialog_OverwriteText));
-						dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Cancel));
-						dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Save));
+						dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("/")[4]);
+						dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[7]);
 						dialogFragment.showDialog(R.id.dialog_container);
 
 				}
@@ -589,6 +638,7 @@ public class PreferencesPresetsFragment extends Fragment
 														//Toast.makeText(MainActivity.context,"Converting old Save names...",Toast.LENGTH_SHORT).show();
 														oldPreset = true;
 												}
+												myWriter.write(aData[0] + "=" + aData[1] + "\n");
 										}
 										else if (p1.length >= 4 && aData[0].equalsIgnoreCase("creator"))
 										{
@@ -598,11 +648,11 @@ public class PreferencesPresetsFragment extends Fragment
 										{
 												if (oldPreset && aData[0].equalsIgnoreCase("RevealBackground"))
 												{
-														aData[0] = "Reveal_Background";
+														aData[0] = "Reveal_Backgroundcolor";
 												}
 												else if (oldPreset && aData[0].equalsIgnoreCase("ActionRevealBackground"))
 												{
-														aData[0] = "ActionReveal_Background";
+														aData[0] = "ActionReveal_Backgroundcolor";
 												}
 												myWriter.write(aData[0] + "=" + aData[1] + "\n");
 										}

@@ -14,10 +14,12 @@ public class GravityChooserDialog extends DialogFragment
 
 		boolean boolean_DialogGravityTop = false;
 		LinearLayout LinearLayout_DialogGravityTop;
+		TextView TextView_DialogGravityTop;
 		Switch Switch_DialogGravityTop;
 
 		boolean boolean_DialogGravityLeft = false;
 		LinearLayout LinearLayout_DialogGravityLeft;
+		TextView TextView_DialogGravityLeft;
 		Switch Switch_DialogGravityLeft;
 
 		//boolean boolean_DialogGravityCenter = false;
@@ -26,10 +28,12 @@ public class GravityChooserDialog extends DialogFragment
 
 		boolean boolean_DialogGravityRight = false;
 		LinearLayout LinearLayout_DialogGravityRight;
+		TextView TextView_DialogGravityRight;
 		Switch Switch_DialogGravityRight;
 
 		boolean boolean_DialogGravityBottom = false;
 		LinearLayout LinearLayout_DialogGravityBottom;
+		TextView TextView_DialogGravityBottom;
 		Switch Switch_DialogGravityBottom;
 		
 		@Override
@@ -44,19 +48,25 @@ public class GravityChooserDialog extends DialogFragment
 				
 				LinearLayout_ImageHolder = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_ImageHolder);
 				
+				String[] gravitys = getString(R.string.advancedPrefs_DialogGravity).split("/");
+				
 				boolean_DialogGravityTop = MainActivity.preferences.getBoolean("DialogGravityTop",false);
 				LinearLayout_DialogGravityTop = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityTop);
 				Switch_DialogGravityTop = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityTop);
+				TextView_DialogGravityTop = (TextView) InflatedView.findViewById(R.id.dialoggravitychooserText_DialogGravityTop);
 				Switch_DialogGravityTop.setClickable(false);
 				Switch_DialogGravityTop.setFocusable(false);
 				Switch_DialogGravityTop.setChecked(boolean_DialogGravityTop);
+				TextView_DialogGravityTop.setText(gravitys[0]);
 
 				boolean_DialogGravityLeft = MainActivity.preferences.getBoolean("DialogGravityLeft",false);
 				LinearLayout_DialogGravityLeft = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityLeft);
 				Switch_DialogGravityLeft = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityLeft);
+				TextView_DialogGravityLeft = (TextView) InflatedView.findViewById(R.id.dialoggravitychooserText_DialogGravityLeft);
 				Switch_DialogGravityLeft.setClickable(false);
 				Switch_DialogGravityLeft.setFocusable(false);
 				Switch_DialogGravityLeft.setChecked(boolean_DialogGravityLeft);
+				TextView_DialogGravityLeft.setText(gravitys[1]);
 
 				//boolean_DialogGravityCenter = MainActivity.preferences.getBoolean("DialogGravityCenter",false);
 				//LinearLayout_DialogGravityCenter = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityCenter);
@@ -68,16 +78,20 @@ public class GravityChooserDialog extends DialogFragment
 				boolean_DialogGravityRight = MainActivity.preferences.getBoolean("DialogGravityRight",false);
 				LinearLayout_DialogGravityRight = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityRight);
 				Switch_DialogGravityRight = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityRight);
+				TextView_DialogGravityRight = (TextView) InflatedView.findViewById(R.id.dialoggravitychooserText_DialogGravityRight);
 				Switch_DialogGravityRight.setClickable(false);
 				Switch_DialogGravityRight.setFocusable(false);
 				Switch_DialogGravityRight.setChecked(boolean_DialogGravityRight);
+				TextView_DialogGravityRight.setText(gravitys[2]);
 
 				boolean_DialogGravityBottom = MainActivity.preferences.getBoolean("DialogGravityBottom",false);
 				LinearLayout_DialogGravityBottom = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityBottom);
 				Switch_DialogGravityBottom = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityBottom);
+				TextView_DialogGravityBottom = (TextView) InflatedView.findViewById(R.id.dialoggravitychooserText_DialogGravityBottom);
 				Switch_DialogGravityBottom.setClickable(false);
 				Switch_DialogGravityBottom.setFocusable(false);
 				Switch_DialogGravityBottom.setChecked(boolean_DialogGravityBottom);
+				TextView_DialogGravityBottom.setText(gravitys[3]);
 				
 				LinearLayout_DialogGravityTop.setOnClickListener(new OnClickListener() {
 

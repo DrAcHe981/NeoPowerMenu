@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Bekijk deze prachtige app om het power menu van je gerookte android smartphone aan te passen!"</string>
 <string name="PreviewPowerMenu">"Preview"</string>
 
@@ -63,7 +62,6 @@ Bekijk de broncode op GitHub."</string>
 <string name="presetsManager_Delete">"Verwijder"</string>
 <string name="presetsManager_SureToDelete">"Weet je zeker dat je [PRESETNAME] wilt verwijderen? Dit kan niet ongedaan worden gemaakt."</string>
 <string name="presetsManager_Share">"Deel"</string>
-<string name="presetsManager_NJI">"Deze functie is momenteel nog niet geïmplementeerd..."</string>
 <string name="presetsManager_ImportMsg">"Wil je deze preset importeren?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] succesvol geïmporteerd."</string>
 <string name="presetsManager_ImportFailed">"Importeren mislukt..."</string>
@@ -81,22 +79,12 @@ Bekijk de broncode op GitHub."</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Vertraging tussen klikken en screenshot."</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"Oké"</string>
-<string name="Dialog_Yes">"Ja"</string>
-<string name="Dialog_Rename">"Hernoem"</string>
-<string name="Dialog_Cancel">"Annuleer"</string>
-<string name="Dialog_Delete">"Verwijder"</string>
-<string name="Dialog_Load">"Laad"</string>
-<string name="Dialog_Save">"Bewaar"</string>
-<string name="Dialog_Ignore">"Negeren"</string>
 <string name="Dialog_SelectColor">"Selecteer kleur"</string>
 <string name="ColorPicker_Value">"Waarde:"</string>
 <string name="ColorPicker_Saturation">"Saturatie:"</string>
 <string name="ColorPicker_Opacity">"Opaciteit:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltInLight">"Licht"</string>
-<string name="presetLoadDialog_BuiltInDark">"Donker"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Zwart"</string>
+<string name="presetLoadDialog_BuiltIn">"Licht/Donger/Zwart"</string>
 <string name="presetLoad_PresetDeleted">"Verwijderd [PRESETNAME]!"</string>
 <string name="presetLoad_PresetLoaded">"Geladen [PRESETNAME]!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Deze preset is gemaakt door:"</string>
@@ -123,10 +111,7 @@ Bekijk de broncode op GitHub."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Expanded Desktop"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Positie scherm"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Verander de scherm positie"</string>
-<string name="advancedPrefs_DialogGravityTop">"Top"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Links"</string>
-<string name="advancedPrefs_DialogGravityRight">"Rechts"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Bodem"</string>
+<string name="advancedPrefs_DialogGravity">"Top/Links/Rechts/Bodem"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Zaklamp aan"</string>

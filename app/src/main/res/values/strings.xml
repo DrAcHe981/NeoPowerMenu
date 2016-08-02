@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Check out this beautiful app to customize your Power Menu of your rooted android device!
 
 "</string>
@@ -16,6 +15,9 @@
 <string name="powerMenuBottom_Recovery">"Recovery"</string>
 <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
 <string name="powerMenuBottom_SafeMode">"Safe Mode"</string>
+		<string name="powerMenuMain_SoundVibrate">Sound: Vibrate</string>
+		<string name="powerMenuMain_SoundNormal">Sound: Normal</string>
+		<string name="powerMenuMain_SoundSilent">Sound: Silent</string>
 <string name="powerMenu_Shuttingdown">"Shutting down..."</string>
 <string name="powerMenu_Rebooting">"Rebooting..."</string>
 
@@ -72,7 +74,6 @@ Click here to get more info."</string>
 <string name="presetsManager_SureToDelete">"Are you sure you want to delete [PRESETNAME]?
 This can't be undone!"</string>
 <string name="presetsManager_Share">"Share"</string>
-<string name="presetsManager_NJI">"This feature is currently not implemented..."</string>
 <string name="presetsManager_ImportMsg">"Would you like to import this preset?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] imported successfully."</string>
 <string name="presetsManager_ImportFailed">"Import failed..."</string>
@@ -90,22 +91,13 @@ This can't be undone!"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Delay between click and screenshot."</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"Ok"</string>
-<string name="Dialog_Yes">"Yes"</string>
-<string name="Dialog_Rename">"Rename"</string>
-<string name="Dialog_Cancel">"Cancel"</string>
-<string name="Dialog_Delete">"Delete"</string>
-<string name="Dialog_Load">"Load"</string>
-<string name="Dialog_Save">"Save"</string>
-<string name="Dialog_Ignore">"Ignore"</string>
+<string name="Dialog_Buttons">"Ok/Yes/No/Rename/Cancel/Delete/Load/Save/Ignore"</string>
 <string name="Dialog_SelectColor">"Select color"</string>
 <string name="ColorPicker_Value">"Value:"</string>
 <string name="ColorPicker_Saturation">"Saturation:"</string>
 <string name="ColorPicker_Opacity">"Opacity:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltInLight">"Light"</string>
-<string name="presetLoadDialog_BuiltInDark">"Dark"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Black"</string>
+<string name="presetLoadDialog_BuiltIn">"Light/Dark/Black"</string>
 <string name="presetLoad_PresetDeleted">"Deleted [PRESETNAME]!"</string>
 <string name="presetLoad_PresetLoaded">"Loaded [PRESETNAME]!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"This preset was created by:"</string>
@@ -132,10 +124,7 @@ This can't be undone!"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Expanded Desktop"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Change the Dialog position."</string>
-<string name="advancedPrefs_DialogGravityTop">"Top"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Left"</string>
-<string name="advancedPrefs_DialogGravityRight">"Right"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Bottom"</string>
+<string name="advancedPrefs_DialogGravity">"Top/Left/Right/Bottom"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Torch On"</string>
@@ -264,4 +253,9 @@ Click here for recovering options."</string>
 <string name="preferencesDesc_Graphics">"Change the graphics, use custom or predefined graphics."</string>
 <string name="login_RecoverSuccess">"You will receive a email with with instructions on how to reset your password."</string>
 <string name="login_RecoverNotFound">"No user with this data found."</string>
+
+		<string name="graphics_Choose">"Restore default/Choose from presets/Choose from gallery"</string>
+		<string name="graphics_Crop">"Crop"</string>
+		<string name="graphics_NoPresetsFound">"No presets with graphics found..."</string>
+		<string name="graphics_GraphicsSaveLoad">"Save with current graphics./This preset contains graphics, do you want to load them?\nThis will overwrite your current graphics!"</string>
 </resources>

@@ -4,8 +4,8 @@ import android.app.*;
 import android.content.*;
 import android.graphics.*;
 import android.os.*;
-import android.support.v4.app.*;
 import android.text.*;
+import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.view.animation.*;
@@ -16,16 +16,18 @@ import com.larswerkman.holocolorpicker.*;
 import de.NeonSoft.neopowermenu.*;
 import java.util.*;
 
-import android.support.v4.app.Fragment;
+import android.content.ClipboardManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import de.NeonSoft.neopowermenu.R;
 
-public class slideDownDialogFragment extends android.support.v4.app.Fragment
+public class slideDownDialogFragment extends android.support.v4.app.DialogFragment
 {
 
 		public static String dialogTag = "slideDownDialog";
-	
+		public static String dialogCloseCall = "de.NeonSoft.slideDownDialog.close";
+		public static ArrayList<slideDownDialogFragment> dialogs = new ArrayList<slideDownDialogFragment>();
+		
 		 private Activity mContext;
 		private slideDownDialogInterface mInterface;
 		private android.support.v4.app.Fragment mFragment;
@@ -35,6 +37,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 		 private String dialogText = "";
 		 private float dialogTextSize = -1;
 	
+		 private ArrayAdapter<String> dialogListAdapter = null;
 		 private int dialogListMode;
 		 private int dialogListLimit = 0;
 		 private boolean dialogListLimitMin = false;
@@ -174,6 +177,12 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 				dialogTextSize = size;
 		}
 		
+		public void setDialogList(int mode, ArrayList<String> items, int defaultsel, boolean closeonsel) {
+				dialogListMode = mode;
+				dialogListItems = (String[]) items.toArray();
+				dialogListDefault = defaultsel;
+				dialogListClose = closeonsel;
+		}
 		public void setDialogList(int mode, String[] items, int defaultsel, boolean closeonsel) {
 				dialogListMode = mode;
 				dialogListItems = items;
@@ -247,10 +256,37 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 						if(mFragmentmanager==null) {
 								throw new Throwable("mFragmentmanager is null!");
 						}
-						mFragmentmanager.beginTransaction().add(mDialogContainer, this, dialogTag).commit();
-				} catch (Throwable t) {
+						if(mDialogContainer > -1) {
+								slideDownDialogFragment.dialogs.add(this);
+								mFragmentmanager.beginTransaction().add(mDialogContainer, this, slideDownDialogFragment.dialogTag).commit();
+						} else {
+								slideDownDialogFragment.dialogs.add(this);
+								setStyle(R.style.slideDownDialogFragment,R.style.slideDownDialogFragment);
+								show(mFragmentmanager,dialogTag);
+						}
+				} catch (final Throwable t) {
 						AlertDialog.Builder adb = new AlertDialog.Builder(mContext);
 						adb.setMessage("Failed to show slideDownDialogFragment:\n"+t);
+						adb.setNeutralButton("Copy to clipboard", new DialogInterface.OnClickListener() {
+
+										@Override
+										public void onClick(DialogInterface p1, int p2)
+										{
+												try {
+														ClipboardManager cpm = new ClipboardManager(mContext, new Handler());
+														cpm.setText(t.toString());
+														if(cpm.getText().toString().equals(t.toString())) {
+																Toast.makeText(mContext,"Copied to clipboard.",Toast.LENGTH_SHORT).show();
+														} else {
+																Toast.makeText(mContext,"Failed to put to clipboard...",Toast.LENGTH_SHORT).show();
+														}
+												}
+												catch (Throwable t) {
+														Log.e("NPM","Failed to put in clipboard: "+t.toString());
+														Toast.makeText(mContext,"Failed to put to clipboard...",Toast.LENGTH_SHORT).show();
+												}
+										}
+								});
 						adb.setPositiveButton("Ok",null);
 						adb.show();
 				}
@@ -291,12 +327,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 								
 						TextView_DialogBg = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogBg);
 						LinearLayout_DialogRoot = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogRoot);
-						LinearLayout_MainContainer = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_MainContainer);
-						//LinearLayout_DialogRoot.setLayoutTransition(transitioner);
-						//LinearLayout_MainContainer.setLayoutTransition(transitioner);
-						TextView_DialogText = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogText);
-						TextView_DialogBg.setVisibility(View.GONE);
-						TextView_DialogBg.setOnClickListener(new OnClickListener() {
+						LinearLayout_DialogRoot.setOnClickListener(new OnClickListener() {
 
 										@Override
 										public void onClick(View p1)
@@ -304,6 +335,13 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 												// Just to prevent touch trough
 										}
 								});
+								
+						LinearLayout_MainContainer = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_MainContainer);
+						//LinearLayout_DialogRoot.setLayoutTransition(transitioner);
+						//LinearLayout_MainContainer.setLayoutTransition(transitioner);
+						TextView_DialogText = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogText);
+						//TextView_DialogText.setMovementMethod(new ScrollingMovementMethod());
+						TextView_DialogBg.setVisibility(View.GONE);
 						LinearLayout_DialogRoot.setVisibility(View.GONE);
 
 						LinearLayout_DialogListView = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogList);
@@ -363,7 +401,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 								public void onReceive(Context p1, Intent p2)
 								{
 										// TODO: Implement this method
-										if(p2.getAction().equalsIgnoreCase("de.NeonSoft.neopowermenu.closeDialogs")) {
+										if(p2.getAction().equalsIgnoreCase(slideDownDialogFragment.dialogCloseCall)) {
 												if(negativeButtonText!=null) {
 														mInterface.onNegativeClick();
 												} else if (positiveButtonText!=null) {
@@ -374,12 +412,13 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 								}
 						};
 						IntentFilter filter = new IntentFilter();
-						filter.addAction("de.NeonSoft.neopowermenu.closeDialogs");
+						filter.addAction(slideDownDialogFragment.dialogCloseCall);
 						filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
 						mContext.registerReceiver(br, filter);
 						
 						if(dialogListItems != null && dialogListItems.length > 0) {
-								ListView_DialogListView.setAdapter(new ArrayAdapter<String>(mContext,(dialogListMode==ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode==ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)),dialogListItems));
+								dialogListAdapter = new ArrayAdapter<String>(mContext,(dialogListMode==ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode==ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)),dialogListItems);
+								ListView_DialogListView.setAdapter(dialogListAdapter);
 								ListView_DialogListView.setChoiceMode(dialogListMode);
 								if(dialogListDefault>-1) {
 										ListView_DialogListView.setItemChecked(dialogListDefault,true);
@@ -582,9 +621,10 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 												// TODO: Implement this method
 												ArrayList<String> resultData = new ArrayList<String>();
 												if(dialogListItems!=null) {
-														if((dialogListMode != ListView.CHOICE_MODE_NONE && dialogListMode != ListView.CHOICE_MODE_SINGLE) && ListView_DialogListView.getCheckedItemCount() < 1) {
-																return;
-														}
+														if(dialogListMode != ListView.CHOICE_MODE_NONE) {
+																if(ListView_DialogListView.getCheckedItemCount() < 1) {
+																		return;
+																} else {
 														if(dialogListLimitMin && dialogListLimit>0 && ListView_DialogListView.getCheckedItemCount() < dialogListLimit) {
 																return;
 														}
@@ -600,6 +640,8 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 																		}
 																}
 																resultData.add(string);
+														}
+														}
 														}
 												}
 												if(dialogInput1descText!=null) {
@@ -641,7 +683,7 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 						TextView_DialogBg.setVisibility(View.VISIBLE);
 						TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 						LinearLayout_DialogRoot.setVisibility(View.VISIBLE);
-						LinearLayout_DialogRoot.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.abc_slide_in_top));
+						LinearLayout_DialogRoot.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.anim_slide_in_top));
 
 						if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP) {
 								//mContext.getWindow().setNavigationBarColor(Color.parseColor(String.format("#%08X", (0xCC000000 & mContext.getResources().getColor(R.color.window_background_dark)))));
@@ -650,6 +692,17 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 						return InflatedView;
 				}
 		
+		public void cancelDialog() {
+				if(!hideActive) {
+				if(negativeButtonText!=null) {
+						mInterface.onNegativeClick();
+				} else if (positiveButtonText!=null) {
+						mInterface.onPositiveClick(null);
+				}
+				closeDialog();
+				}
+		}
+				
 		public void closeDialog() {
 				if(!hideActive) {
 						hideActive = true;
@@ -663,20 +716,23 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 				} else if (EditText_DialogHexInput.isFocused()) {
 						windowToken = EditText_DialogHexInput.getWindowToken();
 				}
-				if(windowToken!=null) inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
-				TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
+						if(windowToken!=null) inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+						TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 				TextView_DialogBg.setVisibility(View.GONE);
-				Animation hideAnim = AnimationUtils.loadAnimation(mContext,R.anim.abc_slide_out_top);
+				TextView_DialogTouchOutside.setVisibility(View.GONE);
+				Animation hideAnim = AnimationUtils.loadAnimation(mContext,R.anim.anim_slide_out_top);
 				hideAnim.setAnimationListener(new Animation.AnimationListener() {
 
 								@Override
 								public void onAnimationEnd(Animation p1)
 								{
 										// TODO: Implement this method
-										mFragmentmanager.beginTransaction().remove(mFragment).commit();
-										if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP) {
-												//mContext.getWindow().setNavigationBarColor(mContext.getResources().getColor(R.color.window_background_dark));
+										if(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).getShowsDialog()) {
+												slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).dismiss();
+										} else {
+												mFragmentmanager.beginTransaction().remove(mFragment).commit();
 										}
+										slideDownDialogFragment.dialogs.remove(slideDownDialogFragment.dialogs.size()-1);
 								}
 
 								@Override
@@ -694,6 +750,26 @@ public class slideDownDialogFragment extends android.support.v4.app.Fragment
 				LinearLayout_DialogRoot.startAnimation(hideAnim);
 				LinearLayout_DialogRoot.setVisibility(View.GONE);
 				}
+		}
+
+		@Override
+		public void onActivityCreated(Bundle savedInstanceState)
+		{
+				super.onActivityCreated(savedInstanceState);
+				if(getShowsDialog()) {
+						//getDialog().getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+						//getDialog().getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+						getDialog().getWindow().getAttributes().windowAnimations = R.style.PopUpDialogAnimation_Window;
+				}
+		}
+
+		private int getNavigationBarHeight(Context context) {
+				int result = 0;
+				int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+				if (resourceId > 0) {
+						result = context.getResources().getDimensionPixelSize(resourceId);
+				}
+				return result;
 		}
 		
 }

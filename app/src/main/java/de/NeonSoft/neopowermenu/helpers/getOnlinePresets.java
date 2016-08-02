@@ -30,6 +30,11 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 		{
 				// TODO: Implement this method
 				if(PreferencesPresetsFragment.onlineRequestIsRunning) {
+						PreferencesPresetsFragment.onlineMSG.setText("Loading...");
+						if(PreferencesPresetsFragment.onlineMSG.getVisibility()==View.GONE) {
+								PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);
+								PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_in));
+						}
 						cancel(true);
 						return;
 				}
@@ -209,7 +214,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 														}
 												});
 										dialogFragment.setDialogText(result);
-										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Ok));
+										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 										PreferencesPresetsFragment.onlineMSG.setText(result);
 								}

@@ -17,7 +17,7 @@
 				android:name=".neopowermenu"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="NeoPowerMenu"
         android:theme="@style/ThemeBaseDark">
         <meta-data
             android:name="xposedmodule"
@@ -32,7 +32,7 @@
         <activity
 						android:exported="true"
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:label="NeoPowerMenu"
 						android:configChanges="orientation|screenSize">
             <!--intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT" />
@@ -80,7 +80,7 @@
         </activity>
 				<activity-alias 
             android:name=".SettingsActivity"
-            android:label="@string/app_name"
+            android:label="NeoPowerMenu"
 						android:enabled="true"
 						android:targetActivity=".MainActivity">
 						<intent-filter>
@@ -92,7 +92,7 @@
 						android:name="addShortcut"
             android:excludeFromRecents="true"
 						android:exported="true"
-            android:label="@string/app_name"
+            android:label="NeoPowerMenu"
             android:theme="@style/TransparentApp"
 						android:configChanges="orientation|screenSize">
             <intent-filter>
@@ -104,7 +104,7 @@
             android:name=".xposed.XposedMainActivity"
             android:excludeFromRecents="true"
 						android:exported="true"
-            android:label="@string/app_name"
+            android:label="NeoPowerMenu"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
 						android:configChanges="orientation|screenSize">
 
@@ -112,7 +112,7 @@
 				<service
 						android:name=".services.ScreenRecordingService"
 						android:exported="true"
-						android:label="@string/app_name">
+						android:label="NeoPowerMenu">
 				</service>
 
         <service android:name=".services.TorchService">
@@ -128,8 +128,7 @@
 						<intent-filter>
 <action android:name="cat.ereza.customactivityoncrash.ERROR" />
 </intent-filter>
-</activity> 
-
+</activity>
     </application>
 
 </manifest>

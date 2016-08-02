@@ -37,7 +37,7 @@
 				android:orientation="vertical"
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="10dp"
-				android:visibility="visible"
+				android:visibility="gone"
 				android:id="@+id/activityloginLinearLayout_LoginContainer">
 
 				<LinearLayout
@@ -55,7 +55,9 @@
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
 						android:ems="10"
-						android:id="@+id/activityloginEditText_UsernameEmail"/>
+						android:id="@+id/activityloginEditText_UsernameEmail"
+						android:singleLine="true"
+						android:inputType="textEmailAddress"/>
 
 				</LinearLayout>
 
@@ -75,7 +77,8 @@
 						android:inputType="textPassword"
 						android:layout_width="match_parent"
 						android:ems="10"
-						android:id="@+id/activityloginEditText_Password"/>
+						android:id="@+id/activityloginEditText_Password"
+						android:singleLine="true"/>
 
 				</LinearLayout>
 
@@ -110,9 +113,9 @@
 
 				</LinearLayout>
 
-					<LinearLayout
-							android:background="?android:attr/selectableItemBackground"
-							android:clickable="true"
+				<LinearLayout
+					android:background="?android:attr/selectableItemBackground"
+					android:clickable="true"
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
 					android:orientation="vertical"
@@ -154,7 +157,8 @@
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
 						android:ems="10"
-						android:id="@+id/activityloginEditText_Username"/>
+						android:id="@+id/activityloginEditText_Username"
+						android:singleLine="true"/>
 
 				</LinearLayout>
 
@@ -174,7 +178,8 @@
 						android:layout_width="match_parent"
 						android:ems="10"
 						android:id="@+id/activityloginEditText_Email"
-						android:inputType="textEmailAddress"/>
+						android:inputType="textEmailAddress"
+						android:singleLine="true"/>
 
 				</LinearLayout>
 
@@ -194,7 +199,8 @@
 						android:layout_width="match_parent"
 						android:ems="10"
 						android:id="@+id/activityloginEditText_RetypeEmail"
-						android:inputType="textEmailAddress"/>
+						android:inputType="textEmailAddress"
+						android:singleLine="true"/>
 
 					<TextView
 						android:layout_height="wrap_content"
@@ -213,14 +219,13 @@
 				android:id="@+id/activityloginLinearLayout_RecoverAccount"
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="10dp"
-				android:visibility="gone">
+				android:visibility="visible">
 
 				<LinearLayout
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
 					android:orientation="vertical"
 					android:layout_gravity="center_horizontal"
-					android:layout_marginTop="10dp"
 					android:layout_marginBottom="5dp">
 
 					<TextView
@@ -259,7 +264,8 @@
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
 						android:ems="10"
-						android:id="@+id/activityloginEditText_RecoverUsername"/>
+						android:id="@+id/activityloginEditText_RecoverUsername"
+						android:singleLine="true"/>
 
 				</LinearLayout>
 
@@ -278,7 +284,9 @@
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
 						android:ems="10"
-						android:id="@+id/activityloginEditText_RecoverEmail"/>
+						android:id="@+id/activityloginEditText_RecoverEmail"
+						android:inputType="textEmailAddress"
+						android:singleLine="true"/>
 
 				</LinearLayout>
 

@@ -23,7 +23,6 @@ public class AboutFragment extends Fragment
 				
 				String[] titles = new String[] {"About",
 																				"User Id",
-																				"Hooked Components",
 																				"Used Librarys",
 																				"CustomActivityOnCrash",
 																				"ACRA",
@@ -56,7 +55,6 @@ public class AboutFragment extends Fragment
 																				" rovo89 and Tungstwenty for Xposed.\n" +
 																				" Igor Da Silva for the concept.",
 																				"Your Device Id:\n" + ((MainActivity.deviceUniqeId.isEmpty() || MainActivity.deviceUniqeId.equalsIgnoreCase("none")) ? "Not generated. (this is not normal...)" : MainActivity.deviceUniqeId) + "\nYour Account Id:\n" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "Not logged in." : MainActivity.accountUniqeId) + "\nThe Id's are used by the Preset Sever to verify your identity.",
-																				helper.activeParts(getActivity()),
 																				"This Project uses some public librarys, all (maybe i have forgot some...) used librarys are listed below.",
 																				"Copyright 2014 Eduard Ereza Martinez.\nLicensed under the Apache License, Version 2.0",
 																				"Licensed under the Apache License, Version 2.0",

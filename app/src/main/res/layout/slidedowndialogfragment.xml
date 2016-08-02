@@ -5,7 +5,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:orientation="vertical">
+		android:orientation="vertical">
 
 	<RelativeLayout
 		android:layout_height="match_parent"
@@ -19,314 +19,306 @@
 			android:id="@+id/slidedowndialogfragmentTextView_DialogBg"
 			android:background="#CC000000"/>
 
-		<LinearLayout
-			android:id="@+id/slidedowndialogfragmentLinearLayout_DialogRoot"
-			android:layout_height="wrap_content"
-			android:layout_width="match_parent"
-			android:orientation="vertical"
-			android:background="@color/colorPrimaryDarkDarkTheme"
-			android:paddingTop="10dp"
-			android:animateLayoutChanges="true">
-
 			<LinearLayout
+				android:id="@+id/slidedowndialogfragmentLinearLayout_DialogRoot"
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
-				android:layout_weight="1.0">
+				android:background="@color/colorPrimaryDarkDarkTheme"
+					android:animateLayoutChanges="true">
 
-				<ScrollView
+				<LinearLayout
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
-					android:fillViewport="true">
+					android:orientation="vertical"
+					android:layout_weight="1.0">
+
+					<ScrollView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:fillViewport="true"
+						android:layout_weight="1.0"
+						android:layout_marginRight="10dp"
+						android:layout_marginLeft="10dp">
+
+						<LinearLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:orientation="vertical"
+							android:paddingBottom="10dp"
+							android:id="@+id/slidedowndialogfragmentLinearLayout_MainContainer"
+							android:background="@color/colorPrimaryDarkDarkTheme">
+
+							<View
+								android:background="@color/transparent"
+								android:layout_height="0dp"
+								android:layout_width="wrap_content"/>
+
+							<TextView
+								android:layout_height="wrap_content"
+								android:textAppearance="?android:attr/textAppearanceMedium"
+								android:layout_width="match_parent"
+								android:text="This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text."
+								android:id="@+id/slidedowndialogfragmentTextView_DialogText"
+								android:textColor="#FFFFFF"
+								android:layout_marginBottom="10dp"/>
+
+							<LinearLayout
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:orientation="vertical"
+								android:id="@+id/slidedowndialogfragmentLinearLayout_DialogInput1"
+								android:visibility="visible">
+
+								<TextView
+									android:layout_height="wrap_content"
+									android:textAppearance="?android:attr/textAppearanceSmall"
+									android:layout_width="match_parent"
+									android:text="Input 1 Text"
+									android:gravity="center_vertical"
+									android:id="@+id/slidedowndialogfragmentTextView_DialogInput1Text"/>
+
+								<EditText
+									android:layout_height="wrap_content"
+									android:layout_width="match_parent"
+									android:ems="10"
+									android:maxLines="1"
+									android:singleLine="true"
+									android:id="@+id/slidedowndialogfragmentEditText_DialogInput1"/>
+
+							</LinearLayout>
+
+							<LinearLayout
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:orientation="vertical"
+								android:id="@+id/slidedowndialogfragmentLinearLayout_DialogInput2"
+								android:visibility="visible">
+
+								<TextView
+									android:layout_height="wrap_content"
+									android:textAppearance="?android:attr/textAppearanceSmall"
+									android:layout_width="match_parent"
+									android:text="Input 2 Text"
+									android:gravity="center_vertical"
+									android:id="@+id/slidedowndialogfragmentTextView_DialogInput2Text"/>
+
+								<EditText
+									android:layout_height="wrap_content"
+									android:layout_width="match_parent"
+									android:ems="10"
+									android:maxLines="1"
+									android:singleLine="true"
+									android:id="@+id/slidedowndialogfragmentEditText_DialogInput2"/>
+
+							</LinearLayout>
+
+							<LinearLayout
+								android:layout_height="match_parent"
+								android:layout_width="match_parent"
+								android:orientation="vertical"
+								android:id="@+id/slidedowndialogfragmentLinearLayout_DialogColorPicker"
+								android:visibility="visible">
+
+								<LinearLayout
+									android:layout_height="match_parent"
+									android:layout_width="match_parent"
+									android:orientation="horizontal"
+									android:gravity="center|center_vertical|center_horizontal"
+									android:layout_weight="1.0">
+
+									<com.larswerkman.holocolorpicker.ValueBar
+										android:layout_width="match_parent"
+										android:layout_height="match_parent"
+										android:layout_gravity="center"
+										android:layout_weight="1.0"
+										android:visibility="visible"
+										app:bar_orientation_horizontal="false"
+										android:id="@+id/slidedowndialogfragmentValueBar_DialogValueBar"/>
+
+									<com.larswerkman.holocolorpicker.SaturationBar
+										android:layout_width="match_parent"
+										android:layout_height="match_parent"
+										android:layout_gravity="center"
+										android:layout_weight="1.0"
+										android:visibility="visible"
+										app:bar_orientation_horizontal="false"
+										android:id="@+id/slidedowndialogfragmentSaturationBar_DialogSaturationBar"/>
+
+									<com.larswerkman.holocolorpicker.OpacityBar
+										android:layout_width="match_parent"
+										android:layout_height="match_parent"
+										android:layout_gravity="center"
+										android:visibility="gone"
+										android:layout_weight="1.0"
+										app:bar_orientation_horizontal="false"
+										android:id="@+id/slidedowndialogfragmentOpacityBar_DialogOpacityBar"/>
+
+									<com.larswerkman.holocolorpicker.ColorPicker
+										android:layout_width="match_parent"
+										android:layout_height="match_parent"
+										android:id="@+id/slidedowndialogfragmentColorPicker_DialogColorPicker"
+										android:layout_weight="1.0"
+										android:layout_gravity="center"/>
+
+								</LinearLayout>
+
+								<LinearLayout
+									android:layout_height="wrap_content"
+									android:layout_width="match_parent"
+									android:orientation="horizontal">
+
+									<TextView
+										android:layout_height="match_parent"
+										android:textAppearance="?android:attr/textAppearanceMedium"
+										android:layout_width="wrap_content"
+										android:text="@string/ColorPicker_Hex"
+										android:gravity="center_vertical"/>
+
+									<EditText
+										android:layout_height="match_parent"
+										android:layout_width="wrap_content"
+										android:ems="10"
+										android:layout_weight="1.0"
+										android:lines="1"
+										android:singleLine="true"
+										android:id="@+id/slidedowndialogfragmentEditText_DialogHexInput"/>
+
+								</LinearLayout>
+
+							</LinearLayout>
+
+							<LinearLayout
+								android:layout_height="wrap_content"
+								android:layout_width="match_parent"
+								android:orientation="horizontal"
+								android:id="@+id/slidedowndialogfragmentLinearLayout_CheckBox"
+								android:visibility="visible">
+
+								<CheckBox
+									android:layout_height="match_parent"
+									android:layout_width="match_parent"
+									android:id="@+id/slidedowndialogfragmentCheckBox_CheckBox"
+									android:text="Text"/>
+
+							</LinearLayout>
+
+						</LinearLayout>
+
+					</ScrollView>
 
 					<LinearLayout
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
 						android:orientation="vertical"
-						android:paddingBottom="10dp"
-						android:id="@+id/slidedowndialogfragmentLinearLayout_MainContainer"
-						android:background="@color/colorPrimaryDarkDarkTheme">
+						android:id="@+id/slidedowndialogfragmentLinearLayout_DialogList"
+						android:layout_marginRight="10dp"
+						android:layout_marginLeft="10dp"
+						android:visibility="visible"
+						android:background="@color/colorPrimaryDarkDarkTheme"
+						android:layout_weight="1.0">
 
-						<View
-							android:background="@color/transparent"
-							android:layout_height="0dp"
-							android:layout_width="wrap_content"/>
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:textAppearance="?android:attr/textAppearanceMedium"
-							android:layout_width="match_parent"
-							android:text="This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text. This is a long text."
-							android:id="@+id/slidedowndialogfragmentTextView_DialogText"
-							android:textColor="#FFFFFF"
-							android:layout_marginLeft="10dp"
-							android:layout_marginRight="10dp"
-							android:layout_marginBottom="5dp"/>
-
-						<LinearLayout
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:orientation="vertical"
-							android:id="@+id/slidedowndialogfragmentLinearLayout_DialogInput1"
-							android:layout_marginRight="10dp"
-							android:layout_marginLeft="10dp"
-							android:visibility="gone">
-
-							<TextView
-								android:layout_height="wrap_content"
-								android:textAppearance="?android:attr/textAppearanceSmall"
-								android:layout_width="match_parent"
-								android:text="Input 1 Text"
-								android:gravity="center_vertical"
-								android:id="@+id/slidedowndialogfragmentTextView_DialogInput1Text"/>
-
-							<EditText
-								android:layout_height="wrap_content"
-								android:layout_width="match_parent"
-								android:ems="10"
-								android:maxLines="1"
-								android:singleLine="true"
-								android:id="@+id/slidedowndialogfragmentEditText_DialogInput1"/>
-
-						</LinearLayout>
-
-						<LinearLayout
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:orientation="vertical"
-							android:id="@+id/slidedowndialogfragmentLinearLayout_DialogInput2"
-							android:layout_marginRight="10dp"
-							android:layout_marginLeft="10dp"
-							android:visibility="gone">
-
-							<TextView
-								android:layout_height="wrap_content"
-								android:textAppearance="?android:attr/textAppearanceSmall"
-								android:layout_width="match_parent"
-								android:text="Input 2 Text"
-								android:gravity="center_vertical"
-								android:id="@+id/slidedowndialogfragmentTextView_DialogInput2Text"/>
-
-							<EditText
-								android:layout_height="wrap_content"
-								android:layout_width="match_parent"
-								android:ems="10"
-								android:maxLines="1"
-								android:singleLine="true"
-								android:id="@+id/slidedowndialogfragmentEditText_DialogInput2"/>
-
-						</LinearLayout>
-
-						<LinearLayout
+						<ListView
 							android:layout_height="match_parent"
 							android:layout_width="match_parent"
-							android:orientation="vertical"
-							android:id="@+id/slidedowndialogfragmentLinearLayout_DialogColorPicker"
-							android:visibility="gone">
-
-							<LinearLayout
-								android:layout_height="match_parent"
-								android:layout_width="match_parent"
-								android:orientation="horizontal"
-								android:gravity="center|center_vertical|center_horizontal"
-								android:layout_weight="1.0">
-
-								<com.larswerkman.holocolorpicker.ValueBar
-									android:layout_width="match_parent"
-									android:layout_height="match_parent"
-									android:layout_gravity="center"
-									android:layout_weight="1.0"
-									android:visibility="visible"
-									app:bar_orientation_horizontal="false"
-									android:id="@+id/slidedowndialogfragmentValueBar_DialogValueBar"/>
-
-								<com.larswerkman.holocolorpicker.SaturationBar
-									android:layout_width="match_parent"
-									android:layout_height="match_parent"
-									android:layout_gravity="center"
-									android:layout_weight="1.0"
-									android:visibility="visible"
-									app:bar_orientation_horizontal="false"
-									android:id="@+id/slidedowndialogfragmentSaturationBar_DialogSaturationBar"/>
-
-								<com.larswerkman.holocolorpicker.OpacityBar
-									android:layout_width="match_parent"
-									android:layout_height="match_parent"
-									android:layout_gravity="center"
-									android:visibility="gone"
-									android:layout_weight="1.0"
-									app:bar_orientation_horizontal="false"
-									android:id="@+id/slidedowndialogfragmentOpacityBar_DialogOpacityBar"/>
-
-								<com.larswerkman.holocolorpicker.ColorPicker
-									android:layout_width="match_parent"
-									android:layout_height="match_parent"
-									android:id="@+id/slidedowndialogfragmentColorPicker_DialogColorPicker"
-									android:layout_weight="1.0"
-									android:layout_gravity="center"/>
-
-							</LinearLayout>
-
-							<LinearLayout
-								android:layout_height="wrap_content"
-								android:layout_width="match_parent"
-								android:orientation="horizontal"
-								android:layout_marginRight="10dp"
-								android:layout_marginLeft="10dp">
-
-								<TextView
-									android:layout_height="match_parent"
-									android:textAppearance="?android:attr/textAppearanceMedium"
-									android:layout_width="wrap_content"
-									android:text="@string/ColorPicker_Hex"
-									android:gravity="center_vertical"/>
-
-								<EditText
-									android:layout_height="match_parent"
-									android:layout_width="wrap_content"
-									android:ems="10"
-									android:layout_weight="1.0"
-									android:lines="1"
-									android:singleLine="true"
-									android:id="@+id/slidedowndialogfragmentEditText_DialogHexInput"/>
-
-							</LinearLayout>
-
-						</LinearLayout>
-
-						<LinearLayout
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:orientation="horizontal"
-							android:id="@+id/slidedowndialogfragmentLinearLayout_CheckBox"
-							android:layout_marginLeft="10dp"
-							android:layout_marginRight="10dp"
-							android:visibility="visible">
-
-							<CheckBox
-								android:layout_height="match_parent"
-								android:layout_width="match_parent"
-								android:id="@+id/slidedowndialogfragmentCheckBox_CheckBox"
-								android:text="Text"/>
-
-						</LinearLayout>
+							android:id="@+id/slidedowndialogfragmentListView_DialogList"
+							android:divider="@color/colorAccentDarkThemeTrans"
+							android:dividerHeight="1dp"
+							android:layout_weight="1.0"/>
 
 					</LinearLayout>
 
-				</ScrollView>
+				</LinearLayout>
 
-			</LinearLayout>
-
-			<LinearLayout
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:orientation="vertical"
-				android:id="@+id/slidedowndialogfragmentLinearLayout_DialogList"
-				android:layout_marginRight="10dp"
-				android:layout_marginLeft="10dp"
-				android:visibility="visible"
-				android:background="@color/colorPrimaryDarkDarkTheme"
-				android:layout_weight="1.0">
-
-				<ListView
-					android:layout_height="match_parent"
+				<TextView
+					android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:layout_width="match_parent"
-					android:id="@+id/slidedowndialogfragmentListView_DialogList"
-					android:divider="@color/colorAccentDarkThemeTrans"
-					android:dividerHeight="1dp"
-					android:layout_weight="1.0"/>
-
-			</LinearLayout>
-
-			<TextView
-				android:layout_height="wrap_content"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_width="match_parent"
-				android:text="Input Assist Text"
-				android:id="@+id/slidedowndialogfragmentTextView_OverwriteInfo"
-				android:layout_marginLeft="10dp"
-				android:layout_marginRight="10dp"
-				android:layout_marginBottom="5dp"
-				android:visibility="gone"
-				android:layout_weight="0"
-				android:background="@color/colorPrimaryDarkDarkTheme"/>
-
-			<LinearLayout
-				android:layout_height="35dp"
-				android:layout_width="match_parent"
-				android:orientation="horizontal"
-				android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtons"
-				android:gravity="right"
-				android:layout_marginRight="10dp"
-				android:layout_weight="0">
+					android:text="Input Assist Text"
+					android:id="@+id/slidedowndialogfragmentTextView_OverwriteInfo"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:layout_marginBottom="5dp"
+					android:visibility="visible"
+					android:layout_weight="0"
+					android:background="@color/colorPrimaryDarkDarkTheme"/>
 
 				<LinearLayout
-					android:background="?selectableItemBackgroundBorderless"
-					android:layout_height="match_parent"
-					android:layout_width="wrap_content"
+					android:layout_height="35dp"
+					android:layout_width="match_parent"
 					android:orientation="horizontal"
-					android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonNegative"
-					android:layout_marginRight="5dp"
-					android:visibility="visible">
+					android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtons"
+					android:gravity="right"
+					android:layout_marginRight="10dp"
+					android:layout_weight="0">
 
-					<TextView
+					<LinearLayout
+						android:background="?selectableItemBackgroundBorderless"
 						android:layout_height="match_parent"
-						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
-						android:text="Negative"
-						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNegativeText"
-						android:textColor="#FFFFFF"
-						android:gravity="center"
+						android:orientation="horizontal"
+						android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonNegative"
 						android:layout_marginRight="5dp"
-						android:layout_marginLeft="10dp"/>
+						android:visibility="visible">
 
-				</LinearLayout>
+						<TextView
+							android:layout_height="match_parent"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:layout_width="wrap_content"
+							android:text="Negative"
+							android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNegativeText"
+							android:textColor="#FFFFFF"
+							android:gravity="center"
+							android:layout_marginRight="5dp"
+							android:layout_marginLeft="10dp"/>
 
-				<LinearLayout
-					android:background="?selectableItemBackgroundBorderless"
-					android:layout_height="match_parent"
-					android:layout_width="wrap_content"
-					android:orientation="horizontal"
-					android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonNeutral"
-					android:layout_marginRight="5dp"
-					android:visibility="visible">
+					</LinearLayout>
 
-					<TextView
+					<LinearLayout
+						android:background="?selectableItemBackgroundBorderless"
 						android:layout_height="match_parent"
-						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
-						android:text="Neutral"
-						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNeutralText"
-						android:textColor="#FFFFFF"
-						android:gravity="center"
+						android:orientation="horizontal"
+						android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonNeutral"
 						android:layout_marginRight="5dp"
-						android:layout_marginLeft="5dp"/>
+						android:visibility="visible">
 
-				</LinearLayout>
+						<TextView
+							android:layout_height="match_parent"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:layout_width="wrap_content"
+							android:text="Neutral"
+							android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNeutralText"
+							android:textColor="#FFFFFF"
+							android:gravity="center"
+							android:layout_marginRight="5dp"
+							android:layout_marginLeft="5dp"/>
 
-				<LinearLayout
-					android:background="?selectableItemBackgroundBorderless"
-					android:layout_height="match_parent"
-					android:layout_width="wrap_content"
-					android:orientation="horizontal"
-					android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonPositive">
+					</LinearLayout>
 
-					<TextView
+					<LinearLayout
+						android:background="?selectableItemBackgroundBorderless"
 						android:layout_height="match_parent"
-						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:layout_width="wrap_content"
-						android:text="Positive"
-						android:id="@+id/slidedowndialogfragmentTextView_DialogButtonPositiveText"
-						android:textColor="#FFFFFF"
-						android:gravity="center"
-						android:layout_marginRight="10dp"
-						android:layout_marginLeft="5dp"/>
+						android:orientation="horizontal"
+						android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonPositive">
+
+						<TextView
+							android:layout_height="match_parent"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:layout_width="wrap_content"
+							android:text="Positive"
+							android:id="@+id/slidedowndialogfragmentTextView_DialogButtonPositiveText"
+							android:textColor="#FFFFFF"
+							android:gravity="center"
+							android:layout_marginRight="10dp"
+							android:layout_marginLeft="5dp"/>
+
+					</LinearLayout>
 
 				</LinearLayout>
 
 			</LinearLayout>
-
-		</LinearLayout>
 
 		<TextView
 			android:layout_height="match_parent"

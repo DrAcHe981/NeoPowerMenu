@@ -1,12 +1,18 @@
 package de.NeonSoft.neopowermenu.helpers;
 
 import android.content.*;
+import android.content.res.*;
 import android.graphics.drawable.*;
 import android.os.*;
 import android.text.*;
+import android.util.*;
 import android.view.*;
-import java.security.*;
 import de.NeonSoft.neopowermenu.*;
+import java.io.*;
+import java.security.*;
+import net.lingala.zip4j.core.*;
+import net.lingala.zip4j.model.*;
+import net.lingala.zip4j.util.*;
 
 public class helper
 {
@@ -36,11 +42,6 @@ public class helper
 		public static int ModuleState() {
 				int active = -1;
 				return active;
-		}
-		
-		public static String activeParts(Context context) {
-				String activeParts = context.getString(R.string.presetsManager_NJI);
-				return activeParts;
 		}
 		
 		public static String getTimeString(long InputMilliSeconds,boolean withTxt)
@@ -74,17 +75,17 @@ public class helper
 				}*/
 				if (OutputHours > 0)
 				{
-						duration_string =  String.format("%02d:%02d:%02d", OutputHours, OutputMinutes, OutputSeconds);
+						duration_string =  String.format("%2d"+(withTxt ? "h " : ":")+"%2d"+(withTxt ? "m " : ":")+"%2d"+(withTxt ? "s" : ""), OutputHours, OutputMinutes, OutputSeconds);
 				}
 				else if (OutputMinutes > 0)
 				{
-						duration_string =  String.format("%02d:%02d", OutputMinutes, OutputSeconds);
+						duration_string =  String.format("%2d"+(withTxt ? "m " : ":")+"%2d"+(withTxt ? "s" : ""), OutputMinutes, OutputSeconds);
 				} else if (OutputSeconds > 0) {
-						duration_string =  String.format("%02d", OutputSeconds);
+						duration_string =  String.format("%2d"+(withTxt ? "s" : ""), OutputSeconds);
 				} else {
-						duration_string =  String.format("%03d", InputMilliSeconds);
+						duration_string =  String.format("%3d"+(withTxt ? "ms" : ""), InputMilliSeconds);
 				}
-				if (withTxt) {
+				/*if (withTxt) {
 						if (OutputHours > 0)
 						{
 								duration_string +=  "(H:M:S)";
@@ -97,7 +98,7 @@ public class helper
 						} else {
 								duration_string += "(MS)";
 						}
-				}
+				}*/
 				return duration_string;
 		}
 
@@ -136,4 +137,203 @@ public class helper
 				return !TextUtils.isEmpty(input) && android.util.Patterns.EMAIL_ADDRESS.matcher(input).matches();
 		}
 
+		public static int getStatusBarHeight(Context context) {
+				int result = 0;
+				int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+				if (resourceId > 0) {
+						result = context.getResources().getDimensionPixelSize(resourceId);
+				}
+				return result;
+		}
+		
+		public static int getNavigationBarHeight(Context context) {
+				int result = 0;
+				int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
+				if (resourceId > 0) {
+						result = context.getResources().getDimensionPixelSize(resourceId);
+				}
+				return result;
+		}
+		
+		/**
+		 * This method converts dp unit to equivalent pixels, depending on device density. 
+		 * 
+		 * @param dp A value in dp (density independent pixels) unit. Which we need to convert into pixels
+		 * @param context Context to get resources and device specific display metrics
+		 * @return A float value to represent px equivalent to dp depending on device density
+		 */
+		public static float convertDpToPixel(float dp, Context context){
+				if(context==null) return dp;
+				Resources resources = context.getResources();
+				DisplayMetrics metrics = resources.getDisplayMetrics();
+				float px = dp * ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+				return px;
+		}
+
+		/**
+		 * This method converts device specific pixels to density independent pixels.
+		 * 
+		 * @param px A value in px (pixels) unit. Which we need to convert into db
+		 * @param context Context to get resources and device specific display metrics
+		 * @return A float value to represent dp equivalent to px value
+		 */
+		public static float convertPixelsToDp(float px, Context context){
+				if(context==null) return px;
+				Resources resources = context.getResources();
+				DisplayMetrics metrics = resources.getDisplayMetrics();
+				float dp = px / ((float)metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+				return dp;
+		}
+
+		public static String zipFile(String fileToZip, String zipFile, String password) {
+				try {
+						ZipFile zip = new ZipFile(zipFile);
+						ZipParameters params = new ZipParameters();
+
+						params.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
+						params.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+						params.setIncludeRootFolder(false);
+						
+						if(password != null && !password.isEmpty()) {
+								params.setPassword(password);
+						}
+
+						zip.addFile(new File(fileToZip),params);
+				} catch (Throwable t) {
+						Log.e("NPM:zipFile","Failed to zip: "+t.toString());
+						return t.toString();
+				}
+				return null;
+		}
+		
+		public static String zipAll(String toZipFolder, String zipFile, String password) {
+				try {
+						ZipFile zip = new ZipFile(zipFile);
+						ZipParameters params = new ZipParameters();
+						
+						params.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
+						params.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+						params.setIncludeRootFolder(false);
+						
+						if(password != null && !password.isEmpty()) {
+								params.setPassword(password);
+						}
+						
+						zip.addFolder(toZipFolder,params);
+				} catch (Throwable t) {
+						Log.e("NPM:zipAll","Failed to zip: "+t.toString());
+						return t.toString();
+				}
+				return null;
+		}
+		
+		public static String unzipFile(String zipFile, String outputFolder, String fileToUnzip, String password) {
+				try {
+						ZipFile zip = new ZipFile(zipFile);
+						UnzipParameters params = new UnzipParameters();
+						
+						if(password != null && !password.isEmpty()) {
+								zip.setPassword(password);
+						}
+						
+						zip.extractFile(fileToUnzip, outputFolder, params, fileToUnzip);
+				} catch (Throwable t) {
+						Log.e("NPM:unzipFile","Failed to unzip: "+t.toString());
+						return t.toString();
+				}
+				return null;
+		}
+		
+		public static String unzipAll(String zipFile, String outputFolder, String password) {
+				try {
+						ZipFile zip = new ZipFile(zipFile);
+						
+						if(password != null && !password.isEmpty()) {
+								zip.setPassword(password);
+						}
+						
+						zip.extractAll(outputFolder);
+				} catch (Throwable t) {
+						Log.e("NPM:unzipAll","Failed to unzip: "+t.toString());
+						return t.toString();
+				}
+				return null;
+		}
+		
+		public static boolean isValidZip(String zipFile, String password) {
+				try {
+						ZipFile zip = new ZipFile(zipFile);
+						
+						if(password != null && !password.isEmpty()) {
+								zip.setPassword(password);
+						}
+						
+						return zip.isValidZipFile();
+						
+				} catch (Throwable t) {
+						Log.e("NPM:isValidZip","Failed to validate: "+t.toString());
+						return false;
+				}
+		}
+		
+		public static String removeFromZip(String zipFile, String fileToRemove, String password) {
+				try {
+						ZipFile zip = new ZipFile(zipFile);
+
+						if(password != null && !password.isEmpty()) {
+								zip.setPassword(password);
+						}
+						
+						zip.removeFile(fileToRemove);
+						
+				} catch (Throwable t) {
+						Log.e("NPM:removeFromZip","Failed to remove: "+t.toString());
+						return t.toString();
+				}
+				return null;
+		}
+		
+		public static boolean copyFile(String inputPath, String outputPath) {
+
+				InputStream in = null;
+				OutputStream out = null;
+				try {
+
+						//create output directory if it doesn't exist
+						File dir = new File (outputPath.replace("/"+outputPath.split("/")[outputPath.split("/").length-1],"")); 
+						if (!dir.exists())
+						{
+								dir.mkdirs();
+						}
+
+
+						in = new FileInputStream(inputPath);        
+						out = new FileOutputStream(outputPath);
+
+						byte[] buffer = new byte[1024];
+						int read;
+						while ((read = in.read(buffer)) != -1) {
+								out.write(buffer, 0, read);
+						}
+						in.close();
+						in = null;
+
+            // write the output file (You have now copied the file)
+            out.flush();
+						out.close();
+						out = null;        
+
+				}  catch (FileNotFoundException fnfe1) {
+						Log.e("NPM:copyFile", fnfe1.getMessage());
+						return false;
+				}
+				catch (Exception e) {
+						Log.e("NPM:copyFile", e.getMessage());
+						return false;
+				} finally 		
+				{
+						return true;
+				}
+
+		}
 }

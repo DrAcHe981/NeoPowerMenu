@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Jetez un oeil à cette magnifique appli pour personnaliser le Menu de Démarrage de votre appareil android rooté !
 
 "</string>
@@ -87,7 +86,6 @@ Vérifiez la source sur GitHub."</string>
 <string name="presetsManager_SureToDelete">"Êtes-vous sûr(e) de vouloir supprimer [PRESETNAME] ?
 Cette action est irréversible !"</string>
 <string name="presetsManager_Share">"Partager"</string>
-<string name="presetsManager_NJI">"Cette fonctionnalité n\'est pas actuellement implémentée..."</string>
 <string name="presetsManager_ImportMsg">"Souhaitez-vous importer ce préréglage ?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] importé avec succès."</string>
 <string name="presetsManager_ImportFailed">"Échec de l\'importation..."</string>
@@ -105,22 +103,12 @@ Cette action est irréversible !"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Délai entre l\'appui et la capture d\'écran."</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"Ok"</string>
-<string name="Dialog_Yes">"Oui"</string>
-<string name="Dialog_Rename">"Renommer"</string>
-<string name="Dialog_Cancel">"Annuler"</string>
-<string name="Dialog_Delete">"Supprimer"</string>
-<string name="Dialog_Load">"Charger"</string>
-<string name="Dialog_Save">"Enregistrer"</string>
-<string name="Dialog_Ignore">"Ignorer"</string>
 <string name="Dialog_SelectColor">"Choisir un couleur"</string>
 <string name="ColorPicker_Value">"Valeur:"</string>
 <string name="ColorPicker_Saturation">"Saturation:"</string>
 <string name="ColorPicker_Opacity">"Opacité:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltInLight">"Clair"</string>
-<string name="presetLoadDialog_BuiltInDark">"Sombre"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Noir"</string>
+<string name="presetLoadDialog_BuiltIn">"Clair/Sombre/Noir"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] supprimé !"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] chargé !"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Ce préréglage a été créé par :"</string>
@@ -147,10 +135,7 @@ Cette action est irréversible !"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Bureau étendu"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Position de la boîte de dialogue"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Modifier la position de la boîte de dialogue."</string>
-<string name="advancedPrefs_DialogGravityTop">"Haut"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Gauche"</string>
-<string name="advancedPrefs_DialogGravityRight">"Droite"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Bas"</string>
+<string name="advancedPrefs_DialogGravity">"Haut/Gauche/Droite/Bas"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Torche On"</string>

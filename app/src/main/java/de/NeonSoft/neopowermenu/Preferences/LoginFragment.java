@@ -208,7 +208,7 @@ public class LoginFragment extends Fragment
 																				}
 																		});
 																dialogFragment.setDialogText("Register failed: \n"+reason);
-																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
+																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												}
@@ -327,7 +327,7 @@ public class LoginFragment extends Fragment
 																				}
 																		});
 																dialogFragment.setDialogText("Reset failed: \n"+reason);
-																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
+																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												}
@@ -530,7 +530,11 @@ public class LoginFragment extends Fragment
 												getStatistics();
 												LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
 												LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-												if(MainActivity.visibleFragment.equalsIgnoreCase("account")) MainActivity.actionbar.setButton(context.getString(R.string.login_TitleLogout),R.drawable.ic_action_export,logoutOnClickListener);
+												if(MainActivity.visibleFragment.equalsIgnoreCase("PresetsManagerAccount")) {
+														MainActivity.actionbar.setButtonText(context.getString(R.string.login_TitleLogout));
+														MainActivity.actionbar.setButtonIcon(R.drawable.ic_action_export);
+														MainActivity.actionbar.setButtonListener(logoutOnClickListener);
+												}
 												loginFragmentMode = "logout";
 										}
 								}

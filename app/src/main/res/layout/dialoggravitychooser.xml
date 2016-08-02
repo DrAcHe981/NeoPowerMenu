@@ -50,9 +50,10 @@
 				<TextView
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
-					android:text="@string/advancedPrefs_DialogGravityTop"
+					android:text="Top"
 					android:layout_gravity="center_horizontal"
-					android:textColor="#FFFFFF"
+						android:textColor="#FFFFFF"
+						android:id="@+id/dialoggravitychooserText_DialogGravityTop"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 				<Switch
@@ -89,9 +90,10 @@
 				<TextView
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
-					android:text="@string/advancedPrefs_DialogGravityLeft"
+					android:text="Left"
 					android:layout_gravity="center_horizontal"
-					android:textColor="#FFFFFF"
+						android:textColor="#FFFFFF"
+						android:id="@+id/dialoggravitychooserText_DialogGravityLeft"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 				<Switch
@@ -128,9 +130,10 @@
 				<TextView
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
-					android:text="@string/advancedPrefs_DialogGravityRight"
+					android:text="Bottom"
 					android:layout_gravity="center_horizontal"
-					android:textColor="#FFFFFF"
+						android:textColor="#FFFFFF"
+						android:id="@+id/dialoggravitychooserText_DialogGravityRight"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 				<Switch
@@ -167,9 +170,10 @@
 				<TextView
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
-					android:text="@string/advancedPrefs_DialogGravityBottom"
+					android:text="Bottom"
 					android:layout_gravity="center_horizontal"
-					android:textColor="#FFFFFF"
+						android:textColor="#FFFFFF"
+						android:id="@+id/dialoggravitychooserText_DialogGravityBottom"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 				<Switch

@@ -10,11 +10,16 @@ import android.util.*;
 import android.view.*;
 import android.widget.*;
 import cat.ereza.customactivityoncrash.*;
+import com.nostra13.universalimageloader.cache.disc.impl.ext.*;
+import com.nostra13.universalimageloader.cache.memory.impl.*;
+import com.nostra13.universalimageloader.core.*;
+import com.nostra13.universalimageloader.core.assist.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.helpers.BlurUtils.*;
+import java.io.*;
+import java.util.*;
 import org.acra.*;
-import org.acra.annotation.*;
 
 import de.NeonSoft.neopowermenu.R;
 
@@ -25,6 +30,7 @@ import de.NeonSoft.neopowermenu.R;
 public class XposedMainActivity extends Activity implements DialogInterface.OnDismissListener {
 
 		public static SharedPreferences preferences;
+		public static SharedPreferences colorPrefs;
 		public static SharedPreferences orderPrefs;
     private static CircularRevealView revealView;
 		private static TextView PreviewLabel;
@@ -53,6 +59,9 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		private static int mBlurLightColorFilter;
 		private static Activity mActivity;
 		private static FrameLayout mActivityRootView;
+
+		public static ImageLoader imageLoader;
+		public static boolean ImgLoader_Loaded;
 		
 		
     @Override
@@ -63,6 +72,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				
 				mContext =getApplicationContext();
 				preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
+				colorPrefs = getSharedPreferences("colors", Context.MODE_WORLD_READABLE);
 				orderPrefs = getSharedPreferences("visibilityOrder",Context.MODE_WORLD_READABLE);
 				
 				mBlurScale = preferences.getInt("blurScale",20);
@@ -134,7 +144,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         maxX = mdispSize.x;
         maxY = mdispSize.y;
 
-        final int color = Color.parseColor(preferences.getString("Reveal_Backgroundcolor","#8800bcd4"));
+        final int color = Color.parseColor(colorPrefs.getString("Reveal_Backgroundcolor","#8800bcd4"));
         final Point p = new Point(maxX / 2, maxY / 2);
 
         IntentFilter filter = new IntentFilter();
@@ -156,6 +166,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				};
 				
 				registerReceiver(mReceiver,filter);
+				
+				initImageLoader();
 				
         handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -257,7 +269,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     }
 
     public static void revealFromTop() {
-        final int color = Color.parseColor(preferences.getString("ActionReveal_Backgroundcolor","#ffffffff"));
+        final int color = Color.parseColor(colorPrefs.getString("ActionReveal_Backgroundcolor","#ffffffff"));
 
         final Point p = new Point(maxX / 2, maxY / 2);
 
@@ -483,6 +495,33 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
 		}
 
-		
-		
+
+		private void initImageLoader() {
+				try {
+						String CACHE_DIR = getCacheDir().getPath() + "/.temp_tmp";
+						new File(CACHE_DIR).mkdirs();
+
+						DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+								.cacheOnDisc(true).cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY)
+								.bitmapConfig(Bitmap.Config.RGB_565).build();
+
+						LruMemoryCache memoryCacheCore = new LruMemoryCache(5*1024*1024);
+						LimitedAgeMemoryCache memoryCache = new LimitedAgeMemoryCache(memoryCacheCore, 15*60);
+						LruDiskCache discCache = new LruDiskCache(new File(CACHE_DIR),new URLFileNameGenerator(),250*1024*1024);
+						ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(
+								getBaseContext())
+								.defaultDisplayImageOptions(defaultOptions)
+								.discCache(discCache)
+								.memoryCache(memoryCache);
+
+						ImageLoaderConfiguration config = builder.build();
+						imageLoader = ImageLoader.getInstance();
+						imageLoader.init(config);
+						ImgLoader_Loaded = true;
+						Log.d("ImageLoader","Loaded!");
+				} catch (Exception e) {
+						Log.e("ImageLoader","Load failed, code:"+e);
+				}
+		}
+
 }

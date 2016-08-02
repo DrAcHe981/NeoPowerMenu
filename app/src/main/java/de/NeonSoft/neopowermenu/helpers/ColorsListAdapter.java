@@ -21,7 +21,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 		
 		AlertDialog savePresetDialog;
 		
-		public static final String TYPE_ITEM = "item", TYPE_HEADER = "header", TYPE_LOAD = "load", TYPE_SAVE = "save";
+		public static final String TYPE_EMPTY = "empty", TYPE_ITEM = "item", TYPE_HEADER = "header", TYPE_LOAD = "load", TYPE_SAVE = "save";
 		
 		public ColorsListAdapter(Activity context,String[][] colorNames,String[] defaultColors) {
 				super(context, R.layout.colorslistitem, colorNames);
@@ -41,8 +41,8 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 		public View getView(final int p1, View InflatedView, ViewGroup p3)
 		{
 				// TODO: Implement this method
-				LinearLayout root, previewLayout;
-				final TextView Title,Preview,Desc;
+				LinearLayout root, previewLayout, Texts;
+				final TextView Title,Preview,Desc,Line;
 				final String[] loadColor;
 				final String colorType;
 				InflatedView = mInflater.inflate(R.layout.colorslistitem,null);
@@ -50,11 +50,25 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 				root = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Root);
 				previewLayout = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Preview);
 				Preview = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Preview);
+				Texts = (LinearLayout) InflatedView.findViewById(R.id.colorslistitemLinearLayout_Texts);
 				Title = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Text);
 				Desc = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Desc);
+				Line = (TextView) InflatedView.findViewById(R.id.colorslistitem_Line);
 				
 				String rowType = getItemType(p1);
 						switch (rowType) {
+								case TYPE_EMPTY:
+										previewLayout.setVisibility(View.GONE);
+										Texts.setVisibility(View.GONE);
+										Line.setVisibility(View.GONE);
+										InflatedView.setEnabled(false);
+										InflatedView.setClickable(false);
+										LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+												LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+										layoutParams.setMargins(0, helper.getNavigationBarHeight(context), 0, 0);
+										root.setLayoutParams(layoutParams);
+										break;
 								case TYPE_LOAD:
 										previewLayout.setVisibility(View.GONE);
 										Title.setText(R.string.preset_Load);
@@ -130,15 +144,24 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																										if(loadColor.length>1) {
 																												if (loadColor[1].contains("Background"))
 																												{
-																														fw.append(loadColor[0]+"_Backgroundcolor="+MainActivity.preferences.getString(loadColor[0]+"_Backgroundcolor","#ffffffff")+"\n");
+																														fw.append(loadColor[0]+"_Backgroundcolor="+MainActivity.colorPrefs.getString(loadColor[0]+"_Backgroundcolor","#ffffffff")+"\n");
 																												} else if (loadColor[1].contains("Text")) {
-																														fw.append(loadColor[0]+"_Textcolor="+MainActivity.preferences.getString(loadColor[0]+"_Textcolor","#ffffff")+"\n");
+																														fw.append(loadColor[0]+"_Textcolor="+MainActivity.colorPrefs.getString(loadColor[0]+"_Textcolor","#ffffff")+"\n");
 																												}
 																										}
 																								}
 																								fw.close();
 																								MainActivity.preferences.edit().putString("lastUsedPreset",resultData.get(0).replace("/","")).commit();
-																								Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",resultData.get(0).replace("/","")),Toast.LENGTH_SHORT).show();
+																								if(resultData.get(2).equalsIgnoreCase("true")) {
+																										helper.zipAll(context.getFilesDir().getPath()+"/images/",context.getFilesDir().getPath()+"/temp/"+resultData.get(0).replace("/","")+".zip",null);
+																										helper.zipFile(context.getFilesDir().getPath()+"/presets/"+resultData.get(0).replace("/","")+".nps",context.getFilesDir().getPath()+"/temp/"+resultData.get(0).replace("/","")+".zip",null);
+																										new File(context.getFilesDir().getPath()+"/presets/"+resultData.get(0).replace("/","")+".nps").delete();
+																										if (new File(context.getFilesDir().getPath()+"/temp/"+resultData.get(0).replace("/","")+".zip").renameTo(new File(context.getFilesDir().getPath()+"/presets/"+resultData.get(0).replace("/","")+".nps"))) {
+																												Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",resultData.get(0).replace("/","")),Toast.LENGTH_SHORT).show();
+																										}
+																								} else {
+																										Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",resultData.get(0).replace("/","")),Toast.LENGTH_SHORT).show();
+																								}
 																						}
 																						catch (IOException e)
 																						{}
@@ -183,8 +206,9 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																);
 																dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastPresetCreatedBy",""),true,null);
 																dialogFragment.setDialogInputAssistInfo(context.getString(R.string.presetSaveDialog_OverwriteText));
-																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
-																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Save));
+																dialogFragment.setDialogCheckBox(context.getString(R.string.graphics_GraphicsSaveLoad).split("/")[0]);
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[7]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});
@@ -222,7 +246,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 												Title.setText("String Resource for "+ loadColor[0]+" not found.");
 										}
 										try {
-												currentColor = MainActivity.preferences.getString(loadColor[0]+colorType,defaultColors[p1]);
+												currentColor = MainActivity.colorPrefs.getString(loadColor[0]+colorType,defaultColors[p1]);
 										} catch (Throwable t) {
 												Preview.setText("Error");
 										}
@@ -259,7 +283,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																				public void onPositiveClick(ArrayList<String> resultData)
 																				{
 																						// TODO: Implement this method
-																						MainActivity.preferences.edit().putString(loadColor[0]+colorType,resultData.get(0)).commit();
+																						MainActivity.colorPrefs.edit().putString(loadColor[0]+colorType,resultData.get(0)).commit();
 																						Preview.setBackgroundColor(Color.parseColor(resultData.get(0)));
 																				}
 
@@ -270,9 +294,9 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																				}
 																		});
 																dialogFragment.setDialogText("");
-																dialogFragment.setDialogColorPicker(MainActivity.preferences.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
-																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Cancel));
-																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Save));
+																dialogFragment.setDialogColorPicker(MainActivity.colorPrefs.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[7]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});

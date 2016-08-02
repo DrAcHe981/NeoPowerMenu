@@ -83,7 +83,6 @@
 							android:id="@+id/irecovery"
 							android:layout_width="45dp"
 							android:layout_height="45dp"
-							android:contentDescription="@string/app_name"
 							android:gravity="center"/>
 
 						<ImageView
@@ -128,7 +127,6 @@
 							android:id="@+id/ibootloader"
 							android:layout_width="45dp"
 							android:layout_height="45dp"
-							android:contentDescription="@string/app_name"
 							android:gravity="center"/>
 
 						<ImageView
@@ -173,7 +171,6 @@
 							android:id="@+id/isafe"
 							android:layout_width="45dp"
 							android:layout_height="45dp"
-							android:contentDescription="@string/app_name"
 							android:gravity="center"/>
 
 						<ImageView

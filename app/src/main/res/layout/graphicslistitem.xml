@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:gravity="center"
+	android:padding="10dp">
+
+	<FrameLayout
+		android:layout_width="@dimen/image_width"
+		android:layout_height="@dimen/image_height">
+
+		<FrameLayout
+			android:id="@+id/frmQueue"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<RelativeLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:gravity="center">
+
+				<ImageView
+					android:id="@+id/imgQueueBg"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:scaleType="fitCenter"
+					android:visibility="visible"
+					android:src="@mipmap/ic_launcher"
+					android:layout_margin="30dp"/>
+
+				<ImageView
+					android:id="@+id/imgQueue"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:scaleType="fitCenter"
+					android:visibility="visible"
+					android:src="@mipmap/ic_launcher"
+					android:layout_margin="30dp"
+					android:padding="20dp"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="match_parent"
+					android:text="Medium Text"
+					android:id="@+id/imgName"
+					android:gravity="center_horizontal"
+					android:visibility="gone"
+					android:layout_alignParentBottom="true"/>
+
+			</RelativeLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				android:gravity="center"
+				android:visibility="visible"
+				android:id="@+id/graphicslistitemLinearLayout_Loading">
+
+				<ProgressBar
+					android:layout_height="50dp"
+					android:layout_width="50dp"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="wrap_content"
+					android:text="Loading..."/>
+
+			</LinearLayout>
+
+		</FrameLayout>
+
+	</FrameLayout>
+
+</LinearLayout>
+

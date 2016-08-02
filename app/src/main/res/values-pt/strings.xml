@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Cheque esse lindo aplicativo para customizar o Menu de Energia de seu dispositivo Rooteado!
 
 "</string>
@@ -78,7 +77,6 @@ Essa configuração só está acessível no Xposed Installer."</string>
 <string name="presetsManager_SureToDelete">"Tem certeza que deseja apagar [PRESETNAME]? 
 Isso não pode  ser desfeito!"</string>
 <string name="presetsManager_Share">"Compartilhar"</string>
-<string name="presetsManager_NJI">"Este recurso não está implementado atualmente..."</string>
 <string name="presetsManager_ImportMsg">"Gostaria de importar esse pré-ajuste?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] Foi importado com sucesso."</string>
 <string name="presetsManager_ImportFailed">"Importação falhou..."</string>
@@ -98,22 +96,12 @@ Isso não pode  ser desfeito!"</string>
 <string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Atraso entre mostrar a animação de revelar e o menu de energia."</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"Ok"</string>
-<string name="Dialog_Yes">"Sim"</string>
-<string name="Dialog_Rename">"Renomear"</string>
-<string name="Dialog_Cancel">"Cancelar"</string>
-<string name="Dialog_Delete">"Apagar"</string>
-<string name="Dialog_Load">"Carregar"</string>
-<string name="Dialog_Save">"Salvar"</string>
-<string name="Dialog_Ignore">"Ignorar"</string>
 <string name="Dialog_SelectColor">"Selecionar cor"</string>
 <string name="ColorPicker_Value">"Valor:"</string>
 <string name="ColorPicker_Saturation">"Saturação:"</string>
 <string name="ColorPicker_Opacity">"Opacidade:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltInLight">"Claro"</string>
-<string name="presetLoadDialog_BuiltInDark">"Escuro"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Preto"</string>
+<string name="presetLoadDialog_BuiltIn">"Claro/Escuro/Preto"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] Apagado!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] Carregado!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Esse pré-ajuste foi criado por:"</string>
@@ -144,11 +132,7 @@ Isso não pode  ser desfeito!"</string>
 <string name="visibilityOrderDesc_ExpandedDesktop">"Alternar o modo da Área de Trabalho expandida do GravityBox através do Menu de Energia (GravityBox precisa estar instalado)."</string>
 <string name="advancedPrefsTitle_DialogGravity">"Posição da caixa de diálogo"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Mudar a posição da caixa de diálogo."</string>
-<string name="advancedPrefs_DialogGravityTop">"Cima"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Esquerda"</string>
-<string name="advancedPrefs_DialogGravityCenter">"Centro"</string>
-<string name="advancedPrefs_DialogGravityRight">"Direita"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Abaixo"</string>
+<string name="advancedPrefs_DialogGravity">"Cima/Esquerda/Direita/Abaixo"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Lanterna ligada"</string>

@@ -14,7 +14,7 @@
 			android:layout_height="match_parent"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_width="match_parent"
-			android:text="@string/presetsManager_NJI"
+			android:text=""
 			android:gravity="center|center_vertical|center_horizontal"
 			android:id="@+id/presetsmanagerlistholderTextView_Message"
 			android:visibility="gone"/>

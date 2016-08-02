@@ -74,8 +74,8 @@ public class PreferencesPartFragment extends Fragment
 	
 				mContext = getActivity();
 
-				MainActivity.actionbar.setTitle(getString(R.string.app_name));
-				MainActivity.actionbar.setSubTitle("v"+MainActivity.versionName+" ("+ MainActivity.versionCode+")");
+				MainActivity.actionbar.setTitle("NeoPowerMenu");
+				MainActivity.actionbar.setSubTitle("v" + MainActivity.versionName + " (" + MainActivity.versionCode + ")"+(MainActivity.LOCALTESTSERVER ? " | Using local test Server" : ""));
 				
 				ActiveStyle = MainActivity.preferences.getString("DialogTheme", "Material");
 				hideicon = MainActivity.preferences.getBoolean("HideLauncherIcon",false);
@@ -95,8 +95,8 @@ public class PreferencesPartFragment extends Fragment
 				LinearLayout_Theme = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Theme);
 
 				LinearLayout_Graphics =(LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Graphics);
-				LinearLayout_Graphics.setAlpha((float) .3);
-				LinearLayout_Graphics.setEnabled(false);
+				//LinearLayout_Graphics.setAlpha((float) .3);
+				//LinearLayout_Graphics.setEnabled(false);
 				
 				LinearLayout_VisibilityOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_VisibilityOrder);
 
@@ -176,7 +176,7 @@ public class PreferencesPartFragment extends Fragment
 														}
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId,true);
-										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Ok));
+										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});
@@ -282,7 +282,7 @@ public class PreferencesPartFragment extends Fragment
 										// TODO: Implement this method
 										Intent i = new Intent(Intent.ACTION_SEND);
 										i.setType("text/plain");
-										i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+										i.putExtra(Intent.EXTRA_SUBJECT, "NeoPowerMenu");
 										String sAux = getString(R.string.ShareMessage);
 										sAux = sAux + "repo.xposed.info/module/de.NeonSoft.neopowermenu \n\n";
 										i.putExtra(Intent.EXTRA_TEXT, sAux);

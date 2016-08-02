@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">"NeoPowerMenu"</string>
 <string name="ShareMessage">"Оцените это отличное приложение для настройки меню выключения с Вашего Аndroid-устройства с root-доступом!
 
 "</string>
@@ -69,7 +68,6 @@
 <string name="presetsManager_SureToDelete">"Вы уверены, что хотите удалить [PRESETNAME]?
 Это не может быть отменено!"</string>
 <string name="presetsManager_Share">"Поделиться"</string>
-<string name="presetsManager_NJI">"Эта опция в данный момент недоступна..."</string>
 <string name="presetsManager_ImportMsg">"Вы хотите импортировать этот шаблон?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] Импортирован успешно."</string>
 <string name="presetsManager_ImportFailed">"Импортировать не удалось..."</string>
@@ -87,22 +85,12 @@
 <string name="advancedPrefsDesc_ScreenshotDelay">"Задержка между нажатием и съёмкой."</string>
 
 <!-- Dialog -->
-<string name="Dialog_Ok">"Oк"</string>
-<string name="Dialog_Yes">"Да"</string>
-<string name="Dialog_Rename">"Переименовать"</string>
-<string name="Dialog_Cancel">"Отмена"</string>
-<string name="Dialog_Delete">"Удалить"</string>
-<string name="Dialog_Load">"Загрузить"</string>
-<string name="Dialog_Save">"Сохранить"</string>
-<string name="Dialog_Ignore">"Игнорировать"</string>
 <string name="Dialog_SelectColor">"Выберите цвет"</string>
 <string name="ColorPicker_Value">"Значение:"</string>
 <string name="ColorPicker_Saturation">"Насыщенность:"</string>
 <string name="ColorPicker_Opacity">"Непрозрачность:"</string>
 <string name="ColorPicker_Hex">"Код:"</string>
-<string name="presetLoadDialog_BuiltInLight">"Светлый"</string>
-<string name="presetLoadDialog_BuiltInDark">"Тёмный"</string>
-<string name="presetLoadDialog_BuiltInBlack">"Чёрный"</string>
+<string name="presetLoadDialog_BuiltIn">"Светлый/Тёмный/Чёрный"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] удалён!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] загружен!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Этот шаблон создан:"</string>
@@ -129,10 +117,7 @@
 <string name="powerMenuMain_ExpandedDesktop">"Расширенный экран"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Позиция диалогового окна"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Изменить позицию диалогового окна"</string>
-<string name="advancedPrefs_DialogGravityTop">"Сверху"</string>
-<string name="advancedPrefs_DialogGravityLeft">"Слева"</string>
-<string name="advancedPrefs_DialogGravityRight">"Справа"</string>
-<string name="advancedPrefs_DialogGravityBottom">"Снизу"</string>
+<string name="advancedPrefs_DialogGravity">"Сверху/Слева/Справа/Снизу"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Фонарик включен"</string>

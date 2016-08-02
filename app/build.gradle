@@ -1,7 +1,6 @@
 apply plugin: 'java'
 
 android {
-    useLibrary 'org.apache.http.legacy'
 		
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -10,8 +9,8 @@ android {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 22
-        versionName "1.5.2"
+        versionCode 26
+        versionName "1.5.3"
     }
 
     buildTypes {
@@ -31,11 +30,11 @@ android {
 }
 		
 dependencies {
+	compile 'com.theartofdev.edmodo:android-image-cropper:2.2.+'
+	compile 'net.lingala.zip4j:zip4j:+';
+	compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5';
  compile 'cat.ereza:customactivityoncrash:1.5.0'
  compile "ch.acra:acra:4.7.0"
-	//compile 'com.faradaj:blur-behind:1.1';
-	//compile 'fr.tvbarthel.blurdialogfragment:lib:2.1.6'
-	//compile 'com.mikepenz:aboutlibraries:5.6.6';
 	compile 'org.apache.commons:commons-lang3:3.0'
 	compile 'org.apache.httpcomponents:httpclient:4.5.2'
 	compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'

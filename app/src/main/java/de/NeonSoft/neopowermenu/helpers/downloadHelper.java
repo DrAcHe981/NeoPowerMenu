@@ -141,6 +141,10 @@ public class downloadHelper
 						// TODO: Implement this method
 						super.onPreExecute();
 						mInterface.onDownloadStarted(true);
+						isRunning = true;
+						iMLastDownloadedSize = 0;
+						iMLastTime = System.currentTimeMillis();
+						iMFirstTime = iMLastTime;
 						timer.scheduleAtFixedRate(new TimerTask() {
 
 										@Override
@@ -152,10 +156,36 @@ public class downloadHelper
 												}
 										}
 								}, 0, 150L);
-								isRunning = true;
-								iMLastDownloadedSize = 0;
-								iMLastTime = System.currentTimeMillis();
-								iMFirstTime = iMLastTime;
+						timer.scheduleAtFixedRate(new TimerTask() {
+
+										@Override
+										public void run()
+										{
+												// TODO: Implement this method
+												try {
+														long mReaminingSize = dltotalsize - dlnowsize;
+														long mDownloadedSize = dlnowsize;
+														mProgress = (int) ((dlnowsize * 100) / dltotalsize);
+
+														long timeElapsedSinceLastTime = System.currentTimeMillis() - iMLastTime;
+														long timeElapsed = System.currentTimeMillis() - iMFirstTime;
+														iMLastTime = System.currentTimeMillis();
+														// Difference between last time and this time = how much was downloaded since last run.
+														long downloadedSinceLastTime = mDownloadedSize - iMLastDownloadedSize;
+														iMLastDownloadedSize = mDownloadedSize;
+														if (timeElapsedSinceLastTime > 0 && timeElapsed > 0) {
+																// Speed (bytes per second) = downloaded bytes / time in seconds (nanoseconds / 1000000000)
+																mAvgSpeed = (mDownloadedSize) * 1000 / timeElapsed;
+																mSpeed = downloadedSinceLastTime * 1000 / timeElapsedSinceLastTime;
+														}
+
+														if (mAvgSpeed > 0) {
+																// ETA (milliseconds) = remaining byte size / bytes per millisecond (bytes per second * 1000)
+																mETA = (mReaminingSize) * 1000 / mAvgSpeed;
+														}
+												} catch (Throwable t) {}
+										}
+								}, 1000L, 1000L);
 				}
 				
 				@Override
@@ -193,26 +223,6 @@ public class downloadHelper
 																total += count;
 																dlnowsize = total;
 																dloutput.write(data, 0, count);
-																long mReaminingSize = dltotalsize - dlnowsize;
-																long mDownloadedSize = dlnowsize;
-																mProgress = (int) ((dlnowsize * 100) / dltotalsize);
-
-																long timeElapsedSinceLastTime = System.currentTimeMillis() - iMLastTime;
-																long timeElapsed = System.currentTimeMillis() - iMFirstTime;
-																iMLastTime = System.currentTimeMillis();
-																// Difference between last time and this time = how much was downloaded since last run.
-																long downloadedSinceLastTime = mDownloadedSize - iMLastDownloadedSize;
-																iMLastDownloadedSize = mDownloadedSize;
-																if (timeElapsedSinceLastTime > 0 && timeElapsed > 0) {
-																		// Speed (bytes per second) = downloaded bytes / time in seconds (nanoseconds / 1000000000)
-																		mAvgSpeed = (mDownloadedSize) * 1000 / timeElapsed;
-																		mSpeed = downloadedSinceLastTime * 1000 / timeElapsedSinceLastTime;
-																}
-
-																if (mAvgSpeed > 0) {
-																		// ETA (milliseconds) = remaining byte size / bytes per millisecond (bytes per second * 1000)
-																		mETA = (mReaminingSize) * 1000 / mAvgSpeed;
-																}
 														}
 												}
 										}

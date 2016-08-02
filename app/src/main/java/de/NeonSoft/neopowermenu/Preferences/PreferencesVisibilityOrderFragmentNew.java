@@ -35,7 +35,10 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 				"SoundMode",
 				"Recovery",
 				"Bootloader",
-				"SafeMode"};
+				"SafeMode",
+				"SoundVibrate",
+				"SoundNormal",
+				"SoundSilent"};
 		public static String[] PowerMenuItemsTexts;
 		
     private DragSortListView.DropListener onDrop =
@@ -90,13 +93,16 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 						getString(R.string.powerMenuMain_Screenshot),
 						getString(R.string.powerMenuMain_Screenrecord),
 						getString(R.string.powerMenuMain_Flashlight),
-						getString(R.string.powerMenuMain_ExpandedDesktop),
+						getString(R.string.powerMenuMain_ExpandedDesktop)+" (GravityBox)",
 						getString(R.string.powerMenuMain_AirplaneMode),
 						getString(R.string.powerMenuMain_RestartUI),
 						getString(R.string.powerMenuMain_SoundMode),
 						getString(R.string.powerMenuBottom_Recovery),
 						getString(R.string.powerMenuBottom_Bootloader),
-						getString(R.string.powerMenuBottom_SafeMode)};
+						getString(R.string.powerMenuBottom_SafeMode),
+						getString(R.string.powerMenuMain_SoundVibrate),
+						getString(R.string.powerMenuMain_SoundNormal),
+						getString(R.string.powerMenuMain_SoundSilent)};
 				
 				View InflatedView = inflater.inflate(R.layout.visibilityorder, container, false);
 				
@@ -186,7 +192,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 														}
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_NONE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,0,true);
-										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Cancel));
+										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("/")[4]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});
@@ -240,8 +246,8 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 												dialogFragment.setDialogText(getString(R.string.visibilityOrder_SelectMulti));
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_MULTIPLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,-1,false);
 										dialogFragment.setDialogListLimit(3,false);
-										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Cancel));
-										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
+										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Buttons).split("/")[4]);
+										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("/")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});
