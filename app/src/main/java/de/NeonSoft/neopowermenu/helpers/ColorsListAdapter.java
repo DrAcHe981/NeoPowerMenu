@@ -19,8 +19,6 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 		public static String[][] colorNamesArray;
 		public static String[] defaultColors;
 		
-		AlertDialog savePresetDialog;
-		
 		public static final String TYPE_EMPTY = "empty", TYPE_ITEM = "item", TYPE_HEADER = "header", TYPE_LOAD = "load", TYPE_SAVE = "save";
 		
 		public ColorsListAdapter(Activity context,String[][] colorNames,String[] defaultColors) {

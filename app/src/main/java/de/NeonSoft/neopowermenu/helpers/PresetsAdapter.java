@@ -122,7 +122,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																		}
 
 																		@Override
-																		public void onPositiveClick(ArrayList<String> resultData)
+																		public void onPositiveClick(final ArrayList<String> resultData)
 																		{
 																				// TODO: Implement this method{
 																				final String appVersion;
@@ -132,8 +132,12 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				{
 																						FileInputStream fIn;
 																						if(helper.isValidZip(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps",null)) {
-																								helper.unzipFile(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps",context.getFilesDir().getPath() + "/temp/",itemsTitle.get(position)+".nps",null);
-																								fIn = new FileInputStream(context.getFilesDir().getPath() + "/temp/" + itemsTitle.get(position) + ".nps");
+																								helper.copyFile(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps",context.getFilesDir().getPath() + "/temp/" + resultData.get(0)+".nps.tmp");
+																								helper.unzipFile(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps.tmp",context.getFilesDir().getPath() + "/temp/",itemsTitle.get(position)+".nps",null);
+																								new File(context.getFilesDir().getPath() + "/temp/" + itemsTitle.get(position) + ".nps").renameTo(new File(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps"));
+																								helper.removeFromZip(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps.tmp",itemsTitle.get(position)+".nps",null);
+																								helper.zipFile(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps",context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps.tmp",null);
+																								fIn = new FileInputStream(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps");
 																						} else {
 																								fIn = new FileInputStream(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps");
 																						}
@@ -153,7 +157,10 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				catch (Throwable t)
 																				{
 																				}
-																				new File(context.getFilesDir().getPath() + "/temp/" + itemsTitle.get(position) +".nps").delete();
+																				if(helper.isValidZip(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps.tmp",null)) {
+																						new File(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) +".nps").delete();
+																						new File(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps.tmp").renameTo(new File(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps"));
+																				}
 																				uploadHelper uH = new uploadHelper(context);
 																				uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
@@ -181,6 +188,9 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										Progress.setProgress(0);
 																										Upload.setEnabled(true);
 																										Upload.setAlpha((float) 1);
+																										//if(helper.isValidZip(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps",null)) {
+																												new File(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) +".nps").delete();
+																										//}
 																										new getOnlinePresets().execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
 																										Toast.makeText(context, context.getString(R.string.presetsManager_UploadComplete), Toast.LENGTH_SHORT).show();
 																								}
@@ -368,7 +378,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																								}
 																						});
 																				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
-																				uH.setLocalUrl(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps");
+																				uH.setLocalUrl(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps");
 																				uH.uploadAs(resultData.get(0) + ".nps");
 																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",resultData.get(0)},{"presetCreator",resultData.get(1)},{"presetAppVersion","v" + appVersion},{MainActivity.usernameemail.contains("@") ? "userEmail" : "userName",MainActivity.usernameemail},{"userId",MainActivity.deviceUniqeId}});
 																				uH.startUpload();

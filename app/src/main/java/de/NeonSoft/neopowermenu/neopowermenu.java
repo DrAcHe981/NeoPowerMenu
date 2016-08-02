@@ -8,9 +8,9 @@ import cat.ereza.customactivityoncrash.*;
 		formUri = "http://www.Neon-Soft.de/inc/acra/acra.php",
 		formUriBasicAuthLogin = "acra",
 		formUriBasicAuthPassword = "acraerrormailer",
-		reportType = org.acra.sender.HttpSender.Type.FORM,
+		reportType = org.acra.sender.HttpSender.Type.JSON,
 		mode = ReportingInteractionMode.SILENT,
-		sendReportsAtShutdown = true,
+		sendReportsAtShutdown = false,
 		socketTimeout = 1000 * 20
 )
 
