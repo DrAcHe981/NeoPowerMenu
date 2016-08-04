@@ -44,6 +44,8 @@ Bekijk de broncode op GitHub."</string>
 <string name="preferencesTitle_Share">"Deel"</string>
 <string name="preferencesDesc_Share">"Bevalt de app? Deel hem met je vrienden."</string>
 <string name="preferencesTitle_About">"Code door Neon-Soft / DrAcHe981"</string>
+
+<!-- Information has no plural in English ;) -->
 <string name="preferencesDesc_About">"Gebaseerd op code van Naman Dwivedi (naman14). Klik hier voor meer informatie."</string>
 
 <!-- Preferences: Visibility and order -->
@@ -75,14 +77,11 @@ Bekijk de broncode op GitHub."</string>
 <string name="advancedPrefs_DelayZero">"Bijna meteen"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Screenshot vertraging"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Vertraging tussen klikken en screenshot."</string>
-
-<!-- Dialog -->
 <string name="Dialog_SelectColor">"Selecteer kleur"</string>
 <string name="ColorPicker_Value">"Waarde:"</string>
 <string name="ColorPicker_Saturation">"Saturatie:"</string>
 <string name="ColorPicker_Opacity">"Opaciteit:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltIn">"Licht/Donger/Zwart"</string>
 <string name="presetLoad_PresetDeleted">"Verwijderd [PRESETNAME]!"</string>
 <string name="presetLoad_PresetLoaded">"Geladen [PRESETNAME]!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Deze preset is gemaakt door:"</string>
@@ -109,7 +108,6 @@ Bekijk de broncode op GitHub."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Expanded Desktop"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Positie scherm"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Verander de scherm positie"</string>
-<string name="advancedPrefs_DialogGravity">"Top/Links/Rechts/Bodem"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Zaklamp aan"</string>
@@ -145,6 +143,8 @@ Sta machtigingen toe die nog niet zijn toegevoegd bij het eerste gebruik (Androi
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Systeem waarschuwingen scherm"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benodigd om het Power Menu bodem op andere items te tonen."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
+
+<!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benodigd op te voorkomen dat de zaklamp en schermopname ongevraagd gesloten worden."</string>
 <string name="powerMenuMain_SoundMode">"Geluidsmodus"</string>
 <string name="powerMenuMain_SoundModeDesc">"Huidige geluidsnodus: [SOUNDMODE]"</string>
