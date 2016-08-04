@@ -133,7 +133,7 @@
 					<TextView
 						android:layout_height="match_parent"
 						android:layout_width="wrap_content"
-						android:text="@string/presetsManager_Upload"
+						android:text="@string/presetsManager_Buttons"
 						android:gravity="center_vertical"
 						android:id="@+id/presetmanagerlistitemTextView_Upload"/>
 

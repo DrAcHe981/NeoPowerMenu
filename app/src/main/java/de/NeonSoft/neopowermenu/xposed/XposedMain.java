@@ -73,7 +73,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
 
 		/*<!-- Internal Hook version to check if reboot is needed --!>*/
-		private static final int XposedHookVersion = 22;
+		private static final int XposedHookVersion = 23;
 
 		Object mPhoneWindowManager;
 
