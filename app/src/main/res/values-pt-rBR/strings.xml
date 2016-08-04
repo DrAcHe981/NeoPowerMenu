@@ -44,6 +44,8 @@ Cheque a fonte no GitHub."</string>
 <string name="preferencesTitle_Share">"Compartilhar"</string>
 <string name="preferencesDesc_Share">"Gostou do aplicativo? Compartilhe com seus amigos."</string>
 <string name="preferencesTitle_About">"Código por Neon-Doft/DrAcHe981"</string>
+
+<!-- Information has no plural in English ;) -->
 <string name="preferencesDesc_About">"Baseado em um código de Naman Dwivedi (naman14)."</string>
 
 <!-- Preferences: Visibility and order -->
@@ -76,14 +78,11 @@ Isso não pode ser desfeito!"</string>
 <string name="advancedPrefs_DelayZero">"Quase instantâneo"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Ataso da Captura de Tela"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Atraso entre o clique e a Captura de Tela."</string>
-
-<!-- Dialog -->
 <string name="Dialog_SelectColor">"Selecione a cor"</string>
 <string name="ColorPicker_Value">"Valor:"</string>
 <string name="ColorPicker_Saturation">"Saturação:"</string>
 <string name="ColorPicker_Opacity">"Opacidade:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltIn">"Claro/Escuro/Preto"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] apagado!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] carregada!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Essa predefinição foi criada por:"</string>
@@ -110,7 +109,6 @@ Isso não pode ser desfeito!"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Área de Trabalho Expandida"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Posição da Caixa de Diálogo"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Mudar a posição da caixa de diálogo."</string>
-<string name="advancedPrefs_DialogGravity">"Topo/Esquerda/Direita/Baixo"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Lanterna ligada"</string>
@@ -146,6 +144,8 @@ Conceder permissões adicionais que não são adicionadas na primeira inicializa
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Janela de  sistema de alerta"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Necessário para exibir o Menu de energia no topo de tudo."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wakelock"</string>
+
+<!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Necessário para evitar o encerramento do  serviço da lanterna e gravação de tela."</string>
 <string name="powerMenuMain_SoundMode">"Modo de Som"</string>
 <string name="powerMenuMain_SoundModeDesc">"Modo de som atual: [SOUNDMODE)"</string>
