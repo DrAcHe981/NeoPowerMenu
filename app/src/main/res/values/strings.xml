@@ -15,9 +15,6 @@
 <string name="powerMenuBottom_Recovery">"Recovery"</string>
 <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
 <string name="powerMenuBottom_SafeMode">"Safe Mode"</string>
-		<string name="powerMenuMain_SoundVibrate">Sound: Vibrate</string>
-		<string name="powerMenuMain_SoundNormal">Sound: Normal</string>
-		<string name="powerMenuMain_SoundSilent">Sound: Silent</string>
 <string name="powerMenu_Shuttingdown">"Shutting down..."</string>
 <string name="powerMenu_Rebooting">"Rebooting..."</string>
 
@@ -87,15 +84,11 @@ This can't be undone!"</string>
 <string name="advancedPrefs_DelayZero">"Almost instant"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Screenshot delay"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Delay between click and screenshot."</string>
-
-<!-- Dialog -->
-<string name="Dialog_Buttons">"Ok/Yes/No/Rename/Cancel/Delete/Load/Save/Ignore"</string>
 <string name="Dialog_SelectColor">"Select color"</string>
 <string name="ColorPicker_Value">"Value:"</string>
 <string name="ColorPicker_Saturation">"Saturation:"</string>
 <string name="ColorPicker_Opacity">"Opacity:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltIn">"Light/Dark/Black"</string>
 <string name="presetLoad_PresetDeleted">"Deleted [PRESETNAME]!"</string>
 <string name="presetLoad_PresetLoaded">"Loaded [PRESETNAME]!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"This preset was created by:"</string>
@@ -122,7 +115,6 @@ This can't be undone!"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Expanded Desktop"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Change the Dialog position."</string>
-<string name="advancedPrefs_DialogGravity">"Top/Left/Right/Bottom"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Torch On"</string>
@@ -223,9 +215,6 @@ Your presets (ordered by stars):
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
 <string name="presetsManager_Stars">"Stars: [STARS]"</string>
-		<string name="presetsManager_ReportDialog">"Are you sure to report [PRESETNAME]?\nThis can't be undone, so please don't report just for fun!\n\nAlso we need a reason why you want to report it, please enter it below./Report reason:"</string>
-		<string name="presetsManager_ReportResult">"[PRESETNAME] reported,the developer will take a look over it./Report failed, please try it again.\nReason: "</string>
-<string name="presetsManager_Buttons">"Give Star/Remove Star/Delete/Report/Upload/Share"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
@@ -251,9 +240,24 @@ Click here for recovering options."</string>
 <string name="preferencesDesc_Graphics">"Change the graphics, use custom or predefined graphics."</string>
 <string name="login_RecoverSuccess">"You will receive a email with with instructions on how to reset your password."</string>
 <string name="login_RecoverNotFound">"No user with this data found."</string>
+<string name="powerMenuMain_SoundVibrate">"Sound: Vibrate"</string>
+<string name="powerMenuMain_SoundNormal">"Sound: Normal"</string>
+<string name="powerMenuMain_SoundSilent">"Sound: Silent"</string>
 
-		<string name="graphics_Choose">"Restore default/Choose from presets/Choose from gallery"</string>
-		<string name="graphics_Crop">"Crop"</string>
-		<string name="graphics_NoPresetsFound">"No presets with graphics found..."</string>
-		<string name="graphics_GraphicsSaveLoad">"Save with current graphics./This preset contains graphics, do you want to load them?\nThis will overwrite your current graphics!"</string>
+<!-- Dialog -->
+<string name="Dialog_Buttons">"Ok/Yes/No/Rename/Cancel/Delete/Load/Save/Ignore"</string>
+<string name="presetLoadDialog_BuiltIn">"Light/Dark/Black"</string>
+<string name="advancedPrefs_DialogGravity">"Top/Left/Right/Bottom"</string>
+<string name="graphics_Choose">"Restore default/Choose from presets/Choose from gallery"</string>
+<string name="graphics_Crop">"Crop"</string>
+<string name="graphics_NoPresetsFound">"No presets with graphics found..."</string>
+<string name="graphics_GraphicsSaveLoad">"Save with current graphics./This preset contains graphics, do you want to load them?
+This will overwrite your current graphics!"</string>
+<string name="presetsManager_ReportDialog">"Are you sure to report [PRESETNAME]?
+This can't be undone, so please don't report just for fun!
+
+Also we need a reason why you want to report it, please enter it below./Report reason:"</string>
+<string name="presetsManager_ReportResult">"[PRESETNAME] reported,the developer will take a look over it./Report failed, please try it again.
+Reason: "</string>
+<string name="presetsManager_Buttons">"Give Star/Remove Star/Delete/Report/Upload/Share"</string>
 </resources>
