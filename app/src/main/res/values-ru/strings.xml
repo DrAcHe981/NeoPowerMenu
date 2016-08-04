@@ -49,6 +49,8 @@
 <string name="preferencesTitle_Share">"Поделиться"</string>
 <string name="preferencesDesc_Share">"Понравилось приложение? Поделитесь им среди своих друзей."</string>
 <string name="preferencesTitle_About">"Создано Neon-Soft / DrAcHe981"</string>
+
+<!-- Information has no plural in English ;) -->
 <string name="preferencesDesc_About">"Основано на исходном коде Naman Dwivedi(naman14)."</string>
 
 <!-- Preferences: Visibility and order -->
@@ -81,14 +83,11 @@
 <string name="advancedPrefs_DelayZero">"почти мгновенно"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Задержка Снимка экрана"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Задержка между нажатием и съёмкой."</string>
-
-<!-- Dialog -->
 <string name="Dialog_SelectColor">"Выберите цвет"</string>
 <string name="ColorPicker_Value">"Значение:"</string>
 <string name="ColorPicker_Saturation">"Насыщенность:"</string>
 <string name="ColorPicker_Opacity">"Непрозрачность:"</string>
 <string name="ColorPicker_Hex">"Код:"</string>
-<string name="presetLoadDialog_BuiltIn">"Светлый/Тёмный/Чёрный"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] удалён!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] загружен!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Этот шаблон создан:"</string>
@@ -115,7 +114,6 @@
 <string name="powerMenuMain_ExpandedDesktop">"Расширенный экран"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Позиция диалогового окна"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Изменить позицию диалогового окна"</string>
-<string name="advancedPrefs_DialogGravity">"Сверху/Слева/Справа/Снизу"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Фонарик включен"</string>
@@ -151,6 +149,8 @@
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Процесс, необходимый для отображения Меню выключения поверх всего"</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Блокировка спящего режима"</string>
+
+<!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
 <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Необходимо, чтобы предотвратить выключения Фонарика и сервиса Записи экрана"</string>
 <string name="powerMenuMain_SoundMode">"Звуковой режим"</string>
 <string name="powerMenuMain_SoundModeDesc">"Текущий режим: [SOUNDMODE]"</string>
@@ -162,9 +162,6 @@
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Регистрация"</string>
-<string name="presetsManager_Upload">"И меня зарегистрированных пользователей защищены, поэтому никто не может загружать шаблоны под их именем. Здесь Вы можете войти или создать новый аккаунт.
-Это не обязательно, если вы не хотите!
-Я никогда не разглашу никакую личную информацию!"</string>
 <string name="presetsManager_UploadMsg">"Имя пользователя или E-mail:"</string>
 <string name="presetsManager_UploadComplete">"Имя пользователя:"</string>
 <string name="presetsManager_UploadFailedSameName">"E-mail:"</string>
