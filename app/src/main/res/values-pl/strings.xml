@@ -87,14 +87,11 @@ Tego nie można cofnąć!"</string>
 <string name="advancedPrefs_DelayZero">"Prawie natychmiast"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Opóźnienie zrzutu ekranu"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Czas między dotknięciem a zrzutem ekranu."</string>
-
-<!-- Dialog -->
 <string name="Dialog_SelectColor">"Wybierz kolor"</string>
 <string name="ColorPicker_Value">"Wartość:"</string>
 <string name="ColorPicker_Saturation">"Nasycenie:"</string>
 <string name="ColorPicker_Opacity">"Krycie:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltIn">"Jasny/Ciemny/Czarny"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] usunięty!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] załadowany!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Szablon stworzony przez:"</string>
@@ -121,7 +118,6 @@ Tego nie można cofnąć!"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Rozszerzony pulpit"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Pozycja okna"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Zmień pozycję okna menu zasilania."</string>
-<string name="advancedPrefs_DialogGravity">"Góra/Lewo/Prawo/Dół"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Latarka włączona"</string>
