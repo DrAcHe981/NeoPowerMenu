@@ -269,9 +269,9 @@ public class MainActivity extends AppCompatActivity
 				};
 						for(int i = 0;i < PreferencesColorFragment.ColorNames.length; i++) {
 								if(PreferencesColorFragment.ColorNames[i][0]==ColorsListAdapter.TYPE_ITEM) {
-										if(colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1],"").isEmpty()) {
-												colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1],preferences.getString(PreferencesColorFragment.ColorNames[i][1],PreferencesColorFragment.lightPreset[i])).commit();
-												preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1]).commit();
+										if(colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(),"").isEmpty()) {
+												colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(),preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(),PreferencesColorFragment.lightPreset[i])).commit();
+												preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
 										}
 								}
 						}

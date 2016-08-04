@@ -145,6 +145,10 @@ public class uploadHelper
 						// TODO: Implement this method
 						super.onPreExecute();
 						mInterface.onUploadStarted(true);
+						isRunning = true;
+						iMLastDownloadedSize = 0;
+						iMLastTime = System.currentTimeMillis();
+						iMFirstTime = iMLastTime;
 						timer.scheduleAtFixedRate(new TimerTask() {
 
 										@Override
@@ -153,14 +157,41 @@ public class uploadHelper
 												// TODO: Implement this method
 												if(dlnowsize > 0 && dltotalsize > 0) {
 														mInterface.onPublishUploadProgress(dlnowsize,dltotalsize);
+												} else {
+														//Log.d("NPM:uH","dlnowsize = "+dlnowsize+", dltotalsize = "+dltotalsize);
 												}
-												//Log.d("NPM:uploadHelper","dlnowsize = "+dlnowsize+", dltotalsize = "+dltotalsize);
 										}
 								}, 0, 150L);
-						isRunning = true;
-						iMLastDownloadedSize = 0;
-						iMLastTime = System.currentTimeMillis();
-						iMFirstTime = iMLastTime;
+						timer.scheduleAtFixedRate(new TimerTask() {
+
+										@Override
+										public void run()
+										{
+												// TODO: Implement this method
+												try {
+														long mReaminingSize = dltotalsize - dlnowsize;
+														long mDownloadedSize = dlnowsize;
+														mProgress = (int) ((dlnowsize * 100) / dltotalsize);
+
+														long timeElapsedSinceLastTime = System.currentTimeMillis() - iMLastTime;
+														long timeElapsed = System.currentTimeMillis() - iMFirstTime;
+														iMLastTime = System.currentTimeMillis();
+														// Difference between last time and this time = how much was downloaded since last run.
+														long downloadedSinceLastTime = mDownloadedSize - iMLastDownloadedSize;
+														iMLastDownloadedSize = mDownloadedSize;
+														if (timeElapsedSinceLastTime > 0 && timeElapsed > 0) {
+																// Speed (bytes per second) = downloaded bytes / time in seconds (nanoseconds / 1000000000)
+																mAvgSpeed = (mDownloadedSize) * 1000 / timeElapsed;
+																mSpeed = downloadedSinceLastTime * 1000 / timeElapsedSinceLastTime;
+														}
+
+														if (mAvgSpeed > 0) {
+																// ETA (milliseconds) = remaining byte size / bytes per millisecond (bytes per second * 1000)
+																mETA = (mReaminingSize) * 1000 / mAvgSpeed;
+														}
+												} catch (Throwable t) {}
+										}
+								}, 1000L, 1000L);
 				}
 
 				@Override
@@ -181,17 +212,17 @@ public class uploadHelper
 						int bytesRead, bytesAvailable, bufferSize;
 						byte[] buffer;
 						int maxBufferSize = 1 * 1024 * 1024;
-						Log.i("NPM","Initializing upload: \nServer: "+p1[0]+"\nFile Name: "+uploadFileName);
+						Log.i("NPM:uH","Initializing upload: \nServer: "+p1[0]+"\nFile Name: "+uploadFileName+"\nSource file: "+p1[1]);
 						File sourceFile = new File(p1[1]);
 						if (!sourceFile.isFile()) {
-								Log.e("NPM", "Source File not exist :" +p1[1] + "" + uploadFileName);
+								Log.e("NPM:uH", "Source File not exist :" +p1[1]);
 								return "file not found";
 						} else {
 								try {
 										// open a URL connection to the Servlet
 										fileInputStream = new FileInputStream(sourceFile);
 										URL url = new URL(p1[0].replace(" ","%20")+(mParams!=null ? getQuery(mParams) : ""));
-										//Log.i("NPM","Parsed url: "+url.toString());
+										//Log.i("NPM:uH","Parsed url: "+url.toString());
 										// Open a HTTP connection to the URL
 										conn = (HttpURLConnection) url.openConnection();
 										conn.setDoInput(true); // Allow Inputs
@@ -215,32 +246,12 @@ public class uploadHelper
 										dltotalsize = sourceFile.length();
 										total = 0;
 										while ((count = bytesRead) > 0) {
-												total += count;
-												dlnowsize = total;
 												dos.write(buffer, 0, bufferSize);
 												bytesAvailable = fileInputStream.available();
 												bufferSize = Math.min(bytesAvailable, maxBufferSize);
 												bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-												long mReaminingSize = dltotalsize - dlnowsize;
-												long mDownloadedSize = dlnowsize;
-												mProgress = (int) ((dlnowsize * 100) / dltotalsize);
-
-												long timeElapsedSinceLastTime = System.currentTimeMillis() - iMLastTime;
-												long timeElapsed = System.currentTimeMillis() - iMFirstTime;
-												iMLastTime = System.currentTimeMillis();
-												// Difference between last time and this time = how much was downloaded since last run.
-												long downloadedSinceLastTime = mDownloadedSize - iMLastDownloadedSize;
-												iMLastDownloadedSize = mDownloadedSize;
-												if (timeElapsedSinceLastTime > 0 && timeElapsed > 0) {
-														// Speed (bytes per second) = downloaded bytes / time in seconds (nanoseconds / 1000000000)
-														mAvgSpeed = (mDownloadedSize) * 1000 / timeElapsed;
-														mSpeed = downloadedSinceLastTime * 1000 / timeElapsedSinceLastTime;
-												}
-
-												if (mAvgSpeed > 0) {
-														// ETA (milliseconds) = remaining byte size / bytes per millisecond (bytes per second * 1000)
-														mETA = (mReaminingSize) * 1000 / mAvgSpeed;
-												}
+												total += bytesRead;
+												dlnowsize = total;
 										}
 										// send multipart form data necesssary after file data...
 										dos.writeBytes(lineEnd);
@@ -256,10 +267,10 @@ public class uploadHelper
 												while ((errorMsgB = br.readLine()) != null) {
 														errorMsg += errorMsgB+"\n";
 												}
-												Log.i("NPM:uH", "HTTP Error Message is : "+ errorMsg);
+												Log.i("NPM:uH", "HTTP Message is : "+ errorMsg);
 												return errorMsg;
 										//}
-										//Log.i("NPM", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
+										//Log.i("NPM:uH", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
 										//if(serverResponseCode==200) {
 										//		return null;
 										//}

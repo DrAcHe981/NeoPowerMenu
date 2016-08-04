@@ -50,12 +50,14 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		 private boolean dialogInput1allowEmpty;
 		private TextWatcher dialogInput1textWatcher;
 		private int dialogInput1mode = InputType.TYPE_TEXT_VARIATION_NORMAL;
+		private boolean dialogInput1singleline = true;
 
 		private String dialogInput2descText;
 		private String dialogInput2defaultText;
 		private boolean dialogInput2allowEmpty;
 		private TextWatcher dialogInput2textWatcher;
 		private int dialogInput2mode = InputType.TYPE_TEXT_VARIATION_NORMAL;
+		private boolean dialogInput2singleline = true;
 
 		private TextView TextView_InputAssistInfo;
 		private String dialogInputAssistInfoString;
@@ -227,6 +229,16 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						if(EditText_DialogInput2 != null) EditText_DialogInput2.setInputType(InputType.TYPE_CLASS_TEXT | mode);
 				}
 		}
+
+		public void setDialogInputSingleLine(int input, boolean mode) {
+				if (input == 1) {
+						dialogInput1singleline = mode;
+						if(EditText_DialogInput1 != null) EditText_DialogInput1.setSingleLine(mode);
+				} else if (input == 2) {
+						dialogInput2singleline = mode;
+						if(EditText_DialogInput2 != null) EditText_DialogInput2.setSingleLine(mode);
+				}
+		}
 		
 		public void setDialogColorPicker(String defaultColor,boolean showOpacityBar) {
 				dialogColorPickerdefaultValue = defaultColor;
@@ -327,7 +339,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								
 						TextView_DialogBg = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogBg);
 						LinearLayout_DialogRoot = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogRoot);
-						LinearLayout_DialogRoot.setOnClickListener(new OnClickListener() {
+						TextView_DialogBg.setOnClickListener(new OnClickListener() {
 
 										@Override
 										public void onClick(View p1)
@@ -450,6 +462,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								if(dialogInput1textWatcher!=null) EditText_DialogInput1.addTextChangedListener(dialogInput1textWatcher);
 								EditText_DialogInput1.setText(dialogInput1defaultText);
 								EditText_DialogInput1.setInputType(InputType.TYPE_CLASS_TEXT | dialogInput1mode);
+								EditText_DialogInput1.setSingleLine(dialogInput1singleline);
 								LinearLayout_DialogInput1.setVisibility(View.VISIBLE);
 						}
 						if(dialogInput2descText!=null) {
@@ -457,6 +470,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								if(dialogInput2textWatcher!=null) EditText_DialogInput2.addTextChangedListener(dialogInput2textWatcher);
 								EditText_DialogInput2.setText(dialogInput2defaultText);
 								EditText_DialogInput2.setInputType(InputType.TYPE_CLASS_TEXT | dialogInput2mode);
+								EditText_DialogInput1.setSingleLine(dialogInput1singleline);
 								LinearLayout_DialogInput2.setVisibility(View.VISIBLE);
 						}
 						if(dialogInputAssistInfoString!= null) {
@@ -761,15 +775,6 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						//getDialog().getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 						getDialog().getWindow().getAttributes().windowAnimations = R.style.PopUpDialogAnimation_Window;
 				}
-		}
-
-		private int getNavigationBarHeight(Context context) {
-				int result = 0;
-				int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
-				if (resourceId > 0) {
-						result = context.getResources().getDimensionPixelSize(resourceId);
-				}
-				return result;
 		}
 		
 }

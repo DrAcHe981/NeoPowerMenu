@@ -94,7 +94,7 @@ public class PreferencesColorFragment extends Fragment
 				"SoundNormal","#ff000000","#ffffff",
 				"SoundSilent","#ff000000","#ffffff"};
 				
-		public static String[][] ColorNames = {
+		public static Object[][] ColorNames = {
 				{ColorsListAdapter.TYPE_HEADER,"Presets"},{ColorsListAdapter.TYPE_LOAD,"Load"},{ColorsListAdapter.TYPE_SAVE,"Save"},
 				{ColorsListAdapter.TYPE_HEADER,"Reveal"},{ColorsListAdapter.TYPE_ITEM,"Reveal_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"ActionReveal_Backgroundcolor"},
 				{ColorsListAdapter.TYPE_HEADER,"Main"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Textcolor"},

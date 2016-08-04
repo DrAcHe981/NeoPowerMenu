@@ -134,7 +134,8 @@
 						android:layout_height="match_parent"
 						android:layout_width="wrap_content"
 						android:text="@string/presetsManager_Upload"
-						android:gravity="center_vertical"/>
+						android:gravity="center_vertical"
+						android:id="@+id/presetmanagerlistitemTextView_Upload"/>
 
 					<TextView
 						android:layout_height="match_parent"
@@ -165,8 +166,9 @@
 					<TextView
 						android:layout_height="match_parent"
 						android:layout_width="wrap_content"
-						android:text="@string/presetsManager_Share"
-						android:gravity="center_vertical"/>
+						android:text="@string/presetsManager_Buttons"
+						android:gravity="center_vertical"
+						android:id="@+id/presetmanagerlistitemTextView_Share"/>
 
 					<TextView
 						android:layout_height="match_parent"
@@ -197,7 +199,7 @@
 					<TextView
 						android:layout_height="match_parent"
 						android:layout_width="wrap_content"
-						android:text="@string/presetsManager_giveStar"
+						android:text="@string/presetsManager_Buttons"
 						android:gravity="center_vertical"
 						android:id="@+id/presetmanagerlistitemTextView_StarText"/>
 
@@ -221,6 +223,17 @@
 					android:id="@+id/presetmanagerlistitemLinearLayout_Delete"
 					android:gravity="center_vertical">
 
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="2dp"
+						android:background="@color/colorAccentDarkTheme"
+						android:alpha="0.3"
+						android:layout_marginTop="5dp"
+						android:layout_marginBottom="5dp"
+						android:layout_marginLeft="5dp"
+						android:id="@+id/presetmanagerlistitemTextView_DeleteLine"
+						android:visibility="gone"/>
+
 					<ImageView
 						android:layout_height="30dp"
 						android:layout_width="30dp"
@@ -231,8 +244,9 @@
 					<TextView
 						android:layout_height="match_parent"
 						android:layout_width="wrap_content"
-						android:text="@string/presetsManager_Delete"
-						android:gravity="center_vertical"/>
+						android:text="@string/presetsManager_Buttons"
+						android:gravity="center_vertical"
+						android:id="@+id/presetmanagerlistitemTextView_Delete"/>
 
 				</LinearLayout>
 

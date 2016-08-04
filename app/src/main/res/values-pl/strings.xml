@@ -68,10 +68,8 @@ Sprawdź źródła na GitHub"</string>
 <string name="presetsManager_TitleOnline">"Szablony online"</string>
 <string name="presetsManager_Creator">"Twórca: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Wbudowany"</string>
-<string name="presetsManager_Delete">"Usuń"</string>
 <string name="presetsManager_SureToDelete">"Czy jesteś pewien że chcesz usunąć [PRESETNAME]?
 Tego nie można cofnąć!"</string>
-<string name="presetsManager_Share">"Udostępnij"</string>
 <string name="presetsManager_ImportMsg">"Czy chcesz importować ten szablon?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] importowany pomyślnie."</string>
 <string name="presetsManager_ImportFailed">"Importowanie nie powiodło się..."</string>

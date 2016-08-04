@@ -64,10 +64,8 @@
 <string name="presetsManager_TitleOnline">"Шаблоны онлайн"</string>
 <string name="presetsManager_Creator">"Создатель: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Встроенный"</string>
-<string name="presetsManager_Delete">"Удалить"</string>
 <string name="presetsManager_SureToDelete">"Вы уверены, что хотите удалить [PRESETNAME]?
 Это не может быть отменено!"</string>
-<string name="presetsManager_Share">"Поделиться"</string>
 <string name="presetsManager_ImportMsg">"Вы хотите импортировать этот шаблон?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] Импортирован успешно."</string>
 <string name="presetsManager_ImportFailed">"Импортировать не удалось..."</string>
@@ -226,8 +224,6 @@
 <string name="colorsPartRevealDesc1">"Цвет анимации заднего фона при нажатии на Выключение/Перезагрузку."</string>
 <string name="colorsPartMain">"Диалоговое окно"</string>
 <string name="presetsManager_Stars">"Звёзды: [STARS]"</string>
-<string name="presetsManager_giveStar">"Дать звезду"</string>
-<string name="presetsManager_removeStar">"Убрать звезду"</string>
 <string name="presetsManager_Refresh">"Обновить"</string>
 <string name="presetsManager_OrderBy">"Сортировать по"</string>
 <string name="presetsManager_OrderNames">"Название/Время/Звёзды/Создатель/Собственные"</string>

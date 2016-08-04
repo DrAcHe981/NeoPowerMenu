@@ -16,12 +16,12 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 {
 		public static Activity context;
 		LayoutInflater mInflater;
-		public static String[][] colorNamesArray;
+		public static Object[][] colorNamesArray;
 		public static String[] defaultColors;
 		
-		public static final String TYPE_EMPTY = "empty", TYPE_ITEM = "item", TYPE_HEADER = "header", TYPE_LOAD = "load", TYPE_SAVE = "save";
+		public static final int TYPE_EMPTY = 0, TYPE_HEADER = 1, TYPE_ITEM = 2, TYPE_LOAD = 10, TYPE_SAVE = 11;
 		
-		public ColorsListAdapter(Activity context,String[][] colorNames,String[] defaultColors) {
+		public ColorsListAdapter(Activity context,Object[][] colorNames,String[] defaultColors) {
 				super(context, R.layout.colorslistitem, colorNames);
 				this.context = context;
 				this.mInflater = context.getLayoutInflater();
@@ -29,7 +29,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 				this.defaultColors = defaultColors;
 		}
 		
-		public String getItemType(int p1)
+		public int getItemType(int p1)
 		{
 				// TODO: Implement this method
 				return colorNamesArray[p1][0];
@@ -53,7 +53,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 				Desc = (TextView) InflatedView.findViewById(R.id.colorslistitemTextView_Desc);
 				Line = (TextView) InflatedView.findViewById(R.id.colorslistitem_Line);
 				
-				String rowType = getItemType(p1);
+				int rowType = getItemType(p1);
 						switch (rowType) {
 								case TYPE_EMPTY:
 										previewLayout.setVisibility(View.GONE);
@@ -138,7 +138,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																										fw.append("Creator=a "+android.os.Build.MANUFACTURER+" " +android.os.Build.MODEL+ " user\n");
 																								}
 																								for (int i=0;i<colorNamesArray.length;i++) {
-																										String[] loadColor = colorNamesArray[i][1].split("_");
+																										String[] loadColor = colorNamesArray[i][1].toString().split("_");
 																										if(loadColor.length>1) {
 																												if (loadColor[1].contains("Background"))
 																												{
@@ -212,7 +212,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 												});
 										break;
 								case TYPE_ITEM:
-										loadColor = colorNamesArray[p1][1].split("_");
+										loadColor = colorNamesArray[p1][1].toString().split("_");
 										
 										Desc.setVisibility(View.GONE);
 										String currentColor = "#ff0000";
@@ -304,10 +304,10 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 										Title = (TextView) InflatedView.findViewById(R.id.listheaderTextView_Title);
 										Desc = (TextView) InflatedView.findViewById(R.id.listheaderTextView_Desc);
 										String mainString = "";
-										if(colorNamesArray[p1][1].equalsIgnoreCase("Presets") || colorNamesArray[p1][1].equalsIgnoreCase("Reveal") || colorNamesArray[p1][1].equalsIgnoreCase("Main")) {
+										if(colorNamesArray[p1][1].toString().equalsIgnoreCase("Presets") || colorNamesArray[p1][1].toString().equalsIgnoreCase("Reveal") || colorNamesArray[p1][1].toString().equalsIgnoreCase("Main")) {
 												try {
 														mainString = context.getResources().getString(context.getResources().getIdentifier("colorsPart"+colorNamesArray[p1][1],"string",MainActivity.class.getPackage().getName()));
-														String title = (colorNamesArray[p1][1].equalsIgnoreCase("Presets") ? mainString : context.getString(R.string.colorsPartTitle).replace("[PART]",mainString));//getResources().getString(context.getResources().getIdentifier("colorsCategory_"+colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
+														String title = (colorNamesArray[p1][1].toString().equalsIgnoreCase("Presets") ? mainString : context.getString(R.string.colorsPartTitle).replace("[PART]",mainString));//getResources().getString(context.getResources().getIdentifier("colorsCategory_"+colorNamesArray[p1][1].toString(),"string",MainActivity.class.getPackage().getName()));
 														Title.setText(title);
 												} catch (Throwable t1) {
 														Title.setText("String Resource for colorsPart"+ colorNamesArray[p1][1]+" not found.");

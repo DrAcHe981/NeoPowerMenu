@@ -70,10 +70,8 @@ Click here to get more info."</string>
 <string name="presetsManager_TitleOnline">"Online Presets"</string>
 <string name="presetsManager_Creator">"Creator: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Built-in"</string>
-<string name="presetsManager_Delete">"Delete"</string>
 <string name="presetsManager_SureToDelete">"Are you sure you want to delete [PRESETNAME]?
 This can't be undone!"</string>
-<string name="presetsManager_Share">"Share"</string>
 <string name="presetsManager_ImportMsg">"Would you like to import this preset?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] imported successfully."</string>
 <string name="presetsManager_ImportFailed">"Import failed..."</string>
@@ -173,7 +171,6 @@ Your user Id has been generated, you are ready to upload presets!"</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Account"</string>
-<string name="presetsManager_Upload">"Upload"</string>
 <string name="presetsManager_UploadMsg">"This Preset will be uploaded to the public server, visible to all other users.
 
 This is your last chance to adjust the name or the creator before uploading..."</string>
@@ -226,8 +223,9 @@ Your presets (ordered by stars):
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
 <string name="presetsManager_Stars">"Stars: [STARS]"</string>
-<string name="presetsManager_giveStar">"Give Star"</string>
-<string name="presetsManager_removeStar">"Remove Star"</string>
+		<string name="presetsManager_ReportDialog">"Are you sure to report [PRESETNAME]?\nThis can't be undone, so please don't report just for fun!\n\nAlso we need a reason why you want to report it, please enter it below./Report reason:"</string>
+		<string name="presetsManager_ReportResult">"[PRESETNAME] reported,the developer will take a look over it./Report failed, please try it again.\nReason: "</string>
+<string name="presetsManager_Buttons">"Give Star/Remove Star/Delete/Report/Upload/Share"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>

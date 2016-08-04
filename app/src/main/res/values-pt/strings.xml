@@ -73,10 +73,8 @@ Essa configuração só está acessível no Xposed Installer."</string>
 <string name="presetsManager_Active">"Ativo:"</string>
 <string name="presetsManager_Creator">"Criador: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Embutido"</string>
-<string name="presetsManager_Delete">"Apagar"</string>
 <string name="presetsManager_SureToDelete">"Tem certeza que deseja apagar [PRESETNAME]? 
 Isso não pode  ser desfeito!"</string>
-<string name="presetsManager_Share">"Compartilhar"</string>
 <string name="presetsManager_ImportMsg">"Gostaria de importar esse pré-ajuste?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] Foi importado com sucesso."</string>
 <string name="presetsManager_ImportFailed">"Importação falhou..."</string>
@@ -144,30 +142,6 @@ Isso não pode  ser desfeito!"</string>
 <!-- Preferences: Colors -->
 <string name="colorsType_Background">"Cores do fundo"</string>
 <string name="colorsType_Text">"Cor do texto"</string>
-<string name="colorsCategory_Reveal">"Revelar fundos"</string>
-<string name="colorsDesc_Reveal">"Cor da animação revelar."</string>
-<string name="colorsDesc_ActionReveal">"Cor da animação revelar ao clicar na opção Reiniciar/Desligar."</string>
-<string name="colorsCategory_Main">"Cores da caixa de diálogo"</string>
-<string name="colorsCategory_Shutdown">"Cores do Desligar"</string>
-<string name="colorsDesc_DialogShutdown">"Cor da caixa de diálogo ao clicar em Desligar."</string>
-<string name="colorsCategory_Reboot">"Cores do Reiniciar"</string>
-<string name="colorsDesc_DialogReboot">"Cor da caixa de diálogo ao clicar em Reiniciar."</string>
-<string name="colorsCategory_SoftReboot">"Cores do Reiniciar Rápido"</string>
-<string name="colorsDesc_DialogSoftReboot">"Cor da caixa de diálogo ao clicar em Reiniciar Rápido."</string>
-<string name="colorsCategory_Screenshot">"Cores da Captura de Tela"</string>
-<string name="colorsDesc_DialogScreenshot">"Cor do botão de Captura de Tela."</string>
-<string name="colorsCategory_Screenrecord">"Cores da Gravação de Tela"</string>
-<string name="colorsDesc_DialogScreenrecord">"Cores do botão de Gravação de Tela."</string>
-<string name="colorsCategory_Flashlight">"Cores da Lanterna"</string>
-<string name="colorsDesc_DialogFlashlight">"Cores do alternador da Lanterna."</string>
-<string name="colorsCategory_ExpandedDesktop">"Cores da Área de trabalho expandida"</string>
-<string name="colorsDesc_DialogExpandedDesktop">"Cores do alternador da Área de trabalho expandida."</string>
-<string name="colorsCategory_Recovery">"Cores do Modo Recuperação"</string>
-<string name="colorsDesc_DialogRecovery">"Cores da caixa de diálogo ao clicar em Modo Recuperação."</string>
-<string name="colorsCategory_Bootloader">"Cores do Bootloader"</string>
-<string name="colorsDesc_DialogBootloader">"Cores da caixa de diálogo ao clicar em Bootloader."</string>
-<string name="colorsCategory_SafeMode">"Cores do Modo de Segurança"</string>
-<string name="colorsDesc_DialogSafeMode">"Cores da caixa de diálogo ao clicar em Modo de Segurança."</string>
 <string name="powerMenuMain_Flashlight">"Ligar Lanterna"</string>
 <string name="visibilityOrderDesc_AirplaneMode">"Alternar o Modo Avião através do Menu de energia."</string>
 <string name="visibilityOrderDesc_RestartUI">"Reiniciar System UI através do Menu de energia."</string>

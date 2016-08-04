@@ -59,10 +59,8 @@ Cheque a fonte no GitHub."</string>
 <string name="presetsManager_TitleOnline">"Predefinições Online"</string>
 <string name="presetsManager_Creator">"Criador: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Embutido"</string>
-<string name="presetsManager_Delete">"Apagar"</string>
 <string name="presetsManager_SureToDelete">"Tem certeza que quer apagar [PRESETNAME]?
 Isso não pode ser desfeito!"</string>
-<string name="presetsManager_Share">"Compartilhar"</string>
 <string name="presetsManager_ImportMsg">"Gostaria de importar esta predefinição?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] foi importada com sucesso."</string>
 <string name="presetsManager_ImportFailed">"Importação falhou"</string>
@@ -159,7 +157,6 @@ Seu ID de usuário foi gerado,você está pronto para enviar predefinições!"</
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Conta"</string>
-<string name="presetsManager_Upload">"Enviar"</string>
 <string name="presetsManager_UploadMsg">"Essa predefinições será enviado para o servidor público, visível para todos os usuários.
 
 Essa é a última chance de ajustar o nome ou o criador antes de enviar..."</string>
@@ -222,8 +219,6 @@ Seus pré-ajustes (ordenados por estrelas):
 <string name="colorsPartRevealDesc1">"Cor da animação revelar ao clicar na opção Reiniciar/Desligar"</string>
 <string name="colorsPartMain">"Caixa de diálogo"</string>
 <string name="presetsManager_Stars">"Estrelas: [STARS]"</string>
-<string name="presetsManager_giveStar">"Dar estrelas"</string>
-<string name="presetsManager_removeStar">"Remover estrelas"</string>
 <string name="presetsManager_Refresh">"Atualizar"</string>
 <string name="presetsManager_OrderBy">"Ordenar por"</string>
 <string name="presetsManager_OrderNames">"Nome/hora/estrelas/criador/seus"</string>

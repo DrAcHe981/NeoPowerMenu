@@ -82,10 +82,8 @@ Vérifiez la source sur GitHub."</string>
 <string name="presetsManager_TitleOnline">"Préréglages en ligne"</string>
 <string name="presetsManager_Creator">"Créateur: [CREATORNAME]"</string>
 <string name="presetsManager_BuiltIn">"Intégré"</string>
-<string name="presetsManager_Delete">"Supprimer"</string>
 <string name="presetsManager_SureToDelete">"Êtes-vous sûr(e) de vouloir supprimer [PRESETNAME] ?
 Cette action est irréversible !"</string>
-<string name="presetsManager_Share">"Partager"</string>
 <string name="presetsManager_ImportMsg">"Souhaitez-vous importer ce préréglage ?"</string>
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] importé avec succès."</string>
 <string name="presetsManager_ImportFailed">"Échec de l\'importation..."</string>
@@ -182,7 +180,6 @@ Votre Id utilisateur a été généré, vous pouvez désormais charger des prér
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Compte"</string>
-<string name="presetsManager_Upload">"Charger"</string>
 <string name="presetsManager_UploadMsg">"Ce préréglage va être chargé sur le serveur public, le rendant visible par tous.
 
 C\'est votre dernière chance pour ajuster le nom ou le créateur avant le chargement..."</string>
@@ -245,8 +242,6 @@ Vos préréglages (triés par étoiles) :
 <string name="colorsPartRevealDesc1">"La couleur de l\'animation d\'apparition quand on appuie sur l\'option Redémarrer/Éteindre."</string>
 <string name="colorsPartMain">"Boîte de dialogue"</string>
 <string name="presetsManager_Stars">"Étoiles : [STARS]"</string>
-<string name="presetsManager_giveStar">"Donner une étoile"</string>
-<string name="presetsManager_removeStar">"Retirer une étoile"</string>
 <string name="presetsManager_Refresh">"Actualiser"</string>
 <string name="presetsManager_OrderBy">"Trier par"</string>
 <string name="presetsManager_OrderNames">"Nom/Temps/Étoile/Créateur/Les miens"</string>
