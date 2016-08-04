@@ -1,3 +1,13 @@
+v1.5.3:
+! Reboot needed for the changes to the xposed part ! 
++ Added the ability to report presets. 
++ Added the ability to use own images. 
++ Added the ability to upload presets with custom images. 
++ Added 3 "new" buttons: Sound Mode Normal, Sound mode Silent and Sound Mode Vibrate (separated items)
+# Fixed Screenshot not capturing, screen record not starting and Airplane mode not changing.
+# Splitted colors save file and main preferences file for better reset without losing all settings. 
+# Updated translations. 
+
 v1.5.2-1:
 # Fixed a critical bug where nearly every preset upload will fail with the reason "Not yours".
 
