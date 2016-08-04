@@ -82,15 +82,11 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="advancedPrefs_DelayZero">"Fast sofort"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Bildschirmfoto Verzögerung"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Verzögerung zwischen dem Klick und dem Screenshot."</string>
-
-		<!-- Dialog -->
-		<string name="Dialog_Buttons">"Ok/Ja/Nein/Umbenennen/Abbrechen/Löschen/Laden/Speichern/Ignorieren"</string>
 <string name="Dialog_SelectColor">"Farbe wählen"</string>
 <string name="ColorPicker_Value">"Wert:"</string>
 <string name="ColorPicker_Saturation">"Sättigung:"</string>
 <string name="ColorPicker_Opacity">"Transparenz:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltIn">"Hell/Dunkel/Schwaz"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] wurde gelöscht!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] wurde geladen!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Diese Voreinstellung wurde erstellt von:"</string>
@@ -117,7 +113,6 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Erweiterter Desktop"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Ändere die Position des Dialogs."</string>
-<string name="advancedPrefs_DialogGravity">"Oben/Links/Rechts/Unten"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Taschenlampe an"</string>
@@ -164,7 +159,6 @@ Deine Nutzer-Id wurde generiert, du bist bereit zum Hochladen von Voreinstellung
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Konto"</string>
-<string name="presetsManager_Upload">"Hochladen"</string>
 <string name="presetsManager_UploadMsg">"Diese Voreinstellungen wird auf den öffentlichen Server hochgeladen, sichtbar für alle Nutzer. 
 
 Dies ist deine letzte Chance, den Namen oder den Ersteller anzupassen..."</string>
@@ -216,10 +210,7 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="login_ReloadStatistics">"Hier klicken, um die Statistiken neu zu laden"</string>
 <string name="login_TitleLogout">"Abmelden"</string>
 <string name="login_pleaseCheckInput">"Etwas ist fehlgeschlagen, bitte überprüfe deine Eingabe."</string>
-		<string name="presetsManager_Stars">"Sterne: [STARS]"</string>
-		<string name="presetsManager_ReportDialog">"Bist Du dir sicher dass du [PRESETNAME] melden willst?\nDies kann nicht rückgängig gemacht werden also melde es nicht nur zum spaß!\n\nDesweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein./Melde Grund:"</string>
-		<string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet,Der Entwickler wird einen blick drüber werfen./Melden fehlgeschlagen, bitte versuch es erneut.\nGrund: "</string>
-<string name="presetsManager_Buttons">"Stern geben/Stern entfernen/Löschen/Melden/Hochladen/Teilen"</string>
+<string name="presetsManager_Stars">"Sterne: [STARS]"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] farben"</string>
@@ -244,10 +235,25 @@ Klicke hier für Wiederherstellungsoptionen."</string>
 <string name="preferencesTitle_Graphics">"Grafiken"</string>
 <string name="preferencesDesc_Graphics">"Ändere die Grafiken, nutze eigene oder vordefinierte Grafiken."</string>
 <string name="login_RecoverSuccess">"Du wirst eine E-mail mit Infos zum Zurücksetzen deines Passworts erhalten."</string>
-		<string name="login_RecoverNotFound">"Keinen Benutzer mit diesen Daten gefunden."</string>
-		
-		<string name="graphics_Choose">"Standard wiederherstellen/Aus Voreinstellungen wählen/Aus Gallerie wählen"</string>
-		<string name="graphics_Crop">"Schneiden"</string>
-		<string name="graphics_NoPresetsFound">"Keine Voreinstellungen mit Grafiken gefunden..."</string>
-		<string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern./Diese Voreinstellung enthält Grafiken, möchtest du sie laden?\nDies überscheibt deine aktuellen Grafiken!"</string>
+<string name="login_RecoverNotFound">"Keinen Benutzer mit diesen Daten gefunden."</string>
+<string name="powerMenuMain_SoundVibrate">"Sound: Vibrieren"</string>
+<string name="powerMenuMain_SoundNormal">"Sound: Normal"</string>
+<string name="powerMenuMain_SoundSilent">"Sound: Still"</string>
+
+<!-- Dialog -->
+<string name="Dialog_Buttons">"Ok/Ja/Nein/Umbenennen/Abbrechen/Löschen/Laden/Speichern/Ignorieren"</string>
+<string name="presetLoadDialog_BuiltIn">"Hell/Dunkel/Schwaz"</string>
+<string name="advancedPrefs_DialogGravity">"Oben/Links/Rechts/Unten"</string>
+<string name="graphics_Choose">"Standard wiederherstellen/Aus Voreinstellungen wählen/Aus Gallerie wählen"</string>
+<string name="graphics_Crop">"Schneiden"</string>
+<string name="graphics_NoPresetsFound">"Keine Voreinstellungen mit Grafiken gefunden..."</string>
+<string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern./Diese Voreinstellung enthält Grafiken, möchtest du sie laden?
+Dies überscheibt deine aktuellen Grafiken!"</string>
+<string name="presetsManager_ReportDialog">"Bist Du dir sicher dass du [PRESETNAME] melden willst?
+Dies kann nicht rückgängig gemacht werden also melde es nicht nur zum spaß!
+
+Desweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein./Melde Grund:"</string>
+<string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet,Der Entwickler wird einen blick drüber werfen./Melden fehlgeschlagen, bitte versuch es erneut.
+Grund: "</string>
+<string name="presetsManager_Buttons">"Stern geben/Stern entfernen/Löschen/Melden/Hochladen/Teilen"</string>
 </resources>
