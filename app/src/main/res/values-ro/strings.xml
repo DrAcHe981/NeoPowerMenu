@@ -79,14 +79,11 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="advancedPrefs_DelayZero">"Aproape instant"</string>
 <string name="advancedPrefsTitle_ScreenshotDelay">"Intarzieri intre screenshots"</string>
 <string name="advancedPrefsDesc_ScreenshotDelay">"Intarzieri intre apasare si realizarea screenshot-ului"</string>
-
-<!-- Dialog -->
 <string name="Dialog_SelectColor">"Selecteaza culoarea"</string>
 <string name="ColorPicker_Value">"Valoare"</string>
 <string name="ColorPicker_Saturation">"Saturatie"</string>
 <string name="ColorPicker_Opacity">"Opacitate"</string>
 <string name="ColorPicker_Hex">"Paletar de culori"</string>
-<string name="presetLoadDialog_BuiltIn">"Luminos/Inchis/Negru"</string>
 <string name="presetLoad_PresetDeleted">"Sters"</string>
 <string name="presetLoad_PresetLoaded">"Incaract"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Acesta presetare a fost creata de:"</string>
@@ -113,7 +110,6 @@ Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum."</strin
 <string name="powerMenuMain_ExpandedDesktop">"Ecran extins"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Pozitie meniu"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Schimba pozitia meniului"</string>
-<string name="advancedPrefs_DialogGravity">"Sus/Stanga/Dreapta/Jos"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Lanterna pornita"</string>
