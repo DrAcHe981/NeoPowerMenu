@@ -235,4 +235,23 @@
 <string name="preferencesDesc_Graphics">"Изменить графику, использовать кастомную или предустановленных графику."</string>
 <string name="login_RecoverSuccess">"Вы получите E-mail с информацией о сбросе пароля."</string>
 <string name="login_RecoverNotFound">"Пользователя с этими данными не найдено."</string>
+<string name="powerMenuMain_SoundVibrate">"Звук: Вибрация"</string>
+<string name="powerMenuMain_SoundNormal">"Звук: Нормально"</string>
+<string name="powerMenuMain_SoundSilent">"Звук: Без звука"</string>
+
+<!-- Dialog -->
+<string name="Dialog_Buttons">"Ок/Да/Нет/Переименовать/Отмена/Удалить/Загузить/Сохранить/Игнорировать"</string>
+<string name="presetLoadDialog_BuiltIn">"Светлый/Тёмный/Чёрный"</string>
+<string name="advancedPrefs_DialogGravity">"Вверх/Влево/Вправо/Вниз"</string>
+<string name="graphics_Choose">"Восстановить исходное/Выбрать из шаблонов/Выбрать из галереи"</string>
+<string name="graphics_Crop">"Обрезать"</string>
+<string name="graphics_NoPresetsFound">"Шаблонов с графикой не найдено..."</string>
+<string name="graphics_GraphicsSaveLoad">"Сохранить текущую графику./Этот шаблон содержит графические изображения, вы хотите их загрузить?
+Это перезапишет ваши текущие изображения!"</string>
+<string name="presetsManager_ReportDialog">"Вы уверены, что хотите пожаловаться на [PRESETNAME]?
+Это не может быть отменено, поэтому не жалуйтесь просто ради веселья, пожалуйста!
+
+Также нам нужна причина, почему вы жалуетесь на него, пожалуйста, укажите её ниже./Причина:"</string>
+<string name="presetsManager_ReportResult">"Жалоба на [PRESETNAME] отправлена, разработчик рассмотрит её./Жалоба не отправлена, попробуйте снова. Причина: "</string>
+<string name="presetsManager_Buttons">"Дать звезду/Убрать звезду/Удалить/Пожаловаться/Загрузить/Поделиться"</string>
 </resources>
