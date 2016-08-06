@@ -73,7 +73,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
 
 		/*<!-- Internal Hook version to check if reboot is needed --!>*/
-		private static final int XposedHookVersion = 23;
+		private static final int XposedHookVersion = 24;
 
 		Object mPhoneWindowManager;
 
@@ -152,7 +152,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
             final Class<?> pmServiceClass = XposedHelpers.findClass(usedPMClass, lpparam.classLoader);
 
-						if (DeepXposedLogging) XposedUtils.log("Getting permissions, using method for " + ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) ? "lollipop and up" : "kitkat and below") + "...");
+						if (DeepXposedLogging) XposedUtils.log("Getting permissions, using method for " + ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) ? "lollipop and above" : "kitkat and below") + "...");
 						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
 						{
 								XposedHelpers.findAndHookMethod(pmServiceClass, "grantPermissionsLPw",
@@ -281,171 +281,54 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 												final Context context = (Context) param.args[0];
 												mContext = context;
 												final Handler mHandler = new Handler(); 
-												xHandler = mHandler; 
-												/*BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
+												xHandler = mHandler;
+												if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+														if(DeepXposedLogging) XposedUtils.log("Creating Broadcast Receiver for KitKat and below...");
+														Application mNPMApp = (Application) param.thisObject;
+														final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
+														final IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
+														BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
 
-														@Override
-														public void onReceive(Context p1, Intent p2)
-														{
-																// TODO: Implement this method
-																//Toast.makeText(p1, "Received NPM Broadcast: " + p2.getAction(), Toast.LENGTH_LONG).show();
-																Log.i(TAG, "Received broadcast: " + p2.getAction());
-																if (DeepXposedLogging) XposedUtils.log("Received broadcast: " + p2.getAction());
-																if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_SCREENSHOT))
+																@Override
+																public void onReceive(final Context p1, Intent p2)
 																{
-																		final Handler handler = xHandler;
-																		if (handler == null) return;
-
-																		synchronized (mScreenshotLock)
-																		{  
-																				if (mScreenshotConnection != null)
-																				{  
-																						return;  
-																				}  
-																				ComponentName cn = new ComponentName("com.android.systemui",  
-																																						 "com.android.systemui.screenshot.TakeScreenshotService");  
-																				Intent intent = new Intent();  
-																				intent.setComponent(cn);  
-																				ServiceConnection conn = new ServiceConnection() {  
-																						@Override  
-																						public void onServiceConnected(ComponentName name, IBinder service)
-																						{  
-																								synchronized (mScreenshotLock)
-																								{  
-																										if (mScreenshotConnection != this)
-																										{  
-																												return;  
-																										}  
-																										final Messenger messenger = new Messenger(service);  
-																										final Message msg = Message.obtain(null, 1);  
-																										final ServiceConnection myConn = this;  
-
-																										Handler h = new Handler(handler.getLooper()) {  
-																												@Override  
-																												public void handleMessage(Message msg)
-																												{  
-																														synchronized (mScreenshotLock)
-																														{  
-																																if (mScreenshotConnection == myConn)
-																																{  
-																																		context.unbindService(mScreenshotConnection);  
-																																		mScreenshotConnection = null;  
-																																		handler.removeCallbacks(mScreenshotTimeout);  
-																																}  
-																														}  
-																												}  
-																										};  
-																										msg.replyTo = new Messenger(h);  
-																										msg.arg1 = msg.arg2 = 0;  
-																										h.post(new Runnable() {
-																														@Override
-																														public void run()
-																														{
-																																try
-																																{
-																																		messenger.send(msg);
-																																}
-																																catch (RemoteException e)
-																																{
-																																		Log.e(TAG, e.toString());
-																																}
-																														}
-																												});
-																								}  
-																						}  
-																						@Override  
-																						public void onServiceDisconnected(ComponentName name)
-																						{}  
-																				};  
-																				if (context.bindService(intent, conn, Context.BIND_AUTO_CREATE))
-																				{  
-																						mScreenshotConnection = conn;  
-																						handler.postDelayed(mScreenshotTimeout, 10000);  
-																				}  
-																		} 
-																}
-																else if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_SCREENRECORD))
-																{
-																		try
+																		//Log.i(TAG, "Received broadcast: " + p2.getAction());
+																		if (DeepXposedLogging) XposedUtils.log("Received broadcast: " + p2.getAction());
+																		switch (p2.getAction())
 																		{
-																				Context pcontext = context.createPackageContext(PACKAGE_NAME , Context.CONTEXT_IGNORE_SECURITY);
-																				Intent intent = new Intent(pcontext, ScreenRecordingService.class);
-																				intent.setAction(ScreenRecordingService.ACTION_TOGGLE_SCREEN_RECORDING);
-																				context.startService(intent);
-																		}
-																		catch (Throwable t)
-																		{
-																				if (DeepXposedLogging) XposedUtils.log("Start Screenrecord service failed:" + t);
+																				case NPM_ACTION_BROADCAST_KILLSYSTEMUI:
+																						mNPMHandler.postDelayed(new Runnable() {
+																										@Override
+																										public void run()
+																										{
+																												android.os.Process.sendSignal(android.os.Process.myPid(), android.os.Process.SIGNAL_KILL);
+																										}
+																								}, 100);
+																						break;
+																				case NPM_ACTION_BROADCAST_SCREENSHOT:
+																						takeScreenshot(p1);
+																						break;
+																				case NPM_ACTION_BROADCAST_SCREENRECORD:
+																						toggleScreenRecord(p1);
+																						break;
+																				case NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE:
+																						toggleAiplaneMode(p1);
+																						break;
+																				case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
+																						toggleShowTouches(p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES,-1));
+																						break;
 																		}
 																}
-																else if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_SHUTDOWN))
-																{
-																		IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
-																		try
-																		{
-																				pm.shutdown(false, false);
-																		}
-																		catch (RemoteException e)
-																		{}
-																}
-																else if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_REBOOT))
-																{
-																		IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
-																		try
-																		{
-																				pm.reboot(false, null, false);
-																		}
-																		catch (RemoteException e)
-																		{}
-																}
-																else if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_REBOOTRECOVERY))
-																{IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
-																		try
-																		{
-																				pm.reboot(false, "recovery", false);
-																		}
-																		catch (RemoteException e)
-																		{}
-																}
-																else if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_REBOOTBOOTLOADER))
-																{IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
-																		try
-																		{
-																				pm.reboot(false, "bootloader", false);
-																		}
-																		catch (RemoteException e)
-																		{}
-																}
-																else if (p2.getAction().equalsIgnoreCase(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE))
-																{
-																		// read the airplane mode setting
-																		boolean isEnabled = Settings.Global.getInt(
-																				context.getContentResolver(), 
-																				Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
-
-// toggle airplane mode
-																		Settings.Global.putInt(
-																				context.getContentResolver(),
-																				Settings.Global.AIRPLANE_MODE_ON, isEnabled ? 0 : 1);
-
-// Post an intent to reload
-																		Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
-																		intent.putExtra("state", !isEnabled);
-																		context.sendBroadcast(intent);
-																}
-														}
-												};
-												IntentFilter filter = new IntentFilter();
-												filter.addAction(NPM_ACTION_BROADCAST_SHUTDOWN);
-												filter.addAction(NPM_ACTION_BROADCAST_REBOOT);
-												filter.addAction(NPM_ACTION_BROADCAST_REBOOTRECOVERY);
-												filter.addAction(NPM_ACTION_BROADCAST_REBOOTBOOTLOADER);
-												filter.addAction(NPM_ACTION_BROADCAST_SCREENSHOT);
-												filter.addAction(NPM_ACTION_BROADCAST_SCREENRECORD);
-												filter.addAction(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
-												filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
-												context.registerReceiver(mNPMReceiver, filter, null, null);*/
-												//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#constructor,").commit();
+														};
+														IntentFilter filter = new IntentFilter();
+														//filter.addAction(NPM_ACTION_BROADCAST_KILLSYSTEMUI);
+														filter.addAction(NPM_ACTION_BROADCAST_SCREENSHOT);
+														filter.addAction(NPM_ACTION_BROADCAST_SCREENRECORD);
+														filter.addAction(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
+														filter.addAction(ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES);
+														filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+														mNPMApp.registerReceiver(mNPMReceiver, filter);
+												}
 												return null;
 										}
 								});
@@ -655,12 +538,14 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				}
 				if (lpparam.packageName.equalsIgnoreCase("com.android.systemui"))
 				{
+						if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 						if (DeepXposedLogging) XposedUtils.log("Hooking (after) " + CLASS_SYSTEMUI + "#onCreate...");
 						XposedHelpers.findAndHookMethod(CLASS_SYSTEMUI, lpparam.classLoader, "onCreate", new XC_MethodHook() {
 										@Override
 										public void afterHookedMethod(MethodHookParam param) throws Throwable
 										{
 
+												if(DeepXposedLogging) XposedUtils.log("Creating Broadcast Receiver for Lollipop and above...");
 												Application mNPMApp = (Application) param.thisObject;
 												final Context context = mNPMApp.getApplicationContext();
 												final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
@@ -684,162 +569,32 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																						}, 100);
 																				break;
 																		case NPM_ACTION_BROADCAST_SCREENSHOT:
-																						final Handler handler = new Handler();
-																						if (handler == null) {
-																								XposedUtils.log("Screenshot failed: handler is null.");
-																								return;
-																						}
-
-																						synchronized (mScreenshotLock)
-																						{  
-																								if (mScreenshotConnection != null)
-																								{  
-																										XposedUtils.log("Screenshot failed: cant create connection.");
-																										return;  
-																								}  
-																								ComponentName cn = new ComponentName("com.android.systemui",  
-																																										 "com.android.systemui.screenshot.TakeScreenshotService");  
-																								Intent intent = new Intent();  
-																								intent.setComponent(cn);  
-																								ServiceConnection conn = new ServiceConnection() {  
-																										@Override  
-																										public void onServiceConnected(ComponentName name, IBinder service)
-																										{  
-																												synchronized (mScreenshotLock)
-																												{  
-																														if (mScreenshotConnection != this)
-																														{  
-																																XposedUtils.log("Screenshot failed: wrong connection.");
-																																return;  
-																														}  
-																														final Messenger messenger = new Messenger(service);  
-																														final Message msg = Message.obtain(null, 1);  
-																														final ServiceConnection myConn = this;  
-
-																														Handler h = new Handler(handler.getLooper()) {  
-																																@Override  
-																																public void handleMessage(Message msg)
-																																{  
-																																		synchronized (mScreenshotLock)
-																																		{  
-																																				if (mScreenshotConnection == myConn)
-																																				{  
-																																						p1.unbindService(mScreenshotConnection);  
-																																						mScreenshotConnection = null;  
-																																						handler.removeCallbacks(mScreenshotTimeout);  
-																																				}  
-																																		}  
-																																}  
-																														};  
-																														msg.replyTo = new Messenger(h);  
-																														msg.arg1 = msg.arg2 = 0;  
-																														h.post(new Runnable() {
-																																		@Override
-																																		public void run()
-																																		{
-																																				try
-																																				{
-																																						messenger.send(msg);
-																																				}
-																																				catch (RemoteException e)
-																																				{
-																																						Log.e(TAG, e.toString());
-																																						XposedUtils.log("Screenshot failed: "+e.toString());
-																																				}
-																																		}
-																																});
-																												}  
-																										}  
-																										@Override  
-																										public void onServiceDisconnected(ComponentName name)
-																										{}  
-																								};  
-																								if (p1.bindService(intent, conn, Context.BIND_AUTO_CREATE))
-																								{  
-																										mScreenshotConnection = conn;  
-																										handler.postDelayed(mScreenshotTimeout, 10000);  
-																								}  
-																						} 
+																						takeScreenshot(p1);
 																						break;
 																				case NPM_ACTION_BROADCAST_SCREENRECORD:
-																						try
-																						{
-																								Context pcontext = p1.createPackageContext(PACKAGE_NAME , Context.CONTEXT_IGNORE_SECURITY);
-																								Intent intent = new Intent(pcontext, ScreenRecordingService.class);
-																								intent.setAction(ScreenRecordingService.ACTION_TOGGLE_SCREEN_RECORDING);
-																								p1.startService(intent);
-																						}
-																						catch (Throwable t)
-																						{
-																								XposedUtils.log("Start Screenrecord service failed:" + t);
-																						}
-																						break;
-																				case NPM_ACTION_BROADCAST_SHUTDOWN:
-																						try
-																						{
-																								pm.shutdown(false, false);
-																						}
-																						catch (RemoteException e)
-																						{}
-																						break;
-																				case NPM_ACTION_BROADCAST_REBOOT:
-																						try
-																						{
-																								pm.reboot(false, null, false);
-																						}
-																						catch (RemoteException e)
-																						{}
-																						break;
-																				case NPM_ACTION_BROADCAST_REBOOTRECOVERY:
-																						try
-																						{
-																								pm.reboot(false, "recovery", false);
-																						}
-																						catch (RemoteException e)
-																						{}
-																						break;
-																				case NPM_ACTION_BROADCAST_REBOOTBOOTLOADER:
-																						IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
-																						try
-																						{
-																								pm.reboot(false, "bootloader", false);
-																						}
-																						catch (RemoteException e)
-																						{}
+																						toggleScreenRecord(p1);
 																						break;
 																				case NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE:
-																						// read the airplane mode setting
-																						boolean isEnabled = Settings.Global.getInt(
-																								p1.getContentResolver(), 
-																								Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
-
-// toggle airplane mode
-																						Settings.Global.putInt(
-																								p1.getContentResolver(),
-																								Settings.Global.AIRPLANE_MODE_ON, isEnabled ? 0 : 1);
-
-// Post an intent to reload
-																						Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
-																						intent.putExtra("state", !isEnabled);
-																						p1.sendBroadcast(intent);
+																						toggleAiplaneMode(p1);
+																						break;
+																				case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
+																						toggleShowTouches(p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES,-1));
 																						break;
 																		}
 																}
 														};
 												IntentFilter filter = new IntentFilter();
-												filter.addAction(NPM_ACTION_BROADCAST_SHUTDOWN);
-												filter.addAction(NPM_ACTION_BROADCAST_REBOOT);
-												filter.addAction(NPM_ACTION_BROADCAST_REBOOTRECOVERY);
-												filter.addAction(NPM_ACTION_BROADCAST_REBOOTBOOTLOADER);
+												filter.addAction(NPM_ACTION_BROADCAST_KILLSYSTEMUI);
 												filter.addAction(NPM_ACTION_BROADCAST_SCREENSHOT);
 												filter.addAction(NPM_ACTION_BROADCAST_SCREENRECORD);
 												filter.addAction(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
-												filter.addAction(NPM_ACTION_BROADCAST_KILLSYSTEMUI);
+												filter.addAction(ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES);
 												filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
 												mNPMApp.registerReceiver(mNPMReceiver, filter);
 										}
 								});
 						if (DeepXposedLogging) XposedUtils.log("Registered receiver for UI events.");
+						}
 				}
 				if (lpparam.packageName.equals("de.NeonSoft.neopowermenu"))
 				{
@@ -890,6 +645,129 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 						if (DeepXposedLogging) XposedUtils.log("Self inject done!");
 				}
 				return;
+    }
+
+		private static void takeScreenshot(final Context p1) {
+				final Handler handler = new Handler();
+				if (handler == null) {
+						XposedUtils.log("Screenshot failed: handler is null.");
+						return;
+				}
+
+				synchronized (mScreenshotLock)
+				{  
+						if (mScreenshotConnection != null)
+						{  
+								XposedUtils.log("Screenshot failed: cant create connection.");
+								return;  
+						}  
+						ComponentName cn = new ComponentName("com.android.systemui",  
+																								 "com.android.systemui.screenshot.TakeScreenshotService");  
+						Intent intent = new Intent();  
+						intent.setComponent(cn);  
+						ServiceConnection conn = new ServiceConnection() {  
+								@Override  
+								public void onServiceConnected(ComponentName name, IBinder service)
+								{  
+										synchronized (mScreenshotLock)
+										{  
+												if (mScreenshotConnection != this)
+												{  
+														XposedUtils.log("Screenshot failed: wrong connection.");
+														return;  
+												}  
+												final Messenger messenger = new Messenger(service);  
+												final Message msg = Message.obtain(null, 1);  
+												final ServiceConnection myConn = this;  
+
+												Handler h = new Handler(handler.getLooper()) {  
+														@Override  
+														public void handleMessage(Message msg)
+														{  
+																synchronized (mScreenshotLock)
+																{  
+																		if (mScreenshotConnection == myConn)
+																		{  
+																				p1.unbindService(mScreenshotConnection);  
+																				mScreenshotConnection = null;  
+																				handler.removeCallbacks(mScreenshotTimeout);  
+																		}  
+																}  
+														}  
+												};  
+												msg.replyTo = new Messenger(h);  
+												msg.arg1 = msg.arg2 = 0;  
+												h.post(new Runnable() {
+																@Override
+																public void run()
+																{
+																		try
+																		{
+																				messenger.send(msg);
+																		}
+																		catch (RemoteException e)
+																		{
+																				Log.e(TAG, e.toString());
+																				XposedUtils.log("Screenshot failed: "+e.toString());
+																		}
+																}
+														});
+										}  
+								}  
+								@Override  
+								public void onServiceDisconnected(ComponentName name)
+								{}  
+						};  
+						if (p1.bindService(intent, conn, Context.BIND_AUTO_CREATE))
+						{  
+								mScreenshotConnection = conn;  
+								handler.postDelayed(mScreenshotTimeout, 10000);  
+						}  
+				} 
+		}
+		
+		private static void toggleScreenRecord(Context p1) {
+				try
+				{
+						Context pcontext = p1.createPackageContext(PACKAGE_NAME , Context.CONTEXT_IGNORE_SECURITY);
+						Intent intent = new Intent(pcontext, ScreenRecordingService.class);
+						intent.setAction(ScreenRecordingService.ACTION_TOGGLE_SCREEN_RECORDING);
+						p1.startService(intent);
+				}
+				catch (Throwable t)
+				{
+						XposedUtils.log("Start Screenrecord service failed:" + t);
+				}
+		}
+		
+		private static void toggleAiplaneMode(Context p1) {
+				// read the airplane mode setting
+				boolean isEnabled = Settings.Global.getInt(
+						p1.getContentResolver(), 
+						Settings.Global.AIRPLANE_MODE_ON, 0) == 1;
+
+				// toggle airplane mode
+				Settings.Global.putInt(
+						p1.getContentResolver(),
+						Settings.Global.AIRPLANE_MODE_ON, isEnabled ? 0 : 1);
+
+				// Post an intent to reload
+				Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+				intent.putExtra("state", !isEnabled);
+				p1.sendBroadcast(intent);
+		}
+		
+    private static void toggleShowTouches(int showTouches) {
+        try {
+            if (showTouches == -1) {
+                showTouches = 1 - Settings.Global.getInt(mContext.getContentResolver(),
+																												 ScreenRecordingService.SETTING_SHOW_TOUCHES);
+            }
+            Settings.Global.putInt(mContext.getContentResolver(),
+																	 ScreenRecordingService.SETTING_SHOW_TOUCHES, showTouches);
+        } catch (Throwable t) {
+            XposedBridge.log(t);
+        }
     }
 
     private boolean showDialog()

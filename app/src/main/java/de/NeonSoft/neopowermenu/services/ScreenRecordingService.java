@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 
 import de.NeonSoft.neopowermenu.R;
+import de.NeonSoft.neopowermenu.xposed.*;
 
 public class ScreenRecordingService extends Service
  {
@@ -47,9 +48,11 @@ public class ScreenRecordingService extends Service
     public static final String ACTION_SCREEN_RECORDING_STOP = "neopowermenu.intent.action.SCREEN_RECORDING_STOP";
     public static final String ACTION_TOGGLE_SCREEN_RECORDING = "neopowermenu.intent.action.TOGGLE_SCREEN_RECORDING";
     public static final String ACTION_SCREEN_RECORDING_STATUS_CHANGED = "neopowermenu.intent.action.SCREEN_RECORDING_STATUS_CHANGED";
-    private static final String ACTION_TOGGLE_SHOW_TOUCHES = "neopowermenu.intent.action.SCREEN_RECORDING_TOGGLE_SHOW_TOUCHES";
+    public static final String ACTION_TOGGLE_SHOW_TOUCHES = "neopowermenu.intent.action.SCREEN_RECORDING_TOGGLE_SHOW_TOUCHES";
     public static final String EXTRA_RECORDING_STATUS = "recordingStatus";
     public static final String EXTRA_STATUS_MESSAGE = "statusMessage";
+    public static final String EXTRA_SHOW_TOUCHES = "showTouches";
+    public static final String SETTING_SHOW_TOUCHES = "show_touches";
 
     public static final int STATUS_IDLE = 0;
     public static final int STATUS_RECORDING = 1;
@@ -207,13 +210,13 @@ public class ScreenRecordingService extends Service
         builder
             .addAction(new Notification.Action.Builder(
 													 Icon.createWithResource(this, R.drawable.ic_media_stop),
-													 getString(R.string.screenrecord_notif_stop), stopPendIntent).build());
-            //.addAction(new Notification.Action.Builder(
-						//							 Icon.createWithResource(this, R.drawable.ic_text_dot),
-						//							 getString(R.string.screenrecord_notif_pointer), pointerPendIntent).build());
+													 getString(R.string.screenrecord_notif_buttons).split("/")[0], stopPendIntent).build())
+            .addAction(new Notification.Action.Builder(
+													 Icon.createWithResource(this, R.drawable.ic_text_dot),
+						getString(R.string.screenrecord_notif_buttons).split("/")[1], pointerPendIntent).build());
 				} else {
-						builder.addAction(R.drawable.ic_media_stop,getString(R.string.screenrecord_notif_stop), stopPendIntent);
-										//.addAction(R.drawable.ic_text_dot,getString(R.string.screenrecord_notif_pointer), pointerPendIntent);
+						builder.addAction(R.drawable.ic_media_stop,getString(R.string.screenrecord_notif_buttons).split("/")[0], stopPendIntent)
+										.addAction(R.drawable.ic_text_dot,getString(R.string.screenrecord_notif_buttons).split("/")[1], pointerPendIntent);
 				}
 													 
 													 
@@ -281,13 +284,13 @@ public class ScreenRecordingService extends Service
     }
 
     private void toggleShowTouches() {
-        //sendBroadcast(new Intent(ModHwKeys.ACTION_TOGGLE_SHOW_TOUCHES));
+        sendBroadcast(new Intent(ACTION_TOGGLE_SHOW_TOUCHES));
     }
 
     private void resetShowTouches() {
-        //Intent intent = new Intent(ModHwKeys.ACTION_TOGGLE_SHOW_TOUCHES);
-        //intent.putExtra(ModHwKeys.EXTRA_SHOW_TOUCHES, mShowTouchesDefault);
-        //sendBroadcast(intent);
+        Intent intent = new Intent(ACTION_TOGGLE_SHOW_TOUCHES);
+        intent.putExtra(EXTRA_SHOW_TOUCHES, mShowTouchesDefault);
+        sendBroadcast(intent);
     }
 
     private void toggleScreenrecord() {
@@ -300,9 +303,9 @@ public class ScreenRecordingService extends Service
 
     private boolean isScreenrecordSupported() {
         // Exynos devices are currently known to have issues
-        /*if (Utils.isExynosDevice()) {
+        if (XposedUtils.isExynosDevice()) {
             Log.e(TAG, "isScreenrecordSupported: screen recording not supported on Exynos devices");
-        }*/
+        }
         // check if screenrecord and kill binaries exist and are executable
         File f = new File(getBinaryPath());
         final boolean scrBinaryOk = f.exists() && f.canExecute();
@@ -314,7 +317,7 @@ public class ScreenRecordingService extends Service
         if (!killBinaryOk) {
             Log.e(TAG, "isScreenrecordSupported: kill binary doesn't exist or is not executable");
         }
-        return (/*!Utils.isExynosDevice() && */scrBinaryOk && killBinaryOk);
+        return (!XposedUtils.isExynosDevice() && scrBinaryOk && killBinaryOk);
     }
 
     private void startScreenrecord() {
@@ -334,15 +337,15 @@ public class ScreenRecordingService extends Service
             return;
         }
 
-        /*try {
-            mShowTouchesDefault = Settings.System.getInt(getContentResolver(),
-																												 ModHwKeys.SETTING_SHOW_TOUCHES);
+        try {
+            mShowTouchesDefault = Settings.Global.getInt(getContentResolver(),
+																												 SETTING_SHOW_TOUCHES);
             if (mShowTouchesDefault == 0) {
                 toggleShowTouches();
             }
         } catch (SettingNotFoundException e) {
             //
-        }*/
+        }
         mCaptureThread = new CaptureThread();
         mCaptureThread.start();
         updateStatus(STATUS_RECORDING);
@@ -369,7 +372,7 @@ public class ScreenRecordingService extends Service
         mHandler.postDelayed(new Runnable() { public void run() {
 										mCaptureThread = null;
 
-										String fileName = "SCR_" + new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date()) + ".mp4";
+										String fileName = "NPM_SCR_" + new SimpleDateFormat("ddMMyyyy_HHmmss", Locale.US).format(new Date()) + ".mp4";
 
 										File picturesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 										if (!picturesDir.exists()) {

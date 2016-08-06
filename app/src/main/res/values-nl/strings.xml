@@ -97,7 +97,6 @@ Bekijk de broncode op GitHub."</string>
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Schermopname gestart"</string>
 <string name="screenrecord_notif_title">"Aan het opnemen"</string>
-<string name="screenrecord_notif_stop">"Stop"</string>
 <string name="screenrecord_toast_error">"Kan schermopnane niet starten"</string>
 <string name="screenrecord_toast_processing">"Kan schermopname niet starten omdat de vorige opname nog wordt verwerkt"</string>
 <string name="screenrecord_toast_saved">"Opname opgeslagen als %s"</string>

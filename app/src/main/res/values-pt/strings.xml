@@ -116,7 +116,6 @@ Isso não pode  ser desfeito!"</string>
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"A tela está sendo gravada"</string>
 <string name="screenrecord_notif_title">"Gravando tela"</string>
-<string name="screenrecord_notif_stop">"Parar"</string>
 <string name="screenrecord_notif_pointer">"Alternar ponteiro"</string>
 <string name="screenrecord_toast_error">"Incapaz de gravar a tela"</string>
 <string name="screenrecord_toast_processing">"Não é possível iniciar uma nova gravação de tela se a anterior ainda está sendo processada"</string>

@@ -102,7 +102,6 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Bildschirmaufnahme läuft"</string>
 <string name="screenrecord_notif_title">"Bildschirmaufnahme"</string>
-<string name="screenrecord_notif_stop">"Stop"</string>
 <string name="screenrecord_toast_error">"Bildschirmaufnahme nicht möglich"</string>
 <string name="screenrecord_toast_processing">"Es kann keine Bildschirmaufnahme gestartet werden, wenn eine andere verarbeitet wird"</string>
 <string name="screenrecord_toast_saved">"Aufnahme gespeichert als %s"</string>

@@ -103,7 +103,6 @@
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Экран записывается"</string>
 <string name="screenrecord_notif_title">"Запись экрана"</string>
-<string name="screenrecord_notif_stop">"Стоп"</string>
 <string name="screenrecord_toast_error">"Невозможно записать экран"</string>
 <string name="screenrecord_toast_processing">"Невозможно начать новую запись, так как старая ещё обрабатывается"</string>
 <string name="screenrecord_toast_saved">"Запись сохранена как %s"</string>

@@ -104,7 +104,7 @@ This can't be undone!"</string>
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Screen is being recorded"</string>
 <string name="screenrecord_notif_title">"Recording screen"</string>
-<string name="screenrecord_notif_stop">"Stop"</string>
+<string name="screenrecord_notif_buttons">"Stop/Toggle pointer"</string>
 <string name="screenrecord_toast_error">"Unable to record screen"</string>
 <string name="screenrecord_toast_processing">"Cannot start new recording as previous recording is still being processed"</string>
 <string name="screenrecord_toast_saved">"Recording saved as %s"</string>
