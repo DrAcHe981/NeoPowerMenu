@@ -245,17 +245,17 @@ public class PreferencesPresetsFragment extends Fragment
 																						}
 																				});
 																				dialogFragment.setDialogText(mContext.getString(R.string.presetsManager_OrderBy));
-																		dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, new String[] {getString(R.string.presetsManager_OrderNames).split("/")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("/")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")"}, onlineOrderSelected,true);
-																		dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
+																		dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, new String[] {getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")"}, onlineOrderSelected,true);
+																		dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																		dialogFragment.showDialog(R.id.dialog_container);
 																		if (onlineOrder.getVisibility() == View.VISIBLE)
 																		{
@@ -560,8 +560,8 @@ public class PreferencesPresetsFragment extends Fragment
 										}}
 						);
 						dialogFragment.setDialogInputAssistInfo(mContext.getString(R.string.presetSaveDialog_OverwriteText));
-						dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("/")[4]);
-						dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[7]);
+						dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+						dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 						dialogFragment.showDialog(R.id.dialog_container);
 
 				}

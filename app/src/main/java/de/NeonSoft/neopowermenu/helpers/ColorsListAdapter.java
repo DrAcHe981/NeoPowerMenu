@@ -204,9 +204,9 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																);
 																dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastPresetCreatedBy",""),true,null);
 																dialogFragment.setDialogInputAssistInfo(context.getString(R.string.presetSaveDialog_OverwriteText));
-																dialogFragment.setDialogCheckBox(context.getString(R.string.graphics_GraphicsSaveLoad).split("/")[0]);
-																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
-																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[7]);
+																dialogFragment.setDialogCheckBox(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[0]);
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});
@@ -293,8 +293,8 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																		});
 																dialogFragment.setDialogText("");
 																dialogFragment.setDialogColorPicker(MainActivity.colorPrefs.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
-																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
-																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[7]);
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});

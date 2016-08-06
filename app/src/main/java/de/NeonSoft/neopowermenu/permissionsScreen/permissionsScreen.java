@@ -62,7 +62,7 @@ public class permissionsScreen extends Fragment
 						CheckBox_DontAskAgain.setVisibility(View.GONE);
 				}
 				
-				MainActivity.actionbar.setButton(getString(R.string.Dialog_Buttons).split("/")[0], R.drawable.ic_content_send, new OnClickListener() {
+				MainActivity.actionbar.setButton(getString(R.string.Dialog_Buttons).split("\\|")[0], R.drawable.ic_content_send, new OnClickListener() {
 
 								@Override
 								public void onClick(View p1)
@@ -104,7 +104,7 @@ public class permissionsScreen extends Fragment
 																}
 														});
 														dialogFragment.setDialogText(getActivity().getString(R.string.permissionsScreen_NotAllGranted));
-												dialogFragment.setDialogPositiveButton(getActivity().getString(R.string.Dialog_Buttons).split("/")[0]);
+												dialogFragment.setDialogPositiveButton(getActivity().getString(R.string.Dialog_Buttons).split("\\|")[0]);
 												dialogFragment.showDialog(R.id.dialog_container);
 										} else {
 												MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();

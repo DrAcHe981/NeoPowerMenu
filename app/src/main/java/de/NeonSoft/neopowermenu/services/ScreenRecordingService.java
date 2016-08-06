@@ -210,13 +210,13 @@ public class ScreenRecordingService extends Service
         builder
             .addAction(new Notification.Action.Builder(
 													 Icon.createWithResource(this, R.drawable.ic_media_stop),
-													 getString(R.string.screenrecord_notif_buttons).split("/")[0], stopPendIntent).build())
+													 getString(R.string.screenrecord_notif_buttons).split("\\|")[0], stopPendIntent).build())
             .addAction(new Notification.Action.Builder(
 													 Icon.createWithResource(this, R.drawable.ic_text_dot),
-						getString(R.string.screenrecord_notif_buttons).split("/")[1], pointerPendIntent).build());
+						getString(R.string.screenrecord_notif_buttons).split("\\|")[1], pointerPendIntent).build());
 				} else {
-						builder.addAction(R.drawable.ic_media_stop,getString(R.string.screenrecord_notif_buttons).split("/")[0], stopPendIntent)
-										.addAction(R.drawable.ic_text_dot,getString(R.string.screenrecord_notif_buttons).split("/")[1], pointerPendIntent);
+						builder.addAction(R.drawable.ic_media_stop,getString(R.string.screenrecord_notif_buttons).split("\\|")[0], stopPendIntent)
+										.addAction(R.drawable.ic_text_dot,getString(R.string.screenrecord_notif_buttons).split("\\|")[1], pointerPendIntent);
 				}
 													 
 													 

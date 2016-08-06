@@ -176,7 +176,7 @@ public class PreferencesPartFragment extends Fragment
 														}
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId,true);
-										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
+										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});

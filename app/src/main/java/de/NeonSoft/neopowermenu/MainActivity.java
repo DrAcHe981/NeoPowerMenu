@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity
 										}
 								});
 						dialogFragment.setDialogText(getString(R.string.welcomeMsg));
-						dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("/")[0]);
+						dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
 						dialogFragment.showDialog(R.id.dialog_container);
 				}
 				actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);

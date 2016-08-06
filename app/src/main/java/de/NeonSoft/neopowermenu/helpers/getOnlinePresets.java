@@ -54,7 +54,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 		protected String doInBackground(String[] p1)
 		{
 				// TODO: Implement this method
-				String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[0]+" ("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")";
+				String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[0]+" ("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")";
 				String searchFor = "";
 				if(p1!=null && p1.length>0) {
 						for(int i = 0;i<p1.length;i++) {
@@ -71,16 +71,16 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 				}
 				String orderName = "_presetName";
 				String orderDirection = "ASC";
-				if(orderBy.contains("("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[1]+")")) {
+				if(orderBy.contains("("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1]+")")) {
 						orderDirection = "DESC";
 				}
-				if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[1])) {
+				if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[1])) {
 						orderName = "_presetTimestamp";
-				} else if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[2])) {
+				} else if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[2])) {
 						orderName = "_presetStars";
-				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[3])) {
+				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[3])) {
 						orderName = "_presetCreator";
-				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("/")[4])) {
+				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[4])) {
 						orderName = "own";
 				}
 				
@@ -214,7 +214,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 														}
 												});
 										dialogFragment.setDialogText(result);
-										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
+										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 										PreferencesPresetsFragment.onlineMSG.setText(result);
 								}

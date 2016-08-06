@@ -109,8 +109,8 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 				TextView_AddNormalItem = (TextView) InflatedView.findViewById(R.id.visibilityorderTextView_AddNormal);
 				TextView_AddMultiItem = (TextView) InflatedView.findViewById(R.id.visibilityorderTextView_AddMulti);
 				
-				TextView_AddNormalItem.setText(getString(R.string.visibilityOrder_Add).split("/")[0]);
-				TextView_AddMultiItem.setText(getString(R.string.visibilityOrder_Add).split("/")[1]);
+				TextView_AddNormalItem.setText(getString(R.string.visibilityOrder_Add).split("\\|")[0]);
+				TextView_AddMultiItem.setText(getString(R.string.visibilityOrder_Add).split("\\|")[1]);
 				
 				DSLV_List = (DragSortListView) InflatedView.findViewById(R.id.visibilityorderDSLV_List);
 
@@ -192,7 +192,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 														}
 												});
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_NONE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,0,true);
-										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("/")[4]);
+										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});
@@ -246,8 +246,8 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 												dialogFragment.setDialogText(getString(R.string.visibilityOrder_SelectMulti));
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_MULTIPLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,-1,false);
 										dialogFragment.setDialogListLimit(3,false);
-										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Buttons).split("/")[4]);
-										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("/")[0]);
+										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
+										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});

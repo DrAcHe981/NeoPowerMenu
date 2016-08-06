@@ -74,10 +74,10 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				BottomBar.setVisibility(View.GONE);
 				final LinearLayout Upload = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Upload);
 				TextView UploadText = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_Upload);
-				UploadText.setText(context.getString(R.string.presetsManager_Buttons).split("/")[4]);
+				UploadText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[4]);
 				LinearLayout Share = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Share);
 				TextView ShareText = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_Share);
-				ShareText.setText(context.getString(R.string.presetsManager_Buttons).split("/")[5]);
+				ShareText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[5]);
 				final LinearLayout Star = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Star);
 				Star.setVisibility(View.GONE);
 				final ImageView StarImage = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_Star);
@@ -85,7 +85,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				LinearLayout Delete = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Delete);
 				ImageView DeleteImage = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_Delete);
 				TextView DeleteText = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_Delete);
-				DeleteText.setText(context.getString(R.string.presetsManager_Buttons).split("/")[2]);
+				DeleteText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[2]);
 				TextView DeleteLine = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_DeleteLine);
 
 				ItemTitle.setText(this.itemsTitle.get(position));
@@ -280,7 +280,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																		dialogFragment.setDialogInput2(context.getString(R.string.login_Password),"",false,null);
 																																		dialogFragment.setDialogInputMode(2,InputType.TYPE_TEXT_VARIATION_PASSWORD);
 																																		dialogFragment.setDialogCheckBox(context.getString(R.string.login_KeepLogin));
-																																				dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
+																																				dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 																																		//dialogFragment.setDialogNeutralButton(context.getString(R.string.login_TitleRegister));
 																																		dialogFragment.setDialogPositiveButton(context.getString(R.string.login_Title));
 																																		MainActivity.fragmentManager.beginTransaction().add(R.id.dialog_container, dialogFragment, slideDownDialogFragment.dialogTag).commit();
@@ -296,7 +296,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																}
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedNoAccess));
-																												dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
+																												dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 																												dialogFragment.setDialogPositiveButton(context.getString(R.string.login_Title));
 																												dialogFragment.showDialog(R.id.dialog_container);
 																										}
@@ -336,7 +336,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																}
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailedSameName));
-																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[0]);
+																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																												dialogFragment.showDialog(R.id.dialog_container);
 																										}
 																										else if (reason.contains("Cannot connect to the DB"))
@@ -383,7 +383,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																}
 																														});
 																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadFailed)+"\n"+reason);
-																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[0]);
+																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																												dialogFragment.showDialog(R.id.dialog_container);
 																										}
 																								}
@@ -404,8 +404,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														dialogFragment.setDialogText(context.getString(R.string.presetsManager_UploadMsg));
 														dialogFragment.setDialogInput1(context.getString(R.string.presetSaveDialog_InfoText),itemsTitle.get(position),false,null);
 														dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_CreatorNameInfo),itemsDesc.get(position),false,null);
-														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
-														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[0]);
+														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 														dialogFragment.showDialog(R.id.dialog_container);
 												}
 										});
@@ -465,8 +465,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																		}
 																});
 																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
-														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
-														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[5]);
+														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[5]);
 														dialogFragment.showDialog(R.id.dialog_container);
 												}
 										});
@@ -559,10 +559,10 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				// TODO: Implement this method
 																		}
 																});
-														dialogFragment.setDialogText(context.getString(R.string.graphics_GraphicsSaveLoad).split("/")[1]);
-														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
-														dialogFragment.setDialogNeutralButton(context.getString(R.string.Dialog_Buttons).split("/")[2]);
-														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[1]);
+														dialogFragment.setDialogText(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[1]);
+														dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+														dialogFragment.setDialogNeutralButton(context.getString(R.string.Dialog_Buttons).split("\\|")[2]);
+														dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[1]);
 														dialogFragment.showDialog(R.id.dialog_container);
 												} else {
 														new loadPreset().execute(context.getFilesDir().getPath()+"/presets/"+selectedName+".nps");
@@ -581,10 +581,10 @@ public class PresetsAdapter extends ArrayAdapter<String>
 								Share.setVisibility(View.GONE);
 								if(MainActivity.preferences.getString("ratedFor","").contains("&"+itemsTitle.get(position)+",")) {
 										StarImage.setImageResource(R.drawable.ic_action_star_0);
-										StarText.setText(context.getString(R.string.presetsManager_Buttons).split("/")[1]);
+										StarText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[1]);
 								} else {
 										StarImage.setImageResource(R.drawable.ic_action_star_10);
-										StarText.setText(context.getString(R.string.presetsManager_Buttons).split("/")[0]);
+										StarText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[0]);
 								}
 								if (PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) || PresetsPage.onlineIds[position].equals(MainActivity.accountUniqeId))
 								{
@@ -675,8 +675,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				}
 																		});
 																dialogFragment.setDialogText(context.getString(R.string.presetsManager_SureToDelete).replace("[PRESETNAME]", itemsTitle.get(position)));
-																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
-																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[5]);
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[5]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});
@@ -687,7 +687,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												Delete.setVisibility(View.VISIBLE);
 										DeleteLine.setVisibility(View.VISIBLE);
 										DeleteImage.setImageResource(R.drawable.ic_action_warning);
-										DeleteText.setText(context.getString(R.string.presetsManager_Buttons).split("/")[3]);
+										DeleteText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[3]);
 										Delete.setOnClickListener(new OnClickListener() {
 
 														@Override
@@ -743,7 +743,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																												// TODO: Implement this method
 																												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
 																												PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
-																												Toast.makeText(context, context.getString(R.string.presetsManager_ReportResult).split("/")[0].replace("[PRESETNAME]", itemsTitle.get(position)), Toast.LENGTH_SHORT).show();
+																												Toast.makeText(context, context.getString(R.string.presetsManager_ReportResult).split("\\|")[0].replace("[PRESETNAME]", itemsTitle.get(position)), Toast.LENGTH_SHORT).show();
 																										}
 
 																										@Override
@@ -786,8 +786,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																		// TODO: Implement this method
 																																}
 																														});
-																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_ReportResult).split("/")[1]+reason);
-																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("/")[0]);
+																												dialogFragment.setDialogText(context.getString(R.string.presetsManager_ReportResult).split("\\|")[1]+reason);
+																												dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																												dialogFragment.showDialog(R.id.dialog_container);
 																										}
 																								});
@@ -809,11 +809,11 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						// TODO: Implement this method
 																				}
 																		});
-																dialogFragment.setDialogText(context.getString(R.string.presetsManager_ReportDialog).split("/")[0].replace("[PRESETNAME]", itemsTitle.get(position)));
-																dialogFragment.setDialogInput1(context.getString(R.string.presetsManager_ReportDialog).split("/")[1],"",false,null);
+																dialogFragment.setDialogText(context.getString(R.string.presetsManager_ReportDialog).split("\\|")[0].replace("[PRESETNAME]", itemsTitle.get(position)));
+																dialogFragment.setDialogInput1(context.getString(R.string.presetsManager_ReportDialog).split("\\|")[1],"",false,null);
 																dialogFragment.setDialogInputSingleLine(1,false);
-																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("/")[4]);
-																dialogFragment.setDialogPositiveButton(context.getString(R.string.presetsManager_Buttons).split("/")[3]);
+																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+																dialogFragment.setDialogPositiveButton(context.getString(R.string.presetsManager_Buttons).split("\\|")[3]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});
@@ -846,15 +846,15 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				public void onUploadComplete(String response)
 																				{
 																						// TODO: Implement this method
-																						if (StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_Buttons).split("/")[0])) {
+																						if (StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_Buttons).split("\\|")[0])) {
 																								StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]",""+(Integer.parseInt(StarsCount.getText().toString().split(": ")[1])+1)));
 																								StarImage.setImageResource(R.drawable.ic_action_star_0);
-																								StarText.setText(context.getString(R.string.presetsManager_Buttons).split("/")[1]);
+																								StarText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[1]);
 																								MainActivity.preferences.edit().putString("ratedFor",MainActivity.preferences.getString("ratedFor","")+"&"+itemsTitle.get(position)+",").commit();
 																						} else {
 																								StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]",""+(Integer.parseInt(StarsCount.getText().toString().split(": ")[1])-1)));
 																								StarImage.setImageResource(R.drawable.ic_action_star_10);
-																								StarText.setText(context.getString(R.string.presetsManager_Buttons).split("/")[0]);
+																								StarText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[0]);
 																								MainActivity.preferences.edit().putString("ratedFor",MainActivity.preferences.getString("ratedFor","").replace("&"+itemsTitle.get(position)+",","")).commit();
 																						}
 																						LoginFragment.getStatistics();
@@ -883,7 +883,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				}
 																		});
 																uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
-																uH.setAdditionalUploadPosts(new String[][] {{"action",(StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_Buttons).split("/")[0]) ? "givestar" : "removestar")},{(MainActivity.usernameemail.contains("@") ? "userEmail" : "userName"),MainActivity.usernameemail},{"name",itemsTitle.get(position)}});
+																uH.setAdditionalUploadPosts(new String[][] {{"action",(StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_Buttons).split("\\|")[0]) ? "givestar" : "removestar")},{(MainActivity.usernameemail.contains("@") ? "userEmail" : "userName"),MainActivity.usernameemail},{"name",itemsTitle.get(position)}});
 																try
 																{
 																		new File(context.getFilesDir().getPath() + "/tmp").createNewFile();

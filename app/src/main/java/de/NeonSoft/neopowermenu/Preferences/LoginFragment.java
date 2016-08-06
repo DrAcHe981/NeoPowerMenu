@@ -208,7 +208,7 @@ public class LoginFragment extends Fragment
 																				}
 																		});
 																dialogFragment.setDialogText("Register failed: \n"+reason);
-																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
+																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												}
@@ -327,7 +327,7 @@ public class LoginFragment extends Fragment
 																				}
 																		});
 																dialogFragment.setDialogText("Reset failed: \n"+reason);
-																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[0]);
+																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												}

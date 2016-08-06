@@ -177,11 +177,11 @@ public class PreferencesGraphicsFragment extends Fragment
 																						presetsListTitles[i] = presetsFiles[i].getName().split(".nps")[0];
 																				}
 																				presetsListDialog.setDialogList(ListView.CHOICE_MODE_SINGLE,presetsListTitles, -1, false);
-																				presetsListDialog.setDialogNegativeButton(getString(R.string.Dialog_Buttons).split("/")[4]);
-																				presetsListDialog.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("/")[6]);
+																				presetsListDialog.setDialogNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
+																				presetsListDialog.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[6]);
 																		} else {
 																				presetsListDialog.setDialogText(getString(R.string.graphics_NoPresetsFound));
-																				presetsListDialog.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("/")[0]);
+																				presetsListDialog.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																		}
 																		presetsListDialog.showDialog(R.id.dialog_container);
 																} else if (position == 2) {
@@ -219,7 +219,7 @@ public class PreferencesGraphicsFragment extends Fragment
 												});
 										String[] choose = getString(R.string.graphics_Choose).split("/");
 										dialogFragment.setDialogList(ListView.CHOICE_MODE_NONE,new String[] {choose[0],choose[1],choose[2]},-1,true);
-										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("/")[4]);
+										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});

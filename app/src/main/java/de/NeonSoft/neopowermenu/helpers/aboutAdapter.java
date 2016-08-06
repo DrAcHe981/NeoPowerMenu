@@ -126,9 +126,9 @@ public class aboutAdapter extends ArrayAdapter<String>
 														dialogFragment.setDialogText("Use this at your own risk!\nThis is to change your device Id, when changing this keep in mind that your uploaded presets won't be 'yours' anymore, if not logged in with an account!");
 														dialogFragment.setDialogInput1("Device Id:",MainActivity.deviceUniqeId,false,null);
 														dialogFragment.setDialogCheckBox("Encrypt with md5");
-														dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("/")[4]);
+														dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 														//dialogFragment.setDialogNeutralButton("Reset");
-														dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("/")[7]);
+														dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 														dialogFragment.showDialog(R.id.dialog_container);
 												}
 										}
