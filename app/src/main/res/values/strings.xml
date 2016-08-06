@@ -213,7 +213,6 @@ Your presets (ordered by stars):
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
-<string name="presetsManager_Stars">"Stars: [STARS]"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
@@ -224,11 +223,12 @@ Your presets (ordered by stars):
 <string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
 <string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsPartMain">"Dialog"</string>
+<string name="presetsManager_Stars">"Stars: [STARS]"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
 <string name="presetsManager_OrderBy">"Order by"</string>
-<string name="presetsManager_OrderNames">"Name/Time/Stars/Creator/Own"</string>
-<string name="presetsManager_OrderAscDesc">"Ascending/Descending"</string>
-<string name="visibilityOrder_Add">"Add normal item/Add multi item"</string>
+<string name="presetsManager_OrderNames">"Name|Time|Stars|Creator|Own"</string>
+<string name="presetsManager_OrderAscDesc">"Ascending|Descending"</string>
+<string name="visibilityOrder_Add">"Add normal item|Add multi item"</string>
 <string name="visibilityOrder_SelectMulti">"Please select three items:"</string>
 <string name="powerMenuMain_Empty">"Empty"</string>
 <string name="login_Recover">"Recover"</string>
@@ -244,20 +244,20 @@ Click here for recovering options."</string>
 <string name="powerMenuMain_SoundSilent">"Sound: Silent"</string>
 
 <!-- Dialog -->
-<string name="Dialog_Buttons">"Ok/Yes/No/Rename/Cancel/Delete/Load/Save/Ignore"</string>
-<string name="presetLoadDialog_BuiltIn">"Light/Dark/Black"</string>
-<string name="advancedPrefs_DialogGravity">"Top/Left/Right/Bottom"</string>
-<string name="graphics_Choose">"Restore default/Choose from presets/Choose from gallery"</string>
+<string name="Dialog_Buttons">"Ok|Yes|No|Rename|Cancel|Delete|Load|Save|Ignore"</string>
+<string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
+<string name="advancedPrefs_DialogGravity">"Top|Left|Right|Bottom"</string>
+<string name="graphics_Choose">"Restore default|Choose from presets|Choose from gallery"</string>
 <string name="graphics_Crop">"Crop"</string>
 <string name="graphics_NoPresetsFound">"No presets with graphics found..."</string>
-<string name="graphics_GraphicsSaveLoad">"Save with current graphics./This preset contains graphics, do you want to load them?
+<string name="graphics_GraphicsSaveLoad">"Save with current graphics.|This preset contains graphics, do you want to load them?
 This will overwrite your current graphics!"</string>
 <string name="presetsManager_ReportDialog">"Are you sure to report [PRESETNAME]?
 This can't be undone, so please don't report just for fun!
 
-Also we need a reason why you want to report it, please enter it below./Report reason:"</string>
-<string name="presetsManager_ReportResult">"[PRESETNAME] reported,the developer will take a look over it./Report failed, please try it again.
+Also we need a reason why you want to report it, please enter it below.|Report reason:"</string>
+<string name="presetsManager_ReportResult">"[PRESETNAME] reported,the developer will take a look over it.|Report failed, please try it again.
 Reason: "</string>
-<string name="presetsManager_Buttons">"Give Star/Remove Star/Delete/Report/Upload/Share"</string>
+<string name="presetsManager_Buttons">"Give Star|Remove Star|Delete|Report|Upload|Share"</string>
 <string name="screenrecord_notif_buttons">"Stop|Toggle pointer"</string>
 </resources>
