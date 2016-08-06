@@ -222,9 +222,9 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="colorsPartMain">"Dialog"</string>
 <string name="presetsManager_Refresh">"Aktualisieren"</string>
 <string name="presetsManager_OrderBy">"Sortieren nach"</string>
-<string name="presetsManager_OrderNames">"Name/Zeit/Sterne/Ersteller/Eigene"</string>
-<string name="presetsManager_OrderAscDesc">"Ansteigend/Absteigend"</string>
-<string name="visibilityOrder_Add">"Normales Item hinzufügen/Multi Item hinzufügen"</string>
+<string name="presetsManager_OrderNames">"Name|Zeit|Sterne|Ersteller|Eigene"</string>
+<string name="presetsManager_OrderAscDesc">"Ansteigend|Absteigend"</string>
+<string name="visibilityOrder_Add">"Normales Item hinzufügen|Multi Item hinzufügen"</string>
 <string name="visibilityOrder_SelectMulti">"Bitte wähle drei Items:"</string>
 <string name="powerMenuMain_Empty">"Leer"</string>
 <string name="login_Recover">"Wiederherstellen"</string>
@@ -240,20 +240,20 @@ Klicke hier für Wiederherstellungsoptionen."</string>
 <string name="powerMenuMain_SoundSilent">"Sound: Still"</string>
 
 <!-- Dialog -->
-<string name="Dialog_Buttons">"Ok/Ja/Nein/Umbenennen/Abbrechen/Löschen/Laden/Speichern/Ignorieren"</string>
-<string name="presetLoadDialog_BuiltIn">"Hell/Dunkel/Schwaz"</string>
-<string name="advancedPrefs_DialogGravity">"Oben/Links/Rechts/Unten"</string>
-<string name="graphics_Choose">"Standard wiederherstellen/Aus Voreinstellungen wählen/Aus Gallerie wählen"</string>
+<string name="Dialog_Buttons">"Ok|Ja|Nein|Umbenennen|Abbrechen|Löschen|Laden|Speichern|Ignorieren"</string>
+<string name="presetLoadDialog_BuiltIn">"Hell|Dunkel|Schwaz"</string>
+<string name="advancedPrefs_DialogGravity">"Oben|Links|Rechts|Unten"</string>
+<string name="graphics_Choose">"Standard wiederherstellen|Aus Voreinstellungen wählen|Aus Gallerie wählen"</string>
 <string name="graphics_Crop">"Schneiden"</string>
 <string name="graphics_NoPresetsFound">"Keine Voreinstellungen mit Grafiken gefunden..."</string>
-<string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern./Diese Voreinstellung enthält Grafiken, möchtest du sie laden?
+<string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern.|Diese Voreinstellung enthält Grafiken, möchtest du sie laden?
 Dies überscheibt deine aktuellen Grafiken!"</string>
 <string name="presetsManager_ReportDialog">"Bist Du dir sicher dass du [PRESETNAME] melden willst?
 Dies kann nicht rückgängig gemacht werden also melde es nicht nur zum spaß!
 
-Desweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein./Melde Grund:"</string>
-<string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet,Der Entwickler wird einen blick drüber werfen./Melden fehlgeschlagen, bitte versuch es erneut.
+Desweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein.|Melde Grund:"</string>
+<string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet,Der Entwickler wird einen blick drüber werfen.|Melden fehlgeschlagen, bitte versuch es erneut.
 Grund: "</string>
-<string name="presetsManager_Buttons">"Stern geben/Stern entfernen/Löschen/Melden/Hochladen/Teilen"</string>
+<string name="presetsManager_Buttons">"Stern geben|Stern entfernen|Löschen|Melden|Hochladen|Teilen"</string>
 <string name="screenrecord_notif_buttons">"Stopp|Pointer an/aus"</string>
 </resources>
