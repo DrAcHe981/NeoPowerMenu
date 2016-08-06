@@ -255,4 +255,5 @@ Desweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ei
 <string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet,Der Entwickler wird einen blick drüber werfen./Melden fehlgeschlagen, bitte versuch es erneut.
 Grund: "</string>
 <string name="presetsManager_Buttons">"Stern geben/Stern entfernen/Löschen/Melden/Hochladen/Teilen"</string>
+<string name="screenrecord_notif_buttons">"Stopp|Pointer an/aus"</string>
 </resources>
