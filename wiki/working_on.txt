@@ -13,9 +13,10 @@ HTC one A9
 HTC Desire 816 (CM 13)
 
 => Samsung
+Samsung Galaxy Alpha
 Samsung Galaxy S3 Mini (SlimKat 4.4.4)
 Samsung Galaxy S4 (i9505)
-Samsung Galaxy Alpha
+Samsung Galaxy S5
 Samsung Galaxy S6 (G920F) (6.0.1)
 Samsung Galaxy E700H (5.0)
 Samsung Galaxy Tab 4 7.0 (t230)
