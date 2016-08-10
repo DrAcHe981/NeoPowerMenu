@@ -1089,6 +1089,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														dH.setLocalUrl(context.getFilesDir().getPath() + "/download");
 														dH.startDownload();
 												} else {
+														PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.presetsManager_States).split("\\|")[downloadHelper.STATE_CANCELLING] +"\n");
 														PreferencesPresetsFragment.DownloadingActiveForLayout[position].setEnabled(false);
 														PreferencesPresetsFragment.DownloadingActiveForLayout[position].setAlpha((float) .3);
 														PreferencesPresetsFragment.DownloadingActiveForHelper[position].stopDownload(true);
