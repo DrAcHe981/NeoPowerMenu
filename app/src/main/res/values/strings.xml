@@ -169,7 +169,6 @@ This is your last chance to adjust the name or the creator before uploading..."<
 <string name="presetsManager_UploadFailedSameName">"This name is already in use, please choose another one."</string>
 <string name="presetsManager_UploadFailedNoAccess">"This creator name is protected, choose another one or log in."</string>
 <string name="presetsManager_UploadFailed">"Upload failed!"</string>
-<string name="presetsManager_States">"Waiting for other downloads...|Connecting to server...|Downloading...|Cancelling..."</string>
 <string name="presetsManager_DownloadFailed">"Download failed!"</string>
 <string name="presetsManager_CantConnecttoServer">"Can't connect to the server!
 Please check your network connection or try it again later."</string>
@@ -260,4 +259,5 @@ Also we need a reason why you want to report it, please enter it below.|Report r
 Reason: "</string>
 <string name="presetsManager_Buttons">"Give Star|Remove Star|Delete|Report|Upload|Share"</string>
 <string name="screenrecord_notif_buttons">"Stop|Toggle pointer"</string>
+<string name="presetsManager_States">"Waiting for other downloads...|Connecting to server...|Downloading...|Cancelling..."</string>
 </resources>
