@@ -244,10 +244,10 @@ public class downloadHelper
 														dloutput = new FileOutputStream(file);
 														byte data[] = new byte[1024];
 														total = 0;
+														setState(STATE_DOWNLOADING);
 														while ((count = dlinput.read(data)) != -1)
 														{	
 																if(!isCancelled()) {
-																		setState(STATE_DOWNLOADING);
 																		total += count;
 																		dlnowsize = total;
 																		dloutput.write(data, 0, count);
