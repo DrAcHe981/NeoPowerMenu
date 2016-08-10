@@ -253,4 +253,5 @@
 Также нам нужна причина, почему вы жалуетесь на него, пожалуйста, укажите её ниже.|Причина:"</string>
 <string name="presetsManager_ReportResult">"Жалоба на [PRESETNAME] отправлена, разработчик рассмотрит её.|Жалоба не отправлена, попробуйте снова. Причина: "</string>
 <string name="presetsManager_Buttons">"Дать звезду|Убрать звезду|Удалить|Пожаловаться|Загрузить|Поделиться"</string>
+<string name="screenrecord_notif_buttons">"Стоп|Переключить указатель"</string>
 </resources>
