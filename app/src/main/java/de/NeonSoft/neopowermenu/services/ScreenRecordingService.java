@@ -34,9 +34,14 @@ import java.util.Locale;
 
 import de.NeonSoft.neopowermenu.R;
 import de.NeonSoft.neopowermenu.xposed.*;
+import android.app.*;
 
 public class ScreenRecordingService extends Service
  {
+		 
+		 private static Context mContext;
+		 private static NotificationManager nm;
+		 
     private static final String TAG = "NPM:ScreenRecordingService";
 
     private static final int SCREENRECORD_NOTIFICATION_ID = 3;
@@ -49,6 +54,8 @@ public class ScreenRecordingService extends Service
     public static final String ACTION_TOGGLE_SCREEN_RECORDING = "neopowermenu.intent.action.TOGGLE_SCREEN_RECORDING";
     public static final String ACTION_SCREEN_RECORDING_STATUS_CHANGED = "neopowermenu.intent.action.SCREEN_RECORDING_STATUS_CHANGED";
     public static final String ACTION_TOGGLE_SHOW_TOUCHES = "neopowermenu.intent.action.SCREEN_RECORDING_TOGGLE_SHOW_TOUCHES";
+    public static final String ACTION_SCREEN_RECORDING_OPEN = "neopowermenu.intent.action.SCREEN_RECORDING_OPEN";
+    public static final String ACTION_SCREEN_RECORDING_DELETE = "neopowermenu.intent.action.SCREEN_RECORDING_DELETE";
     public static final String EXTRA_RECORDING_STATUS = "recordingStatus";
     public static final String EXTRA_STATUS_MESSAGE = "statusMessage";
     public static final String EXTRA_SHOW_TOUCHES = "showTouches";
@@ -79,6 +86,7 @@ public class ScreenRecordingService extends Service
                 // choose screenrecord binary and prepare command
                 List<String> command = new ArrayList<String>();
                 //command.add("su");
+								Log.d(TAG,"Using binary located in: "+getBinaryPath());
 								command.add(getBinaryPath());
 //                if (!mUseStockBinary && 
 //                        mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_SCREENRECORD_MICROPHONE, true)) {
@@ -170,6 +178,9 @@ public class ScreenRecordingService extends Service
     public void onCreate() {
         super.onCreate();
 
+				mContext = getApplicationContext();
+				nm = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
+				
         final String prefsName = getPackageName() + "_preferences";
         mPrefs = getSharedPreferences(prefsName, Context.MODE_WORLD_READABLE);
 
@@ -234,7 +245,41 @@ public class ScreenRecordingService extends Service
                 toggleScreenrecord();
             } else if (intent.getAction().equals(ACTION_TOGGLE_SHOW_TOUCHES)) {
                 toggleShowTouches();
-            }
+            } else if (intent.getAction().equals(ACTION_SCREEN_RECORDING_OPEN)) {
+								String path = intent.getStringExtra("path");
+								
+								Intent player = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
+								player.setDataAndType(Uri.parse(path), "video/*");
+								player.putExtra(Intent.EXTRA_MIME_TYPES,new String[] {"video/*"});
+								player.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+								//Intent chooser = Intent.createChooser(player,path);
+								//chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+								startActivity(player);
+
+								stopSelf();
+								
+						} else if (intent.getAction().equals(ACTION_SCREEN_RECORDING_DELETE)) {
+								String path = intent.getStringExtra("path");
+								File file = new File(path);
+								
+								if(file.delete()) {
+										// Make it appear in gallery, run MediaScanner
+										MediaScannerConnection.scanFile(ScreenRecordingService.this,
+												new String[] { file.getAbsolutePath() }, null,
+												new MediaScannerConnection.OnScanCompletedListener() {
+														public void onScanCompleted(String path, Uri uri) {
+																Log.i(TAG, "MediaScanner done scanning " + path);
+														}
+												});
+								} else {
+										Log.e(TAG,"Failed to delete.");
+								}
+								
+								nm.cancel(SCREENRECORD_NOTIFICATION_ID+1);
+								
+								stopSelf();
+								
+						}
         } else {
             stopSelf();
         }
@@ -368,15 +413,26 @@ public class ScreenRecordingService extends Service
             // wait...
         }
 
+				Notification.Builder builder = new Notification.Builder(mContext)
+						.setContentText("Saving...")
+						.setContentTitle(getString(R.string.screenrecord_notif_title))
+						.setSmallIcon(R.drawable.ic_sysbar_camera)
+						.setOngoing(true)
+						.setWhen(System.currentTimeMillis());
+
+				nm.notify(SCREENRECORD_NOTIFICATION_ID+1,builder.build());
+				
         // Give a second to screenrecord to process the file
         mHandler.postDelayed(new Runnable() { public void run() {
 										mCaptureThread = null;
 
+										String resultMsg = "";
 										String fileName = "NPM_SCR_" + new SimpleDateFormat("ddMMyyyy_HHmmss", Locale.US).format(new Date()) + ".mp4";
 
 										File picturesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 										if (!picturesDir.exists()) {
 												if (!picturesDir.mkdir()) {
+														resultMsg = "Cannpt create Pictures directory.";
 														Log.e(TAG, "Cannot create Pictures directory");
 														return;
 												}
@@ -385,6 +441,7 @@ public class ScreenRecordingService extends Service
 										File screenrecord = new File(picturesDir, "Screenrecord");
 										if (!screenrecord.exists()) {
 												if (!screenrecord.mkdir()) {
+														resultMsg = "Cannot create Screenrecord directory.";
 														Log.e(TAG, "Cannot create Screenrecord directory");
 														return;
 												}
@@ -394,14 +451,16 @@ public class ScreenRecordingService extends Service
 										final File output = new File(screenrecord, fileName);
 
 										Log.d(TAG, "Copying file to " + output.getAbsolutePath());
-
+										
 										try {
 												copyFileUsingStream(input, output);
 												input.delete();
-												Toast.makeText(ScreenRecordingService.this,
-																			 String.format(getString(R.string.screenrecord_toast_saved), 
-																										 output.getPath()), Toast.LENGTH_SHORT).show();
+												resultMsg = String.format(getString(R.string.screenrecord_toast_saved),output.getName());
+												//Toast.makeText(ScreenRecordingService.this,
+												//							 String.format(getString(R.string.screenrecord_toast_saved), 
+												//														 output.getPath()), Toast.LENGTH_SHORT).show();
 										} catch (IOException e) {
+												resultMsg = "Unable to copy output file, look in the log for more info.";
 												Log.e(TAG, "Unable to copy output file", e);
 												Toast.makeText(ScreenRecordingService.this,
 																			 R.string.screenrecord_toast_save_error, Toast.LENGTH_SHORT).show();
@@ -416,12 +475,45 @@ public class ScreenRecordingService extends Service
 														}
 												});
 
+										Intent openIntent = new Intent(mContext, ScreenRecordingService.class);
+										openIntent.setAction(ACTION_SCREEN_RECORDING_OPEN);
+										openIntent.putExtra("path",output.getPath());
+										PendingIntent openPendIntent = PendingIntent.getService(mContext, 0, openIntent,
+																																							PendingIntent.FLAG_UPDATE_CURRENT);
+										
+										Notification.Builder builder = new Notification.Builder(mContext)
+												.setContentText(resultMsg)
+												.setTicker(resultMsg)
+												.setContentTitle(getString(R.string.screenrecord_notif_title))
+												.setSmallIcon(R.drawable.ic_sysbar_camera)
+												.setOngoing(false)
+												.setWhen(System.currentTimeMillis());
+
+										if(resultMsg.equals(String.format(getString(R.string.screenrecord_toast_saved),output.getName()))) {
+										builder.setContentIntent(openPendIntent);
+										Intent deleteIntent = new Intent(mContext, ScreenRecordingService.class);
+										deleteIntent.setAction(ACTION_SCREEN_RECORDING_DELETE);
+										deleteIntent.putExtra("path",output.getPath());
+										PendingIntent deletePendIntent = PendingIntent.getService(mContext, 0, deleteIntent,
+																																						PendingIntent.FLAG_UPDATE_CURRENT);
+
+										if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.M) {
+												builder
+														.addAction(new Notification.Action.Builder(
+																					 Icon.createWithResource(mContext, R.drawable.ic_action_trash),
+																					 getString(R.string.presetsManager_Buttons).split("\\|")[2], deletePendIntent).build());
+										} else {
+												builder.addAction(R.drawable.ic_action_trash,getString(R.string.presetsManager_Buttons).split("\\|")[2], deletePendIntent);
+										}
+										}
+										
+										nm.notify(SCREENRECORD_NOTIFICATION_ID+1,builder.build());
+										
 										updateStatus(STATUS_IDLE);
 								} }, 3000);
     }
 
     private String getBinaryPath() {
-				Log.d(TAG,"Using Binary: " + (mUseStockBinary ? "/system/bin/screenrecord" : getFilesDir() + "/screenrecord"));
         return (mUseStockBinary ? "/system/bin/screenrecord" : getFilesDir() + "/screenrecord");
     }
 

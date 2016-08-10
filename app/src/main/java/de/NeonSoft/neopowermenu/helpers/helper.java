@@ -17,7 +17,8 @@ import net.lingala.zip4j.util.*;
 public class helper
 {
 
-
+		private static boolean zipLogging = true;
+		
     @SuppressWarnings("deprecation")
     public static void setBackground(View view, Drawable d) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -185,6 +186,12 @@ public class helper
 				return dp;
 		}
 
+		
+		public static void zipLogging(boolean enabled) {
+				zipLogging = enabled;
+				//Log.d("NPM:zip","Logging "+(zipLogging ? "enabled" : "disabled")+"...");
+		}
+		
 		public static String zipFile(String fileToZip, String zipFile, String password) {
 				try {
 						ZipFile zip = new ZipFile(zipFile);
@@ -200,7 +207,7 @@ public class helper
 
 						zip.addFile(new File(fileToZip),params);
 				} catch (Throwable t) {
-						Log.e("NPM:zipFile","Failed to zip: "+t.toString());
+						if(zipLogging) Log.e("NPM:zipFile","Failed to zip: "+t.toString());
 						return t.toString();
 				}
 				return null;
@@ -221,7 +228,7 @@ public class helper
 						
 						zip.addFolder(toZipFolder,params);
 				} catch (Throwable t) {
-						Log.e("NPM:zipAll","Failed to zip: "+t.toString());
+						if(zipLogging) Log.e("NPM:zipAll","Failed to zip: "+t.toString());
 						return t.toString();
 				}
 				return null;
@@ -238,7 +245,7 @@ public class helper
 						
 						zip.extractFile(fileToUnzip, outputFolder, params, fileToUnzip);
 				} catch (Throwable t) {
-						Log.e("NPM:unzipFile","Failed to unzip: "+t.toString());
+						if(zipLogging) Log.e("NPM:unzipFile","Failed to unzip: "+t.toString());
 						return t.toString();
 				}
 				return null;
@@ -254,7 +261,7 @@ public class helper
 						
 						zip.extractAll(outputFolder);
 				} catch (Throwable t) {
-						Log.e("NPM:unzipAll","Failed to unzip: "+t.toString());
+						if(zipLogging) Log.e("NPM:unzipAll","Failed to unzip: "+t.toString());
 						return t.toString();
 				}
 				return null;
@@ -271,7 +278,7 @@ public class helper
 						return zip.isValidZipFile();
 						
 				} catch (Throwable t) {
-						Log.e("NPM:isValidZip","Failed to validate: "+t.toString());
+						if(zipLogging) Log.e("NPM:isValidZip","Failed to validate: "+t.toString());
 						return false;
 				}
 		}
@@ -287,7 +294,7 @@ public class helper
 						zip.removeFile(fileToRemove);
 						
 				} catch (Throwable t) {
-						Log.e("NPM:removeFromZip","Failed to remove: "+t.toString());
+						if(zipLogging) Log.e("NPM:removeFromZip","Failed to remove: "+t.toString());
 						return t.toString();
 				}
 				return null;

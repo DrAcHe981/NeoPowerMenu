@@ -74,6 +74,11 @@ public class PreferencesPartFragment extends Fragment
 	
 				mContext = getActivity();
 
+				if (MainActivity.preferences.getBoolean("autoLogin", false) && !MainActivity.loggedIn)
+				{
+						LoginFragment.performLogin(getActivity(), MainActivity.preferences.getString("ueel", "null"), MainActivity.preferences.getString("pd", "null"), true, true);
+				}
+				
 				MainActivity.actionbar.setTitle("NeoPowerMenu");
 				MainActivity.actionbar.setSubTitle("v" + MainActivity.versionName + " (" + MainActivity.versionCode + ")"+(MainActivity.LOCALTESTSERVER ? " | Using local test Server" : ""));
 				
@@ -140,7 +145,7 @@ public class PreferencesPartFragment extends Fragment
 												}
 										}
 										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
-										dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
 														public void onListItemClick(int position, String text)
@@ -164,7 +169,7 @@ public class PreferencesPartFragment extends Fragment
 														}
 
 														@Override
-														public void onPositiveClick(ArrayList<String> resultData)
+														public void onPositiveClick(Bundle resultBundle)
 														{
 																// TODO: Implement this method
 														}
@@ -175,8 +180,8 @@ public class PreferencesPartFragment extends Fragment
 																// TODO: Implement this method
 														}
 												});
-										dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId,true);
-										dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+										dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId,true);
+										dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});

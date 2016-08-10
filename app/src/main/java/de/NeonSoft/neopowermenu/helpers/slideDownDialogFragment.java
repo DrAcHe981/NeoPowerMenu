@@ -24,6 +24,11 @@ import de.NeonSoft.neopowermenu.R;
 public class slideDownDialogFragment extends android.support.v4.app.DialogFragment
 {
 
+		public static String RESULT_LIST = "listResult";
+		public static String RESULT_INPUT = "inputResult_";
+		public static String RESULT_COLORPICKER = "colorpickerResult";
+		public static String RESULT_CHECKBOX = "checkboxResult";
+		
 		public static String dialogTag = "slideDownDialog";
 		public static String dialogCloseCall = "de.NeonSoft.slideDownDialog.close";
 		public static ArrayList<slideDownDialogFragment> dialogs = new ArrayList<slideDownDialogFragment>();
@@ -45,6 +50,17 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		 private int dialogListDefault = 0;
 		 private boolean dialogListClose = true;
 		 
+		 private ArrayList<EditText> dialogInputs = new ArrayList<EditText>();
+		private ArrayList<String> dialogInputDescText = new ArrayList<String>();
+		private ArrayList<String> dialogInputDefaultText = new ArrayList<String>();
+		private ArrayList<Boolean> dialogInputAllowEmpty = new ArrayList<Boolean>();
+		private ArrayList<TextWatcher> dialogInputTextWatcher = new ArrayList<TextWatcher>();
+		private ArrayList<Integer> dialogInputMode = new ArrayList<Integer>();
+		private ArrayList<Boolean> dialogInputSingleLine = new ArrayList<Boolean>();
+		 
+		private LinearLayout LinearLayout_InputHolder;
+		
+		/*
 		 private String dialogInput1descText;
 		 private String dialogInput1defaultText;
 		 private boolean dialogInput1allowEmpty;
@@ -58,7 +74,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		private TextWatcher dialogInput2textWatcher;
 		private int dialogInput2mode = InputType.TYPE_TEXT_VARIATION_NORMAL;
 		private boolean dialogInput2singleline = true;
-
+		*/
+		
 		private TextView TextView_InputAssistInfo;
 		private String dialogInputAssistInfoString;
 		
@@ -83,6 +100,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		LinearLayout LinearLayout_DialogListView;
 		ListView ListView_DialogListView;
 
+		/*
 		LinearLayout LinearLayout_DialogInput1;
 		TextView TextView_DialogInput1Text;
 		EditText EditText_DialogInput1;
@@ -92,7 +110,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		TextView TextView_DialogInput2Text;
 		EditText EditText_DialogInput2;
 		TextWatcher TextWatcher_DialogInput2;
-
+		*/
+		
 		boolean DialogColorPicker_HexChangeViaWheel = false;
 
 		LinearLayout LinearLayout_DialogColorPicker;
@@ -118,6 +137,42 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 
 		TextView TextView_DialogTouchOutside;
 		
+		public slideDownDialogFragment() {
+				this.mContext = null;
+				this.mInterface = new slideDownDialogInterface() {
+
+						@Override
+						public void onListItemClick(int position, String text)
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onNegativeClick()
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onNeutralClick()
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onPositiveClick(Bundle resultBundle)
+						{
+								// TODO: Implement this method
+						}
+
+						@Override
+						public void onTouchOutside()
+						{
+								// TODO: Implement this method
+						}
+				};
+				this.mFragmentmanager = null;
+		}
 
 		public slideDownDialogFragment(Activity context,android.support.v4.app.FragmentManager fragmentmanager) {
 				this.mContext = context;
@@ -142,7 +197,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						}
 
 						@Override
-						public void onPositiveClick(ArrayList<String> resultData)
+						public void onPositiveClick(Bundle resultBundle)
 						{
 								// TODO: Implement this method
 						}
@@ -161,106 +216,245 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 				this.mFragmentmanager = fragmentmanager;
 		}
 		
-		public void setDialogListener(slideDownDialogInterface listener) {
+		public void setListener(slideDownDialogInterface listener) {
 				this.mInterface = listener;
 		}
 		
-		public void setDialogText(String text) {
+		public void setText(String text) {
 				dialogText = text;
 				if(TextView_DialogText!=null) {
 						TextView_DialogText.setText(text);
 						TextView_DialogText.setVisibility(text.isEmpty() ? View.GONE : View.VISIBLE);
 				}
 		}
-		public void setDialogTextSize(float size) {
+		public void setTextSize(float size) {
 				if(TextView_DialogText!=null) {
 						TextView_DialogText.setTextSize(size);
 				}
 				dialogTextSize = size;
 		}
 		
-		public void setDialogList(int mode, ArrayList<String> items, int defaultsel, boolean closeonsel) {
+		public void setList(int mode, ArrayList<String> items, int defaultsel, boolean closeonsel) {
 				dialogListMode = mode;
 				dialogListItems = (String[]) items.toArray();
 				dialogListDefault = defaultsel;
 				dialogListClose = closeonsel;
 		}
-		public void setDialogList(int mode, String[] items, int defaultsel, boolean closeonsel) {
+		public void setList(int mode, String[] items, int defaultsel, boolean closeonsel) {
 				dialogListMode = mode;
 				dialogListItems = items;
 				dialogListDefault = defaultsel;
 				dialogListClose = closeonsel;
 		}
-		public void setDialogListLimit(int limit, boolean alsoMin) {
+		public void setListLimit(int limit, boolean alsoMin) {
 				dialogListLimit = limit;
 				dialogListLimitMin = alsoMin;
 		}
 		
-		public void setDialogInput1(String descText,String defaultText,boolean allowEmpty,TextWatcher watcher) {
+		public void addInput(String descText, String defaultText, boolean allowEmpty, TextWatcher watcher) {
+				dialogInputs.add(null);
+				dialogInputDescText.add(descText);
+				dialogInputDefaultText.add(defaultText);
+				dialogInputAllowEmpty.add(allowEmpty);
+				dialogInputTextWatcher.add(watcher);
+				dialogInputMode.add(InputType.TYPE_CLASS_TEXT);
+				dialogInputSingleLine.add(true);
+		}
+		
+		/*public void setInput1(String descText,String defaultText,boolean allowEmpty,TextWatcher watcher) {
 				dialogInput1descText = descText;
 				dialogInput1defaultText = defaultText;
 				dialogInput1allowEmpty = allowEmpty;
 				dialogInput1textWatcher = watcher;
 		}
-		public void setDialogInput2(String descText,String defaultText,boolean allowEmpty,TextWatcher watcher) {
+		public void setInput2(String descText,String defaultText,boolean allowEmpty,TextWatcher watcher) {
 				dialogInput2descText = descText;
 				dialogInput2defaultText = defaultText;
 				dialogInput2allowEmpty = allowEmpty;
 				dialogInput2textWatcher = watcher;
-		}
+		}*/
 
-		public void showInputAssistInfo(boolean enabled) {
+		public void showAssistInfo(boolean enabled) {
 				TextView_InputAssistInfo.setVisibility(enabled ? View.VISIBLE : View.GONE);
 		}
 		
-		public void setDialogInputAssistInfo(String text) {
+		public void setInputAssistInfo(String text) {
 				if(TextView_InputAssistInfo != null) {
-						TextView_InputAssistInfo.setText("text");
+						TextView_InputAssistInfo.setText(text);
 				}
 				dialogInputAssistInfoString = text;
 		}
 		
-		public void setDialogInputMode(int input, int mode) {
-				if (input == 1) {
+		public void setInputMode(int input, int mode) {
+				dialogInputMode.set(input,InputType.TYPE_CLASS_TEXT | mode);
+				if(dialogInputs.get(input) != null) dialogInputs.get(input).setInputType(InputType.TYPE_CLASS_TEXT | mode);
+				/*if (input == 1) {
 						dialogInput1mode = mode;
 						if(EditText_DialogInput1 != null) EditText_DialogInput1.setInputType(InputType.TYPE_CLASS_TEXT | mode);
 				} else if (input == 2) {
 						dialogInput2mode = mode;
 						if(EditText_DialogInput2 != null) EditText_DialogInput2.setInputType(InputType.TYPE_CLASS_TEXT | mode);
-				}
+				}*/
 		}
 
-		public void setDialogInputSingleLine(int input, boolean mode) {
-				if (input == 1) {
+		public void setInputSingleLine(int input, boolean mode) {
+				dialogInputSingleLine.set(input,mode);
+				if(dialogInputs.get(input) != null) dialogInputs.get(input).setSingleLine(mode);
+				/*if (input == 1) {
 						dialogInput1singleline = mode;
 						if(EditText_DialogInput1 != null) EditText_DialogInput1.setSingleLine(mode);
 				} else if (input == 2) {
 						dialogInput2singleline = mode;
 						if(EditText_DialogInput2 != null) EditText_DialogInput2.setSingleLine(mode);
-				}
+				}*/
 		}
 		
-		public void setDialogColorPicker(String defaultColor,boolean showOpacityBar) {
+		public void setColorPicker(String defaultColor,boolean showOpacityBar) {
 				dialogColorPickerdefaultValue = defaultColor;
 				dialogColorPickershowOpacityBar = showOpacityBar;
 		}
 		
-		public void setDialogCheckBox(String text) {
+		public void setCheckBox(final String text) {
 				dialogCheckBoxtext = text;
+				if(LinearLayout_DialogCheckBox != null && CheckBox_DialogCheckBox.getText().toString().equals(text)) {
+						Animation fadeOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
+						fadeOut.setAnimationListener(new Animation.AnimationListener() {
+
+										@Override
+										public void onAnimationEnd(Animation p1)
+										{
+												// TODO: Implement this method
+												CheckBox_DialogCheckBox.setText(text);
+												LinearLayout_DialogCheckBox.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+										}
+
+										@Override
+										public void onAnimationRepeat(Animation p1)
+										{
+												// TODO: Implement this method
+										}
+
+										@Override
+										public void onAnimationStart(Animation p1)
+										{
+												// TODO: Implement this method
+										}
+								});
+						LinearLayout_DialogCheckBox.startAnimation(fadeOut);
+				}
 		}
 		
-		public void setDialogNegativeButton(String text) {
+		public void setNegativeButton(final String text) {
 				negativeButtonText = text;
+				if(LinearLayout_DialogNegativeButton != null && TextView_DialogNegativeButtonText.getText().toString().equals(text)) {
+						Animation fadeOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
+						fadeOut.setAnimationListener(new Animation.AnimationListener() {
+
+										@Override
+										public void onAnimationEnd(Animation p1)
+										{
+												// TODO: Implement this method
+												TextView_DialogNegativeButtonText.setText(text);
+												LinearLayout_DialogNegativeButton.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+										}
+
+										@Override
+										public void onAnimationRepeat(Animation p1)
+										{
+												// TODO: Implement this method
+										}
+
+										@Override
+										public void onAnimationStart(Animation p1)
+										{
+												// TODO: Implement this method
+										}
+								});
+						LinearLayout_DialogNegativeButton.startAnimation(fadeOut);
+				}
 		}
-		public void setDialogNeutralButton(String text) {
+		public void setNeutralButton(final String text) {
 				neutralButtonText = text;
+				if(LinearLayout_DialogNeutralButton != null && TextView_DialogNeutralButtonText.getText().toString().equals(text)) {
+						Animation fadeOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
+						fadeOut.setAnimationListener(new Animation.AnimationListener() {
+
+										@Override
+										public void onAnimationEnd(Animation p1)
+										{
+												// TODO: Implement this method
+												TextView_DialogNeutralButtonText.setText(text);
+												LinearLayout_DialogNeutralButton.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+										}
+
+										@Override
+										public void onAnimationRepeat(Animation p1)
+										{
+												// TODO: Implement this method
+										}
+
+										@Override
+										public void onAnimationStart(Animation p1)
+										{
+												// TODO: Implement this method
+										}
+								});
+						TextView_DialogNeutralButtonText.startAnimation(fadeOut);
+				}
 		}
-		public void setDialogPositiveButton(String text) {
+		public void setPositiveButton(final String text) {
 				positiveButtonText = text;
+				if(LinearLayout_DialogPositiveButton != null && TextView_DialogPositiveButtonText.getText().toString().equals(text)) {
+						Animation fadeOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
+						fadeOut.setAnimationListener(new Animation.AnimationListener() {
+
+										@Override
+										public void onAnimationEnd(Animation p1)
+										{
+												// TODO: Implement this method
+												TextView_DialogPositiveButtonText.setText(text);
+												LinearLayout_DialogPositiveButton.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+										}
+
+										@Override
+										public void onAnimationRepeat(Animation p1)
+										{
+												// TODO: Implement this method
+										}
+
+										@Override
+										public void onAnimationStart(Animation p1)
+										{
+												// TODO: Implement this method
+										}
+								});
+						LinearLayout_DialogPositiveButton.startAnimation(fadeOut);
+				}
 		}
 		
-		public void setDialogCloseOnTouchOutside(boolean enabled) {
+		public void setCloseOnTouchOutside(boolean enabled) {
 				closeOnTouchOutside = enabled;
+				if(TextView_DialogTouchOutside != null && enabled) {
+						TextView_DialogTouchOutside.setOnClickListener(new OnClickListener() {
+
+										@Override
+										public void onClick(View p1)
+										{
+												// TODO: Implement this method
+												mInterface.onTouchOutside();
+												closeDialog();
+										}
+								});
+				} else if(TextView_DialogTouchOutside != null && !enabled) {
+						TextView_DialogTouchOutside.setOnClickListener(new OnClickListener() {
+
+										@Override
+										public void onClick(View p1)
+										{
+												// TODO: Implement this method
+										}
+								});
+				}
 		}
 		
 		public void showDialog(int mDialogContainer) {
@@ -290,12 +484,12 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 														if(cpm.getText().toString().equals(t.toString())) {
 																Toast.makeText(mContext,"Copied to clipboard.",Toast.LENGTH_SHORT).show();
 														} else {
-																Toast.makeText(mContext,"Failed to put to clipboard...",Toast.LENGTH_SHORT).show();
+																Toast.makeText(mContext,"Failed to put in clipboard...",Toast.LENGTH_SHORT).show();
 														}
 												}
 												catch (Throwable t) {
 														Log.e("NPM","Failed to put in clipboard: "+t.toString());
-														Toast.makeText(mContext,"Failed to put to clipboard...",Toast.LENGTH_SHORT).show();
+														Toast.makeText(mContext,"Failed to put in clipboard...",Toast.LENGTH_SHORT).show();
 												}
 										}
 								});
@@ -308,7 +502,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 				public void onListItemClick(int position, String text);
 				public void onNegativeClick();
 				public void onNeutralClick();
-				public void onPositiveClick(ArrayList<String> resultData);
+				public void onPositiveClick(Bundle resultBundle);
 				public void onTouchOutside();
 		}
 		
@@ -361,6 +555,9 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						ListView_DialogListView.setFastScrollEnabled(true);
 						LinearLayout_DialogListView.setVisibility(View.GONE);
 
+						LinearLayout_InputHolder = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_InputHolder);
+						
+						/*
 						LinearLayout_DialogInput1 = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogInput1);
 						TextView_DialogInput1Text = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogInput1Text);
 						EditText_DialogInput1 = (EditText) InflatedView.findViewById(R.id.slidedowndialogfragmentEditText_DialogInput1);
@@ -370,7 +567,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						TextView_DialogInput2Text = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogInput2Text);
 						EditText_DialogInput2 = (EditText) InflatedView.findViewById(R.id.slidedowndialogfragmentEditText_DialogInput2);
 						LinearLayout_DialogInput2.setVisibility(View.GONE);
-
+						*/
+						
 						LinearLayout_DialogColorPicker = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogColorPicker);
 						ColorPicker_DialogColorPicker = (ColorPicker) InflatedView.findViewById(R.id.slidedowndialogfragmentColorPicker_DialogColorPicker);
 						ValueBar_DialogValueBar = (ValueBar) InflatedView.findViewById(R.id.slidedowndialogfragmentValueBar_DialogValueBar);
@@ -457,7 +655,22 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								LinearLayout_DialogListView.setVisibility(View.VISIBLE);
 						}
 						
-						if(dialogInput1descText!=null) {
+						if(!dialogInputs.isEmpty()) {
+								for(int i = 0; i < dialogInputs.size(); i++) {
+										View InputView = inflater.inflate(R.layout.slidedowndialogfragment_input, null, false);
+										TextView InputText = (TextView) InputView.findViewById(R.id.slidedowndialogfragmentTextView_DialogInputText);
+										EditText Input = (EditText) InputView.findViewById(R.id.slidedowndialogfragmentEditText_DialogInput);
+										InputText.setText(dialogInputDescText.get(i));
+										if(dialogInputTextWatcher.get(i)!=null) Input.addTextChangedListener(dialogInputTextWatcher.get(i));
+										Input.setText(dialogInputDefaultText.get(i));
+										Input.setInputType(dialogInputMode.get(i));
+										Input.setSingleLine(dialogInputSingleLine.get(i));
+										dialogInputs.set(i,Input);
+										LinearLayout_InputHolder.addView(InputView);
+								}
+						}
+						
+						/*if(dialogInput1descText!=null) {
 								TextView_DialogInput1Text.setText(dialogInput1descText);
 								if(dialogInput1textWatcher!=null) EditText_DialogInput1.addTextChangedListener(dialogInput1textWatcher);
 								EditText_DialogInput1.setText(dialogInput1defaultText);
@@ -472,7 +685,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								EditText_DialogInput2.setInputType(InputType.TYPE_CLASS_TEXT | dialogInput2mode);
 								EditText_DialogInput1.setSingleLine(dialogInput1singleline);
 								LinearLayout_DialogInput2.setVisibility(View.VISIBLE);
-						}
+						}*/
 						if(dialogInputAssistInfoString!= null) {
 								TextView_InputAssistInfo.setText(dialogInputAssistInfoString);
 						}
@@ -633,7 +846,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 										public void onClick(View p1)
 										{
 												// TODO: Implement this method
-												ArrayList<String> resultData = new ArrayList<String>();
+												Bundle resultBundle = new Bundle();
+												//ArrayList<String> resultData = new ArrayList<String>();
 												if(dialogListItems!=null) {
 														if(dialogListMode != ListView.CHOICE_MODE_NONE) {
 																if(ListView_DialogListView.getCheckedItemCount() < 1) {
@@ -643,7 +857,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 																return;
 														}
 														if(dialogListMode==ListView.CHOICE_MODE_SINGLE) {
-																resultData.add(dialogListItems[ListView_DialogListView.getCheckedItemPosition()]);
+																resultBundle.putString(RESULT_LIST,dialogListItems[ListView_DialogListView.getCheckedItemPosition()]);
+																//resultData.add(dialogListItems[ListView_DialogListView.getCheckedItemPosition()]);
 														} else if(dialogListMode==ListView.CHOICE_MODE_MULTIPLE) {
 																String string = "";
 																int checked = 0;
@@ -653,11 +868,22 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 																				string = string + i + ((checked>=ListView_DialogListView.getCheckedItemCount()) ? "" : ",");
 																		}
 																}
-																resultData.add(string);
+																resultBundle.putString(RESULT_LIST,string);
+																//resultData.add(string);
 														}
 														}
 														}
 												}
+												if(!dialogInputs.isEmpty()) {
+														for(int i = 0; i < dialogInputs.size(); i++) {
+																if(!dialogInputAllowEmpty.get(i) && dialogInputs.get(i).getText().toString().isEmpty()) {
+																		return;
+																}
+																resultBundle.putString(RESULT_INPUT+i,dialogInputs.get(i).getText().toString());
+																//resultData.add(dialogInputs.get(i).getText().toString());
+														}
+												}
+												/*
 												if(dialogInput1descText!=null) {
 														if(!dialogInput1allowEmpty&&EditText_DialogInput1.getText().toString().isEmpty()) {
 																return;
@@ -670,13 +896,16 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 														}
 														resultData.add(EditText_DialogInput2.getText().toString());
 												}
+												*/
 												if(dialogColorPickerdefaultValue!=null) {
-														resultData.add(String.format((dialogColorPickershowOpacityBar ? "#%08X" : "#%06X"), ((dialogColorPickershowOpacityBar ? 0xFFFFFFFF : 0xFFFFFF) & ColorPicker_DialogColorPicker.getColor())));
+														resultBundle.putString(RESULT_COLORPICKER,String.format((dialogColorPickershowOpacityBar ? "#%08X" : "#%06X"), ((dialogColorPickershowOpacityBar ? 0xFFFFFFFF : 0xFFFFFF) & ColorPicker_DialogColorPicker.getColor())));
+														//resultData.add(String.format((dialogColorPickershowOpacityBar ? "#%08X" : "#%06X"), ((dialogColorPickershowOpacityBar ? 0xFFFFFFFF : 0xFFFFFF) & ColorPicker_DialogColorPicker.getColor())));
 												}
 												if(dialogCheckBoxtext != null) {
-														resultData.add(CheckBox_DialogCheckBox.isChecked() ? "true" : "false");
+														resultBundle.putBoolean(RESULT_CHECKBOX,CheckBox_DialogCheckBox.isChecked());
+														//resultData.add(CheckBox_DialogCheckBox.isChecked() ? "true" : "false");
 												}
-												mInterface.onPositiveClick(resultData);
+												mInterface.onPositiveClick(resultBundle);
 												closeDialog();
 										}
 								});
@@ -723,19 +952,28 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 				mContext.unregisterReceiver(br);
 				InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE); 
 				IBinder windowToken = null;
+				if(!dialogInputs.isEmpty()) {
+						for(int i = 0; i < dialogInputs.size(); i++) {
+								if(dialogInputs.get(i).isFocused()) {
+										windowToken = dialogInputs.get(i).getWindowToken();
+										break;
+								}
+						}
+				}
+				/*
 				if(EditText_DialogInput1.isFocused()) {
 						windowToken = EditText_DialogInput1.getWindowToken();
 				} else if (EditText_DialogInput2.isFocused()) {
 						windowToken = EditText_DialogInput2.getWindowToken();
 				} else if (EditText_DialogHexInput.isFocused()) {
 						windowToken = EditText_DialogHexInput.getWindowToken();
-				}
+				}*/
 						if(windowToken!=null) inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
 						TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 				TextView_DialogBg.setVisibility(View.GONE);
 				TextView_DialogTouchOutside.setVisibility(View.GONE);
 				Animation hideAnim = AnimationUtils.loadAnimation(mContext,R.anim.anim_slide_out_top);
-				hideAnim.setAnimationListener(new Animation.AnimationListener() {
+				/*hideAnim.setAnimationListener(new Animation.AnimationListener() {
 
 								@Override
 								public void onAnimationEnd(Animation p1)
@@ -760,8 +998,26 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								{
 										// TODO: Implement this method
 								}
-						});
+						});*/
 				LinearLayout_DialogRoot.startAnimation(hideAnim);
+				Handler handler = new Handler();
+						handler.postDelayed(new Runnable() {
+
+										@Override
+										public void run()
+										{
+												// TODO: Implement this method
+												try {
+												if(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).getShowsDialog()) {
+														slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).dismiss();
+												} else {
+														mFragmentmanager.beginTransaction().remove(mFragment).commit();
+												}
+												slideDownDialogFragment.dialogs.remove(slideDownDialogFragment.dialogs.size()-1);
+												} catch (Throwable t) {
+												}
+										}
+								}, 800L);
 				LinearLayout_DialogRoot.setVisibility(View.GONE);
 				}
 		}

@@ -59,7 +59,7 @@ public class errorFragment extends Fragment
 						//We retrieve all the error data and show it
 
 						slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), ErrorActivity.fragmentManager);
-						dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+						dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 								@Override
 								public void onListItemClick(int position, String text)
@@ -82,7 +82,7 @@ public class errorFragment extends Fragment
 								}
 
 								@Override
-								public void onPositiveClick(ArrayList<String> resultData)
+								public void onPositiveClick(Bundle resultBundle)
 								{
 									// TODO: Implement this method
 								}
@@ -93,9 +93,9 @@ public class errorFragment extends Fragment
 									// TODO: Implement this method
 								}
 							});
-						dialogFragment.setDialogText(CustomActivityOnCrash.getAllErrorDetailsFromIntent(ErrorActivity.thisActivity, ErrorActivity.thisActivity.getIntent()));
-						dialogFragment.setDialogNeutralButton(getString(R.string.customactivityoncrash_error_activity_error_details_copy));
-						dialogFragment.setDialogPositiveButton(getString(R.string.customactivityoncrash_error_activity_error_details_close));
+						dialogFragment.setText(CustomActivityOnCrash.getAllErrorDetailsFromIntent(ErrorActivity.thisActivity, ErrorActivity.thisActivity.getIntent()));
+						dialogFragment.setNeutralButton(getString(R.string.customactivityoncrash_error_activity_error_details_copy));
+						dialogFragment.setPositiveButton(getString(R.string.customactivityoncrash_error_activity_error_details_close));
 						dialogFragment.showDialog(de.NeonSoft.neopowermenu.R.id.dialog_container);
 						/*AlertDialog dialog = new AlertDialog.Builder(ErrorActivity.this)
 						 .setTitle(R.string.customactivityoncrash_error_activity_error_details_title)

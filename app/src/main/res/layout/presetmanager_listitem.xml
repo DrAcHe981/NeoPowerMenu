@@ -17,6 +17,13 @@
 			android:layout_height="wrap_content"
 			android:orientation="horizontal">
 
+			<ProgressBar
+				style="?android:attr/progressBarStyleHorizontal"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:id="@+id/presetmanagerlistitemProgressBar_Download"
+				android:progressDrawable="@drawable/custom_progressbar"/>
+
 			<LinearLayout
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
@@ -65,7 +72,8 @@
 						android:src="@drawable/ic_file_file_download"
 						android:layout_weight="1.0"
 						android:layout_gravity="center|center_vertical|center_horizontal"
-						android:padding="3dp"/>
+						android:padding="3dp"
+						android:id="@+id/presetmanagerlistitemImageView_Online"/>
 
 				</LinearLayout>
 
@@ -261,16 +269,6 @@
 				android:id="@+id/presetmanagerlistitemTextView1"
 				android:layout_marginRight="5dp"
 				android:layout_marginLeft="5dp"/>
-
-			<ProgressBar
-				style="?android:attr/progressBarStyleHorizontal"
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:id="@+id/presetmanagerlistitemProgressBar_Download"
-				android:progressDrawable="@drawable/custom_progressbar"
-				android:alpha="0.1"
-				android:layout_alignBottom="@id/presetmanagerlistitemTextView1"
-				android:layout_alignTop="@id/listitemhandleleftLinearLayout2"/>
 
 		</RelativeLayout>
 

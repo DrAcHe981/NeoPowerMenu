@@ -166,7 +166,6 @@
 <string name="presetsManager_UploadFailedSameName">"E-mail:"</string>
 <string name="presetsManager_UploadFailedNoAccess">"Повторите E-mail:"</string>
 <string name="presetsManager_UploadFailed">"Вы можете создать пароль по ссылке в электронном письме активации(электронное письмо доступно только на английском языке)."</string>
-<string name="presetsManager_Downloading">"Пароль:"</string>
 <string name="presetsManager_DownloadFailed">"Не выходить из аккаунта."</string>
 <string name="presetsManager_CantConnecttoServer">"Нужен аккаунт?
 Нажмите сюда, чтобы создать его!"</string>

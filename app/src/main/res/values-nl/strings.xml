@@ -162,7 +162,6 @@ Dit is je laatste kans om de naam of maker aan te passen voordat de present word
 <string name="presetsManager_UploadFailedSameName">"Deze naam is al in gebruik, probeer a.u.b. een andere naam."</string>
 <string name="presetsManager_UploadFailedNoAccess">"Deze naam van de maker is beveiligd, kies een andere naam of log in."</string>
 <string name="presetsManager_UploadFailed">"Upload mislukt!"</string>
-<string name="presetsManager_Downloading">"Downloaden..."</string>
 <string name="presetsManager_DownloadFailed">"Download mislukt!"</string>
 <string name="presetsManager_CantConnecttoServer">"Kan niet met de server verbinden!
 Controleer je netwerkverbindinge of probeer het later nog eens."</string>

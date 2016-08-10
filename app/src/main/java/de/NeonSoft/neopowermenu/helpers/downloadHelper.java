@@ -1,6 +1,6 @@
 package de.NeonSoft.neopowermenu.helpers;
 
-import android.content.*;
+import android.app.*;
 import android.os.*;
 import android.util.*;
 import android.widget.*;
@@ -11,13 +11,19 @@ import java.util.*;
 public class downloadHelper
 {
 		
-		private Context mContext;
+		public static int STATE_WAITING = 0;
+		public static int STATE_CONNECTING = 1;
+		public static int STATE_DOWNLOADING = 2;
+		public static int STATE_CANCELLING = 3;
+		
+		private Activity mActivity;
 		private downloadHelperInterface mInterface;
 		
 		private String mUrl;
 		private String mLocalUrl;
 		
 		private boolean isRunning = false;
+		private boolean isCanceled = false;
 		private AsyncTask dlTask;
 
 		URLConnection connection;
@@ -34,6 +40,7 @@ public class downloadHelper
 		long mAvgSpeed;
 		long mSpeed;
 		long mETA;
+		int mState = this.STATE_WAITING;
 		int mProgress;
 		/** How much was downloaded last time. */
 		long iMLastDownloadedSize;
@@ -41,12 +48,12 @@ public class downloadHelper
 		long iMLastTime;
 		long iMFirstTime;
 		
-		public downloadHelper(Context context) {
-				this.mContext = context;
+		public downloadHelper(Activity context) {
+				this.mActivity = context;
 				this.mInterface = new downloadHelperInterface() {
 
 						@Override
-						public void onDownloadStarted(boolean state)
+						public void onDownloadStarted(int state)
 						{
 								// TODO: Implement this method
 						}
@@ -93,11 +100,12 @@ public class downloadHelper
 				if (!this.mUrl.isEmpty() && !this.mLocalUrl.isEmpty()) {
 						dlTask = new downloadAsync().execute(this.mUrl,this.mLocalUrl);
 				} else {
-						Toast.makeText(this.mContext,"Cant start download without url...",Toast.LENGTH_LONG).show();
+						Toast.makeText(this.mActivity,"Cant start download without url...",Toast.LENGTH_LONG).show();
 				}
 		}
 		
 		public boolean stopDownload(boolean force) {
+				isCanceled = true;
 				return dlTask.cancel(force);
 		}
 		
@@ -125,8 +133,17 @@ public class downloadHelper
 				return mETA;
 		}
 		
+		public int getState() {
+				return mState;
+		}
+		
+		private void setState(int state) {
+				mState = state;
+				mInterface.onDownloadStarted(state);
+		}
+		
 		interface downloadHelperInterface {
-				void onDownloadStarted(boolean state);
+				void onDownloadStarted(int state);
 				void onPublishDownloadProgress(long nowSize,long totalSize);
 				void onDownloadComplete();
 				void onDownloadFailed(String reason);
@@ -140,20 +157,29 @@ public class downloadHelper
 				{
 						// TODO: Implement this method
 						super.onPreExecute();
-						mInterface.onDownloadStarted(true);
+						setState(STATE_WAITING);
 						isRunning = true;
 						iMLastDownloadedSize = 0;
 						iMLastTime = System.currentTimeMillis();
 						iMFirstTime = iMLastTime;
+						
 						timer.scheduleAtFixedRate(new TimerTask() {
 
 										@Override
 										public void run()
 										{
-												// TODO: Implement this method
-												if(dlnowsize > 0 && dltotalsize > 0) {
-														mInterface.onPublishDownloadProgress(dlnowsize,dltotalsize);
-												}
+												mActivity.runOnUiThread(new Runnable() {
+														
+																@Override
+																public void run()
+																{
+																		// TODO: Implement this method
+																		if(dlnowsize > 0 && dltotalsize > 0) {
+																				mProgress = (int) ((dlnowsize * 100) / dltotalsize);
+																				mInterface.onPublishDownloadProgress(dlnowsize,dltotalsize);
+																		}
+																}
+														});
 										}
 								}, 0, 150L);
 						timer.scheduleAtFixedRate(new TimerTask() {
@@ -165,7 +191,6 @@ public class downloadHelper
 												try {
 														long mReaminingSize = dltotalsize - dlnowsize;
 														long mDownloadedSize = dlnowsize;
-														mProgress = (int) ((dlnowsize * 100) / dltotalsize);
 
 														long timeElapsedSinceLastTime = System.currentTimeMillis() - iMLastTime;
 														long timeElapsed = System.currentTimeMillis() - iMFirstTime;
@@ -209,6 +234,7 @@ public class downloadHelper
 												connection = url.openConnection();
 												connection.setConnectTimeout(CONNECT_TIMEOUT);
 												connection.setReadTimeout(READ_TIMEOUT);
+												setState(STATE_CONNECTING);
 												connection.connect();
 												//Log.i("Starting download", url.toString());
 												dltotalsize = connection.getContentLength();
@@ -220,9 +246,15 @@ public class downloadHelper
 														total = 0;
 														while ((count = dlinput.read(data)) != -1)
 														{	
-																total += count;
-																dlnowsize = total;
-																dloutput.write(data, 0, count);
+																if(!isCancelled()) {
+																		setState(STATE_DOWNLOADING);
+																		total += count;
+																		dlnowsize = total;
+																		dloutput.write(data, 0, count);
+																} else {
+																		setState(STATE_CANCELLING);
+																		onCancelled("");
+																}
 														}
 												}
 										}
@@ -262,6 +294,7 @@ public class downloadHelper
 				{
 						// TODO: Implement this method
 						super.onCancelled(p1);
+						setState(STATE_CANCELLING);
 						timer.cancel();
 						try
 						{

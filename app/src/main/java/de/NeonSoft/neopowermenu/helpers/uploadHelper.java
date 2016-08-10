@@ -1,16 +1,17 @@
 package de.NeonSoft.neopowermenu.helpers;
+import android.app.*;
 import android.content.*;
 import android.os.*;
 import android.util.*;
+import android.widget.*;
 import java.io.*;
 import java.net.*;
-import android.widget.*;
 import java.util.*;
 
 public class uploadHelper
 {
 		
-		private Context mContext;
+		private Activity mActivity;
 		private uploadHelperInterface mInterface;
 		
 		private String mUrl;
@@ -22,6 +23,7 @@ public class uploadHelper
 		private DataOutputStream dos;
 		
 		private boolean isRunning = false;
+		private boolean isCanceled = false;
 		private AsyncTask ulTask;
 
 		long total = 0;
@@ -39,8 +41,8 @@ public class uploadHelper
 		long iMLastTime;
 		long iMFirstTime;
 		
-		public uploadHelper(Context context) {
-				this.mContext = context;
+		public uploadHelper(Activity context) {
+				this.mActivity = context;
 				this.mInterface = new uploadHelperInterface() {
 
 						@Override
@@ -97,11 +99,12 @@ public class uploadHelper
 								new uploadAsync().execute(this.mUrl,this.mLocalUrl);
 						}
 				} else {
-						Toast.makeText(this.mContext,"Cant upload without server or local file...",Toast.LENGTH_LONG).show();
+						Toast.makeText(this.mActivity,"Cant upload without server or local file...",Toast.LENGTH_LONG).show();
 				}
 		}
 		
 		public boolean stopUpload(boolean force) {
+				isCanceled = true;
 				return ulTask.cancel(force);
 		}
 		
@@ -154,12 +157,19 @@ public class uploadHelper
 										@Override
 										public void run()
 										{
-												// TODO: Implement this method
-												if(dlnowsize > 0 && dltotalsize > 0) {
-														mInterface.onPublishUploadProgress(dlnowsize,dltotalsize);
-												} else {
-														//Log.d("NPM:uH","dlnowsize = "+dlnowsize+", dltotalsize = "+dltotalsize);
-												}
+												mActivity.runOnUiThread(new Runnable() {
+
+																@Override
+																public void run()
+																{
+																		// TODO: Implement this method
+																		if(dlnowsize > 0 && dltotalsize > 0) {
+																				mInterface.onPublishUploadProgress(dlnowsize,dltotalsize);
+																		} else {
+																				//Log.d("NPM:uH","dlnowsize = "+dlnowsize+", dltotalsize = "+dltotalsize);
+																		}
+																}
+														});
 										}
 								}, 0, 150L);
 						timer.scheduleAtFixedRate(new TimerTask() {
@@ -246,12 +256,16 @@ public class uploadHelper
 										dltotalsize = sourceFile.length();
 										total = 0;
 										while ((count = bytesRead) > 0) {
-												dos.write(buffer, 0, bufferSize);
-												bytesAvailable = fileInputStream.available();
-												bufferSize = Math.min(bytesAvailable, maxBufferSize);
-												bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-												total += bytesRead;
-												dlnowsize = total;
+												if(!isCancelled()) {
+														dos.write(buffer, 0, bufferSize);
+														bytesAvailable = fileInputStream.available();
+														bufferSize = Math.min(bytesAvailable, maxBufferSize);
+														bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+														total += bytesRead;
+														dlnowsize = total;
+												} else {
+														onCancelled("");
+												}
 										}
 										// send multipart form data necesssary after file data...
 										dos.writeBytes(lineEnd);
@@ -277,7 +291,7 @@ public class uploadHelper
 								} catch (MalformedURLException ex) {
 										Log.e("NPM:uH",ex.toString());
 										return "error: " + ex.toString();
-								} catch (Exception e) {
+								} catch (Throwable e) {
 										Log.e("NPM:uH",e.toString());
 										return "Exception : " + e.toString();
 								}

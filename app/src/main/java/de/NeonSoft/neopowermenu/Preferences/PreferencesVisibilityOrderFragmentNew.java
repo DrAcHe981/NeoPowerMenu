@@ -158,7 +158,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 								{
 										// TODO: Implement this method
 										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
-										dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
 														public void onListItemClick(int position, String text)
@@ -180,7 +180,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 														}
 
 														@Override
-														public void onPositiveClick(ArrayList<String> resultData)
+														public void onPositiveClick(Bundle resultBundle)
 														{
 																// TODO: Implement this method
 														}
@@ -191,8 +191,8 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 																// TODO: Implement this method
 														}
 												});
-										dialogFragment.setDialogList(ListView.CHOICE_MODE_NONE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,0,true);
-										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
+										dialogFragment.setList(ListView.CHOICE_MODE_NONE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,0,true);
+										dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});
@@ -204,7 +204,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 								{
 										// TODO: Implement this method
 										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
-										dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
 														public void onListItemClick(int position, String text)
@@ -225,10 +225,10 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 														}
 
 														@Override
-														public void onPositiveClick(ArrayList<String> resultData)
+														public void onPositiveClick(Bundle resultBundle)
 														{
 																// TODO: Implement this method
-																String[] split = resultData.get(0).split(",");
+																String[] split = resultBundle.getString(slideDownDialogFragment.RESULT_LIST).split(",");
 																String splitStr = "";
 																for(int i = 0;i < split.length;i++) {
 																		splitStr = splitStr + PowerMenuItems[Integer.parseInt(split[i])] + (i >= split.length ? "" : ",");
@@ -243,11 +243,11 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 																// TODO: Implement this method
 														}
 												});
-												dialogFragment.setDialogText(getString(R.string.visibilityOrder_SelectMulti));
-										dialogFragment.setDialogList(ListView.CHOICE_MODE_MULTIPLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,-1,false);
-										dialogFragment.setDialogListLimit(3,false);
-										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
-										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
+												dialogFragment.setText(getString(R.string.visibilityOrder_SelectMulti));
+										dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,-1,false);
+										dialogFragment.setListLimit(3,false);
+										dialogFragment.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
+										dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
 						});

@@ -146,7 +146,6 @@ Tego nie można cofnąć!"</string>
 <string name="presetsManager_TitleAccount">"Konto"</string>
 <string name="presetsManager_UploadComplete">"Wysyłanie zakończone!"</string>
 <string name="presetsManager_UploadFailed">"Przesyłanie nie powiodło się!"</string>
-<string name="presetsManager_Downloading">"Pobieranie..."</string>
 <string name="presetsManager_DownloadFailed">"Pobieranie nie udane!"</string>
 <string name="presetsManager_CantConnecttoServer">"Nie można połączyć się z serwerem!
 Proszę sprawdzić połączenie sieciowe lub spróbować ponownie później."</string>

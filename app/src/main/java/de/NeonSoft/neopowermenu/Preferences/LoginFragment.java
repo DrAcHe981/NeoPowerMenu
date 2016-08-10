@@ -175,7 +175,7 @@ public class LoginFragment extends Fragment
 														else
 														{
 																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext,MainActivity.fragmentManager);
-																dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+																dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
 																				public void onListItemClick(int position, String text)
@@ -196,7 +196,7 @@ public class LoginFragment extends Fragment
 																				}
 
 																				@Override
-																				public void onPositiveClick(ArrayList<String> resultData)
+																				public void onPositiveClick(Bundle resultBundle)
 																				{
 																						// TODO: Implement this method
 																				}
@@ -207,8 +207,8 @@ public class LoginFragment extends Fragment
 																						// TODO: Implement this method
 																				}
 																		});
-																dialogFragment.setDialogText("Register failed: \n"+reason);
-																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+																dialogFragment.setText("Register failed: \n"+reason);
+																dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												}
@@ -294,7 +294,7 @@ public class LoginFragment extends Fragment
 														else
 														{
 																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
-																dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+																dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
 																				public void onListItemClick(int position, String text)
@@ -315,7 +315,7 @@ public class LoginFragment extends Fragment
 																				}
 
 																				@Override
-																				public void onPositiveClick(ArrayList<String> resultData)
+																				public void onPositiveClick(Bundle resultBundle)
 																				{
 																						// TODO: Implement this method
 																				}
@@ -326,8 +326,8 @@ public class LoginFragment extends Fragment
 																						// TODO: Implement this method
 																				}
 																		});
-																dialogFragment.setDialogText("Reset failed: \n"+reason);
-																dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+																dialogFragment.setText("Reset failed: \n"+reason);
+																dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												}
@@ -478,7 +478,7 @@ public class LoginFragment extends Fragment
 				}
 		}
 		
-		public static void performLogin(final Context context,final String usernameemail,final String password,final boolean keeplogin,final boolean background) {
+		public static void performLogin(final Activity context,final String usernameemail,final String password,final boolean keeplogin,final boolean background) {
 
 				uploadHelper uH = new uploadHelper(context);
 				uH.setInterface(new uploadHelper.uploadHelperInterface() {

@@ -181,7 +181,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoDB));
 								} else {
 										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(PreferencesPresetsFragment.mContext, MainActivity.fragmentManager);
-										dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 														@Override
 														public void onListItemClick(int position, String text)
@@ -202,7 +202,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 														}
 
 														@Override
-														public void onPositiveClick(ArrayList<String> resultData)
+														public void onPositiveClick(Bundle resultBundle)
 														{
 																// TODO: Implement this method
 														}
@@ -213,8 +213,8 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 																// TODO: Implement this method
 														}
 												});
-										dialogFragment.setDialogText(result);
-										dialogFragment.setDialogPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+										dialogFragment.setText(result);
+										dialogFragment.setPositiveButton(PreferencesPresetsFragment.mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 										dialogFragment.showDialog(R.id.dialog_container);
 										PreferencesPresetsFragment.onlineMSG.setText(result);
 								}

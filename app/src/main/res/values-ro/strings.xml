@@ -173,7 +173,6 @@ Este ultima sansa de a schimba numele creatorului!"</string>
 <!-- Fuzzy -->
 <string name="presetsManager_UploadFailedNoAccess">"Numele creatorului este protejat, incearca altul pentru a te loga"</string>
 <string name="presetsManager_UploadFailed">"Upload esuat!"</string>
-<string name="presetsManager_Downloading">"Se downloadeaza..."</string>
 <string name="presetsManager_DownloadFailed">"Downloadare esuata!"</string>
 
 <!-- Fuzzy -->

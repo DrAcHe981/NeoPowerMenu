@@ -186,7 +186,6 @@ C\'est votre dernière chance pour ajuster le nom ou le créateur avant le charg
 <string name="presetsManager_UploadFailedSameName">"Ce nom est déjà utilisé, veuillez en choisir un autre."</string>
 <string name="presetsManager_UploadFailedNoAccess">"Ce nom de créateur est protégé, choisissez-en un autre ou identifiez vous."</string>
 <string name="presetsManager_UploadFailed">"Échec du chargement !"</string>
-<string name="presetsManager_Downloading">"Téléchargement..."</string>
 <string name="presetsManager_DownloadFailed">"Échec du téléchargement !"</string>
 <string name="presetsManager_CantConnecttoServer">"Impossible de se connecter au serveur !
 Veuillez vérifier votre connection réseau et réessayez plus tard."</string>

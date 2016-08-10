@@ -80,8 +80,10 @@ public class XposedDialog extends DialogFragment
 		
 		Runnable mRun;
 		Object[] soundModeIcon = {null,""};
-		int airPlaneMode = 0;
+		int airplaneMode = 0;
 		Object[] airplaneModeIcon = {null,""};
+		boolean flashlightOn = false;
+		Object[] flashlightIcon = {null,""};
 		
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,7 +95,7 @@ public class XposedDialog extends DialogFragment
 				mHandler = new Handler();
 				try
 				{
-						airPlaneMode = android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON);
+						airplaneMode = android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON);
 				}
 				catch (Throwable e)
 				{}
@@ -382,7 +384,7 @@ public class XposedDialog extends DialogFragment
 				}
 				try
 				{
-						if (airplaneModeIcon[0] != null && airPlaneMode != android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON))
+						if (airplaneModeIcon[0] != null && airplaneMode != android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON))
 						{
 								try
 								{
@@ -399,11 +401,23 @@ public class XposedDialog extends DialogFragment
 								{
 										loadImage((ImageView) airplaneModeIcon[0], 9, airplaneModeIcon[1].toString());
 								}
-								airPlaneMode = android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON);
+								airplaneMode = android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON);
 						}
 				}
 				catch (Throwable e)
 				{}
+				try {
+						if(flashlightIcon[0] != null && flashlightOn != (TorchService.getTorchState() == TorchService.TORCH_STATUS_ON)) {
+								if(TorchService.getTorchState()==TorchService.TORCH_STATUS_ON) {
+										loadImage((ImageView) flashlightIcon[0], 5,flashlightIcon[1].toString());
+								} else {
+										loadImage((ImageView) flashlightIcon[0], 6,flashlightIcon[1].toString());
+								}
+								flashlightOn = TorchService.getTorchState() == TorchService.TORCH_STATUS_ON;
+						}
+				} catch (Throwable t) {
+						
+				}
 				mHandler.postDelayed(mRun, 250L);
 		}
 		
@@ -429,6 +443,8 @@ public class XposedDialog extends DialogFragment
 								} else {
 										loadImage(foreground, 5,color2);
 								}
+								flashlightIcon[0] = foreground;
+								flashlightIcon[1] = color2;
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_ExpandedDesktop))) {
 								loadImage(foreground, 7,color2);
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_AirplaneMode))) {
@@ -765,7 +781,7 @@ public class XposedDialog extends DialogFragment
 						}
 				} else if(name.equalsIgnoreCase("Flashlight")) {
 						if(!XposedMainActivity.previewMode) {
-								dismiss();
+								//dismiss();
 								final Handler handler = new Handler();
 								new Thread() {
 										@Override

@@ -164,8 +164,8 @@ Dies ist deine letzte Chance, den Namen oder den Ersteller anzupassen..."</strin
 <string name="presetsManager_UploadComplete">"Hochladen abgeschlossen!"</string>
 <string name="presetsManager_UploadFailedSameName">"Dieser Name wird bereits genutzt, bitte wähle einen anderen."</string>
 <string name="presetsManager_UploadFailedNoAccess">"Dieser Erstellername ist geschützt, wähle einen anderen oder melde dich an."</string>
-<string name="presetsManager_UploadFailed">"Hochladen fehlgeschlagen!"</string>
-<string name="presetsManager_Downloading">"Runterladen..."</string>
+		<string name="presetsManager_UploadFailed">"Hochladen fehlgeschlagen!"</string>
+		<string name="presetsManager_States">"Warte auf andere Downloads...|Verbinde mit Server...|Runterladen...|Wird abgebrochen..."</string>
 <string name="presetsManager_DownloadFailed">"Download fehlgeschlagen!"</string>
 <string name="presetsManager_CantConnecttoServer">"Es kann keine Verbindung zum Server hergestellt werden! 
 Bitte überprüfe deine Verbindung oder versuche es später erneut."</string>

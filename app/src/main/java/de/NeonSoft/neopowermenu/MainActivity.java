@@ -34,8 +34,8 @@ import android.support.v7.app.AlertDialog;
 public class MainActivity extends AppCompatActivity
 {
 
-		public static boolean LOCALTESTSERVER = false; // use local server "127.0.0.1:8080 or online www.Neon-Soft.de
-		public static int TIMEOUT_MILLISEC = 10000; // = 10 seconds
+		public static boolean LOCALTESTSERVER = false; // use local server 127.0.0.1:8080 or online www.Neon-Soft.de
+		public static int TIMEOUT_MILLISEC = 10000; // = 10 seconds, Timeout for various network scripts
 
 		public static String deviceUniqeId = "none";
 
@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity
 		public static String imagesstorage;
 		public static ImageLoader imageLoader;
 		public static boolean ImgLoader_Loaded;
-		
+
 		private String[] requieredDirs = {"presets","download","images","temp"};
-		
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
 		{
@@ -95,56 +95,56 @@ public class MainActivity extends AppCompatActivity
 
 				context = getApplicationContext();
 				activity = getParent();
-        preferences = getSharedPreferences(MainActivity.class.getPackage().getName()+"_preferences", Context.MODE_WORLD_READABLE);
+        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", Context.MODE_WORLD_READABLE);
 				colorPrefs = getSharedPreferences("colors", Context.MODE_WORLD_READABLE);
 				orderPrefs = getSharedPreferences("visibilityOrder", Context.MODE_WORLD_READABLE);
 
 				/*if(getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").exists()) {
-						Log.i("NPM:pC","Detected old preferences, converting...");
-						SharedPreferences oldPrefs = getSharedPreferences(MainActivity.class.getPackage().getName()+"_preferences", Context.MODE_WORLD_READABLE);
-						Map<String, ?> oldPrefsAll = oldPrefs.getAll();
-						if(!oldPrefsAll.isEmpty()) {
-								Object[] keys = oldPrefsAll.keySet().toArray();
-								Object[] values = oldPrefsAll.values().toArray();
-								String designSpace = "";
-								for(int x = 0; x < (String.format("%03d/%03d",oldPrefsAll.size(),oldPrefsAll.size())).length(); x++) {
-										designSpace = designSpace + " ";
-								}
-								for(int i = 0; i < oldPrefsAll.size(); i++) {
-										boolean unknown = false;
-										Log.i("NPM:pC",String.format("%03d/%03d",(i+1),oldPrefsAll.size())+" | "+keys[i]);
-										if(values[i].getClass().equals(String.class)) {
-												Log.i("NPM:pC",designSpace+" | Writing String...");
-												preferences.edit().putString((String) keys[i],(String) values[i]).commit();
-										} else if (values[i].getClass().equals(Integer.class)) {
-												Log.i("NPM:pC",designSpace+" | Writing Integer...");
-												preferences.edit().putInt((String) keys[i],(int) values[i]).commit();
-										} else if (values[i].getClass().equals(Boolean.class)) {
-												Log.i("NPM:pC",designSpace+" | Writing Boolean...");
-												preferences.edit().putBoolean((String) keys[i],(boolean) values[i]).commit();
-										} else {
-												unknown = true;
-												Log.i("NPM:pC",designSpace+" | Unknown type... ("+values[i].getClass()+")");
-										}
-										if(!unknown) {
-												Log.i("NPM:pC",designSpace+" \\_Converted.");
-										} else {
-												Log.i("NPM:pC",designSpace+" \\_Failed.");
-										}
-								}
-						}
-						Log.i("NPM:pC","Preferences convert complete, deleting old file...");
-						oldPrefs.edit().clear().commit();
-						if(getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").exists()) {
-								if(getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").delete()) {
-										Log.i("NPM:pC","Deleted.");
-								} else {
-										Log.i("NPM:pC","Failed to delete...");
-								}
-						}
-				}*/
-				
-				
+				 Log.i("NPM:pC","Detected old preferences, converting...");
+				 SharedPreferences oldPrefs = getSharedPreferences(MainActivity.class.getPackage().getName()+"_preferences", Context.MODE_WORLD_READABLE);
+				 Map<String, ?> oldPrefsAll = oldPrefs.getAll();
+				 if(!oldPrefsAll.isEmpty()) {
+				 Object[] keys = oldPrefsAll.keySet().toArray();
+				 Object[] values = oldPrefsAll.values().toArray();
+				 String designSpace = "";
+				 for(int x = 0; x < (String.format("%03d/%03d",oldPrefsAll.size(),oldPrefsAll.size())).length(); x++) {
+				 designSpace = designSpace + " ";
+				 }
+				 for(int i = 0; i < oldPrefsAll.size(); i++) {
+				 boolean unknown = false;
+				 Log.i("NPM:pC",String.format("%03d/%03d",(i+1),oldPrefsAll.size())+" | "+keys[i]);
+				 if(values[i].getClass().equals(String.class)) {
+				 Log.i("NPM:pC",designSpace+" | Writing String...");
+				 preferences.edit().putString((String) keys[i],(String) values[i]).commit();
+				 } else if (values[i].getClass().equals(Integer.class)) {
+				 Log.i("NPM:pC",designSpace+" | Writing Integer...");
+				 preferences.edit().putInt((String) keys[i],(int) values[i]).commit();
+				 } else if (values[i].getClass().equals(Boolean.class)) {
+				 Log.i("NPM:pC",designSpace+" | Writing Boolean...");
+				 preferences.edit().putBoolean((String) keys[i],(boolean) values[i]).commit();
+				 } else {
+				 unknown = true;
+				 Log.i("NPM:pC",designSpace+" | Unknown type... ("+values[i].getClass()+")");
+				 }
+				 if(!unknown) {
+				 Log.i("NPM:pC",designSpace+" \\_Converted.");
+				 } else {
+				 Log.i("NPM:pC",designSpace+" \\_Failed.");
+				 }
+				 }
+				 }
+				 Log.i("NPM:pC","Preferences convert complete, deleting old file...");
+				 oldPrefs.edit().clear().commit();
+				 if(getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").exists()) {
+				 if(getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").delete()) {
+				 Log.i("NPM:pC","Deleted.");
+				 } else {
+				 Log.i("NPM:pC","Failed to delete...");
+				 }
+				 }
+				 }*/
+
+
 				int orderCheck = 0;
 				while (orderPrefs.getInt(orderCheck + "_item_type", -1) != -1)
 				{
@@ -165,20 +165,17 @@ public class MainActivity extends AppCompatActivity
 				}
         setTheme(R.style.ThemeBaseDark);
 
-				for(int folderCheck = 0; folderCheck < requieredDirs.length; folderCheck ++) {
-						File check = new File(context.getFilesDir().getPath()+"/"+requieredDirs[folderCheck]);
-						if(!check.exists() && !check.isDirectory()) {
+				for (int folderCheck = 0; folderCheck < requieredDirs.length; folderCheck ++)
+				{
+						File check = new File(context.getFilesDir().getPath() + "/" + requieredDirs[folderCheck]);
+						if (!check.exists() && !check.isDirectory())
+						{
 								check.mkdir();
 						}
 				}
-				
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-				if (preferences.getBoolean("autoLogin", false))
-				{
-						LoginFragment.performLogin(context, preferences.getString("ueel", "null"), preferences.getString("pd", "null"), true, true);
-				}
 
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
 				{
@@ -232,17 +229,17 @@ public class MainActivity extends AppCompatActivity
 
 				layoutParams.setMargins(0, helper.getStatusBarHeight(context), 0, 0);
 				//actionBarHolder.setLayoutParams(layoutParams);
-				
+
 				actionbar.addActionBar(actionBarHolder);
 
 				actionbar.setAnimationsEnabled(false);
 				actionbar.setTitle("NeoPowerMenu");
-				actionbar.setSubTitle("v" + versionName + " (" + versionCode + ")"+(LOCALTESTSERVER ? " | Using local test Server" : ""));
+				actionbar.setSubTitle("v" + versionName + " (" + versionCode + ")" + (LOCALTESTSERVER ? " | Using local test Server" : ""));
 
         fragmentManager = getSupportFragmentManager();
 
 				initImageLoader();
-				
+
 				if (preferences.getBoolean("DontAskPermissionsAgain", false) || permissionsScreen.checkPermissions(MainActivity.this, permissionsScreen.permissions))
 				{
 						android.support.v4.app.Fragment fragment = new PreferencesPartFragment();
@@ -267,23 +264,26 @@ public class MainActivity extends AppCompatActivity
 								launchPowerMenu();
 						}
 				};
-						for(int i = 0;i < PreferencesColorFragment.ColorNames.length; i++) {
-								if(PreferencesColorFragment.ColorNames[i][0]==ColorsListAdapter.TYPE_ITEM) {
-										if(colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(),"").isEmpty()) {
-												colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(),preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(),PreferencesColorFragment.lightPreset[i])).commit();
-												preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
-										}
+				for (int i = 0;i < PreferencesColorFragment.ColorNames.length; i++)
+				{
+						if (PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM)
+						{
+								if (colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty())
+								{
+										colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).commit();
+										preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
 								}
 						}
-						
-					
+				}
+
+
 				if ((deviceUniqeId = preferences.getString("userUniqeId", "none")).equalsIgnoreCase("none"))
 				{
 						Date date = new Date();
 						deviceUniqeId = helper.md5Crypto(Build.MANUFACTURER + "-" + Build.MODEL + "-" + date.getYear() + "." + date.getMonth() + "." + date.getDay() + "-" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
 						preferences.edit().putString("userUniqeId", deviceUniqeId).commit();
 						slideDownDialogFragment dialogFragment = new slideDownDialogFragment(this, MainActivity.fragmentManager);
-						dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+						dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 										@Override
 										public void onListItemClick(int position, String text)
@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity
 										}
 
 										@Override
-										public void onPositiveClick(ArrayList<String> resultData)
+										public void onPositiveClick(Bundle resultBundle)
 										{
 												// TODO: Implement this method
 										}
@@ -315,8 +315,8 @@ public class MainActivity extends AppCompatActivity
 												// TODO: Implement this method
 										}
 								});
-						dialogFragment.setDialogText(getString(R.string.welcomeMsg));
-						dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
+						dialogFragment.setText(getString(R.string.welcomeMsg));
+						dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
 						dialogFragment.showDialog(R.id.dialog_container);
 				}
 				actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
@@ -330,17 +330,18 @@ public class MainActivity extends AppCompatActivity
 				if (fragmentManager.findFragmentByTag(slideDownDialogFragment.dialogTag) != null)
 				{
 						/*Intent intent = new Intent();
-						intent.setAction(slideDownDialogFragment.dialogCloseCall);
-						context.sendBroadcast(intent);*/
+						 intent.setAction(slideDownDialogFragment.dialogCloseCall);
+						 context.sendBroadcast(intent);*/
 						//Toast.makeText(context,"Canceling sDDF "+slideDownDialogFragmentHelper.dialogs.size()+"/"+slideDownDialogFragmentHelper.dialogs.size(),Toast.LENGTH_LONG).show();
-						slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).cancelDialog();
+						slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1).cancelDialog();
 						return;
 				}
 				if (visibleFragment.equalsIgnoreCase("CustomColors") || visibleFragment.equalsIgnoreCase("Graphics"))
 				{
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commit();
 				}
-				else if (visibleFragment.equalsIgnoreCase("Cropper")) {
+				else if (visibleFragment.equalsIgnoreCase("Cropper"))
+				{
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesGraphicsFragment()).commit();
 				}
 				else if (visibleFragment.equalsIgnoreCase("VisibilityOrder"))
@@ -404,7 +405,7 @@ public class MainActivity extends AppCompatActivity
 				// TODO: Implement this method
 				super.onActivityResult(requestCode, resultCode, data);
 		}
-		
+
     public static void launchPowerMenu()
 		{
 				Intent intent = new Intent(context, XposedMainActivity.class);
@@ -419,7 +420,7 @@ public class MainActivity extends AppCompatActivity
 		protected void onPause()
 		{
 				// TODO: Implement this method
-				getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").setReadable(true,false);
+				getSharedPrefsFile(MainActivity.class.getPackage().getName() + "_preferences").setReadable(true, false);
 				super.onPause();
 		}
 
@@ -431,15 +432,17 @@ public class MainActivity extends AppCompatActivity
 				{
 						actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
 				}
+				CustomActivityOnCrash.setRestartActivityClass(MainActivity.class);
 				super.onResume();
 		}
-		
+
 		@Override
 		public void onConfigurationChanged(Configuration newConfig)
 		{
 				// TODO: Implement this method
 				super.onConfigurationChanged(newConfig);
-				if(visibleFragment.equalsIgnoreCase("Graphics")) {
+				if (visibleFragment.equalsIgnoreCase("Graphics"))
+				{
 						PreferencesGraphicsFragment.GridView_Images.setNumColumns(getResources().getInteger(R.integer.ImageList_Columns));
 				}
 		}
@@ -497,9 +500,11 @@ public class MainActivity extends AppCompatActivity
 				}
 
 		}
-		
-		private void initImageLoader() {
-				try {
+
+		private void initImageLoader()
+		{
+				try
+				{
 						String CACHE_DIR = getCacheDir().getPath() + "/.temp_tmp";
 						new File(CACHE_DIR).mkdirs();
 
@@ -507,9 +512,9 @@ public class MainActivity extends AppCompatActivity
 								.cacheOnDisc(true).cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY)
 								.bitmapConfig(Bitmap.Config.RGB_565).build();
 
-						LruMemoryCache memoryCacheCore = new LruMemoryCache(5*1024*1024);
-						LimitedAgeMemoryCache memoryCache = new LimitedAgeMemoryCache(memoryCacheCore, 15*60);
-						LruDiskCache discCache = new LruDiskCache(new File(CACHE_DIR),new URLFileNameGenerator(),250*1024*1024);
+						LruMemoryCache memoryCacheCore = new LruMemoryCache(5 * 1024 * 1024);
+						LimitedAgeMemoryCache memoryCache = new LimitedAgeMemoryCache(memoryCacheCore, 15 * 60);
+						LruDiskCache discCache = new LruDiskCache(new File(CACHE_DIR), new URLFileNameGenerator(), 250 * 1024 * 1024);
 						ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(
 								getBaseContext())
 								.defaultDisplayImageOptions(defaultOptions)
@@ -520,9 +525,11 @@ public class MainActivity extends AppCompatActivity
 						imageLoader = ImageLoader.getInstance();
 						imageLoader.init(config);
 						ImgLoader_Loaded = true;
-						Log.d("ImageLoader","Loaded!");
-				} catch (Exception e) {
-						Log.e("ImageLoader","Load failed, code:"+e);
+						Log.d("NPM:imageLoader", "Loaded!");
+				}
+				catch (Exception e)
+				{
+						Log.e("NPM:imageLoader", "Load failed, code:" + e);
 				}
 		}
 

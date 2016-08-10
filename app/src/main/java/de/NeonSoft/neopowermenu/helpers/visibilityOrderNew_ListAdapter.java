@@ -1,12 +1,13 @@
 package de.NeonSoft.neopowermenu.helpers;
 
 import android.app.*;
+import android.os.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
-import java.util.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
+import java.util.*;
 
 public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 {
@@ -81,7 +82,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 									{
 											// TODO: Implement this method
 											slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
-											dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+											dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 															@Override
 															public void onListItemClick(int listpos, String text)
@@ -104,7 +105,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															}
 
 															@Override
-															public void onPositiveClick(ArrayList<String> resultData)
+															public void onPositiveClick(Bundle resultBundle)
 															{
 																	// TODO: Implement this method
 															}
@@ -122,8 +123,8 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															break;
 													}
 											}
-											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
-											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
+											dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
 					});
@@ -236,7 +237,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 									{
 											// TODO: Implement this method
 											slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
-											dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+											dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 															@Override
 															public void onListItemClick(int listpos, String text)
@@ -259,7 +260,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															}
 
 															@Override
-															public void onPositiveClick(ArrayList<String> resultData)
+															public void onPositiveClick(Bundle resultBundle)
 															{
 																	// TODO: Implement this method
 															}
@@ -277,8 +278,8 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															break;
 													}
 											}
-											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
-											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
+											dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});
@@ -289,7 +290,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 									{
 											// TODO: Implement this method
 											slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
-											dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+											dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 															@Override
 															public void onListItemClick(int listpos, String text)
@@ -312,7 +313,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															}
 
 															@Override
-															public void onPositiveClick(ArrayList<String> resultData)
+															public void onPositiveClick(Bundle resultBundle)
 															{
 																	// TODO: Implement this method
 															}
@@ -332,8 +333,8 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 													}
 											}
 											}
-											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
-											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
+											dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});
@@ -344,7 +345,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 									{
 											// TODO: Implement this method
 											slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
-											dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+											dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 															@Override
 															public void onListItemClick(int listpos, String text)
@@ -367,7 +368,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															}
 
 															@Override
-															public void onPositiveClick(ArrayList<String> resultData)
+															public void onPositiveClick(Bundle resultBundle)
 															{
 																	// TODO: Implement this method
 															}
@@ -387,8 +388,8 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 													}
 											}
 											}
-											dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
-											dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
+											dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
 							});

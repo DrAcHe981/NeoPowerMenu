@@ -163,7 +163,6 @@ Essa é a última chance de ajustar o nome ou o criador antes de enviar..."</str
 <string name="presetsManager_UploadFailedSameName">"Esse nome já está em uso, por favor escolha outro."</string>
 <string name="presetsManager_UploadFailedNoAccess">"Esse nome de criador está protegido, escolha outro ou logue-se."</string>
 <string name="presetsManager_UploadFailed">"Falha no envio"</string>
-<string name="presetsManager_Downloading">"Baixando..."</string>
 <string name="presetsManager_DownloadFailed">"Falha ao baixar!"</string>
 <string name="presetsManager_CantConnecttoServer">"Não é possível conectar-se ao servidor!
 Por favor cheque sua conexão com a internet ou tente novamente mais tarde."</string>

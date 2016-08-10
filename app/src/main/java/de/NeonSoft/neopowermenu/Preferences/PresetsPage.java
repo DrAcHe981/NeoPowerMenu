@@ -64,7 +64,7 @@ public class PresetsPage extends Fragment
 						String[] presetsListDesc = new String[presetsFiles.length + 3];
 						String[] presetsListEnabled = new String[presetsFiles.length + 3];
 						String[] presetsListLocal = new String[presetsFiles.length + 3];
-						String[] builtIn = getString(R.string.presetLoadDialog_BuiltIn).split("/");
+						String[] builtIn = getString(R.string.presetLoadDialog_BuiltIn).split("\\|");
 						presetsListTitles[0] = builtIn[0];
 						presetsListDesc[0] = "Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")";
 						presetsListEnabled[0] = "true";

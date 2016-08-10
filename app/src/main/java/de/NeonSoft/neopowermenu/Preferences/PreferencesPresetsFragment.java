@@ -67,6 +67,7 @@ public class PreferencesPresetsFragment extends Fragment
 		public static LinearLayout[] DownloadingActiveForRoot;
 		public static downloadHelper[] DownloadingActiveForHelper;
 		public static LinearLayout[] DownloadingActiveForLayout;
+		public static ImageView[] DownloadingActiveForImageView;
 		public static String[] DownloadingActiveForOldText;
 		public static TextView[] DownloadingActiveForLabel;
 		public static ProgressBar[] DownloadingActiveForProgress;
@@ -196,7 +197,7 @@ public class PreferencesPresetsFragment extends Fragment
 																				onlineOrder.setVisibility(View.GONE);
 																		}
 																		slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
-																		dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+																		dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																						@Override
 																						public void onListItemClick(int position, String text)
@@ -231,7 +232,7 @@ public class PreferencesPresetsFragment extends Fragment
 																						}
 
 																						@Override
-																						public void onPositiveClick(ArrayList<String> resultData)
+																						public void onPositiveClick(Bundle resultBundle)
 																						{
 																								// TODO: Implement this method
 																								hideBars();
@@ -244,8 +245,9 @@ public class PreferencesPresetsFragment extends Fragment
 																								hideBars();
 																						}
 																				});
-																				dialogFragment.setDialogText(mContext.getString(R.string.presetsManager_OrderBy));
-																		dialogFragment.setDialogList(ListView.CHOICE_MODE_SINGLE, new String[] {getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
+																				dialogFragment.setText(mContext.getString(R.string.presetsManager_OrderBy));
+																		dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, new String[] {
+																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
@@ -255,7 +257,7 @@ public class PreferencesPresetsFragment extends Fragment
 																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
 																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")"}, onlineOrderSelected,true);
-																		dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+																		dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
 																		dialogFragment.showDialog(R.id.dialog_container);
 																		if (onlineOrder.getVisibility() == View.VISIBLE)
 																		{
@@ -408,6 +410,8 @@ public class PreferencesPresetsFragment extends Fragment
 		{
 				Importcancled = false;
 				sCreator = "< unknown >";
+				final boolean isZip;
+				isZip = false;
 				try
 				{
 						//Log.i("NPM","Showing import dialog for: "+surl);
@@ -433,6 +437,7 @@ public class PreferencesPresetsFragment extends Fragment
 										Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
 										return false;
 								}
+								isZip = true;
 						}
 						FileInputStream fIn = new FileInputStream(prefile);
 						BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
@@ -458,7 +463,7 @@ public class PreferencesPresetsFragment extends Fragment
 								}
 						}
 						final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
-						dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+						dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 										@Override
 										public void onListItemClick(int position, String text)
@@ -480,10 +485,10 @@ public class PreferencesPresetsFragment extends Fragment
 										}
 
 										@Override
-										public void onPositiveClick(ArrayList<String> resultData)
+										public void onPositiveClick(Bundle resultBundle)
 										{
 												// TODO: Implement this method
-												String newFilename = resultData.get(0) + ".nps";
+												String newFilename = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0") + ".nps";
 												presetInfo[0] = newFilename.replace(".nps","");
 												final boolean newPresetAdded;
 												if (!new File(mContext.getFilesDir().getPath()+"/presets/"+newFilename).exists())
@@ -493,7 +498,7 @@ public class PreferencesPresetsFragment extends Fragment
 														newPresetAdded = false;
 												}
 												String FilePath = "";
-												if(helper.isValidZip(newUrl,null)) {
+												if(isZip) {
 														helper.unzipFile(newUrl,mContext.getFilesDir().getPath()+"/temp/",Filename,null);
 														FilePath = newUrl;
 												} else {
@@ -501,8 +506,10 @@ public class PreferencesPresetsFragment extends Fragment
 												}
 												if(helper.copyFile(FilePath,mContext.getFilesDir().getPath()+"/presets/"+newFilename)) {
 														new File(mContext.getFilesDir().getPath()+"/temp/"+Filename).renameTo(new File(mContext.getFilesDir().getPath()+"/temp/"+newFilename));
-														helper.removeFromZip(mContext.getFilesDir().getPath()+"/presets/"+ newFilename,Filename,null);
-														helper.zipFile(mContext.getFilesDir().getPath()+"/temp/"+newFilename,mContext.getFilesDir().getPath()+"/presets/"+newFilename,null);
+														if(isZip) {
+																helper.removeFromZip(mContext.getFilesDir().getPath()+"/presets/"+ newFilename,Filename,null);
+																helper.zipFile(mContext.getFilesDir().getPath()+"/temp/"+newFilename,mContext.getFilesDir().getPath()+"/presets/"+newFilename,null);
+														}
 														File presetsFolder = new File(mContext.getFilesDir().getPath() + "/temp/");
 														File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
 																		public boolean accept(File dir, String name)
@@ -528,8 +535,8 @@ public class PreferencesPresetsFragment extends Fragment
 												Importcancled = true;
 										}
 								});
-						dialogFragment.setDialogText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : presetInfo[1]) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
-						dialogFragment.setDialogInput1(mContext.getString(R.string.presetSaveDialog_InfoText),Filename.replace(".nps",""),false,new TextWatcher() {
+						dialogFragment.setText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : presetInfo[1]) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
+						dialogFragment.addInput(mContext.getString(R.string.presetSaveDialog_InfoText),Filename.replace(".nps",""),false,new TextWatcher() {
 
 										@Override
 										public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
@@ -544,10 +551,10 @@ public class PreferencesPresetsFragment extends Fragment
 												if (!p1.toString().equalsIgnoreCase("")) {
 														File checkFile = new File(mContext.getFilesDir()+"/presets/"+p1.toString().replace("/","")+".nps");
 														if (!checkFile.exists()) {
-																dialogFragment.showInputAssistInfo(false);
+																dialogFragment.showAssistInfo(false);
 																//dialogFragment.setDialogText("");
 														} else {
-																dialogFragment.showInputAssistInfo(true);
+																dialogFragment.showAssistInfo(true);
 																//dialogFragment.setDialogText(context.getString(R.string.presetSaveDialog_OverwriteText));
 														}
 												}
@@ -559,9 +566,9 @@ public class PreferencesPresetsFragment extends Fragment
 												// TODO: Implement this method
 										}}
 						);
-						dialogFragment.setDialogInputAssistInfo(mContext.getString(R.string.presetSaveDialog_OverwriteText));
-						dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-						dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);
+						dialogFragment.setInputAssistInfo(mContext.getString(R.string.presetSaveDialog_OverwriteText));
+						dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+						dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 						dialogFragment.showDialog(R.id.dialog_container);
 
 				}

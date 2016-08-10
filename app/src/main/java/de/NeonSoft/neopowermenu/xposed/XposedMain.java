@@ -315,7 +315,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																						toggleAiplaneMode(p1);
 																						break;
 																				case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
-																						toggleShowTouches(p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES,-1));
+																						toggleShowTouches(p1,p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES,-1));
 																						break;
 																		}
 																}
@@ -578,7 +578,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																						toggleAiplaneMode(p1);
 																						break;
 																				case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
-																						toggleShowTouches(p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES,-1));
+																						toggleShowTouches(p1,p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES,-1));
 																						break;
 																		}
 																}
@@ -757,13 +757,13 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 				p1.sendBroadcast(intent);
 		}
 		
-    private static void toggleShowTouches(int showTouches) {
+    private static void toggleShowTouches(Context p1,int showTouches) {
         try {
             if (showTouches == -1) {
-                showTouches = 1 - Settings.Global.getInt(mContext.getContentResolver(),
-																												 ScreenRecordingService.SETTING_SHOW_TOUCHES);
+                showTouches = Settings.System.getInt(p1.getContentResolver(),
+																												 ScreenRecordingService.SETTING_SHOW_TOUCHES) == 1 ? 0 : 1;
             }
-            Settings.Global.putInt(mContext.getContentResolver(),
+            Settings.System.putInt(p1.getContentResolver(),
 																	 ScreenRecordingService.SETTING_SHOW_TOUCHES, showTouches);
         } catch (Throwable t) {
             XposedBridge.log(t);

@@ -66,9 +66,12 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-				CustomActivityOnCrash.install(getApplicationContext());
-				CustomActivityOnCrash.setRestartActivityClass(XposedMainActivity.class);
-				ACRA.init(getApplication());
+				previewMode = getIntent().getBooleanExtra("previewmode",false);
+				if(!previewMode) {
+						CustomActivityOnCrash.install(getApplicationContext());
+						CustomActivityOnCrash.setRestartActivityClass(XposedMainActivity.class);
+						ACRA.init(getApplication());
+				}
 				
 				mContext =getApplicationContext();
 				preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
@@ -91,7 +94,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				getWindow().setFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
 				
         getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
-				previewMode = getIntent().getBooleanExtra("previewmode",false);
 				//mKeyguardShowing = getIntent().getBooleanExtra("mKeyguardShowing",false);
 				KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
 				mKeyguardShowing = km.isKeyguardLocked();

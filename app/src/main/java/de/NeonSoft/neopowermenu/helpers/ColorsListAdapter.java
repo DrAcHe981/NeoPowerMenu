@@ -11,6 +11,7 @@ import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
 import java.io.*;
 import java.util.*;
+import android.os.*;
 
 public class ColorsListAdapter extends ArrayAdapter<String>
 {
@@ -92,7 +93,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 														{
 																// TODO: Implement this method
 																final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
-																dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+																dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
 																				public void onListItemClick(int position, String text)
@@ -113,12 +114,12 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																				}
 
 																				@Override
-																				public void onPositiveClick(ArrayList<String> resultData)
+																				public void onPositiveClick(Bundle resultBundle)
 																				{
 																						// TODO: Implement this method
 																						try
 																						{
-																								File presetFile = new File(context.getFilesDir().getPath()+"/presets/"+resultData.get(0).replace("/","")+".nps");
+																								File presetFile = new File(context.getFilesDir().getPath()+"/presets/"+resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")+".nps");
 																								presetFile.createNewFile();
 																								FileWriter fw = new FileWriter(presetFile);
 																								String versionName = "1.0";
@@ -131,9 +132,9 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																										Log.e("tag", e.getMessage());
 																								}
 																								fw.append("AppVersion="+versionName+"\n");
-																								if (!resultData.get(1).equalsIgnoreCase("")){
-																										MainActivity.preferences.edit().putString("lastPresetCreatedBy",resultData.get(1)).commit();
-																										fw.append("Creator="+resultData.get(1).replace("/","")+"\n");
+																								if (!resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"1").equalsIgnoreCase("")){
+																										MainActivity.preferences.edit().putString("lastPresetCreatedBy",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"1")).commit();
+																										fw.append("Creator="+resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"1").replace("/","")+"\n");
 																								} else {
 																										fw.append("Creator=a "+android.os.Build.MANUFACTURER+" " +android.os.Build.MODEL+ " user\n");
 																								}
@@ -149,16 +150,16 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																										}
 																								}
 																								fw.close();
-																								MainActivity.preferences.edit().putString("lastUsedPreset",resultData.get(0).replace("/","")).commit();
-																								if(resultData.get(2).equalsIgnoreCase("true")) {
-																										helper.zipAll(context.getFilesDir().getPath()+"/images/",context.getFilesDir().getPath()+"/temp/"+resultData.get(0).replace("/","")+".zip",null);
-																										helper.zipFile(context.getFilesDir().getPath()+"/presets/"+resultData.get(0).replace("/","")+".nps",context.getFilesDir().getPath()+"/temp/"+resultData.get(0).replace("/","")+".zip",null);
-																										new File(context.getFilesDir().getPath()+"/presets/"+resultData.get(0).replace("/","")+".nps").delete();
-																										if (new File(context.getFilesDir().getPath()+"/temp/"+resultData.get(0).replace("/","")+".zip").renameTo(new File(context.getFilesDir().getPath()+"/presets/"+resultData.get(0).replace("/","")+".nps"))) {
-																												Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",resultData.get(0).replace("/","")),Toast.LENGTH_SHORT).show();
+																								MainActivity.preferences.edit().putString("lastUsedPreset",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")).commit();
+																								if(resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)) {
+																										helper.zipAll(context.getFilesDir().getPath()+"/images/",context.getFilesDir().getPath()+"/temp/"+resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")+".zip",null);
+																										helper.zipFile(context.getFilesDir().getPath()+"/presets/"+resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")+".nps",context.getFilesDir().getPath()+"/temp/"+resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")+".zip",null);
+																										new File(context.getFilesDir().getPath()+"/presets/"+resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")+".nps").delete();
+																										if (new File(context.getFilesDir().getPath()+"/temp/"+resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")+".zip").renameTo(new File(context.getFilesDir().getPath()+"/presets/"+resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")+".nps"))) {
+																												Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")),Toast.LENGTH_SHORT).show();
 																										}
 																								} else {
-																										Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",resultData.get(0).replace("/","")),Toast.LENGTH_SHORT).show();
+																										Toast.makeText(context.getApplicationContext(),context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("/","")),Toast.LENGTH_SHORT).show();
 																								}
 																						}
 																						catch (IOException e)
@@ -171,8 +172,8 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																						// TODO: Implement this method
 																				}
 																		});
-																		dialogFragment.setDialogText("");
-																dialogFragment.setDialogInput1(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastUsedPreset",""),false,new TextWatcher() {
+																		dialogFragment.setText("");
+																dialogFragment.addInput(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastUsedPreset",""),false,new TextWatcher() {
 
 																				@Override
 																				public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
@@ -187,10 +188,10 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																						if (!p1.toString().equalsIgnoreCase("")) {
 																								File checkFile = new File(context.getFilesDir()+"/presets/"+p1.toString().replace("/","")+".nps");
 																								if (!checkFile.exists()) {
-																										dialogFragment.showInputAssistInfo(false);
+																										dialogFragment.showAssistInfo(false);
 																										//dialogFragment.setDialogText("");
 																								} else {
-																										dialogFragment.showInputAssistInfo(true);
+																										dialogFragment.showAssistInfo(true);
 																										//dialogFragment.setDialogText(context.getString(R.string.presetSaveDialog_OverwriteText));
 																								}
 																						}
@@ -202,11 +203,11 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																						// TODO: Implement this method
 																				}}
 																);
-																dialogFragment.setDialogInput2(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastPresetCreatedBy",""),true,null);
-																dialogFragment.setDialogInputAssistInfo(context.getString(R.string.presetSaveDialog_OverwriteText));
-																dialogFragment.setDialogCheckBox(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[0]);
-																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[7]);
+																dialogFragment.addInput(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastPresetCreatedBy",""),true,null);
+																dialogFragment.setInputAssistInfo(context.getString(R.string.presetSaveDialog_OverwriteText));
+																dialogFragment.setCheckBox(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[0]);
+																dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+																dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});
@@ -257,7 +258,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 														{
 																// TODO: Implement this method
 																final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
-																dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+																dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																				@Override
 																				public void onListItemClick(int position, String text)
@@ -278,11 +279,11 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																				}
 
 																				@Override
-																				public void onPositiveClick(ArrayList<String> resultData)
+																				public void onPositiveClick(Bundle resultBundle)
 																				{
 																						// TODO: Implement this method
-																						MainActivity.colorPrefs.edit().putString(loadColor[0]+colorType,resultData.get(0)).commit();
-																						Preview.setBackgroundColor(Color.parseColor(resultData.get(0)));
+																						MainActivity.colorPrefs.edit().putString(loadColor[0]+colorType,resultBundle.getString(slideDownDialogFragment.RESULT_COLORPICKER)).commit();
+																						Preview.setBackgroundColor(Color.parseColor(resultBundle.getString(slideDownDialogFragment.RESULT_COLORPICKER)));
 																				}
 
 																				@Override
@@ -291,10 +292,10 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																						// TODO: Implement this method
 																				}
 																		});
-																dialogFragment.setDialogText("");
-																dialogFragment.setDialogColorPicker(MainActivity.colorPrefs.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
-																dialogFragment.setDialogNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-																dialogFragment.setDialogPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[7]);
+																dialogFragment.setText("");
+																dialogFragment.setColorPicker(MainActivity.colorPrefs.getString(loadColor[0]+colorType,defaultColors[p1]),(defaultColors[p1].length()==7) ? false : true);
+																dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+																dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 																dialogFragment.showDialog(R.id.dialog_container);
 														}
 												});

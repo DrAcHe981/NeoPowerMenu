@@ -70,7 +70,7 @@ public class permissionsScreen extends Fragment
 										// TODO: Implement this method
 										if(!adapter.isAllChecked()) {
 												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
-												dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+												dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																@Override
 																public void onListItemClick(int position, String text)
@@ -91,7 +91,7 @@ public class permissionsScreen extends Fragment
 																}
 
 																@Override
-																public void onPositiveClick(ArrayList<String> resultData)
+																public void onPositiveClick(Bundle resultBundle)
 																{
 																		// TODO: Implement this method
 																		MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -103,8 +103,8 @@ public class permissionsScreen extends Fragment
 																		// TODO: Implement this method
 																}
 														});
-														dialogFragment.setDialogText(getActivity().getString(R.string.permissionsScreen_NotAllGranted));
-												dialogFragment.setDialogPositiveButton(getActivity().getString(R.string.Dialog_Buttons).split("\\|")[0]);
+														dialogFragment.setText(getActivity().getString(R.string.permissionsScreen_NotAllGranted));
+												dialogFragment.setPositiveButton(getActivity().getString(R.string.Dialog_Buttons).split("\\|")[0]);
 												dialogFragment.showDialog(R.id.dialog_container);
 										} else {
 												MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();

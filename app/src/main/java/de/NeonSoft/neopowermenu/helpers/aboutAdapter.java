@@ -87,7 +87,7 @@ public class aboutAdapter extends ArrayAdapter<String>
 												} else {
 														IdClickCount = 20;
 														final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext,MainActivity.fragmentManager);
-														dialogFragment.setDialogListener(new slideDownDialogFragment.slideDownDialogInterface() {
+														dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																		@Override
 																		public void onListItemClick(int position, String text)
@@ -108,9 +108,9 @@ public class aboutAdapter extends ArrayAdapter<String>
 																		}
 
 																		@Override
-																		public void onPositiveClick(ArrayList<String> resultData)
+																		public void onPositiveClick(Bundle resultBundle)
 																		{
-																				MainActivity.deviceUniqeId = (resultData.get(1).equalsIgnoreCase("true") ? helper.md5Crypto(resultData.get(0)) : resultData.get(0));
+																				MainActivity.deviceUniqeId = (resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX) ? helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0")) : resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0"));
 																				MainActivity.preferences.edit().putString("userUniqeId",MainActivity.deviceUniqeId).commit();
 																				itemsTexts.set(p1,"Your Device Id:\n" + ((MainActivity.deviceUniqeId.isEmpty() || MainActivity.deviceUniqeId.equalsIgnoreCase("none")) ? "Not generated. (this is not normal...)" : MainActivity.deviceUniqeId) + "\nYour Account Id:\n" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "Not logged in." : MainActivity.accountUniqeId) + "\nThe Id's are used by the Preset Sever to verify your identity.");
 																				notifyDataSetChanged();
@@ -122,13 +122,13 @@ public class aboutAdapter extends ArrayAdapter<String>
 																				// TODO: Implement this method
 																		}
 																});
-																dialogFragment.setDialogCloseOnTouchOutside(false);
-														dialogFragment.setDialogText("Use this at your own risk!\nThis is to change your device Id, when changing this keep in mind that your uploaded presets won't be 'yours' anymore, if not logged in with an account!");
-														dialogFragment.setDialogInput1("Device Id:",MainActivity.deviceUniqeId,false,null);
-														dialogFragment.setDialogCheckBox("Encrypt with md5");
-														dialogFragment.setDialogNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+																dialogFragment.setCloseOnTouchOutside(false);
+														dialogFragment.setText("Use this at your own risk!\nThis is to change your device Id, when changing this keep in mind that your uploaded presets won't be 'yours' anymore, if not logged in with an account!");
+														dialogFragment.addInput("Device Id:",MainActivity.deviceUniqeId,false,null);
+														dialogFragment.setCheckBox("Encrypt with md5");
+														dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 														//dialogFragment.setDialogNeutralButton("Reset");
-														dialogFragment.setDialogPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);
+														dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 														dialogFragment.showDialog(R.id.dialog_container);
 												}
 										}
