@@ -212,6 +212,7 @@ Your presets (ordered by stars):
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
+<string name="presetsManager_Stars">"Stars: [STARS]"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
@@ -222,7 +223,6 @@ Your presets (ordered by stars):
 <string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
 <string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsPartMain">"Dialog"</string>
-<string name="presetsManager_Stars">"Stars: [STARS]"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
 <string name="presetsManager_OrderBy">"Order by"</string>
 <string name="presetsManager_OrderNames">"Name|Time|Stars|Creator|Own"</string>
@@ -259,11 +259,11 @@ Also we need a reason why you want to report it, please enter it below.|Report r
 Reason: "</string>
 <string name="presetsManager_Buttons">"Give Star|Remove Star|Delete|Report|Upload|Share"</string>
 <string name="screenrecord_notif_buttons">"Stop|Toggle pointer"</string>
-<string name="presetsManager_States">"Waiting for other downloads...|Connecting to server...|Downloading...|Cancelling..."</string>
 
 		<string name="preferences_Animations">"Animations|Change the animations or disable them."</string>
 		<string name="animations_Names">"Fade|Slide up|Slide left|Slide right|Slide down|Disabled"</string>
 		<string name="animations_Categorys">"Main|Items"</string>
 		<string name="animations_Main">"Background|Dialog"</string>
 		<string name="animations_Items">"Appear|Icons|On click|Disappear"</string>
+<string name="presetsManager_States">"Waiting for other downloads...|Connecting to server...|Requesting information... |Downloading...|Cancelling..."</string>
 </resources>
