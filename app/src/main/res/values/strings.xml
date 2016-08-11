@@ -260,4 +260,10 @@ Reason: "</string>
 <string name="presetsManager_Buttons">"Give Star|Remove Star|Delete|Report|Upload|Share"</string>
 <string name="screenrecord_notif_buttons">"Stop|Toggle pointer"</string>
 <string name="presetsManager_States">"Waiting for other downloads...|Connecting to server...|Downloading...|Cancelling..."</string>
+
+		<string name="preferences_Animations">"Animations|Change the animations or disable them."</string>
+		<string name="animations_Names">"Fade|Slide up|Slide left|Slide right|Slide down|Disabled"</string>
+		<string name="animations_Categorys">"Main|Items"</string>
+		<string name="animations_Main">"Background|Dialog"</string>
+		<string name="animations_Items">"Appear|Icons|On click|Disappear"</string>
 </resources>

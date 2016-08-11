@@ -53,7 +53,7 @@ public class downloadHelper
 				this.mInterface = new downloadHelperInterface() {
 
 						@Override
-						public void onDownloadStarted(int state)
+						public void onStateChanged(int state)
 						{
 								// TODO: Implement this method
 						}
@@ -137,13 +137,21 @@ public class downloadHelper
 				return mState;
 		}
 		
-		private void setState(int state) {
+		private void setState(final int state) {
 				mState = state;
-				mInterface.onDownloadStarted(state);
+				mActivity.runOnUiThread(new Runnable() {
+
+								@Override
+								public void run()
+								{
+										// TODO: Implement this method
+										mInterface.onStateChanged(state);
+								}
+						});
 		}
 		
 		interface downloadHelperInterface {
-				void onDownloadStarted(int state);
+				void onStateChanged(int state);
 				void onPublishDownloadProgress(long nowSize,long totalSize);
 				void onDownloadComplete();
 				void onDownloadFailed(String reason);

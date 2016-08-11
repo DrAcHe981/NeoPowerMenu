@@ -84,11 +84,12 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				Star.setVisibility(View.GONE);
 				final ImageView StarImage = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_Star);
 				final TextView StarText = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_StarText);
+				TextView StarLine = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_StarLine);
 				LinearLayout Delete = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Delete);
 				ImageView DeleteImage = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_Delete);
 				TextView DeleteText = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_Delete);
 				DeleteText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[2]);
-				TextView DeleteLine = (TextView) rowView.findViewById(R.id.presetmanagerlistitemTextView_DeleteLine);
+				Delete.setVisibility(View.GONE);
 
 				ItemTitle.setText(this.itemsTitle.get(position));
 				final String[] split = this.itemsDesc.get(position).split(",=,");
@@ -183,15 +184,17 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 																								@Override
-																								public void onUploadStarted(boolean state)
+																								public void onStateChanged(int state)
 																								{
 																										// TODO: Implement this method
+																										if(state == uploadHelper.STATE_WAITING) {
 																										Progress.setProgress(100);
 																										Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
 																										Progress.setAlpha((float) 1);
 																										Progress.startAnimation(BlinkAnim);
 																										Upload.setEnabled(false);
 																										Upload.setAlpha((float) .5);
+																										}
 																								}
 
 																								@Override
@@ -431,6 +434,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														dialogFragment.showDialog(R.id.dialog_container);
 												}
 										});
+								Delete.setVisibility(View.VISIBLE);
 								Delete.setOnClickListener(new OnClickListener() {
 
 												@Override
@@ -620,8 +624,10 @@ public class PresetsAdapter extends ArrayAdapter<String>
 										StarImage.setImageResource(R.drawable.ic_action_star_10);
 										StarText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[0]);
 								}
-								if (PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) || PresetsPage.onlineIds[position].equals(MainActivity.accountUniqeId))
+								if (MainActivity.userRank.equals("A") || PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) || PresetsPage.onlineIds[position].equals(MainActivity.accountUniqeId))
 								{
+										StarLine.setVisibility(View.VISIBLE);
+										Delete.setVisibility(View.VISIBLE);
 										Delete.setOnClickListener(new OnClickListener() {
 
 														@Override
@@ -657,12 +663,14 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 																										@Override
-																										public void onUploadStarted(boolean state)
+																										public void onStateChanged(int state)
 																										{
 																												// TODO: Implement this method
+																												if(state == uploadHelper.STATE_WAITING) {
 																												PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.login_Processing));
 																												PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
 																												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
+																												}
 																										}
 
 																										@Override
@@ -715,14 +723,12 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														}
 												});
 								}
-								else
-								{
+								if(!PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) && !PresetsPage.onlineIds[position].equals(MainActivity.accountUniqeId)) {
 										Star.setVisibility(View.VISIBLE);
-										Delete.setVisibility(View.GONE);
-										if (!MainActivity.accountUniqeId.isEmpty() && !MainActivity.accountUniqeId.equalsIgnoreCase("none"))
+										if (!MainActivity.userRank.equals("A") && !MainActivity.accountUniqeId.isEmpty() && !MainActivity.accountUniqeId.equalsIgnoreCase("none"))
 										{
 												Delete.setVisibility(View.VISIBLE);
-												DeleteLine.setVisibility(View.VISIBLE);
+												StarLine.setVisibility(View.VISIBLE);
 												DeleteImage.setImageResource(R.drawable.ic_action_warning);
 												DeleteText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[3]);
 												Delete.setOnClickListener(new OnClickListener() {
@@ -760,12 +766,14 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																								uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 																												@Override
-																												public void onUploadStarted(boolean state)
+																												public void onStateChanged(int state)
 																												{
 																														// TODO: Implement this method
+																														if(state == uploadHelper.STATE_WAITING) {
 																														PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.login_Processing));
 																														PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
 																														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
+																														}
 																												}
 
 																												@Override
@@ -865,12 +873,14 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 																				@Override
-																				public void onUploadStarted(boolean state)
+																				public void onStateChanged(int state)
 																				{
 																						// TODO: Implement this method
+																						if(state == uploadHelper.STATE_WAITING) {
 																						PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.login_Processing));
 																						PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
 																						PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
+																						}
 																				}
 
 																				@Override
@@ -971,7 +981,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														dH.setInterface(new downloadHelper.downloadHelperInterface() {
 
 																		@Override
-																		public void onDownloadStarted(int state)
+																		public void onStateChanged(int state)
 																		{
 																				// TODO: Implement this method
 																				try

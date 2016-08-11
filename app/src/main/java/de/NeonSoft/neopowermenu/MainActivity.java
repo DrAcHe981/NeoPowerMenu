@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity
 		public static String usernameemail = "";
 		public static String password = "";
 		public static String accountUniqeId = "";
+		public static String userRank = "U";
 
 		public static String imagesstorage;
 		public static ImageLoader imageLoader;
@@ -476,15 +477,15 @@ public class MainActivity extends AppCompatActivity
 				{
 						// TODO: Implement this method
 						super.onPreExecute();
-						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.setVisibility(View.VISIBLE);
-						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_in);
+						PreferencesVisibilityOrderFragment.LinearLayout_Progress.setVisibility(View.VISIBLE);
+						PreferencesVisibilityOrderFragment.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_in);
 				}
 
 				@Override
 				protected String doInBackground(String[] p1)
 				{
 						// TODO: Implement this method
-						PreferencesVisibilityOrderFragmentNew.adapter.outputSorting();
+						PreferencesVisibilityOrderFragment.adapter.outputSorting();
 						return null;
 				}
 
@@ -493,8 +494,8 @@ public class MainActivity extends AppCompatActivity
 				{
 						// TODO: Implement this method
 						super.onPostExecute(p1);
-						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
-						PreferencesVisibilityOrderFragmentNew.LinearLayout_Progress.setVisibility(View.GONE);
+						PreferencesVisibilityOrderFragment.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
+						PreferencesVisibilityOrderFragment.LinearLayout_Progress.setVisibility(View.GONE);
 						actionbar.setButton(context.getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
 						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commit();
 				}

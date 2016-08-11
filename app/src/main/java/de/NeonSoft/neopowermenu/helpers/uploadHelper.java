@@ -10,6 +10,11 @@ import java.util.*;
 
 public class uploadHelper
 {
+
+		public static int STATE_WAITING = 0;
+		public static int STATE_CONNECTING = 1;
+		public static int STATE_UPLOADING = 2;
+		public static int STATE_CANCELLING = 3;
 		
 		private Activity mActivity;
 		private uploadHelperInterface mInterface;
@@ -34,6 +39,7 @@ public class uploadHelper
 		long mAvgSpeed;
 		long mSpeed;
 		long mETA;
+		int mState = this.STATE_WAITING;
 		int mProgress;
 		/** How much was downloaded last time. */
 		long iMLastDownloadedSize;
@@ -46,7 +52,7 @@ public class uploadHelper
 				this.mInterface = new uploadHelperInterface() {
 
 						@Override
-						public void onUploadStarted(boolean state)
+						public void onStateChanged(int state)
 						{
 								// TODO: Implement this method
 						}
@@ -132,8 +138,25 @@ public class uploadHelper
 				return mETA;
 		}
 		
+		public int getState() {
+				return mState;
+		}
+		
+		private void setState(final int state) {
+				mState = state;
+				mActivity.runOnUiThread(new Runnable() {
+
+								@Override
+								public void run()
+								{
+										// TODO: Implement this method
+										mInterface.onStateChanged(state);
+								}
+						});
+		}
+		
 		public interface uploadHelperInterface {
-				void onUploadStarted(boolean state);
+				void onStateChanged(int state);
 				void onPublishUploadProgress(long nowSize,long totalSize);
 				void onUploadComplete(String response);
 				void onUploadFailed(String reason);
@@ -147,7 +170,7 @@ public class uploadHelper
 				{
 						// TODO: Implement this method
 						super.onPreExecute();
-						mInterface.onUploadStarted(true);
+						setState(STATE_WAITING);
 						isRunning = true;
 						iMLastDownloadedSize = 0;
 						iMLastTime = System.currentTimeMillis();
@@ -234,6 +257,7 @@ public class uploadHelper
 										URL url = new URL(p1[0].replace(" ","%20")+(mParams!=null ? getQuery(mParams) : ""));
 										//Log.i("NPM:uH","Parsed url: "+url.toString());
 										// Open a HTTP connection to the URL
+										setState(STATE_CONNECTING);
 										conn = (HttpURLConnection) url.openConnection();
 										conn.setDoInput(true); // Allow Inputs
 										conn.setDoOutput(true); // Allow Outputs
@@ -255,6 +279,7 @@ public class uploadHelper
 										bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 										dltotalsize = sourceFile.length();
 										total = 0;
+										setState(STATE_UPLOADING);
 										while ((count = bytesRead) > 0) {
 												if(!isCancelled()) {
 														dos.write(buffer, 0, bufferSize);
@@ -264,6 +289,7 @@ public class uploadHelper
 														total += bytesRead;
 														dlnowsize = total;
 												} else {
+														setState(STATE_CANCELLING);
 														onCancelled("");
 												}
 										}
@@ -311,6 +337,7 @@ public class uploadHelper
 								{
 										// TODO: Implement this method
 										super.onCancelled(p1);
+										setState(STATE_CANCELLING);
 										timer.cancel();
 										try {
 												//close the streams //

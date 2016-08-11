@@ -89,7 +89,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															{
 																	// TODO: Implement this method
 																	removeAt(position);
-																	insertAt(position,new Object[] {TYPE_NORMAL,PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]});
+																	insertAt(position,new Object[] {TYPE_NORMAL,PreferencesVisibilityOrderFragment.PowerMenuItems[listpos]});
 															}
 
 															@Override
@@ -117,13 +117,13 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															}
 													});
 													int selItem = 0;
-											for(int i = 0;i< PreferencesVisibilityOrderFragmentNew.PowerMenuItems.length;i++) {
-													if(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[i].equalsIgnoreCase(itemsTitle.get(position))) {
+											for(int i = 0;i< PreferencesVisibilityOrderFragment.PowerMenuItems.length;i++) {
+													if(PreferencesVisibilityOrderFragment.PowerMenuItems[i].equalsIgnoreCase(itemsTitle.get(position))) {
 															selItem = i;
 															break;
 													}
 											}
-											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
+											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragment.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
@@ -162,7 +162,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 					}
 					item2.setText(string);
 					} else {
-							item2.setText(PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts[0]);
+							item2.setText(PreferencesVisibilityOrderFragment.PowerMenuItemsTexts[0]);
 					}
 
 					TextView item3 = (TextView) InflatedView.findViewById(R.id.visibilityordermulti_item3);
@@ -180,7 +180,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 					}
 					item3.setText(string);
 					} else {
-							item3.setText(PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts[0]);
+							item3.setText(PreferencesVisibilityOrderFragment.PowerMenuItemsTexts[0]);
 					}
 					
 					LinearLayout ItemCheckBoxHolder = (LinearLayout) InflatedView.findViewById(R.id.visibilityordermulti_LinearLayout_HideDesc);
@@ -244,7 +244,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															{
 																	// TODO: Implement this method
 																	removeAt(position);
-																	insertAt(position,new Object[] {TYPE_MULTI,PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]+","+(items.length >= 2 ? items[1] : "Empty")+","+(items.length == 3 ? items[2] : "Empty")});
+																	insertAt(position,new Object[] {TYPE_MULTI,PreferencesVisibilityOrderFragment.PowerMenuItems[listpos]+","+(items.length >= 2 ? items[1] : "Empty")+","+(items.length == 3 ? items[2] : "Empty")});
 															}
 
 															@Override
@@ -272,13 +272,13 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															}
 													});
 											int selItem = 0;
-											for(int i = 0;i< PreferencesVisibilityOrderFragmentNew.PowerMenuItems.length;i++) {
-													if(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[i].equalsIgnoreCase(items[0])) {
+											for(int i = 0;i< PreferencesVisibilityOrderFragment.PowerMenuItems.length;i++) {
+													if(PreferencesVisibilityOrderFragment.PowerMenuItems[i].equalsIgnoreCase(items[0])) {
 															selItem = i;
 															break;
 													}
 											}
-											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
+											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragment.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
@@ -297,7 +297,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															{
 																	// TODO: Implement this method
 																	removeAt(position);
-																	insertAt(position,new Object[] {TYPE_MULTI,items[0]+","+PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]+","+(items.length == 3 ? items[2] : "Empty")});
+																	insertAt(position,new Object[] {TYPE_MULTI,items[0]+","+PreferencesVisibilityOrderFragment.PowerMenuItems[listpos]+","+(items.length == 3 ? items[2] : "Empty")});
 															}
 
 															@Override
@@ -326,14 +326,14 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 													});
 											int selItem = 0;
 											if(items.length>=2) {
-											for(int i = 0;i< PreferencesVisibilityOrderFragmentNew.PowerMenuItems.length;i++) {
-													if(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[i].equalsIgnoreCase(items[1])) {
+											for(int i = 0;i< PreferencesVisibilityOrderFragment.PowerMenuItems.length;i++) {
+													if(PreferencesVisibilityOrderFragment.PowerMenuItems[i].equalsIgnoreCase(items[1])) {
 															selItem = i;
 															break;
 													}
 											}
 											}
-											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
+											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragment.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}
@@ -352,7 +352,7 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 															{
 																	// TODO: Implement this method
 																	removeAt(position);
-																	insertAt(position,new Object[] {TYPE_MULTI,items[0]+","+(items.length >= 2 ? items[1] : "Empty")+","+PreferencesVisibilityOrderFragmentNew.PowerMenuItems[listpos]});
+																	insertAt(position,new Object[] {TYPE_MULTI,items[0]+","+(items.length >= 2 ? items[1] : "Empty")+","+PreferencesVisibilityOrderFragment.PowerMenuItems[listpos]});
 															}
 
 															@Override
@@ -381,14 +381,14 @@ public class visibilityOrderNew_ListAdapter extends ArrayAdapter<String>
 													});
 											int selItem = 0;
 											if(items.length==3) {
-											for(int i = 0;i< PreferencesVisibilityOrderFragmentNew.PowerMenuItems.length;i++) {
-													if(PreferencesVisibilityOrderFragmentNew.PowerMenuItems[i].equalsIgnoreCase(items[2])) {
+											for(int i = 0;i< PreferencesVisibilityOrderFragment.PowerMenuItems.length;i++) {
+													if(PreferencesVisibilityOrderFragment.PowerMenuItems[i].equalsIgnoreCase(items[2])) {
 															selItem = i;
 															break;
 													}
 											}
 											}
-											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,selItem,true);
+											dialogFragment.setList(ListView.CHOICE_MODE_SINGLE,PreferencesVisibilityOrderFragment.PowerMenuItemsTexts,selItem,true);
 											dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 											dialogFragment.showDialog(R.id.dialog_container);
 									}

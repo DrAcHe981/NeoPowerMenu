@@ -123,12 +123,14 @@ public class LoginFragment extends Fragment
 								uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 												@Override
-												public void onUploadStarted(boolean state)
+												public void onStateChanged(int state)
 												{
 														// TODO: Implement this method
-														PreferencesPresetsFragment.LoadingMsg.setText(getString(R.string.login_Processing));
-														PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
-														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+														if(state == uploadHelper.STATE_WAITING) {
+																PreferencesPresetsFragment.LoadingMsg.setText(getString(R.string.login_Processing));
+																PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
+																PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+														}
 												}
 
 												@Override
@@ -241,12 +243,14 @@ public class LoginFragment extends Fragment
 								uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 												@Override
-												public void onUploadStarted(boolean state)
+												public void onStateChanged(int state)
 												{
 														// TODO: Implement this method
+														if(state == uploadHelper.STATE_WAITING) {
 														PreferencesPresetsFragment.LoadingMsg.setText(getString(R.string.login_Processing));
 														PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
 														PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+														}
 												}
 
 												@Override
@@ -356,6 +360,7 @@ public class LoginFragment extends Fragment
 								MainActivity.usernameemail = "null";
 								MainActivity.password = "null";
 								MainActivity.accountUniqeId = "none";
+								MainActivity.userRank = "U";
 								MainActivity.preferences.edit().putBoolean("autoLogin", false)
 										.remove("ueel")
 										.remove("pd")
@@ -484,13 +489,15 @@ public class LoginFragment extends Fragment
 				uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 								@Override
-								public void onUploadStarted(boolean state)
+								public void onStateChanged(int state)
 								{
 										// TODO: Implement this method
 										if(!background) {
+												if(state == uploadHelper.STATE_WAITING) {
 												PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.login_Processing));
 												PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
 												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+												}
 										}
 								}
 
@@ -514,6 +521,7 @@ public class LoginFragment extends Fragment
 										MainActivity.usernameemail = usernameemail;
 										MainActivity.password = password;
 										MainActivity.accountUniqeId = (responseSplit.length >= 2 ? responseSplit[1] : "none");
+										MainActivity.userRank = (responseSplit.length >= 3 ? responseSplit[2] : "U");
 										if (keeplogin)
 										{
 												MainActivity.preferences.edit().putBoolean("autoLogin", true)
@@ -582,11 +590,13 @@ public class LoginFragment extends Fragment
 				uH.setInterface(new uploadHelper.uploadHelperInterface() {
 
 								@Override
-								public void onUploadStarted(boolean state)
+								public void onStateChanged(int state)
 								{
 										// TODO: Implement this method
+										if(state == uploadHelper.STATE_WAITING) {
 										TextView_Statistics.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 										TextView_Statistics.setVisibility(View.GONE);
+										}
 								}
 
 								@Override

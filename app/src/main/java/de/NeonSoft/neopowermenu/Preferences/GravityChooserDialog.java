@@ -48,7 +48,7 @@ public class GravityChooserDialog extends DialogFragment
 				
 				LinearLayout_ImageHolder = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_ImageHolder);
 				
-				String[] gravitys = getString(R.string.advancedPrefs_DialogGravity).split("/");
+				String[] gravitys = getString(R.string.advancedPrefs_DialogGravity).split("\\|");
 				
 				boolean_DialogGravityTop = MainActivity.preferences.getBoolean("DialogGravityTop",false);
 				LinearLayout_DialogGravityTop = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityTop);

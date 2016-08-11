@@ -211,7 +211,8 @@
 						android:gravity="center_vertical"
 						android:id="@+id/presetmanagerlistitemTextView_StarText"/>
 
-					<TextView
+						<TextView
+								android:id="@+id/presetmanagerlistitemTextView_StarLine"
 						android:layout_height="match_parent"
 						android:layout_width="2dp"
 						android:background="@color/colorAccentDarkTheme"
@@ -219,7 +220,7 @@
 						android:layout_marginTop="5dp"
 						android:layout_marginBottom="5dp"
 						android:layout_marginLeft="5dp"
-						android:visibility="gone"/>
+							android:visibility="gone"/>
 
 				</LinearLayout>
 
@@ -230,17 +231,6 @@
 					android:orientation="horizontal"
 					android:id="@+id/presetmanagerlistitemLinearLayout_Delete"
 					android:gravity="center_vertical">
-
-					<TextView
-						android:layout_height="match_parent"
-						android:layout_width="2dp"
-						android:background="@color/colorAccentDarkTheme"
-						android:alpha="0.3"
-						android:layout_marginTop="5dp"
-						android:layout_marginBottom="5dp"
-						android:layout_marginLeft="5dp"
-						android:id="@+id/presetmanagerlistitemTextView_DeleteLine"
-						android:visibility="gone"/>
 
 					<ImageView
 						android:layout_height="30dp"

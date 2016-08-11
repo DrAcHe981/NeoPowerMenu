@@ -10,7 +10,7 @@ import java.util.*;
 import android.view.View.*;
 import com.android.internal.os.*;
 
-public class PreferencesVisibilityOrderFragmentNew extends Fragment
+public class PreferencesVisibilityOrderFragment extends Fragment
 {
 
 		TextView TextView_AddNormalItem;
@@ -191,7 +191,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 																// TODO: Implement this method
 														}
 												});
-										dialogFragment.setList(ListView.CHOICE_MODE_NONE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,0,true);
+										dialogFragment.setList(ListView.CHOICE_MODE_NONE,PreferencesVisibilityOrderFragment.PowerMenuItemsTexts,0,true);
 										dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}
@@ -244,7 +244,7 @@ public class PreferencesVisibilityOrderFragmentNew extends Fragment
 														}
 												});
 												dialogFragment.setText(getString(R.string.visibilityOrder_SelectMulti));
-										dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE,PreferencesVisibilityOrderFragmentNew.PowerMenuItemsTexts,-1,false);
+										dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE,PreferencesVisibilityOrderFragment.PowerMenuItemsTexts,-1,false);
 										dialogFragment.setListLimit(3,false);
 										dialogFragment.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
 										dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);

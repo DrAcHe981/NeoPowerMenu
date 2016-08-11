@@ -49,6 +49,10 @@ public class PreferencesPartFragment extends Fragment
 		private static LinearLayout LinearLayout_Graphics;
 		
 		private static LinearLayout LinearLayout_VisibilityOrder;
+		
+		private static LinearLayout LinearLayout_Animations;
+		private static TextView TextView_AnimationsTitle;
+		private static TextView TextView_AnimationsDesc;
 
 		private static LinearLayout LinearLayout_Advanced;
 		
@@ -100,11 +104,17 @@ public class PreferencesPartFragment extends Fragment
 				LinearLayout_Theme = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Theme);
 
 				LinearLayout_Graphics =(LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Graphics);
-				//LinearLayout_Graphics.setAlpha((float) .3);
-				//LinearLayout_Graphics.setEnabled(false);
 				
 				LinearLayout_VisibilityOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_VisibilityOrder);
 
+				LinearLayout_Animations = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Animations);
+				TextView_AnimationsTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AnimationsTitle);
+				TextView_AnimationsDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AnimationsDesc);
+				TextView_AnimationsTitle.setText(getString(R.string.preferences_Animations).split("\\|")[0]);
+				TextView_AnimationsDesc.setText(getString(R.string.preferences_Animations).split("\\|")[1]);
+				LinearLayout_Animations.setAlpha((float) .3);
+				LinearLayout_Animations.setEnabled(false);
+				
 				LinearLayout_Advanced = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Advanced);
 				
 				LinearLayout_Permissions = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Permissions);
@@ -209,10 +219,19 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesVisibilityOrderFragmentNew()).commit();
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesVisibilityOrderFragment()).commit();
 								}
 						});
 
+				LinearLayout_Animations.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesAnimationsFragment()).commit();
+								}
+						});
+				
 				LinearLayout_Advanced.setOnClickListener(new OnClickListener() {
 
 								@Override
