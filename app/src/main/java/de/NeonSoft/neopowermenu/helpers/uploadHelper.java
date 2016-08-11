@@ -13,8 +13,9 @@ public class uploadHelper
 
 		public static int STATE_WAITING = 0;
 		public static int STATE_CONNECTING = 1;
-		public static int STATE_UPLOADING = 2;
-		public static int STATE_CANCELLING = 3;
+		public static int STATE_REQUESTINGINFO = 2;
+		public static int STATE_UPLOADING = 3;
+		public static int STATE_CANCELLING = 4;
 		
 		private Activity mActivity;
 		private uploadHelperInterface mInterface;
@@ -259,6 +260,7 @@ public class uploadHelper
 										// Open a HTTP connection to the URL
 										setState(STATE_CONNECTING);
 										conn = (HttpURLConnection) url.openConnection();
+										setState(STATE_REQUESTINGINFO);
 										conn.setDoInput(true); // Allow Inputs
 										conn.setDoOutput(true); // Allow Outputs
 										conn.setUseCaches(false); // Don't use a Cached Copy

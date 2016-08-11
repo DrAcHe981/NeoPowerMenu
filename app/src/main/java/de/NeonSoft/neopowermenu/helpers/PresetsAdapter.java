@@ -1020,7 +1020,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				// TODO: Implement this method
 																				try
 																				{
-																						PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.presetsManager_States).split("\\|")[2] + " - eta: " + helper.getTimeString(dH.getETA(), true) + " | speed: " + helper.getSizeString(dH.getAvgSpeed(), true) + "/s\n" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | " + PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress() + "%");
+																						PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.presetsManager_States).split("\\|")[PreferencesPresetsFragment.DownloadingActiveForHelper[position].getState()] + " - eta: " + helper.getTimeString(dH.getETA(), true) + " | speed: " + helper.getSizeString(dH.getAvgSpeed(), true) + "/s\n" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | " + PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress() + "%");
 																						if (PreferencesPresetsFragment.DownloadingActiveForHelper[position].getSizes()[0] > 0) {
 																								PreferencesPresetsFragment.DownloadingActiveForProgress[position].clearAnimation();
 																								PreferencesPresetsFragment.DownloadingActiveForProgress[position].setAlpha((float) 0.2);

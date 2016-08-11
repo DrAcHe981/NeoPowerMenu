@@ -13,8 +13,9 @@ public class downloadHelper
 		
 		public static int STATE_WAITING = 0;
 		public static int STATE_CONNECTING = 1;
-		public static int STATE_DOWNLOADING = 2;
-		public static int STATE_CANCELLING = 3;
+		public static int STATE_REQUESTINGINFO = 2;
+		public static int STATE_DOWNLOADING = 3;
+		public static int STATE_CANCELLING = 4;
 		
 		private Activity mActivity;
 		private downloadHelperInterface mInterface;
@@ -245,6 +246,7 @@ public class downloadHelper
 												setState(STATE_CONNECTING);
 												connection.connect();
 												//Log.i("Starting download", url.toString());
+												setState(STATE_REQUESTINGINFO);
 												dltotalsize = connection.getContentLength();
 												if (dltotalsize > 0)
 												{
