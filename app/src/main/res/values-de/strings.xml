@@ -257,4 +257,5 @@ Grund: "</string>
 <string name="screenrecord_notif_buttons">"Stopp|Pointer an/aus"</string>
 <string name="downloadHelper_States">"Warte auf andere Downloads...|Verbinde mit Server...|Informationen werden abgerufen...|Runterladen...|Wird abgebrochen..."</string>
 <string name="preferences_Animations">"Animationen|Ändere die Animationen oder deaktiviert sie komplett."</string>
+<string name="uploadHelper_States">"Warte auf andere Uploads...|Verbinde mit Server...|Informationen werden abgerufen...|Hochladen...|Wird abgebrochen..."</string>
 </resources>
