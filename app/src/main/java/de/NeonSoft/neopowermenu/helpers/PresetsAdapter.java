@@ -188,6 +188,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																								public void onStateChanged(int state)
 																								{
 																										// TODO: Implement this method
+																										try {
 																										if(state == uploadHelper.STATE_WAITING) {
 																										//Progress.setProgress(100);
 																										//Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
@@ -219,6 +220,9 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																public void onPositiveClick(Bundle resultBundle)
 																																{
 																																		// TODO: Implement this method
+																																		dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[uploadHelper.STATE_CANCELLING]+"\n\n");
+																																		dialogFragment.setPositiveButton(null);
+																																		dialogFragment.setProgressBarBlink(true);
 																																		uH.stopUpload(true);
 																																}
 
@@ -228,28 +232,34 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																		// TODO: Implement this method
 																																}
 																														});
+																														dialogFragment.setCloseOnButtonClick(false);
 																												dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[state]+"\n\n");
 																												dialogFragment.addProgressBar(true,true);
 																												dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 																												dialogFragment.setCloseOnTouchOutside(false);
 																												dialogFragment.showDialog(R.id.dialog_container);
 																										}
-																										dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[state]+"\n\n");
+																												dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[state]+"\n\n");
+																										} catch (Throwable t) {}
 																								}
 
 																								@Override
 																								public void onPublishUploadProgress(long nowSize, long totalSize)
 																								{
+																										try{
 																										// TODO: Implement this method
 																										//ItemDesc.setText((int) (( nowSize * 100) / totalSize));
 																										//Progress.setProgress(uH.getProgress());
-																										dialogFragment.setProgressBar(uH.getProgress());
-																										dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[uH.getState()] + (uH.getSizes()[0] > 0 ? "\n" +helper.getSizeString(uH.getSizes()[0],true)+"/"+helper.getSizeString(uH.getSizes()[1],true)+"\neta: "+helper.getTimeString(uH.getETA(),true)+", speed: "+ helper.getSizeString(uH.getAvgSpeed(),true)+"/s" : "\n\n"));
-																										if (uH.getSizes()[0] > 0) {
-																												dialogFragment.setProgressBarBlink(false);
+																										if(dialogFragment != null && !dialogFragment.getText().equalsIgnoreCase(context.getString(R.string.uploadHelper_States).split("\\|")[uploadHelper.STATE_CANCELLING]+"\n\n")) {
+																										dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[uH.getState()] + ((uH.getSizes()[0] > 0 && uH.getState() != uploadHelper.STATE_CANCELLING) ? "\n" +helper.getSizeString(uH.getSizes()[0],true)+"/"+helper.getSizeString(uH.getSizes()[1],true)+"\neta: "+helper.getTimeString(uH.getETA(),true)+", speed: "+ helper.getSizeString(uH.getAvgSpeed(),true)+"/s" : "\n\n"));
+																												if (uH.getSizes()[0] > 0) {
+																														dialogFragment.setProgressBar(uH.getProgress());
+																														dialogFragment.setProgressBarBlink(false);
 																												//Progress.clearAnimation();
 																												//Progress.setAlpha((float) 0.2);
 																										}
+																										}
+																										} catch (Throwable t) {}
 																								}
 
 																								@Override
@@ -273,14 +283,16 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																								public void onUploadFailed(String reason)
 																								{
 																										// TODO: Implement this method
-																										dialogFragment.closeDialog();
+																												dialogFragment.closeDialog();
 																										//Progress.setProgress(0);
 																										//Progress.clearAnimation();
 																										//Progress.setAlpha((float) 0.2);
 																										//Upload.setEnabled(true);
 																										//Upload.setAlpha((float) 1);
-																										if(reason.contains("canceled")) {}
-																										if (reason.contains("no access"))
+																										if(reason.equalsIgnoreCase("canceled")) {
+																												//Toast.makeText(context,"Download canceled",Toast.LENGTH_SHORT).show();
+																										}
+																										else if (reason.contains("no access"))
 																										{
 																												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(context, MainActivity.fragmentManager);
 																												dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
@@ -1149,6 +1161,10 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														PreferencesPresetsFragment.DownloadingActiveForLayout[position].setEnabled(false);
 														PreferencesPresetsFragment.DownloadingActiveForLayout[position].setAlpha((float) .3);
 														PreferencesPresetsFragment.DownloadingActiveForHelper[position].stopDownload(true);
+														PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress(100);
+														Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
+														PreferencesPresetsFragment.DownloadingActiveForProgress[position].setAlpha((float) 1);
+														PreferencesPresetsFragment.DownloadingActiveForProgress[position].startAnimation(BlinkAnim);
 												}
 										}
 								});

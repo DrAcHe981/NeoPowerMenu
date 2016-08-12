@@ -33,11 +33,14 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		public static String dialogCloseCall = "de.NeonSoft.slideDownDialog.close";
 		public static ArrayList<slideDownDialogFragment> dialogs = new ArrayList<slideDownDialogFragment>();
 		
-		 private Activity mContext;
+		private Activity mContext;
+		Handler handler;
 		private slideDownDialogInterface mInterface;
 		private android.support.v4.app.Fragment mFragment;
 		private android.support.v4.app.FragmentManager mFragmentmanager;
 		BroadcastReceiver br;
+		
+		private boolean dialogCloseOnButtonClick = true;
 		
 		 private String dialogText = "";
 		 private float dialogTextSize = -1;
@@ -229,12 +232,19 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 				this.mInterface = listener;
 		}
 		
+		public void setCloseOnButtonClick(boolean close) {
+				this.dialogCloseOnButtonClick = close;
+		}
+		
 		public void setText(String text) {
 				dialogText = text;
 				if(TextView_DialogText!=null) {
 						TextView_DialogText.setText(text);
 						TextView_DialogText.setVisibility(text.isEmpty() ? View.GONE : View.VISIBLE);
 				}
+		}
+		public String getText() {
+				return dialogText;
 		}
 		public void setTextSize(float size) {
 				if(TextView_DialogText!=null) {
@@ -383,6 +393,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								RelativeLayout_ProgressText.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 								RelativeLayout_ProgressText.setVisibility(View.INVISIBLE);
 						}
+						ProgressBar_Progress.setAlpha((float) 1);
 						ProgressBar_Progress.setProgress(100);
 						ProgressBar_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.progress_blink));
 				} else {
@@ -422,6 +433,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		}
 		
 		public void setNegativeButton(final String text) {
+				if(text != null && !text.isEmpty()) {
 				negativeButtonText = text;
 				if(LinearLayout_DialogNegativeButton != null && TextView_DialogNegativeButtonText.getText().toString().equals(text)) {
 						Animation fadeOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
@@ -449,8 +461,16 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								});
 						LinearLayout_DialogNegativeButton.startAnimation(fadeOut);
 				}
+		} else {
+				negativeButtonText = null;
+				if(LinearLayout_DialogNegativeButton != null) {
+						LinearLayout_DialogNegativeButton.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+						LinearLayout_DialogNegativeButton.setVisibility(View.GONE);
+				}
+		}
 		}
 		public void setNeutralButton(final String text) {
+				if(text != null && !text.isEmpty()) {
 				neutralButtonText = text;
 				if(LinearLayout_DialogNeutralButton != null && TextView_DialogNeutralButtonText.getText().toString().equals(text)) {
 						Animation fadeOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
@@ -478,8 +498,16 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								});
 						TextView_DialogNeutralButtonText.startAnimation(fadeOut);
 				}
+				} else {
+						neutralButtonText = null;
+						if(LinearLayout_DialogNeutralButton != null) {
+								LinearLayout_DialogNeutralButton.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+								LinearLayout_DialogNeutralButton.setVisibility(View.GONE);
+						}
+				}
 		}
 		public void setPositiveButton(final String text) {
+				if(text != null && !text.isEmpty()) {
 				positiveButtonText = text;
 				if(LinearLayout_DialogPositiveButton != null && TextView_DialogPositiveButtonText.getText().toString().equals(text)) {
 						Animation fadeOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
@@ -507,6 +535,13 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								});
 						LinearLayout_DialogPositiveButton.startAnimation(fadeOut);
 				}
+		} else {
+				positiveButtonText = null;
+				if(LinearLayout_DialogPositiveButton != null) {
+				LinearLayout_DialogPositiveButton.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+				LinearLayout_DialogPositiveButton.setVisibility(View.GONE);
+				}
+		}
 		}
 		
 		public void setCloseOnTouchOutside(boolean enabled) {
@@ -588,6 +623,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 				{
 						// TODO: Implement this method
 						mFragment = this;
+						handler = new Handler();
 						View InflatedView = inflater.inflate(R.layout.slidedowndialogfragment,container,false);
 
 						final LayoutTransition transitioner = new LayoutTransition();
@@ -683,7 +719,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 
 						LinearLayout_DialogPositiveButton = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtonPositive);
 						TextView_DialogPositiveButtonText = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogButtonPositiveText);
-
+						if(positiveButtonText == null || positiveButtonText.isEmpty()) LinearLayout_DialogPositiveButton.setVisibility(View.GONE);
+						
 						TextView_DialogTouchOutside = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogTouchOutside);
 						TextView_DialogTouchOutside.setVisibility(View.GONE);
 
@@ -912,7 +949,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 												{
 														// TODO: Implement this method
 														mInterface.onNegativeClick();
-														closeDialog();
+														if(dialogCloseOnButtonClick) closeDialog();
 												}
 										});
 								LinearLayout_DialogNegativeButton.setVisibility(View.VISIBLE);
@@ -926,11 +963,12 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 												{
 														// TODO: Implement this method
 														mInterface.onNeutralClick();
-														closeDialog();
+														if(dialogCloseOnButtonClick) closeDialog();
 												}
 										});
 								LinearLayout_DialogNeutralButton.setVisibility(View.VISIBLE);
 						}
+						if(positiveButtonText != null && !positiveButtonText.isEmpty()) {
 						TextView_DialogPositiveButtonText.setText(positiveButtonText);
 						LinearLayout_DialogPositiveButton.setOnClickListener(new OnClickListener() {
 
@@ -971,7 +1009,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 																if(!dialogInputAllowEmpty.get(i) && dialogInputs.get(i).getText().toString().isEmpty()) {
 																		return;
 																}
-																resultBundle.putString(RESULT_INPUT+i,dialogInputs.get(i).getText().toString());
+																resultBundle.putString(RESULT_INPUT+i,dialogInputs.get(i).getText().toString().trim());
 																//resultData.add(dialogInputs.get(i).getText().toString());
 														}
 												}
@@ -998,9 +1036,10 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 														//resultData.add(CheckBox_DialogCheckBox.isChecked() ? "true" : "false");
 												}
 												mInterface.onPositiveClick(resultBundle);
-												closeDialog();
+												if(dialogCloseOnButtonClick) closeDialog();
 										}
 								});
+						}
 						if(closeOnTouchOutside) {
 								TextView_DialogTouchOutside.setOnClickListener(new OnClickListener() {
 
@@ -1041,6 +1080,12 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		public void closeDialog() {
 				if(!hideActive) {
 						hideActive = true;
+						mFragment.getActivity().runOnUiThread(new Runnable() {
+
+										@Override
+										public void run()
+										{
+												// TODO: Implement this method
 				mContext.unregisterReceiver(br);
 				InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE); 
 				IBinder windowToken = null;
@@ -1092,25 +1137,26 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								}
 						});*/
 				LinearLayout_DialogRoot.startAnimation(hideAnim);
-				Handler handler = new Handler();
 						handler.postDelayed(new Runnable() {
 
 										@Override
 										public void run()
 										{
 												// TODO: Implement this method
-												try {
-												if(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).getShowsDialog()) {
-														slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).dismiss();
-												} else {
-														mFragmentmanager.beginTransaction().remove(mFragment).commit();
-												}
-												slideDownDialogFragment.dialogs.remove(slideDownDialogFragment.dialogs.size()-1);
-												} catch (Throwable t) {
-												}
+																		try {
+																				if(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).getShowsDialog()) {
+																						slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).dismiss();
+																				} else {
+																						mFragmentmanager.beginTransaction().remove(mFragment).commit();
+																				}
+																				slideDownDialogFragment.dialogs.remove(slideDownDialogFragment.dialogs.size()-1);
+																		} catch (Throwable t) {
+																		}
 										}
 								}, 800L);
 				LinearLayout_DialogRoot.setVisibility(View.GONE);
+				}
+				});
 				}
 		}
 

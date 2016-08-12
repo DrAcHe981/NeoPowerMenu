@@ -145,6 +145,7 @@ public class uploadHelper
 		
 		private void setState(final int state) {
 				mState = state;
+				Log.i("NPM:uH","State changed to "+state);
 				mActivity.runOnUiThread(new Runnable() {
 
 								@Override
@@ -165,6 +166,8 @@ public class uploadHelper
 		
 		class uploadAsync extends AsyncTask<String, String, String>
 		{
+
+				HttpURLConnection conn = null;
 				
 				@Override
 				protected void onPreExecute()
@@ -239,7 +242,6 @@ public class uploadHelper
 						} else {
 								uploadFileName = p1[1].split("/")[p1[1].split("/").length-1];
 						}
-						HttpURLConnection conn = null;
 						String lineEnd = "\r\n";
 						String twoHyphens = "--";
 						String boundary = "*****";
@@ -300,6 +302,7 @@ public class uploadHelper
 														dlnowsize = total;
 												} else {
 														setState(STATE_CANCELLING);
+														bytesRead = 0;
 														onCancelled("");
 												}
 										//}
@@ -352,6 +355,7 @@ public class uploadHelper
 										timer.cancel();
 										try {
 												//close the streams //
+												conn.disconnect();
 												fileInputStream.close();
 												dos.flush();
 												dos.close();
@@ -369,6 +373,7 @@ public class uploadHelper
 										timer.cancel();
 										try {
 												//close the streams //
+												conn.disconnect();
 												fileInputStream.close();
 												dos.flush();
 												dos.close();
