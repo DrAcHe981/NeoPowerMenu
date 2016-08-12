@@ -209,6 +209,150 @@
 
 						</LinearLayout>
 
+						<RelativeLayout
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:orientation="horizontal"
+							android:id="@+id/slidedowndialogfragmentRelativeLayout_Progressbar">
+
+							<ProgressBar
+								style="?android:attr/progressBarStyleHorizontal"
+								android:layout_height="match_parent"
+								android:layout_width="match_parent"
+								android:layout_weight="1.0"
+								android:progressDrawable="@drawable/custom_progressbar"
+								android:id="@+id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_margin="2dp"
+								android:minHeight="35dp"/>
+
+							<TextView
+								android:layout_height="2dp"
+								android:layout_width="5dp"
+								android:background="@color/colorAccentDarkThemeTrans"
+								android:layout_alignLeft="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginLeft="-2dp"
+								android:layout_alignTop="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginTop="-2dp"/>
+
+							<TextView
+								android:layout_height="wrap_content"
+								android:layout_width="2dp"
+								android:background="@color/colorAccentDarkThemeTrans"
+								android:layout_alignLeft="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginLeft="-2dp"
+								android:layout_alignTop="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_alignBottom="@id/slidedowndialogfragmentProgressBar_Progressbar"/>
+
+							<TextView
+								android:layout_height="2dp"
+								android:layout_width="5dp"
+								android:background="@color/colorAccentDarkThemeTrans"
+								android:layout_alignLeft="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginLeft="-2dp"
+								android:layout_alignBottom="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginBottom="-2dp"/>
+
+							<TextView
+								android:layout_height="2dp"
+								android:layout_width="5dp"
+								android:background="@color/colorAccentDarkThemeTrans"
+								android:layout_alignRight="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginRight="-2dp"
+								android:layout_alignTop="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginTop="-2dp"/>
+
+							<TextView
+								android:layout_height="wrap_content"
+								android:layout_width="2dp"
+								android:background="@color/colorAccentDarkThemeTrans"
+								android:layout_alignRight="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginRight="-2dp"
+								android:layout_alignTop="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_alignBottom="@id/slidedowndialogfragmentProgressBar_Progressbar"/>
+
+							<TextView
+								android:layout_height="2dp"
+								android:layout_width="5dp"
+								android:background="@color/colorAccentDarkThemeTrans"
+								android:layout_alignRight="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginRight="-2dp"
+								android:layout_alignBottom="@id/slidedowndialogfragmentProgressBar_Progressbar"
+								android:layout_marginBottom="-2dp"/>
+
+							<RelativeLayout
+								android:layout_height="wrap_content"
+								android:layout_width="wrap_content"
+								android:id="@+id/slidedowndialogfragmentRelativeLayout_ProgressText"
+								android:layout_centerInParent="true">
+
+								<TextView
+									android:layout_height="wrap_content"
+									android:layout_width="50dp"
+									android:text="100%"
+									android:background="#81000000"
+									android:padding="2dp"
+									android:id="@+id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_margin="2dp"
+									android:gravity="center"/>
+
+								<TextView
+									android:layout_height="2dp"
+									android:layout_width="5dp"
+									android:background="@color/colorAccentDarkThemeTrans"
+									android:layout_alignLeft="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginLeft="-2dp"
+									android:layout_alignTop="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginTop="-2dp"/>
+
+								<TextView
+									android:layout_height="wrap_content"
+									android:layout_width="2dp"
+									android:background="@color/colorAccentDarkThemeTrans"
+									android:layout_alignLeft="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginLeft="-2dp"
+									android:layout_alignTop="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_alignBottom="@id/slidedowndialogfragmentTextView_Progressbar"/>
+
+								<TextView
+									android:layout_height="2dp"
+									android:layout_width="5dp"
+									android:background="@color/colorAccentDarkThemeTrans"
+									android:layout_alignLeft="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginLeft="-2dp"
+									android:layout_alignBottom="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginBottom="-2dp"/>
+
+								<TextView
+									android:layout_height="2dp"
+									android:layout_width="5dp"
+									android:background="@color/colorAccentDarkThemeTrans"
+									android:layout_alignRight="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginRight="-2dp"
+									android:layout_alignTop="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginTop="-2dp"/>
+
+								<TextView
+									android:layout_height="wrap_content"
+									android:layout_width="2dp"
+									android:background="@color/colorAccentDarkThemeTrans"
+									android:layout_alignRight="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginRight="-2dp"
+									android:layout_alignTop="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_alignBottom="@id/slidedowndialogfragmentTextView_Progressbar"/>
+
+								<TextView
+									android:layout_height="2dp"
+									android:layout_width="5dp"
+									android:background="@color/colorAccentDarkThemeTrans"
+									android:layout_alignRight="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginRight="-2dp"
+									android:layout_alignBottom="@id/slidedowndialogfragmentTextView_Progressbar"
+									android:layout_marginBottom="-2dp"/>
+
+							</RelativeLayout>
+
+						</RelativeLayout>
+
 					</LinearLayout>
 
 				</ScrollView>

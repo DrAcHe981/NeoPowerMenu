@@ -84,6 +84,10 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		
 		private String dialogCheckBoxtext;
 		
+		private boolean dialogShowProgressBar = false;
+		private boolean dialogProgressBlink = false;
+		private boolean dialogProgressShowText = true;
+		
 		 private String negativeButtonText = null;
 		 private String neutralButtonText = null;
 		 private String positiveButtonText = "Ok";
@@ -123,6 +127,11 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 
 		LinearLayout LinearLayout_DialogCheckBox;
 		CheckBox CheckBox_DialogCheckBox;
+		
+		RelativeLayout RelativeLayout_Progress;
+		ProgressBar ProgressBar_Progress;
+		RelativeLayout RelativeLayout_ProgressText;
+		TextView TextView_ProgressText;
 		
 		LinearLayout LinearLayout_Buttons;
 		
@@ -341,6 +350,74 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 										}
 								});
 						LinearLayout_DialogCheckBox.startAnimation(fadeOut);
+				}
+		}
+		
+		public void addProgressBar(boolean showText, boolean blink) {
+				dialogShowProgressBar = true;
+				dialogProgressShowText = showText;
+				dialogProgressBlink = blink;
+				if(RelativeLayout_Progress!=null && dialogShowProgressBar == false) {
+						if(showText && !blink) {
+								RelativeLayout_ProgressText.setVisibility(View.VISIBLE);
+								RelativeLayout_ProgressText.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+						} else {
+								RelativeLayout_ProgressText.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+								RelativeLayout_ProgressText.setVisibility(View.INVISIBLE);
+						}
+						RelativeLayout_Progress.setVisibility(View.VISIBLE);
+						RelativeLayout_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+						if(blink) {
+								ProgressBar_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.progress_blink));
+						} else {
+								ProgressBar_Progress.setAlpha((float) 0.2);
+								ProgressBar_Progress.clearAnimation();
+						}
+				}
+		}
+		public void setProgressBarBlink(boolean blink) {
+				if(blink != dialogProgressBlink) {
+				dialogProgressBlink = blink;
+				if(blink) {
+						if(dialogProgressShowText) {
+								RelativeLayout_ProgressText.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+								RelativeLayout_ProgressText.setVisibility(View.INVISIBLE);
+						}
+						ProgressBar_Progress.setProgress(100);
+						ProgressBar_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.progress_blink));
+				} else {
+						if(dialogProgressShowText) {
+								RelativeLayout_ProgressText.setVisibility(View.VISIBLE);
+								RelativeLayout_ProgressText.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+						}
+						ProgressBar_Progress.setAlpha((float) 0.2);
+						ProgressBar_Progress.setProgress(0);
+						ProgressBar_Progress.clearAnimation();
+				}
+				}
+		}
+		public void setProgressBarShowText(boolean showText) {
+				if(showText != dialogProgressShowText) {
+				dialogProgressShowText = showText;
+				if(!showText) {
+						RelativeLayout_ProgressText.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+						RelativeLayout_ProgressText.setVisibility(View.INVISIBLE);
+						if(dialogProgressBlink) {
+								ProgressBar_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.progress_blink));
+						}
+				} else {
+						RelativeLayout_ProgressText.setVisibility(View.VISIBLE);
+						RelativeLayout_ProgressText.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+						if(dialogProgressBlink) {
+								ProgressBar_Progress.clearAnimation();
+						}
+				}
+				}
+		}
+		public void setProgressBar(int percent) {
+				if(RelativeLayout_Progress!=null) {
+						ProgressBar_Progress.setProgress(percent);
+						TextView_ProgressText.setText(percent+"%");
 				}
 		}
 		
@@ -584,6 +661,16 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						CheckBox_DialogCheckBox = (CheckBox) InflatedView.findViewById(R.id.slidedowndialogfragmentCheckBox_CheckBox);
 						LinearLayout_DialogCheckBox.setVisibility(View.GONE);
 						
+						RelativeLayout_Progress = (RelativeLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentRelativeLayout_Progressbar);
+						ProgressBar_Progress = (ProgressBar) InflatedView.findViewById(R.id.slidedowndialogfragmentProgressBar_Progressbar);
+						RelativeLayout_ProgressText = (RelativeLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentRelativeLayout_ProgressText);
+						TextView_ProgressText = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_Progressbar);
+						ProgressBar_Progress.setProgress(dialogProgressBlink ? 100 : 0);
+						ProgressBar_Progress.setAlpha(dialogProgressBlink ? (float) 1 : (float) 0.2);
+						TextView_ProgressText.setText("0%");
+						RelativeLayout_Progress.setVisibility(dialogShowProgressBar ? View.VISIBLE : View.GONE);
+						RelativeLayout_ProgressText.setVisibility(dialogProgressShowText ? View.VISIBLE : View.INVISIBLE);
+						
 						LinearLayout_Buttons = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtons);
 						
 						LinearLayout_DialogNegativeButton = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogButtonNegative);
@@ -809,6 +896,11 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						if(dialogCheckBoxtext != null && !dialogCheckBoxtext.isEmpty()) {
 								LinearLayout_DialogCheckBox.setVisibility(View.VISIBLE);
 								CheckBox_DialogCheckBox.setText(dialogCheckBoxtext);
+						}
+						
+						if(dialogProgressBlink) {
+								RelativeLayout_ProgressText.setVisibility(View.INVISIBLE);
+								ProgressBar_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.progress_blink));
 						}
 						
 						if(negativeButtonText != null && !negativeButtonText.isEmpty()) {

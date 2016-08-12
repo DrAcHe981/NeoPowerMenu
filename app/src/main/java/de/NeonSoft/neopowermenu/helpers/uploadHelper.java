@@ -101,9 +101,9 @@ public class uploadHelper
 		public void startUpload() {
 				if(!this.mUrl.isEmpty() || !this.mLocalUrl.isEmpty()) {
 						if(this.mAlias != null && this.mAlias.isEmpty()) {
-								new uploadAsync().execute(this.mUrl,this.mLocalUrl,this.mAlias);
+								ulTask = new uploadAsync().execute(this.mUrl,this.mLocalUrl,this.mAlias);
 						} else {
-								new uploadAsync().execute(this.mUrl,this.mLocalUrl);
+								ulTask = new uploadAsync().execute(this.mUrl,this.mLocalUrl);
 						}
 				} else {
 						Toast.makeText(this.mActivity,"Cant upload without server or local file...",Toast.LENGTH_LONG).show();
@@ -190,7 +190,6 @@ public class uploadHelper
 																		if(dlnowsize > 0 && dltotalsize > 0) {
 																				mInterface.onPublishUploadProgress(dlnowsize,dltotalsize);
 																		} else {
-																				//Log.d("NPM:uH","dlnowsize = "+dlnowsize+", dltotalsize = "+dltotalsize);
 																		}
 																}
 														});
@@ -223,6 +222,7 @@ public class uploadHelper
 																// ETA (milliseconds) = remaining byte size / bytes per millisecond (bytes per second * 1000)
 																mETA = (mReaminingSize) * 1000 / mAvgSpeed;
 														}
+														//Log.d("NPM:uH","dlnowsize = "+dlnowsize+", dltotalsize = "+dltotalsize);
 												} catch (Throwable t) {}
 										}
 								}, 1000L, 1000L);
@@ -245,7 +245,7 @@ public class uploadHelper
 						String boundary = "*****";
 						int bytesRead, bytesAvailable, bufferSize;
 						byte[] buffer;
-						int maxBufferSize = 1 * 1024 * 1024;
+						int maxBufferSize = 1024;
 						Log.i("NPM:uH","Initializing upload: \nServer: "+p1[0]+"\nFile Name: "+uploadFileName+"\nSource file: "+p1[1]);
 						File sourceFile = new File(p1[1]);
 						if (!sourceFile.isFile()) {
@@ -253,6 +253,7 @@ public class uploadHelper
 								return "file not found";
 						} else {
 								try {
+										Log.i("NPM:uH","Uploading "+helper.getSizeString(sourceFile.length(),true) + "("+sourceFile.length()+")");
 										// open a URL connection to the Servlet
 										fileInputStream = new FileInputStream(sourceFile);
 										URL url = new URL(p1[0].replace(" ","%20")+(mParams!=null ? getQuery(mParams) : ""));
@@ -269,6 +270,13 @@ public class uploadHelper
 										conn.setRequestProperty("ENCTYPE", "multipart/form-data");
 										conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
 										conn.setRequestProperty("uploaded_file", p1[1]);
+										dltotalsize = sourceFile.length() +
+												(twoHyphens + boundary + lineEnd).getBytes().length +
+												("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""+ p1[1] + "\"" + lineEnd).getBytes().length +
+												(lineEnd).getBytes().length +
+												(lineEnd).getBytes().length +
+												(twoHyphens + boundary + twoHyphens + lineEnd).getBytes().length;
+										conn.setFixedLengthStreamingMode(dltotalsize);
 										dos = new DataOutputStream(conn.getOutputStream());
 										dos.writeBytes(twoHyphens + boundary + lineEnd);
 										dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""+ p1[1] + "\"" + lineEnd);
@@ -278,11 +286,11 @@ public class uploadHelper
 										bufferSize = Math.min(bytesAvailable, maxBufferSize);
 										buffer = new byte[bufferSize];
 										// read file and write it into form...
-										bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-										dltotalsize = sourceFile.length();
-										total = 0;
 										setState(STATE_UPLOADING);
+										bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+										total = bytesRead;
 										while ((count = bytesRead) > 0) {
+										//for(int i = 0; i < buffer.length; i+=bufferSize) {
 												if(!isCancelled()) {
 														dos.write(buffer, 0, bufferSize);
 														bytesAvailable = fileInputStream.available();
@@ -294,6 +302,7 @@ public class uploadHelper
 														setState(STATE_CANCELLING);
 														onCancelled("");
 												}
+										//}
 										}
 										// send multipart form data necesssary after file data...
 										dos.writeBytes(lineEnd);

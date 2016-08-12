@@ -71,6 +71,8 @@ public class PreferencesPresetsFragment extends Fragment
 		public static String[] DownloadingActiveForOldText;
 		public static TextView[] DownloadingActiveForLabel;
 		public static ProgressBar[] DownloadingActiveForProgress;
+		
+		//public static String oldUploadText = "";
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
