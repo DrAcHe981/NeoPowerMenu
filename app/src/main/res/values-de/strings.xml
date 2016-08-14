@@ -223,7 +223,6 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="presetsManager_OrderBy">"Sortieren nach"</string>
 <string name="presetsManager_OrderNames">"Name|Zeit|Sterne|Ersteller|Eigene"</string>
 <string name="presetsManager_OrderAscDesc">"Ansteigend|Absteigend"</string>
-<string name="visibilityOrder_Add">"Normales Item hinzufügen|Multi Item hinzufügen"</string>
 <string name="visibilityOrder_SelectMulti">"Bitte wähle drei Items:"</string>
 <string name="powerMenuMain_Empty">"Leer"</string>
 <string name="login_Recover">"Wiederherstellen"</string>
@@ -258,4 +257,9 @@ Grund: "</string>
 <string name="downloadHelper_States">"Warte auf andere Downloads...|Verbinde mit Server...|Informationen werden abgerufen...|Runterladen...|Wird abgebrochen..."</string>
 <string name="preferences_Animations">"Animationen|Ändere die Animationen oder deaktiviert sie komplett."</string>
 <string name="uploadHelper_States">"Warte auf andere Uploads...|Verbinde mit Server...|Informationen werden abgerufen...|Hochladen...|Wird abgebrochen..."</string>
+<string name="visibilityOrder_AddItem">"Normales item hinzufügen
+Ein ganz normales ihrem mit mir einen slot.|Multi item hinzufügen
+Füge bis zu drei items in einer Linie hinzu.|Multi Seiten item hinzufügen\nAnklicken öffnet einer neue 'seite'."</string>
+<string name="visibilityOrder_MultiPage">"Multi Seiten item startet hier
+Das erste normale item definiert den Knopf um die 'neue Seite' zu öffnen.|Multi Seiten item endet hier"</string>
 </resources>
