@@ -221,7 +221,6 @@ Seus pré-ajustes (ordenados por estrelas):
 <string name="presetsManager_OrderBy">"Ordenar por"</string>
 <string name="presetsManager_OrderNames">"Nome|hora|estrelas|criador|seus"</string>
 <string name="presetsManager_OrderAscDesc">"Ascendente|Descendente"</string>
-<string name="visibilityOrder_Add">"Adicionar item normal|Adicionar multi item"</string>
 <string name="visibilityOrder_SelectMulti">"Por favor selecione três itens:"</string>
 <string name="powerMenuMain_Empty">"Vazio"</string>
 <string name="login_Recover">"Recuperar"</string>
