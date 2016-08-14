@@ -223,7 +223,6 @@
 <string name="presetsManager_OrderBy">"Сортировать по"</string>
 <string name="presetsManager_OrderNames">"Название|Время|Звёзды|Создатель|Собственные"</string>
 <string name="presetsManager_OrderAscDesc">"По возрастанию|По убыванию"</string>
-<string name="visibilityOrder_Add">"Добавить обычный элемент|Добавить несколько элементов"</string>
 <string name="visibilityOrder_SelectMulti">"Пожалуйста, выберите три элемента."</string>
 <string name="powerMenuMain_Empty">"Пусто"</string>
 <string name="login_Recover">"Восстановить"</string>
@@ -254,4 +253,7 @@
 <string name="presetsManager_ReportResult">"Жалоба на [PRESETNAME] отправлена, разработчик рассмотрит её.|Жалоба не отправлена, попробуйте снова. Причина: "</string>
 <string name="presetsManager_Buttons">"Дать звезду|Убрать звезду|Удалить|Пожаловаться|Загрузить|Поделиться"</string>
 <string name="screenrecord_notif_buttons">"Стоп|Переключить указатель"</string>
+<string name="downloadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
+<string name="preferences_Animations">"Анимации|Изменить анимации или убрать их полностью."</string>
+<string name="uploadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
 </resources>
