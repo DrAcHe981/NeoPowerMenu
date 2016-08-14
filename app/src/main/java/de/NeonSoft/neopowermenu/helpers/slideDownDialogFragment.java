@@ -576,7 +576,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						}
 						if(mDialogContainer > -1) {
 								slideDownDialogFragment.dialogs.add(this);
-								mFragmentmanager.beginTransaction().add(mDialogContainer, this, slideDownDialogFragment.dialogTag).commit();
+								mFragmentmanager.beginTransaction().add(mDialogContainer, this, slideDownDialogFragment.dialogTag).commitAllowingStateLoss();
 						} else {
 								slideDownDialogFragment.dialogs.add(this);
 								setStyle(R.style.slideDownDialogFragment,R.style.slideDownDialogFragment);
@@ -1066,7 +1066,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						return InflatedView;
 				}
 		
-		public void cancelDialog() {
+		public String cancelDialog() {
 				if(!hideActive) {
 				if(negativeButtonText!=null) {
 						mInterface.onNegativeClick();
@@ -1074,7 +1074,11 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						mInterface.onPositiveClick(null);
 				}
 				closeDialog();
+				return "closing";
+				} else if (hideActive) {
+						return "hideactive";
 				}
+				return null;
 		}
 				
 		public void closeDialog() {
@@ -1147,7 +1151,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 																				if(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).getShowsDialog()) {
 																						slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).dismiss();
 																				} else {
-																						mFragmentmanager.beginTransaction().remove(mFragment).commit();
+																						mFragmentmanager.beginTransaction().remove(mFragment).commitAllowingStateLoss();
 																				}
 																				slideDownDialogFragment.dialogs.remove(slideDownDialogFragment.dialogs.size()-1);
 																		} catch (Throwable t) {

@@ -167,7 +167,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 						}
 				};
 				
-				registerReceiver(mReceiver,filter);
+				mContext.registerReceiver(mReceiver,filter);
 				
 				initImageLoader();
 				
@@ -249,6 +249,13 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		protected void onPause()
 		{
 				// TODO: Implement this method
+				if(mReceiver != null) {
+				try {
+						mContext.unregisterReceiver(mReceiver);
+				} catch (Throwable t) {
+						Log.e("NPM:dialog","Failed to unregister broadcastreceiver.",t);
+				}
+				}
 				super.onPause();
 				//powerDialog.dismiss();
 		}

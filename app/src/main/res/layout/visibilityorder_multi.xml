@@ -102,8 +102,8 @@
 			android:orientation="horizontal"
 			android:layout_weight="1.0">
 
-				<TextView
-						android:background="?selectableItemBackground"
+			<TextView
+				android:background="?selectableItemBackground"
 				android:layout_height="match_parent"
 				android:layout_width="match_parent"
 				android:text="Item 1"
@@ -113,8 +113,8 @@
 				android:id="@+id/visibilityordermulti_item1"
 				android:layout_weight="1.0"/>
 
-				<TextView
-						android:background="?selectableItemBackground"
+			<TextView
+				android:background="?selectableItemBackground"
 				android:layout_height="match_parent"
 				android:layout_width="match_parent"
 				android:text="Item 2"
@@ -124,8 +124,8 @@
 				android:id="@+id/visibilityordermulti_item2"
 				android:layout_weight="1.0"/>
 
-				<TextView
-						android:background="?selectableItemBackground"
+			<TextView
+				android:background="?selectableItemBackground"
 				android:layout_height="match_parent"
 				android:layout_width="match_parent"
 				android:text="Item 3"
@@ -134,41 +134,6 @@
 				android:textColor="#FFFFFF"
 				android:id="@+id/visibilityordermulti_item3"
 				android:layout_weight="1.0"/>
-
-		</LinearLayout>
-
-		<LinearLayout
-			android:layout_height="wrap_content"
-			android:layout_width="match_parent"
-			android:orientation="horizontal"
-			android:gravity="left"
-			android:layout_below="@id/listitemhandleleftLinearLayout2"
-			android:layout_alignRight="@id/listitemhandleleftLinearLayout2">
-
-			<LinearLayout
-				android:background="?android:attr/selectableItemBackground"
-				android:layout_height="30dp"
-				android:layout_width="wrap_content"
-				android:orientation="horizontal"
-				android:gravity="center_vertical"
-				android:paddingRight="5dp"
-				android:paddingLeft="5dp"
-				android:id="@+id/visibilityordermulti_LinearLayout_HideDesc"
-				android:visibility="gone">
-
-				<CheckBox
-					android:layout_height="match_parent"
-					android:layout_width="wrap_content"
-					android:gravity="center_vertical"
-					android:id="@+id/visibilityordermulti_hideDescCheckBox"/>
-
-				<TextView
-					android:layout_height="match_parent"
-					android:layout_width="wrap_content"
-					android:text="@string/visibilityOrder_HideDesc"
-					android:gravity="center_vertical"/>
-
-			</LinearLayout>
 
 		</LinearLayout>
 

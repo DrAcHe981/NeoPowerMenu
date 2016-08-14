@@ -12,6 +12,7 @@ import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.R;
 import android.view.View.*;
 import java.io.*;
+import android.view.animation.*;
 
 public class Cropper extends android.support.v4.app.Fragment
 implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCroppedImageCompleteListener
@@ -20,6 +21,13 @@ implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCropp
 		ImageView ImageView_RotateLeft;
 		ImageView ImageView_RotateRight;
 
+		LinearLayout LinearLayout_RoundCrop;
+		TextView TextView_RoundCrop;
+		Switch Switch_RoundCrop;
+
+		RelativeLayout progressHolder;
+		ProgressBar progress;
+		
 		private CropImageView mCropImageView;
 		private String mItem;
 		private Uri mUri;
@@ -49,7 +57,7 @@ implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCropp
 						}
 				}
 
-				MainActivity.actionbar.setButton(getString(R.string.graphics_Crop),R.drawable.ic_content_content_cut,new OnClickListener() {
+				MainActivity.actionbar.setButton(getString(R.string.graphics_Crop).split("\\|")[0],R.drawable.ic_content_content_cut,new OnClickListener() {
 
 								@Override
 								public void onClick(View p1)
@@ -92,6 +100,37 @@ implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCropp
 				mCropImageView.setShowCropOverlay(true);
 				mCropImageView.setShowProgressBar(true);
 				
+				LinearLayout_RoundCrop = (LinearLayout) InflatedView.findViewById(R.id.cropperLinearLayout_CropRound);
+				TextView_RoundCrop = (TextView) InflatedView.findViewById(R.id.cropperTextView_CropRound);
+				TextView_RoundCrop.setText(getString(R.string.graphics_Crop).split("\\|")[1]);
+				Switch_RoundCrop = (Switch) InflatedView.findViewById(R.id.cropperSwitch_CropRound);
+				Switch_RoundCrop.setChecked(true);
+				Switch_RoundCrop.setClickable(false);
+				Switch_RoundCrop.setFocusable(false);
+				LinearLayout_RoundCrop.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										Switch_RoundCrop.setChecked(!Switch_RoundCrop.isChecked());
+										mCropImageView.setCropShape(Switch_RoundCrop.isChecked() ? CropImageView.CropShape.OVAL : CropImageView.CropShape.RECTANGLE);
+								}
+						});
+						
+				progressHolder = (RelativeLayout) InflatedView.findViewById(R.id.cropperRelativeLayout_Progress);
+				progressHolder.setVisibility(View.GONE);
+				progress = (ProgressBar) InflatedView.findViewById(R.id.cropperProgressBar_Progress);
+
+				progressHolder.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// Just prevent touch trough...
+								}
+						});
+				
 				if(mUri!=null) {
 						mCropImageView.setImageUriAsync(mUri);
 				} else {
@@ -130,13 +169,40 @@ implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCropp
                 //intent.putExtra("URI", uri);
                 mCropImageView.saveCroppedImageAsync(Uri.parse("file://"+getActivity().getFilesDir().getPath()+"/images/"+mSaveAs));
             } else {
-								Bitmap saveBitmap = (mCropImageView.getCropShape()==CropImageView.CropShape.OVAL ? CropImage.toOvalBitmap(bitmap) : bitmap);
+								new saveImageAsync().execute(bitmap);
+						}
+            //startActivity(intent);
+        } else {
+            Log.e("NPM:cropper", "Failed to crop image", error);
+            //Toast.makeText(getActivity(), "Image crop failed: " + error.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+		
+		class saveImageAsync extends AsyncTask<Bitmap, String, String>
+		{
+
+				@Override
+				protected void onPreExecute()
+				{
+						// TODO: Implement this method
+						super.onPreExecute();
+						progressHolder.setVisibility(View.VISIBLE);
+						progressHolder.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
+				}
+				
+				@Override
+				protected String doInBackground(Bitmap[] p1)
+				{
+						// TODO: Implement this method
+								Bitmap saveBitmap = (mCropImageView.getCropShape()==CropImageView.CropShape.OVAL ? CropImage.toOvalBitmap(p1[0]) : p1[0]);
+						Log.i("NPM:cropper","Saving "+(mCropImageView.getCropShape()==CropImageView.CropShape.OVAL ? "oval" : "rectangle")+" shaped image to "+getActivity().getFilesDir().getPath()+"/images/"+mSaveAs);
 								FileOutputStream out = null;
 								try {
 										out = new FileOutputStream(getActivity().getFilesDir().getPath()+"/images/"+mSaveAs);
 										saveBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
 								} catch (Throwable t) {
 										Log.e("NPM:cropper","Failed to save: "+t.toString());
+										return t.toString();
 								} finally {
 										try
 										{
@@ -145,15 +211,27 @@ implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCropp
 										catch (IOException e)
 										{
 												Log.e("NPM:cropper","Failed to save: "+e.toString());
+												return e.toString();
 										}
 								}
-            }
-						MainActivity.fragmentManager.beginTransaction().setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesGraphicsFragment()).commit();
-            //startActivity(intent);
-        } else {
-            Log.e("NPM:cropper", "Failed to crop image", error);
-            //Toast.makeText(getActivity(), "Image crop failed: " + error.getMessage(), Toast.LENGTH_LONG).show();
-        }
-    }
+						return null;
+				}
+
+				@Override
+				protected void onPostExecute(String p1)
+				{
+						// TODO: Implement this method
+						super.onPostExecute(p1);
+						progressHolder.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
+						progressHolder.setVisibility(View.GONE);
+						if(p1!=null) {
+								Toast.makeText(getActivity(), "Failed to save,please again...\nFor more info check the logs.", Toast.LENGTH_LONG).show();
+								Log.e("NPM:cropper","Failed to save cropped image: "+p1);
+						} else {
+								MainActivity.fragmentManager.beginTransaction().setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesGraphicsFragment()).commitAllowingStateLoss();
+						}
+				}
+				
+		}
 		
 }

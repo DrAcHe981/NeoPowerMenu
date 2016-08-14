@@ -86,6 +86,8 @@ public class MainActivity extends AppCompatActivity
 
 		private String[] requieredDirs = {"presets","download","images","temp"};
 
+		boolean saveSortingIsSaving = false;
+		
     @Override
     protected void onCreate(Bundle savedInstanceState)
 		{
@@ -145,21 +147,15 @@ public class MainActivity extends AppCompatActivity
 				 }
 				 }*/
 
-
-				int orderCheck = 0;
-				while (orderPrefs.getInt(orderCheck + "_item_type", -1) != -1)
+				if (orderPrefs.getAll().isEmpty())
 				{
-						orderCheck++;
-				}
-				if (orderCheck == 0)
-				{
-						orderPrefs.edit().putInt("0_item_type", visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
+						orderPrefs.edit().putInt("0_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
 						orderPrefs.edit().putString("0_item_title", "Shutdown").commit();
-						orderPrefs.edit().putInt("1_item_type", visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
+						orderPrefs.edit().putInt("1_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
 						orderPrefs.edit().putString("1_item_title", "Reboot").commit();
-						orderPrefs.edit().putInt("2_item_type", visibilityOrderNew_ListAdapter.TYPE_NORMAL).commit();
+						orderPrefs.edit().putInt("2_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
 						orderPrefs.edit().putString("2_item_title", "SoftReboot").commit();
-						orderPrefs.edit().putInt("3_item_type", visibilityOrderNew_ListAdapter.TYPE_MULTI).commit();
+						orderPrefs.edit().putInt("3_item_type", visibilityOrder_ListAdapter.TYPE_MULTI).commit();
 						orderPrefs.edit().putString("3_item1_title", "Recovery").commit();
 						orderPrefs.edit().putString("3_item2_title", "Bootloader").commit();
 						orderPrefs.edit().putString("3_item3_title", "SafeMode").commit();
@@ -334,7 +330,9 @@ public class MainActivity extends AppCompatActivity
 						 intent.setAction(slideDownDialogFragment.dialogCloseCall);
 						 context.sendBroadcast(intent);*/
 						//Toast.makeText(context,"Canceling sDDF "+slideDownDialogFragmentHelper.dialogs.size()+"/"+slideDownDialogFragmentHelper.dialogs.size(),Toast.LENGTH_LONG).show();
-						slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1).cancelDialog();
+						if(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1).cancelDialog() == null) {
+								fragmentManager.beginTransaction().remove(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1)).commitAllowingStateLoss();
+						}
 						return;
 				}
 				if (visibleFragment.equalsIgnoreCase("CustomColors") || visibleFragment.equalsIgnoreCase("Graphics"))
@@ -347,7 +345,9 @@ public class MainActivity extends AppCompatActivity
 				}
 				else if (visibleFragment.equalsIgnoreCase("VisibilityOrder"))
 				{
-						new saveSorting().execute();
+						if(!saveSortingIsSaving) {
+								new saveSorting().execute();
+						}
 				}
 				else if (visibleFragment.equalsIgnoreCase("PresetsManager"))
 				{
@@ -477,6 +477,7 @@ public class MainActivity extends AppCompatActivity
 				{
 						// TODO: Implement this method
 						super.onPreExecute();
+						saveSortingIsSaving = true;
 						PreferencesVisibilityOrderFragment.LinearLayout_Progress.setVisibility(View.VISIBLE);
 						PreferencesVisibilityOrderFragment.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_in);
 				}
@@ -494,10 +495,11 @@ public class MainActivity extends AppCompatActivity
 				{
 						// TODO: Implement this method
 						super.onPostExecute(p1);
+						saveSortingIsSaving = false;
 						PreferencesVisibilityOrderFragment.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
 						PreferencesVisibilityOrderFragment.LinearLayout_Progress.setVisibility(View.GONE);
 						actionbar.setButton(context.getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commit();
+						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commitAllowingStateLoss();
 				}
 
 		}

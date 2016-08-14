@@ -50,6 +50,44 @@
 	</FrameLayout>
 
 	<FrameLayout
+		android:id="@+id/frame3"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center|center_vertical|center_horizontal"
+		android:paddingBottom="10dp"
+		android:visibility="gone">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<ScrollView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_weight="1.0">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:id="@+id/ListContainer2"
+					android:padding="8dp">
+
+					<View
+						android:background="@color/transparent"
+						android:layout_height="0dp"
+						android:layout_width="wrap_content"/>
+
+				</LinearLayout>
+
+			</ScrollView>
+
+		</LinearLayout>
+
+	</FrameLayout>
+
+	<FrameLayout
 		android:id="@+id/frame2"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

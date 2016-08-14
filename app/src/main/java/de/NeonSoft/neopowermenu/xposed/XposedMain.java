@@ -425,16 +425,15 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 														}
 														if (!showDialog())
 														{
+																final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+																final KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+																if(km.isKeyguardLocked()) {
+																		pm.userActivity(SystemClock.uptimeMillis(), false);
+																}
 																Log.e(TAG, "Fallback option: invoking original method");
 																XposedUtils.log("Fallback option: invoking original method");
 																XposedBridge.invokeOriginalMethod(XposedHelpers.findMethodExact(usedPWMClass, lpparam.classLoader, "showGlobalActionsInternal"), methodHookParam.thisObject, null);
 																return null;
-														}
-														KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-														boolean mKeyguardShowing = km.isKeyguardLocked();
-														if (mKeyguardShowing)
-														{
-																showDialog();
 														}
 														//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#showDialog,").commit();
 														return null;

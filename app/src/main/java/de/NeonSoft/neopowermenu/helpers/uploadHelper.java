@@ -7,6 +7,8 @@ import android.widget.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import de.NeonSoft.neopowermenu.*;
+import android.os.PowerManager.WakeLock;
 
 public class uploadHelper
 {
@@ -16,6 +18,9 @@ public class uploadHelper
 		public static int STATE_REQUESTINGINFO = 2;
 		public static int STATE_UPLOADING = 3;
 		public static int STATE_CANCELLING = 4;
+		
+		private PowerManager pm;
+    private WakeLock mPartialWakeLock;
 		
 		private Activity mActivity;
 		private uploadHelperInterface mInterface;
@@ -31,6 +36,9 @@ public class uploadHelper
 		private boolean isRunning = false;
 		private boolean isCanceled = false;
 		private AsyncTask ulTask;
+		
+		int CONNECT_TIMEOUT = 20000;
+		int READ_TIMEOUT = 20000;
 
 		long total = 0;
 		long dltotalsize = 0;
@@ -179,6 +187,10 @@ public class uploadHelper
 						iMLastDownloadedSize = 0;
 						iMLastTime = System.currentTimeMillis();
 						iMFirstTime = iMLastTime;
+            pm = (PowerManager) mActivity.getSystemService(Context.POWER_SERVICE); 
+            mPartialWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "NPM:uH");
+            mPartialWakeLock.acquire();
+            
 						timer.scheduleAtFixedRate(new TimerTask() {
 
 										@Override
@@ -263,12 +275,14 @@ public class uploadHelper
 										// Open a HTTP connection to the URL
 										setState(STATE_CONNECTING);
 										conn = (HttpURLConnection) url.openConnection();
-										setState(STATE_REQUESTINGINFO);
+										conn.setConnectTimeout(CONNECT_TIMEOUT);
+										conn.setReadTimeout(READ_TIMEOUT);
 										conn.setDoInput(true); // Allow Inputs
 										conn.setDoOutput(true); // Allow Outputs
 										conn.setUseCaches(false); // Don't use a Cached Copy
 										conn.setRequestMethod("POST");
-										conn.setRequestProperty("Connection", "Keep-Alive");
+										//System.setProperty("http.keepAlive","false");
+										conn.setRequestProperty("connection", "Keep-Alive");
 										conn.setRequestProperty("ENCTYPE", "multipart/form-data");
 										conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
 										conn.setRequestProperty("uploaded_file", p1[1]);
@@ -279,7 +293,9 @@ public class uploadHelper
 												(lineEnd).getBytes().length +
 												(twoHyphens + boundary + twoHyphens + lineEnd).getBytes().length;
 										conn.setFixedLengthStreamingMode(dltotalsize);
+										//conn.setChunkedStreamingMode(maxBufferSize);
 										dos = new DataOutputStream(conn.getOutputStream());
+										setState(STATE_REQUESTINGINFO);
 										dos.writeBytes(twoHyphens + boundary + lineEnd);
 										dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""+ p1[1] + "\"" + lineEnd);
 										dos.writeBytes(lineEnd);
@@ -289,15 +305,17 @@ public class uploadHelper
 										buffer = new byte[bufferSize];
 										// read file and write it into form...
 										setState(STATE_UPLOADING);
-										bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+										bytesRead = 0;//fileInputStream.read(buffer, 0, bufferSize);
+										dlnowsize = bytesRead;
+										iMLastDownloadedSize = bytesRead;
 										total = bytesRead;
-										while ((count = bytesRead) > 0) {
+										while ((bytesRead = fileInputStream.read(buffer, 0, bufferSize)) > 0) {
 										//for(int i = 0; i < buffer.length; i+=bufferSize) {
 												if(!isCancelled()) {
 														dos.write(buffer, 0, bufferSize);
 														bytesAvailable = fileInputStream.available();
 														bufferSize = Math.min(bytesAvailable, maxBufferSize);
-														bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+														//bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 														total += bytesRead;
 														dlnowsize = total;
 												} else {
@@ -351,6 +369,11 @@ public class uploadHelper
 								{
 										// TODO: Implement this method
 										super.onCancelled(p1);
+										if (mPartialWakeLock != null && mPartialWakeLock.isHeld()) {
+												mPartialWakeLock.release();
+												mPartialWakeLock = null;
+										}
+										System.setProperty("http.keepAlive","true");
 										setState(STATE_CANCELLING);
 										timer.cancel();
 										try {
@@ -370,6 +393,11 @@ public class uploadHelper
 								{
 										// TODO: Implement this method
 										super.onPostExecute(p1);
+										if (mPartialWakeLock != null && mPartialWakeLock.isHeld()) {
+												mPartialWakeLock.release();
+												mPartialWakeLock = null;
+										}
+										System.setProperty("http.keepAlive","true");
 										timer.cancel();
 										try {
 												//close the streams //

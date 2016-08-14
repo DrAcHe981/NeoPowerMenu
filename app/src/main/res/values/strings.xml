@@ -227,7 +227,8 @@ Your presets (ordered by stars):
 <string name="presetsManager_OrderBy">"Order by"</string>
 <string name="presetsManager_OrderNames">"Name|Time|Stars|Creator|Own"</string>
 <string name="presetsManager_OrderAscDesc">"Ascending|Descending"</string>
-<string name="visibilityOrder_Add">"Add normal item|Add multi item"</string>
+<string name="visibilityOrder_AddItem">"Add normal item\nJust a normal item with only one slot.|Add multi item\nAdd up to three items in one line.|Add multi page item\nClicking it will show a new 'page'."</string>
+		<string name="visibilityOrder_MultiPage">"Multi page item starts here\nThe first normal item defines the button to open the 'new page'.|Multi page item ends here"</string>
 <string name="visibilityOrder_SelectMulti">"Please select three items:"</string>
 <string name="powerMenuMain_Empty">"Empty"</string>
 <string name="login_Recover">"Recover"</string>
@@ -247,7 +248,7 @@ Click here for recovering options."</string>
 <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
 <string name="advancedPrefs_DialogGravity">"Top|Left|Right|Bottom"</string>
 <string name="graphics_Choose">"Restore default|Choose from presets|Choose from gallery"</string>
-<string name="graphics_Crop">"Crop"</string>
+<string name="graphics_Crop">"Crop|Round crop"</string>
 <string name="graphics_NoPresetsFound">"No presets with graphics found..."</string>
 <string name="graphics_GraphicsSaveLoad">"Save with current graphics.|This preset contains graphics, do you want to load them?
 This will overwrite your current graphics!"</string>

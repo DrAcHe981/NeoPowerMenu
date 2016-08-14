@@ -94,7 +94,7 @@ public class permissionsScreen extends Fragment
 																public void onPositiveClick(Bundle resultBundle)
 																{
 																		// TODO: Implement this method
-																		MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+																		MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
 																}
 
 																@Override

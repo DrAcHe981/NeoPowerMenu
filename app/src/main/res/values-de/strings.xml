@@ -243,7 +243,7 @@ Klicke hier für Wiederherstellungsoptionen."</string>
 <string name="presetLoadDialog_BuiltIn">"Hell|Dunkel|Schwaz"</string>
 <string name="advancedPrefs_DialogGravity">"Oben|Links|Rechts|Unten"</string>
 <string name="graphics_Choose">"Standard wiederherstellen|Aus Voreinstellungen wählen|Aus Gallerie wählen"</string>
-<string name="graphics_Crop">"Schneiden"</string>
+<string name="graphics_Crop">"Schneiden|Rund zuschneiden"</string>
 <string name="graphics_NoPresetsFound">"Keine Voreinstellungen mit Grafiken gefunden..."</string>
 <string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern.|Diese Voreinstellung enthält Grafiken, möchtest du sie laden?
 Dies überscheibt deine aktuellen Grafiken!"</string>

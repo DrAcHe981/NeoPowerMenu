@@ -12,38 +12,11 @@
 
 		<LinearLayout
 			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:orientation="vertical"
-			android:layout_gravity="center_horizontal"
-			android:layout_marginTop="10dp"
-			android:visibility="gone">
-
-			<TextView
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:text="@string/visibilityOrderCategory_VisibilityOrder"
-				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:gravity="center|center_vertical|center_horizontal"
-				android:paddingLeft="10dp"
-				android:paddingRight="10dp"/>
-
-			<TextView
-				android:layout_height="2dp"
-				android:layout_width="match_parent"
-				android:background="@color/colorAccentDarkTheme"
-				android:layout_marginRight="5dp"
-				android:layout_marginLeft="5dp"
-				android:alpha="0.5"
-				android:minWidth="200dp"/>
-
-		</LinearLayout>
-
-		<LinearLayout
-			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
 			android:orientation="horizontal"
 			android:layout_marginLeft="10dp"
-			android:layout_marginRight="10dp">
+			android:layout_marginRight="10dp"
+			android:visibility="gone">
 
 			<TextView
 				android:background="?selectableItemBackground"
@@ -97,12 +70,32 @@
 	</LinearLayout>
 
 	<LinearLayout
+		android:visibility="visible"
+		android:layout_height="38dp"
+		android:layout_width="50dp"
+		android:orientation="horizontal"
+		android:background="@color/colorPrimaryDarkDarkTheme"
+		android:layout_alignParentRight="true"
+		android:id="@+id/visibilityorderLinearLayout_Add">
+
+		<ImageView
+			android:background="?selectableItemBackgroundBorderless"
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:src="@drawable/ic_action_add"
+			android:padding="3dp"
+			android:id="@+id/visibilityorderImageView_Add"/>
+
+	</LinearLayout>
+
+	<LinearLayout
 		android:layout_height="match_parent"
 		android:layout_width="match_parent"
 		android:orientation="vertical"
 		android:id="@+id/activityvisibilityorderLinearLayout_Saving"
 		android:gravity="center"
-		android:background="#CC000000">
+		android:background="#CC000000"
+		android:visibility="gone">
 
 		<ProgressBar
 			android:layout_height="wrap_content"
