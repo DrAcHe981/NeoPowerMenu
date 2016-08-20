@@ -10,7 +10,6 @@
 		android:layout_height="wrap_content"
 		android:layout_gravity="fill_horizontal"
 		android:gravity="center"
-		android:layoutAnimation="@anim/layout_controller_fade_in"
 		android:orientation="horizontal">
 
 		<LinearLayout

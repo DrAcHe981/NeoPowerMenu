@@ -21,7 +21,8 @@
 				android:layout_height="250dip"
 				android:layout_width="260dip"
 				android:src="@drawable/powermenu_screenshot"
-				android:padding="0dp"/>
+				android:padding="0dp"
+				android:visibility="gone"/>
 
 		</LinearLayout>
 
@@ -52,8 +53,8 @@
 					android:layout_width="wrap_content"
 					android:text="Top"
 					android:layout_gravity="center_horizontal"
-						android:textColor="#FFFFFF"
-						android:id="@+id/dialoggravitychooserText_DialogGravityTop"
+					android:textColor="#FFFFFF"
+					android:id="@+id/dialoggravitychooserText_DialogGravityTop"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 				<Switch
@@ -92,8 +93,8 @@
 					android:layout_width="wrap_content"
 					android:text="Left"
 					android:layout_gravity="center_horizontal"
-						android:textColor="#FFFFFF"
-						android:id="@+id/dialoggravitychooserText_DialogGravityLeft"
+					android:textColor="#FFFFFF"
+					android:id="@+id/dialoggravitychooserText_DialogGravityLeft"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 				<Switch
@@ -132,8 +133,8 @@
 					android:layout_width="wrap_content"
 					android:text="Bottom"
 					android:layout_gravity="center_horizontal"
-						android:textColor="#FFFFFF"
-						android:id="@+id/dialoggravitychooserText_DialogGravityRight"
+					android:textColor="#FFFFFF"
+					android:id="@+id/dialoggravitychooserText_DialogGravityRight"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 				<Switch
@@ -172,8 +173,8 @@
 					android:layout_width="wrap_content"
 					android:text="Bottom"
 					android:layout_gravity="center_horizontal"
-						android:textColor="#FFFFFF"
-						android:id="@+id/dialoggravitychooserText_DialogGravityBottom"
+					android:textColor="#FFFFFF"
+					android:id="@+id/dialoggravitychooserText_DialogGravityBottom"
 					android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 				<Switch

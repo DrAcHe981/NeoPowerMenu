@@ -7,9 +7,13 @@ import android.os.*;
 import android.text.*;
 import android.util.*;
 import android.view.*;
+import android.view.animation.*;
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.Preferences.*;
 import java.io.*;
+import java.lang.reflect.*;
 import java.security.*;
+import java.util.*;
 import net.lingala.zip4j.core.*;
 import net.lingala.zip4j.model.*;
 import net.lingala.zip4j.util.*;
@@ -43,6 +47,61 @@ public class helper
 		public static int ModuleState() {
 				int active = -1;
 				return active;
+		}
+		
+		public static boolean copyPreferences(Context context, SharedPreferences from, SharedPreferences to, boolean logging)
+		{
+				try {
+				if(logging) Log.i("NPM:pC", "Copying preferences...");
+				Map<String, ?> oldPrefsAll = from.getAll();
+				if (!oldPrefsAll.isEmpty())
+				{
+						Object[] keys = oldPrefsAll.keySet().toArray();
+						Object[] values = oldPrefsAll.values().toArray();
+						String designSpace = "";
+						for (int x = 0; x < (String.format("%03d/%03d", oldPrefsAll.size(), oldPrefsAll.size())).length(); x++)
+						{
+								designSpace = designSpace + " ";
+						}
+						for (int i = 0; i < oldPrefsAll.size(); i++)
+						{
+								boolean unknown = false;
+								if(logging) Log.i("NPM:pC", String.format("%03d/%03d", (i + 1), oldPrefsAll.size()) + " | " + keys[i]);
+								if (values[i].getClass().equals(String.class))
+								{
+										if(logging) Log.i("NPM:pC", designSpace + " | Writing String...");
+										to.edit().putString((String) keys[i], (String) values[i]).commit();
+								}
+								else if (values[i].getClass().equals(Integer.class))
+								{
+										if(logging) Log.i("NPM:pC", designSpace + " | Writing Integer...");
+										to.edit().putInt((String) keys[i], (int) values[i]).commit();
+								}
+								else if (values[i].getClass().equals(Boolean.class))
+								{
+										if(logging) Log.i("NPM:pC", designSpace + " | Writing Boolean...");
+										to.edit().putBoolean((String) keys[i], (boolean) values[i]).commit();
+								}
+								else
+								{
+										unknown = true;
+										if(logging) Log.i("NPM:pC", designSpace + " | Unknown type... (" + values[i].getClass() + ")");
+								}
+								if (!unknown)
+								{
+										if(logging) Log.i("NPM:pC", designSpace + " \\_Converted.");
+								}
+								else
+								{
+										if(logging) Log.i("NPM:pC", designSpace + " \\_Failed.");
+								}
+						}
+				}
+				} catch (Throwable t) {
+						return false;
+				} finally {
+						return true;
+				}
 		}
 		
 		public static String getTimeString(long InputMilliSeconds,boolean withTxt)
@@ -343,4 +402,139 @@ public class helper
 				}
 
 		}
+		
+		public static Object[] getDisplaySize(Context context, boolean alwaysPortrait) {
+
+				int width = 0;
+				int height = 0;
+				boolean mHorizontal = false;
+				
+				DisplayMetrics metrics = new DisplayMetrics();
+				Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+				Method mGetRawH = null, mGetRawW = null;
+
+				try {
+						// For JellyBean 4.2 (API 17) and onward
+						if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
+								display.getRealMetrics(metrics);
+
+								width = metrics.widthPixels;
+								height = metrics.heightPixels;
+						} else {
+								mGetRawH = Display.class.getMethod("getRawHeight");
+								mGetRawW = Display.class.getMethod("getRawWidth");
+
+								try {
+										width = (Integer) mGetRawW.invoke(display);
+										height = (Integer) mGetRawH.invoke(display);
+								} catch (IllegalArgumentException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+								} catch (IllegalAccessException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+								} catch (InvocationTargetException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+								}
+						}
+				} catch (NoSuchMethodException e3) {  
+						e3.printStackTrace();
+				}
+				try 
+				{
+						if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.FROYO)
+						{
+								int rotation = display.getOrientation();
+								if (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180) 
+								{
+										mHorizontal = false;
+								}
+								else
+								{
+										mHorizontal = true;
+								}
+						}
+						else
+						{
+								int rotation = display.getRotation();
+								if (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180) 
+								{
+										mHorizontal = false;
+								}
+								else
+								{
+										mHorizontal = true;
+								}
+						}
+				}
+				catch (NoSuchMethodError e)
+				{
+						e.printStackTrace();
+				}
+				if(alwaysPortrait && mHorizontal) {
+						int tmp = width;
+						width = height;
+						height = tmp;
+				}
+				//Log.i("mHorizontal=",""+mHorizontal);
+				return new Object[] {width,height,mHorizontal};
+		}
+		
+		public static Animation getAnimation(Context context, SharedPreferences prefs, int forItem, boolean forOut) {
+				final int speed;
+				speed = 500;
+				if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==0) {
+						speed = 100;
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==1) {
+						speed = 300;
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==2) {
+						speed = 500;
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==3) {
+						speed = 700;
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==4) {
+						speed = 900;
+				}
+				Animation anim = null;
+				if(!forOut) {
+				if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 0) {
+						anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 1) {
+						anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 2) {
+						anim = AnimationUtils.loadAnimation(context, R.anim.abc_slide_in_bottom);
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 3) {
+						anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_right);
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 4) {
+						anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_left);
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 5) {
+						anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_top);
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 6) {
+						anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_up);
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 7) {
+						anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_down);
+				}
+				} else {
+						if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 0) {
+								anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+						} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 1) {
+								anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+						} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 2) {
+								anim = AnimationUtils.loadAnimation(context, R.anim.abc_slide_out_bottom);
+						} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 3) {
+								anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
+						} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 4) {
+								anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_left);
+						} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 5) {
+								anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_top);
+						} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 6) {
+								anim = AnimationUtils.loadAnimation(context, R.anim.scale_out_up);
+						} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_type",PreferencesAnimationsFragment.defaultTypes[forItem]) == 7) {
+								anim = AnimationUtils.loadAnimation(context, R.anim.scale_out_down);
+						}
+				}
+				anim.setDuration(speed);
+				return anim;
+		}
+		
 }

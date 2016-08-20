@@ -32,7 +32,14 @@ public class permissionsScreen extends Fragment
 		public static PermissionsAdapter adapter;
 		private static CheckBox CheckBox_DontAskAgain;
 		
-		public static String[] permissions = {Manifest.permission.INTERNET,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA,Manifest.permission.WAKE_LOCK,Manifest.permission.ACCESS_SURFACE_FLINGER,Manifest.permission.RECORD_AUDIO,Manifest.permission.SYSTEM_ALERT_WINDOW};
+		public static String[] permissions = {
+				Manifest.permission.INTERNET,
+				Manifest.permission.WRITE_EXTERNAL_STORAGE,
+				Manifest.permission.CAMERA,
+				Manifest.permission.WAKE_LOCK,
+				Manifest.permission.ACCESS_SURFACE_FLINGER,
+				Manifest.permission.RECORD_AUDIO,
+				Manifest.permission.SYSTEM_ALERT_WINDOW};
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -44,8 +51,8 @@ public class permissionsScreen extends Fragment
 						MainActivity.visibleFragment = "permissions";
 				}
 				
-				MainActivity.actionbar.setTitle(getString(R.string.preferencesTitle_Permissions));
-				MainActivity.actionbar.setSubTitle(getString(R.string.preferencesDesc_Permissions));
+				MainActivity.actionbar.setTitle(getString(R.string.preferences_Permissions).split("\\|")[0]);
+				MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Permissions).split("\\|")[1]);
 				
 				View InflatedView = inflater.inflate(R.layout.permissionsscreen,null);
 				
@@ -94,7 +101,7 @@ public class permissionsScreen extends Fragment
 																public void onPositiveClick(Bundle resultBundle)
 																{
 																		// TODO: Implement this method
-																		MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
+																		MainActivity.changePrefPage(new PreferencesPartFragment(), false);
 																}
 
 																@Override
@@ -107,7 +114,7 @@ public class permissionsScreen extends Fragment
 												dialogFragment.setPositiveButton(getActivity().getString(R.string.Dialog_Buttons).split("\\|")[0]);
 												dialogFragment.showDialog(R.id.dialog_container);
 										} else {
-												MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesPartFragment()).commit();
+												MainActivity.changePrefPage(new PreferencesPartFragment(), false);
 										}
 								}
 						});

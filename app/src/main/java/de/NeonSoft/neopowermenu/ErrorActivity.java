@@ -29,6 +29,7 @@ import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
 import android.support.v4.app.*;
 import android.support.v7.app.*;
 import java.util.*;
+import android.content.res.*;
 
 public final class ErrorActivity extends AppCompatActivity {
 
@@ -78,6 +79,13 @@ setContentView(de.NeonSoft.neopowermenu.R.layout.customactivityoncrash_error_act
 		
     }
 
+		@Override
+		public void onConfigurationChanged(Configuration newConfig)
+		{
+				// TODO: Implement this method
+				super.onConfigurationChanged(newConfig);
+		}
+		
 		@Override
 		public void onBackPressed()
 		{

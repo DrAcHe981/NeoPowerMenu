@@ -77,7 +77,7 @@
 						<TextView
 							android:layout_height="wrap_content"
 							android:layout_width="match_parent"
-							android:text="@string/preferencesTitle_RootXposed1"
+							android:text="@string/preferences_RootXposed1"
 							android:layout_weight="1.0"
 							android:gravity="center_vertical"
 							android:textAppearance="?android:attr/textAppearanceMedium"
@@ -89,7 +89,7 @@
 						<TextView
 							android:layout_height="wrap_content"
 							android:layout_width="match_parent"
-							android:text="@string/preferencesDesc_RootXposed1"
+							android:text="@string/preferences_RootXposed1"
 							android:layout_weight="1.0"
 							android:gravity="center_vertical"
 							android:paddingLeft="15dp"
@@ -156,7 +156,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_Style"
+						android:text="@string/preferences_Style"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
@@ -206,7 +206,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_Theme"
+						android:text="@string/preferences_Theme"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
@@ -218,7 +218,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_Theme"
+						android:text="@string/preferences_Theme"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"
@@ -256,22 +256,24 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_Graphics"
+						android:text="@string/preferences_Graphics"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:paddingLeft="10dp"
 						android:paddingRight="10dp"
-						android:textColor="#FFFFFF"/>
+						android:textColor="#FFFFFF"
+						android:id="@+id/activitypreferencesTextView_GraphicsTitle"/>
 
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_Graphics"
+						android:text="@string/preferences_Graphics"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"
-						android:paddingRight="10dp"/>
+						android:paddingRight="10dp"
+						android:id="@+id/activitypreferencesTextView_GraphicsDesc"/>
 
 				</LinearLayout>
 
@@ -304,7 +306,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_VisibilityOrder"
+						android:text="@string/preferences_VisibilityOrder"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
@@ -316,7 +318,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_VisibilityOrder"
+						android:text="@string/preferences_VisibilityOrder"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"
@@ -418,6 +420,56 @@
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
+				android:id="@+id/activitypreferencesLinearLayout_Account">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:minHeight="50dp"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preferences_Account"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activitypreferencesTextView_AccountTitle"
+						android:textColor="#FFFFFF"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/preferences_Account"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activitypreferencesTextView_AccountDesc"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_height="2dp"
+					android:layout_width="match_parent"
+					android:background="@color/colorAccentDarkTheme"
+					android:layout_marginRight="5dp"
+					android:layout_marginLeft="5dp"
+					android:alpha="0.3"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
 				android:id="@+id/activitypreferencesLinearLayout_Advanced">
 
 				<LinearLayout
@@ -431,7 +483,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_Advanced"
+						android:text="@string/preferences_Advanced"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
@@ -443,7 +495,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_Advanced"
+						android:text="@string/preferences_Advanced"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"
@@ -481,22 +533,24 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_Permissions"
+						android:text="@string/preferences_Permissions"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:paddingLeft="10dp"
 						android:paddingRight="10dp"
-						android:textColor="#FFFFFF"/>
+						android:textColor="#FFFFFF"
+						android:id="@+id/activitypreferencesTextView_PermissionsTitle"/>
 
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_Permissions"
+						android:text="@string/preferences_Permissions"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"
-						android:paddingRight="10dp"/>
+						android:paddingRight="10dp"
+						android:id="@+id/activitypreferencesTextView_PermissionsDesc"/>
 
 				</LinearLayout>
 
@@ -535,7 +589,7 @@
 						<TextView
 							android:layout_height="wrap_content"
 							android:layout_width="match_parent"
-							android:text="@string/preferencesTitle_HideLauncherIcon"
+							android:text="@string/preferences_HideLauncherIcon"
 							android:layout_weight="1.0"
 							android:gravity="center_vertical"
 							android:textAppearance="?android:attr/textAppearanceMedium"
@@ -547,7 +601,7 @@
 						<TextView
 							android:layout_height="wrap_content"
 							android:layout_width="match_parent"
-							android:text="@string/preferencesDesc_HideLauncherIcon"
+							android:text="@string/preferences_HideLauncherIcon"
 							android:layout_weight="1.0"
 							android:gravity="center_vertical"
 							android:paddingLeft="15dp"
@@ -599,22 +653,24 @@
 						<TextView
 							android:layout_height="wrap_content"
 							android:layout_width="match_parent"
-							android:text="@string/preferencesTitle_DeepXposedLogging"
+							android:text="@string/preferences_DeepXposedLogging"
 							android:layout_weight="1.0"
 							android:gravity="center_vertical"
 							android:textAppearance="?android:attr/textAppearanceMedium"
 							android:paddingLeft="10dp"
 							android:paddingRight="10dp"
-							android:textColor="#FFFFFF"/>
+							android:textColor="#FFFFFF"
+							android:id="@+id/activitypreferencesTextView_DeepXposedLoggingTitle"/>
 
 						<TextView
 							android:layout_height="wrap_content"
 							android:layout_width="match_parent"
-							android:text="@string/preferencesDesc_DeepXposedLogging"
+							android:text="@string/preferences_DeepXposedLogging"
 							android:layout_weight="1.0"
 							android:gravity="center_vertical"
 							android:paddingLeft="15dp"
-							android:paddingRight="10dp"/>
+							android:paddingRight="10dp"
+							android:id="@+id/activitypreferencesTextView_DeepXposedLoggingDesc"/>
 
 					</LinearLayout>
 
@@ -682,7 +738,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_NeoSource"
+						android:text="@string/preferences_NeoSource"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
@@ -694,7 +750,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_NeoSource"
+						android:text="@string/preferences_NeoSource"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"
@@ -732,7 +788,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_Share"
+						android:text="@string/preferences_Share"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
@@ -744,7 +800,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_Share"
+						android:text="@string/preferences_Share"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"
@@ -782,7 +838,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesTitle_About"
+						android:text="@string/preferences_About"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:textAppearance="?android:attr/textAppearanceMedium"
@@ -794,7 +850,7 @@
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
-						android:text="@string/preferencesDesc_About"
+						android:text="@string/preferences_About"
 						android:layout_weight="1.0"
 						android:gravity="center_vertical"
 						android:paddingLeft="15dp"

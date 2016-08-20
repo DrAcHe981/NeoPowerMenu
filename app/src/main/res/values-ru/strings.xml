@@ -18,40 +18,36 @@
 <string name="powerMenu_Shuttingdown">"Выключение..."</string>
 <string name="powerMenu_Rebooting">"Перезагрузка..."</string>
 
-<!-- Preferences: Main -->
-<string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
-<string name="preferencesTitle_RootXposed1">"Root и Xposed недоступны"</string>
-<string name="preferencesDesc_RootXposed1">"Root и Xposed должны быть работающими."</string>
-<string name="preferencesTitle_RootXposed2">"Xposed работает, Root - нет"</string>
-<string name="preferencesDesc_RootXposed2">"Требуется Root, чтобы выключить или перезагрузить...
+		<!-- Preferences: Main -->
+		<string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
+		<string name="preferences_RootXposed1">"Root и Xposed недоступны|Root и Xposed должны быть работающими."</string>
+		<string name="preferences_RootXposed2">"Xposed работает, Root - нет|Требуется Root, чтобы выключить или перезагрузить...
 Пожалуйста, дайте root-доступ."</string>
-<string name="preferencesTitle_RootXposed3">"Root работает, Xposed - нет"</string>
-<string name="preferencesDesc_RootXposed3">"Требуется Xposed, чтобы заменить Меню Выключения...
+		<string name="preferences_RootXposed3">"Root работает, Xposed - нет|Требуется Xposed, чтобы заменить Меню Выключения...
 Пожалуйста, активируете модуль в Xposed installer."</string>
-<string name="preferencesTitle_RootXposed4">"Root и Xposed работают"</string>
-<string name="preferencesDesc_RootXposed4">"Приложение должно работать хорошо!"</string>
-<string name="preferencesCategory_General">"Основное"</string>
-<string name="preferencesTitle_Style">"Стиль"</string>
-<string name="preferencesTitle_Theme">"Тема"</string>
-<string name="preferencesDesc_Theme">"Измените внешний вид."</string>
-<string name="preferencesTitle_VisibilityOrder">"Отображение и порядок"</string>
-<string name="preferencesDesc_VisibilityOrder">"Выберите элементы, которые Вы бы хотели видеть и расположите их так, как Вам хочется."</string>
-<string name="preferencesCategory_Other">"Другое"</string>
-<string name="preferencesTitle_Advanced">"Расширенные настройки"</string>
-<string name="preferencesDesc_Advanced">"Измените расширенные настройки, например, задержки, притяжение или скорость."</string>
-<string name="preferencesTitle_HideLauncherIcon">"Спрятать приложение в меню приложений"</string>
-<string name="preferencesDesc_HideLauncherIcon">"Прячет иконку приложения в меню приложений, может потребоваться перезагрузка.
-Это приложение будет доступно через Xposed Installer."</string>
-<string name="preferencesCategory_About">"О приложении"</string>
-<string name="preferencesTitle_NeoSource">"Исходный код"</string>
-<string name="preferencesDesc_NeoSource">"NeoPowerMenu имеет открытый исходный код.
-Исходники на Github."</string>
-<string name="preferencesTitle_Share">"Поделиться"</string>
-<string name="preferencesDesc_Share">"Понравилось приложение? Поделитесь им среди своих друзей."</string>
-<string name="preferencesTitle_About">"Создано Neon-Soft / DrAcHe981"</string>
+		<string name="preferences_RootXposed4">"Root и Xposed работают|Приложение должно работать хорошо!"</string>
+		<string name="preferences_RootXposed5">"Установленная версия модуля слишком старая...|Пожалуйста, перезагрузите устройство, чтобы закончить процесс обновления!"</string>
 
-<!-- Information has no plural in English ;) -->
-<string name="preferencesDesc_About">"Основано на исходном коде Naman Dwivedi(naman14)."</string>
+		<string name="preferencesCategory_General">"Основное"</string>
+		<string name="preferences_Style">"Стиль"</string>
+		<string name="preferences_Theme">"Тема|Измените внешний вид."</string>
+		<string name="preferences_Graphics">"Графика|Изменить графику, использовать кастомную или предустановленных графику."</string>
+		<string name="preferences_VisibilityOrder">"Отображение и порядок|Выберите элементы, которые Вы бы хотели видеть и расположите их так, как Вам хочется."</string>
+		<string name="preferences_Animations">"Анимации|Изменить анимации или убрать их полностью."</string>
+
+		<string name="preferencesCategory_Other">"Другое"</string>
+		<string name="preferences_Advanced">"Расширенные настройки|Измените расширенные настройки, например, задержки, притяжение или скорость."</string>
+		<string name="preferences_Permissions">"Разрешения|Показывает используемые разрешения и для чего они используются.
+Предоставляет дополнительные разрешения, если они не были предоставлены во время первого запуска(Android 6.0+)."</string>
+		<string name="preferences_HideLauncherIcon">"Спрятать приложение в меню приложений|Прячет иконку приложения в меню приложений, может потребоваться перезагрузка.
+Это приложение будет доступно через Xposed Installer."</string>
+		<string name="preferences_DeepXposedLogging">"Подробное логгирование Xposed|Разрешить подробное логгирование Xposed, после разрешения перезагрузить, чтобы увидеть изменения"</string>
+
+		<string name="preferencesCategory_About">"О приложении"</string>
+		<string name="preferences_NeoSource">"Исходный код|NeoPowerMenu имеет открытый исходный код.
+Исходники на Github."</string>
+		<string name="preferences_Share">"Поделиться|Понравилось приложение? Поделитесь им среди своих друзей."</string>
+		<string name="preferences_About">"Создано Neon-Soft / DrAcHe981|Основано на исходном коде Naman Dwivedi(naman14)."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Отображение и порядок"</string>
@@ -95,10 +91,6 @@
 <string name="presetSaveDialog_OverwriteText">"Уже существует, шаблон будет перезаписан!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] сохранён!"</string>
 <string name="powerMenuMain_Screenrecord">"Запись экрана"</string>
-<string name="preferencesTitle_RootXposed5">"Установленная версия модуля слишком старая..."</string>
-<string name="preferencesDesc_RootXposed5">"Пожалуйста, перезагрузите устройство, чтобы закончить процесс обновления!"</string>
-<string name="preferencesTitle_DeepXposedLogging">"Подробное логгирование Xposed"</string>
-<string name="preferencesDesc_DeepXposedLogging">"Разрешить подробное логгирование Xposed, после разрешения перезагрузить, чтобы увидеть изменения"</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Экран записывается"</string>
@@ -135,9 +127,6 @@
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Нужно для будущих функций(например, пользовательские изображения)"</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Камера"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Нужно для включения Фонарика"</string>
-<string name="preferencesTitle_Permissions">"Разрешения"</string>
-<string name="preferencesDesc_Permissions">"Показывает используемые разрешения и для чего они используются.
-Предоставляет дополнительные разрешения, если они не были предоставлены во время первого запуска(Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Спрятать описание"</string>
 
 <!-- Preferences: Colors -->
@@ -229,8 +218,6 @@
 <string name="login_RecoverAccount">"Нет доступа к аккаунта?
 Нажмите сюда для восстановления."</string>
 <string name="login_RecoverPassword">"Сбросить пароль"</string>
-<string name="preferencesTitle_Graphics">"Графика"</string>
-<string name="preferencesDesc_Graphics">"Изменить графику, использовать кастомную или предустановленных графику."</string>
 <string name="login_RecoverSuccess">"Вы получите E-mail с информацией о сбросе пароля."</string>
 <string name="login_RecoverNotFound">"Пользователя с этими данными не найдено."</string>
 <string name="powerMenuMain_SoundVibrate">"Звук: Вибрация"</string>
@@ -254,6 +241,5 @@
 <string name="presetsManager_Buttons">"Дать звезду|Убрать звезду|Удалить|Пожаловаться|Загрузить|Поделиться"</string>
 <string name="screenrecord_notif_buttons">"Стоп|Переключить указатель"</string>
 <string name="downloadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
-<string name="preferences_Animations">"Анимации|Изменить анимации или убрать их полностью."</string>
 <string name="uploadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
 </resources>

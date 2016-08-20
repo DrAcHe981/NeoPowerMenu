@@ -14,6 +14,7 @@ import java.io.*;
 import java.util.*;
 
 import android.support.v4.app.Fragment;
+import org.acra.*;
 
 public class LoginFragment extends Fragment
 {
@@ -50,7 +51,7 @@ public class LoginFragment extends Fragment
 		{
 				// TODO: Implement this method
 				mContext = getActivity();
-
+				
 				//loginFragmentMode = "login";
 				View InflatedView = inflater.inflate(R.layout.activity_login, container, false);
 
@@ -215,7 +216,7 @@ public class LoginFragment extends Fragment
 														}
 												}
 										});
-								uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+								uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 								uH.setAdditionalUploadPosts(new String[][] {{"action","register"},{"name",EditText_Username.getText().toString()},{"email",EditText_Email.getText().toString()}});
 								try
 								{
@@ -336,7 +337,7 @@ public class LoginFragment extends Fragment
 														}
 												}
 										});
-								uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+								uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 								uH.setAdditionalUploadPosts(new String[][] {{"action","resetpw"},{"name",EditText_RecoverUsername.getText().toString()},{"email",EditText_RecoverEmail.getText().toString()}});
 								try
 								{
@@ -444,6 +445,8 @@ public class LoginFragment extends Fragment
 						if(MainActivity.loggedIn) {
 								loginFragmentMode = "logout";
 						}
+						
+				if(PreferencesPresetsFragment.startTab==0) checkState();
 						
 				return InflatedView;
 		}
@@ -573,7 +576,7 @@ public class LoginFragment extends Fragment
 										}
 								}
 						});
-				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+				uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 				uH.setAdditionalUploadPosts(new String[][] {{"action","login"},{(helper.isValidEmail(usernameemail) ? "email" : "name"),usernameemail},{"password",password}});
 				try
 				{
@@ -624,7 +627,7 @@ public class LoginFragment extends Fragment
 										TextView_Statistics.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 								}
 						});
-				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+				uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 				uH.setAdditionalUploadPosts(new String[][] {{"action","statistics"},{(MainActivity.usernameemail.contains("@") ? "email" : "name"),MainActivity.usernameemail},{"deviceId",MainActivity.deviceUniqeId},{"accountId",MainActivity.accountUniqeId}});
 				try
 				{

@@ -127,8 +127,8 @@ public class PreferencesColorFragment extends Fragment
 				
 				mContext = getActivity();
 				
-				MainActivity.actionbar.setTitle(getString(R.string.preferencesTitle_Theme));
-				MainActivity.actionbar.setSubTitle(getString(R.string.preferencesDesc_Theme));
+				MainActivity.actionbar.setTitle(getString(R.string.preferences_Theme).split("\\|")[0]);
+				MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Theme).split("\\|")[1]);
 				
 				ListView_ColorsList = (ListView) InflatedView.findViewById(R.id.activitycolorpreferencesListView_Colors);
 				

@@ -23,6 +23,8 @@ public class PresetsPage extends Fragment
 		
 		public PresetsPage()
 		{
+				this.page = -1;
+				this.title = null;
 		}
     // newInstance constructor for creating fragment with arguments
     public PresetsPage(int page, String title)
@@ -47,6 +49,7 @@ public class PresetsPage extends Fragment
 														 Bundle savedInstanceState)
 		{
         View view = inflater.inflate(R.layout.presetsmanager_listholder, container, false);
+				if(page!=-1 && title != null) {
 				ListView list = (ListView) view.findViewById(R.id.presetsmanagerlistholderListView_Presets);
 
 				TextView message = (TextView) view.findViewById(R.id.presetsmanagerlistholderTextView_Message);
@@ -137,6 +140,7 @@ public class PresetsPage extends Fragment
 						PreferencesPresetsFragment.onlineMSG = message;
 						new getOnlinePresets().execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
 						//message.setVisibility(View.VISIBLE);
+				}
 				}
         return view;
     }

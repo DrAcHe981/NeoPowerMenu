@@ -134,7 +134,7 @@ implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCropp
 				if(mUri!=null) {
 						mCropImageView.setImageUriAsync(mUri);
 				} else {
-						MainActivity.fragmentManager.beginTransaction().setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesGraphicsFragment()).commit();
+						MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
 				}
 				
 				return InflatedView;
@@ -225,10 +225,10 @@ implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCropp
 						progressHolder.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
 						progressHolder.setVisibility(View.GONE);
 						if(p1!=null) {
-								Toast.makeText(getActivity(), "Failed to save,please again...\nFor more info check the logs.", Toast.LENGTH_LONG).show();
+								Toast.makeText(getActivity(), "Failed to save,please try again...\nFor more info check the logs.", Toast.LENGTH_LONG).show();
 								Log.e("NPM:cropper","Failed to save cropped image: "+p1);
 						} else {
-								MainActivity.fragmentManager.beginTransaction().setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesGraphicsFragment()).commitAllowingStateLoss();
+								MainActivity.changePrefPage(new PreferencesGraphicsFragment(), true);
 						}
 				}
 				

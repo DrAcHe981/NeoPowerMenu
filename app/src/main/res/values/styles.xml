@@ -85,9 +85,25 @@
 		</style>
 
 
-    <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
-        <item name="android:windowExitAnimation">@anim/slide_down_out</item>
+    <style name="DialogAnimation:Fade">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+    <style name="DialogAnimation:SlideUp">
+        <item name="android:windowEnterAnimation">@anim/anim_slide_in_top</item>
+        <item name="android:windowExitAnimation">@anim/anim_slide_out_top</item>
+    </style>
+    <style name="DialogAnimation:SlideLeft">
+        <item name="android:windowEnterAnimation">@anim/anim_slide_in_right</item>
+        <item name="android:windowExitAnimation">@anim/anim_slide_out_right</item>
+    </style>
+    <style name="DialogAnimation:SlideRight">
+        <item name="android:windowEnterAnimation">@anim/anim_slide_in_left</item>
+        <item name="android:windowExitAnimation">@anim/anim_slide_out_left</item>
+    </style>
+    <style name="DialogAnimation:SlideDown">
+        <item name="android:windowEnterAnimation">@anim/anim_slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/anim_slide_out_bottom</item>
     </style>
 
     <attr format="reference" name="accentColor"/>
@@ -128,7 +144,7 @@
         <item name="android:windowTitleStyle">@null</item>
 				<item name="android:backgroundDimEnabled">false</item>
 				<item name="android:windowIsTranslucent">true</item>    
-				<item name="android:windowIsFloating">true</item>  
+				<item name="android:windowIsFloating">false</item>  
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:windowCloseOnTouchOutside">true</item>

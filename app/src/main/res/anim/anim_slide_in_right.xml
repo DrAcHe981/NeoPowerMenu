@@ -8,7 +8,7 @@
 		
 		<translate xmlns:android="http://schemas.android.com/apk/res/android"
 				android:startOffset="0"
-				android:fromYDelta="-100%"
-				android:toYDelta="0%"
+				android:fromXDelta="100%"
+				android:toXDelta="0%"
 				android:duration="900"/>
 </set>

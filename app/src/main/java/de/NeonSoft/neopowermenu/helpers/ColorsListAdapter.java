@@ -78,7 +78,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 														public void onClick(View p1)
 														{
 																// TODO: Implement this method
-																MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPresetsFragment()).commit();
+																MainActivity.changePrefPage(new PreferencesPresetsFragment(), false);
 														}
 												});
 										break;

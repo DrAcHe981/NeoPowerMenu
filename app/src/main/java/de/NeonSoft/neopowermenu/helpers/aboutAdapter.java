@@ -9,6 +9,10 @@ import android.view.View.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import java.util.*;
+import com.nostra13.universalimageloader.utils.*;
+import java.io.*;
+import de.NeonSoft.neopowermenu.Preferences.*;
+import android.view.animation.*;
 
 public class aboutAdapter extends ArrayAdapter<String>
 {
@@ -41,8 +45,281 @@ public class aboutAdapter extends ArrayAdapter<String>
 				
 				Title.setText(this.itemsTitles.get(p1));
 				Text.setText(this.itemsTexts.get(p1));
-				
-				if(this.itemsTexts.get(p1).contains("Your Device Id")) {
+				if(this.itemsTexts.get(p1).contains("Click here to reset the settings.")) {
+						Text.setOnClickListener(new OnClickListener() {
+
+										@Override
+										public void onClick(View p1)
+										{
+												// TODO: Implement this method
+												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
+												dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+																@Override
+																public void onListItemClick(final int position, String text)
+																{
+																		// TODO: Implement this method
+																		slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
+																		dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+																						@Override
+																						public void onListItemClick(int position, String text)
+																						{
+																								// TODO: Implement this method
+																						}
+
+																						@Override
+																						public void onNegativeClick()
+																						{
+																								// TODO: Implement this method
+																						}
+
+																						@Override
+																						public void onNeutralClick()
+																						{
+																								// TODO: Implement this method
+																						}
+
+																						@Override
+																						public void onPositiveClick(Bundle resultBundle)
+																						{
+																								// TODO: Implement this method
+																								if(position==0) {
+																										MainActivity.preferences.edit().clear().commit();
+																										MainActivity.colorPrefs.edit().clear().commit();
+																										MainActivity.orderPrefs.edit().clear().commit();
+																										MainActivity.imageLoader.clearMemoryCache();
+																										MainActivity.imageLoader.clearDiskCache();
+																										File[] cacheFiles = mContext.getCacheDir().listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<cacheFiles.length; i++) {
+																												cacheFiles[i].delete();
+																										}
+																										File[] tempFiles = new File(mContext.getFilesDir().getPath()+"/temp/").listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<tempFiles.length; i++) {
+																												tempFiles[i].delete();
+																										}
+																										File[] downloadFiles = new File(mContext.getFilesDir().getPath()+"/download/").listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<downloadFiles.length; i++) {
+																												downloadFiles[i].delete();
+																										}
+																										File[] presetsFiles = new File(mContext.getFilesDir().getPath()+"/presets/").listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<presetsFiles.length; i++) {
+																												presetsFiles[i].delete();
+																										}
+																										File[] graphicFiles = new File(mContext.getFilesDir().getPath()+"/images/").listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<graphicFiles.length; i++) {
+																												graphicFiles[i].delete();
+																										}
+																								} else if(position==1) {
+																										File[] presetsFiles = new File(mContext.getFilesDir().getPath()+"/presets/").listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<presetsFiles.length; i++) {
+																												presetsFiles[i].delete();
+																										}
+																								} else if(position==2) {
+																										MainActivity.colorPrefs.edit().clear().commit();
+																								} else if(position==3) {
+																										MainActivity.orderPrefs.edit().clear().commit();
+																								} else if(position==4) {
+																										File[] graphicFiles = new File(mContext.getFilesDir().getPath()+"/images/").listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<graphicFiles.length; i++) {
+																												graphicFiles[i].delete();
+																										}
+																								} else if(position==5) {
+																										MainActivity.imageLoader.clearMemoryCache();
+																										MainActivity.imageLoader.clearDiskCache();
+																										File[] cacheFiles = mContext.getCacheDir().listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<cacheFiles.length; i++) {
+																												cacheFiles[i].delete();
+																										}
+																										File[] tempFiles = new File(mContext.getFilesDir().getPath()+"/temp/").listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<tempFiles.length; i++) {
+																												tempFiles[i].delete();
+																										}
+																										File[] downloadFiles = new File(mContext.getFilesDir().getPath()+"/download/").listFiles(new FileFilter() {
+
+																														@Override
+																														public boolean accept(File p1)
+																														{
+																																// TODO: Implement this method
+																																return true;
+																														}
+																												});
+																										for(int i=0; i<downloadFiles.length; i++) {
+																												downloadFiles[i].delete();
+																										}
+																								}
+																								slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
+																								dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+																												@Override
+																												public void onListItemClick(int position, String text)
+																												{
+																														// TODO: Implement this method
+																												}
+
+																												@Override
+																												public void onNegativeClick()
+																												{
+																														// TODO: Implement this method
+																												}
+
+																												@Override
+																												public void onNeutralClick()
+																												{
+																														// TODO: Implement this method
+																												}
+
+																												@Override
+																												public void onPositiveClick(Bundle resultBundle)
+																												{
+																														// TODO: Implement this method
+																														AboutFragment.LoadingLayout.setVisibility(View.VISIBLE);
+																														AboutFragment.LoadingLayout.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+																														new Handler().postDelayed(new Runnable() {
+
+																																		@Override
+																																		public void run()
+																																		{
+																																				mContext.runOnUiThread(new Runnable() {
+
+																																								@Override
+																																								public void run()
+																																								{
+																																										// TODO: Implement this method
+																																										mContext.recreate();
+																																								}
+																																						});
+																																		}
+																																},1000L);
+																												}
+
+																												@Override
+																												public void onTouchOutside()
+																												{
+																														// TODO: Implement this method
+																												}
+																										});
+																										dialogFragment.setCloseOnTouchOutside(false);
+																								dialogFragment.setText("Files deleted!\n\nRestart the app to complete the reset.");
+																								dialogFragment.setPositiveButton("Restart");
+																								dialogFragment.showDialog(R.id.dialog_container);
+																						}
+
+																						@Override
+																						public void onTouchOutside()
+																						{
+																								// TODO: Implement this method
+																						}
+																				});
+																		dialogFragment.setText("Are you sure to "+text.toLowerCase()+"?\nThis can't be undone!");
+																		dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+																		dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_DELETE]);
+																		dialogFragment.showDialog(R.id.dialog_container);
+																}
+
+																@Override
+																public void onNegativeClick()
+																{
+																		// TODO: Implement this method
+																}
+
+																@Override
+																public void onNeutralClick()
+																{
+																		// TODO: Implement this method
+																}
+
+																@Override
+																public void onPositiveClick(Bundle resultBundle)
+																{
+																		// TODO: Implement this method
+																}
+
+																@Override
+																public void onTouchOutside()
+																{
+																		// TODO: Implement this method
+																}
+														});
+												dialogFragment.setList(ListView.CHOICE_MODE_NONE, new String[] {"Delete all data","Delete saved presets","Delete color preferences","Delete visibility and order preferences","Delete all graphics","Delete all cached files"}, -1, true);
+												dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+												dialogFragment.showDialog(R.id.dialog_container);
+										}
+								});
+				}
+				else if(this.itemsTexts.get(p1).contains("Your Device Id")) {
 						Text.setOnClickListener(new OnClickListener() {
 
 										@Override

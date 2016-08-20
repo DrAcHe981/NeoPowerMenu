@@ -16,37 +16,35 @@
 <string name="powerMenu_Shuttingdown">"Uitschakelen..."</string>
 <string name="powerMenu_Rebooting">"Opnieuw opstarten..."</string>
 
-<!-- Preferences: Main -->
-<string name="preferencesCategory_RootXposed">"Root en Xposed"</string>
-<string name="preferencesTitle_RootXposed1">"Root en Xposed niet beschikbaar"</string>
-<string name="preferencesDesc_RootXposed1">"Root en Xposed zijn vereist om deze module te gebruiken."</string>
-<string name="preferencesTitle_RootXposed2">"Xposed beschikbaar, maar root niet"</string>
-<string name="preferencesDesc_RootXposed2">"Root toegang is vereist om uit te schakelen of opnieuw te starten... Sta root toegang toe a.u.b."</string>
-<string name="preferencesTitle_RootXposed3">"Root beschikbaar, maar Xposed niet"</string>
-<string name="preferencesDesc_RootXposed3">"Xposed is vereist om het Power Menu aan te passen... Activeer de module in Xposed installer."</string>
-<string name="preferencesTitle_RootXposed4">"Root en Xposed werken"</string>
-<string name="preferencesDesc_RootXposed4">"De app zou prima moeten werken!"</string>
-<string name="preferencesCategory_General">"Algemeen"</string>
-<string name="preferencesTitle_Style">"Stijl"</string>
-<string name="preferencesTitle_Theme">"Thema"</string>
-<string name="preferencesDesc_Theme">"Verander het uiterlijk."</string>
-<string name="preferencesTitle_VisibilityOrder">"Zichtbaarheid en volgorde"</string>
-<string name="preferencesDesc_VisibilityOrder">"Selecteer de items die je wilt laten zien en sorteer ze naar jouw voorkeur."</string>
-<string name="preferencesCategory_Other">"Overig"</string>
-<string name="preferencesTitle_Advanced">"Geavanceerde instellingen"</string>
-<string name="preferencesDesc_Advanced">"Verander geavanceerde instellingen als vertraging, zwaarte of snelheid."</string>
-<string name="preferencesTitle_HideLauncherIcon">"Verberg de app in de launcher."</string>
-<string name="preferencesDesc_HideLauncherIcon">"Verbergt het app icoon in de launcher. Opnieuw opstarten kan nodig zijn om het icoon te verbergen. Dit instellingenscherm zal na het verbergen alleen toegankelijk zijn via de Xposed installer."</string>
-<string name="preferencesCategory_About">"Over"</string>
-<string name="preferencesTitle_NeoSource">"Bron"</string>
-<string name="preferencesDesc_NeoSource">"NeoPowerMenu is open source.
-Bekijk de broncode op GitHub."</string>
-<string name="preferencesTitle_Share">"Deel"</string>
-<string name="preferencesDesc_Share">"Bevalt de app? Deel hem met je vrienden."</string>
-<string name="preferencesTitle_About">"Code door Neon-Soft / DrAcHe981"</string>
+		<!-- Preferences: Main -->
+		<string name="preferencesCategory_RootXposed">"Root en Xposed"</string>
+		<string name="preferences_RootXposed1">"Root en Xposed niet beschikbaar|Root en Xposed zijn vereist om deze module te gebruiken."</string>
+		<string name="preferences_RootXposed2">"Xposed beschikbaar, maar root niet|Root toegang is vereist om uit te schakelen of opnieuw te starten...
+Sta root toegang toe a.u.b."</string>
+		<string name="preferences_RootXposed3">"Root beschikbaar, maar Xposed niet|Xposed is vereist om het Power Menu aan te passen...
+Activeer de module in Xposed installer."</string>
+		<string name="preferences_RootXposed4">"Root en Xposed werken|De app zou prima moeten werken!"</string>
+		<string name="preferences_RootXposed5">"Module versie is te laag...|Start het apparaat opnieuw op om de update te voltooien!"</string>
 
-<!-- Information has no plural in English ;) -->
-<string name="preferencesDesc_About">"Gebaseerd op code van Naman Dwivedi (naman14). Klik hier voor meer informatie."</string>
+		<string name="preferencesCategory_General">"Algemeen"</string>
+		<string name="preferences_Style">"Stijl"</string>
+		<string name="preferences_Theme">"Thema|Verander het uiterlijk."</string>
+		<string name="preferences_VisibilityOrder">"Zichtbaarheid en volgorde|Selecteer de items die je wilt laten zien en sorteer ze naar jouw voorkeur."</string>
+
+		<string name="preferencesCategory_Other">"Overig"</string>
+		<string name="preferences_Advanced">"Geavanceerde instellingen|Verander geavanceerde instellingen als vertraging, zwaarte of snelheid."</string>
+		<string name="preferences_Permissions">"Machtigingen|Toon de gevraagde machtigingen en bekijk waar ze voor worden gebruikt.
+Sta machtigingen toe die nog niet zijn toegevoegd bij het eerste gebruik (Android 6.0+)."</string>
+		<string name="preferences_HideLauncherIcon">"Verberg de app in de launcher.|Verbergt het app icoon in de launcher. Opnieuw opstarten kan nodig zijn om het icoon te verbergen.
+Dit instellingenscherm zal na het verbergen alleen toegankelijk zijn via de Xposed installer."</string>
+		<string name="preferences_DeepXposedLogging">"Xposed logging|Schakel geavanceerde Xposed logging in en start opnieuw op om door te voeren."</string>
+
+		<string name="preferencesCategory_About">"Over"</string>
+		<string name="preferences_NeoSource">"Bron|NeoPowerMenu is open source.
+Bekijk de broncode op GitHub."</string>
+		<string name="preferences_Share">"Deel|Bevalt de app? Deel hem met je vrienden."</string>
+		<string name="preferences_About">"Code door Neon-Soft / DrAcHe981|Gebaseerd op code van Naman Dwivedi (naman14).
+Klik hier voor meer informatie."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Zichtbaarheid en sortering"</string>
@@ -89,10 +87,6 @@ Bekijk de broncode op GitHub."</string>
 <string name="presetSaveDialog_OverwriteText">"Bestaat al, preset zal worden overschreven!"</string>
 <string name="presetSave_PresetSaved">"Opgeslagen [PRESETNAME]!"</string>
 <string name="powerMenuMain_Screenrecord">"Schermopname"</string>
-<string name="preferencesTitle_RootXposed5">"Module versie is te laag..."</string>
-<string name="preferencesDesc_RootXposed5">"Start het apparaat opnieuw op om de update te voltooien!"</string>
-<string name="preferencesTitle_DeepXposedLogging">"Xposed logging"</string>
-<string name="preferencesDesc_DeepXposedLogging">"Schakel geavanceerde Xposed logging in en start opnieuw op om door te voeren."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Schermopname gestart"</string>
@@ -129,9 +123,6 @@ Bekijk de broncode op GitHub."</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benodigd voor toekomstige functies (bijvoorbeeld: aangepaste afbeeldingen)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Benodigd om zaklamp in te schakelen"</string>
-<string name="preferencesTitle_Permissions">"Machtigingen"</string>
-<string name="preferencesDesc_Permissions">"Toon de gevraagde machtigingen en bekijk waar ze voor worden gebruikt.
-Sta machtigingen toe die nog niet zijn toegevoegd bij het eerste gebruik (Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Verberg beschrijving"</string>
 
 <!-- Preferences: Colors -->

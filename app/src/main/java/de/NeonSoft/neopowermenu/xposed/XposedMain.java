@@ -13,6 +13,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.*;
 import java.util.*;
 import android.view.*;
 import android.view.WindowManagerPolicy.*;
+import java.lang.reflect.*;
 
 /**
  * Created by naman on 20/03/15.
@@ -423,17 +424,25 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 																Log.e(TAG, "Failed to invoke sendCloseSystemWindows: " + t);
 																XposedUtils.log("Failed to invoke sendCloseSystemWindows: " + t);
 														}
-														if (!showDialog())
-														{
-																final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-																final KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-																if(km.isKeyguardLocked()) {
+														final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+														final KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+														if (showDialog()) {
+																if(km.isDeviceLocked()) {
 																		pm.userActivity(SystemClock.uptimeMillis(), false);
 																}
+														} else
+														{
 																Log.e(TAG, "Fallback option: invoking original method");
 																XposedUtils.log("Fallback option: invoking original method");
-																XposedBridge.invokeOriginalMethod(XposedHelpers.findMethodExact(usedPWMClass, lpparam.classLoader, "showGlobalActionsInternal"), methodHookParam.thisObject, null);
-																return null;
+																try
+																{
+																		XposedBridge.invokeOriginalMethod(XposedHelpers.findMethodExact(usedPWMClass, lpparam.classLoader, "showGlobalActionsInternal"), methodHookParam.thisObject, null);
+																}
+																catch (Throwable e)
+																{
+																		Log.e(TAG, "Fallback option: failed");
+																		XposedUtils.log("Fallback option: failed");
+																}
 														}
 														//preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#showDialog,").commit();
 														return null;

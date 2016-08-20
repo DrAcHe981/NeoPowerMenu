@@ -74,6 +74,16 @@ public class PreferencesPresetsFragment extends Fragment
 		
 		//public static String oldUploadText = "";
 
+		public static int startTab = 1;
+		
+		public void setStartTab(int tab) {
+				startTab = tab;
+		}
+		
+		public PreferencesPresetsFragment() {
+				startTab = 1;
+		}
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -106,8 +116,8 @@ public class PreferencesPresetsFragment extends Fragment
         adapterViewPager = new MyPagerAdapter(MainActivity.fragmentManager, new String[] {getString(R.string.presetsManager_TitleAccount),getString(R.string.presetsManager_TitleLocal),getString(R.string.presetsManager_TitleOnline)});
         vpPager.setAdapter(adapterViewPager);
 
-				vpPager.setCurrentItem(1);
-
+				vpPager.setCurrentItem(startTab);
+				
 				vpPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 								@Override
@@ -319,7 +329,7 @@ public class PreferencesPresetsFragment extends Fragment
 												{
 														MainActivity.actionbar.setButton(getString(R.string.login_TitleRegister), R.drawable.ic_action_import, LoginFragment.registerOnClickListener);
 												}
-												else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("logout"))
+												else if (MainActivity.loggedIn)
 												{
 														MainActivity.actionbar.setButton(getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
 												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("recover")) {
@@ -374,7 +384,8 @@ public class PreferencesPresetsFragment extends Fragment
 										// TODO: Implement this method
 								}
 						});
-
+				
+				
         SmartTabLayout tabsStrip = (SmartTabLayout) InflatedView.findViewById(R.id.tabs);
 				tabsStrip.setCustomTabView(R.layout.customtab, R.id.customTabText);
 

@@ -17,39 +17,35 @@
 <string name="powerMenu_Shuttingdown">"Extinction..."</string>
 <string name="powerMenu_Rebooting">"Redémarrage..."</string>
 
-<!-- Preferences: Main -->
-<string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
-<string name="preferencesTitle_RootXposed1">"Root et Xposed non disponible"</string>
-<string name="preferencesDesc_RootXposed1">"Root et Xposed requis pour que ce module fonctionne."</string>
-<string name="preferencesTitle_RootXposed2">"Xposed fonctionnel, pas le Root"</string>
-<string name="preferencesDesc_RootXposed2">"Mais le Root est requis pour éteindre ou redémarrer...
+		<!-- Preferences: Main -->
+		<string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
+		<string name="preferences_RootXposed1">"Root et Xposed non disponible|Root et Xposed requis pour que ce module fonctionne."</string>
+		<string name="preferences_RootXposed2">"Xposed fonctionnel, pas le Root|Mais le Root est requis pour éteindre ou redémarrer...
 Veuillez accepter l\'accès root."</string>
-<string name="preferencesTitle_RootXposed3">"Root fonctionnel, pas Xposed"</string>
-<string name="preferencesDesc_RootXposed3">"Mais Xposed est requis pour remplacer le Menu de Redémarrage...
+		<string name="preferences_RootXposed3">"Root fonctionnel, pas Xposed|Mais Xposed est requis pour remplacer le Menu de Redémarrage...
 Veuillez activer le module dans Xposed installer."</string>
-<string name="preferencesTitle_RootXposed4">"Root et Xposed fonctionnent"</string>
-<string name="preferencesDesc_RootXposed4">"L\'appli devrait bien fonctionner !"</string>
-<string name="preferencesCategory_General">"Général"</string>
-<string name="preferencesTitle_Style">"Style"</string>
-<string name="preferencesTitle_Theme">"Thème"</string>
-<string name="preferencesDesc_Theme">"Changer l\'aspect et l\'ergonomie."</string>
-<string name="preferencesTitle_VisibilityOrder">"Visibilité et Order"</string>
-<string name="preferencesDesc_VisibilityOrder">"Sélectionner les éléments que vous voulez afficher et les placer dans l\'ordre de votre choix."</string>
-<string name="preferencesCategory_Other">"Autres"</string>
-<string name="preferencesTitle_Advanced">"Paramètres avancés"</string>
-<string name="preferencesDesc_Advanced">"Changer les paramètres avancés comme les délais, la gravité ou la vitesse."</string>
-<string name="preferencesTitle_HideLauncherIcon">"Cacher l\'appli dans le launcher"</string>
-<string name="preferencesDesc_HideLauncherIcon">"Cache l\'icône de l\'appli dans le launcher, un redémarrage peut être nécessaire.
-Cet écran de paramètres sera alors uniquement accessible via le Xposed Installer."</string>
-<string name="preferencesCategory_About">"À propos"</string>
-<string name="preferencesTitle_NeoSource">"Source"</string>
-<string name="preferencesDesc_NeoSource">"NeoPowerMenu est open source.
-Vérifiez la source sur GitHub."</string>
-<string name="preferencesTitle_Share">"Partager"</string>
-<string name="preferencesDesc_Share">"Vous aimez l\'appli ? Partagez-la avec vos amis."</string>
-<string name="preferencesTitle_About">"Code par Neon-Soft / DrAcHe981"</string>
-<string name="preferencesDesc_About">"basé sur le code source de Naman Dwivedi (naman14)."</string>
+		<string name="preferences_RootXposed4">"Root et Xposed fonctionnent|L\'appli devrait bien fonctionner !"</string>
+		<string name="preferences_RootXposed5">"La version du Module est trop ancienne...|Veuillez redémarrer votre appareil pour terminer le processus de mise à jour !"</string>
 
+		<string name="preferencesCategory_General">"Général"</string>
+		<string name="preferences_Style">"Style"</string>
+		<string name="preferences_Theme">"Thème|Changer l\'aspect et l\'ergonomie."</string>
+		<string name="preferences_VisibilityOrder">"Visibilité et Order|Sélectionner les éléments que vous voulez afficher et les placer dans l\'ordre de votre choix."</string>
+
+		<string name="preferencesCategory_Other">"Autres"</string>
+		<string name="preferences_Advanced">"Paramètres avancés|Changer les paramètres avancés comme les délais, la gravité ou la vitesse."</string>
+		<string name="preferences_Permissions">"Permissions|Afficher les permissions utilisées et voir leurs utilisations.
+Accorder des permissions complémentaires qui ne sont pas ajoutées au premier démarrage (Android 6.0+)."</string>
+		<string name="preferences_HideLauncherIcon">"Cacher l\'appli dans le launcher|Cache l\'icône de l\'appli dans le launcher, un redémarrage peut être nécessaire.
+Cet écran de paramètres sera alors uniquement accessible via le Xposed Installer."</string>
+		<string name="preferences_DeepXposedLogging">"Journalisation détaillée Xposed|Activer la journalisation avancée Xposed, puis redémarrer pour voir les changes."</string>
+
+		<string name="preferencesCategory_About">"AbÀ proposout"</string>
+		<string name="preferences_NeoSource">"Source|NeoPowerMenu est open source.
+Vérifiez la source sur GitHub."</string>
+		<string name="preferences_Share">"Partager|Vous aimez l\'appli ? Partagez-la avec vos amis."</string>
+		<string name="preferences_About">"Code par Neon-Soft / DrAcHe981|basé sur le code source de Naman Dwivedi (naman14)."</string>
+				
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibilité et Ordre"</string>
 <string name="category_Preset">"Préréglagles"</string>
@@ -114,10 +110,6 @@ Cette action est irréversible !"</string>
 <string name="presetSaveDialog_OverwriteText">"Déjà existant, le préréglage va être écrasé !"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] enregistré !"</string>
 <string name="powerMenuMain_Screenrecord">"Enregistrement de l\'écran"</string>
-<string name="preferencesTitle_RootXposed5">"La version du Module est trop ancienne..."</string>
-<string name="preferencesDesc_RootXposed5">"Veuillez redémarrer votre appareil pour terminer le processus de mise à jour !"</string>
-<string name="preferencesTitle_DeepXposedLogging">"Journalisation détaillée Xposed"</string>
-<string name="preferencesDesc_DeepXposedLogging">"Activer la journalisation avancée Xposed, puis redémarrer pour voir les changes."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"L\'écran est en train d\'être enregistré"</string>
@@ -155,9 +147,6 @@ Cette action est irréversible !"</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Requis pour de futures fonctionnalités (petite info : images personnalisées)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Appareil photo"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Requis pour activer/désactiver la Torche."</string>
-<string name="preferencesTitle_Permissions">"Permissions"</string>
-<string name="preferencesDesc_Permissions">"Afficher les permissions utilisées et voir leurs utilisations.
-Accorder des permissions complémentaires qui ne sont pas ajoutées au premier démarrage (Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Cacher la description"</string>
 
 <!-- Preferences: Colors -->

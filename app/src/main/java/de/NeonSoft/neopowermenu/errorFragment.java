@@ -12,6 +12,7 @@ import java.util.*;
 
 import android.support.v4.app.Fragment;
 import cat.ereza.customactivityoncrash.R;
+import org.acra.*;
 
 public class errorFragment extends Fragment
 {
@@ -21,6 +22,8 @@ public class errorFragment extends Fragment
 	{
 		// TODO: Implement this method
 		View InflatedView = inflater.inflate(de.NeonSoft.neopowermenu.R.layout.customactivityoncrash_error_fragment, container, false);
+		
+		final EditText UserInput = (EditText) InflatedView.findViewById(de.NeonSoft.neopowermenu.R.id.customactivityoncrash_error_activity_info_input);
 		
 		//Close/restart button logic:
         //If a class if set, use restart.
@@ -36,6 +39,8 @@ public class errorFragment extends Fragment
             restartButton.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
+							//ACRA.getErrorReporter().putCustomData("User_Info",UserInput.getText().toString());
+							//ACRA.getErrorReporter().handleException(new Throwable(CustomActivityOnCrash.getStackTraceFromIntent(ErrorActivity.thisActivity.getIntent())),false);
 						Intent intent = new Intent(ErrorActivity.thisActivity, restartActivityClass);
 						CustomActivityOnCrash.restartApplicationWithIntent(ErrorActivity.thisActivity, intent, eventListener);
 					}
@@ -44,6 +49,8 @@ public class errorFragment extends Fragment
             restartButton.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
+							//ACRA.getErrorReporter().putCustomData("User_Info",UserInput.getText().toString());
+							//ACRA.getErrorReporter().handleException(new Throwable(CustomActivityOnCrash.getStackTraceFromIntent(ErrorActivity.thisActivity.getIntent())),false);
 						CustomActivityOnCrash.closeApplication(ErrorActivity.thisActivity, eventListener);
 					}
 				});

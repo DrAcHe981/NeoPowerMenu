@@ -18,41 +18,31 @@
 <string name="powerMenu_Shuttingdown">"Desligando..."</string>
 <string name="powerMenu_Rebooting">"Reiniciando..."</string>
 
-<!-- Preferences: Main -->
-<string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
-<string name="preferencesTitle_RootXposed1">"Root e Xposed não disponíveis"</string>
-<string name="preferencesDesc_RootXposed1">"Root e Xposed são necessários para o funcionamento"</string>
-<string name="preferencesTitle_RootXposed2">"Xposed funcionando,acesso Root não."</string>
-<string name="preferencesDesc_RootXposed2">"É preciso ter acesso Root para  Desligar ou reiniciar...
+		<!-- Preferences: Main -->
+		<string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
+		<string name="preferences_RootXposed1">"Root e Xposed não disponíveis|Root e Xposed são necessários para o funcionamento"</string>
+		<string name="preferences_RootXposed2">"Xposed funcionando,acesso Root não.|É preciso ter acesso Root para  Desligar ou reiniciar...
 Por favor,permita o acesso Root."</string>
-<string name="preferencesTitle_RootXposed3">"Acesso Root funcionando,Xposed não"</string>
-<string name="preferencesDesc_RootXposed3">"É preciso Xposed para substitur o Menu de energia...
+		<string name="preferences_RootXposed3">"Acesso Root funcionando,Xposed não|É preciso Xposed para substitur o Menu de energia...
 Por favor,ative o módulo no Xposed installer."</string>
-<string name="preferencesTitle_RootXposed4">"Root e Xposed estão funcionando."</string>
-<string name="preferencesDesc_RootXposed4">"O aplicativo deve funcionar corretamente!"</string>
-<string name="preferencesCategory_General">"Geral"</string>
-<string name="preferencesTitle_Style">"Estilo"</string>
-<string name="preferencesTitle_Theme">"Tema"</string>
-<string name="preferencesDesc_Theme">"Mudar o tema e prever."</string>
-<string name="preferencesTitle_VisibilityOrder">"Visibilidade e ordem"</string>
-<string name="preferencesDesc_VisibilityOrder">"Selecione os itens que você deseja e a ordem de cada um."</string>
-<string name="preferencesCategory_Other">"Outros"</string>
-<string name="preferencesTitle_Advanced">"Configurações avançadas"</string>
-<string name="preferencesDesc_Advanced">"Alterar configurações avançadas como atraso,gravidade ou velocidade."</string>
-<string name="preferencesTitle_HideLauncherIcon">"Ocultar aplicativo no launcher"</string>
-<string name="preferencesDesc_HideLauncherIcon">"Ocultar o aplicativo no launcher, é necessário reiniciar para que as alterações sejam feitas.
-Essa configuração só está acessível no Xposed Installer."</string>
-<string name="preferencesCategory_About">"Sobre"</string>
-<string name="preferencesTitle_NeoSource">"Fonte"</string>
-<string name="preferencesDesc_NeoSource">"NeoPowerMenu é um código aberto, cheque a fonte no GitHub"</string>
-<string name="preferencesTitle_Share">"Compartilhar"</string>
-<string name="preferencesDesc_Share">"Gostou do aplicativo? Compartilhe-o para todos seus amigos."</string>
-<string name="preferencesTitle_Translator">"Tradução por"</string>
+		<string name="preferences_RootXposed4">"Root e Xposed estão funcionando.|O aplicativo deve funcionar corretamente!"</string>
+		<string name="preferences_RootXposed5">"A versão do módulo é muito antiga...|Por favor,reinicie seu dispositivo para concluir o processo de atualização!"</string>
 
-<!-- Add your name here to get language credits -->
-<string name="preferencesDesc_Translator">"DeluxeMark™"</string>
-<string name="preferencesTitle_About">"Código por Neon-Soft / DrAcHe981"</string>
-<string name="preferencesDesc_About">"Baseado em um código feito por Naman Dwivedi (naman14)."</string>
+		<string name="preferencesCategory_General">"Geral"</string>
+		<string name="preferences_Style">"Estilo"</string>
+		<string name="preferences_Theme">"Tema|Mudar o tema e prever."</string>
+		<string name="preferences_VisibilityOrder">"Visibilidade e ordem|Selecione os itens que você deseja e a ordem de cada um."</string>
+
+		<string name="preferencesCategory_Other">"Outros"</string>
+		<string name="preferences_Advanced">"Configurações avançadas|Alterar configurações avançadas como atraso,gravidade ou velocidade."</string>
+		<string name="preferences_HideLauncherIcon">"Ocultar aplicativo no launcher|Ocultar o aplicativo no launcher, é necessário reiniciar para que as alterações sejam feitas.
+Essa configuração só está acessível no Xposed Installer."</string>
+		<string name="preferences_DeepXposedLogging">"Logs do xposed|Ativar logs avançados no xposed,após ativar, reinicie para ver as mudanças."</string>
+
+		<string name="preferencesCategory_About">"Sobre"</string>
+		<string name="preferences_NeoSource">"Fonte|NeoPowerMenu é um código aberto, cheque a fonte no GitHub"</string>
+		<string name="preferences_Share">"Compartilhar|Gostou do aplicativo? Compartilhe-o para todos seus amigos."</string>
+		<string name="preferences_About">"Código por Neon-Soft / DrAcHe981|Baseado em um código feito por Naman Dwivedi (naman14)."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidade e Ordem"</string>
@@ -107,10 +97,6 @@ Isso não pode  ser desfeito!"</string>
 <string name="presetSaveDialog_OverwriteText">"Já existe,pré-ajuste será sobrescrito!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] salvo!"</string>
 <string name="powerMenuMain_Screenrecord">"Gravação de tela"</string>
-<string name="preferencesTitle_RootXposed5">"A versão do módulo é muito antiga..."</string>
-<string name="preferencesDesc_RootXposed5">"Por favor,reinicie seu dispositivo para concluir o processo de atualização!"</string>
-<string name="preferencesTitle_DeepXposedLogging">"Logs do xposed"</string>
-<string name="preferencesDesc_DeepXposedLogging">"Ativar logs avançados no xposed,após ativar, reinicie para ver as mudanças."</string>
 <string name="visibilityOrderDesc_Screenrecord">"Gravar a tela através do Menu de Energia."</string>
 
 <!-- Screen recording -->

@@ -5,7 +5,7 @@
 		<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" /> 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" /> 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -124,7 +124,8 @@
         <activity
             android:name=".ErrorActivity"
             android:process=":error_activity"
-            android:theme="@style/ThemeBaseDark" >
+            android:theme="@style/ThemeBaseDark"
+						android:configChanges="orientation|screenSize" >
 						<intent-filter>
 <action android:name="cat.ereza.customactivityoncrash.ERROR" />
 </intent-filter>

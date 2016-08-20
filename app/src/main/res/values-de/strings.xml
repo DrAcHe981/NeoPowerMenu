@@ -18,38 +18,37 @@
 <string name="powerMenu_Shuttingdown">"Wird runtergefahren..."</string>
 <string name="powerMenu_Rebooting">"Wird neugestartet..."</string>
 
-<!-- Preferences: Main -->
-<string name="preferencesCategory_RootXposed">"Root und Xposed"</string>
-<string name="preferencesTitle_RootXposed1">"Root und Xposed sind nicht verfügbar"</string>
-<string name="preferencesDesc_RootXposed1">"Ohne Root und Xposed funktioniert leider nichts."</string>
-<string name="preferencesTitle_RootXposed2">"Xposed funktioniert, Root nicht"</string>
-<string name="preferencesDesc_RootXposed2">"Aber Root wird zum Ausschalten oder Neustarten benötigt...
+		<!-- Preferences: Main -->
+		<string name="preferencesCategory_RootXposed">"Root und Xposed"</string>
+		<string name="preferences_RootXposed1">"Root und Xposed sind nicht verfügbar|Ohne Root und Xposed funktioniert leider nichts."</string>
+		<string name="preferences_RootXposed2">"Xposed funktioniert, Root nicht|Aber Root wird zum Ausschalten oder Neustarten benötigt...
 Bitte erlaube den Root-Zugriff."</string>
-<string name="preferencesTitle_RootXposed3">"Root funktioniert, Xposed nicht"</string>
-<string name="preferencesDesc_RootXposed3">"Aber Xposed wird benötigt, um das Ausschaltmenü zu ersetzen...
+		<string name="preferences_RootXposed3">"Root funktioniert, Xposed nicht|Aber Xposed wird benötigt, um das Ausschaltmenü zu ersetzen...
 Bitte aktiviere das Modul im Xposed installer."</string>
-<string name="preferencesTitle_RootXposed4">"Root und Xposed funktionieren"</string>
-<string name="preferencesDesc_RootXposed4">"Die App sollte wie geplant funktionieren!"</string>
-<string name="preferencesCategory_General">"Allgemein"</string>
-<string name="preferencesTitle_Style">"Aussehen"</string>
-<string name="preferencesTitle_Theme">"Design"</string>
-<string name="preferencesDesc_Theme">"Ändere die Farben."</string>
-<string name="preferencesTitle_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
-<string name="preferencesDesc_VisibilityOrder">"Wähle, was gezeigt werden soll und sortiere die Optionen nach deinen Wünschen."</string>
-<string name="preferencesCategory_Other">"Anderes"</string>
-<string name="preferencesTitle_Advanced">"Erweierte Einstellungen"</string>
-<string name="preferencesDesc_Advanced">"Ändere erweiterte Einstellungen wie Verzögerung, Position oder Geschwindigkeit."</string>
-<string name="preferencesTitle_HideLauncherIcon">"Verstecke die App im Launcher"</string>
-<string name="preferencesDesc_HideLauncherIcon">"Versteckt das App-Icon im Launcher, könnte einen Neustart erfordern.
+		<string name="preferences_RootXposed4">"Root und Xposed funktionieren|Die App sollte wie geplant funktionieren!"</string>
+		<string name="preferences_RootXposed5">"Aktivierte Modulversion ist zu niedrig...|Bitte starte dein Gerät neu, um den Updatevorgang abzuschließen!"</string>
+
+		<string name="preferencesCategory_General">"Allgemein"</string>
+		<string name="preferences_Style">"Aussehen"</string>
+		<string name="preferences_Theme">"Design|Ändere die Farben."</string>
+		<string name="preferences_Graphics">"Grafiken|Ändere die Grafiken, nutze eigene oder vordefinierte Grafiken."</string>
+		<string name="preferences_VisibilityOrder">"Sichtbarkeit und Sortierung|Wähle, was gezeigt werden soll und sortiere die Optionen nach deinen Wünschen."</string>
+		<string name="preferences_Animations">"Animationen|Ändere die Animationen oder deaktiviert sie komplett."</string>
+
+		<string name="preferencesCategory_Other">"Anderes"</string>
+		<string name="preferences_Account">Account|Here you can login, create an account or check your statistics when logged in.</string>
+		<string name="preferences_Advanced">"Erweiterte Einstellungen|Ändere erweiterte Einstellungen wie Verzögerung, Position oder Geschwindigkeit."</string>
+		<string name="preferences_Permissions">"Berechtigungen|Zeige die benutzten Berechtigungen und wofür diese genutzt werden.
+Erlaube weitere Berechtigungen, die nicht beim ersten Start erlaubt wurden (Android 6.0+)."</string>
+		<string name="preferences_HideLauncherIcon">"Verstecke die App im Launcher|Versteckt das App-Icon im Launcher, könnte einen Neustart erfordern.
 Diese Einstellungen können dann nur noch über den Xposed Installer geöffnet werden."</string>
-<string name="preferencesCategory_About">"Über"</string>
-<string name="preferencesTitle_NeoSource">"Source"</string>
-<string name="preferencesDesc_NeoSource">"NeoPowerMenu ist open source.
+		<string name="preferences_DeepXposedLogging">"Tiefes Xposed Logging|Aktiviere erweitertes Logging, nach der Aktivierung neu starten, um Änderung zu sehen."</string>
+
+		<string name="preferencesCategory_About">"Über"</string>
+		<string name="preferences_NeoSource">"Source|NeoPowerMenu ist open source.
 Finde die Source auf GitHub."</string>
-<string name="preferencesTitle_Share">"Teilen"</string>
-<string name="preferencesDesc_Share">"Du magst die App? Teile sie mit deinen Freunden."</string>
-<string name="preferencesTitle_About">"Skript von Neon-Soft / DrAcHe981"</string>
-<string name="preferencesDesc_About">"basierend auf der Source von Naman Dwivedi (naman14).
+		<string name="preferences_Share">"Teilen|Du magst die App? Teile sie mit deinen Freunden."</string>
+		<string name="preferences_About">"Skript von Neon-Soft / DrAcHe981|basierend auf der Source von Naman Dwivedi (naman14).
 Klicke hier für mehr Infos."</string>
 
 <!-- Preferences: Visibility and order -->
@@ -94,10 +93,6 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="presetSaveDialog_OverwriteText">"Existiert bereits, Voreinstellung wird überschrieben!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] wurde gespeichert!"</string>
 <string name="powerMenuMain_Screenrecord">"Bildschirmaufnahme"</string>
-<string name="preferencesTitle_RootXposed5">"Aktivierte Modulversion ist zu niedrig..."</string>
-<string name="preferencesDesc_RootXposed5">"Bitte starte dein Gerät neu, um den Updatevorgang abzuschließen!"</string>
-<string name="preferencesTitle_DeepXposedLogging">"Tiefes Xposed Logging"</string>
-<string name="preferencesDesc_DeepXposedLogging">"Aktiviere erweitertes Logging, nach der Aktivierung neu starten, um Änderung zu sehen."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Bildschirmaufnahme läuft"</string>
@@ -134,9 +129,6 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benötigt für zukünftige Funktionen (kleiner Tipp: eigene Bilder)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Benötigt für die Taschenlampe."</string>
-<string name="preferencesTitle_Permissions">"Berechtigungen"</string>
-<string name="preferencesDesc_Permissions">"Zeige die benutzten Berechtigungen und wofür diese genutzt werden. 
-Erlaube weitere Berechtigungen, die nicht beim ersten Start erlaubt wurden (Android 6.0+)."</string>
 <string name="visibilityOrder_HideDesc">"Verstecke Beschreibung"</string>
 
 <!-- Preferences: Colors -->
@@ -229,8 +221,6 @@ Deine Voreinstellungen (nach Sternen sortiert):
 <string name="login_RecoverAccount">"Kein Zugriff auf dein Konto? 
 Klicke hier für Wiederherstellungsoptionen."</string>
 <string name="login_RecoverPassword">"Passwort zurücksetzen"</string>
-<string name="preferencesTitle_Graphics">"Grafiken"</string>
-<string name="preferencesDesc_Graphics">"Ändere die Grafiken, nutze eigene oder vordefinierte Grafiken."</string>
 <string name="login_RecoverSuccess">"Du wirst eine E-mail mit Infos zum Zurücksetzen deines Passworts erhalten."</string>
 <string name="login_RecoverNotFound">"Keinen Benutzer mit diesen Daten gefunden."</string>
 <string name="powerMenuMain_SoundVibrate">"Sound: Vibrieren"</string>
@@ -255,7 +245,6 @@ Grund: "</string>
 <string name="presetsManager_Buttons">"Stern geben|Stern entfernen|Löschen|Melden|Hochladen|Teilen"</string>
 <string name="screenrecord_notif_buttons">"Stopp|Pointer an/aus"</string>
 <string name="downloadHelper_States">"Warte auf andere Downloads...|Verbinde mit Server...|Informationen werden abgerufen...|Runterladen...|Wird abgebrochen..."</string>
-<string name="preferences_Animations">"Animationen|Ändere die Animationen oder deaktiviert sie komplett."</string>
 <string name="uploadHelper_States">"Warte auf andere Uploads...|Verbinde mit Server...|Informationen werden abgerufen...|Hochladen...|Wird abgebrochen..."</string>
 <string name="visibilityOrder_AddItem">"Normales item hinzufügen
 Ein ganz normales Item mit nur einem. slot.|Multi item hinzufügen

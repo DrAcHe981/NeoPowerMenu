@@ -471,7 +471,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										}
 																								}
 																						});
-																				uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
+																				uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
 																				uH.setLocalUrl(path);
 																				uH.uploadAs(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0") + ".nps");
 																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0")},{"presetCreator",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"1")},{"presetAppVersion","v" + appVersion},{MainActivity.usernameemail.contains("@") ? "userEmail" : "userName",MainActivity.usernameemail},{"userId",MainActivity.deviceUniqeId}});
@@ -658,7 +658,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												}
 												else
 												{
-														new loadPreset().execute(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps");
+														new loadPreset().execute((position>=3 ? context.getFilesDir().getPath() + "/presets/" : "") + selectedName + (position>=3 ? ".nps" : ""));
 												}
 										}
 								});
@@ -756,7 +756,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																												Toast.makeText(context, "Failed to delete.\n" + reason, Toast.LENGTH_LONG).show();
 																										}
 																								});
-																						uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php");
+																						uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php");
 																						uH.setAdditionalUploadPosts(new String[][] {{"action","delete"},{"presetName",itemsTitle.get(position)},{"userId",(PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) ? MainActivity.deviceUniqeId : MainActivity.accountUniqeId)}});
 																						try
 																						{
@@ -894,7 +894,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																														dialogFragment.showDialog(R.id.dialog_container);
 																												}
 																										});
-																								uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+																								uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 																								uH.setAdditionalUploadPosts(new String[][] {{"action","report"},{"presetName",itemsTitle.get(position)},{"reason",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("\n", "<br>")},{"accountId",MainActivity.accountUniqeId}});
 																								try
 																								{
@@ -990,7 +990,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						}
 																				}
 																		});
-																uH.setServerUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+																uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 																uH.setAdditionalUploadPosts(new String[][] {{"action",(StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_Buttons).split("\\|")[0]) ? "givestar" : "removestar")},{(MainActivity.usernameemail.contains("@") ? "userEmail" : "userName"),MainActivity.usernameemail},{"name",itemsTitle.get(position)}});
 																try
 																{
@@ -1153,7 +1153,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				{}
 																		}
 																});
-														dH.setUrl("http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position).replace("'", "\\'").replace("\"", "\\\"") + ".nps");
+														dH.setUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position).replace("'", "\\'").replace("\"", "\\\"") + ".nps");
 														dH.setLocalUrl(context.getFilesDir().getPath() + "/download");
 														dH.startDownload();
 												} else {
@@ -1254,7 +1254,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						// TODO: Implement this method
 						try
 						{
-								String[] builtIn = context.getString(R.string.presetsManager_BuiltIn).split("/");
+								String[] builtIn = context.getString(R.string.presetLoadDialog_BuiltIn).split("\\|");
 								if (p1[0].startsWith(context.getFilesDir().getPath()))
 								{
 										File presetFile = new File(p1[0]);
@@ -1362,6 +1362,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						}
 						catch (Throwable e)
 						{
+								Log.e("NPM:import","Failed to import: ",e);
 								return e.toString();
 						}
 				}

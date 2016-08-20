@@ -74,8 +74,8 @@ public class PreferencesGraphicsFragment extends Fragment
 		{
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "Graphics";
-				MainActivity.actionbar.setTitle(getString(R.string.preferencesTitle_Graphics));
-				MainActivity.actionbar.setSubTitle(getString(R.string.preferencesDesc_Graphics));
+				MainActivity.actionbar.setTitle(getString(R.string.preferences_Graphics).split("\\|")[0]);
+				MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Graphics).split("\\|")[1]);
 				
 				MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu),R.drawable.ic_action_launch,MainActivity.previewOnClickListener);
 				
@@ -256,7 +256,7 @@ public class PreferencesGraphicsFragment extends Fragment
 						.start(mContext);*/
 				//mContext.startActivityForResult(intent,CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE);
 				
-				MainActivity.fragmentManager.beginTransaction().setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new Cropper(defaultGraphics[selected][0].toString(),selectedImage,defaultGraphics[selected][2].toString()+".png")).commit();
+				MainActivity.changePrefPage(new Cropper(defaultGraphics[selected][0].toString(),selectedImage,defaultGraphics[selected][2].toString()+".png"), false);
 				
 		}
 		

@@ -19,41 +19,32 @@
 <string name="powerMenu_Shuttingdown">"Wyłączanie..."</string>
 <string name="powerMenu_Rebooting">"Ponowne uruchamianie..."</string>
 
-<!-- Preferences: Main -->
-<string name="preferencesCategory_RootXposed">"Root oraz Xposed"</string>
-<string name="preferencesTitle_RootXposed1">"Root oraz Xposed niedostępne"</string>
-<string name="preferencesDesc_RootXposed1">"Root oraz Xposed są wymagane do działania modułu."</string>
-<string name="preferencesTitle_RootXposed2">"Xposed działa, ale root nie."</string>
-<string name="preferencesDesc_RootXposed2">"Root jest wymagany do wyłączenia lub restartu...
+		<!-- Preferences: Main -->
+		<string name="preferencesCategory_RootXposed">"Root oraz Xposed"</string>
+		<string name="preferences_RootXposed1">"Root oraz Xposed niedostępne|Root oraz Xposed są wymagane do działania modułu."</string>
+		<string name="preferences_RootXposed2">"Xposed działa, ale root nie.|Root jest wymagany do wyłączenia lub restartu...
 Zezwól na dostęp roota."</string>
-<string name="preferencesTitle_RootXposed3">"Root działa,ale Xposed nie"</string>
-<string name="preferencesDesc_RootXposed3">"Xposed jest wymagany do zastąpienia menu zasilania...
+		<string name="preferences_RootXposed3">"Root działa,ale Xposed nie|Xposed jest wymagany do zastąpienia menu zasilania...
 Aktywuj moduł w Xposed Installer."</string>
-<string name="preferencesTitle_RootXposed4">"Root oraz Xposed działają"</string>
-<string name="preferencesDesc_RootXposed4">"Aplikacja powinna śmigać!"</string>
-<string name="preferencesCategory_General">"Ogólne"</string>
-<string name="preferencesTitle_Style">"Styl"</string>
-<string name="preferencesTitle_Theme">"Motyw"</string>
-<string name="preferencesDesc_Theme">"Zmień wygląd i odczucia."</string>
-<string name="preferencesTitle_VisibilityOrder">"Widoczność i kolejność"</string>
-<string name="preferencesDesc_VisibilityOrder">"Wybierz elementy które chcesz widzieć i uporządkuj je jak chcesz."</string>
-<string name="preferencesCategory_Other">"Inne"</string>
-<string name="preferencesTitle_Advanced">"Zaawansowane ustawienia"</string>
-<string name="preferencesDesc_Advanced">"Zmień zaawansowane ustawienia jak opóźnienia, grawitacja lub szybkość."</string>
-<string name="preferencesTitle_HideLauncherIcon">"Ukryj ikonę w launcherze"</string>
-<string name="preferencesDesc_HideLauncherIcon">"Ukryj ikonę w launcherze (może być wymagany restart).
-Ustawienia będą dostępne jedynie przez Xposed Installer.
-"</string>
-<string name="preferencesCategory_About">"O aplikacji"</string>
-<string name="preferencesTitle_NeoSource">"Źródło"</string>
-<string name="preferencesDesc_NeoSource">"Aplikacja ma otwarte źródło.
-Sprawdź źródła na GitHub"</string>
-<string name="preferencesTitle_Share">"Udostępnij"</string>
-<string name="preferencesDesc_Share">"Lubisz tą aplikację? Podziel się nią ze znajomymi!"</string>
-<string name="preferencesTitle_About">"Kod: Neon-Soft / DrAcHe981"</string>
+		<string name="preferences_RootXposed4">"Root oraz Xposed działają|Aplikacja powinna śmigać!"</string>
+		<string name="preferences_RootXposed5">"Wersja Xposed jest zbyt stara|Uruchom urządzenie ponownie, by dokończyć proces aktualizacji."</string>
 
-<!-- Fuzzy -->
-<string name="preferencesDesc_About">"Oparte na źródle od Naman Dwivedi(naman14)."</string>
+		<string name="preferencesCategory_General">"Ogólne"</string>
+		<string name="preferences_Style">"Styl"</string>
+		<string name="preferences_Theme">"Motyw|Zmień wygląd i odczucia."</string>
+		<string name="preferences_VisibilityOrder">"Widoczność i kolejność|Wybierz elementy które chcesz widzieć i uporządkuj je jak chcesz."</string>
+
+		<string name="preferencesCategory_Other">"Inne"</string>
+		<string name="preferences_Advanced">"Zaawansowane ustawienia|Zmień zaawansowane ustawienia jak opóźnienia, grawitacja lub szybkość."</string>
+		<string name="preferences_HideLauncherIcon">"Ukryj ikonę w launcherze|Ukryj ikonę w launcherze (może być wymagany restart).
+Ustawienia będą dostępne jedynie przez Xposed Installer."</string>
+		<string name="preferences_DeepXposedLogging">"Zaawansowane logi Xposed|Włącz zaawansowane logi Xposed, zmiany będą widoczne po restarcie."</string>
+
+		<string name="preferencesCategory_About">"O aplikacji"</string>
+		<string name="preferences_NeoSource">"Źródło|Aplikacja ma otwarte źródło.
+Sprawdź źródła na GitHub"</string>
+		<string name="preferences_Share">"Udostępnij|Lubisz tą aplikację? Podziel się nią ze znajomymi!"</string>
+		<string name="preferences_About">"Kod: Neon-Soft / DrAcHe981|Oparte na źródle od Naman Dwivedi(naman14)."</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Kolejność i widoczność"</string>
@@ -99,10 +90,6 @@ Tego nie można cofnąć!"</string>
 <string name="presetSaveDialog_OverwriteText">"Plik o takiej nazwie istnieje i zostanie nadpisany!"</string>
 <string name="presetSave_PresetSaved">"[PRESETNAME] zapisany!"</string>
 <string name="powerMenuMain_Screenrecord">"Nagrywanie ekranu"</string>
-<string name="preferencesTitle_RootXposed5">"Wersja Xposed jest zbyt stara"</string>
-<string name="preferencesDesc_RootXposed5">"Uruchom urządzenie ponownie, by dokończyć proces aktualizacji."</string>
-<string name="preferencesTitle_DeepXposedLogging">"Zaawansowane logi Xposed"</string>
-<string name="preferencesDesc_DeepXposedLogging">"Włącz zaawansowane logi Xposed, zmiany będą widoczne po restarcie."</string>
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Nagrywanie ekranu rozpoczęte"</string>
@@ -135,7 +122,6 @@ Tego nie można cofnąć!"</string>
 <string name="permissionsScreen_NotAllGranted">"Nie wszystkie uprawnienia są przyznane, niektóre funkcje mogą nie działać ..."</string>
 <string name="permissionsScreen_DontAskAgain">"Nie pytaj ponownie"</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
-<string name="preferencesTitle_Permissions">"Uprawnienia"</string>
 <string name="visibilityOrder_HideDesc">"Ukryj opis"</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Nagraj dźwięk"</string>
 <string name="SoundMode_Normal">"Normalny"</string>

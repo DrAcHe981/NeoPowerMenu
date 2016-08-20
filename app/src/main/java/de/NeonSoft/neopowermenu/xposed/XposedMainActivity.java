@@ -22,6 +22,9 @@ import java.util.*;
 import org.acra.*;
 
 import de.NeonSoft.neopowermenu.R;
+import de.NeonSoft.neopowermenu.Preferences.*;
+import android.view.animation.*;
+import android.view.View.*;
 
 /**
  * Created by naman on 20/03/15.
@@ -32,7 +35,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		public static SharedPreferences preferences;
 		public static SharedPreferences colorPrefs;
 		public static SharedPreferences orderPrefs;
-    private static CircularRevealView revealView;
+		public static SharedPreferences animationPrefs;
+    private static CircularRevealView revealView, revealView2;
 		private static TextView PreviewLabel;
     private static int backgroundColor;
 		public static boolean mKeyguardShowing = false;
@@ -63,6 +67,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		public static ImageLoader imageLoader;
 		public static boolean ImgLoader_Loaded;
 		
+		KeyguardManager mKeyguardManger;
+		KeyguardManager.KeyguardLock mKeyguardLock;
 		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +83,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",Context.MODE_WORLD_READABLE);
 				colorPrefs = getSharedPreferences("colors", Context.MODE_WORLD_READABLE);
 				orderPrefs = getSharedPreferences("visibilityOrder",Context.MODE_WORLD_READABLE);
+				animationPrefs = getSharedPreferences("animations", Context.MODE_WORLD_READABLE);
 				
 				mBlurScale = preferences.getInt("blurScale",20);
 				mBlurRadius = preferences.getInt("blurRadius",3);
@@ -88,20 +95,25 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				sStyleName = preferences.getString("DialogTheme","Material");
 				
         setTheme(R.style.TransparentApp);
-				getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-				getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-				getWindow().setFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED,WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-				getWindow().setFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+				getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | 
+														WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION |
+														WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED |
+														WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM |
+														WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON |
+														WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON);
 				
         getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
+				//getWindow().getDecorView().setSystemUiVisibility(View.STATUS_BAR_DISABLE_EXPAND | View.STATUS_BAR_DISABLE_HOME | View.STATUS_BAR_DISABLE_RECENT);
 				//mKeyguardShowing = getIntent().getBooleanExtra("mKeyguardShowing",false);
-				KeyguardManager km = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-				mKeyguardShowing = km.isKeyguardLocked();
+				mKeyguardManger = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+				mKeyguardLock = mKeyguardManger.newKeyguardLock(KEYGUARD_SERVICE);
+				mKeyguardShowing = mKeyguardManger.isDeviceLocked();
         if (mKeyguardShowing) {
 						//Log.d("NeoPowerMenu","Showing in Keyguard");
 						if (!preferences.getBoolean("ShowOnLockScreen",true)) { 
 								finish();
 						}
+						//mKeyguardLock.disableKeyguard();
             getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         } else {
 						//Log.d("NeoPowerMenu","Showing Normal");
@@ -121,7 +133,17 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				mActivity = XposedMainActivity.this;
 				mActivityRootView = (FrameLayout) findViewById(R.id.activitymainxposedFrameLayout_Root);
 				
-				mBlurUtils = new BlurUtils(getApplicationContext());
+				FrameLayout mFragmentHolder = (FrameLayout) findViewById(R.id.powerfragment_holder);
+				mFragmentHolder.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										XposedDialog.dismissThis();
+								}
+						});
+				/*mBlurUtils = new BlurUtils(getApplicationContext());
 				Bitmap lastBlurredBitmap = BlurTask.getLastBlurredBitmap();
 				
 				if(lastBlurredBitmap!= null) {
@@ -132,10 +154,11 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				} else {
 						//Toast.makeText(mContext,"Starting new blur task...",Toast.LENGTH_SHORT).show();
 						//startBlurTask();
-				}
+				}*/
 				
         revealView = (CircularRevealView) findViewById(R.id.reveal);
-
+				revealView2 = (CircularRevealView) findViewById(R.id.reveal2);
+				
 				PreviewLabel = (TextView) findViewById(R.id.PreviewLable);
 				if(XposedMainActivity.previewMode)
 						PreviewLabel.setVisibility(View.VISIBLE);
@@ -159,10 +182,12 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 						public void onReceive(Context p1, Intent p2)
 						{
 								// TODO: Implement this method
+								if(XposedDialog.canDismiss || previewMode) {
 								if(p2.getAction().equalsIgnoreCase(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
-										powerDialog.dismiss();
+										powerDialog.dismissThis();
 								} else if(p2.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_OFF)) {
 										finish();
+								}
 								}
 						}
 				};
@@ -171,11 +196,19 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				
 				initImageLoader();
 				
+				if(animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+						final Animation anim = helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, false);
+						final int speed = (int) anim.getDuration();
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                revealView.reveal(p.x, p.y, color, 0, 340, null);
+								if (animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
+                		revealView.reveal(p.x, p.y, color, 0, speed, null);
+								} else {
+										revealView.reveal(p.x, p.y, color, 0, 0, null);
+										revealView.startAnimation(anim);
+								}
             }
         }, 50);
 
@@ -186,11 +219,15 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             public void run() {
                 showPowerDialog();
             }
-        }, 240);
+        }, Math.max(speed-150,0));
+				} else {
+						revealView.reveal(p.x, p.y, color, 0, 0, null);
+						showPowerDialog();
+				}
 
 
     }
-
+		
 		public static void startBlurTask() {
 				if (mActivityRootView != null)
 						mActivityRootView.setBackground(null);
@@ -264,14 +301,14 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				try {
         FragmentManager fm = getFragmentManager();
         powerDialog = new XposedDialog();
-				if(sStyleName.equalsIgnoreCase("Material")) {
-						powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
-						} else if (sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
-								powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.TransparentApp);
-						}
-						//fm.beginTransaction().add(R.id.powerfragment_holder,powerDialog).commit();
+				//if(sStyleName.equalsIgnoreCase("Material")) {
+						//powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
+						//} else if (sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
+						//		powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.TransparentApp);
+						//}
+						fm.beginTransaction().add(R.id.powerfragment_holder,powerDialog).commit();
 						//powerDialog.setStyle(DialogFragment.STYLE_NO_FRAME, R.style.ThemeDialogBaseLight);
-        powerDialog.show(fm, "fragment_power");
+        //powerDialog.show(fm, "fragment_power");
 				} catch (Throwable t) {
 						Log.e("NeoPowerMenu","Failed to show power menu: "+t.toString());
 				}
@@ -282,8 +319,22 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         final Point p = new Point(maxX / 2, maxY / 2);
 
-        revealView.reveal(p.x, p.y, color, 0, 340, null);
-
+				if(animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+						Animation anim = helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, false);
+						int speed = (int) anim.getDuration();
+				if (animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
+						revealView.reveal(p.x, p.y, color, 0, speed, null);
+				} else {
+						//revealView.reveal(p.x, p.y, color, 0, 0, null);
+						revealView2.reveal(p.x, p.y, color, 0, 0, null);
+						revealView.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
+						revealView.setVisibility(View.GONE);
+						revealView2.setVisibility(View.VISIBLE);
+						revealView2.startAnimation(anim);
+				}
+				} else {
+        		revealView.reveal(p.x, p.y, color, 0, 0, null);
+				}
 
     }
 
@@ -300,23 +351,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     @Override
     public void onDismiss(final DialogInterface dialog) {
 				if(XposedDialog.canDismiss || previewMode) {
-        final Point p = new Point(maxX / 2, maxY / 2);
-
-        handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                revealView.hide(p.x, p.y, backgroundColor, 0, 340, null);
-            }
-        }, 300);
-        handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                finish();
-                overridePendingTransition(0, 0);
-            }
-        }, 500);
 				}
     }
 
@@ -325,7 +359,60 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		{
 				// TODO: Implement this method
 				if(XposedDialog.canDismiss || previewMode) {
-						super.onBackPressed();
+						XposedDialog.dismissThis();
+						//super.onBackPressed();
+				}
+		}
+		
+		public static void dismissThis() {
+				if(XposedDialog.canDismiss || previewMode) {
+        final Point p = new Point(maxX / 2, maxY / 2);
+
+
+				if (animationPrefs.getInt(PreferencesAnimationsFragment.names[0] + "_type", PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1)
+				{
+						final int speed;
+						Animation anim = helper.getAnimation(mContext, animationPrefs, 0, true);
+						speed = (int) anim.getDuration();
+						Handler handler = new Handler();
+						handler.postDelayed(new Runnable() {
+										@Override
+										public void run()
+										{
+
+												if (animationPrefs.getInt(PreferencesAnimationsFragment.names[0] + "_type", PreferencesAnimationsFragment.defaultTypes[0]) == 1)
+												{
+														revealView.hide(p.x, p.y, backgroundColor, 0, speed, null);
+												}
+												else
+												{
+														//revealView.hide(p.x, p.y, backgroundColor, 0, 0, null);
+														Animation anim = helper.getAnimation(mContext, animationPrefs, 0, true);
+														if(revealView2.getVisibility()==View.VISIBLE) {
+																revealView2.startAnimation(anim);
+														} else {
+																revealView.startAnimation(anim);
+														}
+												}
+										}
+								}, 0);
+						handler = new Handler();
+						handler.postDelayed(new Runnable() {
+										@Override
+										public void run()
+										{
+												if (mKeyguardShowing)
+												{
+														//mKeyguardLock.reenableKeyguard();
+												}
+												mActivity.finish();
+												mActivity.overridePendingTransition(0, 0);
+										}
+								}, speed);
+				} else {
+						mActivity.finish();
+						mActivity.overridePendingTransition(0, 0);
+				}
 				}
 		}
 

@@ -436,7 +436,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 								//Toast.makeText(mContext, "start move from "+from+" to "+to+"\nChecking from "+to+" to "+(itemsType.size()-1), Toast.LENGTH_LONG).show();
 								for(int i = to; i < itemsType.size(); i++) {
 										Object[] checkItem = getItemAt(i);
-										if((int) checkItem[0]==TYPE_MULTIPAGE_END && checkItem[1].toString().equals(item[1]) && i != to) {
+										if((int) checkItem[0]==TYPE_MULTIPAGE_END && i != to) {
 												itemsType.remove(from);
 												itemsTitle.remove(from);
 												itemsType.add(to,(int) item[0]);
@@ -444,7 +444,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 												notifyDataSetChanged();
 												//Toast.makeText(mContext, "Stopped end search at "+i, Toast.LENGTH_LONG).show();
 												break;
-										} else if ((int) checkItem[0]==TYPE_MULTIPAGE_START && !checkItem[1].toString().equals(item[1])) {
+										} else if ((int) checkItem[0]==TYPE_MULTIPAGE_START) {
 												//Toast.makeText(mContext, "Stopped start search at "+i, Toast.LENGTH_LONG).show();
 												//break;
 										}
@@ -454,7 +454,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 								//Toast.makeText(mContext, "end move from "+from+" to "+to+"\nChecking from "+to+" to 0", Toast.LENGTH_LONG).show();
 								for(int i = to; i >= 0; i--) {
 										Object[] checkItem = getItemAt(i);
-										if((int) checkItem[0]==TYPE_MULTIPAGE_START && checkItem[1].toString().equals(item[1]) && i != to) {
+										if((int) checkItem[0]==TYPE_MULTIPAGE_START && i != to) {
 												itemsType.remove(from);
 												itemsTitle.remove(from);
 												itemsType.add(to,(int) item[0]);
@@ -462,7 +462,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 												notifyDataSetChanged();
 												//Toast.makeText(mContext, "Stopped start search at "+i, Toast.LENGTH_LONG).show();
 												break;
-										} else if ((int) checkItem[0]==TYPE_MULTIPAGE_END && !checkItem[1].toString().equals(item[1])) {
+										} else if ((int) checkItem[0]==TYPE_MULTIPAGE_END) {
 												//Toast.makeText(mContext, "Stopped end search at "+i, Toast.LENGTH_LONG).show();
 												//break;
 										}
@@ -482,13 +482,24 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 		{
 				if((int) itemsType.get(position)==TYPE_MULTIPAGE_START) {
 						Object[] item = getItemAt(position);
+						int removingLayers = 0;
 						while(itemsType.size() > position) {
 								Object[] checkItem = getItemAt(position);
-								if((int) checkItem[0] == TYPE_MULTIPAGE_END && checkItem[1].toString().equals(item[1])) {
-										itemsType.remove(position);
-										itemsTitle.remove(position);
-										break;
+								if((int) checkItem[0] == TYPE_MULTIPAGE_END) {
+										if(removingLayers>0) {
+												itemsType.remove(position);
+												itemsTitle.remove(position);
+												removingLayers --;
+												Toast.makeText(mContext,"- Setting layer count to "+removingLayers,Toast.LENGTH_SHORT).show();
+												if(removingLayers == 0 ){
+														break;
+												}
+										}
 								} else {
+										if((int) checkItem[0] == TYPE_MULTIPAGE_START) {
+												removingLayers ++;
+												Toast.makeText(mContext,"+ Setting layer count to "+removingLayers,Toast.LENGTH_SHORT).show();
+										}
 										itemsType.remove(position);
 										itemsTitle.remove(position);
 								}
@@ -509,7 +520,16 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 				for (int i = 0;i < itemsTitle.size();i++)
 				{
 						MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size() - 1)+"_" : "") + i + "_item_type", itemsType.get(i)).commit();
-						if (itemsType.get(i) == TYPE_NORMAL)
+						if (itemsType.get(i) == TYPE_MULTIPAGE_START) {
+								MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_type", TYPE_MULTIPAGE_START).commit();
+								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_title", itemsTitle.get(i)).commit();
+								MultiPage.add(itemsTitle.get(i));
+						} else if (itemsType.get(i) == TYPE_MULTIPAGE_END) {
+								MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_type", TYPE_MULTIPAGE_END).commit();
+								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_title", MultiPage.get(MultiPage.size()-1)).commit();
+								MultiPage.remove(MultiPage.size()-1);
+						}
+						else if (itemsType.get(i) == TYPE_NORMAL)
 						{
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "") + i + "_item_title", itemsTitle.get(i)).commit();
 						}
@@ -519,15 +539,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "") + i + "_item1_title", split[0]).commit();
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "") + i + "_item2_title", (split.length >= 2 ? split[1] : "Empty")).commit();
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "") + i + "_item3_title", (split.length == 3 ? split[2] : "Empty")).commit();
-						} else if (itemsType.get(i) == TYPE_MULTIPAGE_START) {
-								MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_type", itemsType.get(i)).commit();
-								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_title", itemsTitle.get(i)).commit();
-								MultiPage.add(itemsTitle.get(i));
-						} else if (itemsType.get(i) == TYPE_MULTIPAGE_END) {
-								MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_type", itemsType.get(i)).commit();
-								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_title", itemsTitle.get(i)).commit();
-								MultiPage.remove(MultiPage.size()-1);
-						}
+						} 
 				}
 		}
 

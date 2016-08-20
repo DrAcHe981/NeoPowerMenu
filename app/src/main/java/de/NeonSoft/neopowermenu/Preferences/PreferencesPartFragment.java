@@ -25,6 +25,7 @@ public class PreferencesPartFragment extends Fragment
 {
 		
 		Context mContext;
+		Activity mActivity;
 
     private String Urlgithub = "https://github.com/DrAcHe981/NeoPowerMenu";
     
@@ -45,30 +46,54 @@ public class PreferencesPartFragment extends Fragment
 		private static TextView TextView_StyleDesc;
 
 		private static LinearLayout LinearLayout_Theme;
+		private static TextView TextView_ThemeTitle;
+		private static TextView TextView_ThemeDesc;
 
 		private static LinearLayout LinearLayout_Graphics;
+		private static TextView TextView_GraphicsTitle;
+		private static TextView TextView_GraphicsDesc;
 		
 		private static LinearLayout LinearLayout_VisibilityOrder;
+		private static TextView TextView_VisibilityOrderTitle;
+		private static TextView TextView_VisibilityOrderDesc;
 		
 		private static LinearLayout LinearLayout_Animations;
 		private static TextView TextView_AnimationsTitle;
 		private static TextView TextView_AnimationsDesc;
 
+		private static LinearLayout LinearLayout_Account;
+		private static TextView TextView_AccountTitle;
+		private static TextView TextView_AccountDesc;
+
 		private static LinearLayout LinearLayout_Advanced;
+		private static TextView TextView_AdvancedTitle;
+		private static TextView TextView_AdvancedDesc;
 		
 		private static LinearLayout LinearLayout_Permissions;
+		private static TextView TextView_PermissionsTitle;
+		private static TextView TextView_PermissionsDesc;
 
 		private static LinearLayout LinearLayout_HideLauncherIcon;
+		private static TextView TextView_HideLauncherIconTitle;
+		private static TextView TextView_HideLauncherIconDesc;
 		private static Switch Switch_HideLauncherIcon;
 		
 		private static LinearLayout LinearLayout_DeepXposedLogging;
+		private static TextView TextView_DeepXposedLoggingTitle;
+		private static TextView TextView_DeepXposedLoggingDesc;
 		private static Switch Switch_DeepXposedLogging;
 		
 		private static LinearLayout LinearLayout_Source;
+		private static TextView TextView_SourceTitle;
+		private static TextView TextView_SourceDesc;
 
 		private static LinearLayout LinearLayout_Share;
+		private static TextView TextView_ShareTitle;
+		private static TextView TextView_ShareDesc;
 
 		private static LinearLayout LinearLayout_About;
+		private static TextView TextView_AboutTitle;
+		private static TextView TextView_AboutDesc;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -77,6 +102,7 @@ public class PreferencesPartFragment extends Fragment
 				MainActivity.visibleFragment = "Main";
 	
 				mContext = getActivity();
+				mActivity = getActivity();
 
 				if (MainActivity.preferences.getBoolean("autoLogin", false) && !MainActivity.loggedIn)
 				{
@@ -85,6 +111,37 @@ public class PreferencesPartFragment extends Fragment
 				
 				MainActivity.actionbar.setTitle("NeoPowerMenu");
 				MainActivity.actionbar.setSubTitle("v" + MainActivity.versionName + " (" + MainActivity.versionCode + ")"+(MainActivity.LOCALTESTSERVER ? " | Using local test Server" : ""));
+
+				if (MainActivity.orderPrefs.getAll().isEmpty())
+				{
+						MainActivity.orderPrefs.edit().putInt("0_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
+						MainActivity.orderPrefs.edit().putString("0_item_title", "Shutdown").commit();
+						MainActivity.orderPrefs.edit().putInt("1_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
+						MainActivity.orderPrefs.edit().putString("1_item_title", "Reboot").commit();
+						MainActivity.orderPrefs.edit().putInt("2_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
+						MainActivity.orderPrefs.edit().putString("2_item_title", "SoftReboot").commit();
+						MainActivity.orderPrefs.edit().putInt("3_item_type", visibilityOrder_ListAdapter.TYPE_MULTI).commit();
+						MainActivity.orderPrefs.edit().putString("3_item1_title", "Recovery").commit();
+						MainActivity.orderPrefs.edit().putString("3_item2_title", "Bootloader").commit();
+						MainActivity.orderPrefs.edit().putString("3_item3_title", "SafeMode").commit();
+				}
+				for (int i = 0;i < PreferencesColorFragment.ColorNames.length; i++)
+				{
+						if (PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM)
+						{
+								if (MainActivity.colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty())
+								{
+										MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).commit();
+										MainActivity.preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
+								}
+						}
+				}
+				for(int i = 0; i < PreferencesAnimationsFragment.names.length; i++) {
+						if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i]+"_type",-1)==-1) {
+								MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i]+"_type",PreferencesAnimationsFragment.defaultTypes[i]).commit();
+								MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i]+"_speed",2).commit();
+						}
+				}
 				
 				ActiveStyle = MainActivity.preferences.getString("DialogTheme", "Material");
 				hideicon = MainActivity.preferences.getBoolean("HideLauncherIcon",false);
@@ -102,40 +159,86 @@ public class PreferencesPartFragment extends Fragment
 				TextView_StyleDesc.setText(ActiveStyle);
 
 				LinearLayout_Theme = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Theme);
+				TextView_ThemeTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ThemeTitle);
+				TextView_ThemeDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ThemeDesc);
+				TextView_ThemeTitle.setText(getString(R.string.preferences_Theme).split("\\|")[0]);
+				TextView_ThemeDesc.setText(getString(R.string.preferences_Theme).split("\\|")[1]);
 
 				LinearLayout_Graphics =(LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Graphics);
+				TextView_GraphicsTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_GraphicsTitle);
+				TextView_GraphicsDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_GraphicsDesc);
+				TextView_GraphicsTitle.setText(getString(R.string.preferences_Graphics).split("\\|")[0]);
+				TextView_GraphicsDesc.setText(getString(R.string.preferences_Graphics).split("\\|")[1]);
 				
 				LinearLayout_VisibilityOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_VisibilityOrder);
+				TextView_VisibilityOrderTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_VisibilityOrderTitle);
+				TextView_VisibilityOrderDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_VisibilityOrderDesc);
+				TextView_VisibilityOrderTitle.setText(getString(R.string.preferences_VisibilityOrder).split("\\|")[0]);
+				TextView_VisibilityOrderDesc.setText(getString(R.string.preferences_VisibilityOrder).split("\\|")[1]);
 
 				LinearLayout_Animations = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Animations);
 				TextView_AnimationsTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AnimationsTitle);
 				TextView_AnimationsDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AnimationsDesc);
 				TextView_AnimationsTitle.setText(getString(R.string.preferences_Animations).split("\\|")[0]);
 				TextView_AnimationsDesc.setText(getString(R.string.preferences_Animations).split("\\|")[1]);
-				LinearLayout_Animations.setAlpha((float) .3);
-				LinearLayout_Animations.setEnabled(false);
+				//inearLayout_Animations.setAlpha((float) .3);
+				//LinearLayout_Animations.setEnabled(false);
+
+				LinearLayout_Account = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Account);
+				TextView_AccountTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AccountTitle);
+				TextView_AccountDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AccountDesc);
+				TextView_AccountTitle.setText(getString(R.string.preferences_Account).split("\\|")[0]);
+				TextView_AccountDesc.setText(getString(R.string.preferences_Account).split("\\|")[1]);
 				
 				LinearLayout_Advanced = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Advanced);
+				TextView_AdvancedTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AdvancedTitle);
+				TextView_AdvancedDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AdvancedDesc);
+				TextView_AdvancedTitle.setText(getString(R.string.preferences_Advanced).split("\\|")[0]);
+				TextView_AdvancedDesc.setText(getString(R.string.preferences_Advanced).split("\\|")[1]);
 				
 				LinearLayout_Permissions = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Permissions);
+				TextView_PermissionsTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_PermissionsTitle);
+				TextView_PermissionsDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_PermissionsDesc);
+				TextView_PermissionsTitle.setText(getString(R.string.preferences_Permissions).split("\\|")[0]);
+				TextView_PermissionsDesc.setText(getString(R.string.preferences_Permissions).split("\\|")[1]);
 				
 				LinearLayout_HideLauncherIcon = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_HideLauncherIcon);
+				TextView_HideLauncherIconTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_HideLauncherIconTitle);
+				TextView_HideLauncherIconDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_HideLauncherIconDesc);
+				TextView_HideLauncherIconTitle.setText(getString(R.string.preferences_HideLauncherIcon).split("\\|")[0]);
+				TextView_HideLauncherIconDesc.setText(getString(R.string.preferences_HideLauncherIcon).split("\\|")[1]);
 				Switch_HideLauncherIcon = (Switch) InflatedView.findViewById(R.id.activitypreferencesSwitch_HideLauncherIcon);
 				Switch_HideLauncherIcon.setChecked(hideicon);
 				Switch_HideLauncherIcon.setClickable(false);
 				Switch_HideLauncherIcon.setFocusable(false);
 
 				LinearLayout_DeepXposedLogging = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_DeepXposedLogging);
+				TextView_DeepXposedLoggingTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_DeepXposedLoggingTitle);
+				TextView_DeepXposedLoggingDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_DeepXposedLoggingDesc);
+				TextView_DeepXposedLoggingTitle.setText(getString(R.string.preferences_DeepXposedLogging).split("\\|")[0]);
+				TextView_DeepXposedLoggingDesc.setText(getString(R.string.preferences_DeepXposedLogging).split("\\|")[1]);
 				Switch_DeepXposedLogging = (Switch) InflatedView.findViewById(R.id.activitypreferencesSwitch_DeepXposedLogging);
 				Switch_DeepXposedLogging.setChecked(DeepXposedLogging);
 				Switch_DeepXposedLogging.setClickable(false);
 				Switch_DeepXposedLogging.setFocusable(false);
 				
 				LinearLayout_Source = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Source);
+				TextView_SourceTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_SourceTitle);
+				TextView_SourceDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_SourceDesc);
+				TextView_SourceTitle.setText(getString(R.string.preferences_NeoSource).split("\\|")[0]);
+				TextView_SourceDesc.setText(getString(R.string.preferences_NeoSource).split("\\|")[1]);
 				
 				LinearLayout_Share = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Share);
+				TextView_ShareTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ShareTitle);
+				TextView_ShareDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ShareDesc);
+				TextView_ShareTitle.setText(getString(R.string.preferences_Share).split("\\|")[0]);
+				TextView_ShareDesc.setText(getString(R.string.preferences_Share).split("\\|")[1]);
 
 				LinearLayout_About = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_About);
+				TextView_AboutTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AboutTitle);
+				TextView_AboutDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AboutDesc);
+				TextView_AboutTitle.setText(getString(R.string.preferences_About).split("\\|")[0]);
+				TextView_AboutDesc.setText(getString(R.string.preferences_About).split("\\|")[1]);
 
 				LinearLayout_Style.setOnClickListener(new OnClickListener() {
 
@@ -143,9 +246,10 @@ public class PreferencesPartFragment extends Fragment
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										String[] styleList = new String[1];
+										String[] styleList = new String[3];
 										styleList[0] = "Material";
-										//styleList[1] = "Material (Fullscreen)";
+										styleList[1] = "Material (Fullscreen)";
+										styleList[2] = "Material (Full horizontal)";
 										for (int i=0;i < styleList.length;i++)
 										{
 												if (styleList[i].equalsIgnoreCase(ActiveStyle))
@@ -201,7 +305,7 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesColorFragment()).commit();
+										MainActivity.changePrefPage( new PreferencesColorFragment(), false);
 								}
 						});
 
@@ -210,7 +314,7 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										MainActivity.fragmentManager.beginTransaction().setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesGraphicsFragment()).commit();
+										MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
 								}
 						});
 						
@@ -219,7 +323,7 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesVisibilityOrderFragment()).commit();
+										MainActivity.changePrefPage( new PreferencesVisibilityOrderFragment(), false);
 								}
 						});
 
@@ -228,7 +332,19 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesAnimationsFragment()).commit();
+										MainActivity.changePrefPage( new PreferencesAnimationsFragment(), false);
+								}
+						});
+						
+				LinearLayout_Account.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										PreferencesPresetsFragment ppf = new PreferencesPresetsFragment();
+										ppf.setStartTab(0);
+										MainActivity.changePrefPage( ppf, false);
 								}
 						});
 				
@@ -237,7 +353,7 @@ public class PreferencesPartFragment extends Fragment
 								@Override
 								public void onClick(View p1)
 								{
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new PreferencesAdvancedFragment()).commit();
+										MainActivity.changePrefPage(new PreferencesAdvancedFragment(), false);
 								}
 						});
 
@@ -250,7 +366,7 @@ public class PreferencesPartFragment extends Fragment
 										args.putBoolean("AutoStart",false);
 										permissionsScreen permScreen = new permissionsScreen();
 										permScreen.setArguments(args);
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,permScreen).commit();
+										MainActivity.changePrefPage(permScreen, false);
 								}
 						});
 						
@@ -310,7 +426,7 @@ public class PreferencesPartFragment extends Fragment
 										String sAux = getString(R.string.ShareMessage);
 										sAux = sAux + "repo.xposed.info/module/de.NeonSoft.neopowermenu \n\n";
 										i.putExtra(Intent.EXTRA_TEXT, sAux);
-										startActivity(Intent.createChooser(i, getString(R.string.preferencesTitle_Share)));
+										startActivity(Intent.createChooser(i, getString(R.string.preferences_Share).split("\\|")[0]));
 								}
 						});
 
@@ -320,7 +436,7 @@ public class PreferencesPartFragment extends Fragment
 								public void onClick(View p1)
 								{
 										// TODO: Implement this method
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new AboutFragment()).commit();
+										MainActivity.changePrefPage(new AboutFragment(), false);
 								}
 						});
 
@@ -336,21 +452,21 @@ public class PreferencesPartFragment extends Fragment
 						if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)
 						{
 								if(!MainActivity.RootAvailable) {
-										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed2);
-										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed2);
+										TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed2).split("\\|")[0]);
+										TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed2).split("\\|")[1]);
 								} else {
-										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed4);
-										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed4);
+										TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed4).split("\\|")[0]);
+										TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed4).split("\\|")[1]);
 										//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
 										ProgressBar_RootWait.setVisibility(View.GONE);
 								}
 						} else if (helper.ModuleState()==-1) {
 								if (!MainActivity.RootAvailable) {
-										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed1);
-										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed1);
+										TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed1).split("\\|")[0]);
+										TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed1).split("\\|")[1]);
 								} else {
-										TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed3);
-										TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed3);
+										TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed3).split("\\|")[0]);
+										TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed3).split("\\|")[1]);
 										//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
 										ProgressBar_RootWait.setVisibility(View.GONE);
 										/*slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
@@ -361,16 +477,16 @@ public class PreferencesPartFragment extends Fragment
 										dialogFragment.showDialog();*/
 								}
 						} else {
-								TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
-								TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
+								TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed5).split("\\|")[0]);
+								TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed5).split("\\|")[1]);
 								TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
 								TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
 								//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
 								ProgressBar_RootWait.setVisibility(View.GONE);
 						}
 				} catch (Throwable t) {
-						TextView_ModuleStateTitle.setText(R.string.preferencesTitle_RootXposed5);
-						TextView_ModuleStateDesc.setText(R.string.preferencesDesc_RootXposed5);
+						TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed5).split("\\|")[0]);
+						TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed5).split("\\|")[1]);
 						TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
 						TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
 						//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
@@ -393,7 +509,14 @@ public class PreferencesPartFragment extends Fragment
 														new Handler(Looper.getMainLooper()).post(new Runnable() {
 																		@Override
 																		public void run() {
-																				rootAvailable();
+																				mActivity.runOnUiThread(new Runnable() {
+
+																								@Override
+																								public void run()
+																								{
+																										rootAvailable();
+																								}
+																						});
 																		}
 																});
 												}

@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity
 		public static SharedPreferences preferences;
 		public static SharedPreferences colorPrefs;
 		public static SharedPreferences orderPrefs;
+		public static SharedPreferences animationPrefs;
 		public static Context context;
 		public static Activity activity;
 		public static IBinder windowToken;
@@ -101,65 +102,8 @@ public class MainActivity extends AppCompatActivity
         preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", Context.MODE_WORLD_READABLE);
 				colorPrefs = getSharedPreferences("colors", Context.MODE_WORLD_READABLE);
 				orderPrefs = getSharedPreferences("visibilityOrder", Context.MODE_WORLD_READABLE);
-
-				/*if(getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").exists()) {
-				 Log.i("NPM:pC","Detected old preferences, converting...");
-				 SharedPreferences oldPrefs = getSharedPreferences(MainActivity.class.getPackage().getName()+"_preferences", Context.MODE_WORLD_READABLE);
-				 Map<String, ?> oldPrefsAll = oldPrefs.getAll();
-				 if(!oldPrefsAll.isEmpty()) {
-				 Object[] keys = oldPrefsAll.keySet().toArray();
-				 Object[] values = oldPrefsAll.values().toArray();
-				 String designSpace = "";
-				 for(int x = 0; x < (String.format("%03d/%03d",oldPrefsAll.size(),oldPrefsAll.size())).length(); x++) {
-				 designSpace = designSpace + " ";
-				 }
-				 for(int i = 0; i < oldPrefsAll.size(); i++) {
-				 boolean unknown = false;
-				 Log.i("NPM:pC",String.format("%03d/%03d",(i+1),oldPrefsAll.size())+" | "+keys[i]);
-				 if(values[i].getClass().equals(String.class)) {
-				 Log.i("NPM:pC",designSpace+" | Writing String...");
-				 preferences.edit().putString((String) keys[i],(String) values[i]).commit();
-				 } else if (values[i].getClass().equals(Integer.class)) {
-				 Log.i("NPM:pC",designSpace+" | Writing Integer...");
-				 preferences.edit().putInt((String) keys[i],(int) values[i]).commit();
-				 } else if (values[i].getClass().equals(Boolean.class)) {
-				 Log.i("NPM:pC",designSpace+" | Writing Boolean...");
-				 preferences.edit().putBoolean((String) keys[i],(boolean) values[i]).commit();
-				 } else {
-				 unknown = true;
-				 Log.i("NPM:pC",designSpace+" | Unknown type... ("+values[i].getClass()+")");
-				 }
-				 if(!unknown) {
-				 Log.i("NPM:pC",designSpace+" \\_Converted.");
-				 } else {
-				 Log.i("NPM:pC",designSpace+" \\_Failed.");
-				 }
-				 }
-				 }
-				 Log.i("NPM:pC","Preferences convert complete, deleting old file...");
-				 oldPrefs.edit().clear().commit();
-				 if(getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").exists()) {
-				 if(getSharedPrefsFile(MainActivity.class.getPackage().getName()+"_preferences").delete()) {
-				 Log.i("NPM:pC","Deleted.");
-				 } else {
-				 Log.i("NPM:pC","Failed to delete...");
-				 }
-				 }
-				 }*/
-
-				if (orderPrefs.getAll().isEmpty())
-				{
-						orderPrefs.edit().putInt("0_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
-						orderPrefs.edit().putString("0_item_title", "Shutdown").commit();
-						orderPrefs.edit().putInt("1_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
-						orderPrefs.edit().putString("1_item_title", "Reboot").commit();
-						orderPrefs.edit().putInt("2_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
-						orderPrefs.edit().putString("2_item_title", "SoftReboot").commit();
-						orderPrefs.edit().putInt("3_item_type", visibilityOrder_ListAdapter.TYPE_MULTI).commit();
-						orderPrefs.edit().putString("3_item1_title", "Recovery").commit();
-						orderPrefs.edit().putString("3_item2_title", "Bootloader").commit();
-						orderPrefs.edit().putString("3_item3_title", "SafeMode").commit();
-				}
+				animationPrefs = getSharedPreferences("animations", Context.MODE_WORLD_READABLE);
+				
         setTheme(R.style.ThemeBaseDark);
 
 				for (int folderCheck = 0; folderCheck < requieredDirs.length; folderCheck ++)
@@ -240,16 +184,15 @@ public class MainActivity extends AppCompatActivity
 				if (preferences.getBoolean("DontAskPermissionsAgain", false) || permissionsScreen.checkPermissions(MainActivity.this, permissionsScreen.permissions))
 				{
 						android.support.v4.app.Fragment fragment = new PreferencesPartFragment();
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-								.replace(R.id.pref_container, fragment).commit();
+						changePrefPage(fragment, false);
 						if (ImportUrl != null)
 						{
-								fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPresetsFragment()).commit();
+								changePrefPage(new PreferencesPresetsFragment(), false);
 						}
 				}
 				else
 				{
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new permissionsScreen()).commit();
+						changePrefPage(new permissionsScreen(), false);
 				}
 				previewOnClickListener = new OnClickListener() {
 
@@ -261,17 +204,6 @@ public class MainActivity extends AppCompatActivity
 								launchPowerMenu();
 						}
 				};
-				for (int i = 0;i < PreferencesColorFragment.ColorNames.length; i++)
-				{
-						if (PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM)
-						{
-								if (colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty())
-								{
-										colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).commit();
-										preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
-								}
-						}
-				}
 
 
 				if ((deviceUniqeId = preferences.getString("userUniqeId", "none")).equalsIgnoreCase("none"))
@@ -335,13 +267,13 @@ public class MainActivity extends AppCompatActivity
 						}
 						return;
 				}
-				if (visibleFragment.equalsIgnoreCase("CustomColors") || visibleFragment.equalsIgnoreCase("Graphics"))
+				if (visibleFragment.equalsIgnoreCase("CustomColors") || visibleFragment.equalsIgnoreCase("Graphics") || visibleFragment.equalsIgnoreCase("Animations"))
 				{
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commit();
+						changePrefPage(new PreferencesPartFragment(), false);
 				}
 				else if (visibleFragment.equalsIgnoreCase("Cropper"))
 				{
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesGraphicsFragment()).commit();
+						changePrefPage(new PreferencesGraphicsFragment(), false);
 				}
 				else if (visibleFragment.equalsIgnoreCase("VisibilityOrder"))
 				{
@@ -359,7 +291,7 @@ public class MainActivity extends AppCompatActivity
 								}
 						}
 						actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesColorFragment()).commit();
+						changePrefPage(new PreferencesColorFragment(), false);
 				}
 				else if (visibleFragment.equalsIgnoreCase("PresetsManagerOnline") || (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("login") || LoginFragment.loginFragmentMode.equalsIgnoreCase("logout"))))
 				{
@@ -378,20 +310,20 @@ public class MainActivity extends AppCompatActivity
 				}
 				else if (visibleFragment.equalsIgnoreCase("Advanced"))
 				{
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commit();
+						changePrefPage(new PreferencesPartFragment(), false);
 				}
 				else if (visibleFragment.equalsIgnoreCase("Gravity"))
 				{
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesAdvancedFragment()).commit();
+						changePrefPage(new PreferencesAdvancedFragment(), false);
 				}
 				else if (visibleFragment.equalsIgnoreCase("permissions"))
 				{
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commit();
+						changePrefPage(new PreferencesPartFragment(), false);
 				}
 				else if (visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login"))
 				{
 						actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commit();
+						changePrefPage(new PreferencesPartFragment(), false);
 				}
 				else if (visibleFragment.equalsIgnoreCase("Main") || visibleFragment.equalsIgnoreCase("permissionsAutoStart"))
 				{
@@ -499,7 +431,7 @@ public class MainActivity extends AppCompatActivity
 						PreferencesVisibilityOrderFragment.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
 						PreferencesVisibilityOrderFragment.LinearLayout_Progress.setVisibility(View.GONE);
 						actionbar.setButton(context.getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
-						fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, new PreferencesPartFragment()).commitAllowingStateLoss();
+						changePrefPage(new PreferencesPartFragment(), true);
 				}
 
 		}
@@ -521,7 +453,7 @@ public class MainActivity extends AppCompatActivity
 						ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(
 								getBaseContext())
 								.defaultDisplayImageOptions(defaultOptions)
-								.discCache(discCache)
+								.diskCache(discCache)
 								.memoryCache(memoryCache);
 
 						ImageLoaderConfiguration config = builder.build();
@@ -533,6 +465,15 @@ public class MainActivity extends AppCompatActivity
 				catch (Exception e)
 				{
 						Log.e("NPM:imageLoader", "Load failed, code:" + e);
+				}
+		}
+		
+		public static void changePrefPage(android.support.v4.app.Fragment fragment, boolean allowLoss) {
+				android.support.v4.app.FragmentTransaction frag = fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container, fragment);
+				if(allowLoss) {
+						frag.commitAllowingStateLoss();
+				} else {
+						frag.commit();
 				}
 		}
 

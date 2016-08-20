@@ -10,6 +10,9 @@ import java.util.*;
 public class AboutFragment extends Fragment
 {
 
+		
+		public static RelativeLayout LoadingLayout;
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -21,7 +24,11 @@ public class AboutFragment extends Fragment
 				
 				ListView list = (ListView) InflatedView.findViewById(R.id.activityaboutListView1);
 				
+				LoadingLayout = (RelativeLayout) InflatedView.findViewById(R.id.activityaboutRelativeLayout_Progress);
+				LoadingLayout.setVisibility(View.GONE);
+				
 				String[] titles = new String[] {"About",
+																				"Reset settings",
 																				"User Id",
 																				"Used Librarys",
 																				"CustomActivityOnCrash",
@@ -54,6 +61,8 @@ public class AboutFragment extends Fragment
 																				" Naman Dwivedi (naman14) for the original source.\n" + 
 																				" rovo89 and Tungstwenty for Xposed.\n" +
 																				" Igor Da Silva for the concept.",
+																				"Click here to reset the settings.\n" +
+																				"Use this if something somehow destroyed some settings and tye app keeps craahing when entering the corresponding screen.",
 																				"Your Device Id:\n" + ((MainActivity.deviceUniqeId.isEmpty() || MainActivity.deviceUniqeId.equalsIgnoreCase("none")) ? "Not generated. (this is not normal...)" : MainActivity.deviceUniqeId) + "\nYour Account Id:\n" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "Not logged in." : MainActivity.accountUniqeId) + "\nThe Id's are used by the Preset Sever to verify your identity.",
 																				"This Project uses some public librarys, all (maybe i have forgot some...) used librarys are listed below.",
 																				"Copyright 2014 Eduard Ereza Martinez.\nLicensed under the Apache License, Version 2.0",

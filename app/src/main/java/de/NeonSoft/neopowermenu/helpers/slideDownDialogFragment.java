@@ -28,6 +28,16 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		public static String RESULT_INPUT = "inputResult_";
 		public static String RESULT_COLORPICKER = "colorpickerResult";
 		public static String RESULT_CHECKBOX = "checkboxResult";
+
+		public static int BUTTON_OK = 0;
+		public static int BUTTON_YES = 1;
+		public static int BUTTON_NO = 2;
+		public static int BUTTON_RENAME = 3;
+		public static int BUTTON_CANCEL = 4;
+		public static int BUTTON_DELETE = 5;
+		public static int BUTTON_LOAD = 6;
+		public static int BUTTON_SAVE = 7;
+		public static int BUTTON_IGNORE = 8;
 		
 		public static String dialogTag = "slideDownDialog";
 		public static String dialogCloseCall = "de.NeonSoft.slideDownDialog.close";
@@ -625,25 +635,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						mFragment = this;
 						handler = new Handler();
 						View InflatedView = inflater.inflate(R.layout.slidedowndialogfragment,container,false);
-
-						final LayoutTransition transitioner = new LayoutTransition();
-						ObjectAnimator customAppearingAnim = ObjectAnimator.ofFloat(null, "rotationY", 0f, 0f).
-								setDuration(transitioner.getDuration(LayoutTransition.APPEARING));
-						customAppearingAnim.addListener(new AnimatorListenerAdapter() {
-										public void onAnimationEnd(Animator anim) {
-												View view = (View) ((ObjectAnimator) anim).getTarget();
-												view.setRotationY(0f);
-										}
-								});
-						ObjectAnimator customDisappearingAnim = ObjectAnimator.ofFloat(null, "rotationX", 0f, 0f).
-								setDuration(transitioner.getDuration(LayoutTransition.DISAPPEARING));
-						customDisappearingAnim.addListener(new AnimatorListenerAdapter() {
-										public void onAnimationEnd(Animator anim) {
-												View view = (View) ((ObjectAnimator) anim).getTarget();
-												view.setRotationX(0f);
-										}
-								});
-								
+						
 						TextView_DialogBg = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogBg);
 						LinearLayout_DialogRoot = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_DialogRoot);
 						TextView_DialogBg.setOnClickListener(new OnClickListener() {
@@ -748,7 +740,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						IntentFilter filter = new IntentFilter();
 						filter.addAction(slideDownDialogFragment.dialogCloseCall);
 						filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
-						mContext.registerReceiver(br, filter);
+						
+						if(mContext!=null) mContext.registerReceiver(br, filter);
 						
 						if(dialogListItems != null && dialogListItems.length > 0) {
 								dialogListAdapter = new ArrayAdapter<String>(mContext,(dialogListMode==ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode==ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)),dialogListItems);
@@ -988,6 +981,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 														}
 														if(dialogListMode==ListView.CHOICE_MODE_SINGLE) {
 																resultBundle.putString(RESULT_LIST,dialogListItems[ListView_DialogListView.getCheckedItemPosition()]);
+																resultBundle.putInt(RESULT_LIST,ListView_DialogListView.getCheckedItemPosition());
 																//resultData.add(dialogListItems[ListView_DialogListView.getCheckedItemPosition()]);
 														} else if(dialogListMode==ListView.CHOICE_MODE_MULTIPLE) {
 																String string = "";
@@ -1057,7 +1051,9 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						TextView_DialogBg.setVisibility(View.VISIBLE);
 						TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 						LinearLayout_DialogRoot.setVisibility(View.VISIBLE);
-						LinearLayout_DialogRoot.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.anim_slide_in_top));
+						Animation anim = AnimationUtils.loadAnimation(mContext,R.anim.anim_slide_in_top);
+						anim.setDuration(800);
+						LinearLayout_DialogRoot.startAnimation(anim);
 
 						if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP) {
 								//mContext.getWindow().setNavigationBarColor(Color.parseColor(String.format("#%08X", (0xCC000000 & mContext.getResources().getColor(R.color.window_background_dark)))));
@@ -1140,6 +1136,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 										// TODO: Implement this method
 								}
 						});*/
+						hideAnim.setDuration(800);
 				LinearLayout_DialogRoot.startAnimation(hideAnim);
 						handler.postDelayed(new Runnable() {
 

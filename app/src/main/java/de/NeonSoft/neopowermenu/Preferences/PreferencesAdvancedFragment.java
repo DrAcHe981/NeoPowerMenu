@@ -35,8 +35,8 @@ public class PreferencesAdvancedFragment extends Fragment
 				// TODO: Implement this method
 				MainActivity.visibleFragment = "Advanced";
 
-				MainActivity.actionbar.setTitle(getString(R.string.preferencesTitle_Advanced));
-				MainActivity.actionbar.setSubTitle(getString(R.string.preferencesDesc_Advanced));
+				MainActivity.actionbar.setTitle(getString(R.string.preferences_Advanced).split("\\|")[0]);
+				MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Advanced).split("\\|")[1]);
 				
 				View InflatedView = inflater.inflate(R.layout.activity_advanced,null);
 
@@ -68,7 +68,7 @@ public class PreferencesAdvancedFragment extends Fragment
 								public void onClick(View p1)
 								{
 										//GravityChooserDialog gcd = new GravityChooserDialog();
-										MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).replace(R.id.pref_container,new GravityChooserDialog()).commit();
+										MainActivity.changePrefPage(new GravityChooserDialog(), false);
 										//gcd.setStyle(gcd.STYLE_NO_FRAME,R.style.TransparentApp);
 										//gcd.show(MainActivity.fragmentManager,"gravity_chooser");
 								}

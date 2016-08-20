@@ -1,55 +1,89 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
-    
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
 
-		<ScrollView
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fillViewport="true">
+
+		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:fillViewport="true">
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:orientation="vertical"
+			android:paddingBottom="@dimen/customactivityoncrash_activity_vertical_margin"
+			android:paddingLeft="@dimen/customactivityoncrash_activity_horizontal_margin"
+			android:paddingRight="@dimen/customactivityoncrash_activity_horizontal_margin"
+			android:paddingTop="@dimen/customactivityoncrash_activity_vertical_margin">
+
+			<ImageView
+				android:id="@+id/customactivityoncrash_error_activity_image"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:contentDescription="@null"
+				android:src="@drawable/customactivityoncrash_error_image"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:gravity="center"
+				android:text="@string/customactivityoncrash_error_activity_error_occurred_explanation"
+				android:textSize="18sp"
+				android:textStyle="bold"/>
 
 			<LinearLayout
-				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:gravity="center"
+				android:layout_width="match_parent"
 				android:orientation="vertical"
-				android:paddingBottom="@dimen/customactivityoncrash_activity_vertical_margin"
-				android:paddingLeft="@dimen/customactivityoncrash_activity_horizontal_margin"
-				android:paddingRight="@dimen/customactivityoncrash_activity_horizontal_margin"
-				android:paddingTop="@dimen/customactivityoncrash_activity_vertical_margin">
-
-				<ImageView
-					android:id="@+id/customactivityoncrash_error_activity_image"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:contentDescription="@null"
-					android:src="@drawable/customactivityoncrash_error_image"/>
+				android:id="@+id/customactivityoncrash_error_activity_input"
+				android:visibility="gone">
 
 				<TextView
-					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="12dp"
-					android:gravity="center"
-					android:text="@string/customactivityoncrash_error_activity_error_occurred_explanation"
-					android:textSize="18sp"
-					android:textStyle="bold"/>
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:layout_width="match_parent"
+					android:text="What was the last thing you did?"
+					android:gravity="center_vertical"/>
+
+				<EditText
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:ems="10"
+					android:maxLines="1"
+					android:singleLine="true"
+					android:id="@+id/customactivityoncrash_error_activity_info_input"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal">
 
 				<Button
 					android:id="@+id/customactivityoncrash_error_activity_restart_button"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="12dp"
-					android:text="@string/customactivityoncrash_error_activity_close_app"/>
+					android:text="@string/customactivityoncrash_error_activity_close_app"
+					android:layout_weight="1.0"/>
 
 				<Button
 					android:id="@+id/customactivityoncrash_error_activity_more_info_button"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="@string/customactivityoncrash_error_activity_error_details"/>
+					android:text="@string/customactivityoncrash_error_activity_error_details"
+					android:layout_weight="1.0"/>
 
 			</LinearLayout>
 
-		</ScrollView>
+		</LinearLayout>
+
+	</ScrollView>
 
 </LinearLayout>
+
