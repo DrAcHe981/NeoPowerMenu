@@ -247,6 +247,7 @@ Cheque a fonte no GitHub."</string>
 <string name="preferences_Share">"Compartilhar|Gostou do aplicativo? Compartilhe com seus amigos."</string>
 <string name="preferences_About">"Código por Neon-Soft/DrAcHe981|Baseado em um código de Naman Dwivedi (naman14)."</string>
 <string name="animations_Items">"Plano de fundo|Diálogo|Ícones|Itens de única linha|Itens de múltiplas linhas"</string>
+<string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal|Lento|Mais lento|Muito lento"</string>
 <string name="animations_Types">"Desvanece|Revela
 (Funciona somente para o plano de fundo)|Deslizar acima|Deslizar a esquerda|Deslizar a direita|Deslizar abaixo|Aumentar|Diminuir|Desativado"</string>
 <string name="animations_Desc">"[NAME] com a velocidade [SPEED]"</string>
