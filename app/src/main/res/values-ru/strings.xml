@@ -247,5 +247,8 @@
 <string name="preferences_Share">"Поделиться|Понравилось приложение? Поделитесь им среди своих друзей."</string>
 <string name="preferences_About">"Создано Neon-Soft / DrAcHe981|Основано на исходном коде Naman Dwivedi(naman14)."</string>
 <string name="animations_Items">"Задний фон|Диалоговое окно|Иконки|Единичные элементы на линии|Множественные элементы на линии"</string>
-<string name="animations_Speeds">"Очень быстро|Быстрее|Нормально|"</string>
+<string name="animations_Speeds">"Очень быстро|Быстрее|Быстро|Нормально|Медленно|Медленнее|Очень медленно"</string>
+<string name="animations_Types">"Затемнение|Появление
+(Работает только для заднего плана)|Верхний край|Левый край||Правый край|Нижний край|Расширить вверх|Расширить вниз|Отключено"</string>
+<string name="animations_Desc">"[NAME] со скоростью [SPEED]"</string>
 </resources>
