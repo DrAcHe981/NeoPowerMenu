@@ -234,6 +234,7 @@
 <string name="preferences_VisibilityOrder">"Отображение и порядок|Выберите элементы, которые Вы бы хотели видеть и расположите их так, как Вам хочется."</string>
 <string name="preferences_Animations">"Анимации|Изменить анимации или убрать их полностью."</string>
 <string name="preferencesCategory_Other">"Другое"</string>
+<string name="preferences_Account">"Аккаунт|Здесь Вы можете войти в аккаунт, создать аккаунт или проверить свою статистику."</string>
 <string name="preferences_Advanced">"Расширенные настройки|Измените расширенные настройки, например, задержки, притяжение или скорость."</string>
 <string name="preferences_Permissions">"Разрешения|Показывает используемые разрешения и для чего они используются.
 Предоставляет дополнительные разрешения, если они не были предоставлены во время первого запуска(Android 6.0+)."</string>
@@ -245,4 +246,6 @@
 Исходники на Github."</string>
 <string name="preferences_Share">"Поделиться|Понравилось приложение? Поделитесь им среди своих друзей."</string>
 <string name="preferences_About">"Создано Neon-Soft / DrAcHe981|Основано на исходном коде Naman Dwivedi(naman14)."</string>
+<string name="animations_Items">"Задний фон|Диалоговое окно|Иконки|Единичные элементы на линии|Множественные элементы на линии"</string>
+<string name="animations_Speeds">"Очень быстро|Быстрее|Нормально|"</string>
 </resources>
