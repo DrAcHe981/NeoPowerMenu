@@ -224,8 +224,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 						revealView.reveal(p.x, p.y, color, 0, 0, null);
 						showPowerDialog();
 				}
-
-
     }
 		
 		public static void startBlurTask() {
@@ -281,6 +279,14 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 						
 						new BlurTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 		}
+
+		@Override
+		protected void onStart()
+		{
+				// TODO: Implement this method
+				super.onStart();
+				getWindow().getAttributes().windowAnimations = R.style.PopUpDialogAnimation_Window;
+		}
 		
 		@Override
 		protected void onPause()
@@ -327,7 +333,24 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				} else {
 						//revealView.reveal(p.x, p.y, color, 0, 0, null);
 						revealView2.reveal(p.x, p.y, color, 0, 0, null);
-						revealView.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
+						Animation animOut = null;
+						if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 0) {
+								animOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
+						} else if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 2) {
+								animOut = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_top);
+						} else if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 3) {
+								animOut = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_left);
+						} else if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 4) {
+								animOut = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_right);
+						} else if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 5) {
+								animOut = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_bottom);
+						} else if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 6) {
+								animOut = AnimationUtils.loadAnimation(mContext, R.anim.scale_out_down);
+						} else if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[0]+"_type",PreferencesAnimationsFragment.defaultTypes[0]) == 7) {
+								animOut = AnimationUtils.loadAnimation(mContext, R.anim.scale_out_up);
+						}
+						animOut.setDuration(anim.getDuration());
+						revealView.startAnimation(animOut);
 						revealView.setVisibility(View.GONE);
 						revealView2.setVisibility(View.VISIBLE);
 						revealView2.startAnimation(anim);

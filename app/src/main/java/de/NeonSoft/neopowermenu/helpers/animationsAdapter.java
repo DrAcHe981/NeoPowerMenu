@@ -7,6 +7,7 @@ import android.view.View.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
+import de.NeonSoft.neopowermenu.Preferences.*;
 
 public class animationsAdapter extends ArrayAdapter<Integer>
 {
@@ -41,7 +42,7 @@ public class animationsAdapter extends ArrayAdapter<Integer>
 				if(MainActivity.animationPrefs.getInt(items[p1]+"_type",defaultTypes[p1])<mContext.getString(R.string.animations_Types).split("\\|").length-1) {
 				Desc.setText(mContext.getString(R.string.animations_Desc)
 						.replace("[NAME]",mContext.getString(R.string.animations_Types).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_type",defaultTypes[p1])])
-										 .replace("[SPEED]",mContext.getString(R.string.animations_Speeds).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_speed",2)]));
+										 .replace("[SPEED]",mContext.getString(R.string.animations_Speeds).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_speed",3)]));
 		} else {
 				Desc.setText(mContext.getString(R.string.animations_Types).split("\\|")[mContext.getString(R.string.animations_Types).split("\\|").length-1]);
 		}
@@ -82,7 +83,7 @@ public class animationsAdapter extends ArrayAdapter<Integer>
 																if(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)<mContext.getString(R.string.animations_Types).split("\\|").length-1) {
 																Desc.setText(mContext.getString(R.string.animations_Desc)
 																						 .replace("[NAME]",mContext.getString(R.string.animations_Types).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_type",defaultTypes[p1])])
-																						 .replace("[SPEED]",mContext.getString(R.string.animations_Speeds).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_speed",2)]));
+																						 .replace("[SPEED]",mContext.getString(R.string.animations_Speeds).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_speed",3)]));
 																slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
 																dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
@@ -111,7 +112,7 @@ public class animationsAdapter extends ArrayAdapter<Integer>
 																						MainActivity.animationPrefs.edit().putInt(items[p1]+"_speed",resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)).commit();
 																						Desc.setText(mContext.getString(R.string.animations_Desc)
 																												 .replace("[NAME]",mContext.getString(R.string.animations_Types).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_type",defaultTypes[p1])])
-																												 .replace("[SPEED]",mContext.getString(R.string.animations_Speeds).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_speed",2)]));
+																												 .replace("[SPEED]",mContext.getString(R.string.animations_Speeds).split("\\|")[MainActivity.animationPrefs.getInt(items[p1]+"_speed",3)]));
 																				}
 
 																				@Override
@@ -120,10 +121,27 @@ public class animationsAdapter extends ArrayAdapter<Integer>
 																						// TODO: Implement this method
 																				}
 																		});
-																dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, mContext.getString(R.string.animations_Speeds).split("\\|"), MainActivity.animationPrefs.getInt(items[p1]+"_speed",2), false);
+																dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, mContext.getString(R.string.animations_Speeds).split("\\|"), MainActivity.animationPrefs.getInt(items[p1]+"_speed",3), false);
 																dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
 																dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
 																dialogFragment.showDialog(R.id.dialog_container);
+																/*} else if (resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)==mContext.getString(R.string.animations_Types).split("\\|").length-2) {
+																		final animationsCustomAdapter adapter = new animationsCustomAdapter(mContext, items[p1], PreferencesAnimationsFragment.customPrefs);
+																		PreferencesAnimationsFragment.holder.setAdapter(adapter);
+																		MainActivity.actionbar.setButtonText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_SAVE]);
+																		MainActivity.actionbar.setButtonIcon(R.drawable.ic_action_import);
+																		MainActivity.actionbar.setButtonListener(new OnClickListener() {
+
+																						@Override
+																						public void onClick(View p1)
+																						{
+																								// TODO: Implement this method
+																								adapter.saveData();
+																								PreferencesAnimationsFragment.holder.setAdapter(PreferencesAnimationsFragment.adapter);
+																								PreferencesAnimationsFragment.adapter.notifyDataSetChanged();
+																								MainActivity.actionbar.setButton(mContext.getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
+																						}
+																				});*/
 																} else {
 																		Desc.setText(mContext.getString(R.string.animations_Types).split("\\|")[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)]);
 																}

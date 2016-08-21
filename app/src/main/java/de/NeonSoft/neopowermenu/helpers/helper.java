@@ -483,17 +483,21 @@ public class helper
 		
 		public static Animation getAnimation(Context context, SharedPreferences prefs, int forItem, boolean forOut) {
 				final int speed;
-				speed = 500;
-				if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==0) {
+				speed = 700;
+				if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 3)==0) {
 						speed = 100;
-				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==1) {
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 3)==1) {
 						speed = 300;
-				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==2) {
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 3)==2) {
 						speed = 500;
-				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==3) {
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 3)==3) {
 						speed = 700;
-				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 2)==4) {
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 3)==4) {
 						speed = 900;
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 3)==5) {
+						speed = 1100;
+				} else if(prefs.getInt(PreferencesAnimationsFragment.names[forItem]+"_speed", 3)==6) {
+						speed = 1300;
 				}
 				Animation anim = null;
 				if(!forOut) {

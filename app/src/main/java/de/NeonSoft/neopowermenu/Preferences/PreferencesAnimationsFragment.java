@@ -17,6 +17,21 @@ public class PreferencesAnimationsFragment extends android.support.v4.app.Fragme
 				"singlelineitems",
 				"multilineitems"};
 		
+		public static String[] customPrefs = {
+				"Alpha",
+				"XDelta",
+				"YDelta",
+				"XScale",
+				"YScale",
+				"PivotX",
+				"PivotY",
+				"XRotation",
+				"YRotation",
+				"Duration"};
+				
+		public static ListView holder;
+		public static animationsAdapter adapter;
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
@@ -27,13 +42,9 @@ public class PreferencesAnimationsFragment extends android.support.v4.app.Fragme
 				
 				View InflatedView = inflater.inflate(R.layout.activity_animations, container, false);
 				
-				ListView holder = (ListView) InflatedView.findViewById(R.id.activityanimationsListView);
+				holder = (ListView) InflatedView.findViewById(R.id.activityanimationsListView);
 				
-				String[] items = getString(R.string.animations_Items).split("\\|");
-				String[] types = getString(R.string.animations_Types).split("\\|");
-				String[] speeds = getString(R.string.animations_Speeds).split("\\|");
-				
-				animationsAdapter adapter = new animationsAdapter(getActivity(), names, defaultTypes);
+				adapter = new animationsAdapter(getActivity(), names, defaultTypes);
 				
 				holder.setAdapter(adapter);
 				

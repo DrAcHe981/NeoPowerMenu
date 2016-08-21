@@ -257,8 +257,9 @@ The first normal item defines the button to open the 'new page'.|Multi page item
 
 
 		<string name="animations_Items">"Background|Dialog|Icons|Single line items|Multi line items"</string>
-		<string name="animations_Speeds">"Very fast|Fast|Normal|Slow|Very slow"</string>
+		<string name="animations_Speeds">"Very fast|Faster|Fast|Normal|Slow|Slower|Very slow"</string>
 		<string name="animations_Types">"Fade|Reveal\n(Works only for the background)|Slide up|Slide left|Slide right|Slide down|Scale up|Scale down|Disabled"</string>
 		<string name="animations_Desc">"[NAME] with the speed [SPEED]"</string>
+		<string name="animations_Custom">"From [PREFNAME]|to [PREFNAME]"</string>
 		
 </resources>

@@ -1051,8 +1051,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						TextView_DialogBg.setVisibility(View.VISIBLE);
 						TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 						LinearLayout_DialogRoot.setVisibility(View.VISIBLE);
-						Animation anim = AnimationUtils.loadAnimation(mContext,R.anim.anim_slide_in_top);
-						anim.setDuration(800);
+						Animation anim = AnimationUtils.loadAnimation(mContext,R.anim.slidedowndialogfragment_in);
+						//anim.setDuration(800);
 						LinearLayout_DialogRoot.startAnimation(anim);
 
 						if(android.os.Build.VERSION.SDK_INT>=android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -1109,7 +1109,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 				TextView_DialogBg.setVisibility(View.GONE);
 				TextView_DialogTouchOutside.setVisibility(View.GONE);
-				Animation hideAnim = AnimationUtils.loadAnimation(mContext,R.anim.anim_slide_out_top);
+				Animation hideAnim = AnimationUtils.loadAnimation(mContext,R.anim.slidedowndialogfragment_out);
 				/*hideAnim.setAnimationListener(new Animation.AnimationListener() {
 
 								@Override
@@ -1136,7 +1136,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 										// TODO: Implement this method
 								}
 						});*/
-						hideAnim.setDuration(800);
+						//hideAnim.setDuration(800);
 				LinearLayout_DialogRoot.startAnimation(hideAnim);
 						handler.postDelayed(new Runnable() {
 
@@ -1154,7 +1154,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 																		} catch (Throwable t) {
 																		}
 										}
-								}, 800L);
+								}, hideAnim.getDuration());
 				LinearLayout_DialogRoot.setVisibility(View.GONE);
 				}
 				});

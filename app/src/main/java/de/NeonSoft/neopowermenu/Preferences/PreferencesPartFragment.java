@@ -139,7 +139,7 @@ public class PreferencesPartFragment extends Fragment
 				for(int i = 0; i < PreferencesAnimationsFragment.names.length; i++) {
 						if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i]+"_type",-1)==-1) {
 								MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i]+"_type",PreferencesAnimationsFragment.defaultTypes[i]).commit();
-								MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i]+"_speed",2).commit();
+								MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i]+"_speed",3).commit();
 						}
 				}
 				
@@ -345,6 +345,21 @@ public class PreferencesPartFragment extends Fragment
 										PreferencesPresetsFragment ppf = new PreferencesPresetsFragment();
 										ppf.setStartTab(0);
 										MainActivity.changePrefPage( ppf, false);
+										MainActivity.visibleFragment = "PresetsManagerAccount";
+										if (LoginFragment.loginFragmentMode.equalsIgnoreCase("login"))
+										{
+												MainActivity.actionbar.setButton(getString(R.string.login_Title), R.drawable.ic_action_import, LoginFragment.loginOnClickListener);
+										}
+										else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("register"))
+										{
+												MainActivity.actionbar.setButton(getString(R.string.login_TitleRegister), R.drawable.ic_action_import, LoginFragment.registerOnClickListener);
+										}
+										else if (MainActivity.loggedIn)
+										{
+												MainActivity.actionbar.setButton(getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
+										} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("recover")) {
+												MainActivity.actionbar.setButton(getString(R.string.login_Recover),R.drawable.ic_action_settings_backup_restore ,LoginFragment.recoverOnClickListener);
+										}
 								}
 						});
 				

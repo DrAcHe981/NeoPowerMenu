@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:orientation="horizontal"
+			android:layout_weight="1.0"
+			android:id="@+id/animationscustomLinearLayout_Pref1">
+
+			<TextView
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:text="Text"
+				android:layout_weight="0"
+				android:gravity="center"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:id="@+id/animationscustomTextView_Pref1"/>
+
+			<EditText
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:ems="10"
+				android:layout_weight="1.0"
+				android:id="@+id/animationscustomEditText_Pref1"
+				android:singleLine="true"
+				android:inputType="textNoSuggestions"/>
+
+			<Spinner
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:id="@+id/animationscustomSpinner_Pref1"
+				android:popupBackground="@color/colorPrimaryDarkDarkTheme"
+				android:visibility="gone"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:orientation="horizontal"
+			android:layout_weight="1.0"
+			android:id="@+id/animationscustomLinearLayout_Pref2">
+
+			<TextView
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:text="Text"
+				android:gravity="center"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:layout_weight="0"
+				android:id="@+id/animationscustomTextView_Pref2"/>
+
+			<EditText
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:ems="10"
+				android:layout_weight="1.0"
+				android:id="@+id/animationscustomEditText_Pref2"
+				android:singleLine="true"
+				android:inputType="textNoSuggestions"/>
+
+			<Spinner
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:id="@+id/animationscustomSpinner_Pref2"
+				android:popupBackground="@color/colorPrimaryDarkDarkTheme"
+				android:visibility="gone"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<TextView
+		android:layout_height="2dp"
+		android:layout_width="match_parent"
+		android:background="@color/colorAccentDarkTheme"
+		android:layout_marginLeft="5dp"
+		android:layout_marginRight="5dp"
+		android:alpha="0.3"/>
+
+</LinearLayout>
+

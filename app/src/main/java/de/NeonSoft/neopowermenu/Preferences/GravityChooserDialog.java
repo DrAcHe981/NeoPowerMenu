@@ -76,9 +76,11 @@ public class GravityChooserDialog extends DialogFragment
 				LinearLayout Main = (LinearLayout) DummyPowerDialog.findViewById(R.id.fragmentpowerFrameLayout_Main);
 				
 				LinearLayout ListContainer = (LinearLayout) DummyPowerDialog.findViewById(R.id.ListContainer);
-
+				
         FrameLayout frame = (FrameLayout) DummyPowerDialog.findViewById(R.id.frame);
 				frame.setBackgroundColor(Color.parseColor(MainActivity.colorPrefs.getString("Dialog_Backgroundcolor","#ffffff")));
+				
+				((FrameLayout) DummyPowerDialog.findViewById(R.id.frame2)).setVisibility(View.GONE);
 				
 				for(int i = 0; i <= 3; i++) {
 						final String mTitle;
@@ -142,34 +144,8 @@ public class GravityChooserDialog extends DialogFragment
 								} else {
 										root.setVisibility(View.INVISIBLE);
 								}
-								if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
-										final int speed;
-										speed = 500;
-										if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==0) {
-												speed = 100;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==1) {
-												speed = 300;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==2) {
-												speed = 500;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==3) {
-												speed = 700;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==4) {
-												speed = 900;
-										}
-										Animation anim = null;
-										if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 0) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.abc_fade_in);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 2) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_bottom);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 3) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_right);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 4) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_left);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 5) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_top);
-										}
-										anim.setDuration(speed);
-										root.startAnimation(anim);
+								if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[3]+"_type",PreferencesAnimationsFragment.defaultTypes[3]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+										root.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 3, false));
 								}
 						} else {
 
@@ -211,33 +187,7 @@ public class GravityChooserDialog extends DialogFragment
 										root.setVisibility(View.GONE);
 								}
 								if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
-										final int speed;
-										speed = 500;
-										if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==0) {
-												speed = 100;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==1) {
-												speed = 300;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==2) {
-												speed = 500;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==3) {
-												speed = 700;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==4) {
-												speed = 900;
-										}
-										Animation anim = null;
-										if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 0) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.abc_fade_in);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 2) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_bottom);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 3) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_right);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 4) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_left);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 5) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_top);
-										}
-										anim.setDuration(speed);
-										root.startAnimation(anim);
+										root.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 4, false));
 								}
 
 								LinearLayout root2 = (LinearLayout) inflated.findViewById(R.id.powermenumulti_item2);
@@ -274,33 +224,8 @@ public class GravityChooserDialog extends DialogFragment
 										root2.setVisibility(View.GONE);
 								}
 								if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
-										final int speed;
-										speed = 500;
-										if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==0) {
-												speed = 100;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==1) {
-												speed = 300;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==2) {
-												speed = 500;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==3) {
-												speed = 700;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==4) {
-												speed = 900;
-										}
-										Animation anim = null;
-										if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 0) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.abc_fade_in);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 2) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_bottom);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 3) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_right);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 4) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_left);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 5) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_top);
-										}
-										anim.setDuration(speed);
-										anim.setStartOffset((speed/30)*3);
+										Animation anim = helper.getAnimation(mContext, MainActivity.animationPrefs, 4, false);
+										anim.setStartOffset((anim.getDuration()/30)*3);
 										root2.startAnimation(anim);
 								}
 
@@ -339,37 +264,11 @@ public class GravityChooserDialog extends DialogFragment
 										root3.setVisibility(View.GONE);
 								}
 								if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
-										final int speed;
-										speed = 500;
-										if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==0) {
-												speed = 100;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==1) {
-												speed = 300;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==2) {
-												speed = 500;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==3) {
-												speed = 700;
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_speed", 2)==4) {
-												speed = 900;
-										}
-										Animation anim = null;
-										if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 0) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.abc_fade_in);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 2) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_bottom);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 3) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_right);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 4) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_left);
-										} else if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4]+"_type",PreferencesAnimationsFragment.defaultTypes[4]) == 5) {
-												anim = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in_top);
-										}
-										anim.setDuration(speed);
-										anim.setStartOffset((speed/30)*6);
+										Animation anim = helper.getAnimation(mContext, MainActivity.animationPrefs, 4, false);
+										anim.setStartOffset((anim.getDuration()/30)*6);
 										root3.startAnimation(anim);
 								}
 						}
-						
 						if(inflated != null) ListContainer.addView(inflated);
 						
 				}
@@ -580,7 +479,9 @@ public class GravityChooserDialog extends DialogFragment
 												image.setPadding(5,5,5,5);
 												image.setColorFilter(Color.parseColor("#ffffff"),
 																						 android.graphics.PorterDuff.Mode.DST);
-												image.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
+												if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+														image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 2, true));
+												}
 												image.setVisibility(View.INVISIBLE);
 												super.onLoadingStarted(imageUri, view);
 										}
@@ -589,7 +490,9 @@ public class GravityChooserDialog extends DialogFragment
 												image.setImageBitmap(loadedImage);
 												image.setPadding(0,0,0,0);
 												image.setVisibility(View.VISIBLE);
-												image.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
+												if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+														image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 2, false));
+												}
 										}
 										@Override
 										public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
@@ -598,7 +501,9 @@ public class GravityChooserDialog extends DialogFragment
 												image.setColorFilter(Color.parseColor(color),
 																						 android.graphics.PorterDuff.Mode.SRC_IN);
 												image.setVisibility(View.VISIBLE);
-												image.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
+												if(MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+														image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 2, false));
+												}
 										}
 								});
 				} else {
