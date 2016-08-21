@@ -201,6 +201,12 @@ Presetarile tale (in functie de numarul de stele)
 <string name="presetsManager_OrderNames">"Nume|Timp|Stele|Creator|Personal"</string>
 <string name="presetsManager_OrderAscDesc">"Crescator|Descrescator"</string>
 <string name="visibilityOrder_SelectMulti">"Selecteaza trei elemente"</string>
+<string name="powerMenuMain_Empty">"Gol"</string>
+<string name="login_Recover">"Recuperare"</string>
+<string name="login_RecoverPassword">"Resetare Parola"</string>
+<string name="powerMenuMain_SoundVibrate">"Sunet: Vibrare"</string>
+<string name="powerMenuMain_SoundNormal">"Sunet: Normal"</string>
+<string name="powerMenuMain_SoundSilent">"Sunet: Silentios"</string>
 
 <!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root si Xposed"</string>
