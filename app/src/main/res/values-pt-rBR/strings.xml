@@ -16,34 +16,6 @@
 <string name="powerMenu_Shuttingdown">"Desligando..."</string>
 <string name="powerMenu_Rebooting">"Reiniciando..."</string>
 
-		<!-- Preferences: Main -->
-		<string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
-		<string name="preferences_RootXposed1">"Root e Xposed indisponíveis|Root e Xposed são necessários para o módulo funcionar."</string>
-		<string name="preferences_RootXposed2">"Xposed funcionando, Root não|Root é necessário para desligar ou reiniciar, por favor permita o acesso root."</string>
-		<string name="preferences_RootXposed3">"Root funcionando, Xposed não|Xposed é necessário para substituir o Menu de Energia...
-Por favor ative o módulo no Xposed Installer"</string>
-		<string name="preferences_RootXposed4">"Root e Xposed funcionando|O aplicativo deve funcionar corretamente!"</string>
-		<string name="preferences_RootXposed5">"Versão do módulo muito antiga...|Por favor reinicie seu dispositivo para concluir o processo de atualização!"</string>
-
-		<string name="preferencesCategory_General">"Geral"</string>
-		<string name="preferences_Style">"Estilo"</string>
-		<string name="preferences_Theme">"Tema|Mudar a aparência e conferir uma prévia."</string>
-		<string name="preferences_Graphics">"Ícones|Mudar os ícones,usar customizados ou ícones predefinidos."</string>
-		<string name="preferences_VisibilityOrder">"Visibilidade e Ordem|Selecione os itens que deseja ver e a ordem de cada um."</string>
-
-		<string name="preferencesCategory_Other">"Outros"</string>
-		<string name="preferences_Advanced">"Configurações Avançadas|Alterar configurações avançadas como atraso, gravidade ou velocidade."</string>
-		<string name="preferences_Permissions">"Permissões|Mostrar as permissões usadas e ver para que são usadas.
-Conceder permissões adicionais que não são adicionadas na primeira inicialização (Android 6.0+)."</string>
-		<string name="preferences_HideLauncherIcon">"Ocultar aplicativo no launcher|Oculta o aplicativo no launcher,isso pode levar até uma reinicialização para ocultar o ícone. Essa opção de configurações ficará apenas acessível no Xposed Installer."</string>
-		<string name="preferences_DeepXposedLogging">"Log do xposed|Ativar o log avançado do Xposed,após ativar reinicie para ver as mudanças."</string>
-
-		<string name="preferencesCategory_About">"Sobre"</string>
-		<string name="preferences_NeoSource">"Fonte|NeoPowerMenu é um código aberto.
-Cheque a fonte no GitHub."</string>
-		<string name="preferences_Share">"Compartilhar|Gostou do aplicativo? Compartilhe com seus amigos."</string>
-		<string name="preferences_About">"Código por Neon-Soft/DrAcHe981|Baseado em um código de Naman Dwivedi (naman14)."</string>
-
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Viabilidade e ordem"</string>
 <string name="category_Preset">"Predefinições"</string>
@@ -218,4 +190,64 @@ Clique aqui para opções de recuperação."</string>
 <string name="login_RecoverPassword">"Redefinir Senha"</string>
 <string name="login_RecoverSuccess">"Você receberá um email com as informações para redefinir sua senha."</string>
 <string name="login_RecoverNotFound">"Nenhum usuário com esses dados foi encontrado."</string>
+<string name="powerMenuMain_SoundVibrate">"Som: Vibrar"</string>
+<string name="powerMenuMain_SoundNormal">"Som: Normal"</string>
+<string name="powerMenuMain_SoundSilent">"Som: Silencioso"</string>
+
+<!-- Dialog -->
+<string name="Dialog_Buttons">"Ok|Sim|Não|Renomear|Cancelar|Deletar|Carregar|Salvar|Ignorar"</string>
+<string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
+<string name="advancedPrefs_DialogGravity">"Cima|Esquerda|Direita|Baixo"</string>
+<string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
+<string name="graphics_Crop">"Cortar|Cortar rodado"</string>
+<string name="graphics_NoPresetsFound">"Nenhuma predefinição com gráficos encontrada..."</string>
+<string name="graphics_GraphicsSaveLoad">"Salvar com os gráficos atuais.|Essa predefinição contém gráficos, você quer carregá-los?
+Isso vai sobrescrever seus gráficos atuais!"</string>
+<string name="presetsManager_ReportDialog">"Você tem certeza de reportar [PRESETNAME]?
+Isso não pode ser desfeito, então por favor não reporte apenas por diversão!
+
+Também nós precisamos de um porquê você quer reportar isso, por favor escreva abaixo.|Reportar razão:"</string>
+<string name="presetsManager_ReportResult">"[PRESETNAME] reportado, o desenvolvedor vai dar uma olhada nisso.|Reporte falhado, por favor tente de novo.
+Razão: "</string>
+<string name="presetsManager_Buttons">"Dar estrela|Remover estrela|Deletar|Reportar|Enviar|Compartilhar"</string>
+<string name="screenrecord_notif_buttons">"Parar|Alternar indicador"</string>
+<string name="downloadHelper_States">"Esperando por outros downloads...|Conectando ao servidor...|Requisitando informação...|Baixando...|Cancelando..."</string>
+<string name="uploadHelper_States">"Esperando por outros envios...|Conectando ao servidor...|Requisitando informação...|Enviando...|Cancelando..."</string>
+<string name="visibilityOrder_AddItem">"Adicionar item normal
+Apenas um item normal com apenas um cartão.|Adicionar item múltiplo
+Adicionar até três itens em uma linha.|Adicionar item múltipla página
+Clicando vai te levar a uma nova 'página'."</string>
+<string name="visibilityOrder_MultiPage">"A múltipla página começa aqui
+O primeiro item normal define o botão para abrir a 'nova página'.|A múltipla página termina aqui"</string>
+
+<!-- Preferences: Main -->
+<string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
+<string name="preferences_RootXposed1">"Root e Xposed indisponíveis|Root e Xposed são necessários para o módulo funcionar."</string>
+<string name="preferences_RootXposed2">"Xposed funcionando, Root não|Root é necessário para desligar ou reiniciar, por favor permita o acesso root."</string>
+<string name="preferences_RootXposed3">"Root funcionando, Xposed não|Xposed é necessário para substituir o Menu de Energia...
+Por favor ative o módulo no Xposed Installer"</string>
+<string name="preferences_RootXposed4">"Root e Xposed funcionando|O aplicativo deve funcionar corretamente!"</string>
+<string name="preferences_RootXposed5">"Versão do módulo muito antiga...|Por favor reinicie seu dispositivo para concluir o processo de atualização!"</string>
+<string name="preferencesCategory_General">"Geral"</string>
+<string name="preferences_Style">"Estilo"</string>
+<string name="preferences_Theme">"Tema|Mudar a aparência e conferir uma prévia."</string>
+<string name="preferences_Graphics">"Ícones|Mudar os ícones,usar customizados ou ícones predefinidos."</string>
+<string name="preferences_VisibilityOrder">"Visibilidade e Ordem|Selecione os itens que deseja ver e a ordem de cada um."</string>
+<string name="preferences_Animations">"Animações|Mudar as animações ou desativá-las completamente."</string>
+<string name="preferencesCategory_Other">"Outros"</string>
+<string name="preferences_Account">"Conta|Aqui você pode logar, criar uma conta ou checar suas estatísticas quando logado."</string>
+<string name="preferences_Advanced">"Configurações Avançadas|Alterar configurações avançadas como atraso, gravidade ou velocidade."</string>
+<string name="preferences_Permissions">"Permissões|Mostrar as permissões usadas e ver para que são usadas.
+Conceder permissões adicionais que não são adicionadas na primeira inicialização (Android 6.0+)."</string>
+<string name="preferences_HideLauncherIcon">"Ocultar aplicativo no launcher|Oculta o aplicativo no launcher,isso pode levar até uma reinicialização para ocultar o ícone. Essa opção de configurações ficará apenas acessível no Xposed Installer."</string>
+<string name="preferences_DeepXposedLogging">"Log do xposed|Ativar o log avançado do Xposed,após ativar reinicie para ver as mudanças."</string>
+<string name="preferencesCategory_About">"Sobre"</string>
+<string name="preferences_NeoSource">"Fonte|NeoPowerMenu é um código aberto.
+Cheque a fonte no GitHub."</string>
+<string name="preferences_Share">"Compartilhar|Gostou do aplicativo? Compartilhe com seus amigos."</string>
+<string name="preferences_About">"Código por Neon-Soft/DrAcHe981|Baseado em um código de Naman Dwivedi (naman14)."</string>
+<string name="animations_Items">"Plano de fundo|Diálogo|Ícones|Itens de única linha|Itens de múltiplas linhas"</string>
+<string name="animations_Types">"Desvanece|Revela
+(Funciona somente para o plano de fundo)|Deslizar acima|Deslizar a esquerda|Deslizar a direita|Deslizar abaixo|Aumentar|Diminuir|Desativado"</string>
+<string name="animations_Desc">"[NAME] com a velocidade [SPEED]"</string>
 </resources>
