@@ -18,39 +18,6 @@
 <string name="powerMenu_Shuttingdown">"Shutting down..."</string>
 <string name="powerMenu_Rebooting">"Rebooting..."</string>
 
-<!-- Preferences: Main -->
-<string name="preferencesCategory_RootXposed">"Root and Xposed"</string>
-<string name="preferences_RootXposed1">"Root and Xposed not available|Root and Xposed are required for this module to work."</string>
-		<string name="preferences_RootXposed2">"Xposed working, Root not|But Root is needed to Power off or Reboot...
-Please allow root access."</string>
-		<string name="preferences_RootXposed3">"Root working, Xposed not|But Xposed is needed to replace the Power Menu...
-Please activate the module in the Xposed installer."</string>
-		<string name="preferences_RootXposed4">"Root and Xposed are working|The app should work fine!"</string>
-		<string name="preferences_RootXposed5">"Hooked Module version is to low...|Please restart your device to complete the update process!"</string>
-
-<string name="preferencesCategory_General">"General"</string>
-<string name="preferences_Style">"Style"</string>
-		<string name="preferences_Theme">"Theme|Change the look and feel."</string>
-		<string name="preferences_Graphics">"Graphics|Change the graphics, use custom or predefined graphics."</string>
-		<string name="preferences_VisibilityOrder">"Visibility and Order|Select the items you want to show and order them as you wish."</string>
-		<string name="preferences_Animations">"Animations|Change the animations or disable them completely."</string>
-
-<string name="preferencesCategory_Other">"Other"</string>
-		<string name="preferences_Account">Account|Here you can login, create an account or check your statistics when logged in.</string>
-		<string name="preferences_Advanced">"Advanced Settings|Change advanced settings like delays, gravity or speed."</string>
-		<string name="preferences_Permissions">"Permissions|Show the requested permissions and see for what they are used for.
-Grant additional permissions that are not added on first start (Android 6.0+)."</string>
-		<string name="preferences_HideLauncherIcon">"Hide app in launcher|Hides the app icon in the launcher, it can take up to a reboot to hide the icon.
-This Settings screen will only be accessible via the Xposed Installer then."</string>
-		<string name="preferences_DeepXposedLogging">"Deep Xposed logging|Enable advanced Xposed logging, after enabling reboot to see changes."</string>
-				
-<string name="preferencesCategory_About">"About"</string>
-		<string name="preferences_NeoSource">"Source|NeoPowerMenu is open source.
-Check out the source on GitHub."</string>
-<string name="preferences_Share">"Share|Like the app? Share it with your friends."</string>
-		<string name="preferences_About">"Code by Neon-Soft / DrAcHe981|based on the source of Naman Dwivedi (naman14).
-Click here to get more info."</string>
-
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibility and order"</string>
 <string name="category_Preset">"Presets"</string>
@@ -255,11 +222,38 @@ Clicking it will show a new 'page'."</string>
 <string name="visibilityOrder_MultiPage">"Multi page item starts here
 The first normal item defines the button to open the 'new page'.|Multi page item ends here"</string>
 
-
-		<string name="animations_Items">"Background|Dialog|Icons|Single line items|Multi line items"</string>
-		<string name="animations_Speeds">"Very fast|Faster|Fast|Normal|Slow|Slower|Very slow"</string>
-		<string name="animations_Types">"Fade|Reveal\n(Works only for the background)|Slide up|Slide left|Slide right|Slide down|Scale up|Scale down|Disabled"</string>
-		<string name="animations_Desc">"[NAME] with the speed [SPEED]"</string>
-		<string name="animations_Custom">"From [PREFNAME]|to [PREFNAME]"</string>
-		
+<!-- Preferences: Main -->
+<string name="preferencesCategory_RootXposed">"Root and Xposed"</string>
+<string name="preferences_RootXposed1">"Root and Xposed not available|Root and Xposed are required for this module to work."</string>
+<string name="preferences_RootXposed2">"Xposed working, Root not|But Root is needed to Power off or Reboot...
+Please allow root access."</string>
+<string name="preferences_RootXposed3">"Root working, Xposed not|But Xposed is needed to replace the Power Menu...
+Please activate the module in the Xposed installer."</string>
+<string name="preferences_RootXposed4">"Root and Xposed are working|The app should work fine!"</string>
+<string name="preferences_RootXposed5">"Hooked Module version is to low...|Please restart your device to complete the update process!"</string>
+<string name="preferencesCategory_General">"General"</string>
+<string name="preferences_Style">"Style"</string>
+<string name="preferences_Theme">"Theme|Change the look and feel."</string>
+<string name="preferences_Graphics">"Graphics|Change the graphics, use custom or predefined graphics."</string>
+<string name="preferences_VisibilityOrder">"Visibility and Order|Select the items you want to show and order them as you wish."</string>
+<string name="preferences_Animations">"Animations|Change the animations or disable them completely."</string>
+<string name="preferencesCategory_Other">"Other"</string>
+<string name="preferences_Account">"Account|Here you can login, create an account or check your statistics when logged in."</string>
+<string name="preferences_Advanced">"Advanced Settings|Change advanced settings like delays, gravity or speed."</string>
+<string name="preferences_Permissions">"Permissions|Show the requested permissions and see for what they are used for.
+Grant additional permissions that are not added on first start (Android 6.0+)."</string>
+<string name="preferences_HideLauncherIcon">"Hide app in launcher|Hides the app icon in the launcher, it can take up to a reboot to hide the icon.
+This Settings screen will only be accessible via the Xposed Installer then."</string>
+<string name="preferences_DeepXposedLogging">"Deep Xposed logging|Enable advanced Xposed logging, after enabling reboot to see changes."</string>
+<string name="preferencesCategory_About">"About"</string>
+<string name="preferences_NeoSource">"Source|NeoPowerMenu is open source.
+Check out the source on GitHub."</string>
+<string name="preferences_Share">"Share|Like the app? Share it with your friends."</string>
+<string name="preferences_About">"Code by Neon-Soft / DrAcHe981|based on the source of Naman Dwivedi (naman14).
+Click here to get more info."</string>
+<string name="animations_Items">"Background|Dialog|Icons|Single line items|Multi line items"</string>
+<string name="animations_Speeds">"Very fast|Faster|Fast|Normal|Slow|Slower|Very slow"</string>
+<string name="animations_Types">"Fade|Reveal
+(Works only for the background)|Slide up|Slide left|Slide right|Slide down|Scale up|Scale down|Disabled"</string>
+<string name="animations_Desc">"[NAME] with the speed [SPEED]"</string>
 </resources>
