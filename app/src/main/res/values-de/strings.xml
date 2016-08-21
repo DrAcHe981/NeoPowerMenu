@@ -67,7 +67,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="screenrecord_toast_error">"Bildschirmaufnahme nicht möglich"</string>
 <string name="screenrecord_toast_processing">"Es kann keine Bildschirmaufnahme gestartet werden, wenn eine andere verarbeitet wird"</string>
 <string name="screenrecord_toast_saved">"Aufnahme gespeichert als %s"</string>
-<string name="screenrecord_toast_save_error">"Fehler beim Speichern der Aufnahme"</string>
+<string name="screenrecord_toast_save_error">"Fehler beim speichern der Aufnahme"</string>
 <string name="powerMenuMain_FlashlightOff">"Taschenlampe ausschalten"</string>
 <string name="powerMenuMain_FlashlightDesc">"Wird nach [AUTOOFF] ausgeschaltet."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Automatisches Ausschalten deaktiviert."</string>
@@ -91,8 +91,8 @@ Dies kann nicht rückgängig gemacht werden!"</string>
 <string name="permissionsScreen_Title">"Berechtigungen"</string>
 <string name="permissionsScreen_NotAllGranted">"Du hast nicht alle Berechtigungen gewährt, manche Dinge werden nicht funktionieren..."</string>
 <string name="permissionsScreen_ClickToRequest">"Klicke, um die Berechtigung anzufragen."</string>
-<string name="permissionsScreen_DontAskAgain">"Nicht erneut Fragen"</string>
-<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Externer Speicher Lesen/Schreiben"</string>
+<string name="permissionsScreen_DontAskAgain">"Nicht erneut fragen"</string>
+<string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Externer Speicher lesen/schreiben"</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benötigt für zukünftige Funktionen (kleiner Tipp: eigene Bilder)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Benötigt für die Taschenlampe."</string>
@@ -149,7 +149,7 @@ Ich werde niemals irgendwelche privaten Daten teilen!"</string>
 Klicke hier, um ein Konto zu erstellen!"</string>
 <string name="login_LoggedIn">"Angemeldet!"</string>
 <string name="login_LoginFailedWithReason">"Anmelden fehlgeschlagen: "</string>
-<string name="login_LoginFailedWrongData">"Anmelden fehlgeschlagen, falsche E-mail or Passwort!"</string>
+<string name="login_LoginFailedWrongData">"Anmelden fehlgeschlagen, falsche E-mail oder Passwort!"</string>
 <string name="login_RegisterFailedNameUsed">"Tut uns leid, der gewählte Name oder die gewählte E-mail Adresse ist bereits vergeben."</string>
 <string name="login_RegisterSuccess">"Registrierung erfolgreich, du wirst eine E-mail zum Aktivieren erhalten!"</string>
 <string name="login_Processing">"Verarbeite..."</string>
@@ -192,7 +192,7 @@ Klicke hier für Wiederherstellungsoptionen."</string>
 <string name="login_RecoverNotFound">"Keinen Benutzer mit diesen Daten gefunden."</string>
 <string name="powerMenuMain_SoundVibrate">"Sound: Vibrieren"</string>
 <string name="powerMenuMain_SoundNormal">"Sound: Normal"</string>
-<string name="powerMenuMain_SoundSilent">"Sound: Still"</string>
+<string name="powerMenuMain_SoundSilent">"Sound: Lautlos"</string>
 
 <!-- Dialog -->
 <string name="Dialog_Buttons">"Ok|Ja|Nein|Umbenennen|Abbrechen|Löschen|Laden|Speichern|Ignorieren"</string>
@@ -204,21 +204,21 @@ Klicke hier für Wiederherstellungsoptionen."</string>
 <string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern.|Diese Voreinstellung enthält Grafiken, möchtest du sie laden?
 Dies überscheibt deine aktuellen Grafiken!"</string>
 <string name="presetsManager_ReportDialog">"Bist Du dir sicher dass du [PRESETNAME] melden willst?
-Dies kann nicht rückgängig gemacht werden also melde es nicht nur zum spaß!
+Dies kann nicht rückgängig gemacht werden, also melde es nicht nur zum Spaß!
 
-Desweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein.|Melde Grund:"</string>
-<string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet,Der Entwickler wird einen blick drüber werfen.|Melden fehlgeschlagen, bitte versuch es erneut.
+Desweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein.|Meldegrund:"</string>
+<string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet, der Entwickler wird einen Blick drüber werfen.|Melden fehlgeschlagen, bitte versuch es erneut.
 Grund: "</string>
 <string name="presetsManager_Buttons">"Stern geben|Stern entfernen|Löschen|Melden|Hochladen|Teilen"</string>
 <string name="screenrecord_notif_buttons">"Stopp|Pointer an/aus"</string>
-<string name="downloadHelper_States">"Warte auf andere Downloads...|Verbinde mit Server...|Informationen werden abgerufen...|Runterladen...|Wird abgebrochen..."</string>
+<string name="downloadHelper_States">"Warte auf andere Downloads...|Verbinde mit Server...|Informationen werden abgerufen...|Herunterladen...|Abbrechen..."</string>
 <string name="uploadHelper_States">"Warte auf andere Uploads...|Verbinde mit Server...|Informationen werden abgerufen...|Hochladen...|Wird abgebrochen..."</string>
 <string name="visibilityOrder_AddItem">"Normales item hinzufügen
-Ein ganz normales Item mit nur einem. slot.|Multi item hinzufügen
-Füge bis zu drei items in einer Linie hinzu.|Multi Seiten item hinzufügen
-Anklicken öffnet eine neue 'seite'."</string>
-<string name="visibilityOrder_MultiPage">"Multi Seiten item startet hier
-Das erste normale item definiert den Knopf um die 'neue Seite' zu öffnen.|Multi Seiten item endet hier"</string>
+Ein ganz normales Item mit nur einem Slot.|Multi Item hinzufügen
+Füge bis zu drei Items in einer Linie hinzu.|Multi Seiten Item hinzufügen
+Anklicken öffnet eine neue 'Seite'."</string>
+<string name="visibilityOrder_MultiPage">"Multi Seiten Item startet hier
+Das erste normale Item definiert den Knopf um die 'neue Seite' zu öffnen.|Multi Seiten Item endet hier"</string>
 
 <!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root und Xposed"</string>
@@ -226,7 +226,7 @@ Das erste normale item definiert den Knopf um die 'neue Seite' zu öffnen.|Multi
 <string name="preferences_RootXposed2">"Xposed funktioniert, Root nicht|Aber Root wird zum Ausschalten oder Neustarten benötigt...
 Bitte erlaube den Root-Zugriff."</string>
 <string name="preferences_RootXposed3">"Root funktioniert, Xposed nicht|Aber Xposed wird benötigt, um das Ausschaltmenü zu ersetzen...
-Bitte aktiviere das Modul im Xposed installer."</string>
+Bitte aktiviere das Modul im Xposed Installer."</string>
 <string name="preferences_RootXposed4">"Root und Xposed funktionieren|Die App sollte wie geplant funktionieren!"</string>
 <string name="preferences_RootXposed5">"Aktivierte Modulversion ist zu niedrig...|Bitte starte dein Gerät neu, um den Updatevorgang abzuschließen!"</string>
 <string name="preferencesCategory_General">"Allgemein"</string>
@@ -249,7 +249,7 @@ Finde die Source auf GitHub."</string>
 <string name="preferences_Share">"Teilen|Du magst die App? Teile sie mit deinen Freunden."</string>
 <string name="preferences_About">"Skript von Neon-Soft / DrAcHe981|basierend auf der Source von Naman Dwivedi (naman14).
 Klicke hier für mehr Infos."</string>
-<string name="animations_Items">"Hintergrund|Dialog|Grafiken|Einzel Linien items|Multi Linien items"</string>
+<string name="animations_Items">"Hintergrund|Dialog|Grafiken|Einzel Linien Items|Multi Linien Items"</string>
 <string name="animations_Speeds">"Sehr schnell|Schneller|Schnell|Normal|Langsam|Langsamer|Sehr langsam"</string>
 <string name="animations_Types">"Überblenden|Reveal
 (Funktioniert nur für den Hintergrund)|Nach oben schieben|Nach links schieben|Nach Rechts schieben|Nach unten schieben|Hoch skalieren|Runter skalieren|Deaktiviert"</string>
