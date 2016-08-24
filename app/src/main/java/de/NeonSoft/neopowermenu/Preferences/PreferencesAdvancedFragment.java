@@ -17,6 +17,12 @@ public class PreferencesAdvancedFragment extends Fragment
 		
 		LinearLayout LinearLayout_DialogGravity;
 		
+		LinearLayout LinearLayout_Confirmation;
+		TextView TextView_ConfirmationTitle;
+		TextView TextView_ConfirmationDesc;
+		Switch Switch_Confirmation;
+		boolean boolean_Confirmation;
+		
 		LinearLayout LinearLayout_ShowOnLockScreen;
 		Switch Switch_ShowOnLockScreen;
 		boolean boolean_ShowOnLockScreen;
@@ -71,6 +77,29 @@ public class PreferencesAdvancedFragment extends Fragment
 										MainActivity.changePrefPage(new GravityChooserDialog(), false);
 										//gcd.setStyle(gcd.STYLE_NO_FRAME,R.style.TransparentApp);
 										//gcd.show(MainActivity.fragmentManager,"gravity_chooser");
+								}
+						});
+				
+				boolean_Confirmation = MainActivity.preferences.getBoolean("RequireConfirmation",false);
+				LinearLayout_Confirmation = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_Confirmation);
+				TextView_ConfirmationTitle = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_ConfirmationTitle);
+				TextView_ConfirmationDesc = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_ConfirmationDesc);
+				TextView_ConfirmationTitle.setText(getString(R.string.advancedPrefs_Confirmation).split("\\|")[0]);
+				TextView_ConfirmationDesc.setText(getString(R.string.advancedPrefs_Confirmation).split("\\|")[1]);
+				Switch_Confirmation = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_Confirmation);
+				Switch_Confirmation.setChecked(boolean_Confirmation);
+				Switch_Confirmation.setClickable(false);
+				Switch_Confirmation.setFocusable(false);
+				
+				LinearLayout_Confirmation.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										boolean_Confirmation = !boolean_Confirmation;
+										Switch_Confirmation.setChecked(boolean_Confirmation);
+										MainActivity.preferences.edit().putBoolean("RequireConfirmation",boolean_Confirmation).commit();
 								}
 						});
 				

@@ -42,6 +42,8 @@ public class XposedDialog extends DialogFragment
 		boolean firstTouch = false;
 		View firstTouchOn = null;
 		boolean doubleToConfirm = false;
+		boolean RequireConfirmation = false;
+		String confirmDialog = "";
 		static boolean isDismissing = false;
 		public static String SubDialogParent = "root";
 		public static String inSubDialog = null;
@@ -54,13 +56,13 @@ public class XposedDialog extends DialogFragment
 		FrameLayout dialogContent;
 		LinearLayout ListContainer, ListContainer2;
 		
-    FrameLayout frame, frame2, frame3;
+    FrameLayout frame, frame2, frame3, frameConfirm;
     private CircularRevealView revealView;
     private View selectedView;
     private int backgroundColor;
 		ImageView progressbg;
     ProgressBar progress;
-    TextView status, status_detail;
+    TextView status, status_detail, confirmAction, confirmNo, confirmYes;
 
     private static final String SHUTDOWN_BROADCAST
 		= "am broadcast android.intent.action.ACTION_SHUTDOWN";
@@ -121,6 +123,8 @@ public class XposedDialog extends DialogFragment
 				am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
 				amRingerMode = am.getRingerMode();
 			
+				RequireConfirmation = XposedMainActivity.preferences.getBoolean("RequireConfirmation",false);
+				
 				boolean_DialogGravityTop = XposedMainActivity.preferences.getBoolean("DialogGravityTop",false);
 				boolean_DialogGravityLeft = XposedMainActivity.preferences.getBoolean("DialogGravityLeft",false);
 				boolean_DialogGravityRight = XposedMainActivity.preferences.getBoolean("DialogGravityRight",false);
@@ -156,6 +160,15 @@ public class XposedDialog extends DialogFragment
 				ListContainer2 = (LinearLayout) view.findViewById(R.id.ListContainer2);
 				frame2.setVisibility(View.GONE);
 				frame3.setVisibility(View.GONE);
+				
+				frameConfirm = (FrameLayout) view.findViewById(R.id.frameConfirm);
+				frameConfirm.setVisibility(View.GONE);
+				confirmAction = (TextView) view.findViewById(R.id.fragmentpowerTextView_ConfirmAction);
+				confirmAction.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("Dialog_Textcolor", "#000000")));
+				confirmNo = (TextView) view.findViewById(R.id.fragmentpowerTextView_ConfirmNo);
+				confirmNo.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("Dialog_Textcolor", "#000000")));
+				confirmYes = (TextView) view.findViewById(R.id.fragmentpowerTextView_ConfirmYes);
+				confirmYes.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("Dialog_Textcolor", "#000000")));
 
 				if(XposedMainActivity.sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
 						LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
@@ -169,6 +182,8 @@ public class XposedDialog extends DialogFragment
 						params2.height = FrameLayout.LayoutParams.MATCH_PARENT;
 						frame.setLayoutParams(params2);
 						frame3.setLayoutParams(params2);
+						//params2.height = (int) helper.convertDpToPixel(150f, mContext);
+						//frameConfirm.setLayoutParams(params2);
 						FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
 						crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
 						crparams.height = FrameLayout.LayoutParams.MATCH_PARENT;
@@ -190,6 +205,8 @@ public class XposedDialog extends DialogFragment
 						}
 						frame.setLayoutParams(params2);
 						frame3.setLayoutParams(params2);
+						//params2.height = (int) helper.convertDpToPixel(150f, mContext);
+						//frameConfirm.setLayoutParams(params2);
 				} else {
 						FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
 						crparams.width = (int) helper.convertDpToPixel(340, mContext);
@@ -207,6 +224,8 @@ public class XposedDialog extends DialogFragment
 						}
 						frame.setLayoutParams(params2);
 						frame3.setLayoutParams(params2);
+						//params2.height = (int) helper.convertDpToPixel(150f, mContext);
+						//frameConfirm.setLayoutParams(params2);
 				}
 				
 				if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1]+"_type",PreferencesAnimationsFragment.defaultTypes[1]) < mContext.getString(R.string.animations_Types).split("\\|").length-1) {
@@ -221,7 +240,7 @@ public class XposedDialog extends DialogFragment
         status_detail = (TextView) view.findViewById(R.id.status_detail);
 
 				progressbg = (ImageView) view.findViewById(R.id.progressbg);
-				progressbg.setVisibility((GraphicBehindProgress ? View.VISIBLE : View.GONE));
+				progressbg.setVisibility((GraphicBehindProgress ? View.VISIBLE : View.INVISIBLE));
         progress = (ProgressBar) view.findViewById(R.id.progress);
 
         progress.getIndeterminateDrawable().setColorFilter(
@@ -718,7 +737,7 @@ public class XposedDialog extends DialogFragment
 				}
 		}
 		
-		private void performMenuClick(String name,View v) {
+		private void performMenuClick(final String name,final View v) {
 				if(name.contains("multipage:")) {
 						if(frame3.getVisibility()==View.GONE) {
 								ListContainer2.removeAllViews();
@@ -803,7 +822,49 @@ public class XposedDialog extends DialogFragment
 								}
 								frame3.setVisibility(View.GONE);
 						}
-				} else
+				} else {
+						if(RequireConfirmation && (name.equalsIgnoreCase("Shutdown") || name.equalsIgnoreCase("Reboot") || name.equalsIgnoreCase("SoftReboot") || name.equalsIgnoreCase("Recovery") || name.equalsIgnoreCase("Bootloader") || name.equalsIgnoreCase("SafeMode"))) {
+								if(!confirmDialog.equalsIgnoreCase(name)) {
+										confirmDialog = name;
+										confirmAction.setText(mContext.getString(R.string.powerMenu_SureToRebootPowerOff).split("\\|")[(name.equalsIgnoreCase("Shutdown") ? 1 : 0)]);
+										confirmNo.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_NO]);
+										confirmNo.setOnClickListener(new OnClickListener() {
+
+														@Override
+														public void onClick(View p1)
+														{
+																// TODO: Implement this method
+																dismissThis();
+														}
+												});
+										confirmYes.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_YES]);
+										confirmYes.setOnClickListener(new OnClickListener() {
+
+														@Override
+														public void onClick(View p1)
+														{
+																// TODO: Implement this method
+																performMenuClick(name,v);
+														}
+												});
+										if(frame3.getVisibility()==View.GONE) {
+												frameConfirm.setVisibility(View.VISIBLE);
+												if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1]+"_type",PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+														frame.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 1, true));
+														frameConfirm.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 1, false));
+												}
+												frame.setVisibility(View.GONE);
+										} else {
+												frameConfirm.setVisibility(View.VISIBLE);
+												if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1]+"_type",PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+														frame3.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 1, true));
+														frameConfirm.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 1, false));
+												}
+												frame3.setVisibility(View.GONE);
+										}
+										return;
+								}
+						}
 				if(name.equalsIgnoreCase("Shutdown")) {
 						if(doubleToConfirm) {
 								if(!firstTouch && firstTouchOn != v) {
@@ -842,8 +903,10 @@ public class XposedDialog extends DialogFragment
 												revealView.reveal(p.x, p.y, color, 0, 0, null);
 												if(frame3.getVisibility()==View.VISIBLE) {
 														frame3.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
-												} else {
+												} else if (frame.getVisibility() == View.VISIBLE) {
 														frame.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
+												} else {
+														frameConfirm.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
 												}
 												revealView.startAnimation(anim);
 												frame2.startAnimation(anim);
@@ -866,6 +929,7 @@ public class XposedDialog extends DialogFragment
                 ((XposedMainActivity) getActivity()).revealFromTop();
                 frame.setVisibility(View.GONE);
 								frame3.setVisibility(View.GONE);
+								frameConfirm.setVisibility(View.GONE);
                 frame2.setVisibility(View.VISIBLE);
 								
 								status.setText(R.string.powerMenuMain_Shutdown);
@@ -919,8 +983,10 @@ public class XposedDialog extends DialogFragment
 												revealView.reveal(p.x, p.y, color, 0, 0, null);
 												if(frame3.getVisibility()==View.VISIBLE) {
 														frame3.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
-												} else {
+												} else if (frame.getVisibility() == View.VISIBLE) {
 														frame.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
+												} else {
+														frameConfirm.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
 												}
 												revealView.startAnimation(anim);
 												frame2.startAnimation(anim);
@@ -941,7 +1007,9 @@ public class XposedDialog extends DialogFragment
 								}
 
 								((XposedMainActivity) getActivity()).revealFromTop();
-								frame.setVisibility(View.GONE);frame3.setVisibility(View.GONE);
+								frame.setVisibility(View.GONE);
+								frame3.setVisibility(View.GONE);
+								frameConfirm.setVisibility(View.GONE);
 								frame2.setVisibility(View.VISIBLE);
 
 								status.setText(R.string.powerMenuMain_Reboot);
@@ -995,8 +1063,10 @@ public class XposedDialog extends DialogFragment
 												revealView.reveal(p.x, p.y, color, 0, 0, null);
 												if(frame3.getVisibility()==View.VISIBLE) {
 														frame3.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
-												} else {
+												} else if (frame.getVisibility() == View.VISIBLE) {
 														frame.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
+												} else {
+														frameConfirm.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
 												}
 												revealView.startAnimation(anim);
 												frame2.startAnimation(anim);
@@ -1017,7 +1087,9 @@ public class XposedDialog extends DialogFragment
                 }
 
                 ((XposedMainActivity) getActivity()).revealFromTop();
-                frame.setVisibility(View.GONE);frame3.setVisibility(View.GONE);
+                frame.setVisibility(View.GONE);
+								frame3.setVisibility(View.GONE);
+								frameConfirm.setVisibility(View.GONE);
                 frame2.setVisibility(View.VISIBLE);
 
                 status.setText(R.string.powerMenuMain_SoftReboot);
@@ -1143,8 +1215,10 @@ public class XposedDialog extends DialogFragment
 										revealView.reveal(p.x, p.y, color, 0, 0, null);
 										if(frame3.getVisibility()==View.VISIBLE) {
 												frame3.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
-										} else {
+										} else if (frame.getVisibility() == View.VISIBLE) {
 												frame.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
+										} else {
+												frameConfirm.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
 										}
 										revealView.startAnimation(anim);
 										frame2.startAnimation(anim);
@@ -1165,7 +1239,9 @@ public class XposedDialog extends DialogFragment
 						}
 
 						((XposedMainActivity) getActivity()).revealFromTop();
-						frame.setVisibility(View.GONE);frame3.setVisibility(View.GONE);
+						frame.setVisibility(View.GONE);
+						frame3.setVisibility(View.GONE);
+						frameConfirm.setVisibility(View.GONE);
 						frame2.setVisibility(View.VISIBLE);
 
 						status.setText(R.string.powerMenuBottom_Recovery);
@@ -1194,8 +1270,10 @@ public class XposedDialog extends DialogFragment
 										revealView.reveal(p.x, p.y, color, 0, 0, null);
 										if(frame3.getVisibility()==View.VISIBLE) {
 												frame3.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
-										} else {
+										} else if (frame.getVisibility() == View.VISIBLE) {
 												frame.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
+										} else {
+												frameConfirm.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
 										}
 										revealView.startAnimation(anim);
 										frame2.startAnimation(anim);
@@ -1216,7 +1294,9 @@ public class XposedDialog extends DialogFragment
 						}
 
 						((XposedMainActivity) getActivity()).revealFromTop();
-						frame.setVisibility(View.GONE);frame3.setVisibility(View.GONE);
+						frame.setVisibility(View.GONE);
+						frame3.setVisibility(View.GONE);
+						frameConfirm.setVisibility(View.GONE);
 						frame2.setVisibility(View.VISIBLE);
 
 						status.setText(R.string.powerMenuBottom_Bootloader);
@@ -1245,8 +1325,10 @@ public class XposedDialog extends DialogFragment
 										revealView.reveal(p.x, p.y, color, 0, 0, null);
 										if(frame3.getVisibility()==View.VISIBLE) {
 												frame3.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
-										} else {
+										} else if (frame.getVisibility() == View.VISIBLE) {
 												frame.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
+										} else {
+												frameConfirm.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, true));
 										}
 										revealView.startAnimation(anim);
 										frame2.startAnimation(anim);
@@ -1267,7 +1349,9 @@ public class XposedDialog extends DialogFragment
 						}
 
 						((XposedMainActivity) getActivity()).revealFromTop();
-						frame.setVisibility(View.GONE);frame3.setVisibility(View.GONE);
+						frame.setVisibility(View.GONE);
+						frame3.setVisibility(View.GONE);
+						frameConfirm.setVisibility(View.GONE);
 						frame2.setVisibility(View.VISIBLE);
 
 						status.setText(R.string.powerMenuBottom_SafeMode);
@@ -1290,6 +1374,7 @@ public class XposedDialog extends DialogFragment
 						if (!XposedMainActivity.previewMode) {
 								am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 						}
+				}
 				}
 		}
 		

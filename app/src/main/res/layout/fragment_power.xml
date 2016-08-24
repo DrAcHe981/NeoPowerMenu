@@ -88,6 +88,64 @@
 
 		</FrameLayout>
 
+		<FrameLayout
+			android:id="@+id/frameConfirm"
+			android:layout_width="340dp"
+			android:layout_height="150dp"
+			android:layout_gravity="center|center_vertical|center_horizontal"
+			android:visibility="visible">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical"
+				android:gravity="center">
+
+				<TextView
+					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:text="Reboot?"
+					android:textSize="20sp"
+					android:id="@+id/fragmentpowerTextView_ConfirmAction"
+					android:layout_weight="1.0"
+					android:gravity="center"
+					android:layout_marginBottom="-20dp"/>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:gravity="right"
+					android:layout_margin="10dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="No"
+						android:textSize="16sp"
+						android:background="?selectableItemBackground"
+						android:id="@+id/fragmentpowerTextView_ConfirmNo"
+						android:layout_weight="1.0"
+						android:gravity="center"
+						android:padding="5dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="Yes"
+						android:textSize="16sp"
+						android:background="?selectableItemBackground"
+						android:id="@+id/fragmentpowerTextView_ConfirmYes"
+						android:gravity="center"
+						android:layout_weight="1.0"
+						android:padding="5dp"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</FrameLayout>
+
 		<de.NeonSoft.neopowermenu.helpers.CircularRevealView
 			android:id="@+id/reveal"
 			android:layout_width="match_parent"
@@ -100,7 +158,7 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
 			android:layout_marginRight="20dp"
-			android:visibility="visible">
+			android:visibility="gone">
 
 			<LinearLayout
 				android:layout_width="match_parent"
