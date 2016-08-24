@@ -16,37 +16,65 @@ import org.apache.http.impl.client.*;
 import org.apache.http.params.*;
 import org.json.*;
 import android.view.View.*;
+import android.graphics.*;
 
 public class getOnlinePresets extends AsyncTask<String, String, String>
 {
+		public static int MODE_ALL = 0;
+		public static int MODE_OFFSET = 1;
+
+		private int refreshMode = this.MODE_ALL;
 
 		private String[] onlineTitles;
 		private String[] onlineCreator;
 		private String[] onlineEnabled;
 		private String[] onlineLocal;
-		
+
+		public getOnlinePresets()
+		{
+		}
+
+		public getOnlinePresets(int refreshMode)
+		{
+				this.refreshMode = refreshMode;
+		}
+
 		@Override
 		protected void onPreExecute()
 		{
 				// TODO: Implement this method
-				if(PreferencesPresetsFragment.onlineRequestIsRunning) {
-						PreferencesPresetsFragment.onlineMSG.setText("Loading...");
-						if(PreferencesPresetsFragment.onlineMSG.getVisibility()==View.GONE) {
+				if (PreferencesPresetsFragment.onlineRequestIsRunning)
+				{
+						PreferencesPresetsFragment.onlineMSG.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
+						if (PreferencesPresetsFragment.onlineMSG.getVisibility() == View.GONE)
+						{
 								PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);
-								PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_in));
+								PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_in));
 						}
 						cancel(true);
 						return;
 				}
 				PreferencesPresetsFragment.onlineRequestIsRunning = true;
-				PreferencesPresetsFragment.onlineList.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_out));
-				PreferencesPresetsFragment.onlineList.setVisibility(View.GONE);
-				if(PreferencesPresetsFragment.onlineAdapter!=null) {
-						PreferencesPresetsFragment.onlineAdapter.removeAll();
+				if (refreshMode == MODE_ALL && PreferencesPresetsFragment.onlineList.getVisibility() == View.VISIBLE)
+				{
+						PreferencesPresetsFragment.onlineList.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_out));
+						PreferencesPresetsFragment.onlineList.setVisibility(View.GONE);
 				}
-				PreferencesPresetsFragment.onlineMSG.setText("Loading...");
-				PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);
-				PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_in));
+				/*if(PreferencesPresetsFragment.onlineAdapter!=null) {
+				 PreferencesPresetsFragment.onlineAdapter.removeAll();
+				 }*/
+				if (refreshMode == MODE_ALL)
+				{
+						PresetsPage.onlineIds.clear();
+						PreferencesPresetsFragment.OnlineListTitles.clear();
+						PreferencesPresetsFragment.OnlineListDescs.clear();
+						PreferencesPresetsFragment.OnlineListEnabled.clear();
+						PreferencesPresetsFragment.OnlineListLocal.clear();
+						PreferencesPresetsFragment.onlineAdapter.notifyDataSetChanged();
+						PreferencesPresetsFragment.onlineMSG.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
+						PreferencesPresetsFragment.onlineMSGHolder.setVisibility(View.VISIBLE);
+						PreferencesPresetsFragment.onlineMSGHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_in));
+				}
 				super.onPreExecute();
 		}
 
@@ -54,48 +82,71 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 		protected String doInBackground(String[] p1)
 		{
 				// TODO: Implement this method
-				String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[0]+" ("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0]+")";
+				String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")";
 				String searchFor = "";
-				if(p1!=null && p1.length>0) {
-						for(int i = 0;i<p1.length;i++) {
-						if(p1[i].contains("order=")) {
-								orderBy = p1[i];
-						} else if (p1[i].contains("search=")) {
-								searchFor = p1[i];
-						}
+				String offset = "";
+				if (p1 != null && p1.length > 0)
+				{
+						for (int i = 0;i < p1.length;i++)
+						{
+								if (!p1[i].isEmpty())
+								{
+										if (p1[i].contains("order="))
+										{
+												orderBy = p1[i];
+										}
+										else if (p1[i].contains("search="))
+										{
+												searchFor = p1[i];
+										}
+										else if (p1[i].contains("offset="))
+										{
+												offset = p1[i].split("set=")[1];
+										}
+								}
 						}
 				}
 				String searchTerm = "";
-				if(!searchFor.isEmpty()) {
+				if (!searchFor.isEmpty())
+				{
 						searchTerm = searchFor.split("ch=")[1];
 				}
 				String orderName = "_presetName";
 				String orderDirection = "ASC";
-				if(orderBy.contains("("+MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1]+")")) {
+				if (orderBy.contains("(" + MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")"))
+				{
 						orderDirection = "DESC";
 				}
-				if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[1])) {
+				if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[1]))
+				{
 						orderName = "_presetTimestamp";
-				} else if(orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[2])) {
+				}
+				else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[2]))
+				{
 						orderName = "_presetStars";
-				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[3])) {
+				}
+				else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[3]))
+				{
 						orderName = "_presetCreator";
-				} else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[4])) {
+				}
+				else if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[4]))
+				{
 						orderName = "own";
 				}
-				
+
 				try
 				{
 						HttpParams httpParams = new BasicHttpParams();
 						HttpConnectionParams.setConnectionTimeout(httpParams,
 																											MainActivity.TIMEOUT_MILLISEC);
 						HttpConnectionParams.setSoTimeout(httpParams, MainActivity.TIMEOUT_MILLISEC);
-						
+
 						HttpParams p = new BasicHttpParams();
 						p.setParameter("user", MainActivity.deviceUniqeId);
 
 						HttpClient httpclient = new DefaultHttpClient(p);
-						String url = "http://"+(MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de")+"/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&format=json&userId="+MainActivity.deviceUniqeId+""+((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "" : "&accountId="+MainActivity.accountUniqeId)+"&sortBy="+orderName+"&sortDir="+orderDirection+(searchTerm.isEmpty() ? "" : "&searchFor="+searchTerm);
+						String url = "http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&appversion=" + MainActivity.versionCode + "&format=json&userId=" + MainActivity.deviceUniqeId + "" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "" : "&accountId=" + MainActivity.accountUniqeId) + "&sortBy=" + orderName + "&sortDir=" + orderDirection + (searchTerm.isEmpty() ? "" : "&searchFor=" + searchTerm) + (offset.isEmpty() ? "" : "&offset=" + offset);
+						Log.i("NPM:getOnlinePresets", "Trying to fetch from " + url);
 						HttpPost httppost = new HttpPost(url);
 
 						try
@@ -108,7 +159,8 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 								//httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 								ResponseHandler<String> responseHandler = new BasicResponseHandler();
 								String responseBody = httpclient.execute(httppost, responseHandler);
-								if(responseBody.contains("Cannot connect to the DB")) {
+								if (responseBody.contains("Cannot connect to the DB"))
+								{
 										return "Request failed: Cannot connect to the DB";
 								}
 								JSONObject json = new JSONObject(responseBody);
@@ -119,7 +171,6 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 								onlineCreator = new String[jArray.length()];
 								onlineEnabled = new String[jArray.length()];
 								onlineLocal = new String[jArray.length()];
-								PresetsPage.onlineIds = new String[jArray.length()];
 
 								for (int i = 0; i < jArray.length(); i++)
 								{
@@ -133,14 +184,14 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 										map.put("Name", jObject.getString("_presetName"));
 										map.put("Creator", jObject.getString("_presetCreator"));
 										map.put("AppVersion", jObject.getString("_presetAppVersion"));
-										map.put("CreatorId",jObject.getString("_creatorUniqeId"));
+										map.put("CreatorId", jObject.getString("_creatorUniqeId"));
 
 										mylist.add(map);
 										onlineTitles[i] = jObject.getString("_presetName");
-										onlineCreator[i] = jObject.getString("_presetCreator")+",=,"+jObject.getString("_presetAppVersion")+",=,"+jObject.getString("_presetStars");
+										onlineCreator[i] = jObject.getString("_presetCreator") + ",=," + jObject.getString("_presetAppVersion") + ",=," + jObject.getString("_presetStars");
 										onlineEnabled[i] = "false";
 										onlineLocal[i] = "false";
-										PresetsPage.onlineIds[i] = jObject.getString("_creatorUniqeId");
+										PresetsPage.onlineIds.add(jObject.getString("_creatorUniqeId"));
 
 								}
 
@@ -174,12 +225,38 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 				super.onPostExecute(result);
 				if (result != null)
 				{
-								Log.e("NPM",result);
-								if((result.contains("Connection to") && result.contains("refused")) || result.contains("Unable to resolve host")) {
+						Log.e("NPM", result);
+						if (PreferencesPresetsFragment.onlineMSGHolder.getVisibility() == View.VISIBLE)
+						{
+								PreferencesPresetsFragment.onlineMSGHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_out));
+								PreferencesPresetsFragment.onlineMSGHolder.setVisibility(View.GONE);
+						}
+						String errorTitle = "";
+						if ((result.contains("Connection to") && result.contains("refused")) || result.contains("Unable to resolve host"))
+						{
+								errorTitle = PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoServer);
+								if (refreshMode == MODE_ALL)
+								{
 										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoServer));
-								} else if (result.contains("Cannot connect to the DB")) {
+										PreferencesPresetsFragment.onlineMSGHolder.setVisibility(View.VISIBLE);
+										PreferencesPresetsFragment.onlineMSGHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_in));
+								}
+						}
+						else if (result.contains("Cannot connect to the DB"))
+						{
+								errorTitle = PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoDB);
+								if (refreshMode == MODE_ALL)
+								{
 										PreferencesPresetsFragment.onlineMSG.setText(PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_CantConnecttoDB));
-								} else {
+										PreferencesPresetsFragment.onlineMSGHolder.setVisibility(View.VISIBLE);
+										PreferencesPresetsFragment.onlineMSGHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_in));
+								}
+						}
+						else
+						{
+								errorTitle = result;
+								if (refreshMode == MODE_ALL)
+								{
 										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(PreferencesPresetsFragment.mContext, MainActivity.fragmentManager);
 										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
@@ -218,24 +295,73 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 										dialogFragment.showDialog(R.id.dialog_container);
 										PreferencesPresetsFragment.onlineMSG.setText(result);
 								}
-						PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);
-						PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_in));
+						}
+						if (refreshMode == MODE_OFFSET)
+						{
+								//PresetsPage.onlineIds.remove(PresetsPage.onlineIds.size()-1);
+								PreferencesPresetsFragment.OnlineListTitles.set(PreferencesPresetsFragment.OnlineListTitles.size() - 1, PreferencesPresetsFragment.mContext.getString(R.string.presetsManager_LoadMore).split("\\|")[6]);
+								PreferencesPresetsFragment.OnlineListDescs.set(PreferencesPresetsFragment.OnlineListDescs.size() - 1, errorTitle);
+								//PreferencesPresetsFragment.OnlineListEnabled.set(PreferencesPresetsFragment.OnlineListEnabled.size()-1);
+								PreferencesPresetsFragment.OnlineListLocal.set(PreferencesPresetsFragment.OnlineListLocal.size() - 1, "error");
+								PreferencesPresetsFragment.onlineAdapter.notifyDataSetChanged();
+						}
 						//Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
 				}
 				else
 				{
-						ArrayList<String> ListTitles = new ArrayList<String>(Arrays.asList(onlineTitles));
-						ArrayList<String> ListDescs = new ArrayList<String>(Arrays.asList(onlineCreator));
-						ArrayList<String> ListEnabled = new ArrayList<String>(Arrays.asList(onlineEnabled));
-						ArrayList<String> ListLocal = new ArrayList<String>(Arrays.asList(onlineLocal));
-						PreferencesPresetsFragment.onlineAdapter = new PresetsAdapter(PreferencesPresetsFragment.mContext, ListTitles, ListDescs, ListEnabled, ListLocal);
-						PreferencesPresetsFragment.onlineList.setAdapter(PreferencesPresetsFragment.onlineAdapter);
-						PreferencesPresetsFragment.onlineList.setFastScrollEnabled(true);
-						PreferencesPresetsFragment.onlineList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-						PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_out));
-						PreferencesPresetsFragment.onlineMSG.setVisibility(View.GONE);
-						PreferencesPresetsFragment.onlineList.setVisibility(View.VISIBLE);
-						PreferencesPresetsFragment.onlineList.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_in));
+						//ArrayList<String> ListTitles = new ArrayList<String>(Arrays.asList(onlineTitles));
+						//ArrayList<String> ListDescs = new ArrayList<String>(Arrays.asList(onlineCreator));
+						//ArrayList<String> ListEnabled = new ArrayList<String>(Arrays.asList(onlineEnabled));
+						//ArrayList<String> ListLocal = new ArrayList<String>(Arrays.asList(onlineLocal));
+
+						if (refreshMode == MODE_OFFSET)
+						{
+								PresetsPage.onlineIds.remove(PresetsPage.onlineIds.size() - 1);
+								PreferencesPresetsFragment.OnlineListTitles.remove(PreferencesPresetsFragment.OnlineListTitles.size() - 1);
+								PreferencesPresetsFragment.OnlineListDescs.remove(PreferencesPresetsFragment.OnlineListDescs.size() - 1);
+								PreferencesPresetsFragment.OnlineListEnabled.remove(PreferencesPresetsFragment.OnlineListEnabled.size() - 1);
+								PreferencesPresetsFragment.OnlineListLocal.remove(PreferencesPresetsFragment.OnlineListLocal.size() - 1);
+						}
+
+						PreferencesPresetsFragment.OnlineListTitles.addAll(Arrays.asList(onlineTitles));
+						PreferencesPresetsFragment.OnlineListDescs.addAll(Arrays.asList(onlineCreator));
+						PreferencesPresetsFragment.OnlineListEnabled.addAll(Arrays.asList(onlineEnabled));
+						PreferencesPresetsFragment.OnlineListLocal.addAll(Arrays.asList(onlineLocal));
+
+						if (onlineTitles.length == 0 && refreshMode == MODE_OFFSET)
+						{
+								PresetsPage.onlineIds.add("xyz");
+								PreferencesPresetsFragment.OnlineListTitles.add(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[4]);
+								PreferencesPresetsFragment.OnlineListDescs.add(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[5]);
+								PreferencesPresetsFragment.OnlineListEnabled.add("false");
+								PreferencesPresetsFragment.OnlineListLocal.add("NoMore");
+						}
+
+						if (onlineTitles.length == 30)
+						{
+								PresetsPage.onlineIds.add("xyz");
+								PreferencesPresetsFragment.OnlineListTitles.add(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[2]);
+								PreferencesPresetsFragment.OnlineListDescs.add(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[3]);
+								PreferencesPresetsFragment.OnlineListEnabled.add("false");
+								PreferencesPresetsFragment.OnlineListLocal.add("LoadMore");
+						}
+
+						PreferencesPresetsFragment.onlineAdapter.notifyDataSetChanged();
+						if (PreferencesPresetsFragment.onlineMSGHolder.getVisibility() == View.VISIBLE)
+						{
+								PreferencesPresetsFragment.onlineMSGHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_out));
+								PreferencesPresetsFragment.onlineMSGHolder.setVisibility(View.GONE);
+						}
+						if (refreshMode == MODE_ALL)
+						{
+								PreferencesPresetsFragment.onlineList.setSelection(0);
+								PreferencesPresetsFragment.onlineList.scrollTo(0, 0);
+						}
+						if (PreferencesPresetsFragment.onlineList.getVisibility() == View.GONE)
+						{
+								PreferencesPresetsFragment.onlineList.setVisibility(View.VISIBLE);
+								PreferencesPresetsFragment.onlineList.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_in));
+						}
 				}
 				PreferencesPresetsFragment.onlineRequestIsRunning = false;
 		}

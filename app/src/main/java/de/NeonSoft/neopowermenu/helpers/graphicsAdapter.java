@@ -149,7 +149,8 @@ public class graphicsAdapter extends BaseAdapter
 						holder.imgQueueBg.setImageDrawable(drawable);
 						holder.imgQueue = (ImageView) convertView
 								.findViewById(de.NeonSoft.neopowermenu.R.id.imgQueue);
-						
+						holder.imgProgress = (ProgressBar) convertView.findViewById(R.id.imgProgress);
+								
 						holder.name = (TextView) convertView.findViewById(de.NeonSoft.neopowermenu.R.id.imgName);
 								
 						holder.LoadingBar = (LinearLayout) convertView.findViewById(de.NeonSoft.neopowermenu.R.id.graphicslistitemLinearLayout_Loading);
@@ -168,15 +169,20 @@ public class graphicsAdapter extends BaseAdapter
 								holder.name.setText(string);
 								holder.name.setVisibility(View.VISIBLE);
 						} catch (Throwable t1) {
-								holder.name.setVisibility(View.GONE);
+								holder.name.setText(mItems.get(position).resName);
+								holder.name.setVisibility(View.VISIBLE);
 								Log.e("NPM:graphicsList","No String found for resource "+mItems.get(position).resName+"\n"+t);
 						}
 				}
 				//holder.name.setText((mItems.get(position).sdcardPath==null ? "resId" : "sdcardPath"));
 				try {
-						if(mItems.get(position).sdcardPath != null) {
-								MemoryCacheUtils.removeFromCache((mItems.get(position).sdcardPath.startsWith("file://") ? "" : "file://") + mItems.get(position).sdcardPath,MainActivity.imageLoader.getMemoryCache());
-								DiskCacheUtils.removeFromCache((mItems.get(position).sdcardPath.startsWith("file://") ? "" : "file://") + mItems.get(position).sdcardPath,MainActivity.imageLoader.getDiscCache());
+						if(mItems.get(position).sdcardPath != null && mItems.get(position).fileName.equalsIgnoreCase("Progress") && mItems.get(position).sdcardPath.equalsIgnoreCase("Stock")) {
+								holder.LoadingBar.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
+								holder.LoadingBar.setVisibility(View.GONE);
+								holder.imgQueue.setVisibility(View.GONE);
+								holder.imgProgress.setVisibility(View.VISIBLE);
+								holder.imgProgress.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
+						} else if(mItems.get(position).sdcardPath != null) {
 						mImageLoader.displayImage((mItems.get(position).sdcardPath.startsWith("file://") ? "" : "file://") + mItems.get(position).sdcardPath,
 								holder.imgQueue, new SimpleImageLoadingListener() {
 										@Override
@@ -194,22 +200,61 @@ public class graphicsAdapter extends BaseAdapter
 												holder.imgQueue.setPadding(0,0,0,0);
 												holder.imgQueue.setImageBitmap(loadedImage);
 												holder.imgQueue.setVisibility(View.VISIBLE);
-												holder.imgQueue.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
+												Animation blendIn = AnimationUtils.loadAnimation(mContext,R.anim.fade_in);
+												if(mItems.get(position).fileName.equalsIgnoreCase("Progress")) {
+														blendIn.setAnimationListener(new Animation.AnimationListener() {
+
+																		@Override
+																		public void onAnimationEnd(Animation p1)
+																		{
+																				// TODO: Implement this method
+																				Animation progressAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate_right);
+																				progressAnim.setRepeatMode(Animation.RESTART);
+																				progressAnim.setRepeatCount(Animation.INFINITE);
+																				holder.imgQueue.startAnimation(progressAnim);
+																		}
+
+																		@Override
+																		public void onAnimationRepeat(Animation p1)
+																		{
+																				// TODO: Implement this method
+																		}
+
+																		@Override
+																		public void onAnimationStart(Animation p1)
+																		{
+																				// TODO: Implement this method
+																		}
+																});
+												}
+												holder.imgQueue.startAnimation(blendIn);
 										}
 										@Override
 										public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
 												Log.e("NPM:graphicsList","Failed to load image '"+imageUri+"': "+failReason.getCause().toString());
 												holder.LoadingBar.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 												holder.LoadingBar.setVisibility(View.GONE);
-												holder.imgQueue.setImageDrawable(mContext.getResources().getDrawable(defaultGraphics.get(position).resId));
-												holder.imgQueue.setVisibility(View.VISIBLE);
-												holder.imgQueue.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
+												if(mItems.get(position).fileName.equalsIgnoreCase("Progress") && MainActivity.preferences.getString("ProgressDrawable","Stock").equalsIgnoreCase("stock")) {
+														holder.imgQueue.setVisibility(View.GONE);
+														holder.imgProgress.setVisibility(View.VISIBLE);
+														holder.imgProgress.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
+												} else {
+														holder.imgQueue.setImageDrawable(mContext.getResources().getDrawable(defaultGraphics.get(position).resId));
+														holder.imgQueue.setVisibility(View.VISIBLE);
+														holder.imgQueue.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
+												}
+												if(mItems.get(position).fileName.equalsIgnoreCase("Progress") && MainActivity.preferences.getString("ProgressDrawable","Stock").equalsIgnoreCase("pb/dr")) {
+														((AnimationDrawable) holder.imgQueue.getDrawable()).start();
+												}
 										}
 								});
 						} else if (mItems.get(position).resId > 0) {
 								holder.LoadingBar.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 								holder.LoadingBar.setVisibility(View.GONE);
 								holder.imgQueue.setImageDrawable(mContext.getResources().getDrawable(mItems.get(position).resId));
+								if(mItems.get(position).fileName.equalsIgnoreCase("Progress")) {
+										((AnimationDrawable) holder.imgQueue.getDrawable()).start();
+								}
 								holder.imgQueue.setVisibility(View.VISIBLE);
 								holder.imgQueue.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 						} else {
@@ -223,10 +268,16 @@ public class graphicsAdapter extends BaseAdapter
 				return convertView;
 		}
 		
+		public void removeFromCache(String fileName) {
+				MemoryCacheUtils.removeFromCache(((mContext.getFilesDir().getPath()+"/images/"+fileName+".png").startsWith("file://") ? "" : "file://") + mContext.getFilesDir().getPath()+"/images/"+fileName+".png",MainActivity.imageLoader.getMemoryCache());
+				DiskCacheUtils.removeFromCache(((mContext.getFilesDir().getPath()+"/images/"+fileName+".png").startsWith("file://") ? "" : "file://") + mContext.getFilesDir().getPath()+"/images/"+fileName+".png",MainActivity.imageLoader.getDiscCache());
+		}
+		
 		public class ViewHolder {
 				RelativeLayout.LayoutParams params;
 				ImageView imgQueue;
 				ImageView imgQueueBg;
+				ProgressBar imgProgress;
 				TextView name;
 				LinearLayout LoadingBar;
 		}

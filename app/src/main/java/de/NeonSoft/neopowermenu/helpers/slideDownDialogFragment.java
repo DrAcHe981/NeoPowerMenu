@@ -96,6 +96,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 		private boolean dialogColorPickershowOpacityBar;
 		
 		private String dialogCheckBoxtext;
+		private boolean dialogCheckBoxChecked;
 		
 		private boolean dialogShowProgressBar = false;
 		private boolean dialogProgressBlink = false;
@@ -343,9 +344,12 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 				dialogColorPickershowOpacityBar = showOpacityBar;
 		}
 		
-		public void setCheckBox(final String text) {
+		public void setCheckBox(final String text, final boolean checked) {
 				dialogCheckBoxtext = text;
-				if(LinearLayout_DialogCheckBox != null && CheckBox_DialogCheckBox.getText().toString().equals(text)) {
+				dialogCheckBoxChecked = checked;
+				if(LinearLayout_DialogCheckBox != null) {
+						CheckBox_DialogCheckBox.setChecked(checked);
+				if(CheckBox_DialogCheckBox.getText().toString().equals(text)) {
 						Animation fadeOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
 						fadeOut.setAnimationListener(new Animation.AnimationListener() {
 
@@ -353,6 +357,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 										public void onAnimationEnd(Animation p1)
 										{
 												// TODO: Implement this method
+												CheckBox_DialogCheckBox.setChecked(checked);
 												CheckBox_DialogCheckBox.setText(text);
 												LinearLayout_DialogCheckBox.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
 										}
@@ -370,6 +375,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 										}
 								});
 						LinearLayout_DialogCheckBox.startAnimation(fadeOut);
+				}
 				}
 		}
 		
@@ -926,6 +932,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 						if(dialogCheckBoxtext != null && !dialogCheckBoxtext.isEmpty()) {
 								LinearLayout_DialogCheckBox.setVisibility(View.VISIBLE);
 								CheckBox_DialogCheckBox.setText(dialogCheckBoxtext);
+								CheckBox_DialogCheckBox.setChecked(dialogCheckBoxChecked);
 						}
 						
 						if(dialogProgressBlink) {

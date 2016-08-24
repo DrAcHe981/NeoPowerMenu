@@ -32,6 +32,7 @@ public class PreferencesGraphicsFragment extends Fragment
 		//String activeGraphics = "internal1";
 		
 		public static Object[][] defaultGraphics = {
+				{"Progress", "stock","Progress"},
 				{"Shutdown",R.drawable.poweroff1,"Shutdown"},
 				{"Reboot",R.drawable.ic_av_loop,"Reboot"},
 				{"SoftReboot",R.drawable.ic_image_rotate_left,"SoftReboot"},
@@ -51,6 +52,7 @@ public class PreferencesGraphicsFragment extends Fragment
 				{"SafeMode",R.drawable.ic_notification_sync_problem,"SafeMode"}};
 		
 		Object[][] loadGraphics = {
+				{"Progress", "stock","Progress"},
 				{"Shutdown",R.drawable.poweroff1,"Shutdown"},
 				{"Reboot",R.drawable.ic_av_loop,"Reboot"},
 				{"SoftReboot",R.drawable.ic_image_rotate_left,"SoftReboot"},
@@ -95,7 +97,15 @@ public class PreferencesGraphicsFragment extends Fragment
 						File checkFile = new File(mContext.getFilesDir().getPath()+"/images/"+defaultGraphics[i][2]+".png");
 						if (checkFile.exists()) {
 								loadGraphics[i][1] = mContext.getFilesDir().getPath()+"/images/"+defaultGraphics[i][2]+".png";
+						} else if (defaultGraphics[i][0].toString().equalsIgnoreCase("Progress")) {
+								loadGraphics[i][1] = MainActivity.preferences.getString("ProgressDrawable","stock");
 						}
+				}
+				
+				if(loadGraphics[0][1].toString().equalsIgnoreCase("pb/dr")) {
+						loadGraphics[0][1] = R.drawable.progress_pitchblack_darkred_cm13;
+				} else if(loadGraphics[0][1].toString().equalsIgnoreCase("WeaReOne")) {
+						loadGraphics[0][1] = R.drawable.progress_weareone;
 				}
 				
 				graphicsAdapter.addFallbackGraphics(defaultGraphics);
@@ -115,7 +125,11 @@ public class PreferencesGraphicsFragment extends Fragment
 														public void onListItemClick(int position, String text)
 														{
 																// TODO: Implement this method
+																graphicsAdapter.removeFromCache(defaultGraphics[selected][2].toString());
 																if(position == 0) {
+																		if(defaultGraphics[selected][0].toString().equalsIgnoreCase("Progress")) {
+																				MainActivity.preferences.edit().putString("ProgressDrawable","Stock").commit();
+																		}
 																		new File(loadGraphics[selected][1].toString()).delete();
 																		loadGraphics[selected][1] = defaultGraphics[selected][1];
 																		graphicsAdapter.remove(selected);
@@ -190,8 +204,21 @@ public class PreferencesGraphicsFragment extends Fragment
 																		Intent intent = new Intent();
 																		intent.setType("image/*");
 																		intent.setAction(Intent.ACTION_GET_CONTENT);
-																		startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE_RESULT); 
-																		//Toast.makeText(getActivity(),getString(R.string.presetsManager_NJI),Toast.LENGTH_SHORT).show();
+																		startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE_RESULT);
+																} else if (position == 3) {
+																		MainActivity.preferences.edit().putString("ProgressDrawable","pb/dr").commit();
+																		new File(loadGraphics[selected][1].toString()).delete();
+																		loadGraphics[selected][1] = R.drawable.progress_pitchblack_darkred_cm13;
+																		graphicsAdapter.remove(selected);
+																		Object[] item = {defaultGraphics[selected][0],R.drawable.progress_pitchblack_darkred_cm13,defaultGraphics[selected][2]};
+																		graphicsAdapter.addAt(selected,item);
+																} else if (position == 4) {
+																		MainActivity.preferences.edit().putString("ProgressDrawable","WeaReOne").commit();
+																		new File(loadGraphics[selected][1].toString()).delete();
+																		loadGraphics[selected][1] = R.drawable.progress_weareone;
+																		graphicsAdapter.remove(selected);
+																		Object[] item = {defaultGraphics[selected][0],R.drawable.progress_weareone,defaultGraphics[selected][2]};
+																		graphicsAdapter.addAt(selected,item);
 																}
 														}
 
@@ -219,8 +246,8 @@ public class PreferencesGraphicsFragment extends Fragment
 																// TODO: Implement this method
 														}
 												});
-										String[] choose = getString(R.string.graphics_Choose).split("\\|");
-										dialogFragment.setList(ListView.CHOICE_MODE_NONE,new String[] {choose[0],choose[1],choose[2]},-1,true);
+										String[] choose = (getString(R.string.graphics_Choose)+(defaultGraphics[selected][0].toString().equalsIgnoreCase("Progress") ? "|PitchBlack / DarkRed CM13|We aRe One" : "")).split("\\|");
+										dialogFragment.setList(ListView.CHOICE_MODE_NONE, choose, -1, true);
 										dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
 										dialogFragment.showDialog(R.id.dialog_container);
 								}

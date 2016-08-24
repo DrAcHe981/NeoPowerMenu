@@ -312,7 +312,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 						//} else if (sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
 						//		powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE,R.style.TransparentApp);
 						//}
-						fm.beginTransaction().add(R.id.powerfragment_holder,powerDialog).commit();
+						fm.beginTransaction().add(R.id.powerfragment_holder,powerDialog).commitAllowingStateLoss();
 						//powerDialog.setStyle(DialogFragment.STYLE_NO_FRAME, R.style.ThemeDialogBaseLight);
         //powerDialog.show(fm, "fragment_power");
 				} catch (Throwable t) {

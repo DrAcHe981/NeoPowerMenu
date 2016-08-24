@@ -1,8 +1,10 @@
 package de.NeonSoft.neopowermenu.xposed;
 
+import android.animation.*;
 import android.app.*;
 import android.content.*;
 import android.graphics.*;
+import android.graphics.drawable.*;
 import android.media.*;
 import android.os.*;
 import android.util.*;
@@ -19,7 +21,6 @@ import de.NeonSoft.neopowermenu.services.*;
 import eu.chainfire.libsuperuser.*;
 import java.io.*;
 import java.util.*;
-import android.animation.*;
 
 /**
  * Created by naman on 20/03/15.
@@ -104,6 +105,7 @@ public class XposedDialog extends DialogFragment
 				//doubleToConfirm = XposedMainActivity.preferences.getBoolean("DoubleTouchToConfirm",true);
 				mInflater = inflater;
 				isDismissing = false;
+				canDismiss = true;
 				mHandler = new Handler();
 				try
 				{
@@ -544,11 +546,11 @@ public class XposedDialog extends DialogFragment
 		public void refreshIcons() {
 				if(soundModeIcon[0] != null && amRingerMode != am.getRingerMode()) {
 						if(amRingerMode==AudioManager.RINGER_MODE_VIBRATE) {
-								loadImage((ImageView) soundModeIcon[0], 13,soundModeIcon[1].toString());
+								loadImage((ImageView) soundModeIcon[0], 14,soundModeIcon[1].toString());
 						} else if(amRingerMode==AudioManager.RINGER_MODE_SILENT) {
-								loadImage((ImageView) soundModeIcon[0], 12,soundModeIcon[1].toString());
+								loadImage((ImageView) soundModeIcon[0], 13,soundModeIcon[1].toString());
 						} else {
-								loadImage((ImageView) soundModeIcon[0], 11,soundModeIcon[1].toString());
+								loadImage((ImageView) soundModeIcon[0], 12,soundModeIcon[1].toString());
 						}
 						amRingerMode = am.getRingerMode();
 				}
@@ -560,16 +562,16 @@ public class XposedDialog extends DialogFragment
 								{
 										if (android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON) == 0)
 										{
-												loadImage((ImageView) airplaneModeIcon[0], 9, airplaneModeIcon[1].toString());
+												loadImage((ImageView) airplaneModeIcon[0], 10, airplaneModeIcon[1].toString());
 										}
 										else
 										{
-												loadImage((ImageView) airplaneModeIcon[0], 8, airplaneModeIcon[1].toString());
+												loadImage((ImageView) airplaneModeIcon[0], 9, airplaneModeIcon[1].toString());
 										}
 								}
 								catch (Throwable e)
 								{
-										loadImage((ImageView) airplaneModeIcon[0], 9, airplaneModeIcon[1].toString());
+										loadImage((ImageView) airplaneModeIcon[0], 10, airplaneModeIcon[1].toString());
 								}
 								airplaneMode = android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON);
 						}
@@ -579,9 +581,9 @@ public class XposedDialog extends DialogFragment
 				try {
 						if(flashlightIcon[0] != null && flashlightOn != (TorchService.getTorchState() == TorchService.TORCH_STATUS_ON)) {
 								if(TorchService.getTorchState()==TorchService.TORCH_STATUS_ON) {
-										loadImage((ImageView) flashlightIcon[0], 5,flashlightIcon[1].toString());
-								} else {
 										loadImage((ImageView) flashlightIcon[0], 6,flashlightIcon[1].toString());
+								} else {
+										loadImage((ImageView) flashlightIcon[0], 7,flashlightIcon[1].toString());
 								}
 								flashlightOn = TorchService.getTorchState() == TorchService.TORCH_STATUS_ON;
 						}
@@ -598,64 +600,64 @@ public class XposedDialog extends DialogFragment
 						background.setImageDrawable(drawable);
 						foreground.setVisibility(View.VISIBLE);
 						if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Shutdown))) {
-								loadImage(foreground, 0,color2);
-						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Reboot))) {
 								loadImage(foreground, 1,color2);
-						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoftReboot))) {
+						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Reboot))) {
 								loadImage(foreground, 2,color2);
-						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenshot))) {
+						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoftReboot))) {
 								loadImage(foreground, 3,color2);
-						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenrecord))) {
+						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenshot))) {
 								loadImage(foreground, 4,color2);
+						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenrecord))) {
+								loadImage(foreground, 5,color2);
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Flashlight))) {
 								if(TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) {
-										loadImage(foreground, 6,color2);
+										loadImage(foreground, 7,color2);
 								} else {
-										loadImage(foreground, 5,color2);
+										loadImage(foreground, 6,color2);
 								}
 								flashlightIcon[0] = foreground;
 								flashlightIcon[1] = color2;
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_ExpandedDesktop))) {
-								loadImage(foreground, 7,color2);
+								loadImage(foreground, 8,color2);
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_AirplaneMode))) {
 								try
 								{
 										if(android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON) == 0) {
-												loadImage(foreground, 9,color2);
+												loadImage(foreground, 10,color2);
 										} else {
-												loadImage(foreground, 8,color2);
+												loadImage(foreground, 9,color2);
 										}
 								}
 								catch (Throwable e)
 								{
-										loadImage(foreground, 9,color2);
+										loadImage(foreground, 10,color2);
 								}
 								airplaneModeIcon[0] = foreground;
 								airplaneModeIcon[1] = color2;
 						} else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_RestartUI))) {
-								loadImage(foreground, 10,color2);
+								loadImage(foreground, 11,color2);
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundMode))) {
 								if(amRingerMode==AudioManager.RINGER_MODE_VIBRATE) {
-										loadImage(foreground, 13,color2);
+										loadImage(foreground, 14,color2);
 								} else if(amRingerMode==AudioManager.RINGER_MODE_SILENT) {
-										loadImage(foreground, 12,color2);
+										loadImage(foreground, 13,color2);
 								} else {
-										loadImage(foreground, 11,color2);
+										loadImage(foreground, 12,color2);
 								}
 								soundModeIcon[0] = foreground;
 								soundModeIcon[1] = color2;
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_Recovery))) {
-								loadImage(foreground, 14,color2);
-						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_Bootloader))) {
 								loadImage(foreground, 15,color2);
-						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_SafeMode))) {
+						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_Bootloader))) {
 								loadImage(foreground, 16,color2);
+						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_SafeMode))) {
+								loadImage(foreground, 17,color2);
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundVibrate))) {
-								loadImage(foreground, 13,color2);
+								loadImage(foreground, 14,color2);
 						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundNormal))) {
-								loadImage(foreground, 11,color2);
-						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundSilent))) {
 								loadImage(foreground, 12,color2);
+						} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundSilent))) {
+								loadImage(foreground, 13,color2);
 						}
 				} else {
 						TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig()
@@ -698,7 +700,7 @@ public class XposedDialog extends DialogFragment
 										Log.e("NPM:xposedDialog","Failed to load image '"+imageUri+"': "+failReason.getCause().toString());
 										image.setImageDrawable(mContext.getResources().getDrawable(PreferencesGraphicsFragment.defaultGraphics[id][1]));
 										image.setColorFilter(Color.parseColor(color),
-																							android.graphics.PorterDuff.Mode.SRC_IN);
+																							android.graphics.PorterDuff.Mode.MULTIPLY);
 										image.setVisibility(View.VISIBLE);
 										if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
 												image.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 2, false));
@@ -708,7 +710,7 @@ public class XposedDialog extends DialogFragment
 				} else {
 						image.setImageDrawable(mContext.getResources().getDrawable(PreferencesGraphicsFragment.defaultGraphics[id][1]));
 						image.setColorFilter(Color.parseColor(color),
-																 android.graphics.PorterDuff.Mode.SRC_IN);
+																 android.graphics.PorterDuff.Mode.MULTIPLY);
 						image.setVisibility(View.VISIBLE);
 						if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
 								image.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 2, false));
@@ -865,16 +867,11 @@ public class XposedDialog extends DialogFragment
                 frame.setVisibility(View.GONE);
 								frame3.setVisibility(View.GONE);
                 frame2.setVisibility(View.VISIBLE);
+								
+								status.setText(R.string.powerMenuMain_Shutdown);
+								status_detail.setText(R.string.powerMenu_Shuttingdown);
 
-                status.setText(R.string.powerMenuMain_Shutdown);
-                status_detail.setText(R.string.powerMenu_Shuttingdown);
-								if(GraphicBehindProgress) loadImage(progressbg, 0, XposedMainActivity.colorPrefs.getString("DialogShutdown_Textcolor", "#ffffff"));
-								progress.getIndeterminateDrawable().setColorFilter(
-										Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogShutdown_Textcolor", "#ffffff")),
-										android.graphics.PorterDuff.Mode.SRC_IN);
-								status.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogShutdown_Textcolor", "#ffffff")));
-								status_detail.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogShutdown_Textcolor", "#ffffff")));
-
+								setProgressScreen("Shutdown");
 								if (!XposedMainActivity.previewMode)
 								{
 										if(HookShutdownThread) {
@@ -949,13 +946,8 @@ public class XposedDialog extends DialogFragment
 
 								status.setText(R.string.powerMenuMain_Reboot);
 								status_detail.setText(R.string.powerMenu_Rebooting);
-								if(GraphicBehindProgress) loadImage(progressbg, 1, XposedMainActivity.colorPrefs.getString("DialogReboot_Textcolor", "#ffffff"));
-								progress.getIndeterminateDrawable().setColorFilter(
-										Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogReboot_Textcolor", "#ffffff")),
-										android.graphics.PorterDuff.Mode.SRC_IN);
-								status.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogReboot_Textcolor", "#ffffff")));
-								status_detail.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogReboot_Textcolor", "#ffffff")));
 
+								setProgressScreen("Reboot");
 								if (!XposedMainActivity.previewMode)
 								{
 										if(HookShutdownThread) {
@@ -1030,13 +1022,8 @@ public class XposedDialog extends DialogFragment
 
                 status.setText(R.string.powerMenuMain_SoftReboot);
                 status_detail.setText(R.string.powerMenu_Rebooting);
-								if(GraphicBehindProgress) loadImage(progressbg, 2, XposedMainActivity.colorPrefs.getString("DialogSoftReboot_Textcolor", "#ffffff"));
-								progress.getIndeterminateDrawable().setColorFilter(
-										Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogSoftReboot_Textcolor", "#ffffff")),
-										android.graphics.PorterDuff.Mode.SRC_IN);
-								status.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogSoftReboot_Textcolor", "#ffffff")));
-								status_detail.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogSoftReboot_Textcolor", "#ffffff")));
 
+								setProgressScreen("SoftReboot");
 								if (!XposedMainActivity.previewMode)
 								{
 										if(HookShutdownThread) {
@@ -1183,13 +1170,8 @@ public class XposedDialog extends DialogFragment
 
 						status.setText(R.string.powerMenuBottom_Recovery);
 						status_detail.setText(R.string.powerMenu_Rebooting);
-						if(GraphicBehindProgress) loadImage(progressbg, 14, XposedMainActivity.colorPrefs.getString("DialogRecovery_Textcolor", "#ffffff"));
-						progress.getIndeterminateDrawable().setColorFilter(
-								Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogRecovery_Textcolor", "#ffffff")),
-								android.graphics.PorterDuff.Mode.SRC_IN);
-						status.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogRecovery_Textcolor", "#ffffff")));
-						status_detail.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogRecovery_Textcolor", "#ffffff")));
 
+						setProgressScreen("Recovery");
 						if (!XposedMainActivity.previewMode)
 						{
 								if(HookShutdownThread) {
@@ -1239,13 +1221,8 @@ public class XposedDialog extends DialogFragment
 
 						status.setText(R.string.powerMenuBottom_Bootloader);
 						status_detail.setText(R.string.powerMenu_Rebooting);
-						if(GraphicBehindProgress) loadImage(progressbg, 15, XposedMainActivity.colorPrefs.getString("DialogBootloader_Textcolor", "#ffffff"));
-						progress.getIndeterminateDrawable().setColorFilter(
-								Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogBootloader_Textcolor", "#ffffff")),
-								android.graphics.PorterDuff.Mode.SRC_IN);
-						status.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogBootloader_Textcolor", "#ffffff")));
-						status_detail.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogBootloader_Textcolor", "#ffffff")));
 
+						setProgressScreen("Bootloader");
 						if (!XposedMainActivity.previewMode)
 						{
 								if(HookShutdownThread) {
@@ -1295,13 +1272,8 @@ public class XposedDialog extends DialogFragment
 
 						status.setText(R.string.powerMenuBottom_SafeMode);
 						status_detail.setText(R.string.powerMenu_Rebooting);
-						if(GraphicBehindProgress) loadImage(progressbg, 16, XposedMainActivity.colorPrefs.getString("DialogSafeMode_Textcolor", "#ffffff"));
-						progress.getIndeterminateDrawable().setColorFilter(
-								Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogSafeMode_Textcolor", "#ffffff")),
-								android.graphics.PorterDuff.Mode.SRC_IN);
-						status.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogSafeMode_Textcolor", "#ffffff")));
-						status_detail.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("DialogSafeMode_Textcolor", "#ffffff")));
 
+						setProgressScreen("SafeMode");
 						if (!XposedMainActivity.previewMode)
 						{
 								new BackgroundThread(REBOOT_SAFE_MODE).start();
@@ -1319,6 +1291,109 @@ public class XposedDialog extends DialogFragment
 								am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 						}
 				}
+		}
+		
+		public void setProgressScreen(final String showingFor) {
+				status.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("Dialog"+showingFor+"_Textcolor", "#ffffff")));
+				status_detail.setTextColor(Color.parseColor(XposedMainActivity.colorPrefs.getString("Dialog"+showingFor+"_Textcolor", "#ffffff")));
+				
+				//if(GraphicBehindProgress) loadImage(progressbg, 0, XposedMainActivity.colorPrefs.getString("DialogShutdown_Textcolor", "#ffffff"));
+				if(XposedMainActivity.preferences.getString("ProgressDrawable","Stock").equalsIgnoreCase("file")) {
+						if(new File(mContext.getFilesDir().getPath()+"/images/"+PreferencesGraphicsFragment.defaultGraphics[0][2]+".png").exists()) {
+								XposedMainActivity.imageLoader.displayImage("file://"+mContext.getFilesDir().getPath()+"/images/"+PreferencesGraphicsFragment.defaultGraphics[0][2]+".png",
+										progressbg, new SimpleImageLoadingListener() {
+												@Override
+												public void onLoadingStarted(String imageUri, View view) {
+														progress.setVisibility(View.INVISIBLE);
+												}
+												@Override
+												public void onLoadingComplete(final String imageUri, final View view, Bitmap loadedImage) {
+														progressbg.setVisibility(View.VISIBLE);
+														progressbg.setImageBitmap(loadedImage);
+														if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+														Animation blendIn = helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 2, false);
+																blendIn.setAnimationListener(new Animation.AnimationListener() {
+
+																				@Override
+																				public void onAnimationEnd(Animation p1)
+																				{
+																						// TODO: Implement this method
+																						Animation progressAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate_right);
+																						progressAnim.setRepeatMode(Animation.RESTART);
+																						progressAnim.setRepeatCount(Animation.INFINITE);
+																						progressbg.startAnimation(progressAnim);
+																				}
+
+																				@Override
+																				public void onAnimationRepeat(Animation p1)
+																				{
+																						// TODO: Implement this method
+																				}
+
+																				@Override
+																				public void onAnimationStart(Animation p1)
+																				{
+																						// TODO: Implement this method
+																				}
+																});
+																progressbg.startAnimation(blendIn);
+														}
+												}
+												@Override
+												public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+														Log.e("NPM:xposedDialog","Failed to load image '"+imageUri+"': "+failReason.getCause().toString());
+														progress.getIndeterminateDrawable().setColorFilter(Color.parseColor(XposedMainActivity.colorPrefs.getString("Dialog"+showingFor+"_Textcolor", "#ffffff")),android.graphics.PorterDuff.Mode.MULTIPLY);
+														progress.setVisibility(View.VISIBLE);
+														if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+																progress.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 2, false));
+														}
+												}
+										});
+						}
+				} else {
+						if(XposedMainActivity.preferences.getString("ProgressDrawable","Stock").equalsIgnoreCase("Stock")) {
+								progress.getIndeterminateDrawable().setColorFilter(Color.parseColor(XposedMainActivity.colorPrefs.getString("Dialog"+showingFor+"_Textcolor", "#ffffff")),android.graphics.PorterDuff.Mode.MULTIPLY);
+								if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+										progress.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 2, false));
+								}
+						} else {
+								progress.setVisibility(View.GONE);
+								progressbg.setColorFilter(Color.parseColor(XposedMainActivity.colorPrefs.getString("Dialog"+showingFor+"_Textcolor", "#ffffff")),android.graphics.PorterDuff.Mode.MULTIPLY);
+								new loadProgressResource().execute();
+						}
+				}
+		}
+		
+		class loadProgressResource extends AsyncTask<Object, String, String>
+		{
+
+				Drawable image = null;
+				
+				@Override
+				protected String doInBackground(Object[] p1)
+				{
+						// TODO: Implement this method
+						if(XposedMainActivity.preferences.getString("ProgressDrawable","Stock").equalsIgnoreCase("pb/dr")) {
+								image = mContext.getResources().getDrawable(R.drawable.progress_pitchblack_darkred_cm13);
+						} else if (XposedMainActivity.preferences.getString("ProgressDrawable","Stock").equalsIgnoreCase("WeaReOne")) {
+								image = mContext.getResources().getDrawable(R.drawable.progress_weareone);
+						}
+						return null;
+				}
+
+				@Override
+				protected void onPostExecute(String p1)
+				{
+						// TODO: Implement this method
+						super.onPostExecute(p1);
+						progressbg.setImageDrawable(image);
+						progressbg.setVisibility(View.VISIBLE);
+						if(XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[2]+"_type",PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length-1) {
+								progressbg.startAnimation(helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 2, false));
+						}
+						((AnimationDrawable) progressbg.getDrawable()).start();
+				}
+				
 		}
 		
     private static void setThreadPrio(int prio)

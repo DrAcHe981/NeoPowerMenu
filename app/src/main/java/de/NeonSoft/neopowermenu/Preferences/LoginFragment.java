@@ -216,7 +216,7 @@ public class LoginFragment extends Fragment
 														}
 												}
 										});
-								uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+								uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 								uH.setAdditionalUploadPosts(new String[][] {{"action","register"},{"name",EditText_Username.getText().toString()},{"email",EditText_Email.getText().toString()}});
 								try
 								{
@@ -337,7 +337,7 @@ public class LoginFragment extends Fragment
 														}
 												}
 										});
-								uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+								uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 								uH.setAdditionalUploadPosts(new String[][] {{"action","resetpw"},{"name",EditText_RecoverUsername.getText().toString()},{"email",EditText_RecoverEmail.getText().toString()}});
 								try
 								{
@@ -448,6 +448,12 @@ public class LoginFragment extends Fragment
 						
 				if(PreferencesPresetsFragment.startTab==0) checkState();
 						
+				if(MainActivity.loggingIn) {
+						PreferencesPresetsFragment.LoadingMsg.setText(mContext.getString(R.string.login_Processing));
+						PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
+						PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+				}
+				
 				return InflatedView;
 		}
 
@@ -497,6 +503,7 @@ public class LoginFragment extends Fragment
 										// TODO: Implement this method
 										if(!background) {
 												if(state == uploadHelper.STATE_WAITING) {
+														MainActivity.loggingIn = true;
 												PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.login_Processing));
 												PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
 												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
@@ -514,6 +521,7 @@ public class LoginFragment extends Fragment
 								public void onUploadComplete(String response)
 								{
 										// TODO: Implement this method
+										MainActivity.loggingIn = false;
 										String[] responseSplit = response.split(",");
 										if(!background) {
 												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
@@ -532,7 +540,7 @@ public class LoginFragment extends Fragment
 														.putString("pd", MainActivity.password)
 														.putString("auid", MainActivity.accountUniqeId).commit();
 										}
-										if(!background) {
+										if(TextView_AccountInfo != null) {
 												TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 												TextView_AccountInfo.setVisibility(View.GONE);
 												LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
@@ -554,6 +562,7 @@ public class LoginFragment extends Fragment
 								public void onUploadFailed(String reason)
 								{
 										// TODO: Implement this method
+										MainActivity.loggingIn = false;
 										if(!background) {
 												PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 												PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
@@ -576,7 +585,7 @@ public class LoginFragment extends Fragment
 										}
 								}
 						});
-				uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+				uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 				uH.setAdditionalUploadPosts(new String[][] {{"action","login"},{(helper.isValidEmail(usernameemail) ? "email" : "name"),usernameemail},{"password",password}});
 				try
 				{
@@ -627,7 +636,7 @@ public class LoginFragment extends Fragment
 										TextView_Statistics.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
 								}
 						});
-				uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+				uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 				uH.setAdditionalUploadPosts(new String[][] {{"action","statistics"},{(MainActivity.usernameemail.contains("@") ? "email" : "name"),MainActivity.usernameemail},{"deviceId",MainActivity.deviceUniqeId},{"accountId",MainActivity.accountUniqeId}});
 				try
 				{

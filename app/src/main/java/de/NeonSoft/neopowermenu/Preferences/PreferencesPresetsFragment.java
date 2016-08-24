@@ -47,6 +47,7 @@ public class PreferencesPresetsFragment extends Fragment
 		public static PresetsAdapter onlineAdapter;
 		public static ListView onlineList;
 		public static TextView onlineMSG;
+		public static RelativeLayout onlineMSGHolder;
 		
 		public static LinearLayout onlineSearch;
 		
@@ -71,6 +72,11 @@ public class PreferencesPresetsFragment extends Fragment
 		public static String[] DownloadingActiveForOldText;
 		public static TextView[] DownloadingActiveForLabel;
 		public static ProgressBar[] DownloadingActiveForProgress;
+		
+		public static ArrayList<String> OnlineListTitles = new ArrayList<String>();
+		public static ArrayList<String> OnlineListDescs = new ArrayList<String>();
+		public static ArrayList<String> OnlineListEnabled = new ArrayList<String>();
+		public static ArrayList<String> OnlineListLocal = new ArrayList<String>();
 		
 		//public static String oldUploadText = "";
 

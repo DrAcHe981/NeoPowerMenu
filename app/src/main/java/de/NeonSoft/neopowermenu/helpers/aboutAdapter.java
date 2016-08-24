@@ -88,6 +88,7 @@ public class aboutAdapter extends ArrayAdapter<String>
 																										MainActivity.preferences.edit().clear().commit();
 																										MainActivity.colorPrefs.edit().clear().commit();
 																										MainActivity.orderPrefs.edit().clear().commit();
+																										MainActivity.animationPrefs.edit().clear().commit();
 																										MainActivity.imageLoader.clearMemoryCache();
 																										MainActivity.imageLoader.clearDiskCache();
 																										File[] cacheFiles = mContext.getCacheDir().listFiles(new FileFilter() {
@@ -168,6 +169,7 @@ public class aboutAdapter extends ArrayAdapter<String>
 																								} else if(position==3) {
 																										MainActivity.orderPrefs.edit().clear().commit();
 																								} else if(position==4) {
+																										MainActivity.preferences.edit().putString("ProgressDrawable","Stock").commit();
 																										File[] graphicFiles = new File(mContext.getFilesDir().getPath()+"/images/").listFiles(new FileFilter() {
 
 																														@Override
@@ -219,6 +221,8 @@ public class aboutAdapter extends ArrayAdapter<String>
 																										for(int i=0; i<downloadFiles.length; i++) {
 																												downloadFiles[i].delete();
 																										}
+																								} else if (position==6) {
+																										MainActivity.animationPrefs.edit().clear().commit();
 																								}
 																								slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
 																								dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
@@ -313,11 +317,115 @@ public class aboutAdapter extends ArrayAdapter<String>
 																		// TODO: Implement this method
 																}
 														});
-												dialogFragment.setList(ListView.CHOICE_MODE_NONE, new String[] {"Delete all data","Delete saved presets","Delete color preferences","Delete visibility and order preferences","Delete all graphics","Delete all cached files"}, -1, true);
+												dialogFragment.setList(ListView.CHOICE_MODE_NONE, new String[] {"Delete all data","Delete saved presets","Delete color settings","Delete visibility and order settings","Delete all graphics","Delete all cached files","Delete animation settings"}, -1, true);
 												dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 												dialogFragment.showDialog(R.id.dialog_container);
 										}
 								});
+				}
+				else if (this.itemsTexts.get(p1).contains("This Project uses some public librarys")) {
+						Text.setOnClickListener(new OnClickListener() {
+
+										@Override
+										public void onClick(View p1)
+										{
+												// TODO: Implement this method
+												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
+												dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+																@Override
+																public void onListItemClick(int position, String text)
+																{
+																		// TODO: Implement this method
+																}
+
+																@Override
+																public void onNegativeClick()
+																{
+																		// TODO: Implement this method
+																}
+
+																@Override
+																public void onNeutralClick()
+																{
+																		// TODO: Implement this method
+																}
+
+																@Override
+																public void onPositiveClick(Bundle resultBundle)
+																{
+																		// TODO: Implement this method
+																		MainActivity.preferences.edit().putBoolean("useLocalServer",resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)).commit();
+																		slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
+																		dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+																						@Override
+																						public void onListItemClick(int position, String text)
+																						{
+																								// TODO: Implement this method
+																						}
+
+																						@Override
+																						public void onNegativeClick()
+																						{
+																								// TODO: Implement this method
+																						}
+
+																						@Override
+																						public void onNeutralClick()
+																						{
+																								// TODO: Implement this method
+																						}
+
+																						@Override
+																						public void onPositiveClick(Bundle resultBundle)
+																						{
+																								// TODO: Implement this method
+																								AboutFragment.LoadingLayout.setVisibility(View.VISIBLE);
+																								AboutFragment.LoadingLayout.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+																								new Handler().postDelayed(new Runnable() {
+
+																												@Override
+																												public void run()
+																												{
+																														mContext.runOnUiThread(new Runnable() {
+
+																																		@Override
+																																		public void run()
+																																		{
+																																				// TODO: Implement this method
+																																				mContext.recreate();
+																																		}
+																																});
+																												}
+																										},1000L);
+																						}
+
+																						@Override
+																						public void onTouchOutside()
+																						{
+																								// TODO: Implement this method
+																						}
+																				});
+																		dialogFragment.setCloseOnTouchOutside(false);
+																		dialogFragment.setText("Restart the app to let the change take effect.");
+																		dialogFragment.setPositiveButton("Restart");
+																		dialogFragment.showDialog(R.id.dialog_container);
+																}
+
+																@Override
+																public void onTouchOutside()
+																{
+																		// TODO: Implement this method
+																}
+														});
+												dialogFragment.setText("Disable or enable the use of the local server via the checkbox below.\nLocal means 127.0.0.1, online means www.Neon-Soft.de");
+												dialogFragment.setCheckBox("Use local server",MainActivity.preferences.getBoolean("useLocalServer",false));
+												dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_SAVE]);
+												dialogFragment.showDialog(R.id.dialog_container);
+										}
+								});
+						
 				}
 				else if(this.itemsTexts.get(p1).contains("Your Device Id")) {
 						Text.setOnClickListener(new OnClickListener() {
@@ -402,7 +510,7 @@ public class aboutAdapter extends ArrayAdapter<String>
 																dialogFragment.setCloseOnTouchOutside(false);
 														dialogFragment.setText("Use this at your own risk!\nThis is to change your device Id, when changing this keep in mind that your uploaded presets won't be 'yours' anymore, if not logged in with an account!");
 														dialogFragment.addInput("Device Id:",MainActivity.deviceUniqeId,false,null);
-														dialogFragment.setCheckBox("Encrypt with md5");
+														dialogFragment.setCheckBox("Encrypt with md5",true);
 														dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 														//dialogFragment.setDialogNeutralButton("Reset");
 														dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);

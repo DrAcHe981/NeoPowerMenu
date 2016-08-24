@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity
 
 		// Session data
 		public static boolean loggedIn = false;
+		public static boolean loggingIn = false;
 		public static String usernameemail = "";
 		public static String password = "";
 		public static String accountUniqeId = "";
@@ -106,6 +107,8 @@ public class MainActivity extends AppCompatActivity
 				
         setTheme(R.style.ThemeBaseDark);
 
+				LOCALTESTSERVER = preferences.getBoolean("useLocalServer",false);
+				
 				for (int folderCheck = 0; folderCheck < requieredDirs.length; folderCheck ++)
 				{
 						File check = new File(context.getFilesDir().getPath() + "/" + requieredDirs[folderCheck]);
@@ -353,6 +356,7 @@ public class MainActivity extends AppCompatActivity
 		protected void onPause()
 		{
 				// TODO: Implement this method
+				PreferencesPartFragment.mActivity = null;
 				getSharedPrefsFile(MainActivity.class.getPackage().getName() + "_preferences").setReadable(true, false);
 				super.onPause();
 		}
@@ -365,6 +369,7 @@ public class MainActivity extends AppCompatActivity
 				{
 						actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
 				}
+				PreferencesPartFragment.mActivity = this;
 				CustomActivityOnCrash.setRestartActivityClass(MainActivity.class);
 				super.onResume();
 		}

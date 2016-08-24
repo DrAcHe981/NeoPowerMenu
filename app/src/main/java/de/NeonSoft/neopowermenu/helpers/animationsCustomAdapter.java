@@ -39,7 +39,7 @@ public class animationsCustomAdapter extends ArrayAdapter<String>
 				Spinner pref2Spinn = (Spinner) InflatedView.findViewById(R.id.animationscustomSpinner_Pref2);
 				//pref2Spinn.setAdapter(new SpinnerAdapter(mContext, ));
 				
-				pref1Text.setText((mPrefItems[position].contains("Pivot") || mPrefItems[position].contains("Duration") ? mPrefItems[position] : mContext.getString(R.string.animations_Custom).split("\\|")[0]).replace("[PREFNAME]",mPrefItems[position]));
+				//pref1Text.setText((mPrefItems[position].contains("Pivot") || mPrefItems[position].contains("Duration") ? mPrefItems[position] : mContext.getString(R.string.animations_Custom).split("\\|")[0]).replace("[PREFNAME]",mPrefItems[position]));
 				/*pref1Edit.addTextChangedListener(new TextWatcher() {
 
 								CharSequence beforeChange;
@@ -71,7 +71,7 @@ public class animationsCustomAdapter extends ArrayAdapter<String>
 						
 				if(!mPrefItems[position].contains("Pivot") && !mPrefItems[position].contains("Duration")) {
 						pref2.setVisibility(View.VISIBLE);
-						pref2Text.setText(mContext.getString(R.string.animations_Custom).split("\\|")[1].replace("[PREFNAME]",mPrefItems[position]));
+						//pref2Text.setText(mContext.getString(R.string.animations_Custom).split("\\|")[1].replace("[PREFNAME]",mPrefItems[position]));
 						/*pref2Edit.addTextChangedListener(new TextWatcher() {
 
 										CharSequence beforeChange;

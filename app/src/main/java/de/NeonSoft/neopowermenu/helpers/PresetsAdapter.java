@@ -15,13 +15,14 @@ import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
 import java.io.*;
 import java.util.*;
+import android.widget.AbsListView.*;
 
 public class PresetsAdapter extends ArrayAdapter<String>
 {
 
 		public static String selectedName = "";
 		public static AlertDialog uploadad;
-
+		
 		private final Activity context;
 		private final ArrayList<String> itemsTitle;
 		private final ArrayList<String> itemsDesc;
@@ -59,7 +60,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				rowView = inflater.inflate(R.layout.presetmanager_listitem, null, true);
 
 				final LinearLayout root = (LinearLayout) rowView.findViewById(R.id.root);
-				TextView ItemTitle = (TextView) rowView.findViewById(R.id.title);
+				final TextView ItemTitle = (TextView) rowView.findViewById(R.id.title);
 				final TextView ItemDesc = (TextView) rowView.findViewById(R.id.text);
 				LinearLayout LocalButton = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Local);
 				LocalButton.setVisibility(View.VISIBLE);
@@ -360,7 +361,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																																				dialogFragment.addInput(context.getString(R.string.login_UsernameEmail), presetCreator, false, null);
 																																				dialogFragment.addInput(context.getString(R.string.login_Password), "", false, null);
 																																				dialogFragment.setInputMode(2, InputType.TYPE_TEXT_VARIATION_PASSWORD);
-																																				dialogFragment.setCheckBox(context.getString(R.string.login_KeepLogin));
+																																				dialogFragment.setCheckBox(context.getString(R.string.login_KeepLogin),MainActivity.preferences.getBoolean("autoLogin",false));
 																																				dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 																																				//dialogFragment.setDialogNeutralButton(context.getString(R.string.login_TitleRegister));
 																																				dialogFragment.setPositiveButton(context.getString(R.string.login_Title));
@@ -471,7 +472,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																										}
 																								}
 																						});
-																				uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
+																				uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
 																				uH.setLocalUrl(path);
 																				uH.uploadAs(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0") + ".nps");
 																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0")},{"presetCreator",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"1")},{"presetAppVersion","v" + appVersion},{MainActivity.usernameemail.contains("@") ? "userEmail" : "userName",MainActivity.usernameemail},{"userId",MainActivity.deviceUniqeId}});
@@ -682,7 +683,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 										StarImage.setImageResource(R.drawable.ic_action_star_10);
 										StarText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[0]);
 								}
-								if (MainActivity.userRank.equals("A") || PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) || PresetsPage.onlineIds[position].equals(MainActivity.accountUniqeId))
+								if (MainActivity.userRank.equals("A") || PresetsPage.onlineIds.get(position).equals(MainActivity.deviceUniqeId) || PresetsPage.onlineIds.get(position).equals(MainActivity.accountUniqeId))
 								{
 										StarLine.setVisibility(View.VISIBLE);
 										Delete.setVisibility(View.VISIBLE);
@@ -756,8 +757,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																												Toast.makeText(context, "Failed to delete.\n" + reason, Toast.LENGTH_LONG).show();
 																										}
 																								});
-																						uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php");
-																						uH.setAdditionalUploadPosts(new String[][] {{"action","delete"},{"presetName",itemsTitle.get(position)},{"userId",(PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) ? MainActivity.deviceUniqeId : MainActivity.accountUniqeId)}});
+																						uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php");
+																						uH.setAdditionalUploadPosts(new String[][] {{"action","delete"},{"presetName",itemsTitle.get(position)},{"userId",(PresetsPage.onlineIds.get(position).equals(MainActivity.deviceUniqeId) ? MainActivity.deviceUniqeId : MainActivity.accountUniqeId)}});
 																						try
 																						{
 																								new File(context.getFilesDir().getPath() + "/tmp").createNewFile();
@@ -781,7 +782,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 														}
 												});
 								}
-								if(!PresetsPage.onlineIds[position].equals(MainActivity.deviceUniqeId) && !PresetsPage.onlineIds[position].equals(MainActivity.accountUniqeId)) {
+								if(!PresetsPage.onlineIds.get(position).equals(MainActivity.deviceUniqeId) && !PresetsPage.onlineIds.get(position).equals(MainActivity.accountUniqeId)) {
 										Star.setVisibility(View.VISIBLE);
 										if (!MainActivity.userRank.equals("A") && !MainActivity.accountUniqeId.isEmpty() && !MainActivity.accountUniqeId.equalsIgnoreCase("none"))
 										{
@@ -894,7 +895,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																														dialogFragment.showDialog(R.id.dialog_container);
 																												}
 																										});
-																								uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+																								uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 																								uH.setAdditionalUploadPosts(new String[][] {{"action","report"},{"presetName",itemsTitle.get(position)},{"reason",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0").replace("\n", "<br>")},{"accountId",MainActivity.accountUniqeId}});
 																								try
 																								{
@@ -990,7 +991,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						}
 																				}
 																		});
-																uH.setServerUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+																uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
 																uH.setAdditionalUploadPosts(new String[][] {{"action",(StarText.getText().toString().equalsIgnoreCase(context.getString(R.string.presetsManager_Buttons).split("\\|")[0]) ? "givestar" : "removestar")},{(MainActivity.usernameemail.contains("@") ? "userEmail" : "userName"),MainActivity.usernameemail},{"name",itemsTitle.get(position)}});
 																try
 																{
@@ -1006,7 +1007,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						}
 						catch (Throwable t)
 						{}
-						if (PreferencesPresetsFragment.DownloadingActiveForHelper[position] != null)
+						if (position < (PreferencesPresetsFragment.DownloadingActiveForHelper.length) && PreferencesPresetsFragment.DownloadingActiveForHelper[position] != null)
 						{
 								//oldText = ItemDesc.getText().toString();
 								Progress.setProgress(PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress());
@@ -1153,11 +1154,13 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				{}
 																		}
 																});
-														dH.setUrl("https://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position).replace("'", "\\'").replace("\"", "\\\"") + ".nps");
+														dH.setUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position).replace("'", "\\'").replace("\"", "\\\"") + ".nps");
 														dH.setLocalUrl(context.getFilesDir().getPath() + "/download");
 														dH.startDownload();
-												} else {
-														PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.downloadHelper_States).split("\\|")[downloadHelper.STATE_CANCELLING] +"\n");
+												}
+												else
+												{
+														PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.downloadHelper_States).split("\\|")[downloadHelper.STATE_CANCELLING] + "\n");
 														PreferencesPresetsFragment.DownloadingActiveForLayout[position].setEnabled(false);
 														PreferencesPresetsFragment.DownloadingActiveForLayout[position].setAlpha((float) .3);
 														PreferencesPresetsFragment.DownloadingActiveForHelper[position].stopDownload(true);
@@ -1168,6 +1171,55 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												}
 										}
 								});
+				}
+				else if (itemsLocal.get(position).equalsIgnoreCase("LoadMore"))
+				{
+						BottomBar.setVisibility(View.GONE);
+						LocalButton.setVisibility(View.GONE);
+						OnlineButton.setVisibility(View.GONE);
+						ItemTitle.setGravity(Gravity.CENTER);
+						ItemDesc.setGravity(Gravity.CENTER);
+						ItemDesc.setText(itemsDesc.get(position));
+						Progress.setProgress(100);
+						Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
+						Progress.setAlpha((float) 1);
+						Progress.startAnimation(BlinkAnim);
+						ItemTitle.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
+						ItemDesc.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[1]);
+						new getOnlinePresets(getOnlinePresets.MODE_OFFSET).execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlineListLocal.size() - 1));
+				}
+				else if (itemsLocal.get(position).equalsIgnoreCase("error"))
+				{
+						BottomBar.setVisibility(View.GONE);
+						LocalButton.setVisibility(View.GONE);
+						OnlineButton.setVisibility(View.GONE);
+						ItemTitle.setGravity(Gravity.CENTER);
+						ItemDesc.setGravity(Gravity.CENTER);
+						ItemDesc.setText(itemsDesc.get(position));
+						root.setOnClickListener(new OnClickListener() {
+
+										@Override
+										public void onClick(View p1)
+										{
+												// TODO: Implement this method
+												Progress.setProgress(100);
+												Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
+												Progress.setAlpha((float) 1);
+												Progress.startAnimation(BlinkAnim);
+												ItemTitle.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
+												ItemDesc.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[1]);
+												new getOnlinePresets(getOnlinePresets.MODE_OFFSET).execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlineListLocal.size() - 1));
+										}
+								});
+				}
+				else if (itemsLocal.get(position).equalsIgnoreCase("NoMore"))
+				{
+						BottomBar.setVisibility(View.GONE);
+						LocalButton.setVisibility(View.GONE);
+						OnlineButton.setVisibility(View.GONE);
+						ItemTitle.setGravity(Gravity.CENTER);
+						ItemDesc.setGravity(Gravity.CENTER);
+						ItemDesc.setText(itemsDesc.get(position));
 				}
 
 
@@ -1362,7 +1414,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						}
 						catch (Throwable e)
 						{
-								Log.e("NPM:import","Failed to import: ",e);
+								Log.e("NPM:import", "Failed to import: ", e);
 								return e.toString();
 						}
 				}

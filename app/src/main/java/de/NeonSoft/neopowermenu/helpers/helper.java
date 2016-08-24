@@ -127,24 +127,28 @@ public class helper
 								OutputSeconds++;
 						}
 				}
-				String duration_string = "00:00";
+				String duration_string = "0ms";
 				/*if (withMs) {
 						OutputHours = OutputMinutes;
 						OutputMinutes = OutputSeconds;
 						OutputSeconds = Long.parseLong((""+InputMilliSeconds));
 				}*/
+				String hours = "", minutes = "", seconds = "", milliseconds = "";
 				if (OutputHours > 0)
 				{
-						duration_string =  String.format("%2d"+(withTxt ? "h " : ":")+"%2d"+(withTxt ? "m " : ":")+"%2d"+(withTxt ? "s" : ""), OutputHours, OutputMinutes, OutputSeconds);
+						hours = String.format("%2d", OutputHours);
 				}
-				else if (OutputMinutes > 0)
+				if (OutputMinutes > 0)
 				{
-						duration_string =  String.format("%2d"+(withTxt ? "m " : ":")+"%2d"+(withTxt ? "s" : ""), OutputMinutes, OutputSeconds);
-				} else if (OutputSeconds > 0) {
-						duration_string =  String.format("%2d"+(withTxt ? "s" : ""), OutputSeconds);
-				} else {
-						duration_string =  String.format("%3d"+(withTxt ? "ms" : ""), InputMilliSeconds);
+						minutes = String.format("%2d", OutputMinutes);
 				}
+				if (OutputSeconds > 0) {
+						seconds = String.format("%2d", OutputSeconds);
+				}
+				if(seconds.isEmpty() && minutes.isEmpty() && hours.isEmpty()) {
+						milliseconds =  String.format("%3d", InputMilliSeconds);
+				}
+				duration_string = hours+(!hours.isEmpty() && !minutes.isEmpty() ? (withTxt ? "h " : ":") : "")+minutes+(!minutes.isEmpty() && !seconds.isEmpty() ? (withTxt ? "m " : ":") : "")+seconds+(!seconds.isEmpty() && !milliseconds.isEmpty() ? (withTxt ? "s " : ":") : "")+milliseconds+(!milliseconds.isEmpty() ? (withTxt ? "ms" : "") : "");
 				/*if (withTxt) {
 						if (OutputHours > 0)
 						{

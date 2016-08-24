@@ -25,7 +25,7 @@ public class PreferencesPartFragment extends Fragment
 {
 		
 		Context mContext;
-		Activity mActivity;
+		public static Activity mActivity;
 
     private String Urlgithub = "https://github.com/DrAcHe981/NeoPowerMenu";
     
@@ -524,6 +524,7 @@ public class PreferencesPartFragment extends Fragment
 														new Handler(Looper.getMainLooper()).post(new Runnable() {
 																		@Override
 																		public void run() {
+																				if(mActivity != null) {
 																				mActivity.runOnUiThread(new Runnable() {
 
 																								@Override
@@ -532,6 +533,7 @@ public class PreferencesPartFragment extends Fragment
 																										rootAvailable();
 																								}
 																						});
+																				}
 																		}
 																});
 												}

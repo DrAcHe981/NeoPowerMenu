@@ -6,6 +6,7 @@
 <string name="PreviewPowerMenu">"Preview"</string>
 
 <!-- Power Menu -->
+		<string name="powerMenuMain_Progress">"Loading circle"</string>
 <string name="powerMenuMain_Shutdown">"Power Off"</string>
 <string name="powerMenuMain_Reboot">"Reboot"</string>
 <string name="powerMenuMain_SoftReboot">"Soft Reboot"</string>
@@ -131,6 +132,7 @@ This is your last chance to adjust the name or the creator before uploading..."<
 Please check your network connection or try again later."</string>
 <string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
 Please try again later, when nothing changes: Please report it to the developer."</string>
+		<string name="presetsManager_LoadMore">"Loading...|Please wait...|Show more presets|Click here to show more presets.|The End.|No more presets to show.|Click here to try again."</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
 <string name="permissionsScreenDesc_android.permission.INTERNET">"Required to download/upload presets from/to the public server."</string>
 

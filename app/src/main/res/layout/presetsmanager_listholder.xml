@@ -10,14 +10,22 @@
 		android:layout_height="match_parent"
 		android:layout_width="match_parent">
 
-		<TextView
+		<RelativeLayout
 			android:layout_height="match_parent"
-			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_width="match_parent"
-			android:text=""
-			android:gravity="center|center_vertical|center_horizontal"
-			android:id="@+id/presetsmanagerlistholderTextView_Message"
-			android:visibility="gone"/>
+			android:id="@+id/presetsmanagerlistholderRelativeLayout_Message"
+			android:visibility="gone">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"
+				android:text=""
+				android:gravity="center|center_vertical|center_horizontal"
+				android:id="@+id/presetsmanagerlistholderTextView_Message"
+				android:layout_centerInParent="true"/>
+
+		</RelativeLayout>
 
 		<ListView
 			android:layout_height="match_parent"

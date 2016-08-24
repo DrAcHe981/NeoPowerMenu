@@ -186,6 +186,9 @@ implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCropp
 				{
 						// TODO: Implement this method
 						super.onPreExecute();
+						if(mSaveAs.contains("Progress")) {
+								MainActivity.preferences.edit().putString("ProgressDrawable","file").commit();
+						}
 						progressHolder.setVisibility(View.VISIBLE);
 						progressHolder.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in));
 				}
