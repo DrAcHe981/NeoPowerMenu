@@ -6,7 +6,6 @@
 <string name="PreviewPowerMenu">"Vorschau"</string>
 
 <!-- Power Menu -->
-		<string name="powerMenuMain_Progress">"Lade kreis"</string>
 <string name="powerMenuMain_Shutdown">"Ausschalten"</string>
 <string name="powerMenuMain_Reboot">"Neustarten"</string>
 <string name="powerMenuMain_SoftReboot">"Schneller Neustart"</string>
@@ -129,8 +128,7 @@ Dies ist deine letzte Chance, den Namen oder den Ersteller anzupassen..."</strin
 <string name="presetsManager_CantConnecttoServer">"Es kann keine Verbindung zum Server hergestellt werden! 
 Bitte überprüfe deine Verbindung oder versuche es später erneut."</string>
 <string name="presetsManager_CantConnecttoDB">"Es kann keine Verbindung zur Datenbank hergestellt werden! 
-		Bitte versuche es später erneut, wenn sich nichts ändert: Melde es bitte dem Entwickler."</string>
-<string name="presetsManager_LoadMore">"Laden...|Bitte warten...|Zeige mehr Voreinstellungen|Klicke hier um mehr Voreinstellungen anzuzeigen.|Das Ende.|Keine weiteren Voreinstellungen zum anzeigen.|Klicke hier um es erneut zu versuchen."</string>
+Bitte versuche es später erneut, wenn sich nichts ändert: Melde es bitte dem Entwickler."</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
 <string name="permissionsScreenDesc_android.permission.INTERNET">"Wird benötigt, um Voreinstellungen vom öffentlichen Server runter oder hochzuladen."</string>
 
@@ -256,4 +254,12 @@ Klicke hier für mehr Infos."</string>
 <string name="animations_Types">"Überblenden|Reveal
 (Funktioniert nur für den Hintergrund)|Nach oben schieben|Nach links schieben|Nach Rechts schieben|Nach unten schieben|Hoch skalieren|Runter skalieren|Deaktiviert"</string>
 <string name="animations_Desc">"[NAME] mit der Geschwindigkeit [SPEED]"</string>
+
+<!-- Power Menu -->
+<string name="powerMenuMain_Progress">"Lade kreis"</string>
+<string name="presetsManager_LoadMore">"Laden...|Bitte warten...|Zeige mehr Voreinstellungen|Klicke hier um mehr Voreinstellungen anzuzeigen.|Das Ende.|Keine weiteren Voreinstellungen zum anzeigen.|Klicke hier um es erneut zu versuchen."</string>
+<string name="powerMenu_SureToRebootPowerOff">"Bist du sicher dass du dein Gerät neustarten willst?|Bist du sicher dass du dein Gerät Ausschalten willst?"</string>
+
+<!-- Preferences: Advanced -->
+<string name="advancedPrefs_Confirmation">"Benötige Bestätigung|Aktiviere die Abfrage einer Bestätigung bevor das Gerät neu startet oder ausgeschaltet wird."</string>
 </resources>
