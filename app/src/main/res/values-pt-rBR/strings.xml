@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="ShareMessage">"Confira esse lindo app para customizar o Menu de Energia de seu aparelho!"</string>
+<string name="ShareMessage">"Confira esse lindo app para customizar o Menu de Energia de seu dispositivo android rooteado!"</string>
 <string name="PreviewPowerMenu">"PREVER"</string>
 
 <!-- Power Menu -->
@@ -251,4 +251,12 @@ Cheque a fonte no GitHub."</string>
 <string name="animations_Types">"Desvanece|Revela
 (Funciona somente para o plano de fundo)|Deslizar acima|Deslizar a esquerda|Deslizar a direita|Deslizar abaixo|Aumentar|Diminuir|Desativado"</string>
 <string name="animations_Desc">"[NAME] com a velocidade [SPEED]"</string>
+
+<!-- Power Menu -->
+<string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
+<string name="presetsManager_LoadMore">"Carregando...|Aguarde...|Mais predefinições|Clique aqui para mostrar mais predefinições.|O Fim.|Não há mais nenhuma.|Toque para repetir. "</string>
+<string name="powerMenu_SureToRebootPowerOff">"Tem certeza que deseja reiniciar o dispositivo?|Tem certeza que deseja desligar o dispositivo? "</string>
+
+<!-- Preferences: Advanced -->
+<string name="advancedPrefs_Confirmation">"Pedir confirmação|Ative para pedir confirmação ao desligar ou reiniciar o dispositivo. "</string>
 </resources>
