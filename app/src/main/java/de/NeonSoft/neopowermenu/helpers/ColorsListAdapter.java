@@ -65,7 +65,7 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 										LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
 												LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-										layoutParams.setMargins(0, helper.getNavigationBarHeight(context), 0, 0);
+										layoutParams.setMargins(0, (helper.isDeviceHorizontal(context) ? helper.getNavigationBarSize(context).x : helper.getNavigationBarSize(context).y), 0, 0);
 										root.setLayoutParams(layoutParams);
 										break;
 								case TYPE_LOAD:

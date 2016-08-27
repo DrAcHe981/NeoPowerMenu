@@ -2,6 +2,7 @@ package de.NeonSoft.neopowermenu.helpers;
 
 import android.content.*;
 import android.content.res.*;
+import android.graphics.*;
 import android.graphics.drawable.*;
 import android.os.*;
 import android.text.*;
@@ -148,7 +149,11 @@ public class helper
 				if(seconds.isEmpty() && minutes.isEmpty() && hours.isEmpty()) {
 						milliseconds =  String.format("%3d", InputMilliSeconds);
 				}
-				duration_string = hours+(!hours.isEmpty() && !minutes.isEmpty() ? (withTxt ? "h " : ":") : "")+minutes+(!minutes.isEmpty() && !seconds.isEmpty() ? (withTxt ? "m " : ":") : "")+seconds+(!seconds.isEmpty() && !milliseconds.isEmpty() ? (withTxt ? "s " : ":") : "")+milliseconds+(!milliseconds.isEmpty() ? (withTxt ? "ms" : "") : "");
+				duration_string = hours+(!hours.isEmpty() ? (withTxt ? "h " : ":") : "");
+				duration_string += minutes+(!minutes.isEmpty() ? (withTxt ? "m " : ":") : "");
+				duration_string += seconds+(!seconds.isEmpty() ? (withTxt ? "s " : ":") : "");
+				duration_string += milliseconds+(!milliseconds.isEmpty() ? (withTxt ? "ms" : "") : "");
+				//duration_string = hours+(!hours.isEmpty() && withTxt ? "h" : ":")+(!hours.isEmpty() && !minutes.isEmpty() && withTxt ? " " : "")+minutes+(!minutes.isEmpty() && withTxt ? "m" : ":")+(!minutes.isEmpty() && !seconds.isEmpty() && withTxt ? " " : "")+seconds+(!seconds.isEmpty() && withTxt ? "s" : ":")+(!seconds.isEmpty() && !milliseconds.isEmpty() && withTxt ? " " : "")+milliseconds+(!milliseconds.isEmpty() && withTxt ? "ms" : "");
 				/*if (withTxt) {
 						if (OutputHours > 0)
 						{
@@ -210,13 +215,88 @@ public class helper
 				return result;
 		}
 		
-		public static int getNavigationBarHeight(Context context) {
-				int result = 0;
-				int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
-				if (resourceId > 0) {
-						result = context.getResources().getDimensionPixelSize(resourceId);
+		public static boolean isDeviceHorizontal(Context mContext) {
+				WindowManager windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+				Display display = windowManager.getDefaultDisplay();
+				boolean mHorizontal = false;
+				
+				try 
+				{
+						if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.FROYO)
+						{
+								int rotation = display.getOrientation();
+								if (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180) 
+								{
+										mHorizontal = false;
+								}
+								else
+								{
+										mHorizontal = true;
+								}
+						}
+						else
+						{
+								int rotation = display.getRotation();
+								if (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180) 
+								{
+										mHorizontal = false;
+								}
+								else
+								{
+										mHorizontal = true;
+								}
+						}
 				}
-				return result;
+				catch (NoSuchMethodError e)
+				{
+						e.printStackTrace();
+				}
+				
+				return mHorizontal;
+		}
+		
+		public static Point getNavigationBarSize(Context mContext) {
+				Point appUsableScreenSize = getAppUsableScreenSize(mContext);
+				Point realScreenSize = getRealScreenSize(mContext);
+				
+				// at right
+				if(appUsableScreenSize.x < realScreenSize.x) {
+						return new Point(realScreenSize.x - appUsableScreenSize.x, 0);
+				}
+
+				// at bottom
+				if(appUsableScreenSize.y < realScreenSize.y) {
+						return new Point(0, realScreenSize.y - appUsableScreenSize.y);
+				}
+				
+				// none
+				return new Point(0, 0);
+		}
+		
+		public static Point getAppUsableScreenSize(Context mContext) {
+				WindowManager windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+				Display display = (windowManager.getDefaultDisplay());
+				Point size = new Point();
+				display.getSize(size);
+				
+				return size;
+		}
+		
+		public static Point getRealScreenSize(Context mContext) {
+				WindowManager windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+				Display display = windowManager.getDefaultDisplay();
+				Point size = new Point();
+				
+				if(Build.VERSION.SDK_INT >= 17) {
+						display.getRealSize(size);
+				} else if (Build.VERSION.SDK_INT >= 14) {
+						try {
+								size.x = (Integer) Display.class.getMethod("getRawWidth").invoke(display);
+								size.y = (Integer) Display.class.getMethod("getRawHeight").invoke(display);
+						} catch (Throwable t) {}
+				}
+				
+				return size;
 		}
 		
 		/**

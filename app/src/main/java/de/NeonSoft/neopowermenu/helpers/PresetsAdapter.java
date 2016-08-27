@@ -41,13 +41,15 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				this.itemsDesc = itemsDesc;
 				this.itemsEnabled = itemsEnabled;
 				this.itemsLocal = itemsLocal;
-				PreferencesPresetsFragment.DownloadingActiveForRoot = new LinearLayout[itemsTitle.size()];
-				PreferencesPresetsFragment.DownloadingActiveForHelper = new downloadHelper[itemsTitle.size()];
-				PreferencesPresetsFragment.DownloadingActiveForLayout = new LinearLayout[itemsTitle.size()];
-				PreferencesPresetsFragment.DownloadingActiveForImageView = new ImageView[itemsTitle.size()];
-				PreferencesPresetsFragment.DownloadingActiveForOldText = new String[itemsTitle.size()];
-				PreferencesPresetsFragment.DownloadingActiveForLabel = new TextView[itemsTitle.size()];
-				PreferencesPresetsFragment.DownloadingActiveForProgress = new ProgressBar[itemsTitle.size()];
+				//if(itemsLocal.get(0).equalsIgnoreCase("false")) {
+				//PreferencesPresetsFragment.DownloadingActiveForRoot = new LinearLayout[itemsTitle.size()];
+				//PreferencesPresetsFragment.DownloadingActiveForHelper = new downloadHelper[itemsTitle.size()];
+				//PreferencesPresetsFragment.DownloadingActiveForLayout = new LinearLayout[itemsTitle.size()];
+				//PreferencesPresetsFragment.DownloadingActiveForImageView = new ImageView[itemsTitle.size()];
+				//PreferencesPresetsFragment.DownloadingActiveForOldText = new String[itemsTitle.size()];
+				//PreferencesPresetsFragment.DownloadingActiveForLabel = new TextView[itemsTitle.size()];
+				//PreferencesPresetsFragment.DownloadingActiveForProgress = new ProgressBar[itemsTitle.size()];
+				//}
 		}
 
 		@Override
@@ -57,11 +59,19 @@ public class PresetsAdapter extends ArrayAdapter<String>
 				final LayoutInflater inflater = context.getLayoutInflater();
 				View rowView;
 				//final String prefname = this.itemsSwitchPrefName.get(position);
-				rowView = inflater.inflate(R.layout.presetmanager_listitem, null, true);
+				if(convertView == null) {
+						rowView = inflater.inflate(R.layout.presetmanager_listitem, null, true);
+				} else {
+						rowView = convertView;
+				}
 
 				final LinearLayout root = (LinearLayout) rowView.findViewById(R.id.root);
 				final TextView ItemTitle = (TextView) rowView.findViewById(R.id.title);
+				ItemTitle.setGravity(Gravity.NO_GRAVITY);
 				final TextView ItemDesc = (TextView) rowView.findViewById(R.id.text);
+				ItemDesc.setGravity(Gravity.NO_GRAVITY);
+				final ImageView hasGraphics = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_hasGraphics);
+				hasGraphics.setVisibility(View.GONE);
 				LinearLayout LocalButton = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Local);
 				LocalButton.setVisibility(View.VISIBLE);
 				RadioButton ItemSwitch = (RadioButton) rowView.findViewById(R.id.Active);
@@ -140,6 +150,8 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				final String appVersion;
 																				final String presetName = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0");
 																				final String presetCreator = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"1");
+																				final boolean hasGraphics;
+																				hasGraphics = false;
 																				String path = "";
 																				appVersion = MainActivity.versionName.replace("v", "");
 																				try
@@ -147,6 +159,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																						FileInputStream fIn;
 																						if (helper.isValidZip(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps", null))
 																						{
+																								hasGraphics = true;
 																								helper.copyFile(context.getFilesDir().getPath() + "/presets/" + itemsTitle.get(position) + ".nps", context.getFilesDir().getPath() + "/temp/" + presetName + ".nps.tmp");
 																								helper.unzipFile(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps.tmp", context.getFilesDir().getPath() + "/temp/", itemsTitle.get(position) + ".nps", null);
 																								new File(context.getFilesDir().getPath() + "/temp/" + itemsTitle.get(position) + ".nps").renameTo(new File(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps"));
@@ -475,7 +488,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				uH.setServerUrl("http"+(MainActivity.LOCALTESTSERVER ? "" : "s")+"://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
 																				uH.setLocalUrl(path);
 																				uH.uploadAs(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0") + ".nps");
-																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0")},{"presetCreator",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"1")},{"presetAppVersion","v" + appVersion},{MainActivity.usernameemail.contains("@") ? "userEmail" : "userName",MainActivity.usernameemail},{"userId",MainActivity.deviceUniqeId}});
+																				uH.setAdditionalUploadPosts(new String[][] {{"presetName",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0")},{"presetCreator",resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"1")},{"presetAppVersion","v" + appVersion},{"presetHasGraphics",hasGraphics ? "true" : "false"},{MainActivity.userName.contains("@") ? "userEmail" : "userName",MainActivity.userName},{"userId",MainActivity.deviceUniqeId}});
 																				uH.startUpload();
 																		}
 
@@ -663,6 +676,9 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												}
 										}
 								});
+						if(helper.isValidZip(context.getFilesDir().getPath()+"/presets/"+itemsTitle.get(position)+".nps",null)) {
+								hasGraphics.setVisibility(View.VISIBLE);
+						}
 				}
 				else if (itemsLocal.get(position).equalsIgnoreCase("false"))
 				{
@@ -1007,24 +1023,24 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						}
 						catch (Throwable t)
 						{}
-						if (position < (PreferencesPresetsFragment.DownloadingActiveForHelper.length) && PreferencesPresetsFragment.DownloadingActiveForHelper[position] != null)
+						if (position < (PreferencesPresetsFragment.DownloadingActiveForHelper.size()) && PreferencesPresetsFragment.DownloadingActiveForHelper.get(position) != null)
 						{
 								//oldText = ItemDesc.getText().toString();
-								Progress.setProgress(PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress());
+								Progress.setProgress(PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getProgress());
 								//OnlineButton.setEnabled(false);
 								//OnlineButton.setAlpha((float) .3);
 								OnlineButtonImage.setImageResource(R.drawable.ic_action_cancel);
-								PreferencesPresetsFragment.DownloadingActiveForRoot[position] = root;
-								PreferencesPresetsFragment.DownloadingActiveForLayout[position] = OnlineButton;
-								PreferencesPresetsFragment.DownloadingActiveForImageView[position] = OnlineButtonImage;
-								PreferencesPresetsFragment.DownloadingActiveForLabel[position] = ItemDesc;
-								PreferencesPresetsFragment.DownloadingActiveForProgress[position] = Progress;
-								long[] sizes = PreferencesPresetsFragment.DownloadingActiveForHelper[position].getSizes();
-								PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.downloadHelper_States).split("\\|")[PreferencesPresetsFragment.DownloadingActiveForHelper[position].getState()] + (PreferencesPresetsFragment.DownloadingActiveForHelper[position].getSizes()[0] > 0 ? " - eta: " + helper.getTimeString(PreferencesPresetsFragment.DownloadingActiveForHelper[position].getETA(), true) + " | speed: " + helper.getSizeString(PreferencesPresetsFragment.DownloadingActiveForHelper[position].getAvgSpeed(), true) + "/s\n" + helper.getSizeString(sizes[0], true) + "/" + helper.getSizeString(sizes[1], true) + " | " + PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress() + "%" : "\n"));
-								if(PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress()<=0) {
+								PreferencesPresetsFragment.DownloadingActiveForRoot.set(position, root);
+								PreferencesPresetsFragment.DownloadingActiveForLayout.set(position, OnlineButton);
+								PreferencesPresetsFragment.DownloadingActiveForImageView.set(position, OnlineButtonImage);
+								PreferencesPresetsFragment.DownloadingActiveForLabel.set(position, ItemDesc);
+								PreferencesPresetsFragment.DownloadingActiveForProgress.set(position, Progress);
+								long[] sizes = PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getSizes();
+								PreferencesPresetsFragment.DownloadingActiveForLabel.get(position).setText(context.getString(R.string.downloadHelper_States).split("\\|")[PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getState()] + (PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getSizes()[0] > 0 ? " - eta: " + helper.getTimeString(PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getETA(), true) + " | speed: " + helper.getSizeString(PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getAvgSpeed(), true) + "/s\n" + helper.getSizeString(sizes[0], true) + "/" + helper.getSizeString(sizes[1], true) + " | " + PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getProgress() + "%" : "\n"));
+								if(PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getProgress()<=0) {
 										Progress.setProgress(100);
 										Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
-										PreferencesPresetsFragment.DownloadingActiveForProgress[position].setAlpha((float) 1);
+										PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setAlpha((float) 1);
 										Progress.startAnimation(BlinkAnim);
 								}
 						}
@@ -1034,7 +1050,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 										public void onClick(View p1)
 										{
 												// TODO: Implement this method
-												if (PreferencesPresetsFragment.DownloadingActiveForHelper[position] == null)
+												if (position < (PreferencesPresetsFragment.DownloadingActiveForHelper.size()) && PreferencesPresetsFragment.DownloadingActiveForHelper.get(position) == null)
 												{
 														final downloadHelper dH = new downloadHelper(context);
 														dH.setInterface(new downloadHelper.downloadHelperInterface() {
@@ -1046,26 +1062,26 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				try
 																				{
 																						if(state==downloadHelper.STATE_WAITING) {
-																						PreferencesPresetsFragment.DownloadingActiveForHelper[position] = dH;
-																						PreferencesPresetsFragment.DownloadingActiveForRoot[position] = root;
-																						PreferencesPresetsFragment.DownloadingActiveForLayout[position] = OnlineButton;
-																						PreferencesPresetsFragment.DownloadingActiveForImageView[position] = OnlineButtonImage;
-																						PreferencesPresetsFragment.DownloadingActiveForLabel[position] = ItemDesc;
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position] = Progress;
-																						PreferencesPresetsFragment.DownloadingActiveForOldText[position] = ItemDesc.getText().toString();
+																						PreferencesPresetsFragment.DownloadingActiveForHelper.set(position,dH);
+																						PreferencesPresetsFragment.DownloadingActiveForRoot.set(position, root);
+																						PreferencesPresetsFragment.DownloadingActiveForLayout.set(position, OnlineButton);
+																						PreferencesPresetsFragment.DownloadingActiveForImageView.set(position, OnlineButtonImage);
+																						PreferencesPresetsFragment.DownloadingActiveForLabel.set(position, ItemDesc);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.set(position, Progress);
+																						PreferencesPresetsFragment.DownloadingActiveForOldText.set(position, ItemDesc.getText().toString());
 																						if(PreferencesPresetsFragment.DownloadingActiveFor.equals("")) {
 																								PreferencesPresetsFragment.DownloadingActiveFor = itemsTitle.get(position);
 																						}
 																						//PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.downloadHelper_States).split("\\|")[state] + "\n");
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress(100);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setProgress(100);
 																						Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].setAlpha((float) 1);
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].startAnimation(BlinkAnim);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setAlpha((float) 1);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).startAnimation(BlinkAnim);
 																						//OnlineButton.setEnabled(false);
 																						//OnlineButton.setAlpha((float) .3);
-																						PreferencesPresetsFragment.DownloadingActiveForImageView[position].setImageResource(R.drawable.ic_action_cancel);
+																						PreferencesPresetsFragment.DownloadingActiveForImageView.get(position).setImageResource(R.drawable.ic_action_cancel);
 																						}
-																						PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.downloadHelper_States).split("\\|")[state] + "\n");
+																						PreferencesPresetsFragment.DownloadingActiveForLabel.get(position).setText(context.getString(R.string.downloadHelper_States).split("\\|")[state] + "\n");
 																				}
 																				catch (Throwable t)
 																				{
@@ -1079,13 +1095,13 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				// TODO: Implement this method
 																				try
 																				{
-																						PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.downloadHelper_States).split("\\|")[PreferencesPresetsFragment.DownloadingActiveForHelper[position].getState()] + " - eta: " + helper.getTimeString(dH.getETA(), true) + " | speed: " + helper.getSizeString(dH.getAvgSpeed(), true) + "/s\n" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | " + PreferencesPresetsFragment.DownloadingActiveForHelper[position].getProgress() + "%");
-																						if (PreferencesPresetsFragment.DownloadingActiveForHelper[position].getSizes()[0] > 0) {
-																								PreferencesPresetsFragment.DownloadingActiveForProgress[position].clearAnimation();
-																								PreferencesPresetsFragment.DownloadingActiveForProgress[position].setAlpha((float) 0.2);
+																						PreferencesPresetsFragment.DownloadingActiveForLabel.get(position).setText(context.getString(R.string.downloadHelper_States).split("\\|")[PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getState()] + " - eta: " + helper.getTimeString(dH.getETA(), true) + " | speed: " + helper.getSizeString(dH.getAvgSpeed(), true) + "/s\n" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | " + PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getProgress() + "%");
+																						if (PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).getSizes()[0] > 0) {
+																								PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).clearAnimation();
+																								PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setAlpha((float) 0.2);
 																						}
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress((int) ((nowSize * 100) / totalSize));
-																						PreferencesPresetsFragment.DownloadingActiveForRoot[position].postInvalidate();
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setProgress((int) ((nowSize * 100) / totalSize));
+																						PreferencesPresetsFragment.DownloadingActiveForRoot.get(position).postInvalidate();
 																				}
 																				catch (Throwable t)
 																				{
@@ -1099,20 +1115,20 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				// TODO: Implement this method
 																				try
 																				{
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress(0);
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].clearAnimation();
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].setAlpha((float) 0.2);
-																						PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(PreferencesPresetsFragment.DownloadingActiveForOldText[position]);
-																						PreferencesPresetsFragment.DownloadingActiveForLayout[position].setEnabled(true);
-																						PreferencesPresetsFragment.DownloadingActiveForLayout[position].setAlpha((float) 1);
-																						PreferencesPresetsFragment.DownloadingActiveForImageView[position].setImageResource(R.drawable.ic_file_file_download);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setProgress(0);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).clearAnimation();
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setAlpha((float) 0.2);
+																						PreferencesPresetsFragment.DownloadingActiveForLabel.get(position).setText(PreferencesPresetsFragment.DownloadingActiveForOldText.get(position));
+																						PreferencesPresetsFragment.DownloadingActiveForLayout.get(position).setEnabled(true);
+																						PreferencesPresetsFragment.DownloadingActiveForLayout.get(position).setAlpha((float) 1);
+																						PreferencesPresetsFragment.DownloadingActiveForImageView.get(position).setImageResource(R.drawable.ic_file_file_download);
 																						PreferencesPresetsFragment.DownloadingActiveFor = "";
-																						PreferencesPresetsFragment.DownloadingActiveForHelper[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForRoot[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForLayout[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForImageView[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForLabel[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position] = null;
+																						PreferencesPresetsFragment.DownloadingActiveForHelper.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForRoot.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForLayout.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForImageView.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForLabel.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.set(position, null);
 																						try
 																						{
 																								PreferencesPresetsFragment.ImportPreset("file://" + context.getFilesDir().getPath() + "/download/" + split[0] + "_" + itemsTitle.get(position).replace("'", "\\\'").replace("\"", "\\\"") + ".nps", PreferencesPresetsFragment.localAdapter, itemsTitle.get(position), null);
@@ -1134,21 +1150,21 @@ public class PresetsAdapter extends ArrayAdapter<String>
 																				// TODO: Implement this method
 																				try
 																				{
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress(0);
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].clearAnimation();
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position].setAlpha((float) 0.2);
-																						PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(PreferencesPresetsFragment.DownloadingActiveForOldText[position]);
-																						PreferencesPresetsFragment.DownloadingActiveForLayout[position].setEnabled(true);
-																						PreferencesPresetsFragment.DownloadingActiveForLayout[position].setAlpha((float) 1);
-																						PreferencesPresetsFragment.DownloadingActiveForImageView[position].setImageResource(R.drawable.ic_file_file_download);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setProgress(0);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).clearAnimation();
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setAlpha((float) 0.2);
+																						PreferencesPresetsFragment.DownloadingActiveForLabel.get(position).setText(PreferencesPresetsFragment.DownloadingActiveForOldText.get(position));
+																						PreferencesPresetsFragment.DownloadingActiveForLayout.get(position).setEnabled(true);
+																						PreferencesPresetsFragment.DownloadingActiveForLayout.get(position).setAlpha((float) 1);
+																						PreferencesPresetsFragment.DownloadingActiveForImageView.get(position).setImageResource(R.drawable.ic_file_file_download);
 																						if (!reason.equalsIgnoreCase("canceled")) Toast.makeText(context, context.getString(R.string.presetsManager_DownloadFailed) + "\n" + reason, Toast.LENGTH_LONG).show();
 																						PreferencesPresetsFragment.DownloadingActiveFor = "";
-																						PreferencesPresetsFragment.DownloadingActiveForHelper[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForRoot[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForLayout[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForImageView[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForLabel[position] = null;
-																						PreferencesPresetsFragment.DownloadingActiveForProgress[position] = null;
+																						PreferencesPresetsFragment.DownloadingActiveForHelper.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForRoot.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForLayout.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForImageView.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForLabel.set(position, null);
+																						PreferencesPresetsFragment.DownloadingActiveForProgress.set(position, null);
 																				}
 																				catch (Throwable t)
 																				{}
@@ -1160,17 +1176,20 @@ public class PresetsAdapter extends ArrayAdapter<String>
 												}
 												else
 												{
-														PreferencesPresetsFragment.DownloadingActiveForLabel[position].setText(context.getString(R.string.downloadHelper_States).split("\\|")[downloadHelper.STATE_CANCELLING] + "\n");
-														PreferencesPresetsFragment.DownloadingActiveForLayout[position].setEnabled(false);
-														PreferencesPresetsFragment.DownloadingActiveForLayout[position].setAlpha((float) .3);
-														PreferencesPresetsFragment.DownloadingActiveForHelper[position].stopDownload(true);
-														PreferencesPresetsFragment.DownloadingActiveForProgress[position].setProgress(100);
+														PreferencesPresetsFragment.DownloadingActiveForLabel.get(position).setText(context.getString(R.string.downloadHelper_States).split("\\|")[downloadHelper.STATE_CANCELLING] + "\n");
+														PreferencesPresetsFragment.DownloadingActiveForLayout.get(position).setEnabled(false);
+														PreferencesPresetsFragment.DownloadingActiveForLayout.get(position).setAlpha((float) .3);
+														PreferencesPresetsFragment.DownloadingActiveForHelper.get(position).stopDownload(true);
+														PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setProgress(100);
 														Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
-														PreferencesPresetsFragment.DownloadingActiveForProgress[position].setAlpha((float) 1);
-														PreferencesPresetsFragment.DownloadingActiveForProgress[position].startAnimation(BlinkAnim);
+														PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).setAlpha((float) 1);
+														PreferencesPresetsFragment.DownloadingActiveForProgress.get(position).startAnimation(BlinkAnim);
 												}
 										}
 								});
+						if(PreferencesPresetsFragment.OnlineHasGraphics.get(position)) {
+								hasGraphics.setVisibility(View.VISIBLE);
+						}
 				}
 				else if (itemsLocal.get(position).equalsIgnoreCase("LoadMore"))
 				{
@@ -1187,6 +1206,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						ItemTitle.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
 						ItemDesc.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[1]);
 						new getOnlinePresets(getOnlinePresets.MODE_OFFSET).execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlineListLocal.size() - 1));
+						root.setEnabled(false);
 				}
 				else if (itemsLocal.get(position).equalsIgnoreCase("error"))
 				{
@@ -1196,12 +1216,14 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						ItemTitle.setGravity(Gravity.CENTER);
 						ItemDesc.setGravity(Gravity.CENTER);
 						ItemDesc.setText(itemsDesc.get(position));
+						root.setEnabled(true);
 						root.setOnClickListener(new OnClickListener() {
 
 										@Override
 										public void onClick(View p1)
 										{
 												// TODO: Implement this method
+												root.setEnabled(false);
 												Progress.setProgress(100);
 												Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
 												Progress.setAlpha((float) 1);
@@ -1220,6 +1242,7 @@ public class PresetsAdapter extends ArrayAdapter<String>
 						ItemTitle.setGravity(Gravity.CENTER);
 						ItemDesc.setGravity(Gravity.CENTER);
 						ItemDesc.setText(itemsDesc.get(position));
+						root.setEnabled(false);
 				}
 
 

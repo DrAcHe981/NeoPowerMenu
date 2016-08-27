@@ -65,18 +65,19 @@ public class PreferencesPresetsFragment extends Fragment
 		public static boolean onlineRequestIsRunning;
 
 		public static String DownloadingActiveFor = "";
-		public static LinearLayout[] DownloadingActiveForRoot;
-		public static downloadHelper[] DownloadingActiveForHelper;
-		public static LinearLayout[] DownloadingActiveForLayout;
-		public static ImageView[] DownloadingActiveForImageView;
-		public static String[] DownloadingActiveForOldText;
-		public static TextView[] DownloadingActiveForLabel;
-		public static ProgressBar[] DownloadingActiveForProgress;
+		public static ArrayList<LinearLayout> DownloadingActiveForRoot = new ArrayList<LinearLayout>();
+		public static ArrayList<downloadHelper> DownloadingActiveForHelper = new ArrayList<downloadHelper>();
+		public static ArrayList<LinearLayout> DownloadingActiveForLayout = new ArrayList<LinearLayout>();
+		public static ArrayList<ImageView> DownloadingActiveForImageView = new ArrayList<ImageView>();
+		public static ArrayList<String> DownloadingActiveForOldText = new ArrayList<String>();
+		public static ArrayList<TextView> DownloadingActiveForLabel = new ArrayList<TextView>();
+		public static ArrayList<ProgressBar> DownloadingActiveForProgress = new ArrayList<ProgressBar>();
 		
 		public static ArrayList<String> OnlineListTitles = new ArrayList<String>();
 		public static ArrayList<String> OnlineListDescs = new ArrayList<String>();
 		public static ArrayList<String> OnlineListEnabled = new ArrayList<String>();
 		public static ArrayList<String> OnlineListLocal = new ArrayList<String>();
+		public static ArrayList<Boolean> OnlineHasGraphics = new ArrayList<Boolean>();
 		
 		//public static String oldUploadText = "";
 
@@ -166,9 +167,11 @@ public class PreferencesPresetsFragment extends Fragment
 																								{
 																										// TODO: Implement this method
 																										if(!onlineSearchEdit.getText().toString().isEmpty()) {
+																												try {
 																												InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
 																												IBinder windowToken = onlineSearchEdit.getWindowToken();
 																												inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+																												} catch (Throwable t) {}
 																												onlineSearchTerm = onlineSearchEdit.getText().toString();
 																												new getOnlinePresets().execute((onlineOrderSelectedString.isEmpty() ? "" : "order="+ onlineOrderSelectedString),(onlineSearchTerm.isEmpty() ? "" : "search="+onlineSearchTerm));
 																										}
@@ -349,9 +352,11 @@ public class PreferencesPresetsFragment extends Fragment
 														onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
 														onlineSearchBar.setVisibility(View.GONE);
 														//onlineSearchEdit.setText("");
-														InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-														IBinder windowToken = onlineSearchEdit.getWindowToken();
-														inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+														try {
+																InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+																IBinder windowToken = onlineSearchEdit.getWindowToken();
+																inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+														} catch (Throwable t) {}
 												}
 												if (onlineOrder.getVisibility() == View.VISIBLE)
 												{
@@ -372,9 +377,11 @@ public class PreferencesPresetsFragment extends Fragment
 														onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
 														onlineSearchBar.setVisibility(View.GONE);
 														//onlineSearchEdit.setText("");
-														InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-														IBinder windowToken = onlineSearchEdit.getWindowToken();
-														inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+														try {
+																InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+																IBinder windowToken = onlineSearchEdit.getWindowToken();
+																inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+														} catch (Throwable t) {}
 												}
 												if (onlineOrder.getVisibility() == View.VISIBLE)
 												{

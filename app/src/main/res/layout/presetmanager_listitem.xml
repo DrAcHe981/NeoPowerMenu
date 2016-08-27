@@ -28,11 +28,11 @@
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
 				android:orientation="vertical"
-				android:paddingRight="5dp"
 				android:layout_weight="0"
 				android:layout_alignParentRight="true"
 				android:id="@+id/listitemhandleleftLinearLayout1"
-				android:layout_centerVertical="true">
+				android:layout_centerVertical="true"
+				android:layout_marginRight="5dp">
 
 				<LinearLayout
 					android:layout_height="wrap_content"
@@ -90,16 +90,29 @@
 				android:layout_marginRight="10dp"
 				android:id="@+id/listitemhandleleftLinearLayout2">
 
-				<TextView
+				<LinearLayout
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
-					android:text="Title/Primary Text"
-					android:layout_weight="1.0"
-					android:gravity="bottom"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:textColor="#FFFFFF"
-					android:id="@+id/title"
-					android:paddingRight="10dp"/>
+					android:orientation="horizontal">
+
+					<ImageView
+						android:layout_height="match_parent"
+						android:layout_width="25dp"
+						android:src="@drawable/ic_device_now_wallpaper"
+						android:id="@+id/presetmanagerlistitemImageView_hasGraphics"
+						android:padding="2dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="Title/Primary Text"
+						android:gravity="bottom"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="#FFFFFF"
+						android:id="@+id/title"
+						android:paddingRight="10dp"/>
+
+				</LinearLayout>
 
 				<TextView
 					android:layout_height="wrap_content"
@@ -211,8 +224,8 @@
 						android:gravity="center_vertical"
 						android:id="@+id/presetmanagerlistitemTextView_StarText"/>
 
-						<TextView
-								android:id="@+id/presetmanagerlistitemTextView_StarLine"
+					<TextView
+						android:id="@+id/presetmanagerlistitemTextView_StarLine"
 						android:layout_height="match_parent"
 						android:layout_width="2dp"
 						android:background="@color/colorAccentDarkTheme"
@@ -220,7 +233,7 @@
 						android:layout_marginTop="5dp"
 						android:layout_marginBottom="5dp"
 						android:layout_marginLeft="5dp"
-							android:visibility="gone"/>
+						android:visibility="gone"/>
 
 				</LinearLayout>
 
@@ -259,6 +272,18 @@
 				android:id="@+id/presetmanagerlistitemTextView1"
 				android:layout_marginRight="5dp"
 				android:layout_marginLeft="5dp"/>
+
+			<ImageView
+				android:layout_height="25dp"
+				android:layout_width="wrap_content"
+				android:src="@drawable/ic_device_now_wallpaper"
+				android:layout_alignParentTop="true"
+				android:padding="3dp"
+				android:id="@+id/presetmanagerlistitemImageView_hasGraphics1"
+				android:layout_alignRight="@id/listitemhandleleftLinearLayout1"
+				android:layout_alignLeft="@id/listitemhandleleftLinearLayout1"
+				android:scaleType="fitCenter"
+				android:visibility="gone"/>
 
 		</RelativeLayout>
 

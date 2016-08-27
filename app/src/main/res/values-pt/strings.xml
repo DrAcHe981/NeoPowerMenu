@@ -115,7 +115,7 @@ Isso não pode  ser desfeito!"</string>
 <string name="visibilityOrderDesc_ExpandedDesktop">"Alternar o modo da Área de Trabalho expandida do GravityBox através do Menu de Energia (GravityBox precisa estar instalado)."</string>
 <string name="advancedPrefsTitle_DialogGravity">"Posição da caixa de diálogo"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Mudar a posição da caixa de diálogo."</string>
-<string name="advancedPrefs_DialogGravity">"Cima/Esquerda/Direita/Abaixo"</string>
+<string name="advancedPrefs_DialogGravity">"Cima|Esquerda|Direita|Abaixo"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Lanterna ligada"</string>

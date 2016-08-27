@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity
 		public static String password = "";
 		public static String accountUniqeId = "";
 		public static String userRank = "U";
+		public static String userName = "";
 
 		public static String imagesstorage;
 		public static ImageLoader imageLoader;
@@ -286,11 +287,11 @@ public class MainActivity extends AppCompatActivity
 				}
 				else if (visibleFragment.equalsIgnoreCase("PresetsManager"))
 				{
-						for (int i = 0; i < PreferencesPresetsFragment.DownloadingActiveForHelper.length; i ++)
+						for (int i = 0; i < PreferencesPresetsFragment.DownloadingActiveForHelper.size(); i ++)
 						{
-								if (PreferencesPresetsFragment.DownloadingActiveForHelper[i] != null && PreferencesPresetsFragment.DownloadingActiveForHelper[i].isRunning())
+								if (PreferencesPresetsFragment.DownloadingActiveForHelper.get(i) != null && PreferencesPresetsFragment.DownloadingActiveForHelper.get(i).isRunning())
 								{
-										PreferencesPresetsFragment.DownloadingActiveForHelper[i].stopDownload(true);
+										PreferencesPresetsFragment.DownloadingActiveForHelper.get(i).stopDownload(true);
 								}
 						}
 						actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);

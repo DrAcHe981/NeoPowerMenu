@@ -15,6 +15,7 @@ import java.util.*;
 
 import android.support.v4.app.Fragment;
 import org.acra.*;
+import android.text.*;
 
 public class LoginFragment extends Fragment
 {
@@ -27,6 +28,8 @@ public class LoginFragment extends Fragment
 		// LoginContainer
 		static LinearLayout LinearLayout_LoginContainer;
 		static EditText EditText_UsernameEmail, EditText_Password;
+		boolean boolean_ShowPW = false;
+		static ImageView ImageView_ShowHidePw;
 		static CheckBox CheckBox_KeepLogin;
 		static LinearLayout LinearLayout_CreateAccount;
 		static LinearLayout LinearLayout_RecoverButton;
@@ -62,6 +65,7 @@ public class LoginFragment extends Fragment
 				LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
 				EditText_UsernameEmail = (EditText) InflatedView.findViewById(R.id.activityloginEditText_UsernameEmail);
 				EditText_Password = (EditText) InflatedView.findViewById(R.id.activityloginEditText_Password);
+				ImageView_ShowHidePw = (ImageView) InflatedView.findViewById(R.id.activityloginImageView_ShowHidePW);
 				CheckBox_KeepLogin = (CheckBox) InflatedView.findViewById(R.id.activityloginCheckBox_KeepLogin);
 				LinearLayout_CreateAccount = (LinearLayout) InflatedView.findViewById(R.id.activityloginLinearLayout_CreateAccount);
 				LinearLayout_RecoverButton = (LinearLayout) InflatedView.findViewById(R.id.activityloginLinearLayout_RecoverButton);
@@ -384,6 +388,26 @@ public class LoginFragment extends Fragment
 						CheckBox_KeepLogin.setChecked(true);
 				}
 
+				ImageView_ShowHidePw.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										int cursorpos = EditText_Password.getSelectionStart();
+										if(boolean_ShowPW) {
+												boolean_ShowPW = false;
+												ImageView_ShowHidePw.setImageResource(R.drawable.ic_action_eye_closed);
+												EditText_Password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+										} else {
+												boolean_ShowPW = true;
+												ImageView_ShowHidePw.setImageResource(R.drawable.ic_action_eye_open);
+												EditText_Password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+										}
+										EditText_Password.setSelection(cursorpos);
+								}
+						});
+				
 				LinearLayout_CreateAccount.setOnClickListener(new OnClickListener() {
 
 								@Override
@@ -463,7 +487,7 @@ public class LoginFragment extends Fragment
 						loginFragmentMode = "logout";
 						if(TextView_AccountInfo.getVisibility()==View.VISIBLE ) TextView_AccountInfo.setVisibility(View.GONE);
 						if(LinearLayout_LoginContainer.getVisibility()==View.VISIBLE) LinearLayout_LoginContainer.setVisibility(View.GONE);
-						TextView_TitleStatistics.setText(mContext.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.usernameemail));
+						TextView_TitleStatistics.setText(mContext.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.userName));
 						getStatistics();
 						if(LinearLayout_LoggedInContainer.getVisibility()==View.GONE) LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
 						//MainActivity.actionbar.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_content_send, logoutOnClickListener);
@@ -533,6 +557,7 @@ public class LoginFragment extends Fragment
 										MainActivity.password = password;
 										MainActivity.accountUniqeId = (responseSplit.length >= 2 ? responseSplit[1] : "none");
 										MainActivity.userRank = (responseSplit.length >= 3 ? responseSplit[2] : "U");
+										MainActivity.userName = (responseSplit.length >= 4 ? responseSplit[3] : "");
 										if (keeplogin)
 										{
 												MainActivity.preferences.edit().putBoolean("autoLogin", true)
@@ -545,7 +570,7 @@ public class LoginFragment extends Fragment
 												TextView_AccountInfo.setVisibility(View.GONE);
 												LinearLayout_LoginContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
 												LinearLayout_LoginContainer.setVisibility(View.GONE);
-												TextView_TitleStatistics.setText(context.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.usernameemail));
+												TextView_TitleStatistics.setText(context.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.userName));
 												getStatistics();
 												LinearLayout_LoggedInContainer.setVisibility(View.VISIBLE);
 												LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));

@@ -37,7 +37,7 @@
 				android:orientation="vertical"
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="10dp"
-				android:visibility="gone"
+				android:visibility="visible"
 				android:id="@+id/activityloginLinearLayout_LoginContainer">
 
 				<LinearLayout
@@ -72,13 +72,28 @@
 						android:layout_width="match_parent"
 						android:text="@string/login_Password"/>
 
-					<EditText
+					<RelativeLayout
 						android:layout_height="wrap_content"
-						android:inputType="textPassword"
-						android:layout_width="match_parent"
-						android:ems="10"
-						android:id="@+id/activityloginEditText_Password"
-						android:singleLine="true"/>
+						android:layout_width="match_parent">
+
+						<EditText
+							android:layout_height="wrap_content"
+							android:inputType="textPassword"
+							android:layout_width="match_parent"
+							android:ems="10"
+							android:id="@+id/activityloginEditText_Password"
+							android:singleLine="true"/>
+
+							<ImageView
+									android:background="?selectableItemBackgroundBorderless"
+							android:layout_height="35dp"
+							android:layout_width="35dp"
+							android:src="@drawable/ic_action_eye_closed"
+							android:layout_alignParentRight="true"
+							android:id="@+id/activityloginImageView_ShowHidePW"
+							android:padding="3dp"/>
+
+					</RelativeLayout>
 
 				</LinearLayout>
 
@@ -219,7 +234,7 @@
 				android:id="@+id/activityloginLinearLayout_RecoverAccount"
 				android:layout_marginLeft="10dp"
 				android:layout_marginRight="10dp"
-				android:visibility="visible">
+				android:visibility="gone">
 
 				<LinearLayout
 					android:layout_height="wrap_content"

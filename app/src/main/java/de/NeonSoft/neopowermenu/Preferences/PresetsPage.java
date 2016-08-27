@@ -53,7 +53,9 @@ public class PresetsPage extends Fragment
 		{
         View view = inflater.inflate(R.layout.presetsmanager_listholder, container, false);
 				if(page!=-1 && title != null) {
-				ListView list = (ListView) view.findViewById(R.id.presetsmanagerlistholderListView_Presets);
+						ListView list = (ListView) view.findViewById(R.id.presetsmanagerlistholderListView_Presets);
+						list.setFastScrollEnabled(true);
+						list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
 				RelativeLayout messageHolder = (RelativeLayout) view.findViewById(R.id.presetsmanagerlistholderRelativeLayout_Message);
 						messageHolder.setOnClickListener(new OnClickListener() {
@@ -78,8 +80,6 @@ public class PresetsPage extends Fragment
 				{
 						PreferencesPresetsFragment.onlineAdapter = new PresetsAdapter(PreferencesPresetsFragment.mContext, PreferencesPresetsFragment.OnlineListTitles, PreferencesPresetsFragment.OnlineListDescs, PreferencesPresetsFragment.OnlineListEnabled, PreferencesPresetsFragment.OnlineListLocal);
 						list.setAdapter(PreferencesPresetsFragment.onlineAdapter);
-						list.setFastScrollEnabled(true);
-						list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 						PreferencesPresetsFragment.onlineList = list;
 						PreferencesPresetsFragment.onlineMSG = message;
 						PreferencesPresetsFragment.onlineMSGHolder = messageHolder;

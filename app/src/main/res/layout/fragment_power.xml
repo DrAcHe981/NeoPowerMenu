@@ -23,7 +23,8 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical"
-				android:gravity="center">
+				android:gravity="center"
+				android:id="@+id/frameLinear">
 
 				<ScrollView
 					android:layout_height="wrap_content"
@@ -61,7 +62,8 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical"
-				android:gravity="center">
+				android:gravity="center"
+				android:id="@+id/frame3Linear">
 
 				<ScrollView
 					android:layout_height="wrap_content"
@@ -99,24 +101,24 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:orientation="vertical"
-				android:gravity="center">
+				android:layout_gravity="center"
+				android:gravity="center"
+				android:id="@+id/frameConfirmLinear">
 
 				<TextView
 					android:layout_height="match_parent"
-					android:layout_width="match_parent"
+					android:layout_width="340dp"
 					android:text="Reboot?"
 					android:textSize="20sp"
 					android:id="@+id/fragmentpowerTextView_ConfirmAction"
 					android:layout_weight="1.0"
-					android:gravity="center"
-					android:layout_marginBottom="-20dp"/>
+					android:gravity="center"/>
 
 				<LinearLayout
 					android:layout_height="wrap_content"
-					android:layout_width="match_parent"
+					android:layout_width="340dp"
 					android:orientation="horizontal"
-					android:gravity="right"
-					android:layout_margin="10dp">
+					android:gravity="right">
 
 					<TextView
 						android:layout_height="wrap_content"
@@ -127,7 +129,7 @@
 						android:id="@+id/fragmentpowerTextView_ConfirmNo"
 						android:layout_weight="1.0"
 						android:gravity="center"
-						android:padding="5dp"/>
+						android:padding="10dp"/>
 
 					<TextView
 						android:layout_height="wrap_content"
@@ -138,7 +140,7 @@
 						android:id="@+id/fragmentpowerTextView_ConfirmYes"
 						android:gravity="center"
 						android:layout_weight="1.0"
-						android:padding="5dp"/>
+						android:padding="10dp"/>
 
 				</LinearLayout>
 
@@ -155,16 +157,17 @@
 		<FrameLayout
 			android:id="@+id/frame2"
 			android:layout_width="340dp"
-			android:layout_height="wrap_content"
+			android:layout_height="150dp"
 			android:layout_gravity="center"
-			android:layout_marginRight="20dp"
 			android:visibility="gone">
 
 			<LinearLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginRight="20dp"
 				android:gravity="center"
-				android:orientation="horizontal">
+				android:orientation="horizontal"
+				android:id="@+id/frame2Linear">
 
 				<RelativeLayout
 					android:layout_height="wrap_content"

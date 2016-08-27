@@ -142,7 +142,9 @@ public class graphicsAdapter extends BaseAdapter
 		{
 				// TODO: Implement this method
 				final ViewHolder holder;
+				if(convertView == null) {
 						convertView = mInfalter.inflate(R.layout.graphicslistitem, null);
+						}
 						holder = new ViewHolder();
 						holder.imgQueueBg = (ImageView) convertView.findViewById(de.NeonSoft.neopowermenu.R.id.imgQueueBg);
 						GraphicDrawable drawable = GraphicDrawable.builder().beginConfig().setContext(mContext).endConfig().buildRound(null, mContext.getResources().getColor(R.color.colorPrimaryDarkDarkTheme));
@@ -251,12 +253,18 @@ public class graphicsAdapter extends BaseAdapter
 						} else if (mItems.get(position).resId > 0) {
 								holder.LoadingBar.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 								holder.LoadingBar.setVisibility(View.GONE);
+								try {
 								holder.imgQueue.setImageDrawable(mContext.getResources().getDrawable(mItems.get(position).resId));
 								if(mItems.get(position).fileName.equalsIgnoreCase("Progress")) {
 										((AnimationDrawable) holder.imgQueue.getDrawable()).start();
 								}
 								holder.imgQueue.setVisibility(View.VISIBLE);
 								holder.imgQueue.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
+								} catch (Throwable t) {
+										holder.imgQueue.setVisibility(View.GONE);
+										holder.imgProgress.setVisibility(View.VISIBLE);
+										holder.imgProgress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+								} 
 						} else {
 								throw new Exception("No graphic info found. (image path or resource id)");
 						}

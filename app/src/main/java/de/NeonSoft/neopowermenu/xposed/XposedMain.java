@@ -427,7 +427,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 														final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
 														final KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
 														if (showDialog()) {
-																if(km.isDeviceLocked()) {
+																if(km.isKeyguardLocked()) {
 																		pm.userActivity(SystemClock.uptimeMillis(), false);
 																}
 														} else

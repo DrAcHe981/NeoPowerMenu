@@ -81,6 +81,7 @@ public class GravityChooserDialog extends DialogFragment
 				frame.setBackgroundColor(Color.parseColor(MainActivity.colorPrefs.getString("Dialog_Backgroundcolor","#ffffff")));
 				
 				((FrameLayout) DummyPowerDialog.findViewById(R.id.frame2)).setVisibility(View.GONE);
+				((FrameLayout) DummyPowerDialog.findViewById(R.id.frameConfirm)).setVisibility(View.GONE);
 				
 				for(int i = 0; i <= 3; i++) {
 						final String mTitle;
@@ -405,58 +406,58 @@ public class GravityChooserDialog extends DialogFragment
 								background.setImageDrawable(drawable);
 								foreground.setVisibility(View.VISIBLE);
 								if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Shutdown))) {
-										loadImage(foreground, 0,color2);
-								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Reboot))) {
 										loadImage(foreground, 1,color2);
-								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoftReboot))) {
+								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Reboot))) {
 										loadImage(foreground, 2,color2);
-								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenshot))) {
+								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoftReboot))) {
 										loadImage(foreground, 3,color2);
-								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenrecord))) {
+								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenshot))) {
 										loadImage(foreground, 4,color2);
+								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenrecord))) {
+										loadImage(foreground, 5,color2);
 								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Flashlight))) {
 										if(TorchService.getTorchState()==TorchService.TORCH_STATUS_OFF) {
-												loadImage(foreground, 6,color2);
+												loadImage(foreground, 7,color2);
 										} else {
-												loadImage(foreground, 5,color2);
+												loadImage(foreground, 6,color2);
 										}
 								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_ExpandedDesktop))) {
-										loadImage(foreground, 7,color2);
+										loadImage(foreground, 8,color2);
 								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_AirplaneMode))) {
 										try
 										{
 												if(android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON) == 0) {
-														loadImage(foreground, 9,color2);
+														loadImage(foreground, 10,color2);
 												} else {
-														loadImage(foreground, 8,color2);
+														loadImage(foreground, 9,color2);
 												}
 										}
 										catch (Throwable e)
 										{
-												loadImage(foreground, 9,color2);
+												loadImage(foreground, 10,color2);
 										}
 								} else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_RestartUI))) {
-										loadImage(foreground, 10,color2);
+										loadImage(foreground, 11,color2);
 								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundMode))) {
 										if(amRingerMode==AudioManager.RINGER_MODE_VIBRATE) {
-												loadImage(foreground, 13,color2);
+												loadImage(foreground, 14,color2);
 										} else if(amRingerMode==AudioManager.RINGER_MODE_SILENT) {
-												loadImage(foreground, 12,color2);
+												loadImage(foreground, 13,color2);
 										} else {
-												loadImage(foreground, 11,color2);
+												loadImage(foreground, 12,color2);
 										}
 								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_Recovery))) {
-										loadImage(foreground, 14,color2);
-								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_Bootloader))) {
 										loadImage(foreground, 15,color2);
-								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_SafeMode))) {
+								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_Bootloader))) {
 										loadImage(foreground, 16,color2);
+								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_SafeMode))) {
+										loadImage(foreground, 17,color2);
 								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundVibrate))) {
-										loadImage(foreground, 13,color2);
+										loadImage(foreground, 14,color2);
 								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundNormal))) {
-										loadImage(foreground, 11,color2);
-								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundSilent))) {
 										loadImage(foreground, 12,color2);
+								} else if(text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundSilent))) {
+										loadImage(foreground, 13,color2);
 								}
 						} else {
 								TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig()

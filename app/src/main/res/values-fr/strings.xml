@@ -124,7 +124,7 @@ Cette action est irréversible !"</string>
 <string name="powerMenuMain_ExpandedDesktop">"Bureau étendu"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Position de la boîte de dialogue"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Modifier la position de la boîte de dialogue."</string>
-<string name="advancedPrefs_DialogGravity">"Haut/Gauche/Droite/Bas"</string>
+<string name="advancedPrefs_DialogGravity">"Haut|Gauche|Droite|Bas"</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Torche On"</string>

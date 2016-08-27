@@ -1104,46 +1104,14 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 								}
 						}
 				}
-				/*
-				if(EditText_DialogInput1.isFocused()) {
-						windowToken = EditText_DialogInput1.getWindowToken();
-				} else if (EditText_DialogInput2.isFocused()) {
-						windowToken = EditText_DialogInput2.getWindowToken();
-				} else if (EditText_DialogHexInput.isFocused()) {
-						windowToken = EditText_DialogHexInput.getWindowToken();
-				}*/
+				try {
 						if(windowToken!=null) inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
-						TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
+				} catch (Throwable t) {}
+				TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 				TextView_DialogBg.setVisibility(View.GONE);
 				TextView_DialogTouchOutside.setVisibility(View.GONE);
 				Animation hideAnim = AnimationUtils.loadAnimation(mContext,R.anim.slidedowndialogfragment_out);
-				/*hideAnim.setAnimationListener(new Animation.AnimationListener() {
-
-								@Override
-								public void onAnimationEnd(Animation p1)
-								{
-										// TODO: Implement this method
-										if(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).getShowsDialog()) {
-												slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size()-1).dismiss();
-										} else {
-												mFragmentmanager.beginTransaction().remove(mFragment).commit();
-										}
-										slideDownDialogFragment.dialogs.remove(slideDownDialogFragment.dialogs.size()-1);
-								}
-
-								@Override
-								public void onAnimationRepeat(Animation p1)
-								{
-										// TODO: Implement this method
-								}
-
-								@Override
-								public void onAnimationStart(Animation p1)
-								{
-										// TODO: Implement this method
-								}
-						});*/
-						//hideAnim.setDuration(800);
+				
 				LinearLayout_DialogRoot.startAnimation(hideAnim);
 						handler.postDelayed(new Runnable() {
 

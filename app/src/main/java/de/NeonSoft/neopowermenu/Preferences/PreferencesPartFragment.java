@@ -463,7 +463,8 @@ public class PreferencesPartFragment extends Fragment
 		}
 
 		private void checkState() {
-				try{
+				if(isAdded()) {
+						try{
 						if (helper.ModuleState()>=MainActivity.neededModuleActiveVersion)
 						{
 								if(!MainActivity.RootAvailable) {
@@ -506,6 +507,7 @@ public class PreferencesPartFragment extends Fragment
 						TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
 						//ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
 						ProgressBar_RootWait.setVisibility(View.GONE);
+						}
 				}
 		}
 		

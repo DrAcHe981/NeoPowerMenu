@@ -66,10 +66,18 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 				if (refreshMode == MODE_ALL)
 				{
 						PresetsPage.onlineIds.clear();
+						PreferencesPresetsFragment.DownloadingActiveForRoot.clear();
+						PreferencesPresetsFragment.DownloadingActiveForHelper.clear();
+						PreferencesPresetsFragment.DownloadingActiveForLayout.clear();
+						PreferencesPresetsFragment.DownloadingActiveForImageView.clear();
+						PreferencesPresetsFragment.DownloadingActiveForOldText.clear();
+						PreferencesPresetsFragment.DownloadingActiveForLabel.clear();
+						PreferencesPresetsFragment.DownloadingActiveForProgress.clear();
 						PreferencesPresetsFragment.OnlineListTitles.clear();
 						PreferencesPresetsFragment.OnlineListDescs.clear();
 						PreferencesPresetsFragment.OnlineListEnabled.clear();
 						PreferencesPresetsFragment.OnlineListLocal.clear();
+						PreferencesPresetsFragment.OnlineHasGraphics.clear();
 						PreferencesPresetsFragment.onlineAdapter.notifyDataSetChanged();
 						PreferencesPresetsFragment.onlineMSG.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
 						PreferencesPresetsFragment.onlineMSGHolder.setVisibility(View.VISIBLE);
@@ -192,7 +200,15 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 										onlineEnabled[i] = "false";
 										onlineLocal[i] = "false";
 										PresetsPage.onlineIds.add(jObject.getString("_creatorUniqeId"));
-
+										PreferencesPresetsFragment.OnlineHasGraphics.add(jObject.getString("_presetHasGraphics").equalsIgnoreCase("true"));
+										
+										PreferencesPresetsFragment.DownloadingActiveForRoot.add(null);
+										PreferencesPresetsFragment.DownloadingActiveForHelper.add(null);
+										PreferencesPresetsFragment.DownloadingActiveForLayout.add(null);
+										PreferencesPresetsFragment.DownloadingActiveForImageView.add(null);
+										PreferencesPresetsFragment.DownloadingActiveForOldText.add("");
+										PreferencesPresetsFragment.DownloadingActiveForLabel.add(null);
+										PreferencesPresetsFragment.DownloadingActiveForProgress.add(null);
 								}
 
 						}
@@ -321,6 +337,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 								PreferencesPresetsFragment.OnlineListDescs.remove(PreferencesPresetsFragment.OnlineListDescs.size() - 1);
 								PreferencesPresetsFragment.OnlineListEnabled.remove(PreferencesPresetsFragment.OnlineListEnabled.size() - 1);
 								PreferencesPresetsFragment.OnlineListLocal.remove(PreferencesPresetsFragment.OnlineListLocal.size() - 1);
+								PreferencesPresetsFragment.OnlineHasGraphics.remove(PreferencesPresetsFragment.OnlineHasGraphics.size() - 1);
 						}
 
 						PreferencesPresetsFragment.OnlineListTitles.addAll(Arrays.asList(onlineTitles));
@@ -335,6 +352,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 								PreferencesPresetsFragment.OnlineListDescs.add(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[5]);
 								PreferencesPresetsFragment.OnlineListEnabled.add("false");
 								PreferencesPresetsFragment.OnlineListLocal.add("NoMore");
+								PreferencesPresetsFragment.OnlineHasGraphics.add(false);
 						}
 
 						if (onlineTitles.length == 30)
@@ -344,6 +362,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String>
 								PreferencesPresetsFragment.OnlineListDescs.add(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[3]);
 								PreferencesPresetsFragment.OnlineListEnabled.add("false");
 								PreferencesPresetsFragment.OnlineListLocal.add("LoadMore");
+								PreferencesPresetsFragment.OnlineHasGraphics.add(false);
 						}
 
 						PreferencesPresetsFragment.onlineAdapter.notifyDataSetChanged();
