@@ -205,7 +205,11 @@ public class ColorsListAdapter extends ArrayAdapter<String>
 																);
 																dialogFragment.addInput(context.getString(R.string.presetSaveDialog_InfoText),MainActivity.preferences.getString("lastPresetCreatedBy",""),true,null);
 																dialogFragment.setInputAssistInfo(context.getString(R.string.presetSaveDialog_OverwriteText));
-																dialogFragment.setCheckBox(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[0],false);
+																File graphicsDir = new File(context.getFilesDir().getPath()+"/images/");
+																File[] graphics = graphicsDir.listFiles();
+																if(graphics.length > 0) {
+																		dialogFragment.setCheckBox(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[0],false);
+																}
 																dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
 																dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[7]);
 																dialogFragment.showDialog(R.id.dialog_container);
