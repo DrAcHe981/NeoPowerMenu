@@ -68,12 +68,12 @@ This can't be undone!"</string>
 <string name="screenrecord_toast_processing">"Cannot start new recording as previous recording is still being processed"</string>
 <string name="screenrecord_toast_saved">"Recording saved as %s"</string>
 <string name="screenrecord_toast_save_error">"Unable to save recording to output file"</string>
-<string name="powerMenuMain_FlashlightOff">"Turn Torch Off"</string>
+<string name="powerMenuMain_FlashlightOff">"Turn torch off"</string>
 <string name="powerMenuMain_FlashlightDesc">"Turning off after [AUTOOFF]."</string>
 <string name="powerMenuMain_FlashlightDescDisabled">"Automatic turn off disabled."</string>
 <string name="powerMenuMain_ExpandedDesktop">"Expanded Desktop"</string>
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
-<string name="advancedPrefsDesc_DialogGravity">"Change the Dialog position."</string>
+<string name="advancedPrefsDesc_DialogGravity">"Change the dialog position."</string>
 
 <!-- Torch -->
 <string name="quick_settings_torch_on">"Torch On"</string>
@@ -95,14 +95,14 @@ This can't be undone!"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
 <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Required for future functions (little tip: custom images)."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
-<string name="permissionsScreenDesc_android.permission.CAMERA">"Required to toggle the Torch."</string>
+<string name="permissionsScreenDesc_android.permission.CAMERA">"Required to toggle the torch."</string>
 <string name="visibilityOrder_HideDesc">"Hide description"</string>
 
 <!-- Preferences: Colors -->
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Required for the screen recorder to record the screen."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
-<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Required to Record audio with the screen recorder."</string>
+<string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Required to record audio with the screen recorder."</string>
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Required to display the Power Menu on top of everything."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
@@ -128,11 +128,11 @@ This is your last chance to adjust the name or the creator before uploading..."<
 <string name="presetsManager_UploadFailed">"Upload failed!"</string>
 <string name="presetsManager_DownloadFailed">"Download failed!"</string>
 <string name="presetsManager_CantConnecttoServer">"Can't connect to the server!
-Please check your network connection or try it again later."</string>
+Please check your network connection or try again later."</string>
 <string name="presetsManager_CantConnecttoDB">"Can't connect to the database!
-Please try it again later, when nothing changes: Please report it to the developer."</string>
+Please try again later, when nothing changes: Please report it to the developer."</string>
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
-<string name="permissionsScreenDesc_android.permission.INTERNET">"Needed to download/upload presets from/to the public server."</string>
+<string name="permissionsScreenDesc_android.permission.INTERNET">"Required to download/upload presets from/to the public server."</string>
 
 <!-- Login page -->
 <string name="login_Title">"Login"</string>
@@ -143,15 +143,15 @@ I will never share any private data!"</string>
 <string name="login_UsernameEmail">"Username or E-mail:"</string>
 <string name="login_Username">"Username:"</string>
 <string name="login_Email">"E-mail:"</string>
-<string name="login_RetypeEmail">"Retype E-mail:"</string>
-<string name="login_PasswordOverEmail">"You can set your password over the link in the activation e-mail (the e-mail is only available in english)."</string>
+<string name="login_RetypeEmail">"Repeat E-mail:"</string>
+<string name="login_PasswordOverEmail">"You can set your password via the link in the activation E-mail (the E-mail is only available in English)."</string>
 <string name="login_Password">"Password:"</string>
 <string name="login_KeepLogin">"Keep me logged in."</string>
 <string name="login_Register">"Need an account?
-Click here to create a new Account!"</string>
+Click here to create a new account!"</string>
 <string name="login_LoggedIn">"Logged in!"</string>
 <string name="login_LoginFailedWithReason">"Login failed: "</string>
-<string name="login_LoginFailedWrongData">"Login failed, wrong e-mail or password!"</string>
+<string name="login_LoginFailedWrongData">"Login failed, wrong E-mail or password!"</string>
 <string name="login_RegisterFailedNameUsed">"Sorry, the choosen name or email adress is already in use."</string>
 <string name="login_RegisterSuccess">"Registration successful, you will receive an email to activate your account!"</string>
 <string name="login_Processing">"Processing..."</string>
@@ -168,7 +168,8 @@ Your presets (ordered by stars):
 <!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
-<string name="login_pleaseCheckInput">"Something went wrong, Please check your input."</string>
+<string name="login_pleaseCheckInput">"Something went wrong, please check your input."</string>
+<string name="presetsManager_Stars">"Stars: [STARS]"</string>
 
 <!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
@@ -179,7 +180,6 @@ Your presets (ordered by stars):
 <string name="colorsPartRevealDesc">"The color of the reveal animation."</string>
 <string name="colorsPartRevealDesc1">"The color of the reveal animation when clicked on a Reboot/Shutdown option."</string>
 <string name="colorsPartMain">"Dialog"</string>
-<string name="presetsManager_Stars">"Stars: [STARS]"</string>
 <string name="presetsManager_Refresh">"Refresh"</string>
 <string name="presetsManager_OrderBy">"Order by"</string>
 <string name="presetsManager_OrderNames">"Name|Time|Stars|Creator|Own"</string>
@@ -201,7 +201,7 @@ Click here for recovering options."</string>
 <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
 <string name="advancedPrefs_DialogGravity">"Top|Left|Right|Bottom"</string>
 <string name="graphics_Choose">"Restore default|Choose from presets|Choose from gallery"</string>
-<string name="graphics_Crop">"Crop|Round crop"</string>
+<string name="graphics_Crop">"Crop|Circle crop"</string>
 <string name="graphics_NoPresetsFound">"No presets with graphics found..."</string>
 <string name="graphics_GraphicsSaveLoad">"Save with current graphics.|This preset contains graphics, do you want to load them?
 This will overwrite your current graphics!"</string>
@@ -209,7 +209,7 @@ This will overwrite your current graphics!"</string>
 This can't be undone, so please don't report just for fun!
 
 Also we need a reason why you want to report it, please enter it below.|Report reason:"</string>
-<string name="presetsManager_ReportResult">"[PRESETNAME] reported,the developer will take a look over it.|Report failed, please try it again.
+<string name="presetsManager_ReportResult">"[PRESETNAME] reported, the developer will have a look at it.|Report failed, please try again.
 Reason: "</string>
 <string name="presetsManager_Buttons">"Give Star|Remove Star|Delete|Report|Upload|Share"</string>
 <string name="screenrecord_notif_buttons">"Stop|Toggle pointer"</string>
@@ -239,11 +239,11 @@ Please activate the module in the Xposed installer."</string>
 <string name="preferences_Animations">"Animations|Change the animations or disable them completely."</string>
 <string name="preferencesCategory_Other">"Other"</string>
 <string name="preferences_Account">"Account|Here you can login, create an account or check your statistics when logged in."</string>
-<string name="preferences_Advanced">"Advanced Settings|Change advanced settings like delays, gravity or speed."</string>
-<string name="preferences_Permissions">"Permissions|Show the requested permissions and see for what they are used for.
+<string name="preferences_Advanced">"Advanced Settings|Change advanced settings such as delays, gravity or speed."</string>
+<string name="preferences_Permissions">"Permissions|Show the requested permissions and see for what they are being used for.
 Grant additional permissions that are not added on first start (Android 6.0+)."</string>
 <string name="preferences_HideLauncherIcon">"Hide app in launcher|Hides the app icon in the launcher, it can take up to a reboot to hide the icon.
-This Settings screen will only be accessible via the Xposed Installer then."</string>
+This settings screen will only be accessible via the Xposed Installer then."</string>
 <string name="preferences_DeepXposedLogging">"Deep Xposed logging|Enable advanced Xposed logging, after enabling reboot to see changes."</string>
 <string name="preferencesCategory_About">"About"</string>
 <string name="preferences_NeoSource">"Source|NeoPowerMenu is open source.
