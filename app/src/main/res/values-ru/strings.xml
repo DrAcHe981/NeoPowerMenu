@@ -251,4 +251,12 @@
 <string name="animations_Types">"Затемнение|Появление
 (Работает только для заднего плана)|Верхний край|Левый край||Правый край|Нижний край|Расширить вверх|Расширить вниз|Отключено"</string>
 <string name="animations_Desc">"[NAME] со скоростью [SPEED]"</string>
+
+<!-- Power Menu -->
+<string name="powerMenuMain_Progress">"Круг загрузки"</string>
+<string name="presetsManager_LoadMore">"Загрузка...|Пожалуйста, подождите...|Показать больше шаблонов|Нажмите сюда, чтобы отобразить больше шаблонов.|Конец.|Больше шаблонов нет.|Нажмите, чтобы попробовать снова."</string>
+<string name="powerMenu_SureToRebootPowerOff">"Вы уверены, что хотите перезагрузить устройство?|Вы уверены, что хотите выключить устройство?"</string>
+
+<!-- Preferences: Advanced -->
+<string name="advancedPrefs_Confirmation">"Запрос подтверждения|Включить запрос подтверждения перед перезагрузкой или выключением."</string>
 </resources>
