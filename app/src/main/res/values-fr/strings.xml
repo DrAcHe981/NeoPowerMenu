@@ -102,7 +102,7 @@ Cette action est irréversible !"</string>
 <string name="ColorPicker_Saturation">"Saturation:"</string>
 <string name="ColorPicker_Opacity">"Opacité:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltIn">"Clair/Sombre/Noir"</string>
+<string name="presetLoadDialog_BuiltIn">"Clair|Sombre|Noir"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] supprimé !"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] chargé !"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Ce préréglage a été créé par :"</string>

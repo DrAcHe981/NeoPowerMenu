@@ -334,7 +334,7 @@ public class XposedDialog extends DialogFragment
 										firstItemDrawn = false;
 								} else if (XposedMainActivity.orderPrefs.getInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i+"_item_type",-1)==visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END) {
 										items.add(XposedMainActivity.orderPrefs.getString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i+"_item_title","null"));
-										MultiPage.remove(MultiPage.size()-1);
+										if(MultiPage.size() > 0) MultiPage.remove(MultiPage.size()-1);
 								}
 						}	
 				}

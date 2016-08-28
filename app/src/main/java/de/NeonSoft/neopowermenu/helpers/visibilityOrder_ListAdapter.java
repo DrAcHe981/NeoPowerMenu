@@ -490,7 +490,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 												itemsType.remove(position);
 												itemsTitle.remove(position);
 												removingLayers --;
-												Toast.makeText(mContext,"- Setting layer count to "+removingLayers,Toast.LENGTH_SHORT).show();
+												//Toast.makeText(mContext,"- Setting layer count to "+removingLayers,Toast.LENGTH_SHORT).show();
 												if(removingLayers == 0 ){
 														break;
 												}
@@ -498,7 +498,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 								} else {
 										if((int) checkItem[0] == TYPE_MULTIPAGE_START) {
 												removingLayers ++;
-												Toast.makeText(mContext,"+ Setting layer count to "+removingLayers,Toast.LENGTH_SHORT).show();
+												//Toast.makeText(mContext,"+ Setting layer count to "+removingLayers,Toast.LENGTH_SHORT).show();
 										}
 										itemsType.remove(position);
 										itemsTitle.remove(position);
@@ -519,7 +519,6 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 				MainActivity.orderPrefs.edit().clear().commit();
 				for (int i = 0;i < itemsTitle.size();i++)
 				{
-						MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size() - 1)+"_" : "") + i + "_item_type", itemsType.get(i)).commit();
 						if (itemsType.get(i) == TYPE_MULTIPAGE_START) {
 								MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_type", TYPE_MULTIPAGE_START).commit();
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i + "_item_title", itemsTitle.get(i)).commit();
@@ -531,11 +530,13 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String>
 						}
 						else if (itemsType.get(i) == TYPE_NORMAL)
 						{
+								MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size() - 1)+"_" : "") + i + "_item_type", itemsType.get(i)).commit();
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "") + i + "_item_title", itemsTitle.get(i)).commit();
 						}
 						else if (itemsType.get(i) == TYPE_MULTI)
 						{
 								String [] split = itemsTitle.get(i).split("\\|");
+								MainActivity.orderPrefs.edit().putInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size() - 1)+"_" : "") + i + "_item_type", itemsType.get(i)).commit();
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "") + i + "_item1_title", split[0]).commit();
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "") + i + "_item2_title", (split.length >= 2 ? split[1] : "Empty")).commit();
 								MainActivity.orderPrefs.edit().putString((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "") + i + "_item3_title", (split.length == 3 ? split[2] : "Empty")).commit();

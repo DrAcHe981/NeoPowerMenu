@@ -137,6 +137,14 @@ public class PreferencesGraphicsFragment extends Fragment
 																		graphicsAdapter.addAt(selected,item);
 																} else if (position == 1) {
 																		//Toast.makeText(getActivity(),getString(R.string.presetsManager_NJI),Toast.LENGTH_SHORT).show();
+																		File presetsFolder = new File(getActivity().getFilesDir().getPath() + "/presets/");
+																		final File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
+																						public boolean accept(File dir, String name)
+																						{
+																								boolean supported = helper.isValidZip(dir+"/"+name,null) && helper.unzipFile(dir+"/"+name,mContext.getFilesDir().getAbsolutePath()+"/temp/",defaultGraphics[selected][2]+".png",null) == null;
+																								return (supported && name.toLowerCase().endsWith(".nps"));
+																						}});
+																		helper.zipLogging(true);
 																		slideDownDialogFragment presetsListDialog = new slideDownDialogFragment(getActivity(),MainActivity.fragmentManager);
 																		presetsListDialog.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
@@ -162,8 +170,12 @@ public class PreferencesGraphicsFragment extends Fragment
 																						public void onPositiveClick(Bundle resultBundle)
 																						{
 																								// TODO: Implement this method
+																								if(defaultGraphics[selected][0].toString().equalsIgnoreCase("Progress")) {
+																										MainActivity.preferences.edit().putString("ProgressDrawable","file").commit();
+																								}
 																								new File(loadGraphics[selected][1].toString()).delete();
-																								if(helper.unzipFile(mContext.getFilesDir().getPath()+"/presets/"+resultBundle.getString(slideDownDialogFragment.RESULT_LIST)+".nps",mContext.getFilesDir().getPath()+"/images/",defaultGraphics[selected][2]+".png",null) == null) {
+																								Log.d("NPM","Extracting from " + presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)]);
+																								if(helper.unzipFile(presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)].toString(),mContext.getFilesDir().getPath()+"/images/",defaultGraphics[selected][2]+".png",null) == null) {
 																										loadGraphics[selected][1] = mContext.getFilesDir().getPath()+"/images/"+defaultGraphics[selected][2]+".png";
 																										graphicsAdapter.remove(selected);
 																										Object[] item = {defaultGraphics[selected][0],loadGraphics[selected][1],defaultGraphics[selected][2]};
@@ -178,14 +190,6 @@ public class PreferencesGraphicsFragment extends Fragment
 																						}
 																				});
 																				helper.zipLogging(false);
-																		File presetsFolder = new File(getActivity().getFilesDir().getPath() + "/presets/");
-																		File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
-																						public boolean accept(File dir, String name)
-																						{
-																								boolean supported = helper.isValidZip(dir+"/"+name,null) && helper.unzipFile(dir+"/"+name,mContext.getFilesDir().getAbsolutePath()+"/temp/",defaultGraphics[selected][2]+".png",null) == null;
-																								return (supported && name.toLowerCase().endsWith(".nps"));
-																						}});
-																						helper.zipLogging(true);
 																		if(presetsFiles.length>0) {
 																				String[] presetsListTitles = new String[presetsFiles.length];
 																				for (int i=0;i < presetsFiles.length;i++)

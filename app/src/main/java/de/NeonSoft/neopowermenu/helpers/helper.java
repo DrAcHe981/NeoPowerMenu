@@ -337,6 +337,10 @@ public class helper
 		
 		public static String zipFile(String fileToZip, String zipFile, String password) {
 				try {
+						if(!new File(fileToZip).exists()) {
+								throw new Throwable("File not found: "+fileToZip);
+						}
+						//Log.i("NPM:zipFile","Zipping file: "+fileToZip);
 						ZipFile zip = new ZipFile(zipFile);
 						ZipParameters params = new ZipParameters();
 
@@ -358,6 +362,10 @@ public class helper
 		
 		public static String zipAll(String toZipFolder, String zipFile, String password) {
 				try {
+						if(!new File(toZipFolder).exists()) {
+								throw new Throwable("Folder not found: "+toZipFolder);
+						}
+						//Log.i("NPM:zipAll","Zipping folder: "+toZipFolder);
 						ZipFile zip = new ZipFile(zipFile);
 						ZipParameters params = new ZipParameters();
 						
@@ -379,6 +387,10 @@ public class helper
 		
 		public static String unzipFile(String zipFile, String outputFolder, String fileToUnzip, String password) {
 				try {
+						if(!new File(zipFile).exists()) {
+								throw new Throwable("File not found: "+zipFile);
+						}
+						//Log.i("NPM:unzipFile","Unzipping from: "+zipFile);
 						ZipFile zip = new ZipFile(zipFile);
 						UnzipParameters params = new UnzipParameters();
 						
@@ -396,6 +408,10 @@ public class helper
 		
 		public static String unzipAll(String zipFile, String outputFolder, String password) {
 				try {
+						if(!new File(zipFile).exists()) {
+								throw new Throwable("File not found: "+zipFile);
+						}
+						//Log.i("NPM:unzipAll","Unzipping from: "+zipFile);
 						ZipFile zip = new ZipFile(zipFile);
 						
 						if(password != null && !password.isEmpty()) {
@@ -412,6 +428,10 @@ public class helper
 		
 		public static boolean isValidZip(String zipFile, String password) {
 				try {
+						if(!new File(zipFile).exists()) {
+								throw new Throwable("File not found: "+zipFile);
+						}
+						//Log.i("NPM:isValidZip","Checking for: "+zipFile);
 						ZipFile zip = new ZipFile(zipFile);
 						
 						if(password != null && !password.isEmpty()) {
@@ -428,6 +448,10 @@ public class helper
 		
 		public static String removeFromZip(String zipFile, String fileToRemove, String password) {
 				try {
+						if(!new File(zipFile).exists()) {
+								throw new Throwable("File not found: "+zipFile);
+						}
+						//Log.i("NPM:removeFromZip","Removing from: "+zipFile);
 						ZipFile zip = new ZipFile(zipFile);
 
 						if(password != null && !password.isEmpty()) {

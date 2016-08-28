@@ -89,7 +89,7 @@ Isso não pode  ser desfeito!"</string>
 <string name="ColorPicker_Saturation">"Saturação:"</string>
 <string name="ColorPicker_Opacity">"Opacidade:"</string>
 <string name="ColorPicker_Hex">"Hex:"</string>
-<string name="presetLoadDialog_BuiltIn">"Claro/Escuro/Preto"</string>
+<string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
 <string name="presetLoad_PresetDeleted">"[PRESETNAME] Apagado!"</string>
 <string name="presetLoad_PresetLoaded">"[PRESETNAME] Carregado!"</string>
 <string name="presetSaveDialog_CreatorNameInfo">"Esse pré-ajuste foi criado por:"</string>

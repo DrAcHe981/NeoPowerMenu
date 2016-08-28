@@ -152,7 +152,8 @@ public class graphicsAdapter extends BaseAdapter
 						holder.imgQueue = (ImageView) convertView
 								.findViewById(de.NeonSoft.neopowermenu.R.id.imgQueue);
 						holder.imgProgress = (ProgressBar) convertView.findViewById(R.id.imgProgress);
-								
+						holder.imgProgress.setVisibility(View.GONE);
+						
 						holder.name = (TextView) convertView.findViewById(de.NeonSoft.neopowermenu.R.id.imgName);
 								
 						holder.LoadingBar = (LinearLayout) convertView.findViewById(de.NeonSoft.neopowermenu.R.id.graphicslistitemLinearLayout_Loading);
@@ -236,15 +237,9 @@ public class graphicsAdapter extends BaseAdapter
 												Log.e("NPM:graphicsList","Failed to load image '"+imageUri+"': "+failReason.getCause().toString());
 												holder.LoadingBar.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_out));
 												holder.LoadingBar.setVisibility(View.GONE);
-												if(mItems.get(position).fileName.equalsIgnoreCase("Progress") && MainActivity.preferences.getString("ProgressDrawable","Stock").equalsIgnoreCase("stock")) {
 														holder.imgQueue.setVisibility(View.GONE);
 														holder.imgProgress.setVisibility(View.VISIBLE);
 														holder.imgProgress.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
-												} else {
-														holder.imgQueue.setImageDrawable(mContext.getResources().getDrawable(defaultGraphics.get(position).resId));
-														holder.imgQueue.setVisibility(View.VISIBLE);
-														holder.imgQueue.startAnimation(AnimationUtils.loadAnimation(mContext,R.anim.fade_in));
-												}
 												if(mItems.get(position).fileName.equalsIgnoreCase("Progress") && MainActivity.preferences.getString("ProgressDrawable","Stock").equalsIgnoreCase("pb/dr")) {
 														((AnimationDrawable) holder.imgQueue.getDrawable()).start();
 												}
