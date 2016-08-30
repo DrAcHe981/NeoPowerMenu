@@ -218,7 +218,7 @@ Ein ganz normales Item mit nur einem Slot.|Multi Item hinzufügen
 Füge bis zu drei Items in einer Linie hinzu.|Multi Seiten Item hinzufügen
 Anklicken öffnet eine neue 'Seite'."</string>
 <string name="visibilityOrder_MultiPage">"Multi Seiten Item startet hier
-Das erste normale Item definiert den Knopf um die 'neue Seite' zu öffnen.|Multi Seiten Item endet hier"</string>
+Das erste normale Item definiert den Knopf, um die 'neue Seite' zu öffnen.|Multi Seiten Item endet hier"</string>
 
 <!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root und Xposed"</string>
@@ -256,10 +256,12 @@ Klicke hier für mehr Infos."</string>
 <string name="animations_Desc">"[NAME] mit der Geschwindigkeit [SPEED]"</string>
 
 <!-- Power Menu -->
-<string name="powerMenuMain_Progress">"Lade kreis"</string>
-<string name="presetsManager_LoadMore">"Laden...|Bitte warten...|Zeige mehr Voreinstellungen|Klicke hier um mehr Voreinstellungen anzuzeigen.|Das Ende.|Keine weiteren Voreinstellungen zum anzeigen.|Klicke hier um es erneut zu versuchen."</string>
-<string name="powerMenu_SureToRebootPowerOff">"Bist du sicher dass du dein Gerät neustarten willst?|Bist du sicher dass du dein Gerät Ausschalten willst?"</string>
+<string name="powerMenuMain_Progress">"Ladekreis"</string>
+<string name="presetsManager_LoadMore">"Laden...|Bitte warten...|Zeige mehr Voreinstellungen|Klicke hier, um mehr Voreinstellungen anzuzeigen.|Das Ende.|Keine weiteren Voreinstellungen zum anzeigen.|Klicke hier, um es erneut zu versuchen."</string>
+<string name="powerMenu_SureToRebootPowerOff">"Bist du sicher, dass du dein Gerät neustarten willst?|Bist du sicher dass, du dein Gerät Ausschalten willst?"</string>
 
 <!-- Preferences: Advanced -->
-<string name="advancedPrefs_Confirmation">"Benötige Bestätigung|Aktiviere die Abfrage einer Bestätigung bevor das Gerät neu startet oder ausgeschaltet wird."</string>
+<string name="advancedPrefs_Confirmation">"Benötige Bestätigung|Aktiviere eine Bestätigung, bevor das Gerät neu startet oder ausgeschaltet wird."</string>
+<string name="preferences_Donate">"Spenden|Du magst die app?
+Warum spendest du mir nicht eine Tasse Kaffee oder was anderes?"</string>
 </resources>
