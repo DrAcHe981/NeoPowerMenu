@@ -119,7 +119,7 @@ public class XposedDialog extends DialogFragment
         View view = inflater.inflate(R.layout.fragment_power,container,false);
 				
 
-				mContext = XposedMainActivity.mContext;
+				mContext = getActivity();
 
 				am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
 				amRingerMode = am.getRingerMode();

@@ -249,6 +249,8 @@ This settings screen will only be accessible via the Xposed Installer then."</st
 <string name="preferences_NeoSource">"Source|NeoPowerMenu is open source.
 Check out the source on GitHub."</string>
 <string name="preferences_Share">"Share|Like the app? Share it with your friends."</string>
+		<string name="preferences_Donate">"Donate|Like the app?
+Why not donate me a cup of coffee or something else?"</string>
 <string name="preferences_About">"Code by Neon-Soft / DrAcHe981|based on the source of Naman Dwivedi (naman14).
 Click here to get more info."</string>
 <string name="animations_Items">"Background|Dialog|Icons|Single line items|Multi line items"</string>

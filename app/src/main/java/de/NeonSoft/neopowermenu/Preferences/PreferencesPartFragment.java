@@ -5,24 +5,25 @@ import android.content.pm.*;
 import android.net.*;
 import android.os.*;
 import android.support.v4.app.*;
-import android.text.*;
+import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
-import android.widget.AdapterView.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.permissionsScreen.*;
 import eu.chainfire.libsuperuser.*;
-import java.io.*;
-import java.util.*;
 
-import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
-import android.view.View.OnClickListener;
 
 public class PreferencesPartFragment extends Fragment
 {
+
+    /**
+     * PayPal
+     */
+    public static final String PAYPAL_USER = "drache981@gmail.com";
+    public static final String PAYPAL_CURRENCY_CODE = "EUR";
 		
 		Context mContext;
 		public static Activity mActivity;
@@ -82,6 +83,10 @@ public class PreferencesPartFragment extends Fragment
 		private static TextView TextView_DeepXposedLoggingTitle;
 		private static TextView TextView_DeepXposedLoggingDesc;
 		private static Switch Switch_DeepXposedLogging;
+
+		private static LinearLayout LinearLayout_Donate;
+		private static TextView TextView_DonateTitle;
+		private static TextView TextView_DonateDesc;
 		
 		private static LinearLayout LinearLayout_Source;
 		private static TextView TextView_SourceTitle;
@@ -221,6 +226,12 @@ public class PreferencesPartFragment extends Fragment
 				Switch_DeepXposedLogging.setChecked(DeepXposedLogging);
 				Switch_DeepXposedLogging.setClickable(false);
 				Switch_DeepXposedLogging.setFocusable(false);
+
+				LinearLayout_Donate = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Donate);
+				TextView_DonateTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_DonateTitle);
+				TextView_DonateDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_DonateDesc);
+				TextView_DonateTitle.setText(getString(R.string.preferences_Donate).split("\\|")[0]);
+				TextView_DonateDesc.setText(getString(R.string.preferences_Donate).split("\\|")[1]);
 				
 				LinearLayout_Source = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Source);
 				TextView_SourceTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_SourceTitle);
@@ -417,6 +428,83 @@ public class PreferencesPartFragment extends Fragment
 								}
 						});
 
+				LinearLayout_Donate.setOnClickListener(new OnClickListener() {
+
+								@Override
+								public void onClick(View p1)
+								{
+										// TODO: Implement this method
+										slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mActivity, MainActivity.fragmentManager);
+										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+														@Override
+														public void onListItemClick(int position, String text)
+														{
+																// TODO: Implement this method
+																if (position == 0)
+																{
+																		Uri.Builder uriBuilder = new Uri.Builder();
+																		uriBuilder.scheme("https").authority("www.paypal.com").path("cgi-bin/webscr");
+																		uriBuilder.appendQueryParameter("cmd", "_donations");
+
+																		uriBuilder.appendQueryParameter("business", PAYPAL_USER);
+																		uriBuilder.appendQueryParameter("lc", "US");
+																		uriBuilder.appendQueryParameter("item_name", "NeoPowerMenu - Create your own Power Menu!");
+																		uriBuilder.appendQueryParameter("no_note", "1");
+																		// uriBuilder.appendQueryParameter("no_note", "0");
+																		// uriBuilder.appendQueryParameter("cn", "Note to the developer");
+																		uriBuilder.appendQueryParameter("no_shipping", "1");
+																		uriBuilder.appendQueryParameter("currency_code", PAYPAL_CURRENCY_CODE);
+																		Uri payPalUri = uriBuilder.build();
+
+																		try
+																		{
+																				Intent viewIntent = new Intent(Intent.ACTION_VIEW, payPalUri);
+																				startActivity(viewIntent);
+																		}
+																		catch (ActivityNotFoundException e)
+																		{
+																				slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mActivity, MainActivity.fragmentManager);
+																				dialogFragment.setText("Failed to donate, no application found to handle the request.");
+																				dialogFragment.showDialog(R.id.dialog_container);
+																		}
+																}
+																else if (position == 1)
+																{
+
+																}
+														}
+
+														@Override
+														public void onNegativeClick()
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onNeutralClick()
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onPositiveClick(Bundle resultBundle)
+														{
+																// TODO: Implement this method
+														}
+
+														@Override
+														public void onTouchOutside()
+														{
+																// TODO: Implement this method
+														}
+												});
+										dialogFragment.setList(ListView.CHOICE_MODE_NONE, new String[] {"PayPal"}, -1, true);
+										dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+										dialogFragment.showDialog(R.id.dialog_container);
+								}
+						});
+						
 				LinearLayout_Source.setOnClickListener(new OnClickListener() {
 
 								@Override
@@ -461,7 +549,7 @@ public class PreferencesPartFragment extends Fragment
 				
 				return InflatedView;
 		}
-
+		
 		private void checkState() {
 				if(isAdded()) {
 						try{
