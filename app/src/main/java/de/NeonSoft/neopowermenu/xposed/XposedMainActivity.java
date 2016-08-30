@@ -47,6 +47,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 		public static boolean doubleToConfirm = false;
 
 		public static boolean HookShutdownThread = false;
+		public static boolean DeepXposedLogging = false;
 
 		public static String sStyleName = "Material";
 		XposedDialog powerDialog;
@@ -84,6 +85,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				colorPrefs = getSharedPreferences("colors", Context.MODE_WORLD_READABLE);
 				orderPrefs = getSharedPreferences("visibilityOrder",Context.MODE_WORLD_READABLE);
 				animationPrefs = getSharedPreferences("animations", Context.MODE_WORLD_READABLE);
+				
+				DeepXposedLogging = preferences.getBoolean("DeepXposedLogging",false);
 				
 				mBlurScale = preferences.getInt("blurScale",20);
 				mBlurRadius = preferences.getInt("blurRadius",3);

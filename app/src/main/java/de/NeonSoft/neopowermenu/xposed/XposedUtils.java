@@ -21,7 +21,9 @@ public class XposedUtils
 		
 		public static void log(String message) {
 				Log.i("NPM:xposed",message);
-				XposedBridge.log("[NeoPowerMenu] "+message);
+				try {
+						XposedBridge.log("[NeoPowerMenu] "+message);
+				} catch (Throwable t) {}
 		}
 
     public static Point getLocationInView(View src, View target)

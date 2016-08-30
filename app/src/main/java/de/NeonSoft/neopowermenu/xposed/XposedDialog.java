@@ -1554,6 +1554,7 @@ public class XposedDialog extends DialogFragment
         private BackgroundThread(Object cmd)
 				{
             this.sCmd = cmd;
+						if(XposedMainActivity.DeepXposedLogging) XposedUtils.log("Starting background task with command: "+cmd);
         }
 
         @Override
@@ -1564,13 +1565,16 @@ public class XposedDialog extends DialogFragment
 						{
 								setThreadPrio(BG_PRIO);
 
-								if (sCmd == null)
+								if (sCmd == null) {
 										return;
-										/**
-										 * Sending a system broadcast to notify apps and the system that we're going down
-										 * so that they write any outstanding data that might need to be flushed
-										 */
-										Shell.SU.run(SHUTDOWN_BROADCAST);
+								}
+								
+								if(XposedMainActivity.DeepXposedLogging) XposedUtils.log("Sending "+SHUTDOWN_BROADCAST);
+								/**
+								 * Sending a system broadcast to notify apps and the system that we're going down
+								 * so that they write any outstanding data that might need to be flushed
+								 */
+								Shell.SU.run(SHUTDOWN_BROADCAST);
 								
 
 								new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
@@ -1586,12 +1590,14 @@ public class XposedDialog extends DialogFragment
 																				mContext.sendBroadcast(broadcast);
 																		}
 																		else
-																		{
+																{
+																		if(XposedMainActivity.DeepXposedLogging) XposedUtils.log("Running su command "+sCmd.toString());
 																				Shell.SU.run((String) sCmd);
 																		}
 														}
 														else if (sCmd instanceof String[])
 														{
+																if(XposedMainActivity.DeepXposedLogging) XposedUtils.log("Running su commands "+sCmd);
 																Shell.SU.run((String[]) sCmd);
 														}
 												}
