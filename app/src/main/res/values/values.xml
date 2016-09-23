@@ -4,5 +4,4 @@
 
     <integer name="rcv_animationDurationHide">420</integer>
     <integer name="rcv_animationDurationReveal">420</integer>
-    <integer name="av_animationDuration">340</integer>
 </resources>

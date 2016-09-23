@@ -1,47 +1,65 @@
-apply plugin: 'java'
+apply plugin: 'com.android.application'
 
 android {
-		
+    signingConfigs {
+        config {
+            keyAlias 'neohack'
+            keyPassword 'drache'
+            storeFile file('C:/Users/Magix/Desktop/NeoPowerMenu/new.keystore')
+            storePassword 'drache'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    useLibrary 'org.apache.http.legacy'
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
-
+    buildToolsVersion "24.0.2"
     defaultConfig {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 32
-        versionName "1.5.4-2"
+        versionCode 35
+        versionName "1.5.4-4"
+        multiDexEnabled true
+        signingConfig signingConfigs.config
     }
-
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "8g"
+    }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug-aide {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
-		
+
 dependencies {
-	compile 'com.theartofdev.edmodo:android-image-cropper:2.2.+'
-	compile 'net.lingala.zip4j:zip4j:+';
-	compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5';
- compile 'cat.ereza:customactivityoncrash:1.5.0'
- compile "ch.acra:acra:4.7.0"
-	compile 'org.apache.commons:commons-lang3:3.0'
-	compile 'org.apache.httpcomponents:httpclient:4.5.2'
-	compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-	compile 'com.android.support:support-v4:+'
-	compile 'com.larswerkman:HoloColorPicker:1.5'
-    compile files('lib/XposedBridgeApi-20150213.jar')
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.2.+'
+    compile 'net.lingala.zip4j:zip4j:+'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'cat.ereza:customactivityoncrash:1.5.0'
+    compile 'ch.acra:acra:4.9.0'
+    compile 'org.apache.commons:commons-lang3:3.0'
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
+    compile 'com.android.support:support-v4:+'
+    compile 'com.larswerkman:HoloColorPicker:1.5'
+    //compile files('lib/XposedBridgeApi-20150213.jar')
+    provided 'de.robv.android.xposed:api:82'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'eu.chainfire:libsuperuser:1.0.0.+'
-    compile fileTree(dir: 'deps', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'deps')
+    provided fileTree(include: ['*.jar'], dir: 'syslib')
 }

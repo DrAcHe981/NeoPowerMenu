@@ -11,11 +11,11 @@ import android.graphics.drawable.shapes.*;
  */
 public class GraphicDrawable extends ShapeDrawable {
 
-		private final Context context;
+    private final Context context;
     private final Paint textPaint;
     private final Paint borderPaint;
     private static final float SHADE_FACTOR = 0.9f;
-		private final Bitmap graphic;
+    private final Bitmap graphic;
     private final int color;
     private final RectShape shape;
     private final int height;
@@ -27,8 +27,8 @@ public class GraphicDrawable extends ShapeDrawable {
     private GraphicDrawable(Builder builder) {
         super(builder.shape);
 
-				context = builder.context;
-				
+        context = builder.context;
+
         // shape properties
         shape = builder.shape;
         height = builder.height;
@@ -36,9 +36,9 @@ public class GraphicDrawable extends ShapeDrawable {
         radius = builder.radius;
 
         // graphic and color
-				graphic = builder.graphic;
+        graphic = builder.graphic;
         color = builder.color;
-				
+
         // text paint settings
         fontSize = builder.fontSize;
         textPaint = new Paint();
@@ -64,9 +64,9 @@ public class GraphicDrawable extends ShapeDrawable {
     }
 
     private int getDarkerShade(int color) {
-        return Color.rgb((int)(SHADE_FACTOR * Color.red(color)),
-												 (int)(SHADE_FACTOR * Color.green(color)),
-												 (int)(SHADE_FACTOR * Color.blue(color)));
+        return Color.rgb((int) (SHADE_FACTOR * Color.red(color)),
+                (int) (SHADE_FACTOR * Color.green(color)),
+                (int) (SHADE_FACTOR * Color.blue(color)));
     }
 
     @Override
@@ -84,26 +84,24 @@ public class GraphicDrawable extends ShapeDrawable {
         canvas.translate(r.left, r.top);
 
         // draw graphic
-				Rect r2 = new Rect();
-				int px = (int) helper.convertDpToPixel(20,context);
-				r2.set(r.left+px,r.top+px,r.right-px,r.bottom-px);
-				if(graphic != null) canvas.drawBitmap(graphic,null,r2,null);
-				
+        Rect r2 = new Rect();
+        int px = (int) helper.convertDpToPixel(20, context);
+        r2.set(r.left + px, r.top + px, r.right - px, r.bottom - px);
+        if (graphic != null) canvas.drawBitmap(graphic, null, r2, null);
+
         canvas.restoreToCount(count);
 
     }
 
     private void drawBorder(Canvas canvas) {
         RectF rect = new RectF(getBounds());
-        rect.inset(borderThickness/2, borderThickness/2);
+        rect.inset(borderThickness / 2, borderThickness / 2);
 
         if (shape instanceof OvalShape) {
             canvas.drawOval(rect, borderPaint);
-        }
-        else if (shape instanceof RoundRectShape) {
+        } else if (shape instanceof RoundRectShape) {
             canvas.drawRoundRect(rect, radius, radius, borderPaint);
-        }
-        else {
+        } else {
             canvas.drawRect(rect, borderPaint);
         }
     }
@@ -139,9 +137,9 @@ public class GraphicDrawable extends ShapeDrawable {
 
     public static class Builder implements IConfigBuilder, IShapeBuilder, IBuilder {
 
-				public Context context;
-				
-				private Bitmap graphic;
+        public Context context;
+
+        private Bitmap graphic;
 
         private int color;
 
@@ -164,10 +162,10 @@ public class GraphicDrawable extends ShapeDrawable {
         private boolean toUpperCase;
 
         public float radius;
-				
+
         private Builder() {
-						context = null;
-						graphic = null;
+            context = null;
+            graphic = null;
             color = Color.GRAY;
             textColor = Color.WHITE;
             borderThickness = 0;
@@ -180,11 +178,11 @@ public class GraphicDrawable extends ShapeDrawable {
             toUpperCase = false;
         }
 
-				public IConfigBuilder setContext(Context context) {
-						this.context = context;
-						return this;
-				}
-				
+        public IConfigBuilder setContext(Context context) {
+            this.context = context;
+            return this;
+        }
+
         public IConfigBuilder width(int width) {
             this.width = width;
             return this;
@@ -282,8 +280,8 @@ public class GraphicDrawable extends ShapeDrawable {
     }
 
     public interface IConfigBuilder {
-				public IConfigBuilder setContext(Context context);
-				
+        public IConfigBuilder setContext(Context context);
+
         public IConfigBuilder width(int width);
 
         public IConfigBuilder height(int height);

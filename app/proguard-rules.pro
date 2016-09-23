@@ -29,6 +29,8 @@
 
 # Keep all the ACRA classes
 -keep class org.acra.** { *; }
+-keep class de.NeonSoft.neopowermenu.xposed.** { *; }
+-keep class de.NeonSoft.neopowermenu.helpers.helper { *; }
 
 # Don't warn about removed methods from AppCompat
 -dontwarn android.support.v4.app.NotificationCompat*

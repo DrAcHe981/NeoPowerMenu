@@ -1,228 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:gravity="center"
-	android:id="@+id/fragmentpowerFrameLayout_Main">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragmentpowerFrameLayout_Main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
 
-	<FrameLayout
-		android:layout_width="340dp"
-		android:layout_height="wrap_content"
-		android:id="@+id/fragmentpowerFrameLayout1"
-		android:foregroundGravity="center|center_vertical|center_horizontal"
-		android:layout_gravity="center|center_vertical|center_horizontal">
+    <FrameLayout
+        android:id="@+id/fragmentpowerFrameLayout1"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_vertical|center_horizontal"
+        android:foregroundGravity="center|center_vertical|center_horizontal">
 
-		<FrameLayout
-			android:id="@+id/frame"
-			android:layout_width="340dp"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center|center_vertical|center_horizontal">
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical|center_horizontal">
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="vertical"
-				android:gravity="center"
-				android:id="@+id/frameLinear">
+            <LinearLayout
+                android:id="@+id/frameLinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
-				<ScrollView
-					android:layout_height="wrap_content"
-					android:layout_width="340dp"
-					android:layout_weight="1.0">
+                <ScrollView
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0">
 
-					<LinearLayout
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:orientation="vertical"
-						android:id="@+id/ListContainer"
-						android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/ListContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-						<View
-							android:background="@color/transparent"
-							android:layout_height="0dp"
-							android:layout_width="wrap_content"/>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:background="@color/transparent"/>
 
-					</LinearLayout>
+                    </LinearLayout>
 
-				</ScrollView>
+                </ScrollView>
 
-			</LinearLayout>
+            </LinearLayout>
 
-		</FrameLayout>
+        </FrameLayout>
 
-		<FrameLayout
-			android:id="@+id/frame3"
-			android:layout_width="340dp"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center|center_vertical|center_horizontal"
-			android:visibility="gone">
+        <FrameLayout
+            android:id="@+id/frame3"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical|center_horizontal"
+            android:visibility="gone">
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="vertical"
-				android:gravity="center"
-				android:id="@+id/frame3Linear">
+            <LinearLayout
+                android:id="@+id/frame3Linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
-				<ScrollView
-					android:layout_height="wrap_content"
-					android:layout_width="340dp"
-					android:layout_weight="1.0">
+                <ScrollView
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0">
 
-					<LinearLayout
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:orientation="vertical"
-						android:id="@+id/ListContainer2"
-						android:padding="8dp">
+                    <LinearLayout
+                        android:id="@+id/ListContainer2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-						<View
-							android:background="@color/transparent"
-							android:layout_height="0dp"
-							android:layout_width="wrap_content"/>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:background="@color/transparent"/>
 
-					</LinearLayout>
+                    </LinearLayout>
 
-				</ScrollView>
+                </ScrollView>
 
-			</LinearLayout>
+            </LinearLayout>
 
-		</FrameLayout>
+        </FrameLayout>
 
-		<FrameLayout
-			android:id="@+id/frameConfirm"
-			android:layout_width="340dp"
-			android:layout_height="150dp"
-			android:layout_gravity="center|center_vertical|center_horizontal"
-			android:visibility="visible">
+        <FrameLayout
+            android:id="@+id/frameConfirm"
+            android:layout_width="340dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center|center_vertical|center_horizontal"
+            android:visibility="gone">
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:orientation="vertical"
-				android:layout_gravity="center"
-				android:gravity="center"
-				android:id="@+id/frameConfirmLinear">
+            <LinearLayout
+                android:id="@+id/frameConfirmLinear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
 
-				<TextView
-					android:layout_height="match_parent"
-					android:layout_width="340dp"
-					android:text="Reboot?"
-					android:textSize="20sp"
-					android:id="@+id/fragmentpowerTextView_ConfirmAction"
-					android:layout_weight="1.0"
-					android:gravity="center"/>
+                <TextView
+                    android:id="@+id/fragmentpowerTextView_ConfirmAction"
+                    android:layout_width="340dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="Reboot?"
+                    android:textSize="20sp"/>
 
-				<LinearLayout
-					android:layout_height="wrap_content"
-					android:layout_width="340dp"
-					android:orientation="horizontal"
-					android:gravity="right">
+                <LinearLayout
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal">
 
-					<TextView
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:text="No"
-						android:textSize="16sp"
-						android:background="?selectableItemBackground"
-						android:id="@+id/fragmentpowerTextView_ConfirmNo"
-						android:layout_weight="1.0"
-						android:gravity="center"
-						android:padding="10dp"/>
+                    <TextView
+                        android:id="@+id/fragmentpowerTextView_ConfirmNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:background="?selectableItemBackground"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="No"
+                        android:textSize="16sp"/>
 
-					<TextView
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:text="Yes"
-						android:textSize="16sp"
-						android:background="?selectableItemBackground"
-						android:id="@+id/fragmentpowerTextView_ConfirmYes"
-						android:gravity="center"
-						android:layout_weight="1.0"
-						android:padding="10dp"/>
+                    <TextView
+                        android:id="@+id/fragmentpowerTextView_ConfirmYes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:background="?selectableItemBackground"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Yes"
+                        android:textSize="16sp"/>
 
-				</LinearLayout>
+                </LinearLayout>
 
-			</LinearLayout>
+            </LinearLayout>
 
-		</FrameLayout>
+        </FrameLayout>
 
-		<de.NeonSoft.neopowermenu.helpers.CircularRevealView
-			android:id="@+id/reveal"
-			android:layout_width="match_parent"
-			android:layout_height="150dp"
-			android:layout_gravity="center"/>
+        <de.NeonSoft.neopowermenu.helpers.CircularRevealView
+            android:id="@+id/reveal"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"/>
 
-		<FrameLayout
-			android:id="@+id/frame2"
-			android:layout_width="340dp"
-			android:layout_height="150dp"
-			android:layout_gravity="center"
-			android:visibility="gone">
+        <FrameLayout
+            android:id="@+id/frame2"
+            android:layout_width="340dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:visibility="visible">
 
-			<LinearLayout
-				android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_marginRight="20dp"
-				android:gravity="center"
-				android:orientation="horizontal"
-				android:id="@+id/frame2Linear">
+            <LinearLayout
+                android:id="@+id/frame2Linear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-				<RelativeLayout
-					android:layout_height="wrap_content"
-					android:layout_width="wrap_content">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-					<ImageView
-						android:layout_height="55dp"
-						android:layout_width="55dp"
-						android:id="@+id/progressbg"
-						android:layout_centerInParent="true"/>
+                    <ImageView
+                        android:id="@+id/progressbg"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_centerInParent="true"/>
 
-					<ProgressBar
-						android:id="@+id/progress"
-						android:layout_width="55dp"
-						android:layout_height="55dp"
-						android:indeterminate="true"/>
+                    <ProgressBar
+                        android:id="@+id/progress"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:indeterminate="true"/>
 
-				</RelativeLayout>
+                </RelativeLayout>
 
-				<LinearLayout
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-					<TextView
-						android:id="@+id/status"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginLeft="10dp"
-						android:text="Power Off"
-						android:textColor="#ffffff"
-						android:textSize="20sp"/>
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Power Off"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"/>
 
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-						<TextView
-							android:id="@+id/status_detail"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginLeft="10dp"
-							android:text="Shutting Down..."
-							android:textColor="#ffffff"
-							android:textSize="10sp"/>
+                        <TextView
+                            android:id="@+id/status_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Shutting Down..."
+                            android:textColor="#ffffff"
+                            android:textSize="10sp"/>
 
-					</LinearLayout>
+                    </LinearLayout>
 
-				</LinearLayout>
+                </LinearLayout>
 
-			</LinearLayout>
+            </LinearLayout>
 
-		</FrameLayout>
+        </FrameLayout>
 
-	</FrameLayout>
+    </FrameLayout>
 
 </LinearLayout>
 

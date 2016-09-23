@@ -11,7 +11,6 @@ import de.NeonSoft.neopowermenu.helpers.*;
 import java.util.*;
 
 import android.support.v4.app.Fragment;
-import cat.ereza.customactivityoncrash.R;
 import org.acra.*;
 
 public class errorFragment extends Fragment
@@ -35,7 +34,7 @@ public class errorFragment extends Fragment
         final CustomActivityOnCrash.EventListener eventListener = CustomActivityOnCrash.getEventListenerFromIntent(ErrorActivity.thisActivity.getIntent());
 
         if (restartActivityClass != null) {
-            restartButton.setText(R.string.customactivityoncrash_error_activity_restart_app);
+            restartButton.setText(R.string.errorActivity_RestartApp);
             restartButton.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
@@ -46,6 +45,7 @@ public class errorFragment extends Fragment
 					}
 				});
         } else {
+	        restartButton.setText(R.string.errorActivity_CloseApp);
             restartButton.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
@@ -59,13 +59,15 @@ public class errorFragment extends Fragment
         Button moreInfoButton = (Button) InflatedView.findViewById(de.NeonSoft.neopowermenu.R.id.customactivityoncrash_error_activity_more_info_button);
 
         if (CustomActivityOnCrash.isShowErrorDetailsFromIntent(ErrorActivity.thisActivity.getIntent())) {
-
+			moreInfoButton.setText(getString(R.string.errorActivity_MoreInfo));
             moreInfoButton.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
 						//We retrieve all the error data and show it
 
-						slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), ErrorActivity.fragmentManager);
+						slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+						dialogFragment.setContext(getActivity());
+						dialogFragment.setFragmentManager(ErrorActivity.fragmentManager);
 						dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 								@Override
@@ -85,7 +87,7 @@ public class errorFragment extends Fragment
 								{
 									// TODO: Implement this method
 									copyErrorToClipboard();
-									Toast.makeText(ErrorActivity.thisActivity, R.string.customactivityoncrash_error_activity_error_details_copied, Toast.LENGTH_SHORT).show();
+									Toast.makeText(ErrorActivity.thisActivity, R.string.errorActivity_Copyied, Toast.LENGTH_SHORT).show();
 								}
 
 								@Override
@@ -101,24 +103,9 @@ public class errorFragment extends Fragment
 								}
 							});
 						dialogFragment.setText(CustomActivityOnCrash.getAllErrorDetailsFromIntent(ErrorActivity.thisActivity, ErrorActivity.thisActivity.getIntent()));
-						dialogFragment.setNeutralButton(getString(R.string.customactivityoncrash_error_activity_error_details_copy));
-						dialogFragment.setPositiveButton(getString(R.string.customactivityoncrash_error_activity_error_details_close));
+						dialogFragment.setNeutralButton(getString(R.string.errorActivity_CopyToClip));
+						dialogFragment.setPositiveButton(getString(R.string.errorActivity_Close));
 						dialogFragment.showDialog(de.NeonSoft.neopowermenu.R.id.dialog_container);
-						/*AlertDialog dialog = new AlertDialog.Builder(ErrorActivity.this)
-						 .setTitle(R.string.customactivityoncrash_error_activity_error_details_title)
-						 .setMessage(CustomActivityOnCrash.getAllErrorDetailsFromIntent(ErrorActivity.this, getIntent()))
-						 .setPositiveButton(R.string.customactivityoncrash_error_activity_error_details_close, null)
-						 .setNeutralButton(R.string.customactivityoncrash_error_activity_error_details_copy,
-						 new DialogInterface.OnClickListener() {
-						 @Override
-						 public void onClick(DialogInterface dialog, int which) {
-						 copyErrorToClipboard();
-						 Toast.makeText(ErrorActivity.this, R.string.customactivityoncrash_error_activity_error_details_copied, Toast.LENGTH_SHORT).show();
-						 }
-						 })
-						 .show();
-						 TextView textView = (TextView) dialog.findViewById(android.R.id.message);
-						 textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.customactivityoncrash_error_activity_error_details_text_size));*/
 					}
 				});
         } else {
@@ -126,7 +113,7 @@ public class errorFragment extends Fragment
         }
 
         int defaultErrorActivityDrawableId = CustomActivityOnCrash.getDefaultErrorActivityDrawableIdFromIntent(ErrorActivity.thisActivity.getIntent());
-        ImageView errorImageView = ((ImageView) InflatedView.findViewById(R.id.customactivityoncrash_error_activity_image));
+        ImageView errorImageView = ((ImageView) InflatedView.findViewById(cat.ereza.customactivityoncrash.R.id.customactivityoncrash_error_activity_image));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             errorImageView.setImageDrawable(getResources().getDrawable(defaultErrorActivityDrawableId, ErrorActivity.thisActivity.getTheme()));
         } else {

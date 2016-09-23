@@ -103,7 +103,20 @@ public class actionBar
 
 		public void setButton(String sText, int iImgResId, OnClickListener onclkl)
 		{
-				if (LinearLayout_Button.getVisibility() == View.GONE || (!sText.equalsIgnoreCase(TextView_ButtonText_Text) && ImageView_ButtonIcon_Icon != iImgResId))
+			setButtonText(sText);
+			setButtonIcon(iImgResId);
+			setButtonListener(onclkl);
+			if (LinearLayout_Button.getVisibility() == View.INVISIBLE)
+			{
+				LinearLayout_Button.setVisibility(View.VISIBLE);
+				if (boolean_animationsEnabled) LinearLayout_Button.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+			}
+			else if (LinearLayout_Button.getVisibility() == View.GONE)
+			{
+				LinearLayout_Button.setVisibility(View.VISIBLE);
+				if (boolean_animationsEnabled) LinearLayout_Button.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.anim_fade_slide_in_right));
+			}
+				/*if (LinearLayout_Button.getVisibility() == View.GONE || (!sText.equalsIgnoreCase(TextView_ButtonText_Text) && ImageView_ButtonIcon_Icon != iImgResId))
 				{
 						if (LinearLayout_Button.getVisibility() == View.VISIBLE)
 						{
@@ -139,7 +152,7 @@ public class actionBar
 				else
 				{
 						//Toast.makeText(context,"ActionBarButton already set with this data.",Toast.LENGTH_SHORT).show();
-				}
+				}*/
 		}
 
 		public void setButtonListener(OnClickListener listener)

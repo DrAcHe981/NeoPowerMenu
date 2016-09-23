@@ -37,7 +37,6 @@
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
 					android:fillViewport="true"
-					android:layout_weight="1.0"
 					android:layout_marginRight="10dp"
 					android:layout_marginLeft="10dp"
 					android:layout_marginTop="5dp">
@@ -61,8 +60,7 @@
 							android:text="text"
 							android:id="@+id/slidedowndialogfragmentTextView_DialogText"
 							android:textColor="#FFFFFF"
-							android:paddingBottom="10dp"
-							android:layout_marginBottom="10dp"/>
+							android:paddingBottom="5dp"/>
 
 						<LinearLayout
 							android:layout_height="wrap_content"
@@ -71,61 +69,11 @@
 							android:id="@+id/slidedowndialogfragmentLinearLayout_InputHolder"/>
 
 						<LinearLayout
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:orientation="vertical"
-							android:id="@+id/slidedowndialogfragmentLinearLayout_DialogInput1"
-							android:visibility="gone">
-
-							<TextView
-								android:layout_height="wrap_content"
-								android:textAppearance="?android:attr/textAppearanceSmall"
-								android:layout_width="match_parent"
-								android:text="Input 1 Text"
-								android:gravity="center_vertical"
-								android:id="@+id/slidedowndialogfragmentTextView_DialogInput1Text"/>
-
-							<EditText
-								android:layout_height="wrap_content"
-								android:layout_width="match_parent"
-								android:ems="10"
-								android:maxLines="1"
-								android:singleLine="true"
-								android:id="@+id/slidedowndialogfragmentEditText_DialogInput1"/>
-
-						</LinearLayout>
-
-						<LinearLayout
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:orientation="vertical"
-							android:id="@+id/slidedowndialogfragmentLinearLayout_DialogInput2"
-							android:visibility="gone">
-
-							<TextView
-								android:layout_height="wrap_content"
-								android:textAppearance="?android:attr/textAppearanceSmall"
-								android:layout_width="match_parent"
-								android:text="Input 2 Text"
-								android:gravity="center_vertical"
-								android:id="@+id/slidedowndialogfragmentTextView_DialogInput2Text"/>
-
-							<EditText
-								android:layout_height="wrap_content"
-								android:layout_width="match_parent"
-								android:ems="10"
-								android:maxLines="1"
-								android:singleLine="true"
-								android:id="@+id/slidedowndialogfragmentEditText_DialogInput2"/>
-
-						</LinearLayout>
-
-						<LinearLayout
 							android:layout_height="match_parent"
 							android:layout_width="match_parent"
 							android:orientation="vertical"
 							android:id="@+id/slidedowndialogfragmentLinearLayout_DialogColorPicker"
-							android:visibility="gone">
+							android:visibility="visible">
 
 							<LinearLayout
 								android:layout_height="match_parent"
@@ -138,7 +86,6 @@
 									android:layout_width="match_parent"
 									android:layout_height="match_parent"
 									android:layout_gravity="center"
-									android:layout_weight="1.0"
 									android:visibility="visible"
 									app:bar_orientation_horizontal="false"
 									android:id="@+id/slidedowndialogfragmentValueBar_DialogValueBar"/>
@@ -147,7 +94,6 @@
 									android:layout_width="match_parent"
 									android:layout_height="match_parent"
 									android:layout_gravity="center"
-									android:layout_weight="1.0"
 									android:visibility="visible"
 									app:bar_orientation_horizontal="false"
 									android:id="@+id/slidedowndialogfragmentSaturationBar_DialogSaturationBar"/>
@@ -157,7 +103,6 @@
 									android:layout_height="match_parent"
 									android:layout_gravity="center"
 									android:visibility="gone"
-									android:layout_weight="1.0"
 									app:bar_orientation_horizontal="false"
 									android:id="@+id/slidedowndialogfragmentOpacityBar_DialogOpacityBar"/>
 
@@ -165,7 +110,6 @@
 									android:layout_width="match_parent"
 									android:layout_height="match_parent"
 									android:id="@+id/slidedowndialogfragmentColorPicker_DialogColorPicker"
-									android:layout_weight="1.0"
 									android:layout_gravity="center"/>
 
 							</LinearLayout>
@@ -366,7 +310,7 @@
 					android:id="@+id/slidedowndialogfragmentLinearLayout_DialogList"
 					android:layout_marginRight="10dp"
 					android:layout_marginLeft="10dp"
-					android:visibility="visible"
+					android:visibility="gone"
 					android:background="@color/colorPrimaryDarkDarkTheme"
 					android:layout_weight="1.0"
 					android:layout_marginTop="10dp">

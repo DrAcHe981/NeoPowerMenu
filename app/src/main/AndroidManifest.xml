@@ -1,135 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.NeonSoft.neopowermenu">
+          package="de.NeonSoft.neopowermenu">
 
-		<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" /> 
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-		<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-		
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+
     <application
-				android:name=".neopowermenu"
+        android:name=".neopowermenu"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="NeoPowerMenu"
         android:theme="@style/ThemeBaseDark">
         <meta-data
             android:name="xposedmodule"
-            android:value="true" />
+            android:value="true"/>
         <meta-data
             android:name="xposeddescription"
-            android:value="Material Power Menu with Reveal and other Animations (Original from naman14)" />
+            android:value="Material Power Menu with Reveal and other Animations (Original from naman14)"/>
         <meta-data
             android:name="xposedminversion"
-            android:value="54" />
+            android:value="54"/>
 
         <activity
-						android:exported="true"
             android:name=".MainActivity"
-            android:label="NeoPowerMenu"
-						android:configChanges="orientation|screenSize">
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:label="NeoPowerMenu">
             <!--intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter-->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS"/>
             </intent-filter>
-						<!-- Register to handle email attachments -->
-						<!-- WARNING: Do NOT use android:host="*" for these as they will not work properly -->
-						<intent-filter>
-								<!-- needed for properly formatted email messages -->
-								<data
-										android:scheme="content"
-										android:mimeType="application/vnd.neopowermenu"
-										android:pathPattern=".*\\.nps" />
-								<!-- needed for mangled email messages -->
-								<data
-										android:scheme="content"
-										android:mimeType="application/neopowermenu"
-										android:pathPattern=".*\\.nps" />
-								<!-- needed for mangled email messages -->
-								<data
-										android:scheme="content"
-										android:mimeType="application/octet-stream"
-										android:pathPattern=".*\\.nps" />
-
-								<action android:name="android.intent.action.VIEW" />
-
-								<category android:name="android.intent.category.DEFAULT" />
-								<category android:name="android.intent.category.BROWSABLE" />
-						</intent-filter>
-						<!-- Register to handle file opening -->
-						<intent-filter>
-								<data android:scheme="file"
-										android:mimeType="text/*"
-										android:pathPattern=".*\\.nps"/>
-
-								<action android:name="android.intent.action.VIEW" />
-
-								<category android:name="android.intent.category.DEFAULT" />
-								<category android:name="android.intent.category.BROWSABLE" />
-						</intent-filter>
-        </activity>
-				<activity-alias 
-            android:name=".SettingsActivity"
-            android:label="NeoPowerMenu"
-						android:enabled="true"
-						android:targetActivity=".MainActivity">
-						<intent-filter>
-								<action android:name="android.intent.action.MAIN" />
-								<category android:name="android.intent.category.LAUNCHER" />
-						</intent-filter>   
-				</activity-alias>
-				<activity
-						android:name="addShortcut"
-            android:excludeFromRecents="true"
-						android:exported="true"
-            android:label="NeoPowerMenu"
-            android:theme="@style/TransparentApp"
-						android:configChanges="orientation|screenSize">
+            <!-- Register to handle email attachments -->
+            <!-- WARNING: Do NOT use android:host="*" for these as they will not work properly -->
             <intent-filter>
-								<action android:name="android.intent.action.CREATE_SHORTCUT" />
-								<category android:name="android.intent.category.DEFAULT" />
+                <!-- needed for properly formatted email messages -->
+                <data
+                    android:mimeType="application/vnd.neopowermenu"
+                    android:pathPattern=".*\\.nps"
+                    android:scheme="content"/>
+                <!-- needed for mangled email messages -->
+                <data
+                    android:mimeType="application/neopowermenu"
+                    android:pathPattern=".*\\.nps"
+                    android:scheme="content"/>
+                <!-- needed for mangled email messages -->
+                <data
+                    android:mimeType="application/octet-stream"
+                    android:pathPattern=".*\\.nps"
+                    android:scheme="content"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
-				</activity>
+            <!-- Register to handle file opening -->
+            <intent-filter>
+                <data
+                    android:mimeType="text/*"
+                    android:pathPattern=".*\\.nps"
+                    android:scheme="file"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity-alias
+            android:name=".SettingsActivity"
+            android:enabled="true"
+            android:label="NeoPowerMenu"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name="addShortcut"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:label="@string/shortcut_ShowPowerMenu"
+            android:theme="@style/TransparentApp">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".xposed.XposedMainActivity"
+            android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
-						android:exported="true"
+            android:exported="true"
             android:label="NeoPowerMenu"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-						android:configChanges="orientation|screenSize">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
 
         </activity>
-				<service
-						android:name=".services.ScreenRecordingService"
-						android:exported="true"
-						android:label="NeoPowerMenu">
-				</service>
+
+        <service
+            android:name=".services.ScreenRecordingService"
+            android:exported="true"
+            android:label="NeoPowerMenu">
+        </service>
 
         <service android:name=".services.TorchService">
             <intent-filter>
-                <action android:name="neopowermenu.intent.action.TOGGLE_TORCH" />
+                <action android:name="neopowermenu.intent.action.TOGGLE_TORCH"/>
             </intent-filter>
         </service>
 
         <activity
             android:name=".ErrorActivity"
+            android:configChanges="orientation|screenSize"
             android:process=":error_activity"
-            android:theme="@style/ThemeBaseDark"
-						android:configChanges="orientation|screenSize" >
-						<intent-filter>
-<action android:name="cat.ereza.customactivityoncrash.ERROR" />
-</intent-filter>
-</activity>
+            android:theme="@style/ThemeBaseDark">
+            <intent-filter>
+                <action android:name="cat.ereza.customactivityoncrash.ERROR"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

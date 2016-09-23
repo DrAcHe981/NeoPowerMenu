@@ -30,13 +30,16 @@ public class PresetsPage extends Fragment
 				this.title = null;
 		}
     // newInstance constructor for creating fragment with arguments
-    public PresetsPage(int page, String title)
-		{
-				this.page = page;
-				this.title = title;
-    }
-		
-    // Store instance variables based on arguments passed
+
+
+	@Override
+	public void setArguments(Bundle args) {
+		super.setArguments(args);
+		this.page = args.getInt("page");
+		this.title = args.getString("title");
+	}
+
+	// Store instance variables based on arguments passed
     @Override
     public void onCreate(Bundle savedInstanceState)
 		{

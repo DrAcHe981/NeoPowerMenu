@@ -1,4 +1,5 @@
 package de.NeonSoft.neopowermenu.Preferences;
+
 import android.app.*;
 import android.content.*;
 import android.os.*;
@@ -13,775 +14,578 @@ import android.view.inputmethod.*;
 import android.widget.*;
 import android.widget.AdapterView.*;
 import android.widget.TextView.*;
+
 import com.ogaclejapan.smarttablayout.*;
+
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
+
 import java.io.*;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View.OnClickListener;
+
 import de.NeonSoft.neopowermenu.R;
+
 import java.util.*;
 
-public class PreferencesPresetsFragment extends Fragment
-{
+public class PreferencesPresetsFragment extends Fragment {
 
-		public static AlertDialog importad;
-		public static String Filename;
-		public static String sCreator = "< unknown >";
-		public static String newUrl;
-		public static boolean Importcancled = false;
+    public static AlertDialog importad;
+    public static String Filename;
+    public static String sCreator = "< unknown >";
+    public static String newUrl;
+    public static boolean Importcancled = false;
 
-		public static RelativeLayout progressHolder;
-		public static ProgressBar progress;
-		public static TextView LoadingMsg;
+    public static RelativeLayout progressHolder;
+    public static ProgressBar progress;
+    public static TextView LoadingMsg;
 
-		public static Activity mContext;
+    public static Activity mContext;
 
-		View InflatedView;
-		public static ViewPager vpPager;
-		public static MyPagerAdapter adapterViewPager;
+    View InflatedView;
+    public static ViewPager vpPager;
+    public static MyPagerAdapter adapterViewPager;
 
-		public static PresetsAdapter localAdapter;
-		public static PresetsAdapter onlineAdapter;
-		public static ListView onlineList;
-		public static TextView onlineMSG;
-		public static RelativeLayout onlineMSGHolder;
-		
-		public static LinearLayout onlineSearch;
-		
-		public static LinearLayout onlineSearchBar;
-		public static EditText onlineSearchEdit;
-		public static ImageView onlineStartSearch;
-		
-		public static LinearLayout onlineOrder;
-		
-		public static String onlineSearchTerm = "";
-		
-		private static int onlineOrderSelected = 0;
-		public static String onlineOrderSelectedString = "";
+    public static PresetsAdapter localAdapter;
+    public static PresetsAdapter onlineAdapter;
+    public static ListView onlineList;
+    public static TextView onlineMSG;
+    public static RelativeLayout onlineMSGHolder;
 
-		public static boolean onlineRequestIsRunning;
+    public static LinearLayout onlineSearch;
 
-		public static String DownloadingActiveFor = "";
-		public static ArrayList<LinearLayout> DownloadingActiveForRoot = new ArrayList<LinearLayout>();
-		public static ArrayList<downloadHelper> DownloadingActiveForHelper = new ArrayList<downloadHelper>();
-		public static ArrayList<LinearLayout> DownloadingActiveForLayout = new ArrayList<LinearLayout>();
-		public static ArrayList<ImageView> DownloadingActiveForImageView = new ArrayList<ImageView>();
-		public static ArrayList<String> DownloadingActiveForOldText = new ArrayList<String>();
-		public static ArrayList<TextView> DownloadingActiveForLabel = new ArrayList<TextView>();
-		public static ArrayList<ProgressBar> DownloadingActiveForProgress = new ArrayList<ProgressBar>();
-		
-		public static ArrayList<String> OnlineListTitles = new ArrayList<String>();
-		public static ArrayList<String> OnlineListDescs = new ArrayList<String>();
-		public static ArrayList<String> OnlineListEnabled = new ArrayList<String>();
-		public static ArrayList<String> OnlineListLocal = new ArrayList<String>();
-		public static ArrayList<Boolean> OnlineHasGraphics = new ArrayList<Boolean>();
-		
-		//public static String oldUploadText = "";
+    public static LinearLayout onlineSearchBar;
+    public static EditText onlineSearchEdit;
+    public static ImageView onlineStartSearch;
 
-		public static int startTab = 1;
-		
-		public void setStartTab(int tab) {
-				startTab = tab;
-		}
-		
-		public PreferencesPresetsFragment() {
-				startTab = 1;
-		}
-		
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-		{
-				// TODO: Implement this method
-				MainActivity.visibleFragment = "PresetsManager";
+    public static LinearLayout onlineOrder;
 
-				MainActivity.actionbar.setTitle(getString(R.string.preset_Load));
-				MainActivity.actionbar.setSubTitle(getString(R.string.preset_LoadDesc));
-				
-				mContext = getActivity();
-				onlineSearchTerm = "";
-				onlineOrderSelected = 0;
-				onlineOrderSelectedString = "";
+    public static String onlineSearchTerm = "";
 
-				InflatedView = inflater.inflate(R.layout.activity_presetsmanager, container, false);
+    private static int onlineOrderSelected = 0;
+    public static String onlineOrderSelectedString = "";
+
+    public static boolean onlineRequestIsRunning;
+
+    public static String DownloadingActiveFor = "";
+    public static ArrayList<LinearLayout> DownloadingActiveForRoot = new ArrayList<LinearLayout>();
+    public static ArrayList<downloadHelper> DownloadingActiveForHelper = new ArrayList<downloadHelper>();
+    public static ArrayList<LinearLayout> DownloadingActiveForLayout = new ArrayList<LinearLayout>();
+    public static ArrayList<ImageView> DownloadingActiveForImageView = new ArrayList<ImageView>();
+    public static ArrayList<String> DownloadingActiveForOldText = new ArrayList<String>();
+    public static ArrayList<TextView> DownloadingActiveForLabel = new ArrayList<TextView>();
+    public static ArrayList<ProgressBar> DownloadingActiveForProgress = new ArrayList<ProgressBar>();
+
+    public static ArrayList<String> OnlineListTitles = new ArrayList<String>();
+    public static ArrayList<String> OnlineListDescs = new ArrayList<String>();
+    public static ArrayList<String> OnlineListEnabled = new ArrayList<String>();
+    public static ArrayList<String> OnlineListLocal = new ArrayList<String>();
+    public static ArrayList<Boolean> OnlineHasGraphics = new ArrayList<Boolean>();
+
+    //public static String oldUploadText = "";
+
+    public static int startTab = 1;
+
+    public void setStartTab(int tab) {
+        startTab = tab;
+    }
+
+    public PreferencesPresetsFragment() {
+        startTab = 1;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        MainActivity.visibleFragment = "PresetsManager";
+
+        MainActivity.actionbar.setTitle(getString(R.string.preset_Load));
+        MainActivity.actionbar.setSubTitle(getString(R.string.preset_LoadDesc));
+
+        mContext = getActivity();
+        onlineSearchTerm = "";
+        onlineOrderSelected = 0;
+        onlineOrderSelectedString = "";
+
+        InflatedView = inflater.inflate(R.layout.activity_presetsmanager, container, false);
 
 
-				onlineSearch = (LinearLayout) InflatedView.findViewById(R.id.activitypresetsmanagerLinearLayout_SearchIcon);
-				onlineSearch.setVisibility(View.GONE);
+        onlineSearch = (LinearLayout) InflatedView.findViewById(R.id.activitypresetsmanagerLinearLayout_SearchIcon);
+        onlineSearch.setVisibility(View.GONE);
 
-				onlineSearchBar = (LinearLayout) InflatedView.findViewById(R.id.activitypresetsmanagerLinearLayout_SearchBar);
-				onlineSearchEdit = (EditText) InflatedView.findViewById(R.id.activitypresetsmanagerEditText_Search);
-				onlineStartSearch = (ImageView) InflatedView.findViewById(R.id.activitypresetsmanagerImageView_StartSearch);
-				onlineSearchBar.setVisibility(View.GONE);
+        onlineSearchBar = (LinearLayout) InflatedView.findViewById(R.id.activitypresetsmanagerLinearLayout_SearchBar);
+        onlineSearchEdit = (EditText) InflatedView.findViewById(R.id.activitypresetsmanagerEditText_Search);
+        onlineStartSearch = (ImageView) InflatedView.findViewById(R.id.activitypresetsmanagerImageView_StartSearch);
+        onlineSearchBar.setVisibility(View.GONE);
 
-				onlineOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypresetsmanagerLinearLayout_Order);
-				onlineOrder.setVisibility(View.GONE);
-				
+        onlineOrder = (LinearLayout) InflatedView.findViewById(R.id.activitypresetsmanagerLinearLayout_Order);
+        onlineOrder.setVisibility(View.GONE);
+
         vpPager = (ViewPager) InflatedView.findViewById(R.id.pager);
-        adapterViewPager = new MyPagerAdapter(MainActivity.fragmentManager, new String[] {getString(R.string.presetsManager_TitleAccount),getString(R.string.presetsManager_TitleLocal),getString(R.string.presetsManager_TitleOnline)});
+        adapterViewPager = new MyPagerAdapter(MainActivity.fragmentManager, new String[]{getString(R.string.presetsManager_TitleAccount), getString(R.string.presetsManager_TitleLocal), getString(R.string.presetsManager_TitleOnline)});
         vpPager.setAdapter(adapterViewPager);
 
-				vpPager.setCurrentItem(startTab);
-				
-				vpPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        vpPager.setCurrentItem(startTab);
 
-								@Override
-								public void onPageScrolled(int p1, float p2, int p3)
-								{
-										// TODO: Implement this method
-								}
+        if (startTab == 0) {
+            MainActivity.visibleFragment = "PresetsManagerAccount";
+        } else if (startTab == 1) {
+            MainActivity.visibleFragment = "PresetsManager";
+        } else if (startTab == 2) {
+            MainActivity.visibleFragment = "PresetsManagerOnline";
+        }
 
-								@Override
-								public void onPageSelected(int p1)
-								{
-										// TODO: Implement this method
-										if (adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleOnline)))
-										{
-												MainActivity.visibleFragment = "PresetsManagerOnline";
-												MainActivity.actionbar.setButton(getString(R.string.presetsManager_Refresh), R.drawable.ic_action_autorenew, new OnClickListener() {
+        vpPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-																@Override
-																public void onClick(View p1)
-																{
-																		// TODO: Implement this method
-																		new getOnlinePresets().execute((onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
-																}
-														});
-												onlineSearch.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onPageScrolled(int p1, float p2, int p3) {
 
-																@Override
-																public void onClick(View p1)
-																{
-																		// TODO: Implement this method
-																		if(onlineSearch.getVisibility() == View.VISIBLE) {
-																				onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-																				onlineSearch.setVisibility(View.GONE);
-																		}
-																		if(onlineSearchBar.getVisibility() == View.GONE) {
-																				onlineStartSearch.setOnClickListener(new OnClickListener() {
+            }
 
-																								@Override
-																								public void onClick(View p1)
-																								{
-																										// TODO: Implement this method
-																										if(!onlineSearchEdit.getText().toString().isEmpty()) {
-																												try {
-																												InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-																												IBinder windowToken = onlineSearchEdit.getWindowToken();
-																												inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
-																												} catch (Throwable t) {}
-																												onlineSearchTerm = onlineSearchEdit.getText().toString();
-																												new getOnlinePresets().execute((onlineOrderSelectedString.isEmpty() ? "" : "order="+ onlineOrderSelectedString),(onlineSearchTerm.isEmpty() ? "" : "search="+onlineSearchTerm));
-																										}
-																								}
-																						});
-																				onlineSearchEdit.setOnEditorActionListener(new OnEditorActionListener() {
+            @Override
+            public void onPageSelected(int p1) {
+                checkPage();
+            }
 
-																								@Override
-																								public boolean onEditorAction(TextView p1, int p2, KeyEvent p3)
-																								{
-																										// TODO: Implement this method
-																										onlineStartSearch.callOnClick();
-																										return false;
-																								}
-																						});
-																				onlineSearchEdit.setText("");
-																				onlineSearchBar.setVisibility(View.VISIBLE);
-																				onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
-																				InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-																				onlineSearchEdit.requestFocus();
-																				IBinder windowToken = onlineSearchEdit.getWindowToken();
-																				inputManager.showSoftInput(onlineSearchEdit, InputMethodManager.SHOW_IMPLICIT);
-																		}
-																		if (onlineOrder.getVisibility() == View.VISIBLE)
-																		{
-																				onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-																				onlineOrder.setVisibility(View.GONE);
-																		}
-																}
-														});
-												onlineOrder.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onPageScrollStateChanged(int p1) {
 
-																@Override
-																public void onClick(View p1)
-																{
-																		// TODO: Implement this method
-																		if(onlineSearch.getVisibility() == View.VISIBLE) {
-																				onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-																				onlineSearch.setVisibility(View.GONE);
-																		}
-																		if (onlineOrder.getVisibility() == View.VISIBLE)
-																		{
-																				onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-																				onlineOrder.setVisibility(View.GONE);
-																		}
-																		slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
-																		dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+            }
+        });
 
-																						@Override
-																						public void onListItemClick(int position, String text)
-																						{
-																								// TODO: Implement this method
-																								onlineOrderSelected = position;
-																								onlineOrderSelectedString = text;
-																								MainActivity.actionbar.setButtonListener(new OnClickListener() {
 
-																												@Override
-																												public void onClick(View p1)
-																												{
-																														// TODO: Implement this method
-																														new getOnlinePresets().execute("order=" + onlineOrderSelectedString);
-																												}
-																										});
-																								hideBars();
-																								new getOnlinePresets().execute("order=" + onlineOrderSelectedString);
-																						}
-
-																						@Override
-																						public void onNegativeClick()
-																						{
-																								// TODO: Implement this method
-																								hideBars();
-																						}
-
-																						@Override
-																						public void onNeutralClick()
-																						{
-																								// TODO: Implement this method
-																						}
-
-																						@Override
-																						public void onPositiveClick(Bundle resultBundle)
-																						{
-																								// TODO: Implement this method
-																								hideBars();
-																						}
-
-																						@Override
-																						public void onTouchOutside()
-																						{
-																								// TODO: Implement this method
-																								hideBars();
-																						}
-																				});
-																				dialogFragment.setText(mContext.getString(R.string.presetsManager_OrderBy));
-																		dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, new String[] {
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-																																		 getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")"}, onlineOrderSelected,true);
-																		dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
-																		dialogFragment.showDialog(R.id.dialog_container);
-																		if (onlineOrder.getVisibility() == View.VISIBLE)
-																		{
-																				onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-																				onlineOrder.setVisibility(View.GONE);
-																		}
-																		/*
-																		AlertDialog.Builder adb = new AlertDialog.Builder(getActivity());
-																		adb.setTitle(R.string.presetsManager_OrderBy);
-																		adb.setSingleChoiceItems(new String[] {getString(R.string.presetsManager_OrderNames).split("/")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																						getString(R.string.presetsManager_OrderNames).split("/")[0] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
-																						getString(R.string.presetsManager_OrderNames).split("/")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																						getString(R.string.presetsManager_OrderNames).split("/")[1] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
-																						getString(R.string.presetsManager_OrderNames).split("/")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																						getString(R.string.presetsManager_OrderNames).split("/")[2] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")",
-																						getString(R.string.presetsManager_OrderNames).split("/")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")",
-																						getString(R.string.presetsManager_OrderNames).split("/")[3] + " (" + getString(R.string.presetsManager_OrderAscDesc).split("/")[1] + ")"}, onlineOrderSelected, new DialogInterface.OnClickListener() {
-
-																						@Override
-																						public void onClick(DialogInterface p1, int p2)
-																						{
-																								// TODO: Implement this method
-																								ad.dismiss();
-																								onlineOrderSelected = p2;
-																								onlineOrderSelectedString = (ad).getListView().getItemAtPosition(p2).toString();
-																								MainActivity.actionbar.setActionBarButtonListener(new OnClickListener() {
-
-																												@Override
-																												public void onClick(View p1)
-																												{
-																														// TODO: Implement this method
-																														new getOnlinePresets().execute("order=" + onlineOrderSelectedString);
-																												}
-																										});
-																								new getOnlinePresets().execute("order=" + (ad).getListView().getItemAtPosition(p2));
-																						}
-																				});
-
-																		ad = adb.create();
-																		ad.show();
-																		*/
-																}
-														});
-												onlineSearch.setVisibility(View.VISIBLE);
-												onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
-												onlineOrder.setVisibility(View.VISIBLE);
-												onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
-										}
-										else if (adapterViewPager.getPageTitle(p1).toString().equalsIgnoreCase(getString(R.string.presetsManager_TitleAccount)))
-										{
-												MainActivity.visibleFragment = "PresetsManagerAccount";
-												if (LoginFragment.loginFragmentMode.equalsIgnoreCase("login"))
-												{
-														MainActivity.actionbar.setButton(getString(R.string.login_Title), R.drawable.ic_action_import, LoginFragment.loginOnClickListener);
-												}
-												else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("register"))
-												{
-														MainActivity.actionbar.setButton(getString(R.string.login_TitleRegister), R.drawable.ic_action_import, LoginFragment.registerOnClickListener);
-												}
-												else if (MainActivity.loggedIn)
-												{
-														MainActivity.actionbar.setButton(getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
-												} else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("recover")) {
-														MainActivity.actionbar.setButton(getString(R.string.login_Recover),R.drawable.ic_action_settings_backup_restore ,LoginFragment.recoverOnClickListener);
-												}
-												if(onlineSearch.getVisibility() == View.VISIBLE) {
-														onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-														onlineSearch.setVisibility(View.GONE);
-												}
-												if(onlineSearchBar.getVisibility() == View.VISIBLE) {
-														onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-														onlineSearchBar.setVisibility(View.GONE);
-														//onlineSearchEdit.setText("");
-														try {
-																InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-																IBinder windowToken = onlineSearchEdit.getWindowToken();
-																inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
-														} catch (Throwable t) {}
-												}
-												if (onlineOrder.getVisibility() == View.VISIBLE)
-												{
-														onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-														onlineOrder.setVisibility(View.GONE);
-												}
-												LoginFragment.checkState();
-										}
-										else
-										{
-												MainActivity.visibleFragment = "PresetsManager";
-												MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
-												if(onlineSearch.getVisibility() == View.VISIBLE) {
-														onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-														onlineSearch.setVisibility(View.GONE);
-												}
-												if(onlineSearchBar.getVisibility() == View.VISIBLE) {
-														onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-														onlineSearchBar.setVisibility(View.GONE);
-														//onlineSearchEdit.setText("");
-														try {
-																InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-																IBinder windowToken = onlineSearchEdit.getWindowToken();
-																inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
-														} catch (Throwable t) {}
-												}
-												if (onlineOrder.getVisibility() == View.VISIBLE)
-												{
-														onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-														onlineOrder.setVisibility(View.GONE);
-												}
-										}
-								}
-
-								@Override
-								public void onPageScrollStateChanged(int p1)
-								{
-										// TODO: Implement this method
-								}
-						});
-				
-				
         SmartTabLayout tabsStrip = (SmartTabLayout) InflatedView.findViewById(R.id.tabs);
-				tabsStrip.setCustomTabView(R.layout.customtab, R.id.customTabText);
+        tabsStrip.setCustomTabView(R.layout.customtab, R.id.customTabText);
 
         tabsStrip.setViewPager(vpPager);
 
-				progressHolder = (RelativeLayout) InflatedView.findViewById(R.id.presetsmanagerlistholderRelativeLayout_Progress);
-				progressHolder.setVisibility(View.GONE);
-				progress = (ProgressBar) InflatedView.findViewById(R.id.presetsmanagerlistholderProgressBar_Progress);
-				LoadingMsg = (TextView) InflatedView.findViewById(R.id.presetsmanagerlistholderTextView_LoadMsg);
+        progressHolder = (RelativeLayout) InflatedView.findViewById(R.id.presetsmanagerlistholderRelativeLayout_Progress);
+        progressHolder.setVisibility(View.GONE);
+        progress = (ProgressBar) InflatedView.findViewById(R.id.presetsmanagerlistholderProgressBar_Progress);
+        LoadingMsg = (TextView) InflatedView.findViewById(R.id.presetsmanagerlistholderTextView_LoadMsg);
 
-				progressHolder.setOnClickListener(new OnClickListener() {
+        progressHolder.setOnClickListener(new OnClickListener() {
 
-								@Override
-								public void onClick(View p1)
-								{
-										// Just prevent touch trough...
-								}
-						});
-				return InflatedView;
-		}
+            @Override
+            public void onClick(View p1) {
+                // Just prevent touch trough...
+            }
+        });
+        return InflatedView;
+    }
 
-		public static void hideBars() {
-				if(onlineSearchBar.getVisibility() == View.VISIBLE) {
-						onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
-						onlineSearchBar.setVisibility(View.GONE);
-				}
-				onlineSearchTerm = "";
-				onlineSearch.setVisibility(View.VISIBLE);
-				onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
-				onlineOrder.setVisibility(View.VISIBLE);
-				onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
-		}
-		
-		public static boolean ImportPreset(final String surl, final PresetsAdapter adapter, String name, final String creator)
-		{
-				Importcancled = false;
-				sCreator = "< unknown >";
-				final boolean isZip;
-				isZip = false;
-				try
-				{
-						//Log.i("NPM","Showing import dialog for: "+surl);
-						String fUrl = surl;
-						if (!surl.endsWith(".nps"))
-						{
-								MainActivity.ImportUrl = null;
-								Toast.makeText(mContext, "Import failed...\nUnknown file type!", Toast.LENGTH_LONG).show();
-								return false;
-						}
-						if (surl.startsWith("file:"))
-						{
-								fUrl = surl.replace("file:", "");
-						}
-						newUrl = fUrl;
-						final File prefile;
-						prefile = new File(newUrl);
-						Filename = (name != null && !name.isEmpty()) ? name + ".nps" : prefile.getName();
-						if(helper.isValidZip(prefile.getPath(),null)) {
-								if(helper.unzipFile(prefile.getPath(),mContext.getFilesDir().getPath()+"/temp/",Filename,null)==null) {
-										prefile = new File(mContext.getFilesDir().getPath()+"/temp/"+Filename);
-								} else {
-										Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
-										return false;
-								}
-								isZip = true;
-						}
-						FileInputStream fIn = new FileInputStream(prefile);
-						BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
-						String aDataRow = ""; 
-						final String[] presetInfo = new String[4];
-						presetInfo[0] = Filename.split(".nps")[0];
-						presetInfo[1] = "< unknown >";
-						presetInfo[2] = "true";
-						presetInfo[3] = "true";
-						while ((aDataRow = myReader.readLine()) != null)
-						{ 
-								//aBuffer += aDataRow + "\n";
-								String[] aData = aDataRow.split("=");
-								if (aData.length < 2)
-								{
-										MainActivity.ImportUrl = null;
-										Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
-										return false;//presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
-								}
-								if (aData[0].equalsIgnoreCase("Creator"))
-								{
-										presetInfo[1] = aData[1];
-								}
-						}
-						final slideDownDialogFragment dialogFragment = new slideDownDialogFragment(mContext, MainActivity.fragmentManager);
-						dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+    public static void checkPage() {
+        if (adapterViewPager.getPageTitle(vpPager.getCurrentItem()).toString().equalsIgnoreCase(mContext.getString(R.string.presetsManager_TitleOnline))) {
+            MainActivity.visibleFragment = "PresetsManagerOnline";
+            MainActivity.actionbar.setButton(mContext.getString(R.string.presetsManager_Refresh), R.drawable.ic_action_autorenew, new OnClickListener() {
 
-										@Override
-										public void onListItemClick(int position, String text)
-										{
-												// TODO: Implement this method
-										}
+                @Override
+                public void onClick(View p1) {
 
-										@Override
-										public void onNegativeClick()
-										{
-												// TODO: Implement this method
-												Importcancled = true;
-										}
+                    new getOnlinePresets().execute((onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
+                }
+            });
+            onlineSearch.setOnClickListener(new OnClickListener() {
 
-										@Override
-										public void onNeutralClick()
-										{
-												// TODO: Implement this method
-										}
+                @Override
+                public void onClick(View p1) {
 
-										@Override
-										public void onPositiveClick(Bundle resultBundle)
-										{
-												// TODO: Implement this method
-												String newFilename = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0") + ".nps";
-												presetInfo[0] = newFilename.replace(".nps","");
-												final boolean newPresetAdded;
-												if (!new File(mContext.getFilesDir().getPath()+"/presets/"+newFilename).exists())
-												{
-														newPresetAdded = true;
-												} else {
-														newPresetAdded = false;
-												}
-												String FilePath = "";
-												if(isZip) {
-														helper.unzipFile(newUrl,mContext.getFilesDir().getPath()+"/temp/",Filename,null);
-														FilePath = newUrl;
-												} else {
-														FilePath = prefile.getPath();
-												}
-												if(helper.copyFile(FilePath,mContext.getFilesDir().getPath()+"/presets/"+newFilename)) {
-														new File(mContext.getFilesDir().getPath()+"/temp/"+Filename).renameTo(new File(mContext.getFilesDir().getPath()+"/temp/"+newFilename));
-														if(isZip) {
-																helper.removeFromZip(mContext.getFilesDir().getPath()+"/presets/"+ newFilename,Filename,null);
-																helper.zipFile(mContext.getFilesDir().getPath()+"/temp/"+newFilename,mContext.getFilesDir().getPath()+"/presets/"+newFilename,null);
-														}
-														File presetsFolder = new File(mContext.getFilesDir().getPath() + "/temp/");
-														File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
-																		public boolean accept(File dir, String name)
-																		{
-																				return true;
-																		}});
-														for(int i = 0; i < presetsFiles.length; i++) {
-																presetsFiles[i].delete();
-														}
-														if (newPresetAdded)
-														{
-																adapter.insert(presetInfo);
-														}
-														Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportSuccess).replace("[PRESETNAME]", newFilename.replace(".nps","")), Toast.LENGTH_SHORT).show();
-												}
-												//new ImportPreset().execute(newUrl, Filename, adapter);
-										}
+                    if (onlineSearch.getVisibility() == View.VISIBLE) {
+                        onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                        onlineSearch.setVisibility(View.GONE);
+                    }
+                    if (onlineSearchBar.getVisibility() == View.GONE) {
+                        onlineStartSearch.setOnClickListener(new OnClickListener() {
 
-										@Override
-										public void onTouchOutside()
-										{
-												// TODO: Implement this method
-												Importcancled = true;
-										}
-								});
-						dialogFragment.setText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : presetInfo[1]) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
-						dialogFragment.addInput(mContext.getString(R.string.presetSaveDialog_InfoText),Filename.replace(".nps",""),false,new TextWatcher() {
+                            @Override
+                            public void onClick(View p1) {
 
-										@Override
-										public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
-										{
-												// TODO: Implement this method
-										}
+                                if (!onlineSearchEdit.getText().toString().isEmpty()) {
+                                    try {
+                                        InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                        IBinder windowToken = onlineSearchEdit.getWindowToken();
+                                        inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+                                    } catch (Throwable t) {
+                                    }
+                                    onlineSearchTerm = onlineSearchEdit.getText().toString();
+                                    new getOnlinePresets().execute((onlineOrderSelectedString.isEmpty() ? "" : "order=" + onlineOrderSelectedString), (onlineSearchTerm.isEmpty() ? "" : "search=" + onlineSearchTerm));
+                                }
+                            }
+                        });
+                        onlineSearchEdit.setOnEditorActionListener(new OnEditorActionListener() {
 
-										@Override
-										public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
-										{
-												// TODO: Implement this method
-												if (!p1.toString().equalsIgnoreCase("")) {
-														File checkFile = new File(mContext.getFilesDir()+"/presets/"+p1.toString().replace("/","")+".nps");
-														if (!checkFile.exists()) {
-																dialogFragment.showAssistInfo(false);
-																//dialogFragment.setDialogText("");
-														} else {
-																dialogFragment.showAssistInfo(true);
-																//dialogFragment.setDialogText(context.getString(R.string.presetSaveDialog_OverwriteText));
-														}
-												}
-										}
+                            @Override
+                            public boolean onEditorAction(TextView p1, int p2, KeyEvent p3) {
 
-										@Override
-										public void afterTextChanged(Editable p1)
-										{
-												// TODO: Implement this method
-										}}
-						);
-						dialogFragment.setInputAssistInfo(mContext.getString(R.string.presetSaveDialog_OverwriteText));
-						dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-						dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);
-						dialogFragment.showDialog(R.id.dialog_container);
+                                onlineStartSearch.callOnClick();
+                                return false;
+                            }
+                        });
+                        onlineSearchEdit.setText("");
+                        onlineSearchBar.setVisibility(View.VISIBLE);
+                        onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
+                        InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        onlineSearchEdit.requestFocus();
+                        IBinder windowToken = onlineSearchEdit.getWindowToken();
+                        inputManager.showSoftInput(onlineSearchEdit, InputMethodManager.SHOW_IMPLICIT);
+                    }
+                    if (onlineOrder.getVisibility() == View.VISIBLE) {
+                        onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                        onlineOrder.setVisibility(View.GONE);
+                    }
+                }
+            });
+            onlineOrder.setOnClickListener(new OnClickListener() {
 
-				}
-				catch (Throwable e)
-				{
-						Log.e("NPM", "Import failed!\n" + e.toString());
-				}
-				MainActivity.ImportUrl = null;
-				if (Importcancled)
-				{
-						return false;
-				}
-				else
-				{
-						return true;
-				}
-		}
+                @Override
+                public void onClick(View p1) {
 
-		public static class ImportPreset extends AsyncTask<Object, String, String>
-		{
+                    if (onlineSearch.getVisibility() == View.VISIBLE) {
+                        onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                        onlineSearch.setVisibility(View.GONE);
+                    }
+                    if (onlineOrder.getVisibility() == View.VISIBLE) {
+                        onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                        onlineOrder.setVisibility(View.GONE);
+                    }
+                    slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    dialogFragment.setContext(mContext);
+                    dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                    dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
-				PresetsAdapter adapter;
-				String[] presetInfo = new String[4];
-				File tmpfile;
-				boolean newPresetAdded = false;
-				boolean oldPreset = false;
+                        @Override
+                        public void onListItemClick(int position, String text) {
 
-				@Override
-				protected void onPreExecute()
-				{
-						// TODO: Implement this method
-						progressHolder.setVisibility(View.VISIBLE);
-						progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
-						super.onPreExecute();
-				}
+                            onlineOrderSelected = position;
+                            onlineOrderSelectedString = text;
+                            MainActivity.actionbar.setButtonListener(new OnClickListener() {
 
-				@Override
-				protected String doInBackground(Object[] p1)
-				{
-						// TODO: Implement this method
-						try
-						{
-								adapter = (PresetsAdapter) p1[2];
-								if (p1[0].toString().startsWith("file:"))
-								{
-										p1[0] = p1[0].toString().replace("file:", "");
-								}
-								Log.i("NPM", "Starting import for: " + p1[0]);
-								File prefile = new File(p1[0].toString());
-								String Filename = (String) p1[1];
-								tmpfile = new File(mContext.getFilesDir().getPath() + "/presets/" + Filename);
-								if (!tmpfile.exists())
-								{
-										newPresetAdded = true;
-								}
-								FileInputStream fIn = new FileInputStream(prefile);
-								FileOutputStream fOut = new FileOutputStream(tmpfile);
-								BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
-								BufferedWriter myWriter = new BufferedWriter(new OutputStreamWriter(fOut));
-								String aDataRow = ""; 
-								//String aBuffer = "";
-								presetInfo[0] = Filename.split(".nps")[0];
-								presetInfo[1] = "< unknown >";
-								presetInfo[2] = "true";
-								presetInfo[3] = "true";
-								while ((aDataRow = myReader.readLine()) != null)
-								{ 
-										//aBuffer += aDataRow + "\n";
-										String[] aData = aDataRow.split("=");
-										if (aData[0].equalsIgnoreCase("AppVersion"))
-										{
-												if (aData[1].equalsIgnoreCase("1.4.2"))
-												{
-														//Toast.makeText(MainActivity.context,"Converting old Save names...",Toast.LENGTH_SHORT).show();
-														oldPreset = true;
-												}
-												myWriter.write(aData[0] + "=" + aData[1] + "\n");
-										}
-										else if (p1.length >= 4 && aData[0].equalsIgnoreCase("creator"))
-										{
-												myWriter.write(aData[0] + "=" + p1[3]);
-										}
-										else
-										{
-												if (oldPreset && aData[0].equalsIgnoreCase("RevealBackground"))
-												{
-														aData[0] = "Reveal_Backgroundcolor";
-												}
-												else if (oldPreset && aData[0].equalsIgnoreCase("ActionRevealBackground"))
-												{
-														aData[0] = "ActionReveal_Backgroundcolor";
-												}
-												myWriter.write(aData[0] + "=" + aData[1] + "\n");
-										}
-										String[] loadColor = aData[0].split("_");
-										publishProgress(loadColor[0] + ": " + aData[1]);
-										if (aData[0].equalsIgnoreCase("Creator"))
-										{
-												presetInfo[1] = aData[1];
-										}
-								}
-								myWriter.close();
-								myReader.close();
-								fOut.close();
-								fIn.close();
-						}
-						catch (Throwable e)
-						{
-								Log.e("NPM", " Preset Import failed: " + e.toString());
-								return e.toString();
-						}
-						return "true";
-				}
+                                @Override
+                                public void onClick(View p1) {
 
-				@Override
-				protected void onProgressUpdate(String[] values)
-				{
-						// TODO: Implement this method
-						super.onProgressUpdate(values);
-						LoadingMsg.setText("Loading...\n" + values[0]);
-				}
+                                    new getOnlinePresets().execute("order=" + onlineOrderSelectedString);
+                                }
+                            });
+                            hideBars();
+                            new getOnlinePresets().execute("order=" + onlineOrderSelectedString);
+                        }
 
-				@Override
-				protected void onPostExecute(String result)
-				{
-						// TODO: Implement this method
-						super.onPostExecute(result);
-						progressHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
-						progressHolder.setVisibility(View.GONE);
-						if (result.equalsIgnoreCase("true"))
-						{
-								if (newPresetAdded)
-								{
-										adapter.insert(presetInfo);
-								}
-								Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportSuccess).replace("[PRESETNAME]", presetInfo[0]), Toast.LENGTH_SHORT).show();
-						}
-						else
-						{
-								tmpfile.delete();
-								Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportFailed), Toast.LENGTH_LONG).show();
-						}
-						MainActivity.ImportUrl = null;
-				}
+                        @Override
+                        public void onNegativeClick() {
 
-		}
+                            hideBars();
+                        }
 
-		private static class MyPagerAdapter extends FragmentStatePagerAdapter
-		{
-				private static String[] pageTitles;
+                        @Override
+                        public void onNeutralClick() {
 
-				public MyPagerAdapter(FragmentManager fragmentManager, String[] titles)
-				{
-						super(fragmentManager);
-						pageTitles = titles;
-				}
+                        }
 
-				// Returns total number of pages
-				@Override
-				public int getCount()
-				{
-						return pageTitles.length;
-				}
+                        @Override
+                        public void onPositiveClick(Bundle resultBundle) {
 
-				// Returns the fragment to display for that page
-				@Override
-				public Fragment getItem(int position)
-				{
-						switch (position)
-						{
-								case 0:
-										return new LoginFragment();
-								case 1: // Fragment # 0 - This will show FirstFragment
-										return new PresetsPage(0, "Local");
-								case 2: // Fragment # 0 - This will show FirstFragment different title
-										return new PresetsPage(1, "Online");
-								default:
-										return null;
-						}
-				}
+                            hideBars();
+                        }
 
-				// Returns the page title for the top indicator
-				@Override
-				public CharSequence getPageTitle(int position)
-				{
-						return "" + pageTitles[position];
-				}
+                        @Override
+                        public void onTouchOutside() {
 
-		}
+                            hideBars();
+                        }
+                    });
+                    dialogFragment.setText(mContext.getString(R.string.presetsManager_OrderBy));
+                    dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, new String[]{
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")"}, onlineOrderSelected, true);
+                    dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                    dialogFragment.showDialog(R.id.dialog_container);
+                    if (onlineOrder.getVisibility() == View.VISIBLE) {
+                        onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                        onlineOrder.setVisibility(View.GONE);
+                    }
+                }
+            });
+            onlineSearch.setVisibility(View.VISIBLE);
+            onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
+            onlineOrder.setVisibility(View.VISIBLE);
+            onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
+        } else if (adapterViewPager.getPageTitle(vpPager.getCurrentItem()).toString().equalsIgnoreCase(mContext.getString(R.string.presetsManager_TitleAccount))) {
+            MainActivity.visibleFragment = "PresetsManagerAccount";
+            if (LoginFragment.loginFragmentMode.equalsIgnoreCase("login")) {
+                MainActivity.actionbar.setButton(mContext.getString(R.string.login_Title), R.drawable.ic_action_import, LoginFragment.loginOnClickListener);
+            } else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("register")) {
+                MainActivity.actionbar.setButton(mContext.getString(R.string.login_TitleRegister), R.drawable.ic_action_import, LoginFragment.registerOnClickListener);
+            } else if (MainActivity.loggedIn) {
+                MainActivity.actionbar.setButton(mContext.getString(R.string.login_TitleLogout), R.drawable.ic_action_export, LoginFragment.logoutOnClickListener);
+            } else if (LoginFragment.loginFragmentMode.equalsIgnoreCase("recover")) {
+                MainActivity.actionbar.setButton(mContext.getString(R.string.login_Recover), R.drawable.ic_action_settings_backup_restore, LoginFragment.recoverOnClickListener);
+            }
+            if (onlineSearch.getVisibility() == View.VISIBLE) {
+                onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                onlineSearch.setVisibility(View.GONE);
+            }
+            if (onlineSearchBar.getVisibility() == View.VISIBLE) {
+                onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                onlineSearchBar.setVisibility(View.GONE);
+                //onlineSearchEdit.setText("");
+                try {
+                    InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    IBinder windowToken = onlineSearchEdit.getWindowToken();
+                    inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+                } catch (Throwable t) {
+                }
+            }
+            if (onlineOrder.getVisibility() == View.VISIBLE) {
+                onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                onlineOrder.setVisibility(View.GONE);
+            }
+            LoginFragment.checkState();
+        } else {
+            MainActivity.visibleFragment = "PresetsManager";
+            MainActivity.actionbar.setButton(mContext.getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
+            if (onlineSearch.getVisibility() == View.VISIBLE) {
+                onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                onlineSearch.setVisibility(View.GONE);
+            }
+            if (onlineSearchBar.getVisibility() == View.VISIBLE) {
+                onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                onlineSearchBar.setVisibility(View.GONE);
+                //onlineSearchEdit.setText("");
+                try {
+                    InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    IBinder windowToken = onlineSearchEdit.getWindowToken();
+                    inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
+                } catch (Throwable t) {
+                }
+            }
+            if (onlineOrder.getVisibility() == View.VISIBLE) {
+                onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+                onlineOrder.setVisibility(View.GONE);
+            }
+        }
+    }
+
+    public static void hideBars() {
+        if (onlineSearchBar.getVisibility() == View.VISIBLE) {
+            onlineSearchBar.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_out_top));
+            onlineSearchBar.setVisibility(View.GONE);
+        }
+        onlineSearchTerm = "";
+        onlineSearch.setVisibility(View.VISIBLE);
+        onlineSearch.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
+        onlineOrder.setVisibility(View.VISIBLE);
+        onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
+    }
+
+    public static boolean ImportPreset(final String surl, final PresetsAdapter adapter, String name, final String creator) {
+        Importcancled = false;
+        sCreator = "< unknown >";
+        final boolean isZip;
+        try {
+            //Log.i("NPM","Showing import dialog for: "+surl);
+            String fUrl = surl;
+            if (!surl.endsWith(".nps")) {
+                MainActivity.ImportUrl = null;
+                Toast.makeText(mContext, "Import failed...\nUnknown file type!", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            if (surl.startsWith("file:")) {
+                fUrl = surl.replace("file:", "");
+            }
+            newUrl = fUrl;
+            File prefile = new File(newUrl);
+            Filename = (name != null && !name.isEmpty()) ? name + ".nps" : prefile.getName();
+            if (helper.isValidZip(prefile.getPath(), null)) {
+                if (helper.unzipFile(prefile.getPath(), mContext.getFilesDir().getPath() + "/temp/", Filename, null) == null) {
+                    prefile = new File(mContext.getFilesDir().getPath() + "/temp/" + Filename);
+                } else {
+                    Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
+                    return false;
+                }
+                isZip = true;
+            } else {
+                isZip = false;
+            }
+            FileInputStream fIn = new FileInputStream(prefile);
+            BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
+            String aDataRow = "";
+            final String[] presetInfo = new String[4];
+            presetInfo[0] = Filename.split(".nps")[0];
+            presetInfo[1] = "< unknown >";
+            presetInfo[2] = "true";
+            presetInfo[3] = "true";
+            while ((aDataRow = myReader.readLine()) != null) {
+                //aBuffer += aDataRow + "\n";
+                String[] aData = aDataRow.split("=");
+                if (aData.length < 2) {
+                    MainActivity.ImportUrl = null;
+                    Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
+                    return false;//presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
+                }
+                if (aData[0].equalsIgnoreCase("Creator")) {
+                    presetInfo[1] = aData[1];
+                }
+            }
+            final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+            dialogFragment.setContext(mContext);
+            dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+            dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+                @Override
+                public void onListItemClick(int position, String text) {
+
+                }
+
+                @Override
+                public void onNegativeClick() {
+
+                    Importcancled = true;
+                }
+
+                @Override
+                public void onNeutralClick() {
+
+                }
+
+                @Override
+                public void onPositiveClick(Bundle resultBundle) {
+
+                    File prefile = new File(newUrl);
+                    String newFilename = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0") + ".nps";
+                    presetInfo[0] = newFilename.replace(".nps", "");
+                    final boolean newPresetAdded;
+                    newPresetAdded = !new File(mContext.getFilesDir().getPath() + "/presets/" + newFilename).exists();
+                    String FilePath = "";
+                    if (isZip) {
+                        helper.unzipFile(newUrl, mContext.getFilesDir().getPath() + "/temp/", Filename, null);
+                        FilePath = newUrl;
+                    } else {
+                        FilePath = prefile.getPath();
+                    }
+                    if (helper.copyFile(FilePath, mContext.getFilesDir().getPath() + "/presets/" + newFilename)) {
+                        new File(mContext.getFilesDir().getPath() + "/temp/" + Filename).renameTo(new File(mContext.getFilesDir().getPath() + "/temp/" + newFilename));
+                        if (isZip) {
+                            helper.removeFromZip(mContext.getFilesDir().getPath() + "/presets/" + newFilename, Filename, null);
+                            helper.zipFile(mContext.getFilesDir().getPath() + "/temp/" + newFilename, mContext.getFilesDir().getPath() + "/presets/" + newFilename, null);
+                        }
+                        File presetsFolder = new File(mContext.getFilesDir().getPath() + "/temp/");
+                        File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
+                            public boolean accept(File dir, String name) {
+                                return true;
+                            }
+                        });
+                        for (int i = 0; i < presetsFiles.length; i++) {
+                            presetsFiles[i].delete();
+                        }
+                        if (newPresetAdded) {
+                            adapter.insert(presetInfo);
+                        }
+                        Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportSuccess).replace("[PRESETNAME]", newFilename.replace(".nps", "")), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.e("NPM", "Import failed!\nCan't move file.");
+                    }
+                    //new ImportPreset().execute(newUrl, Filename, adapter);
+                }
+
+                @Override
+                public void onTouchOutside() {
+
+                    Importcancled = true;
+                }
+            });
+            dialogFragment.setText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : presetInfo[1]) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
+            dialogFragment.addInput(mContext.getString(R.string.presetSaveDialog_InfoText), Filename.replace(".nps", ""), false, new TextWatcher() {
+
+                        @Override
+                        public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
+
+                            if (!p1.toString().equalsIgnoreCase("")) {
+                                File checkFile = new File(mContext.getFilesDir() + "/presets/" + p1.toString().replace("/", "") + ".nps");
+                                if (!checkFile.exists()) {
+                                    dialogFragment.showAssistInfo(false);
+                                    //dialogFragment.setDialogText("");
+                                } else {
+                                    dialogFragment.showAssistInfo(true);
+                                    //dialogFragment.setDialogText(context.getString(R.string.presetSaveDialog_OverwriteText));
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable p1) {
+
+                        }
+                    }
+            );
+            dialogFragment.setInputAssistInfo(mContext.getString(R.string.presetSaveDialog_OverwriteText));
+            dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+            dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[7]);
+            dialogFragment.showDialog(R.id.dialog_container);
+
+        } catch (Throwable e) {
+            Log.e("NPM", "Import failed!\n" + e.toString());
+        }
+        MainActivity.ImportUrl = null;
+        return !Importcancled;
+    }
+
+    private static class MyPagerAdapter extends FragmentStatePagerAdapter {
+        private static String[] pageTitles;
+
+        public MyPagerAdapter(FragmentManager fragmentManager, String[] titles) {
+            super(fragmentManager);
+            pageTitles = titles;
+        }
+
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return pageTitles.length;
+        }
+
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            PresetsPage page = new PresetsPage();
+            Bundle pageBundle = new Bundle();
+            switch (position) {
+                case 0:
+                    return new LoginFragment();
+                case 1: // Fragment # 0 - This will show FirstFragment
+                    pageBundle.putInt("page", 0);
+                    pageBundle.putString("title", "Local");
+                    page.setArguments(pageBundle);
+                    return page;
+                case 2: // Fragment # 0 - This will show FirstFragment different title
+                    pageBundle.putInt("page", 1);
+                    pageBundle.putString("title", "Online");
+                    page.setArguments(pageBundle);
+                    return page;
+                default:
+                    return null;
+            }
+        }
+
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "" + pageTitles[position];
+        }
+
+    }
 }

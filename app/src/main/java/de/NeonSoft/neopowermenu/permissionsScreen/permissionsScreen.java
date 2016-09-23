@@ -37,7 +37,7 @@ public class permissionsScreen extends Fragment
 				Manifest.permission.WRITE_EXTERNAL_STORAGE,
 				Manifest.permission.CAMERA,
 				Manifest.permission.WAKE_LOCK,
-				Manifest.permission.ACCESS_SURFACE_FLINGER,
+				"android.permission.ACCESS_SURFACE_FLINGER",
 				Manifest.permission.RECORD_AUDIO,
 				Manifest.permission.SYSTEM_ALERT_WINDOW};
 		
@@ -76,7 +76,9 @@ public class permissionsScreen extends Fragment
 								{
 										// TODO: Implement this method
 										if(!adapter.isAllChecked()) {
-												slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
+											slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+											dialogFragment.setContext(getActivity());
+											dialogFragment.setFragmentManager(MainActivity.fragmentManager);
 												dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
 																@Override
@@ -137,7 +139,7 @@ public class permissionsScreen extends Fragment
 				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
 				{
 						for(int i = 0;i<permissions.length;i++) {
-								if(!permissions[i].equalsIgnoreCase(Manifest.permission.ACCESS_SURFACE_FLINGER) && !permissions[i].equalsIgnoreCase(Manifest.permission.SYSTEM_ALERT_WINDOW) && ContextCompat.checkSelfPermission(mActivity,permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+								if(!permissions[i].equalsIgnoreCase("android.permission.ACCESS_SURFACE_FLINGER") && !permissions[i].equalsIgnoreCase(Manifest.permission.SYSTEM_ALERT_WINDOW) && ContextCompat.checkSelfPermission(mActivity,permissions[i]) != PackageManager.PERMISSION_GRANTED) {
 										return false;
 								}
 						}

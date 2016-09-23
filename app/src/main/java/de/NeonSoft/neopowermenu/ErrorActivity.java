@@ -70,7 +70,7 @@ setContentView(de.NeonSoft.neopowermenu.R.layout.customactivityoncrash_error_act
 				}
 				catch (Throwable e)
 				{
-						Log.e("Failed to get Version infos: ",e.getMessage());
+						Log.e("NPM","Failed to get Version info: ",e);
 				}
 				actionbar.setSubTitle("v"+versionName+"("+versionCode+")");
 		actionbar.setAnimationsEnabled(true);
