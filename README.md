@@ -1,7 +1,9 @@
 # NeoPowerMenu
 Create Your own Power menu!
 
+[![api](https://img.shields.io/badge/api-16%2B-brightgreen.svg)]()
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/neopowermenu/localized.svg)](https://crowdin.com/project/neopowermenu)
+[![License](https://img.shields.io/badge/License-Apache v2.0-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ~ Sorry when my English is not the Best...
 
@@ -21,6 +23,7 @@ Change the colors change what is displayed and change the order!
 
 For support or to share ideas look here [XDA-Developers](http://forum.xda-developers.com/xposed/modules/mod-neopowermenu-t3324581)
 
+Concept image:
 ![alt tag](https://raw.githubusercontent.com/DrAcHe981/NeoPowerMenu/master/demo.gif)
 
  Original Source by Naman Dwivedi (naman14)
