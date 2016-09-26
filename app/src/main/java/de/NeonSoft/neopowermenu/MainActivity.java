@@ -106,10 +106,10 @@ public class MainActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         activity = getParent();
-        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", Context.MODE_WORLD_READABLE);
-        colorPrefs = getSharedPreferences("colors", Context.MODE_WORLD_READABLE);
-        orderPrefs = getSharedPreferences("visibilityOrder", Context.MODE_WORLD_READABLE);
-        animationPrefs = getSharedPreferences("animations", Context.MODE_WORLD_READABLE);
+        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", 0);
+        colorPrefs = getSharedPreferences("colors", 0);
+        orderPrefs = getSharedPreferences("visibilityOrder", 0);
+        animationPrefs = getSharedPreferences("animations", 0);
 
         DeepLogging = preferences.getBoolean("DeepXposedLoggin", false);
 
@@ -127,10 +127,12 @@ public class MainActivity extends AppCompatActivity {
 
         LOCALTESTSERVER = preferences.getBoolean("useLocalServer", false);
 
-        for (int folderCheck = 0; folderCheck < requieredDirs.length; folderCheck++) {
-            File check = new File(context.getFilesDir().getPath() + "/" + requieredDirs[folderCheck]);
+        for (String requieredDir : requieredDirs) {
+            File check = new File(context.getFilesDir().getPath() + "/" + requieredDir);
             if (!check.exists() && !check.isDirectory()) {
-                check.mkdir();
+                if(!check.mkdir()) {
+                    Log.e("NPM:rD","Failed to create required directory: "+requieredDir);
+                }
             }
         }
 

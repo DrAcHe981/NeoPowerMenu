@@ -33,7 +33,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|screenSize|screenLayout|uiMode"
             android:exported="true"
             android:label="NeoPowerMenu">
             <!--intent-filter>
@@ -94,7 +94,7 @@
 
         <activity
             android:name="addShortcut"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|screenSize|screenLayout|uiMode"
             android:excludeFromRecents="true"
             android:exported="true"
             android:label="@string/shortcut_ShowPowerMenu"
@@ -106,7 +106,7 @@
         </activity>
         <activity
             android:name=".xposed.XposedMainActivity"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|screenSize|screenLayout|uiMode"
             android:excludeFromRecents="true"
             android:exported="true"
             android:label="NeoPowerMenu"
@@ -128,7 +128,7 @@
 
         <activity
             android:name=".ErrorActivity"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation|screenSize|screenLayout|uiMode"
             android:process=":error_activity"
             android:theme="@style/ThemeBaseDark">
             <intent-filter>

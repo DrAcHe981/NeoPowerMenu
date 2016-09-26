@@ -16,12 +16,12 @@ android {
         abortOnError false
     }
     useLibrary 'org.apache.http.legacy'
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "24.0.2"
     defaultConfig {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 35
         versionName "1.5.4-4"
         multiDexEnabled true

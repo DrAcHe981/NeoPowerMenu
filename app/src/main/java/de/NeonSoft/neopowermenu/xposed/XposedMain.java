@@ -470,7 +470,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         if (sIsStartedGuard == null)
                             XposedUtils.log("sIsStartedGuard is null,reboot will crash...");
                         sIsStarted = (boolean) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sIsStarted");
-                        if (sIsStarted == true)
+                        if (sIsStarted)
                             XposedUtils.log("sIsStarted is true,thats not normal for fresh created...");
                         sInstance = (ShutdownThread) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sInstance");
                         if (sInstance == null)
@@ -690,7 +690,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static void takeScreenshot(final Context p1) {
         final Handler handler = new Handler();
         if (handler == null) {
-            XposedUtils.log("Screenshot failed: handler is null.");
+            XposedUtils.log("Screenshot failed: handler is null, this should never happen!");
             return;
         }
 
@@ -797,7 +797,9 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         ActivityManager am = (ActivityManager) p1.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfo = am.getRunningAppProcesses();
 
-        XposedUtils.log("Trying to kill "+runningAppProcessInfo.get(1).processName + " ("+runningAppProcessInfo.get(1).pid+")");
+        if(DeepXposedLogging) {
+            XposedUtils.log("Trying to kill " + runningAppProcessInfo.get(1).processName + " (" + runningAppProcessInfo.get(1).pid + ")");
+        }
 
         java.lang.Process suProcess = null;
         try {
@@ -837,7 +839,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
     private boolean showDialog() {
         if (mContext == null) {
-            Log.e(TAG, "Failed to show Power Menu: mContext is null");
             XposedUtils.log("Failed to show Power Menu: mContext is null");
             return false;
         }
@@ -852,7 +853,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             //intent.putExtra("mKeyguardShowing", mKeyguardShowing);
             context.startActivity(intent);
         } catch (Exception e) {
-            Log.e(TAG, "Failed to show Power Menu (" + PACKAGE_NAME + "): " + e);
             XposedUtils.log("Failed to show Power Menu (" + PACKAGE_NAME + "): " + e);
             return false;
         }

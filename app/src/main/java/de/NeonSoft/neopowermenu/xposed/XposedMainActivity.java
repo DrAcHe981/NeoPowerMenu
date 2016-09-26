@@ -87,10 +87,10 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         }
 
         mContext = getApplicationContext();
-        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", Context.MODE_WORLD_READABLE);
-        colorPrefs = getSharedPreferences("colors", Context.MODE_WORLD_READABLE);
-        orderPrefs = getSharedPreferences("visibilityOrder", Context.MODE_WORLD_READABLE);
-        animationPrefs = getSharedPreferences("animations", Context.MODE_WORLD_READABLE);
+        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", 0);
+        colorPrefs = getSharedPreferences("colors", 0);
+        orderPrefs = getSharedPreferences("visibilityOrder", 0);
+        animationPrefs = getSharedPreferences("animations", 0);
 
         DeepXposedLogging = preferences.getBoolean("DeepXposedLogging", false);
         HideOnClick = preferences.getBoolean("HideOnClick", false);
