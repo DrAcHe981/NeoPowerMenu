@@ -426,14 +426,16 @@ public class PreferencesPresetsFragment extends Fragment {
             presetInfo[3] = "true";
             while ((aDataRow = myReader.readLine()) != null) {
                 //aBuffer += aDataRow + "\n";
-                String[] aData = aDataRow.split("=");
-                if (aData.length < 2) {
-                    MainActivity.ImportUrl = null;
-                    Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
-                    return false;//presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
-                }
-                if (aData[0].equalsIgnoreCase("Creator")) {
-                    presetInfo[1] = aData[1];
+                if(!aDataRow.equalsIgnoreCase("[INFO]") && !aDataRow.equalsIgnoreCase("[COLORS]")) {
+                    String[] aData = aDataRow.split("=");
+                    if (aData.length < 2) {
+                        MainActivity.ImportUrl = null;
+                        Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
+                        return false;//presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
+                    }
+                    if (aData[0].equalsIgnoreCase("Creator")) {
+                        presetInfo[1] = aData[1];
+                    }
                 }
             }
             final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
