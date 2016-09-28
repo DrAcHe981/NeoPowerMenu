@@ -271,13 +271,13 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="graphics_PaddingDesc">"Definiert die Grafiken Größe.\nGrößerer wert = Kleinere Grafiken. (Standard 0dp)"</string>
   <string name="presetsManager_LoadOnlyGraphics">"Nur Grafiken laden"</string>
   <string name="downloadHelper_InvalidSize">"Die heruntergeladene Datei ist nicht vollständig. \nBitte versuch es erneut."</string>
-  <string name="downloadHelper_FailedAt1">"Keine Verbindung zum Server möglich, bitte überprüf deine Internetverbindung und versuch es erneut."</string>
-  <string name="downloadHelper_FailedAt2">"Fehler beim abrufen der benötigten Informationen, bitte überprüf deine Internetverbindung und versuch es erneut."</string>
-  <string name="downloadHelper_FailedAt3">"Fehler beim runterladen der Datei, bitte überprüf deine Internetverbindung und versuch es erneut."</string>
+  <string name="downloadHelper_FailedAt1">"Keine Verbindung zum Server möglich, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
+  <string name="downloadHelper_FailedAt2">"Fehler beim abrufen der benötigten Informationen, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
+  <string name="downloadHelper_FailedAt3">"Fehler beim runterladen der Datei, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
   <string name="downloadHelper_UnknownError">"Während des Herunterladens ist ein Unbekannter Fehler aufgetreten. Bitte versuch es erneut."</string>
-  <string name="uploadHelper_FailedAt1">"Keine Verbindung zum Server möglich, bitte überprüf deine Internetverbindung und versuch es erneut."</string>
-  <string name="uploadHelper_FailedAt2">"Fehler beim abrufen der benötigten Informationen, bitte überprüf deine Internetverbindung und versuch es erneut."</string>
-  <string name="uploadHelper_FailedAt3">"Fehler beim hochladen der Datei, bitte überprüf deine Internetverbindung und versuch es erneut."</string>
+  <string name="uploadHelper_FailedAt1">"Keine Verbindung zum Server möglich, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
+  <string name="uploadHelper_FailedAt2">"Fehler beim abrufen der benötigten Informationen, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
+  <string name="uploadHelper_FailedAt3">"Fehler beim hochladen der Datei, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
   <string name="uploadHelper_UnknownError">"Während des Hochladensist ein Unbekannter Fehler aufgetreten. Bitte versuch es erneut."</string>
   <string name="visibilityOrder_SearchApp">"Suche App (Groß/Kleinschreibung wird ignoriert):"</string>
   <string name="powerMenuMain_MediaPrevious">"Vorheriges"</string>

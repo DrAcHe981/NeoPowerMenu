@@ -242,6 +242,8 @@ Cheque a fonte no GitHub."</string>
   <string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal|Lento|Mais lento|Muito lento"</string>
   <string name="animations_Types">"Desvanecer|Revelar
 (Funciona somente para o plano de fundo)|Deslizar acima|Deslizar a esquerda|Deslizar a direita|Deslizar abaixo|Aumentar|Diminuir|Desativado"</string>
+  <string name="animations_Type">"Tipo"</string>
+  <string name="animations_Speed">"Velocidade"</string>
   <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
   <string name="presetsManager_LoadMore">"Carregando...|Aguarde...|Mais predefinições|Clique aqui para mostrar mais predefinições.|O Fim.|Não há mais nenhuma.|Toque para repetir. "</string>
@@ -269,6 +271,7 @@ Cheque a fonte no GitHub."</string>
   <string name="errorActivity_RestartApp">"Reiniciar aplicativo"</string>
   <string name="errorActivity_CloseApp">"Fechar aplicativo"</string>
   <string name="errorActivity_Close">"Fechar"</string>
+  <string name="errorActivity_MoreInfo">"Mais informações"</string>
   <string name="tourReview_Title">"Tour de apresentação"</string>
   <string name="tourReview_Desc">"Clique aqui para que começar."</string>
   <string name="tourPage_Next">"Avançar"</string>
@@ -308,4 +311,6 @@ Cheque a fonte no GitHub."</string>
   <string name="powerMenuMain_MediaPrevious">"Anterior"</string>
   <string name="powerMenuMain_MediaPlayPause">"Reproduzir/Pausar"</string>
   <string name="powerMenuMain_MediaNext">"Próxima"</string>
+  <string name="presetsManager_Loading">"Lendo predefinição..."</string>
+  <string name="shortcut_ShowPowerMenu">"Menu de energia"</string>
 </resources>

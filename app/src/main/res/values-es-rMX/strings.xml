@@ -15,6 +15,7 @@
   <string name="powerMenuBottom_SafeMode">"Modo seguro"</string>
   <string name="powerMenu_Shuttingdown">"Apagando..."</string>
   <string name="powerMenu_Rebooting">"Reiniciando..."</string>
+  <string name="ToggleRotateMode_Auto">"Auto"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidad y orden"</string>
   <string name="category_Preset">"Temas"</string>
@@ -209,5 +210,7 @@
   <string name="advancedPrefs_Confirmation">"Requiere confirmación | Permitir un cuadro diálogo de confirmación antes de reiniciar el o apagar."</string>
   <string name="preferences_Donate">"Donar | ¿Te gusta la aplicación? \nPorque no donarme una taza de café o algo más?"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Los iconos de aplicación para los botones de acceso directo de aplicación de la carga."</string>
+  <string name="advancedPrefs_ExperimentalPWMHook">Experimental PhoneWindowManager hook</string>
+  <string name="colorsResetToDefault">"Reset to default"</string>
   <string name="tourPage_2_Title">"Imagens amor"</string>
 </resources>
