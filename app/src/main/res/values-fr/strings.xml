@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">"NeoPowerMenu"</string>
+<string name="action_settings">"Paramètres"</string>
+<string name="ShareMessage">"Jetez un oeil à cette magnifique appli pour personnaliser le Menu de Démarrage de votre appareil android rooté !
+
+"</string>
+
+<!-- Change this to your website! -->
+<string name="TranslatorWebsite">"http://www.neon-soft.de"</string>
+<string name="PreviewPowerMenu">"Prévisualisation"</string>
+
+<!-- Power Menu -->
+<string name="powerMenuMain_Shutdown">"Éteindre"</string>
+<string name="powerMenuMain_Reboot">"Redémarrer"</string>
+<string name="powerMenuMain_SoftReboot">"Redémarrage logiciel"</string>
+<string name="powerMenuMain_SoftRebootDesc">"Redémarre simplement l'interface utilisateur Android en tuant le processus zygote"</string>
+<string name="powerMenuMain_Screenshot">"Capture d\'écran"</string>
+<string name="powerMenuMain_ScreenshotDesc">"Délai capture d\'écran delay: [SCREENSHOTDELAY]"</string>
+<string name="powerMenuBottom_Recovery">"Recovery"</string>
+<string name="powerMenuBottom_Bootloader">"Bootloader"</string>
+<string name="powerMenuBottom_SafeMode">"Mode Sécurisé"</string>
+<string name="powerMenu_Shuttingdown">"Extinction..."</string>
+<string name="powerMenu_Rebooting">"Redémarrage..."</string>
+
+<!-- Preferences: Main -->
+<string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
+<string name="preferencesTitle_RootXposed1">"Root et Xposed non disponible"</string>
+<string name="preferencesDesc_RootXposed1">"Root et Xposed requis pour que ce module fonctionne."</string>
+<string name="preferencesTitle_RootXposed2">"Xposed fonctionnel, pas le Root"</string>
+<string name="preferencesDesc_RootXposed2">"Mais le Root est requis pour éteindre ou redémarrer...
+Veuillez accepter l\'accès root."</string>
+<string name="preferencesTitle_RootXposed3">"Root fonctionnel, pas Xposed"</string>
+<string name="preferencesDesc_RootXposed3">"Mais Xposed est requis pour remplacer le Menu de Redémarrage...
+Veuillez activer le module dans Xposed installer."</string>
+<string name="preferencesTitle_RootXposed4">"Root et Xposed fonctionnent"</string>
+<string name="preferencesDesc_RootXposed4">"L\'appli devrait bien fonctionner !"</string>
+<string name="preferencesCategory_General">"Général"</string>
+<string name="preferencesTitle_Style">"Style"</string>
+<string name="preferencesDesc_Style">"[STYLENAME] (plus à venir)"</string>
+<string name="preferencesTitle_Theme">"Thème"</string>
+<string name="preferencesDesc_Theme">"Changer l\'aspect et l\'ergonomie."</string>
+<string name="preferencesTitle_VisibilityOrder">"Visibilité et Order"</string>
+<string name="preferencesDesc_VisibilityOrder">"Sélectionner les éléments que vous voulez afficher et les placer dans l\'ordre de votre choix."</string>
+<string name="preferencesCategory_Other">"Autres"</string>
+<string name="preferencesTitle_Advanced">"Paramètres avancés"</string>
+<string name="preferencesDesc_Advanced">"Changer les paramètres avancés comme les délais, la gravité ou la vitesse."</string>
+<string name="preferencesTitle_HideLauncherIcon">"Cacher l\'appli dans le launcher"</string>
+<string name="preferencesDesc_HideLauncherIcon">"Cache l\'icône de l\'appli dans le launcher, un redémarrage peut être nécessaire.
+Cet écran de paramètres sera alors uniquement accessible via le Xposed Installer."</string>
+<string name="preferencesCategory_About">"À propos"</string>
+<string name="preferencesTitle_NeoSource">"Source"</string>
+<string name="preferencesDesc_NeoSource">"NeoPowerMenu est open source.
+Vérifiez la source sur GitHub."</string>
+<string name="preferencesTitle_OrigSource">"Source originale"</string>
+<string name="preferencesDesc_OrigSource">"Le Material Power Menu original est open source.
+Vérifiez la source sur GitHub."</string>
+<string name="preferencesTitle_Share">"Partager"</string>
+<string name="preferencesDesc_Share">"Vous aimez l\'appli ? Partagez-la avec vos amis."</string>
+<string name="preferencesTitle_Translator">"Traductions par"</string>
+
+<!-- Add your name here to get language credits -->
+<string name="preferencesDesc_Translator">"Primokorn"</string>
+<string name="preferencesTitle_About">"Code par Neon-Soft / DrAcHe981"</string>
+<string name="preferencesDesc_About">"basé sur le code source de Naman Dwivedi (naman14)."</string>
+
+<!-- Preferences: Visibility and order -->
+<string name="visibilityOrderCategory_VisibilityOrder">"Visibilité et Ordre"</string>
+<string name="visibilityOrderTitle_Shutdown">"Éteindre"</string>
+<string name="visibilityOrderDesc_Shutdown">"Éteint l'appareil."</string>
+<string name="visibilityOrderTitle_Reboot">"Redémarrer"</string>
+<string name="visibilityOrderDesc_Reboot">"Redémarre l\'appareil."</string>
+<string name="visibilityOrderTitle_SoftReboot">"Redémarrage logiciel"</string>
+<string name="visibilityOrderDesc_SoftReboot">"Redémarre simplement l'interface utilisateur en tuant le processus zygote"</string>
+<string name="visibilityOrderTitle_Screenshot">"Capture d\'écran"</string>
+<string name="visibilityOrderDesc_Screenshot">"Prend une capture d\'écran depuis le Menu de Redémarrage."</string>
+<string name="visibilityOrder_Enabled">"Activé:"</string>
+<string name="category_Preset">"Préréglagles"</string>
+<string name="preset_Load">"Chager préréglages"</string>
+<string name="preset_LoadDesc">"Charger une configuration sauvegardée"</string>
+<string name="preset_Save">"Enregistrer préréglage"</string>
+<string name="preset_SaveDesc">"Enregistrer votre configuration actuelle"</string>
+
+<!-- Preferences: Background colors -->
+<string name="category_Reveal">"Afficher les arrière-plans"</string>
+<string name="category_Backgrounds">"Couleurs d\'arrière-plan"</string>
+<string name="Dialog_Backgroundcolor">"Couleur d\'arrière-plan"</string>
+<string name="Dialog_BackgroundcolorDesc">"La couleur d\'arrière-plan de la boîte de dialogue."</string>
+<string name="DialogShutdown_Backgroundcolor">"Couleur d\'arrière-plan d\'extinction"</string>
+<string name="DialogShutdown_BackgroundcolorDesc">"La couleur d\'arrière-plan de la boîte de dialogue quand on appuie sur Éteindre."</string>
+<string name="DialogReboot_Backgroundcolor">"Couleur d\'arrière-plan du redémarrage"</string>
+<string name="DialogReboot_BackgroundcolorDesc">"La couleur d\'arrière-plan de la boîte de dialogue quand on appuie sur Redémarrer."</string>
+<string name="DialogSoftReboot_Backgroundcolor">"Couleur d\'arrière-plan du Redémarrage logiciel"</string>
+<string name="DialogSoftReboot_BackgroundcolorDesc">"La couleur d\'arrière-plan de la boîte de dialogue quand on appuie sur Redémarrage logiciel."</string>
+<string name="DialogScreenshot_Backgroundcolor">"Couleur d\'arrière-plan de Capture d\'écran"</string>
+<string name="DialogScreenshot_BackgroundcolorDesc">"La couleur d\'arrière-plan du Cercle Capture d\'écran."</string>
+<string name="DialogRecovery_Backgroundcolor">"Couleur d\'arrière-plan du Recovery"</string>
+<string name="DialogRecovery_BackgroundcolorDesc">"La couleur d\'arrière-plan de la boîte de dialogue quand on appuie sur Recovery."</string>
+<string name="DialogBootloader_Backgroundcolor">"Couleur d\'arrière-plan du Bootloader"</string>
+<string name="DialogBootloader_BackgroundcolorDesc">"La couleur d\'arrière-plan de la boîte de dialogue quand on appuie sur Bootloader."</string>
+<string name="DialogSafeMode_Backgroundcolor">"Couleur d\'arrière-plan du Mode Sécurisé"</string>
+<string name="DialogSafeMode_BackgroundcolorDesc">"La couleur d\'arrière-plan de la boîte de dialogue quand on appuie sur Mode Sécurisé."</string>
+
+<!-- Preferences: Text colors -->
+<string name="category_Texts">"Couleurs du texte"</string>
+<string name="Dialog_Textcolor">"Couleur du texte"</string>
+<string name="Dialog_TextcolorDesc">"La couleur du texte de la boîte de dialogue."</string>
+<string name="DialogShutdown_Textcolor">"Couleur du texte de l\'extinction"</string>
+<string name="DialogShutdown_TextcolorDesc">"La couleur du texte de la boîte de dialogue quand on appuie sur Éteindre."</string>
+<string name="DialogReboot_Textcolor">"Couleur du texte de Redémarrer"</string>
+<string name="DialogReboot_TextcolorDesc">"La couleur du texte de la boîte de dialogue quand on appuie sur Redémarrer."</string>
+<string name="DialogSoftReboot_Textcolor">"Couleur du texte de Redémarrage logiciel"</string>
+<string name="DialogSoftReboot_TextcolorDesc">"La couleur du texte de la boîte de dialogue quand on appuie sur Redémarrage logiciel."</string>
+<string name="DialogScreenshot_Textcolor">"Couleur du texte de Capture d\'écran"</string>
+<string name="DialogScreenshot_TextcolorDesc">"La couleur du texte de la lettre cerclée Capture d\'écran."</string>
+<string name="DialogRecovery_Textcolor">"Couleur du texte de Recovery"</string>
+<string name="DialogRecovery_TextcolorDesc">"La couleur du texte de la boîte de dialogue quand on appuie sur Recovery."</string>
+<string name="DialogBootloader_Textcolor">"Couleur du texte de Bootloader"</string>
+<string name="DialogBootloader_TextcolorDesc">"La couleur du texte de la boîte de dialogue quand on appuie sur Bootloader."</string>
+<string name="DialogSafeMode_Textcolor">"Couleur du texte de Mode Sécurisé"</string>
+<string name="DialogSafeMode_TextcolorDesc">"La couleur du texte de la boîte de dialogue quand on appuie sur Mode Sécurisé."</string>
+
+<!-- Preferences: Preset Manager -->
+<string name="presetsManager_TitleLocal">"Préréglages locaux"</string>
+<string name="presetsManager_TitleOnline">"Préréglages en ligne"</string>
+<string name="presetsManager_Active">"Actif:"</string>
+<string name="presetsManager_Creator">"Créateur: [CREATORNAME]"</string>
+<string name="presetsManager_BuiltIn">"Intégré"</string>
+<string name="presetsManager_Delete">"Supprimer"</string>
+<string name="presetsManager_SureToDelete">"Êtes-vous sûr(e) de vouloir supprimer [PRESETNAME] ?
+Cette action est irréversible !"</string>
+<string name="presetsManager_Share">"Partager"</string>
+<string name="presetsManager_NJI">"Cette fonctionnalité n\'est pas actuellement implémentée..."</string>
+<string name="presetsManager_ImportMsg">"Souhaitez-vous importer ce préréglage ?"</string>
+<string name="presetsManager_ImportSuccess">"[PRESETNAME] importé avec succès."</string>
+<string name="presetsManager_ImportFailed">"Échec de l\'importation..."</string>
+
+<!-- Preferences: Advanced -->
+<string name="advancedPrefsCategory_PowerMenu">"Menu de Démarrage"</string>
+<string name="advancedPrefsTitle_UseGraphics">"Utiliser des Graphiques"</string>
+<string name="advancedPrefsDesc_UseGraphics">"Utiliser des Graphiques à la pace des Lettres cerclées."</string>
+<string name="advancedPrefsCategory_LockScreen">"Écran de verrouillage"</string>
+<string name="advancedPrefsTitle_ShowOnLockScreen">"Afficher sur l\'écran de verrouillage on lockscreen"</string>
+<string name="advancedPrefsDesc_ShowOnLockScreen">"Afficher le Menu de Démarrage sur l\'écran de verrouillage. Si désactivé, rien ne sera affiché."</string>
+<string name="advancedPrefsCategory_Delays">"Délais"</string>
+<string name="advancedPrefs_DelayZero">"Presque instantané"</string>
+<string name="advancedPrefsTitle_ScreenshotDelay">"Délai Capture d\'écran"</string>
+<string name="advancedPrefsDesc_ScreenshotDelay">"Délai entre l\'appui et la capture d\'écran."</string>
+<string name="advancedPrefsTitle_PowerMenuSlideUpDelay">"Délai du Menu de Démarrage"</string>
+<string name="advancedPrefsDesc_PowerMenuSlideUpDelay">"Délai entre l\'apparition de l\'animation et le menu de démarrage."</string>
+
+<!-- Dialog -->
+<string name="Dialog_WaitForRoot">"En attente du Root..."</string>
+<string name="Dialog_Ok">"Ok"</string>
+<string name="Dialog_Yes">"Oui"</string>
+<string name="Dialog_Rename">"Renommer"</string>
+<string name="Dialog_Cancel">"Annuler"</string>
+<string name="Dialog_Delete">"Supprimer"</string>
+<string name="Dialog_Load">"Charger"</string>
+<string name="Dialog_Save">"Enregistrer"</string>
+<string name="Dialog_Ignore">"Ignorer"</string>
+<string name="Dialog_SelectColor">"Choisir un couleur"</string>
+<string name="ColorPicker_Value">"Valeur:"</string>
+<string name="ColorPicker_Saturation">"Saturation:"</string>
+<string name="ColorPicker_Opacity">"Opacité:"</string>
+<string name="ColorPicker_Hex">"Hex:"</string>
+<string name="presetLoadDialog_BuiltInLight">"Clair"</string>
+<string name="presetLoadDialog_BuiltInDark">"Sombre"</string>
+<string name="presetLoadDialog_BuiltInBlack">"Noir"</string>
+<string name="presetLoad_PresetDeleted">"[PRESETNAME] supprimé !"</string>
+<string name="presetLoad_CantDelBuiltIn">"Les préréglages intégrés ne peuvent pas être supprimés !"</string>
+<string name="presetLoad_PresetLoaded">"[PRESETNAME] chargé !"</string>
+<string name="presetSaveDialog_CreatorNameInfo">"Ce préréglage a été créé par :"</string>
+<string name="presetSaveDialog_InfoText">"Définir un nom pour le préréglage :"</string>
+<string name="presetSaveDialog_OverwriteText">"Déjà existant, le préréglage va être écrasé !"</string>
+<string name="presetSave_PresetSaved">"[PRESETNAME] enregistré !"</string>
+<string name="ToggleShow">"Afficher"</string>
+<string name="ToggleHide">"Cacher"</string>
+<string name="presetsManager_Title">"Préréglages"</string>
+<string name="powerMenuMain_Screenrecord">"Enregistrement de l\'écran"</string>
+<string name="preferencesTitle_RootXposed5">"La version du Module est trop ancienne..."</string>
+<string name="preferencesDesc_RootXposed5">"Veuillez redémarrer votre appareil pour terminer le processus de mise à jour !"</string>
+<string name="preferencesTitle_DeepXposedLogging">"Journalisation détaillée Xposed"</string>
+<string name="preferencesDesc_DeepXposedLogging">"Activer la journalisation avancée Xposed, puis redémarrer pour voir les changes."</string>
+<string name="visibilityOrderTitle_Screenrecord">"Enregistrement de l\'écran"</string>
+<string name="visibilityOrderDesc_Screenrecord">"Faire des enregistrements de l\'écran depuis le Menu de Démarrage."</string>
+
+<!-- Screen recording -->
+<string name="screenrecord_notif_ticker">"L\'écran est en train d\'être enregistré"</string>
+<string name="screenrecord_notif_title">"Enregistrement de l\'écran"</string>
+<string name="screenrecord_notif_stop">"Stop"</string>
+<string name="screenrecord_notif_pointer">"Basculer le pointeur"</string>
+<string name="screenrecord_toast_error">"Impossible d\'éenregistrer l\'écran"</string>
+<string name="screenrecord_toast_processing">"Impossible de lancer un nouvel enregistrement car le précédent est toujours en-cours d\'utilisation"</string>
+<string name="screenrecord_toast_saved">"Enregistrement enregistré en %s"</string>
+<string name="screenrecord_toast_save_error">"Impossible d\'enregistrer vers le fichier de destination"</string>
+<string name="powerMenuMain_FlashlightOn">"Allumer la Torche"</string>
+<string name="powerMenuMain_FlashlightOff">"Éteindre la Torche"</string>
+<string name="powerMenuMain_FlashlightDesc">"Éteindre après [AUTOOFF]."</string>
+<string name="powerMenuMain_FlashlightDescDisabled">"Extinction automatique désactivée."</string>
+<string name="powerMenuMain_ExpandedDesktop">"Bureau étendu"</string>
+<string name="visibilityOrderTitle_Flashlight">"Torche"</string>
+<string name="visibilityOrderDesc_Flashlight">"Activer/Désactiver la Torche depuis le Menu de Démarrage."</string>
+<string name="visibilityOrderTitle_ExpandedDesktop">"Bureau étendu"</string>
+<string name="visibilityOrderDesc_ExpandedDesktop">"Activer/Désactiver le mode Bureau Étendu de GravityBox depuis le Menu de Démarrage (GravityBox doit être installé)."</string>
+<string name="advancedPrefsTitle_DialogGravity">"Position de la boîte de dialogue"</string>
+<string name="advancedPrefsDesc_DialogGravity">"Modifier la position de la boîte de dialogue."</string>
+<string name="advancedPrefs_DialogGravityTop">"Haut"</string>
+<string name="advancedPrefs_DialogGravityLeft">"Gauche"</string>
+<string name="advancedPrefs_DialogGravityCenter">"Centre"</string>
+<string name="advancedPrefs_DialogGravityRight">"Droite"</string>
+<string name="advancedPrefs_DialogGravityBottom">"Bas"</string>
+
+<!-- Torch -->
+<string name="quick_settings_torch_on">"Torche On"</string>
+<string name="quick_settings_torch_off">"Torche Off"</string>
+<string name="quick_settings_torch_off_notif">"Appuyer pour éteindre"</string>
+<string name="RevealBackground">"Affiche la couleur d\'arrière-plan"</string>
+<string name="RevealBackgroundDesc">"La couleur d\'arrière-plan de l\'effect d\'apparition."</string>
+<string name="ActionRevealBackground">"La couleur d\'arrière-plan de l\'Action"</string>
+<string name="ActionRevealBackgroundDesc">"La couleur d\'arrière-plan de l\'effet d\'apparition quand on appuie sur les options Redémarrer/Éteindre."</string>
+<string name="DialogScreenrecord_Backgroundcolor">"Couleur d\'arrière-plan de l\'enregistrement de l\'écran"</string>
+<string name="DialogScreenrecord_BackgroundcolorDesc">"La couleur d\'arrière-plan du cercle de l\'enregistrement de l\'écran."</string>
+<string name="DialogFlashlight_Backgroundcolor">"Couleur d\'arrière-plan de la Torche"</string>
+<string name="DialogFlashlight_BackgroundcolorDesc">"La couleur d\'arrière-plan du cercle de la Torche."</string>
+<string name="DialogExpandedDesktop_Backgroundcolor">"Couleur d\'arrière-plan du Bureau étendu"</string>
+<string name="DialogExpandedDesktop_BackgroundcolorDesc">"La couleur d\'arrière-plan du cercle du Bureau étendu."</string>
+<string name="DialogScreenrecord_Textcolor">"Couleur du texte de l\'Enregistrement de l\'écran"</string>
+<string name="DialogScreenrecord_TextcolorDesc">"La couleur du texte de la lettre cerclée de l\'enregistrement de l\'écran."</string>
+<string name="DialogFlashlight_Textcolor">"Couleur du texte de la Torche"</string>
+<string name="DialogFlashlight_TextcolorDesc">"La couleur du texte de la lettre cerclée de la Torche."</string>
+<string name="DialogExpandedDesktop_Textcolor">"Couleur du texte du Bureau étendu"</string>
+<string name="DialogExpandedDesktop_TextcolorDesc">"La couleur du texte de la lettre cerclée du Bureau étendu."</string>
+
+<!-- Dialog -->
+<string name="permissionRequestTitle">"Permissions"</string>
+<string name="permissionRequestMsg">"Appareil photo: Pour activer/désactiver la Torche.
+Lecture/Écriture du stockage: pour des fonctionnalités futures (petite info : images personnalisées).
+
+Ces permissions sont nécessaires pour que l\'appli fonctionne correctement...
+Appuyez sur OK pour afficher la boîte de dialogue une nouvelle fois, appuyez sur Annuler pour quitter l\'appli."</string>
+</resources>
