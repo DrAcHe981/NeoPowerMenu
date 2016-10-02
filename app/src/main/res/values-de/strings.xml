@@ -308,7 +308,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="backupRestore_DeleteFailed">"Löschen der Dateien fehlgeschlagen...\nBitte versuch es später erneut, es kann sein das manche Dateien nun beschädigt sind..."</string>
   <string name="backupRestore_RestoreFailed">"Wiederherstellen fehlgeschlagen...\nBitte versuch es später erneut, es kann sein das manche Dateien nun beschädigt sind..."</string>
   <string name="backupRestore_RestoreFailedUnknownFile">"Wiederherstellen fehlgeschlagen, unbekannter Dateityp! \nBitte versuch es erneut."</string>
-  <string name="backupRestoreOptions_MainPreferences">"Haupt Einstellungen (Dies schließt ihre einzigartige Geräte-Id und die Erweiterten Einstellungen mit ein)"</string>
+  <string name="backupRestoreOptions_MainPreferences">"Haupt Einstellungen (Einzigartige Geräte-Id, Erweiterten Einstellungen, usw.)"</string>
   <string name="backupRestoreOptions_Colors">"Farben"</string>
   <string name="backupRestoreOptions_Presets">"Voreinstellungen"</string>
   <string name="backupRestoreOptions_Graphics">"Grafiken"</string>

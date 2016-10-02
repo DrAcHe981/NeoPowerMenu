@@ -336,7 +336,7 @@
     <string name="backupRestore_DeleteFailed">"File deleting failed...\nPlease try it again, some files may be corrupted now..."</string>
     <string name="backupRestore_RestoreFailed">"File restore failed...\nPlease try it again, some files may be corrupted now..."</string>
     <string name="backupRestore_RestoreFailedUnknownFile">"Restore failed, unknown file type!\nPlease try it again."</string>
-    <string name="backupRestoreOptions_MainPreferences">"Main preferences (This includes your unique device id and the advanced settings)"</string>
+    <string name="backupRestoreOptions_MainPreferences">"Main preferences (Unique device id, advanced settings etc.)"</string>
     <string name="backupRestoreOptions_Colors">"Colors"</string>
     <string name="backupRestoreOptions_Presets">"Presets"</string>
     <string name="backupRestoreOptions_Graphics">"Graphics"</string>
