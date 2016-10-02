@@ -191,7 +191,6 @@
   <string name="presetLoadDialog_BuiltIn">"Светлый|Тёмный|Чёрный"</string>
   <string name="advancedPrefs_DialogGravity">"Вверх|Влево|Вправо|Вниз"</string>
   <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
-  <string name="graphics_Crop">"Обрезать"</string>
   <string name="graphics_NoPresetsFound">"Шаблонов с графикой не найдено..."</string>
   <string name="graphics_GraphicsSaveLoad">"\"Сохранить текущую графику.|Этот шаблон содержит графические изображения, вы хотите их загрузить?
 Это перезапишет ваши текущие изображения!\""</string>
@@ -242,6 +241,8 @@
   <string name="animations_Speeds">"Очень быстро|Быстрее|Быстро|Нормально|Медленно|Медленнее|Очень медленно"</string>
   <string name="animations_Types">"\"Затемнение|Появление
 (Работает только для заднего плана)|Верхний край|Левый край||Правый край|Нижний край|Расширить вверх|Расширить вниз|Отключено\""</string>
+  <string name="animations_Type">"Тип"</string>
+  <string name="animations_Speed">"Скорость"</string>
   <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Круг загрузки"</string>
   <string name="presetsManager_LoadMore">"Загрузка...|Пожалуйста, подождите...|Показать больше шаблонов|Нажмите сюда, чтобы отобразить больше шаблонов.|Конец.|Больше шаблонов нет.|Нажмите, чтобы попробовать снова."</string>
@@ -270,6 +271,7 @@
   <string name="errorActivity_RestartApp">"Перезапуск приложения"</string>
   <string name="errorActivity_CloseApp">"Закрыть приложение"</string>
   <string name="errorActivity_Close">"Закрыть"</string>
+  <string name="errorActivity_MoreInfo">"Больше информации"</string>
   <string name="tourReview_Title">"Обзорный тур"</string>
   <string name="tourReview_Desc">"Нажмите здесь, чтобы начать тур."</string>
   <string name="tourPage_Next">"Дальше"</string>
@@ -306,4 +308,9 @@
   <string name="uploadHelper_FailedAt3">"Не удалось загрузить файл на сервер, пожалуйста, проверьте своё соединение и попробуйте снова."</string>
   <string name="uploadHelper_UnknownError">"Произошла неизвестная ошибка при загрузке файла на сервер, пожалуйста, попробуйте снова."</string>
   <string name="visibilityOrder_SearchApp">"Поиск (без учета регистра):"</string>
+  <string name="powerMenuMain_MediaPrevious">"Предыдущий"</string>
+  <string name="powerMenuMain_MediaPlayPause">"Пуск/Пауза"</string>
+  <string name="powerMenuMain_MediaNext">"Следующий"</string>
+  <string name="presetsManager_Loading">"Чтение шаблона..."</string>
+  <string name="shortcut_ShowPowerMenu">"Меню выключения"</string>
 </resources>

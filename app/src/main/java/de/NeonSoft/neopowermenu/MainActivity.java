@@ -106,12 +106,12 @@ public class MainActivity extends AppCompatActivity {
 
         context = getApplicationContext();
         activity = getParent();
-        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", 0);
-        colorPrefs = getSharedPreferences("colors", 0);
+        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",  0);
+        colorPrefs = getSharedPreferences("colors",  0);
         orderPrefs = getSharedPreferences("visibilityOrder", 0);
         animationPrefs = getSharedPreferences("animations", 0);
 
-        DeepLogging = preferences.getBoolean("DeepXposedLoggin", false);
+        DeepLogging = preferences.getBoolean("DeepXposedLogging", false);
 
         ForcedLanguage = preferences.getString("ForcedLanguage","System");
         if(!ForcedLanguage.equalsIgnoreCase("system")) {
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Throwable e) {
             versionName = "< unknown >";
             versionCode = -1;
-            Log.e("NPM", "Failed to get Version infos: ", e);
+            Log.e("NPM", "Failed to get Version info: ", e);
         }
 
         actionbar = new actionBar(this);
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
             LoginFragment.returnToLogin();
         } else if (visibleFragment.equalsIgnoreCase("Gravity")) {
             changePrefPage(new PreferencesAdvancedFragment(), false);
-        } else if (visibleFragment.equalsIgnoreCase("tour") || visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login") || visibleFragment.equalsIgnoreCase("permissions") || visibleFragment.equalsIgnoreCase("Advanced") || visibleFragment.equalsIgnoreCase("CustomColors") || visibleFragment.equalsIgnoreCase("Graphics") || visibleFragment.equalsIgnoreCase("Animations")) {
+        } else if (visibleFragment.equalsIgnoreCase("BackupRestore") || visibleFragment.equalsIgnoreCase("tour") || visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login") || visibleFragment.equalsIgnoreCase("permissions") || visibleFragment.equalsIgnoreCase("Advanced") || visibleFragment.equalsIgnoreCase("CustomColors") || visibleFragment.equalsIgnoreCase("Graphics") || visibleFragment.equalsIgnoreCase("Animations")) {
             if (visibleFragment.equalsIgnoreCase("tour")) {
                 if (tourFragment.pager.getCurrentItem() == 0) {
                     tourFragment.finishTour();

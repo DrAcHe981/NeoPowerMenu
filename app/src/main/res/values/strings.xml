@@ -310,4 +310,36 @@
     <string name="presetsManager_Loading">"Reading preset..."</string>
 
     <string name="shortcut_ShowPowerMenu">"Power menu"</string>
+
+    <string name="visibilityOrder_InvalidMultiPageMove">"Invalid move operation, There can't be a start after the end or an end before the start!"</string>
+
+    <string name="preferences_BackupRestoreTitle">"Backup/Restore"</string>
+    <string name="preferences_BackupRestoreDesc">"Backup all your settings and restore them later, also you could delete settings if something goes wrong or if you just want a fresh menu."</string>
+
+    <string name="backupRestoreCategory_BackupRestore">"Backup and restore"</string>
+    <string name="backupRestore_NewBackupTitle">"Backup all settings"</string>
+    <string name="backupRestore_NewBackupDesc">"Click here to save all settings to the local storage root."</string>
+    <string name="backupRestore_RestoreTitle">"Restore settings"</string>
+    <string name="backupRestore_RestoreDesc">"Click here to restore saved settings."</string>
+    <string name="backupRestoreCategory_Delete">"Delete"</string>
+    <string name="backupRestore_DeleteSettingsTitle">"Delete settings"</string>
+    <string name="backupRestore_DeleteSettingsDesc">"Click here to get a dialog with settings you could reset, Use this if something somehow destroyed some settings and the app keeps crashing when entering the corresponding screen."</string>
+    <string name="backupRestore_ChooseBackupOptions">"Please choose what you want to backup:\nSelecting 'Presets' or 'Graphics' could lead to a big backup file!"</string>
+    <string name="backupRestore_ChooseBackupName">"Backup name: (Leave empty to use an automated name)"</string>
+    <string name="backupRestore_ChooseRestoreOptions">"Please choose what you want to restore:"</string>
+    <string name="backupRestore_ChooseDeleteOptions">"Please choose what you want to delete:"</string>
+    <string name="backupRestore_BackupComplete">"Backup complete!"</string>
+    <string name="backupRestore_BackupFailed">"Backup failed, please try it again."</string>
+    <string name="backupRestore_RestoreComplete">"File restore almost complete!\nClick on restart to complete the file restore process. (This could take some time)"</string>
+    <string name="backupRestore_DeleteComplete">"File deleting almost complete!\nClick on restart to complete the file deleting process. (This could take some time)"</string>
+    <string name="backupRestore_Restart">"Restart"</string>
+    <string name="backupRestore_DeleteFailed">"File deleting failed...\nPlease try it again, some files may be corrupted now..."</string>
+    <string name="backupRestore_RestoreFailed">"File restore failed...\nPlease try it again, some files may be corrupted now..."</string>
+    <string name="backupRestore_RestoreFailedUnknownFile">"Restore failed, unknown file type!\nPlease try it again."</string>
+    <string name="backupRestoreOptions_MainPreferences">"Main preferences (This includes your unique device id and the advanced settings)"</string>
+    <string name="backupRestoreOptions_Colors">"Colors"</string>
+    <string name="backupRestoreOptions_Presets">"Presets"</string>
+    <string name="backupRestoreOptions_Graphics">"Graphics"</string>
+    <string name="backupRestoreOptions_VisibilityAndOrder">"Visibility and Order"</string>
+    <string name="backupRestoreOptions_Animations">"Animations"</string>
 </resources>

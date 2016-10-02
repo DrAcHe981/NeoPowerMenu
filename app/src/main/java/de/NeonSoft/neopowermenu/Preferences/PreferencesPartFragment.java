@@ -75,6 +75,8 @@ public class PreferencesPartFragment extends Fragment {
     private static TextView TextView_PermissionsTitle;
     private static TextView TextView_PermissionsDesc;
 
+    LinearLayout LinearLayout_BackupRestore;
+
     private static LinearLayout LinearLayout_HideLauncherIcon;
     private static TextView TextView_HideLauncherIconTitle;
     private static TextView TextView_HideLauncherIconDesc;
@@ -104,7 +106,7 @@ public class PreferencesPartFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: Implement this method
-        if(!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
+        if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
             MainActivity.visibleFragment = "Main";
         }
 
@@ -140,9 +142,9 @@ public class PreferencesPartFragment extends Fragment {
         }
         for (int i = 0; i < PreferencesAnimationsFragment.names.length; i++) {
             if ((int) PreferencesAnimationsFragment.names[i][0] == animationsAdapter.TYPE_ITEM) {
-                if(PreferencesAnimationsFragment.names[i][1].toString().contains("type") && MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i][1].toString(), -1) == -1) {
+                if (PreferencesAnimationsFragment.names[i][1].toString().contains("type") && MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i][1].toString(), -1) == -1) {
                     MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i][1].toString(), PreferencesAnimationsFragment.defaultTypes[i]).apply();
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i+1][1].toString(), 3).apply();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + 1][1].toString(), 3).apply();
                 }
             }
         }
@@ -205,6 +207,8 @@ public class PreferencesPartFragment extends Fragment {
         TextView_PermissionsDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_PermissionsDesc);
         TextView_PermissionsTitle.setText(getString(R.string.preferences_Permissions).split("\\|")[0]);
         TextView_PermissionsDesc.setText(getString(R.string.preferences_Permissions).split("\\|")[1]);
+
+        LinearLayout_BackupRestore = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_BackupRestore);
 
         LinearLayout_HideLauncherIcon = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_HideLauncherIcon);
         TextView_HideLauncherIconTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_HideLauncherIconTitle);
@@ -377,6 +381,13 @@ public class PreferencesPartFragment extends Fragment {
             }
         });
 
+        LinearLayout_BackupRestore.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.changePrefPage(new PreferencesBackupRestore(), false);
+            }
+        });
+
         LinearLayout_HideLauncherIcon.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -477,7 +488,15 @@ public class PreferencesPartFragment extends Fragment {
                 // TODO: Implement this method
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(Urlgithub));
-                startActivity(i);
+                try {
+                    startActivity(i);
+                } catch (ActivityNotFoundException e) {
+                    slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    dialogFragment.setContext(mActivity);
+                    dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                    dialogFragment.setText("Failed, no application found to handle the request.");
+                    dialogFragment.showDialog(R.id.dialog_container);
+                }
             }
         });
 
@@ -492,7 +511,15 @@ public class PreferencesPartFragment extends Fragment {
                 String sAux = getString(R.string.ShareMessage);
                 sAux = sAux + "repo.xposed.info/module/de.NeonSoft.neopowermenu \n\n";
                 i.putExtra(Intent.EXTRA_TEXT, sAux);
-                startActivity(Intent.createChooser(i, getString(R.string.preferences_Share).split("\\|")[0]));
+                try {
+                    startActivity(Intent.createChooser(i, getString(R.string.preferences_Share).split("\\|")[0]));
+                } catch (ActivityNotFoundException e) {
+                    slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    dialogFragment.setContext(mActivity);
+                    dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                    dialogFragment.setText("Failed, no application found to handle the request.");
+                    dialogFragment.showDialog(R.id.dialog_container);
+                }
             }
         });
 
@@ -507,7 +534,7 @@ public class PreferencesPartFragment extends Fragment {
 
         checkState();
 
-        if(!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
+        if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
             MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
         }
 
@@ -537,7 +564,7 @@ public class PreferencesPartFragment extends Fragment {
                         //ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
                         ProgressBar_RootWait.setVisibility(View.GONE);
                                         /*slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
-										//dialogFragment.set
+                                        //dialogFragment.set
 										dialogFragment.setDialogText(getString(R.string.preferencesDesc_RootXposed3));
 										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Ignore));
 										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));

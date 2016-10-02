@@ -33,7 +33,6 @@ public class AboutFragment extends Fragment {
 
         String[] titles = new String[]{"About",
                 getString(R.string.tourReview_Title),
-                "Reset settings",
                 "User Id",
                 "Force Language",
                 "Used Libraries",
@@ -71,8 +70,6 @@ public class AboutFragment extends Fragment {
                 " rovo89 and Tungstwenty for Xposed.\n" +
                 " Igor Da Silva for the concept.",
                 getString(R.string.tourReview_Desc),
-                "Click here to reset the settings.\n" +
-                        "Use this if something somehow destroyed some settings and the app keeps crashing when entering the corresponding screen.",
                 "Your Device Id:\n" + ((MainActivity.deviceUniqeId.isEmpty() || MainActivity.deviceUniqeId.equalsIgnoreCase("none")) ? "Not generated. (this is not normal...)" : MainActivity.deviceUniqeId) + "\nYour Account Id:\n" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "Not logged in." : MainActivity.accountUniqeId) + "\nThis Id's are used by the Preset Sever to verify your identity.",
                 "Click here to force the language, current:\n" +
                         conf.locale.getDisplayName() + " (" + conf.locale.getLanguage() + (conf.locale.getCountry().isEmpty() ? "" : "_" + conf.locale.getCountry().toUpperCase()) + ")",

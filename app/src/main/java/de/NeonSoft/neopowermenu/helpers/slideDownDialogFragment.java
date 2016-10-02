@@ -47,7 +47,6 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
     public static int BUTTON_IGNORE = 8;
 
     public static String dialogTag = "slideDownDialog";
-    public static String dialogCloseCall = "de.NeonSoft.slideDownDialog.close";
     public static ArrayList<slideDownDialogFragment> dialogs = new ArrayList<slideDownDialogFragment>();
 
     private Activity mContext;
@@ -55,7 +54,6 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
     private slideDownDialogInterface mInterface;
     private android.support.v4.app.Fragment mFragment;
     private android.support.v4.app.FragmentManager mFragmentmanager;
-    BroadcastReceiver br;
 
     private boolean dialogCloseOnButtonClick = true;
 
@@ -169,14 +167,6 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
             }
         };
         this.mFragmentmanager = null;
-    }
-
-    @Override
-    public void setArguments(Bundle args) {
-        super.setArguments(args);
-        this.mContext = (Activity) args.getSerializable("mContext");
-        this.mInterface = (slideDownDialogInterface) args.getSerializable("mInterface");
-        this.mFragmentmanager = (FragmentManager) args.getSerializable("mFragmentManager");
     }
 
     public void setContext(Activity context) {
@@ -523,6 +513,9 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
             if (mFragmentmanager == null) {
                 throw new Throwable("mFragmentmanager is null!");
             }
+            if (mContext == null) {
+                throw new Throwable("mContext is null!");
+            }
             if (mDialogContainer > -1) {
                 slideDownDialogFragment.dialogs.add(this);
                 mFragmentmanager.beginTransaction().add(mDialogContainer, this, slideDownDialogFragment.dialogTag).commitAllowingStateLoss();
@@ -656,27 +649,6 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         TextView_DialogText.setText(dialogText);
         if (dialogTextSize > 0) TextView_DialogText.setTextSize(dialogTextSize);
         TextView_DialogText.setVisibility(dialogText.isEmpty() ? View.GONE : View.VISIBLE);
-
-        br = new BroadcastReceiver() {
-
-            @Override
-            public void onReceive(Context p1, Intent p2) {
-
-                if (p2.getAction().equalsIgnoreCase(slideDownDialogFragment.dialogCloseCall)) {
-                    if (negativeButtonText != null) {
-                        mInterface.onNegativeClick();
-                    } else if (positiveButtonText != null) {
-                        mInterface.onPositiveClick(null);
-                    }
-                    closeDialog();
-                }
-            }
-        };
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(slideDownDialogFragment.dialogCloseCall);
-        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
-
-        if (mContext != null) mContext.registerReceiver(br, filter);
 
         if (dialogListItems != null && dialogListItems.length > 0) {
             dialogListAdapter = new ArrayAdapter<String>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
@@ -968,12 +940,11 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
     public void closeDialog() {
         if (!hideActive) {
             hideActive = true;
-            mFragment.getActivity().runOnUiThread(new Runnable() {
+            mContext.runOnUiThread(new Runnable() {
 
                 @Override
                 public void run() {
 
-                    mContext.unregisterReceiver(br);
                     InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                     IBinder windowToken = null;
                     if (!dialogInputs.isEmpty()) {

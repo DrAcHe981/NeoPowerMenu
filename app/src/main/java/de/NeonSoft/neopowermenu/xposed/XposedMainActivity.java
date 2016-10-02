@@ -155,7 +155,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
+                XposedDialog.SubDialogs.clear();
                 XposedDialog.dismissThis();
             }
         });
@@ -199,7 +199,10 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                 // TODO: Implement this method
                 if (XposedDialog.canDismiss || previewMode) {
                     if (p2.getAction().equalsIgnoreCase(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
-                        if (XposedDialog.mContext != null) powerDialog.dismissThis();
+                        if (XposedDialog.mContext != null) {
+                            powerDialog.SubDialogs.clear();
+                            powerDialog.dismissThis();
+                        }
                     } else if (p2.getAction().equalsIgnoreCase(Intent.ACTION_SCREEN_OFF)) {
                         finish();
                     }
@@ -335,7 +338,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 1) {
                 revealView.reveal(p.x, p.y, color, 0, speed, null);
             } else {
-                //revealView.reveal(p.x, p.y, color, 0, 0, null);
                 revealView2.reveal(p.x, p.y, color, 0, 0, null);
                 Animation animOut = null;
                 if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 0) {
@@ -352,6 +354,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.scale_out_down);
                 } else if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 7) {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.scale_out_up);
+                } else {
+                    animOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
                 }
                 animOut.setDuration(anim.getDuration());
                 revealView.startAnimation(animOut);

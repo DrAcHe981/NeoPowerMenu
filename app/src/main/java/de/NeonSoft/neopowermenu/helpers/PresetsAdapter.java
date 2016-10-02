@@ -582,8 +582,10 @@ public class PresetsAdapter extends ArrayAdapter<String> {
                                         new File(context.getFilesDir().getPath() + "/temp/" + PreferencesGraphicsFragment.defaultGraphics[i][2] + ".png").renameTo(new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.defaultGraphics[i][2] + ".png"));
                                         MemoryCacheUtils.removeFromCache(((context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.defaultGraphics[i][2] + ".png").startsWith("file://") ? "" : "file://") + context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.defaultGraphics[i][2] + ".png", MainActivity.imageLoader.getMemoryCache());
                                         DiskCacheUtils.removeFromCache(((context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.defaultGraphics[i][2] + ".png").startsWith("file://") ? "" : "file://") + context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.defaultGraphics[i][2] + ".png", MainActivity.imageLoader.getDiscCache());
-                                        if (PreferencesGraphicsFragment.defaultGraphics[i][2].toString().equalsIgnoreCase("Progress")) {
+                                        if (PreferencesGraphicsFragment.defaultGraphics[i][2].toString().equalsIgnoreCase("Progress") && new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.defaultGraphics[i][2] + ".png").exists()) {
                                             MainActivity.preferences.edit().putString("ProgressDrawable", "file").apply();
+                                        } else {
+                                            MainActivity.preferences.edit().putString("ProgressDrawable", "stock").apply();
                                         }
                                     } catch (Throwable t) {
                                         Log.d("NPM:presetLoad", "Cant move graphic " + PreferencesGraphicsFragment.defaultGraphics[i][0] + "-" + PreferencesGraphicsFragment.defaultGraphics[i][1] + ".png, reason: " + t.toString());

@@ -330,7 +330,7 @@ public class LoginFragment extends Fragment {
                 MainActivity.preferences.edit().putBoolean("autoLogin", false)
                         .remove("ueel")
                         .remove("pd")
-                        .remove("auid").commit();
+                        .remove("auid").apply();
                 LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
                 LinearLayout_LoggedInContainer.setVisibility(View.GONE);
                 LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
@@ -434,9 +434,9 @@ public class LoginFragment extends Fragment {
     public static void checkState() {
         if (MainActivity.loggedIn) {
             loginFragmentMode = "logout";
-            if (TextView_AccountInfo.getVisibility() == View.VISIBLE)
+            if (TextView_AccountInfo != null && TextView_AccountInfo.getVisibility() == View.VISIBLE)
                 TextView_AccountInfo.setVisibility(View.GONE);
-            if (LinearLayout_LoginContainer.getVisibility() == View.VISIBLE)
+            if (LinearLayout_LoginContainer != null && LinearLayout_LoginContainer.getVisibility() == View.VISIBLE)
                 LinearLayout_LoginContainer.setVisibility(View.GONE);
             TextView_TitleStatistics.setText(mContext.getString(R.string.login_TitleStatistics).replace("[USERNAMEEMAIL]", MainActivity.userName));
             getStatistics();
@@ -445,29 +445,29 @@ public class LoginFragment extends Fragment {
             //MainActivity.actionbar.setActionBarButton(getString(R.string.login_TitleLogout), R.drawable.ic_content_send, logoutOnClickListener);
         } else if (loginFragmentMode.equalsIgnoreCase("register")) {
             loginFragmentMode = "register";
-            if (TextView_AccountInfo.getVisibility() == View.GONE)
+            if (TextView_AccountInfo != null && TextView_AccountInfo.getVisibility() == View.GONE)
                 TextView_AccountInfo.setVisibility(View.VISIBLE);
-            if (LinearLayout_RegisterContainer.getVisibility() == View.GONE)
+            if (LinearLayout_RegisterContainer != null && LinearLayout_RegisterContainer.getVisibility() == View.GONE)
                 LinearLayout_RegisterContainer.setVisibility(View.VISIBLE);
-            if (LinearLayout_LoginContainer.getVisibility() == View.VISIBLE)
+            if (LinearLayout_LoginContainer != null && LinearLayout_LoginContainer.getVisibility() == View.VISIBLE)
                 LinearLayout_LoginContainer.setVisibility(View.GONE);
             //MainActivity.actionbar.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
         } else if (loginFragmentMode.equalsIgnoreCase("recover")) {
             loginFragmentMode = "recover";
-            if (TextView_AccountInfo.getVisibility() == View.GONE)
+            if (TextView_AccountInfo != null && TextView_AccountInfo.getVisibility() == View.GONE)
                 TextView_AccountInfo.setVisibility(View.VISIBLE);
-            if (LinearLayout_RecoverAccountContainer.getVisibility() == View.GONE)
+            if (LinearLayout_RecoverAccountContainer != null && LinearLayout_RecoverAccountContainer.getVisibility() == View.GONE)
                 LinearLayout_RecoverAccountContainer.setVisibility(View.VISIBLE);
-            if (LinearLayout_LoginContainer.getVisibility() == View.VISIBLE)
+            if (LinearLayout_LoginContainer != null && LinearLayout_LoginContainer.getVisibility() == View.VISIBLE)
                 LinearLayout_LoginContainer.setVisibility(View.GONE);
             //MainActivity.actionbar.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
         } else {
             loginFragmentMode = "login";
-            if (TextView_AccountInfo.getVisibility() == View.GONE)
+            if (TextView_AccountInfo != null && TextView_AccountInfo.getVisibility() == View.GONE)
                 TextView_AccountInfo.setVisibility(View.VISIBLE);
-            if (LinearLayout_LoginContainer.getVisibility() == View.GONE)
+            if (LinearLayout_LoginContainer != null && LinearLayout_LoginContainer.getVisibility() == View.GONE)
                 LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
-            if (LinearLayout_LoggedInContainer.getVisibility() == View.VISIBLE)
+            if (LinearLayout_LoggedInContainer != null && LinearLayout_LoggedInContainer.getVisibility() == View.VISIBLE)
                 LinearLayout_LoggedInContainer.setVisibility(View.GONE);
             //MainActivity.actionbar.setActionBarButton(getString(R.string.login_Title), R.drawable.ic_content_send, loginOnClickListener);
         }

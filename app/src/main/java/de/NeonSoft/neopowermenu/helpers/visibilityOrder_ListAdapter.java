@@ -4,6 +4,7 @@ import android.app.*;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.*;
+import android.util.Log;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -582,40 +583,36 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String> {
     public void move(int from, int to) {
         if (from != to) {
             Object[] item = getItemAt(from);
-            if ((int) item[0] == TYPE_MULTIPAGE_START) {
-                //Toast.makeText(mContext, "start move from "+from+" to "+to+"\nChecking from "+to+" to "+(itemsType.size()-1), Toast.LENGTH_LONG).show();
-                for (int i = to; i < itemsType.size(); i++) {
-                    Object[] checkItem = getItemAt(i);
-                    if ((int) checkItem[0] == TYPE_MULTIPAGE_END && i != to) {
-                        itemsType.remove(from);
-                        itemsTitle.remove(from);
-                        itemsType.add(to, (int) item[0]);
-                        itemsTitle.add(to, item[1].toString());
-                        notifyDataSetChanged();
-                        //Toast.makeText(mContext, "Stopped end search at "+i, Toast.LENGTH_LONG).show();
+            if ((int) item[0] == TYPE_MULTIPAGE_START || (int) item[0] == TYPE_MULTIPAGE_END) {
+                boolean validMove = true;
+                itemsType.remove(from);
+                itemsTitle.remove(from);
+                itemsType.add(to, (int) item[0]);
+                itemsTitle.add(to, item[1].toString());
+                ArrayList<String> pages = new ArrayList<>();
+                for (int i = 0; i < itemsType.size(); i++) {
+                    try {
+                        Object[] checkItem = getItemAt(i);
+                        if(MainActivity.DeepLogging) Log.i("NPM:vOPC","("+String.format("%02d",i)+")> "+checkItem[0] + " | " + checkItem[1]);
+                        if ((int) checkItem[0] == TYPE_MULTIPAGE_START) {
+                            pages.add(checkItem[1].toString());
+                        } else if ((int) checkItem[0] == TYPE_MULTIPAGE_END) {
+                            pages.remove(pages.size() - 1);
+                        }
+                    } catch (Throwable t) {
+                        Log.e("NPM:vOPC", "Invalid move operation:", t);
+                        validMove = false;
                         break;
-                    } else if ((int) checkItem[0] == TYPE_MULTIPAGE_START) {
-                        //Toast.makeText(mContext, "Stopped start search at "+i, Toast.LENGTH_LONG).show();
-                        //break;
                     }
                 }
-            } else if ((int) item[0] == TYPE_MULTIPAGE_END) {
-                //Toast.makeText(mContext, "end move from "+from+" to "+to+"\nChecking from "+to+" to 0", Toast.LENGTH_LONG).show();
-                for (int i = to; i >= 0; i--) {
-                    Object[] checkItem = getItemAt(i);
-                    if ((int) checkItem[0] == TYPE_MULTIPAGE_START && i != to) {
-                        itemsType.remove(from);
-                        itemsTitle.remove(from);
-                        itemsType.add(to, (int) item[0]);
-                        itemsTitle.add(to, item[1].toString());
-                        notifyDataSetChanged();
-                        //Toast.makeText(mContext, "Stopped start search at "+i, Toast.LENGTH_LONG).show();
-                        break;
-                    } else if ((int) checkItem[0] == TYPE_MULTIPAGE_END) {
-                        //Toast.makeText(mContext, "Stopped end search at "+i, Toast.LENGTH_LONG).show();
-                        //break;
-                    }
+                if (!validMove) {
+                    Toast.makeText(mContext,mContext.getString(R.string.visibilityOrder_InvalidMultiPageMove),Toast.LENGTH_LONG).show();
+                    itemsType.remove(to);
+                    itemsTitle.remove(to);
+                    itemsType.add(from, (int) item[0]);
+                    itemsTitle.add(from, item[1].toString());
                 }
+                notifyDataSetChanged();
             } else {
                 //Toast.makeText(mContext, "normal move from "+from+" to "+to, Toast.LENGTH_SHORT).show();
                 itemsType.remove(from);
@@ -625,6 +622,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<String> {
                 notifyDataSetChanged();
             }
         }
+
     }
 
     public void removeAt(int position) {
