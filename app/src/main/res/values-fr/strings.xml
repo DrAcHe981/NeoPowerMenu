@@ -102,8 +102,6 @@ Cette action est irréversible !"</string>
   <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibreur"</string>
   <string name="SoundMode_Silent">"Silencieux"</string>
-  <string name="welcomeMsg">"Bienvenu à NeoPowerMenu !
-Votre Id utilisateur a été généré, vous pouvez désormais charger des préréglages !"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Compte"</string>
   <string name="presetsManager_UploadMsg">"Ce préréglage va être chargé sur le serveur public, le rendant visible par tous.

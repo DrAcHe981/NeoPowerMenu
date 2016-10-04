@@ -94,8 +94,6 @@ Tego nie można cofnąć!\""</string>
   <string name="SoundMode_Normal">"Normalny"</string>
   <string name="SoundMode_Vibrate">"Wibracja"</string>
   <string name="SoundMode_Silent">"Cichy"</string>
-  <string name="welcomeMsg">"\"Witaj w NeoPowerMenu!
-Twój id użytkownika został utworzony i gotowy do zapisania ustawień!\""</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Konto"</string>
   <string name="presetsManager_UploadComplete">"Wysyłanie zakończone!"</string>

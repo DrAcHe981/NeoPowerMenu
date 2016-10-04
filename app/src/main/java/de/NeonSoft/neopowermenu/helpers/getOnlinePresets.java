@@ -22,7 +22,7 @@ import org.json.*;
 import android.view.View.*;
 import android.graphics.*;
 
-public class getOnlinePresets extends AsyncTask<String, String, String> {
+public class getOnlinePresets extends AsyncTask<Object, String, String> {
     public static int MODE_ALL = 0;
     public static int MODE_OFFSET = 1;
 
@@ -43,13 +43,13 @@ public class getOnlinePresets extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPreExecute() {
-        
-        if (PreferencesPresetsFragment.onlineRequestIsRunning) {
+
+        if (PreferencesPresetsFragment.onlineMSG.getVisibility() == View.GONE) {
             PreferencesPresetsFragment.onlineMSG.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
-            if (PreferencesPresetsFragment.onlineMSG.getVisibility() == View.GONE) {
-                PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);
-                PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_in));
-            }
+            PreferencesPresetsFragment.onlineMSG.setVisibility(View.VISIBLE);
+            PreferencesPresetsFragment.onlineMSG.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_in));
+        }
+        if (PreferencesPresetsFragment.onlineRequestIsRunning) {
             cancel(true);
             return;
         }
@@ -84,20 +84,20 @@ public class getOnlinePresets extends AsyncTask<String, String, String> {
     }
 
     @Override
-    protected String doInBackground(String[] p1) {
+    protected String doInBackground(Object... p1) {
         
         String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")";
         String searchFor = "";
-        String offset = "";
+        String offset = "0";
         if (p1 != null && p1.length > 0) {
             for (int i = 0; i < p1.length; i++) {
-                if (!p1[i].isEmpty()) {
-                    if (p1[i].contains("order=")) {
-                        orderBy = p1[i];
-                    } else if (p1[i].contains("search=")) {
-                        searchFor = p1[i];
-                    } else if (p1[i].contains("offset=")) {
-                        offset = p1[i].split("set=")[1];
+                if (!p1[i].toString().isEmpty()) {
+                    if (p1[i].toString().contains("order=")) {
+                        orderBy = p1[i].toString();
+                    } else if (p1[i].toString().contains("search=")) {
+                        searchFor = p1[i].toString();
+                    } else if (p1[i].toString().contains("offset=")) {
+                        offset = p1[i].toString().split("set=")[1];
                     }
                 }
             }
@@ -131,12 +131,14 @@ public class getOnlinePresets extends AsyncTask<String, String, String> {
             p.setParameter("user", MainActivity.deviceUniqeId);
 
             HttpClient httpclient = new DefaultHttpClient(p);
-            String url = "http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php?action=presets&appversion=" + MainActivity.versionCode + "&format=json&userId=" + MainActivity.deviceUniqeId + "" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "" : "&accountId=" + MainActivity.accountUniqeId) + "&sortBy=" + orderName + "&sortDir=" + orderDirection + (searchTerm.isEmpty() ? "" : "&searchFor=" + searchTerm) + (offset.isEmpty() ? "" : "&offset=" + offset);
-            Log.i("NPM:getOnlinePresets", "Trying to fetch from " + url);
+            String cleanUrl = "http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php";
+            String url = cleanUrl + "?action=presets&appversion=" + MainActivity.versionCode + "&format=json&userId=" + MainActivity.deviceUniqeId + "" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "" : "&accountId=" + MainActivity.accountUniqeId) + "&sortBy=" + orderName + "&sortDir=" + orderDirection + (searchTerm.isEmpty() ? "" : "&searchFor=" + searchTerm) + (offset.isEmpty() ? "" : "&offset=" + offset);
+            Log.i("NPM:getOnlinePresets", "Trying to fetch from " + cleanUrl);
+            Log.i("NPM:getOnlinePresets", "Offset: " + offset + " | Sorting: " + orderName +" ("+orderDirection+")"+ " | Filter: " + searchTerm);
             HttpPost httppost = new HttpPost(url);
 
             try {
-                Log.i(getClass().getSimpleName(), "send  task - start");
+                Log.i("NPM:getOnlinePresets", "Fetching...");
 
                 //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
                 //		2);
@@ -209,7 +211,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String> {
         
         super.onPostExecute(result);
         if (result != null) {
-            Log.e("NPM", result);
+            Log.e("NPM:getOnlinePresets", "Failed: "+result);
             if (PreferencesPresetsFragment.onlineMSGHolder.getVisibility() == View.VISIBLE) {
                 PreferencesPresetsFragment.onlineMSGHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_out));
                 PreferencesPresetsFragment.onlineMSGHolder.setVisibility(View.GONE);
@@ -278,6 +280,7 @@ public class getOnlinePresets extends AsyncTask<String, String, String> {
             }
             //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
         } else {
+            Log.i("NPM:getOnlinePresets", "Done!");
             //ArrayList<String> ListTitles = new ArrayList<String>(Arrays.asList(onlineTitles));
             //ArrayList<String> ListDescs = new ArrayList<String>(Arrays.asList(onlineCreator));
             //ArrayList<String> ListEnabled = new ArrayList<String>(Arrays.asList(onlineEnabled));
@@ -333,4 +336,17 @@ public class getOnlinePresets extends AsyncTask<String, String, String> {
         PreferencesPresetsFragment.onlineRequestIsRunning = false;
     }
 
+    @Override
+    protected void onCancelled() {
+        super.onCancelled();
+        PreferencesPresetsFragment.onlineRequestIsRunning = false;
+        Log.i("NPM:getOnlinePresets", "Canceled...");
+    }
+
+    @Override
+    protected void onCancelled(String s) {
+        super.onCancelled(s);
+        PreferencesPresetsFragment.onlineRequestIsRunning = false;
+        Log.i("NPM:getOnlinePresets", "Canceled...");
+    }
 }

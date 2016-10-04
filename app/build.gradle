@@ -22,7 +22,7 @@ android {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 38
+        versionCode 39
         versionName "1.5.5-2"
         multiDexEnabled true
         signingConfig signingConfigs.config

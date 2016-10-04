@@ -84,6 +84,8 @@ public class PreferencesPresetsFragment extends Fragment {
     public static ArrayList<String> OnlineListLocal = new ArrayList<String>();
     public static ArrayList<Boolean> OnlineHasGraphics = new ArrayList<Boolean>();
 
+    public static AsyncTask listParser;
+
     //public static String oldUploadText = "";
 
     public static int startTab = 1;
@@ -184,7 +186,7 @@ public class PreferencesPresetsFragment extends Fragment {
                 @Override
                 public void onClick(View p1) {
 
-                    new getOnlinePresets().execute((onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
+                    listParser = helper.startAsyncTask(new getOnlinePresets(),(onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
                 }
             });
             onlineSearch.setOnClickListener(new OnClickListener() {
@@ -210,7 +212,7 @@ public class PreferencesPresetsFragment extends Fragment {
                                     } catch (Throwable t) {
                                     }
                                     onlineSearchTerm = onlineSearchEdit.getText().toString();
-                                    new getOnlinePresets().execute((onlineOrderSelectedString.isEmpty() ? "" : "order=" + onlineOrderSelectedString), (onlineSearchTerm.isEmpty() ? "" : "search=" + onlineSearchTerm));
+                                    listParser = helper.startAsyncTask(new getOnlinePresets(),(onlineOrderSelectedString.isEmpty() ? "" : "order=" + onlineOrderSelectedString), (onlineSearchTerm.isEmpty() ? "" : "search=" + onlineSearchTerm));
                                 }
                             }
                         });
@@ -265,11 +267,11 @@ public class PreferencesPresetsFragment extends Fragment {
                                 @Override
                                 public void onClick(View p1) {
 
-                                    new getOnlinePresets().execute("order=" + onlineOrderSelectedString);
+                                    listParser = helper.startAsyncTask(new getOnlinePresets(),"order=" + onlineOrderSelectedString);
                                 }
                             });
                             hideBars();
-                            new getOnlinePresets().execute("order=" + onlineOrderSelectedString);
+                            listParser = helper.startAsyncTask(new getOnlinePresets(),"order=" + onlineOrderSelectedString);
                         }
 
                         @Override

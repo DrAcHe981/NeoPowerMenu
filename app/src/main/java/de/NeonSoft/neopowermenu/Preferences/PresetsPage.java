@@ -77,7 +77,7 @@ public class PresetsPage extends Fragment
 						messageHolder.setVisibility(View.VISIBLE);
 						messageHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_in));
 						list.setVisibility(View.GONE);
-						new loadLocal().execute(list,messageHolder,message);
+						helper.startAsyncTask(new loadLocal(),list,messageHolder,message);
 				}
 				else
 				{
@@ -91,7 +91,7 @@ public class PresetsPage extends Fragment
 						PreferencesPresetsFragment.OnlineListDescs.clear();
 						PreferencesPresetsFragment.OnlineListEnabled.clear();
 						PreferencesPresetsFragment.OnlineListLocal.clear();
-						new getOnlinePresets().execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
+						PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
 						//message.setVisibility(View.VISIBLE);
 				}
 				}

@@ -270,7 +270,7 @@ public class PresetsAdapter extends ArrayAdapter<String> {
                                         //if(helper.isValidZip(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps",null)) {
                                         new File(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps").delete();
                                         //}
-                                        new getOnlinePresets().execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
+                                        PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
                                         Toast.makeText(context, context.getString(R.string.presetsManager_UploadComplete), Toast.LENGTH_SHORT).show();
                                     }
 
@@ -683,7 +683,7 @@ public class PresetsAdapter extends ArrayAdapter<String> {
                                             PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
                                             PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
                                             Toast.makeText(context, context.getString(R.string.presetLoad_PresetDeleted).replace("[PRESETNAME]", itemsTitle.get(position)), Toast.LENGTH_SHORT).show();
-                                            new getOnlinePresets().execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
+                                            PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
                                         }
 
                                         @Override
@@ -1043,6 +1043,7 @@ public class PresetsAdapter extends ArrayAdapter<String> {
                         });
                         dH.setUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/Presets/" + split[0] + "_" + itemsTitle.get(position).replace("'", "\\'").replace("\"", "\\\"") + ".nps");
                         dH.setLocalUrl(context.getFilesDir().getPath() + "/download");
+                        dH.setAllowMultiple(true);
                         dH.startDownload();
                     } else {
                         PreferencesPresetsFragment.DownloadingActiveForLabel.get(position).setText(context.getString(R.string.downloadHelper_States).split("\\|")[downloadHelper.STATE_CANCELLING] + "\n");
@@ -1072,7 +1073,7 @@ public class PresetsAdapter extends ArrayAdapter<String> {
             Progress.startAnimation(BlinkAnim);
             ItemTitle.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
             ItemDesc.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[1]);
-            new getOnlinePresets(getOnlinePresets.MODE_OFFSET).execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlineListLocal.size() - 1));
+            PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(getOnlinePresets.MODE_OFFSET),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlineListLocal.size() - 1));
             root.setEnabled(false);
         } else if (itemsLocal.get(position).equalsIgnoreCase("error")) {
             BottomBar.setVisibility(View.GONE);
@@ -1094,7 +1095,7 @@ public class PresetsAdapter extends ArrayAdapter<String> {
                     Progress.startAnimation(BlinkAnim);
                     ItemTitle.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
                     ItemDesc.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[1]);
-                    new getOnlinePresets(getOnlinePresets.MODE_OFFSET).execute((PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlineListLocal.size() - 1));
+                    PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(getOnlinePresets.MODE_OFFSET),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlineListLocal.size() - 1));
                 }
             });
         } else if (itemsLocal.get(position).equalsIgnoreCase("NoMore")) {
@@ -1249,6 +1250,7 @@ public class PresetsAdapter extends ArrayAdapter<String> {
                         preset = PreferencesColorFragment.lightPreset;
                     } else if (p1[0].equalsIgnoreCase(builtIn[1])) {
                         preset = PreferencesColorFragment.darkPreset;
+                    } else if (p1[0].equalsIgnoreCase(builtIn[2])) {
                     } else if (p1[0].equalsIgnoreCase(builtIn[2])) {
                         preset = PreferencesColorFragment.blackPreset;
                     }

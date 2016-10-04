@@ -13,7 +13,7 @@ import de.NeonSoft.neopowermenu.R;
 
 public class downloadHelper {
 
-    public static String[] STATE_NAMES = {"STATE_WAITING","STATE_CONNECTING","STATE_REQUESTINGINFO","STATE_DOWNLOADING","STATE_CANCELLING"};
+    public static String[] STATE_NAMES = {"STATE_WAITING", "STATE_CONNECTING", "STATE_REQUESTINGINFO", "STATE_DOWNLOADING", "STATE_CANCELLING"};
     public static int STATE_WAITING = 0;
     public static int STATE_CONNECTING = 1;
     public static int STATE_REQUESTINGINFO = 2;
@@ -26,9 +26,13 @@ public class downloadHelper {
     private String mUrl;
     private String mLocalUrl;
 
+    private String instanceName = "";
+
     private boolean isRunning = false;
     private boolean isCanceled = false;
     private AsyncTask dlTask;
+
+    boolean mAllowMultiple = false;
 
     URLConnection connection;
     int CONNECT_TIMEOUT = 5000;
@@ -100,9 +104,14 @@ public class downloadHelper {
         new File(this.mLocalUrl).mkdirs();
     }
 
+    public void setAllowMultiple(boolean mode) {
+        this.mAllowMultiple = mode;
+    }
+
     public void startDownload() {
         if (!this.mUrl.isEmpty() && !this.mLocalUrl.isEmpty()) {
-            dlTask = new downloadAsync().execute(this.mUrl, this.mLocalUrl);
+            instanceName = String.format(Locale.getDefault(), "%04d",Math.round(Math.random() * 1000));
+            dlTask = startAsyncTask(new downloadAsync(),this.mUrl, this.mLocalUrl);
         } else {
             Toast.makeText(this.mActivity, "Cant start download without url...", Toast.LENGTH_LONG).show();
         }
@@ -144,7 +153,7 @@ public class downloadHelper {
 
     private void setState(final int state) {
         mState = state;
-        Log.i("NPM:uH", "State changed to " + STATE_NAMES[state] + "(" + state + ")");
+        Log.i("NPM:uH", instanceName+ "> State changed to " + STATE_NAMES[state] + "(" + state + ")");
         mActivity.runOnUiThread(new Runnable() {
 
             @Override
@@ -165,7 +174,7 @@ public class downloadHelper {
         void onDownloadFailed(String reason);
     }
 
-    class downloadAsync extends AsyncTask<String, String, String> {
+    class downloadAsync extends AsyncTask<Object, String, String> {
 
         @Override
         protected void onPreExecute() {
@@ -188,7 +197,7 @@ public class downloadHelper {
                             // TODO: Implement this method
                             if (dlnowsize > 0 && dltotalsize > 0) {
                                 mProgress = (int) ((dlnowsize * 100) / dltotalsize);
-                                if(getState()!=STATE_CANCELLING) {
+                                if (getState() != STATE_CANCELLING) {
                                     mInterface.onPublishDownloadProgress(dlnowsize, dltotalsize);
                                 }
                             }
@@ -228,15 +237,15 @@ public class downloadHelper {
         }
 
         @Override
-        protected String doInBackground(String[] p1) {
+        protected String doInBackground(Object[] p1) {
             // TODO: Implement this method
             int count;
             try {
                 try {
                     try {
-                        String name = p1[0].split("/")[p1[0].split("/").length - 1];
+                        String name = p1[0].toString().split("/")[p1[0].toString().split("/").length - 1];
                         Log.i("NPM:dH", "Initializing download: \nServer: " + p1[0] + "\nFile Name: " + name);
-                        URL url = new URL(p1[0].replace(" ", "%20"));
+                        URL url = new URL(p1[0].toString().replace(" ", "%20"));
                         file = p1[1] + "/" + name;
                         if (new File(file).exists()) {
                             new File(file).delete();
@@ -256,7 +265,7 @@ public class downloadHelper {
                             total = 0;
                             setState(STATE_DOWNLOADING);
                             while ((count = dlinput.read(data)) != -1) {
-                                if (getState()!=STATE_CANCELLING) {
+                                if (getState() != STATE_CANCELLING) {
                                     total += count;
                                     dlnowsize = total;
                                     dloutput.write(data, 0, count);
@@ -267,18 +276,18 @@ public class downloadHelper {
                         }
                     } catch (ConnectException ce) {
                         //return "Download Failed";
-                        Log.e("NPM:dH", "Download Error: " + ce.toString());
-                        return "Failed at: "+STATE_NAMES[getState()];
+                        Log.e("NPM:dH", instanceName+ "> Download Error: " + ce.toString());
+                        return "Failed at: " + STATE_NAMES[getState()];
                     }
                 } catch (IOException ioe) {
                     //return "Download Failed";
-                    Log.e("NPM:dH", "Download Error: " + ioe.toString());
-                    return "Failed at: "+STATE_NAMES[getState()];
+                    Log.e("NPM:dH", instanceName+ "> Download Error: " + ioe.toString());
+                    return "Failed at: " + STATE_NAMES[getState()];
                 }
             } catch (Throwable e) {
                 //return "Download Failed";
-                Log.e("NPM:dH", "Download Error: " + e.toString());
-                return "Failed at: "+STATE_NAMES[getState()];
+                Log.e("NPM:dH", instanceName+ "> Download Error: " + e.toString());
+                return "Failed at: " + STATE_NAMES[getState()];
             }
             return null;
         }
@@ -345,6 +354,14 @@ public class downloadHelper {
             isRunning = false;
         }
 
+    }
+
+    @SafeVarargs
+    private final <T> AsyncTask startAsyncTask(AsyncTask<T, ?, ?> asyncTask, T... params) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB && mAllowMultiple)
+            return asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+        else
+            return asyncTask.execute(params);
     }
 
 }

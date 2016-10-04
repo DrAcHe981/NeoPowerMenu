@@ -38,9 +38,13 @@ public class uploadHelper {
     private FileInputStream fileInputStream;
     private DataOutputStream dos;
 
+    private String instanceName = "";
+
     private boolean isRunning = false;
     private boolean isCanceled = false;
     private AsyncTask ulTask;
+
+    boolean mAllowMultiple = false;
 
     int CONNECT_TIMEOUT = 20000;
     int READ_TIMEOUT = 20000;
@@ -136,12 +140,17 @@ public class uploadHelper {
         this.mParams = params;
     }
 
+    public void setAllowMultiple(boolean mode) {
+        this.mAllowMultiple = mode;
+    }
+
     public void startUpload() {
         if (!this.mUrl.isEmpty() || !this.mLocalUrl.isEmpty()) {
+            instanceName = String.format(Locale.getDefault(), "%04d",Math.round(Math.random() * 1000));
             if (this.mAlias != null && this.mAlias.isEmpty()) {
-                ulTask = new uploadAsync().execute(this.mUrl, this.mLocalUrl, this.mAlias);
+                ulTask = startAsyncTask(new uploadAsync(),this.mUrl, this.mLocalUrl, this.mAlias);
             } else {
-                ulTask = new uploadAsync().execute(this.mUrl, this.mLocalUrl);
+                ulTask = startAsyncTask(new uploadAsync(),this.mUrl, this.mLocalUrl);
             }
         } else {
             Toast.makeText(this.mActivity == null ? this.mContext : this.mActivity, "Cant upload without server or local file...", Toast.LENGTH_LONG).show();
@@ -184,7 +193,7 @@ public class uploadHelper {
 
     private void setState(final int state) {
         mState = state;
-        Log.i("NPM:uH", "State changed to " + STATE_NAMES[state] + "(" + state + ")");
+        Log.i("NPM:uH", instanceName + "> State changed to " + STATE_NAMES[state] + "(" + state + ")");
         if(mActivity != null) {
             mActivity.runOnUiThread(new Runnable() {
 
@@ -207,7 +216,7 @@ public class uploadHelper {
         void onUploadFailed(String reason);
     }
 
-    class uploadAsync extends AsyncTask<String, String, String> {
+    class uploadAsync extends AsyncTask<Object, String, String> {
 
         HttpURLConnection conn = null;
 
@@ -278,14 +287,14 @@ public class uploadHelper {
         }
 
         @Override
-        protected String doInBackground(String[] p1) {
+        protected String doInBackground(Object... p1) {
             // TODO: Implement this method
             int count;
             String uploadFileName;
             if (p1.length >= 3) {
-                uploadFileName = p1[2];
+                uploadFileName = p1[2].toString();
             } else {
-                uploadFileName = p1[1].split("/")[p1[1].split("/").length - 1];
+                uploadFileName = p1[1].toString().split("/")[p1[1].toString().split("/").length - 1];
             }
             String lineEnd = "\r\n";
             String twoHyphens = "--";
@@ -294,16 +303,16 @@ public class uploadHelper {
             byte[] buffer;
             int maxBufferSize = 1024;
             Log.i("NPM:uH", "Initializing upload: \nServer: " + p1[0] + "\nFile Name: " + uploadFileName + "\nSource file: " + p1[1]);
-            File sourceFile = new File(p1[1]);
+            File sourceFile = new File(p1[1].toString());
             if (!sourceFile.isFile()) {
-                Log.e("NPM:uH", "Source File not exist :" + p1[1]);
+                Log.e("NPM:uH", instanceName + "> Source File not exist :" + p1[1]);
                 return "file not found";
             } else {
                 try {
                     Log.i("NPM:uH", "Uploading " + helper.getSizeString(sourceFile.length(), true) + "(" + sourceFile.length() + ")");
                     // open a URL connection to the Servlet
                     fileInputStream = new FileInputStream(sourceFile);
-                    URL url = new URL(p1[0].replace(" ", "%20") + (mParams != null ? getQuery(mParams) : ""));
+                    URL url = new URL(p1[0].toString().replace(" ", "%20") + (mParams != null ? getQuery(mParams) : ""));
                     //Log.i("NPM:uH","Parsed url: "+url.toString());
                     // Open a HTTP connection to the URL
                     setState(STATE_CONNECTING);
@@ -318,7 +327,7 @@ public class uploadHelper {
                     conn.setRequestProperty("connection", "Keep-Alive");
                     conn.setRequestProperty("ENCTYPE", "multipart/form-data");
                     conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-                    conn.setRequestProperty("uploaded_file", p1[1]);
+                    conn.setRequestProperty("uploaded_file", p1[1].toString());
                     dltotalsize = sourceFile.length() +
                             (twoHyphens + boundary + lineEnd).getBytes().length +
                             ("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"" + p1[1] + "\"" + lineEnd).getBytes().length +
@@ -372,7 +381,7 @@ public class uploadHelper {
                     while ((errorMsgB = br.readLine()) != null) {
                         errorMsg += errorMsgB + "\n";
                     }
-                    Log.i("NPM:uH", "HTTP Message is : " + errorMsg);
+                    Log.i("NPM:uH", "HTTP Message is : " + errorMsg.split(",")[0]);
                     return errorMsg;
                     //}
                     //Log.i("NPM:uH", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
@@ -380,10 +389,10 @@ public class uploadHelper {
                     //		return null;
                     //}
                 } catch (MalformedURLException ex) {
-                    Log.e("NPM:uH", ex.toString());
+                    Log.e("NPM:uH", instanceName + "> "+ ex.toString());
                     return "Failed at: "+STATE_NAMES[getState()];
                 } catch (Throwable e) {
-                    Log.e("NPM:uH", e.toString());
+                    Log.e("NPM:uH", instanceName + "> "+ e.toString());
                     return "Failed at: "+STATE_NAMES[getState()];
                 }
             } // End else block
@@ -434,7 +443,7 @@ public class uploadHelper {
                 fileInputStream.close();
                 dos.flush();
                 dos.close();
-            } catch (Throwable t) {
+            } catch (Throwable ignored) {
             }
             if (p1.contains("success")) {
                 mInterface.onUploadComplete(p1);
@@ -462,7 +471,7 @@ public class uploadHelper {
         StringBuilder result = new StringBuilder();
         boolean first = true;
 
-        for (int x = 0; x < params.length; x++) {
+        for (String[] param : params) {
             if (first) {
                 first = false;
                 result.append("?");
@@ -470,12 +479,20 @@ public class uploadHelper {
                 result.append("&");
             }
 
-            result.append(URLEncoder.encode(params[x][0].replace("'", "\\'").replace("\"", "\\\"").replace("\\", "\\\\").replace("/", ""), "UTF-8"));
+            result.append(URLEncoder.encode(param[0].replace("'", "\\'").replace("\"", "\\\"").replace("\\", "\\\\").replace("/", ""), "UTF-8"));
             result.append("=");
-            result.append(URLEncoder.encode(params[x][1].replace("'", "\\'").replace("\"", "\\\"").replace("\\", "\\\\").replace("/", ""), "UTF-8"));
+            result.append(URLEncoder.encode(param[1].replace("'", "\\'").replace("\"", "\\\"").replace("\\", "\\\\").replace("/", ""), "UTF-8"));
         }
 
         return result.toString();
+    }
+
+    @SafeVarargs
+    private final <T> AsyncTask startAsyncTask(AsyncTask<T, ?, ?> asyncTask, T... params) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB && mAllowMultiple)
+            return asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+        else
+            return asyncTask.execute(params);
     }
 
 }

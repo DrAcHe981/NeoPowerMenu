@@ -99,7 +99,6 @@
   <string name="SoundMode_Normal">"Mod normal"</string>
   <string name="SoundMode_Vibrate">"Mod vibratii"</string>
   <string name="SoundMode_Silent">"Silentios"</string>
-  <string name="welcomeMsg">"Bun venit in Meniul NeoPower! ID-ul user-ului tau a fost generat, poti de acum sa trimiti presetarile tale!"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Cont"</string>
   <string name="presetsManager_UploadMsg">"\"Aceasta presetare va fi incarcata pe serverul public, fiind vizibila altor utilizatori.

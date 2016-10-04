@@ -302,19 +302,19 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                             XposedUtils.log("Received broadcast: " + p2.getAction());
                                         switch (p2.getAction()) {
                                             case NPM_ACTION_BROADCAST_SHUTDOWN:
-                                                performCMDCall(new String[] {SHUTDOWN_BROADCAST,SHUTDOWN_CMD});
+                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, SHUTDOWN_CMD});
                                                 break;
                                             case NPM_ACTION_BROADCAST_REBOOT:
-                                                performCMDCall(new String[] {SHUTDOWN_BROADCAST,REBOOT_CMD});
+                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_CMD});
                                                 break;
                                             case NPM_ACTION_BROADCAST_SOFTREBOOT:
-                                                performCMDCall(new String[] {SHUTDOWN_BROADCAST,REBOOT_SOFT_REBOOT_CMD});
+                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_SOFT_REBOOT_CMD});
                                                 break;
                                             case NPM_ACTION_BROADCAST_REBOOTRECOVERY:
-                                                performCMDCall(new String[] {SHUTDOWN_BROADCAST,REBOOT_RECOVERY_CMD});
+                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_RECOVERY_CMD});
                                                 break;
                                             case NPM_ACTION_BROADCAST_REBOOTBOOTLOADER:
-                                                performCMDCall(new String[] {SHUTDOWN_BROADCAST,REBOOT_BOOTLOADER_CMD});
+                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_BOOTLOADER_CMD});
                                                 break;
                                             case NPM_ACTION_BROADCAST_KILLSYSTEMUI:
                                                 mNPMHandler.postDelayed(new Runnable() {
@@ -374,8 +374,19 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 XposedHelpers.findAndHookMethod(usedGADClass, lpparam.classLoader, "showDialog", boolean.class, boolean.class, new XC_MethodReplacement() {
                     @Override
                     protected Object replaceHookedMethod(final MethodHookParam methodHookParam) throws Throwable {
+                        final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
                         if (!showDialog()) {
-                            XposedUtils.log("Cant invoke fallback option");
+                            XposedUtils.log("Failed to show dialog, showing info...");
+                            AlertDialog.Builder adb = new AlertDialog.Builder(mContext, 0);
+                            adb.setMessage(R.string.xposedMain_MenuActivityNotFound);
+                            adb.setNegativeButton(R.string.xposedMain_MenuActivityNotFound_Cancel, null);
+                            adb.setPositiveButton(R.string.xposedMain_MenuActivityNotFound_Restart, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    pm.reboot(null);
+                                }
+                            });
+                            adb.show();
                         }
                         //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#showDialog,").commit();
                         return null;
@@ -445,12 +456,17 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
                         final KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                         if (!showDialog()) {
-                            XposedUtils.log("Fallback option: invoking original method");
-                            try {
-                                XposedBridge.invokeOriginalMethod(XposedHelpers.findMethodExact(usedPWMClass, lpparam.classLoader, "showGlobalActionsInternal"), methodHookParam.thisObject, null);
-                            } catch (Throwable e) {
-                                XposedUtils.log("Fallback option: failed");
-                            }
+                            XposedUtils.log("Failed to show dialog, showing info...");
+                            AlertDialog.Builder adb = new AlertDialog.Builder(mContext, 0);
+                            adb.setMessage(R.string.xposedMain_MenuActivityNotFound);
+                            adb.setNegativeButton(R.string.xposedMain_MenuActivityNotFound_Cancel, null);
+                            adb.setPositiveButton(R.string.xposedMain_MenuActivityNotFound_Restart, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    pm.reboot(null);
+                                }
+                            });
+                            adb.show();
                         }
                         //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#showDialog,").commit();
                         return null;
@@ -567,19 +583,19 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                     XposedUtils.log("Received broadcast: " + p2.getAction());
                                 switch (p2.getAction()) {
                                     case NPM_ACTION_BROADCAST_SHUTDOWN:
-                                        performCMDCall(new String[] {SHUTDOWN_BROADCAST,SHUTDOWN_CMD});
+                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, SHUTDOWN_CMD});
                                         break;
                                     case NPM_ACTION_BROADCAST_REBOOT:
-                                        performCMDCall(new String[] {SHUTDOWN_BROADCAST,REBOOT_CMD});
+                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_CMD});
                                         break;
                                     case NPM_ACTION_BROADCAST_SOFTREBOOT:
-                                        performCMDCall(new String[] {SHUTDOWN_BROADCAST,REBOOT_SOFT_REBOOT_CMD});
+                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_SOFT_REBOOT_CMD});
                                         break;
                                     case NPM_ACTION_BROADCAST_REBOOTRECOVERY:
-                                        performCMDCall(new String[] {SHUTDOWN_BROADCAST,REBOOT_RECOVERY_CMD});
+                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_RECOVERY_CMD});
                                         break;
                                     case NPM_ACTION_BROADCAST_REBOOTBOOTLOADER:
-                                        performCMDCall(new String[] {SHUTDOWN_BROADCAST,REBOOT_BOOTLOADER_CMD});
+                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_BOOTLOADER_CMD});
                                         break;
                                     case NPM_ACTION_BROADCAST_KILLSYSTEMUI:
                                         mNPMHandler.postDelayed(new Runnable() {
@@ -673,7 +689,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     }
 
     private static void performCMDCall(String[] cmd) {
-        XposedUtils.log("Trying to run '"+cmd+"' using system process call");
+        XposedUtils.log("Trying to run '" + cmd + "' using system process call");
 
         java.lang.Process suProcess = null;
         try {
@@ -683,7 +699,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             os.flush();
             os.close();
         } catch (Throwable e) {
-            XposedUtils.log("Failed to perform system process call: "+e.toString());
+            XposedUtils.log("Failed to perform system process call: " + e.toString());
         }
     }
 
@@ -797,19 +813,19 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         ActivityManager am = (ActivityManager) p1.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfo = am.getRunningAppProcesses();
 
-        if(DeepXposedLogging) {
+        if (DeepXposedLogging) {
             XposedUtils.log("Trying to kill " + runningAppProcessInfo.get(1).processName + " (" + runningAppProcessInfo.get(1).pid + ")");
         }
 
         java.lang.Process suProcess = null;
         try {
-            suProcess = Runtime.getRuntime().exec("am force-stop "+ runningAppProcessInfo.get(1).processName);
+            suProcess = Runtime.getRuntime().exec("am force-stop " + runningAppProcessInfo.get(1).processName);
             DataOutputStream os = new DataOutputStream(suProcess.getOutputStream());
             os.writeBytes("" + "\n");
             os.flush();
             os.close();
         } catch (Throwable e) {
-           XposedUtils.log("Failed to kill: "+e.toString());
+            XposedUtils.log("Failed to kill: " + e.toString());
         }
     }
 

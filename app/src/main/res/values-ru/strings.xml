@@ -112,8 +112,6 @@
   <string name="SoundMode_Normal">"Нормальный"</string>
   <string name="SoundMode_Vibrate">"Вибрация"</string>
   <string name="SoundMode_Silent">"Тихий"</string>
-  <string name="welcomeMsg">"\"Войдите или создайте аккаунт на Neon-Soft.de.
-Это защитит ваше имя пользователя на сервере шаблонов.\""</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Регистрация"</string>
   <string name="presetsManager_UploadMsg">"Имя пользователя или E-mail:"</string>
@@ -286,7 +284,6 @@
   <string name="tourPage_3_Title">"Меню графики"</string>
   <string name="tourPage_3_Text">"Настройка используемой графики (необходимо включить в расширенных настройках)."</string>
   <string name="tourPage_4_Title">"Меню видимости и порядка расположения"</string>
-  <string name="tourPage_4_Text">"Выберите, что вы хотите видеть в вашем меню расположите функции, как вы пожелаете."</string>
   <string name="tourPage_5_Title">"Меню анимаций"</string>
   <string name="tourPage_5_Text">"Изменить анимации появления и исчезновения вашего меню, или полностью отключите их."</string>
   <string name="tourPage_6_Title">"Расширенное меню"</string>

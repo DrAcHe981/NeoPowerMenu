@@ -91,8 +91,6 @@
   <string name="SoundMode_Normal">"Normaal"</string>
   <string name="SoundMode_Vibrate">"Trillen"</string>
   <string name="SoundMode_Silent">"Stil"</string>
-  <string name="welcomeMsg">"\"Welkom bij NeoPowerMenu!
-Je gebruikersID is toegekend je bent klaar om presets te uploaden!\""</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_UploadMsg">"\"Deze preset zal geüpload worden naar een publieke server, zichtbaar voor andere gebruikers.
 

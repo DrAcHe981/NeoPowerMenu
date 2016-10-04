@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
             changePrefPage(new PreferencesGraphicsFragment(), false);
         } else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
             if (!saveSortingIsSaving) {
-                new saveSorting().execute();
+                helper.startAsyncTask(new saveSorting());
             }
         } else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
             for (int i = 0; i < PreferencesPresetsFragment.DownloadingActiveForHelper.size(); i++) {
@@ -247,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
                     PreferencesPresetsFragment.DownloadingActiveForHelper.get(i).stopDownload(true);
                 }
             }
+            PreferencesPresetsFragment.listParser.cancel(true);
             actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
             changePrefPage(new PreferencesColorFragment(), false);
         } else if (visibleFragment.equalsIgnoreCase("PresetsManagerOnline") || (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("login") || LoginFragment.loginFragmentMode.equalsIgnoreCase("logout")))) {
@@ -278,12 +279,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO: Implement this method
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
     public static void launchPowerMenu() {
         Intent intent = new Intent(context, XposedMainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -310,7 +305,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if (DeepLogging) Log.e("NPM", "Failed...");
         }
-        PreferencesPartFragment.mActivity = null;
         super.onPause();
     }
 
@@ -320,7 +314,6 @@ public class MainActivity extends AppCompatActivity {
         if (!visibleFragment.equalsIgnoreCase("tour") && !visibleFragment.equalsIgnoreCase("about") && !visibleFragment.equalsIgnoreCase("permissions") && !visibleFragment.equalsIgnoreCase("permissionsAutoStart") && !visibleFragment.equalsIgnoreCase("PresetsManagerOnline") && !visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && !visibleFragment.equalsIgnoreCase("VisibilityOrder") && !visibleFragment.equalsIgnoreCase("Cropper")) {
             actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
         }
-        PreferencesPartFragment.mActivity = this;
         CustomActivityOnCrash.setRestartActivityClass(MainActivity.class);
         super.onResume();
     }

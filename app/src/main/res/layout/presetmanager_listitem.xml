@@ -100,7 +100,8 @@
 						android:layout_width="25dp"
 						android:src="@drawable/ic_device_now_wallpaper"
 						android:id="@+id/presetmanagerlistitemImageView_hasGraphics"
-						android:padding="2dp"/>
+						android:padding="2dp"
+                        android:layout_gravity="top"/>
 
 					<TextView
 						android:layout_height="wrap_content"
@@ -115,7 +116,7 @@
 				</LinearLayout>
 
 				<TextView
-					android:layout_height="wrap_content"
+					android:layout_height="match_parent"
 					android:layout_width="match_parent"
 					android:text="Description/Secondary Text"
 					android:layout_weight="1.0"

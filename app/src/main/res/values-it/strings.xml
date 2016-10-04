@@ -102,7 +102,6 @@
   <string name="SoundMode_Normal">"Normale"</string>
   <string name="SoundMode_Vibrate">"Vibrazione"</string>
   <string name="SoundMode_Silent">"Silenzioso"</string>
-  <string name="welcomeMsg">"Benvenuto a NeoPowerMenu! \n Il tuo Id utente è stato generato, siete pronti a caricare i preset!"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Profilo"</string>
   <string name="presetsManager_UploadMsg">"Questo Preset verrà caricato sul server pubblico, visibile a tutti gli altri users.\n\n Questa è l'ultima possibilità per modificare il nome o il creatore prima di caricare..."</string>

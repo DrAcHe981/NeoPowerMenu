@@ -67,6 +67,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
     private String[] dialogListItems;
     private int dialogListDefault = 0;
     private boolean dialogListClose = true;
+    private boolean dialogListAllowEmpty = false;
+    private ArrayList<Boolean> dialogListChecks = new ArrayList<>();
 
     private ArrayList<EditText> dialogInputs = new ArrayList<EditText>();
     private ArrayList<String> dialogInputDescText = new ArrayList<String>();
@@ -229,6 +231,16 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
     public void setListLimit(int limit, boolean alsoMin) {
         dialogListLimit = limit;
         dialogListLimitMin = alsoMin;
+    }
+
+    public void setListAllowEmpty(boolean listAllowEmpty) {
+        this.dialogListAllowEmpty = listAllowEmpty;
+    }
+
+    public void setListChecks(ArrayList<Boolean> checks) {
+        if(dialogListMode == ListView.CHOICE_MODE_MULTIPLE) {
+            this.dialogListChecks = checks;
+        }
     }
 
     public void addInput(String descText, String defaultText, boolean allowEmpty, TextWatcher watcher) {
@@ -651,12 +663,17 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         TextView_DialogText.setVisibility(dialogText.isEmpty() ? View.GONE : View.VISIBLE);
 
         if (dialogListItems != null && dialogListItems.length > 0) {
-            dialogListAdapter = new ArrayAdapter<String>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
+            dialogListAdapter = new ArrayAdapter<>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
             ListView_DialogListView.setAdapter(dialogListAdapter);
             ListView_DialogListView.setChoiceMode(dialogListMode);
             if (dialogListDefault > -1) {
                 ListView_DialogListView.setItemChecked(dialogListDefault, true);
                 ListView_DialogListView.setSelection(dialogListDefault);
+            }
+            if (dialogListMode == ListView.CHOICE_MODE_MULTIPLE && !dialogListChecks.isEmpty()) {
+                for (int i = 0; i < dialogListChecks.size(); i++) {
+                    ListView_DialogListView.setItemChecked(i, dialogListChecks.get(i));
+                }
             }
             ListView_DialogListView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -857,7 +874,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                     //ArrayList<String> resultData = new ArrayList<String>();
                     if (dialogListItems != null) {
                         if (dialogListMode != ListView.CHOICE_MODE_NONE) {
-                            if (ListView_DialogListView.getCheckedItemCount() < 1) {
+                            if (!dialogListAllowEmpty && ListView_DialogListView.getCheckedItemCount() < 1) {
                                 return;
                             } else {
                                 if (dialogListLimitMin && dialogListLimit > 0 && ListView_DialogListView.getCheckedItemCount() < dialogListLimit) {

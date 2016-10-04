@@ -5,8 +5,6 @@ import android.content.*;
 import android.content.pm.*;
 import android.net.*;
 import android.os.*;
-import android.support.v4.app.*;
-import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -23,85 +21,85 @@ public class PreferencesPartFragment extends Fragment {
     /**
      * PayPal
      */
-    public static final String PAYPAL_USER = "drache981@gmail.com";
-    public static final String PAYPAL_CURRENCY_CODE = "EUR";
+    final String PAYPAL_USER = "drache981@gmail.com";
+    final String PAYPAL_CURRENCY_CODE = "EUR";
 
     Context mContext;
-    public static Activity mActivity;
+    Activity mActivity;
 
-    private String Urlgithub = "https://github.com/DrAcHe981/NeoPowerMenu";
+    String Urlgithub = "https://github.com/DrAcHe981/NeoPowerMenu";
 
-    private String ActiveStyle = "Material";
-    private int ActiveStyleId = 0;
+    String ActiveStyle = "Material";
+    int ActiveStyleId = 0;
 
-    private boolean hideicon = false;
-    private boolean DeepXposedLogging = false;
+    boolean hideicon = false;
+    boolean DeepXposedLogging = false;
 
-    private View InflatedView;
+    View InflatedView;
 
-    private static ProgressBar ProgressBar_RootWait;
-    private static TextView TextView_ModuleStateTitle;
-    private static TextView TextView_ModuleStateDesc;
+    ProgressBar ProgressBar_RootWait;
+    TextView TextView_ModuleStateTitle;
+    TextView TextView_ModuleStateDesc;
 
-    private static LinearLayout LinearLayout_Style;
-    private static TextView TextView_StyleTitle;
-    private static TextView TextView_StyleDesc;
+    LinearLayout LinearLayout_Style;
+    TextView TextView_StyleTitle;
+    TextView TextView_StyleDesc;
 
-    private static LinearLayout LinearLayout_Theme;
-    private static TextView TextView_ThemeTitle;
-    private static TextView TextView_ThemeDesc;
+    LinearLayout LinearLayout_Theme;
+    TextView TextView_ThemeTitle;
+    TextView TextView_ThemeDesc;
 
-    private static LinearLayout LinearLayout_Graphics;
-    private static TextView TextView_GraphicsTitle;
-    private static TextView TextView_GraphicsDesc;
+    LinearLayout LinearLayout_Graphics;
+    TextView TextView_GraphicsTitle;
+    TextView TextView_GraphicsDesc;
 
-    private static LinearLayout LinearLayout_VisibilityOrder;
-    private static TextView TextView_VisibilityOrderTitle;
-    private static TextView TextView_VisibilityOrderDesc;
+    LinearLayout LinearLayout_VisibilityOrder;
+    TextView TextView_VisibilityOrderTitle;
+    TextView TextView_VisibilityOrderDesc;
 
-    private static LinearLayout LinearLayout_Animations;
-    private static TextView TextView_AnimationsTitle;
-    private static TextView TextView_AnimationsDesc;
+    LinearLayout LinearLayout_Animations;
+    TextView TextView_AnimationsTitle;
+    TextView TextView_AnimationsDesc;
 
-    private static LinearLayout LinearLayout_Account;
-    private static TextView TextView_AccountTitle;
-    private static TextView TextView_AccountDesc;
+    LinearLayout LinearLayout_Account;
+    TextView TextView_AccountTitle;
+    TextView TextView_AccountDesc;
 
-    private static LinearLayout LinearLayout_Advanced;
-    private static TextView TextView_AdvancedTitle;
-    private static TextView TextView_AdvancedDesc;
+    LinearLayout LinearLayout_Advanced;
+    TextView TextView_AdvancedTitle;
+    TextView TextView_AdvancedDesc;
 
-    private static LinearLayout LinearLayout_Permissions;
-    private static TextView TextView_PermissionsTitle;
-    private static TextView TextView_PermissionsDesc;
+    LinearLayout LinearLayout_Permissions;
+    TextView TextView_PermissionsTitle;
+    TextView TextView_PermissionsDesc;
 
     LinearLayout LinearLayout_BackupRestore;
 
-    private static LinearLayout LinearLayout_HideLauncherIcon;
-    private static TextView TextView_HideLauncherIconTitle;
-    private static TextView TextView_HideLauncherIconDesc;
-    private static Switch Switch_HideLauncherIcon;
+    LinearLayout LinearLayout_HideLauncherIcon;
+    TextView TextView_HideLauncherIconTitle;
+    TextView TextView_HideLauncherIconDesc;
+    Switch Switch_HideLauncherIcon;
 
-    private static LinearLayout LinearLayout_DeepXposedLogging;
-    private static TextView TextView_DeepXposedLoggingTitle;
-    private static TextView TextView_DeepXposedLoggingDesc;
-    private static Switch Switch_DeepXposedLogging;
+    LinearLayout LinearLayout_DeepXposedLogging;
+    TextView TextView_DeepXposedLoggingTitle;
+    TextView TextView_DeepXposedLoggingDesc;
+    Switch Switch_DeepXposedLogging;
 
-    private static LinearLayout LinearLayout_Donate;
-    private static TextView TextView_DonateTitle;
-    private static TextView TextView_DonateDesc;
+    LinearLayout LinearLayout_Donate;
+    TextView TextView_DonateTitle;
+    TextView TextView_DonateDesc;
 
-    private static LinearLayout LinearLayout_Source;
-    private static TextView TextView_SourceTitle;
-    private static TextView TextView_SourceDesc;
+    LinearLayout LinearLayout_Source;
+    TextView TextView_SourceTitle;
+    TextView TextView_SourceDesc;
 
-    private static LinearLayout LinearLayout_Share;
-    private static TextView TextView_ShareTitle;
-    private static TextView TextView_ShareDesc;
+    LinearLayout LinearLayout_Share;
+    TextView TextView_ShareTitle;
+    TextView TextView_ShareDesc;
 
-    private static LinearLayout LinearLayout_About;
-    private static TextView TextView_AboutTitle;
-    private static TextView TextView_AboutDesc;
+    LinearLayout LinearLayout_About;
+    TextView TextView_AboutTitle;
+    TextView TextView_AboutDesc;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -541,7 +539,7 @@ public class PreferencesPartFragment extends Fragment {
         return InflatedView;
     }
 
-    private void checkState() {
+    void checkState() {
         if (isAdded()) {
             try {
                 if (helper.ModuleState() >= MainActivity.neededModuleActiveVersion) {
@@ -573,16 +571,26 @@ public class PreferencesPartFragment extends Fragment {
                 } else {
                     TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed5).split("\\|")[0]);
                     TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed5).split("\\|")[1]);
-                    TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
-                    TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme, null));
+                        TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme, null));
+                    } else {
+                        TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+                        TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+                    }
                     //ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
                     ProgressBar_RootWait.setVisibility(View.GONE);
                 }
             } catch (Throwable t) {
                 TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed5).split("\\|")[0]);
                 TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed5).split("\\|")[1]);
-                TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
-                TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme, null));
+                    TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme, null));
+                } else {
+                    TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+                    TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
+                }
                 //ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
                 ProgressBar_RootWait.setVisibility(View.GONE);
             }
@@ -621,7 +629,7 @@ public class PreferencesPartFragment extends Fragment {
 
     }
 
-    private void rootAvailable() {
+    void rootAvailable() {
         if (TextView_ModuleStateTitle != null) {
             MainActivity.RootAvailable = true;
             checkState();

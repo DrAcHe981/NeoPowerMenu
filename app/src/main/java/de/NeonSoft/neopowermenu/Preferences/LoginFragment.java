@@ -209,6 +209,7 @@ public class LoginFragment extends Fragment {
                 } catch (IOException e) {
                 }
                 uH.setLocalUrl(mContext.getFilesDir().getPath() + "/tmp");
+                uH.setAllowMultiple(true);
                 uH.startUpload();
             }
         };
@@ -312,6 +313,7 @@ public class LoginFragment extends Fragment {
                 } catch (IOException e) {
                 }
                 uH.setLocalUrl(mContext.getFilesDir().getPath() + "/tmp");
+                uH.setAllowMultiple(true);
                 uH.startUpload();
             }
 
@@ -425,7 +427,6 @@ public class LoginFragment extends Fragment {
             loginFragmentMode = "logout";
         }
 
-        if (PreferencesPresetsFragment.startTab == 0) checkState();
         if (PreferencesPresetsFragment.startTab == 0) PreferencesPresetsFragment.checkPage();
 
         return InflatedView;
@@ -516,7 +517,7 @@ public class LoginFragment extends Fragment {
                     MainActivity.preferences.edit().putBoolean("autoLogin", true)
                             .putString("ueel", MainActivity.usernameemail)
                             .putString("pd", MainActivity.password)
-                            .putString("auid", MainActivity.accountUniqeId).commit();
+                            .putString("auid", MainActivity.accountUniqeId).apply();
                 }
                 if (LinearLayout_LoginContainer != null) {
                     TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
@@ -557,6 +558,7 @@ public class LoginFragment extends Fragment {
         } catch (IOException e) {
         }
         uH.setLocalUrl(context.getFilesDir().getPath() + "/tmp");
+        uH.setAllowMultiple(true);
         uH.startUpload();
     }
 
@@ -602,6 +604,7 @@ public class LoginFragment extends Fragment {
         } catch (IOException e) {
         }
         uH.setLocalUrl(mContext.getFilesDir().getPath() + "/tmp");
+        uH.setAllowMultiple(true);
         uH.startUpload();
         if (MainActivity.visibleFragment.equalsIgnoreCase("PresetsManagerAccount")) {
             MainActivity.actionbar.setButtonText(mContext.getString(R.string.login_TitleLogout));

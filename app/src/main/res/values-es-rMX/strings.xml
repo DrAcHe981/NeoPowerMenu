@@ -101,7 +101,6 @@
   <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibrar"</string>
   <string name="SoundMode_Silent">"Silencio"</string>
-  <string name="welcomeMsg">"¡Bienvenido a NeoPowerMenu! \nTu usuario se ha generado, ¡estas listo para subir temas!"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Cuenta"</string>
   <string name="presetsManager_UploadMsg">"Este Tema se subira al servidor público, y será visible para otros usuarios.\n\nEsta es tu última oportunidad de ajustar el nombre o el creador antes de subir..."</string>

@@ -243,6 +243,12 @@ public class graphicsAdapter extends BaseAdapter {
                                     holder.imgQueue.setVisibility(View.VISIBLE);
                                     holder.imgQueue.startAnimation(blendIn);
                                 } else {
+                                    if (mItems.get(position).fileName.equalsIgnoreCase("Progress")) {
+                                        Animation progressAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate_right);
+                                        progressAnim.setRepeatMode(Animation.RESTART);
+                                        progressAnim.setRepeatCount(Animation.INFINITE);
+                                        holder.imgQueue.startAnimation(progressAnim);
+                                    }
                                     holder.LoadingBar.setVisibility(View.GONE);
                                     holder.imgQueue.setPadding((int) PreferencesGraphicsFragment.float_padding * 4, (int) PreferencesGraphicsFragment.float_padding * 4, (int) PreferencesGraphicsFragment.float_padding * 4, (int) PreferencesGraphicsFragment.float_padding * 4);
                                     holder.imgQueue.setImageBitmap(loadedImage);

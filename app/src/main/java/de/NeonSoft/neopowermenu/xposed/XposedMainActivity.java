@@ -33,49 +33,41 @@ import android.view.View.*;
 
 public class XposedMainActivity extends Activity implements DialogInterface.OnDismissListener {
 
-    public static SharedPreferences preferences;
-    public static SharedPreferences colorPrefs;
-    public static SharedPreferences orderPrefs;
-    public static SharedPreferences animationPrefs;
-    private static CircularRevealView revealView, revealView2;
-    private static TextView PreviewLabel;
-    private static int backgroundColor;
-    public static boolean mKeyguardShowing = false;
-    public static boolean previewMode = false;
+    SharedPreferences preferences;
+    SharedPreferences colorPrefs;
+    SharedPreferences orderPrefs;
+    SharedPreferences animationPrefs;
+    CircularRevealView revealView, revealView2;
+    TextView PreviewLabel;
+    boolean mKeyguardShowing = false;
+    boolean previewMode = false;
     android.os.Handler handler;
-    static int maxX, maxY;
-    public static Context mContext;
-    public static boolean doubleToConfirm = false;
+    int maxX, maxY;
+    Context mContext;
+    boolean doubleToConfirm = false;
 
-    public static boolean HookShutdownThread = false;
-    public static boolean DeepXposedLogging = false;
-    public static boolean HideOnClick = false;
-    public static boolean LoadAppIcons = true;
-    public static boolean RoundAppIcons = false;
-    public static boolean ColorizeNonStockIcons = false;
-    public static float GraphicsPadding = 0;
+    boolean HookShutdownThread = false;
+    boolean DeepXposedLogging = false;
+    boolean HideOnClick = false;
+    boolean LoadAppIcons = true;
+    boolean RoundAppIcons = false;
+    boolean ColorizeNonStockIcons = false;
+    float GraphicsPadding = 0;
 
-    public static String sStyleName = "Material";
+    String sStyleName = "Material";
     XposedDialog powerDialog;
 
-    public static BroadcastReceiver mReceiver;
+    public BroadcastReceiver mReceiver;
 
-    private static boolean mBlurEnabled;
-    private static int mBlurScale;
-    private static int mBlurRadius;
-    private static BlurUtils mBlurUtils;
-    private static ColorFilter mColorFilter;
-    private static int mBlurDarkColorFilter;
-    private static int mBlurMixedColorFilter;
-    private static int mBlurLightColorFilter;
-    private static Activity mActivity;
-    private static FrameLayout mActivityRootView;
+    Activity mActivity;
+    FrameLayout mActivityRootView;
 
-    public static ImageLoader imageLoader;
-    public static boolean ImgLoader_Loaded;
+    ImageLoader imageLoader;
+    boolean ImgLoader_Loaded;
 
     KeyguardManager mKeyguardManger;
     KeyguardManager.KeyguardLock mKeyguardLock;
+    int backgroundColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,13 +90,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         RoundAppIcons = preferences.getBoolean("RoundAppIcons", false);
         ColorizeNonStockIcons = preferences.getBoolean("ColorizeNonStockIcons", false);
         GraphicsPadding = preferences.getFloat("GraphicsPadding", 0);
-
-        mBlurScale = preferences.getInt("blurScale", 20);
-        mBlurRadius = preferences.getInt("blurRadius", 3);
-        mBlurDarkColorFilter = preferences.getInt("blurDarkColorFilter", Color.LTGRAY);
-        mBlurMixedColorFilter = preferences.getInt("blurMixedColorFilter", Color.GRAY);
-        mBlurLightColorFilter = preferences.getInt("blurLightColorFilter", Color.DKGRAY);
-        mBlurEnabled = preferences.getBoolean("blurEnabled", false);
 
         sStyleName = preferences.getString("DialogTheme", "Material");
 
@@ -155,8 +140,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
             @Override
             public void onClick(View p1) {
-                XposedDialog.SubDialogs.clear();
-                XposedDialog.dismissThis();
+                powerDialog.SubDialogs.clear();
+                powerDialog.dismissThis();
             }
         });
                 /*mBlurUtils = new BlurUtils(getApplicationContext());
@@ -176,7 +161,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         revealView2 = (CircularRevealView) findViewById(R.id.reveal2);
 
         PreviewLabel = (TextView) findViewById(R.id.PreviewLable);
-        if (XposedMainActivity.previewMode)
+        if (previewMode)
             PreviewLabel.setVisibility(View.VISIBLE);
 
         Display mdisp = getWindowManager().getDefaultDisplay();
@@ -197,9 +182,9 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             @Override
             public void onReceive(Context p1, Intent p2) {
                 // TODO: Implement this method
-                if (XposedDialog.canDismiss || previewMode) {
+                if (powerDialog.canDismiss || previewMode) {
                     if (p2.getAction().equalsIgnoreCase(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
-                        if (XposedDialog.mContext != null) {
+                        if (powerDialog.mContext != null) {
                             powerDialog.SubDialogs.clear();
                             powerDialog.dismissThis();
                         }
@@ -215,7 +200,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         initImageLoader();
 
         if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-            final Animation anim = helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, false);
+            final Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
             final int speed = (int) anim.getDuration();
             handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -244,58 +229,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         }
     }
 
-    public static void startBlurTask() {
-        if (mActivityRootView != null)
-            mActivityRootView.setBackground(null);
-
-        BlurTask.setBlurTaskCallback(new BlurTaskCallback() {
-
-            @Override
-            public void blurTaskDone(final Bitmap blurredBitmap) {
-                // TODO: Implement this method
-                if (blurredBitmap != null) {
-                    if (mActivityRootView != null) {
-                        Toast.makeText(mContext, "Blurring done, setting...", Toast.LENGTH_SHORT).show();
-                        mActivityRootView.post(new Runnable() {
-
-                            @Override
-                            public void run() {
-                                BitmapDrawable blurredDrawable = new BitmapDrawable(blurredBitmap);
-                                blurredDrawable.setColorFilter(mColorFilter);
-
-                                mActivityRootView.setBackground(blurredDrawable);
-                            }
-                        });
-                    }
-                } else {
-                    Toast.makeText(mContext, "Failed to blur image...", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void dominantColor(int color) {
-                // TODO: Implement this method
-                double lightness = DisplayUtils.getColorLightness(color);
-
-                if (lightness >= 0.0 && color <= 1.0) {
-                    if (lightness <= 0.33) {
-                        mColorFilter = new PorterDuffColorFilter(mBlurLightColorFilter, PorterDuff.Mode.MULTIPLY);
-                    } else if (lightness >= 0.34 && lightness <= 0.66) {
-                        mColorFilter = new PorterDuffColorFilter(mBlurMixedColorFilter, PorterDuff.Mode.MULTIPLY);
-                    } else if (lightness >= 0.67 && lightness <= 1.0) {
-                        mColorFilter = new PorterDuffColorFilter(mBlurDarkColorFilter, PorterDuff.Mode.MULTIPLY);
-                    }
-                } else {
-                    mColorFilter = new PorterDuffColorFilter(mBlurMixedColorFilter, PorterDuff.Mode.MULTIPLY);
-                }
-            }
-        });
-
-        BlurTask.setBlurEngine(BlurEngine.RenderScriptBlur);
-
-        new BlurTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-
     @Override
     protected void onStart() {
         // TODO: Implement this method
@@ -314,6 +247,9 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         try {
             FragmentManager fm = getFragmentManager();
             powerDialog = new XposedDialog();
+            powerDialog.setHost(this);
+            powerDialog.setPreferences(preferences, colorPrefs, orderPrefs, animationPrefs);
+            powerDialog.setConfiguration(previewMode,HideOnClick, mKeyguardShowing, LoadAppIcons, sStyleName, GraphicsPadding, ColorizeNonStockIcons, imageLoader, DeepXposedLogging);
             //if(sStyleName.equalsIgnoreCase("Material")) {
             //powerDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ThemeDialogBaseLight);
             //} else if (sStyleName.equalsIgnoreCase("Material (Fullscreen)")) {
@@ -327,32 +263,32 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         }
     }
 
-    public static void revealFromTop() {
+    public void revealFromTop() {
         final int color = Color.parseColor(colorPrefs.getString("ActionReveal_Backgroundcolor", "#ffffffff"));
 
         final Point p = new Point(maxX / 2, maxY / 2);
 
         if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-            Animation anim = helper.getAnimation(mContext, XposedMainActivity.animationPrefs, 0, false);
+            Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
             int speed = (int) anim.getDuration();
             if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 1) {
                 revealView.reveal(p.x, p.y, color, 0, speed, null);
             } else {
                 revealView2.reveal(p.x, p.y, color, 0, 0, null);
                 Animation animOut = null;
-                if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 0) {
+                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 0) {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
-                } else if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 2) {
+                } else if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 2) {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_top);
-                } else if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 3) {
+                } else if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 3) {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_left);
-                } else if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 4) {
+                } else if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 4) {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_right);
-                } else if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 5) {
+                } else if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 5) {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out_bottom);
-                } else if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 6) {
+                } else if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 6) {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.scale_out_down);
-                } else if (XposedMainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 7) {
+                } else if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 7) {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.scale_out_up);
                 } else {
                     animOut = AnimationUtils.loadAnimation(mContext, R.anim.fade_out);
@@ -369,7 +305,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     }
 
-    public static void revealToTop() {
+    public void revealToTop() {
         final int color = Color.parseColor("#8800bcd4");
 
         final Point p = new Point(maxX / 2, maxY / 2);
@@ -381,15 +317,15 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     @Override
     public void onDismiss(final DialogInterface dialog) {
-        if (XposedDialog.canDismiss || previewMode) {
+        if (powerDialog.canDismiss || previewMode) {
         }
     }
 
     @Override
     public void onBackPressed() {
         // TODO: Implement this method
-        if (XposedDialog.canDismiss || previewMode) {
-            XposedDialog.dismissThis();
+        if (powerDialog.canDismiss || previewMode) {
+            powerDialog.dismissThis();
             //super.onBackPressed();
         }
     }
@@ -406,8 +342,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         super.finish();
     }
 
-    public static void dismissThis() {
-        if (XposedDialog.canDismiss || previewMode) {
+    public void dismissThis() {
+        if (powerDialog.canDismiss || previewMode) {
             final Point p = new Point(maxX / 2, maxY / 2);
 
             if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
@@ -455,174 +391,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         // TODO: Implement this method
         super.onConfigurationChanged(newConfig);
     }
-
-    public static class BlurTask extends AsyncTask<Void, Void, Bitmap> {
-
-
-        private static int[] mScreenDimens;
-
-        private static Bitmap mScreenBitmap;
-
-        private static BlurEngine mBlurEngine;
-
-        private static BlurTaskCallback mCallback;
-
-
-        public static void setBlurEngine(BlurEngine blurEngine) {
-
-
-            mBlurEngine = blurEngine;
-
-
-        }
-
-
-        public static void setBlurTaskCallback(BlurTaskCallback callBack) {
-
-
-            mCallback = callBack;
-
-
-        }
-
-
-        public static int[] getRealScreenDimensions() {
-
-
-            return mScreenDimens;
-
-
-        }
-
-
-        public static Bitmap getLastBlurredBitmap() {
-
-
-            return mScreenBitmap;
-
-
-        }
-
-
-        @Override
-
-        protected void onPreExecute() {
-
-
-// obtém o tamamho real da tela
-
-            mScreenDimens = DisplayUtils.getRealScreenDimensions(mContext);
-
-
-// obtém a screenshot da tela com escala reduzida
-
-            mScreenBitmap = DisplayUtils.takeSurfaceScreenshot(mContext, mBlurScale);
-
-
-        }
-
-
-        @Override
-
-        protected Bitmap doInBackground(Void... arg0) {
-
-
-            try {
-
-
-// continua ?
-
-                if (mScreenBitmap == null) {
-                    Log.e("NPM", "mScreenBitmap == null");
-                    return null;
-                }
-
-
-// calback
-
-                mCallback.dominantColor(DisplayUtils.getDominantColorByPixelsSampling(mScreenBitmap, 10, 10));
-
-
-// blur engine
-
-                if (mBlurEngine == BlurEngine.RenderScriptBlur) {
-
-
-                    mScreenBitmap = mBlurUtils.renderScriptBlur(mScreenBitmap, mBlurRadius);
-
-
-                } else if (mBlurEngine == BlurEngine.StackBlur) {
-
-
-                    mScreenBitmap = mBlurUtils.stackBlur(mScreenBitmap, mBlurRadius);
-
-
-                } else if (mBlurEngine == BlurEngine.FastBlur) {
-
-
-                    mBlurUtils.fastBlur(mScreenBitmap, mBlurRadius);
-
-
-                }
-
-
-                return mScreenBitmap;
-
-
-            } catch (OutOfMemoryError e) {
-
-
-// erro
-                Log.e("NPM", "OutOfMemoryError: " + e);
-                return null;
-
-
-            }
-
-        }
-
-
-        @Override
-
-        protected void onPostExecute(Bitmap bitmap) {
-
-
-            if (bitmap != null) {
-
-
-// -----------------------------
-
-// bitmap criado com sucesso !!!
-
-// -----------------------------
-
-
-// callback
-
-                mCallback.blurTaskDone(bitmap);
-
-
-            } else {
-
-
-// --------------------------
-
-// erro ao criar o bitmap !!!
-
-// --------------------------
-
-
-// callback
-
-                mCallback.blurTaskDone(null);
-
-
-            }
-
-        }
-
-    }
-
 
     private void initImageLoader() {
         try {

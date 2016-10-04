@@ -307,7 +307,7 @@ public class GravityChooserDialog extends DialogFragment {
                 if (boolean_DialogGravityTop) {
                     boolean_DialogGravityBottom = false;
                     Switch_DialogGravityBottom.setChecked(boolean_DialogGravityBottom);
-                    MainActivity.preferences.edit().putBoolean("DialogGravityBottom", boolean_DialogGravityBottom).commit();
+                    MainActivity.preferences.edit().putBoolean("DialogGravityBottom", boolean_DialogGravityBottom).apply();
                 }
                 MainActivity.preferences.edit().putBoolean("DialogGravityTop", boolean_DialogGravityTop).apply();
                 changeGravity();
@@ -323,7 +323,7 @@ public class GravityChooserDialog extends DialogFragment {
                 if (boolean_DialogGravityLeft) {
                     boolean_DialogGravityRight = false;
                     Switch_DialogGravityRight.setChecked(boolean_DialogGravityRight);
-                    MainActivity.preferences.edit().putBoolean("DialogGravityRight", boolean_DialogGravityRight).commit();
+                    MainActivity.preferences.edit().putBoolean("DialogGravityRight", boolean_DialogGravityRight).apply();
                 }
                 MainActivity.preferences.edit().putBoolean("DialogGravityLeft", boolean_DialogGravityLeft).apply();
                 changeGravity();
@@ -339,7 +339,7 @@ public class GravityChooserDialog extends DialogFragment {
                 if (boolean_DialogGravityRight) {
                     boolean_DialogGravityLeft = false;
                     Switch_DialogGravityLeft.setChecked(boolean_DialogGravityLeft);
-                    MainActivity.preferences.edit().putBoolean("DialogGravityLeft", boolean_DialogGravityLeft).commit();
+                    MainActivity.preferences.edit().putBoolean("DialogGravityLeft", boolean_DialogGravityLeft).apply();
                 }
                 MainActivity.preferences.edit().putBoolean("DialogGravityRight", boolean_DialogGravityRight).apply();
                 changeGravity();
@@ -355,7 +355,7 @@ public class GravityChooserDialog extends DialogFragment {
                 if (boolean_DialogGravityBottom) {
                     boolean_DialogGravityTop = false;
                     Switch_DialogGravityTop.setChecked(boolean_DialogGravityTop);
-                    MainActivity.preferences.edit().putBoolean("DialogGravityTop", boolean_DialogGravityTop).commit();
+                    MainActivity.preferences.edit().putBoolean("DialogGravityTop", boolean_DialogGravityTop).apply();
                 }
                 MainActivity.preferences.edit().putBoolean("DialogGravityBottom", boolean_DialogGravityBottom).apply();
                 changeGravity();
@@ -380,62 +380,12 @@ public class GravityChooserDialog extends DialogFragment {
                     loadImage(foreground, 2, color2);
                 } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoftReboot))) {
                     loadImage(foreground, 3, color2);
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenshot))) {
-                    loadImage(foreground, 4, color2);
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Screenrecord))) {
-                    loadImage(foreground, 5, color2);
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Flashlight))) {
-                    if (TorchService.getTorchState() == TorchService.TORCH_STATUS_OFF) {
-                        loadImage(foreground, 7, color2);
-                    } else {
-                        loadImage(foreground, 6, color2);
-                    }
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_ExpandedDesktop))) {
-                    loadImage(foreground, 8, color2);
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_AirplaneMode))) {
-                    if (Build.VERSION.SDK_INT >= 17) {
-                        try {
-                            if (android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON) == 0) {
-                                loadImage(foreground, 10, color2);
-                            } else {
-                                loadImage(foreground, 9, color2);
-                            }
-                        } catch (Throwable e) {
-                            loadImage(foreground, 10, color2);
-                        }
-                    } else {
-                        try {
-                            if (android.provider.Settings.System.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON) == 0) {
-                                loadImage(foreground, 10, color2);
-                            } else {
-                                loadImage(foreground, 9, color2);
-                            }
-                        } catch (Throwable e) {
-                            loadImage(foreground, 10, color2);
-                        }
-                    }
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_RestartUI))) {
-                    loadImage(foreground, 11, color2);
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundMode))) {
-                    if (amRingerMode == AudioManager.RINGER_MODE_VIBRATE) {
-                        loadImage(foreground, 14, color2);
-                    } else if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
-                        loadImage(foreground, 13, color2);
-                    } else {
-                        loadImage(foreground, 12, color2);
-                    }
                 } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_Recovery))) {
                     loadImage(foreground, 15, color2);
                 } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_Bootloader))) {
                     loadImage(foreground, 16, color2);
                 } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuBottom_SafeMode))) {
                     loadImage(foreground, 17, color2);
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundVibrate))) {
-                    loadImage(foreground, 14, color2);
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundNormal))) {
-                    loadImage(foreground, 12, color2);
-                } else if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_SoundSilent))) {
-                    loadImage(foreground, 13, color2);
                 }
             } else {
                 TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig()

@@ -110,7 +110,6 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibrieren"</string>
   <string name="SoundMode_Silent">"Lautlos"</string>
-  <string name="welcomeMsg">"Willkommen bei NeoPowerMenu!\nDeine Nutzer-Id wurde generiert, du bist bereit zum Hochladen von Voreinstellungen!"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Konto"</string>
   <string name="presetsManager_UploadMsg">"Diese Voreinstellung wird auf den Öffentlichen Server hochgeladen, sichtbar für alle Nutzer.\n\nDies ist deine letzte Chance, den Namen oder den Ersteller anzupassen..."</string>
@@ -258,7 +257,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="tourPage_3_Title">"Das Grafiken-Menü"</string>
   <string name="tourPage_3_Text">"Passe die Grafiken, die verwendet werden an (muss in den erweiterten Einstellungen aktiviert werden)."</string>
   <string name="tourPage_4_Title">"Das Sichtbarkeit und Sortierungs Menü"</string>
-  <string name="tourPage_4_Text">"Wähle was im Menü sein soll und passe die Sortierung nach deinen wünschen an."</string>
+  <string name="tourPage_4_Text">"Wähle was im Menü sein soll und passe die Sortierung nach deinen wünschen an.\nKlicke auf das '+' um neue Elemente hinzuzufügen, streiche sie aus dem Bildschirm um sie zu löschen.\n\nDas 'Schloss' Symbol heißt: auf dem Sperr Bildschirm zeigen.\nDas 'i' Symbol heißt: die Element Beschreibung anzeigen."</string>
   <string name="tourPage_5_Title">"Das Animationen Menü"</string>
   <string name="tourPage_5_Text">"Ändere wie das Menü ein und ausgeblendet wird, oder deaktiviere die Animationen komplett."</string>
   <string name="tourPage_6_Title">"Das Erweriterte Einstellungen Menü"</string>
@@ -285,8 +284,15 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="powerMenuMain_MediaNext">"Nächstes"</string>
   <string name="presetsManager_Loading">"Lese Voreinstellung..."</string>
   <string name="shortcut_ShowPowerMenu">"Ausschaltmenü"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviour">"Aussehen und Verhalten bearbeiten"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourDesc">"Wähle wie sich das Element verhält:"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText">"Element Text: (leer lassen, um den Standardwert zu nutzen)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText1">"Text des ersten Elements: (leer lassen, um den Standardwert zu nutzen)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText2">"Text des zweiten Elements: (leer lassen, um den Standardwert zu nutzen)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText3">"Text des dritten Elements: (leer lassen, um den Standardwert zu nutzen)"</string>
+  <string name="visibilityOrder_HideOnLockscreen">"Auf Sperrbildschirm verbergen"</string>
   <string name="visibilityOrder_InvalidMultiPageMove">"Ungültige Verschieben Operation, es kann kein Start nach dem Ende oder ein Ende vor dem Start sein!"</string>
-  <string name="preferences_BackupRestoreTitle">"Sichern/Wiederherstellen"</string>
+  <string name="preferences_BackupRestoreTitle">"Sichern und Wiederherstellen"</string>
   <string name="preferences_BackupRestoreDesc">"Sichere alle deine Einstellungen und stelle sie später wieder her, du kannst auch Einstellungen löschen, wenn etwas schief geht oder falls du einfach nur ein frisches Menü willst."</string>
   <string name="backupRestoreCategory_BackupRestore">"Sichern und Wiederherstellen"</string>
   <string name="backupRestore_NewBackupTitle">"Alle Einstellungen sichern"</string>
@@ -314,4 +320,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="backupRestoreOptions_Graphics">"Grafiken"</string>
   <string name="backupRestoreOptions_VisibilityAndOrder">"Sichtbarkeit und Sortierung"</string>
   <string name="backupRestoreOptions_Animations">"Animationen"</string>
+  <string name="xposedMain_MenuActivityNotFound">"Es scheint das du mein Modul deinstalliert hast bevor du es deaktiviert hattest...\nNun weiß das System nicht was es machen soll, bitte klicke auf Neustarten um dein Gerät neu zu starten und um die Deinstallation abzuschließen!"</string>
+  <string name="xposedMain_MenuActivityNotFound_Cancel">"Abbrechen"</string>
+  <string name="xposedMain_MenuActivityNotFound_Restart">"Neustarten"</string>
 </resources>

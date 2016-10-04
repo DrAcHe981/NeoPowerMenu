@@ -145,37 +145,57 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         DSLV_List.setDragScrollProfile(ssProfile);
         DSLV_List.setFastScrollEnabled(true);
 
-        ArrayList<Integer> types = new ArrayList<Integer>(Arrays.asList(new Integer[]{}));
-        ArrayList<String> items = new ArrayList<String>(Arrays.asList(new String[]{}));
+        ArrayList<Integer> types = new ArrayList<>();
+        ArrayList<String> items = new ArrayList<>();
+        ArrayList<Boolean> hideDesc = new ArrayList<>();
+        ArrayList<Boolean> hideOnLockscreen = new ArrayList<>();
+        ArrayList<String> texts = new ArrayList<>();
         //int i = 0;
         ArrayList<String> MultiPage = new ArrayList<String>();
         for (int i = 0; i < MainActivity.orderPrefs.getAll().keySet().size(); i++) {
             //Log.i("NPM:visibilityorder","Loading item "+(MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i+
             //				"\nType: "+MainActivity.orderPrefs.getInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+ i+"_item_type",-1));
             if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) != -1) {
-                types.add(MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", adapter.TYPE_NORMAL));
                 if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", adapter.TYPE_NORMAL) == adapter.TYPE_NORMAL) {
+                    types.add(MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", adapter.TYPE_NORMAL));
+                    hideDesc.add(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
+                    hideOnLockscreen.add(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     items.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
+                    texts.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
                     //Log.i("NPM:visibilityorder","Content(single): "+items.get(i));
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", adapter.TYPE_NORMAL) == adapter.TYPE_MULTI) {
+                    types.add(MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", adapter.TYPE_NORMAL));
+                    hideDesc.add(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
+                    hideOnLockscreen.add(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     items.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null") + "|" +
                             MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null") + "|" +
                             MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null"));
+                    texts.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_text", "< default >") + "|" +
+                            MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_text", "< default >") + "|" +
+                            MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_text", "< default >"));
                     //Log.i("NPM:visibilityorder","Content(multi): "+items.get(i));
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
+                    types.add(MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", adapter.TYPE_NORMAL));
+                    hideDesc.add(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
+                    hideOnLockscreen.add(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     //types.add(MainActivity.orderPrefs.getInt((MultiPage.size()>0 ? MultiPage.get(MultiPage.size()-1)+"_" : "")+i+"_item_type",adapter.TYPE_NORMAL));
                     items.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
+                    texts.add("");
                     MultiPage.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                     //Log.i("NPM:visibilityorder","Content: open multi page");
                 } else if (MultiPage.size() > 0 && MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END) {
+                    types.add(MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", adapter.TYPE_NORMAL));
+                    hideDesc.add(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
+                    hideOnLockscreen.add(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     //types.add(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END);
                     items.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
+                    texts.add("");
                     MultiPage.remove(MultiPage.size() - 1);
                     //Log.i("NPM:visibilityorder","Content: close multi page");
                 }
             }
         }
-        adapter = new visibilityOrder_ListAdapter(getActivity(), types, items);
+        adapter = new visibilityOrder_ListAdapter(getActivity(), types, items, hideDesc, hideOnLockscreen, texts);
 
         DSLV_List.setAdapter(adapter);
 
@@ -253,7 +273,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                                         }
                                         loadAppsTask = new loadApps().execute(adapter.TYPE_NORMAL,-1);
                                     } else {
-                                        adapter.addItem(visibilityOrder_ListAdapter.TYPE_NORMAL, PowerMenuItems[position]);
+                                        adapter.addItem(visibilityOrder_ListAdapter.TYPE_NORMAL, PowerMenuItems[position], false, false, "");
                                     }
                                 }
 
@@ -312,7 +332,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                                                 splitStr = splitStr + (i >= split.length ? "" : "|");
                                             }
                                             //Toast.makeText(getActivity(),"Adding "+split.length+" items: "+splitStr,Toast.LENGTH_LONG).show();
-                                            adapter.addItem(type, splitStr);
+                                            adapter.addItem(type, splitStr, false, false, "< default >|< default >|< default >");
                                         }
                                 }
 
@@ -338,9 +358,9 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                                     
                                     Date date = new Date();
                                     String groupName = helper.md5Crypto(date.getDay() + "." + date.getMonth() + "." + date.getYear() + "/" + date.getHours() + ":" + date.getMinutes() + ":" + date.getMinutes()+ ":" + date.getSeconds());
-                                    adapter.addItem(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START, groupName);
-                                    adapter.addItem(visibilityOrder_ListAdapter.TYPE_NORMAL, PowerMenuItems[position]);
-                                    adapter.addItem(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END, groupName);
+                                    adapter.addItem(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START, groupName, false, false, "");
+                                    adapter.addItem(visibilityOrder_ListAdapter.TYPE_NORMAL, PowerMenuItems[position], false, false, "");
+                                    adapter.addItem(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END, groupName, false, false, "");
                                 }
 
                                 @Override
@@ -495,10 +515,11 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             }
                         }
                         if (rechoice != -1) {
+                            Object[] item = adapter.getItemAt(rechoice);
                             adapter.removeAt(rechoice);
-                            adapter.insertAt(rechoice, new Object[]{type, string});
+                            adapter.insertAt(rechoice, new Object[]{type, string, item[2], item[3], item[4]});
                         } else {
-                            adapter.addItem(type, string);
+                            adapter.addItem(type, string, false, false, "");
                         }
                     }
 

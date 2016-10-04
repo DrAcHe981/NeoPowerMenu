@@ -118,7 +118,6 @@
 <string name="SoundMode_Normal">"Normal"</string>
 <string name="SoundMode_Vibrate">"Vibrate"</string>
 <string name="SoundMode_Silent">"Silent"</string>
-<string name="welcomeMsg">"Welcome to NeoPowerMenu!\nYour user Id has been generated, you are ready to upload presets!"</string>
 
 <!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Account"</string>
@@ -275,7 +274,7 @@
     <string name="tourPage_3_Title">"The Graphics Menu"</string>
     <string name="tourPage_3_Text">"Customize the graphics that are used (needs to be enabled in the advanced settings)."</string>
     <string name="tourPage_4_Title">"The Visibility and Order Menu"</string>
-    <string name="tourPage_4_Text">"Choose what you want to have in your menu and sort the options as you wish."</string>
+    <string name="tourPage_4_Text">"Choose what you want to have in your menu and sort the options as you wish.\nClick on the '+' to add new items, swipe the item out of the screen to delete it.\n\nThe 'lock' icon means: show on the lockscreen.\nThe 'i' icon means: show item description."</string>
     <string name="tourPage_5_Title">"The Animations Menu"</string>
     <string name="tourPage_5_Text">"Change the way the menu animates in and out or disable the animations completely."</string>
     <string name="tourPage_6_Title">"The Advanced Menu"</string>
@@ -311,9 +310,16 @@
 
     <string name="shortcut_ShowPowerMenu">"Power menu"</string>
 
+    <string name="visibilityOrder_EditAppearanceBehaviour">"Edit appearance and behaviour"</string>
+    <string name="visibilityOrder_EditAppearanceBehaviourDesc">"Choose below how the item behaves:"</string>
+    <string name="visibilityOrder_EditAppearanceBehaviourText">"Item text: (make empty to use default)"</string>
+    <string name="visibilityOrder_EditAppearanceBehaviourText1">"First Item text: (make empty to use default)"</string>
+    <string name="visibilityOrder_EditAppearanceBehaviourText2">"Second Item text: (make empty to use default)"</string>
+    <string name="visibilityOrder_EditAppearanceBehaviourText3">"Third Item text: (make empty to use default)"</string>
+    <string name="visibilityOrder_HideOnLockscreen">"Hide on Lockscreen"</string>
     <string name="visibilityOrder_InvalidMultiPageMove">"Invalid move operation, There can't be a start after the end or an end before the start!"</string>
 
-    <string name="preferences_BackupRestoreTitle">"Backup/Restore"</string>
+    <string name="preferences_BackupRestoreTitle">"Backup and Restore"</string>
     <string name="preferences_BackupRestoreDesc">"Backup all your settings and restore them later, also you could delete settings if something goes wrong or if you just want a fresh menu."</string>
 
     <string name="backupRestoreCategory_BackupRestore">"Backup and restore"</string>
@@ -342,4 +348,8 @@
     <string name="backupRestoreOptions_Graphics">"Graphics"</string>
     <string name="backupRestoreOptions_VisibilityAndOrder">"Visibility and Order"</string>
     <string name="backupRestoreOptions_Animations">"Animations"</string>
+
+    <string name="xposedMain_MenuActivityNotFound">"It seems like you have uninstalled my module before you disabled it...\nNow the system don't knows what to do here, please click on restart to restart your device and to complete the uninstallation!"</string>
+    <string name="xposedMain_MenuActivityNotFound_Cancel">"Cancel"</string>
+    <string name="xposedMain_MenuActivityNotFound_Restart">"Restart"</string>
 </resources>

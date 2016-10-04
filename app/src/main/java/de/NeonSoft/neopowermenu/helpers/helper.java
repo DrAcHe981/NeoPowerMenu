@@ -22,6 +22,8 @@ import net.lingala.zip4j.core.*;
 import net.lingala.zip4j.model.*;
 import net.lingala.zip4j.util.*;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+
 public class helper {
 
     private static boolean zipLogging = true;
@@ -627,6 +629,14 @@ public class helper {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    @SafeVarargs
+    public static <T> AsyncTask startAsyncTask(AsyncTask<T ,?, ?> asyncTask, T... params) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+            return asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
+        else
+            return asyncTask.execute(params);
     }
 
 }
