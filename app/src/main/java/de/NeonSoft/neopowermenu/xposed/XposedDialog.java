@@ -2231,7 +2231,7 @@ public class XposedDialog extends DialogFragment {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                     return Settings.Global.getInt(mContext.getContentResolver(), "mobile_data",0) == 1;
                 } else {
-                    return Settings.System.getInt(mContext.getContentResolver(), "mobile_data",0) == 1;
+                    return Settings.Secure.getInt(mContext.getContentResolver(), "mobile_data",0) == 1;
                 }
             } catch (Throwable t) {
 						Log.e("NPM:gD","Error getting data state: ",t);
