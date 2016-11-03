@@ -70,19 +70,20 @@ public class PreferencesPresetsFragment extends Fragment {
     public static boolean onlineRequestIsRunning;
 
     public static String DownloadingActiveFor = "";
-    public static ArrayList<LinearLayout> DownloadingActiveForRoot = new ArrayList<LinearLayout>();
+    /*public static ArrayList<LinearLayout> DownloadingActiveForRoot = new ArrayList<LinearLayout>();
     public static ArrayList<downloadHelper> DownloadingActiveForHelper = new ArrayList<downloadHelper>();
     public static ArrayList<LinearLayout> DownloadingActiveForLayout = new ArrayList<LinearLayout>();
     public static ArrayList<ImageView> DownloadingActiveForImageView = new ArrayList<ImageView>();
     public static ArrayList<String> DownloadingActiveForOldText = new ArrayList<String>();
     public static ArrayList<TextView> DownloadingActiveForLabel = new ArrayList<TextView>();
-    public static ArrayList<ProgressBar> DownloadingActiveForProgress = new ArrayList<ProgressBar>();
+    public static ArrayList<ProgressBar> DownloadingActiveForProgress = new ArrayList<ProgressBar>();*/
+		public static ArrayList<PresetsHolder> OnlinePresets = new ArrayList<>();
 
-    public static ArrayList<String> OnlineListTitles = new ArrayList<String>();
-    public static ArrayList<String> OnlineListDescs = new ArrayList<String>();
-    public static ArrayList<String> OnlineListEnabled = new ArrayList<String>();
-    public static ArrayList<String> OnlineListLocal = new ArrayList<String>();
-    public static ArrayList<Boolean> OnlineHasGraphics = new ArrayList<Boolean>();
+    //public static ArrayList<String> OnlineListTitles = new ArrayList<String>();
+    //public static ArrayList<String> OnlineListDescs = new ArrayList<String>();
+    //public static ArrayList<String> OnlineListEnabled = new ArrayList<String>();
+    //public static ArrayList<String> OnlineListLocal = new ArrayList<String>();
+    //public static ArrayList<Boolean> OnlineHasGraphics = new ArrayList<Boolean>();
 
     public static AsyncTask listParser;
 
@@ -421,22 +422,22 @@ public class PreferencesPresetsFragment extends Fragment {
             FileInputStream fIn = new FileInputStream(prefile);
             BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
             String aDataRow = "";
-            final String[] presetInfo = new String[4];
-            presetInfo[0] = Filename.split(".nps")[0];
-            presetInfo[1] = "< unknown >";
-            presetInfo[2] = "true";
-            presetInfo[3] = "true";
+            //final String[] presetInfo = new String[4];
+						final PresetsHolder preset = new PresetsHolder();
+						preset.setType(PresetsHolder.TYPE_INTERNAL);
+            preset.setName(Filename.split(".nps")[0]);
+            preset.setDescription("< unknown >");
             while ((aDataRow = myReader.readLine()) != null) {
                 //aBuffer += aDataRow + "\n";
                 if(!aDataRow.equalsIgnoreCase("[INFO]") && !aDataRow.equalsIgnoreCase("[COLORS]")) {
                     String[] aData = aDataRow.split("=");
                     if (aData.length < 2) {
                         MainActivity.ImportUrl = null;
-                        Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!\nCause by: Unknown string split length: "+aData.length, Toast.LENGTH_LONG).show();
                         return false;//presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
                     }
                     if (aData[0].equalsIgnoreCase("Creator")) {
-                        presetInfo[1] = aData[1];
+                        preset.setDescription(aData[1]);
                     }
                 }
             }
@@ -466,7 +467,7 @@ public class PreferencesPresetsFragment extends Fragment {
 
                     File prefile = new File(newUrl);
                     String newFilename = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0") + ".nps";
-                    presetInfo[0] = newFilename.replace(".nps", "");
+                    preset.setName(newFilename.replace(".nps", ""));
                     final boolean newPresetAdded;
                     newPresetAdded = !new File(mContext.getFilesDir().getPath() + "/presets/" + newFilename).exists();
                     String FilePath = "";
@@ -492,7 +493,7 @@ public class PreferencesPresetsFragment extends Fragment {
                             presetsFiles[i].delete();
                         }
                         if (newPresetAdded) {
-                            adapter.insert(presetInfo);
+                            adapter.insert(preset);
                         }
                         Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportSuccess).replace("[PRESETNAME]", newFilename.replace(".nps", "")), Toast.LENGTH_SHORT).show();
                     } else {
@@ -507,7 +508,7 @@ public class PreferencesPresetsFragment extends Fragment {
                     Importcancled = true;
                 }
             });
-            dialogFragment.setText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : presetInfo[1]) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
+            dialogFragment.setText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : preset.getDescription()) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
             dialogFragment.addInput(mContext.getString(R.string.presetSaveDialog_InfoText), Filename.replace(".nps", ""), false, new TextWatcher() {
 
                         @Override

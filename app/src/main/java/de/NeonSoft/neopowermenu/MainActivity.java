@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View p1) {
                 // TODO: Implement this method
-                actionbar.hideButton();
+                //actionbar.hideButton();
                 launchPowerMenu();
             }
         };
@@ -242,12 +242,13 @@ public class MainActivity extends AppCompatActivity {
                 helper.startAsyncTask(new saveSorting());
             }
         } else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
-            for (int i = 0; i < PreferencesPresetsFragment.DownloadingActiveForHelper.size(); i++) {
-                if (PreferencesPresetsFragment.DownloadingActiveForHelper.get(i) != null && PreferencesPresetsFragment.DownloadingActiveForHelper.get(i).isRunning()) {
-                    PreferencesPresetsFragment.DownloadingActiveForHelper.get(i).stopDownload(true);
+            for (int i = 0; i < PreferencesPresetsFragment.OnlinePresets.size(); i++) {
+                if (PreferencesPresetsFragment.OnlinePresets.get(i).getDownloadHelper() != null && PreferencesPresetsFragment.OnlinePresets.get(i).getDownloadHelper().isRunning()) {
+                    PreferencesPresetsFragment.OnlinePresets.get(i).getDownloadHelper().stopDownload(true);
                 }
             }
-            PreferencesPresetsFragment.listParser.cancel(true);
+						if(PreferencesPresetsFragment.listParser != null)
+            		PreferencesPresetsFragment.listParser.cancel(true);
             actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
             changePrefPage(new PreferencesColorFragment(), false);
         } else if (visibleFragment.equalsIgnoreCase("PresetsManagerOnline") || (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("login") || LoginFragment.loginFragmentMode.equalsIgnoreCase("logout")))) {
@@ -285,7 +286,9 @@ public class MainActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         intent.putExtra("previewmode", true);
+				//Toast.makeText(context, "pre Preview mode: "+intent.getBooleanExtra("previewmode",false), Toast.LENGTH_SHORT).show();
         context.startActivity(intent);
+				//context.startService(intent);
     }
 
     @Override
@@ -345,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class saveSorting extends AsyncTask<String, String, String> {
+    class saveSorting extends AsyncTask<Object, String, String> {
 
         @Override
         protected void onPreExecute() {
@@ -357,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(String[] p1) {
+        protected String doInBackground(Object[] p1) {
             // TODO: Implement this method
             PreferencesVisibilityOrderFragment.adapter.outputSorting();
             return null;

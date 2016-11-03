@@ -399,8 +399,8 @@ public class GravityChooserDialog extends DialogFragment {
     }
 
     private static void loadImage(final ImageView image, final int id, final String color) {
-        if (new File(mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.defaultGraphics[id][2] + ".png").exists()) {
-            MainActivity.imageLoader.displayImage("file://" + mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.defaultGraphics[id][2] + ".png",
+        if (new File(mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[id][2] + ".png").exists()) {
+            MainActivity.imageLoader.displayImage("file://" + mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[id][2] + ".png",
                     image, new SimpleImageLoadingListener() {
                         @Override
                         public void onLoadingStarted(String imageUri, View view) {
@@ -432,7 +432,7 @@ public class GravityChooserDialog extends DialogFragment {
                         @Override
                         public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
                             Log.e("NPM:xposedDialog", "Failed to load image '" + imageUri + "': " + failReason.getCause().toString());
-                            image.setImageDrawable(mContext.getResources().getDrawable((int) PreferencesGraphicsFragment.defaultGraphics[id][1]));
+                            image.setImageDrawable(mContext.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[id][1]));
                             image.setColorFilter(Color.parseColor(color),
                                     android.graphics.PorterDuff.Mode.SRC_IN);
                             image.setVisibility(View.VISIBLE);
@@ -443,7 +443,7 @@ public class GravityChooserDialog extends DialogFragment {
                     });
         } else {
             image.setPadding((int) Math.max(float_padding,helper.convertDpToPixel(5,mContext)),(int) Math.max(float_padding,helper.convertDpToPixel(5,mContext)),(int) Math.max(float_padding,helper.convertDpToPixel(5,mContext)),(int) Math.max(float_padding,helper.convertDpToPixel(5,mContext)));
-            image.setImageDrawable(mContext.getResources().getDrawable((int) PreferencesGraphicsFragment.defaultGraphics[id][1]));
+            image.setImageDrawable(mContext.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[id][1]));
             image.setColorFilter(Color.parseColor(color),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             image.setVisibility(View.VISIBLE);

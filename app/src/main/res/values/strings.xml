@@ -21,6 +21,10 @@
     <string name="powerMenuMain_ToggleRotate">"Screen rotation"</string>
     <string name="ToggleRotateMode_Auto">"Auto"</string>
     <string name="ToggleRotateMode_Off">"Off"</string>
+		<string name="powerMenuMain_ToggleWifi">"WiFi"</string>
+		<string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
+		<string name="powerMenuMain_ToggleData">"Data"</string>
+		<string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
 
 <!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibility and order"</string>
@@ -86,6 +90,7 @@
 <string name="powerMenuMain_RestartUI">"Restart System UI"</string>
 
 <!-- Preferences: Colors -->
+		<string name="colorsType_Reveal">"Reveal color"</string>
     <string name="colorsType_Circle">"Circle color"</string>
 <string name="colorsType_Background">"Background color"</string>
 <string name="colorsType_Text">"Text color"</string>
@@ -97,7 +102,7 @@
 <string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
 <string name="permissionsScreen_DontAskAgain">"Don't ask again"</string>
 <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Read/Write External Storage"</string>
-<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Required for future functions (little tip: custom images)."</string>
+<string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Required to use custom graphics."</string>
 <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Required to toggle the torch."</string>
 <string name="visibilityOrder_HideDesc">"Hide description"</string>
@@ -110,9 +115,15 @@
 <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Alert window"</string>
 <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Required to display the Power Menu on top of everything."</string>
 <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
-
-<!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
-<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Required to prevent killing of the torch and screenrecord service."</string>
+		<string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Required to prevent killing of the torch and screenrecord service."</string>
+		<string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Access WiFi State"</string>
+		<string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Required to get the WiFi state."</string>
+		<string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Change WiFi State"</string>
+		<string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Required to toggle WiFi."</string>
+		<string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
+		<string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Required to get the bluetooth state."</string>
+		<string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Admin"</string>
+		<string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Required to toggle bluetooth without any dialog."</string>
 <string name="powerMenuMain_SoundMode">"Sound Mode"</string>
 <string name="powerMenuMain_SoundModeDesc">"Current mode: [SOUNDMODE]"</string>
 <string name="SoundMode_Normal">"Normal"</string>
@@ -265,6 +276,7 @@
     <string name="tourPage_Next">"Next"</string>
     <string name="tourPage_Skip">"Skip"</string>
     <string name="tourPage_Enjoy">"Create your menu!"</string>
+		<string name="tourPage_UnknownProblem">"There was an unknown problem showing the next tour page, please click skip and report the problem to the developer...\n\nCaused by:\n"</string>
     <string name="tourPage_0_Title">"Welcome to NPM!"</string>
     <string name="tourPage_0_Text">"First off all: Thank you for downloading my app!\n\nThis little tour will show you the basics to use my app."</string>
     <string name="tourPage_1_Title">"The Main Menu"</string>
@@ -301,6 +313,7 @@
     <string name="uploadHelper_FailedAt3">"Failed to upload the file, please check your connection and try it again."</string>
     <string name="uploadHelper_UnknownError">"There was an unknown problem while uploading the file, please try it again."</string>
     <string name="visibilityOrder_SearchApp">"Search app (case insensitive):"</string>
+		<string name="visibilityOrder_FilterItemsList">"Search item (case insensitive):"</string>
 
     <string name="powerMenuMain_MediaPrevious">"Previous"</string>
     <string name="powerMenuMain_MediaPlayPause">"Play/Pause"</string>
@@ -352,4 +365,5 @@
     <string name="xposedMain_MenuActivityNotFound">"It seems like you have uninstalled my module before you disabled it...\nNow the system don't knows what to do here, please click on restart to restart your device and to complete the uninstallation!"</string>
     <string name="xposedMain_MenuActivityNotFound_Cancel">"Cancel"</string>
     <string name="xposedMain_MenuActivityNotFound_Restart">"Restart"</string>
+		
 </resources>

@@ -5,10 +5,11 @@ import android.content.*;
 import android.content.pm.*;
 import android.net.*;
 import android.os.*;
+import android.support.v4.app.*;
+import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
-
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.permissionsScreen.*;
@@ -133,6 +134,7 @@ public class PreferencesPartFragment extends Fragment {
         for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
             if ((int) PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM) {
                 if (MainActivity.colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty()) {
+										//Log.d("NPM:cI","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
                     MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).apply();
                     MainActivity.preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).apply();
                 }

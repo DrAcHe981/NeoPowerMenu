@@ -115,7 +115,7 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                             public void onPositiveClick(Bundle resultBundle) {
 
                                 try {
-                                    File presetFile = new File(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "") + ".nps");
+                                    File presetFile = new File(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".nps");
                                     presetFile.createNewFile();
                                     FileWriter fw = new FileWriter(presetFile);
                                     fw.append("[INFO]" + "\n");
@@ -123,16 +123,19 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                     fw.append("AppVersionCode=" + MainActivity.versionCode + "\n");
                                     if (!resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1").equalsIgnoreCase("")) {
                                         MainActivity.preferences.edit().putString("lastPresetCreatedBy", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1")).commit();
-                                        fw.append("Creator=" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1").replace("/", "") + "\n");
+                                        fw.append("Creator=" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1").replace("/", "").trim() + "\n");
                                     } else {
                                         fw.append("Creator=a " + Build.BRAND + " " + Build.MODEL + " user\n");
                                     }
                                     fw.append("GraphicsScale=" + MainActivity.preferences.getFloat("GraphicsPadding", 0) + "\n");
+																		fw.append("ColorizeNonStockIcons=" + MainActivity.preferences.getBoolean("ColorizeNonStockIcons",false) + "\n");
                                     fw.append("[COLORS]" + "\n");
                                     for (int i = 0; i < colorNamesArray.length; i++) {
                                         String[] loadColor = colorNamesArray[i][1].toString().split("_");
                                         if (loadColor.length > 1) {
-                                            if (loadColor[1].contains("Background")) {
+																						if (loadColor[1].contains("Reveal")) {
+                                                fw.append(loadColor[0] + "_Revealcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Revealcolor", "#ffffffff") + "\n");
+																						} else if (loadColor[1].contains("Background")) {
                                                 fw.append(loadColor[0] + "_Backgroundcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Backgroundcolor", "#ffffffff") + "\n");
                                             } else if (loadColor[1].contains("Text")) {
                                                 fw.append(loadColor[0] + "_Textcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Textcolor", "#ffffff") + "\n");
@@ -142,16 +145,16 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                         }
                                     }
                                     fw.close();
-                                    MainActivity.preferences.edit().putString("lastUsedPreset", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "")).apply();
+                                    MainActivity.preferences.edit().putString("lastUsedPreset", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim()).apply();
                                     if (resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)) {
-                                        helper.zipAll(context.getFilesDir().getPath() + "/images/", context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "") + ".zip", null);
-                                        helper.zipFile(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "") + ".nps", context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "") + ".zip", null);
-                                        new File(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "") + ".nps").delete();
-                                        if (new File(context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "") + ".zip").renameTo(new File(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "") + ".nps"))) {
-                                            Toast.makeText(context.getApplicationContext(), context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "")), Toast.LENGTH_SHORT).show();
+                                        helper.zipAll(context.getFilesDir().getPath() + "/images/", context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".zip", null);
+                                        helper.zipFile(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".nps", context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".zip", null);
+                                        new File(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".nps").delete();
+                                        if (new File(context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".zip").renameTo(new File(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".nps"))) {
+                                            Toast.makeText(context.getApplicationContext(), context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim()), Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
-                                        Toast.makeText(context.getApplicationContext(), context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "")), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context.getApplicationContext(), context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim()), Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (IOException e) {
                                 }
@@ -174,7 +177,7 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                     public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
 
                                         if (!p1.toString().equalsIgnoreCase("")) {
-                                            File checkFile = new File(context.getFilesDir() + "/presets/" + p1.toString().replace("/", "") + ".nps");
+                                            File checkFile = new File(context.getFilesDir() + "/presets/" + p1.toString().replace("/", "").trim() + ".nps");
                                             if (!checkFile.exists()) {
                                                 dialogFragment.showAssistInfo(false);
                                                 //dialogFragment.setDialogText("");
@@ -209,33 +212,29 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
 
                 Desc.setVisibility(View.GONE);
                 final String currentColor;
-                if (loadColor[1].contains("Background")) {
+								if (loadColor[1].contains("Reveal")) {
+										colorType = "_Revealcolor";
+								} else if (loadColor[1].contains("Background")) {
                     colorType = "_Backgroundcolor";
                 } else if (loadColor[1].contains("Circle")) {
                     colorType = "_Circlecolor";
-                } else {
+                } else if (loadColor[1].contains("Text")) {
                     colorType = "_Textcolor";
-                }
+                } else {
+										colorType = "null";
+								}
                 try {
                     String title = "";
-                    if (loadColor[1].contains("Background")) {
+										if (loadColor[1].contains("Reveal")) {
+												title = context.getString(R.string.colorsType_Reveal);
+                    } else if (loadColor[1].contains("Background")) {
                         title = context.getString(R.string.colorsType_Background);
                         if (loadColor[0].contains("Reveal")) {
-                            try {
-                                String descCode = "Desc";
-                                if (loadColor[0].contains("Action")) {
-                                    descCode = "Desc1";
-                                }
-                                String Description = context.getResources().getString(context.getResources().getIdentifier("colorsPartReveal" + descCode, "string", MainActivity.class.getPackage().getName()));
-                                Desc.setText(Description);
-                                Desc.setVisibility(View.VISIBLE);
-                            } catch (Throwable t) {
-                                Desc.setText("String Resource for colorsPart" + loadColor[0] + " not found.");
-                            }
+														title = context.getString(R.string.colorsType_Reveal);
                         }
                     } else if (loadColor[1].contains("Circle")) {
                         title = context.getString(R.string.colorsType_Circle);
-                    } else {
+                    } else if (loadColor[1].contains("Text")) {
                         title = context.getString(R.string.colorsType_Text);
                     }
                     Title.setText(title);
@@ -307,17 +306,10 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                             public void onListItemClick(int position, String text) {
                                 if (position == 0) {
                                     for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
-                                        if (loadColor[0].contains("Reveal")) {
-                                            if (PreferencesColorFragment.ColorNames[i][1].toString().contains("Reveal") && PreferencesColorFragment.ColorNames[i][1].toString().contains(colorType)) {
+                                            if (PreferencesColorFragment.ColorNames[i][1].toString().contains(colorType)) {
                                                 MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), currentColor).apply();
                                                 notifyDataSetChanged();
                                             }
-                                        } else {
-                                            if (!PreferencesColorFragment.ColorNames[i][1].toString().contains("Reveal") && PreferencesColorFragment.ColorNames[i][1].toString().contains(colorType)) {
-                                                MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), currentColor).apply();
-                                                notifyDataSetChanged();
-                                            }
-                                        }
                                     }
                                 } else if (position == 1) {
                                     MainActivity.colorPrefs.edit().putString(loadColor[0] + colorType, defaultColors[p1]).apply();

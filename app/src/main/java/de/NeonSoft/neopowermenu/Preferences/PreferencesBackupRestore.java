@@ -104,11 +104,11 @@ public class PreferencesBackupRestore extends Fragment {
                         String backupPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
                         String backupName = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", "");
                         if (backupName.isEmpty())
-                            backupName = "NPM_Backup_" + String.format(Locale.getDefault(), "%02d-%02d-%02d", date.get(Calendar.HOUR), date.get(Calendar.MINUTE), date.get(Calendar.SECOND)) + "_" + String.format(Locale.getDefault(), "%02d-%02d-%4d", date.get(Calendar.DAY_OF_MONTH), date.get(Calendar.MONTH), date.get(Calendar.YEAR));
+                            backupName = "NPM_Backup_" + String.format(Locale.getDefault(), "%02d-%02d-%4d", date.get(Calendar.DAY_OF_MONTH), date.get(Calendar.MONTH), date.get(Calendar.YEAR)) + "_" + String.format(Locale.getDefault(), "%02d-%02d-%02d", date.get(Calendar.HOUR), date.get(Calendar.MINUTE), date.get(Calendar.SECOND));
                         backupName += ".npmb";
                         String backupOptions = resultBundle.getString(slideDownDialogFragment.RESULT_LIST, "");
 
-                        new createBackup().execute(backupPath, backupName, backupOptions);
+                        helper.startAsyncTask(new createBackup(),backupPath, backupName, backupOptions);
                     }
 
                     @Override
@@ -165,7 +165,7 @@ public class PreferencesBackupRestore extends Fragment {
                     public void onPositiveClick(Bundle resultBundle) {
                         String deleteOptions = resultBundle.getString(slideDownDialogFragment.RESULT_LIST, "");
 
-                        new deleteFiles().execute(deleteOptions);
+                        helper.startAsyncTask(new deleteFiles(),deleteOptions);
                     }
 
                     @Override
@@ -221,7 +221,7 @@ public class PreferencesBackupRestore extends Fragment {
                         public void onPositiveClick(Bundle resultBundle) {
                             String restoreOptions = resultBundle.getString(slideDownDialogFragment.RESULT_LIST, "");
 
-                            new restoreBackup().execute(finalPath, restoreOptions);
+                            helper.startAsyncTask(new restoreBackup(),finalPath, restoreOptions);
                         }
 
                         @Override
@@ -271,7 +271,7 @@ public class PreferencesBackupRestore extends Fragment {
         }
     }
 
-    class createBackup extends AsyncTask<String, String, String> {
+    class createBackup extends AsyncTask<Object, String, String> {
 
         private String backupPath;
         private String backupName;
@@ -285,10 +285,10 @@ public class PreferencesBackupRestore extends Fragment {
         }
 
         @Override
-        protected String doInBackground(String... params) {
-            backupPath = params[0];
-            backupName = params[1];
-            backupOptions = params[2].split(",");
+        protected String doInBackground(Object... params) {
+            backupPath = params[0].toString();
+            backupName = params[1].toString();
+            backupOptions = params[2].toString().split(",");
 
             PackageManager m = mActivity.getPackageManager();
             String s = MainActivity.class.getPackage().getName();
@@ -352,7 +352,7 @@ public class PreferencesBackupRestore extends Fragment {
         }
     }
 
-    class restoreBackup extends AsyncTask<String, String, String> {
+    class restoreBackup extends AsyncTask<Object, String, String> {
 
         String path = "";
         String[] restoreOptions;
@@ -365,9 +365,9 @@ public class PreferencesBackupRestore extends Fragment {
         }
 
         @Override
-        protected String doInBackground(String... params) {
-            path = params[0];
-            restoreOptions = params[1].split(",");
+        protected String doInBackground(Object... params) {
+            path = params[0].toString();
+            restoreOptions = params[1].toString().split(",");
             PackageManager m = mActivity.getPackageManager();
             String s = MainActivity.class.getPackage().getName();
             try {
@@ -580,7 +580,7 @@ public class PreferencesBackupRestore extends Fragment {
         }
     }
 
-    class deleteFiles extends AsyncTask<String, String, String> {
+    class deleteFiles extends AsyncTask<Object, String, String> {
 
         String[] deleteOptions;
 
@@ -592,8 +592,8 @@ public class PreferencesBackupRestore extends Fragment {
         }
 
         @Override
-        protected String doInBackground(String... params) {
-            deleteOptions = params[0].split(",");
+        protected String doInBackground(Object... params) {
+            deleteOptions = params[0].toString().split(",");
 
             PackageManager m = mActivity.getPackageManager();
             String s = MainActivity.class.getPackage().getName();

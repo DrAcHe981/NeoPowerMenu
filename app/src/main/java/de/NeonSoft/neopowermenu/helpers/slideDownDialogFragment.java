@@ -212,6 +212,9 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         dialogListDefault = defaultsel;
         dialogListClose = closeonsel;
         if(ListView_DialogListView!=null) {
+						for(int i = 0; i < dialogListAdapter.getCount(); i++) {
+								ListView_DialogListView.setItemChecked(i, false);
+						}
             dialogListAdapter = new ArrayAdapter<String>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
             ListView_DialogListView.setAdapter(dialogListAdapter);
         }
@@ -223,6 +226,9 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         dialogListDefault = defaultsel;
         dialogListClose = closeonsel;
         if(ListView_DialogListView!=null) {
+						for(int i = 0; i < dialogListAdapter.getCount(); i++) {
+								ListView_DialogListView.setItemChecked(i, false);
+						}
             dialogListAdapter = new ArrayAdapter<String>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
             ListView_DialogListView.setAdapter(dialogListAdapter);
         }
@@ -240,8 +246,17 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
     public void setListChecks(ArrayList<Boolean> checks) {
         if(dialogListMode == ListView.CHOICE_MODE_MULTIPLE) {
             this.dialogListChecks = checks;
+						if(ListView_DialogListView != null) {
+                for (int i = 0; i < dialogListChecks.size(); i++) {
+                    ListView_DialogListView.setItemChecked(i, dialogListChecks.get(i));
+                }
+						}
         }
     }
+		
+		public boolean getListItemChecked(int position) {
+				return ListView_DialogListView.isItemChecked(position);
+		}
 
     public void addInput(String descText, String defaultText, boolean allowEmpty, TextWatcher watcher) {
         dialogInputs.add(null);

@@ -53,19 +53,19 @@ public class tourPage extends Fragment
 
             ImageView Image = (ImageView) view.findViewById(R.id.tourPageImage);
             Image.setVisibility(View.INVISIBLE);
-            if (tourFragment.pageImages.size() > page) {
-                tourFragment.pageImages.set(page, Image);
-            } else {
-                tourFragment.pageImages.add(Image);
-            }
+            //if (tourFragment.pageImages.size() > page) {
+            tourFragment.pageImages.set(page, Image);
+            //} else {
+            //    tourFragment.pageImages.add(Image);
+            //}
 
             LinearLayout Holder = (LinearLayout) view.findViewById(R.id.tourPageTextHolder);
             Holder.setVisibility(View.INVISIBLE);
-            if (tourFragment.pageTextHolders.size() > page) {
-                tourFragment.pageTextHolders.set(page, Holder);
-            } else {
-                tourFragment.pageTextHolders.add(Holder);
-            }
+            //if (tourFragment.pageTextHolders.size() > page) {
+            tourFragment.pageTextHolders.set(page, Holder);
+            //} else {
+            //    tourFragment.pageTextHolders.add(Holder);
+            //}
             TextView Title = (TextView) view.findViewById(R.id.tourPageTitle);
             TextView Text = (TextView) view.findViewById(R.id.tourPageText);
 

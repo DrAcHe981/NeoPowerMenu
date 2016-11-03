@@ -5,7 +5,7 @@ import org.acra.annotation.*;
 import cat.ereza.customactivityoncrash.*;
 
 @ReportsCrashes(
-		formUri = "https://www.Neon-Soft.de/inc/acra/acra.php",
+		formUri = "https://www.neon-soft.de/inc/acra/acra.php",
 		formUriBasicAuthLogin = "acra",
 		formUriBasicAuthPassword = "acraerrormailer",
 		reportType = org.acra.sender.HttpSender.Type.JSON,

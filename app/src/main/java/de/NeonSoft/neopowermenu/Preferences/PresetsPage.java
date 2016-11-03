@@ -22,7 +22,7 @@ public class PresetsPage extends Fragment
     private String title;
     private int page;
 		
-		public static ArrayList<String> onlineIds = new ArrayList<String>();
+		//public static ArrayList<String> onlineIds = new ArrayList<String>();
 		
 		public PresetsPage()
 		{
@@ -81,16 +81,12 @@ public class PresetsPage extends Fragment
 				}
 				else
 				{
-						PreferencesPresetsFragment.onlineAdapter = new PresetsAdapter(PreferencesPresetsFragment.mContext, PreferencesPresetsFragment.OnlineListTitles, PreferencesPresetsFragment.OnlineListDescs, PreferencesPresetsFragment.OnlineListEnabled, PreferencesPresetsFragment.OnlineListLocal);
+						PreferencesPresetsFragment.onlineAdapter = new PresetsAdapter(PreferencesPresetsFragment.mContext, PreferencesPresetsFragment.OnlinePresets);
 						list.setAdapter(PreferencesPresetsFragment.onlineAdapter);
 						PreferencesPresetsFragment.onlineList = list;
 						PreferencesPresetsFragment.onlineMSG = message;
 						PreferencesPresetsFragment.onlineMSGHolder = messageHolder;
-						PresetsPage.onlineIds.clear();
-						PreferencesPresetsFragment.OnlineListTitles.clear();
-						PreferencesPresetsFragment.OnlineListDescs.clear();
-						PreferencesPresetsFragment.OnlineListEnabled.clear();
-						PreferencesPresetsFragment.OnlineListLocal.clear();
+						PreferencesPresetsFragment.OnlinePresets.clear();
 						PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
 						//message.setVisibility(View.VISIBLE);
 				}
@@ -105,10 +101,7 @@ public class PresetsPage extends Fragment
 				RelativeLayout messageHolder;
 				TextView message;
 				File[] presetsFiles;
-				String[] presetsListTitles;
-				String[] presetsListDesc;
-				String[] presetsListEnabled;
-				String[] presetsListLocal;
+				PresetsHolder[] presetsList;
 				
 				@Override
 				protected void onPreExecute()
@@ -121,23 +114,23 @@ public class PresetsPage extends Fragment
 										{
 												return name.toLowerCase().endsWith(".nps");
 										}});
-						presetsListTitles = new String[presetsFiles.length + 3];
-						presetsListDesc = new String[presetsFiles.length + 3];
-						presetsListEnabled = new String[presetsFiles.length + 3];
-						presetsListLocal = new String[presetsFiles.length + 3];
+						presetsList = new PresetsHolder[presetsFiles.length + 3];
 						String[] builtIn = getString(R.string.presetLoadDialog_BuiltIn).split("\\|");
-						presetsListTitles[0] = builtIn[0];
-						presetsListDesc[0] = "Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")";
-						presetsListEnabled[0] = "true";
-						presetsListLocal[0] = "pre";
-						presetsListTitles[1] = builtIn[1];
-						presetsListDesc[1] = "Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")";
-						presetsListEnabled[1] = "true";
-						presetsListLocal[1] = "pre";
-						presetsListTitles[2] = builtIn[2];
-						presetsListDesc[2] = "Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")";
-						presetsListEnabled[2] = "true";
-						presetsListLocal[2] = "pre";
+						PresetsHolder preset = new PresetsHolder();
+						preset.setType(PresetsHolder.TYPE_INTERNAL);
+						preset.setName(builtIn[0]);
+						preset.setDescription("Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")");
+						presetsList[0] = preset;
+						preset = new PresetsHolder();
+						preset.setType(PresetsHolder.TYPE_INTERNAL);
+						preset.setName(builtIn[1]);
+						preset.setDescription("Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")");
+						presetsList[1] = preset;
+						preset = new PresetsHolder();
+						preset.setType(PresetsHolder.TYPE_INTERNAL);
+						preset.setName(builtIn[2]);
+						preset.setDescription("Neon-Soft.de" + " (" + getString(R.string.presetsManager_BuiltIn) + ")");
+						presetsList[2] = preset;
 				}
 
 				@Override
@@ -149,10 +142,13 @@ public class PresetsPage extends Fragment
 						message = (TextView) p1[2];
 						for (int i=0;i < presetsFiles.length;i++)
 						{
-								presetsListDesc[i + 3] = getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", "<unknown>");
-								presetsListTitles[i + 3] = presetsFiles[i].getName().split(".nps")[0];
+								PresetsHolder preset = new PresetsHolder();
+								preset.setType(PresetsHolder.TYPE_INTERNAL);
+								preset.setName(presetsFiles[i].getName().split(".nps")[0]);
+								preset.setDescription(getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", "<unknown>"));
 								File tmpfile = new File(getActivity().getFilesDir().getPath() + "/presets/" + presetsFiles[i].getName());
 								if(helper.isValidZip(tmpfile.getPath(),null)) {
+										preset.setHasGraphics(true);
 										helper.unzipFile(tmpfile.getPath(),mContext.getFilesDir().getPath()+"/temp/",presetsFiles[i].getName(),null);
 										tmpfile = new File(mContext.getFilesDir().getPath()+"/temp/"+presetsFiles[i].getName());
 								}
@@ -173,7 +169,7 @@ public class PresetsPage extends Fragment
 										}
 										if (!aBuffer.equalsIgnoreCase(""))
 										{
-												presetsListDesc[i + 3] = aBuffer;
+												preset.setDescription(aBuffer);
 										}
 										tmpread.close();
 										myReader.close();
@@ -185,8 +181,7 @@ public class PresetsPage extends Fragment
 								if(tmpfile.getPath().startsWith(mContext.getFilesDir().getPath()+"/temp/")) {
 										tmpfile.delete();
 								}
-								presetsListEnabled[i + 3] = "true";
-								presetsListLocal[i + 3] = "true";
+								presetsList[i + 3] = preset;
 						}
 						return null;
 				}
@@ -198,11 +193,8 @@ public class PresetsPage extends Fragment
 						super.onPostExecute(p1);
 						messageHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_out));
 						messageHolder.setVisibility(View.GONE);
-						ArrayList<String> ListTitles = new ArrayList<String>(Arrays.asList(presetsListTitles));
-						ArrayList<String> ListDescs = new ArrayList<String>(Arrays.asList(presetsListDesc));
-						ArrayList<String> ListEnabled = new ArrayList<String>(Arrays.asList(presetsListEnabled));
-						ArrayList<String> ListLocal = new ArrayList<String>(Arrays.asList(presetsListLocal));
-						PreferencesPresetsFragment.localAdapter = new PresetsAdapter(getActivity(), ListTitles, ListDescs, ListEnabled, ListLocal);
+						ArrayList<PresetsHolder> localpresets = new ArrayList<>(Arrays.asList(presetsList));
+						PreferencesPresetsFragment.localAdapter = new PresetsAdapter(getActivity(), localpresets);
 						list.setAdapter(PreferencesPresetsFragment.localAdapter);
 						list.setFastScrollEnabled(true);
 						list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);

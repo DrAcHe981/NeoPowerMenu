@@ -26,7 +26,6 @@ public class permissionsScreen extends Fragment
 		private static Activity mActivity;
 		private static FragmentActivity mFragment;
 		public static final int MY_PERMISSIONS_REQUEST = 101;
-		private static AlertDialog.Builder PermissionsDialog;
 		
 		private static ListView ListView_Permissions;
 		public static PermissionsAdapter adapter;
@@ -39,7 +38,11 @@ public class permissionsScreen extends Fragment
 				Manifest.permission.WAKE_LOCK,
 				"android.permission.ACCESS_SURFACE_FLINGER",
 				Manifest.permission.RECORD_AUDIO,
-				Manifest.permission.SYSTEM_ALERT_WINDOW};
+				Manifest.permission.SYSTEM_ALERT_WINDOW,
+				Manifest.permission.ACCESS_WIFI_STATE,
+				Manifest.permission.CHANGE_WIFI_STATE,
+				Manifest.permission.BLUETOOTH,
+				Manifest.permission.BLUETOOTH_ADMIN};
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

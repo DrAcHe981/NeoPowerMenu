@@ -1,34 +1,22 @@
 package de.NeonSoft.neopowermenu.tour;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.app.*;
+import android.os.*;
+import android.support.annotation.*;
+import android.support.v4.app.*;
+import android.support.v4.view.*;
+import android.view.*;
+import android.view.animation.*;
+import android.widget.*;
+import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.Preferences.*;
+import de.NeonSoft.neopowermenu.helpers.*;
+import de.NeonSoft.neopowermenu.permissionsScreen.*;
+import java.util.*;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import java.util.ArrayList;
-
-import de.NeonSoft.neopowermenu.MainActivity;
-import de.NeonSoft.neopowermenu.Preferences.PreferencesAdvancedFragment;
-import de.NeonSoft.neopowermenu.Preferences.PreferencesAnimationsFragment;
-import de.NeonSoft.neopowermenu.Preferences.PreferencesColorFragment;
-import de.NeonSoft.neopowermenu.Preferences.PreferencesGraphicsFragment;
-import de.NeonSoft.neopowermenu.Preferences.PreferencesPartFragment;
-import de.NeonSoft.neopowermenu.Preferences.PreferencesPresetsFragment;
-import de.NeonSoft.neopowermenu.Preferences.PreferencesVisibilityOrderFragment;
-import de.NeonSoft.neopowermenu.R;
-import de.NeonSoft.neopowermenu.helpers.NonSwipeableViewPager;
-import de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen;
 
 public class tourFragment extends Fragment {
 
@@ -71,6 +59,12 @@ public class tourFragment extends Fragment {
             }
         });
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            mActivity.getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDarkDarkTheme));
+            mActivity.getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDarkTheme));
+        }
+				
         View InflatedView = inflater.inflate(R.layout.tourfragment, container, false);
 
         LinearLayout root = (LinearLayout) InflatedView.findViewById(R.id.tourPageRoot);
@@ -107,9 +101,11 @@ public class tourFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
+								try {
                 pageTextHolders.get(position).setVisibility(View.VISIBLE);
                 pageTextHolders.get(position).startAnimation(slideIn);
                 if (position == 0) {
+										pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
                     pageImages.get(position).setVisibility(View.VISIBLE);
                     pageImages.get(position).startAnimation(fadeIn);
                     MainActivity.changePrefPage(new PreferencesPartFragment(), false);
@@ -133,11 +129,53 @@ public class tourFragment extends Fragment {
                     MainActivity.changePrefPage(new PreferencesAdvancedFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
                 } else if (position == 7) {
+										pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
                     pageImages.get(position).setVisibility(View.VISIBLE);
                     pageImages.get(position).startAnimation(fadeIn);
                     MainActivity.changePrefPage(new PreferencesPartFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Enjoy), R.drawable.ic_action_launch, finishOnClick);
                 }
+								} catch (Throwable t) {
+										slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+										dialogFragment.setContext(mActivity);
+										dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+														@Override
+														public void onListItemClick(int position, String text)
+														{
+																
+														}
+
+														@Override
+														public void onNegativeClick()
+														{
+																
+														}
+
+														@Override
+														public void onNeutralClick()
+														{
+																
+														}
+
+														@Override
+														public void onPositiveClick(Bundle resultBundle)
+														{
+																finishTour();
+														}
+
+														@Override
+														public void onTouchOutside()
+														{
+																
+														}
+												});
+										dialogFragment.setNeutralButton(getString(R.string.errorActivity_CopyToClip));
+										dialogFragment.setText(getString(R.string.tourPage_UnknownProblem) + t.toString());
+										dialogFragment.setPositiveButton(getString(R.string.tourPage_Skip));
+										dialogFragment.showDialog(R.id.dialog_container);
+								}
             }
 
             @Override
@@ -149,6 +187,11 @@ public class tourFragment extends Fragment {
     }
 
     public static void finishTour() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            mActivity.getWindow().setStatusBarColor(mActivity.getResources().getColor(R.color.colorPrimaryDarkDarkTheme));
+            mActivity.getWindow().setNavigationBarColor(mActivity.getResources().getColor(R.color.window_background_dark));
+        }
         MainActivity.visibleFragment = "main";
         MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).remove(MainActivity.fragmentManager.findFragmentByTag("tour")).commit();
         if (MainActivity.preferences.getBoolean("DontAskPermissionsAgain", false) || permissionsScreen.checkPermissions(mActivity, permissionsScreen.permissions)) {
@@ -189,41 +232,57 @@ public class tourFragment extends Fragment {
                 case 0:
                     pageBundle.putInt("page", 0);
                     pageBundle.putString("title", "0");
+										pageImages.add(null);
+										pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 case 1:
                     pageBundle.putInt("page", 1);
                     pageBundle.putString("title", "1");
+										pageImages.add(null);
+										pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 case 2:
                     pageBundle.putInt("page", 2);
                     pageBundle.putString("title", "2");
+										pageImages.add(null);
+										pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 case 3:
                     pageBundle.putInt("page", 3);
                     pageBundle.putString("title", "3");
+										pageImages.add(null);
+										pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 case 4:
                     pageBundle.putInt("page", 4);
                     pageBundle.putString("title", "4");
+										pageImages.add(null);
+										pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 case 5:
                     pageBundle.putInt("page", 5);
                     pageBundle.putString("title", "5");
+										pageImages.add(null);
+										pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 case 6:
                     pageBundle.putInt("page", 6);
                     pageBundle.putString("title", "6");
+										pageImages.add(null);
+										pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 case 7:
                     pageBundle.putInt("page", 7);
                     pageBundle.putString("title", "7");
+										pageImages.add(null);
+										pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 default:

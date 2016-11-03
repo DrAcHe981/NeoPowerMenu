@@ -202,7 +202,7 @@ public class LoginFragment extends Fragment {
                         }
                     }
                 });
-                uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+                uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.neon-soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
                 uH.setAdditionalUploadPosts(new String[][]{{"action", "register"}, {"name", EditText_Username.getText().toString()}, {"email", EditText_Email.getText().toString()}});
                 try {
                     new File(mContext.getFilesDir().getPath() + "/tmp").createNewFile();
@@ -306,7 +306,7 @@ public class LoginFragment extends Fragment {
                         }
                     }
                 });
-                uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+                uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.neon-soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
                 uH.setAdditionalUploadPosts(new String[][]{{"action", "resetpw"}, {"name", EditText_RecoverUsername.getText().toString()}, {"email", EditText_RecoverEmail.getText().toString()}});
                 try {
                     new File(mContext.getFilesDir().getPath() + "/tmp").createNewFile();
@@ -551,7 +551,7 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
-        uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+        uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.neon-soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
         uH.setAdditionalUploadPosts(new String[][]{{"action", "login"}, {(helper.isValidEmail(usernameemail) ? "email" : "name"), usernameemail}, {"password", password}});
         try {
             new File(context.getFilesDir().getPath() + "/tmp").createNewFile();
@@ -597,7 +597,7 @@ public class LoginFragment extends Fragment {
                 TextView_Statistics.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
             }
         });
-        uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.Neon-Soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
+        uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.neon-soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice3.php");
         uH.setAdditionalUploadPosts(new String[][]{{"action", "statistics"}, {(MainActivity.usernameemail.contains("@") ? "email" : "name"), MainActivity.usernameemail}, {"deviceId", MainActivity.deviceUniqeId}, {"accountId", MainActivity.accountUniqeId}});
         try {
             new File(mContext.getFilesDir().getPath() + "/tmp").createNewFile();
