@@ -19,6 +19,7 @@ import java.util.*;
 import android.support.v4.app.Fragment;
 
 import de.NeonSoft.neopowermenu.R;
+
 import android.widget.AdapterView.*;
 
 public class PreferencesGraphicsFragment extends Fragment {
@@ -29,7 +30,7 @@ public class PreferencesGraphicsFragment extends Fragment {
     LinearLayout LinearLayout_Padding;
     TextView TextView_PaddingValue;
     SeekBar SeekBar_Padding;
-    
+
     public static GridView GridView_Images;
     GraphicsAdapter graphicsAdapter;
 
@@ -39,7 +40,7 @@ public class PreferencesGraphicsFragment extends Fragment {
 
     //String activeGraphics = "internal1";
 
-	ArrayList<GraphicItemHolder> GraphicsList = new ArrayList<>();
+    ArrayList<GraphicItemHolder> GraphicsList = new ArrayList<>();
     public static Object[][] graphics = {
             {"Progress", "stock", "Progress"}, //0
             {"Shutdown", R.drawable.poweroff1, "Shutdown"}, //1
@@ -66,14 +67,15 @@ public class PreferencesGraphicsFragment extends Fragment {
             {"MediaPrevious", R.drawable.ic_action_playback_prev, "MediaPrevious"}, //22
             {"MediaPlayPause", R.drawable.ic_action_playback_play, "MediaPlay"}, //23
             {"MediaPlayPause", R.drawable.ic_action_playback_pause, "MediaPause"}, //24
-				{"MediaNext", R.drawable.ic_action_playback_next, "MediaNext"}, //25
-				{"ToggleWifi", R.drawable.ic_device_signal_wifi_off, "ToggleWifiOff"}, // 26
-				{"ToggleWifi", R.drawable.ic_device_signal_wifi_4_bar, "ToggleWifiOn"}, // 27
-				{"ToggleBluetooth", R.drawable.ic_device_bluetooth_disabled, "ToggleBluetoothOff"}, // 28
-				{"ToggleBluetooth", R.drawable.ic_device_bluetooth, "ToggleBluetoothOn"}, // 29
-				{"ToggleData", R.drawable.ic_device_signal_cellular_off, "ToggleDataOff"}, // 30
-				{"ToggleData", R.drawable.ic_device_signal_cellular_4_bar, "ToggleDataOn"}, // 31
-				{"RebootFlashMode", R.drawable.ic_image_flash_on, "RebootFlashMode"} // 32
+            {"MediaNext", R.drawable.ic_action_playback_next, "MediaNext"}, //25
+            {"ToggleWifi", R.drawable.ic_device_signal_wifi_off, "ToggleWifiOff"}, // 26
+            {"ToggleWifi", R.drawable.ic_device_signal_wifi_4_bar, "ToggleWifiOn"}, // 27
+            {"ToggleBluetooth", R.drawable.ic_device_bluetooth_disabled, "ToggleBluetoothOff"}, // 28
+            {"ToggleBluetooth", R.drawable.ic_device_bluetooth, "ToggleBluetoothOn"}, // 29
+            {"ToggleData", R.drawable.ic_device_signal_cellular_off, "ToggleDataOff"}, // 30
+            {"ToggleData", R.drawable.ic_device_signal_cellular_4_bar, "ToggleDataOn"}, // 31
+            {"RebootFlashMode", R.drawable.ic_image_flash_on, "RebootFlashMode"},
+            {"LockPhone", R.drawable.ic_action_lock_outline, "LockPhone"}// 32
     };
 
     /*Object[][] loadGraphics = {
@@ -112,8 +114,8 @@ public class PreferencesGraphicsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        
-        if(!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
+
+        if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
             MainActivity.visibleFragment = "Graphics";
             MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
         }
@@ -122,7 +124,7 @@ public class PreferencesGraphicsFragment extends Fragment {
 
         mContext = getActivity();
 
-        float_padding = MainActivity.preferences.getFloat("GraphicsPadding",0);
+        float_padding = MainActivity.preferences.getFloat("GraphicsPadding", 0);
 
         View InflatedView = inflater.inflate(R.layout.activity_graphics, container, false);
 
@@ -130,15 +132,15 @@ public class PreferencesGraphicsFragment extends Fragment {
         TextView_PaddingValue = (TextView) InflatedView.findViewById(R.id.activitygraphicsTextView_PaddingValue);
         SeekBar_Padding = (SeekBar) InflatedView.findViewById(R.id.activitygraphicsSeekBar_Padding);
         SeekBar_Padding.setMax(20);
-        SeekBar_Padding.setProgress((int) helper.convertPixelsToDp(float_padding,mContext));
-        TextView_PaddingValue.setText((int) helper.convertPixelsToDp(float_padding,mContext)+"dp");
+        SeekBar_Padding.setProgress((int) helper.convertPixelsToDp(float_padding, mContext));
+        TextView_PaddingValue.setText((int) helper.convertPixelsToDp(float_padding, mContext) + "dp");
 
         SeekBar_Padding.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 float_padding = helper.convertDpToPixel(i, mContext);
-                TextView_PaddingValue.setText((int) helper.convertPixelsToDp(float_padding,mContext)+"dp");
-                MainActivity.preferences.edit().putFloat("GraphicsPadding",float_padding).apply();
+                TextView_PaddingValue.setText((int) helper.convertPixelsToDp(float_padding, mContext) + "dp");
+                MainActivity.preferences.edit().putFloat("GraphicsPadding", float_padding).apply();
                 graphicsAdapter.notifyDataSetChanged();
             }
 
@@ -155,29 +157,29 @@ public class PreferencesGraphicsFragment extends Fragment {
         GridView_Images = (GridView) InflatedView.findViewById(R.id.activitygraphicsGridView1);
 
         for (int i = 0; i < graphics.length; i++) {
-						GraphicItemHolder graphic = new GraphicItemHolder();
-						graphic.setName(graphics[i][0].toString());
+            GraphicItemHolder graphic = new GraphicItemHolder();
+            graphic.setName(graphics[i][0].toString());
             if (graphics[i][0].toString().equalsIgnoreCase("Progress")) {
-								if (MainActivity.preferences.getString("ProgressDrawable", "stock").equalsIgnoreCase("pb/dr")) {
-										graphic.setRessource(R.drawable.progress_pitchblack_darkred_cm13);
-								} else if (MainActivity.preferences.getString("ProgressDrawable", "stock").equalsIgnoreCase("WeaReOne")) {
-										graphic.setRessource(R.drawable.progress_weareone);
-								} else {
-										graphic.setFile("stock");
-								}
+                if (MainActivity.preferences.getString("ProgressDrawable", "stock").equalsIgnoreCase("pb/dr")) {
+                    graphic.setRessource(R.drawable.progress_pitchblack_darkred_cm13);
+                } else if (MainActivity.preferences.getString("ProgressDrawable", "stock").equalsIgnoreCase("WeaReOne")) {
+                    graphic.setRessource(R.drawable.progress_weareone);
+                } else {
+                    graphic.setFile("stock");
+                }
             }
             File checkFile = new File(mContext.getFilesDir().getPath() + "/images/" + graphics[i][2] + ".png");
             if (checkFile.exists()) {
                 graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + graphics[i][2] + ".png");
-						} else if(!checkFile.exists() && !graphics[i][0].toString().equalsIgnoreCase("Progress")) {
-								graphic.setRessource((int) graphics[i][1]);
-						}
-						graphic.setFileName(graphics[i][2].toString());
-						GraphicsList.add(graphic);
+            } else if (!checkFile.exists() && !graphics[i][0].toString().equalsIgnoreCase("Progress")) {
+                graphic.setRessource((int) graphics[i][1]);
+            }
+            graphic.setFileName(graphics[i][2].toString());
+            GraphicsList.add(graphic);
         }
 
         /*
-				for(int i = 0; i < defaultGraphics.length; i++) {
+                for(int i = 0; i < defaultGraphics.length; i++) {
 						Graphic graphic = new Graphic();
 						graphic.setName(loadGraphics[i][0].toString());
 						if(loadGraphics[i][1].getClass().equals(String.class)) {
@@ -192,51 +194,51 @@ public class PreferencesGraphicsFragment extends Fragment {
         for (int i = 0; i < MainActivity.orderPrefs.getAll().keySet().size(); i++) {
             if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) != -1) {
                 if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL) == visibilityOrder_ListAdapter.TYPE_NORMAL) {
-                    if(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").contains(".")) {
-												GraphicItemHolder graphic = new GraphicItemHolder();
-												graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0]);
-												if(new File(mContext.getFilesDir().getPath()+"/images/"+MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0]+".png").exists()) {
-														graphic.setFile(mContext.getFilesDir().getPath()+"/images/"+MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0] + ".png");
-												} else {
-														graphic.setRessource(R.drawable.ic_action_android);
-												}
-												graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0]);
-												GraphicsList.add(graphic);
-										}
+                    if (MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").contains(".")) {
+                        GraphicItemHolder graphic = new GraphicItemHolder();
+                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0]);
+                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0] + ".png").exists()) {
+                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0] + ".png");
+                        } else {
+                            graphic.setRessource(R.drawable.ic_action_android);
+                        }
+                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0]);
+                        GraphicsList.add(graphic);
+                    }
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL) == visibilityOrder_ListAdapter.TYPE_MULTI) {
-                    if(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").contains(".")) {
-												GraphicItemHolder graphic = new GraphicItemHolder();
-												graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0]);
-												if(new File(mContext.getFilesDir().getPath()+"/images/"+MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0]+".png").exists()) {
-														graphic.setFile(mContext.getFilesDir().getPath()+"/images/"+MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0] + ".png");
-												} else {
-														graphic.setRessource(R.drawable.ic_action_android);
-												}
-												graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0]);
-												GraphicsList.add(graphic);
-										}
-                    if(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").contains(".")) {
-												GraphicItemHolder graphic = new GraphicItemHolder();
-												graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0]);
-												if(new File(mContext.getFilesDir().getPath()+"/images/"+MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0]+".png").exists()) {
-														graphic.setFile(mContext.getFilesDir().getPath()+"/images/"+MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0] + ".png");
-												} else {
-														graphic.setRessource(R.drawable.ic_action_android);
-												}
-												graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0]);
-												GraphicsList.add(graphic);
-										}
-                    if(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").contains(".")) {
-												GraphicItemHolder graphic = new GraphicItemHolder();
-												graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0]);
-												if(new File(mContext.getFilesDir().getPath()+"/images/"+MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0]+".png").exists()) {
-														graphic.setFile(mContext.getFilesDir().getPath()+"/images/"+MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0] + ".png");
-												} else {
-														graphic.setRessource(R.drawable.ic_action_android);
-												}
-												graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0]);
-												GraphicsList.add(graphic);
-										}
+                    if (MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").contains(".")) {
+                        GraphicItemHolder graphic = new GraphicItemHolder();
+                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0]);
+                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0] + ".png").exists()) {
+                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0] + ".png");
+                        } else {
+                            graphic.setRessource(R.drawable.ic_action_android);
+                        }
+                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0]);
+                        GraphicsList.add(graphic);
+                    }
+                    if (MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").contains(".")) {
+                        GraphicItemHolder graphic = new GraphicItemHolder();
+                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0]);
+                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0] + ".png").exists()) {
+                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0] + ".png");
+                        } else {
+                            graphic.setRessource(R.drawable.ic_action_android);
+                        }
+                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0]);
+                        GraphicsList.add(graphic);
+                    }
+                    if (MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").contains(".")) {
+                        GraphicItemHolder graphic = new GraphicItemHolder();
+                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0]);
+                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0] + ".png").exists()) {
+                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0] + ".png");
+                        } else {
+                            graphic.setRessource(R.drawable.ic_action_android);
+                        }
+                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0]);
+                        GraphicsList.add(graphic);
+                    }
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
                     MultiPage.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                 } else if (MultiPage.size() > 0 && MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END) {
@@ -253,162 +255,157 @@ public class PreferencesGraphicsFragment extends Fragment {
         //graphicsAdapter.addFallbackGraphics(defaultGraphics);
         //graphicsAdapter.addAll(GraphicsList);
 
-				GridView_Images.setOnItemClickListener(new OnItemClickListener() {
+        GridView_Images.setOnItemClickListener(new OnItemClickListener() {
 
-								@Override
-								public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
-								{
-										selected = p3;
-										slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
-										dialogFragment.setContext(mContext);
-										dialogFragment.setFragmentManager(MainActivity.fragmentManager);
-										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+            @Override
+            public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4) {
+                selected = p3;
+                slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                dialogFragment.setContext(mContext);
+                dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
-														@Override
-														public void onListItemClick(int position, String text) {
-																if(GraphicsList.get(selected).getFile() != null) {
-																		graphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
-																		new File(GraphicsList.get(selected).getFile()).delete();
-																}
-																if (position == 0) {
-																		if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
-																				MainActivity.preferences.edit().putString("ProgressDrawable", "Stock").apply();
-																		}
-																		GraphicItemHolder item = new GraphicItemHolder();
-																		item.setName(GraphicsList.get(selected).getName());
-																		if (GraphicsList.get(selected).getName().contains(".")) {
-																				item.setRessource(R.drawable.ic_action_android);
-																		} else {
-																				if(GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
-																						item.setFile(graphics[selected][1].toString());
-																				} else {
-																						item.setRessource((int) graphics[selected][1]);
-																				}
-																		}
-																		item.setFileName(GraphicsList.get(selected).getFileName());
-																		graphicsAdapter.set(selected, item);
-																		GraphicsList.set(selected, item);
-																} else if (position == 1) {
-																		helper.zipLogging(false);
-																		//Toast.makeText(getActivity(),getString(R.string.presetsManager_NJI),Toast.LENGTH_SHORT).show();
-																		File presetsFolder = new File(getActivity().getFilesDir().getPath() + "/presets/");
-																		final File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
-																						public boolean accept(File dir, String name) {
-																								boolean supported = helper.isValidZip(dir + "/" + name, null) && helper.unzipFile(dir + "/" + name, mContext.getFilesDir().getAbsolutePath() + "/temp/", graphics[selected][2] + ".png", null) == null;
-																								return (supported && name.toLowerCase().endsWith(".nps"));
-																						}
-																				});
-																		helper.zipLogging(true);
-																		slideDownDialogFragment presetsListDialog = new slideDownDialogFragment();
-																		presetsListDialog.setContext(mContext);
-																		presetsListDialog.setFragmentManager(MainActivity.fragmentManager);
-																		presetsListDialog.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                    @Override
+                    public void onListItemClick(int position, String text) {
+                        if (GraphicsList.get(selected).getFile() != null) {
+                            graphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
+                            new File(GraphicsList.get(selected).getFile()).delete();
+                        }
+                        if (position == 0) {
+                            if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
+                                MainActivity.preferences.edit().putString("ProgressDrawable", "Stock").apply();
+                            }
+                            GraphicItemHolder item = new GraphicItemHolder();
+                            item.setName(GraphicsList.get(selected).getName());
+                            if (GraphicsList.get(selected).getName().contains(".")) {
+                                item.setRessource(R.drawable.ic_action_android);
+                            } else {
+                                if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
+                                    item.setFile(graphics[selected][1].toString());
+                                } else {
+                                    item.setRessource((int) graphics[selected][1]);
+                                }
+                            }
+                            item.setFileName(GraphicsList.get(selected).getFileName());
+                            graphicsAdapter.set(selected, item);
+                            GraphicsList.set(selected, item);
+                        } else if (position == 1) {
+                            helper.zipLogging(false);
+                            //Toast.makeText(getActivity(),getString(R.string.presetsManager_NJI),Toast.LENGTH_SHORT).show();
+                            File presetsFolder = new File(getActivity().getFilesDir().getPath() + "/presets/");
+                            final File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
+                                public boolean accept(File dir, String name) {
+                                    boolean supported = helper.isValidZip(dir + "/" + name, null) && helper.unzipFile(dir + "/" + name, mContext.getFilesDir().getAbsolutePath() + "/temp/", graphics[selected][2] + ".png", null) == null;
+                                    return (supported && name.toLowerCase().endsWith(".nps"));
+                                }
+                            });
+                            helper.zipLogging(true);
+                            slideDownDialogFragment presetsListDialog = new slideDownDialogFragment();
+                            presetsListDialog.setContext(mContext);
+                            presetsListDialog.setFragmentManager(MainActivity.fragmentManager);
+                            presetsListDialog.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
 
-																						@Override
-																						public void onListItemClick(int position, String text) {
+                                @Override
+                                public void onListItemClick(int position, String text) {
 
-																						}
+                                }
 
-																						@Override
-																						public void onNegativeClick() {
+                                @Override
+                                public void onNegativeClick() {
 
-																						}
+                                }
 
-																						@Override
-																						public void onNeutralClick() {
+                                @Override
+                                public void onNeutralClick() {
 
-																						}
+                                }
 
-																						@Override
-																						public void onPositiveClick(Bundle resultBundle) {
-																								if (presetsFiles.length > 0) {
-																										if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
-																												MainActivity.preferences.edit().putString("ProgressDrawable", "file").apply();
-																										}
-																										Log.d("NPM", "Extracting from " + presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)]);
-																										if (helper.unzipFile(presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)].toString(), mContext.getFilesDir().getPath() + "/images/", GraphicsList.get(selected).getFileName()+".png", null) == null) {
-																												GraphicItemHolder item = new GraphicItemHolder();
-																												item.setName(GraphicsList.get(selected).getName());
-																												item.setFile(mContext.getFilesDir().getPath()+"/images/"+GraphicsList.get(selected).getFileName()+".png");
-																												item.setFileName(GraphicsList.get(selected).getFileName());
-																												graphicsAdapter.set(selected, item);
-																												GraphicsList.set(selected, item);
-																										}
-																								}
-																						}
+                                @Override
+                                public void onPositiveClick(Bundle resultBundle) {
+                                    if (presetsFiles.length > 0) {
+                                        if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
+                                            MainActivity.preferences.edit().putString("ProgressDrawable", "file").apply();
+                                        }
+                                        Log.d("NPM", "Extracting from " + presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)]);
+                                        if (helper.unzipFile(presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)].toString(), mContext.getFilesDir().getPath() + "/images/", GraphicsList.get(selected).getFileName() + ".png", null) == null) {
+                                            GraphicItemHolder item = new GraphicItemHolder();
+                                            item.setName(GraphicsList.get(selected).getName());
+                                            item.setFile(mContext.getFilesDir().getPath() + "/images/" + GraphicsList.get(selected).getFileName() + ".png");
+                                            item.setFileName(GraphicsList.get(selected).getFileName());
+                                            graphicsAdapter.set(selected, item);
+                                            GraphicsList.set(selected, item);
+                                        }
+                                    }
+                                }
 
-																						@Override
-																						public void onTouchOutside() {
+                                @Override
+                                public void onTouchOutside() {
 
-																						}
-																				});
-																		if (presetsFiles.length > 0) {
-																				String[] presetsListTitles = new String[presetsFiles.length];
-																				for (int i = 0; i < presetsFiles.length; i++) {
-																						presetsListTitles[i] = presetsFiles[i].getName().split(".nps")[0];
-																				}
-																				presetsListDialog.setList(ListView.CHOICE_MODE_SINGLE, presetsListTitles, -1, false);
-																				presetsListDialog.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
-																				presetsListDialog.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[6]);
-																		} else {
-																				presetsListDialog.setText(getString(R.string.graphics_NoPresetsFound));
-																				presetsListDialog.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
-																		}
-																		presetsListDialog.showDialog(R.id.dialog_container);
-																} else if (position == 2) {
-																		Intent intent = new Intent();
-																		intent.setType("image/*");
-																		intent.setAction(Intent.ACTION_GET_CONTENT);
-																		startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE_RESULT);
-																} else if (position == 3) {
-																		MainActivity.preferences.edit().putString("ProgressDrawable", "pb/dr").apply();
-																		GraphicItemHolder item = new GraphicItemHolder();
-																		item.setName(GraphicsList.get(selected).getName());
-																		item.setRessource(R.drawable.progress_pitchblack_darkred_cm13);
-																		item.setFileName(GraphicsList.get(selected).getFileName());
-																		graphicsAdapter.set(selected, item);
-																		GraphicsList.set(selected, item);
-																} else if (position == 4) {
-																		MainActivity.preferences.edit().putString("ProgressDrawable", "WeaReOne").apply();
-																		GraphicItemHolder item = new GraphicItemHolder();
-																		item.setName(GraphicsList.get(selected).getName());
-																		item.setRessource(R.drawable.progress_weareone);
-																		item.setFileName(GraphicsList.get(selected).getFileName());
-																		graphicsAdapter.set(selected, item);
-																		GraphicsList.set(selected, item);
-																}
-														}
-														
-														@Override
-														public void onNegativeClick()
-														{
-																
-														}
+                                }
+                            });
+                            if (presetsFiles.length > 0) {
+                                String[] presetsListTitles = new String[presetsFiles.length];
+                                for (int i = 0; i < presetsFiles.length; i++) {
+                                    presetsListTitles[i] = presetsFiles[i].getName().split(".nps")[0];
+                                }
+                                presetsListDialog.setList(ListView.CHOICE_MODE_SINGLE, presetsListTitles, -1, false);
+                                presetsListDialog.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
+                                presetsListDialog.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[6]);
+                            } else {
+                                presetsListDialog.setText(getString(R.string.graphics_NoPresetsFound));
+                                presetsListDialog.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                            }
+                            presetsListDialog.showDialog(R.id.dialog_container);
+                        } else if (position == 2) {
+                            Intent intent = new Intent();
+                            intent.setType("image/*");
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE_RESULT);
+                        } else if (position == 3) {
+                            MainActivity.preferences.edit().putString("ProgressDrawable", "pb/dr").apply();
+                            GraphicItemHolder item = new GraphicItemHolder();
+                            item.setName(GraphicsList.get(selected).getName());
+                            item.setRessource(R.drawable.progress_pitchblack_darkred_cm13);
+                            item.setFileName(GraphicsList.get(selected).getFileName());
+                            graphicsAdapter.set(selected, item);
+                            GraphicsList.set(selected, item);
+                        } else if (position == 4) {
+                            MainActivity.preferences.edit().putString("ProgressDrawable", "WeaReOne").apply();
+                            GraphicItemHolder item = new GraphicItemHolder();
+                            item.setName(GraphicsList.get(selected).getName());
+                            item.setRessource(R.drawable.progress_weareone);
+                            item.setFileName(GraphicsList.get(selected).getFileName());
+                            graphicsAdapter.set(selected, item);
+                            GraphicsList.set(selected, item);
+                        }
+                    }
 
-														@Override
-														public void onNeutralClick()
-														{
-																
-														}
+                    @Override
+                    public void onNegativeClick() {
 
-														@Override
-														public void onPositiveClick(Bundle resultBundle)
-														{
-																
-														}
+                    }
 
-														@Override
-														public void onTouchOutside()
-														{
-																
-														}
-												});
-										String[] choose = (getString(R.string.graphics_Choose) + (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress") ? "|PitchBlack / DarkRed CM13|We aRe One" : "")).split("\\|");
-										dialogFragment.setList(ListView.CHOICE_MODE_NONE, choose, -1, true);
-										dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
-										dialogFragment.showDialog(R.id.dialog_container);
-								}
-						});
+                    @Override
+                    public void onNeutralClick() {
+
+                    }
+
+                    @Override
+                    public void onPositiveClick(Bundle resultBundle) {
+
+                    }
+
+                    @Override
+                    public void onTouchOutside() {
+
+                    }
+                });
+                String[] choose = (getString(R.string.graphics_Choose) + (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress") ? "|PitchBlack / DarkRed CM13|We aRe One" : "")).split("\\|");
+                dialogFragment.setList(ListView.CHOICE_MODE_NONE, choose, -1, true);
+                dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
+                dialogFragment.showDialog(R.id.dialog_container);
+            }
+        });
 				
         /*GridView_Images.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -573,11 +570,11 @@ public class PreferencesGraphicsFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        
+
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PICTURE_RESULT) {
             if (resultCode == mContext.RESULT_OK) {
-                    startCrop(data.getData());
+                startCrop(data.getData());
             }
         }
     }
@@ -587,7 +584,7 @@ public class PreferencesGraphicsFragment extends Fragment {
         Bundle cropperArgs = new Bundle();
         cropperArgs.putString("mItem", GraphicsList.get(selected).getName());
         cropperArgs.putParcelable("mUri", selectedImage);
-        cropperArgs.putString("mSaveAs", GraphicsList.get(selected).getFileName()+".png");
+        cropperArgs.putString("mSaveAs", GraphicsList.get(selected).getFileName() + ".png");
         cropper.setArguments(cropperArgs);
 
         MainActivity.changePrefPage(cropper, false);

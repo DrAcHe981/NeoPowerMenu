@@ -23,6 +23,10 @@
   <string name="powerMenuMain_ToggleRotate">"Поворот экрана"</string>
   <string name="ToggleRotateMode_Auto">"Авто"</string>
   <string name="ToggleRotateMode_Off">"Выключено"</string>
+  <string name="powerMenuMain_ToggleWifi">"WiFi"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
+  <string name="powerMenuMain_ToggleData">"Мобильные Данные"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Режим установки"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Отображение и порядок"</string>
   <string name="category_Preset">"Шаблоны"</string>
@@ -83,6 +87,7 @@
   <string name="powerMenuMain_AirplaneMode">"Режим полёта"</string>
   <string name="powerMenuMain_RestartUI">"Перезапуск System UI"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Reveal">"Цвет появления окна"</string>
   <string name="colorsType_Circle">"Цвет круга"</string>
   <string name="colorsType_Background">"Цвет фона"</string>
   <string name="colorsType_Text">"Цвет текста"</string>
@@ -93,7 +98,7 @@
   <string name="permissionsScreen_ClickToRequest">"Нажмите, чтобы запросить разрешения"</string>
   <string name="permissionsScreen_DontAskAgain">"Не спрашивать снова"</string>
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Чтение/запись внешней памяти"</string>
-  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Нужно для будущих функций(например, пользовательские изображения)"</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Необходимо для использования пользовательской графики."</string>
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Камера"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Нужно для включения Фонарика"</string>
   <string name="visibilityOrder_HideDesc">"Спрятать описание"</string>
@@ -105,8 +110,15 @@
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Окно системы оповещения"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Процесс, необходимый для отображения Меню выключения поверх всего"</string>
   <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Блокировка спящего режима"</string>
-  <!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Необходимо, чтобы предотвратить выключения Фонарика и сервиса Записи экрана"</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Доступ к состоянию WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Необходимо для получения состояния WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Изменить состояние WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Необходимо, чтобы включать/выключать WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Необходимо, чтобы получать состояние Bluetooth."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth адмиристратор"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Необходимо, чтобы переключать Bluetooth без диалогового окна."</string>
   <string name="powerMenuMain_SoundMode">"Звуковой режим"</string>
   <string name="powerMenuMain_SoundModeDesc">"Текущий режим: [SOUNDMODE]"</string>
   <string name="SoundMode_Normal">"Нормальный"</string>
@@ -189,6 +201,7 @@
   <string name="presetLoadDialog_BuiltIn">"Светлый|Тёмный|Чёрный"</string>
   <string name="advancedPrefs_DialogGravity">"Вверх|Влево|Вправо|Вниз"</string>
   <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
+  <string name="graphics_Crop">"Обрезка | Круговая обрезка"</string>
   <string name="graphics_NoPresetsFound">"Шаблонов с графикой не найдено..."</string>
   <string name="graphics_GraphicsSaveLoad">"\"Сохранить текущую графику.|Этот шаблон содержит графические изображения, вы хотите их загрузить?
 Это перезапишет ваши текущие изображения!\""</string>
@@ -275,6 +288,7 @@
   <string name="tourPage_Next">"Дальше"</string>
   <string name="tourPage_Skip">"Пропустить"</string>
   <string name="tourPage_Enjoy">"Создайте собственное меню!"</string>
+  <string name="tourPage_UnknownProblem">"При попадании следующего окна тура случилась неопознанная ошибка. Нажмите \"Пропустить\" и сообщите о проблеме разработчику...\n\nСлкчилась из-за:\n"</string>
   <string name="tourPage_0_Title">"Добро пожаловать в NPM!"</string>
   <string name="tourPage_0_Text">"Во-первых, спасибо за загрузку моего приложения! \n\nЭтот небольшой тур покажет вам основы использования моего приложения."</string>
   <string name="tourPage_1_Title">"Главное меню"</string>
@@ -284,6 +298,7 @@
   <string name="tourPage_3_Title">"Меню графики"</string>
   <string name="tourPage_3_Text">"Настройка используемой графики (необходимо включить в расширенных настройках)."</string>
   <string name="tourPage_4_Title">"Меню видимости и порядка расположения"</string>
+  <string name="tourPage_4_Text">"Выберите, что вы хотите видеть в вашем меню и расположите опции, как вам угодно. \nНажмите на «+», чтобы добавить новые элементы, быстро протащите пальцем элемент с экрана, чтобы удалить его.\n\nИконка «замок» означает: Показывать на экране блокировки.\nИконка «Э» означает: Показать описание элемента."</string>
   <string name="tourPage_5_Title">"Меню анимаций"</string>
   <string name="tourPage_5_Text">"Изменить анимации появления и исчезновения вашего меню, или полностью отключите их."</string>
   <string name="tourPage_6_Title">"Расширенное меню"</string>
@@ -305,9 +320,49 @@
   <string name="uploadHelper_FailedAt3">"Не удалось загрузить файл на сервер, пожалуйста, проверьте своё соединение и попробуйте снова."</string>
   <string name="uploadHelper_UnknownError">"Произошла неизвестная ошибка при загрузке файла на сервер, пожалуйста, попробуйте снова."</string>
   <string name="visibilityOrder_SearchApp">"Поиск (без учета регистра):"</string>
+  <string name="visibilityOrder_FilterItemsList">"Критерий поиска (без учета регистра):"</string>
   <string name="powerMenuMain_MediaPrevious">"Предыдущий"</string>
   <string name="powerMenuMain_MediaPlayPause">"Пуск/Пауза"</string>
   <string name="powerMenuMain_MediaNext">"Следующий"</string>
   <string name="presetsManager_Loading">"Чтение шаблона..."</string>
   <string name="shortcut_ShowPowerMenu">"Меню выключения"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviour">"Изменить внешний вид и поведение"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourDesc">"Выберите, как элемент должен себя вести:"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText">"Надпись в элементе: (оставьте пустым, чтобы использовать надпись по-умолчанию)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText1">"Первая надпись элемента: (оставьте пустым, чтобы использовать надпись по-умолчанию)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText2">"Навторая надпись элемента: (оставьте пустым, чтобы использовать надпись по-умолчанию)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText3">"Третья надпись элемента: (оставьте пустым, чтобы использовать надпись по-умолчанию)"</string>
+  <string name="visibilityOrder_HideOnLockscreen">"Не показывать на экране блокировки"</string>
+  <string name="visibilityOrder_InvalidMultiPageMove">"Неверная операция перемещения, начало не может быть после конца, а конец - до начала!"</string>
+  <string name="preferences_BackupRestoreTitle">"Создание и загрузка резервных копий"</string>
+  <string name="preferences_BackupRestoreDesc">"Сохраните все свои настройки и Восстановите их позднее, так же вы можете удалить настройки, если что-то пошло не так, или вы просто хотите создать меню заново."</string>
+  <string name="backupRestoreCategory_BackupRestore">"Создание и загрузка резервных копий"</string>
+  <string name="backupRestore_NewBackupTitle">"Сохранить все настройки"</string>
+  <string name="backupRestore_NewBackupDesc">"Нажмите сюда, чтобы сохранить все настройки в корне памяти."</string>
+  <string name="backupRestore_RestoreTitle">"Восстановить настройки"</string>
+  <string name="backupRestore_RestoreDesc">"Нажмите, чтобы восстановить сохраненные настройки."</string>
+  <string name="backupRestoreCategory_Delete">"Удалить"</string>
+  <string name="backupRestore_DeleteSettingsTitle">"Удалить настройки"</string>
+  <string name="backupRestore_DeleteSettingsDesc">"Нажмите сюда, чтобы появилось окно, с настройками, которые вы хотите обнулить, используйте это, если что-то как-то нарушило настройки и приложение вылетает при входе на соответствующий экран."</string>
+  <string name="backupRestore_ChooseBackupOptions">"Пожалуйста, выберите, что вы хотите сохранить:\nВыбор \"шаблоны\" или \"графика\" может привести к большому файлу резервной копии!"</string>
+  <string name="backupRestore_ChooseBackupName">"Название сохранения: (Оставьте пустым, чтобы использовать имя, сгенерировпнное автоматически)"</string>
+  <string name="backupRestore_ChooseRestoreOptions">"Пожалуйста, выберите, что вы хотите восстановить:"</string>
+  <string name="backupRestore_ChooseDeleteOptions">"Пожалуйста, выберите что вы хотите удалить:"</string>
+  <string name="backupRestore_BackupComplete">"Сохранение завершено!"</string>
+  <string name="backupRestore_BackupFailed">"Сохранение не удалось, пожалуйста повторите еще раз."</string>
+  <string name="backupRestore_RestoreComplete">"Восстановление файлов почти завершено!\nНажмите, чтобы перезагрузить устройство и закончить процесс восстановления. (Это может занять немного времени)"</string>
+  <string name="backupRestore_DeleteComplete">"Удаление файлов почти завершено!\nНажмите, чтобы перезагрузить устройство и закончить процесс удаления. (Это может занять немного времени)"</string>
+  <string name="backupRestore_Restart">"Перезагрузка"</string>
+  <string name="backupRestore_DeleteFailed">"Удаление файла не удалось...\nПожалуйста, попробуйте еще раз, некоторые файлы могут быть повреждены..."</string>
+  <string name="backupRestore_RestoreFailed">"Восстановление файлов не удалось...\nПлжалуйста, попробуйте еще раз, файлы могут быть повреждены..."</string>
+  <string name="backupRestore_RestoreFailedUnknownFile">"Восстановление не удалось, неизвестный формат файла!\nПожалуйста, попробуйте еще раз."</string>
+  <string name="backupRestoreOptions_MainPreferences">"Основные настройки(Уникальный ID устройства, расширенные настройки и т. д.)"</string>
+  <string name="backupRestoreOptions_Colors">"Цвета"</string>
+  <string name="backupRestoreOptions_Presets">"Шаблоны"</string>
+  <string name="backupRestoreOptions_Graphics">"Графика"</string>
+  <string name="backupRestoreOptions_VisibilityAndOrder">"Отображение и порядок"</string>
+  <string name="backupRestoreOptions_Animations">"Анимации"</string>
+  <string name="xposedMain_MenuActivityNotFound">"Кажется, вы удалили мой модуль перед тем, как деактмвировпли его...\nТеперь система не знает, что тут отображать. Пожалуйста, нажмите на перезагрузку, чтобы завершить удаление!"</string>
+  <string name="xposedMain_MenuActivityNotFound_Cancel">"Отмена"</string>
+  <string name="xposedMain_MenuActivityNotFound_Restart">"Перезагрузка"</string>
 </resources>

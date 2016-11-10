@@ -55,11 +55,12 @@ public class PreferencesColorFragment extends Fragment {
             "ToggleRotate", "#ff3f51b5", "#ffffff",
             "MediaPrevious", "#ff3f51b5", "#ffffff",
             "MediaPlayPause", "#ff3f51b5", "#ffffff",
-				"MediaNext", "#ff3f51b5", "#ffffff",
-				"ToggleWifi", "#ff3f51b5", "#ffffff",
-				"ToggleBluetooth", "#ff3f51b5", "#ffffff",
-				"ToggleData", "#ff3f51b5", "#ffffff",
-				"RebootFlashMode", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff"};
+            "MediaNext", "#ff3f51b5", "#ffffff",
+            "ToggleWifi", "#ff3f51b5", "#ffffff",
+            "ToggleBluetooth", "#ff3f51b5", "#ffffff",
+            "ToggleData", "#ff3f51b5", "#ffffff",
+            "RebootFlashMode", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff",
+            "LockPhone", "#ff3f51b5", "#ffffff"};
 
     public static String[] darkPreset = {
             "Presets", "Load", "Save",
@@ -85,11 +86,12 @@ public class PreferencesColorFragment extends Fragment {
             "ToggleRotate", "#ff3f51b5", "#ffffff",
             "MediaPrevious", "#ff3f51b5", "#ffffff",
             "MediaPlayPause", "#ff3f51b5", "#ffffff",
-				"MediaNext", "#ff3f51b5", "#ffffff",
-				"ToggleWifi", "#ff3f51b5", "#ffffff",
-				"ToggleBluetooth", "#ff3f51b5", "#ffffff",
-				"ToggleData", "#ff3f51b5", "#ffffff",
-				"RebootFlashMode", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff"};
+            "MediaNext", "#ff3f51b5", "#ffffff",
+            "ToggleWifi", "#ff3f51b5", "#ffffff",
+            "ToggleBluetooth", "#ff3f51b5", "#ffffff",
+            "ToggleData", "#ff3f51b5", "#ffffff",
+            "RebootFlashMode", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff",
+            "LockPhone", "#ff3f51b5", "#ffffff"};
 
     public static String[] blackPreset = {
             "Presets", "Load", "Save",
@@ -115,11 +117,12 @@ public class PreferencesColorFragment extends Fragment {
             "ToggleRotate", "#ff000000", "#ffffff",
             "MediaPrevious", "#ff000000", "#ffffff",
             "MediaPlayPause", "#ff000000", "#ffffff",
-				"MediaNext", "#ff000000", "#ffffff",
-				"ToggleWifi", "#ff000000", "#ffffff",
-				"ToggleBluetooth", "#ff000000", "#ffffff",
-				"ToggleData", "#ff000000", "#ffffff",
-				"RebootFlashMode", "#ff000000", "#ff000000", "#ff000000", "#ffffff"};
+            "MediaNext", "#ff000000", "#ffffff",
+            "ToggleWifi", "#ff000000", "#ffffff",
+            "ToggleBluetooth", "#ff000000", "#ffffff",
+            "ToggleData", "#ff000000", "#ffffff",
+            "RebootFlashMode", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
+            "LockPhone", "#ff000000", "#ffffff"};
 
     public static Object[][] ColorNames = {
             {ColorsListAdapter.TYPE_HEADER, "Presets"}, {ColorsListAdapter.TYPE_LOAD, "Load"}, {ColorsListAdapter.TYPE_SAVE, "Save"},
@@ -145,11 +148,12 @@ public class PreferencesColorFragment extends Fragment {
             {ColorsListAdapter.TYPE_HEADER, "ToggleRotate"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleRotate_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleRotate_Textcolor"},
             {ColorsListAdapter.TYPE_HEADER, "MediaPrevious"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaPrevious_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaPrevious_Textcolor"},
             {ColorsListAdapter.TYPE_HEADER, "MediaPlayPause"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaPlayPause_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaPlayPause_Textcolor"},
-				{ColorsListAdapter.TYPE_HEADER, "MediaNext"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaNext_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaNext_Textcolor"},
-				{ColorsListAdapter.TYPE_HEADER, "ToggleWifi"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleWifi_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleWifi_Textcolor"},
-				{ColorsListAdapter.TYPE_HEADER, "ToggleBluetooth"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleBluetooth_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleBluetooth_Textcolor"},
-				{ColorsListAdapter.TYPE_HEADER, "ToggleData"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleData_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleData_Textcolor"},
-				{ColorsListAdapter.TYPE_HEADER, "RebootFlashMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Textcolor"}};
+            {ColorsListAdapter.TYPE_HEADER, "MediaNext"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaNext_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaNext_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "ToggleWifi"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleWifi_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleWifi_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "ToggleBluetooth"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleBluetooth_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleBluetooth_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "ToggleData"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleData_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleData_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "RebootFlashMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "LockPhone"}, {ColorsListAdapter.TYPE_ITEM, "DialogLockPhone_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogLockPhone_Textcolor"}};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

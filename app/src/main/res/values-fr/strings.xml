@@ -12,12 +12,20 @@
   <string name="powerMenuMain_SoftRebootDesc">"Redémarre simplement l'interface utilisateur Android en tuant le processus zygote"</string>
   <string name="powerMenuMain_Screenshot">"Capture d'écran"</string>
   <string name="powerMenuMain_ScreenshotDesc">"Délai capture d'écran delay: [SCREENSHOTDELAY]"</string>
+  <string name="powerMenuBottom_Recovery">"Restauration"</string>
+  <string name="powerMenuBottom_Bootloader">"Amorçage"</string>
   <string name="powerMenuBottom_SafeMode">"Mode Sécurisé"</string>
   <string name="powerMenu_Shuttingdown">"Extinction..."</string>
   <string name="powerMenu_Rebooting">"Redémarrage..."</string>
+  <string name="powerMenuMain_KillApp">"Tuer l’application au premier plan"</string>
   <string name="powerMenuMain_AppShortcut">"Raccourci d'application"</string>
+  <string name="powerMenuMain_ActivityShortcut">"Raccourci d’activité"</string>
   <string name="powerMenuMain_ToggleRotate">"Rotation de l’écran"</string>
   <string name="ToggleRotateMode_Auto">"Auto"</string>
+  <string name="ToggleRotateMode_Off">"Inactif"</string>
+  <string name="powerMenuMain_ToggleWifi">"Wifi"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
+  <string name="powerMenuMain_ToggleData">"Données"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilité et Ordre"</string>
   <string name="category_Preset">"Préréglagles"</string>
@@ -48,7 +56,9 @@ Cette action est irréversible !"</string>
   <string name="advancedPrefsDesc_ScreenshotDelay">"Délai entre l'appui et la capture d'écran."</string>
   <string name="Dialog_SelectColor">"Choisir un couleur"</string>
   <string name="ColorPicker_Value">"Valeur:"</string>
+  <string name="ColorPicker_Saturation">"Saturation :"</string>
   <string name="ColorPicker_Opacity">"Opacité:"</string>
+  <string name="ColorPicker_Hex">"Hex :"</string>
   <string name="presetLoad_PresetDeleted">"[PRESETNAME] supprimé !"</string>
   <string name="presetLoad_PresetLoaded">"[PRESETNAME] chargé !"</string>
   <string name="presetSaveDialog_CreatorNameInfo">"Ce préréglage a été créé par :"</string>
@@ -81,11 +91,12 @@ Cette action est irréversible !"</string>
   <string name="colorsType_Text">"Couleur du texte"</string>
   <string name="powerMenuMain_Flashlight">"Torche"</string>
   <!-- Permissions Screen -->
+  <string name="permissionsScreen_Title">"Permissions"</string>
   <string name="permissionsScreen_NotAllGranted">"Toutes les permissions ne sont pas accordées, certaines options peuvent ne pas fonctionner..."</string>
   <string name="permissionsScreen_ClickToRequest">"Appuyez pour demander la permissions."</string>
   <string name="permissionsScreen_DontAskAgain">"Ne plus demander"</string>
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Lecture/Écriture du stockage externe"</string>
-  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Requis pour de futures fonctionnalités (petite info : images personnalisées)."</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Requiert l'utilisation de graphiques personnalisés."</string>
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Appareil photo"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Requis pour activer/désactiver la Torche."</string>
   <string name="visibilityOrder_HideDesc">"Cacher la description"</string>
@@ -95,8 +106,16 @@ Cette action est irréversible !"</string>
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Requis pour enregistrer le son avec l'enregistrement de l'écran."</string>
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Fenêtre d'Alerte Système"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Requis pour afficher le Menu de Démarrage au premier plan."</string>
-  <!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
+  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Empêcher le réveil"</string>
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Requis pour empêcher la fermeture de la torche et de l'enregistrement de l'écran."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Accès à l'état du Wifi"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Requis pour obtenir l’état du WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Changer l'état du Wi-Fi"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Requis pour activer/désactiver le WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Requis pour obtenir l’état du Bluetooth."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Admin Bluetooth"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Requis pour activer/désactiver le Bluetooth sans aucun dialogue."</string>
   <string name="powerMenuMain_SoundMode">"Mode Son"</string>
   <string name="powerMenuMain_SoundModeDesc">"Mode actuel : [SOUNDMODE]"</string>
   <string name="SoundMode_Normal">"Normal"</string>
@@ -136,6 +155,7 @@ Cliquez ici pour créer un nouveau Compte !"</string>
   <string name="login_LoggedIn">"Connecté !"</string>
   <string name="login_LoginFailedWithReason">"Échec d'identification : "</string>
   <string name="login_LoginFailedWrongData">"Erreur d'identifiants, mauvais e-mail ou mot de passe !"</string>
+  <string name="login_RegisterFailedNameUsed">"Désolé, le nom d'utilisateur ou l'adresse e-mail est déjà utilisé(e)."</string>
   <string name="login_RegisterSuccess">"Enregistrement réussi, vous allez recevoir un e-mail pour activer votre compte !"</string>
   <string name="login_Processing">"En-cours..."</string>
   <string name="login_TitleStatistics">"Statistiques de [USERNAMEEMAIL]"</string>
@@ -167,7 +187,11 @@ Vos préréglages (triés par étoiles) :
   <string name="presetsManager_OrderAscDesc">"Ascendant|Descendant"</string>
   <string name="visibilityOrder_SelectMulti">"Veuillez choisir trois éléments :"</string>
   <string name="powerMenuMain_Empty">"Vide"</string>
+  <string name="login_Recover">"Restaurer"</string>
+  <string name="login_RecoverAccount">"Vous ne pouvez pas accéder à votre compte ? \nCliquez ici pour les options de récupération ."</string>
   <string name="login_RecoverPassword">"Réinitialiser le mot de passe"</string>
+  <string name="login_RecoverSuccess">"Vous allez recevoir un email contenant les instructions permettant de réinitialiser votre mot de passe."</string>
+  <string name="login_RecoverNotFound">"Aucun utilisateur avec ces données trouvé."</string>
   <string name="powerMenuMain_SoundVibrate">"Son : vibrer"</string>
   <string name="powerMenuMain_SoundNormal">"Son : Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Son : silencieux"</string>
@@ -175,6 +199,9 @@ Vos préréglages (triés par étoiles) :
   <string name="Dialog_Buttons">"OK|Oui|Non|Renommer|Annuler|Supprimer|Charger|Enregistrer|Ignorer"</string>
   <string name="presetLoadDialog_BuiltIn">"Clair|Sombre|Noir"</string>
   <string name="advancedPrefs_DialogGravity">"Haut|Gauche|Droite|Bas"</string>
+  <string name="graphics_Choose">"Restaurer par défaut | Choisir des préréglages | Choisir dans la Galerie"</string>
+  <string name="presetsManager_Buttons">"Donner Star | Supprimer Star | Supprimer | Report | Télécharger | Partager"</string>
+  <string name="screenrecord_notif_buttons">"Stop | Afficher pointeur"</string>
   <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
   <string name="preferences_RootXposed1">"Root et Xposed non disponible|Root et Xposed requis pour que ce module fonctionne."</string>
@@ -200,6 +227,7 @@ Cet écran de paramètres sera alors uniquement accessible via le Xposed Install
 Vérifiez la source sur GitHub.\""</string>
   <string name="preferences_Share">"Partager|Vous aimez l'appli ? Partagez-la avec vos amis."</string>
   <string name="preferences_About">"Code par Neon-Soft / DrAcHe981|basé sur le code source de Naman Dwivedi (naman14)."</string>
+  <string name="animations_Speed">"Vitesse"</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
 </resources>

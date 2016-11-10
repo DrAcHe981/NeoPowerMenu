@@ -261,9 +261,9 @@ public class ScreenRecordingService extends Service {
                     player.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"video/*"});
                 }
                 player.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                //Intent chooser = Intent.createChooser(player,path);
-                //chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(Intent.createChooser(player,"Open with..."));
+                Intent chooser = Intent.createChooser(player,path);
+                chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(chooser);
 
                 stopSelf();
 

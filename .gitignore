@@ -8,3 +8,5 @@ local.properties
 .gradle
 *.apk
 *.txt
+wiki
+*.keystore

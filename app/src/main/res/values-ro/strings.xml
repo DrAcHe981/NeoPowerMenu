@@ -81,7 +81,6 @@
   <string name="permissionsScreen_ClickToRequest">"Apasa pentru a cere permisiuni."</string>
   <string name="permissionsScreen_DontAskAgain">"Nu intreba din nou"</string>
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Citire/Scriere memoire externa"</string>
-  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Necesar pentru functii viitoare (mic exemplu: imagini diferite)"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Necesar pentru a folosi Lanterna"</string>
   <string name="visibilityOrder_HideDesc">"Ascunde descriere"</string>
   <!-- Preferences: Colors -->
@@ -92,7 +91,6 @@
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Ferastra Avertizare Sistem"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Necesar pentru a vedea meniul de alimentare deasupra orcarui element"</string>
   <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Blocare trezire"</string>
-  <!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Necear pentru a preveni oprirea serviciului lanterna si a capturii de ecarn"</string>
   <string name="powerMenuMain_SoundMode">"Mod Sunet"</string>
   <string name="powerMenuMain_SoundModeDesc">"Modul curent:"</string>

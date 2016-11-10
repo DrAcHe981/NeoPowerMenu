@@ -365,5 +365,10 @@
     <string name="xposedMain_MenuActivityNotFound">"It seems like you have uninstalled my module before you disabled it...\nNow the system don't knows what to do here, please click on restart to restart your device and to complete the uninstallation!"</string>
     <string name="xposedMain_MenuActivityNotFound_Cancel">"Cancel"</string>
     <string name="xposedMain_MenuActivityNotFound_Restart">"Restart"</string>
-		
+    <string name="powerMenuMain_LockPhone">Lock device</string>
+    <string name="permissionsScreenTitle_DeviceAdmin">Device Admin.</string>
+    <string name="permissionsScreenDesc_DeviceAdmin">Required to lock the device.</string>
+    <string name="permissionsScreen_DeviceAdminDisable">Disabling this will remove the ability to lock the device via the power menu.</string>
+    <string name="visibilityOrder_FillEmpty">Keep empty items space</string>
+
 </resources>

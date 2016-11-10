@@ -21,6 +21,10 @@
   <string name="powerMenuMain_ToggleRotate">"Bildschirmrotation"</string>
   <string name="ToggleRotateMode_Auto">"Automatisch"</string>
   <string name="ToggleRotateMode_Off">"Deaktiviert"</string>
+  <string name="powerMenuMain_ToggleWifi">"Wlan"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
+  <string name="powerMenuMain_ToggleData">"Mobile Daten"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
   <string name="category_Preset">"Voreinstellungen"</string>
@@ -81,6 +85,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="powerMenuMain_AirplaneMode">"Flugzeug-Modus"</string>
   <string name="powerMenuMain_RestartUI">"System UI neu starten"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Reveal">"Reveal Farbe"</string>
   <string name="colorsType_Circle">"Kreisfarbe"</string>
   <string name="colorsType_Background">"Hintergrundfarbe"</string>
   <string name="colorsType_Text">"Textfarbe"</string>
@@ -91,7 +96,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="permissionsScreen_ClickToRequest">"Klicke, um die Berechtigung anzufragen."</string>
   <string name="permissionsScreen_DontAskAgain">"Nicht erneut Fragen"</string>
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Externer Speicher Lesen/schreiben"</string>
-  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benötigt für zukünftige Funktionen (kleiner Tipp: eigene Bilder)."</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Benötigten um eigene Grafiken zu nutzen."</string>
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Benötigt für die Taschenlampe."</string>
   <string name="visibilityOrder_HideDesc">"Verstecke Beschreibung"</string>
@@ -103,8 +108,15 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Warnungs Fenster"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt, um das Ausschalt Menü über allem anderen anzuzeigen."</string>
   <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
-  <!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benötigt, um zu verhindern, dass der Taschenlampen-Service und der Bildschirmaufnahmen-Service beendet werden."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Auf Wlan Status zugreifen"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Benötigt um den aktuellen Wlan Status auszulesen."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Wlan Status ändern"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Benötigt um das Wlan ein/auszuschalten."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Benötigt um den aktuellen Bluetooth Status auszulesen."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Administration"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Benötigt um das Bluetooth ohne einen Dialog ein/auszuschalten."</string>
   <string name="powerMenuMain_SoundMode">"Sound Modus"</string>
   <string name="powerMenuMain_SoundModeDesc">"Aktueller Modus: [SOUNDMODE]"</string>
   <string name="SoundMode_Normal">"Normal"</string>
@@ -248,6 +260,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="tourPage_Next">"Weiter"</string>
   <string name="tourPage_Skip">"Überspringen"</string>
   <string name="tourPage_Enjoy">"Erstelle dein Menü!"</string>
+  <string name="tourPage_UnknownProblem">"Es ist ein Unbekannter Fehler beim zeigen der nächsten Tour Seite aufgetreten, bitte Klick auf überspringen und melde den Fehler dem Entwickler...\n\nHervorgerufen durch: \n"</string>
   <string name="tourPage_0_Title">"Willkommen bei NPM!"</string>
   <string name="tourPage_0_Text">"Bevor es losgeht: Vielen Dank für das Herunterladen meiner App! \n\nDiese kleine Tour zeigt dir die Grundlagen, um meine App zu nutzen."</string>
   <string name="tourPage_1_Title">"Das Hauptmenü"</string>
@@ -279,6 +292,7 @@ Dies kann nicht rückgängig gemacht werden!"</string>
   <string name="uploadHelper_FailedAt3">"Fehler beim hochladen der Datei, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
   <string name="uploadHelper_UnknownError">"Während des Hochladensist ein Unbekannter Fehler aufgetreten. Bitte versuch es erneut."</string>
   <string name="visibilityOrder_SearchApp">"Suche App (Groß/Kleinschreibung wird ignoriert):"</string>
+  <string name="visibilityOrder_FilterItemsList">"Element suchen (Groß/Kleinschreibung wird ignoriert):"</string>
   <string name="powerMenuMain_MediaPrevious">"Vorheriges"</string>
   <string name="powerMenuMain_MediaPlayPause">"Wiedergabe/Pause"</string>
   <string name="powerMenuMain_MediaNext">"Nächstes"</string>

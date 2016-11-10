@@ -195,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
                 //actionbar.hideButton();
                 launchPowerMenu();
             }
@@ -328,6 +327,14 @@ public class MainActivity extends AppCompatActivity {
         if (visibleFragment.equalsIgnoreCase("Graphics")) {
             PreferencesGraphicsFragment.GridView_Images.setNumColumns(getResources().getInteger(R.integer.ImageList_Columns));
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == permissionsScreen.RESULT_ENABLE_ADMIN) {
+            permissionsScreen.adapter.notifyDataSetChanged();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

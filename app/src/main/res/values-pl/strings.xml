@@ -89,7 +89,6 @@ Tego nie można cofnąć!\""</string>
   <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Nagraj dźwięk"</string>
   <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"WakeLock"</string>
-  <!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
   <string name="powerMenuMain_SoundMode">"Tryb Dźwięku"</string>
   <string name="SoundMode_Normal">"Normalny"</string>
   <string name="SoundMode_Vibrate">"Wibracja"</string>

@@ -22,6 +22,7 @@ import android.view.*;
 import android.view.WindowManagerPolicy.*;
 
 import java.lang.reflect.*;
+
 import android.telecom.*;
 import android.util.Log;
 import android.telephony.*;
@@ -58,7 +59,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_PACKAGE_MANAGER_SERVICE = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
-		
+
     private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER"};
 
     private static final String CLASS_SYSTEMUI = "com.android.systemui.SystemUIApplication";
@@ -193,16 +194,16 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
                                         final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
 
-																				for(int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                        // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
-                                        if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
-                                            final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
-																																																					XPOSEDPERMISSIONS[i]);
-                                            int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
-                                            if (DeepXposedLogging)
-                                                XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ") ; ret=" + ret);
+                                        for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
+                                            // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
+                                            if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
+                                                final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
+                                                        XPOSEDPERMISSIONS[i]);
+                                                int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
+                                                if (DeepXposedLogging)
+                                                    XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ") ; ret=" + ret);
+                                            }
                                         }
-																				}
 
                                     } else {
                                         final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
@@ -211,22 +212,22 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
                                         final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
 
-																				for(int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                        // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
-                                        if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
-                                            final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
-																																																					XPOSEDPERMISSIONS[i]);
-                                            grantedPerms.add(XPOSEDPERMISSIONS[i]);
-                                            int[] gpGids = (int[]) XposedHelpers.getObjectField(extras, "gids");
-                                            int[] bpGids = (int[]) XposedHelpers.getObjectField(pAccessSurfaceFlinger, "gids");
-                                            gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(),
-                                                    "appendInts", gpGids, bpGids);
+                                        for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
+                                            // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
+                                            if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
+                                                final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
+                                                        XPOSEDPERMISSIONS[i]);
+                                                grantedPerms.add(XPOSEDPERMISSIONS[i]);
+                                                int[] gpGids = (int[]) XposedHelpers.getObjectField(extras, "gids");
+                                                int[] bpGids = (int[]) XposedHelpers.getObjectField(pAccessSurfaceFlinger, "gids");
+                                                gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(),
+                                                        "appendInts", gpGids, bpGids);
 
-                                            if (DeepXposedLogging)
-                                                XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ")");
+                                                if (DeepXposedLogging)
+                                                    XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ")");
+                                            }
                                         }
                                     }
-																		}
                                 }
                                 //preferences.edit().putString("activeParts", preferences.getString("activeParts","") + "permissionGranter,").commit();
                             }
@@ -248,17 +249,17 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                                 (List<String>) XposedHelpers.getObjectField(param.args[0], "requestedPermissions");
                                         final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
                                         final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
-																		
-																				for(int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                       			// Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
-                                        		if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
-                                            		final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
-                                                    		XPOSEDPERMISSIONS[i]);
-                                           			int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
-                                            		if (DeepXposedLogging)
-                                                		XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ") ; ret=" + ret);
-                                        		}
-																				}
+
+                                        for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
+                                            // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
+                                            if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
+                                                final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
+                                                        XPOSEDPERMISSIONS[i]);
+                                                int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
+                                                if (DeepXposedLogging)
+                                                    XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ") ; ret=" + ret);
+                                            }
+                                        }
 
                                     } else {
                                         final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
@@ -267,21 +268,21 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
                                         final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
 
-																				for(int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                        		// Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
-                                        		if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
-                                            		final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
-																																																							XPOSEDPERMISSIONS[i]);
-                                            		grantedPerms.add(XPOSEDPERMISSIONS[i]);
-                                            		int[] gpGids = (int[]) XposedHelpers.getObjectField(extras, "gids");
-                                            		int[] bpGids = (int[]) XposedHelpers.getObjectField(pAccessSurfaceFlinger, "gids");
-                                            		gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(),
-                                                    		"appendInts", gpGids, bpGids);
+                                        for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
+                                            // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
+                                            if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
+                                                final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
+                                                        XPOSEDPERMISSIONS[i]);
+                                                grantedPerms.add(XPOSEDPERMISSIONS[i]);
+                                                int[] gpGids = (int[]) XposedHelpers.getObjectField(extras, "gids");
+                                                int[] bpGids = (int[]) XposedHelpers.getObjectField(pAccessSurfaceFlinger, "gids");
+                                                gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(),
+                                                        "appendInts", gpGids, bpGids);
 
-                                         		   if (DeepXposedLogging)
-                                                		XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ")");
-                                        		}
-																				}
+                                                if (DeepXposedLogging)
+                                                    XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ")");
+                                            }
+                                        }
                                     }
                                 }
                                 //preferences.edit().putString("activeParts", preferences.getString("activeParts","") + "permissionGranter,").commit();
@@ -356,9 +357,9 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                             case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
                                                 toggleShowTouches(p1, p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES, -1));
                                                 break;
-																						case NPM_ACTION_BROADCAST_TOGGLEDATA:
-																								toggleData(p1, !isDataActive(p1));
-																								break;
+                                            case NPM_ACTION_BROADCAST_TOGGLEDATA:
+                                                toggleData(p1, !isDataActive(p1));
+                                                break;
                                         }
                                     }
                                 };
@@ -375,7 +376,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                 filter.addAction(NPM_ACTION_BROADCAST_TOGGLEROTATION);
                                 filter.addAction(NPM_ACTION_BROADCAST_KILLAPP);
                                 filter.addAction(ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES);
-																filter.addAction(NPM_ACTION_BROADCAST_TOGGLEDATA);
+                                filter.addAction(NPM_ACTION_BROADCAST_TOGGLEDATA);
                                 filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
                                 mNPMApp.registerReceiver(mNPMReceiver, filter);
                             }
@@ -641,9 +642,9 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                     case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
                                         toggleShowTouches(p1, p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES, -1));
                                         break;
-																		case NPM_ACTION_BROADCAST_TOGGLEDATA:
-																				toggleData(p1, !isDataActive(p1));
-																				break;
+                                    case NPM_ACTION_BROADCAST_TOGGLEDATA:
+                                        toggleData(p1, !isDataActive(p1));
+                                        break;
                                 }
                             }
                         };
@@ -660,7 +661,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         filter.addAction(NPM_ACTION_BROADCAST_TOGGLEROTATION);
                         filter.addAction(NPM_ACTION_BROADCAST_KILLAPP);
                         filter.addAction(ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES);
-												filter.addAction(NPM_ACTION_BROADCAST_TOGGLEDATA);
+                        filter.addAction(NPM_ACTION_BROADCAST_TOGGLEDATA);
                         filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
                         mNPMApp.registerReceiver(mNPMReceiver, filter);
                     }
@@ -771,7 +772,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             @Override
                             public void run() {
                                 try {
-																		XposedUtils.log("Sending screenshot message...");
+                                    XposedUtils.log("Sending screenshot message...");
                                     messenger.send(msg);
                                 } catch (RemoteException e) {
                                     //Log.e(TAG, e.toString());
@@ -875,34 +876,34 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             XposedBridge.log(t);
         }
     }
-		
+
     private void toggleData(Context p1, boolean enable) {
         try {
-						TelephonyManager telephonyManager = (TelephonyManager) p1.getSystemService(Context.TELEPHONY_SERVICE);
-						//telephonyManager.setDataEnabled(enable);
-						Method setEnabledMethod = telephonyManager.getClass().getDeclaredMethod("setDataEnabled", boolean.class);
-						if(setEnabledMethod != null) {
-								setEnabledMethod.invoke(telephonyManager, enable);
-						}
+            TelephonyManager telephonyManager = (TelephonyManager) p1.getSystemService(Context.TELEPHONY_SERVICE);
+            //telephonyManager.setDataEnabled(enable);
+            Method setEnabledMethod = telephonyManager.getClass().getDeclaredMethod("setDataEnabled", boolean.class);
+            if (setEnabledMethod != null) {
+                setEnabledMethod.invoke(telephonyManager, enable);
+            }
         } catch (Throwable t) {
             XposedUtils.log("Error toggling data: " + t.toString());
         }
     }
 
-		private boolean isDataActive(Context p1) {
-				try {
-						TelephonyManager telephonyManager = (TelephonyManager) p1.getSystemService(Context.TELEPHONY_SERVICE);
-						//return telephonyManager.getDataEnabled();
-						Method getEnabledMethod = telephonyManager.getClass().getDeclaredMethod("getDataEnabled");
-						if(getEnabledMethod != null) {
-								return (boolean) getEnabledMethod.invoke(telephonyManager);
-						}
-				} catch (Throwable t) {
-						XposedUtils.log("Error getting data state: " + t.toString());
-						return false;
-				}
-				return false;
-		}
+    private boolean isDataActive(Context p1) {
+        try {
+            TelephonyManager telephonyManager = (TelephonyManager) p1.getSystemService(Context.TELEPHONY_SERVICE);
+            //return telephonyManager.getDataEnabled();
+            Method getEnabledMethod = telephonyManager.getClass().getDeclaredMethod("getDataEnabled");
+            if (getEnabledMethod != null) {
+                return (boolean) getEnabledMethod.invoke(telephonyManager);
+            }
+        } catch (Throwable t) {
+            XposedUtils.log("Error getting data state: " + t.toString());
+            return false;
+        }
+        return false;
+    }
 
     private boolean showDialog() {
         if (mContext == null) {

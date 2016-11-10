@@ -15,7 +15,15 @@
   <string name="powerMenuBottom_SafeMode">"Modo seguro"</string>
   <string name="powerMenu_Shuttingdown">"Apagando..."</string>
   <string name="powerMenu_Rebooting">"Reiniciando..."</string>
+  <string name="powerMenuMain_KillApp">"Matar aplicacion en primer plano"</string>
+  <string name="powerMenuMain_AppShortcut">"Acceso directo"</string>
+  <string name="powerMenuMain_ActivityShortcut">"Actividad"</string>
+  <string name="powerMenuMain_ToggleRotate">"Giro de pantalla"</string>
   <string name="ToggleRotateMode_Auto">"Auto"</string>
+  <string name="ToggleRotateMode_Off">"Apagado"</string>
+  <string name="powerMenuMain_ToggleWifi">"Wi-Fi"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
+  <string name="powerMenuMain_ToggleData">"Datos"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidad y orden"</string>
   <string name="category_Preset">"Temas"</string>
@@ -75,6 +83,7 @@
   <string name="powerMenuMain_AirplaneMode">"Modo avión"</string>
   <string name="powerMenuMain_RestartUI">"Reiniciar UI de sistema"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Circle">"Color del círculo"</string>
   <string name="colorsType_Background">"Color de fondo"</string>
   <string name="colorsType_Text">"Color de texto"</string>
   <string name="powerMenuMain_Flashlight">"Antorcha"</string>
@@ -84,7 +93,7 @@
   <string name="permissionsScreen_ClickToRequest">"Hacer clic para pedir el permiso."</string>
   <string name="permissionsScreen_DontAskAgain">"No preguntar de nuevo"</string>
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Lectura/Escritura almacenamiento externo"</string>
-  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Requerido para futuras funciones (imágenes personalizadas)."</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Requeridos para utilizar gráficos personalizados."</string>
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Camara"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Requerido para prender/apagar antorcha."</string>
   <string name="visibilityOrder_HideDesc">"Ocultar descripción"</string>
@@ -94,8 +103,16 @@
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Requerido para grabar audio en la grabación de pantalla."</string>
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Ventana de alertas de sistema"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Requerido para mostrar el menú de apagado por encima de todo."</string>
-  <!-- Sehr gewagt, aber mir fällt nichts anderes ein xD -->
+  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Despertar"</string>
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Requerido para evitar el cierre de los servicios de antorcha y grabador de pantalla."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Acceso al estado del WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Necesario para obtener el estado de Wi-Fi."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Cambiar estado de WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Necesario para activar el WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Necesario para obtener el estado de bluetooth."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Administrador de Bluetooth"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Necesaria para activar el bluetooth sin ningún diálogo."</string>
   <string name="powerMenuMain_SoundMode">"Modo de sonido"</string>
   <string name="powerMenuMain_SoundModeDesc">"Modo actual: [SOUNDMODE]"</string>
   <string name="SoundMode_Normal">"Normal"</string>
@@ -128,6 +145,7 @@
   <string name="login_LoggedIn">"¡Conectado!"</string>
   <string name="login_LoginFailedWithReason">"Error de inicio de sesión: "</string>
   <string name="login_LoginFailedWrongData">"¡Fallado el login, correo electrónico o contraseña incorrecto!"</string>
+  <string name="login_RegisterFailedNameUsed">"Lo sentimos, el nombre o correo electrónico ya está en uso."</string>
   <string name="login_RegisterSuccess">"Registro exitoso, recibirás un correo electrónico para poder activar tu cuenta!"</string>
   <string name="login_Processing">"Procesando..."</string>
   <string name="login_TitleStatistics">"Estadísticas para [USERNAMEEMAIL]"</string>
@@ -156,6 +174,7 @@
   <string name="login_Recover">"Recuperar"</string>
   <string name="login_RecoverAccount">"No se puede acceder a tu cuenta? \nClic aquí para opciones de recuperación."</string>
   <string name="login_RecoverPassword">"Reestablecer contraseña"</string>
+  <string name="login_RecoverSuccess">"Recibirás un correo electrónico con instrucciones sobre cómo restablecer tu contraseña."</string>
   <string name="login_RecoverNotFound">"Ningún usuario con estos datos encontrados."</string>
   <string name="powerMenuMain_SoundVibrate">"Sonido: vibración"</string>
   <string name="powerMenuMain_SoundNormal">"Sonido: Normal"</string>
@@ -201,6 +220,8 @@
   <string name="animations_Items">"Fondo | Diálogo | Iconos | Artículo simple | Artículos múltiples"</string>
   <string name="animations_Speeds">"Muy rápido | Más rápido | Rápido | Normal | Lento | Más lento | Muy lento"</string>
   <string name="animations_Types">"Desaparecer | Aparecer\n(Funciona sólo para el fondo) |Deslizar hacia arriba| Deslizar a la izquierda | Deslizar a la derecha | Deslizar hacia abajo | Aumentar | Reducir | Inhabilitar"</string>
+  <string name="animations_Type">"Tipo"</string>
+  <string name="animations_Speed">"Velocidad"</string>
   <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Imagen de carga"</string>
   <string name="presetsManager_LoadMore">"Cargando... | Por favor, espere... | Mostrar más temad| Haga clic aquí para mostrar más temas. | El final. | No hay más temas para mostrar. | Haga clic aquí para intentarlo de nuevo."</string>
@@ -208,8 +229,60 @@
   <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Requiere confirmación | Permitir un cuadro diálogo de confirmación antes de reiniciar el o apagar."</string>
   <string name="preferences_Donate">"Donar | ¿Te gusta la aplicación? \nPorque no donarme una taza de café o algo más?"</string>
+  <string name="advancedPrefs_HideOnClick">"Ocultar con un clic"</string>
+  <string name="advancedPrefs_HideOnClickDesc">"Ocultar el menú haciendo clic en un botón."</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Los iconos de aplicación para los botones de acceso directo de aplicación de la carga."</string>
+  <string name="style_Material">Material</string>
+  <string name="style_MaterialFullscreen">Material (Pantalla completa)</string>
+  <string name="style_MaterialFullHorizontal">Material (Horizontal completo)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Experimental PhoneWindowManager hook</string>
+  <string name="advancedPrefs_ColorizeNonStockIcons">"Colorear los iconos"</string>
   <string name="colorsResetToDefault">"Reset to default"</string>
+  <string name="errorActivity_RestartApp">"Reiniciar aplicación"</string>
+  <string name="errorActivity_CloseApp">"Cerrar aplicación"</string>
+  <string name="errorActivity_Close">"Cerrar"</string>
   <string name="tourPage_2_Title">"Imagens amor"</string>
+  <string name="tourPage_7_Title">"¡Disfruta!"</string>
+  <string name="uploadHelper_FailedAt2">"Error al solicitar la información necesaria, por favor, compruebe su conexión y vuelva a intentarlo."</string>
+  <string name="uploadHelper_FailedAt3">"No se pudo cargar el archivo, por favor, compruebe su conexión y vuelva a intentarlo."</string>
+  <string name="uploadHelper_UnknownError">"Hubo un problema desconocido mientras se cargaba el archivo, por favor, inténtelo de nuevo."</string>
+  <string name="visibilityOrder_SearchApp">"Buscar aplicación (mayúsculas y minúsculas):"</string>
+  <string name="powerMenuMain_MediaPrevious">"Anterior"</string>
+  <string name="powerMenuMain_MediaPlayPause">"Reproducir/Pausa"</string>
+  <string name="powerMenuMain_MediaNext">"Siguiente"</string>
+  <string name="presetsManager_Loading">"Leyendo configuración..."</string>
+  <string name="shortcut_ShowPowerMenu">"Menú de apagado"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviour">"Editar apariencia y comportamiento"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourDesc">"Seleccione a continuación cómo se comporta el elemento:"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText">"Texto: (dejar vacío para el valor por defecto)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText1">"Primer elemento: (dejar vacío para el valor por defecto)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText2">"Segundo elemento: (dejar vacío para el valor por defecto)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText3">"Tercer elemento: (dejar vacío para el valor por defecto)"</string>
+  <string name="visibilityOrder_HideOnLockscreen">"Ocultar en pantalla de bloqueo"</string>
+  <string name="visibilityOrder_InvalidMultiPageMove">"Operación de movimiento no válida, allí no puede haber un comienzo después del final o un final antes del inicio!"</string>
+  <string name="preferences_BackupRestoreTitle">"Copia de Seguridad"</string>
+  <string name="preferences_BackupRestoreDesc">"Crea una copia de seguridad de todos tus ajutes, también podras eliminar las configuraciones si algo sale mal, o si deseas iniciar de nuevo."</string>
+  <string name="backupRestoreCategory_BackupRestore">"Copia de Seguridad"</string>
+  <string name="backupRestore_NewBackupTitle">"Copia de seguridad de todos los ajustes"</string>
+  <string name="backupRestore_NewBackupDesc">"Haga clic aquí para guardar todos los ajustes en la raíz de almacenamiento local."</string>
+  <string name="backupRestore_RestoreTitle">"Restaurar la configuración"</string>
+  <string name="backupRestore_RestoreDesc">"Haga clic aquí para restaurar tus ajustes guardados."</string>
+  <string name="backupRestoreCategory_Delete">"Borrar"</string>
+  <string name="backupRestore_DeleteSettingsTitle">"Borrar ajustes"</string>
+  <string name="backupRestore_DeleteSettingsDesc">"Haz clic aquí para obtener un cuadro de diálogo con los ajustes que pudes restablecer, utiliza esto si algo va mal con tus ajutes y la aplicación esta teniendo errores al cargar los menus."</string>
+  <string name="backupRestore_ChooseBackupOptions">"Por favor, elija lo que desea copiar:\nSelecting 'Por defecto' o 'Graficos' podrían causar que tu copia d sgeuridad sea de gran tamaño!"</string>
+  <string name="backupRestore_ChooseBackupName">"Nombre de copia de seguridad: (dejar vacío para usar un nombre automatizado)"</string>
+  <string name="backupRestore_ChooseRestoreOptions">"Por favor, elija lo que desea restaurar:"</string>
+  <string name="backupRestore_ChooseDeleteOptions">"Por favor, elija lo que desea eliminar:"</string>
+  <string name="backupRestore_BackupComplete">"Respaldo completo!"</string>
+  <string name="backupRestore_BackupFailed">"Error de copia de seguridad, por favor, inténtelo de nuevo."</string>
+  <string name="backupRestore_Restart">"Reiniciar"</string>
+  <string name="backupRestoreOptions_Colors">"Colores"</string>
+  <string name="backupRestoreOptions_Presets">"Temas"</string>
+  <string name="backupRestoreOptions_Graphics">"Gráficos"</string>
+  <string name="backupRestoreOptions_VisibilityAndOrder">"Visibilidad y orden"</string>
+  <string name="backupRestoreOptions_Animations">"Animaciones"</string>
+  <string name="xposedMain_MenuActivityNotFound">"Parece que usted ha desinstalado mi módulo antes de desabilitarlo...\nAhora el sistema no sabe qué hacer, haga clic en reiniciar para reiniciar el dispositivo y para completar la desinstalación!"</string>
+  <string name="xposedMain_MenuActivityNotFound_Cancel">"Cancelar"</string>
+  <string name="xposedMain_MenuActivityNotFound_Restart">"Reiniciar"</string>
 </resources>
