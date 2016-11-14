@@ -22,9 +22,7 @@
   <string name="ToggleRotateMode_Auto">"自動"</string>
   <string name="ToggleRotateMode_Off">"オフ"</string>
   <string name="powerMenuMain_ToggleWifi">"Wi-Fi"</string>
-  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"データ"</string>
-  <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"表示と並び順"</string>
   <string name="category_Preset">"プリセット"</string>
@@ -56,7 +54,6 @@
   <string name="ColorPicker_Value">"値:"</string>
   <string name="ColorPicker_Saturation">"彩度:"</string>
   <string name="ColorPicker_Opacity">"不透明度:"</string>
-  <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"[PRESETNAME] を削除しました!"</string>
   <string name="presetLoad_PresetLoaded">"[PRESETNAME] を読み込みました!"</string>
   <string name="presetSaveDialog_CreatorNameInfo">"このプリセットの制作者:"</string>
@@ -112,7 +109,6 @@
   <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Wi-Fi の状態を取得するために必要です。"</string>
   <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Wi-Fi の状態の変更"</string>
   <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Wi-Fi のトグルに必要です。"</string>
-  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Bluetooth の状態を取得するために必要です。"</string>
   <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth 管理者"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"ダイアログなしで Bluetooth を切り替えるために必要です。"</string>
