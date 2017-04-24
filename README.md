@@ -3,7 +3,7 @@ Create Your own Power menu!
 
 [![api](https://img.shields.io/badge/api-16%2B-brightgreen.svg)]()
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/neopowermenu/localized.svg)](https://crowdin.com/project/neopowermenu)
-[![License](https://img.shields.io/badge/License-Apache v2.0-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ~ Sorry when my English is not the Best...
 
