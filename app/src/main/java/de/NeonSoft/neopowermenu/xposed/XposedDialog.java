@@ -1013,9 +1013,9 @@ public class XposedDialog extends DialogFragment {
                     try {
                         if (amRingerMode != am.getRingerMode()) {
                             if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
-                                loadImage(silentModeIcon_Image.get(i), 35, PreferencesGraphicsFragment.graphics[34][2].toString(), silentModeIcon_Color.get(i));
+                                loadImage(silentModeIcon_Image.get(i), 34, PreferencesGraphicsFragment.graphics[34][2].toString(), silentModeIcon_Color.get(i));
                             } else {
-                                loadImage(silentModeIcon_Image.get(i), 34, PreferencesGraphicsFragment.graphics[35][2].toString(), silentModeIcon_Color.get(i));
+                                loadImage(silentModeIcon_Image.get(i), 35, PreferencesGraphicsFragment.graphics[35][2].toString(), silentModeIcon_Color.get(i));
                             }
                             amRingerMode = am.getRingerMode();
                         }
