@@ -1,0 +1,16 @@
+files:
+  - 
+    source: /app/src/main/res/values/strings.xml
+    translation: /app/src/main/res/values-%android_code%/strings.xml
+    languages_mapping:
+      android_code:
+        de: de
+        ja: ja
+        it: it
+        pt-PT: pt
+        tr: tr
+        fr: fr
+        ru: ru
+        ro: ro
+        nl: nl
+        pl: pl
