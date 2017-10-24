@@ -25,7 +25,7 @@
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
-		
+
 		<style name="TransparentApp" parent="Theme.AppCompat.NoActionBar">
         <item name="accentColor">@color/transparent</item>
         <item name="iconColor">@android:color/white</item>
@@ -43,6 +43,8 @@
         <item name="android:windowCloseOnTouchOutside">false</item>
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
+            <item name="android:windowEnterAnimation">@anim/fade_in</item>
+            <item name="android:windowExitAnimation">@anim/fade_out</item>
 		</style>
 		
 		<style name="slideDownDialogFragment" parent="Theme.AppCompat.NoActionBar">

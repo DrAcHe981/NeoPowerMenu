@@ -364,7 +364,7 @@ public class LoginFragment extends Fragment {
                 } else {
                     boolean_ShowPW = true;
                     ImageView_ShowHidePw.setImageResource(R.drawable.ic_action_eye_open);
-                    EditText_Password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+                    EditText_Password.setInputType(InputType.TYPE_CLASS_TEXT);
                 }
                 EditText_Password.setSelection(cursorpos);
             }

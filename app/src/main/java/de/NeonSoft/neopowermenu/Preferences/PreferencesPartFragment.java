@@ -9,8 +9,12 @@ import android.support.v4.app.*;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
+
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.R;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.permissionsScreen.*;
 import eu.chainfire.libsuperuser.*;
@@ -22,7 +26,7 @@ public class PreferencesPartFragment extends Fragment {
     /**
      * PayPal
      */
-    final String PAYPAL_USER = "drache981@gmail.com";
+    final String PAYPAL_USER = "drache981@neon-soft.de";
     final String PAYPAL_CURRENCY_CODE = "EUR";
 
     Context mContext;
@@ -104,7 +108,6 @@ public class PreferencesPartFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: Implement this method
         if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
             MainActivity.visibleFragment = "Main";
         }
@@ -134,7 +137,7 @@ public class PreferencesPartFragment extends Fragment {
         for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
             if ((int) PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM) {
                 if (MainActivity.colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty()) {
-										//Log.d("NPM:cI","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
+                    //Log.d("NPM:cI","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
                     MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).apply();
                     MainActivity.preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).apply();
                 }
@@ -156,6 +159,14 @@ public class PreferencesPartFragment extends Fragment {
         InflatedView = inflater.inflate(R.layout.activity_preferences, container, false);
 
         ProgressBar_RootWait = (ProgressBar) InflatedView.findViewById(R.id.activitypreferencesProgressBar_ModuleState);
+        if(!MainActivity.RootAvailable) {
+            ProgressBar_RootWait.setProgress(100);
+            Animation BlinkAnim = AnimationUtils.loadAnimation(mActivity, R.anim.progress_blink);
+            ProgressBar_RootWait.setAlpha((float) 1);
+            ProgressBar_RootWait.startAnimation(BlinkAnim);
+        } else {
+            ProgressBar_RootWait.setVisibility(View.GONE);
+        }
         TextView_ModuleStateTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ModuleStateTitle);
         TextView_ModuleStateDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ModuleStateDesc);
 
@@ -258,7 +269,7 @@ public class PreferencesPartFragment extends Fragment {
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
+
                 String[] styleList = new String[3];
                 styleList[0] = getString(R.string.style_Material);
                 styleList[1] = getString(R.string.style_MaterialFullscreen);
@@ -276,7 +287,7 @@ public class PreferencesPartFragment extends Fragment {
 
                     @Override
                     public void onListItemClick(int position, String text) {
-                        // TODO: Implement this method
+
                         MainActivity.preferences.edit().putString("DialogTheme", text).apply();
                         ActiveStyle = text;
                         TextView_StyleDesc.setText(ActiveStyle);
@@ -284,22 +295,22 @@ public class PreferencesPartFragment extends Fragment {
 
                     @Override
                     public void onNegativeClick() {
-                        // TODO: Implement this method
+
                     }
 
                     @Override
                     public void onNeutralClick() {
-                        // TODO: Implement this method
+
                     }
 
                     @Override
                     public void onPositiveClick(Bundle resultBundle) {
-                        // TODO: Implement this method
+
                     }
 
                     @Override
                     public void onTouchOutside() {
-                        // TODO: Implement this method
+
                     }
                 });
                 dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId, true);
@@ -344,7 +355,7 @@ public class PreferencesPartFragment extends Fragment {
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
+
                 PreferencesPresetsFragment ppf = new PreferencesPresetsFragment();
                 ppf.setStartTab(0);
                 MainActivity.changePrefPage(ppf, false);
@@ -426,7 +437,7 @@ public class PreferencesPartFragment extends Fragment {
 
                     @Override
                     public void onListItemClick(int position, String text) {
-                        // TODO: Implement this method
+
                         if (position == 0) {
                             Uri.Builder uriBuilder = new Uri.Builder();
                             uriBuilder.scheme("https").authority("www.paypal.com").path("cgi-bin/webscr");
@@ -457,22 +468,22 @@ public class PreferencesPartFragment extends Fragment {
 
                     @Override
                     public void onNegativeClick() {
-                        // TODO: Implement this method
+
                     }
 
                     @Override
                     public void onNeutralClick() {
-                        // TODO: Implement this method
+
                     }
 
                     @Override
                     public void onPositiveClick(Bundle resultBundle) {
-                        // TODO: Implement this method
+
                     }
 
                     @Override
                     public void onTouchOutside() {
-                        // TODO: Implement this method
+
                     }
                 });
                 dialogFragment.setList(ListView.CHOICE_MODE_NONE, new String[]{"PayPal"}, -1, true);
@@ -485,7 +496,7 @@ public class PreferencesPartFragment extends Fragment {
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
+
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(Urlgithub));
                 try {
@@ -504,7 +515,7 @@ public class PreferencesPartFragment extends Fragment {
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
+
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_SUBJECT, "NeoPowerMenu");
@@ -527,7 +538,7 @@ public class PreferencesPartFragment extends Fragment {
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
+
                 MainActivity.changePrefPage(new AboutFragment(), false);
             }
         });
@@ -543,47 +554,29 @@ public class PreferencesPartFragment extends Fragment {
 
     void checkState() {
         if (isAdded()) {
-            try {
-                if (helper.ModuleState() >= MainActivity.neededModuleActiveVersion) {
-                    if (!MainActivity.RootAvailable) {
-                        TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed2).split("\\|")[0]);
-                        TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed2).split("\\|")[1]);
-                    } else {
-                        TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed4).split("\\|")[0]);
-                        TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed4).split("\\|")[1]);
-                        //ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
-                        ProgressBar_RootWait.setVisibility(View.GONE);
-                    }
-                } else if (helper.ModuleState() == -1) {
-                    if (!MainActivity.RootAvailable) {
-                        TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed1).split("\\|")[0]);
-                        TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed1).split("\\|")[1]);
-                    } else {
-                        TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed3).split("\\|")[0]);
-                        TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed3).split("\\|")[1]);
-                        //ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
-                        ProgressBar_RootWait.setVisibility(View.GONE);
-                                        /*slideDownDialogFragment dialogFragment = new slideDownDialogFragment(getActivity(), MainActivity.fragmentManager);
-                                        //dialogFragment.set
-										dialogFragment.setDialogText(getString(R.string.preferencesDesc_RootXposed3));
-										dialogFragment.setDialogNegativeButton(getString(R.string.Dialog_Ignore));
-										dialogFragment.setDialogPositiveButton(getString(R.string.Dialog_Ok));
-										dialogFragment.showDialog();*/
-                    }
+            if (helper.ModuleState() >= MainActivity.neededModuleActiveVersion) {
+                if (!MainActivity.RootAvailable) {
+                    TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed2).split("\\|")[0]);
+                    TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed2).split("\\|")[1]);
                 } else {
-                    TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed5).split("\\|")[0]);
-                    TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed5).split("\\|")[1]);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme, null));
-                        TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme, null));
-                    } else {
-                        TextView_ModuleStateTitle.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
-                        TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
-                    }
+                    TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed4).split("\\|")[0]);
+                    TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed4).split("\\|")[1]);
                     //ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
+                    ProgressBar_RootWait.clearAnimation();
                     ProgressBar_RootWait.setVisibility(View.GONE);
                 }
-            } catch (Throwable t) {
+            } else if (helper.ModuleState() == -1) {
+                if (!MainActivity.RootAvailable) {
+                    TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed1).split("\\|")[0]);
+                    TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed1).split("\\|")[1]);
+                } else {
+                    TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed3).split("\\|")[0]);
+                    TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed3).split("\\|")[1]);
+                    //ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
+                    ProgressBar_RootWait.clearAnimation();
+                    ProgressBar_RootWait.setVisibility(View.GONE);
+                }
+            } else {
                 TextView_ModuleStateTitle.setText(getString(R.string.preferences_RootXposed5).split("\\|")[0]);
                 TextView_ModuleStateDesc.setText(getString(R.string.preferences_RootXposed5).split("\\|")[1]);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -594,6 +587,7 @@ public class PreferencesPartFragment extends Fragment {
                     TextView_ModuleStateDesc.setTextColor(getResources().getColor(R.color.colorAccentDarkTheme));
                 }
                 //ProgressBar_RootWait.startAnimation(MainActivity.anim_fade_out);
+                ProgressBar_RootWait.clearAnimation();
                 ProgressBar_RootWait.setVisibility(View.GONE);
             }
         }
@@ -601,7 +595,7 @@ public class PreferencesPartFragment extends Fragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        // TODO: Implement this method
+
         super.onActivityCreated(savedInstanceState);
         if (!MainActivity.RootAvailable) {
             new Thread(new Runnable() {
@@ -632,10 +626,8 @@ public class PreferencesPartFragment extends Fragment {
     }
 
     void rootAvailable() {
-        if (TextView_ModuleStateTitle != null) {
-            MainActivity.RootAvailable = true;
-            checkState();
-        }
+        MainActivity.RootAvailable = true;
+        checkState();
     }
 
 }

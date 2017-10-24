@@ -48,22 +48,30 @@ public class AboutFragment extends Fragment {
         Configuration conf = res.getConfiguration();
 
         String[] texts = new String[]{"NeoPowerMenu by Neon-Soft / DrAcHe981\n" +
-                "based on a Source from Naman Dwivedi (naman14).\n\n" +
+                "based on the Source from Naman Dwivedi (naman14).\n\n" +
                 "Translators (I update them from time to time so don't be angry if you translated, but don't got listed here ;D):\n" +
-                "> English:\n" +
-                "Robin G. (DrAcHe981 @xda), MrWasdennnoch (@xda)\n\n" +
-                "> German:\n" +
-                "Robin G. (DrAcHe981 @xda), MrWasdennnoch (@xda)\n\n" +
-                "> Polish:\n" +
-                "Witoslavski (@forum.android.com.pl), tmacher (@xda)\n\n" +
-                "> Portuguese (BR):\n" +
-                "DeluxeMark™ (@xda), RhaySF\n\n" +
-                "> Russia:\n" +
-                "Smirnov Yaroslav (Smirnaff @xda)\n\n" +
                 "> Dutch:\n" +
-                "mike2nl (@xda)\n\n" +
+                "Hakan Ilbas (hakanilbas), mike2nl\n\n" +
+                "> English:\n" +
+                "Robin G. (DrAcHe981), MrWasdennnoch\n\n" +
+                "> French:\n" +
+                "Joël Costamagna, Raziel65\n\n" +
+                "> German:\n" +
+                "Robin G. (DrAcHe981), MrWasdennnoch\n\n" +
+                "> Italian:\n" +
+                "Lucas Rey (LordSpectre)\n\n" +
+                "> Japanese:\n" +
+                "Noumi (AndroPlus)\n\n" +
+                "> Polish:\n" +
+                "Witoslavski, tmacher\n\n" +
+                "> Portuguese, Brazilian:\n" +
+                "DeluxeMark™, RhaySF, Marcio Andrade (marciozomb13)\n\n" +
+                "> Russia:\n" +
+                "Smirnov Yaroslav (Smirnaff)\n\n" +
                 "> Romanian:\n" +
-                "azZA_09 (@xda)\n\n" +
+                "azZA_09\n\n" +
+                "> Spanish, Mexico:\n" +
+                "WarLion, Daniel Carrero (danielcr), Cricket Blue Side (cricketblueside)\n\n" +
                 "Special Thanks:\n" +
                 " You for using my Module.\n" +
                 " Naman Dwivedi (naman14) for the original source.\n" +

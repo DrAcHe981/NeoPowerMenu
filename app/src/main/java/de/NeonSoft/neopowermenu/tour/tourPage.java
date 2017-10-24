@@ -77,7 +77,7 @@ public class tourPage extends Fragment
                 if (page == 0) {
                     Title.setText(getString(R.string.tourPage_0_Title));
                     Image.setVisibility(View.VISIBLE);
-                    Image.setPadding((int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext));
+                    //Image.setPadding((int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext));
                     Text.setText(getString(R.string.tourPage_0_Text));
                     ButtonText.setText(getString(R.string.tourPage_Skip));
                     ButtonHolder.setVisibility(View.VISIBLE);
@@ -104,7 +104,7 @@ public class tourPage extends Fragment
                 } else if (page == 7) {
                     Title.setText(getString(R.string.tourPage_7_Title));
                     Image.setVisibility(View.VISIBLE);
-                    Image.setPadding((int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext));
+                    //Image.setPadding((int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext));
                     Text.setText(getString(R.string.tourPage_7_Text));
                 }
             }

@@ -30,11 +30,13 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import de.NeonSoft.neopowermenu.R;
+import de.NeonSoft.neopowermenu.helpers.PreferenceNames;
 import de.NeonSoft.neopowermenu.xposed.*;
 
 import android.app.*;
@@ -45,6 +47,7 @@ public class ScreenRecordingService extends Service {
     private static NotificationManager nm;
 
     private static final String TAG = "NPM:SRCServ";
+    boolean DeepLogging = false;
 
     private static final int SCREENRECORD_NOTIFICATION_ID = 3;
     private static final int MSG_TASK_ENDED = 1;
@@ -76,6 +79,7 @@ public class ScreenRecordingService extends Service {
     private boolean mUseStockBinary;
 
     private CaptureThread mCaptureThread;
+    private String screenrecordReturnCode = "";
 
     private class CaptureThread extends Thread {
         public void run() {
@@ -86,48 +90,55 @@ public class ScreenRecordingService extends Service {
                 fieldPid.setAccessible(true);
 
                 // choose screenrecord binary and prepare command
-                List<String> command = new ArrayList<String>();
+                List<String> command = new ArrayList<>();
                 //command.add("su");
-                Log.d(TAG, "Using binary located in: " + getBinaryPath());
+                if(DeepLogging) Log.d(TAG, "Using binary located in: " + getBinaryPath());
                 command.add(getBinaryPath());
-//                if (!mUseStockBinary && 
-//                        mPrefs.getBoolean(GravityBoxSettings.PREF_KEY_SCREENRECORD_MICROPHONE, true)) {
-//                    command.add("--microphone");
-//                }
-                String prefVal = mPrefs.getString("ScreenRecord_Size", "default");
+                if(DeepLogging) Log.d(TAG, "Setting screenrecorder configurations...");
+                if (!mUseStockBinary && mPrefs.getBoolean(PreferenceNames.pScreenRecord_Microphone, true)) {
+                    command.add("--microphone");
+                    if(DeepLogging) Log.d(TAG, "> --microphone");
+                }
+                String prefVal = mPrefs.getString(PreferenceNames.pScreenRecord_Size, "default");
                 if (!prefVal.equals("default")) {
                     command.add("--size");
                     command.add(prefVal);
+                    if(DeepLogging) Log.d(TAG, "> --size " + prefVal);
                 }
-                prefVal = String.valueOf(mPrefs.getInt("ScreenRecord_BitRate", 4) * 1000000);
+                prefVal = String.valueOf(mPrefs.getLong(PreferenceNames.pScreenRecord_BitRate, 4) * 1000000);
                 command.add("--bit-rate");
                 command.add(prefVal);
+                if(DeepLogging) Log.d(TAG, "> --bitrate " + prefVal);
                 if (!mUseStockBinary) {
-                    prefVal = String.valueOf(mPrefs.getInt("ScreenRecord_TimeLimit", 3) * 60);
+                    prefVal = String.valueOf(mPrefs.getLong(PreferenceNames.pScreenRecord_TimeLimit, (1000 * 3) * 60));
                     command.add("--time-limit");
                     command.add(prefVal);
+                    if(DeepLogging) Log.d(TAG, "> --timelimit " + prefVal);
                 }
-                if (mPrefs.getBoolean("ScreenRecord_Rotate", false)) {
+                if (mPrefs.getBoolean(PreferenceNames.pScreenRecord_Rotate, false)) {
                     command.add("--rotate");
+                    if(DeepLogging) Log.d(TAG, "> --rotate");
                 }
-
                 command.add(TMP_PATH);
+                if(DeepLogging) Log.d(TAG, "> " + TMP_PATH);
 
                 // construct and start the process
                 ProcessBuilder pb = new ProcessBuilder();
                 pb.command(command);
                 pb.redirectErrorStream(true);
+                if(DeepLogging) Log.d(TAG, "Starting capture thread.");
                 Process proc = pb.start();
 
                 // Get process PID to be used with native kill later
                 final int pid = fieldPid.getInt(proc);
-                Log.d(TAG, "Screenrecord PID = " + pid);
+                if(DeepLogging) Log.d(TAG, "Screenrecord PID = " + pid);
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 
                 while (!isInterrupted()) {
                     if (br.ready()) {
-                        Log.d(TAG, br.readLine());
+                        screenrecordReturnCode += br.readLine();
+                        Log.e(TAG, br.readLine());
                     }
 
                     try {
@@ -147,28 +158,12 @@ public class ScreenRecordingService extends Service {
 
                 // Terminate the recording process
                 Runtime.getRuntime().exec(new String[]{"kill", "-2", String.valueOf(pid)});
-            } catch (IOException e) {
+            } catch (IOException | IllegalAccessException | ClassNotFoundException | IllegalArgumentException | NoSuchFieldException e) {
                 // Notify something went wrong
                 Message msg = Message.obtain(mHandler, MSG_TASK_ERROR, 0, 0, e.getMessage());
                 mHandler.sendMessage(msg);
 
                 // Log the error as well
-                Log.e(TAG, "Error while starting the screenrecord process", e);
-            } catch (NoSuchFieldException e) {
-                Message msg = Message.obtain(mHandler, MSG_TASK_ERROR, 0, 0, e.getMessage());
-                mHandler.sendMessage(msg);
-                Log.e(TAG, "Error while starting the screenrecord process", e);
-            } catch (IllegalArgumentException e) {
-                Message msg = Message.obtain(mHandler, MSG_TASK_ERROR, 0, 0, e.getMessage());
-                mHandler.sendMessage(msg);
-                Log.e(TAG, "Error while starting the screenrecord process", e);
-            } catch (IllegalAccessException e) {
-                Message msg = Message.obtain(mHandler, MSG_TASK_ERROR, 0, 0, e.getMessage());
-                mHandler.sendMessage(msg);
-                Log.e(TAG, "Error while starting the screenrecord process", e);
-            } catch (ClassNotFoundException e) {
-                Message msg = Message.obtain(mHandler, MSG_TASK_ERROR, 0, 0, e.getMessage());
-                mHandler.sendMessage(msg);
                 Log.e(TAG, "Error while starting the screenrecord process", e);
             }
         }
@@ -189,7 +184,8 @@ public class ScreenRecordingService extends Service {
         nm = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
 
         final String prefsName = getPackageName() + "_preferences";
-        mPrefs = getSharedPreferences(prefsName, Context.MODE_WORLD_READABLE);
+        mPrefs = getSharedPreferences(prefsName, 0);
+        DeepLogging = mPrefs.getBoolean(PreferenceNames.pDeepXposedLogging,false);
 
         mHandler = new Handler() {
             public void handleMessage(Message msg) {
@@ -243,6 +239,7 @@ public class ScreenRecordingService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if(DeepLogging) Log.d(TAG, "Received command: " + intent.getAction());
         if (intent != null && intent.getAction() != null) {
             if (intent.getAction().equals(ACTION_SCREEN_RECORDING_START)) {
                 startScreenrecord();
@@ -261,7 +258,7 @@ public class ScreenRecordingService extends Service {
                     player.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{"video/*"});
                 }
                 player.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Intent chooser = Intent.createChooser(player,path);
+                Intent chooser = Intent.createChooser(player, getString(R.string.screenrecord_notif_open));
                 chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(chooser);
 
@@ -277,7 +274,7 @@ public class ScreenRecordingService extends Service {
                             new String[]{file.getAbsolutePath()}, null,
                             new MediaScannerConnection.OnScanCompletedListener() {
                                 public void onScanCompleted(String path, Uri uri) {
-                                    Log.i(TAG, "MediaScanner done scanning " + path);
+                                    if(DeepLogging) Log.i(TAG, "MediaScanner done scanning " + path);
                                 }
                             });
                 } else {
@@ -290,6 +287,7 @@ public class ScreenRecordingService extends Service {
 
             }
         } else {
+            if(DeepLogging) Log.d(TAG, "Unknown action code.");
             stopSelf();
         }
 
@@ -375,10 +373,10 @@ public class ScreenRecordingService extends Service {
     }
 
     private void startScreenrecord() {
-        mUseStockBinary = mPrefs.getBoolean("Screenrecord_UseStockBinary", true);
+        mUseStockBinary = mPrefs.getBoolean(PreferenceNames.pScreenRecord_UseStockBinary, false);
         if (!isScreenrecordSupported()) {
             Log.e(TAG, "startScreenrecord: System does not support screen recording");
-            Toast.makeText(this, "Your system does not support screen recording", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.screenrecord_toast_nosupport), Toast.LENGTH_SHORT).show();
             return;
         }
         if (isRecording()) {
@@ -442,7 +440,7 @@ public class ScreenRecordingService extends Service {
         }
 
         Notification.Builder builder = new Notification.Builder(mContext)
-                .setContentText("Saving...")
+                .setContentText(getString(R.string.screenrecord_notif_saving))
                 .setContentTitle(getString(R.string.screenrecord_notif_title))
                 .setSmallIcon(R.drawable.ic_sysbar_camera)
                 .setOngoing(true)
@@ -461,7 +459,7 @@ public class ScreenRecordingService extends Service {
                 File picturesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
                 if (!picturesDir.exists()) {
                     if (!picturesDir.mkdir()) {
-                        resultMsg = "Cannpt create Pictures directory.";
+                        resultMsg = getString(R.string.screenrecord_notif_failedCreateDir);
                         Log.e(TAG, "Cannot create Pictures directory");
                         return;
                     }
@@ -470,7 +468,7 @@ public class ScreenRecordingService extends Service {
                 File screenrecord = new File(picturesDir, "Screenrecord");
                 if (!screenrecord.exists()) {
                     if (!screenrecord.mkdir()) {
-                        resultMsg = "Cannot create Screenrecord directory.";
+                        resultMsg = getString(R.string.screenrecord_notif_failedCreateDir);
                         Log.e(TAG, "Cannot create Screenrecord directory");
                         return;
                     }
@@ -479,7 +477,7 @@ public class ScreenRecordingService extends Service {
                 File input = new File(TMP_PATH);
                 final File output = new File(screenrecord, fileName);
 
-                Log.d(TAG, "Copying file to " + output.getAbsolutePath());
+                if(DeepLogging) Log.d(TAG, "Copying file to " + output.getAbsolutePath());
 
                 try {
                     copyFileUsingStream(input, output);
@@ -489,7 +487,7 @@ public class ScreenRecordingService extends Service {
                     //							 String.format(getString(R.string.screenrecord_toast_saved),
                     //														 output.getPath()), Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
-                    resultMsg = "Unable to copy output file, look in the log for more info.";
+                    resultMsg = getString(R.string.screenrecord_notif_failedToSave);
                     Log.e(TAG, "Unable to copy output file", e);
                     Toast.makeText(ScreenRecordingService.this,
                             R.string.screenrecord_toast_save_error, Toast.LENGTH_SHORT).show();

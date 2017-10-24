@@ -17,17 +17,21 @@ public class GraphicDrawable extends ShapeDrawable {
     private static final float SHADE_FACTOR = 0.9f;
     private final Bitmap graphic;
     private final int color;
+    private final int padding;
     private final RectShape shape;
     private final int height;
     private final int width;
     private final int fontSize;
     private final float radius;
     private final int borderThickness;
+    private static GraphicDrawable thisDrawable;
 
     private GraphicDrawable(Builder builder) {
         super(builder.shape);
 
         context = builder.context;
+
+        thisDrawable = this;
 
         // shape properties
         shape = builder.shape;
@@ -38,6 +42,7 @@ public class GraphicDrawable extends ShapeDrawable {
         // graphic and color
         graphic = builder.graphic;
         color = builder.color;
+        padding = builder.padding;
 
         // text paint settings
         fontSize = builder.fontSize;
@@ -85,9 +90,9 @@ public class GraphicDrawable extends ShapeDrawable {
 
         // draw graphic
         Rect r2 = new Rect();
-        int px = (int) helper.convertDpToPixel(20, context);
+        int px = (int) helper.convertDpToPixel(padding, context);
         r2.set(r.left + px, r.top + px, r.right - px, r.bottom - px);
-        if (graphic != null) canvas.drawBitmap(graphic, null, r2, null);
+        if (graphic != null) canvas.drawBitmap(graphic, null, r2, textPaint);
 
         canvas.restoreToCount(count);
 
@@ -163,6 +168,8 @@ public class GraphicDrawable extends ShapeDrawable {
 
         public float radius;
 
+        private int padding;
+
         private Builder() {
             context = null;
             graphic = null;
@@ -176,6 +183,7 @@ public class GraphicDrawable extends ShapeDrawable {
             fontSize = -1;
             isBold = false;
             toUpperCase = false;
+            padding = 10;
         }
 
         public IConfigBuilder setContext(Context context) {
@@ -277,6 +285,11 @@ public class GraphicDrawable extends ShapeDrawable {
             this.graphic = graphic;
             return new GraphicDrawable(this);
         }
+
+        public IShapeBuilder setPadding(int pad) {
+            this.padding = pad;
+            return this;
+        }
     }
 
     public interface IConfigBuilder {
@@ -321,5 +334,7 @@ public class GraphicDrawable extends ShapeDrawable {
         public GraphicDrawable buildRoundRect(Bitmap graphic, int color, int radius);
 
         public GraphicDrawable buildRound(Bitmap graphic, int color);
+
+        IShapeBuilder setPadding(int i);
     }
 }

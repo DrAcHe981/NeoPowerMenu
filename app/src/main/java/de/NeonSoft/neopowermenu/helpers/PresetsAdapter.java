@@ -48,7 +48,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-				final PresetsHolder preset = mItems.get(position);
+        final PresetsHolder preset = mItems.get(position);
         final LayoutInflater inflater = context.getLayoutInflater();
         View rowView;
         //final String prefname = this.itemsSwitchPrefName.get(position);
@@ -100,11 +100,11 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
             StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]", split[2]));
         }
         ItemDesc.setText(desc);
-				preset.setRoot(root);
-				preset.setLayout(OnlineButton);
-				preset.setImageView(OnlineButtonImage);
-				preset.setTexView(ItemDesc);
-				preset.setProgressBar(Progress);
+        preset.setRoot(root);
+        preset.setLayout(OnlineButton);
+        preset.setImageView(OnlineButtonImage);
+        preset.setTexView(ItemDesc);
+        preset.setProgressBar(Progress);
         if (preset.getType() == PresetsHolder.TYPE_INTERNAL) {
             root.setEnabled(true);
             if (position >= 3) {
@@ -116,7 +116,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                     @Override
                     public void onClick(View p1) {
-                        
+
                         slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                         dialogFragment.setContext(context);
                         dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -124,25 +124,25 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                             @Override
                             public void onListItemClick(int position, String text) {
-                                
+
                             }
 
                             @Override
                             public void onNegativeClick() {
-                                
+
                             }
 
                             @Override
                             public void onNeutralClick() {
-                                
+
                             }
 
                             @Override
                             public void onPositiveClick(final Bundle resultBundle) {
-                                
+
                                 String appVersion = MainActivity.versionName.replace("v", "");
-                                final String presetName = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/","").trim();
-                                final String presetCreator = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1").replace("/","").trim();
+                                final String presetName = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim();
+                                final String presetCreator = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1").replace("/", "").trim();
                                 boolean hasGraphics = false;
                                 String path = "";
                                 try {
@@ -184,7 +184,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                                     @Override
                                     public void onStateChanged(int state) {
-                                        
+
                                         try {
                                             if (state == uploadHelper.STATE_WAITING) {
                                                 //Progress.setProgress(100);
@@ -197,22 +197,22 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                                                     @Override
                                                     public void onListItemClick(int position, String text) {
-                                                        
+
                                                     }
 
                                                     @Override
                                                     public void onNegativeClick() {
-                                                        
+
                                                     }
 
                                                     @Override
                                                     public void onNeutralClick() {
-                                                        
+
                                                     }
 
                                                     @Override
                                                     public void onPositiveClick(Bundle resultBundle) {
-                                                        
+
                                                         dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[uploadHelper.STATE_CANCELLING] + "\n\n");
                                                         dialogFragment.setPositiveButton(null);
                                                         dialogFragment.setProgressBarBlink(true);
@@ -221,7 +221,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                                                     @Override
                                                     public void onTouchOutside() {
-                                                        
+
                                                     }
                                                 });
                                                 dialogFragment.setCloseOnButtonClick(false);
@@ -239,11 +239,11 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                     @Override
                                     public void onPublishUploadProgress(long nowSize, long totalSize) {
                                         try {
-                                            
+
                                             //ItemDesc.setText((int) (( nowSize * 100) / totalSize));
                                             //Progress.setProgress(uH.getProgress());
                                             if (dialogFragment != null && !dialogFragment.getText().equalsIgnoreCase(context.getString(R.string.uploadHelper_States).split("\\|")[uploadHelper.STATE_CANCELLING] + "\n\n")) {
-                                                dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[uH.getState()] + ((uH.getSizes()[0] > 0 && uH.getState() != uploadHelper.STATE_CANCELLING) ? "\n" + helper.getSizeString(uH.getSizes()[0], true) + "/" + helper.getSizeString(uH.getSizes()[1], true) + "\neta: " + helper.getTimeString(uH.getETA(), true) + ", speed: " + helper.getSizeString(uH.getAvgSpeed(), true) + "/s" : "\n\n"));
+                                                dialogFragment.setText(context.getString(R.string.uploadHelper_States).split("\\|")[uH.getState()] + ((uH.getSizes()[0] > 0 && uH.getState() != uploadHelper.STATE_CANCELLING) ? "\n" + helper.getSizeString(uH.getSizes()[0], true) + "/" + helper.getSizeString(uH.getSizes()[1], true) + "\neta: " + helper.getTimeString(context, uH.getETA(), 1) + ", speed: " + helper.getSizeString(uH.getAvgSpeed(), true) + "/s" : "\n\n"));
                                                 if (uH.getSizes()[0] > 0) {
                                                     dialogFragment.setProgressBar(uH.getProgress());
                                                     dialogFragment.setProgressBarBlink(false);
@@ -267,7 +267,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                         //if(helper.isValidZip(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps",null)) {
                                         new File(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps").delete();
                                         //}
-                                        PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
+                                        PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(), (PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
                                         Toast.makeText(context, context.getString(R.string.presetsManager_UploadComplete), Toast.LENGTH_SHORT).show();
                                     }
 
@@ -342,7 +342,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                                         dialogFragment.setText("");
                                                         dialogFragment.addInput(context.getString(R.string.login_UsernameEmail), presetCreator, false, null);
                                                         dialogFragment.addInput(context.getString(R.string.login_Password), "", false, null);
-                                                        dialogFragment.setInputMode(2, InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                                        dialogFragment.setInputMode(1, InputType.TYPE_TEXT_VARIATION_PASSWORD);
                                                         dialogFragment.setCheckBox(context.getString(R.string.login_KeepLogin), MainActivity.preferences.getBoolean("autoLogin", false));
                                                         dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
                                                         //dialogFragment.setDialogNeutralButton(context.getString(R.string.login_TitleRegister));
@@ -591,7 +591,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                 if (!resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)) {
                                     new loadPreset().execute(context.getFilesDir().getPath() + "/temp/" + selectedName + ".nps");
                                 } else {
-                                    Toast.makeText(context,context.getString(R.string.presetLoad_PresetLoaded).replace("[PRESETNAME]",selectedName),Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, context.getString(R.string.presetLoad_PresetLoaded).replace("[PRESETNAME]", selectedName), Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -601,7 +601,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             }
                         });
                         dialogFragment.setText(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[1]);
-                        dialogFragment.setCheckBox(context.getString(R.string.presetsManager_LoadOnlyGraphics),false);
+                        dialogFragment.setCheckBox(context.getString(R.string.presetsManager_LoadOnlyGraphics), false);
                         dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
                         dialogFragment.setNeutralButton(context.getString(R.string.Dialog_Buttons).split("\\|")[2]);
                         dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_LOAD]);
@@ -680,7 +680,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                             PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
                                             PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
                                             Toast.makeText(context, context.getString(R.string.presetLoad_PresetDeleted).replace("[PRESETNAME]", mItems.get(position).getName()), Toast.LENGTH_SHORT).show();
-                                            PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
+                                            PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(), (PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
                                         }
 
                                         @Override
@@ -908,19 +908,20 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                 }
             } catch (Throwable t) {
             }
-								if(preset.getDownloadHelper() != null) {
-										Progress.setProgress(PreferencesPresetsFragment.OnlinePresets.get(position).getDownloadHelper().getProgress());
-										OnlineButtonImage.setImageResource(R.drawable.ic_action_cancel);
+            if (preset.getDownloadHelper() != null) {
+                Progress.setProgress(PreferencesPresetsFragment.OnlinePresets.get(position).getDownloadHelper().getProgress());
+                OnlineButtonImage.setImageResource(R.drawable.ic_action_cancel);
                 long[] sizes = preset.getDownloadHelper().getSizes();
-                preset.getTextView().setText(context.getString(R.string.downloadHelper_States).split("\\|")[preset.getDownloadHelper().getState()] + (sizes[0] > 0 ? " - eta: " + helper.getTimeString(preset.getDownloadHelper().getETA(), true) + " | speed: " + helper.getSizeString(preset.getDownloadHelper().getAvgSpeed(), true) + "/s\n" + helper.getSizeString(sizes[0], true) + "/" + helper.getSizeString(sizes[1], true) + " | " + preset.getDownloadHelper().getProgress() + "%" : "\n"));
-                if (preset.getDownloadHelper().getProgress() <= 0) {
+                preset.getTextView().setText(context.getString(R.string.downloadHelper_States).split("\\|")[preset.getDownloadHelper().getState()] + (preset.getDownloadHelper().getState() == downloadHelper.STATE_DOWNLOADING ? " - " + helper.getSizeString(sizes[0], true) + "/" + helper.getSizeString(sizes[1], true) + " | " + preset.getDownloadHelper().getProgress() + "%\n" + context.getString(R.string.downloadHelper_RemainingTime).replace("[TIME]", helper.getTimeString(context, preset.getDownloadHelper().getETA(), 1)) + " | " + context.getString(R.string.downloadHelper_Speed).replace("[SPEED]", helper.getSizeString(preset.getDownloadHelper().getAvgSpeed(), true)) : "\n"));
+                if (preset.getDownloadHelper().getState() != downloadHelper.STATE_DOWNLOADING) {
                     preset.getProgessBar().setProgress(100);
                     Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
-                    preset.getProgessBar().setAlpha((float) 1);
                     preset.getProgessBar().startAnimation(BlinkAnim);
-										}
-										PreferencesPresetsFragment.OnlinePresets.set(position, preset);
-								}
+                } else {
+                    preset.getProgessBar().setAlpha((float) .2);
+                }
+                PreferencesPresetsFragment.OnlinePresets.set(position, preset);
+            }
             root.setOnClickListener(new OnClickListener() {
 
                 @Override
@@ -955,7 +956,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                         preset.getImageView().setImageResource(R.drawable.ic_action_cancel);
                                     }
                                     preset.getTextView().setText(context.getString(R.string.downloadHelper_States).split("\\|")[state] + "\n");
-																		PreferencesPresetsFragment.OnlinePresets.set(position, preset);
+                                    PreferencesPresetsFragment.OnlinePresets.set(position, preset);
                                 } catch (Throwable t) {
                                     Log.e("NPM", "Failed to start download: " + t.toString());
                                 }
@@ -964,8 +965,8 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             @Override
                             public void onPublishDownloadProgress(long nowSize, long totalSize) {
                                 try {
-                                    if(preset.getDownloadHelper().getState()!=downloadHelper.STATE_CANCELLING) {
-                                        preset.getTextView().setText(context.getString(R.string.downloadHelper_States).split("\\|")[preset.getDownloadHelper().getState()] + " - eta: " + helper.getTimeString(preset.getDownloadHelper().getETA(), true) + " | speed: " + helper.getSizeString(preset.getDownloadHelper().getAvgSpeed(), true) + "/s\n" + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | " + preset.getDownloadHelper().getProgress() + "%");
+                                    if (preset.getDownloadHelper().getState() != downloadHelper.STATE_CANCELLING) {
+                                        preset.getTextView().setText(context.getString(R.string.downloadHelper_States).split("\\|")[preset.getDownloadHelper().getState()] + " - " + helper.getSizeString(nowSize, true) + "/" + helper.getSizeString(totalSize, true) + " | " + preset.getDownloadHelper().getProgress() + "%\n" + context.getString(R.string.downloadHelper_RemainingTime).replace("[TIME]", helper.getTimeString(context, preset.getDownloadHelper().getETA(), 1)) + " | " + context.getString(R.string.downloadHelper_Speed).replace("[SPEED]", helper.getSizeString(preset.getDownloadHelper().getAvgSpeed(), true)));
                                         if (preset.getDownloadHelper().getSizes()[0] > 0) {
                                             preset.getProgessBar().clearAnimation();
                                             preset.getProgessBar().setAlpha((float) 0.2);
@@ -980,7 +981,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                             @Override
                             public void onDownloadComplete() {
-                                
+
                                 try {
                                     preset.getProgessBar().setProgress(0);
                                     preset.getProgessBar().clearAnimation();
@@ -991,7 +992,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                     preset.getImageView().setImageResource(R.drawable.ic_file_file_download);
                                     //PreferencesPresetsFragment.DownloadingActiveFor = "";
                                     preset.setDownloadHelper(null);
-																		PreferencesPresetsFragment.OnlinePresets.set(position, preset);
+                                    PreferencesPresetsFragment.OnlinePresets.set(position, preset);
                                     try {
                                         PreferencesPresetsFragment.ImportPreset("file://" + context.getFilesDir().getPath() + "/download/" + split[0] + "_" + mItems.get(position).getName().replace("'", "\\\'").replace("\"", "\\\"") + ".nps", PreferencesPresetsFragment.localAdapter, mItems.get(position).getName(), null);
                                     } catch (Exception e) {
@@ -1005,7 +1006,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                             @Override
                             public void onDownloadFailed(String reason) {
-                                
+
                                 try {
                                     preset.getProgessBar().setProgress(0);
                                     preset.getProgessBar().clearAnimation();
@@ -1018,7 +1019,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                     preset.setDownloadHelper(null);
                                     if (!reason.equalsIgnoreCase("canceled"))
                                         Toast.makeText(context, reason, Toast.LENGTH_LONG).show();
-																		PreferencesPresetsFragment.OnlinePresets.set(position, preset);
+                                    PreferencesPresetsFragment.OnlinePresets.set(position, preset);
                                 } catch (Throwable t) {
                                 }
                             }
@@ -1055,7 +1056,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
             Progress.startAnimation(BlinkAnim);
             ItemTitle.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
             ItemDesc.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[1]);
-            PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(getOnlinePresets.MODE_OFFSET),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlinePresets.size() - 1));
+            PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(getOnlinePresets.MODE_OFFSET), (PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlinePresets.size() - 1));
             root.setEnabled(false);
         } else if (preset.getType() == PresetsHolder.TYPE_ERROR) {
             BottomBar.setVisibility(View.GONE);
@@ -1069,7 +1070,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                 @Override
                 public void onClick(View p1) {
-                    
+
                     root.setEnabled(false);
                     Progress.setProgress(100);
                     Animation BlinkAnim = AnimationUtils.loadAnimation(context, R.anim.progress_blink);
@@ -1077,7 +1078,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                     Progress.startAnimation(BlinkAnim);
                     ItemTitle.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[0]);
                     ItemDesc.setText(MainActivity.context.getString(R.string.presetsManager_LoadMore).split("\\|")[1]);
-                    PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(getOnlinePresets.MODE_OFFSET),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlinePresets.size() - 1));
+                    PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(getOnlinePresets.MODE_OFFSET), (PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString), (PreferencesPresetsFragment.onlineSearchTerm.isEmpty() ? "" : "search=" + PreferencesPresetsFragment.onlineSearchTerm), "offset=" + (PreferencesPresetsFragment.OnlinePresets.size() - 1));
                 }
             });
         } else if (preset.getType() == PresetsHolder.TYPE_NOMORE) {
@@ -1090,7 +1091,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
             root.setEnabled(false);
         }
 
-				mItems.set(position, preset);
+        mItems.set(position, preset);
 
         return rowView;
     }
@@ -1133,12 +1134,12 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
         boolean oldPreset = false;
         String presetVersionName = "1.0";
         int presetVersionCode = 0;
-				
-				String oldActionReveal = "";
+
+        String oldActionReveal = "";
 
         @Override
         protected void onPreExecute() {
-            
+
             PreferencesPresetsFragment.progressHolder.setVisibility(View.VISIBLE);
             PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_in));
             super.onPreExecute();
@@ -1146,7 +1147,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
         @Override
         protected String doInBackground(String[] p1) {
-            
+
             try {
                 String[] builtIn = context.getString(R.string.presetLoadDialog_BuiltIn).split("\\|");
                 if (p1[0].startsWith(context.getFilesDir().getPath())) {
@@ -1158,9 +1159,9 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                     for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
                         String[] loadColor = PreferencesColorFragment.ColorNames[i][1].toString().split("_");
                         if (loadColor.length > 1) {
-														if (loadColor[1].contains("Reveal")) {
-																MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Revealcolor", PreferencesColorFragment.lightPreset[i]).apply();
-														} else if (loadColor[1].contains("Background")) {
+                            if (loadColor[1].contains("Reveal")) {
+                                MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Revealcolor", PreferencesColorFragment.lightPreset[i]).apply();
+                            } else if (loadColor[1].contains("Background")) {
                                 MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Backgroundcolor", PreferencesColorFragment.lightPreset[i]).apply();
                             } else if (loadColor[1].contains("Text")) {
                                 MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Textcolor", PreferencesColorFragment.lightPreset[i]).apply();
@@ -1180,12 +1181,12 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                         } else if (aData[0].equals("AppVersionCode")) {
                             presetVersionCode = Integer.parseInt(aData[1]);
                         } else if (aData[0].equals("GraphicsPadding")) {
-                            MainActivity.preferences.edit().putFloat("GraphicsPadding",Integer.parseInt(aData[1])).apply();
-												} else if (aData[0].equals("ColorizeNonStockIcons")) {
-                            MainActivity.preferences.edit().putBoolean("ColorizeNonStockIcons",(aData[1].equals("true") ? true : false)).apply();
+                            MainActivity.preferences.edit().putFloat("GraphicsPadding", Integer.parseInt(aData[1])).apply();
+                        } else if (aData[0].equals("ColorizeNonStockIcons")) {
+                            MainActivity.preferences.edit().putBoolean("ColorizeNonStockIcons", (aData[1].equals("true") ? true : false)).apply();
                         } else {
                             if (presetVersionName.equals("1.4.2")) {
-                                if(aData[0].equalsIgnoreCase("RevealBackground")) {
+                                if (aData[0].equalsIgnoreCase("RevealBackground")) {
                                     aData[0] = "Reveal_Backgroundcolor";
                                 } else if (aData[0].equalsIgnoreCase("ActionRevealBackground")) {
                                     aData[0] = "ActionReveal_Backgroundcolor";
@@ -1193,15 +1194,15 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             }
                             if (presetVersionCode < 34 && aData[0].contains("Background") && !aData[0].contains("Reveal")) {
                                 String[] split = aData[0].split("_");
-                                MainActivity.colorPrefs.edit().putString(split[0] + "_Circlecolor",aData[1]).apply();
+                                MainActivity.colorPrefs.edit().putString(split[0] + "_Circlecolor", aData[1]).apply();
                             }
-														if (presetVersionCode < 43 && aData[0].contains("ActionReveal")) {
+                            if (presetVersionCode < 43 && aData[0].contains("ActionReveal")) {
                                 //String[] split = aData[0].split("=");
-																oldActionReveal = aData[1];
-																//publishProgress("importingOldAR");
-														}
+                                oldActionReveal = aData[1];
+                                //publishProgress("importingOldAR");
+                            }
                             if (presetVersionCode < 44) {
-                                if(aData[0].equalsIgnoreCase("Reveal_Backgroundcolor")) {
+                                if (aData[0].equalsIgnoreCase("Reveal_Backgroundcolor")) {
                                     aData[0] = "Dialog_Revealcolor";
                                 }
                             }
@@ -1211,11 +1212,11 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                     publishProgress(loadColor[0] + ": " + aData[1]);
                                 }
                             }
-														if (!oldActionReveal.isEmpty() && aData[0].contains("Background") && !aData[0].contains("Reveal")) {
-																String[] split = aData[0].split("_");
-																//publishProgress("convertedOldAR");
-																MainActivity.colorPrefs.edit().putString(split[0] + "_Revealcolor",oldActionReveal).apply();
-														}
+                            if (!oldActionReveal.isEmpty() && aData[0].contains("Background") && !aData[0].contains("Reveal")) {
+                                String[] split = aData[0].split("_");
+                                //publishProgress("convertedOldAR");
+                                MainActivity.colorPrefs.edit().putString(split[0] + "_Revealcolor", oldActionReveal).apply();
+                            }
                         }
                     }
                     if (presetFile.getPath().startsWith(context.getFilesDir().getPath() + "/temp/")) {
@@ -1242,7 +1243,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                     for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
                         String[] loadColor = PreferencesColorFragment.ColorNames[i][1].toString().split("_");
                         if (loadColor.length > 1) {
-														if (loadColor[1].contains("Reveal")) {
+                            if (loadColor[1].contains("Reveal")) {
                                 MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Revealcolor", preset[i]).apply();
                             } else if (loadColor[1].contains("Background")) {
                                 MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Backgroundcolor", preset[i]).apply();
@@ -1264,20 +1265,20 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
         @Override
         protected void onProgressUpdate(String[] p1) {
-            
+
             super.onProgressUpdate(p1);
-						if(p1[0].equalsIgnoreCase("importingOldAR")) {
-								Toast.makeText(context, "Found old ActionReveal, starting convert process...", Toast.LENGTH_SHORT).show();
-						} else if (p1[0].equalsIgnoreCase("convertedOldAR")) {
-								Toast.makeText(context, "Converted an old ActionReveal!", Toast.LENGTH_SHORT).show();
-						} else {
-            		PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.presetsManager_Loading) + "\n" + p1[0]);
-						}
+            if (p1[0].equalsIgnoreCase("importingOldAR")) {
+                Toast.makeText(context, "Found old ActionReveal, starting convert process...", Toast.LENGTH_SHORT).show();
+            } else if (p1[0].equalsIgnoreCase("convertedOldAR")) {
+                Toast.makeText(context, "Converted an old ActionReveal!", Toast.LENGTH_SHORT).show();
+            } else {
+                PreferencesPresetsFragment.LoadingMsg.setText(context.getString(R.string.presetsManager_Loading) + "\n" + p1[0]);
+            }
         }
 
         @Override
         protected void onPostExecute(String p1) {
-            
+
             super.onPostExecute(p1);
             if (p1.equalsIgnoreCase("success")) {
                 MainActivity.preferences.edit().putString("lastUsedPreset", selectedName).apply();

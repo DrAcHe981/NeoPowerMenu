@@ -74,46 +74,14 @@ public class PreferencesGraphicsFragment extends Fragment {
             {"ToggleBluetooth", R.drawable.ic_device_bluetooth, "ToggleBluetoothOn"}, // 29
             {"ToggleData", R.drawable.ic_device_signal_cellular_off, "ToggleDataOff"}, // 30
             {"ToggleData", R.drawable.ic_device_signal_cellular_4_bar, "ToggleDataOn"}, // 31
-            {"RebootFlashMode", R.drawable.ic_image_flash_on, "RebootFlashMode"},
-            {"LockPhone", R.drawable.ic_action_lock_outline, "LockPhone"}// 32
+            {"RebootFlashMode", R.drawable.ic_image_flash_on, "RebootFlashMode"}, // 32
+            {"LockPhone", R.drawable.ic_action_lock_outline, "LockPhone"}, // 33
+            {"SilentMode", R.drawable.ic_av_volume_up, "SilentModeOff"}, // 34
+            {"SilentMode", R.drawable.ic_av_volume_off, "SilentModeOn"} // 35
     };
 
-    /*Object[][] loadGraphics = {
-            {"Progress", "stock", "Progress"},
-            {"Shutdown", R.drawable.poweroff1, "Shutdown"},
-            {"Reboot", R.drawable.ic_av_loop, "Reboot"},
-            {"SoftReboot", R.drawable.ic_image_rotate_left, "SoftReboot"},
-            {"Screenshot", R.drawable.ic_device_now_wallpaper, "Screenshot"},
-            {"Screenrecord", R.drawable.ic_image_center_focus_weak, "Screenrecord"},
-            {"Flashlight", R.drawable.ic_qs_torch_off, "FlashlightOff"},
-            {"Flashlight", R.drawable.ic_qs_torch_on, "FlashlightOn"},
-            {"ExpandedDesktop", R.drawable.ic_device_developer_mode, "ExpandedDesktop"},
-            {"AirplaneMode", R.drawable.ic_device_airplanemode_off, "AirplaneModeOff"},
-            {"AirplaneMode", R.drawable.ic_device_airplanemode_on, "AirplaneModeOn"},
-            {"RestartUI", R.drawable.ic_alert_error, "RestartUI"},
-            {"SoundNormal", R.drawable.ic_av_volume_up, "SoundModeOn"},
-            {"SoundSilent", R.drawable.ic_av_volume_off, "SoundModeOff"},
-            {"SoundVibrate", R.drawable.ic_notification_vibration, "SoundModeVibrate"},
-            {"Recovery", R.drawable.ic_hardware_memory, "Recovery"},
-            {"Bootloader", R.drawable.ic_action_settings_backup_restore, "Bootloader"},
-            {"SafeMode", R.drawable.ic_notification_sync_problem, "SafeMode"},
-            {"KillApp", R.drawable.ic_action_highlight_remove, "KillApp"},
-            {"AppShortcut", R.drawable.ic_action_android, "AppShortcut"},
-            {"ToggleRotate", R.drawable.ic_device_screen_lock_rotation, "ToggleRotationOff"},
-            {"ToggleRotate", R.drawable.ic_device_screen_rotation, "ToggleRotationOn"},
-            {"MediaPrevious", R.drawable.ic_action_playback_prev, "MediaPrevious"},
-            {"MediaPlayPause", R.drawable.ic_action_playback_play, "MediaPlay"},
-            {"MediaPlayPause", R.drawable.ic_action_playback_pause, "MediaPause"},
-						{"MediaNext", R.drawable.ic_action_playback_next, "MediaNext"},
-						{"ToggleWifi", R.drawable.ic_device_signal_wifi_off, "ToggleWifiOff"},
-						{"ToggleWifi", R.drawable.ic_device_signal_wifi_4_bar, "ToggleWifiOn"},
-						{"ToggleBluetooth", R.drawable.ic_device_bluetooth_disabled, "ToggleBluetoothOff"},
-						{"ToggleBluetooth", R.drawable.ic_device_bluetooth, "ToggleBluetoothOn"},
-						{"ToggleData", R.drawable.ic_device_signal_cellular_off, "ToggleDataOff"},
-						{"ToggleData", R.drawable.ic_device_signal_cellular_4_bar, "ToggleDataOn"}};*/
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
             MainActivity.visibleFragment = "Graphics";
@@ -124,7 +92,7 @@ public class PreferencesGraphicsFragment extends Fragment {
 
         mContext = getActivity();
 
-        float_padding = MainActivity.preferences.getFloat("GraphicsPadding", 0);
+        float_padding = MainActivity.preferences.getFloat("GraphicsPadding", 20);
 
         View InflatedView = inflater.inflate(R.layout.activity_graphics, container, false);
 
@@ -267,7 +235,7 @@ public class PreferencesGraphicsFragment extends Fragment {
 
                     @Override
                     public void onListItemClick(int position, String text) {
-                        if (GraphicsList.get(selected).getFile() != null) {
+                        if (GraphicsList.get(selected).getFile() != null && position != 1) {
                             graphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
                             new File(GraphicsList.get(selected).getFile()).delete();
                         }
@@ -323,6 +291,10 @@ public class PreferencesGraphicsFragment extends Fragment {
                                 @Override
                                 public void onPositiveClick(Bundle resultBundle) {
                                     if (presetsFiles.length > 0) {
+                                        if (GraphicsList.get(selected).getFile() != null) {
+                                            graphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
+                                            new File(GraphicsList.get(selected).getFile()).delete();
+                                        }
                                         if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
                                             MainActivity.preferences.edit().putString("ProgressDrawable", "file").apply();
                                         }

@@ -87,6 +87,7 @@ public class GravityChooserDialog extends DialogFragment {
 
         ((FrameLayout) DummyPowerDialog.findViewById(R.id.frame2)).setVisibility(View.GONE);
         ((FrameLayout) DummyPowerDialog.findViewById(R.id.frameConfirm)).setVisibility(View.GONE);
+        ((FrameLayout) DummyPowerDialog.findViewById(R.id.frameEnterPassword)).setVisibility(View.GONE);
 
         for (int i = 0; i <= 3; i++) {
             String mTitle = "";

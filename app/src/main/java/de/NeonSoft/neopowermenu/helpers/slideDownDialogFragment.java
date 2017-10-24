@@ -57,11 +57,16 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 
     private boolean dialogCloseOnButtonClick = true;
 
+    private boolean useCustomView = false;
+    private View customView = null;
+
     private String dialogText = "";
     private float dialogTextSize = -1;
 
     private ArrayAdapter<String> dialogListAdapter = null;
     private int dialogListMode;
+    public static int LIST_RETURN_MODE_NUMBER = 0, LIST_RETURN_MODE_TEXT = 1;
+    private int dialogListReturnMode = LIST_RETURN_MODE_NUMBER;
     private int dialogListLimit = 0;
     private boolean dialogListLimitMin = false;
     private String[] dialogListItems;
@@ -187,6 +192,11 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         this.dialogCloseOnButtonClick = close;
     }
 
+    public void setCustomView(View view) {
+        this.customView = view;
+        this.useCustomView = true;
+    }
+
     public void setText(String text) {
         dialogText = text;
         if (TextView_DialogText != null) {
@@ -211,10 +221,10 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         dialogListItems = items.toArray(new String[0]);
         dialogListDefault = defaultsel;
         dialogListClose = closeonsel;
-        if(ListView_DialogListView!=null) {
-						for(int i = 0; i < dialogListAdapter.getCount(); i++) {
-								ListView_DialogListView.setItemChecked(i, false);
-						}
+        if (ListView_DialogListView != null) {
+            for (int i = 0; i < dialogListAdapter.getCount(); i++) {
+                ListView_DialogListView.setItemChecked(i, false);
+            }
             dialogListAdapter = new ArrayAdapter<String>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
             ListView_DialogListView.setAdapter(dialogListAdapter);
         }
@@ -225,13 +235,17 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         dialogListItems = items;
         dialogListDefault = defaultsel;
         dialogListClose = closeonsel;
-        if(ListView_DialogListView!=null) {
-						for(int i = 0; i < dialogListAdapter.getCount(); i++) {
-								ListView_DialogListView.setItemChecked(i, false);
-						}
+        if (ListView_DialogListView != null) {
+            for (int i = 0; i < dialogListAdapter.getCount(); i++) {
+                ListView_DialogListView.setItemChecked(i, false);
+            }
             dialogListAdapter = new ArrayAdapter<String>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
             ListView_DialogListView.setAdapter(dialogListAdapter);
         }
+    }
+
+    public void setListReturnMode(int mode) {
+        dialogListReturnMode = mode;
     }
 
     public void setListLimit(int limit, boolean alsoMin) {
@@ -244,19 +258,19 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
     }
 
     public void setListChecks(ArrayList<Boolean> checks) {
-        if(dialogListMode == ListView.CHOICE_MODE_MULTIPLE) {
+        if (dialogListMode == ListView.CHOICE_MODE_MULTIPLE) {
             this.dialogListChecks = checks;
-						if(ListView_DialogListView != null) {
+            if (ListView_DialogListView != null) {
                 for (int i = 0; i < dialogListChecks.size(); i++) {
                     ListView_DialogListView.setItemChecked(i, dialogListChecks.get(i));
                 }
-						}
+            }
         }
     }
-		
-		public boolean getListItemChecked(int position) {
-				return ListView_DialogListView.isItemChecked(position);
-		}
+
+    public boolean getListItemChecked(int position) {
+        return ListView_DialogListView.isItemChecked(position);
+    }
 
     public void addInput(String descText, String defaultText, boolean allowEmpty, TextWatcher watcher) {
         dialogInputs.add(null);
@@ -671,186 +685,190 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 
         TextView_DialogTouchOutside = (TextView) InflatedView.findViewById(R.id.slidedowndialogfragmentTextView_DialogTouchOutside);
         TextView_DialogTouchOutside.setVisibility(View.GONE);
+        if (this.useCustomView) {
+            LinearLayout LinearLayout_CustomViewHolder = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_CustomViewHolder);
+            LinearLayout_CustomViewHolder.addView(this.customView);
+        } else {
 
+            if (dialogListItems != null && dialogListItems.length > 0) {
+                dialogListAdapter = new ArrayAdapter<>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
+                ListView_DialogListView.setAdapter(dialogListAdapter);
+                ListView_DialogListView.setChoiceMode(dialogListMode);
+                if (dialogListDefault > -1) {
+                    ListView_DialogListView.setItemChecked(dialogListDefault, true);
+                    ListView_DialogListView.setSelection(dialogListDefault);
+                }
+                if (dialogListMode == ListView.CHOICE_MODE_MULTIPLE && !dialogListChecks.isEmpty()) {
+                    for (int i = 0; i < dialogListChecks.size(); i++) {
+                        ListView_DialogListView.setItemChecked(i, dialogListChecks.get(i));
+                    }
+                }
+                ListView_DialogListView.setOnItemClickListener(new OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4) {
+
+                        if (dialogListLimit > 0) {
+                            if (ListView_DialogListView.getCheckedItemCount() > dialogListLimit) {
+                                ListView_DialogListView.setItemChecked(p3, false);
+                                return;
+                            }
+                        }
+                        mInterface.onListItemClick(p3, ListView_DialogListView.getItemAtPosition(p3).toString());
+                        if (dialogListClose) {
+                            closeDialog();
+                        }
+                    }
+                });
+                LinearLayout_DialogListView.setVisibility(View.VISIBLE);
+            }
+
+            if (!dialogInputs.isEmpty()) {
+                for (int i = 0; i < dialogInputs.size(); i++) {
+                    View InputView = inflater.inflate(R.layout.slidedowndialogfragment_input, LinearLayout_InputHolder, false);
+                    TextView InputText = (TextView) InputView.findViewById(R.id.slidedowndialogfragmentTextView_DialogInputText);
+                    EditText Input = (EditText) InputView.findViewById(R.id.slidedowndialogfragmentEditText_DialogInput);
+                    InputText.setText(dialogInputDescText.get(i));
+                    if (dialogInputTextWatcher.get(i) != null)
+                        Input.addTextChangedListener(dialogInputTextWatcher.get(i));
+                    Input.setText(dialogInputDefaultText.get(i));
+                    Input.setInputType(dialogInputMode.get(i));
+                    Input.setSingleLine(dialogInputSingleLine.get(i));
+                    dialogInputs.set(i, Input);
+                    LinearLayout_InputHolder.addView(InputView);
+                }
+            }
+            if (dialogInputAssistInfoString != null) {
+                TextView_InputAssistInfo.setText(dialogInputAssistInfoString);
+            }
+
+            if (dialogColorPickerdefaultValue != null) {
+                ColorPicker_DialogColorPicker.addValueBar(ValueBar_DialogValueBar);
+                ColorPicker_DialogColorPicker.addSaturationBar(SaturationBar_DialogSaturationBar);
+                ColorPicker_DialogColorPicker.addOpacityBar(OpacityBar_DialogOpacityBar);
+                ColorPicker_DialogColorPicker.setOldCenterColor(Color.parseColor(dialogColorPickerdefaultValue));
+                ColorPicker_DialogColorPicker.setColor(Color.parseColor(dialogColorPickerdefaultValue));
+                OpacityBar_DialogOpacityBar.setVisibility(dialogColorPickershowOpacityBar ? View.VISIBLE : View.GONE);
+                InputFilter[] filterArray = new InputFilter[1];
+                if (dialogColorPickershowOpacityBar) {
+                    EditText_DialogHexInput.setText(String.format("#%08X", Color.parseColor(dialogColorPickerdefaultValue)));
+                    filterArray[0] = new InputFilter.LengthFilter(9);
+                } else {
+                    EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & Color.parseColor(dialogColorPickerdefaultValue))));
+                    filterArray[0] = new InputFilter.LengthFilter(7);
+                }
+                EditText_DialogHexInput.setFilters(filterArray);
+                ColorPicker_DialogColorPicker.setOnTouchListener(new OnTouchListener() {
+
+                    @Override
+                    public boolean onTouch(View p1, MotionEvent p2) {
+
+                        DialogColorPicker_HexChangeViaWheel = true;
+                        if (dialogColorPickershowOpacityBar) {
+                            EditText_DialogHexInput.setText(String.format("#%08X", ColorPicker_DialogColorPicker.getColor()));
+                        } else {
+                            EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & ColorPicker_DialogColorPicker.getColor())));
+                        }
+                        return false;
+                    }
+                });
+                ValueBar_DialogValueBar.setOnTouchListener(new OnTouchListener() {
+
+                    @Override
+                    public boolean onTouch(View p1, MotionEvent p2) {
+
+                        DialogColorPicker_HexChangeViaWheel = true;
+                        if (dialogColorPickershowOpacityBar) {
+                            EditText_DialogHexInput.setText(String.format("#%08X", ColorPicker_DialogColorPicker.getColor()));
+                        } else {
+                            EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & ColorPicker_DialogColorPicker.getColor())));
+                        }
+                        return false;
+                    }
+                });
+                SaturationBar_DialogSaturationBar.setOnTouchListener(new OnTouchListener() {
+
+                    @Override
+                    public boolean onTouch(View p1, MotionEvent p2) {
+
+                        DialogColorPicker_HexChangeViaWheel = true;
+                        if (dialogColorPickershowOpacityBar) {
+                            EditText_DialogHexInput.setText(String.format("#%08X", ColorPicker_DialogColorPicker.getColor()));
+                        } else {
+                            EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & ColorPicker_DialogColorPicker.getColor())));
+                        }
+                        return false;
+                    }
+                });
+                OpacityBar_DialogOpacityBar.setOnTouchListener(new OnTouchListener() {
+
+                    @Override
+                    public boolean onTouch(View p1, MotionEvent p2) {
+
+                        DialogColorPicker_HexChangeViaWheel = true;
+                        if (dialogColorPickershowOpacityBar) {
+                            EditText_DialogHexInput.setText(String.format("#%08X", ColorPicker_DialogColorPicker.getColor()));
+                        } else {
+                            EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & ColorPicker_DialogColorPicker.getColor())));
+                        }
+                        return false;
+                    }
+                });
+                EditText_DialogHexInput.setOnTouchListener(new OnTouchListener() {
+
+                    @Override
+                    public boolean onTouch(View p1, MotionEvent p2) {
+
+                        DialogColorPicker_HexChangeViaWheel = false;
+                        return false;
+                    }
+                });
+                EditText_DialogHexInput.addTextChangedListener(new TextWatcher() {
+
+                    @Override
+                    public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable p1) {
+
+                        if (!DialogColorPicker_HexChangeViaWheel) {
+                            try {
+                                EditText_DialogHexInput.setTextColor(Color.parseColor("#FFFFFF"));
+                                ColorPicker_DialogColorPicker.setColor(Color.parseColor(EditText_DialogHexInput.getText().toString()));
+                                //picker.invalidate();
+                            } catch (Throwable e) {
+                                EditText_DialogHexInput.setTextColor(Color.parseColor("#FF0000"));
+                            }
+                        } else {
+                            //DialogColorPicker_HexChangeViaWheel = false;
+                        }
+                    }
+                });
+                LinearLayout_DialogColorPicker.setVisibility(View.VISIBLE);
+            }
+
+            if (dialogCheckBoxtext != null && !dialogCheckBoxtext.isEmpty()) {
+                LinearLayout_DialogCheckBox.setVisibility(View.VISIBLE);
+                CheckBox_DialogCheckBox.setText(dialogCheckBoxtext);
+                CheckBox_DialogCheckBox.setChecked(dialogCheckBoxChecked);
+            }
+
+            if (dialogProgressBlink) {
+                RelativeLayout_ProgressText.setVisibility(View.INVISIBLE);
+                ProgressBar_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.progress_blink));
+            }
+        }
 
         TextView_DialogText.setText(dialogText);
         if (dialogTextSize > 0) TextView_DialogText.setTextSize(dialogTextSize);
         TextView_DialogText.setVisibility(dialogText.isEmpty() ? View.GONE : View.VISIBLE);
-
-        if (dialogListItems != null && dialogListItems.length > 0) {
-            dialogListAdapter = new ArrayAdapter<>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
-            ListView_DialogListView.setAdapter(dialogListAdapter);
-            ListView_DialogListView.setChoiceMode(dialogListMode);
-            if (dialogListDefault > -1) {
-                ListView_DialogListView.setItemChecked(dialogListDefault, true);
-                ListView_DialogListView.setSelection(dialogListDefault);
-            }
-            if (dialogListMode == ListView.CHOICE_MODE_MULTIPLE && !dialogListChecks.isEmpty()) {
-                for (int i = 0; i < dialogListChecks.size(); i++) {
-                    ListView_DialogListView.setItemChecked(i, dialogListChecks.get(i));
-                }
-            }
-            ListView_DialogListView.setOnItemClickListener(new OnItemClickListener() {
-
-                @Override
-                public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4) {
-
-                    if (dialogListLimit > 0) {
-                        if (ListView_DialogListView.getCheckedItemCount() > dialogListLimit) {
-                            ListView_DialogListView.setItemChecked(p3, false);
-                            return;
-                        }
-                    }
-                    mInterface.onListItemClick(p3, ListView_DialogListView.getItemAtPosition(p3).toString());
-                    if (dialogListClose) {
-                        closeDialog();
-                    }
-                }
-            });
-            LinearLayout_DialogListView.setVisibility(View.VISIBLE);
-        }
-
-        if (!dialogInputs.isEmpty()) {
-            for (int i = 0; i < dialogInputs.size(); i++) {
-                View InputView = inflater.inflate(R.layout.slidedowndialogfragment_input, LinearLayout_InputHolder, false);
-                TextView InputText = (TextView) InputView.findViewById(R.id.slidedowndialogfragmentTextView_DialogInputText);
-                EditText Input = (EditText) InputView.findViewById(R.id.slidedowndialogfragmentEditText_DialogInput);
-                InputText.setText(dialogInputDescText.get(i));
-                if (dialogInputTextWatcher.get(i) != null)
-                    Input.addTextChangedListener(dialogInputTextWatcher.get(i));
-                Input.setText(dialogInputDefaultText.get(i));
-                Input.setInputType(dialogInputMode.get(i));
-                Input.setSingleLine(dialogInputSingleLine.get(i));
-                dialogInputs.set(i, Input);
-                LinearLayout_InputHolder.addView(InputView);
-            }
-        }
-        if (dialogInputAssistInfoString != null) {
-            TextView_InputAssistInfo.setText(dialogInputAssistInfoString);
-        }
-
-        if (dialogColorPickerdefaultValue != null) {
-            ColorPicker_DialogColorPicker.addValueBar(ValueBar_DialogValueBar);
-            ColorPicker_DialogColorPicker.addSaturationBar(SaturationBar_DialogSaturationBar);
-            ColorPicker_DialogColorPicker.addOpacityBar(OpacityBar_DialogOpacityBar);
-            ColorPicker_DialogColorPicker.setOldCenterColor(Color.parseColor(dialogColorPickerdefaultValue));
-            ColorPicker_DialogColorPicker.setColor(Color.parseColor(dialogColorPickerdefaultValue));
-            OpacityBar_DialogOpacityBar.setVisibility(dialogColorPickershowOpacityBar ? View.VISIBLE : View.GONE);
-            InputFilter[] filterArray = new InputFilter[1];
-            if (dialogColorPickershowOpacityBar) {
-                EditText_DialogHexInput.setText(String.format("#%08X", Color.parseColor(dialogColorPickerdefaultValue)));
-                filterArray[0] = new InputFilter.LengthFilter(9);
-            } else {
-                EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & Color.parseColor(dialogColorPickerdefaultValue))));
-                filterArray[0] = new InputFilter.LengthFilter(7);
-            }
-            EditText_DialogHexInput.setFilters(filterArray);
-            ColorPicker_DialogColorPicker.setOnTouchListener(new OnTouchListener() {
-
-                @Override
-                public boolean onTouch(View p1, MotionEvent p2) {
-
-                    DialogColorPicker_HexChangeViaWheel = true;
-                    if (dialogColorPickershowOpacityBar) {
-                        EditText_DialogHexInput.setText(String.format("#%08X", ColorPicker_DialogColorPicker.getColor()));
-                    } else {
-                        EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & ColorPicker_DialogColorPicker.getColor())));
-                    }
-                    return false;
-                }
-            });
-            ValueBar_DialogValueBar.setOnTouchListener(new OnTouchListener() {
-
-                @Override
-                public boolean onTouch(View p1, MotionEvent p2) {
-
-                    DialogColorPicker_HexChangeViaWheel = true;
-                    if (dialogColorPickershowOpacityBar) {
-                        EditText_DialogHexInput.setText(String.format("#%08X", ColorPicker_DialogColorPicker.getColor()));
-                    } else {
-                        EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & ColorPicker_DialogColorPicker.getColor())));
-                    }
-                    return false;
-                }
-            });
-            SaturationBar_DialogSaturationBar.setOnTouchListener(new OnTouchListener() {
-
-                @Override
-                public boolean onTouch(View p1, MotionEvent p2) {
-
-                    DialogColorPicker_HexChangeViaWheel = true;
-                    if (dialogColorPickershowOpacityBar) {
-                        EditText_DialogHexInput.setText(String.format("#%08X", ColorPicker_DialogColorPicker.getColor()));
-                    } else {
-                        EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & ColorPicker_DialogColorPicker.getColor())));
-                    }
-                    return false;
-                }
-            });
-            OpacityBar_DialogOpacityBar.setOnTouchListener(new OnTouchListener() {
-
-                @Override
-                public boolean onTouch(View p1, MotionEvent p2) {
-
-                    DialogColorPicker_HexChangeViaWheel = true;
-                    if (dialogColorPickershowOpacityBar) {
-                        EditText_DialogHexInput.setText(String.format("#%08X", ColorPicker_DialogColorPicker.getColor()));
-                    } else {
-                        EditText_DialogHexInput.setText(String.format("#%06X", (0xFFFFFF & ColorPicker_DialogColorPicker.getColor())));
-                    }
-                    return false;
-                }
-            });
-            EditText_DialogHexInput.setOnTouchListener(new OnTouchListener() {
-
-                @Override
-                public boolean onTouch(View p1, MotionEvent p2) {
-
-                    DialogColorPicker_HexChangeViaWheel = false;
-                    return false;
-                }
-            });
-            EditText_DialogHexInput.addTextChangedListener(new TextWatcher() {
-
-                @Override
-                public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable p1) {
-
-                    if (!DialogColorPicker_HexChangeViaWheel) {
-                        try {
-                            EditText_DialogHexInput.setTextColor(Color.parseColor("#FFFFFF"));
-                            ColorPicker_DialogColorPicker.setColor(Color.parseColor(EditText_DialogHexInput.getText().toString()));
-                            //picker.invalidate();
-                        } catch (Throwable e) {
-                            EditText_DialogHexInput.setTextColor(Color.parseColor("#FF0000"));
-                        }
-                    } else {
-                        //DialogColorPicker_HexChangeViaWheel = false;
-                    }
-                }
-            });
-            LinearLayout_DialogColorPicker.setVisibility(View.VISIBLE);
-        }
-
-        if (dialogCheckBoxtext != null && !dialogCheckBoxtext.isEmpty()) {
-            LinearLayout_DialogCheckBox.setVisibility(View.VISIBLE);
-            CheckBox_DialogCheckBox.setText(dialogCheckBoxtext);
-            CheckBox_DialogCheckBox.setChecked(dialogCheckBoxChecked);
-        }
-
-        if (dialogProgressBlink) {
-            RelativeLayout_ProgressText.setVisibility(View.INVISIBLE);
-            ProgressBar_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.progress_blink));
-        }
 
         if (negativeButtonText != null && !negativeButtonText.isEmpty()) {
             TextView_DialogNegativeButtonText.setText(negativeButtonText);
@@ -905,7 +923,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                                     for (int i = 0; i < dialogListItems.length; i++) {
                                         if (ListView_DialogListView.isItemChecked(i)) {
                                             checked++;
-                                            string = string + i + ((checked >= ListView_DialogListView.getCheckedItemCount()) ? "" : ",");
+                                            string = string + (dialogListReturnMode == LIST_RETURN_MODE_TEXT ? dialogListItems[i] : i) + ((checked >= ListView_DialogListView.getCheckedItemCount()) ? "" : ",");
                                         }
                                     }
                                     resultBundle.putString(RESULT_LIST, string);
@@ -987,7 +1005,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                             }
                         }
                     }
-                    if(ColorPicker_DialogColorPicker!= null) {
+                    if (ColorPicker_DialogColorPicker != null) {
                         windowToken = EditText_DialogHexInput.getWindowToken();
                     }
                     try {

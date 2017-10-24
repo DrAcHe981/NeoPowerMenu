@@ -109,9 +109,7 @@
   <string name="SoundMode_Silent">"Stil"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Account"</string>
-  <string name="presetsManager_UploadMsg">"\"Deze preset zal geüpload worden naar een publieke server, zichtbaar voor andere gebruikers.
-
-Dit is je laatste kans om de naam of maker aan te passen voordat de present wordt geüpload...\""</string>
+  <string name="presetsManager_UploadMsg">"Deze preset zal geüpload worden naar een publieke server, zichtbaar voor andere gebruikers.\n\nDit is je laatste kans om de naam of maker aan te passen voordat de present wordt geüpload..."</string>
   <string name="presetsManager_UploadComplete">"Upload voltooid!"</string>
   <string name="presetsManager_UploadFailedSameName">"Deze naam is al in gebruik, probeer a.u.b. een andere naam."</string>
   <string name="presetsManager_UploadFailedNoAccess">"Deze naam van de maker is beveiligd, kies een andere naam of log in."</string>
@@ -126,9 +124,7 @@ Probeer het later nog eens, wanneer het dan nog niet lukt dit graag aan de ontwi
   <!-- Login page -->
   <string name="login_Title">"Inloggen"</string>
   <string name="login_TitleRegister">"Registreer"</string>
-  <string name="login_Info">"\"De gebruikersnamen van geregistreerde gebruikers zijn beschermd zodat niemand een upload in hun na kan doen, hier kun je inloggen of een nieuwe account creëren.
-Dit is niet vereist als je het niet wilt!
-Ik zal nooit privé data delen.\""</string>
+  <string name="login_Info">"De gebruikersnamen van geregistreerde gebruikers zijn beschermd zodat niemand een upload in hun na kan doen, hier kun je inloggen of een nieuwe account creëren.\nDit is niet vereist als je het niet wilt!\nIk zal nooit privé data delen!"</string>
   <string name="login_UsernameEmail">"Gebruikersnaam of E-mail:"</string>
   <string name="login_Username">"Gebruikersnaam:"</string>
   <string name="login_Email">"E-mail:"</string>
@@ -145,10 +141,7 @@ Klik hier om een nieuwe account te maken!\""</string>
   <string name="login_RegisterSuccess">"Registratie succesvol, je zilt een E-mail ontvangen om je account te activeren!"</string>
   <string name="login_Processing">"Verwerken..."</string>
   <string name="login_TitleStatistics">"Statistieken voor [USERNAMEEMAIL]"</string>
-  <string name="login_Statistics">"Voorkeuren upgeload
-Aantal gegeven sterren
-Aantal ontvangen steren
-Uw voorkeuren (op volgorde van het aantal sterren)"</string>
+  <string name="login_Statistics">"Voorkeuren upgeload: [UPLOADCOUNT]\n\nAantal gegeven sterren: [STARSGIVEN]\nAantal ontvangen steren: [STARSRECEIVED]\n\nUw voorkeuren (op volgorde van het aantal sterren):\n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"Fout bij het ophalen van de statistieken..."</string>
   <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Klik hier om de statistieken opnieuw te laden"</string>
@@ -190,8 +183,7 @@ Sta machtigingen toe die nog niet zijn toegevoegd bij het eerste gebruik (Androi
 Dit instellingenscherm zal na het verbergen alleen toegankelijk zijn via de Xposed installer.\""</string>
   <string name="preferences_DeepXposedLogging">"Xposed logging|Schakel geavanceerde Xposed logging in en start opnieuw op om door te voeren."</string>
   <string name="preferencesCategory_About">"Over"</string>
-  <string name="preferences_NeoSource">"\"Bron|NeoPowerMenu is open source.
-Bekijk de broncode op GitHub.\""</string>
+  <string name="preferences_NeoSource">"Bron|NeoPowerMenu is open source.\nBekijk de broncode op GitHub."</string>
   <string name="preferences_Share">"Deel|Bevalt de app? Deel hem met je vrienden."</string>
   <string name="preferences_About">"\"Code door Neon-Soft / DrAcHe981|Gebaseerd op code van Naman Dwivedi (naman14).
 Klik hier voor meer informatie.\""</string>

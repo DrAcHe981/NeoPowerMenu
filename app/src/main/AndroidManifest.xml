@@ -9,22 +9,27 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER"/>
+    <uses-permission android:name="android.permission.READ_FRAME_BUFFER"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
-		<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-		<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-		<uses-permission android:name="android.permission.BLUETOOTH"/>
-		<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
     <application
         android:name=".neopowermenu"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="NeoPowerMenu"
-        android:theme="@style/ThemeBaseDark">
+        android:theme="@style/ThemeBaseDark"
+        android:fullBackupContent="true">
         <meta-data
             android:name="xposedmodule"
             android:value="true"/>
@@ -101,7 +106,7 @@
             android:configChanges="orientation|screenSize|screenLayout|uiMode"
             android:excludeFromRecents="true"
             android:exported="true"
-            android:label="@string/shortcut_ShowPowerMenu"
+            android:label="NeoPowerMenu"
             android:theme="@style/TransparentApp">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT"/>
@@ -140,12 +145,21 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".deviceAdmin"
-                  android:permission="android.permission.BIND_DEVICE_ADMIN">
-            <meta-data android:name="android.app.device_admin"
-                       android:resource="@xml/policies" />
+        <receiver
+            android:name=".deviceAdmin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/policies"/>
             <intent-filter>
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="de.NeonSoft.neopowermenu.bootCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 

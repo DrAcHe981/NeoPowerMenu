@@ -10,6 +10,7 @@ public class MenuItemHolder {
     private String iGraphic = "";
     private String iOnPage = "";
     private boolean iFillEmpty = false;
+    private boolean iLockedWithPassword = false;
 
     public MenuItemHolder() {
     }
@@ -21,7 +22,8 @@ public class MenuItemHolder {
                           String text,
                           String graphic,
                           String onPage,
-                          boolean fillEnmpty) {
+                          boolean fillEnmpty,
+                          boolean lockWithPassword) {
         iType = type;
         iTitle = title;
         iHideDesc = hideDesc;
@@ -30,6 +32,7 @@ public class MenuItemHolder {
         iGraphic = graphic;
         iOnPage = onPage;
         iFillEmpty = fillEnmpty;
+        iLockedWithPassword = lockWithPassword;
     }
 
     public void setType(int type) {
@@ -94,6 +97,14 @@ public class MenuItemHolder {
 
     public boolean getFillEmpty() {
         return iFillEmpty;
+    }
+
+    public void setLockedWithPassword(boolean lockWithPassword) {
+        iLockedWithPassword = lockWithPassword;
+    }
+
+    public boolean getLockedWithPassword() {
+        return iLockedWithPassword;
     }
 
 }

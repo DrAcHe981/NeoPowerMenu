@@ -60,7 +60,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
 
-    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER"};
+    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER","android.permission.READ_FRAME_BUFFER"};
 
     private static final String CLASS_SYSTEMUI = "com.android.systemui.SystemUIApplication";
 
@@ -81,7 +81,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final int MESSAGE_DISMISS = 0;
 
     Handler xHandler;
-    private static final Object mScreenshotLock = new Object();
+    private final static Object mScreenshotLock = new Object();
     private static ServiceConnection mScreenshotConnection = null;
 
     static Context mContext;
@@ -99,9 +99,71 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
 
     /*<!-- Internal Hook version to check if reboot is needed --!>*/
-    private static final int XposedHookVersion = 25;
+    private static final int XposedHookVersion = 26;
 
     Object mPhoneWindowManager;
+
+    Application mSysteUIApplication;
+    public BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(final Context p1, Intent p2) {
+            //Log.i(TAG, "Received broadcast: " + p2.getAction());
+            if (DeepXposedLogging)
+                XposedUtils.log("Received broadcast: " + p2.getAction());
+            switch (p2.getAction()) {
+                case NPM_ACTION_BROADCAST_SHUTDOWN:
+                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, SHUTDOWN_CMD});
+                    break;
+                case NPM_ACTION_BROADCAST_REBOOT:
+                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_CMD});
+                    break;
+                case NPM_ACTION_BROADCAST_SOFTREBOOT:
+                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_SOFT_REBOOT_CMD});
+                    break;
+                case NPM_ACTION_BROADCAST_REBOOTRECOVERY:
+                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_RECOVERY_CMD});
+                    break;
+                case NPM_ACTION_BROADCAST_REBOOTBOOTLOADER:
+                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_BOOTLOADER_CMD});
+                    break;
+                case NPM_ACTION_BROADCAST_KILLSYSTEMUI:
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            android.os.Process.sendSignal(android.os.Process.myPid(), android.os.Process.SIGNAL_KILL);
+                        }
+                    }, 100);
+                    break;
+                case NPM_ACTION_BROADCAST_SCREENSHOT:
+                    takeScreenshot(p1);
+                    break;
+                case NPM_ACTION_BROADCAST_SCREENRECORD:
+                    toggleScreenRecord(p1);
+                    break;
+                case NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE:
+                    toggleAiplaneMode(p1);
+                    break;
+                case NPM_ACTION_BROADCAST_KILLAPP:
+                    killLastApp(p1);
+                    break;
+                case NPM_ACTION_BROADCAST_TOGGLEROTATION:
+                    toggleRotation(p1);
+                    break;
+                case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
+                    toggleShowTouches(p1, p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES, -1));
+                    break;
+                case NPM_ACTION_BROADCAST_TOGGLEDATA:
+                    toggleData(p1, !isDataActive(p1));
+                    break;
+            }
+            if (isOrderedBroadcast()) {
+                if (DeepXposedLogging)
+                    XposedUtils.log("Aborting broadcast, to prevent multiple calls!");
+                abortBroadcast();
+            }
+        }
+    };;
 
     @Override
     public void initZygote(StartupParam startupParam) throws Throwable {
@@ -305,64 +367,9 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
                                 if (DeepXposedLogging)
                                     XposedUtils.log("Creating Broadcast Receiver for KitKat and below...");
-                                Application mNPMApp = (Application) param.thisObject;
-                                final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
+                                //Application mNPMApp = (Application) param.thisObject;
+                                //final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
                                 //final IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
-                                BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
-
-                                    @Override
-                                    public void onReceive(final Context p1, Intent p2) {
-                                        //Log.i(TAG, "Received broadcast: " + p2.getAction());
-                                        if (DeepXposedLogging)
-                                            XposedUtils.log("Received broadcast: " + p2.getAction());
-                                        switch (p2.getAction()) {
-                                            case NPM_ACTION_BROADCAST_SHUTDOWN:
-                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, SHUTDOWN_CMD});
-                                                break;
-                                            case NPM_ACTION_BROADCAST_REBOOT:
-                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_CMD});
-                                                break;
-                                            case NPM_ACTION_BROADCAST_SOFTREBOOT:
-                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_SOFT_REBOOT_CMD});
-                                                break;
-                                            case NPM_ACTION_BROADCAST_REBOOTRECOVERY:
-                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_RECOVERY_CMD});
-                                                break;
-                                            case NPM_ACTION_BROADCAST_REBOOTBOOTLOADER:
-                                                performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_BOOTLOADER_CMD});
-                                                break;
-                                            case NPM_ACTION_BROADCAST_KILLSYSTEMUI:
-                                                mNPMHandler.postDelayed(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        android.os.Process.sendSignal(android.os.Process.myPid(), android.os.Process.SIGNAL_KILL);
-                                                    }
-                                                }, 100);
-                                                break;
-                                            case NPM_ACTION_BROADCAST_SCREENSHOT:
-                                                takeScreenshot(p1);
-                                                break;
-                                            case NPM_ACTION_BROADCAST_SCREENRECORD:
-                                                toggleScreenRecord(p1);
-                                                break;
-                                            case NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE:
-                                                toggleAiplaneMode(p1);
-                                                break;
-                                            case NPM_ACTION_BROADCAST_KILLAPP:
-                                                killLastApp(p1);
-                                                break;
-                                            case NPM_ACTION_BROADCAST_TOGGLEROTATION:
-                                                toggleRotation(p1);
-                                                break;
-                                            case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
-                                                toggleShowTouches(p1, p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES, -1));
-                                                break;
-                                            case NPM_ACTION_BROADCAST_TOGGLEDATA:
-                                                toggleData(p1, !isDataActive(p1));
-                                                break;
-                                        }
-                                    }
-                                };
                                 IntentFilter filter = new IntentFilter();
                                 //filter.addAction(NPM_ACTION_BROADCAST_KILLSYSTEMUI);
                                 filter.addAction(NPM_ACTION_BROADCAST_SHUTDOWN);
@@ -378,7 +385,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                 filter.addAction(ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES);
                                 filter.addAction(NPM_ACTION_BROADCAST_TOGGLEDATA);
                                 filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
-                                mNPMApp.registerReceiver(mNPMReceiver, filter);
+                                mContext.registerReceiver(mNPMReceiver, filter);
                             }
                         } catch (Throwable t) {
                             XposedUtils.log(t.toString());
@@ -589,81 +596,30 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
                         if (DeepXposedLogging)
                             XposedUtils.log("Creating Broadcast Receiver for Lollipop and above...");
-                        Application mNPMApp = (Application) param.thisObject;
+                        Application mNPMApplication = (Application) param.thisObject;
                         //final Context context = mNPMApp.getApplicationContext();
-                        final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
+                        //final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
                         //final IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
-                        BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
-
-                            @Override
-                            public void onReceive(final Context p1, Intent p2) {
-                                //Log.i(TAG, "Received broadcast: " + p2.getAction());
-                                if (DeepXposedLogging)
-                                    XposedUtils.log("Received broadcast: " + p2.getAction());
-                                switch (p2.getAction()) {
-                                    case NPM_ACTION_BROADCAST_SHUTDOWN:
-                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, SHUTDOWN_CMD});
-                                        break;
-                                    case NPM_ACTION_BROADCAST_REBOOT:
-                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_CMD});
-                                        break;
-                                    case NPM_ACTION_BROADCAST_SOFTREBOOT:
-                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_SOFT_REBOOT_CMD});
-                                        break;
-                                    case NPM_ACTION_BROADCAST_REBOOTRECOVERY:
-                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_RECOVERY_CMD});
-                                        break;
-                                    case NPM_ACTION_BROADCAST_REBOOTBOOTLOADER:
-                                        performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_BOOTLOADER_CMD});
-                                        break;
-                                    case NPM_ACTION_BROADCAST_KILLSYSTEMUI:
-                                        mNPMHandler.postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                android.os.Process.sendSignal(android.os.Process.myPid(), android.os.Process.SIGNAL_KILL);
-                                            }
-                                        }, 100);
-                                        break;
-                                    case NPM_ACTION_BROADCAST_SCREENSHOT:
-                                        takeScreenshot(p1);
-                                        break;
-                                    case NPM_ACTION_BROADCAST_SCREENRECORD:
-                                        toggleScreenRecord(p1);
-                                        break;
-                                    case NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE:
-                                        toggleAiplaneMode(p1);
-                                        break;
-                                    case NPM_ACTION_BROADCAST_KILLAPP:
-                                        killLastApp(p1);
-                                        break;
-                                    case NPM_ACTION_BROADCAST_TOGGLEROTATION:
-                                        toggleRotation(p1);
-                                        break;
-                                    case ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES:
-                                        toggleShowTouches(p1, p2.getIntExtra(ScreenRecordingService.EXTRA_SHOW_TOUCHES, -1));
-                                        break;
-                                    case NPM_ACTION_BROADCAST_TOGGLEDATA:
-                                        toggleData(p1, !isDataActive(p1));
-                                        break;
-                                }
-                            }
-                        };
-                        IntentFilter filter = new IntentFilter();
-                        filter.addAction(NPM_ACTION_BROADCAST_SHUTDOWN);
-                        filter.addAction(NPM_ACTION_BROADCAST_REBOOT);
-                        filter.addAction(NPM_ACTION_BROADCAST_SOFTREBOOT);
-                        filter.addAction(NPM_ACTION_BROADCAST_REBOOTRECOVERY);
-                        filter.addAction(NPM_ACTION_BROADCAST_REBOOTBOOTLOADER);
-                        filter.addAction(NPM_ACTION_BROADCAST_KILLSYSTEMUI);
-                        filter.addAction(NPM_ACTION_BROADCAST_SCREENSHOT);
-                        filter.addAction(NPM_ACTION_BROADCAST_SCREENRECORD);
-                        filter.addAction(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
-                        filter.addAction(NPM_ACTION_BROADCAST_TOGGLEROTATION);
-                        filter.addAction(NPM_ACTION_BROADCAST_KILLAPP);
-                        filter.addAction(ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES);
-                        filter.addAction(NPM_ACTION_BROADCAST_TOGGLEDATA);
-                        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
-                        mNPMApp.registerReceiver(mNPMReceiver, filter);
+                        try {
+                            IntentFilter filter = new IntentFilter();
+                            filter.addAction(NPM_ACTION_BROADCAST_SHUTDOWN);
+                            filter.addAction(NPM_ACTION_BROADCAST_REBOOT);
+                            filter.addAction(NPM_ACTION_BROADCAST_SOFTREBOOT);
+                            filter.addAction(NPM_ACTION_BROADCAST_REBOOTRECOVERY);
+                            filter.addAction(NPM_ACTION_BROADCAST_REBOOTBOOTLOADER);
+                            filter.addAction(NPM_ACTION_BROADCAST_KILLSYSTEMUI);
+                            filter.addAction(NPM_ACTION_BROADCAST_SCREENSHOT);
+                            filter.addAction(NPM_ACTION_BROADCAST_SCREENRECORD);
+                            filter.addAction(NPM_ACTION_BROADCAST_TOGGLEAIRPLANEMODE);
+                            filter.addAction(NPM_ACTION_BROADCAST_TOGGLEROTATION);
+                            filter.addAction(NPM_ACTION_BROADCAST_KILLAPP);
+                            filter.addAction(ScreenRecordingService.ACTION_TOGGLE_SHOW_TOUCHES);
+                            filter.addAction(NPM_ACTION_BROADCAST_TOGGLEDATA);
+                            filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+                            mNPMApplication.registerReceiver(mNPMReceiver, filter);
+                        } catch (Throwable t) {
+                            XposedUtils.log("Failed to register BroadcastReceiver: " + t.toString());
+                        }
                     }
                 });
                 if (DeepXposedLogging) XposedUtils.log("Registered receiver for UI events.");
@@ -733,6 +689,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             return;
         }
 
+        mScreenshotConnection = null;
+
         synchronized (mScreenshotLock) {
             if (mScreenshotConnection != null) {
                 XposedUtils.log("Screenshot failed: cant create connection.");
@@ -762,6 +720,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         p1.unbindService(mScreenshotConnection);
                                         mScreenshotConnection = null;
                                         handler.removeCallbacks(mScreenshotTimeout);
+                                        if(DeepXposedLogging) XposedUtils.log("Screenshot message handled, unbinding and removing callbacks.");
                                     }
                                 }
                             }
@@ -772,7 +731,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             @Override
                             public void run() {
                                 try {
-                                    XposedUtils.log("Sending screenshot message...");
+                                    if(DeepXposedLogging) XposedUtils.log("Sending screenshot message...");
                                     messenger.send(msg);
                                 } catch (RemoteException e) {
                                     //Log.e(TAG, e.toString());
@@ -933,6 +892,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             synchronized (mScreenshotLock) {
                 if (mScreenshotConnection != null) {
                     mContext.unbindService(mScreenshotConnection);
+                    XposedUtils.log("Screenshot connection timed out, closing.");
                     mScreenshotConnection = null;
                 }
             }

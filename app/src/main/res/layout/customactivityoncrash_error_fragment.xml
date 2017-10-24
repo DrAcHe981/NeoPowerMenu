@@ -32,7 +32,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginTop="12dp"
 				android:gravity="center"
-				android:text="@string/customactivityoncrash_error_activity_error_occurred_explanation"
+				android:text="@string/errorActivity_Info"
 				android:textSize="18sp"
 				android:textStyle="bold"/>
 

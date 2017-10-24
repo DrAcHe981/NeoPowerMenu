@@ -124,6 +124,15 @@
                     android:src="@drawable/ic_action_lock_outline"
                     android:visibility="gone"/>
 
+                <ImageView
+                    android:id="@+id/visibilityordermultiImageView_LockedWithPassword"
+                    android:layout_width="25dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="top"
+                    android:padding="2dp"
+                    android:src="@drawable/ic_communication_vpn_key"
+                    android:visibility="gone"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

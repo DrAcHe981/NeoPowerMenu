@@ -11,7 +11,8 @@
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center|center_vertical|center_horizontal"
-        android:foregroundGravity="center|center_vertical|center_horizontal">
+        android:foregroundGravity="center|center_vertical|center_horizontal"
+        android:background="#ff0000">
 
         <FrameLayout
             android:id="@+id/frame"
@@ -93,7 +94,7 @@
         <FrameLayout
             android:id="@+id/frameConfirm"
             android:layout_width="340dp"
-            android:layout_height="150dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center|center_vertical|center_horizontal"
             android:visibility="gone">
 
@@ -108,7 +109,7 @@
                 <TextView
                     android:id="@+id/fragmentpowerTextView_ConfirmAction"
                     android:layout_width="340dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1.0"
                     android:gravity="center"
                     android:text="Reboot?"
@@ -148,6 +149,90 @@
 
         </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/frameEnterPassword"
+            android:layout_width="340dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center_vertical|center_horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/frameEnterPasswordLinear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:animateLayoutChanges="true">
+
+                <TextView
+                    android:id="@+id/fragmentpowerTextView_EnterPasswordAction"
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/powerMenu_LockedWithPassword"
+                    android:textSize="20sp"/>
+
+                <ImageView
+                    android:id="@+id/fragmentpowerImageView_EnterPasswordFingerPrint"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/fingerprint_white_192x192"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/fragmentpowerTextView_EnterPasswordError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Error"
+                    android:textColor="@color/colorAccentDarkTheme"
+                    android:textSize="20sp"
+                    android:visibility="gone"/>
+
+                <EditText
+                    android:id="@+id/fragmentpowerEditText_EnterPassword"
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:hint="@string/powerMenu_Password"
+                    android:inputType="textPassword"
+                    android:visibility="visible"/>
+
+                <LinearLayout
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/fragmentpowerTextView_EnterPasswordCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Cancel"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/fragmentpowerTextView_EnterPasswordOk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Ok"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
         <de.NeonSoft.neopowermenu.helpers.CircularRevealView
             android:id="@+id/reveal"
             android:layout_width="match_parent"
@@ -159,13 +244,12 @@
             android:layout_width="340dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:id="@+id/frame2Linear"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 

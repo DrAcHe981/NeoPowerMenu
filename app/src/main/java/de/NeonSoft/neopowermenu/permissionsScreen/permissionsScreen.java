@@ -33,6 +33,9 @@ public class permissionsScreen extends Fragment {
     private static CheckBox CheckBox_DontAskAgain;
 
     public static String[] permissions = {
+            "android.permission.ACCESS_NOTIFICATION_POLICY",
+            "android.permission.USE_FINGERPRINT",
+            Manifest.permission.RECEIVE_BOOT_COMPLETED,
             "DeviceAdmin",
             Manifest.permission.BLUETOOTH_ADMIN,
             Manifest.permission.BLUETOOTH,
@@ -126,7 +129,12 @@ public class permissionsScreen extends Fragment {
     public static boolean checkPermissions(Activity mActivity, String[] permissions) {
         DevicePolicyManager devicePolicyManager = (DevicePolicyManager) mActivity.getSystemService(Context.DEVICE_POLICY_SERVICE);
         for (int i = 0; i < permissions.length; i++) {
-            if (permissions[i].equalsIgnoreCase("DeviceAdmin")) {
+            if (permissions[i].equalsIgnoreCase("android.permission.ACCESS_NOTIFICATION_POLICY")) {
+                NotificationManager notificationManager = (NotificationManager) mActivity.getSystemService(Context.NOTIFICATION_SERVICE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
+                    return false;
+                }
+            } else if (permissions[i].equalsIgnoreCase("DeviceAdmin")) {
                 if (!devicePolicyManager.isAdminActive(new ComponentName(mActivity, deviceAdmin.class))) {
                     return false;
                 }

@@ -60,7 +60,8 @@ public class PreferencesColorFragment extends Fragment {
             "ToggleBluetooth", "#ff3f51b5", "#ffffff",
             "ToggleData", "#ff3f51b5", "#ffffff",
             "RebootFlashMode", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff",
-            "LockPhone", "#ff3f51b5", "#ffffff"};
+            "LockPhone", "#ff3f51b5", "#ffffff",
+            "SilentMode", "#ff3f51b5", "#ffffff"};
 
     public static String[] darkPreset = {
             "Presets", "Load", "Save",
@@ -91,7 +92,8 @@ public class PreferencesColorFragment extends Fragment {
             "ToggleBluetooth", "#ff3f51b5", "#ffffff",
             "ToggleData", "#ff3f51b5", "#ffffff",
             "RebootFlashMode", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff",
-            "LockPhone", "#ff3f51b5", "#ffffff"};
+            "LockPhone", "#ff3f51b5", "#ffffff",
+            "SilentMode", "#ff3f51b5", "#ffffff"};
 
     public static String[] blackPreset = {
             "Presets", "Load", "Save",
@@ -122,7 +124,8 @@ public class PreferencesColorFragment extends Fragment {
             "ToggleBluetooth", "#ff000000", "#ffffff",
             "ToggleData", "#ff000000", "#ffffff",
             "RebootFlashMode", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
-            "LockPhone", "#ff000000", "#ffffff"};
+            "LockPhone", "#ff000000", "#ffffff",
+            "SilentMode", "#ff000000", "#ffffff"};
 
     public static Object[][] ColorNames = {
             {ColorsListAdapter.TYPE_HEADER, "Presets"}, {ColorsListAdapter.TYPE_LOAD, "Load"}, {ColorsListAdapter.TYPE_SAVE, "Save"},
@@ -153,7 +156,8 @@ public class PreferencesColorFragment extends Fragment {
             {ColorsListAdapter.TYPE_HEADER, "ToggleBluetooth"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleBluetooth_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleBluetooth_Textcolor"},
             {ColorsListAdapter.TYPE_HEADER, "ToggleData"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleData_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleData_Textcolor"},
             {ColorsListAdapter.TYPE_HEADER, "RebootFlashMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Textcolor"},
-            {ColorsListAdapter.TYPE_HEADER, "LockPhone"}, {ColorsListAdapter.TYPE_ITEM, "DialogLockPhone_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogLockPhone_Textcolor"}};
+            {ColorsListAdapter.TYPE_HEADER, "LockPhone"}, {ColorsListAdapter.TYPE_ITEM, "DialogLockPhone_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogLockPhone_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "SilentMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogSilentMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSilentMode_Textcolor"}};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

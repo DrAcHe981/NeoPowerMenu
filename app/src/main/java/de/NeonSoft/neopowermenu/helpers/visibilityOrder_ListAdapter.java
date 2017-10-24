@@ -72,6 +72,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
             ImageView HideDescription = (ImageView) InflatedView.findViewById(R.id.visibilityordernormalImageView_HideDescription);
             ImageView HideOnLockscreen = (ImageView) InflatedView.findViewById(R.id.visibilityordernormalImageView_HideOnLockscreen);
+            ImageView LockedWithPassword = (ImageView) InflatedView.findViewById(R.id.visibilityordernormalImageView_LockedWithPassword);
 
             try {
                 if (!mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuMain_" + this.items.get(position).getTitle() + "Desc", "string", MainActivity.class.getPackage().getName())).equalsIgnoreCase("")) {
@@ -81,6 +82,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
             } catch (Throwable t) {
             }
             HideOnLockscreen.setVisibility(items.get(position).getHideOnLockScreen() ? View.GONE : View.VISIBLE);
+            LockedWithPassword.setVisibility(items.get(position).getLockedWithPassword() ? View.VISIBLE : View.GONE);
 
             MenuItemHolder.setOnClickListener(new OnClickListener() {
 
@@ -677,7 +679,9 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
             });
 
             ImageView HideOnLockscreen = (ImageView) InflatedView.findViewById(R.id.visibilityordermultiImageView_HideOnLockscreen);
+            ImageView LockedWithPassword = (ImageView) InflatedView.findViewById(R.id.visibilityordermultiImageView_LockedWithPassword);
             HideOnLockscreen.setVisibility(items.get(position).getHideOnLockScreen() ? View.GONE : View.VISIBLE);
+            LockedWithPassword.setVisibility(items.get(position).getLockedWithPassword() ? View.VISIBLE : View.GONE);
 
             LinearLayout EditAppearanceBehaviour = (LinearLayout) InflatedView.findViewById(R.id.visibilityordermultiLinearLayout_EditBehaviour);
             EditAppearanceBehaviour.setOnClickListener(new OnClickListener() {
@@ -695,7 +699,9 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
             item.setText(mContext.getString(R.string.visibilityOrder_MultiPage).split("\\|")[0]);
 
             ImageView HideOnLockscreen = (ImageView) InflatedView.findViewById(R.id.visibilityordernormalImageView_HideOnLockscreen);
+            ImageView LockedWithPassword = (ImageView) InflatedView.findViewById(R.id.visibilityordernormalImageView_LockedWithPassword);
             HideOnLockscreen.setVisibility(items.get(position).getHideOnLockScreen() ? View.GONE : View.VISIBLE);
+            LockedWithPassword.setVisibility(items.get(position).getLockedWithPassword() ? View.VISIBLE : View.GONE);
 
             LinearLayout EditAppearanceBehaviour = (LinearLayout) InflatedView.findViewById(R.id.visibilityordernormalLinearLayout_EditBehaviour);
             EditAppearanceBehaviour.setOnClickListener(new OnClickListener() {
@@ -835,6 +841,10 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
         }
         options.add(mContext.getString(R.string.visibilityOrder_HideOnLockscreen));
         checked.add(thisItem.getHideOnLockScreen());
+        if (thisItem.getType() != TYPE_MULTIPAGE_START) {
+            options.add(mContext.getString(R.string.visibilityOrder_LockWithPassword));
+            checked.add(thisItem.getLockedWithPassword());
+        }
         slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
         dialogFragment.setContext(mContext);
         dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -861,54 +871,229 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                                            String inputResult3 = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "2", "");
                                            String listResult = resultBundle.getString(slideDownDialogFragment.RESULT_LIST, "");
 
-                                           MenuItemHolder item = items.get(position);
+                                           final MenuItemHolder item = items.get(position);
+                                           final boolean oldLockedWithPassword = item.getLockedWithPassword();
+                                           if (item.getType() == TYPE_NORMAL) {
+                                               item.setHideDesc(false);
+                                               item.setHideOnLockScreen(false);
+                                           } else if (item.getType() == TYPE_MULTI) {
+                                               item.setFillEmpty(false);
+                                               item.setHideOnLockScreen(false);
+                                           }
+                                           item.setLockedWithPassword(false);
                                            if (thisItem.getType() == TYPE_NORMAL || thisItem.getType() == TYPE_MULTIPAGE_START) {
                                                item.setText((inputResult.isEmpty() ? "" : inputResult));
 
-                                               if (item.getType() == TYPE_NORMAL) {
-                                                   item.setHideDesc(false);
-                                                   item.setHideOnLockScreen(false);
-                                               } else if (item.getType() == TYPE_MULTI) {
-                                                   item.setFillEmpty(false);
-                                                   item.setHideOnLockScreen(false);
-                                               }
-
                                                if (!listResult.isEmpty()) {
-                                                   for (String result : listResult.split(",")) {
-                                                           if (options.size() >= 2) {
-                                                               if (Integer.parseInt(result) == 0) {
-                                                                   item.setHideDesc(true);
-                                                               } else if (Integer.parseInt(result) == 1) {
-                                                                   item.setHideOnLockScreen(true);
-                                                               }
+                                                   for (final String result : listResult.split(",")) {
+                                                       if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_HideDesc))) {
+                                                           item.setHideDesc(true);
+                                                       } else if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_HideOnLockscreen))) {
+                                                           item.setHideOnLockScreen(true);
+                                                       } else if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_LockWithPassword))) {
+                                                           if (MainActivity.preferences.getString(PreferenceNames.pItemPWL, "").isEmpty()) {
+                                                               slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                                                               dialogFragment.setContext(mContext);
+                                                               dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                                                               dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                                                                   @Override
+                                                                   public void onListItemClick(int position, String text) {
+
+                                                                   }
+
+                                                                   @Override
+                                                                   public void onNegativeClick() {
+
+                                                                   }
+
+                                                                   @Override
+                                                                   public void onNeutralClick() {
+
+                                                                   }
+
+                                                                   @Override
+                                                                   public void onPositiveClick(Bundle resultBundle) {
+                                                                       MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", ""))).apply();
+                                                                       item.setLockedWithPassword(true);
+
+                                                                       items.set(position, item);
+
+                                                                       notifyDataSetChanged();
+                                                                   }
+
+                                                                   @Override
+                                                                   public void onTouchOutside() {
+
+                                                                   }
+                                                               });
+                                                               dialogFragment.setText(mContext.getString(R.string.visibilityOrder_NoPasswordSet));
+                                                               dialogFragment.addInput(mContext.getString(R.string.advancedPrefs_Password), "", false, null);
+                                                               dialogFragment.setInputMode(0, InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                                               dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+                                                               dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_SAVE]);
+                                                               dialogFragment.showDialog(R.id.dialog_container);
                                                            } else {
-                                                               if (Integer.parseInt(result) == 0) {
-                                                                   item.setHideOnLockScreen(true);
-                                                               }
-                                                           }
-                                                   }
-                                               }
-                                           } else if (thisItem.getType() == TYPE_MULTI)
-
-                                           {
-                                               item.setText((inputResult.isEmpty() ? "< default >" : inputResult) + "|" + (inputResult2.isEmpty() ? "< default >" : inputResult2) + "|" + (inputResult3.isEmpty() ? "< default >" : inputResult3));
-
-                                               item.setHideOnLockScreen(false);
-
-                                               if (!listResult.isEmpty()) {
-                                                   for (String result : listResult.split(",")) {
-                                                       if (options.size() >= 2) {
-                                                           if (Integer.parseInt(result) == 0) {
-                                                               item.setFillEmpty(true);
-                                                           } else if (Integer.parseInt(result) == 1) {
-                                                               item.setHideOnLockScreen(true);
-                                                           }
-                                                       } else {
-                                                           if (Integer.parseInt(result) == 0) {
-                                                               item.setHideOnLockScreen(true);
+                                                               item.setLockedWithPassword(true);
                                                            }
                                                        }
                                                    }
+                                               }
+                                               if (!MainActivity.preferences.getString(PreferenceNames.pItemPWL, "").isEmpty() && !item.getLockedWithPassword() && oldLockedWithPassword) {
+                                                   final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                                                   dialogFragment.setContext(mContext);
+                                                   dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                                                   dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                                                       @Override
+                                                       public void onListItemClick(int position, String text) {
+
+                                                       }
+
+                                                       @Override
+                                                       public void onNegativeClick() {
+                                                           item.setLockedWithPassword(oldLockedWithPassword);
+                                                           dialogFragment.closeDialog();
+
+                                                           items.set(position, item);
+
+                                                           notifyDataSetChanged();
+                                                       }
+
+                                                       @Override
+                                                       public void onNeutralClick() {
+                                                       }
+
+                                                       @Override
+                                                       public void onPositiveClick(Bundle resultBundle) {
+                                                           if (helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")).equals(MainActivity.preferences.getString(PreferenceNames.pItemPWL, ""))) {
+                                                               dialogFragment.closeDialog();
+
+                                                               items.set(position, item);
+
+                                                               notifyDataSetChanged();
+                                                           } else {
+                                                               Toast.makeText(mContext, mContext.getString(R.string.powerMenu_WrongPassword), Toast.LENGTH_LONG).show();
+                                                           }
+                                                       }
+
+                                                       @Override
+                                                       public void onTouchOutside() {
+                                                           item.setLockedWithPassword(oldLockedWithPassword);
+                                                       }
+                                                   });
+                                                   dialogFragment.setText(mContext.getString(R.string.visibilityOrder_RemovePWLock));
+                                                   dialogFragment.addInput(mContext.getString(R.string.advancedPrefs_Password), "", true, null);
+                                                   dialogFragment.setInputMode(0, InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                                   dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+                                                   dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
+                                                   dialogFragment.setCloseOnButtonClick(false);
+                                                   dialogFragment.showDialog(R.id.dialog_container);
+                                               }
+                                           } else if (thisItem.getType() == TYPE_MULTI) {
+                                               item.setText((inputResult.isEmpty() ? "< default >" : inputResult) + "|" + (inputResult2.isEmpty() ? "< default >" : inputResult2) + "|" + (inputResult3.isEmpty() ? "< default >" : inputResult3));
+
+                                               if (!listResult.isEmpty()) {
+                                                   for (String result : listResult.split(",")) {
+                                                       if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_FillEmpty))) {
+                                                           item.setFillEmpty(true);
+                                                       } else if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_HideOnLockscreen))) {
+                                                           item.setHideOnLockScreen(true);
+                                                       } else if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_LockWithPassword))) {
+                                                           if (MainActivity.preferences.getString(PreferenceNames.pItemPWL, "").isEmpty()) {
+                                                               slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                                                               dialogFragment.setContext(mContext);
+                                                               dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                                                               dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                                                                   @Override
+                                                                   public void onListItemClick(int position, String text) {
+
+                                                                   }
+
+                                                                   @Override
+                                                                   public void onNegativeClick() {
+
+                                                                   }
+
+                                                                   @Override
+                                                                   public void onNeutralClick() {
+
+                                                                   }
+
+                                                                   @Override
+                                                                   public void onPositiveClick(Bundle resultBundle) {
+                                                                       MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", ""))).apply();
+                                                                       item.setLockedWithPassword(true);
+
+                                                                       items.set(position, item);
+
+                                                                       notifyDataSetChanged();
+                                                                   }
+
+                                                                   @Override
+                                                                   public void onTouchOutside() {
+
+                                                                   }
+                                                               });
+                                                               dialogFragment.setText(mContext.getString(R.string.visibilityOrder_NoPasswordSet));
+                                                               dialogFragment.addInput(mContext.getString(R.string.advancedPrefs_Password), "", false, null);
+                                                               dialogFragment.setInputMode(0, InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                                               dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+                                                               dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_SAVE]);
+                                                               dialogFragment.showDialog(R.id.dialog_container);
+                                                           } else {
+                                                               item.setLockedWithPassword(true);
+                                                           }
+                                                       }
+                                                   }
+                                               }
+                                               if (!MainActivity.preferences.getString(PreferenceNames.pItemPWL, "").isEmpty() && !item.getLockedWithPassword() && oldLockedWithPassword) {
+                                                   final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                                                   dialogFragment.setContext(mContext);
+                                                   dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                                                   dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                                                       @Override
+                                                       public void onListItemClick(int position, String text) {
+
+                                                       }
+
+                                                       @Override
+                                                       public void onNegativeClick() {
+                                                           item.setLockedWithPassword(oldLockedWithPassword);
+                                                           dialogFragment.closeDialog();
+
+                                                           items.set(position, item);
+
+                                                           notifyDataSetChanged();
+                                                       }
+
+                                                       @Override
+                                                       public void onNeutralClick() {
+                                                       }
+
+                                                       @Override
+                                                       public void onPositiveClick(Bundle resultBundle) {
+                                                           if (helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")).equals(MainActivity.preferences.getString(PreferenceNames.pItemPWL, ""))) {
+                                                               dialogFragment.closeDialog();
+
+                                                               items.set(position, item);
+
+                                                               notifyDataSetChanged();
+                                                           } else {
+                                                               Toast.makeText(mContext, mContext.getString(R.string.powerMenu_WrongPassword), Toast.LENGTH_LONG).show();
+                                                           }
+                                                       }
+
+                                                       @Override
+                                                       public void onTouchOutside() {
+                                                           item.setLockedWithPassword(oldLockedWithPassword);
+                                                       }
+                                                   });
+                                                   dialogFragment.setText(mContext.getString(R.string.visibilityOrder_RemovePWLock));
+                                                   dialogFragment.addInput(mContext.getString(R.string.advancedPrefs_Password), "", true, null);
+                                                   dialogFragment.setInputMode(0, InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                                   dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+                                                   dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
+                                                   dialogFragment.setCloseOnButtonClick(false);
+                                                   dialogFragment.showDialog(R.id.dialog_container);
                                                }
                                            }
 
@@ -939,6 +1124,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
         }
 
         dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, options, -1, false);
+        dialogFragment.setListReturnMode(slideDownDialogFragment.LIST_RETURN_MODE_TEXT);
         dialogFragment.setListChecks(checked);
         dialogFragment.setListAllowEmpty(true);
         dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).
@@ -962,6 +1148,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
             MainActivity.orderPrefs.edit().putBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", items.get(i).getHideDesc()).apply();
             MainActivity.orderPrefs.edit().putBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", items.get(i).getHideOnLockScreen()).apply();
             MainActivity.orderPrefs.edit().putBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_fillEmpty", items.get(i).getFillEmpty()).apply();
+            MainActivity.orderPrefs.edit().putBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_lockedWithPassword", items.get(i).getLockedWithPassword()).apply();
             if (items.get(i).getType() == TYPE_MULTIPAGE_START) {
                 MainActivity.orderPrefs.edit().putString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", items.get(i).getTitle()).apply();
                 MultiPage.add(items.get(i).getTitle());
