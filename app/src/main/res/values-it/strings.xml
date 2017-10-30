@@ -8,10 +8,7 @@
   <string name="powerMenuMain_Reboot">"Riavvia"</string>
   <string name="powerMenuMain_SoftReboot">"Riavvio Soft"</string>
   <string name="powerMenuMain_SoftRebootDesc">"Riavvio semplice Android UI con chiusura il processo zygote"</string>
-  <string name="powerMenuMain_Screenshot">"Screenshot"</string>
   <string name="powerMenuMain_ScreenshotDesc">"Ritardo screenshot: [SCREENSHOTDELAY]"</string>
-  <string name="powerMenuBottom_Recovery">"Recovery"</string>
-  <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
   <string name="powerMenuBottom_SafeMode">"Modalità Provvisoria"</string>
   <string name="powerMenu_Shuttingdown">"Spegnimento..."</string>
   <string name="powerMenu_Rebooting">"Riavvio..."</string>
@@ -19,11 +16,9 @@
   <string name="powerMenuMain_AppShortcut">"Scorciatoia App"</string>
   <string name="powerMenuMain_ActivityShortcut">"Scorciatoia attività"</string>
   <string name="powerMenuMain_ToggleRotate">"Rotazione schermo"</string>
-  <string name="ToggleRotateMode_Auto">"Auto"</string>
   <string name="ToggleRotateMode_Off">"Spento"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilità e ordinamento"</string>
-  <string name="category_Preset">"Presets"</string>
   <string name="preset_Load">"Carica preset"</string>
   <string name="preset_LoadDesc">"Carica una configurazione salvata"</string>
   <string name="preset_Save">"Salva preset"</string>
@@ -90,7 +85,6 @@
   <string name="permissionsScreen_ClickToRequest">"Clicca per richiedere l'autorizzazione."</string>
   <string name="permissionsScreen_DontAskAgain">"Non chiedere più"</string>
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Archiviazione esterna di lettura/scrittura"</string>
-  <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Necessaria per attivare o disattivare la torcia."</string>
   <string name="visibilityOrder_HideDesc">"Nascondi Descrizione"</string>
   <!-- Preferences: Colors -->
@@ -100,7 +94,6 @@
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Necessaria per registrare l'audio con lo screen recorder."</string>
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Finestra di avviso di sistema"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Per visualizzare il Power Menu sopra ogni cosa."</string>
-  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Richiesto per impedire la chiusura del servizio screen record e torcia."</string>
   <string name="powerMenuMain_SoundMode">"Modalità audio"</string>
   <string name="powerMenuMain_SoundModeDesc">"Modalità corrente: [SOUNDMODE]"</string>
@@ -117,10 +110,8 @@
   <string name="presetsManager_DownloadFailed">"Download non riuscito!"</string>
   <string name="presetsManager_CantConnecttoServer">"Impossibile connettersi al server! \n Per favore controllare la connessione di rete o riprovare più tardi."</string>
   <string name="presetsManager_CantConnecttoDB">"Impossibile connettersi al database! \n Per favore riprovare più tardi, quando non cambia nulla: si prega di segnalarlo allo sviluppatore."</string>
-  <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Richiesto scaricare/caricare preset dal/sul server pubblico."</string>
   <!-- Login page -->
-  <string name="login_Title">"Login"</string>
   <string name="login_TitleRegister">"Iscriviti"</string>
   <string name="login_Info">"Gli username degli utenti registrati sono protetti in modo che nessuno può caricare a nome loro, qui puoi accedere o creare un nuovo account.\n Questo non è necessario se non vuoi farlo! \n Nessun dato privato verrà condiviso!"</string>
   <string name="login_UsernameEmail">"Nome utente o e-mail:"</string>
@@ -128,7 +119,6 @@
   <string name="login_Email">"E-Mail:"</string>
   <string name="login_RetypeEmail">"Ripetere E-mail:"</string>
   <string name="login_PasswordOverEmail">"È possibile impostare la password tramite il link nell'attivazione E-mail (l'E-mail è solo disponibile in lingua inglese)."</string>
-  <string name="login_Password">"Password:"</string>
   <string name="login_KeepLogin">"Rimani connesso."</string>
   <string name="login_Register">"Bisogno di un account? \n clicca qui per creare un nuovo account!"</string>
   <string name="login_LoggedIn">"Accesso effettuato!"</string>
@@ -149,7 +139,6 @@
   <string name="colorsPartTitle">"[PART] colori"</string>
   <string name="colorsPartDescDialog">"I colori della finestra di dialogo quando si fa clic su [BUTTON]."</string>
   <string name="colorsPartDescButton">"I colori del pulsante [BUTTON]."</string>
-  <string name="colorsPartPresets">"Presets"</string>
   <string name="colorsPartReveal">"Visualizza"</string>
   <string name="colorsPartRevealDesc">"Il colore dell'animazione reveal."</string>
   <string name="colorsPartRevealDesc1">"Il colore dell'animazione reveal quando fa clic su un'opzione di riavvio/arresto."</string>
@@ -223,7 +212,6 @@
   <string name="advancedPrefs_HideOnClickDesc">"Nascondi il menù quando clicchi sull'interruttore."</string>
   <string name="advancedPrefs_LoadAppIcons">"Carica icone App"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Carica icone App per pulsanti scorciatoie."</string>
-  <string name="style_Material">Material</string>
   <string name="style_MaterialFullscreen">Material (Tutto schermo)</string>
   <string name="style_MaterialFullHorizontal">Material (Orizzontale)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Aggancio sperimentale PhoneWindowManager</string>
