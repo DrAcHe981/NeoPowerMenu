@@ -99,8 +99,8 @@
   <string name="SoundMode_Silent">"Silentios"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Cont"</string>
-  <string name="presetsManager_UploadMsg">"\"\"Aceasta presetare va fi incarcata pe serverul public, fiind vizibila altor utilizatori.
-Este ultima sansa de a schimba numele creatorului!\"\""</string>
+  <string name="presetsManager_UploadMsg">"\"\"\"Aceasta presetare va fi incarcata pe serverul public, fiind vizibila altor utilizatori.
+Este ultima sansa de a schimba numele creatorului!\"\"\""</string>
   <string name="presetsManager_UploadComplete">"Upload complet!"</string>
   <string name="presetsManager_UploadFailedSameName">"Nume deja folosit, te rugam sa incerci altul."</string>
   <string name="presetsManager_UploadFailedNoAccess">"Numele creatorului este protejat, incearca altul pentru a te loga"</string>
@@ -119,20 +119,20 @@ Este ultima sansa de a schimba numele creatorului!\"\""</string>
   <string name="login_PasswordOverEmail">"Poti sa-ti setezi parola din link-ul din e-mailul de activare (e-mailul este valabil doar in engleza)"</string>
   <string name="login_Password">"Parola"</string>
   <string name="login_KeepLogin">"Tine-ma logat."</string>
-  <string name="login_Register">"\"\"Ai nevoie de un cont?
-Apasa aici pentru a-ti crea unul!\"\""</string>
+  <string name="login_Register">"\"\"\"Ai nevoie de un cont?
+Apasa aici pentru a-ti crea unul!\"\"\""</string>
   <string name="login_LoggedIn">"Logare reusita!"</string>
   <string name="login_LoginFailedWithReason">"Logare esuata!"</string>
   <string name="login_LoginFailedWrongData">"Logare esuata, parola sau e-mail gresit!"</string>
   <string name="login_RegisterSuccess">"Inregistrare completa, vei primi un email pentru a-ti activa contul!"</string>
   <string name="login_Processing">"Se proceseaza..."</string>
   <string name="login_TitleStatistics">"Statstici pentru [USERNAMEEMAIL]"</string>
-  <string name="login_Statistics">"\"\"Presetae incarcata: : [UPLOADCOUNT]
+  <string name="login_Statistics">"\"\"\"Presetae incarcata: : [UPLOADCOUNT]
 Stele oferite:  [STARSGIVEN]
 Stale primite:  [STARSRECEIVED]
 
 Presetarile tale (in functie de numarul de stele)
-[TOP5PRESETS] \"\""</string>
+[TOP5PRESETS] \"\"\""</string>
   <string name="login_StatisticsFailed">"Esuare preluare statistici"</string>
   <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Reincarcare statistici"</string>
@@ -163,10 +163,10 @@ Presetarile tale (in functie de numarul de stele)
   <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root si Xposed"</string>
   <string name="preferences_RootXposed1">"Atat accesul Root cat si modul Xposed nu sunt prezente pe telefon.|Accesul Root pentru telefon si instalarea modului Xposed sunt necesare pentru functionarea acestui mod."</string>
-  <string name="preferences_RootXposed2">"\"\"Modul Xposed este functional,insa telefonul nu prezinta acces Root.|Dar...pentru a utiliza acest mod aveti nevoie de Root...
-Va rugam sa permiteti accesul root.\"\""</string>
-  <string name="preferences_RootXposed3">"\"\"Acces Root prezent, modul Xposed nu este instalat.|Dar mdoul Xposed este necesar pentru a inlocui meniul de oprire.
-Activeaza modulul in Xposed.\"\""</string>
+  <string name="preferences_RootXposed2">"\"\"\"Modul Xposed este functional,insa telefonul nu prezinta acces Root.|Dar...pentru a utiliza acest mod aveti nevoie de Root...
+Va rugam sa permiteti accesul root.\"\"\""</string>
+  <string name="preferences_RootXposed3">"\"\"\"Acces Root prezent, modul Xposed nu este instalat.|Dar mdoul Xposed este necesar pentru a inlocui meniul de oprire.
+Activeaza modulul in Xposed.\"\"\""</string>
   <string name="preferences_RootXposed4">"Acces Root si mod Xposed functional.|Aplicatia ar trebui sa functioneze!"</string>
   <string name="preferences_RootXposed5">"Versiunea Modului este prea veche...|Restarteaza telefonul pentru a finaliza procesul de actualizare!"</string>
   <string name="preferences_Style">"Stil"</string>
@@ -174,14 +174,14 @@ Activeaza modulul in Xposed.\"\""</string>
   <string name="preferences_VisibilityOrder">"Vizibilitate si ordine|Selecteaza elementele pe care vrei sa le vezi in ordinea dorita"</string>
   <string name="preferencesCategory_Other">"Altele"</string>
   <string name="preferences_Advanced">"Setari avansate|Schimba setarile avansate cum ar fi intarzieri,gravitatie sau viteza"</string>
-  <string name="preferences_Permissions">"\"\"Permisiuni|Arata permisiunile folosite si vezi pentru ce sunt utilizate.
-Acorda alte permisiuni daca nu sunt deja activate de la inceput (Android 6.0+)\"\""</string>
-  <string name="preferences_HideLauncherIcon">"\"\"Ascunde aplicatia din lista de aplicatii|Ascunde aplicatia in lista de aplicatii (necesita posibil o restartare a telefonului).
-Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum.\"\""</string>
+  <string name="preferences_Permissions">"\"\"\"Permisiuni|Arata permisiunile folosite si vezi pentru ce sunt utilizate.
+Acorda alte permisiuni daca nu sunt deja activate de la inceput (Android 6.0+)\"\"\""</string>
+  <string name="preferences_HideLauncherIcon">"\"\"\"Ascunde aplicatia din lista de aplicatii|Ascunde aplicatia in lista de aplicatii (necesita posibil o restartare a telefonului).
+Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum.\"\"\""</string>
   <string name="preferences_DeepXposedLogging">"Permite logs-uri Xposed avansat.|Permite logs-uri Xposed avansate (dupa activare restarteaza telefonul pentru a vedea schimbarile)"</string>
   <string name="preferencesCategory_About">"Despre"</string>
-  <string name="preferences_NeoSource">"\"\"Sursa|NeoPowerMenu este open-source.
-Vezi sursa pe GitHub\"\""</string>
+  <string name="preferences_NeoSource">"\"\"\"Sursa|NeoPowerMenu este open-source.
+Vezi sursa pe GitHub\"\"\""</string>
   <string name="preferences_Share">"Share|Iti place aplicatia? Da-o si prietenilor tai!"</string>
   <string name="preferences_About">"Codul de Neon-Soft/DrAcHe981|bazat pe sursa lui Naman Dwivedi (naman14)"</string>
   <!-- Power Menu -->
