@@ -42,6 +42,7 @@ public class PreferencesPartFragment extends Fragment {
 
     View InflatedView;
 
+    LinearLayout LinearLayout_ModuleState;
     ProgressBar ProgressBar_RootWait;
     TextView TextView_ModuleStateTitle;
     TextView TextView_ModuleStateDesc;
@@ -65,6 +66,8 @@ public class PreferencesPartFragment extends Fragment {
     LinearLayout LinearLayout_Animations;
     TextView TextView_AnimationsTitle;
     TextView TextView_AnimationsDesc;
+
+    LinearLayout LinearLayout_DialogGravity;
 
     LinearLayout LinearLayout_Account;
     TextView TextView_AccountTitle;
@@ -158,6 +161,7 @@ public class PreferencesPartFragment extends Fragment {
 
         InflatedView = inflater.inflate(R.layout.activity_preferences, container, false);
 
+        LinearLayout_ModuleState = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_ModuleState);
         ProgressBar_RootWait = (ProgressBar) InflatedView.findViewById(R.id.activitypreferencesProgressBar_ModuleState);
         if(!MainActivity.RootAvailable) {
             ProgressBar_RootWait.setProgress(100);
@@ -200,6 +204,8 @@ public class PreferencesPartFragment extends Fragment {
         TextView_AnimationsDesc.setText(getString(R.string.preferences_Animations).split("\\|")[1]);
         //inearLayout_Animations.setAlpha((float) .3);
         //LinearLayout_Animations.setEnabled(false);
+
+        LinearLayout_DialogGravity = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_DialogPosition);
 
         LinearLayout_Account = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Account);
         TextView_AccountTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AccountTitle);
@@ -264,6 +270,42 @@ public class PreferencesPartFragment extends Fragment {
         TextView_AboutDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_AboutDesc);
         TextView_AboutTitle.setText(getString(R.string.preferences_About).split("\\|")[0]);
         TextView_AboutDesc.setText(getString(R.string.preferences_About).split("\\|")[1]);
+
+        LinearLayout_ModuleState.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (helper.ModuleState()==-1) {
+                    try {
+                        Intent viewIntent = new Intent();
+                        viewIntent.setClassName("de.robv.android.xposed.installer", "de.robv.android.xposed.installer.WelcomeActivity");
+                        viewIntent.putExtra("fragment", 1);
+                        viewIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(viewIntent);
+                    } catch (ActivityNotFoundException e) {
+                        slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                        dialogFragment.setContext(mActivity);
+                        dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                        dialogFragment.setText("Failed to open the Xposed installer, application not found.\n\n" + e.getMessage());
+                        dialogFragment.showDialog(R.id.dialog_container);
+                    }
+                } else if (!MainActivity.RootAvailable) {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            helper.setThreadPrio(MainActivity.BG_PRIO);
+
+                            if (!Shell.SU.available()) {
+                                slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                                dialogFragment.setContext(mActivity);
+                                dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                                dialogFragment.setText("Failed to execute root request, device is not rooted.");
+                                dialogFragment.showDialog(R.id.dialog_container);
+                            }
+                        }
+                    }).start();
+                }
+            }
+        });
 
         LinearLayout_Style.setOnClickListener(new OnClickListener() {
 
@@ -348,6 +390,14 @@ public class PreferencesPartFragment extends Fragment {
             @Override
             public void onClick(View p1) {
                 MainActivity.changePrefPage(new PreferencesAnimationsFragment(), false);
+            }
+        });
+
+        LinearLayout_DialogGravity.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View p1) {
+                MainActivity.changePrefPage(new GravityChooserDialog(), false);
             }
         });
 

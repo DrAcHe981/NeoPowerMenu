@@ -10,6 +10,7 @@ import android.util.*;
 import android.widget.*;
 
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.helpers.helper;
 import de.NeonSoft.neopowermenu.services.*;
 import de.robv.android.xposed.*;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.*;
@@ -397,7 +398,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                     XposedUtils.log("Registering Broadcast Receiver and setting other values...");
                 if (DeepXposedLogging)
                     XposedUtils.log("Hooking (replace) " + usedGADClass + "#showDialog...");
-                XposedHelpers.findAndHookMethod(usedGADClass, lpparam.classLoader, "showDialog", boolean.class, boolean.class, new XC_MethodReplacement() {
+                XC_MethodHook showDialogHook = new XC_MethodReplacement() {
                     @Override
                     protected Object replaceHookedMethod(final MethodHookParam methodHookParam) throws Throwable {
                         final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
@@ -418,7 +419,14 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         return null;
                     }
 
-                });
+                };
+                if (XposedUtils.isParanoidRom()) {
+                    XposedHelpers.findAndHookMethod(globalActionsClass, "showDialog",
+                            boolean.class, boolean.class, boolean.class, showDialogHook);
+                } else {
+                    XposedHelpers.findAndHookMethod(globalActionsClass, "showDialog",
+                            boolean.class, boolean.class, showDialogHook);
+                }
                 if (DeepXposedLogging)
                     XposedUtils.log("Replaced with showDialog(), just executing startActivity() to start my own dialog.");
                 if (DeepXposedLogging)
@@ -513,7 +521,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             XposedUtils.log("sIsStartedGuard is null,reboot will crash...");
                         sIsStarted = (boolean) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sIsStarted");
                         if (sIsStarted)
-                            XposedUtils.log("sIsStarted is true,thats not normal for fresh created...");
+                            XposedUtils.log("sIsStarted is true,that's not normal for fresh created...");
                         sInstance = (ShutdownThread) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sInstance");
                         if (sInstance == null)
                             XposedUtils.log("sInstance is null,reboot will crash...");
@@ -584,7 +592,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 if (DeepXposedLogging)
                     XposedUtils.log("Rebuild the function to stop displaying the default shutdown loading dialog...");
             }
-            XposedUtils.log("Loading complete! Everything should work...");
+            XposedUtils.log("Loading complete, all hooks executed.");
         }
         if (lpparam.packageName.equalsIgnoreCase("com.android.systemui")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

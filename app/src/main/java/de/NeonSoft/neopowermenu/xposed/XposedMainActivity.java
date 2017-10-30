@@ -23,6 +23,17 @@ import de.NeonSoft.neopowermenu.Preferences.*;
 import android.view.animation.*;
 import android.view.View.*;
 
+import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache;
+import com.nostra13.universalimageloader.cache.memory.impl.LimitedAgeMemoryCache;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
+import java.io.File;
 import java.util.ArrayList;
 
 public class XposedMainActivity extends Activity implements DialogInterface.OnDismissListener {
@@ -31,6 +42,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     SharedPreferences colorPrefs;
     SharedPreferences orderPrefs;
     SharedPreferences animationPrefs;
+    ImageView revealImageView;
     CircularRevealView revealView, revealView2;
     TextView PreviewLabel;
     boolean mKeyguardShowing = false;
@@ -39,6 +51,9 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     int maxX, maxY;
     Context mContext;
     boolean doubleToConfirm = false;
+
+    static ImageLoader mImageLoader;
+    boolean mImageLoaderLoaded = false;
 
     boolean HookShutdownThread = false;
     boolean DeepXposedLogging = false;
@@ -81,6 +96,9 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         isShortcutWithVisibleContent = false;
         mContext = getApplicationContext();
+
+        initImageLoader();
+
         preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", 0);
         colorPrefs = getSharedPreferences("colors", 0);
         orderPrefs = getSharedPreferences("visibilityOrder", 0);
@@ -251,6 +269,32 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 				 }*/
 
         revealView = (CircularRevealView) findViewById(R.id.reveal);
+        revealImageView = (ImageView) findViewById(R.id.revealImage);
+        if (new File(mContext.getFilesDir().getPath() + "/images/background.png").exists()) {
+            mImageLoader.loadImage(mContext.getFilesDir().getPath() + "/images/background.png", new ImageLoadingListener() {
+                @Override
+                public void onLoadingStarted(String imageUri, View view) {
+
+                }
+
+                @Override
+                public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+
+                }
+
+                @Override
+                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                    revealImageView.setImageBitmap(loadedImage);
+                    revealImageView.setVisibility(View.VISIBLE);
+                    revealImageView.startAnimation(new AnimationUtils().loadAnimation(mContext, R.anim.fade_in));
+                }
+
+                @Override
+                public void onLoadingCancelled(String imageUri, View view) {
+
+                }
+            });
+        }
         revealView2 = (CircularRevealView) findViewById(R.id.reveal2);
 
         PreviewLabel = (TextView) findViewById(R.id.PreviewLable);
@@ -507,6 +551,33 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         //}
     }
 
+    private void initImageLoader() {
+        try {
+            String CACHE_DIR = mContext.getCacheDir().getPath() + "/.temp_tmp";
+            new File(CACHE_DIR).mkdirs();
+
+            DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                    .cacheOnDisc(true).cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY)
+                    .bitmapConfig(Bitmap.Config.RGB_565).build();
+
+            LruMemoryCache memoryCacheCore = new LruMemoryCache(5 * 1024 * 1024);
+            LimitedAgeMemoryCache memoryCache = new LimitedAgeMemoryCache(memoryCacheCore, 15 * 60);
+            LruDiskCache discCache = new LruDiskCache(new File(CACHE_DIR), new URLFileNameGenerator(), 250 * 1024 * 1024);
+            ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(
+                    mContext)
+                    .defaultDisplayImageOptions(defaultOptions)
+                    .discCache(discCache)
+                    .memoryCache(memoryCache);
+
+            ImageLoaderConfiguration config = builder.build();
+            mImageLoader = ImageLoader.getInstance();
+            mImageLoader.init(config);
+            mImageLoaderLoaded = true;
+            Log.d("ImageLoader", "Loaded!");
+        } catch (Exception e) {
+            Log.e("ImageLoader", "Load failed, code:" + e);
+        }
+    }
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);

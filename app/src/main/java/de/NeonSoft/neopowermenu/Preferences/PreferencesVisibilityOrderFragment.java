@@ -349,6 +349,17 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                                         item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
                                         item.setTitle(FinalPowerMenuItems[position]);
                                         item.setText("");
+                                        if (FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[7])) {
+                                            if (!helper.isAppInstalled(mContext, "com.ceco.gm2.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.kitkat.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.lollipop.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.marshmallow.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.nougat.gravitybox")) {
+
+                                                slideDownDialogFragment NoGravityBox = new slideDownDialogFragment();
+                                                NoGravityBox.setContext(getActivity());
+                                                NoGravityBox.setFragmentManager(MainActivity.fragmentManager);
+                                                NoGravityBox.setText(getString(R.string.visibilityOrder_NoGravityBoxFound));
+                                                NoGravityBox.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                                                NoGravityBox.showDialog(R.id.dialog_container);
+                                            }
+                                        }
                                         adapter.addItem(item);
                                     }
                                 }
@@ -628,7 +639,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
             }
         });
         if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
-            MainActivity.actionbar.hideButton();
+            //MainActivity.actionbar.hideButton();
         }
 
         return InflatedView;

@@ -196,7 +196,7 @@ public class addShortcut extends AppCompatActivity {
             if (addShortcut.useGraphic) {
                 Bitmap bd = null;
                 if (text.equalsIgnoreCase(mActivity.getString(R.string.shortcut_ShowPowerMenu))) {
-                    bd = loadImage(0, color2);
+                    bd = loadImage(0, "#FFFFFF");
                 } else if (text.equalsIgnoreCase("Shutdown")) {
                     bd = loadImage(1, color2);
                 } else if (text.equalsIgnoreCase("Reboot")) {

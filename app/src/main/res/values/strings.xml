@@ -229,7 +229,7 @@
 <string name="preferences_Animations">"Animations|Change the animations or disable them completely."</string>
 <string name="preferencesCategory_Other">"Other"</string>
 <string name="preferences_Account">"Account|Here you can login, create an account or check your statistics when logged in."</string>
-<string name="preferences_Advanced">"Advanced Settings|Change advanced settings such as delays, gravity or speed."</string>
+<string name="preferences_Advanced">"Advanced Settings|Change advanced settings such as delays or speed."</string>
 <string name="preferences_Permissions">"Permissions|Show the requested permissions and see for what they are being used for.\nGrant additional permissions that are not added on first start (Android 6.0+)."</string>
 <string name="preferences_HideLauncherIcon">"Hide app in launcher|Hides the app icon in the launcher, it can take up to a reboot to hide the icon.\nThis settings screen will only be accessible via the Xposed Installer then."</string>
 <string name="preferences_DeepXposedLogging">"Deep Xposed logging|Enable advanced Xposed logging, after enabling reboot to see changes."</string>
@@ -443,5 +443,6 @@
     <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Access notification policy"</string>
     <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Required on Nougat(7.0) and above to change the 'Do Not Disturb' mode."</string>
     <string name="powerMenuMain_Shortcut">Shortcut</string>
+    <string name="visibilityOrder_NoGravityBoxFound">GravityBox could not be located, this item will have no effect without GravityBox being installed.</string>
 
 </resources>

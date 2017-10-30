@@ -72,8 +72,6 @@ public class PreferencesAdvancedFragment extends Fragment {
     TextView TextView_BlurRadius;
     float Float_BlurRadius;
 
-    LinearLayout LinearLayout_DialogGravity;
-
     LinearLayout LinearLayout_Confirmation;
     TextView TextView_ConfirmationTitle;
     TextView TextView_ConfirmationDesc;
@@ -935,19 +933,6 @@ public class PreferencesAdvancedFragment extends Fragment {
                 boolean_UseGraphics = !boolean_UseGraphics;
                 MainActivity.preferences.edit().putBoolean(PreferenceNames.pUseGraphics, boolean_UseGraphics).apply();
                 Switch_UseGraphics.setChecked(boolean_UseGraphics);
-            }
-        });
-
-        LinearLayout_DialogGravity = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_DialogGravity);
-
-        LinearLayout_DialogGravity.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                //GravityChooserDialog gcd = new GravityChooserDialog();
-                MainActivity.changePrefPage(new GravityChooserDialog(), false);
-                //gcd.setStyle(gcd.STYLE_NO_FRAME,R.style.TransparentApp);
-                //gcd.show(MainActivity.fragmentManager,"gravity_chooser");
             }
         });
 

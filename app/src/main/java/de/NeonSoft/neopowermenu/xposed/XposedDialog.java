@@ -66,6 +66,8 @@ public class XposedDialog extends DialogFragment {
 
     private XposedMainActivity menuHost;
 
+    private View PowerDialog;
+
     public XposedDialog() {
 
     }
@@ -89,8 +91,6 @@ public class XposedDialog extends DialogFragment {
     String sStyleName;
     float mGraphicsPadding = 0;
     boolean mColorizeNonStockIcons = false;
-    ImageLoader mImageLoader;
-    boolean mImageLoaderLoaded = false;
     boolean mDeepXposedLogging = false;
 
     boolean RequireConfirmation = false;
@@ -109,6 +109,7 @@ public class XposedDialog extends DialogFragment {
     private Runnable hidePasswordErrorRunnable;
 
     LinearLayout dialogMain;
+    LinearLayout dialogPadding;
     FrameLayout dialogContent;
     LinearLayout ListContainer;
     LinearLayout ListContainer2;
@@ -150,10 +151,16 @@ public class XposedDialog extends DialogFragment {
 
     public boolean canDismiss = true;
 
+    /*
     boolean boolean_DialogGravityTop = false;
     boolean boolean_DialogGravityLeft = false;
     boolean boolean_DialogGravityRight = false;
     boolean boolean_DialogGravityBottom = false;
+    */
+
+    int int_Vertical = 0;
+    int int_Horizontal = 0;
+    Object[] DisplaySize;
 
     AudioManager am;
     public static int amRingerMode;
@@ -196,8 +203,6 @@ public class XposedDialog extends DialogFragment {
                              Bundle savedInstanceState) {
 
         mContext = getActivity();
-
-        initImageLoader();
 
         pm = mContext.getPackageManager();
         mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
@@ -249,7 +254,7 @@ public class XposedDialog extends DialogFragment {
             rotate = Settings.System.getInt(mContext.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION);
         } catch (Throwable e) {
         }
-        View view = inflater.inflate(R.layout.fragment_power, container, false);
+        PowerDialog = inflater.inflate(R.layout.fragment_power, container, false);
 
 
         am = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
@@ -270,12 +275,23 @@ public class XposedDialog extends DialogFragment {
         RequireConfirmation = preferences.getBoolean("RequireConfirmation", false);
         UseRootCommands = preferences.getBoolean("UseRoot", true);
 
-        boolean_DialogGravityTop = preferences.getBoolean("DialogGravityTop", false);
-        boolean_DialogGravityLeft = preferences.getBoolean("DialogGravityLeft", false);
-        boolean_DialogGravityRight = preferences.getBoolean("DialogGravityRight", false);
-        boolean_DialogGravityBottom = preferences.getBoolean("DialogGravityBottom", false);
+        //boolean_DialogGravityTop = preferences.getBoolean("DialogGravityTop", false);
+        //boolean_DialogGravityLeft = preferences.getBoolean("DialogGravityLeft", false);
+        //boolean_DialogGravityRight = preferences.getBoolean("DialogGravityRight", false);
+        //boolean_DialogGravityBottom = preferences.getBoolean("DialogGravityBottom", false);
 
-        int gravity = 0;
+        int_Vertical = preferences.getInt("DialogPosition_Vertical",25);
+        int_Horizontal = preferences.getInt("DialogPosition_Horizontal",25);
+        DisplaySize = helper.getDisplaySize(mContext, false);
+
+        if (!helper.isDeviceHorizontal(mContext)) {
+            DisplaySize[1] = (int) DisplaySize[1] - helper.getNavigationBarSize(mContext).y - helper.getStatusBarHeight(mContext);
+        } else {
+            DisplaySize[0] = (int) DisplaySize[0] - helper.getNavigationBarSize(mContext).x;
+            DisplaySize[1] = (int) DisplaySize[1] - helper.getStatusBarHeight(mContext);
+        }
+
+        /*int gravity = 0;
         if (boolean_DialogGravityTop) {
             gravity |= Gravity.TOP;
         } else if (boolean_DialogGravityBottom) {
@@ -289,27 +305,29 @@ public class XposedDialog extends DialogFragment {
             gravity |= Gravity.RIGHT;
         } else {
             gravity |= Gravity.CENTER_HORIZONTAL;
-        }
-        dialogMain = (LinearLayout) view.findViewById(R.id.fragmentpowerFrameLayout_Main);
+        }*/
+        dialogMain = (LinearLayout) PowerDialog.findViewById(R.id.fragmentpowerFrameLayout_Main);
 
-        dialogContent = (FrameLayout) view.findViewById(R.id.fragmentpowerFrameLayout1);
+        dialogPadding = (LinearLayout) PowerDialog.findViewById(R.id.fragmentpowerPadding);
 
-        revealView = (CircularRevealView) view.findViewById(R.id.reveal);
+        dialogContent = (FrameLayout) PowerDialog.findViewById(R.id.fragmentpowerFrameLayout1);
+
+        revealView = (CircularRevealView) PowerDialog.findViewById(R.id.reveal);
         backgroundColor = Color.parseColor(colorPrefs.getString("Dialog_Backgroundcolor", "#ffffff"));
-        ListContainer = (LinearLayout) view.findViewById(R.id.ListContainer);
+        ListContainer = (LinearLayout) PowerDialog.findViewById(R.id.ListContainer);
 
-        frame = (FrameLayout) view.findViewById(R.id.frame);
+        frame = (FrameLayout) PowerDialog.findViewById(R.id.frame);
         dialogContent.setBackgroundColor(backgroundColor);
-        frameLinear = (LinearLayout) view.findViewById(R.id.frameLinear);
-        frame2 = (FrameLayout) view.findViewById(R.id.frame2);
+        frameLinear = (LinearLayout) PowerDialog.findViewById(R.id.frameLinear);
+        frame2 = (FrameLayout) PowerDialog.findViewById(R.id.frame2);
         frame2.setVisibility(View.GONE);
-        frame2Linear = (LinearLayout) view.findViewById(R.id.frame2Linear);
-        frame3 = (FrameLayout) view.findViewById(R.id.frame3);
+        frame2Linear = (LinearLayout) PowerDialog.findViewById(R.id.frame2Linear);
+        frame3 = (FrameLayout) PowerDialog.findViewById(R.id.frame3);
         frame3.setVisibility(View.GONE);
-        frame3Linear = (LinearLayout) view.findViewById(R.id.frame3Linear);
-        ListContainer2 = (LinearLayout) view.findViewById(R.id.ListContainer2);
+        frame3Linear = (LinearLayout) PowerDialog.findViewById(R.id.frame3Linear);
+        ListContainer2 = (LinearLayout) PowerDialog.findViewById(R.id.ListContainer2);
 
-        frameConfirm = (FrameLayout) view.findViewById(R.id.frameConfirm);
+        frameConfirm = (FrameLayout) PowerDialog.findViewById(R.id.frameConfirm);
         frameConfirm.setVisibility(View.GONE);
         frameConfirm.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -317,15 +335,15 @@ public class XposedDialog extends DialogFragment {
                 return true;
             }
         });
-        frameConfirmLinear = (LinearLayout) view.findViewById(R.id.frameConfirmLinear);
-        confirmAction = (TextView) view.findViewById(R.id.fragmentpowerTextView_ConfirmAction);
+        frameConfirmLinear = (LinearLayout) PowerDialog.findViewById(R.id.frameConfirmLinear);
+        confirmAction = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_ConfirmAction);
         confirmAction.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
-        confirmNo = (TextView) view.findViewById(R.id.fragmentpowerTextView_ConfirmNo);
+        confirmNo = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_ConfirmNo);
         confirmNo.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
-        confirmYes = (TextView) view.findViewById(R.id.fragmentpowerTextView_ConfirmYes);
+        confirmYes = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_ConfirmYes);
         confirmYes.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
 
-        frameEnterPassword = (FrameLayout) view.findViewById(R.id.frameEnterPassword);
+        frameEnterPassword = (FrameLayout) PowerDialog.findViewById(R.id.frameEnterPassword);
         frameEnterPassword.setVisibility(View.GONE);
         frameEnterPassword.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -333,19 +351,19 @@ public class XposedDialog extends DialogFragment {
                 return true;
             }
         });
-        frameEnterPasswordLinear = (LinearLayout) view.findViewById(R.id.frameEnterPasswordLinear);
-        EnterPasswordAction = (TextView) view.findViewById(R.id.fragmentpowerTextView_EnterPasswordAction);
+        frameEnterPasswordLinear = (LinearLayout) PowerDialog.findViewById(R.id.frameEnterPasswordLinear);
+        EnterPasswordAction = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_EnterPasswordAction);
         EnterPasswordAction.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
-        EnterPasswordCancel = (TextView) view.findViewById(R.id.fragmentpowerTextView_EnterPasswordCancel);
-        EnterPasswordFingerprint = (ImageView) view.findViewById(R.id.fragmentpowerImageView_EnterPasswordFingerPrint);
+        EnterPasswordCancel = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_EnterPasswordCancel);
+        EnterPasswordFingerprint = (ImageView) PowerDialog.findViewById(R.id.fragmentpowerImageView_EnterPasswordFingerPrint);
         EnterPasswordFingerprint.setColorFilter(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")), PorterDuff.Mode.MULTIPLY);
-        EnterPasswordInput = (EditText) view.findViewById(R.id.fragmentpowerEditText_EnterPassword);
-        EnterPasswordError = (TextView) view.findViewById(R.id.fragmentpowerTextView_EnterPasswordError);
+        EnterPasswordInput = (EditText) PowerDialog.findViewById(R.id.fragmentpowerEditText_EnterPassword);
+        EnterPasswordError = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_EnterPasswordError);
         EnterPasswordError.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
         EnterPasswordError.setVisibility(View.GONE);
         EnterPasswordCancel.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
         EnterPasswordCancel.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
-        EnterPasswordOk = (TextView) view.findViewById(R.id.fragmentpowerTextView_EnterPasswordOk);
+        EnterPasswordOk = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_EnterPasswordOk);
         EnterPasswordOk.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
         EnterPasswordOk.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
 
@@ -374,13 +392,14 @@ public class XposedDialog extends DialogFragment {
         } else if (sStyleName.equalsIgnoreCase(getString(R.string.style_MaterialFullHorizontal))) {
             FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
             crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            crparams.height = ((int) helper.convertDpToPixel(150, mContext)) + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+            crparams.height = ((int) helper.convertDpToPixel(150, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
             revealView.setLayoutParams(crparams);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
             params.width = LinearLayout.LayoutParams.MATCH_PARENT;
             dialogContent.setLayoutParams(params);
             FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
             params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            /*
             if (boolean_DialogGravityTop) {
                 params2.topMargin = helper.getStatusBarHeight(mContext);
             }
@@ -394,18 +413,20 @@ public class XposedDialog extends DialogFragment {
                     params2.rightMargin = helper.getNavigationBarSize(mContext).x;
                 }
             }
+            */
             frame.setLayoutParams(params2);
             frame3.setLayoutParams(params2);
         } else {
             FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
-            crparams.width = ((int) helper.convertDpToPixel(340, mContext)) + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
-            crparams.height = ((int) helper.convertDpToPixel(150, mContext)) + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+            crparams.width = ((int) helper.convertDpToPixel(340, mContext));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
+            crparams.height = ((int) helper.convertDpToPixel(150, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
             revealView.setLayoutParams(crparams);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
-            params.width = ((int) helper.convertDpToPixel(340, mContext)) + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
+            params.width = ((int) helper.convertDpToPixel(340, mContext));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
             dialogContent.setLayoutParams(params);
             FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
             params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            /*
             if (boolean_DialogGravityTop) {
                 params2.topMargin = helper.getStatusBarHeight(mContext);
             }
@@ -419,6 +440,7 @@ public class XposedDialog extends DialogFragment {
                     params2.rightMargin = helper.getNavigationBarSize(mContext).x;
                 }
             }
+            */
             frame.setLayoutParams(params2);
             frame3.setLayoutParams(params2);
             //params2.height = (int) helper.convertDpToPixel(150f, mContext);
@@ -434,6 +456,7 @@ public class XposedDialog extends DialogFragment {
         //params3.width = ((int) helper.convertDpToPixel(340, mContext)) + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
         paramsConfirm.height = ((int) helper.convertDpToPixel(150, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
         //paramsEnterPassword.height = ((int) helper.convertDpToPixel(150, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+        /*
         if (boolean_DialogGravityTop || sStyleName.equalsIgnoreCase(getString(R.string.style_MaterialFullscreen))) {
             paramsFrame2.topMargin = helper.getStatusBarHeight(mContext);
             paramsConfirm.topMargin = helper.getStatusBarHeight(mContext);
@@ -453,6 +476,7 @@ public class XposedDialog extends DialogFragment {
                 paramsEnterPassword.rightMargin = helper.getNavigationBarSize(mContext).x;
             }
         }
+        */
         frame2.setLayoutParams(paramsFrame2);
         frameConfirm.setLayoutParams(paramsConfirm);
         frameEnterPassword.setLayoutParams(paramsEnterPassword);
@@ -463,19 +487,19 @@ public class XposedDialog extends DialogFragment {
             dialogContent.setLayoutTransition(lt);
         }
 
-        dialogMain.setGravity(gravity);
-        frameLinear.setGravity(gravity);
+        //dialogMain.setGravity(gravity);
+        //frameLinear.setGravity(gravity);
         frame2Linear.setGravity(Gravity.CENTER);
-        frame3Linear.setGravity(gravity);
-        frameConfirmLinear.setGravity(gravity);
-        frameEnterPasswordLinear.setGravity(gravity);
+        //frame3Linear.setGravity(gravity);
+        //frameConfirmLinear.setGravity(gravity);
+        //frameEnterPasswordLinear.setGravity(gravity);
 
-        status = (TextView) view.findViewById(R.id.status);
-        status_detail = (TextView) view.findViewById(R.id.status_detail);
+        status = (TextView) PowerDialog.findViewById(R.id.status);
+        status_detail = (TextView) PowerDialog.findViewById(R.id.status_detail);
 
-        progressbg = (ImageView) view.findViewById(R.id.progressbg);
+        progressbg = (ImageView) PowerDialog.findViewById(R.id.progressbg);
         progressbg.setVisibility((GraphicBehindProgress ? View.VISIBLE : View.INVISIBLE));
-        progress = (ProgressBar) view.findViewById(R.id.progress);
+        progress = (ProgressBar) PowerDialog.findViewById(R.id.progress);
 
         progress.getIndeterminateDrawable().setColorFilter(
                 Color.parseColor("#ffffff"),
@@ -553,7 +577,35 @@ public class XposedDialog extends DialogFragment {
             dialogMain.setVisibility(View.INVISIBLE);
         }
 
-        return view;
+        ViewTreeObserver vto = dialogContent.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+            @Override
+            public void onGlobalLayout() {
+                setGravity();
+                ViewTreeObserver obs = dialogContent.getViewTreeObserver();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    obs.removeOnGlobalLayoutListener(this);
+                } else {
+                    obs.removeGlobalOnLayoutListener(this);
+                }
+            }
+        });
+
+        dialogPadding.addOnLayoutChangeListener(new OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                int widthWas = oldRight - oldLeft; // right exclusive, left inclusive
+                int heightWas = oldBottom - oldTop; // bottom exclusive, top inclusive
+                if( v.getWidth() != widthWas || v.getHeight() != heightWas )
+                {
+                    setGravity();
+                }
+            }
+        });
+
+        return PowerDialog;
 
     }
 
@@ -1227,7 +1279,7 @@ public class XposedDialog extends DialogFragment {
 
     private void loadImage(final ImageView image, final int id, final String fileName, final String color) {
         if (new File(mContext.getFilesDir().getPath() + "/images/" + fileName + ".png").exists()) {
-            mImageLoader.displayImage("file://" + mContext.getFilesDir().getPath() + "/images/" + fileName + ".png",
+            XposedMainActivity.mImageLoader.displayImage("file://" + mContext.getFilesDir().getPath() + "/images/" + fileName + ".png",
                     image, new SimpleImageLoadingListener() {
                         @Override
                         public void onLoadingStarted(String imageUri, View view) {
@@ -2271,7 +2323,7 @@ public class XposedDialog extends DialogFragment {
         //if(GraphicBehindProgress) loadImage(progressbg, 0, colorPrefs.getString("DialogShutdown_Textcolor", "#ffffff"));
         if (preferences.getString("ProgressDrawable", "Stock").equalsIgnoreCase("file")) {
             if (new File(mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[0][2] + ".png").exists()) {
-                mImageLoader.displayImage("file://" + mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[0][2] + ".png",
+                XposedMainActivity.mImageLoader.displayImage("file://" + mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[0][2] + ".png",
                         progressbg, new SimpleImageLoadingListener() {
                             @Override
                             public void onLoadingStarted(String imageUri, View view) {
@@ -2540,6 +2592,7 @@ public class XposedDialog extends DialogFragment {
     public void onActivityCreated(Bundle arg0) {
         super.onActivityCreated(arg0);
         if (getShowsDialog()) {
+            /*
             int gravity = 0;
             if (boolean_DialogGravityTop) {
                 gravity |= Gravity.TOP;
@@ -2559,6 +2612,39 @@ public class XposedDialog extends DialogFragment {
             //		.getAttributes().windowAnimations = R.style.DialogAnimation;
             getDialog().getWindow()
                     .getAttributes().gravity = gravity;
+            */
+        }
+    }
+
+    private void setGravity() {
+        int left = 0, top = 0, right = 0, bottom = 0;
+        try {
+            bottom = ((int_Vertical * ((int) DisplaySize[1] - dialogContent.getHeight())) / 100);
+            //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
+        } catch (Exception e) {
+            Log.d("NPM:GRAV","Calculation error.", e);
+        }
+        try {
+            right = ((int_Horizontal * ((int) DisplaySize[0] - dialogContent.getWidth())) / 100);
+            //left = ((int) DisplaySize[1] % (int) helper.convertDpToPixel(int_Horizontal, mContext));
+        } catch (Exception e) {
+            Log.d("NPM:GRAV","Calculation error.", e);
+        }
+        dialogPadding.setPadding(left,top,right,bottom);
+        try {
+            if (!helper.isDeviceHorizontal(mContext)) {
+                LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
+                dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
+                dialogContentParams.bottomMargin = helper.getNavigationBarSize(mContext).y;
+                dialogContent.setLayoutParams(dialogContentParams);
+            } else {
+                LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
+                dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
+                dialogContentParams.rightMargin = helper.getNavigationBarSize(mContext).x;
+                dialogContent.setLayoutParams(dialogContentParams);
+            }
+        } catch (Exception e) {
+            Log.e("NPM:GRAV","Failed to set layout params.", e);
         }
     }
 
@@ -2603,34 +2689,6 @@ public class XposedDialog extends DialogFragment {
         } catch (Throwable t) {
             Log.e("NPM:gD", "Error getting data state: ", t);
             return false;
-        }
-    }
-
-    private void initImageLoader() {
-        try {
-            String CACHE_DIR = mContext.getCacheDir().getPath() + "/.temp_tmp";
-            new File(CACHE_DIR).mkdirs();
-
-            DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-                    .cacheOnDisc(true).cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY)
-                    .bitmapConfig(Bitmap.Config.RGB_565).build();
-
-            LruMemoryCache memoryCacheCore = new LruMemoryCache(5 * 1024 * 1024);
-            LimitedAgeMemoryCache memoryCache = new LimitedAgeMemoryCache(memoryCacheCore, 15 * 60);
-            LruDiskCache discCache = new LruDiskCache(new File(CACHE_DIR), new URLFileNameGenerator(), 250 * 1024 * 1024);
-            ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(
-                    mContext)
-                    .defaultDisplayImageOptions(defaultOptions)
-                    .discCache(discCache)
-                    .memoryCache(memoryCache);
-
-            ImageLoaderConfiguration config = builder.build();
-            mImageLoader = ImageLoader.getInstance();
-            mImageLoader.init(config);
-            mImageLoaderLoaded = true;
-            Log.d("ImageLoader", "Loaded!");
-        } catch (Exception e) {
-            Log.e("ImageLoader", "Load failed, code:" + e);
         }
     }
 }

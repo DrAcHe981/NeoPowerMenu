@@ -16,14 +16,14 @@ android {
         abortOnError false
     }
     useLibrary 'org.apache.http.legacy'
-    compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
-        targetSdkVersion 24
-        versionCode 49
-        versionName "1.5.6-3"
+        targetSdkVersion 26
+        versionCode 50
+        versionName "1.5.6-4"
         multiDexEnabled true
         signingConfig signingConfigs.config
     }
@@ -52,14 +52,13 @@ dependencies {
     compile 'cat.ereza:customactivityoncrash:1.5.0'
     compile 'ch.acra:acra:4.9.0'
     compile 'org.apache.commons:commons-lang3:3.0'
-    compile 'org.apache.httpcomponents:httpclient:4.5.2'
     compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-    compile 'com.android.support:support-v4:24.2.1';
+    compile 'com.android.support:support-v4:26.1.0';
     compile 'com.larswerkman:HoloColorPicker:1.5'
     //compile files('lib/XposedBridgeApi-20150213.jar')
 	//compile files('lib/api-82-sources.jar')
-    provided 'de.robv.android.xposed:api:82'
-    compile 'com.android.support:appcompat-v7:24.2.1'
+    provided 'de.robv.android.xposed:api:+'
+    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'eu.chainfire:libsuperuser:1.0.0.+'
     //compile fileTree(include: ['*.jar'], dir: 'deps')
     provided fileTree(include: ['*.jar'], dir: 'syslib')

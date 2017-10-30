@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/window_background_dark">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom|right"
+            android:id="@+id/dialoggravitychooserLinearLayout_ImageHolder">
+
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/activitydialogpositionSeekBar_Horitontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:progress="50"
+            android:rotation="180"
+            android:layout_marginLeft="15dp"/>
+
+        <de.NeonSoft.neopowermenu.helpers.VerticalSeekBar
+            android:id="@+id/activitydialogpositionSeekBar_Vertical"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:progress="50"
+            android:layout_marginTop="20dp"/>
+
+        <ImageView
+            android:id="@+id/activitydialogpositionImageView_Reset"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="3dp"
+            android:src="@drawable/ic_action_trash"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

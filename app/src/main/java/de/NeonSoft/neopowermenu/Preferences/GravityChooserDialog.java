@@ -5,6 +5,7 @@ import android.content.*;
 import android.graphics.*;
 import android.media.*;
 import android.os.*;
+import android.support.annotation.Nullable;
 import android.support.v4.app.*;
 import android.util.*;
 import android.view.*;
@@ -28,6 +29,10 @@ public class GravityChooserDialog extends DialogFragment {
     public static Activity mContext;
 
     LinearLayout LinearLayout_ImageHolder;
+
+    private SeekBar SeekBar_Vertical;
+    private SeekBar SeekBar_Horizontal;
+    private ImageView ImageView_Reset;
 
     boolean boolean_DialogGravityTop = false;
     LinearLayout LinearLayout_DialogGravityTop;
@@ -57,6 +62,11 @@ public class GravityChooserDialog extends DialogFragment {
     public static int amRingerMode;
 
     static float float_padding = 0;
+    int int_Vertical = 0;
+    int int_Horizontal = 0;
+    Object[] DisplaySize;
+
+    View DummyPowerDialog;
 
     @Override
     public View onCreateView(LayoutInflater p1, ViewGroup p2, Bundle p3) {
@@ -68,16 +78,96 @@ public class GravityChooserDialog extends DialogFragment {
 
         float_padding = MainActivity.preferences.getFloat("GraphicsPadding",0);
 
+        DisplaySize = helper.getDisplaySize(mContext, false);
+
+        if (!helper.isDeviceHorizontal(mContext)) {
+            DisplaySize[1] = (int) DisplaySize[1] - helper.getNavigationBarSize(mContext).y - helper.getStatusBarHeight(mContext) - MainActivity.actionBarHolder.getHeight();
+        } else {
+            DisplaySize[0] = (int) DisplaySize[0] - helper.getNavigationBarSize(mContext).x;
+            DisplaySize[1] = (int) DisplaySize[1] - helper.getStatusBarHeight(mContext);
+        }
+
+        int_Vertical = MainActivity.preferences.getInt("DialogPosition_Vertical",50);
+        int_Horizontal = MainActivity.preferences.getInt("DialogPosition_Horizontal",50);
+
         MainActivity.visibleFragment = "Gravity";
+
+        //MainActivity.actionBarHolder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+        //MainActivity.actionBarHolder.setVisibility(View.GONE);
 
         MainActivity.actionbar.setTitle(getString(R.string.advancedPrefsTitle_DialogGravity));
         MainActivity.actionbar.setSubTitle(getString(R.string.advancedPrefsDesc_DialogGravity));
 
-        View InflatedView = p1.inflate(R.layout.dialoggravitychooser, p2, false);
+        View InflatedView = p1.inflate(R.layout.activity_dialogposition, p2, false);
 
         LinearLayout_ImageHolder = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_ImageHolder);
 
-        View DummyPowerDialog = p1.inflate(R.layout.fragment_power, null, false);
+        SeekBar_Vertical = (SeekBar) InflatedView.findViewById(R.id.activitydialogpositionSeekBar_Vertical);
+        SeekBar_Vertical.setMax(100);
+        SeekBar_Vertical.setProgress(int_Vertical);
+
+        SeekBar_Vertical.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int_Vertical = progress;
+                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).apply();
+                changeGravity();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        SeekBar_Horizontal = (SeekBar) InflatedView.findViewById(R.id.activitydialogpositionSeekBar_Horitontal);
+        SeekBar_Horizontal.setMax(100);
+        SeekBar_Horizontal.setProgress(int_Horizontal);
+
+        SeekBar_Horizontal.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int_Horizontal = progress;
+                MainActivity.preferences.edit().putInt("DialogPosition_Horizontal", int_Horizontal).apply();
+                changeGravity();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        ImageView_Reset = (ImageView) InflatedView.findViewById(R.id.activitydialogpositionImageView_Reset);
+        ImageView_Reset.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int_Horizontal = 50;
+                int_Vertical = 50;
+                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).putInt("DialogPosition_Horizontal", int_Horizontal).apply();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    SeekBar_Vertical.setProgress(50,true);
+                    SeekBar_Horizontal.setProgress(50,true);
+                } else {
+                    SeekBar_Vertical.setProgress(50);
+                    SeekBar_Horizontal.setProgress(50);
+                }
+                SeekBar_Vertical.invalidate();
+                changeGravity();
+            }
+        });
+
+        DummyPowerDialog = p1.inflate(R.layout.fragment_power, null, false);
+        FrameLayout Frame = (FrameLayout) DummyPowerDialog.findViewById(R.id.fragmentpowerFrameLayout1);
+        Frame.setPadding(2,2,2,2);
         LinearLayout Main = (LinearLayout) DummyPowerDialog.findViewById(R.id.fragmentpowerFrameLayout_Main);
 
         LinearLayout ListContainer = (LinearLayout) DummyPowerDialog.findViewById(R.id.ListContainer);
@@ -244,130 +334,33 @@ public class GravityChooserDialog extends DialogFragment {
                     root3.startAnimation(anim);
                 }
             }
-            if (inflated != null) ListContainer.addView(inflated);
-
+            ListContainer.addView(inflated);
         }
+
 
         LinearLayout_ImageHolder.addView(DummyPowerDialog);
         LinearLayout.LayoutParams MainParams = new LinearLayout.LayoutParams(Main.getLayoutParams());
-        MainParams.width = (int) helper.getDisplaySize(mContext, true)[0] - (60 * 2);
+        MainParams.width = (int) helper.getDisplaySize(mContext, true)[0] - 200;
         //MainParams.height = (int) helper.convertDpToPixel((float) 250,mContext.getApplicationContext());
         Main.setLayoutParams(MainParams);
 
-        String[] gravitys = getString(R.string.advancedPrefs_DialogGravity).split("\\|");
-
-        boolean_DialogGravityTop = MainActivity.preferences.getBoolean("DialogGravityTop", false);
-        LinearLayout_DialogGravityTop = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityTop);
-        Switch_DialogGravityTop = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityTop);
-        TextView_DialogGravityTop = (TextView) InflatedView.findViewById(R.id.dialoggravitychooserText_DialogGravityTop);
-        Switch_DialogGravityTop.setClickable(false);
-        Switch_DialogGravityTop.setFocusable(false);
-        Switch_DialogGravityTop.setChecked(boolean_DialogGravityTop);
-        TextView_DialogGravityTop.setText(gravitys[0]);
-
-        boolean_DialogGravityLeft = MainActivity.preferences.getBoolean("DialogGravityLeft", false);
-        LinearLayout_DialogGravityLeft = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityLeft);
-        Switch_DialogGravityLeft = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityLeft);
-        TextView_DialogGravityLeft = (TextView) InflatedView.findViewById(R.id.dialoggravitychooserText_DialogGravityLeft);
-        Switch_DialogGravityLeft.setClickable(false);
-        Switch_DialogGravityLeft.setFocusable(false);
-        Switch_DialogGravityLeft.setChecked(boolean_DialogGravityLeft);
-        TextView_DialogGravityLeft.setText(gravitys[1]);
-
-        //boolean_DialogGravityCenter = MainActivity.preferences.getBoolean("DialogGravityCenter",false);
-        //LinearLayout_DialogGravityCenter = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityCenter);
-        //Switch_DialogGravityCenter = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityCenter);
-        //Switch_DialogGravityCenter.setClickable(false);
-        //Switch_DialogGravityCenter.setFocusable(false);
-        //Switch_DialogGravityCenter.setChecked(boolean_DialogGravityCenter);
-
-        boolean_DialogGravityRight = MainActivity.preferences.getBoolean("DialogGravityRight", false);
-        LinearLayout_DialogGravityRight = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityRight);
-        Switch_DialogGravityRight = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityRight);
-        TextView_DialogGravityRight = (TextView) InflatedView.findViewById(R.id.dialoggravitychooserText_DialogGravityRight);
-        Switch_DialogGravityRight.setClickable(false);
-        Switch_DialogGravityRight.setFocusable(false);
-        Switch_DialogGravityRight.setChecked(boolean_DialogGravityRight);
-        TextView_DialogGravityRight.setText(gravitys[2]);
-
-        boolean_DialogGravityBottom = MainActivity.preferences.getBoolean("DialogGravityBottom", false);
-        LinearLayout_DialogGravityBottom = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_DialogGravityBottom);
-        Switch_DialogGravityBottom = (Switch) InflatedView.findViewById(R.id.dialoggravitychooserSwitch_DialogGravityBottom);
-        TextView_DialogGravityBottom = (TextView) InflatedView.findViewById(R.id.dialoggravitychooserText_DialogGravityBottom);
-        Switch_DialogGravityBottom.setClickable(false);
-        Switch_DialogGravityBottom.setFocusable(false);
-        Switch_DialogGravityBottom.setChecked(boolean_DialogGravityBottom);
-        TextView_DialogGravityBottom.setText(gravitys[3]);
-
-        LinearLayout_DialogGravityTop.setOnClickListener(new OnClickListener() {
+        ViewTreeObserver vto = DummyPowerDialog.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
             @Override
-            public void onClick(View p1) {
-                boolean_DialogGravityTop = !boolean_DialogGravityTop;
-                Switch_DialogGravityTop.setChecked(boolean_DialogGravityTop);
-                if (boolean_DialogGravityTop) {
-                    boolean_DialogGravityBottom = false;
-                    Switch_DialogGravityBottom.setChecked(boolean_DialogGravityBottom);
-                    MainActivity.preferences.edit().putBoolean("DialogGravityBottom", boolean_DialogGravityBottom).apply();
-                }
-                MainActivity.preferences.edit().putBoolean("DialogGravityTop", boolean_DialogGravityTop).apply();
+            public void onGlobalLayout() {
                 changeGravity();
+                ViewTreeObserver obs = DummyPowerDialog.getViewTreeObserver();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    obs.removeOnGlobalLayoutListener(this);
+                } else {
+                    obs.removeGlobalOnLayoutListener(this);
+                }
             }
         });
-
-        LinearLayout_DialogGravityLeft.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                boolean_DialogGravityLeft = !boolean_DialogGravityLeft;
-                Switch_DialogGravityLeft.setChecked(boolean_DialogGravityLeft);
-                if (boolean_DialogGravityLeft) {
-                    boolean_DialogGravityRight = false;
-                    Switch_DialogGravityRight.setChecked(boolean_DialogGravityRight);
-                    MainActivity.preferences.edit().putBoolean("DialogGravityRight", boolean_DialogGravityRight).apply();
-                }
-                MainActivity.preferences.edit().putBoolean("DialogGravityLeft", boolean_DialogGravityLeft).apply();
-                changeGravity();
-            }
-        });
-
-        LinearLayout_DialogGravityRight.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                boolean_DialogGravityRight = !boolean_DialogGravityRight;
-                Switch_DialogGravityRight.setChecked(boolean_DialogGravityRight);
-                if (boolean_DialogGravityRight) {
-                    boolean_DialogGravityLeft = false;
-                    Switch_DialogGravityLeft.setChecked(boolean_DialogGravityLeft);
-                    MainActivity.preferences.edit().putBoolean("DialogGravityLeft", boolean_DialogGravityLeft).apply();
-                }
-                MainActivity.preferences.edit().putBoolean("DialogGravityRight", boolean_DialogGravityRight).apply();
-                changeGravity();
-            }
-        });
-
-        LinearLayout_DialogGravityBottom.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                boolean_DialogGravityBottom = !boolean_DialogGravityBottom;
-                Switch_DialogGravityBottom.setChecked(boolean_DialogGravityBottom);
-                if (boolean_DialogGravityBottom) {
-                    boolean_DialogGravityTop = false;
-                    Switch_DialogGravityTop.setChecked(boolean_DialogGravityTop);
-                    MainActivity.preferences.edit().putBoolean("DialogGravityTop", boolean_DialogGravityTop).apply();
-                }
-                MainActivity.preferences.edit().putBoolean("DialogGravityBottom", boolean_DialogGravityBottom).apply();
-                changeGravity();
-            }
-        });
-
-        changeGravity();
-
         return InflatedView;
     }
-
 
     public void createCircleIcon(ImageView background, final ImageView foreground, String text, String color1, String color2) {
         try {
@@ -410,7 +403,7 @@ public class GravityChooserDialog extends DialogFragment {
                             image.setColorFilter(Color.parseColor("#ffffff"),
                                     android.graphics.PorterDuff.Mode.DST);
                             if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, true));
+                                //image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, true));
                             }
                             image.setVisibility(View.INVISIBLE);
                             super.onLoadingStarted(imageUri, view);
@@ -426,7 +419,7 @@ public class GravityChooserDialog extends DialogFragment {
                             }
                             image.setVisibility(View.VISIBLE);
                             if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, false));
+                                //image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, false));
                             }
                         }
 
@@ -438,7 +431,7 @@ public class GravityChooserDialog extends DialogFragment {
                                     android.graphics.PorterDuff.Mode.SRC_IN);
                             image.setVisibility(View.VISIBLE);
                             if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, false));
+                                //image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, false));
                             }
                         }
                     });
@@ -448,11 +441,12 @@ public class GravityChooserDialog extends DialogFragment {
             image.setColorFilter(Color.parseColor(color),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             image.setVisibility(View.VISIBLE);
-            image.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+            //image.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
         }
     }
 
     void changeGravity() {
+        /*
         int gravity = 0;
         if (boolean_DialogGravityTop) {
             gravity |= Gravity.TOP;
@@ -469,6 +463,21 @@ public class GravityChooserDialog extends DialogFragment {
             gravity |= Gravity.CENTER_HORIZONTAL;
         }
         LinearLayout_ImageHolder.setGravity(gravity);
+        */
+        int left = 0, top = 0,right = 0,bottom = 0;
+        try {
+            bottom = ((int_Vertical * ((int) DisplaySize[1] - DummyPowerDialog.getHeight())) / SeekBar_Vertical.getMax());
+            //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
+        } catch (Exception e) {
+            Log.d("NPM:GRAV","Calculation error.", e);
+        }
+        try {
+            right = ((int_Horizontal * ((int) DisplaySize[0] - DummyPowerDialog.getWidth())) / SeekBar_Horizontal.getMax());
+            //left = ((int) DisplaySize[1] % (int) helper.convertDpToPixel(int_Horizontal, mContext));
+        } catch (Exception e) {
+            Log.d("NPM:GRAV","Calculation error.", e);
+        }
+        LinearLayout_ImageHolder.setPadding(left,top,right,bottom);
     }
 
     @Override

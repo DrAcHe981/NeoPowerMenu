@@ -92,7 +92,7 @@ public class PreferencesGraphicsFragment extends Fragment {
 
         mContext = getActivity();
 
-        float_padding = MainActivity.preferences.getFloat("GraphicsPadding", 20);
+        float_padding = MainActivity.preferences.getFloat("GraphicsPadding", 0);
 
         View InflatedView = inflater.inflate(R.layout.activity_graphics, container, false);
 

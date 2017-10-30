@@ -4,15 +4,19 @@
     android:id="@+id/fragmentpowerFrameLayout_Main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="bottom|right">
+
+    <LinearLayout
+        android:id="@+id/fragmentpowerPadding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <FrameLayout
         android:id="@+id/fragmentpowerFrameLayout1"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|center_vertical|center_horizontal"
         android:foregroundGravity="center|center_vertical|center_horizontal"
-        android:background="#ff0000">
+        android:background="@drawable/accentframe">
 
         <FrameLayout
             android:id="@+id/frame"
@@ -95,6 +99,7 @@
             android:id="@+id/frameConfirm"
             android:layout_width="340dp"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_gravity="center|center_vertical|center_horizontal"
             android:visibility="gone">
 
@@ -153,6 +158,7 @@
             android:id="@+id/frameEnterPassword"
             android:layout_width="340dp"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:layout_gravity="center|center_vertical|center_horizontal"
             android:visibility="visible">
 
@@ -178,7 +184,7 @@
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     android:src="@drawable/fingerprint_white_192x192"
-                    android:visibility="gone"/>
+                    android:visibility="visible"/>
 
                 <TextView
                     android:id="@+id/fragmentpowerTextView_EnterPasswordError"
@@ -307,6 +313,8 @@
         </FrameLayout>
 
     </FrameLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
 

@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     public static String versionName = "v1.0";
     public static int versionCode = -1;
 
-    LinearLayout actionBarHolder;
+    public static LinearLayout actionBarHolder;
 
     public static actionBar actionbar;
 
@@ -196,6 +196,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View p1) {
                 //actionbar.hideButton();
+                if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
+                    if (!saveSortingIsSaving) {
+                        helper.startAsyncTask(new saveSorting());
+                    }
+                }
                 launchPowerMenu();
             }
         };
@@ -239,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
             if (!saveSortingIsSaving) {
                 helper.startAsyncTask(new saveSorting());
+                changePrefPage(new PreferencesPartFragment(), false);
             }
         } else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
             for (int i = 0; i < PreferencesPresetsFragment.OnlinePresets.size(); i++) {
@@ -258,9 +264,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else if (visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && (LoginFragment.loginFragmentMode.equalsIgnoreCase("register") || LoginFragment.loginFragmentMode.equalsIgnoreCase("recover"))) {
             LoginFragment.returnToLogin();
-        } else if (visibleFragment.equalsIgnoreCase("Gravity")) {
-            changePrefPage(new PreferencesAdvancedFragment(), false);
-        } else if (visibleFragment.equalsIgnoreCase("BackupRestore") || visibleFragment.equalsIgnoreCase("tour") || visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login") || visibleFragment.equalsIgnoreCase("permissions") || visibleFragment.equalsIgnoreCase("Advanced") || visibleFragment.equalsIgnoreCase("CustomColors") || visibleFragment.equalsIgnoreCase("Graphics") || visibleFragment.equalsIgnoreCase("Animations")) {
+        } else if (visibleFragment.equalsIgnoreCase("Gravity") || visibleFragment.equalsIgnoreCase("BackupRestore") || visibleFragment.equalsIgnoreCase("tour") || visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login") || visibleFragment.equalsIgnoreCase("permissions") || visibleFragment.equalsIgnoreCase("Advanced") || visibleFragment.equalsIgnoreCase("CustomColors") || visibleFragment.equalsIgnoreCase("Graphics") || visibleFragment.equalsIgnoreCase("Animations")) {
             if (visibleFragment.equalsIgnoreCase("tour")) {
                 if (tourFragment.pager.getCurrentItem() == 0) {
                     tourFragment.finishTour();
@@ -268,6 +272,8 @@ public class MainActivity extends AppCompatActivity {
                     tourFragment.pager.setCurrentItem(tourFragment.pager.getCurrentItem() - 1, true);
                 }
             } else {
+                //actionBarHolder.setVisibility(View.VISIBLE);
+                //actionBarHolder.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in));
                 changePrefPage(new PreferencesPartFragment(), false);
                 if (visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login")) {
                     actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
@@ -381,7 +387,7 @@ public class MainActivity extends AppCompatActivity {
             PreferencesVisibilityOrderFragment.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
             PreferencesVisibilityOrderFragment.LinearLayout_Progress.setVisibility(View.GONE);
             actionbar.setButton(context.getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
-            changePrefPage(new PreferencesPartFragment(), true);
+            //changePrefPage(new PreferencesPartFragment(), true);
         }
 
     }

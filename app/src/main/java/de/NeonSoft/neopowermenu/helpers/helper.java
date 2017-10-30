@@ -2,6 +2,7 @@ package de.NeonSoft.neopowermenu.helpers;
 
 import android.annotation.SuppressLint;
 import android.content.*;
+import android.content.pm.PackageManager;
 import android.content.res.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
@@ -43,6 +44,16 @@ public class helper {
             view.setBackground(d);
         } else {
             view.setBackgroundDrawable(d);
+        }
+    }
+
+    public static boolean isAppInstalled(Context context, String appUri) {
+        try {
+            PackageManager pm = context.getPackageManager();
+            pm.getPackageInfo(appUri, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 

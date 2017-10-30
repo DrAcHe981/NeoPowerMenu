@@ -39,16 +39,6 @@ public class XposedUtils
 
         return new Point(l1[0], l1[1]);
     }
-		
-    public static boolean isAppInstalled(Context context, String appUri) {
-        try {
-            PackageManager pm = context.getPackageManager();
-            pm.getPackageInfo(appUri, PackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
     public static boolean hasFlash(Context con) {
         if (mHasFlash != null) return mHasFlash;
@@ -117,6 +107,11 @@ public class XposedUtils
 								context.getString(R.string.powerMenuBottom_Recovery));
 				} catch (Throwable t) { /* ignore */ }
 		}
+
+    public static boolean isParanoidRom() {
+        return (Build.DISPLAY != null && Build.DISPLAY.startsWith("pa_"));
+    }
+
 
     public static void performSoftReboot() {
     }
