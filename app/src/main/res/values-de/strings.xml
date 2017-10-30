@@ -10,6 +10,8 @@
   <string name="powerMenuMain_SoftRebootDesc">"Startet die Android UI neu, indem der Zygote-Prozess gestoppt wird"</string>
   <string name="powerMenuMain_Screenshot">"Bildschirmfoto"</string>
   <string name="powerMenuMain_ScreenshotDesc">"Bildschirmfoto-Verzögerung: [SCREENSHOTDELAY]"</string>
+  <string name="powerMenuBottom_Recovery">"Recovery"</string>
+  <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
   <string name="powerMenuBottom_SafeMode">"Abgesicherter Modus"</string>
   <string name="powerMenu_Shuttingdown">"Wird heruntergefahren..."</string>
   <string name="powerMenu_Rebooting">"Wird neugestartet..."</string>
@@ -20,7 +22,9 @@
   <string name="ToggleRotateMode_Auto">"Automatisch"</string>
   <string name="ToggleRotateMode_Off">"Deaktiviert"</string>
   <string name="powerMenuMain_ToggleWifi">"Wlan"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Mobile Daten"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
   <string name="category_Preset">"Voreinstellungen"</string>
@@ -52,6 +56,7 @@
   <string name="ColorPicker_Value">"Wert:"</string>
   <string name="ColorPicker_Saturation">"Sättigung:"</string>
   <string name="ColorPicker_Opacity">"Transparenz:"</string>
+  <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"[PRESETNAME] wurde gelöscht!"</string>
   <string name="presetLoad_PresetLoaded">"[PRESETNAME] wurde geladen!"</string>
   <string name="presetSaveDialog_CreatorNameInfo">"Diese Voreinstellung wurde erstellt von:"</string>
@@ -101,16 +106,19 @@
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Benötigt, um bei der Bildschirmaufzeichnung Ton mit aufzuzeichnen."</string>
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"System Warnungs Fenster"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Benötigt, um das Ausschalt Menü über allem anderen anzuzeigen."</string>
+  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Benötigt, um zu verhindern, dass der Taschenlampen-Service und der Bildschirmaufnahmen-Service beendet werden."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Auf Wlan Status zugreifen"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Benötigt um den aktuellen Wlan Status auszulesen."</string>
   <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Wlan Status ändern"</string>
   <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Benötigt um das Wlan ein/auszuschalten."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Benötigt um den aktuellen Bluetooth Status auszulesen."</string>
   <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Administration"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Benötigt um das Bluetooth ohne einen Dialog ein/auszuschalten."</string>
   <string name="powerMenuMain_SoundMode">"Sound Modus"</string>
   <string name="powerMenuMain_SoundModeDesc">"Aktueller Modus: [SOUNDMODE]"</string>
+  <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibrieren"</string>
   <string name="SoundMode_Silent">"Lautlos"</string>
   <!-- Preferences: Preset Manager -->
@@ -123,6 +131,7 @@
   <string name="presetsManager_DownloadFailed">"Runterladen fehlgeschlagen!"</string>
   <string name="presetsManager_CantConnecttoServer">"Es kann keine Verbindung zum Server hergestellt werden! \nBitte überprüfe deine Verbindung oder versuchen es später erneut."</string>
   <string name="presetsManager_CantConnecttoDB">"Es kann keine Verbindung zur Datenbank hergestellt werden! \nBitte versuch es später erneut, wenn sich nichts ändert: Melde dies bitte dem Entwickler."</string>
+  <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Wird benötigt, um Voreinstellungen vom öffentlichen Server runter oder hochzuladen."</string>
   <!-- Login page -->
   <string name="login_Title">"Anmelden"</string>
@@ -130,6 +139,7 @@
   <string name="login_Info">"Die Namen von Registrierten Nutzern sind geschützt, damit keiner unter dem Namen hochladen kann, hier kannst du dich anmelden oder ein Konto erstellen.\nDies wird nicht benötigt, wenn du nicht möchtest!\nIch werde niemals irgendwelche privaten Daten teilen!"</string>
   <string name="login_UsernameEmail">"Nutzername oder E-mail:"</string>
   <string name="login_Username">"Nutzername:"</string>
+  <string name="login_Email">"E-mail:"</string>
   <string name="login_RetypeEmail">"E-mail wiederholen:"</string>
   <string name="login_PasswordOverEmail">"Sie können Ihr Passwort über den Link in der Aktivierungs E-mail festlegen, (die E-mail ist nur in englischer Sprache verfügbar)."</string>
   <string name="login_Password">"Passwort:"</string>
@@ -154,8 +164,10 @@
   <string name="colorsPartDescDialog">"Die Farben des Dialogs wenn auf [BUTTON] geklickt wurde."</string>
   <string name="colorsPartDescButton">"Die Farben des [BUTTON] Knopfes."</string>
   <string name="colorsPartPresets">"Voreinstellungen"</string>
+  <string name="colorsPartReveal">"Reveal"</string>
   <string name="colorsPartRevealDesc">"Die Farbe der Reveal Animation."</string>
   <string name="colorsPartRevealDesc1">"Die Farbe der Reveal Animation wenn auf eine Neustarten/Ausschalten Option geklickt wurde."</string>
+  <string name="colorsPartMain">"Dialog"</string>
   <string name="presetsManager_Refresh">"Aktualisieren"</string>
   <string name="presetsManager_OrderBy">"Sortieren nach"</string>
   <string name="presetsManager_OrderNames">"Name|Zeit|Sterne|Ersteller|Eigene"</string>
@@ -227,6 +239,7 @@
   <string name="advancedPrefs_HideOnClickDesc">"Das Menü schließen wenn auf einen Schalter geklickt wurde."</string>
   <string name="advancedPrefs_LoadAppIcons">"App-Symbole laden"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"App-Symbole für Verknüpfungs knöpfe laden."</string>
+  <string name="style_Material">Material</string>
   <string name="style_MaterialFullscreen">Material (Vollbild)</string>
   <string name="style_MaterialFullHorizontal">Material (volle horizontale)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Experimentelle PhoneWindowManager hooks</string>
@@ -400,4 +413,6 @@
   <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Erforderlich, um den Fingerabdruck Scanner zum Element entsperren zu nutzen."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Auf Benachrichtigungen zugreifen"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Erforderlich, um auf Nougat(7.0) und höher den \"Bitte nicht stören\" Modus zu ändern."</string>
+  <string name="powerMenuMain_Shortcut">Verknüpfung</string>
+  <string name="visibilityOrder_NoGravityBoxFound">GravityBox konnte nicht gefunden werden, dieses Element funktioniert nicht wenn GravityBox nicht installiert ist.</string>
 </resources>
