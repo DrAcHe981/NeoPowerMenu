@@ -34,8 +34,8 @@
   <string name="presetsManager_TitleOnline">"Predefinições Online"</string>
   <string name="presetsManager_Creator">"Criador: [CREATORNAME]"</string>
   <string name="presetsManager_BuiltIn">"Embutida"</string>
-  <string name="presetsManager_SureToDelete">"\"Tem certeza que quer apagar [PRESETNAME]?
-Isso não pode ser desfeito!\""</string>
+  <string name="presetsManager_SureToDelete">"\"\"Tem certeza que quer apagar [PRESETNAME]?
+Isso não pode ser desfeito!\"\""</string>
   <string name="presetsManager_ImportMsg">"Gostaria de importar esta predefinição?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] foi importada com sucesso."</string>
   <string name="presetsManager_ImportFailed">"Importação falhou..."</string>
@@ -118,33 +118,33 @@ Isso não pode ser desfeito!\""</string>
   <string name="SoundMode_Silent">"Silencioso"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Conta"</string>
-  <string name="presetsManager_UploadMsg">"\"Esta predefinição será enviada para o servidor público, visível para todos os usuários.
+  <string name="presetsManager_UploadMsg">"\"\"Esta predefinição será enviada para o servidor público, visível para todos os usuários.
 
-Essa é a última chance de ajustar o nome ou o criador antes de enviar...\""</string>
+Essa é a última chance de ajustar o nome ou o criador antes de enviar...\"\""</string>
   <string name="presetsManager_UploadComplete">"Envio completo!"</string>
   <string name="presetsManager_UploadFailedSameName">"Esse nome já está em uso, por favor escolha outro."</string>
   <string name="presetsManager_UploadFailedNoAccess">"Esse nome de criador está protegido, escolha outro ou logue-se."</string>
   <string name="presetsManager_UploadFailed">"Falha no envio!"</string>
   <string name="presetsManager_DownloadFailed">"Falha ao baixar!"</string>
-  <string name="presetsManager_CantConnecttoServer">"\"Não é possível conectar-se ao servidor!
-Por favor cheque sua conexão com a internet ou tente novamente mais tarde.\""</string>
-  <string name="presetsManager_CantConnecttoDB">"\"Não é possível conectar ao banco de dados!
-Por favor, tente novamente mais tarde, se nada mudar: por favor informe ao desenvolvedor.\""</string>
+  <string name="presetsManager_CantConnecttoServer">"\"\"Não é possível conectar-se ao servidor!
+Por favor cheque sua conexão com a internet ou tente novamente mais tarde.\"\""</string>
+  <string name="presetsManager_CantConnecttoDB">"\"\"Não é possível conectar ao banco de dados!
+Por favor, tente novamente mais tarde, se nada mudar: por favor informe ao desenvolvedor.\"\""</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Necessário para baixar ou enviar predefinições do servidor público."</string>
   <!-- Login page -->
   <string name="login_Title">"Entrar"</string>
   <string name="login_TitleRegister">"Registrar"</string>
-  <string name="login_Info">"\"Os nomes de usuários registrados são protegidos de modo que ninguém pode fazer o envios com eles, aqui você pode fazer login ou criar uma conta nova.
+  <string name="login_Info">"\"\"Os nomes de usuários registrados são protegidos de modo que ninguém pode fazer o envios com eles, aqui você pode fazer login ou criar uma conta nova.
 Isso não é necessário se você não quiser!
-Nunca compartilharemos quaisquer dados privados!\""</string>
+Nunca compartilharemos quaisquer dados privados!\"\""</string>
   <string name="login_UsernameEmail">"Usuário ou E-mail:"</string>
   <string name="login_Username">"Usuário:"</string>
   <string name="login_RetypeEmail">"Redigite o e-mail:"</string>
   <string name="login_PasswordOverEmail">"Você pode definir sua senha sobre o link no e-mail de ativação (O e-mail só estará disponível em inglês)."</string>
   <string name="login_Password">"Senha:"</string>
   <string name="login_KeepLogin">"Manter-me logado."</string>
-  <string name="login_Register">"\"Precisa de uma conta?
-Clique aqui para criar uma nova!\""</string>
+  <string name="login_Register">"\"\"Precisa de uma conta?
+Clique aqui para criar uma nova!\"\""</string>
   <string name="login_LoggedIn">"Logado!"</string>
   <string name="login_LoginFailedWithReason">"Falha ao entrar:"</string>
   <string name="login_LoginFailedWrongData">"Falha ao entrar, e-mail ou senha estão errados!"</string>
@@ -152,13 +152,13 @@ Clique aqui para criar uma nova!\""</string>
   <string name="login_RegisterSuccess">"Registrado com sucesso,você receberá um e-mail para ativar sua conta!"</string>
   <string name="login_Processing">"Processando..."</string>
   <string name="login_TitleStatistics">"Estatísticas para [USERNAMEEMAIL]"</string>
-  <string name="login_Statistics">"\"Predefinições carregadas: [UPLOADCOUNT]
+  <string name="login_Statistics">"\"\"Predefinições carregadas: [UPLOADCOUNT]
 
 Estrelas dadas: [STARSGIVEN]
 Estrelas recebidas: [STARSRECEIVED]
 
 Suas predefinições (ordenados por estrelas):
-[TOP5PRESETS]\"\""</string>
+[TOP5PRESETS]\"\"\""</string>
   <string name="login_StatisticsFailed">"Falha ao receber estatísticas..."</string>
   <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Atualizar estatísticas"</string>
@@ -181,8 +181,8 @@ Suas predefinições (ordenados por estrelas):
   <string name="visibilityOrder_SelectMulti">"Por favor selecione três itens:"</string>
   <string name="powerMenuMain_Empty">"Vazio"</string>
   <string name="login_Recover">"Recuperar"</string>
-  <string name="login_RecoverAccount">"\"Não consegue acessar a conta?
-Clique aqui para opções de recuperação.\""</string>
+  <string name="login_RecoverAccount">"\"\"Não consegue acessar a conta?
+Clique aqui para opções de recuperação.\"\""</string>
   <string name="login_RecoverPassword">"Redefinir Senha"</string>
   <string name="login_RecoverSuccess">"Você receberá um e-mail com as informações para redefinir sua senha."</string>
   <string name="login_RecoverNotFound">"Nenhum usuário com esses dados foi encontrado."</string>
@@ -196,32 +196,32 @@ Clique aqui para opções de recuperação.\""</string>
   <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
   <string name="graphics_Crop">"Cortar|Cortar redondo"</string>
   <string name="graphics_NoPresetsFound">"Nenhuma predefinição com gráficos encontrada..."</string>
-  <string name="graphics_GraphicsSaveLoad">"\"Salvar com os gráficos atuais.|Essa predefinição contém gráficos, você quer carregá-los?
-Isso vai sobrescrever seus gráficos atuais!\""</string>
-  <string name="presetsManager_ReportDialog">"\"Você quer mesmo reportar [PRESETNAME]?
+  <string name="graphics_GraphicsSaveLoad">"\"\"Salvar com os gráficos atuais.|Essa predefinição contém gráficos, você quer carregá-los?
+Isso vai sobrescrever seus gráficos atuais!\"\""</string>
+  <string name="presetsManager_ReportDialog">"\"\"Você quer mesmo reportar [PRESETNAME]?
 Isso não pode ser desfeito, então por favor não reporte apenas por diversão!
 
-Também nós precisamos de um porquê você quer reportar isso, por favor escreva abaixo.|Razão da denúncia:\""</string>
-  <string name="presetsManager_ReportResult">"\"[PRESETNAME] reportado, o desenvolvedor vai dar uma olhada nisso.|Falha no relato, por favor tente de novo.
-Razão: \""</string>
+Também nós precisamos de um porquê você quer reportar isso, por favor escreva abaixo.|Razão da denúncia:\"\""</string>
+  <string name="presetsManager_ReportResult">"\"\"[PRESETNAME] reportado, o desenvolvedor vai dar uma olhada nisso.|Falha no relato, por favor tente de novo.
+Razão: \"\""</string>
   <string name="presetsManager_Buttons">"Dar Estrela|Remover Estrela|Deletar|Denunciar|Enviar|Compartilhar"</string>
   <string name="screenrecord_notif_buttons">"Parar|Alternar indicador"</string>
   <string name="downloadHelper_States">"Esperando por outros downloads...|Conectando ao servidor...|Requisitando informação...|Baixando...|Cancelando..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
   <string name="downloadHelper_Speed">"velocidade: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Esperando por outros envios...|Conectando ao servidor...|Requisitando informação...|Enviando...|Cancelando..."</string>
-  <string name="visibilityOrder_AddItem">"\"Adicionar item normal
+  <string name="visibilityOrder_AddItem">"\"\"Adicionar item normal
 Apenas um item normal com apenas um cartão.|Adicionar item múltiplo
 Adicionar até três itens em uma linha.|Adicionar item múltipla página
-Clicando vai te levar a uma nova 'página'.\""</string>
-  <string name="visibilityOrder_MultiPage">"\"A múltipla página começa aqui
-O primeiro item normal define o botão para abrir a 'nova página'.|A múltipla página termina aqui\""</string>
+Clicando vai te levar a uma nova 'página'.\"\""</string>
+  <string name="visibilityOrder_MultiPage">"\"\"A múltipla página começa aqui
+O primeiro item normal define o botão para abrir a 'nova página'.|A múltipla página termina aqui\"\""</string>
   <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
   <string name="preferences_RootXposed1">"Root e Xposed indisponíveis|Root e Xposed são necessários para o módulo funcionar."</string>
   <string name="preferences_RootXposed2">"Xposed funcionando, Root não|Root é necessário para desligar ou reiniciar, por favor permita o acesso root."</string>
-  <string name="preferences_RootXposed3">"\"Root funcionando, Xposed não|Xposed é necessário para substituir o Menu de Energia...
-Por favor ative o módulo no Xposed Installer.\""</string>
+  <string name="preferences_RootXposed3">"\"\"Root funcionando, Xposed não|Xposed é necessário para substituir o Menu de Energia...
+Por favor ative o módulo no Xposed Installer.\"\""</string>
   <string name="preferences_RootXposed4">"Root e Xposed funcionando|O aplicativo deve funcionar corretamente!"</string>
   <string name="preferences_RootXposed5">"Versão do módulo muito antiga...|Por favor reinicie seu dispositivo para concluir o processo de atualização!"</string>
   <string name="preferencesCategory_General">"Geral"</string>
@@ -233,19 +233,19 @@ Por favor ative o módulo no Xposed Installer.\""</string>
   <string name="preferencesCategory_Other">"Outros"</string>
   <string name="preferences_Account">"Conta|Aqui você pode logar, criar uma conta ou checar suas estatísticas quando logado."</string>
   <string name="preferences_Advanced">"Configurações Avançadas|Alterar configurações avançadas como atraso, gravidade ou velocidade."</string>
-  <string name="preferences_Permissions">"\"Permissões|Mostrar as permissões usadas e ver para que são usadas.
-Conceder permissões adicionais que não são adicionadas na primeira inicialização (Android 6.0+).\""</string>
+  <string name="preferences_Permissions">"\"\"Permissões|Mostrar as permissões usadas e ver para que são usadas.
+Conceder permissões adicionais que não são adicionadas na primeira inicialização (Android 6.0+).\"\""</string>
   <string name="preferences_HideLauncherIcon">"Ocultar aplicativo no launcher|Oculta o aplicativo no launcher,isso pode levar até uma reinicialização para ocultar o ícone. Essa opção de configurações ficará apenas acessível no Xposed Installer."</string>
   <string name="preferences_DeepXposedLogging">"Log do Xposed|Ativar o log avançado do Xposed, após ativar reinicie para ver as mudanças."</string>
   <string name="preferencesCategory_About">"Sobre"</string>
-  <string name="preferences_NeoSource">"\"Fonte|NeoPowerMenu é um código aberto.
-Cheque a fonte no GitHub.\""</string>
+  <string name="preferences_NeoSource">"\"\"Fonte|NeoPowerMenu é um código aberto.
+Cheque a fonte no GitHub.\"\""</string>
   <string name="preferences_Share">"Compartilhar|Gostou do aplicativo? Compartilhe com seus amigos."</string>
   <string name="preferences_About">"Código por Neon-Soft/DrAcHe981|Baseado em um código de Naman Dwivedi (naman14)."</string>
   <string name="animations_Items">"Plano de fundo|Diálogo|Ícones|Itens de única linha|Itens de múltiplas linhas"</string>
   <string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal|Lento|Mais lento|Muito lento"</string>
-  <string name="animations_Types">"\"Desvanecer|Revelar
-(Funciona somente para o plano de fundo)|Deslizar acima|Deslizar a esquerda|Deslizar a direita|Deslizar abaixo|Aumentar|Diminuir|Desativado\""</string>
+  <string name="animations_Types">"\"\"Desvanecer|Revelar
+(Funciona somente para o plano de fundo)|Deslizar acima|Deslizar a esquerda|Deslizar a direita|Deslizar abaixo|Aumentar|Diminuir|Desativado\"\""</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
   <!-- Power Menu -->
