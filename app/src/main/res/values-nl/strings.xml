@@ -11,7 +11,6 @@
   <string name="powerMenuMain_Screenshot">"Schermafbeelding"</string>
   <string name="powerMenuMain_ScreenshotDesc">"Vertraging screenshot"</string>
   <string name="powerMenuBottom_Recovery">"Recovery (Vol Up + sluimer + thuisknop)"</string>
-  <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
   <string name="powerMenuBottom_SafeMode">"Veilige modus"</string>
   <string name="powerMenu_Shuttingdown">"Uitschakelen..."</string>
   <string name="powerMenu_Rebooting">"Opnieuw opstarten..."</string>
@@ -19,7 +18,6 @@
   <string name="powerMenuMain_AppShortcut">"Snelkoppeling van de applicatie"</string>
   <string name="powerMenuMain_ActivityShortcut">"Snelkoppeling van de activiteit"</string>
   <string name="powerMenuMain_ToggleRotate">"Schermrotatie"</string>
-  <string name="ToggleRotateMode_Auto">"Auto"</string>
   <string name="ToggleRotateMode_Off">"Uit"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Zichtbaarheid en sortering"</string>
@@ -90,7 +88,6 @@
   <string name="permissionsScreen_ClickToRequest">"Klik om machtigingen op te vragen."</string>
   <string name="permissionsScreen_DontAskAgain">"Niet opnieuw vragen"</string>
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Lees/schrijf externe opslag"</string>
-  <string name="permissionsScreenTitle_android.permission.CAMERA">"Camera"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Benodigd om zaklamp in te schakelen"</string>
   <string name="visibilityOrder_HideDesc">"Verberg beschrijving"</string>
   <!-- Preferences: Colors -->
@@ -108,18 +105,16 @@
   <string name="SoundMode_Vibrate">"Trillen"</string>
   <string name="SoundMode_Silent">"Stil"</string>
   <!-- Preferences: Preset Manager -->
-  <string name="presetsManager_TitleAccount">"Account"</string>
   <string name="presetsManager_UploadMsg">"Deze preset zal geüpload worden naar een publieke server, zichtbaar voor andere gebruikers.\n\nDit is je laatste kans om de naam of maker aan te passen voordat de present wordt geüpload..."</string>
   <string name="presetsManager_UploadComplete">"Upload voltooid!"</string>
   <string name="presetsManager_UploadFailedSameName">"Deze naam is al in gebruik, probeer a.u.b. een andere naam."</string>
   <string name="presetsManager_UploadFailedNoAccess">"Deze naam van de maker is beveiligd, kies een andere naam of log in."</string>
   <string name="presetsManager_UploadFailed">"Upload mislukt!"</string>
   <string name="presetsManager_DownloadFailed">"Download mislukt!"</string>
-  <string name="presetsManager_CantConnecttoServer">"\"Kan niet met de server verbinden!
-Controleer je netwerkverbindinge of probeer het later nog eens.\""</string>
-  <string name="presetsManager_CantConnecttoDB">"\"Kan niet met de database verbinden!
-Probeer het later nog eens, wanneer het dan nog niet lukt dit graag aan de ontwikkelaar melden.\""</string>
-  <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+  <string name="presetsManager_CantConnecttoServer">"\"\"Kan niet met de server verbinden!
+Controleer je netwerkverbindinge of probeer het later nog eens.\"\""</string>
+  <string name="presetsManager_CantConnecttoDB">"\"\"Kan niet met de database verbinden!
+Probeer het later nog eens, wanneer het dan nog niet lukt dit graag aan de ontwikkelaar melden.\"\""</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Benodigd om presents te downloaden/uploaden van en naar de publieke server."</string>
   <!-- Login page -->
   <string name="login_Title">"Inloggen"</string>
@@ -127,13 +122,12 @@ Probeer het later nog eens, wanneer het dan nog niet lukt dit graag aan de ontwi
   <string name="login_Info">"De gebruikersnamen van geregistreerde gebruikers zijn beschermd zodat niemand een upload in hun na kan doen, hier kun je inloggen of een nieuwe account creëren.\nDit is niet vereist als je het niet wilt!\nIk zal nooit privé data delen!"</string>
   <string name="login_UsernameEmail">"Gebruikersnaam of E-mail:"</string>
   <string name="login_Username">"Gebruikersnaam:"</string>
-  <string name="login_Email">"E-mail:"</string>
   <string name="login_RetypeEmail">"Typ E-mail opnieuw:"</string>
   <string name="login_PasswordOverEmail">"Je kunt een wachtwoord instellen via de activatie E-mail (deze E-mail is alleen in het Engels beschikbaar)."</string>
   <string name="login_Password">"Wachtwoord:"</string>
   <string name="login_KeepLogin">"Hou me ingelogd."</string>
-  <string name="login_Register">"\"Een account nodig?
-Klik hier om een nieuwe account te maken!\""</string>
+  <string name="login_Register">"\"\"Een account nodig?
+Klik hier om een nieuwe account te maken!\"\""</string>
   <string name="login_LoggedIn">"Ingelogd!"</string>
   <string name="login_LoginFailedWithReason">"Inloggen mislukt:"</string>
   <string name="login_LoginFailedWrongData">"Inloggen mislukt, verkeerde E-mail of wachtwoord!"</string>
@@ -165,10 +159,10 @@ Klik hier om een nieuwe account te maken!\""</string>
   <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root en Xposed"</string>
   <string name="preferences_RootXposed1">"Root en Xposed niet beschikbaar|Root en Xposed zijn vereist om deze module te gebruiken."</string>
-  <string name="preferences_RootXposed2">"\"Xposed beschikbaar, maar root niet|Root toegang is vereist om uit te schakelen of opnieuw te starten...
-Sta root toegang toe a.u.b.\""</string>
-  <string name="preferences_RootXposed3">"\"Root beschikbaar, maar Xposed niet|Xposed is vereist om het Power Menu aan te passen...
-Activeer de module in Xposed installer.\""</string>
+  <string name="preferences_RootXposed2">"\"\"Xposed beschikbaar, maar root niet|Root toegang is vereist om uit te schakelen of opnieuw te starten...
+Sta root toegang toe a.u.b.\"\""</string>
+  <string name="preferences_RootXposed3">"\"\"Root beschikbaar, maar Xposed niet|Xposed is vereist om het Power Menu aan te passen...
+Activeer de module in Xposed installer.\"\""</string>
   <string name="preferences_RootXposed4">"Root en Xposed werken|De app zou prima moeten werken!"</string>
   <string name="preferences_RootXposed5">"Module versie is te laag...|Start het apparaat opnieuw op om de update te voltooien!"</string>
   <string name="preferencesCategory_General">"Algemeen"</string>
@@ -177,16 +171,16 @@ Activeer de module in Xposed installer.\""</string>
   <string name="preferences_VisibilityOrder">"Zichtbaarheid en volgorde|Selecteer de items die je wilt laten zien en sorteer ze naar jouw voorkeur."</string>
   <string name="preferencesCategory_Other">"Overig"</string>
   <string name="preferences_Advanced">"Geavanceerde instellingen|Verander geavanceerde instellingen als vertraging, zwaarte of snelheid."</string>
-  <string name="preferences_Permissions">"\"Machtigingen|Toon de gevraagde machtigingen en bekijk waar ze voor worden gebruikt.
-Sta machtigingen toe die nog niet zijn toegevoegd bij het eerste gebruik (Android 6.0+).\""</string>
-  <string name="preferences_HideLauncherIcon">"\"Verberg de app in de launcher.|Verbergt het app icoon in de launcher. Opnieuw opstarten kan nodig zijn om het icoon te verbergen.
-Dit instellingenscherm zal na het verbergen alleen toegankelijk zijn via de Xposed installer.\""</string>
+  <string name="preferences_Permissions">"\"\"Machtigingen|Toon de gevraagde machtigingen en bekijk waar ze voor worden gebruikt.
+Sta machtigingen toe die nog niet zijn toegevoegd bij het eerste gebruik (Android 6.0+).\"\""</string>
+  <string name="preferences_HideLauncherIcon">"\"\"Verberg de app in de launcher.|Verbergt het app icoon in de launcher. Opnieuw opstarten kan nodig zijn om het icoon te verbergen.
+Dit instellingenscherm zal na het verbergen alleen toegankelijk zijn via de Xposed installer.\"\""</string>
   <string name="preferences_DeepXposedLogging">"Xposed logging|Schakel geavanceerde Xposed logging in en start opnieuw op om door te voeren."</string>
   <string name="preferencesCategory_About">"Over"</string>
   <string name="preferences_NeoSource">"Bron|NeoPowerMenu is open source.\nBekijk de broncode op GitHub."</string>
   <string name="preferences_Share">"Deel|Bevalt de app? Deel hem met je vrienden."</string>
-  <string name="preferences_About">"\"Code door Neon-Soft / DrAcHe981|Gebaseerd op code van Naman Dwivedi (naman14).
-Klik hier voor meer informatie.\""</string>
+  <string name="preferences_About">"\"\"Code door Neon-Soft / DrAcHe981|Gebaseerd op code van Naman Dwivedi (naman14).
+Klik hier voor meer informatie.\"\""</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
   <string name="errorActivity_MoreInfo">"Meer info"</string>

@@ -10,8 +10,6 @@
   <string name="powerMenuMain_SoftRebootDesc">"Reinicio simple de el UI de android cerrando el proceso zygote"</string>
   <string name="powerMenuMain_Screenshot">"Captura de pantalla"</string>
   <string name="powerMenuMain_ScreenshotDesc">"Retraso en captura de pantalla:[SCREENSHOTDELAY]"</string>
-  <string name="powerMenuBottom_Recovery">"Recovery"</string>
-  <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
   <string name="powerMenuBottom_SafeMode">"Modo seguro"</string>
   <string name="powerMenu_Shuttingdown">"Apagando..."</string>
   <string name="powerMenu_Rebooting">"Reiniciando..."</string>
@@ -19,10 +17,8 @@
   <string name="powerMenuMain_AppShortcut">"Acceso directo"</string>
   <string name="powerMenuMain_ActivityShortcut">"Actividad"</string>
   <string name="powerMenuMain_ToggleRotate">"Giro de pantalla"</string>
-  <string name="ToggleRotateMode_Auto">"Auto"</string>
   <string name="ToggleRotateMode_Off">"Apagado"</string>
   <string name="powerMenuMain_ToggleWifi">"Wi-Fi"</string>
-  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Datos"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidad y orden"</string>
@@ -55,7 +51,6 @@
   <string name="ColorPicker_Value">"Valor:"</string>
   <string name="ColorPicker_Saturation">"Saturación:"</string>
   <string name="ColorPicker_Opacity">"Opacidad:"</string>
-  <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"¡Borrar [PRESETNAME]!"</string>
   <string name="presetLoad_PresetLoaded">"¡[PRESETNAME] cargado!"</string>
   <string name="presetSaveDialog_CreatorNameInfo">"Este tema fue creado por:"</string>
@@ -109,13 +104,11 @@
   <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Necesario para obtener el estado de Wi-Fi."</string>
   <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Cambiar estado de WiFi"</string>
   <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Necesario para activar el WiFi."</string>
-  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Necesario para obtener el estado de bluetooth."</string>
   <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Administrador de Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Necesaria para activar el bluetooth sin ningún diálogo."</string>
   <string name="powerMenuMain_SoundMode">"Modo de sonido"</string>
   <string name="powerMenuMain_SoundModeDesc">"Modo actual: [SOUNDMODE]"</string>
-  <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibrar"</string>
   <string name="SoundMode_Silent">"Silencio"</string>
   <!-- Preferences: Preset Manager -->
@@ -128,7 +121,6 @@
   <string name="presetsManager_DownloadFailed">"¡Descarga fallida!"</string>
   <string name="presetsManager_CantConnecttoServer">"¡No puedo conectar con el servidor!\n Por favor verifique su conexión a Internet e intente de nuevo."</string>
   <string name="presetsManager_CantConnecttoDB">"¡No se puede conectar a la base de datos! \nPorfavor intentalo más tarde, cuando nada cambie: por favor, reportalo al desarrollador."</string>
-  <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Necesaria para descargar/cargar temas de el servidor público."</string>
   <!-- Login page -->
   <string name="login_Title">"Inicio de sesión"</string>
@@ -201,7 +193,6 @@
   <string name="preferences_RootXposed3">"Rooteo trabajando, Xposed no | Xposed es necesario para reemplazar el Menu...\nPorfavor activa el módulo en el instalador de Xposed."</string>
   <string name="preferences_RootXposed4">"Rooteo y Xposed trabajando | ¡La aplicación debería trabajar bien!"</string>
   <string name="preferences_RootXposed5">"Versión del módulo de gancho es baja... | Reinicie el dispositivo para completar el proceso de actualización!"</string>
-  <string name="preferencesCategory_General">"General"</string>
   <string name="preferences_Style">"Estilo"</string>
   <string name="preferences_Theme">"Tema | Cambiar la apariencia."</string>
   <string name="preferences_Graphics">"Gráficos | Cambiar los gráficos, utilice gráficos personalizados o predefinidos."</string>
@@ -232,12 +223,9 @@
   <string name="advancedPrefs_HideOnClick">"Ocultar con un clic"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Ocultar el menú haciendo clic en un botón."</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Los iconos de aplicación para los botones de acceso directo de aplicación de la carga."</string>
-  <string name="style_Material">Material</string>
   <string name="style_MaterialFullscreen">Material (Pantalla completa)</string>
   <string name="style_MaterialFullHorizontal">Material (Horizontal completo)</string>
-  <string name="advancedPrefs_ExperimentalPWMHook">Experimental PhoneWindowManager hook</string>
   <string name="advancedPrefs_ColorizeNonStockIcons">"Colorear los iconos"</string>
-  <string name="colorsResetToDefault">"Reset to default"</string>
   <string name="errorActivity_RestartApp">"Reiniciar aplicación"</string>
   <string name="errorActivity_CloseApp">"Cerrar aplicación"</string>
   <string name="errorActivity_Close">"Cerrar"</string>
