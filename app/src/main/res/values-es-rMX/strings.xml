@@ -314,4 +314,22 @@
   <string name="advancedPrefsDesc_ScreenRecordRotate">"Rotar 90 grados."</string>
   <string name="advancedPrefs_SelectBitRate">"Seleccionar bitrate:"</string>
   <string name="advancedPrefs_SelectSize">"Seleccionar tamaño del vídeo:"</string>
+  <string name="screenrecord_toast_nosupport">"Tu sistema no soporta grabación de pantalla"</string>
+  <string name="advancedPrefsTitle_ScreenRecordUseStockBinary">"Utilizar valores binarios"</string>
+  <string name="advancedPrefs_Hours">"hora(s)"</string>
+  <string name="advancedPrefs_Minutes">"minuto(s)"</string>
+  <string name="advancedPrefs_Seconds">"segundo(s)"</string>
+  <string name="advancedPrefs_MilliSeconds">"milisegundo(s)"</string>
+  <string name="advancedPrefsTitle_BlurBehind">"Desenfoque"</string>
+  <string name="advancedPrefsDesc_BlurBehind">"Activar desenfoque al contenido detrás del menú."</string>
+  <string name="advancedPrefsTitle_BlurRadius">"Radio de desenfoque"</string>
+  <string name="advancedPrefsDesc_BlurRadius">"Define cuánto debe estar desenfocado el fondo (por defecto: 14)"</string>
+  <string name="advancedPrefs_SelectBlurRadius">"Seleccionar radio de desenfoque:"</string>
+  <string name="screenrecord_notif_open">"Abrir con..."</string>
+  <string name="screenrecord_notif_saving">Guardando...</string>
+  <string name="screenrecord_notif_failedCreateDir">"No se pudieron crear los directorios necesarios."</string>
+  <string name="errorActivity_Info">"Se ha producido un error inesperado.\nLamento las molestias."</string>
+  <string name="powerMenuMain_SilentMode">"Modo silencioso"</string>
+  <string name="visibilityOrder_LockWithPassword">"Bloquear con contraseña"</string>
+  <string name="powerMenu_Password">"contraseña"</string>
 </resources>
