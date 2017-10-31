@@ -19,6 +19,7 @@
   <string name="powerMenuMain_ToggleRotate">"Giro de pantalla"</string>
   <string name="ToggleRotateMode_Off">"Apagado"</string>
   <string name="powerMenuMain_ToggleWifi">"Wi-Fi"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Datos"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidad y orden"</string>
@@ -104,11 +105,13 @@
   <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Necesario para obtener el estado de Wi-Fi."</string>
   <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Cambiar estado de WiFi"</string>
   <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Necesario para activar el WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Necesario para obtener el estado de bluetooth."</string>
   <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Administrador de Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Necesaria para activar el bluetooth sin ningún diálogo."</string>
   <string name="powerMenuMain_SoundMode">"Modo de sonido"</string>
   <string name="powerMenuMain_SoundModeDesc">"Modo actual: [SOUNDMODE]"</string>
+  <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibrar"</string>
   <string name="SoundMode_Silent">"Silencio"</string>
   <!-- Preferences: Preset Manager -->
@@ -121,6 +124,7 @@
   <string name="presetsManager_DownloadFailed">"¡Descarga fallida!"</string>
   <string name="presetsManager_CantConnecttoServer">"¡No puedo conectar con el servidor!\n Por favor verifique su conexión a Internet e intente de nuevo."</string>
   <string name="presetsManager_CantConnecttoDB">"¡No se puede conectar a la base de datos! \nPorfavor intentalo más tarde, cuando nada cambie: por favor, reportalo al desarrollador."</string>
+  <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Necesaria para descargar/cargar temas de el servidor público."</string>
   <!-- Login page -->
   <string name="login_Title">"Inicio de sesión"</string>
@@ -183,6 +187,8 @@
   <string name="presetsManager_Buttons">"Dar estrellas | Quitar estrellas | Eliminar | Reportar | Subir | Compartir"</string>
   <string name="screenrecord_notif_buttons">"Detener | Alternar"</string>
   <string name="downloadHelper_States">"A la espera de otras descargas... | Conectando al servidor... | Solicitando información... | Descargando... | Cancelando..."</string>
+  <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
+  <string name="downloadHelper_Speed">"velocidad: [SPEED]/s"</string>
   <string name="uploadHelper_States">"A la espera de otras cargas... | Conectando al servidor... | Solicitando información... | Subir... | Cancelando..."</string>
   <string name="visibilityOrder_AddItem">"Añadir un ítem normal\nUn ítem normal usará un lugar. | Añadir multiple items\nAgrega hasta tres artículos en una línea. | Añadir multiple items\n Con un clic se mostrará una nueva página."</string>
   <string name="visibilityOrder_MultiPage">"Páginas de elementos inicia aquí\nEl primer elemento normal define el botón para abrir la 'nueva página'. | Páginas de elementos termina aquí"</string>
@@ -193,6 +199,7 @@
   <string name="preferences_RootXposed3">"Rooteo trabajando, Xposed no | Xposed es necesario para reemplazar el Menu...\nPorfavor activa el módulo en el instalador de Xposed."</string>
   <string name="preferences_RootXposed4">"Rooteo y Xposed trabajando | ¡La aplicación debería trabajar bien!"</string>
   <string name="preferences_RootXposed5">"Versión del módulo de gancho es baja... | Reinicie el dispositivo para completar el proceso de actualización!"</string>
+  <string name="preferencesCategory_General">"General"</string>
   <string name="preferences_Style">"Estilo"</string>
   <string name="preferences_Theme">"Tema | Cambiar la apariencia."</string>
   <string name="preferences_Graphics">"Gráficos | Cambiar los gráficos, utilice gráficos personalizados o predefinidos."</string>
@@ -222,15 +229,38 @@
   <string name="preferences_Donate">"Donar | ¿Te gusta la aplicación? \nPorque no donarme una taza de café o algo más?"</string>
   <string name="advancedPrefs_HideOnClick">"Ocultar con un clic"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Ocultar el menú haciendo clic en un botón."</string>
+  <string name="advancedPrefs_LoadAppIcons">"Cargar iconos"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Los iconos de aplicación para los botones de acceso directo de aplicación de la carga."</string>
+  <string name="style_Material">Material</string>
   <string name="style_MaterialFullscreen">Material (Pantalla completa)</string>
   <string name="style_MaterialFullHorizontal">Material (Horizontal completo)</string>
   <string name="advancedPrefs_ColorizeNonStockIcons">"Colorear los iconos"</string>
+  <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Por defecto los iconos personalizados no serán coloreados, activa esto para cambiarlo."</string>
+  <string name="advancedPrefs_RoundAppIcons">"Redondear iconos"</string>
+  <string name="advancedPrefs_RoundAppIconsDesc">"Redondea los iconos, si no coinciden con los círculos."</string>
+  <string name="colorsApplyToAll">"Aplicar a todos los de este tipo"</string>
+  <string name="colorsResetToDefault">"Restaurar valores"</string>
+  <string name="errorActivity_CopyToClip">"Copiar al portapapeles"</string>
+  <string name="errorActivity_Copyied">"Copiado al portapapeles"</string>
   <string name="errorActivity_RestartApp">"Reiniciar aplicación"</string>
   <string name="errorActivity_CloseApp">"Cerrar aplicación"</string>
   <string name="errorActivity_Close">"Cerrar"</string>
+  <string name="errorActivity_MoreInfo">"Más información"</string>
+  <string name="tourPage_Next">"Siguiente"</string>
+  <string name="tourPage_Skip">"Saltar"</string>
+  <string name="tourPage_Enjoy">"¡Crea tu menú!"</string>
+  <string name="tourPage_0_Title">"¡Bienvenido a NPM!"</string>
+  <string name="tourPage_1_Title">"Menú principal"</string>
   <string name="tourPage_2_Title">"Imagens amor"</string>
+  <string name="tourPage_3_Title">"Menú de gráficos"</string>
+  <string name="tourPage_3_Text">"Personaliza los gráficos que se usen (necesita ser activado en los ajustes avanzados)."</string>
+  <string name="tourPage_4_Title">"Visibilidad y orden del menú"</string>
+  <string name="tourPage_5_Title">"Menú de animaciones"</string>
+  <string name="tourPage_5_Text">"Cambia la manera en que se anima el menú o desactiva las animaciones completamente."</string>
+  <string name="tourPage_6_Title">"Menú avanzado"</string>
+  <string name="tourPage_6_Text">"Aquí podrás personalizar el menú en todo su esplendor."</string>
   <string name="tourPage_7_Title">"¡Disfruta!"</string>
+  <string name="graphics_PaddingTitle">"Relleno gráfico"</string>
   <string name="uploadHelper_FailedAt2">"Error al solicitar la información necesaria, por favor, compruebe su conexión y vuelva a intentarlo."</string>
   <string name="uploadHelper_FailedAt3">"No se pudo cargar el archivo, por favor, compruebe su conexión y vuelva a intentarlo."</string>
   <string name="uploadHelper_UnknownError">"Hubo un problema desconocido mientras se cargaba el archivo, por favor, inténtelo de nuevo."</string>
@@ -273,4 +303,15 @@
   <string name="xposedMain_MenuActivityNotFound">"Parece que usted ha desinstalado mi módulo antes de desabilitarlo...\nAhora el sistema no sabe qué hacer, haga clic en reiniciar para reiniciar el dispositivo y para completar la desinstalación!"</string>
   <string name="xposedMain_MenuActivityNotFound_Cancel">"Cancelar"</string>
   <string name="xposedMain_MenuActivityNotFound_Restart">"Reiniciar"</string>
+  <string name="advancedPrefsDesc_ScreenRecordMicrophone">"Grabar sonido usando el micrófono."</string>
+  <string name="advancedPrefsTitle_ScreenRecordSize">"Tamaño de vídeo"</string>
+  <string name="advancedPrefsDesc_ScreenRecordSize">"Seleccione el tamaño del vídeo grabado."</string>
+  <string name="advancedPrefsTitle_ScreenRecordTime">"Tiempo límite"</string>
+  <string name="advancedPrefsDesc_ScreenRecordTime">"Definir la longitud máxima de la grabación."</string>
+  <string name="advancedPrefsDesc_ScreenRecordBitRate">"Definir el bitrate utilizado para grabar el video."</string>
+  <string name="advancedPrefsTitle_ScreenRecordBitRate">"Bitrate del video"</string>
+  <string name="advancedPrefsTitle_ScreenRecordRotate">"Rotar vídeo"</string>
+  <string name="advancedPrefsDesc_ScreenRecordRotate">"Rotar 90 grados."</string>
+  <string name="advancedPrefs_SelectBitRate">"Seleccionar bitrate:"</string>
+  <string name="advancedPrefs_SelectSize">"Seleccionar tamaño del vídeo:"</string>
 </resources>
