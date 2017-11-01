@@ -10,6 +10,8 @@
   <string name="powerMenuMain_SoftRebootDesc">"Reinicio simple de el UI de android cerrando el proceso zygote"</string>
   <string name="powerMenuMain_Screenshot">"Captura de pantalla"</string>
   <string name="powerMenuMain_ScreenshotDesc">"Retraso en captura de pantalla:[SCREENSHOTDELAY]"</string>
+  <string name="powerMenuBottom_Recovery">"Recovery"</string>
+  <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
   <string name="powerMenuBottom_SafeMode">"Modo seguro"</string>
   <string name="powerMenu_Shuttingdown">"Apagando..."</string>
   <string name="powerMenu_Rebooting">"Reiniciando..."</string>
@@ -17,6 +19,7 @@
   <string name="powerMenuMain_AppShortcut">"Acceso directo"</string>
   <string name="powerMenuMain_ActivityShortcut">"Actividad"</string>
   <string name="powerMenuMain_ToggleRotate">"Giro de pantalla"</string>
+  <string name="ToggleRotateMode_Auto">"Automático"</string>
   <string name="ToggleRotateMode_Off">"Apagado"</string>
   <string name="powerMenuMain_ToggleWifi">"Wi-Fi"</string>
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
@@ -52,6 +55,7 @@
   <string name="ColorPicker_Value">"Valor:"</string>
   <string name="ColorPicker_Saturation">"Saturación:"</string>
   <string name="ColorPicker_Opacity">"Opacidad:"</string>
+  <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"¡Borrar [PRESETNAME]!"</string>
   <string name="presetLoad_PresetLoaded">"¡[PRESETNAME] cargado!"</string>
   <string name="presetSaveDialog_CreatorNameInfo">"Este tema fue creado por:"</string>
@@ -79,6 +83,7 @@
   <string name="powerMenuMain_AirplaneMode">"Modo avión"</string>
   <string name="powerMenuMain_RestartUI">"Reiniciar UI de sistema"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Reveal">"Revelar color"</string>
   <string name="colorsType_Circle">"Color del círculo"</string>
   <string name="colorsType_Background">"Color de fondo"</string>
   <string name="colorsType_Text">"Color de texto"</string>
