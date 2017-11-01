@@ -6,6 +6,8 @@
   <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Desligar"</string>
   <string name="powerMenuMain_Reboot">"Reiniciar"</string>
+  <string name="powerMenuMain_SoftReboot">"Reiniciar Rápido"</string>
+  <string name="powerMenuMain_SoftRebootDesc">"Simplesmente reinicie o carro interface Android parando o processo zygote"</string>
   <!-- Preferences: Visibility and order -->
   <!-- Preferences: Preset Manager -->
   <!-- Preferences: Advanced -->
