@@ -2,22 +2,17 @@ package de.NeonSoft.neopowermenu.Preferences;
 
 import android.app.Activity;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageParser;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.*;
 import android.support.v4.app.*;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -52,7 +47,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
     static ArrayList<String> shortcutNames = new ArrayList<>();
     static ArrayList<ResolveInfo> shortcutPackages = new ArrayList<>();
     static ArrayList<String> shortcutsNamesFiltered = new ArrayList<String>();
-    static ArrayList<ResolveInfo> shortcutsPackagesFiltered = new ArrayList<>();
+    static ArrayList<ResolveInfo> shortcutPackagesFiltered = new ArrayList<>();
     public static boolean shortcutsListFullyParsed;
     public static AsyncTask loadShortcutsTask;
 
@@ -891,7 +886,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             if (shortcutsNamesFiltered.isEmpty()) {
                                 thisRI = shortcutPackages.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
                             } else {
-                                thisRI = shortcutsPackagesFiltered.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
+                                thisRI = shortcutPackagesFiltered.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
                             }
                         } else {
                             String[] split = result.split("\\|");
@@ -903,7 +898,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             if (shortcutsNamesFiltered.isEmpty()) {
                                 thisRI = shortcutPackages.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
                             } else {
-                                thisRI = shortcutsPackagesFiltered.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
+                                thisRI = shortcutPackagesFiltered.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
                             }
                         }
                         ShortcutItem si = new ShortcutItem(item.getTitle(ThisEditID), thisRI);
@@ -970,14 +965,14 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     @Override
                     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                         shortcutsNamesFiltered.clear();
-                        shortcutsPackagesFiltered.clear();
+                        shortcutPackagesFiltered.clear();
                         if (charSequence.toString().isEmpty()) {
                             dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, shortcutNames, -1, false);
                         } else {
                             for (int x = 0; x < shortcutNames.size(); x++) {
                                 if (shortcutNames.get(x).toLowerCase().contains(charSequence.toString().toLowerCase())) {
                                     shortcutsNamesFiltered.add(shortcutNames.get(x));
-                                    shortcutsPackagesFiltered.add(shortcutsPackagesFiltered.get(x));
+                                    shortcutPackagesFiltered.add(shortcutPackages.get(x));
                                 }
                             }
                             dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, shortcutsNamesFiltered, -1, false);
