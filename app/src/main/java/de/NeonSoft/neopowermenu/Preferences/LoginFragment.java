@@ -332,7 +332,7 @@ public class LoginFragment extends Fragment {
                 MainActivity.preferences.edit().putBoolean("autoLogin", false)
                         .remove("ueel")
                         .remove("pd")
-                        .remove("auid").apply();
+                        .remove("auid").commit();
                 LinearLayout_LoggedInContainer.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
                 LinearLayout_LoggedInContainer.setVisibility(View.GONE);
                 LinearLayout_LoginContainer.setVisibility(View.VISIBLE);
@@ -517,7 +517,7 @@ public class LoginFragment extends Fragment {
                     MainActivity.preferences.edit().putBoolean("autoLogin", true)
                             .putString("ueel", MainActivity.usernameemail)
                             .putString("pd", MainActivity.password)
-                            .putString("auid", MainActivity.accountUniqeId).apply();
+                            .putString("auid", MainActivity.accountUniqeId).commit();
                 }
                 if (LinearLayout_LoginContainer != null) {
                     TextView_AccountInfo.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));

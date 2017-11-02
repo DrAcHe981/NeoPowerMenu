@@ -34,7 +34,6 @@ public class PreferencesPartFragment extends Fragment {
 
     String Urlgithub = "https://github.com/DrAcHe981/NeoPowerMenu";
 
-    String ActiveStyle = "Material";
     int ActiveStyleId = 0;
 
     boolean hideicon = false;
@@ -114,6 +113,11 @@ public class PreferencesPartFragment extends Fragment {
         if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
             MainActivity.visibleFragment = "Main";
         }
+        final String[] styleList = {getString(R.string.style_Material),
+            getString(R.string.style_MaterialFullscreen),
+            getString(R.string.style_MaterialFullHorizontal)//,
+            //getString(R.string.style_MaterialDynamicWidth)
+        };
 
         mContext = getActivity();
         mActivity = getActivity();
@@ -126,36 +130,36 @@ public class PreferencesPartFragment extends Fragment {
         MainActivity.actionbar.setSubTitle("v" + MainActivity.versionName + " (" + MainActivity.versionCode + ")" + (MainActivity.LOCALTESTSERVER ? " | Using local test Server" : ""));
 
         if (MainActivity.orderPrefs.getAll().isEmpty()) {
-            MainActivity.orderPrefs.edit().putInt("0_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();
-            MainActivity.orderPrefs.edit().putString("0_item_title", "Shutdown").apply();
-            MainActivity.orderPrefs.edit().putInt("1_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();
-            MainActivity.orderPrefs.edit().putString("1_item_title", "Reboot").apply();
-            MainActivity.orderPrefs.edit().putInt("2_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();
-            MainActivity.orderPrefs.edit().putString("2_item_title", "SoftReboot").apply();
-            MainActivity.orderPrefs.edit().putInt("3_item_type", visibilityOrder_ListAdapter.TYPE_MULTI).apply();
-            MainActivity.orderPrefs.edit().putString("3_item1_title", "Recovery").apply();
-            MainActivity.orderPrefs.edit().putString("3_item2_title", "Bootloader").apply();
-            MainActivity.orderPrefs.edit().putString("3_item3_title", "SafeMode").apply();
+            MainActivity.orderPrefs.edit().putInt("0_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
+            MainActivity.orderPrefs.edit().putString("0_item_title", "Shutdown").commit();
+            MainActivity.orderPrefs.edit().putInt("1_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
+            MainActivity.orderPrefs.edit().putString("1_item_title", "Reboot").commit();
+            MainActivity.orderPrefs.edit().putInt("2_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
+            MainActivity.orderPrefs.edit().putString("2_item_title", "SoftReboot").commit();
+            MainActivity.orderPrefs.edit().putInt("3_item_type", visibilityOrder_ListAdapter.TYPE_MULTI).commit();
+            MainActivity.orderPrefs.edit().putString("3_item1_title", "Recovery").commit();
+            MainActivity.orderPrefs.edit().putString("3_item2_title", "Bootloader").commit();
+            MainActivity.orderPrefs.edit().putString("3_item3_title", "SafeMode").commit();
         }
         for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
             if ((int) PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM) {
                 if (MainActivity.colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty()) {
                     //Log.d("NPM:cI","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
-                    MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).apply();
-                    MainActivity.preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).apply();
+                    MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).commit();
+                    MainActivity.preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
                 }
             }
         }
         for (int i = 0; i < PreferencesAnimationsFragment.names.length; i++) {
             if ((int) PreferencesAnimationsFragment.names[i][0] == animationsAdapter.TYPE_ITEM) {
                 if (PreferencesAnimationsFragment.names[i][1].toString().contains("type") && MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i][1].toString(), -1) == -1) {
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i][1].toString(), PreferencesAnimationsFragment.defaultTypes[i]).apply();
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + 1][1].toString(), 3).apply();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i][1].toString(), PreferencesAnimationsFragment.defaultTypes[i]).commit();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + 1][1].toString(), 3).commit();
                 }
             }
         }
 
-        ActiveStyle = MainActivity.preferences.getString("DialogTheme", "Material");
+        ActiveStyleId = MainActivity.preferences.getInt("DialogThemeId", 0);
         hideicon = MainActivity.preferences.getBoolean("HideLauncherIcon", false);
         DeepXposedLogging = MainActivity.preferences.getBoolean("DeepXposedLogging", false);
 
@@ -177,7 +181,7 @@ public class PreferencesPartFragment extends Fragment {
         LinearLayout_Style = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Style);
         TextView_StyleTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_StyleTitle);
         TextView_StyleDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_StyleDesc);
-        TextView_StyleDesc.setText(ActiveStyle);
+        TextView_StyleDesc.setText(styleList[Math.min(ActiveStyleId, styleList.length-1)]);
 
         LinearLayout_Theme = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Theme);
         TextView_ThemeTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ThemeTitle);
@@ -298,8 +302,23 @@ public class PreferencesPartFragment extends Fragment {
                                 slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                                 dialogFragment.setContext(mActivity);
                                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
-                                dialogFragment.setText("Failed to execute root request, device is not rooted.");
+                                dialogFragment.setText("Failed to execute root request, device is not rooted or the request got rejected.");
                                 dialogFragment.showDialog(R.id.dialog_container);
+                            } else {
+                                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (mActivity != null) {
+                                            mActivity.runOnUiThread(new Runnable() {
+
+                                                @Override
+                                                public void run() {
+                                                    rootAvailable();
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
                             }
                         }
                     }).start();
@@ -312,16 +331,6 @@ public class PreferencesPartFragment extends Fragment {
             @Override
             public void onClick(View p1) {
 
-                String[] styleList = new String[3];
-                styleList[0] = getString(R.string.style_Material);
-                styleList[1] = getString(R.string.style_MaterialFullscreen);
-                styleList[2] = getString(R.string.style_MaterialFullHorizontal);
-                for (int i = 0; i < styleList.length; i++) {
-                    if (styleList[i].equalsIgnoreCase(ActiveStyle)) {
-                        ActiveStyleId = i;
-                        //presetsList[i] = "(Active) "+ presetsFiles[i].getName().split(".nps")[0];
-                    }
-                }
                 slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                 dialogFragment.setContext(mActivity);
                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -330,9 +339,8 @@ public class PreferencesPartFragment extends Fragment {
                     @Override
                     public void onListItemClick(int position, String text) {
 
-                        MainActivity.preferences.edit().putString("DialogTheme", text).apply();
-                        ActiveStyle = text;
-                        TextView_StyleDesc.setText(ActiveStyle);
+                        MainActivity.preferences.edit().putInt("DialogThemeId", position).commit();
+                        TextView_StyleDesc.setText(styleList[position]);
                     }
 
                     @Override
@@ -355,7 +363,7 @@ public class PreferencesPartFragment extends Fragment {
 
                     }
                 });
-                dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, styleList, ActiveStyleId, true);
+                dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, styleList, MainActivity.preferences.getInt("DialogThemeId",0), true);
                 dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
                 dialogFragment.showDialog(R.id.dialog_container);
             }
@@ -462,7 +470,7 @@ public class PreferencesPartFragment extends Fragment {
                     getActivity().getPackageManager().setComponentEnabledSetting(componentSettings, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
                 }
                 Switch_HideLauncherIcon.setChecked(hideicon);
-                MainActivity.preferences.edit().putBoolean("HideLauncherIcon", hideicon).apply();
+                MainActivity.preferences.edit().putBoolean("HideLauncherIcon", hideicon).commit();
             }
         });
 
@@ -472,7 +480,7 @@ public class PreferencesPartFragment extends Fragment {
             public void onClick(View p1) {
                 DeepXposedLogging = !DeepXposedLogging;
                 Switch_DeepXposedLogging.setChecked(DeepXposedLogging);
-                MainActivity.preferences.edit().putBoolean("DeepXposedLogging", DeepXposedLogging).apply();
+                MainActivity.preferences.edit().putBoolean("DeepXposedLogging", DeepXposedLogging).commit();
             }
         });
 

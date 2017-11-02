@@ -444,5 +444,10 @@
     <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Required on Nougat(7.0) and above to change the 'Do Not Disturb' mode."</string>
     <string name="powerMenuMain_Shortcut">Shortcut</string>
     <string name="visibilityOrder_NoGravityBoxFound">GravityBox could not be located, this item will have no effect without GravityBox being installed.</string>
+    <string name="visibilityOrder_HideText">Hide text</string>
+    <string name="style_MaterialDynamicWidth">Material (Dynamic width)</string>
+    <string name="graphics_BehaviorTitle">Customize graphic behavior</string>
+    <string name="graphics_BehaviorDesc">Enable/Disable graphics and customize values such as padding and coloring.</string>
+    <string name="visibilityOrder_SearchShortcut">Search Shortcut (case insensitive):</string>
 
 </resources>

@@ -21,9 +21,6 @@ import de.NeonSoft.neopowermenu.helpers.*;
 
 public class PreferencesAdvancedFragment extends Fragment {
 
-    LinearLayout LinearLayout_UseGraphics;
-    Switch Switch_UseGraphics;
-    boolean boolean_UseGraphics;
     boolean ExperimentalPWMHook = false;
 
     LinearLayout LinearLayout_FlashlightAutoOff;
@@ -82,18 +79,6 @@ public class PreferencesAdvancedFragment extends Fragment {
     Switch Switch_HideOnClick;
     boolean boolean_HideOnClick;
 
-    LinearLayout LinearLayout_LoadAppIcons;
-    Switch Switch_LoadAppIcons;
-    boolean boolean_LoadAppIcons;
-
-    LinearLayout LinearLayout_RoundAppIcons;
-    Switch Switch_RoundAppIcons;
-    boolean boolean_RoundAppIcons;
-
-    LinearLayout LinearLayout_ColorizeNonStockIcons;
-    Switch Switch_ColorizeNonStockIcons;
-    boolean boolean_ColorizeNonStockIcons;
-
     LinearLayout LinearLayout_ShowOnLockScreen;
     Switch Switch_ShowOnLockScreen;
     boolean boolean_ShowOnLockScreen;
@@ -146,7 +131,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             @Override
             public void onClick(View p1) {
                 boolean_FlashlightAutoOff = !boolean_FlashlightAutoOff;
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pTorchAutoOff, boolean_FlashlightAutoOff).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pTorchAutoOff, boolean_FlashlightAutoOff).commit();
                 Switch_FlashlightAutoOff.setChecked(boolean_FlashlightAutoOff);
                 if (boolean_FlashlightAutoOff) {
                     LinearLayout_FlashlightAutoOffTime.setEnabled(true);
@@ -245,7 +230,7 @@ public class PreferencesAdvancedFragment extends Fragment {
                         } else {
                             TextView_FlashlightAutoOffTime.setText(helper.getTimeString(getActivity(), Long_FlashlightAutoOffTime, 1));
                         }
-                        MainActivity.preferences.edit().putLong(PreferenceNames.pTorchAutoOffTime, Long_FlashlightAutoOffTime).apply();
+                        MainActivity.preferences.edit().putLong(PreferenceNames.pTorchAutoOffTime, Long_FlashlightAutoOffTime).commit();
                     }
 
                     @Override
@@ -272,7 +257,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             @Override
             public void onClick(View p1) {
                 boolean_ScreenRecordStockBinary = !boolean_ScreenRecordStockBinary;
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pScreenRecord_UseStockBinary, boolean_ScreenRecordStockBinary).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pScreenRecord_UseStockBinary, boolean_ScreenRecordStockBinary).commit();
                 Switch_ScreenRecordStockBinary.setChecked(boolean_ScreenRecordStockBinary);
                 if (!boolean_ScreenRecordStockBinary) {
                     LinearLayout_ScreenRecordMicrophone.setEnabled(true);
@@ -308,7 +293,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             @Override
             public void onClick(View p1) {
                 boolean_ScreenRecordMicrophone = !boolean_ScreenRecordMicrophone;
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pScreenRecord_Microphone, boolean_ScreenRecordMicrophone).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pScreenRecord_Microphone, boolean_ScreenRecordMicrophone).commit();
                 Switch_ScreenRecordMicrophone.setChecked(boolean_ScreenRecordMicrophone);
             }
         });
@@ -366,7 +351,7 @@ public class PreferencesAdvancedFragment extends Fragment {
                             size = ScreenRecordingSizes[(int) Long_ScreenRecordSize].split("\\(")[1];
                         }
                         MainActivity.preferences.edit().putLong(PreferenceNames.pScreenRecord_Size + "Long", Long_ScreenRecordSize)
-                                .putString(PreferenceNames.pScreenRecord_Size, size.replace("px)", "")).apply();
+                                .putString(PreferenceNames.pScreenRecord_Size, size.replace("px)", "")).commit();
                     }
 
                     @Override
@@ -430,7 +415,7 @@ public class PreferencesAdvancedFragment extends Fragment {
                     public void onPositiveClick(Bundle resultBundle) {
                         Long_ScreenRecordBitRate = timepickerdialog_PickerHours.getValue() + 1;
                         TextView_ScreenRecordBitRate.setText(Long_ScreenRecordBitRate + "MBps");
-                        MainActivity.preferences.edit().putLong(PreferenceNames.pScreenRecord_BitRate, Long_ScreenRecordBitRate).apply();
+                        MainActivity.preferences.edit().putLong(PreferenceNames.pScreenRecord_BitRate, Long_ScreenRecordBitRate).commit();
                     }
 
                     @Override
@@ -531,7 +516,7 @@ public class PreferencesAdvancedFragment extends Fragment {
                         } else {
                             TextView_ScreenRecordTimeLimit.setText(helper.getTimeString(getActivity(), Long_ScreenRecordTimeLimit, 1));
                         }
-                        MainActivity.preferences.edit().putLong(PreferenceNames.pScreenRecord_TimeLimit, Long_ScreenRecordTimeLimit).apply();
+                        MainActivity.preferences.edit().putLong(PreferenceNames.pScreenRecord_TimeLimit, Long_ScreenRecordTimeLimit).commit();
                     }
 
                     @Override
@@ -558,7 +543,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             @Override
             public void onClick(View p1) {
                 boolean_ScreenRecordRotate = !boolean_ScreenRecordRotate;
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pScreenRecord_Rotate, boolean_ScreenRecordRotate).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pScreenRecord_Rotate, boolean_ScreenRecordRotate).commit();
                 Switch_ScreenRecordRotate.setChecked(boolean_ScreenRecordRotate);
             }
         });
@@ -590,13 +575,13 @@ public class PreferencesAdvancedFragment extends Fragment {
                     public void onPositiveClick(Bundle resultBundle) {
                         if (!MainActivity.preferences.getString(PreferenceNames.pItemPWL, "").isEmpty()) {
                             if (helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")).equals(MainActivity.preferences.getString(PreferenceNames.pItemPWL, ""))) {
-                                MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, (resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1", "").isEmpty() ? "" : helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1", "")))).apply();
+                                MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, (resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1", "").isEmpty() ? "" : helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1", "")))).commit();
                                 dialogFragment.closeDialog();
                             } else {
                                 Toast.makeText(getActivity(), getString(R.string.powerMenu_WrongPassword), Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", ""))).apply();
+                            MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", ""))).commit();
                             dialogFragment.closeDialog();
                         }
                         if (mFingerprintManager != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -725,7 +710,7 @@ public class PreferencesAdvancedFragment extends Fragment {
                                 if (helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")).equals(MainActivity.preferences.getString(PreferenceNames.pItemPWL, ""))) {
                                     dialogFragment.closeDialog();
                                     boolean_LockWithFingerprint = !boolean_LockWithFingerprint;
-                                    MainActivity.preferences.edit().putBoolean(PreferenceNames.pLockWithFingerprint, boolean_LockWithFingerprint).apply();
+                                    MainActivity.preferences.edit().putBoolean(PreferenceNames.pLockWithFingerprint, boolean_LockWithFingerprint).commit();
                                     Switch_LockWithFingerprint.setChecked(boolean_LockWithFingerprint);
                                 } else {
                                     Toast.makeText(getActivity(), getString(R.string.powerMenu_WrongPassword), Toast.LENGTH_LONG).show();
@@ -788,7 +773,7 @@ public class PreferencesAdvancedFragment extends Fragment {
                                 public void onFingerprintSuccess(FingerprintManager.AuthenticationResult result) {
                                     fingerprintDialog.closeDialog();
                                     boolean_LockWithFingerprint = true;
-                                    MainActivity.preferences.edit().putBoolean(PreferenceNames.pLockWithFingerprint, boolean_LockWithFingerprint).apply();
+                                    MainActivity.preferences.edit().putBoolean(PreferenceNames.pLockWithFingerprint, boolean_LockWithFingerprint).commit();
                                     Switch_LockWithFingerprint.setChecked(boolean_LockWithFingerprint);
                                 }
 
@@ -840,7 +825,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             @Override
             public void onClick(View p1) {
                 boolean_BlurBehind = !boolean_BlurBehind;
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pBlurBehind, boolean_BlurBehind).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pBlurBehind, boolean_BlurBehind).commit();
                 Switch_BlurBehind.setChecked(boolean_BlurBehind);
                 if (boolean_BlurBehind) {
                     LinearLayout_BlurRadius.setEnabled(true);
@@ -904,7 +889,7 @@ public class PreferencesAdvancedFragment extends Fragment {
                     public void onPositiveClick(Bundle resultBundle) {
                         Float_BlurRadius = timepickerdialog_PickerHours.getValue();
                         TextView_BlurRadius.setText(((int) Float_BlurRadius) + "");
-                        MainActivity.preferences.edit().putFloat(PreferenceNames.pBlurRadius, Float_BlurRadius).apply();
+                        MainActivity.preferences.edit().putFloat(PreferenceNames.pBlurRadius, Float_BlurRadius).commit();
                     }
 
                     @Override
@@ -915,24 +900,6 @@ public class PreferencesAdvancedFragment extends Fragment {
                 dialogFragment.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
                 dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
                 dialogFragment.showDialog(R.id.dialog_container);
-            }
-        });
-
-        boolean_UseGraphics = MainActivity.preferences.getBoolean(PreferenceNames.pUseGraphics, false);
-        LinearLayout_UseGraphics = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_UseGraphics);
-        Switch_UseGraphics = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_UseGraphics);
-
-        Switch_UseGraphics.setChecked(boolean_UseGraphics);
-        Switch_UseGraphics.setClickable(false);
-        Switch_UseGraphics.setFocusable(false);
-
-        LinearLayout_UseGraphics.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                boolean_UseGraphics = !boolean_UseGraphics;
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pUseGraphics, boolean_UseGraphics).apply();
-                Switch_UseGraphics.setChecked(boolean_UseGraphics);
             }
         });
 
@@ -953,7 +920,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             public void onClick(View p1) {
                 boolean_Confirmation = !boolean_Confirmation;
                 Switch_Confirmation.setChecked(boolean_Confirmation);
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pRequireConfirmation, boolean_Confirmation).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pRequireConfirmation, boolean_Confirmation).commit();
             }
         });
 
@@ -971,61 +938,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             public void onClick(View p1) {
                 boolean_HideOnClick = !boolean_HideOnClick;
                 Switch_HideOnClick.setChecked(boolean_HideOnClick);
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pHideOnClick, boolean_HideOnClick).apply();
-            }
-        });
-
-        boolean_LoadAppIcons = MainActivity.preferences.getBoolean(PreferenceNames.pLoadAppIcons, true);
-        LinearLayout_LoadAppIcons = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_LoadAppIcons);
-        Switch_LoadAppIcons = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_LoadAppIcons);
-
-        Switch_LoadAppIcons.setChecked(boolean_LoadAppIcons);
-        Switch_LoadAppIcons.setClickable(false);
-        Switch_LoadAppIcons.setFocusable(false);
-
-        LinearLayout_LoadAppIcons.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                boolean_LoadAppIcons = !boolean_LoadAppIcons;
-                Switch_LoadAppIcons.setChecked(boolean_LoadAppIcons);
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pLoadAppIcons, boolean_LoadAppIcons).apply();
-            }
-        });
-
-        boolean_RoundAppIcons = MainActivity.preferences.getBoolean(PreferenceNames.pRoundAppIcons, false);
-        LinearLayout_RoundAppIcons = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_RoundAppIcons);
-        Switch_RoundAppIcons = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_RoundAppIcons);
-
-        Switch_RoundAppIcons.setChecked(boolean_RoundAppIcons);
-        Switch_RoundAppIcons.setClickable(false);
-        Switch_RoundAppIcons.setFocusable(false);
-
-        LinearLayout_RoundAppIcons.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                boolean_RoundAppIcons = !boolean_RoundAppIcons;
-                Switch_RoundAppIcons.setChecked(boolean_RoundAppIcons);
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pRoundAppIcons, boolean_RoundAppIcons).apply();
-            }
-        });
-
-        boolean_ColorizeNonStockIcons = MainActivity.preferences.getBoolean(PreferenceNames.pColorizeNonStockIcons, false);
-        LinearLayout_ColorizeNonStockIcons = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_ColorizeNonStockIcons);
-        Switch_ColorizeNonStockIcons = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_ColorizeNonStockIcons);
-
-        Switch_ColorizeNonStockIcons.setChecked(boolean_ColorizeNonStockIcons);
-        Switch_ColorizeNonStockIcons.setClickable(false);
-        Switch_ColorizeNonStockIcons.setFocusable(false);
-
-        LinearLayout_ColorizeNonStockIcons.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                boolean_ColorizeNonStockIcons = !boolean_ColorizeNonStockIcons;
-                Switch_ColorizeNonStockIcons.setChecked(boolean_ColorizeNonStockIcons);
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pColorizeNonStockIcons, boolean_ColorizeNonStockIcons).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pHideOnClick, boolean_HideOnClick).commit();
             }
         });
 
@@ -1043,7 +956,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             public void onClick(View p1) {
                 boolean_UseRoot = !boolean_UseRoot;
                 Switch_UseRoot.setChecked(boolean_UseRoot);
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pUseRoot, boolean_UseRoot).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pUseRoot, boolean_UseRoot).commit();
             }
         });
 
@@ -1060,7 +973,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             @Override
             public void onClick(View p1) {
                 ExperimentalPWMHook = !ExperimentalPWMHook;
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pExperimentalPWMHook, ExperimentalPWMHook).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pExperimentalPWMHook, ExperimentalPWMHook).commit();
                 Switch_ExperimentalPWMHook.setChecked(ExperimentalPWMHook);
             }
         });
@@ -1078,7 +991,7 @@ public class PreferencesAdvancedFragment extends Fragment {
             @Override
             public void onClick(View p1) {
                 boolean_ShowOnLockScreen = !boolean_ShowOnLockScreen;
-                MainActivity.preferences.edit().putBoolean(PreferenceNames.pShowOnLockscreen, boolean_ShowOnLockScreen).apply();
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pShowOnLockscreen, boolean_ShowOnLockScreen).commit();
                 Switch_ShowOnLockScreen.setChecked(boolean_ShowOnLockScreen);
             }
         });
@@ -1163,7 +1076,7 @@ public class PreferencesAdvancedFragment extends Fragment {
                         } else {
                             TextView_ScreenshotDelayTime.setText(helper.getTimeString(getActivity(), Long_ScreenshotDelay, 1));
                         }
-                        MainActivity.preferences.edit().putLong(PreferenceNames.pScreenshotDelay, Long_ScreenshotDelay).apply();
+                        MainActivity.preferences.edit().putLong(PreferenceNames.pScreenshotDelay, Long_ScreenshotDelay).commit();
                     }
 
                     @Override

@@ -7,6 +7,7 @@ import android.content.res.*;
 import android.graphics.*;
 import android.net.*;
 import android.os.*;
+import android.preference.PreferenceManager;
 import android.support.v4.app.*;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.*;
@@ -28,6 +29,7 @@ import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.tour.tourFragment;
 import de.NeonSoft.neopowermenu.permissionsScreen.*;
 import de.NeonSoft.neopowermenu.xposed.*;
+import eu.chainfire.libsuperuser.Shell;
 
 import java.io.*;
 import java.util.*;
@@ -104,14 +106,25 @@ public class MainActivity extends AppCompatActivity {
         CustomActivityOnCrash.setRestartActivityClass(MainActivity.class);
         ACRA.init(getApplication());
 
+        SettingsManager.getInstance(this).fixFolderPermissionsAsync();
+
         context = getApplicationContext();
         activity = getParent();
-        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",  0);
+        preferences = SettingsManager.getInstance(this).getMainPrefs();//getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", 0);
         colorPrefs = getSharedPreferences("colors",  0);
         orderPrefs = getSharedPreferences("visibilityOrder", 0);
         animationPrefs = getSharedPreferences("animations", 0);
 
         DeepLogging = preferences.getBoolean("DeepXposedLogging", false);
+
+        PackageManager m = getPackageManager();
+        String s = getPackageName();
+        try {
+            PackageInfo p = m.getPackageInfo(s, 0);
+            s = p.applicationInfo.dataDir;
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.w("NPM", "Error Package name not found ", e);
+        }
 
         ForcedLanguage = preferences.getString("ForcedLanguage","System");
         if(!ForcedLanguage.equalsIgnoreCase("system")) {
@@ -198,17 +211,20 @@ public class MainActivity extends AppCompatActivity {
                 //actionbar.hideButton();
                 if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
                     if (!saveSortingIsSaving) {
-                        helper.startAsyncTask(new saveSorting());
+                        saveSorting save = new saveSorting();
+                        save.setFinish(1);
+                        helper.startAsyncTask(save);
                     }
+                } else {
+                    launchPowerMenu();
                 }
-                launchPowerMenu();
             }
         };
 
         if ((deviceUniqeId = preferences.getString("userUniqeId", "none")).equalsIgnoreCase("none")) {
             Date date = new Date();
             deviceUniqeId = helper.md5Crypto(Build.MANUFACTURER + "-" + Build.MODEL + "-" + date.getYear() + "." + date.getMonth() + "." + date.getDay() + "-" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
-            preferences.edit().putString("userUniqeId", deviceUniqeId).apply();
+            preferences.edit().putString("userUniqeId", deviceUniqeId).commit();
             freshInstall = true;
         }
         if (freshInstall) {
@@ -243,8 +259,9 @@ public class MainActivity extends AppCompatActivity {
             changePrefPage(new PreferencesGraphicsFragment(), false);
         } else if (visibleFragment.equalsIgnoreCase("VisibilityOrder")) {
             if (!saveSortingIsSaving) {
-                helper.startAsyncTask(new saveSorting());
-                changePrefPage(new PreferencesPartFragment(), false);
+                saveSorting save = new saveSorting();
+                save.setFinish(2);
+                helper.startAsyncTask(save);
             }
         } else if (visibleFragment.equalsIgnoreCase("PresetsManager")) {
             for (int i = 0; i < PreferencesPresetsFragment.OnlinePresets.size(); i++) {
@@ -306,12 +323,14 @@ public class MainActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             Log.w("NPM", "Error Package name not found ", e);
         }
-        if (DeepLogging)
-            Log.i("NPM", "Setting " + s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml world readable...");
-        if (new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").setReadable(true, false)) {
-            if (DeepLogging) Log.i("NPM", "Success.");
-        } else {
-            if (DeepLogging) Log.e("NPM", "Failed...");
+        if (new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").exists()) {
+            if (DeepLogging)
+                Log.i("NPM", "Setting " + s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml world readable...");
+            if (new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").setReadable(true, false)) {
+                if (DeepLogging) Log.i("NPM", "Success.");
+            } else {
+                if (DeepLogging) Log.e("NPM", "Failed...");
+            }
         }
         super.onPause();
     }
@@ -339,6 +358,39 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == permissionsScreen.RESULT_ENABLE_ADMIN) {
             permissionsScreen.adapter.notifyDataSetChanged();
+        } else if (requestCode == PreferencesVisibilityOrderFragment.REQ_OBTAIN_SHORTCUT && PreferencesVisibilityOrderFragment.mShortcutHandler != null) {
+            if (resultCode == Activity.RESULT_OK) {
+                String localIconResName = null;
+                Bitmap b = null;
+                Intent.ShortcutIconResource siRes = data.getParcelableExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE);
+                Intent shortcutIntent = data.getParcelableExtra(Intent.EXTRA_SHORTCUT_INTENT);
+                if (siRes != null) {
+                    if (shortcutIntent != null &&
+                            "neopowermenu.intent.action.LAUNCH_ACTION".equals(
+                                    shortcutIntent.getAction())) {
+                        localIconResName = siRes.resourceName;
+                    } else {
+                        try {
+                            final Context extContext = context.createPackageContext(
+                                    siRes.packageName, Context.CONTEXT_IGNORE_SECURITY);
+                            final Resources extRes = extContext.getResources();
+                            final int drawableResId = extRes.getIdentifier(siRes.resourceName, "drawable", siRes.packageName);
+                            b = BitmapFactory.decodeResource(extRes, drawableResId);
+                        } catch (PackageManager.NameNotFoundException e) {
+                            //
+                        }
+                    }
+                }
+                if (localIconResName == null && b == null) {
+                    b = (Bitmap) data.getParcelableExtra(Intent.EXTRA_SHORTCUT_ICON);
+                }
+
+                PreferencesVisibilityOrderFragment.mShortcutHandler.onHandleShortcut(shortcutIntent,
+                        data.getStringExtra(Intent.EXTRA_SHORTCUT_NAME),
+                        localIconResName, b);
+            } else {
+                PreferencesVisibilityOrderFragment.mShortcutHandler.onShortcutCancelled();
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -363,9 +415,10 @@ public class MainActivity extends AppCompatActivity {
 
     class saveSorting extends AsyncTask<Object, String, String> {
 
+        private int finishingAction = 0;
+
         @Override
         protected void onPreExecute() {
-            // TODO: Implement this method
             super.onPreExecute();
             saveSortingIsSaving = true;
             PreferencesVisibilityOrderFragment.LinearLayout_Progress.setVisibility(View.VISIBLE);
@@ -374,22 +427,27 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Object[] p1) {
-            // TODO: Implement this method
             PreferencesVisibilityOrderFragment.adapter.outputSorting();
             return null;
         }
 
         @Override
         protected void onPostExecute(String p1) {
-            // TODO: Implement this method
             super.onPostExecute(p1);
             saveSortingIsSaving = false;
             PreferencesVisibilityOrderFragment.LinearLayout_Progress.startAnimation(MainActivity.anim_fade_out);
             PreferencesVisibilityOrderFragment.LinearLayout_Progress.setVisibility(View.GONE);
             actionbar.setButton(context.getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
-            //changePrefPage(new PreferencesPartFragment(), true);
+            if (finishingAction==1) {
+                launchPowerMenu();
+            } else if (finishingAction==2) {
+                changePrefPage(new PreferencesPartFragment(), true);
+            }
         }
 
+        public void setFinish(int finish) {
+            this.finishingAction = finish;
+        }
     }
 
     private void initImageLoader() {

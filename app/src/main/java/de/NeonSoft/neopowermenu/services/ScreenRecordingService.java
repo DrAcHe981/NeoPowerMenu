@@ -37,6 +37,7 @@ import java.util.Locale;
 
 import de.NeonSoft.neopowermenu.R;
 import de.NeonSoft.neopowermenu.helpers.PreferenceNames;
+import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 import de.NeonSoft.neopowermenu.xposed.*;
 
 import android.app.*;
@@ -184,7 +185,7 @@ public class ScreenRecordingService extends Service {
         nm = (NotificationManager) mContext.getSystemService(NOTIFICATION_SERVICE);
 
         final String prefsName = getPackageName() + "_preferences";
-        mPrefs = getSharedPreferences(prefsName, 0);
+        mPrefs = SettingsManager.getInstance(this).getMainPrefs();
         DeepLogging = mPrefs.getBoolean(PreferenceNames.pDeepXposedLogging,false);
 
         mHandler = new Handler() {

@@ -110,7 +110,7 @@ public class GravityChooserDialog extends DialogFragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int_Vertical = progress;
-                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).apply();
+                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).commit();
                 changeGravity();
             }
 
@@ -132,7 +132,7 @@ public class GravityChooserDialog extends DialogFragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int_Horizontal = progress;
-                MainActivity.preferences.edit().putInt("DialogPosition_Horizontal", int_Horizontal).apply();
+                MainActivity.preferences.edit().putInt("DialogPosition_Horizontal", int_Horizontal).commit();
                 changeGravity();
             }
 
@@ -152,7 +152,7 @@ public class GravityChooserDialog extends DialogFragment {
             public void onClick(View v) {
                 int_Horizontal = 50;
                 int_Vertical = 50;
-                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).putInt("DialogPosition_Horizontal", int_Horizontal).apply();
+                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).putInt("DialogPosition_Horizontal", int_Horizontal).commit();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     SeekBar_Vertical.setProgress(50,true);
                     SeekBar_Horizontal.setProgress(50,true);

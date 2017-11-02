@@ -2,6 +2,8 @@ package de.NeonSoft.neopowermenu.xposed;
 
 import android.app.*;
 import android.content.*;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
@@ -66,7 +68,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     boolean mBlurBehind = false;
     float mBlurRadius = 14f;
 
-    String sStyleName = "Material";
+    int sStyleName = 0;
     XposedDialog powerDialog;
 
     public BroadcastReceiver mReceiver;
@@ -87,6 +89,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SettingsManager.getInstance(this).fixFolderPermissionsAsync();
+
         previewMode = getIntent().getBooleanExtra("previewmode", false);
         if (!previewMode) {
             CustomActivityOnCrash.install(getApplicationContext());
@@ -99,7 +103,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         initImageLoader();
 
-        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", 0);
+        preferences = SettingsManager.getInstance(this).getMainPrefs();//getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",  0);
         colorPrefs = getSharedPreferences("colors", 0);
         orderPrefs = getSharedPreferences("visibilityOrder", 0);
         animationPrefs = getSharedPreferences("animations", 0);
@@ -111,10 +115,26 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         ColorizeNonStockIcons = preferences.getBoolean("ColorizeNonStockIcons", false);
         GraphicsPadding = preferences.getFloat("GraphicsPadding", 0);
 
+        PackageManager m = getPackageManager();
+        String s = getPackageName();
+        try {
+            PackageInfo p = m.getPackageInfo(s, 0);
+            s = p.applicationInfo.dataDir;
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.w("NPM", "Error Package name not found ", e);
+        }
+        if (DeepXposedLogging)
+            Log.i("NPM", "Setting " + s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml world readable...");
+        if (new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").setReadable(true, false)) {
+            if (DeepXposedLogging) Log.i("NPM", "Success.");
+        } else {
+            if (DeepXposedLogging) Log.e("NPM", "Failed...");
+        }
+
         mBlurBehind = preferences.getBoolean("BlurBehind", false);
         mBlurRadius = preferences.getFloat("BlurRadius", 14f);
 
-        sStyleName = preferences.getString("DialogTheme", "Material");
+        sStyleName = preferences.getInt("DialogThemeId", 0);
 
         action = null;
 
@@ -167,9 +187,11 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                 item.setHideOnLockScreen(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                 item.setFillEmpty(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_fillEmpty", false));
                 item.setLockedWithPassword(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_lockedWithPassword", false));
+                item.setHideText(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideText", false));
                 if (item.getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
-                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
-                    item.setText(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
+                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"),"","");
+                    item.setText(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""),"","");
+                    item.setShortcutUri(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""),"","");
                     if (MultiPage.size() == 0 || (MultiPage.size() == 1 && !firstItemDrawn)) {
                         if (!mKeyguardShowing || (mKeyguardShowing && !item.getHideOnLockScreen())) {
                             createItem = visibilityOrder_ListAdapter.TYPE_NORMAL;
@@ -177,33 +199,36 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                         firstItemDrawn = true;
                     }
                 } else if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTI) {
-                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null") + "|" +
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null") + "|" +
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null"));
-                    item.setText(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_text", "< default >") + "|" +
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_text", "< default >") + "|" +
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_text", "< default >"));
+                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", ""),
+                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", ""),
+                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", ""));
+                    item.setText(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_text", "").replace("< default >", ""),
+                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_text", "").replace("< default >", ""),
+                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_text", "").replace("< default >", ""));
+                    item.setShortcutUri(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_shortcutUri", ""),
+                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_shortcutUri", ""),
+                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_shortcutUri", ""));
                     if (MultiPage.size() == 0) {
                         if (!mKeyguardShowing || (mKeyguardShowing && !item.getHideOnLockScreen())) {
                             createItem = visibilityOrder_ListAdapter.TYPE_MULTI;
                         }
                     }
                 } else if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
-                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
-                    item.setText("");
+                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"), "", "");
+                    item.setText("", "", "");
                     item.setOnPage(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                     MultiPage.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                     if (!mKeyguardShowing || (mKeyguardShowing && !item.getHideOnLockScreen())) {
                         firstItemDrawn = false;
                     }
                 } else if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END) {
-                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
-                    item.setText("");
+                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"), "", "");
+                    item.setText("", "", "");
                     item.setOnPage(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                     if (MultiPage.size() > 0) MultiPage.remove(MultiPage.size() - 1);
                 }
             }
-            if (XposedMainActivity.action != null && item.getTitle().contains(XposedMainActivity.action)) {
+            if (XposedMainActivity.action != null && item.getTitle(1).contains(XposedMainActivity.action)) {
                 shortcutItem = i;
             }
             if (item.getType() != -1) {

@@ -5,6 +5,8 @@ import android.content.*;
 import android.media.AudioManager;
 import android.os.*;
 import android.os.Process;
+import android.os.storage.IMountService;
+import android.os.storage.IMountShutdownObserver;
 import android.provider.*;
 import android.util.*;
 import android.widget.*;
@@ -16,6 +18,7 @@ import de.robv.android.xposed.*;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.*;
 
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -39,6 +42,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private boolean ExperimentalPWMHook = false;
 
     public static String PACKAGE_NAME = MainActivity.class.getPackage().getName();
+    private static final File prefsFileProt = new File("/data/user_de/0/" + MainActivity.class.getPackage().getName() + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml");
 
     private static final String SHUTDOWN_BROADCAST
             = "am broadcast android.intent.action.ACTION_SHUTDOWN";
@@ -79,7 +83,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public static final String NPM_ACTION_BROADCAST_TOGGLEDATA = "de.NeonSoft.neopowermenu.action.toggleData";
     public static final String NPM_ACTION_BROADCAST_REBOOTFLASHMODE = "de.NeonSoft.neopowermenu.action.RebootFlashMode";
 
-    private static final int MESSAGE_DISMISS = 0;
 
     Handler xHandler;
     private final static Object mScreenshotLock = new Object();
@@ -90,22 +93,22 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
     private static Object sIsStartedGuard;
     private static boolean sIsStarted;
+    private static boolean mReboot;
+    private static boolean mRebootSafeMode;
+    private static String mRebootReason;
     // Provides shutdown assurance in case the system_server is killed
     public static final String SHUTDOWN_ACTION_PROPERTY = "sys.shutdown.requested";
     // Indicates whether we are rebooting into safe mode
     public static final String REBOOT_SAFEMODE_PROPERTY = "persist.sys.safemode";
 
     private static ShutdownThread sInstance = new ShutdownThread();
-    Class<?> ShutdownThreadClass = null;
-
+    //Class<?> ShutdownThreadClass = null;
 
     /*<!-- Internal Hook version to check if reboot is needed --!>*/
     private static final int XposedHookVersion = 26;
 
-    Object mPhoneWindowManager;
 
-    Application mSysteUIApplication;
-    public BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
+    private BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(final Context p1, Intent p2) {
@@ -114,19 +117,29 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 XposedUtils.log("Received broadcast: " + p2.getAction());
             switch (p2.getAction()) {
                 case NPM_ACTION_BROADCAST_SHUTDOWN:
-                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, SHUTDOWN_CMD});
+                    XposedUtils.doPowerAction(p1, XposedUtils.NPM_POWERACTION_SHUTDOWN);
+                    //XposedHelpers.callMethod(ShutdownThreadClass,"shutdown",mContext, false);
+                    //performCMDCall(new String[]{SHUTDOWN_BROADCAST, SHUTDOWN_CMD});
                     break;
                 case NPM_ACTION_BROADCAST_REBOOT:
-                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_CMD});
+                    XposedUtils.doPowerAction(p1, XposedUtils.NPM_POWERACTION_REBOOT);
+                    //XposedHelpers.callMethod(ShutdownThreadClass,"reboot",mContext, null, false);
+                    //performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_CMD});
                     break;
                 case NPM_ACTION_BROADCAST_SOFTREBOOT:
-                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_SOFT_REBOOT_CMD});
+                    XposedUtils.doPowerAction(p1, XposedUtils.NPM_POWERACTION_SOFTREBOOT);
+                    //XposedUtils.performSoftReboot();
+                    //performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_SOFT_REBOOT_CMD});
                     break;
                 case NPM_ACTION_BROADCAST_REBOOTRECOVERY:
-                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_RECOVERY_CMD});
+                    XposedUtils.doPowerAction(p1, XposedUtils.NPM_POWERACTION_RECOVERY);
+                    //XposedHelpers.callMethod(ShutdownThreadClass,"reboot",mContext, "recovery", false);
+                    //performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_RECOVERY_CMD});
                     break;
                 case NPM_ACTION_BROADCAST_REBOOTBOOTLOADER:
-                    performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_BOOTLOADER_CMD});
+                    XposedUtils.doPowerAction(p1, XposedUtils.NPM_POWERACTION_BOOTLOADER);
+                    //XposedHelpers.callMethod(ShutdownThreadClass,"reboot",mContext, "bootloader", false);
+                    //performCMDCall(new String[]{SHUTDOWN_BROADCAST, REBOOT_BOOTLOADER_CMD});
                     break;
                 case NPM_ACTION_BROADCAST_KILLSYSTEMUI:
                     new Handler().postDelayed(new Runnable() {
@@ -164,24 +177,30 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 abortBroadcast();
             }
         }
-    };;
+    };
 
     @Override
     public void initZygote(StartupParam startupParam) throws Throwable {
-        preferences = new XSharedPreferences(PACKAGE_NAME);
+        if (XposedUtils.USE_DEVICE_PROTECTED_STORAGE()) {
+            preferences = new XSharedPreferences(prefsFileProt);
+        } else {
+            preferences = new XSharedPreferences(PACKAGE_NAME);
+        }
         //preferences.getFile().setReadable(true, false);
         preferences.makeWorldReadable();
+        preferences.reload();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !startupParam.startsSystemServer)
             return;
-        preferences.reload();
         DeepXposedLogging = preferences.getBoolean("DeepXposedLogging", false);
+        HookShutdownThread = preferences.getBoolean("HookShutdownThread", true);
         ExperimentalPWMHook = preferences.getBoolean("ExperimentalPWMHook", false);
-        UseRoot = preferences.getBoolean("UseRoot", true);
+        UseRoot = preferences.getBoolean("UseRoot", false);
         XposedUtils.log("/_Zygote init...");
         XposedUtils.log("|_____Module Info");
         XposedUtils.log("|-Module Path: " + startupParam.modulePath);
         XposedUtils.log("|-Hook version: " + XposedHookVersion);
         XposedUtils.log("|-Preferences: " + preferences.getFile().getAbsolutePath());
+        XposedUtils.log("|\\-World readable: " + preferences.getFile().canRead());
         XposedUtils.log("|-Deep Logging: " + (DeepXposedLogging ? "active, logging everything." : "not active, logging only errors."));
         XposedUtils.log("|-HookShutdownThread: " + HookShutdownThread);
         XposedUtils.log("|-ExperimentalPWMHook: " + ExperimentalPWMHook);
@@ -231,9 +250,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             if (DeepXposedLogging) XposedUtils.log(usedPMClass);
             final Class<?> phoneWindowManagerClass = XposedHelpers.findClass(usedPWMClass, lpparam.classLoader);
             final Class<?> globalActionsClass = XposedHelpers.findClass(usedGADClass, lpparam.classLoader);
-            if (HookShutdownThread) {
-                ShutdownThreadClass = XposedHelpers.findClass(usedSDClass, lpparam.classLoader);
-            }
+            final Class<?> ShutdownThreadClass = XposedHelpers.findClass(usedSDClass, lpparam.classLoader);
 
             final Class<?> pmServiceClass = XposedHelpers.findClass(usedPMClass, lpparam.classLoader);
 
@@ -490,7 +507,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
                         final KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                         if (!showDialog()) {
-                            XposedUtils.log("Failed to show dialog, showing info...");
+                            Log.e("NPM:DIALOG", "Failed to show dialog, showing info...");
                             AlertDialog.Builder adb = new AlertDialog.Builder(mContext, 0);
                             adb.setMessage(R.string.xposedMain_MenuActivityNotFound);
                             adb.setNegativeButton(R.string.xposedMain_MenuActivityNotFound_Cancel, null);
@@ -522,69 +539,19 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         sIsStarted = (boolean) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sIsStarted");
                         if (sIsStarted)
                             XposedUtils.log("sIsStarted is true,that's not normal for fresh created...");
-                        sInstance = (ShutdownThread) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sInstance");
-                        if (sInstance == null)
-                            XposedUtils.log("sInstance is null,reboot will crash...");
+                        //sInstance = (ShutdownThread) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sInstance");
+                        //if (sInstance == null)
+                            //XposedUtils.log("sInstance is null,reboot will crash...");
                         //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "ShutdownThread#constructor,").commit();
                     }
                 });
                 if (DeepXposedLogging) XposedUtils.log("Getting needed values...");
                 if (DeepXposedLogging)
-                    XposedUtils.log("Hooking (replace) " + usedSDClass + "#beginShutdownSequence...");
+                    XposedUtils.log("Hooking (after) " + usedSDClass + "#beginShutdownSequence...");
                 XposedHelpers.findAndHookMethod(usedSDClass, lpparam.classLoader, "beginShutdownSequence", Context.class, new XC_MethodReplacement() {
                     @Override
                     protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam param) throws Throwable {
-                        try {
-                            synchronized (sIsStartedGuard) {
-                                if (sIsStarted) {
-                                    Log.d(TAG, "Shutdown sequence already running, returning.");
-                                    return null;
-                                }
-                                sIsStarted = true;
-                            }
-                            // throw up an indeterminate system dialog to indicate radio is
-                            // shutting down.
-                                                                /*ProgressDialog pd = new ProgressDialog(context);
-                                                                 pd.setTitle(context.getText(com.android.internal.R.string.power_off));
-																 pd.setMessage(context.getText(com.android.internal.R.string.shutdown_progress));
-																 pd.setIndeterminate(true);
-																 pd.setCancelable(false);
-																 pd.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
-																 pd.show();*/
-                            Context context = (Context) param.args[0];
-                            sInstance.mContext = context;
-                            sInstance.mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-                            // make sure we never fall asleep again
-                            sInstance.mCpuWakeLock = null;
-                            try {
-                                sInstance.mCpuWakeLock = sInstance.mPowerManager.newWakeLock(
-                                        PowerManager.PARTIAL_WAKE_LOCK, TAG + "-cpu");
-                                sInstance.mCpuWakeLock.setReferenceCounted(false);
-                                sInstance.mCpuWakeLock.acquire();
-                            } catch (SecurityException e) {
-                                Log.w(TAG, "No permission to acquire wake lock", e);
-                                sInstance.mCpuWakeLock = null;
-                            }
-                            // also make sure the screen stays on for better user experience
-                            sInstance.mScreenWakeLock = null;
-                            if (sInstance.mPowerManager.isScreenOn()) {
-                                try {
-                                    sInstance.mScreenWakeLock = sInstance.mPowerManager.newWakeLock(
-                                            PowerManager.FULL_WAKE_LOCK, TAG + "-screen");
-                                    sInstance.mScreenWakeLock.setReferenceCounted(false);
-                                    sInstance.mScreenWakeLock.acquire();
-                                } catch (SecurityException e) {
-                                    Log.w(TAG, "No permission to acquire wake lock", e);
-                                    sInstance.mScreenWakeLock = null;
-                                }
-                            }
-                            // start the thread that initiates shutdown
-                            sInstance.mHandler = new Handler() {
-                            };
-                            sInstance.start();
-                        } catch (Throwable t) {
-                            XposedUtils.log("ShutdownThread Failed: " + t.toString());
-                        }
+
                         //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "ShutdownThread#beginShutdownSequence,").commit();
                         return null;
                     }
@@ -676,7 +643,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     }
 
     private static void performCMDCall(String[] cmd) {
-        XposedUtils.log("Trying to run '" + cmd + "' using system process call");
+        XposedUtils.log("Trying to run '" + cmd[0] + "' using system process call");
 
         java.lang.Process suProcess = null;
         try {
@@ -908,6 +875,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     };
 
     public static class ShutdownThread extends Thread {
+        private Object SHUTDOWNOBJECT = null;
         private final Object mActionDoneSync = new Object();
         private boolean mActionDone;
         private Context mContext;
@@ -934,19 +902,19 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
          */
         public void run() {
             BroadcastReceiver br = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
+                @Override public void onReceive(Context context, Intent intent) {
                     // We don't allow apps to cancel this, so ignore the result.
                     actionDone();
                 }
             };
-            Toast.makeText(sInstance.mContext, "ShutdownThread execute...", Toast.LENGTH_SHORT).show();
-            // First send the high-level shut down broadcast.
             mActionDone = false;
-            if (Build.VERSION.SDK_INT >= 17) {
-                mContext.sendOrderedBroadcastAsUser(new Intent(Intent.ACTION_SHUTDOWN), android.os.Process.myUserHandle(), null, br, mHandler, 0, null, null);
+            Intent intent = new Intent(Intent.ACTION_SHUTDOWN);
+            intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                mContext.sendOrderedBroadcastAsUser(intent,
+                        android.os.Process.myUserHandle(), null, br, mHandler, 0, null, null);
             } else {
-                mContext.sendOrderedBroadcast(new Intent(Intent.ACTION_SHUTDOWN), null, br, mHandler, 0, null, null);
+                mContext.sendOrderedBroadcast(intent, null, br, mHandler, 0, null, null);
             }
         }
     }

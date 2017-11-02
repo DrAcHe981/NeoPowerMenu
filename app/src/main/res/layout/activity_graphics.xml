@@ -10,6 +10,7 @@
 		android:id="@+id/activitygraphicsLinealLayout_Padding"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:visibility="gone"
 		android:orientation="vertical">
 
 		<LinearLayout
@@ -76,6 +77,54 @@
 
 	</LinearLayout>
 
+	<LinearLayout
+		android:id="@+id/activitygraphicsLinealLayout_Behavior"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:minHeight="50dp"
+			android:orientation="vertical"
+			android:paddingBottom="5dp"
+			android:paddingTop="5dp">
+
+			<TextView
+				android:id="@+id/activitygraphicsTextView_BehaviorTitle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:gravity="center_vertical"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:text="@string/graphics_BehaviorTitle"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="#FFFFFF"/>
+
+			<TextView
+				android:id="@+id/activitygraphicsTextView_BehaviorDesc"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:gravity="center_vertical"
+				android:paddingLeft="15dp"
+				android:paddingRight="10dp"
+				android:text="@string/graphics_BehaviorDesc"/>
+
+		</LinearLayout>
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="2dp"
+			android:layout_marginLeft="5dp"
+			android:layout_marginRight="5dp"
+			android:alpha="0.3"
+			android:background="@color/colorAccentDarkTheme"/>
+
+	</LinearLayout>
+
 	<GridView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -91,4 +140,3 @@
 	</GridView>
 
 </LinearLayout>
-

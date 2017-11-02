@@ -84,7 +84,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
                 } catch (Throwable t1) {
                     holder.name.setText(mGraphics.get(position).getName());
                     holder.name.setVisibility(View.VISIBLE);
-                    Log.e("NPM:graphicsList", "No String found for resource " + mGraphics.get(position).getName() + "\n" + t);
+                    Log.w("NPM:graphicsList", "No String found for resource " + mGraphics.get(position).getName() + "\n" + t);
                 }
             }
         }

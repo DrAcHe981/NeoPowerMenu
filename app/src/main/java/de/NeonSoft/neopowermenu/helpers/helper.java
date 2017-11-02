@@ -19,6 +19,7 @@ import android.widget.NumberPicker;
 
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
+import de.NeonSoft.neopowermenu.xposed.XposedUtils;
 
 import java.io.*;
 import java.lang.reflect.*;
@@ -55,6 +56,16 @@ public class helper {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static File getFilesDir(Context ctx) {
+        if (XposedUtils.USE_DEVICE_PROTECTED_STORAGE()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                return ctx.isDeviceProtectedStorage() ?
+                        ctx.getFilesDir() : ctx.createDeviceProtectedStorageContext().getFilesDir();
+            }
+        }
+        return ctx.getFilesDir();
     }
 
     public static void postInvalidateOnAnimation(View view) {

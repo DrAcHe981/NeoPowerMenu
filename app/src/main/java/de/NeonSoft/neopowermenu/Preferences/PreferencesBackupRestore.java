@@ -39,6 +39,7 @@ import java.util.zip.ZipFile;
 
 import de.NeonSoft.neopowermenu.MainActivity;
 import de.NeonSoft.neopowermenu.R;
+import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 import de.NeonSoft.neopowermenu.helpers.helper;
 import de.NeonSoft.neopowermenu.helpers.slideDownDialogFragment;
 
@@ -309,7 +310,7 @@ public class PreferencesBackupRestore extends Fragment {
                     if (Integer.parseInt(backupOption) == 0) {
                         if (MainActivity.DeepLogging)
                             Log.d("NPM:cB", "Adding main settings...");
-                        helper.zipFile(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml", backupPath + backupName, null);
+                        helper.zipFile(SettingsManager.getSettingsFile(MainActivity.context), backupPath + backupName, null);
                     } else if (Integer.parseInt(backupOption) == 1) {
                         if (MainActivity.DeepLogging)
                             Log.d("NPM:cB", "Adding color settings...");
@@ -379,6 +380,7 @@ public class PreferencesBackupRestore extends Fragment {
 
             if (MainActivity.DeepLogging) {
                 Log.d("NPM:rB", "Restoring from: " + path);
+                Log.d("NPM:rB", "Restoring to: " + SettingsManager.getSettingsFile(MainActivity.context));
                 Log.d("NPM:rB", "Restoring parts: " + params[1]);
             }
 
@@ -399,8 +401,8 @@ public class PreferencesBackupRestore extends Fragment {
                 for (String option : restoreOptions) {
                     if (Integer.parseInt(option) == 0) {
                         if (MainActivity.DeepLogging) Log.d("NPM:rB", "Restoring main settings...");
-                        new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").delete();
-                        if (!new File(mActivity.getFilesDir().getPath() + "/temp/" + MainActivity.class.getPackage().getName() + "_preferences.xml").renameTo(new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml"))) {
+                        new File(SettingsManager.getSettingsFile(MainActivity.context)).delete();
+                        if (!new File(mActivity.getFilesDir().getPath() + "/temp/" + MainActivity.class.getPackage().getName() + "_preferences.xml").renameTo(new File(SettingsManager.getSettingsFile(MainActivity.context)))) {
                             Log.e("NPM:rB", "Failed to restore main settings!");
                         }
                     } else if (Integer.parseInt(option) == 1) {
@@ -612,6 +614,7 @@ public class PreferencesBackupRestore extends Fragment {
                     if (Integer.parseInt(option) == 0) {
                         if (MainActivity.DeepLogging) Log.d("NPM:dF", "Deleting main settings...");
                         new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").delete();
+                        new File(SettingsManager.getSettingsFile(MainActivity.context)).delete();
                     } else if (Integer.parseInt(option) == 1) {
                         if (MainActivity.DeepLogging)
                             Log.d("NPM:dF", "Deleting color settings...");

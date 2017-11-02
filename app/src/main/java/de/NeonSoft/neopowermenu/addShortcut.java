@@ -38,6 +38,7 @@ import de.NeonSoft.neopowermenu.Preferences.AddShortcutList;
 import de.NeonSoft.neopowermenu.Preferences.PreferencesGraphicsFragment;
 import de.NeonSoft.neopowermenu.Preferences.PreferencesVisibilityOrderFragment;
 import de.NeonSoft.neopowermenu.helpers.GraphicDrawable;
+import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 import de.NeonSoft.neopowermenu.helpers.TextDrawable;
 import de.NeonSoft.neopowermenu.helpers.URLFileNameGenerator;
 import de.NeonSoft.neopowermenu.helpers.actionBar;
@@ -83,7 +84,7 @@ public class addShortcut extends AppCompatActivity {
 
         mActivity = getApplicationContext();
 
-        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", 0);
+        preferences = SettingsManager.getInstance(this).getMainPrefs();
         colorPrefs = getSharedPreferences("colors", 0);
         setTheme(R.style.ThemeBaseDark);
 

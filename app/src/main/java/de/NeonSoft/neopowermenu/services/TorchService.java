@@ -7,6 +7,7 @@ import android.hardware.*;
 import android.os.*;
 
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 
 import android.os.PowerManager.WakeLock;
 
@@ -55,7 +56,7 @@ public class TorchService extends Service {
         builder.setContentIntent(mPendingIntent);
         mTorchNotif = builder.build();
 
-        SharedPreferences prefs = getSharedPreferences(getPackageName() + "_preferences", 0);
+        SharedPreferences prefs = SettingsManager.getInstance(this).getMainPrefs();
         mTorchTimeout = (int) prefs.getLong("FlashlightAutoOffTime", 10 * 60 * 1000);
         mTorchAutoOff = prefs.getBoolean("FlashlightAutoOff", true);
         mHandler = new Handler();

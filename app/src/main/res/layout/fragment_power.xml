@@ -8,6 +8,7 @@
 
     <LinearLayout
         android:id="@+id/fragmentpowerPadding"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -15,12 +16,14 @@
         android:id="@+id/fragmentpowerFrameLayout1"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:foregroundGravity="center|center_vertical|center_horizontal"
         android:background="@drawable/accentframe">
 
         <FrameLayout
             android:id="@+id/frame"
             android:layout_width="340dp"
+            android:foregroundGravity="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center|center_vertical|center_horizontal">
 
@@ -32,7 +35,8 @@
                 android:orientation="vertical">
 
                 <ScrollView
-                    android:layout_width="340dp"
+                    android:id="@+id/frameScroll"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.0">
 
@@ -71,8 +75,9 @@
                 android:orientation="vertical">
 
                 <ScrollView
-                    android:layout_width="340dp"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/frame3Scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="1.0">
 
                     <LinearLayout
@@ -160,7 +165,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_gravity="center|center_vertical|center_horizontal"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <LinearLayout
                 android:id="@+id/frameEnterPasswordLinear"
@@ -260,6 +265,7 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
+                    android:id="@+id/frame2Relative"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
