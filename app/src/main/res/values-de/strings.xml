@@ -292,7 +292,7 @@
   <string name="uploadHelper_FailedAt2">"Fehler beim abrufen der benötigten Informationen, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
   <string name="uploadHelper_FailedAt3">"Fehler beim hochladen der Datei, bitte überprüfe deine Internetverbindung und versuch es erneut."</string>
   <string name="uploadHelper_UnknownError">"Während des Hochladensist ein Unbekannter Fehler aufgetreten. Bitte versuch es erneut."</string>
-  <string name="visibilityOrder_SearchApp">"Suche App (Groß/Kleinschreibung wird ignoriert):"</string>
+  <string name="visibilityOrder_SearchApp">"App suchen (Groß/Kleinschreibung wird ignoriert):"</string>
   <string name="visibilityOrder_FilterItemsList">"Element suchen (Groß/Kleinschreibung wird ignoriert):"</string>
   <string name="powerMenuMain_MediaPrevious">"Vorheriges"</string>
   <string name="powerMenuMain_MediaPlayPause">"Wiedergabe/Pause"</string>
@@ -415,4 +415,9 @@
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Erforderlich, um auf Nougat(7.0) und höher den \"Bitte nicht stören\" Modus zu ändern."</string>
   <string name="powerMenuMain_Shortcut">Verknüpfung</string>
   <string name="visibilityOrder_NoGravityBoxFound">GravityBox konnte nicht gefunden werden, dieses Element funktioniert nicht wenn GravityBox nicht installiert ist.</string>
+  <string name="visibilityOrder_HideText">Text ausblenden</string>
+  <string name="style_MaterialDynamicWidth">Material (dynamische Breite)</string>
+  <string name="graphics_BehaviorTitle">Grafik Verhalten anpassen</string>
+  <string name="graphics_BehaviorDesc">Aktiviere/deaktiviere Grafiken und passen Sie Werte an wie Abstand und Färbung.</string>
+  <string name="visibilityOrder_SearchShortcut">Verknüpfung suchen (Groß/Kleinschreibung wird ignoriert):</string>
 </resources>
