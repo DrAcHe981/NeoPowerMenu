@@ -417,7 +417,6 @@
   <string name="visibilityOrder_NoGravityBoxFound">GravityBox konnte nicht gefunden werden, dieses Element funktioniert nicht wenn GravityBox nicht installiert ist.</string>
   <string name="visibilityOrder_HideText">Text ausblenden</string>
   <string name="style_MaterialDynamicWidth">Material (dynamische Breite)</string>
-  <string name="graphics_BehaviorTitle">Grafik Verhalten anpassen</string>
   <string name="graphics_BehaviorDesc">Aktiviere/deaktiviere Grafiken und passen Sie Werte an wie Abstand und Färbung.</string>
   <string name="visibilityOrder_SearchShortcut">Verknüpfung suchen (Groß/Kleinschreibung wird ignoriert):</string>
   <string name="preferences_TranslateDesc">Du kennst sprachen die diese App haben sollte? Dann tippe hier, um das Projekt auf Crowdin zu sehen, und hilf bei der Übersetzung!</string>
