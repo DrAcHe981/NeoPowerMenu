@@ -188,7 +188,8 @@
   <string name="preferences_Animations">"Animazioni | Modificare le animazioni o disattivarli completamente."</string>
   <string name="preferencesCategory_Other">"Altro"</string>
   <string name="preferences_Account">"Account | Qui puoi accedere, creare un account o controllare le tue statistiche dopo log in."</string>
-    <string name="preferences_Permissions">"Autorizzazioni | Visualizza le autorizzazioni richieste e controlla per cosa sono usate\n Consenti le autorizzazioni aggiuntive che non sono date al primo avvio (Android 6.0 +)."</string>
+  <string name="preferences_Advanced">"Impostazioni avanzate | Modificare le impostazioni avanzate quali ritardi, gravity o la velocità."</string>
+  <string name="preferences_Permissions">"Autorizzazioni | Visualizza le autorizzazioni richieste e controlla per cosa sono usate\n Consenti le autorizzazioni aggiuntive che non sono date al primo avvio (Android 6.0 +)."</string>
   <string name="preferences_HideLauncherIcon">"Nascondere le app nella schermata di avvio | Nasconde l'icona dell'app nella schermata di avvio, può essere necessario riavviare il sistema per nascondere l'icona. \n Questa schermata impostazioni sarà accessibile solo tramite il programma di installazione di Xposed."</string>
   <string name="preferences_DeepXposedLogging">"Log profondo su Xposed! | Abilità log profondo su Xposed, dopo abilitazione riavvia per vedere cambiamenti."</string>
   <string name="preferencesCategory_About">"Altro"</string>
@@ -239,7 +240,6 @@
   <string name="tourPage_2_Title">"Menù dei Temi"</string>
   <string name="tourPage_2_Text">"Qui inizia la personalizzazione: puoi cambiare ogni colore!\nOffrire un menù altamente personalizzabile è il mio obiettivo principale."</string>
   <string name="tourPage_3_Title">"Menù Grafica"</string>
-  <string name="tourPage_3_Text">Personalizza la grafica in uso.</string>
   <string name="tourPage_4_Title">"Menù Visibilità ed Ordinamento"</string>
   <string name="tourPage_4_Text">"Scegli cosa vuoi avere nel tuo menù è ordina le opzioni come preferisci.\nClicca sul '+' per aggiungere nuovi elementi, trascina l'elemento per cancellarlo.\n\nL'icona 'lock' significa: Mostra nelal lockscreen.\nL'icona 'i' significa: mostra descrizione."</string>
   <string name="tourPage_5_Title">"Menù animazioni"</string>
