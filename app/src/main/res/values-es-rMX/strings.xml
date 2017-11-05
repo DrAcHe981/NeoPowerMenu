@@ -212,8 +212,7 @@
   <string name="preferences_Animations">"Animaciones | Cambiar las animaciones o deshabilitarlas completamente."</string>
   <string name="preferencesCategory_Other">"Otros"</string>
   <string name="preferences_Account">"Cuenta | Aquí se puede iniciar sesión, crear una cuenta o consultar sus estadísticas."</string>
-  <string name="preferences_Advanced">"Configuración avanzada | Cambiar configuración avanzada tales como retrasos, gravedad o velocidad."</string>
-  <string name="preferences_Permissions">"Permisos | Muestra Los permission requeridos y be para que son usados \nOtorga permisos adicionales que no se han agregado en el inicio (Android 6.0 +)."</string>
+    <string name="preferences_Permissions">"Permisos | Muestra Los permission requeridos y be para que son usados \nOtorga permisos adicionales que no se han agregado en el inicio (Android 6.0 +)."</string>
   <string name="preferences_HideLauncherIcon">"Ocultar la aplicación en el lanzador | Oculta el icono de la aplicación en el lanzador, puede tomar hasta un reinicio para ocultar el icono. \nEsta pantalla de Configuración sólo será accesible a través del instalador de Xposed."</string>
   <string name="preferences_DeepXposedLogging">"Registro de Xposed profundo | Activar el registro avanzado de Xposed, después de habilitar el reinicio para ver cambios."</string>
   <string name="preferencesCategory_About">"Acerca de"</string>

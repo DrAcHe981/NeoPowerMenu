@@ -193,8 +193,7 @@
   <string name="preferences_Theme">"Thème|Changer l'aspect et l'ergonomie."</string>
   <string name="preferences_VisibilityOrder">"Visibilité et Order|Sélectionner les éléments que vous voulez afficher et les placer dans l'ordre de votre choix."</string>
   <string name="preferencesCategory_Other">"Autres"</string>
-  <string name="preferences_Advanced">"Paramètres avancés|Changer les paramètres avancés comme les délais, la gravité ou la vitesse."</string>
-  <string name="preferences_Permissions">"Permissions|Afficher les permissions utilisées et voir leurs utilisations.\nAccorder des permissions complémentaires qui ne sont pas ajoutées au premier démarrage (Android 6.0+)."</string>
+    <string name="preferences_Permissions">"Permissions|Afficher les permissions utilisées et voir leurs utilisations.\nAccorder des permissions complémentaires qui ne sont pas ajoutées au premier démarrage (Android 6.0+)."</string>
   <string name="preferences_HideLauncherIcon">"\"\"Cacher l'appli dans le launcher|Cache l'icône de l'appli dans le launcher, un redémarrage peut être nécessaire.
 Cet écran de paramètres sera alors uniquement accessible via le Xposed Installer.\"\""</string>
   <string name="preferences_DeepXposedLogging">"Journalisation détaillée Xposed|Activer la journalisation avancée Xposed, puis redémarrer pour voir les changes."</string>

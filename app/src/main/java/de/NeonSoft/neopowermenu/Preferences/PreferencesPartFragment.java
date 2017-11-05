@@ -560,7 +560,7 @@ public class PreferencesPartFragment extends Fragment {
             public void onClick(View p1) {
 
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("http://crowdin.com/project/neopowermenu"));
+                i.setData(Uri.parse("https://crowdin.com/project/neopowermenu"));
                 try {
                     startActivity(i);
                 } catch (ActivityNotFoundException e) {

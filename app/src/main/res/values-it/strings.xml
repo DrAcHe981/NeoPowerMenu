@@ -188,8 +188,7 @@
   <string name="preferences_Animations">"Animazioni | Modificare le animazioni o disattivarli completamente."</string>
   <string name="preferencesCategory_Other">"Altro"</string>
   <string name="preferences_Account">"Account | Qui puoi accedere, creare un account o controllare le tue statistiche dopo log in."</string>
-  <string name="preferences_Advanced">"Impostazioni avanzate | Modificare le impostazioni avanzate quali ritardi, gravity o la velocità."</string>
-  <string name="preferences_Permissions">"Autorizzazioni | Visualizza le autorizzazioni richieste e controlla per cosa sono usate\n Consenti le autorizzazioni aggiuntive che non sono date al primo avvio (Android 6.0 +)."</string>
+    <string name="preferences_Permissions">"Autorizzazioni | Visualizza le autorizzazioni richieste e controlla per cosa sono usate\n Consenti le autorizzazioni aggiuntive che non sono date al primo avvio (Android 6.0 +)."</string>
   <string name="preferences_HideLauncherIcon">"Nascondere le app nella schermata di avvio | Nasconde l'icona dell'app nella schermata di avvio, può essere necessario riavviare il sistema per nascondere l'icona. \n Questa schermata impostazioni sarà accessibile solo tramite il programma di installazione di Xposed."</string>
   <string name="preferences_DeepXposedLogging">"Log profondo su Xposed! | Abilità log profondo su Xposed, dopo abilitazione riavvia per vedere cambiamenti."</string>
   <string name="preferencesCategory_About">"Altro"</string>

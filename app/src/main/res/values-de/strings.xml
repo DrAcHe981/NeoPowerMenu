@@ -215,7 +215,7 @@
   <string name="preferences_Animations">"Animationen|Ändere die Animationen oder deaktiviere sie komplett."</string>
   <string name="preferencesCategory_Other">"Anderes"</string>
   <string name="preferences_Account">"Konto|Hier kannst du dich anmelden, ein Konto erstellen oder deine Statistiken überprüfen."</string>
-  <string name="preferences_Advanced">"Erweiterte Einstellungen|Ändere Erweiterte Einstellungen wie Verzögerung, Position oder Geschwindigkeit."</string>
+  <string name="preferences_Advanced">Erweiterte Einstellungen|Ändere Erweiterte Einstellungen wie Verzögerung oder Geschwindigkeit.</string>
   <string name="preferences_Permissions">"Berechtigungen|Zeige die benutzten Berechtigungen und wofür sie genutzt werden.\nErlaube weitere Berechtigungen, die nicht beim ersten Start erlaubt wurden (Android 6.0+)."</string>
   <string name="preferences_HideLauncherIcon">"Verstecke die App im Launcher|Versteckt das App-Icon im Launcher, könnte einen Neustart erfordern.\nDiese Einstellungen können dann nur noch über den Xposed Installer geöffnet werden."</string>
   <string name="preferences_DeepXposedLogging">"Tiefes Xposed Logging|Aktiviere Erweitertes Logging, nach der Aktivierung neu starten, um Änderung zu sehen."</string>
