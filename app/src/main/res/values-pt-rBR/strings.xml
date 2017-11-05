@@ -240,7 +240,8 @@ Por favor ative o módulo no Xposed Installer.\"\""</string>
   <string name="preferences_Animations">"Animações|Mudar as animações ou desativá-las completamente."</string>
   <string name="preferencesCategory_Other">"Outros"</string>
   <string name="preferences_Account">"Conta|Aqui você pode logar, criar uma conta ou checar suas estatísticas quando logado."</string>
-    <string name="preferences_Permissions">"\"\"Permissões|Mostrar as permissões usadas e ver para que são usadas.
+  <string name="preferences_Advanced">"Configurações Avançadas|Alterar configurações avançadas como atraso, gravidade ou velocidade."</string>
+  <string name="preferences_Permissions">"\"\"Permissões|Mostrar as permissões usadas e ver para que são usadas.
 Conceder permissões adicionais que não são adicionadas na primeira inicialização (Android 6.0+).\"\""</string>
   <string name="preferences_HideLauncherIcon">"Ocultar aplicativo no launcher|Oculta o aplicativo no launcher,isso pode levar até uma reinicialização para ocultar o ícone. Essa opção de configurações ficará apenas acessível no Xposed Installer."</string>
   <string name="preferences_DeepXposedLogging">"Log do Xposed|Ativar o log avançado do Xposed, após ativar reinicie para ver as mudanças."</string>
@@ -296,7 +297,6 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="tourPage_2_Title">"O Menu de Tema"</string>
   <string name="tourPage_2_Text">"Aqui começa sua personalização: você pode alterar todas as cores! \nOferecer o menu de energia mais personalizável possível é meu objetivo."</string>
   <string name="tourPage_3_Title">"O Menu de Gráficos"</string>
-  <string name="tourPage_3_Text">Personalize os gráficos que são usados.</string>
   <string name="tourPage_4_Title">"O Menu de Ordem e Visibilidade"</string>
   <string name="tourPage_4_Text">"Escolha o que você quer ter em seu menu e a ordem de classificação. \nClique em '+' para adicionar novos itens, deslize o item para fora da tela para excluir.\n\nO ícone 'cadeado' significa: mostrar na tela de bloqueio.\nO ícone 'i' significa: mostrar a descrição do item."</string>
   <string name="tourPage_5_Title">"O Menu de Animações"</string>
