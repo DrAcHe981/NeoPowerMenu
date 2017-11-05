@@ -834,11 +834,10 @@ public class XposedDialog extends DialogFragment {
     public void refreshIcons() {
         if (isAdded()) {
             if (!soundModeIcon_Image.isEmpty() && amRingerMode != am.getRingerMode()) {
-                amRingerMode = am.getRingerMode();
                 for (int i = 0; i < soundModeIcon_Image.size(); i++) {
-                    if (amRingerMode == AudioManager.RINGER_MODE_VIBRATE) {
+                    if (am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
                         loadImage(soundModeIcon_Image.get(i), 14, PreferencesGraphicsFragment.graphics[14][2].toString(), soundModeIcon_Color.get(i));
-                    } else if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
+                    } else if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
                         loadImage(soundModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[13][2].toString(), soundModeIcon_Color.get(i));
                     } else {
                         loadImage(soundModeIcon_Image.get(i), 12, PreferencesGraphicsFragment.graphics[12][2].toString(), soundModeIcon_Color.get(i));
@@ -848,9 +847,9 @@ public class XposedDialog extends DialogFragment {
                     for (int i = 0; i < soundModeIcon_Text.size(); i++) {
                         if (soundModeIcon_Text.get(i) != null) {
                             String descText = getString(R.string.SoundMode_Normal);
-                            if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
+                            if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
                                 descText = getString(R.string.SoundMode_Silent);
-                            } else if (amRingerMode == AudioManager.RINGER_MODE_VIBRATE) {
+                            } else if (am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
                                 descText = getString(R.string.SoundMode_Vibrate);
                             }
                             String descString = mContext.getString(R.string.powerMenuMain_SoundModeDesc).replace("[SOUNDMODE]", descText);
@@ -1000,16 +999,13 @@ public class XposedDialog extends DialogFragment {
                 }
             }
 
-            if (!silentModeIcon_Image.isEmpty()) {
+            if (!silentModeIcon_Image.isEmpty() && amRingerMode != am.getRingerMode()) {
                 for (int i = 0; i < silentModeIcon_Image.size(); i++) {
                     try {
-                        if (amRingerMode != am.getRingerMode()) {
-                            if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
-                                loadImage(silentModeIcon_Image.get(i), 12, PreferencesGraphicsFragment.graphics[12][2].toString(), silentModeIcon_Color.get(i));
-                            } else {
-                                loadImage(silentModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[13][2].toString(), silentModeIcon_Color.get(i));
-                            }
-                            amRingerMode = am.getRingerMode();
+                        if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
+                            loadImage(silentModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[13][2].toString(), silentModeIcon_Color.get(i));
+                        } else if (am.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+                            loadImage(silentModeIcon_Image.get(i), 12, PreferencesGraphicsFragment.graphics[12][2].toString(), silentModeIcon_Color.get(i));
                         }
                     } catch (Throwable t) {
                         loadImage(silentModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[12][2].toString(), silentModeIcon_Color.get(i));
@@ -1017,6 +1013,7 @@ public class XposedDialog extends DialogFragment {
                     }
                 }
             }
+            amRingerMode = am.getRingerMode();
             mHandler.postDelayed(mRun, 250L);
         }
     }
