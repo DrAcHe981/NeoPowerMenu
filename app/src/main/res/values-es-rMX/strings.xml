@@ -258,7 +258,6 @@
   <string name="tourPage_1_Title">"Menú principal"</string>
   <string name="tourPage_2_Title">"Imagens amor"</string>
   <string name="tourPage_3_Title">"Menú de gráficos"</string>
-  <string name="tourPage_3_Text">"Personaliza los gráficos que se usen (necesita ser activado en los ajustes avanzados)."</string>
   <string name="tourPage_4_Title">"Visibilidad y orden del menú"</string>
   <string name="tourPage_5_Title">"Menú de animaciones"</string>
   <string name="tourPage_5_Text">"Cambia la manera en que se anima el menú o desactiva las animaciones completamente."</string>
