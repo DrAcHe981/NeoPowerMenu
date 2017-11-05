@@ -265,7 +265,6 @@
   <string name="tourPage_2_Title">"テーマメニュー"</string>
   <string name="tourPage_2_Text">"ここでカスタマイズを始められます。どの色も変更できます!\nNPMはあらゆるカスタマイズができる電源メニューを目指しています。"</string>
   <string name="tourPage_3_Title">"グラフィックメニュー"</string>
-  <string name="tourPage_3_Text">"使われているグラフィックをカスタマイズします。(高度な設定で有効にする必要があります)"</string>
   <string name="tourPage_4_Title">"表示と並び順メニュー"</string>
   <string name="tourPage_4_Text">"何を電源メニューに表示したいか選び、並び順を好きなように変更できます。\n'+'ボタンを押して新しいアイテムを追加し、アイテムを画面外にスワイプして削除できます。\n\nロックアイコンはロック画面で表示するアイテムです。\n'i'アイテムはアイテムの説明を表示します。"</string>
   <string name="tourPage_5_Title">"アニメーションメニュー"</string>
