@@ -7,6 +7,7 @@ import android.os.*;
 import android.preference.Preference;
 import android.util.*;
 import android.view.*;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 
 import com.nostra13.universalimageloader.core.listener.*;
@@ -40,6 +41,8 @@ public class PreferencesGraphicsFragment extends Fragment {
 
     public static GridView GridView_Images;
     GraphicsAdapter graphicsAdapter;
+
+    TextView graphicsDisabled;
 
     public static int SELECT_PICTURE_RESULT = 1;
 
@@ -211,6 +214,13 @@ public class PreferencesGraphicsFragment extends Fragment {
                             } else if (Integer.parseInt(p) == 2) {
                                 boolean_ColorizeNonStockIcons = true;
                             }
+                        }
+                        if (!boolean_UseGraphics && graphicsDisabled.getVisibility() == View.GONE) {
+                            graphicsDisabled.setVisibility(View.VISIBLE);
+                            graphicsDisabled.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
+                        } else if (boolean_UseGraphics && graphicsDisabled.getVisibility() == View.VISIBLE) {
+                            graphicsDisabled.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+                            graphicsDisabled.setVisibility(View.GONE);
                         }
                         float_padding = helper.convertDpToPixel(PaddingSeekbar.getProgress(), mContext);
                         MainActivity.preferences.edit()
@@ -500,7 +510,19 @@ public class PreferencesGraphicsFragment extends Fragment {
                 dialogFragment.showDialog(R.id.dialog_container);
             }
         });
-				
+
+
+        graphicsDisabled = (TextView) InflatedView.findViewById(R.id.activitygraphicsTextView_Disabled);
+        graphicsDisabled.setVisibility(boolean_UseGraphics ? View.GONE : View.VISIBLE);
+        graphicsDisabled.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean_UseGraphics = true;
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pUseGraphics, true).commit();
+                graphicsDisabled.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+                graphicsDisabled.setVisibility(View.GONE);
+            }
+        });
         /*GridView_Images.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

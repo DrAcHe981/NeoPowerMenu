@@ -6,137 +6,163 @@
 	android:layout_height="fill_parent"
 	android:orientation="vertical">
 
-	<LinearLayout
-		android:id="@+id/activitygraphicsLinealLayout_Padding"
+	<RelativeLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:visibility="gone"
-		android:orientation="vertical">
+		android:layout_height="match_parent">
 
 		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:minHeight="50dp"
-			android:orientation="vertical"
-			android:paddingBottom="5dp"
-			android:paddingTop="5dp">
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
 
 			<LinearLayout
+				android:id="@+id/activitygraphicsLinealLayout_Padding"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:orientation="horizontal">
+				android:visibility="gone"
+				android:orientation="vertical">
 
-				<TextView
-					android:id="@+id/activitygraphicsTextView_PaddingTitle"
+				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_weight="1.0"
-					android:gravity="center_vertical"
-					android:paddingLeft="10dp"
-					android:paddingRight="10dp"
-					android:text="@string/graphics_PaddingTitle"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:textColor="#FFFFFF"/>
+					android:minHeight="50dp"
+					android:orientation="vertical"
+					android:paddingBottom="5dp"
+					android:paddingTop="5dp">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal">
+
+						<TextView
+							android:id="@+id/activitygraphicsTextView_PaddingTitle"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_weight="1.0"
+							android:gravity="center_vertical"
+							android:paddingLeft="10dp"
+							android:paddingRight="10dp"
+							android:text="@string/graphics_PaddingTitle"
+							android:textAppearance="?android:attr/textAppearanceMedium"
+							android:textColor="#FFFFFF"/>
+
+						<TextView
+							android:id="@+id/activitygraphicsTextView_PaddingValue"
+							android:layout_width="wrap_content"
+							android:layout_height="match_parent"
+							android:layout_marginRight="5dp"
+							android:gravity="center|center_vertical|center_horizontal"
+							android:text="0dp"/>
+
+					</LinearLayout>
+
+					<TextView
+						android:id="@+id/activitygraphicsTextView_PaddingDesc"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="10dp"
+						android:text="@string/graphics_PaddingDesc"/>
+
+					<SeekBar
+						android:id="@+id/activitygraphicsSeekBar_Padding"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="10dp"
+						android:layout_marginRight="10dp"/>
+
+				</LinearLayout>
 
 				<TextView
-					android:id="@+id/activitygraphicsTextView_PaddingValue"
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
+					android:layout_width="match_parent"
+					android:layout_height="2dp"
+					android:layout_marginLeft="5dp"
 					android:layout_marginRight="5dp"
-					android:gravity="center|center_vertical|center_horizontal"
-					android:text="0dp"/>
+					android:alpha="0.3"
+					android:background="@color/colorAccentDarkTheme"/>
 
 			</LinearLayout>
 
-			<TextView
-				android:id="@+id/activitygraphicsTextView_PaddingDesc"
+			<LinearLayout
+				android:id="@+id/activitygraphicsLinealLayout_Behavior"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_weight="1.0"
-				android:gravity="center_vertical"
-				android:paddingLeft="15dp"
-				android:paddingRight="10dp"
-				android:text="@string/graphics_PaddingDesc"/>
+				android:orientation="vertical"
+				android:background="?android:attr/selectableItemBackground"
+				android:clickable="true"
+				android:focusable="true">
 
-			<SeekBar
-				android:id="@+id/activitygraphicsSeekBar_Padding"
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:minHeight="50dp"
+					android:orientation="vertical"
+					android:paddingBottom="5dp"
+					android:paddingTop="5dp">
+
+					<TextView
+						android:id="@+id/activitygraphicsTextView_BehaviorTitle"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:text="@string/graphics_BehaviorTitle"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="#FFFFFF"/>
+
+					<TextView
+						android:id="@+id/activitygraphicsTextView_BehaviorDesc"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="1.0"
+						android:gravity="center_vertical"
+						android:paddingLeft="15dp"
+						android:paddingRight="10dp"
+						android:text="@string/graphics_BehaviorDesc"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="2dp"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					android:alpha="0.3"
+					android:background="@color/colorAccentDarkTheme"/>
+
+			</LinearLayout>
+
+			<GridView
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginLeft="10dp"
-				android:layout_marginRight="10dp"/>
+				android:layout_height="match_parent"
+				android:layout_gravity="top"
+				android:layout_margin="0dp"
+				android:horizontalSpacing="-15dp"
+				android:numColumns="2"
+				android:padding="0dp"
+				android:verticalSpacing="-15dp"
+				tools:listitem="@layout/graphicslistitem"
+				android:id="@+id/activitygraphicsGridView1">
+
+			</GridView>
 
 		</LinearLayout>
 
 		<TextView
+			android:id="@+id/activitygraphicsTextView_Disabled"
 			android:layout_width="match_parent"
-			android:layout_height="2dp"
-			android:layout_marginLeft="5dp"
-			android:layout_marginRight="5dp"
-			android:alpha="0.3"
-			android:background="@color/colorAccentDarkTheme"/>
+			android:layout_height="match_parent"
+			android:background="#CC000000"
+			android:textAlignment="center"
+			android:gravity="center"
+			android:text="@string/graphics_NotEnabled" />
 
-	</LinearLayout>
-
-	<LinearLayout
-		android:id="@+id/activitygraphicsLinealLayout_Behavior"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical">
-
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:minHeight="50dp"
-			android:orientation="vertical"
-			android:paddingBottom="5dp"
-			android:paddingTop="5dp">
-
-			<TextView
-				android:id="@+id/activitygraphicsTextView_BehaviorTitle"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_weight="1.0"
-				android:gravity="center_vertical"
-				android:paddingLeft="10dp"
-				android:paddingRight="10dp"
-				android:text="@string/graphics_BehaviorTitle"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:textColor="#FFFFFF"/>
-
-			<TextView
-				android:id="@+id/activitygraphicsTextView_BehaviorDesc"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_weight="1.0"
-				android:gravity="center_vertical"
-				android:paddingLeft="15dp"
-				android:paddingRight="10dp"
-				android:text="@string/graphics_BehaviorDesc"/>
-
-		</LinearLayout>
-
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="2dp"
-			android:layout_marginLeft="5dp"
-			android:layout_marginRight="5dp"
-			android:alpha="0.3"
-			android:background="@color/colorAccentDarkTheme"/>
-
-	</LinearLayout>
-
-	<GridView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_gravity="top"
-		android:layout_margin="0dp"
-		android:horizontalSpacing="-15dp"
-		android:numColumns="2"
-		android:padding="0dp"
-		android:verticalSpacing="-15dp"
-		tools:listitem="@layout/graphicslistitem"
-		android:id="@+id/activitygraphicsGridView1">
-
-	</GridView>
+	</RelativeLayout>
 
 </LinearLayout>

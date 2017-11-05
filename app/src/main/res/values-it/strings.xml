@@ -239,7 +239,7 @@
   <string name="tourPage_2_Title">"Menù dei Temi"</string>
   <string name="tourPage_2_Text">"Qui inizia la personalizzazione: puoi cambiare ogni colore!\nOffrire un menù altamente personalizzabile è il mio obiettivo principale."</string>
   <string name="tourPage_3_Title">"Menù Grafica"</string>
-  <string name="tourPage_3_Text">"Personalizza la grafica in uso (necessita di essere abilitato nelle impostazioni avanzate)."</string>
+  <string name="tourPage_3_Text">Personalizza la grafica in uso.</string>
   <string name="tourPage_4_Title">"Menù Visibilità ed Ordinamento"</string>
   <string name="tourPage_4_Text">"Scegli cosa vuoi avere nel tuo menù è ordina le opzioni come preferisci.\nClicca sul '+' per aggiungere nuovi elementi, trascina l'elemento per cancellarlo.\n\nL'icona 'lock' significa: Mostra nelal lockscreen.\nL'icona 'i' significa: mostra descrizione."</string>
   <string name="tourPage_5_Title">"Menù animazioni"</string>
