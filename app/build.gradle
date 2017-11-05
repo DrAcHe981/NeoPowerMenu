@@ -22,13 +22,12 @@ android {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 50
-        versionName "1.5.6-4"
+        versionCode 51
+        versionName "1.5.6-5"
         multiDexEnabled true
         signingConfig signingConfigs.config
     }
     dexOptions {
-        incremental true
         javaMaxHeapSize "8g"
     }
     buildTypes {

@@ -940,6 +940,56 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/activitypreferencesLinearLayout_Translate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:id="@+id/activitypreferencesTextView_TranslateTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="@string/preferences_TranslateTitle"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#FFFFFF"/>
+
+                    <TextView
+                        android:id="@+id/activitypreferencesTextView_TranslateDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="10dp"
+                        android:text="@string/preferences_TranslateDesc"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:alpha="0.3"
+                    android:background="@color/colorAccentDarkTheme"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/activitypreferencesLinearLayout_Share"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

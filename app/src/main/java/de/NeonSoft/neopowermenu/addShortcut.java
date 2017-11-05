@@ -38,6 +38,7 @@ import de.NeonSoft.neopowermenu.Preferences.AddShortcutList;
 import de.NeonSoft.neopowermenu.Preferences.PreferencesGraphicsFragment;
 import de.NeonSoft.neopowermenu.Preferences.PreferencesVisibilityOrderFragment;
 import de.NeonSoft.neopowermenu.helpers.GraphicDrawable;
+import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 import de.NeonSoft.neopowermenu.helpers.TextDrawable;
 import de.NeonSoft.neopowermenu.helpers.URLFileNameGenerator;
 import de.NeonSoft.neopowermenu.helpers.actionBar;
@@ -48,7 +49,7 @@ import static de.NeonSoft.neopowermenu.MainActivity.visibleFragment;
 
 public class addShortcut extends AppCompatActivity {
 
-    public static String TAG = "NPM:shortcut";
+    public static String TAG = "NPM";
 
     public static SharedPreferences preferences;
     public static SharedPreferences colorPrefs;
@@ -83,7 +84,7 @@ public class addShortcut extends AppCompatActivity {
 
         mActivity = getApplicationContext();
 
-        preferences = getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences", 0);
+        preferences = SettingsManager.getInstance(this).getMainPrefs();
         colorPrefs = getSharedPreferences("colors", 0);
         setTheme(R.style.ThemeBaseDark);
 
@@ -289,9 +290,9 @@ public class addShortcut extends AppCompatActivity {
             imageLoader = ImageLoader.getInstance();
             imageLoader.init(config);
             ImgLoader_Loaded = true;
-            Log.d("NPM:imageLoader", "Loaded!");
+            Log.d("NPM", "ImageLoader Loaded!");
         } catch (Exception e) {
-            Log.e("NPM:imageLoader", "Load failed, code:" + e);
+            Log.e("NPM", "ImageLoader loading failed", e);
         }
     }
 

@@ -16,12 +16,8 @@ public class PreferenceNames {
 
     public static String pBlurBehind = "BlurBehind";
     public static String pBlurRadius = "BlurRadius";
-    public static String pUseGraphics = "UseGraphics";
     public static String pRequireConfirmation = "RequireConfirmation";
     public static String pHideOnClick = "HideOnClick";
-    public static String pLoadAppIcons = "LoadAppIcons";
-    public static String pRoundAppIcons = "RoundAppIcons";
-    public static String pColorizeNonStockIcons = "ColorizeNonStockIcons";
     public static String pUseRoot = "UseRoot";
     public static String pExperimentalPWMHook = "ExperimentalPWMHook";
     public static String pShowOnLockscreen ="ShowOnLockScreen";
@@ -29,4 +25,10 @@ public class PreferenceNames {
 
     public static String pItemPWL = "itemPWL";
     public static String pLockWithFingerprint = "LockWithFingerprint";
+
+    public static String pUseGraphics = "UseGraphics";
+    public static String pGraphicsPadding = "GraphicsPadding";
+    public static String pLoadAppIcons = "LoadAppIcons";
+    public static String pRoundAppIcons = "RoundAppIcons";
+    public static String pColorizeNonStockIcons = "ColorizeNonStockIcons";
 }

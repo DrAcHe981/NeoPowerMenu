@@ -7,13 +7,14 @@ import android.hardware.*;
 import android.os.*;
 
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 
 import android.os.PowerManager.WakeLock;
 
 import android.hardware.Camera;
 
 public class TorchService extends Service {
-    private static final String TAG = "NPM:TorchService";
+    private static final String TAG = "NPM";
 
     public static final String ACTION_TOGGLE_TORCH = "neopowermenu.intent.action.TOGGLE_TORCH";
     public static final String ACTION_TORCH_STATUS_CHANGED = "neopowermenu.intent.action.TORCH_STATUS_CHANGED";
@@ -55,7 +56,7 @@ public class TorchService extends Service {
         builder.setContentIntent(mPendingIntent);
         mTorchNotif = builder.build();
 
-        SharedPreferences prefs = getSharedPreferences(getPackageName() + "_preferences", 0);
+        SharedPreferences prefs = SettingsManager.getInstance(this).getMainPrefs();
         mTorchTimeout = (int) prefs.getLong("FlashlightAutoOffTime", 10 * 60 * 1000);
         mTorchAutoOff = prefs.getBoolean("FlashlightAutoOff", true);
         mHandler = new Handler();

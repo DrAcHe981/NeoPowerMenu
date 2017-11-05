@@ -152,8 +152,7 @@ Aktywuj moduł w Xposed Installer.\"\"\""</string>
   <string name="preferences_Theme">"Motyw|Zmień wygląd i odczucia."</string>
   <string name="preferences_VisibilityOrder">"Widoczność i kolejność|Wybierz elementy które chcesz widzieć i uporządkuj je jak chcesz."</string>
   <string name="preferencesCategory_Other">"Inne"</string>
-  <string name="preferences_Advanced">"Zaawansowane ustawienia|Zmień zaawansowane ustawienia jak opóźnienia, grawitacja lub szybkość."</string>
-  <string name="preferences_HideLauncherIcon">"\"\"\"Ukryj ikonę w launcherze|Ukryj ikonę w launcherze (może być wymagany restart).
+    <string name="preferences_HideLauncherIcon">"\"\"\"Ukryj ikonę w launcherze|Ukryj ikonę w launcherze (może być wymagany restart).
 Ustawienia będą dostępne jedynie przez Xposed Installer.\"\"\""</string>
   <string name="preferences_DeepXposedLogging">"Zaawansowane logi Xposed|Włącz zaawansowane logi Xposed, zmiany będą widoczne po restarcie."</string>
   <string name="preferencesCategory_About">"O aplikacji"</string>

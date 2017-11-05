@@ -5,10 +5,13 @@ import android.content.pm.*;
 import android.content.res.*;
 import android.graphics.*;
 import android.os.*;
+import android.text.TextUtils;
 import android.util.*;
 import android.view.*;
 import de.NeonSoft.neopowermenu.*;
 import de.robv.android.xposed.*;
+
+import java.io.File;
 import java.util.*;
 
 import static de.robv.android.xposed.XposedHelpers.callStaticMethod;
@@ -16,15 +19,23 @@ import static de.robv.android.xposed.XposedHelpers.findClass;
 
 public class XposedUtils
 {
-		private static Boolean mHasFlash;
-		private static Boolean mIsExynosDevice;
+
+    public static int NPM_POWERACTION_SHUTDOWN = 0;
+    public static int NPM_POWERACTION_REBOOT = 1;
+    public static int NPM_POWERACTION_SOFTREBOOT = 2;
+    public static int NPM_POWERACTION_RECOVERY = 3;
+    public static int NPM_POWERACTION_BOOTLOADER = 4;
+
+    private static Boolean mHasFlash;
+    private static Boolean mIsExynosDevice;
+    private static Boolean mIsSamsumgRom = null;
 		
-		public static void log(String message) {
-				Log.i("NPM:xposed",message);
-				try {
-						XposedBridge.log("[NeoPowerMenu] "+message);
-				} catch (Throwable t) {}
-		}
+    public static void log(String message) {
+        Log.i("NPM",message);
+        try {
+            XposedBridge.log("[NeoPowerMenu] "+message);
+        } catch (Throwable t) {}
+    }
 
     public static Point getLocationInView(View src, View target)
 		{
@@ -110,6 +121,13 @@ public class XposedUtils
 
     public static boolean isParanoidRom() {
         return (Build.DISPLAY != null && Build.DISPLAY.startsWith("pa_"));
+    }
+    public static boolean isSamsungRom() {
+        if (mIsSamsumgRom != null) return mIsSamsumgRom;
+
+        mIsSamsumgRom = (new File("/system/framework/twframework.jar").isFile() ||
+                new File("/system/framework/touchwiz.jar").isFile());
+        return mIsSamsumgRom;
     }
 
 
@@ -216,6 +234,44 @@ public class XposedUtils
                 callStaticMethod(classSystemProperties, "set", key, val);
             } catch (Throwable t) {
                 log("SystemProp.set failed: " + t.getMessage());
+            }
+        }
+    }
+
+    public static boolean USE_DEVICE_PROTECTED_STORAGE() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+    }
+
+
+    public static void doPowerAction(Context context, int mode) {
+        final PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        IPowerManager powerManager = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
+        if (mode == NPM_POWERACTION_SHUTDOWN) {
+            try {
+                powerManager.shutdown(false, false);
+            } catch (Exception e) {
+                XposedUtils.log("Failed to perform shutdown: " + e.toString());
+            }
+        } else if (mode == NPM_POWERACTION_REBOOT) {
+            try {
+                pm.reboot(null);
+            } catch (Exception e) {
+                XposedUtils.log("Failed to perform reboot(" + mode + "): " + e.toString());
+            }
+        } else if (mode == NPM_POWERACTION_SOFTREBOOT) {
+            performSoftReboot();
+        } else if (mode == NPM_POWERACTION_RECOVERY) {
+            //replaceRecoveryMessage();
+            try {
+                pm.reboot("recovery");
+            } catch (Exception e) {
+                XposedUtils.log("Failed to perform reboot(" + mode + "): " + e.toString());
+            }
+        } else if (mode == NPM_POWERACTION_BOOTLOADER) {
+            try {
+                pm.reboot(isSamsungRom() ? "download" : "bootloader");
+            } catch (Exception e) {
+                XposedUtils.log("Failed to perform reboot(" + mode + "): " + e.toString());
             }
         }
     }

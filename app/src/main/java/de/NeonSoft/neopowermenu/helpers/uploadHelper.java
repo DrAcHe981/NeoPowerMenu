@@ -193,7 +193,7 @@ public class uploadHelper {
 
     private void setState(final int state) {
         mState = state;
-        Log.i("NPM:uH", instanceName + "> State changed to " + STATE_NAMES[state] + "(" + state + ")");
+        Log.i("NPM", "[uploadHelper] " + instanceName + "> State changed to " + STATE_NAMES[state] + "(" + state + ")");
         if(mActivity != null) {
             mActivity.runOnUiThread(new Runnable() {
 
@@ -230,7 +230,7 @@ public class uploadHelper {
             iMLastTime = System.currentTimeMillis();
             iMFirstTime = iMLastTime;
             pm = (PowerManager) (mActivity == null ? mContext : mActivity).getSystemService(Context.POWER_SERVICE);
-            mPartialWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "NPM:uH");
+            mPartialWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "NPM");
             mPartialWakeLock.acquire();
 
             timer.scheduleAtFixedRate(new TimerTask() {
@@ -302,14 +302,14 @@ public class uploadHelper {
             int bytesRead, bytesAvailable, bufferSize;
             byte[] buffer;
             int maxBufferSize = 1024;
-            Log.i("NPM:uH", "Initializing upload: \nServer: " + p1[0] + "\nFile Name: " + uploadFileName + "\nSource file: " + p1[1]);
+            Log.i("NPM", "[uploadHelper] Initializing upload: \nServer: " + p1[0] + "\nFile Name: " + uploadFileName + "\nSource file: " + p1[1]);
             File sourceFile = new File(p1[1].toString());
             if (!sourceFile.isFile()) {
-                Log.e("NPM:uH", instanceName + "> Source File not exist :" + p1[1]);
+                Log.e("NPM", "[uploadHelper] " + instanceName + "> Source File not exist :" + p1[1]);
                 return "file not found";
             } else {
                 try {
-                    Log.i("NPM:uH", "Uploading " + helper.getSizeString(sourceFile.length(), true) + "(" + sourceFile.length() + ")");
+                    Log.i("NPM", "[uploadHelper] Uploading " + helper.getSizeString(sourceFile.length(), true) + "(" + sourceFile.length() + ")");
                     // open a URL connection to the Servlet
                     fileInputStream = new FileInputStream(sourceFile);
                     URL url = new URL(p1[0].toString().replace(" ", "%20") + (mParams != null ? getQuery(mParams) : ""));
@@ -381,7 +381,7 @@ public class uploadHelper {
                     while ((errorMsgB = br.readLine()) != null) {
                         errorMsg += errorMsgB + "\n";
                     }
-                    Log.i("NPM:uH", "HTTP Message is : " + errorMsg.split(",")[0]);
+                    Log.i("NPM", "[uploadHelper] HTTP Message is : " + errorMsg.split(",")[0]);
                     return errorMsg;
                     //}
                     //Log.i("NPM:uH", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
@@ -389,10 +389,10 @@ public class uploadHelper {
                     //		return null;
                     //}
                 } catch (MalformedURLException ex) {
-                    Log.e("NPM:uH", instanceName + "> "+ ex.toString());
+                    Log.e("NPM", "[uploadHelper] " + instanceName + "> "+ ex.toString());
                     return "Failed at: "+STATE_NAMES[getState()];
                 } catch (Throwable e) {
-                    Log.e("NPM:uH", instanceName + "> "+ e.toString());
+                    Log.e("NPM", "[uploadHelper] " + instanceName + "> "+ e.toString());
                     return "Failed at: "+STATE_NAMES[getState()];
                 }
             } // End else block

@@ -211,8 +211,7 @@
   <string name="preferences_Animations">"アニメーション|アニメーションを変更したり完全に無効にしたりします。"</string>
   <string name="preferencesCategory_Other">"その他"</string>
   <string name="preferences_Account">"アカウント|ログインしたりアカウントを作製したり、ログイン後に統計を確認したりできます。"</string>
-  <string name="preferences_Advanced">"高度な設定|遅延や速度などの高度な設定を変更します。"</string>
-  <string name="preferences_Permissions">"権限|要求された権限が何のために使われているか表示します。\n初回起動時に許可しなかった権限を許可してください。(Android 6.0+)"</string>
+    <string name="preferences_Permissions">"権限|要求された権限が何のために使われているか表示します。\n初回起動時に許可しなかった権限を許可してください。(Android 6.0+)"</string>
   <string name="preferences_HideLauncherIcon">"ホームアプリでアプリを隠す|ホームアプリでアプリアイコンを隠します。再起動後に非表示になります。\nこの設定画面は Xposed Installer から開けるようになります。"</string>
   <string name="preferences_DeepXposedLogging">"詳細な Xposed ログ|Xposed の詳細なログを記録します。変更後は再起動してください。"</string>
   <string name="preferencesCategory_About">"このアプリについて"</string>
@@ -265,6 +264,7 @@
   <string name="tourPage_2_Title">"テーマメニュー"</string>
   <string name="tourPage_2_Text">"ここでカスタマイズを始められます。どの色も変更できます!\nNPMはあらゆるカスタマイズができる電源メニューを目指しています。"</string>
   <string name="tourPage_3_Title">"グラフィックメニュー"</string>
+  <string name="tourPage_3_Text">使われているグラフィックをカスタマイズします</string>
   <string name="tourPage_4_Title">"表示と並び順メニュー"</string>
   <string name="tourPage_4_Text">"何を電源メニューに表示したいか選び、並び順を好きなように変更できます。\n'+'ボタンを押して新しいアイテムを追加し、アイテムを画面外にスワイプして削除できます。\n\nロックアイコンはロック画面で表示するアイテムです。\n'i'アイテムはアイテムの説明を表示します。"</string>
   <string name="tourPage_5_Title">"アニメーションメニュー"</string>

@@ -123,12 +123,12 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
             HttpClient httpclient = new DefaultHttpClient(p);
             String cleanUrl = "http://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.neon-soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice1.php";
             String url = cleanUrl + "?action=presets&appversion=" + MainActivity.versionCode + "&format=json&userId=" + MainActivity.deviceUniqeId + "" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "" : "&accountId=" + MainActivity.accountUniqeId) + "&sortBy=" + orderName + "&sortDir=" + orderDirection + (searchTerm.isEmpty() ? "" : "&searchFor=" + searchTerm) + (offset.isEmpty() ? "" : "&offset=" + offset);
-            Log.i("NPM:getOnlinePresets", "Trying to fetch from " + cleanUrl);
-            Log.i("NPM:getOnlinePresets", "Offset: " + offset + " | Sorting: " + orderName +" ("+orderDirection+")"+ " | Filter: " + searchTerm);
+            Log.i("NPM", "[onlinePresetFetcher] Trying to fetch from " + cleanUrl);
+            Log.i("NPM", "[onlinePresetFetcher] Offset: " + offset + " | Sorting: " + orderName +" ("+orderDirection+")"+ " | Filter: " + searchTerm);
             HttpPost httppost = new HttpPost(url);
 
             try {
-                Log.i("NPM:getOnlinePresets", "Fetching...");
+                Log.i("NPM", "[onlinePresetFetcher] Fetching...");
 
                 //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(
                 //		2);
@@ -204,7 +204,7 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
         
         super.onPostExecute(result);
         if (result != null) {
-            Log.e("NPM:getOnlinePresets", "Failed: "+result);
+            Log.e("NPM", "[onlinePresetFetcher] Failed: "+result);
             if (PreferencesPresetsFragment.onlineMSGHolder.getVisibility() == View.VISIBLE) {
                 PreferencesPresetsFragment.onlineMSGHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_out));
                 PreferencesPresetsFragment.onlineMSGHolder.setVisibility(View.GONE);
@@ -278,7 +278,7 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
             }
             //Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
         } else {
-            Log.i("NPM:getOnlinePresets", "Done!");
+            Log.i("NPM", "[onlinePresetFetcher] Done!");
             //ArrayList<String> ListTitles = new ArrayList<String>(Arrays.asList(onlineTitles));
             //ArrayList<String> ListDescs = new ArrayList<String>(Arrays.asList(onlineCreator));
             //ArrayList<String> ListEnabled = new ArrayList<String>(Arrays.asList(onlineEnabled));
@@ -347,13 +347,13 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
     protected void onCancelled() {
         super.onCancelled();
         PreferencesPresetsFragment.onlineRequestIsRunning = false;
-        Log.i("NPM:getOnlinePresets", "Canceled...");
+        Log.i("NPM", "[onlinePresetFetcher] Canceled...");
     }
 
     @Override
     protected void onCancelled(String s) {
         super.onCancelled(s);
         PreferencesPresetsFragment.onlineRequestIsRunning = false;
-        Log.i("NPM:getOnlinePresets", "Canceled...");
+        Log.i("NPM", "[onlinePresetFetcher] Canceled...");
     }
 }

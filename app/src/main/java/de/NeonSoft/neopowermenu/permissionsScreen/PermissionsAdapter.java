@@ -53,7 +53,7 @@ public class PermissionsAdapter extends ArrayAdapter<String> {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                        mContext.startActivity(intent);
+                        mContext.startActivityForResult(intent, permissionsScreen.MY_PERMISSIONS_REQUEST);
                     }
 
                 });

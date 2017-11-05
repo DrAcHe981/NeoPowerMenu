@@ -110,7 +110,7 @@ public class GravityChooserDialog extends DialogFragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int_Vertical = progress;
-                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).apply();
+                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).commit();
                 changeGravity();
             }
 
@@ -132,7 +132,7 @@ public class GravityChooserDialog extends DialogFragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 int_Horizontal = progress;
-                MainActivity.preferences.edit().putInt("DialogPosition_Horizontal", int_Horizontal).apply();
+                MainActivity.preferences.edit().putInt("DialogPosition_Horizontal", int_Horizontal).commit();
                 changeGravity();
             }
 
@@ -152,7 +152,7 @@ public class GravityChooserDialog extends DialogFragment {
             public void onClick(View v) {
                 int_Horizontal = 50;
                 int_Vertical = 50;
-                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).putInt("DialogPosition_Horizontal", int_Horizontal).apply();
+                MainActivity.preferences.edit().putInt("DialogPosition_Vertical", int_Vertical).putInt("DialogPosition_Horizontal", int_Horizontal).commit();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     SeekBar_Vertical.setProgress(50,true);
                     SeekBar_Horizontal.setProgress(50,true);
@@ -425,7 +425,7 @@ public class GravityChooserDialog extends DialogFragment {
 
                         @Override
                         public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                            Log.e("NPM:xposedDialog", "Failed to load image '" + imageUri + "': " + failReason.getCause().toString());
+                            Log.e("NPM", "Failed to load image '" + imageUri + "': " + failReason.getCause().toString());
                             image.setImageDrawable(mContext.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[id][1]));
                             image.setColorFilter(Color.parseColor(color),
                                     android.graphics.PorterDuff.Mode.SRC_IN);
@@ -469,13 +469,13 @@ public class GravityChooserDialog extends DialogFragment {
             bottom = ((int_Vertical * ((int) DisplaySize[1] - DummyPowerDialog.getHeight())) / SeekBar_Vertical.getMax());
             //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
         } catch (Exception e) {
-            Log.d("NPM:GRAV","Calculation error.", e);
+            Log.d("NPM","Calculation error.", e);
         }
         try {
             right = ((int_Horizontal * ((int) DisplaySize[0] - DummyPowerDialog.getWidth())) / SeekBar_Horizontal.getMax());
             //left = ((int) DisplaySize[1] % (int) helper.convertDpToPixel(int_Horizontal, mContext));
         } catch (Exception e) {
-            Log.d("NPM:GRAV","Calculation error.", e);
+            Log.d("NPM","Calculation error.", e);
         }
         LinearLayout_ImageHolder.setPadding(left,top,right,bottom);
     }

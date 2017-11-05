@@ -145,7 +145,7 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                         }
                                     }
                                     fw.close();
-                                    MainActivity.preferences.edit().putString("lastUsedPreset", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim()).apply();
+                                    MainActivity.preferences.edit().putString("lastUsedPreset", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim()).commit();
                                     if (resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)) {
                                         helper.zipAll(context.getFilesDir().getPath() + "/images/", context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".zip", null);
                                         helper.zipFile(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".nps", context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".zip", null);
@@ -279,7 +279,7 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                             @Override
                             public void onPositiveClick(Bundle resultBundle) {
 
-                                MainActivity.colorPrefs.edit().putString(loadColor[0] + colorType, resultBundle.getString(slideDownDialogFragment.RESULT_COLORPICKER)).commit();
+                                MainActivity.colorPrefs.edit().putString(loadColor[0] + colorType, resultBundle.getString(slideDownDialogFragment.RESULT_COLORPICKER)).apply();
                                 notifyDataSetChanged();
                             }
 

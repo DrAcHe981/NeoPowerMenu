@@ -19,6 +19,7 @@ import android.widget.NumberPicker;
 
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
+import de.NeonSoft.neopowermenu.xposed.XposedUtils;
 
 import java.io.*;
 import java.lang.reflect.*;
@@ -57,6 +58,16 @@ public class helper {
         }
     }
 
+    public static File getFilesDir(Context ctx) {
+        if (XposedUtils.USE_DEVICE_PROTECTED_STORAGE()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                return ctx.isDeviceProtectedStorage() ?
+                        ctx.getFilesDir() : ctx.createDeviceProtectedStorageContext().getFilesDir();
+            }
+        }
+        return ctx.getFilesDir();
+    }
+
     public static void postInvalidateOnAnimation(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             view.postInvalidateOnAnimation();
@@ -76,7 +87,7 @@ public class helper {
 
     public static boolean copyPreferences(Context context, SharedPreferences from, SharedPreferences to, boolean logging) {
         try {
-            if (logging) Log.i("NPM:pC", "Copying preferences...");
+            if (logging) Log.i("NPM", "Copying preferences...");
             Map<String, ?> oldPrefsAll = from.getAll();
             if (!oldPrefsAll.isEmpty()) {
                 Object[] keys = oldPrefsAll.keySet().toArray();
@@ -88,25 +99,25 @@ public class helper {
                 for (int i = 0; i < oldPrefsAll.size(); i++) {
                     boolean unknown = false;
                     if (logging)
-                        Log.i("NPM:pC", String.format("%03d/%03d", (i + 1), oldPrefsAll.size()) + " | " + keys[i]);
+                        Log.i("NPM", String.format("%03d/%03d", (i + 1), oldPrefsAll.size()) + " | " + keys[i]);
                     if (values[i].getClass().equals(String.class)) {
-                        if (logging) Log.i("NPM:pC", designSpace + " | Writing String...");
+                        if (logging) Log.i("NPM", designSpace + " | Writing String...");
                         to.edit().putString((String) keys[i], (String) values[i]).apply();
                     } else if (values[i].getClass().equals(Integer.class)) {
-                        if (logging) Log.i("NPM:pC", designSpace + " | Writing Integer...");
+                        if (logging) Log.i("NPM", designSpace + " | Writing Integer...");
                         to.edit().putInt((String) keys[i], (int) values[i]).apply();
                     } else if (values[i].getClass().equals(Boolean.class)) {
-                        if (logging) Log.i("NPM:pC", designSpace + " | Writing Boolean...");
+                        if (logging) Log.i("NPM", designSpace + " | Writing Boolean...");
                         to.edit().putBoolean((String) keys[i], (boolean) values[i]).apply();
                     } else {
                         unknown = true;
                         if (logging)
-                            Log.i("NPM:pC", designSpace + " | Unknown type... (" + values[i].getClass() + ")");
+                            Log.i("NPM", designSpace + " | Unknown type... (" + values[i].getClass() + ")");
                     }
                     if (!unknown) {
-                        if (logging) Log.i("NPM:pC", designSpace + " \\_Converted.");
+                        if (logging) Log.i("NPM", designSpace + " \\_Converted.");
                     } else {
-                        if (logging) Log.i("NPM:pC", designSpace + " \\_Failed.");
+                        if (logging) Log.i("NPM", designSpace + " \\_Failed.");
                     }
                 }
             }
@@ -339,7 +350,7 @@ public class helper {
 
             zip.addFile(new File(fileToZip), params);
         } catch (Throwable t) {
-            if (zipLogging) Log.e("NPM:zipFile", "Failed to zip: " + t.toString());
+            if (zipLogging) Log.e("NPM", "Failed to zip: " + t.toString());
             return t.toString();
         }
         return null;
@@ -364,7 +375,7 @@ public class helper {
 
             zip.addFolder(toZipFolder, params);
         } catch (Throwable t) {
-            if (zipLogging) Log.e("NPM:zipAll", "Failed to zip: " + t.toString());
+            if (zipLogging) Log.e("NPM", "Failed to zip: " + t.toString());
             return t.toString();
         }
         return null;
@@ -385,7 +396,7 @@ public class helper {
 
             zip.extractFile(fileToUnzip, outputFolder, params, fileToUnzip);
         } catch (Throwable t) {
-            if (zipLogging) Log.e("NPM:unzipFile", "Failed to unzip: " + t.toString());
+            if (zipLogging) Log.e("NPM", "Failed to unzip: " + t.toString());
             return t.toString();
         }
         return null;
@@ -405,7 +416,7 @@ public class helper {
 
             zip.extractAll(outputFolder);
         } catch (Throwable t) {
-            if (zipLogging) Log.e("NPM:unzipAll", "Failed to unzip: " + t.toString());
+            if (zipLogging) Log.e("NPM", "Failed to unzip: " + t.toString());
             return t.toString();
         }
         return null;
@@ -426,7 +437,7 @@ public class helper {
             return zip.isValidZipFile();
 
         } catch (Throwable t) {
-            if (zipLogging) Log.e("NPM:isValidZip", "Failed to validate: " + t.toString());
+            if (zipLogging) Log.e("NPM", "Failed to validate: " + t.toString());
             return false;
         }
     }
@@ -446,7 +457,7 @@ public class helper {
             zip.removeFile(fileToRemove);
 
         } catch (Throwable t) {
-            if (zipLogging) Log.e("NPM:removeFromZip", "Failed to remove: " + t.toString());
+            if (zipLogging) Log.e("NPM", "Failed to remove: " + t.toString());
             return t.toString();
         }
         return null;
@@ -482,10 +493,10 @@ public class helper {
             out = null;
 
         } catch (FileNotFoundException fnfe1) {
-            Log.e("NPM:copyFile", fnfe1.getMessage());
+            Log.e("NPM", fnfe1.getMessage());
             return false;
         } catch (Exception e) {
-            Log.e("NPM:copyFile", e.getMessage());
+            Log.e("NPM", e.getMessage());
             return false;
         } finally {
             return true;
@@ -518,13 +529,10 @@ public class helper {
                     width = (Integer) mGetRawW.invoke(display);
                     height = (Integer) mGetRawH.invoke(display);
                 } catch (IllegalArgumentException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 } catch (InvocationTargetException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -662,7 +670,7 @@ public class helper {
         return 0f;
     }
 
-    public static Bitmap takeScreenshot(Context context, boolean statusBarVisible, boolean navBarVisible) {
+    public static Bitmap takeScreenshot(Context context, boolean statusBarVisible, boolean navBarVisible) throws Throwable {
         // We need to orient the screenshot correctly (and the Surface api seems to take screenshots
         // only in the natural orientation of the device :!)
         DisplayMetrics mDisplayMetrics = new DisplayMetrics();
@@ -688,8 +696,8 @@ public class helper {
         // Take the screenshot
         Bitmap mScreenBitmap = SurfaceControl.screenshot((int) dims[0], (int) dims[1]);
         if (mScreenBitmap == null) {
-            Log.e("NPM:tS", "Failed to take screenshot using SurfaceControl...");
-            return null;
+            throw new Throwable("Failed to take screenshot using SurfaceControl, mScreenBitmap is null");
+            //return null;
         }
 
         //if (requiresRotation) {
@@ -711,7 +719,7 @@ public class helper {
         mScreenBitmap.setHasAlpha(false);
         mScreenBitmap.prepareToDraw();
 
-        Log.i("NPM:tS", "Screenshot using SurfaceControl taken!");
+        Log.i("NPM", "[takeScreenshot] Screenshot using SurfaceControl taken!");
         return mScreenBitmap;
     }
 
@@ -722,23 +730,25 @@ public class helper {
             Object[] displaySize = getDisplaySize(context, false);
             bitmap = SurfaceControl.screenshot((int) displaySize[0], (int) displaySize[1]);
         } catch (Throwable t) {
-            Log.e("NPM:tS", "Failed to take screenshot using SurfaceControl...", t);
+            Log.e("NPM", "[takeScreenshot] Failed to take screenshot using SurfaceControl...", t);
         }
 
         if (bitmap != null) {
-            Log.i("NPM:tS", "Screenshot using SurfaceControl taken!");
+            Log.i("NPM", "[takeScreenshot] Screenshot using SurfaceControl taken!");
         } else {
-            Log.e("NPM:tS", "Failed to take screenshot using SurfaceControl...");
+            Log.e("NPM", "[takeScreenshot] Failed to take screenshot using SurfaceControl...");
         }
 
         return bitmap;
     }
 
-    public static Bitmap blurBitmap(Context context, Bitmap bmp) {
+    public static Bitmap blurBitmap(Context context, Bitmap bmp) throws Throwable {
         return blurBitmap(context, bmp, 14);
     }
 
-    public static Bitmap blurBitmap(Context context, Bitmap bmp, float radius) {
+    public static Bitmap blurBitmap(Context context, Bitmap bmp, float radius) throws Throwable {
+        if (bmp==null)
+            throw new Throwable("Failed to blur, bmp is null.");
         Bitmap out = Bitmap.createBitmap(bmp);
         RenderScript rs = RenderScript.create(context);
         radius = Math.min(Math.max(radius, 0), 25);
@@ -753,6 +763,8 @@ public class helper {
             script.setInput(input);
             script.setRadius(radius);
             script.forEach(output);
+        } else {
+            Log.e("NPM", "[blurTask] Too low sdk version for blurTask, min SDK needed " + Build.VERSION_CODES.JELLY_BEAN_MR1);
         }
 
         output.copyTo(out);

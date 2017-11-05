@@ -30,7 +30,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="NeoPowerMenu"
         android:theme="@style/ThemeBaseDark"
-        android:fullBackupContent="true">
+        android:fullBackupContent="true"
+        android:persistent="true">
         <meta-data
             android:name="xposedmodule"
             android:value="true"/>
@@ -120,7 +121,7 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:label="NeoPowerMenu"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            android:theme="@style/TransparentApp">
 
         </activity>
 

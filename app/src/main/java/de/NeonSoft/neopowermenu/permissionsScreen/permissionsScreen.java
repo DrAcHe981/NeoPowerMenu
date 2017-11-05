@@ -118,7 +118,7 @@ public class permissionsScreen extends Fragment {
 
             @Override
             public void onCheckedChanged(CompoundButton p1, boolean p2) {
-                MainActivity.preferences.edit().putBoolean("DontAskPermissionsAgain", p2).apply();
+                MainActivity.preferences.edit().putBoolean("DontAskPermissionsAgain", p2).commit();
             }
 
         });

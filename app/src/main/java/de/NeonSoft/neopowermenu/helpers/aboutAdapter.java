@@ -133,7 +133,7 @@ public class aboutAdapter extends ArrayAdapter<String> {
                         @Override
                         public void onPositiveClick(Bundle resultBundle) {
                             if (resultBundle != null) {
-                                MainActivity.preferences.edit().putString("ForcedLanguage", languages.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)).split("\\(")[1].split("\\)")[0]).apply();
+                                MainActivity.preferences.edit().putString("ForcedLanguage", languages.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)).split("\\(")[1].split("\\)")[0]).commit();
                                 slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                                 dialogFragment.setContext(mContext);
                                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -227,7 +227,7 @@ public class aboutAdapter extends ArrayAdapter<String> {
                         @Override
                         public void onPositiveClick(Bundle resultBundle) {
                             if (resultBundle != null) {
-                                MainActivity.preferences.edit().putBoolean("useLocalServer", resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)).apply();
+                                MainActivity.preferences.edit().putBoolean("useLocalServer", resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)).commit();
                                 slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                                 dialogFragment.setContext(mContext);
                                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -368,7 +368,7 @@ public class aboutAdapter extends ArrayAdapter<String> {
                             @Override
                             public void onPositiveClick(Bundle resultBundle) {
                                 MainActivity.deviceUniqeId = (resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX) ? helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")) : resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0"));
-                                MainActivity.preferences.edit().putString("userUniqeId", MainActivity.deviceUniqeId).apply();
+                                MainActivity.preferences.edit().putString("userUniqeId", MainActivity.deviceUniqeId).commit();
                                 itemsTexts.set(p1, "Your Device Id:\n" + ((MainActivity.deviceUniqeId.isEmpty() || MainActivity.deviceUniqeId.equalsIgnoreCase("none")) ? "Not generated. (this is not normal...)" : MainActivity.deviceUniqeId) + "\nYour Account Id:\n" + ((MainActivity.accountUniqeId.isEmpty() || MainActivity.accountUniqeId.equalsIgnoreCase("none")) ? "Not logged in." : MainActivity.accountUniqeId) + "\nThe Id's are used by the Preset Sever to verify your identity.");
                                 notifyDataSetChanged();
                             }

@@ -286,7 +286,7 @@
     <string name="tourPage_2_Title">"The Theme Menu"</string>
     <string name="tourPage_2_Text">"Here starts your customization: you can change every color!\nOffering the most customizable power menu is my main goal."</string>
     <string name="tourPage_3_Title">"The Graphics Menu"</string>
-    <string name="tourPage_3_Text">"Customize the graphics that are used (needs to be enabled in the advanced settings)."</string>
+    <string name="tourPage_3_Text">"Customize the graphics that are used."</string>
     <string name="tourPage_4_Title">"The Visibility and Order Menu"</string>
     <string name="tourPage_4_Text">"Choose what you want to have in your menu and sort the options as you wish.\nClick on the '+' to add new items, swipe the item out of the screen to delete it.\n\nThe 'lock' icon means: show on the lockscreen.\nThe 'i' icon means: show item description."</string>
     <string name="tourPage_5_Title">"The Animations Menu"</string>
@@ -444,5 +444,13 @@
     <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Required on Nougat(7.0) and above to change the 'Do Not Disturb' mode."</string>
     <string name="powerMenuMain_Shortcut">Shortcut</string>
     <string name="visibilityOrder_NoGravityBoxFound">GravityBox could not be located, this item will have no effect without GravityBox being installed.</string>
+    <string name="visibilityOrder_HideText">Hide text</string>
+    <string name="style_MaterialDynamicWidth">Material (Dynamic width)</string>
+    <string name="graphics_BehaviorTitle">Customize graphic behaviour</string>
+    <string name="graphics_BehaviorDesc">Enable/Disable graphics and customize values such as padding and coloring.</string>
+    <string name="visibilityOrder_SearchShortcut">Search Shortcut (case insensitive):</string>
+    <string name="preferences_TranslateDesc">You know languages that this app should have?\nThen tap here to check out the project on Crowdin and help with the translation!</string>
+    <string name="preferences_TranslateTitle">Translation</string>
+    <string name="graphics_NotEnabled">Graphics aren\'t enabled\nTap here to enable them!</string>
 
 </resources>

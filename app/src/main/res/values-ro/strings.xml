@@ -173,8 +173,7 @@ Activeaza modulul in Xposed.\"\"\""</string>
   <string name="preferences_Theme">"Teme|Schimba modul de vizualiare"</string>
   <string name="preferences_VisibilityOrder">"Vizibilitate si ordine|Selecteaza elementele pe care vrei sa le vezi in ordinea dorita"</string>
   <string name="preferencesCategory_Other">"Altele"</string>
-  <string name="preferences_Advanced">"Setari avansate|Schimba setarile avansate cum ar fi intarzieri,gravitatie sau viteza"</string>
-  <string name="preferences_Permissions">"\"\"\"Permisiuni|Arata permisiunile folosite si vezi pentru ce sunt utilizate.
+    <string name="preferences_Permissions">"\"\"\"Permisiuni|Arata permisiunile folosite si vezi pentru ce sunt utilizate.
 Acorda alte permisiuni daca nu sunt deja activate de la inceput (Android 6.0+)\"\"\""</string>
   <string name="preferences_HideLauncherIcon">"\"\"\"Ascunde aplicatia din lista de aplicatii|Ascunde aplicatia in lista de aplicatii (necesita posibil o restartare a telefonului).
 Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum.\"\"\""</string>

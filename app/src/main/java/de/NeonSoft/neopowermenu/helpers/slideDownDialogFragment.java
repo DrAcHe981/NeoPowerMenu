@@ -590,7 +590,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                             Toast.makeText(mContext, "Failed to put in clipboard...", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Throwable t) {
-                        Log.e("NPM:sDDF", "Failed to put in clipboard: " + t.toString());
+                        Log.e("NPM", "Failed to put in clipboard: " + t.toString());
                         Toast.makeText(mContext, "Failed to put in clipboard...", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -688,8 +688,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         if (this.useCustomView) {
             LinearLayout LinearLayout_CustomViewHolder = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_CustomViewHolder);
             LinearLayout_CustomViewHolder.addView(this.customView);
-        } else {
-
+        }
             if (dialogListItems != null && dialogListItems.length > 0) {
                 dialogListAdapter = new ArrayAdapter<>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);
                 ListView_DialogListView.setAdapter(dialogListAdapter);
@@ -864,7 +863,6 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                 RelativeLayout_ProgressText.setVisibility(View.INVISIBLE);
                 ProgressBar_Progress.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.progress_blink));
             }
-        }
 
         TextView_DialogText.setText(dialogText);
         if (dialogTextSize > 0) TextView_DialogText.setTextSize(dialogTextSize);
@@ -1012,7 +1010,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                         if (windowToken != null)
                             inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
                     } catch (Throwable t) {
-                        Log.e("NPM:sDDF", "Failed to hide IME:", t);
+                        Log.e("NPM", "Failed to hide IME:", t);
                     }
                     TextView_DialogTouchOutside.setOnTouchListener(new OnTouchListener() {
                         @Override

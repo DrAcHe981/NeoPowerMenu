@@ -93,8 +93,7 @@ Por favor,ative o módulo no Xposed installer.\""</string>
   <string name="preferences_Theme">"Tema|Mudar o tema e prever."</string>
   <string name="preferences_VisibilityOrder">"Visibilidade e ordem|Selecione os itens que você deseja e a ordem de cada um."</string>
   <string name="preferencesCategory_Other">"Outros"</string>
-  <string name="preferences_Advanced">"Configurações avançadas|Alterar configurações avançadas como atraso,gravidade ou velocidade."</string>
-  <string name="preferences_HideLauncherIcon">"\"Ocultar aplicativo no launcher|Ocultar o aplicativo no launcher, é necessário reiniciar para que as alterações sejam feitas.
+    <string name="preferences_HideLauncherIcon">"\"Ocultar aplicativo no launcher|Ocultar o aplicativo no launcher, é necessário reiniciar para que as alterações sejam feitas.
 Essa configuração só está acessível no Xposed Installer.\""</string>
   <string name="preferences_DeepXposedLogging">"Logs do xposed|Ativar logs avançados no xposed,após ativar, reinicie para ver as mudanças."</string>
   <string name="preferencesCategory_About">"Sobre"</string>

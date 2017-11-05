@@ -215,7 +215,7 @@
   <string name="preferences_Animations">"Animationen|Ändere die Animationen oder deaktiviere sie komplett."</string>
   <string name="preferencesCategory_Other">"Anderes"</string>
   <string name="preferences_Account">"Konto|Hier kannst du dich anmelden, ein Konto erstellen oder deine Statistiken überprüfen."</string>
-  <string name="preferences_Advanced">"Erweiterte Einstellungen|Ändere Erweiterte Einstellungen wie Verzögerung, Position oder Geschwindigkeit."</string>
+  <string name="preferences_Advanced">Erweiterte Einstellungen|Ändere Erweiterte Einstellungen wie Verzögerung oder Geschwindigkeit.</string>
   <string name="preferences_Permissions">"Berechtigungen|Zeige die benutzten Berechtigungen und wofür sie genutzt werden.\nErlaube weitere Berechtigungen, die nicht beim ersten Start erlaubt wurden (Android 6.0+)."</string>
   <string name="preferences_HideLauncherIcon">"Verstecke die App im Launcher|Versteckt das App-Icon im Launcher, könnte einen Neustart erfordern.\nDiese Einstellungen können dann nur noch über den Xposed Installer geöffnet werden."</string>
   <string name="preferences_DeepXposedLogging">"Tiefes Xposed Logging|Aktiviere Erweitertes Logging, nach der Aktivierung neu starten, um Änderung zu sehen."</string>
@@ -269,6 +269,7 @@
   <string name="tourPage_2_Title">"Das Designmenü"</string>
   <string name="tourPage_2_Text">"Hier beginnst du deine Anpassungen: Du kannst jede Farbe ändern!\nDas am meisten anpassbare Ausschalt Menü anzubieten ist mein Ziel."</string>
   <string name="tourPage_3_Title">"Das Grafiken-Menü"</string>
+  <string name="tourPage_3_Text">Passe die Grafiken, die verwendet werden an.</string>
   <string name="tourPage_4_Title">"Das Sichtbarkeit und Sortierungs Menü"</string>
   <string name="tourPage_4_Text">"Wähle was im Menü sein soll und passe die Sortierung nach deinen wünschen an.\nKlicke auf das '+' um neue Elemente hinzuzufügen, streiche sie aus dem Bildschirm um sie zu löschen.\n\nDas 'Schloss' Symbol heißt: auf dem Sperr Bildschirm zeigen.\nDas 'i' Symbol heißt: die Element Beschreibung anzeigen."</string>
   <string name="tourPage_5_Title">"Das Animationen Menü"</string>
@@ -418,5 +419,6 @@
   <string name="style_MaterialDynamicWidth">Material (dynamische Breite)</string>
   <string name="graphics_BehaviorDesc">Aktiviere/deaktiviere Grafiken und passen Sie Werte an wie Abstand und Färbung.</string>
   <string name="visibilityOrder_SearchShortcut">Verknüpfung suchen (Groß/Kleinschreibung wird ignoriert):</string>
+  <string name="preferences_TranslateDesc">Du kennst sprachen die diese App haben sollte? Dann tippe hier, um das Projekt auf Crowdin zu sehen, und hilf bei der Übersetzung!</string>
   <string name="preferences_TranslateTitle">Übersetzung</string>
 </resources>
