@@ -100,6 +100,8 @@ public class PreferencesPartFragment extends Fragment {
     TextView TextView_SourceTitle;
     TextView TextView_SourceDesc;
 
+    LinearLayout LinearLayout_Translate;
+
     LinearLayout LinearLayout_Share;
     TextView TextView_ShareTitle;
     TextView TextView_ShareDesc;
@@ -130,22 +132,22 @@ public class PreferencesPartFragment extends Fragment {
         MainActivity.actionbar.setSubTitle("v" + MainActivity.versionName + " (" + MainActivity.versionCode + ")" + (MainActivity.LOCALTESTSERVER ? " | Using local test Server" : ""));
 
         if (MainActivity.orderPrefs.getAll().isEmpty()) {
-            MainActivity.orderPrefs.edit().putInt("0_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
-            MainActivity.orderPrefs.edit().putString("0_item_title", "Shutdown").commit();
-            MainActivity.orderPrefs.edit().putInt("1_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
-            MainActivity.orderPrefs.edit().putString("1_item_title", "Reboot").commit();
-            MainActivity.orderPrefs.edit().putInt("2_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).commit();
-            MainActivity.orderPrefs.edit().putString("2_item_title", "SoftReboot").commit();
-            MainActivity.orderPrefs.edit().putInt("3_item_type", visibilityOrder_ListAdapter.TYPE_MULTI).commit();
-            MainActivity.orderPrefs.edit().putString("3_item1_title", "Recovery").commit();
-            MainActivity.orderPrefs.edit().putString("3_item2_title", "Bootloader").commit();
-            MainActivity.orderPrefs.edit().putString("3_item3_title", "SafeMode").commit();
+            MainActivity.orderPrefs.edit().putInt("0_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();
+            MainActivity.orderPrefs.edit().putString("0_item_title", "Shutdown").apply();
+            MainActivity.orderPrefs.edit().putInt("1_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();
+            MainActivity.orderPrefs.edit().putString("1_item_title", "Reboot").apply();
+            MainActivity.orderPrefs.edit().putInt("2_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();
+            MainActivity.orderPrefs.edit().putString("2_item_title", "SoftReboot").apply();
+            MainActivity.orderPrefs.edit().putInt("3_item_type", visibilityOrder_ListAdapter.TYPE_MULTI).apply();
+            MainActivity.orderPrefs.edit().putString("3_item1_title", "Recovery").apply();
+            MainActivity.orderPrefs.edit().putString("3_item2_title", "Bootloader").apply();
+            MainActivity.orderPrefs.edit().putString("3_item3_title", "SafeMode").apply();
         }
         for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
             if ((int) PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM) {
                 if (MainActivity.colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty()) {
                     //Log.d("NPM:cI","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
-                    MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).commit();
+                    MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).apply();
                     MainActivity.preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
                 }
             }
@@ -153,8 +155,8 @@ public class PreferencesPartFragment extends Fragment {
         for (int i = 0; i < PreferencesAnimationsFragment.names.length; i++) {
             if ((int) PreferencesAnimationsFragment.names[i][0] == animationsAdapter.TYPE_ITEM) {
                 if (PreferencesAnimationsFragment.names[i][1].toString().contains("type") && MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i][1].toString(), -1) == -1) {
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i][1].toString(), PreferencesAnimationsFragment.defaultTypes[i]).commit();
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + 1][1].toString(), 3).commit();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i][1].toString(), PreferencesAnimationsFragment.defaultTypes[i]).apply();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + 1][1].toString(), 3).apply();
                 }
             }
         }
@@ -262,6 +264,8 @@ public class PreferencesPartFragment extends Fragment {
         TextView_SourceDesc = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_SourceDesc);
         TextView_SourceTitle.setText(getString(R.string.preferences_NeoSource).split("\\|")[0]);
         TextView_SourceDesc.setText(getString(R.string.preferences_NeoSource).split("\\|")[1]);
+
+        LinearLayout_Translate = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Translate);
 
         LinearLayout_Share = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_Share);
         TextView_ShareTitle = (TextView) InflatedView.findViewById(R.id.activitypreferencesTextView_ShareTitle);
@@ -547,6 +551,25 @@ public class PreferencesPartFragment extends Fragment {
                 dialogFragment.setList(ListView.CHOICE_MODE_NONE, new String[]{"PayPal"}, -1, true);
                 dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
                 dialogFragment.showDialog(R.id.dialog_container);
+            }
+        });
+
+        LinearLayout_Translate.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View p1) {
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://crowdin.com/project/neopowermenu"));
+                try {
+                    startActivity(i);
+                } catch (ActivityNotFoundException e) {
+                    slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    dialogFragment.setContext(mActivity);
+                    dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                    dialogFragment.setText("Failed, no application found to handle the request.");
+                    dialogFragment.showDialog(R.id.dialog_container);
+                }
             }
         });
 

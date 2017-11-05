@@ -67,7 +67,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
             } catch (PackageManager.NameNotFoundException e) {
                 holder.name.setText(mGraphics.get(position).getName());
                 holder.name.setVisibility(View.VISIBLE);
-                Log.e("NPM:graphicsList", "No package found for resource " + mGraphics.get(position).getName() + "\n" + e);
+                Log.e("NPM", "No package found for resource " + mGraphics.get(position).getName() + "\n" + e);
             }
         } else {
             try {
@@ -84,7 +84,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
                 } catch (Throwable t1) {
                     holder.name.setText(mGraphics.get(position).getName());
                     holder.name.setVisibility(View.VISIBLE);
-                    Log.w("NPM:graphicsList", "No String found for resource " + mGraphics.get(position).getName() + "\n" + t);
+                    Log.w("NPM", "No String found for resource " + mGraphics.get(position).getName() + "\n" + t);
                 }
             }
         }
@@ -121,7 +121,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
 
                         @Override
                         public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                            Log.e("NPM:graphicsList", "Failed to load image '" + imageUri + "': " + failReason.getCause());
+                            Log.e("NPM", "Failed to load image '" + imageUri + "': " + failReason.getCause());
                         }
                     });
         } else if (mGraphics.get(position).getRessource() != -1) {
@@ -143,7 +143,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
             }
             holder.imgQueue.setVisibility(View.VISIBLE);
         } else {
-            Log.e("NPM:graphicsList", "No graphic info found. (image path or resource id)");
+            Log.e("NPM", "No graphic info found. (image path or resource id)");
         }
 
         return InflatedView;

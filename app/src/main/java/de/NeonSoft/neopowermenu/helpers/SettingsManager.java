@@ -64,11 +64,11 @@ public class SettingsManager {
             }
             if (XposedUtils.USE_DEVICE_PROTECTED_STORAGE() && new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").exists() && !new File("/data/user_de/0/" + MainActivity.class.getPackage().getName() + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").exists()) {
                 File oldPref = new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml");
-                Log.d("NPM:pref","Found old preference file, trying to move.");
+                Log.d("NPM","Found old preference file, trying to move.");
                 if (oldPref.renameTo(new File("/data/user_de/0/" + MainActivity.class.getPackage().getName() + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml"))) {
-                    Log.d("NPM:pref","File moved!");
+                    Log.d("NPM","File moved!");
                 } else {
-                    Log.e("NPM:pref","Moving failed.");
+                    Log.e("NPM","Moving failed.");
                 }
             }
         }

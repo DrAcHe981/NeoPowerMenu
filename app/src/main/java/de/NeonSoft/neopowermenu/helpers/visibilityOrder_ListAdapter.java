@@ -633,14 +633,14 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     try {
                         MenuItemHolder checkItem = getItemAt(i);
                         if (MainActivity.DeepLogging)
-                            Log.i("NPM:vOPC", "(" + String.format("%02d", i) + ")> " + checkItem.getType() + " | " + checkItem.getTitle(1));
+                            Log.i("NPM", "(" + String.format("%02d", i) + ")> " + checkItem.getType() + " | " + checkItem.getTitle(1));
                         if (checkItem.getType() == TYPE_MULTIPAGE_START) {
                             pages.add(checkItem.getTitle(1));
                         } else if (checkItem.getType() == TYPE_MULTIPAGE_END) {
                             pages.remove(pages.size() - 1);
                         }
                     } catch (Throwable t) {
-                        Log.e("NPM:vOPC", "Invalid move operation:", t);
+                        Log.e("NPM", "Invalid move operation:", t);
                         validMove = false;
                         break;
                     }
@@ -799,7 +799,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
                                                                    @Override
                                                                    public void onPositiveClick(Bundle resultBundle) {
-                                                                       MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", ""))).apply();
+                                                                       MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", ""))).commit();
                                                                        item.setLockedWithPassword(true);
 
                                                                        items.set(position, item);
@@ -908,7 +908,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
                                                                    @Override
                                                                    public void onPositiveClick(Bundle resultBundle) {
-                                                                       MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", ""))).apply();
+                                                                       MainActivity.preferences.edit().putString(PreferenceNames.pItemPWL, helper.md5Crypto(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0", ""))).commit();
                                                                        item.setLockedWithPassword(true);
 
                                                                        items.set(position, item);

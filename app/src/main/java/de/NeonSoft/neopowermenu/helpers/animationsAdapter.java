@@ -75,7 +75,7 @@ public class animationsAdapter extends ArrayAdapter<Object> {
                                 @Override
                                 public void onListItemClick(int position, String text) {
                                     // TODO: Implement this method
-                                    MainActivity.animationPrefs.edit().putInt(items[p1][1].toString(), position).commit();
+                                    MainActivity.animationPrefs.edit().putInt(items[p1][1].toString(), position).apply();
                                     notifyDataSetChanged();
                                 }
 
@@ -121,7 +121,7 @@ public class animationsAdapter extends ArrayAdapter<Object> {
                                     @Override
                                     public void onListItemClick(int position, String text) {
                                         // TODO: Implement this method
-                                        MainActivity.animationPrefs.edit().putInt(items[p1][1].toString(), position).commit();
+                                        MainActivity.animationPrefs.edit().putInt(items[p1][1].toString(), position).apply();
                                         notifyDataSetChanged();
                                     }
 

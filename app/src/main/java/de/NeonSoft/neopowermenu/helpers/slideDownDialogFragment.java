@@ -590,7 +590,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                             Toast.makeText(mContext, "Failed to put in clipboard...", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Throwable t) {
-                        Log.e("NPM:sDDF", "Failed to put in clipboard: " + t.toString());
+                        Log.e("NPM", "Failed to put in clipboard: " + t.toString());
                         Toast.makeText(mContext, "Failed to put in clipboard...", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -1010,7 +1010,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                         if (windowToken != null)
                             inputManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
                     } catch (Throwable t) {
-                        Log.e("NPM:sDDF", "Failed to hide IME:", t);
+                        Log.e("NPM", "Failed to hide IME:", t);
                     }
                     TextView_DialogTouchOutside.setOnTouchListener(new OnTouchListener() {
                         @Override

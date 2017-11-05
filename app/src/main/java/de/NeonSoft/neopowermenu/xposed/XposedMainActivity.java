@@ -123,13 +123,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         } catch (PackageManager.NameNotFoundException e) {
             Log.w("NPM", "Error Package name not found ", e);
         }
-        if (DeepXposedLogging)
-            Log.i("NPM", "Setting " + s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml world readable...");
-        if (new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").setReadable(true, false)) {
-            if (DeepXposedLogging) Log.i("NPM", "Success.");
-        } else {
-            if (DeepXposedLogging) Log.e("NPM", "Failed...");
-        }
 
         mBlurBehind = preferences.getBoolean("BlurBehind", false);
         mBlurRadius = preferences.getFloat("BlurRadius", 14f);
@@ -260,7 +253,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                     getWindow().setBackgroundDrawable(draw);
                 }
             } catch (Throwable t) {
-                Log.e("NPM:blurTask","Failed to capture or blur the background...",t);
+                Log.e("NPM","[blurTask] Failed to capture or blur the background...", t);
             }
         }
 
@@ -295,8 +288,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         revealView = (CircularRevealView) findViewById(R.id.reveal);
         revealImageView = (ImageView) findViewById(R.id.revealImage);
-        if (new File(mContext.getFilesDir().getPath() + "/images/background.png").exists()) {
-            mImageLoader.loadImage(mContext.getFilesDir().getPath() + "/images/background.png", new ImageLoadingListener() {
+        if (new File(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png").exists()) {
+            mImageLoader.loadImage(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png", new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String imageUri, View view) {
 
@@ -505,7 +498,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             try {
                 mContext.unregisterReceiver(mReceiver);
             } catch (Throwable t) {
-                Log.e("NPM:dialog", "Failed to unregister broadcastreceiver.", t);
+                Log.e("NPM", "Failed to unregister broadcastreceiver.", t);
             }
         }
         super.finish();
@@ -598,9 +591,9 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             mImageLoader = ImageLoader.getInstance();
             mImageLoader.init(config);
             mImageLoaderLoaded = true;
-            Log.d("ImageLoader", "Loaded!");
+            Log.d("NPM", "ImageLoader Loaded!");
         } catch (Exception e) {
-            Log.e("ImageLoader", "Load failed, code:" + e);
+            Log.e("NPM", "Failed to load ImageLoader", e);
         }
     }
     @Override

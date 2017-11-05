@@ -14,7 +14,7 @@ import android.os.PowerManager.WakeLock;
 import android.hardware.Camera;
 
 public class TorchService extends Service {
-    private static final String TAG = "NPM:TorchService";
+    private static final String TAG = "NPM";
 
     public static final String ACTION_TOGGLE_TORCH = "neopowermenu.intent.action.TOGGLE_TORCH";
     public static final String ACTION_TORCH_STATUS_CHANGED = "neopowermenu.intent.action.TORCH_STATUS_CHANGED";

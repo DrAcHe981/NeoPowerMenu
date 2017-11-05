@@ -121,7 +121,7 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:label="NeoPowerMenu"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            android:theme="@style/TransparentApp">
 
         </activity>
 

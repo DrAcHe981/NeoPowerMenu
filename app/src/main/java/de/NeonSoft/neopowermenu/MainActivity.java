@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             File check = new File(context.getFilesDir().getPath() + "/" + requieredDir);
             if (!check.exists() && !check.isDirectory()) {
                 if(!check.mkdir()) {
-                    Log.e("NPM:rD","Failed to create required directory: "+requieredDir);
+                    Log.e("NPM","Failed to create required directory: "+requieredDir);
                 }
             }
         }
@@ -323,15 +323,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             Log.w("NPM", "Error Package name not found ", e);
         }
-        if (new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").exists()) {
-            if (DeepLogging)
-                Log.i("NPM", "Setting " + s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml world readable...");
-            if (new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").setReadable(true, false)) {
-                if (DeepLogging) Log.i("NPM", "Success.");
-            } else {
-                if (DeepLogging) Log.e("NPM", "Failed...");
-            }
-        }
         super.onPause();
     }
 
@@ -356,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == permissionsScreen.RESULT_ENABLE_ADMIN) {
+        if(requestCode == permissionsScreen.RESULT_ENABLE_ADMIN || requestCode == permissionsScreen.MY_PERMISSIONS_REQUEST) {
             permissionsScreen.adapter.notifyDataSetChanged();
         } else if (requestCode == PreferencesVisibilityOrderFragment.REQ_OBTAIN_SHORTCUT && PreferencesVisibilityOrderFragment.mShortcutHandler != null) {
             if (resultCode == Activity.RESULT_OK) {
@@ -472,9 +463,9 @@ public class MainActivity extends AppCompatActivity {
             imageLoader = ImageLoader.getInstance();
             imageLoader.init(config);
             ImgLoader_Loaded = true;
-            Log.d("NPM:imageLoader", "Loaded!");
+            Log.d("NPM", "ImageLoader Loaded!");
         } catch (Exception e) {
-            Log.e("NPM:imageLoader", "Load failed, code:" + e);
+            Log.e("NPM", "Failed to load ImageLoader", e);
         }
     }
 

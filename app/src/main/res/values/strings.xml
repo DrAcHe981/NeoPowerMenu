@@ -449,5 +449,7 @@
     <string name="graphics_BehaviorTitle">Customize graphic behavior</string>
     <string name="graphics_BehaviorDesc">Enable/Disable graphics and customize values such as padding and coloring.</string>
     <string name="visibilityOrder_SearchShortcut">Search Shortcut (case insensitive):</string>
+    <string name="preferences_TranslateDesc">You know some languages the app should have?\nThen tap here to check out the project on Crowdin and help translating!</string>
+    <string name="preferences_TranslateTitle">Translation</string>
 
 </resources>

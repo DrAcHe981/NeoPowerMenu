@@ -519,13 +519,13 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             PreferencesPresetsFragment.progress.setVisibility(View.VISIBLE);
                             Intent shareIntent = new Intent(Intent.ACTION_SEND);
                             shareIntent.setType("text/rtf");
-                            File sharedfolder = new File(context.getExternalFilesDir(null) + "/NeoPowerMenu/sharedpresets");
-                            File tmpfile = new File(context.getExternalFilesDir(null) + "/NeoPowerMenu/sharedpresets/" + mItems.get(position).getName() + ".nps");
+                            File sharedfolder = new File(context.getExternalFilesDir(null) + "/sharedpresets");
+                            File tmpfile = new File(context.getExternalFilesDir(null) + "/sharedpresets/" + mItems.get(position).getName() + ".nps");
                             sharedfolder.mkdirs();
                             tmpfile.delete();
-                            helper.copyFile(context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps", context.getExternalFilesDir(null) + "/NeoPowerMenu/sharedpresets/" + mItems.get(position).getName() + ".nps");
+                            helper.copyFile(context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps", context.getExternalFilesDir(null) + "/sharedpresets/" + mItems.get(position).getName() + ".nps");
 
-                            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(context.getExternalFilesDir(null) + "/NeoPowerMenu/sharedpresets/" + mItems.get(position).getName() + ".nps")));
+                            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(context.getExternalFilesDir(null) + "/sharedpresets/" + mItems.get(position).getName() + ".nps")));
                             context.startActivity(shareIntent.createChooser(shareIntent, mItems.get(position).getName()));
                             PreferencesPresetsFragment.progress.setVisibility(View.GONE);
                         } catch (Throwable e) {
@@ -580,12 +580,12 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                         MemoryCacheUtils.removeFromCache(((context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").startsWith("file://") ? "" : "file://") + context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png", MainActivity.imageLoader.getMemoryCache());
                                         DiskCacheUtils.removeFromCache(((context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").startsWith("file://") ? "" : "file://") + context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png", MainActivity.imageLoader.getDiscCache());
                                         if (PreferencesGraphicsFragment.graphics[i][2].toString().equalsIgnoreCase("Progress") && new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").exists()) {
-                                            MainActivity.preferences.edit().putString("ProgressDrawable", "file").apply();
+                                            MainActivity.preferences.edit().putString("ProgressDrawable", "file").commit();
                                         } else {
-                                            MainActivity.preferences.edit().putString("ProgressDrawable", "stock").apply();
+                                            MainActivity.preferences.edit().putString("ProgressDrawable", "stock").commit();
                                         }
                                     } catch (Throwable t) {
-                                        Log.d("NPM:presetLoad", "Cant move graphic " + PreferencesGraphicsFragment.graphics[i][0] + "-" + PreferencesGraphicsFragment.graphics[i][1] + ".png, reason: " + t.toString());
+                                        Log.d("NPM", "Cant move graphic " + PreferencesGraphicsFragment.graphics[i][0] + "-" + PreferencesGraphicsFragment.graphics[i][1] + ".png, reason: " + t.toString());
                                     }
                                 }
                                 if (!resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)) {
@@ -867,12 +867,12 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                         StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]", "" + (Integer.parseInt(StarsCount.getText().toString().split(": ")[1]) + 1)));
                                         StarImage.setImageResource(R.drawable.ic_action_star_0);
                                         StarText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[1]);
-                                        MainActivity.preferences.edit().putString("ratedFor", MainActivity.preferences.getString("ratedFor", "") + "&" + mItems.get(position).getName() + ",").apply();
+                                        MainActivity.preferences.edit().putString("ratedFor", MainActivity.preferences.getString("ratedFor", "") + "&" + mItems.get(position).getName() + ",").commit();
                                     } else {
                                         StarsCount.setText(context.getString(R.string.presetsManager_Stars).replace("[STARS]", "" + (Integer.parseInt(StarsCount.getText().toString().split(": ")[1]) - 1)));
                                         StarImage.setImageResource(R.drawable.ic_action_star_10);
                                         StarText.setText(context.getString(R.string.presetsManager_Buttons).split("\\|")[0]);
-                                        MainActivity.preferences.edit().putString("ratedFor", MainActivity.preferences.getString("ratedFor", "").replace("&" + mItems.get(position).getName() + ",", "")).apply();
+                                        MainActivity.preferences.edit().putString("ratedFor", MainActivity.preferences.getString("ratedFor", "").replace("&" + mItems.get(position).getName() + ",", "")).commit();
                                     }
                                     String[] split = mItems.get(position).getDescription().split(",=,");
                                     preset.setDescription(split[0] + ",=," + split[1] + ",=," + (Integer.parseInt(StarsCount.getText().toString().split(": ")[1])));
@@ -1181,9 +1181,9 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                         } else if (aData[0].equals("AppVersionCode")) {
                             presetVersionCode = Integer.parseInt(aData[1]);
                         } else if (aData[0].equals("GraphicsPadding")) {
-                            MainActivity.preferences.edit().putFloat("GraphicsPadding", Integer.parseInt(aData[1])).apply();
+                            MainActivity.preferences.edit().putFloat(PreferenceNames.pGraphicsPadding, Integer.parseInt(aData[1])).commit();
                         } else if (aData[0].equals("ColorizeNonStockIcons")) {
-                            MainActivity.preferences.edit().putBoolean("ColorizeNonStockIcons", (aData[1].equals("true") ? true : false)).apply();
+                            MainActivity.preferences.edit().putBoolean(PreferenceNames.pColorizeNonStockIcons, (aData[1].equals("true") ? true : false)).commit();
                         } else {
                             if (presetVersionName.equals("1.4.2")) {
                                 if (aData[0].equalsIgnoreCase("RevealBackground")) {
@@ -1258,7 +1258,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                 }
                 return "success";
             } catch (Throwable e) {
-                Log.e("NPM:import", "Failed to import: ", e);
+                Log.e("NPM", "Failed to import: ", e);
                 return e.toString();
             }
         }
@@ -1281,7 +1281,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
             super.onPostExecute(p1);
             if (p1.equalsIgnoreCase("success")) {
-                MainActivity.preferences.edit().putString("lastUsedPreset", selectedName).apply();
+                MainActivity.preferences.edit().putString("lastUsedPreset", selectedName).commit();
                 Toast.makeText(context.getApplicationContext(), context.getString(R.string.presetLoad_PresetLoaded).replace("[PRESETNAME]", selectedName), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(context.getApplicationContext(), context.getString(R.string.presetsManager_ImportFailed) + "\n" + p1, Toast.LENGTH_SHORT).show();

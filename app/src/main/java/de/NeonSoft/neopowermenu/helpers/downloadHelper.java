@@ -153,7 +153,7 @@ public class downloadHelper {
 
     private void setState(final int state) {
         mState = state;
-        Log.i("NPM:uH", instanceName+ "> State changed to " + STATE_NAMES[state] + "(" + state + ")");
+        Log.i("NPM", "[downloadHelper] " + instanceName+ "> State changed to " + STATE_NAMES[state] + "(" + state + ")");
         mActivity.runOnUiThread(new Runnable() {
 
             @Override
@@ -244,7 +244,7 @@ public class downloadHelper {
                 try {
                     try {
                         String name = p1[0].toString().split("/")[p1[0].toString().split("/").length - 1];
-                        Log.i("NPM:dH", "Initializing download: \nServer: " + p1[0] + "\nFile Name: " + name);
+                        Log.i("NPM", "[downloadHelper] Initializing download: \nServer: " + p1[0] + "\nFile Name: " + name);
                         URL url = new URL(p1[0].toString().replace(" ", "%20"));
                         file = p1[1] + "/" + name;
                         if (new File(file).exists()) {
@@ -276,17 +276,17 @@ public class downloadHelper {
                         }
                     } catch (ConnectException ce) {
                         //return "Download Failed";
-                        Log.e("NPM:dH", instanceName+ "> Download Error: " + ce.toString());
+                        Log.e("NPM", "[downloadHelper] " + instanceName+ "> Download Error: " + ce.toString());
                         return "Failed at: " + STATE_NAMES[getState()];
                     }
                 } catch (IOException ioe) {
                     //return "Download Failed";
-                    Log.e("NPM:dH", instanceName+ "> Download Error: " + ioe.toString());
+                    Log.e("NPM", "[downloadHelper] " + instanceName+ "> Download Error: " + ioe.toString());
                     return "Failed at: " + STATE_NAMES[getState()];
                 }
             } catch (Throwable e) {
                 //return "Download Failed";
-                Log.e("NPM:dH", instanceName+ "> Download Error: " + e.toString());
+                Log.e("NPM", "[downloadHelper] " + instanceName+ "> Download Error: " + e.toString());
                 return "Failed at: " + STATE_NAMES[getState()];
             }
             return null;
@@ -309,7 +309,7 @@ public class downloadHelper {
                 dloutput.close();
                 dlinput.close();
             } catch (Throwable t) {
-                Log.e("NPM:dH", t.toString());
+                Log.e("NPM", "[downloadHelper] " + t.toString());
             }
             mInterface.onDownloadFailed("canceled");
             isRunning = false;
@@ -325,7 +325,7 @@ public class downloadHelper {
                 dloutput.close();
                 dlinput.close();
             } catch (Throwable t) {
-                Log.e("NPM:dH", t.toString());
+                Log.e("NPM", "[downloadHelper] " + t.toString());
             }
             if (p1 == null) {
                 File sizeCheck = new File(file);

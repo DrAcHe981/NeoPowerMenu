@@ -31,7 +31,7 @@ public class XposedUtils
     private static Boolean mIsSamsumgRom = null;
 		
     public static void log(String message) {
-        Log.i("NPM:xposed",message);
+        Log.i("NPM",message);
         try {
             XposedBridge.log("[NeoPowerMenu] "+message);
         } catch (Throwable t) {}

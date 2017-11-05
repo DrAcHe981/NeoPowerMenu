@@ -49,7 +49,7 @@ import static de.NeonSoft.neopowermenu.MainActivity.visibleFragment;
 
 public class addShortcut extends AppCompatActivity {
 
-    public static String TAG = "NPM:shortcut";
+    public static String TAG = "NPM";
 
     public static SharedPreferences preferences;
     public static SharedPreferences colorPrefs;
@@ -290,9 +290,9 @@ public class addShortcut extends AppCompatActivity {
             imageLoader = ImageLoader.getInstance();
             imageLoader.init(config);
             ImgLoader_Loaded = true;
-            Log.d("NPM:imageLoader", "Loaded!");
+            Log.d("NPM", "ImageLoader Loaded!");
         } catch (Exception e) {
-            Log.e("NPM:imageLoader", "Load failed, code:" + e);
+            Log.e("NPM", "ImageLoader loading failed", e);
         }
     }
 

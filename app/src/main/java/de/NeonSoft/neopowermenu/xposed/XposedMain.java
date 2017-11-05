@@ -507,7 +507,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
                         final KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                         if (!showDialog()) {
-                            Log.e("NPM:DIALOG", "Failed to show dialog, showing info...");
+                            Log.e("NPM", "Failed to show dialog, showing info...");
                             AlertDialog.Builder adb = new AlertDialog.Builder(mContext, 0);
                             adb.setMessage(R.string.xposedMain_MenuActivityNotFound);
                             adb.setNegativeButton(R.string.xposedMain_MenuActivityNotFound_Cancel, null);

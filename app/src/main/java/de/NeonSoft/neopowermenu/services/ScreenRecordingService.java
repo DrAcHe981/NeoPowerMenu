@@ -47,7 +47,7 @@ public class ScreenRecordingService extends Service {
     private static Context mContext;
     private static NotificationManager nm;
 
-    private static final String TAG = "NPM:SRCServ";
+    private static final String TAG = "NPM";
     boolean DeepLogging = false;
 
     private static final int SCREENRECORD_NOTIFICATION_ID = 3;

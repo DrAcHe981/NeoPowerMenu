@@ -197,7 +197,7 @@ public class PreferencesBackupRestore extends Fragment {
                     restorePath = restorePath.replace("primary:", Environment.getExternalStorageDirectory().getAbsolutePath() + "/");
                 final String finalPath = restorePath;
                 if (MainActivity.DeepLogging)
-                    Log.d("NPM:rB", "Checking file: " + restorePath);
+                    Log.d("NPM", "Checking file: " + restorePath);
                 if (restorePath.endsWith(".npmb") && helper.isValidZip(restorePath, null)) {
                     final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                     dialogFragment.setContext(mActivity);
@@ -301,33 +301,33 @@ public class PreferencesBackupRestore extends Fragment {
             }
 
             if (MainActivity.DeepLogging) {
-                Log.d("NPM:cB", "Backing up to: " + backupPath + backupName);
-                Log.d("NPM:rB", "Backing up parts: " + params[2]);
+                Log.d("NPM", "Backing up to: " + backupPath + backupName);
+                Log.d("NPM", "Backing up parts: " + params[2]);
             }
 
             try {
                 for (String backupOption : backupOptions) {
                     if (Integer.parseInt(backupOption) == 0) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:cB", "Adding main settings...");
+                            Log.d("NPM", "Adding main settings...");
                         helper.zipFile(SettingsManager.getSettingsFile(MainActivity.context), backupPath + backupName, null);
                     } else if (Integer.parseInt(backupOption) == 1) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:cB", "Adding color settings...");
+                            Log.d("NPM", "Adding color settings...");
                         helper.zipFile(s + "/shared_prefs/colors.xml", backupPath + backupName, null);
                     } else if (Integer.parseInt(backupOption) == 2) {
-                        if (MainActivity.DeepLogging) Log.d("NPM:cB", "Adding presets...");
+                        if (MainActivity.DeepLogging) Log.d("NPM", "Adding presets...");
                         helper.zipAll(mActivity.getFilesDir().getPath() + "/presets/", backupPath + backupName, null);
                     } else if (Integer.parseInt(backupOption) == 3) {
-                        if (MainActivity.DeepLogging) Log.d("NPM:cB", "Adding images...");
+                        if (MainActivity.DeepLogging) Log.d("NPM", "Adding images...");
                         helper.zipAll(mActivity.getFilesDir().getPath() + "/images/", backupPath + backupName, null);
                     } else if (Integer.parseInt(backupOption) == 4) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:cB", "Adding visibilityOrder settings...");
+                            Log.d("NPM", "Adding visibilityOrder settings...");
                         helper.zipFile(s + "/shared_prefs/visibilityOrder.xml", backupPath + backupName, null);
                     } else if (Integer.parseInt(backupOption) == 5) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:cB", "Adding animation settings...");
+                            Log.d("NPM", "Adding animation settings...");
                         helper.zipFile(s + "/shared_prefs/animations.xml", backupPath + backupName, null);
                     }
                 }
@@ -343,11 +343,11 @@ public class PreferencesBackupRestore extends Fragment {
             super.onPostExecute(s);
             RelativeLayout_Progress.startAnimation(AnimationUtils.loadAnimation(mActivity, R.anim.fade_out));
             RelativeLayout_Progress.setVisibility(View.GONE);
-            if (MainActivity.DeepLogging) Log.d("NPM:cB", "Checking file...");
+            if (MainActivity.DeepLogging) Log.d("NPM", "Checking file...");
             if (s == null && helper.isValidZip(backupPath + backupName, null)) {
                 Toast.makeText(mActivity, getString(R.string.backupRestore_BackupComplete), Toast.LENGTH_SHORT).show();
             } else {
-                Log.e("NPM:cB", "Failed to backup: " + s);
+                Log.e("NPM", "Failed to backup: " + s);
                 Toast.makeText(mActivity, getString(R.string.backupRestore_BackupFailed), Toast.LENGTH_SHORT).show();
             }
         }
@@ -379,9 +379,9 @@ public class PreferencesBackupRestore extends Fragment {
             }
 
             if (MainActivity.DeepLogging) {
-                Log.d("NPM:rB", "Restoring from: " + path);
-                Log.d("NPM:rB", "Restoring to: " + SettingsManager.getSettingsFile(MainActivity.context));
-                Log.d("NPM:rB", "Restoring parts: " + params[1]);
+                Log.d("NPM", "Restoring from: " + path);
+                Log.d("NPM", "Restoring to: " + SettingsManager.getSettingsFile(MainActivity.context));
+                Log.d("NPM", "Restoring parts: " + params[1]);
             }
 
             try {
@@ -400,20 +400,20 @@ public class PreferencesBackupRestore extends Fragment {
 
                 for (String option : restoreOptions) {
                     if (Integer.parseInt(option) == 0) {
-                        if (MainActivity.DeepLogging) Log.d("NPM:rB", "Restoring main settings...");
+                        if (MainActivity.DeepLogging) Log.d("NPM", "Restoring main settings...");
                         new File(SettingsManager.getSettingsFile(MainActivity.context)).delete();
                         if (!new File(mActivity.getFilesDir().getPath() + "/temp/" + MainActivity.class.getPackage().getName() + "_preferences.xml").renameTo(new File(SettingsManager.getSettingsFile(MainActivity.context)))) {
-                            Log.e("NPM:rB", "Failed to restore main settings!");
+                            Log.e("NPM", "Failed to restore main settings!");
                         }
                     } else if (Integer.parseInt(option) == 1) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:rB", "Restoring color settings...");
+                            Log.d("NPM", "Restoring color settings...");
                         new File(s + "/shared_prefs/colors.xml").delete();
                         if (!new File(mActivity.getFilesDir().getPath() + "/temp/colors.xml").renameTo(new File(s + "/shared_prefs/colors.xml"))) {
-                            Log.e("NPM:rB", "Failed to restore color settings!");
+                            Log.e("NPM", "Failed to restore color settings!");
                         }
                     } else if (Integer.parseInt(option) == 2) {
-                        if (MainActivity.DeepLogging) Log.d("NPM:rB", "Restoring presets...");
+                        if (MainActivity.DeepLogging) Log.d("NPM", "Restoring presets...");
                         File[] oldPresetFiles = new File(mActivity.getFilesDir().getPath() + "/presets/").listFiles(new FilenameFilter() {
                             public boolean accept(File dir, String name) {
                                 return name.endsWith(".nps");
@@ -432,7 +432,7 @@ public class PreferencesBackupRestore extends Fragment {
                             file.renameTo(new File(mActivity.getFilesDir().getPath() + "/presets/" + file.getName()));
                         }
                     } else if (Integer.parseInt(option) == 3) {
-                        if (MainActivity.DeepLogging) Log.d("NPM:rB", "Restoring graphics...");
+                        if (MainActivity.DeepLogging) Log.d("NPM", "Restoring graphics...");
                         MainActivity.imageLoader.clearMemoryCache();
                         MainActivity.imageLoader.clearDiskCache();
                         File[] oldGraphicsFiles = new File(mActivity.getFilesDir().getPath() + "/images/").listFiles(new FilenameFilter() {
@@ -454,17 +454,17 @@ public class PreferencesBackupRestore extends Fragment {
                         }
                     } else if (Integer.parseInt(option) == 4) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:rB", "Restoring visibilityOrder settings...");
+                            Log.d("NPM", "Restoring visibilityOrder settings...");
                         new File(s + "/shared_prefs/visibilityOrder.xml").delete();
                         if (!new File(mActivity.getFilesDir().getPath() + "/temp/visibilityOrder.xml").renameTo(new File(s + "/shared_prefs/visibilityOrder.xml"))) {
-                            Log.e("NPM:rB", "Failed to restore visibilityOrder settings!");
+                            Log.e("NPM", "Failed to restore visibilityOrder settings!");
                         }
                     } else if (Integer.parseInt(option) == 5) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:rB", "Restoring animation settings...");
+                            Log.d("NPM", "Restoring animation settings...");
                         new File(s + "/shared_prefs/animations.xml").delete();
                         if (!new File(mActivity.getFilesDir().getPath() + "/temp/animations.xml").renameTo(new File(s + "/shared_prefs/animations.xml"))) {
-                            Log.e("NPM:rB", "Failed to restore animation settings!");
+                            Log.e("NPM", "Failed to restore animation settings!");
                         }
                     }
                 }
@@ -544,7 +544,7 @@ public class PreferencesBackupRestore extends Fragment {
                 dialogFragment.setPositiveButton(getString(R.string.backupRestore_Restart));
                 dialogFragment.showDialog(R.id.dialog_container);
             } else {
-                Log.e("NPM:rB", "Failed to restore: " + s);
+                Log.e("NPM", "Failed to restore: " + s);
                 slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                 dialogFragment.setContext(mActivity);
                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -607,20 +607,20 @@ public class PreferencesBackupRestore extends Fragment {
             }
 
             if (MainActivity.DeepLogging) {
-                Log.d("NPM:dF", "Deleting parts: " + params[0]);
+                Log.d("NPM", "Deleting parts: " + params[0]);
             }
             try {
                 for (String option : deleteOptions) {
                     if (Integer.parseInt(option) == 0) {
-                        if (MainActivity.DeepLogging) Log.d("NPM:dF", "Deleting main settings...");
+                        if (MainActivity.DeepLogging) Log.d("NPM", "Deleting main settings...");
                         new File(s + "/shared_prefs/" + MainActivity.class.getPackage().getName() + "_preferences.xml").delete();
                         new File(SettingsManager.getSettingsFile(MainActivity.context)).delete();
                     } else if (Integer.parseInt(option) == 1) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:dF", "Deleting color settings...");
+                            Log.d("NPM", "Deleting color settings...");
                         new File(s + "/shared_prefs/colors.xml").delete();
                     } else if (Integer.parseInt(option) == 2) {
-                        if (MainActivity.DeepLogging) Log.d("NPM:dF", "Deleting presets...");
+                        if (MainActivity.DeepLogging) Log.d("NPM", "Deleting presets...");
                         File[] oldPresetFiles = new File(mActivity.getFilesDir().getPath() + "/presets/").listFiles(new FilenameFilter() {
                             public boolean accept(File dir, String name) {
                                 return name.endsWith(".nps");
@@ -630,7 +630,7 @@ public class PreferencesBackupRestore extends Fragment {
                             file.delete();
                         }
                     } else if (Integer.parseInt(option) == 3) {
-                        if (MainActivity.DeepLogging) Log.d("NPM:dF", "Deleting graphics...");
+                        if (MainActivity.DeepLogging) Log.d("NPM", "Deleting graphics...");
                         MainActivity.imageLoader.clearMemoryCache();
                         MainActivity.imageLoader.clearDiskCache();
                         File[] oldGraphicsFiles = new File(mActivity.getFilesDir().getPath() + "/images/").listFiles(new FilenameFilter() {
@@ -643,11 +643,11 @@ public class PreferencesBackupRestore extends Fragment {
                         }
                     } else if (Integer.parseInt(option) == 4) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:dF", "Deleting visibilityOrder settings...");
+                            Log.d("NPM", "Deleting visibilityOrder settings...");
                         new File(s + "/shared_prefs/visibilityOrder.xml").delete();
                     } else if (Integer.parseInt(option) == 5) {
                         if (MainActivity.DeepLogging)
-                            Log.d("NPM:dF", "Deleting animation settings...");
+                            Log.d("NPM", "Deleting animation settings...");
                         new File(s + "/shared_prefs/animations.xml").delete();
                     }
                 }
@@ -718,7 +718,7 @@ public class PreferencesBackupRestore extends Fragment {
                 dialogFragment.setPositiveButton(getString(R.string.backupRestore_Restart));
                 dialogFragment.showDialog(R.id.dialog_container);
             } else {
-                Log.e("NPM:dF", "Failed to delete: " + s);
+                Log.e("NPM", "Failed to delete: " + s);
                 slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                 dialogFragment.setContext(mActivity);
                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);

@@ -20,7 +20,7 @@ public class bootCompleteReceiver extends BroadcastReceiver {
 
     // copies required files from assets to file system
     private void prepareAssets(Context context) {
-        Log.d("NPM:bCR","Preparing assets...");
+        Log.d("NPM","Preparing assets...");
         File f;
 
         // prepare alternative screenrecord binary if doesn't exist yet
@@ -33,15 +33,15 @@ public class bootCompleteReceiver extends BroadcastReceiver {
             assetName = "screenrecord_kk";
         }
         if (!f.exists()) {
-            Log.d("NPM:bCR","Preparing "+assetName+"...");
+            Log.d("NPM","Preparing "+assetName+"...");
             helper.writeAssetToFile(context, assetName, f);
             if (f.exists()) {
                 f.setExecutable(true);
-                Log.d("NPM:bCR","Prepared "+assetName+"!");
+                Log.d("NPM","Prepared "+assetName+"!");
             } else {
-                Log.e("NPM:bCR","Failed to prepare "+assetName+"...");
+                Log.e("NPM","Failed to prepare "+assetName+"...");
             }
         }
-        Log.d("NPM:bCR","Assets prepared!");
+        Log.d("NPM","Assets prepared!");
     }
 }
