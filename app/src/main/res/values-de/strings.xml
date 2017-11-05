@@ -422,5 +422,5 @@
   <string name="visibilityOrder_SearchShortcut">Verknüpfung suchen (Groß/Kleinschreibung wird ignoriert):</string>
   <string name="preferences_TranslateDesc">Sie kennen Sprachen die diese app haben sollte? \nDann tipp hier, um das Projekt auf Crowdin zu sehen und helf bei der Übersetzung!</string>
   <string name="preferences_TranslateTitle">Übersetzung</string>
-  <string name="graphics_NotEnabled">Grafik ist nicht aktiviert\nTippe hier zu aktivieren!</string>
+  <string name="graphics_NotEnabled">Grafiken sind nicht aktiviert\nTippe hier zum aktivieren!</string>
 </resources>
