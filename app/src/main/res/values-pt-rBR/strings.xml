@@ -297,6 +297,7 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="tourPage_2_Title">"O Menu de Tema"</string>
   <string name="tourPage_2_Text">"Aqui começa sua personalização: você pode alterar todas as cores! \nOferecer o menu de energia mais personalizável possível é meu objetivo."</string>
   <string name="tourPage_3_Title">"O Menu de Gráficos"</string>
+  <string name="tourPage_3_Text">"Personalize os gráficos usados."</string>
   <string name="tourPage_4_Title">"O Menu de Ordem e Visibilidade"</string>
   <string name="tourPage_4_Text">"Escolha o que você quer ter em seu menu e a ordem de classificação. \nClique em '+' para adicionar novos itens, deslize o item para fora da tela para excluir.\n\nO ícone 'cadeado' significa: mostrar na tela de bloqueio.\nO ícone 'i' significa: mostrar a descrição do item."</string>
   <string name="tourPage_5_Title">"O Menu de Animações"</string>
@@ -441,6 +442,8 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Acessar política de notificações"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Necessária no Nougat (7.0) e acima para alterar o modo 'Não Perturbe'."</string>
   <string name="powerMenuMain_Shortcut">Atalho</string>
+  <string name="visibilityOrder_NoGravityBoxFound">GravityBox não instalado, esse item não terá efeito sem o GravityBox instalado.</string>
   <string name="visibilityOrder_HideText">Ocultar texto</string>
   <string name="style_MaterialDynamicWidth">Material (Largura Dinâmica)</string>
+  <string name="graphics_BehaviorTitle">Personalize o comportamento dos gráficos</string>
 </resources>
