@@ -446,4 +446,7 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="visibilityOrder_HideText">Ocultar texto</string>
   <string name="style_MaterialDynamicWidth">Material (Largura Dinâmica)</string>
   <string name="graphics_BehaviorTitle">Personalize o comportamento dos gráficos</string>
+  <string name="graphics_BehaviorDesc">Ative/Desative gráficos e customize valores como preenchimento e coloração.</string>
+  <string name="visibilityOrder_SearchShortcut">Atalho de Busca (case insensitive):</string>
+  <string name="preferences_TranslateTitle">Tradução</string>
 </resources>
