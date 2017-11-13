@@ -23,6 +23,7 @@
   <string name="powerMenuMain_ToggleRotate">"Поворот экрана"</string>
   <string name="ToggleRotateMode_Auto">"Авто"</string>
   <string name="ToggleRotateMode_Off">"Выключено"</string>
+  <string name="powerMenuMain_ToggleWifi">"WiFi"</string>
   <string name="powerMenuMain_ToggleData">"Мобильные Данные"</string>
   <string name="powerMenuMain_RebootFlashMode">"Режим установки"</string>
   <!-- Preferences: Visibility and order -->
