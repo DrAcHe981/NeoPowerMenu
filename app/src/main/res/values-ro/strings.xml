@@ -55,7 +55,6 @@
   <string name="powerMenuMain_Screenrecord">"Inregistrare Ecran"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Ecranul este inregistrat"</string>
-  <string name="screenrecord_notif_title">"Se Inregistreaza ecarnul...."</string>
   <string name="screenrecord_toast_error">"Imposibil de inregistrat ecranul"</string>
   <string name="screenrecord_toast_processing">"Nu se poate incepe o noua inregistrare in timp ce inregistrati!"</string>
   <string name="screenrecord_toast_saved">"Inregistrare salvata ca %s"</string>

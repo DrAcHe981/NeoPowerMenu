@@ -23,6 +23,7 @@
   <string name="powerMenuMain_ToggleRotate">"Поворот экрана"</string>
   <string name="ToggleRotateMode_Auto">"Авто"</string>
   <string name="ToggleRotateMode_Off">"Выключено"</string>
+  <string name="powerMenuMain_ToggleWifi">"WiFi"</string>
   <string name="powerMenuMain_ToggleData">"Мобильные Данные"</string>
   <string name="powerMenuMain_RebootFlashMode">"Режим установки"</string>
   <!-- Preferences: Visibility and order -->
@@ -67,7 +68,6 @@
   <string name="powerMenuMain_Screenrecord">"Запись экрана"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Экран записывается"</string>
-  <string name="screenrecord_notif_title">"Запись экрана"</string>
   <string name="screenrecord_toast_error">"Невозможно записать экран"</string>
   <string name="screenrecord_toast_processing">"Невозможно начать новую запись, так как старая ещё обрабатывается"</string>
   <string name="screenrecord_toast_saved">"Запись сохранена как %s"</string>
