@@ -67,7 +67,6 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="powerMenuMain_Screenrecord">"Gravação de Tela"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"A tela está sendo gravada"</string>
-  <string name="screenrecord_notif_title">"Gravando tela "</string>
   <string name="screenrecord_toast_error">"Incapaz de gravar a tela"</string>
   <string name="screenrecord_toast_processing">"Não é possível iniciar uma nova gravação se a gravação anterior ainda estiver sendo processada"</string>
   <string name="screenrecord_toast_saved">"Gravação salva como %s"</string>
