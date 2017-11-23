@@ -63,7 +63,6 @@
   <string name="powerMenuMain_Screenrecord">"スクリーンレコード"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"画面を記録中です"</string>
-  <string name="screenrecord_notif_title">"画面を録画中"</string>
   <string name="screenrecord_toast_error">"画面の録画に失敗しました"</string>
   <string name="screenrecord_toast_processing">"以前の録画の処理中のため、新しい録画を開始できません"</string>
   <string name="screenrecord_toast_saved">"%s として保存しました"</string>
