@@ -57,7 +57,6 @@ Tego nie można cofnąć!\"\"\""</string>
   <string name="powerMenuMain_Screenrecord">"Nagrywanie ekranu"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Nagrywanie ekranu rozpoczęte"</string>
-  <string name="screenrecord_notif_title">"Nagrywanie ekranu"</string>
   <string name="screenrecord_toast_error">"Nie można nagrać ekranu"</string>
   <string name="screenrecord_toast_processing">"Nie można nagrać ekranu, ponieważ poprzednie nagranie jest nadal przetwarzane."</string>
   <string name="screenrecord_toast_saved">"Zapisano nagranie jako %s"</string>
