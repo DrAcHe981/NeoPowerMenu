@@ -66,7 +66,8 @@
   <string name="powerMenuMain_Screenrecord">"Bildschirmaufnahme"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Bildschirm wird aufgezeichnet"</string>
-    <string name="screenrecord_toast_error">"Bildschirmaufnahme nicht möglich"</string>
+  <string name="screenrecord_notif_title">Bildschirmaufnahme</string>
+  <string name="screenrecord_toast_error">"Bildschirmaufnahme nicht möglich"</string>
   <string name="screenrecord_toast_processing">"Es kann keine Bildschirmaufnahme gestartet werden, wenn eine andere verarbeitet wird"</string>
   <string name="screenrecord_toast_saved">"Aufnahme gespeichert als %s"</string>
   <string name="screenrecord_toast_save_error">"Fehler beim speichern der Aufnahme"</string>
@@ -422,4 +423,8 @@
   <string name="preferences_TranslateDesc">Sie kennen Sprachen die diese app haben sollte? \nDann tipp hier, um das Projekt auf Crowdin zu sehen und helf bei der Übersetzung!</string>
   <string name="preferences_TranslateTitle">Übersetzung</string>
   <string name="graphics_NotEnabled">Grafiken sind nicht aktiviert\nTippe hier zum aktivieren!</string>
+  <string name="advancedPrefsTitle_ScreenRecordCountdown">Bildschirmaufzeichnung countdown</string>
+  <string name="advancedPrefsDesc_ScreenRecordCountdown">Zeige einen Countdown vor dem Start der Bildschirmaufzeichnung.</string>
+  <string name="screenrecord_toast_start_in">Die Bildschirmaufnahme wird gestartet in [TIME]...</string>
+  <string name="screenrecord_notif_binarynotFound">Konnte die binäre Datei nicht finden, lesen, oder ausführen. \n Bildschirmaufnahme ist möglicherweise auf Ihrem Gerät nicht unterstützt.</string>
 </resources>
