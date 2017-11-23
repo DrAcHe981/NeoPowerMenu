@@ -66,7 +66,6 @@
   <string name="powerMenuMain_Screenrecord">"Bildschirmaufnahme"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Bildschirm wird aufgezeichnet"</string>
-  <string name="screenrecord_notif_title">"Bildschirmaufnahme läuft"</string>
   <string name="screenrecord_toast_error">"Bildschirmaufnahme nicht möglich"</string>
   <string name="screenrecord_toast_processing">"Es kann keine Bildschirmaufnahme gestartet werden, wenn eine andere verarbeitet wird"</string>
   <string name="screenrecord_toast_saved">"Aufnahme gespeichert als %s"</string>
