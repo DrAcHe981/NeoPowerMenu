@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     public static actionBar actionbar;
 
     /*<!-- Internal needed Hook version to check if reboot is needed --!>*/
-    public static int neededModuleActiveVersion = 26;
+    public static int neededModuleActiveVersion = 27;
 
     public static String ImportUrl = null;
 

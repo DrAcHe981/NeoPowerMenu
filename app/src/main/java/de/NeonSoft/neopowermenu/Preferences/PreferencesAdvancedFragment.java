@@ -17,6 +17,8 @@ import de.NeonSoft.neopowermenu.*;
 
 import android.widget.*;
 
+import java.util.concurrent.TimeUnit;
+
 import de.NeonSoft.neopowermenu.helpers.*;
 
 public class PreferencesAdvancedFragment extends Fragment {
@@ -54,6 +56,10 @@ public class PreferencesAdvancedFragment extends Fragment {
     LinearLayout LinearLayout_ScreenRecordRotate;
     Switch Switch_ScreenRecordRotate;
     boolean boolean_ScreenRecordRotate;
+
+    LinearLayout LinearLayout_ScreenRecordCountdown;
+    TextView TextView_ScreenRecordCountdown;
+    long Long_ScreenRecordCountdown;
 
     LinearLayout LinearLayout_Password;
 
@@ -545,6 +551,100 @@ public class PreferencesAdvancedFragment extends Fragment {
                 boolean_ScreenRecordRotate = !boolean_ScreenRecordRotate;
                 MainActivity.preferences.edit().putBoolean(PreferenceNames.pScreenRecord_Rotate, boolean_ScreenRecordRotate).commit();
                 Switch_ScreenRecordRotate.setChecked(boolean_ScreenRecordRotate);
+            }
+        });
+
+        Long_ScreenRecordCountdown = MainActivity.preferences.getLong(PreferenceNames.pScreenRecord_Countdown, 0);
+        LinearLayout_ScreenRecordCountdown = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_ScreenRecordCountdown);
+        TextView_ScreenRecordCountdown = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_ScreenRecordCountdown);
+        if (Long_ScreenRecordCountdown == 0) {
+            TextView_ScreenRecordCountdown.setText(R.string.advancedPrefs_DelayZero);
+        } else {
+            TextView_ScreenRecordCountdown.setText(helper.getTimeString(getActivity(), Long_ScreenRecordCountdown, 1));
+        }
+
+        LinearLayout_ScreenRecordCountdown.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View p1) {
+                slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                dialogFragment.setContext(getActivity());
+                dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                dialogFragment.setText(getString(R.string.advancedPrefs_SelectTime));
+                View customView = inflater.inflate(R.layout.timepickerdialog, null, false);
+                final NumberPicker timepickerdialog_PickerHours = (NumberPicker) customView.findViewById(R.id.timepickerdialog_Hours);
+                final NumberPicker timepickerdialog_PickerMinutes = (NumberPicker) customView.findViewById(R.id.timepickerdialog_Minutes);
+                final NumberPicker timepickerdialog_PickerSeconds = (NumberPicker) customView.findViewById(R.id.timepickerdialog_Secondss);
+                String[] vals = new String[25];
+                for (int i = 0; i <= 24; i++) {
+                    vals[i] = i + " " + getString(R.string.advancedPrefs_Hours);
+                }
+                timepickerdialog_PickerHours.setMinValue(0);
+                timepickerdialog_PickerHours.setMaxValue(24);
+                timepickerdialog_PickerHours.setWrapSelectorWheel(false);
+                timepickerdialog_PickerHours.setDisplayedValues(vals);
+                timepickerdialog_PickerHours.setValue((int) helper.splitMilliseconds(Long_ScreenRecordCountdown, "h"));
+                helper.setDividerColor(timepickerdialog_PickerHours, getResources().getColor(R.color.colorAccentDarkThemeTrans));
+                vals = new String[61];
+                for (int i = 0; i <= 60; i++) {
+                    vals[i] = i + " " + getString(R.string.advancedPrefs_Minutes);
+                }
+                timepickerdialog_PickerMinutes.setMinValue(0);
+                timepickerdialog_PickerMinutes.setMaxValue(59);
+                timepickerdialog_PickerMinutes.setDisplayedValues(vals);
+                timepickerdialog_PickerMinutes.setWrapSelectorWheel(false);
+                timepickerdialog_PickerMinutes.setValue((int) helper.splitMilliseconds(Long_ScreenRecordCountdown, "m"));
+                helper.setDividerColor(timepickerdialog_PickerMinutes, getResources().getColor(R.color.colorAccentDarkThemeTrans));
+                vals = new String[61];
+                for (int i = 0; i <= 60; i++) {
+                    vals[i] = i + " " + getString(R.string.advancedPrefs_Seconds);
+                }
+                timepickerdialog_PickerSeconds.setMinValue(0);
+                timepickerdialog_PickerSeconds.setMaxValue(59);
+                timepickerdialog_PickerSeconds.setDisplayedValues(vals);
+                timepickerdialog_PickerSeconds.setWrapSelectorWheel(false);
+                timepickerdialog_PickerSeconds.setValue((int) helper.splitMilliseconds(Long_ScreenRecordCountdown, "s"));
+                helper.setDividerColor(timepickerdialog_PickerSeconds, getResources().getColor(R.color.colorAccentDarkThemeTrans));
+                dialogFragment.setCustomView(customView);
+                dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                    @Override
+                    public void onListItemClick(int position, String text) {
+
+                    }
+
+                    @Override
+                    public void onNegativeClick() {
+
+                    }
+
+                    @Override
+                    public void onNeutralClick() {
+
+                    }
+
+                    @Override
+                    public void onPositiveClick(Bundle resultBundle) {
+                        long milliseconds = 0;
+                        milliseconds += java.util.concurrent.TimeUnit.HOURS.toMillis(timepickerdialog_PickerHours.getValue());//timepickerdialog_PickerHours.getValue() * (1000 * 60);
+                        milliseconds += java.util.concurrent.TimeUnit.MINUTES.toMillis(timepickerdialog_PickerMinutes.getValue());//timepickerdialog_PickerMinutes.getValue() * (1000 * 60);
+                        milliseconds += java.util.concurrent.TimeUnit.SECONDS.toMillis(timepickerdialog_PickerSeconds.getValue());//timepickerdialog_PickerSeconds.getValue() * 1000;
+                        Long_ScreenRecordCountdown = milliseconds;
+                        if (Long_ScreenRecordCountdown == 0) {
+                            TextView_ScreenRecordCountdown.setText(R.string.advancedPrefs_DelayZero);
+                        } else {
+                            TextView_ScreenRecordCountdown.setText(helper.getTimeString(getActivity(), Long_ScreenRecordCountdown, 1));
+                        }
+                        MainActivity.preferences.edit().putLong(PreferenceNames.pScreenRecord_Countdown, Long_ScreenRecordCountdown).commit();
+                    }
+
+                    @Override
+                    public void onTouchOutside() {
+
+                    }
+                });
+                dialogFragment.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+                dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
+                dialogFragment.showDialog(R.id.dialog_container);
             }
         });
 

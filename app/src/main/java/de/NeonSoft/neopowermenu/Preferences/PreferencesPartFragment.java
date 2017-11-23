@@ -293,7 +293,7 @@ public class PreferencesPartFragment extends Fragment {
                         slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                         dialogFragment.setContext(mActivity);
                         dialogFragment.setFragmentManager(MainActivity.fragmentManager);
-                        dialogFragment.setText("Failed to open the Xposed installer, application not found.\n\n" + e.getMessage());
+                        dialogFragment.setText("Failed to open the Xposed installer, application not found.");
                         dialogFragment.showDialog(R.id.dialog_container);
                     }
                 } else if (!MainActivity.RootAvailable) {

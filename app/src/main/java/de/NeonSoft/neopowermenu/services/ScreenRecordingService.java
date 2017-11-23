@@ -10,9 +10,11 @@ import android.graphics.drawable.Icon;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Message;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
@@ -34,10 +36,14 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 import de.NeonSoft.neopowermenu.R;
 import de.NeonSoft.neopowermenu.helpers.PreferenceNames;
 import de.NeonSoft.neopowermenu.helpers.SettingsManager;
+import de.NeonSoft.neopowermenu.helpers.helper;
 import de.NeonSoft.neopowermenu.xposed.*;
 
 import android.app.*;
@@ -54,6 +60,7 @@ public class ScreenRecordingService extends Service {
     private static final int MSG_TASK_ENDED = 1;
     private static final int MSG_TASK_ERROR = 2;
     private static final String TMP_PATH = Environment.getExternalStorageDirectory() + "/__tmp_screenrecord.mp4";
+    private static long iCountdown = 0;
 
     public static final String ACTION_SCREEN_RECORDING_START = "neopowermenu.intent.action.SCREEN_RECORDING_START";
     public static final String ACTION_SCREEN_RECORDING_STOP = "neopowermenu.intent.action.SCREEN_RECORDING_STOP";
@@ -81,12 +88,19 @@ public class ScreenRecordingService extends Service {
 
     private CaptureThread mCaptureThread;
     private String screenrecordReturnCode = "";
+    private Toast tToast;
+    private Context baseContext;
 
     private class CaptureThread extends Thread {
         public void run() {
             try {
                 // Firstly, make sure we are able to get to pid field of ProcessImpl class
-                final Class<?> classProcImpl = Class.forName("java.lang.ProcessManager$ProcessImpl");
+                final Class<?> classProcImpl;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    classProcImpl = Class.forName("java.lang.UNIXProcess");
+                } else {
+                    classProcImpl = Class.forName("java.lang.ProcessManager$ProcessImpl");
+                }
                 final Field fieldPid = classProcImpl.getDeclaredField("pid");
                 fieldPid.setAccessible(true);
 
@@ -94,11 +108,16 @@ public class ScreenRecordingService extends Service {
                 List<String> command = new ArrayList<>();
                 //command.add("su");
                 if(DeepLogging) Log.d(TAG, "Using binary located in: " + getBinaryPath());
+                if (!new File(getBinaryPath()).exists() || !new File(getBinaryPath()).canRead() || !new File(getBinaryPath()).canExecute()) {
+                    Log.e(TAG, "Binary not found!");
+                    Toast.makeText(mContext, getString(R.string.screenrecord_notif_binarynotFound), Toast.LENGTH_LONG).show();
+                    stopSelf();
+                }
                 command.add(getBinaryPath());
                 if(DeepLogging) Log.d(TAG, "Setting screenrecorder configurations...");
                 if (!mUseStockBinary && mPrefs.getBoolean(PreferenceNames.pScreenRecord_Microphone, true)) {
-                    command.add("--microphone");
-                    if(DeepLogging) Log.d(TAG, "> --microphone");
+                    //command.add("--microphone");
+                    //if(DeepLogging) Log.d(TAG, "> --microphone");
                 }
                 String prefVal = mPrefs.getString(PreferenceNames.pScreenRecord_Size, "default");
                 if (!prefVal.equals("default")) {
@@ -109,12 +128,12 @@ public class ScreenRecordingService extends Service {
                 prefVal = String.valueOf(mPrefs.getLong(PreferenceNames.pScreenRecord_BitRate, 4) * 1000000);
                 command.add("--bit-rate");
                 command.add(prefVal);
-                if(DeepLogging) Log.d(TAG, "> --bitrate " + prefVal);
+                if(DeepLogging) Log.d(TAG, "> --bit-rate " + prefVal);
                 if (!mUseStockBinary) {
-                    prefVal = String.valueOf(mPrefs.getLong(PreferenceNames.pScreenRecord_TimeLimit, (1000 * 3) * 60));
+                    prefVal = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(mPrefs.getLong(PreferenceNames.pScreenRecord_TimeLimit, (1000 * 3) * 60)));
                     command.add("--time-limit");
                     command.add(prefVal);
-                    if(DeepLogging) Log.d(TAG, "> --timelimit " + prefVal);
+                    if(DeepLogging) Log.d(TAG, "> --time-limit " + prefVal);
                 }
                 if (mPrefs.getBoolean(PreferenceNames.pScreenRecord_Rotate, false)) {
                     command.add("--rotate");
@@ -139,7 +158,7 @@ public class ScreenRecordingService extends Service {
                 while (!isInterrupted()) {
                     if (br.ready()) {
                         screenrecordReturnCode += br.readLine();
-                        Log.e(TAG, br.readLine());
+                        Log.e(TAG, "Error: " + br.readLine());
                     }
 
                     try {
@@ -240,6 +259,7 @@ public class ScreenRecordingService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        baseContext = getBaseContext();
         if(DeepLogging) Log.d(TAG, "Received command: " + intent.getAction());
         if (intent != null && intent.getAction() != null) {
             if (intent.getAction().equals(ACTION_SCREEN_RECORDING_START)) {
@@ -413,11 +433,33 @@ public class ScreenRecordingService extends Service {
             toggleShowTouches();
         }
 
-        mCaptureThread = new
+        mCaptureThread = new CaptureThread();
 
-                CaptureThread();
+        if (mPrefs.getLong(PreferenceNames.pScreenRecord_Countdown, 0) > 0) {
+            iCountdown = mPrefs.getLong(PreferenceNames.pScreenRecord_Countdown,0);
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    final CountDownTimer cdt5  = new CountDownTimer(iCountdown,1000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            if (tToast != null) tToast.cancel();
+                            tToast = Toast.makeText(mContext, getString(R.string.screenrecord_toast_start_in).replace("[TIME]", "" + helper.getTimeString(mContext, millisUntilFinished, 0)), Toast.LENGTH_SHORT);
+                            tToast.show();
+                        }
 
-        mCaptureThread.start();
+                        @Override
+                        public void onFinish() {
+                            tToast.cancel();
+                            mCaptureThread.start();
+                        }
+                    }.start();
+                }
+            });
+        } else {
+            mCaptureThread.start();
+        }
+
 
         updateStatus(STATUS_RECORDING);
 

@@ -22,7 +22,7 @@
 
         <FrameLayout
             android:id="@+id/frame"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:foregroundGravity="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center|center_vertical|center_horizontal">
@@ -62,7 +62,7 @@
 
         <FrameLayout
             android:id="@+id/frame3"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|center_vertical|center_horizontal"
             android:visibility="gone">
@@ -119,8 +119,7 @@
                 <TextView
                     android:id="@+id/fragmentpowerTextView_ConfirmAction"
                     android:layout_width="340dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.0"
+                    android:layout_height="110dp"
                     android:gravity="center"
                     android:text="Reboot?"
                     android:textSize="20sp"/>
@@ -189,7 +188,7 @@
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     android:src="@drawable/fingerprint_white_192x192"
-                    android:visibility="visible"/>
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/fragmentpowerTextView_EnterPasswordError"
@@ -255,6 +254,7 @@
             android:layout_width="340dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
+            android:foregroundGravity="center"
             android:visibility="gone">
 
             <LinearLayout

@@ -70,7 +70,7 @@
 
 <!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Screen is being recorded"</string>
-<string name="screenrecord_notif_title">"Recording screen"</string>
+<string name="screenrecord_notif_title">Screen recording</string>
 <string name="screenrecord_toast_error">"Unable to record screen"</string>
 <string name="screenrecord_toast_processing">"Cannot start new recording as previous recording is still being processed"</string>
 <string name="screenrecord_toast_saved">"Recording saved as %s"</string>
@@ -452,5 +452,9 @@
     <string name="preferences_TranslateDesc">You know languages that this app should have?\nThen tap here to check out the project on Crowdin and help with the translation!</string>
     <string name="preferences_TranslateTitle">Translation</string>
     <string name="graphics_NotEnabled">Graphics aren\'t enabled\nTap here to enable them!</string>
+    <string name="advancedPrefsTitle_ScreenRecordCountdown">Screen record countdown</string>
+    <string name="advancedPrefsDesc_ScreenRecordCountdown">Show a countdown before starting the screen recording.</string>
+    <string name="screenrecord_toast_start_in">Starting the screen recording in [TIME]...</string>
+    <string name="screenrecord_notif_binarynotFound">Could not locate, read, or execute binary file.\nScreen recording might not be supported on your device.</string>
 
 </resources>
