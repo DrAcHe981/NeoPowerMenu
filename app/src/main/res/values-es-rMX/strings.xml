@@ -65,7 +65,6 @@
   <string name="powerMenuMain_Screenrecord">"Grabado de pantalla"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Pantalla se está grabando"</string>
-  <string name="screenrecord_notif_title">"Grabando pantalla"</string>
   <string name="screenrecord_toast_error">"Incapaz de grabar pantalla"</string>
   <string name="screenrecord_toast_processing">"No se puede iniciar nueva grabación la grabación anterior todavía se está procesando"</string>
   <string name="screenrecord_toast_saved">"Grabación salvada como %s"</string>
