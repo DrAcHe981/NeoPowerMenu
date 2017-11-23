@@ -51,8 +51,7 @@ public class SettingsManager {
 
     private SettingsManager(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            mContext = XposedUtils.USE_DEVICE_PROTECTED_STORAGE() && !context.isDeviceProtectedStorage() ?
-                    context.createDeviceProtectedStorageContext() : context;
+            mContext = (XposedUtils.USE_DEVICE_PROTECTED_STORAGE() && !context.isDeviceProtectedStorage() ? context.createDeviceProtectedStorageContext() : context);
 
             PackageManager m = context.getPackageManager();
             String s = context.getPackageName();
@@ -71,6 +70,8 @@ public class SettingsManager {
                     Log.e("NPM","Moving failed.");
                 }
             }
+        } else {
+            mContext = context;
         }
         mFileObserverListeners = new ArrayList<>();
         mPrefsMain =  new WorldReadablePrefs(mContext, MainActivity.class.getPackage().getName() + "_preferences");
@@ -84,8 +85,7 @@ public class SettingsManager {
             throw new IllegalArgumentException("Context cannot be null");
 
         if (mInstance == null) {
-            mInstance = new SettingsManager(context.getApplicationContext() != null ?
-                    context.getApplicationContext() : context);
+            mInstance = new SettingsManager(context.getApplicationContext() != null ? context.getApplicationContext() : context);
         }
         return mInstance;
     }
@@ -182,18 +182,35 @@ public class SettingsManager {
     }
 
     private void registerFileObserver() {
-        mFileObserver = new FileObserver(mContext.getDataDir() + "/shared_prefs",
-                FileObserver.ATTRIB | FileObserver.CLOSE_WRITE) {
-            @Override
-            public void onEvent(int event, String path) {
-                for (FileObserverListener l : mFileObserverListeners) {
-                    if ((event & FileObserver.ATTRIB) != 0)
-                        l.onFileAttributesChanged(path);
-                    if ((event & FileObserver.CLOSE_WRITE) != 0)
-                        l.onFileUpdated(path);
-                }
+        File pkgFolder = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            pkgFolder = mContext.getDataDir();
+        } else {
+            PackageManager m = mContext.getPackageManager();
+            String s = mContext.getPackageName();
+            try {
+                PackageInfo p = m.getPackageInfo(s, 0);
+                pkgFolder = new File(p.applicationInfo.dataDir);
+            } catch (PackageManager.NameNotFoundException e) {
+                Log.w("NPM", "Error Package name not found ", e);
             }
-        };
-        mFileObserver.startWatching();
+        }
+        if (pkgFolder != null) {
+            mFileObserver = new FileObserver(pkgFolder.getPath() + "/shared_prefs",
+                    FileObserver.ATTRIB | FileObserver.CLOSE_WRITE) {
+                @Override
+                public void onEvent(int event, String path) {
+                    for (FileObserverListener l : mFileObserverListeners) {
+                        if ((event & FileObserver.ATTRIB) != 0)
+                            l.onFileAttributesChanged(path);
+                        if ((event & FileObserver.CLOSE_WRITE) != 0)
+                            l.onFileUpdated(path);
+                    }
+                }
+            };
+            mFileObserver.startWatching();
+        } else {
+            Log.e("NPM","Could not start FileObserver: pkgFolder is null.");
+        }
     }
 }

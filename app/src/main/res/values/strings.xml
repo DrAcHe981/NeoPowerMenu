@@ -456,5 +456,7 @@
     <string name="advancedPrefsDesc_ScreenRecordCountdown">Show a countdown before starting the screen recording.</string>
     <string name="screenrecord_toast_start_in">Starting the screen recording in [TIME]...</string>
     <string name="screenrecord_notif_binarynotFound">Could not locate, read, or execute binary file.\nScreen recording might not be supported on your device.</string>
+    <string name="advancedPrefsTitle_HideActionDescriptionText">Hide description text in shutdown/reboot action dialog</string>
+    <string name="advancedPrefsDesc_HideActionDescriptionText">Hide the \"Shutting down...\" or similar from the shutdown/reboot action dialog.</string>
 
 </resources>

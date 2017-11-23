@@ -61,6 +61,10 @@ public class PreferencesAdvancedFragment extends Fragment {
     TextView TextView_ScreenRecordCountdown;
     long Long_ScreenRecordCountdown;
 
+    LinearLayout LinearLayout_HideDescriptionLine;
+    Switch Switch_HideDescriptionLine;
+    boolean boolean_HideDescriptionLine;
+
     LinearLayout LinearLayout_Password;
 
     LinearLayout LinearLayout_LockWithFingerprint;
@@ -645,6 +649,24 @@ public class PreferencesAdvancedFragment extends Fragment {
                 dialogFragment.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
                 dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
                 dialogFragment.showDialog(R.id.dialog_container);
+            }
+        });
+
+        boolean_HideDescriptionLine = MainActivity.preferences.getBoolean(PreferenceNames.pHideDescriptionLine, false);
+        LinearLayout_HideDescriptionLine = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_HideSecondLine);
+        Switch_HideDescriptionLine = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_HideSecondLine);
+
+        Switch_HideDescriptionLine.setChecked(boolean_HideDescriptionLine);
+        Switch_HideDescriptionLine.setClickable(false);
+        Switch_HideDescriptionLine.setFocusable(false);
+
+        LinearLayout_HideDescriptionLine.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View p1) {
+                boolean_HideDescriptionLine = !boolean_HideDescriptionLine;
+                Switch_HideDescriptionLine.setChecked(boolean_HideDescriptionLine);
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pHideDescriptionLine, boolean_HideDescriptionLine).commit();
             }
         });
 

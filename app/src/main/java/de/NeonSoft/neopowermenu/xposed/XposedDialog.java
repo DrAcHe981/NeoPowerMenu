@@ -205,8 +205,9 @@ public class XposedDialog extends DialogFragment {
         hidePasswordErrorRunnable = new Runnable() {
             @Override
             public void run() {
-                EnterPasswordError.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
+                //EnterPasswordError.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
                 EnterPasswordError.setVisibility(View.GONE);
+                EnterPasswordAction.setVisibility(View.VISIBLE);
             }
         };
         mKeyguardShowing = mKeyguardManager.isKeyguardLocked();
@@ -266,8 +267,8 @@ public class XposedDialog extends DialogFragment {
         RequireConfirmation = preferences.getBoolean("RequireConfirmation", false);
         UseRootCommands = preferences.getBoolean("UseRoot", true);
 
-        int_Vertical = preferences.getInt("DialogPosition_Vertical",25);
-        int_Horizontal = preferences.getInt("DialogPosition_Horizontal",25);
+        int_Vertical = preferences.getInt("DialogPosition_Vertical",50);
+        int_Horizontal = preferences.getInt("DialogPosition_Horizontal",50);
         DisplaySize = helper.getDisplaySize(mContext, false);
 
         if (!helper.isDeviceHorizontal(mContext)) {
@@ -330,7 +331,9 @@ public class XposedDialog extends DialogFragment {
         EnterPasswordCancel = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_EnterPasswordCancel);
         EnterPasswordFingerprint = (ImageView) PowerDialog.findViewById(R.id.fragmentpowerImageView_EnterPasswordFingerPrint);
         EnterPasswordFingerprint.setColorFilter(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")), PorterDuff.Mode.MULTIPLY);
+        EnterPasswordFingerprint.setVisibility(View.GONE);
         EnterPasswordInput = (EditText) PowerDialog.findViewById(R.id.fragmentpowerEditText_EnterPassword);
+        EnterPasswordInput.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
         EnterPasswordError = (TextView) PowerDialog.findViewById(R.id.fragmentpowerTextView_EnterPasswordError);
         EnterPasswordError.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
         EnterPasswordError.setVisibility(View.GONE);
@@ -368,7 +371,7 @@ public class XposedDialog extends DialogFragment {
             frame3Scroll.setLayoutParams(frameScrollParams);
             FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
             crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            crparams.height = ((int) helper.convertDpToPixel(150, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+            crparams.height = ((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
             revealView.setLayoutParams(crparams);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
             params.width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -386,7 +389,7 @@ public class XposedDialog extends DialogFragment {
             frame3Scroll.setLayoutParams(frameScrollParams);
             FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
             crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            crparams.height = ((int) helper.convertDpToPixel(150, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+            crparams.height = ((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
             revealView.setLayoutParams(crparams);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
             params.width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -403,7 +406,7 @@ public class XposedDialog extends DialogFragment {
         } else {
             FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
             crparams.width = ((int) helper.convertDpToPixel(340, mContext));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
-            crparams.height = ((int) helper.convertDpToPixel(150, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+            crparams.height = ((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
             revealView.setLayoutParams(crparams);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
             params.width = ((int) helper.convertDpToPixel(340, mContext));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
@@ -415,10 +418,11 @@ public class XposedDialog extends DialogFragment {
         }
         FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frameEnterPassword.getLayoutParams());
         params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
+        //params2.height = ((int) helper.convertDpToPixel(170, mContext));
 
-        frame2.setLayoutParams(params2);
-        frameConfirm.setLayoutParams(params2);
-        frameEnterPassword.setLayoutParams(params2);
+        //frame2.setLayoutParams(params2);
+        //frameConfirm.setLayoutParams(params2);
+        //frameEnterPassword.setLayoutParams(params2);
 
         if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) < mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
             LayoutTransition lt = new LayoutTransition();
@@ -430,6 +434,7 @@ public class XposedDialog extends DialogFragment {
 
         status = (TextView) PowerDialog.findViewById(R.id.status);
         status_detail = (TextView) PowerDialog.findViewById(R.id.status_detail);
+        if (preferences.getBoolean(PreferenceNames.pHideDescriptionLine, false)) status_detail.setVisibility(View.GONE);
 
         progressbg = (ImageView) PowerDialog.findViewById(R.id.progressbg);
         progressbg.setVisibility((GraphicBehindProgress ? View.VISIBLE : View.INVISIBLE));
@@ -1452,9 +1457,11 @@ public class XposedDialog extends DialogFragment {
                 if (!confirmDialog.equalsIgnoreCase(name)) {
                     confirmDialog = name;
                     SubDialogs.add("EnterPassword");
+                    frameEnterPasswordLinear.setLayoutTransition(null);
                     EnterPasswordInput.setVisibility(View.VISIBLE);
                     EnterPasswordFingerprint.setVisibility(View.GONE);
                     EnterPasswordAction.setText(getString(R.string.powerMenu_LockedWithPassword));
+                    EnterPasswordAction.setVisibility(View.VISIBLE);
                     EnterPasswordError.setText("");
                     EnterPasswordError.setVisibility(View.GONE);
                     EnterPasswordOk.setText(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
@@ -1482,6 +1489,7 @@ public class XposedDialog extends DialogFragment {
                                                 if (errorCode == -1) {
                                                     EnterPasswordError.setText("Unknown problem: " + errorMsg);
                                                     if(EnterPasswordError.getVisibility() == View.GONE) {
+                                                        EnterPasswordAction.setVisibility(View.GONE);
                                                         EnterPasswordError.setVisibility(View.VISIBLE);
                                                         //EnterPasswordError.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
                                                     }
@@ -1490,6 +1498,7 @@ public class XposedDialog extends DialogFragment {
                                                 } else if (errorCode == FingerprintManager.FINGERPRINT_ERROR_LOCKOUT) {
                                                     EnterPasswordError.setText(errorMsg);
                                                     if(EnterPasswordError.getVisibility() == View.GONE) {
+                                                        EnterPasswordAction.setVisibility(View.GONE);
                                                         EnterPasswordError.setVisibility(View.VISIBLE);
                                                         //EnterPasswordError.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
                                                     }
@@ -1507,6 +1516,7 @@ public class XposedDialog extends DialogFragment {
                                                 } else if (errorCode != FingerprintManager.FINGERPRINT_ERROR_CANCELED) {
                                                     EnterPasswordError.setText(getString(R.string.powerMenu_FingerprintFailed));
                                                     if(EnterPasswordError.getVisibility() == View.GONE) {
+                                                        EnterPasswordAction.setVisibility(View.GONE);
                                                         EnterPasswordError.setVisibility(View.VISIBLE);
                                                         //EnterPasswordError.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
                                                     }
@@ -1520,6 +1530,7 @@ public class XposedDialog extends DialogFragment {
                                         public void onFingerprintHelp(int helpId, String helpString) {
                                             EnterPasswordError.setText(helpString);
                                             if(EnterPasswordError.getVisibility() == View.GONE) {
+                                                EnterPasswordAction.setVisibility(View.GONE);
                                                 EnterPasswordError.setVisibility(View.VISIBLE);
                                                 //EnterPasswordError.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
                                             }
@@ -1563,6 +1574,8 @@ public class XposedDialog extends DialogFragment {
                         public void onClick(View p1) {
                             if (EnterPasswordOk.getText().toString().equalsIgnoreCase(getString(R.string.powerMenu_PasswordUsePassword))) {
                                 EnterPasswordAction.setText(getString(R.string.powerMenu_LockedWithPassword));
+                                EnterPasswordAction.setVisibility(View.VISIBLE);
+                                EnterPasswordError.setVisibility(View.GONE);
                                 EnterPasswordFingerprint.setVisibility(View.GONE);
                                 EnterPasswordInput.setVisibility(View.VISIBLE);
                                 mFingerprintHandler.stopAuth();
@@ -1576,6 +1589,7 @@ public class XposedDialog extends DialogFragment {
                             }
                         }
                     });
+                    frameEnterPasswordLinear.setLayoutTransition(new LayoutTransition());
                     if (frame3.getVisibility() == View.GONE) {
                         frameEnterPassword.setVisibility(View.VISIBLE);
                         if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
@@ -2315,6 +2329,7 @@ public class XposedDialog extends DialogFragment {
             EnterPasswordInput.setText("");
             EnterPasswordError.setText(getString(R.string.powerMenu_WrongPassword));
             if(EnterPasswordError.getVisibility() == View.GONE) {
+                EnterPasswordAction.setVisibility(View.GONE);
                 EnterPasswordError.setVisibility(View.VISIBLE);
                 //EnterPasswordError.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_in));
             }

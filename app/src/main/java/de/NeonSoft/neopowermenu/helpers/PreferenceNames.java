@@ -15,6 +15,7 @@ public class PreferenceNames {
     public static String pScreenRecord_Rotate = "ScreenRecord_Rotate";
     public static String pScreenRecord_Countdown = "ScreenRecord_Countdown";
 
+    public static String pHideDescriptionLine = "HideDescriptionLine";
     public static String pBlurBehind = "BlurBehind";
     public static String pBlurRadius = "BlurRadius";
     public static String pRequireConfirmation = "RequireConfirmation";
