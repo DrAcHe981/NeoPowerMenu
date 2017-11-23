@@ -65,7 +65,6 @@
   <string name="powerMenuMain_Screenrecord">"Enregistrement de l'écran"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"L'écran est en train d'être enregistré"</string>
-  <string name="screenrecord_notif_title">"Enregistrement de l'écran"</string>
   <string name="screenrecord_toast_error">"Impossible d'éenregistrer l'écran"</string>
   <string name="screenrecord_toast_processing">"Impossible de lancer un nouvel enregistrement car le précédent est toujours en-cours d'utilisation"</string>
   <string name="screenrecord_toast_saved">"Enregistrement enregistré en %s"</string>
