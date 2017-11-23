@@ -57,7 +57,6 @@
   <string name="powerMenuMain_Screenrecord">"Registra schermo"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Lo schermo è in fase di registrazione"</string>
-  <string name="screenrecord_notif_title">"Registrazione schermo"</string>
   <string name="screenrecord_toast_error">"Impossibile registrare schermo"</string>
   <string name="screenrecord_toast_processing">"Non è possibile avviare nuova registrazione in quanto la registrazione precedente è ancora in fase di elaborazione"</string>
   <string name="screenrecord_toast_saved">"Registrazione salvato come %s"</string>
