@@ -13,6 +13,7 @@ public class PreferenceNames {
     public static String pScreenRecord_BitRate = "ScreenRecord_BitRate";
     public static String pScreenRecord_TimeLimit = "ScreenRecord_TimeLimit";
     public static String pScreenRecord_Rotate = "ScreenRecord_Rotate";
+    public static String pScreenRecord_Countdown = "ScreenRecord_Countdown";
 
     public static String pBlurBehind = "BlurBehind";
     public static String pBlurRadius = "BlurRadius";

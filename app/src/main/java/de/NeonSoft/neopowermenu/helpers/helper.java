@@ -1,6 +1,7 @@
 package de.NeonSoft.neopowermenu.helpers;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.*;
 import android.content.pm.PackageManager;
 import android.content.res.*;
@@ -170,6 +171,7 @@ public class helper {
         if (seconds.equalsIgnoreCase("00") && minutes.equalsIgnoreCase("00") && hours.equalsIgnoreCase("00")) {
             milliseconds = String.format(Locale.getDefault(), "%03d", InputMilliSeconds);
         }
+
         if (milliseconds.isEmpty()) {
             duration_string = hours + ":";
             duration_string += minutes + ":";
@@ -261,7 +263,7 @@ public class helper {
 
         // at bottom
         if (appUsableScreenSize.y < realScreenSize.y) {
-            return new Point(0, realScreenSize.y - appUsableScreenSize.y);
+            return new Point(0, realScreenSize.y - appUsableScreenSize.y - (helper.getStatusBarHeight(mContext)/2));
         }
 
         // none

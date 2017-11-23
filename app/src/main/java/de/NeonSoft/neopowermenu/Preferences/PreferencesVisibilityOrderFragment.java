@@ -53,7 +53,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
 
     LinearLayout LinearLayout_Add;
 
-    DragSortListView DSLV_List;
+    public static DragSortListView DSLV_List;
     public static visibilityOrder_ListAdapter adapter;
 
     public static LinearLayout LinearLayout_Progress;

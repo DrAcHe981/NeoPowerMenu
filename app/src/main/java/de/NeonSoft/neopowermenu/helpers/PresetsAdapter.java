@@ -1147,7 +1147,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
         @Override
         protected String doInBackground(String[] p1) {
-
+            Log.i("NPM","Trying to load preset: " + p1[0]);
             try {
                 String[] builtIn = context.getString(R.string.presetLoadDialog_BuiltIn).split("\\|");
                 if (p1[0].startsWith(context.getFilesDir().getPath())) {
@@ -1237,7 +1237,6 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                     } else if (p1[0].equalsIgnoreCase(builtIn[1])) {
                         preset = PreferencesColorFragment.darkPreset;
                     } else if (p1[0].equalsIgnoreCase(builtIn[2])) {
-                    } else if (p1[0].equalsIgnoreCase(builtIn[2])) {
                         preset = PreferencesColorFragment.blackPreset;
                     }
                     for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
@@ -1250,7 +1249,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             } else if (loadColor[1].contains("Text")) {
                                 MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Textcolor", preset[i]).apply();
                             } else if (loadColor[1].contains("Circle")) {
-                                MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Circletcolor", preset[i]).apply();
+                                MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Circlecolor", preset[i]).apply();
                             }
                             publishProgress(loadColor[0] + ": " + preset[i]);
                         }

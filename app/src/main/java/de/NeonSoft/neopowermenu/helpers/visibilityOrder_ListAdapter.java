@@ -610,6 +610,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
     public void addItem(MenuItemHolder item) {
         items.add(item);
         notifyDataSetChanged();
+        PreferencesVisibilityOrderFragment.DSLV_List.smoothScrollToPosition(PreferencesVisibilityOrderFragment.DSLV_List.getCount());
     }
 
     public MenuItemHolder getItemAt(int position) {

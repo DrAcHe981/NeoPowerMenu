@@ -344,18 +344,18 @@ public class XposedDialog extends DialogFragment {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
             params.width = LinearLayout.LayoutParams.MATCH_PARENT;
             params.height = LinearLayout.LayoutParams.MATCH_PARENT;
+            params.topMargin = helper.getStatusBarHeight(mContext);
+            if (!helper.isDeviceHorizontal(mContext)) {
+                params.bottomMargin = helper.getNavigationBarSize(mContext).y;
+            } else if (helper.isDeviceHorizontal(mContext)) {
+                params.rightMargin = helper.getNavigationBarSize(mContext).x;
+            }
             dialogContent.setLayoutParams(params);
             FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
             params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            params2.topMargin = helper.getStatusBarHeight(mContext);
-            if (!helper.isDeviceHorizontal(mContext)) {
-                params2.bottomMargin = helper.getNavigationBarSize(mContext).y;
-            } else if (helper.isDeviceHorizontal(mContext)) {
-                params2.rightMargin = helper.getNavigationBarSize(mContext).x;
-            }
-            params2.height = FrameLayout.LayoutParams.MATCH_PARENT;
-            frame.setLayoutParams(params2);
-            frame3.setLayoutParams(params2);
+            params2.height = FrameLayout.LayoutParams.WRAP_CONTENT;
+            //frame.setLayoutParams(params2);
+            //frame3.setLayoutParams(params2);
             FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
             crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
             crparams.height = FrameLayout.LayoutParams.MATCH_PARENT;
@@ -374,6 +374,7 @@ public class XposedDialog extends DialogFragment {
             params.width = LinearLayout.LayoutParams.MATCH_PARENT;
             dialogContent.setLayoutParams(params);
             FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
+            //params2.topMargin = helper.getStatusBarHeight(mContext);
             params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
             frame.setLayoutParams(params2);
             frame3.setLayoutParams(params2);
@@ -392,6 +393,9 @@ public class XposedDialog extends DialogFragment {
             dialogContent.setLayoutParams(params);
             FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
             params2.width = FrameLayout.LayoutParams.WRAP_CONTENT;
+            if (!helper.isDeviceHorizontal(mContext)) {
+                params2.bottomMargin = helper.getNavigationBarSize(mContext).y;
+            }
             frame.setLayoutParams(params2);
             frame3.setLayoutParams(params2);
             frameLinear.setLayoutParams(params2);
@@ -409,17 +413,12 @@ public class XposedDialog extends DialogFragment {
             frame.setLayoutParams(params2);
             frame3.setLayoutParams(params2);
         }
-        FrameLayout.LayoutParams paramsFrame2 = new FrameLayout.LayoutParams(frame2.getLayoutParams());
-        FrameLayout.LayoutParams paramsConfirm = new FrameLayout.LayoutParams(frameConfirm.getLayoutParams());
-        FrameLayout.LayoutParams paramsEnterPassword = new FrameLayout.LayoutParams(frameEnterPassword.getLayoutParams());
-        paramsFrame2.width = FrameLayout.LayoutParams.MATCH_PARENT;
-        paramsConfirm.width = FrameLayout.LayoutParams.MATCH_PARENT;
-        paramsEnterPassword.width = FrameLayout.LayoutParams.MATCH_PARENT;
-        paramsConfirm.height = ((int) helper.convertDpToPixel(150, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+        FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frameEnterPassword.getLayoutParams());
+        params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
 
-        frame2.setLayoutParams(paramsFrame2);
-        frameConfirm.setLayoutParams(paramsConfirm);
-        frameEnterPassword.setLayoutParams(paramsEnterPassword);
+        frame2.setLayoutParams(params2);
+        frameConfirm.setLayoutParams(params2);
+        frameEnterPassword.setLayoutParams(params2);
 
         if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) < mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
             LayoutTransition lt = new LayoutTransition();
@@ -517,7 +516,7 @@ public class XposedDialog extends DialogFragment {
 
             @Override
             public void onGlobalLayout() {
-                setGravity();
+                setGravity(sStyleName);
                 ViewTreeObserver obs = dialogContent.getViewTreeObserver();
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -535,10 +534,12 @@ public class XposedDialog extends DialogFragment {
                 int heightWas = oldBottom - oldTop; // bottom exclusive, top inclusive
                 if( v.getWidth() != widthWas || v.getHeight() != heightWas )
                 {
-                    setGravity();
+                    //setGravity(sStyleName);
                 }
             }
         });
+
+        //setGravity(sStyleName);
 
         return PowerDialog;
 
@@ -834,11 +835,10 @@ public class XposedDialog extends DialogFragment {
     public void refreshIcons() {
         if (isAdded()) {
             if (!soundModeIcon_Image.isEmpty() && amRingerMode != am.getRingerMode()) {
-                amRingerMode = am.getRingerMode();
                 for (int i = 0; i < soundModeIcon_Image.size(); i++) {
-                    if (amRingerMode == AudioManager.RINGER_MODE_VIBRATE) {
+                    if (am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
                         loadImage(soundModeIcon_Image.get(i), 14, PreferencesGraphicsFragment.graphics[14][2].toString(), soundModeIcon_Color.get(i));
-                    } else if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
+                    } else if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
                         loadImage(soundModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[13][2].toString(), soundModeIcon_Color.get(i));
                     } else {
                         loadImage(soundModeIcon_Image.get(i), 12, PreferencesGraphicsFragment.graphics[12][2].toString(), soundModeIcon_Color.get(i));
@@ -848,9 +848,9 @@ public class XposedDialog extends DialogFragment {
                     for (int i = 0; i < soundModeIcon_Text.size(); i++) {
                         if (soundModeIcon_Text.get(i) != null) {
                             String descText = getString(R.string.SoundMode_Normal);
-                            if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
+                            if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
                                 descText = getString(R.string.SoundMode_Silent);
-                            } else if (amRingerMode == AudioManager.RINGER_MODE_VIBRATE) {
+                            } else if (am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
                                 descText = getString(R.string.SoundMode_Vibrate);
                             }
                             String descString = mContext.getString(R.string.powerMenuMain_SoundModeDesc).replace("[SOUNDMODE]", descText);
@@ -1000,16 +1000,13 @@ public class XposedDialog extends DialogFragment {
                 }
             }
 
-            if (!silentModeIcon_Image.isEmpty()) {
+            if (!silentModeIcon_Image.isEmpty() && amRingerMode != am.getRingerMode()) {
                 for (int i = 0; i < silentModeIcon_Image.size(); i++) {
                     try {
-                        if (amRingerMode != am.getRingerMode()) {
-                            if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
-                                loadImage(silentModeIcon_Image.get(i), 12, PreferencesGraphicsFragment.graphics[12][2].toString(), silentModeIcon_Color.get(i));
-                            } else {
-                                loadImage(silentModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[13][2].toString(), silentModeIcon_Color.get(i));
-                            }
-                            amRingerMode = am.getRingerMode();
+                        if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
+                            loadImage(silentModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[13][2].toString(), silentModeIcon_Color.get(i));
+                        } else if (am.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
+                            loadImage(silentModeIcon_Image.get(i), 12, PreferencesGraphicsFragment.graphics[12][2].toString(), silentModeIcon_Color.get(i));
                         }
                     } catch (Throwable t) {
                         loadImage(silentModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[12][2].toString(), silentModeIcon_Color.get(i));
@@ -1017,6 +1014,7 @@ public class XposedDialog extends DialogFragment {
                     }
                 }
             }
+            amRingerMode = am.getRingerMode();
             mHandler.postDelayed(mRun, 250L);
         }
     }
@@ -2625,35 +2623,37 @@ public class XposedDialog extends DialogFragment {
         }
     }
 
-    private void setGravity() {
+    private void setGravity(int iStyle) {
         int left = 0, top = 0, right = 0, bottom = 0;
         try {
             bottom = ((int_Vertical * ((int) DisplaySize[1] - dialogContent.getHeight())) / 100);
             //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
         } catch (Exception e) {
-            Log.d("NPM","[xposedDialog] Gravity calculation error.", e);
+            Log.d("NPM", "[xposedDialog] Gravity calculation error.", e);
         }
         try {
             right = ((int_Horizontal * ((int) DisplaySize[0] - dialogContent.getWidth())) / 100);
             //left = ((int) DisplaySize[1] % (int) helper.convertDpToPixel(int_Horizontal, mContext));
         } catch (Exception e) {
-            Log.d("NPM","[xposedDialog] Gravity calculation error.", e);
+            Log.d("NPM", "[xposedDialog] Gravity calculation error.", e);
         }
-        dialogPadding.setPadding(left,top,right,bottom);
-        try {
-            if (!helper.isDeviceHorizontal(mContext)) {
-                LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
-                dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
-                dialogContentParams.bottomMargin = helper.getNavigationBarSize(mContext).y;
-                dialogContent.setLayoutParams(dialogContentParams);
-            } else {
-                LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
-                dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
-                dialogContentParams.rightMargin = helper.getNavigationBarSize(mContext).x;
-                dialogContent.setLayoutParams(dialogContentParams);
+        if (iStyle != 1) {
+            dialogPadding.setPadding(left, top, right, bottom);
+            try {
+                if (!helper.isDeviceHorizontal(mContext)) {
+                    LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
+                    dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
+                    dialogContentParams.bottomMargin = helper.getNavigationBarSize(mContext).y;
+                    dialogContent.setLayoutParams(dialogContentParams);
+                } else {
+                    LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
+                    dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
+                    dialogContentParams.rightMargin = helper.getNavigationBarSize(mContext).x;
+                    dialogContent.setLayoutParams(dialogContentParams);
+                }
+            } catch (Exception e) {
+                Log.e("NPM", "[xposedDialog] Failed to set layout params.", e);
             }
-        } catch (Exception e) {
-            Log.e("NPM","[xposedDialog] Failed to set layout params.", e);
         }
     }
 
