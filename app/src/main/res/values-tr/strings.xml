@@ -180,5 +180,31 @@
   <string name="animations_Speed">"Hız"</string>
   <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Yükleme dairesi"</string>
+  <string name="presetsManager_LoadMore">"Yükleniyor... | Lütfen bekleyin... | Daha fazla hazır ayarlarını göster | Daha fazla hazır ayarlarını görüntülemek için burayı tıklatın. | Sonuna. | Göstermek için daha fazla hiçbir hazır. | Yeniden denemek için burayı tıklatın."</string>
+  <string name="powerMenu_SureToRebootPowerOff">"Aygıtınızı yeniden başlatmak istediğinizden emin misiniz? | cihazı kapatmak istediğinizden eminmisiniz."</string>
   <!-- Preferences: Advanced -->
+  <string name="advancedPrefs_Confirmation">"Gerekli teyidi | Bir onay iletişim kutusu yeniden doğmuş gibi ya da güç önce kapalı olanak sağlar."</string>
+  <string name="preferences_Donate">"Bağış | Belgili tanımlık app hangi tarihlerde? \nWhy değil bağışlamak bana bir fincan kahve ya da başka bir şey?"</string>
+  <string name="advancedPrefs_HideOnClick">"Tıkla gizle"</string>
+  <string name="advancedPrefs_HideOnClickDesc">"Bir açma / kapatma düğmesini tıklattığınızda menüyü gizleyin."</string>
+  <string name="advancedPrefs_LoadAppIcons">"Uygulama ikonlarını yükle"</string>
+  <string name="advancedPrefs_LoadAppIconsDesc">"App kısayol düğmeleri için app simgeleri yükleyin."</string>
+  <string name="style_Material">Kaplama</string>
+  <string name="style_MaterialFullscreen">Kaplama (Tam Ekran)</string>
+  <string name="style_MaterialFullHorizontal">Kaplama (Tam Yatay)</string>
+  <string name="advancedPrefs_ExperimentalPWMHook">Deneysel PhoneWindowManager kanca</string>
+  <string name="advancedPrefs_ExperimentalPWMHookDesc">Dikkat et, GlobalActions sınıf \nUse yerine PhoneWindowManager içine kanca değil etkinleştirmek normal kanca aygıtınız için çalışıyorsa! değişiklikleri görmek için \yeniden başlat </string>
+  <string name="advancedPrefs_ColorizeNonStockIcons">"Özel simgeler renklendirme"</string>
+  <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Varsayılan olarak, özel simgeler renkli olmaz, bu etkinleştirildiğinde değişir."</string>
+  <string name="advancedPrefs_RoundAppIcons">"Yuvarlak uygulama simgeleri"</string>
+  <string name="advancedPrefs_RoundAppIconsDesc">" çevrelerinde eşleşmiyorsa yuvarlak, uygulama simgeleri yapmak."</string>
+  <string name="colorsApplyToAll">"Hepsini bu tipe uygulamak"</string>
+  <string name="colorsResetToDefault">"Varsayılana sıfırla"</string>
+  <string name="errorActivity_CopyToClip">"Panoya kopyala"</string>
+  <string name="errorActivity_Copyied">"Panoya kopyalandı"</string>
+  <string name="errorActivity_RestartApp">"Uygulamayı yeniden başlat"</string>
+  <string name="errorActivity_CloseApp">"Uygulamayı kapat"</string>
+  <string name="errorActivity_Close">"Kapat"</string>
+  <string name="errorActivity_MoreInfo">"Daha fazla bilgi"</string>
+  <string name="tourReview_Title">"Tur gözden geçirin"</string>
 </resources>
