@@ -106,7 +106,23 @@
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Ekran kaydediciyle ses kaydedebilmek için gerekli."</string>
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Sistem Uyarısı penceresi"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Her şeyin üzerine Güç Menüsünü görüntülemek için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Uyandırma kilidi"</string>
+  <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"El feneri ve ekran kaydı servisinin öldürülmesini önlemek için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"WiFi Durumu Erişimi"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"WiFi açıp kapatabilmek için gerekli."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"WiFi Durumunu Değiştir"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"WiFi geçişi yapmak için gerekli."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Bluetooth açıp kapatabilmek için gerekli."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth yönetici"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Herhangi bir diyalog olmadan Bluetooth geçişi yapmak için gerekli."</string>
+  <string name="powerMenuMain_SoundMode">"Ses Modu"</string>
+  <string name="powerMenuMain_SoundModeDesc">"Geçerli Mod: [SOUNDMODE]"</string>
+  <string name="SoundMode_Normal">"Normal"</string>
+  <string name="SoundMode_Vibrate">"Titreşim"</string>
+  <string name="SoundMode_Silent">"Sessiz"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleAccount">"Hesap"</string>
   <string name="presetsManager_UploadMsg">"Bu hazır ayar sunucuya yüklenecek ve herkes tarafından görülebilecek.\n\nBu, yüklemeden önce, ad ve yaratıcı ismini belirleyebilmek için son şansın..."</string>
   <string name="presetsManager_UploadComplete">"Yükleme tamamlandı!"</string>
   <string name="presetsManager_UploadFailedSameName">"Bu isim zaten kullanılıyor, lütfen başka bir isim seçin."</string>
@@ -147,6 +163,22 @@
   <string name="colorsPartTitle">"[PART] renkler"</string>
   <!-- Dialog -->
   <!-- Preferences: Main -->
+  <string name="preferencesCategory_Other">"Diğer"</string>
+  <string name="preferences_Account">"Hesap | Burada giriş yapabilirsiniz, bir hesap oluşturmak veya oturum açtığında istatistiklerinizi kontrol edin."</string>
+  <string name="preferences_Advanced">"Gelişmiş ayarlar | Gecikmeler veya hız gibi gelişmiş ayarları değiştirin."</string>
+  <string name="preferences_Permissions">"İzinler | İstenen izinleri gösterin ve ne için kullanıldıklarını görün. \ N İlk başlatıldığında eklenmeyen ek izinler (Android 6.0+)."</string>
+  <string name="preferences_HideLauncherIcon">"Başlatıcıda uygulamayı gizle Başlatıcıda uygulama simgesini gizler; simgeyi gizlemek için bir yeniden başlatma sürebilir. \ NBu ayarlar ekranına yalnızca Xposed Installer'dan erişilebilir."</string>
+  <string name="preferences_DeepXposedLogging">"Derin Xposed günlüğü | Değişiklikleri görmek için yeniden başlatma etkinleştirdikten sonra Gelişmiş Xposed günlüğünü etkinleştirin."</string>
+  <string name="preferencesCategory_About">"Hakkında"</string>
+  <string name="preferences_NeoSource">"Kaynak | NeoPowerMenu açık kaynak. \nCheck kaynak GitHub üzerinde dışarı var."</string>
+  <string name="preferences_Share">"Paylaş|Bu uygulamayı arkadaşlarınla paylaş"</string>
+  <string name="preferences_About">"Neon-Soft kodla / DrAcHe981 | Turan Dwivedi (naman14) kaynağına dayanan. \nClick burada daha fazla bilgi almak için."</string>
+  <string name="animations_Items">"Arka plan | İletişim | Simgeler | Tek satır öğeleri | Çoklu satır öğeleri"</string>
+  <string name="animations_Speeds">"Çok hızlı | Daha hızlı | Hızlı | Normal | Yavaş | Daha yavaş | Çok yavaş"</string>
+  <string name="animations_Types">"Fade | Reveal\n (sadece arka planda çalışır) | Kadar slayt | Slayt yaptı | Şu slayt | Aşağı slayt | Terazi gözü ilâ | Küçült | Engelli"</string>
+  <string name="animations_Type">"Tip"</string>
+  <string name="animations_Speed">"Hız"</string>
   <!-- Power Menu -->
+  <string name="powerMenuMain_Progress">"Yükleme dairesi"</string>
   <!-- Preferences: Advanced -->
 </resources>
