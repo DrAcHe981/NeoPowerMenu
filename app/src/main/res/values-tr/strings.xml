@@ -74,10 +74,38 @@
   <string name="powerMenuMain_FlashlightOff">"Feneri kapat"</string>
   <string name="powerMenuMain_FlashlightDesc">"Şundan sonra kapat [AUTOOFF]."</string>
   <string name="powerMenuMain_FlashlightDescDisabled">"Otomatik kapatma devre dışı."</string>
+  <string name="powerMenuMain_ExpandedDesktop">"Genişletilmiş masaüstü"</string>
+  <string name="advancedPrefsTitle_DialogGravity">"İletişim konumu"</string>
+  <string name="advancedPrefsDesc_DialogGravity">"İletişim konumunu değiştirmek."</string>
   <!-- Torch -->
+  <string name="quick_settings_torch_on">"Fener Açık"</string>
+  <string name="quick_settings_torch_off">"Fener Kapalı"</string>
+  <string name="quick_settings_torch_off_notif">"Kapatmak için dokun"</string>
+  <string name="powerMenuMain_AirplaneMode">"Uçak modu"</string>
+  <string name="powerMenuMain_RestartUI">"Sistem kullanıcı Arabirimi yeniden başlatın"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Reveal">"Rengi göster"</string>
+  <string name="colorsType_Circle">"Daire rengi"</string>
+  <string name="colorsType_Background">"Arka plan rengi"</string>
+  <string name="colorsType_Text">"Metin rengi"</string>
+  <string name="powerMenuMain_Flashlight">"El feneri"</string>
   <!-- Permissions Screen -->
+  <string name="permissionsScreen_Title">"İzinler"</string>
+  <string name="permissionsScreen_NotAllGranted">"Tüm izinler verilmedi, bazı fonksiyonlar çalışmayabilir..."</string>
+  <string name="permissionsScreen_ClickToRequest">"İzin istemek için tıklayın."</string>
+  <string name="permissionsScreen_DontAskAgain">"Bir daha sorma"</string>
+  <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Harici depolamayı oku/yaz"</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Özel grafik kullanmak için gerekli."</string>
+  <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
+  <string name="permissionsScreenDesc_android.permission.CAMERA">"El fenerini açıp kapayabilmek için gerekli."</string>
+  <string name="visibilityOrder_HideDesc">"Açıklamayı gizle"</string>
   <!-- Preferences: Colors -->
+  <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Erişim yüzeyi parlatıcısı"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Ekranı kaydedebilmek için gerekli."</string>
+  <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ses Kaydet"</string>
+  <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Ekran kaydediciyle ses kaydedebilmek için gerekli."</string>
+  <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Sistem Uyarısı penceresi"</string>
+  <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Her şeyin üzerine Güç Menüsünü görüntülemek için gereklidir."</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_UploadMsg">"Bu hazır ayar sunucuya yüklenecek ve herkes tarafından görülebilecek.\n\nBu, yüklemeden önce, ad ve yaratıcı ismini belirleyebilmek için son şansın..."</string>
   <string name="presetsManager_UploadComplete">"Yükleme tamamlandı!"</string>
