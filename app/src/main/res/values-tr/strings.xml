@@ -34,13 +34,51 @@
   <string name="preset_SaveDesc">"Geçerli yapılandırmayı kaydet"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Yerel hazır ayarlar"</string>
+  <string name="presetsManager_TitleOnline">"Online hazır ayarlar"</string>
+  <string name="presetsManager_Creator">"Oluşturan: [CREATORNAME]"</string>
+  <string name="presetsManager_BuiltIn">"Derlenme tarihi"</string>
+  <string name="presetsManager_SureToDelete">"Bunu silmek istediğinden emin misin [PRESETNAME]?\nBu geri alınamaz!"</string>
+  <string name="presetsManager_ImportMsg">"Bu ayarı almak ister misin?"</string>
+  <string name="presetsManager_ImportSuccess">"[PRESETNAME] başarıyla alındı."</string>
+  <string name="presetsManager_ImportFailed">"İçe aktarma başarısız..."</string>
   <!-- Preferences: Advanced -->
+  <string name="advancedPrefsCategory_PowerMenu">"Güç Menüsü"</string>
+  <string name="advancedPrefsTitle_UseGraphics">"Grafik kullanma"</string>
+  <string name="advancedPrefsDesc_UseGraphics">"Grafik yerine mektup daireler kullanın."</string>
+  <string name="advancedPrefsCategory_LockScreen">"Kilit Ekranı"</string>
+  <string name="advancedPrefsTitle_ShowOnLockScreen">"Kilit ekranında göster"</string>
+  <string name="advancedPrefsDesc_ShowOnLockScreen">"Devre dışı bırakıldığında hiçbir şey görünmeyecek şekilde, kilit ekranında Gç Menüsünü gösterin."</string>
+  <string name="advancedPrefsCategory_Delays">"Gecikmeler"</string>
+  <string name="advancedPrefs_DelayZero">"Neredeyse anında"</string>
+  <string name="advancedPrefsTitle_ScreenshotDelay">"Ekran görüntüsü gecikmesi"</string>
+  <string name="advancedPrefsDesc_ScreenshotDelay">"Tıklama ve alma arasındaki gecikme."</string>
+  <string name="Dialog_SelectColor">"Renk seç"</string>
+  <string name="ColorPicker_Value">"Değer:"</string>
+  <string name="ColorPicker_Saturation">"Doygunluk"</string>
+  <string name="ColorPicker_Opacity">"Saydamlık:"</string>
+  <string name="ColorPicker_Hex">"Büyü"</string>
+  <string name="presetLoad_PresetDeleted">"Silindi [PRESETNAME]!"</string>
+  <string name="presetLoad_PresetLoaded">"Yüklendi [PRESETNAME]!"</string>
+  <string name="presetSaveDialog_CreatorNameInfo">"Bu ayar şu kişi tarafından oluşturuldu:"</string>
+  <string name="presetSaveDialog_InfoText">"Bu ayar için bir isim ayarlayın:"</string>
+  <string name="presetSaveDialog_OverwriteText">"Zaten var, üzerine yazılacak!"</string>
+  <string name="presetSave_PresetSaved">"Kaydedildi [PRESETNAME]!"</string>
+  <string name="powerMenuMain_Screenrecord">"Ekran kaydı"</string>
   <!-- Screen recording -->
+  <string name="screenrecord_notif_ticker">"Ekran görüntüsü kaydediliyor"</string>
+  <string name="screenrecord_notif_title">Ekran kaydı</string>
+  <string name="screenrecord_toast_error">"Ekran kaydedilemiyor"</string>
   <!-- Torch -->
   <!-- Preferences: Colors -->
   <!-- Permissions Screen -->
   <!-- Preferences: Colors -->
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_UploadMsg">"Bu hazır ayar sunucuya yüklenecek ve herkes tarafından görülebilecek.\n\nBu, yüklemeden önce, ad ve yaratıcı ismini belirleyebilmek için son şansın..."</string>
+  <string name="presetsManager_UploadComplete">"Yükleme tamamlandı!"</string>
+  <string name="presetsManager_UploadFailedSameName">"Bu isim zaten kullanılıyor, lütfen başka bir isim seçin."</string>
+  <string name="presetsManager_UploadFailedNoAccess">"Bu yaratıcı adı korunuyor, başka bir ad seç veya giriş yap."</string>
+  <string name="presetsManager_UploadFailed">"Yükleme başarısız!"</string>
+  <string name="presetsManager_DownloadFailed">"İndirme başarısız!"</string>
   <!-- Login page -->
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
