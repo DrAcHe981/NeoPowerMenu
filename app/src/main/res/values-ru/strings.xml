@@ -457,4 +457,5 @@
   <string name="screenrecord_toast_start_in">Запуск записи экрана через [TIME]...</string>
   <string name="screenrecord_notif_binarynotFound">Невозможно найти, прочесть или выполнить двоичный фвйл.\nЗапись экрана может не поддерживаться вашим устройством.</string>
   <string name="advancedPrefsTitle_HideActionDescriptionText">Скрыть описание в диалоге выключения/перезагрузки</string>
+  <string name="advancedPrefsDesc_HideActionDescriptionText">Убрать \"Выключение...\" и похожее из диалога выключения/перезагрузки.</string>
 </resources>
