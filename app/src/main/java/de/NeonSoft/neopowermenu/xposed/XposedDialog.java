@@ -1656,7 +1656,7 @@ public class XposedDialog extends DialogFragment {
                 }
             }
             //SubDialogs.clear();
-            if (!XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty() || !XposedMainActivity.mItems.get(id).getShortcutUri(2).isEmpty() || !XposedMainActivity.mItems.get(id).getShortcutUri(3).isEmpty()) {
+            if (id >= 0 && (!XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty() || !XposedMainActivity.mItems.get(id).getShortcutUri(2).isEmpty() || !XposedMainActivity.mItems.get(id).getShortcutUri(3).isEmpty())) {
                 if (!mPreviewMode) {
                     SubDialogs.clear();
                     dismissThis();

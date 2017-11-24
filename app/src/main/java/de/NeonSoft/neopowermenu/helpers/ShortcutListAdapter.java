@@ -101,7 +101,6 @@ public class ShortcutListAdapter extends ArrayAdapter<String> {
         title.setText(string);
 
         image.setImageBitmap(addShortcut.createCircleIcon(mItems.get(position), string, addShortcut.colorPrefs.getString("Dialog" + mItems.get(position) + "_Circlecolor", "#ff000000"), addShortcut.colorPrefs.getString("Dialog" + mItems.get(position) + "_Textcolor", "#ffffff")));
-
         return InflatedView;
     }
 

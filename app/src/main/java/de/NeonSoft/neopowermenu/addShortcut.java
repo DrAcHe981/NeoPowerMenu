@@ -251,7 +251,7 @@ public class addShortcut extends AppCompatActivity {
                 } else if (text.equalsIgnoreCase("LockPhone")) {
                     bd = loadImage(33, color2);
                 } else if (text.equalsIgnoreCase("SilentMode")) {
-                    bd = loadImage(35, color2);
+                    bd = loadImage(12, color2);
                 }
                 if (text.equalsIgnoreCase(mActivity.getString(R.string.shortcut_ShowPowerMenu))) {
                     fbd = GraphicDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig().setPadding(0).buildRound(bd, mActivity.getResources().getColor(R.color.transparent));

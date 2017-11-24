@@ -36,7 +36,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String TAG = "NPM";
     private XSharedPreferences preferences;
     public static boolean DeepXposedLogging = false;
-    private boolean HookShutdownThread = false;
     public boolean UseRoot = true;
 
     private boolean ExperimentalPWMHook = false;
@@ -58,8 +57,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public static final String CLASS_GLOBAL_ACTIONS_MARSHMALLOW = "com.android.server.policy.GlobalActions";
     private static final String CLASS_PHONE_WINDOW_MANAGER = "com.android.internal.policy.impl.PhoneWindowManager";
     private static final String CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW = "com.android.server.policy.PhoneWindowManager";
-    private static final String CLASS_SHUTDOWNTHREAD = "com.android.server.power.ShutdownThread";
-    private static final String CLASS_SHUTDOWNTHREAD_MARSHMALLOW = "com.android.server.power.ShutdownThread";
 
     private static final String CLASS_PACKAGE_MANAGER_SERVICE = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
@@ -90,19 +87,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
     static Context mContext;
     public Object mObjectHolder;
-
-    private static Object sIsStartedGuard;
-    private static boolean sIsStarted;
-    private static boolean mReboot;
-    private static boolean mRebootSafeMode;
-    private static String mRebootReason;
-    // Provides shutdown assurance in case the system_server is killed
-    public static final String SHUTDOWN_ACTION_PROPERTY = "sys.shutdown.requested";
-    // Indicates whether we are rebooting into safe mode
-    public static final String REBOOT_SAFEMODE_PROPERTY = "persist.sys.safemode";
-
-    private static ShutdownThread sInstance = new ShutdownThread();
-    //Class<?> ShutdownThreadClass = null;
 
     /*<!-- Internal Hook version to check if reboot is needed --!>*/
     private static final int XposedHookVersion = 27;
@@ -186,13 +170,11 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         } else {
             preferences = new XSharedPreferences(PACKAGE_NAME);
         }
-        //preferences.getFile().setReadable(true, false);
         preferences.makeWorldReadable();
         preferences.reload();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !startupParam.startsSystemServer)
             return;
         DeepXposedLogging = preferences.getBoolean("DeepXposedLogging", false);
-        HookShutdownThread = preferences.getBoolean("HookShutdownThread", true);
         ExperimentalPWMHook = preferences.getBoolean("ExperimentalPWMHook", false);
         UseRoot = preferences.getBoolean("UseRoot", false);
         XposedUtils.log("/_Zygote init...");
@@ -202,7 +184,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         XposedUtils.log("|-Preferences: " + preferences.getFile().getAbsolutePath());
         XposedUtils.log("|\\-World readable: " + preferences.getFile().canRead());
         XposedUtils.log("|-Deep Logging: " + (DeepXposedLogging ? "active, logging everything." : "not active, logging only errors."));
-        XposedUtils.log("|-HookShutdownThread: " + HookShutdownThread);
         XposedUtils.log("|-ExperimentalPWMHook: " + ExperimentalPWMHook);
         XposedUtils.log("|-UseRootCommands: " + UseRoot);
         if (DeepXposedLogging) {
@@ -223,34 +204,28 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
         if (lpparam.packageName.equals("android") &&
                 lpparam.processName.equals("android")) {
-            //if (DeepXposedLogging)
             XposedUtils.log("Loading Power Menu...");
 
             final String usedGADClass;
             final String usedPWMClass;
-            String usedSDClass;
             String usedPMClass;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 usedGADClass = CLASS_GLOBAL_ACTIONS_MARSHMALLOW;
                 usedPWMClass = CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW;
-                usedSDClass = CLASS_SHUTDOWNTHREAD_MARSHMALLOW;
                 usedPMClass = CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW;
             } else {
                 usedGADClass = CLASS_GLOBAL_ACTIONS;
                 usedPWMClass = CLASS_PHONE_WINDOW_MANAGER;
-                usedSDClass = CLASS_SHUTDOWNTHREAD;
                 usedPMClass = CLASS_PACKAGE_MANAGER_SERVICE;
             }
 
             if (DeepXposedLogging)
-                XposedUtils.log("Detected " + android.os.Build.VERSION.RELEASE + "(" + Build.VERSION.SDK + "), injecting to: ");
+                XposedUtils.log("Detected " + android.os.Build.VERSION.RELEASE + "(" + Build.VERSION.SDK_INT + "), injecting to: ");
             if (DeepXposedLogging) XposedUtils.log(usedGADClass);
             if (DeepXposedLogging) XposedUtils.log(usedPWMClass);
-            if (DeepXposedLogging && HookShutdownThread) XposedUtils.log(usedSDClass);
             if (DeepXposedLogging) XposedUtils.log(usedPMClass);
             final Class<?> phoneWindowManagerClass = XposedHelpers.findClass(usedPWMClass, lpparam.classLoader);
             final Class<?> globalActionsClass = XposedHelpers.findClass(usedGADClass, lpparam.classLoader);
-            final Class<?> ShutdownThreadClass = XposedHelpers.findClass(usedSDClass, lpparam.classLoader);
 
             final Class<?> pmServiceClass = XposedHelpers.findClass(usedPMClass, lpparam.classLoader);
 
@@ -264,7 +239,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                                 final String pkgName = (String) XposedHelpers.getObjectField(param.args[0], "packageName");
 
-                                // NeoPowerMenu
                                 if (PACKAGE_NAME.equals(pkgName)) {
                                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                                         final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
@@ -275,7 +249,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
 
                                         for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                            // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
                                             if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
                                                 final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
                                                         XPOSEDPERMISSIONS[i]);
@@ -293,7 +266,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
 
                                         for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                            // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
                                             if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
                                                 final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
                                                         XPOSEDPERMISSIONS[i]);
@@ -309,7 +281,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         }
                                     }
                                 }
-                                //preferences.edit().putString("activeParts", preferences.getString("activeParts","") + "permissionGranter,").commit();
                             }
                         });
             } else {
@@ -331,7 +302,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
 
                                         for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                            // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
                                             if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
                                                 final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
                                                         XPOSEDPERMISSIONS[i]);
@@ -349,7 +319,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
 
                                         for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                            // Add android.permission.ACCESS_SURFACE_FLINGER needed by screen recorder
                                             if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
                                                 final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
                                                         XPOSEDPERMISSIONS[i]);
@@ -365,7 +334,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         }
                                     }
                                 }
-                                //preferences.edit().putString("activeParts", preferences.getString("activeParts","") + "permissionGranter,").commit();
                             }
                         });
             }
@@ -385,9 +353,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
                                 if (DeepXposedLogging)
                                     XposedUtils.log("Creating Broadcast Receiver for KitKat and below...");
-                                //Application mNPMApp = (Application) param.thisObject;
-                                //final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
-                                //final IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
                                 IntentFilter filter = new IntentFilter();
                                 //filter.addAction(NPM_ACTION_BROADCAST_KILLSYSTEMUI);
                                 filter.addAction(NPM_ACTION_BROADCAST_SHUTDOWN);
@@ -414,13 +379,15 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 if (DeepXposedLogging)
                     XposedUtils.log("Registering Broadcast Receiver and setting other values...");
                 if (DeepXposedLogging)
-                    XposedUtils.log("Hooking (replace) " + usedGADClass + "#showDialog...");
+                    XposedUtils.log("Hooking (replace) " + usedGADClass + "#showDialog..." + (XposedUtils.isParanoidRom() ? "(Paranoid ROM Method)" : ""));
                 XC_MethodHook showDialogHook = new XC_MethodReplacement() {
                     @Override
                     protected Object replaceHookedMethod(final MethodHookParam methodHookParam) throws Throwable {
                         final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-                        if (!showDialog()) {
-                            XposedUtils.log("Failed to show dialog, showing info...");
+                        try {
+                            showDialog();
+                        } catch (Throwable t) {
+                            Log.e("NPM", "Failed to show dialog, showing info...", t);
                             AlertDialog.Builder adb = new AlertDialog.Builder(mContext, 0);
                             adb.setMessage(R.string.xposedMain_MenuActivityNotFound);
                             adb.setNegativeButton(R.string.xposedMain_MenuActivityNotFound_Cancel, null);
@@ -432,7 +399,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             });
                             adb.show();
                         }
-                        //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#showDialog,").commit();
                         return null;
                     }
 
@@ -456,7 +422,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         } catch (Throwable t) {
                             XposedUtils.log(t.toString());
                         }
-                        //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#createDialog,").commit();
                         return null;
                     }
 
@@ -469,8 +434,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
                     @Override
                     protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam param) throws Throwable {
-                        // TODO: Implement this method
-                        //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#onAiplaneModeChanged,").commit();
                         return null;
                     }
                 });
@@ -506,8 +469,10 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         }
                         final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
                         final KeyguardManager km = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-                        if (!showDialog()) {
-                            Log.e("NPM", "Failed to show dialog, showing info...");
+                        try {
+                            showDialog();
+                        } catch (Throwable t) {
+                            Log.e("NPM", "Failed to show dialog, showing info...", t);
                             AlertDialog.Builder adb = new AlertDialog.Builder(mContext, 0);
                             adb.setMessage(R.string.xposedMain_MenuActivityNotFound);
                             adb.setNegativeButton(R.string.xposedMain_MenuActivityNotFound_Cancel, null);
@@ -519,45 +484,12 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             });
                             adb.show();
                         }
-                        //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "GlobalActionsDialog#showDialog,").commit();
                         return null;
                     }
 
                 });
                 if (DeepXposedLogging)
                     XposedUtils.log("Replaced with showDialog(), just executing startActivity() to start my own dialog.");
-            }
-            if (HookShutdownThread && ShutdownThreadClass != null) {
-                if (DeepXposedLogging)
-                    XposedUtils.log("Hooking (after) " + usedSDClass + " constructor...");
-                XposedBridge.hookAllConstructors(ShutdownThreadClass, new XC_MethodHook() {
-                    @Override
-                    public void afterHookedMethod(XC_MethodHook.MethodHookParam param) {
-                        sIsStartedGuard = XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sIsStartedGuard");
-                        if (sIsStartedGuard == null)
-                            XposedUtils.log("sIsStartedGuard is null,reboot will crash...");
-                        sIsStarted = (boolean) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sIsStarted");
-                        if (sIsStarted)
-                            XposedUtils.log("sIsStarted is true,that's not normal for fresh created...");
-                        //sInstance = (ShutdownThread) XposedHelpers.getStaticObjectField(ShutdownThreadClass, "sInstance");
-                        //if (sInstance == null)
-                            //XposedUtils.log("sInstance is null,reboot will crash...");
-                        //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "ShutdownThread#constructor,").commit();
-                    }
-                });
-                if (DeepXposedLogging) XposedUtils.log("Getting needed values...");
-                if (DeepXposedLogging)
-                    XposedUtils.log("Hooking (after) " + usedSDClass + "#beginShutdownSequence...");
-                XposedHelpers.findAndHookMethod(usedSDClass, lpparam.classLoader, "beginShutdownSequence", Context.class, new XC_MethodReplacement() {
-                    @Override
-                    protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam param) throws Throwable {
-
-                        //preferences.edit().putString("activeParts", preferences.getString("activeParts","") +  "ShutdownThread#beginShutdownSequence,").commit();
-                        return null;
-                    }
-                });
-                if (DeepXposedLogging)
-                    XposedUtils.log("Rebuild the function to stop displaying the default shutdown loading dialog...");
             }
             XposedUtils.log("Loading complete, all hooks executed.");
         }
@@ -572,9 +504,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         if (DeepXposedLogging)
                             XposedUtils.log("Creating Broadcast Receiver for Lollipop and above...");
                         Application mNPMApplication = (Application) param.thisObject;
-                        //final Context context = mNPMApp.getApplicationContext();
-                        //final Handler mNPMHandler = new Handler(mNPMApp.getMainLooper());
-                        //final IPowerManager pm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
                         try {
                             IntentFilter filter = new IntentFilter();
                             filter.addAction(NPM_ACTION_BROADCAST_SHUTDOWN);
@@ -616,14 +545,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 @Override
                 protected Object replaceHookedMethod(XC_MethodHook.MethodHookParam param) throws Throwable {
                     try {
-                        //Class<?> classSm = XposedHelpers.findClass("android.os.ServiceManager", null);
-                        //Class<?> classIpm = XposedHelpers.findClass("android.os.IPowerManager.Stub", null);
-                        //IBinder b = (IBinder) XposedHelpers.callStaticMethod(
-                        //		classSm, "getService", Context.POWER_SERVICE);
                         IPowerManager ipm = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
                         ipm.crash("Hot reboot");
-                        //Object ipm = XposedHelpers.callStaticMethod(classIpm, "asInterface", b);
-                        //XposedHelpers.callMethod(ipm, "crash", "Hot reboot");
                     } catch (Throwable t) {
                         try {
                             XposedUtils.SystemProp.set("ctl.restart", "surfaceflinger");
@@ -873,51 +796,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             }
         }
     };
-
-    public static class ShutdownThread extends Thread {
-        private Object SHUTDOWNOBJECT = null;
-        private final Object mActionDoneSync = new Object();
-        private boolean mActionDone;
-        private Context mContext;
-        private PowerManager mPowerManager;
-        private PowerManager.WakeLock mCpuWakeLock;
-        private PowerManager.WakeLock mScreenWakeLock;
-        private Handler mHandler;
-
-        private ShutdownThread() {
-
-        }
-
-
-        void actionDone() {
-            synchronized (mActionDoneSync) {
-                mActionDone = true;
-                mActionDoneSync.notifyAll();
-            }
-        }
-
-        /**
-         * Makes sure we handle the shutdown gracefully.
-         * Shuts off power regardless of radio and bluetooth state if the alloted time has passed.
-         */
-        public void run() {
-            BroadcastReceiver br = new BroadcastReceiver() {
-                @Override public void onReceive(Context context, Intent intent) {
-                    // We don't allow apps to cancel this, so ignore the result.
-                    actionDone();
-                }
-            };
-            mActionDone = false;
-            Intent intent = new Intent(Intent.ACTION_SHUTDOWN);
-            intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                mContext.sendOrderedBroadcastAsUser(intent,
-                        android.os.Process.myUserHandle(), null, br, mHandler, 0, null, null);
-            } else {
-                mContext.sendOrderedBroadcast(intent, null, br, mHandler, 0, null, null);
-            }
-        }
-    }
 
 }
 

@@ -44,6 +44,8 @@ public class AddShortcutList extends Fragment {
         addShortcut.items = new ArrayList<>(Arrays.asList(PreferencesVisibilityOrderFragment.PowerMenuItems));
         addShortcut.items.remove(0);
         addShortcut.items.add(0,getString(R.string.shortcut_ShowPowerMenu));
+        addShortcut.items.remove(18);
+        addShortcut.items.remove(28);
 
         adapter = new ShortcutListAdapter(mActivity, addShortcut.items);
 
