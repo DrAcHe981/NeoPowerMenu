@@ -207,4 +207,14 @@
   <string name="errorActivity_Close">"Kapat"</string>
   <string name="errorActivity_MoreInfo">"Daha fazla bilgi"</string>
   <string name="tourReview_Title">"Tur gözden geçirin"</string>
+  <string name="tourReview_Desc">"Burada Tur başlatmayaizin vermek için tıklayın"</string>
+  <string name="tourPage_Next">"Sonraki"</string>
+  <string name="tourPage_Skip">"Geç"</string>
+  <string name="tourPage_Enjoy">"Menünüzü oluşturun!"</string>
+  <string name="tourPage_UnknownProblem">"Bir sonraki tur sayfasında gösterilen bilinmeyen bir sorun oluştu, lütfen Atla'yı tıklatın ve sorunu developer...\n\nCaused tarafından rapor: \n"</string>
+  <string name="tourPage_0_Title">"NPM hoş geldiniz!"</string>
+  <string name="tourPage_0_Text">"Bütün her şeyden önce: benim app indirmek için teşekkür ederiz! \n\nThis küçük tur-ecek göstermek sen benim app kullanmak için temel."</string>
+  <string name="tourPage_1_Title">"Ana Menü"</string>
+  <string name="backupRestore_DeleteSettingsTitle">"Ayarları sil"</string>
+  <string name="backupRestore_DeleteSettingsDesc">"Tıklayın burada bir iletişim sıfırlama ayarları ile almak için bu bir şey bir şekilde bazı ayarları yok ve belgili tanımlık app karşılık gelen ekran girerken çökmesini tutar kullanın."</string>
 </resources>
