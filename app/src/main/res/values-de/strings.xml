@@ -427,4 +427,6 @@
   <string name="advancedPrefsDesc_ScreenRecordCountdown">Zeige einen Countdown vor dem Start der Bildschirmaufzeichnung.</string>
   <string name="screenrecord_toast_start_in">Die Bildschirmaufnahme wird gestartet in [TIME]...</string>
   <string name="screenrecord_notif_binarynotFound">Konnte die binäre Datei nicht finden, lesen, oder ausführen. \n Bildschirmaufnahme ist möglicherweise auf Ihrem Gerät nicht unterstützt.</string>
+  <string name="advancedPrefsTitle_HideActionDescriptionText">Beschreibungstext im Herunterfahren/Neu starten dialog ausblenden</string>
+  <string name="advancedPrefsDesc_HideActionDescriptionText">Verstecke \"Wird heruntergefahren...\" oder ähnliches im Herunterfahren/Neu starten Dialog.</string>
 </resources>
