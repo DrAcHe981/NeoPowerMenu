@@ -68,6 +68,12 @@
   <string name="screenrecord_notif_ticker">"Ekran görüntüsü kaydediliyor"</string>
   <string name="screenrecord_notif_title">Ekran kaydı</string>
   <string name="screenrecord_toast_error">"Ekran kaydedilemiyor"</string>
+  <string name="screenrecord_toast_processing">"Önceki kayıt hala işlenirken yeni kaydı başlatılamıyor"</string>
+  <string name="screenrecord_toast_saved">"Kaydedildi %s"</string>
+  <string name="screenrecord_toast_save_error">"Çıktı dosyasına kayıt kaydedilemiyor"</string>
+  <string name="powerMenuMain_FlashlightOff">"Feneri kapat"</string>
+  <string name="powerMenuMain_FlashlightDesc">"Şundan sonra kapat [AUTOOFF]."</string>
+  <string name="powerMenuMain_FlashlightDescDisabled">"Otomatik kapatma devre dışı."</string>
   <!-- Torch -->
   <!-- Preferences: Colors -->
   <!-- Permissions Screen -->
@@ -79,9 +85,38 @@
   <string name="presetsManager_UploadFailedNoAccess">"Bu yaratıcı adı korunuyor, başka bir ad seç veya giriş yap."</string>
   <string name="presetsManager_UploadFailed">"Yükleme başarısız!"</string>
   <string name="presetsManager_DownloadFailed">"İndirme başarısız!"</string>
+  <string name="presetsManager_CantConnecttoServer">"Sunucuya bağlanılamıyor!\nLütfen internet bağlantını kontrol et ve tekrar dene."</string>
+  <string name="presetsManager_CantConnecttoDB">"Veritabanına bağlanılamıyor!\nLütfen daha sonra deneyin, birşeyler değişirse bunu geliştiriciye iletin."</string>
+  <string name="permissionsScreenTitle_android.permission.INTERNET">"İnternet"</string>
+  <string name="permissionsScreenDesc_android.permission.INTERNET">"Sunucudan hazır ayarları indirebilmek/sunucuya yükleyebilmek için gerekli."</string>
   <!-- Login page -->
+  <string name="login_Title">"Giriş Yap"</string>
+  <string name="login_TitleRegister">"Kayıt Ol"</string>
+  <string name="login_Info">"Kayıtlı kullanıcıların kullanıcı adları korunmaktadır, böylece kimse kendi adına yükleyemez, burada oturum açabilir veya yeni bir hesap oluşturabilirsiniz. \ NBu istemezseniz gerekli değildir! \ NÖzel verileri kesinlikle paylaşmayacağım!"</string>
+  <string name="login_UsernameEmail">"Kullanıcı adı veya E-Posta:"</string>
+  <string name="login_Username">"Kullanıcı Adı:"</string>
+  <string name="login_Email">"E-posta:"</string>
+  <string name="login_RetypeEmail">"E-posta tekrar:"</string>
+  <string name="login_PasswordOverEmail">"Şifrenizi, aktivasyon maili ile etkinleştirebilirsiniz. (Mail, sadece İngilizce dilindedir)."</string>
+  <string name="login_Password">"Şifre:"</string>
+  <string name="login_KeepLogin">"Oturumu Açık Tut"</string>
+  <string name="login_Register">"Bir hesabın yok mu?\nYeni bir hesap oluşturmak için buraya tıkla!"</string>
+  <string name="login_LoggedIn">"Giriş yapıldı!"</string>
+  <string name="login_LoginFailedWithReason">"Giriş başarısız: "</string>
+  <string name="login_LoginFailedWrongData">"Giriş başarısız, e-mail veya parola yanlış!"</string>
+  <string name="login_RegisterFailedNameUsed">"Üzgünüm, seçtiğiniz ad veya mail adresi zaten kullanılıyor."</string>
+  <string name="login_RegisterSuccess">"Kayıt başarılı, hesabınızı etkinleştirmek için bir e-posta alacaksınız!"</string>
+  <string name="login_Processing">"İşleniyor..."</string>
+  <string name="login_TitleStatistics">"[USERNAMEEMAIL] için istatistikler"</string>
+  <string name="login_Statistics">"Hazır ayarlar yüklendi: [UPLOADCOUNT]\n\nVerilen yıldızlar: [STARSGIVEN]\nAlınan yıldızlar: [STARSRECEIVED]\n\nSenin hazır ayarların (yıldızlara göre):\n[TOP5PRESETS]"</string>
+  <string name="login_StatisticsFailed">"İstatistik alımı başarısız..."</string>
   <!-- Fuzzy -->
+  <string name="login_ReloadStatistics">"İstatistikleri yeniden yüklemek için buraya tıklayın"</string>
+  <string name="login_TitleLogout">"Çıkış yap"</string>
+  <string name="login_pleaseCheckInput">"Bir şeyler ters gitti, lütfen tekrar deneyin."</string>
+  <string name="presetsManager_Stars">"Yıldızlar"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsPartTitle">"[PART] renkler"</string>
   <!-- Dialog -->
   <!-- Preferences: Main -->
   <!-- Power Menu -->
