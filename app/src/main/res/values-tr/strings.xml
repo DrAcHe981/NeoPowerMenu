@@ -7,14 +7,33 @@
   <string name="powerMenuMain_Shutdown">"Kapat"</string>
   <string name="powerMenuMain_Reboot">"Yeniden Başlat"</string>
   <string name="powerMenuMain_SoftReboot">"Hızlı Yeniden Başlat"</string>
+  <string name="powerMenuMain_SoftRebootDesc">"Zigot işlemini keserek Android kullanıcı arayüzünü yeniden başlatmanız yeterlidir"</string>
+  <string name="powerMenuMain_Screenshot">"Ekran Görüntüsü"</string>
+  <string name="powerMenuMain_ScreenshotDesc">"Ekran görüntüsü gecikme: [SCREENSHOTDELAY]"</string>
   <string name="powerMenuBottom_Recovery">"Kurtarma"</string>
   <string name="powerMenuBottom_Bootloader">"Ön yükleme"</string>
   <string name="powerMenuBottom_SafeMode">"Güvenli Mod"</string>
   <string name="powerMenu_Shuttingdown">"Kapatmak"</string>
   <string name="powerMenu_Rebooting">"\"Yeniden başlat\""</string>
   <string name="powerMenuMain_KillApp">"Planlı uygulamayı sonlandır"</string>
+  <string name="powerMenuMain_AppShortcut">"Uygulama kısa yolu"</string>
+  <string name="powerMenuMain_ActivityShortcut">"Etkinlik kısayolu"</string>
+  <string name="powerMenuMain_ToggleRotate">"Ekran döndürme"</string>
+  <string name="ToggleRotateMode_Auto">"Otomatik"</string>
+  <string name="ToggleRotateMode_Off">"Kapalı"</string>
+  <string name="powerMenuMain_ToggleWifi">"Kablosuz bağlantı"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
+  <string name="powerMenuMain_ToggleData">"Veri"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Yükleme modu"</string>
   <!-- Preferences: Visibility and order -->
+  <string name="visibilityOrderCategory_VisibilityOrder">"Görünüm ve Sıralama"</string>
+  <string name="category_Preset">"Önayarlar"</string>
+  <string name="preset_Load">"Ön ayar yükleme"</string>
+  <string name="preset_LoadDesc">"Kaydedilmiş yapılandırmayı yükle"</string>
+  <string name="preset_Save">"Önayarı kaydet"</string>
+  <string name="preset_SaveDesc">"Geçerli yapılandırmayı kaydet"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleLocal">"Yerel hazır ayarlar"</string>
   <!-- Preferences: Advanced -->
   <!-- Screen recording -->
   <!-- Torch -->
