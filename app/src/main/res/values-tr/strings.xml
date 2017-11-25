@@ -73,6 +73,13 @@
   <string name="SoundMode_Silent">"Sessiz"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Hesap"</string>
+  <string name="presetsManager_UploadMsg">"Bu hazır ayar diğer kullanıcıların da görebileceği şekilde genel sunucuya yüklenecek.\n\nBu, yüklemeden önce, adı veya oluşturucuyu belirleyebilmek için son şansınız..."</string>
+  <string name="presetsManager_UploadComplete">"Yükleme tamamlandı!"</string>
+  <string name="presetsManager_UploadFailedSameName">"Bu ad zaten kullanılıyor, lütfen başka bir ad seçin."</string>
+  <string name="presetsManager_UploadFailedNoAccess">"Bu oluşturucu adı korunuyor, başka birini seçin veya giriş yapın."</string>
+  <string name="presetsManager_UploadFailed">"Yükleme başarısız!"</string>
+  <string name="presetsManager_DownloadFailed">"İndirme başarısız!"</string>
+  <string name="presetsManager_CantConnecttoServer">"Sunucuya bağlanılamıyor!\nLütfen internet bağlantınızı kontrol edin veya daha sonra tekrar deneyin."</string>
   <!-- Login page -->
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
