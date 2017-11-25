@@ -21,9 +21,28 @@
   <string name="powerMenuMain_ToggleRotate">"Ekran döndürme"</string>
   <string name="ToggleRotateMode_Auto">"Otomatik"</string>
   <string name="ToggleRotateMode_Off">"Kapalı"</string>
+  <string name="powerMenuMain_ToggleWifi">"WiFi"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
+  <string name="powerMenuMain_ToggleData">"Veri"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
   <!-- Preferences: Visibility and order -->
+  <string name="visibilityOrderCategory_VisibilityOrder">"Görünüm ve sıralama"</string>
+  <string name="category_Preset">"Hazır ayarlar"</string>
+  <string name="preset_Load">"Hazır ayar yükle"</string>
+  <string name="preset_LoadDesc">"Kayıtlı bir yapılandırma yükle"</string>
+  <string name="preset_Save">"Hazır ayarı kaydet"</string>
+  <string name="preset_SaveDesc">"Geçerli yapılandırmanızı kaydedin"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleLocal">"Yerel Hazır Ayarlar"</string>
+  <string name="presetsManager_TitleOnline">"Çevrimiçi Hazır Ayarlar"</string>
+  <string name="presetsManager_Creator">"Oluşturan: [CREATORNAME]"</string>
+  <string name="presetsManager_BuiltIn">"Dahili"</string>
+  <string name="presetsManager_SureToDelete">"[PRESETNAME] gerçekten silinsin mi?\nBu geri alınamaz!"</string>
+  <string name="presetsManager_ImportMsg">"Bu hazır ayarı almak ister misiniz?"</string>
+  <string name="presetsManager_ImportSuccess">"[PRESETNAME] başarıyla alındı."</string>
+  <string name="presetsManager_ImportFailed">"Alma başarısız..."</string>
   <!-- Preferences: Advanced -->
+  <string name="advancedPrefsCategory_PowerMenu">"Güç Menüsü"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
