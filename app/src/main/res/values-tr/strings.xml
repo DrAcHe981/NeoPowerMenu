@@ -90,6 +90,7 @@
   <string name="login_UsernameEmail">"Kullanıcı adı veya E-Posta:"</string>
   <string name="login_Username">"Kullanıcı adı:"</string>
   <string name="login_Email">"E-posta:"</string>
+  <string name="login_RetypeEmail">"E-postayı Tekrarla:"</string>
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
   <!-- Dialog -->
