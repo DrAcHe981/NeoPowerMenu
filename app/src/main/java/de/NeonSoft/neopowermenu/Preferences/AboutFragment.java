@@ -50,30 +50,33 @@ public class AboutFragment extends Fragment {
         String[] texts = new String[]{"NeoPowerMenu by Neon-Soft / DrAcHe981\n" +
                 "based on the Source from Naman Dwivedi (naman14).\n\n" +
                 "Translators (I update them from time to time so don't be angry if you translated, but don't got listed here ;D):\n" +
-                "> Dutch:\n" +
-                "Hakan Ilbas (hakanilbas), mike2nl\n\n" +
-                "> English:\n" +
-                "Robin G. (DrAcHe981), MrWasdennnoch\n\n" +
-                "> French:\n" +
-                "Joël Costamagna, Raziel65\n\n" +
                 "> German:\n" +
-                "Robin G. (DrAcHe981), MrWasdennnoch\n\n" +
+                " Robing G. (DrAcHe981), MrWasdennnoch\n" +
+                "> Dutch:\n" +
+                " Hakan Ilbas (hakanilbas)\n" +
+                "> French:\n" +
+                " Joël COSTAMAGNA (Joel-Costamagna), Raziel65, Rom (RomXDA)\n" +
                 "> Italian:\n" +
-                "Lucas Rey (LordSpectre)\n\n" +
+                " Lucas Rey (LordSpectre)\n" +
                 "> Japanese:\n" +
-                "Noumi (AndroPlus)\n\n" +
+                " AndroPlus (Noumi)\n" +
                 "> Polish:\n" +
-                "Witoslavski, tmacher\n\n" +
-                "> Portuguese, Brazilian:\n" +
-                "DeluxeMark™, RhaySF, Marcio Andrade (marciozomb13)\n\n" +
-                "> Russia:\n" +
-                "Smirnov Yaroslav (Smirnaff)\n\n" +
+                " Kasia Suchecka (kejciaq)\n" +
+                "> Portuguese:\n" +
+                " Joel Bastos (burns8888)\n" +
+                "> Portuguese (BR):\n" +
+                " Marcio Andrade (marciozomb13), Rhaysf15\n" +
                 "> Romanian:\n" +
-                "azZA_09\n\n" +
-                "> Spanish, Mexico:\n" +
-                "WarLion, Daniel Carrero (danielcr), Cricket Blue Side (cricketblueside)\n\n" +
+                " \n" +
+                "> Russian:\n" +
+                " Smirnaff, Артем Пичугин (leonardo906), Дмитрий Никифорян (pekjiamiiiuk2014)\n" +
+                "> Spanish (MX):\n" +
+                " CricketBlueSide, Daniel Carrero (danielcr), Joseahfer, WarLion\n" +
+                "> Turkish:\n" +
+                " Fatih Fırıncı (Fatih_BaKeR)\n\n" +
                 "Special Thanks:\n" +
                 " You for using my Module.\n" +
+                " C3C0 for all the code I took out of GravityBox.\n" +
                 " Naman Dwivedi (naman14) for the original source.\n" +
                 " rovo89 and Tungstwenty for Xposed.\n" +
                 " Igor Da Silva for the concept.",

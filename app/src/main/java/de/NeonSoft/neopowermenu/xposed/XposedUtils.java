@@ -29,7 +29,8 @@ public class XposedUtils
     private static Boolean mHasFlash;
     private static Boolean mIsExynosDevice;
     private static Boolean mIsSamsumgRom = null;
-		
+    private static Boolean mIsOxygenOsRom = null;
+
     public static void log(String message) {
         Log.i("NPM",message);
         try {
@@ -132,6 +133,14 @@ public class XposedUtils
 
 
     public static void performSoftReboot() {
+    }
+
+    public static boolean isOxygenOsRom() {
+        if (mIsOxygenOsRom == null) {
+            String version = SystemProp.get("ro.oxygen.version", "0");
+            mIsOxygenOsRom = version != null && !version.isEmpty() &&  !"0".equals(version);
+        }
+        return mIsOxygenOsRom;
     }
 
     public static class SystemProp extends XposedUtils {

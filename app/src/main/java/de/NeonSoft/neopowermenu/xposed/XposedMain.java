@@ -12,6 +12,7 @@ import android.util.*;
 import android.widget.*;
 
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.helpers.PreferenceNames;
 import de.NeonSoft.neopowermenu.helpers.helper;
 import de.NeonSoft.neopowermenu.services.*;
 import de.robv.android.xposed.*;
@@ -57,6 +58,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public static final String CLASS_GLOBAL_ACTIONS_MARSHMALLOW = "com.android.server.policy.GlobalActions";
     private static final String CLASS_PHONE_WINDOW_MANAGER = "com.android.internal.policy.impl.PhoneWindowManager";
     private static final String CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW = "com.android.server.policy.PhoneWindowManager";
+    private static final String CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW_OEM = "com.android.server.policy.OemPhoneWindowManager";
 
     private static final String CLASS_PACKAGE_MANAGER_SERVICE = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
@@ -182,8 +184,20 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         XposedUtils.log("|-Module Path: " + startupParam.modulePath);
         XposedUtils.log("|-Hook version: " + XposedHookVersion);
         XposedUtils.log("|-Preferences: " + preferences.getFile().getAbsolutePath());
+        XposedUtils.log("||-Found: " + (preferences.getFile().exists() ? "yes" : "no, using defaults."));
         XposedUtils.log("|\\-World readable: " + preferences.getFile().canRead());
         XposedUtils.log("|-Deep Logging: " + (DeepXposedLogging ? "active, logging everything." : "not active, logging only errors."));
+        if (!DeepXposedLogging) {
+            XposedUtils.log("|");
+            XposedUtils.log("|--->> ATTENTION");
+            XposedUtils.log("|--->> Before reporting a system crash or not working function, please activate deep logging and restart the device, else I wont be able to help!");
+            XposedUtils.log("|");
+        }
+        if (XposedUtils.isOxygenOsRom()) {
+            //ExperimentalPWMHook = true;
+            //preferences.edit().putBoolean(PreferenceNames.pExperimentalPWMHook, true).commit();
+            //XposedUtils.log("|---OxygenOS Device detected, enabling phone window manager hook by default.");
+        }
         XposedUtils.log("|-ExperimentalPWMHook: " + ExperimentalPWMHook);
         XposedUtils.log("|-UseRootCommands: " + UseRoot);
         if (DeepXposedLogging) {
@@ -211,7 +225,11 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             String usedPMClass;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 usedGADClass = CLASS_GLOBAL_ACTIONS_MARSHMALLOW;
-                usedPWMClass = CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW;
+                if (XposedUtils.isOxygenOsRom()) {
+                    usedPWMClass = CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW_OEM;
+                } else {
+                    usedPWMClass = CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW;
+                }
                 usedPMClass = CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW;
             } else {
                 usedGADClass = CLASS_GLOBAL_ACTIONS;
