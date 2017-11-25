@@ -80,7 +80,16 @@
   <string name="presetsManager_UploadFailed">"Yükleme başarısız!"</string>
   <string name="presetsManager_DownloadFailed">"İndirme başarısız!"</string>
   <string name="presetsManager_CantConnecttoServer">"Sunucuya bağlanılamıyor!\nLütfen internet bağlantınızı kontrol edin veya daha sonra tekrar deneyin."</string>
+  <string name="presetsManager_CantConnecttoDB">"Veritabanına bağlanılamıyor!\nLütfen daha sonra tekrar deneyin, hiçbir şey değişmezse: Lütfen bunu geliştiriciye bildirin."</string>
+  <string name="permissionsScreenTitle_android.permission.INTERNET">"İnternet"</string>
+  <string name="permissionsScreenDesc_android.permission.INTERNET">"Genel sunucudan hazır ayarları indirebilmek/sunucuya yükleyebilmek için gerekli."</string>
   <!-- Login page -->
+  <string name="login_Title">"Giriş"</string>
+  <string name="login_TitleRegister">"Kayıt"</string>
+  <string name="login_Info">"Kayıtlı kullanıcıların kullanıcı adları kimsenin adına yüklenememesi için korunmaktadır, buradan giriş yapabilir veya yeni bir hesap oluşturabilirsiniz.\nİstemiyorsanız, bu gerekli değildir!\nNÖzel hiçbir veriyi asla paylaşmayacağım!"</string>
+  <string name="login_UsernameEmail">"Kullanıcı adı veya E-Posta:"</string>
+  <string name="login_Username">"Kullanıcı adı:"</string>
+  <string name="login_Email">"E-posta:"</string>
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
   <!-- Dialog -->
