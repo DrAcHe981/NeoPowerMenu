@@ -43,6 +43,10 @@
   <string name="presetsManager_ImportFailed">"Alma başarısız..."</string>
   <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Güç Menüsü"</string>
+  <string name="advancedPrefsTitle_UseGraphics">"Grafikleri Kullan"</string>
+  <string name="advancedPrefsDesc_UseGraphics">"Harf daireleri yerine Grafikler kullanın."</string>
+  <string name="advancedPrefsCategory_LockScreen">"Kilit ekranı"</string>
+  <string name="advancedPrefsTitle_ShowOnLockScreen">"Kilit ekranında göster"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
