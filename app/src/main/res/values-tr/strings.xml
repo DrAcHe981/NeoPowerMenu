@@ -57,12 +57,22 @@
   <string name="ColorPicker_Opacity">"Opaklık:"</string>
   <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"[PRESETNAME] silindi!"</string>
+  <string name="presetLoad_PresetLoaded">"[PRESETNAME] yüklendi!"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
   <!-- Permissions Screen -->
   <!-- Preferences: Colors -->
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Bluetooth durumunu almak için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Yönetici"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Herhangi bir diyalog olmadan Bluetooth'u açıp kapamak için gereklidir"</string>
+  <string name="powerMenuMain_SoundMode">"Ses Modu"</string>
+  <string name="powerMenuMain_SoundModeDesc">"Geçerli mod: [SOUNDMODE]"</string>
+  <string name="SoundMode_Normal">"Normal"</string>
+  <string name="SoundMode_Vibrate">"Titreşim"</string>
+  <string name="SoundMode_Silent">"Sessiz"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleAccount">"Hesap"</string>
   <!-- Login page -->
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
