@@ -67,6 +67,7 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="powerMenuMain_Screenrecord">"Gravação de Tela"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"A tela está sendo gravada"</string>
+  <string name="screenrecord_notif_title">Gravação de tela</string>
   <string name="screenrecord_toast_error">"Incapaz de gravar a tela"</string>
   <string name="screenrecord_toast_processing">"Não é possível iniciar uma nova gravação se a gravação anterior ainda estiver sendo processada"</string>
   <string name="screenrecord_toast_saved">"Gravação salva como %s"</string>
@@ -447,5 +448,13 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="graphics_BehaviorTitle">Personalize o comportamento dos gráficos</string>
   <string name="graphics_BehaviorDesc">Ative/Desative gráficos e customize valores como preenchimento e coloração.</string>
   <string name="visibilityOrder_SearchShortcut">Atalho de Busca (case insensitive):</string>
+  <string name="preferences_TranslateDesc">Sabe idiomas que este app deveria ter? \nEntão toque aqui para conferir o projeto no Crowdin e ajudar com a tradução!</string>
   <string name="preferences_TranslateTitle">Tradução</string>
+  <string name="graphics_NotEnabled">Gráficos não estão habilitados\nToque aqui para habilitar!</string>
+  <string name="advancedPrefsTitle_ScreenRecordCountdown">Contagem para gravação de tela</string>
+  <string name="advancedPrefsDesc_ScreenRecordCountdown">Mostrar uma contagem regressiva antes de iniciar a gravação de tela.</string>
+  <string name="screenrecord_toast_start_in">Iniciando a gravação em [TIME]...</string>
+  <string name="screenrecord_notif_binarynotFound">Não foi possível localizar, ler ou executar o arquivo binário. \nA gravação de tela pode não ser suportada em seu dispositivo.</string>
+  <string name="advancedPrefsTitle_HideActionDescriptionText">Esconder texto de descrição na caixa de diálogo de ação de desligamento/reinicialização</string>
+  <string name="advancedPrefsDesc_HideActionDescriptionText">Esconder a mensagem \"Desligando...\" ou similar na caixa de diálogo ação de desligamento/reinicialização.</string>
 </resources>
