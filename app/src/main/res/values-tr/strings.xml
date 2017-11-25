@@ -47,6 +47,16 @@
   <string name="advancedPrefsDesc_UseGraphics">"Harf daireleri yerine Grafikler kullanın."</string>
   <string name="advancedPrefsCategory_LockScreen">"Kilit ekranı"</string>
   <string name="advancedPrefsTitle_ShowOnLockScreen">"Kilit ekranında göster"</string>
+  <string name="advancedPrefsCategory_Delays">"Gecikmeler"</string>
+  <string name="advancedPrefs_DelayZero">"Neredeyse anında"</string>
+  <string name="advancedPrefsTitle_ScreenshotDelay">"Ekran görüntüsü gecikmesi"</string>
+  <string name="advancedPrefsDesc_ScreenshotDelay">"Tıklama ve ekran görüntüsü arasındaki gecikme."</string>
+  <string name="Dialog_SelectColor">"Renk seç"</string>
+  <string name="ColorPicker_Value">"Değer:"</string>
+  <string name="ColorPicker_Saturation">"Koyuluk:"</string>
+  <string name="ColorPicker_Opacity">"Opaklık:"</string>
+  <string name="ColorPicker_Hex">"Hex:"</string>
+  <string name="presetLoad_PresetDeleted">"[PRESETNAME] silindi!"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
