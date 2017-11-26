@@ -102,6 +102,17 @@
   <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Surface Flinger Erişimi"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Ekran kaydedicinin ekranı kaydetmesi için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ses Kaydı"</string>
+  <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Ekran kaydediciyle ses kaydedebilmek için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Sistem Uyarısı penceresi"</string>
+  <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Her şeyin üzerinde Güç Menüsünü görüntülemek için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Uyandırma Kilidi"</string>
+  <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Fener ve ekran kaydı hizmetinin sonlandırılmasını önlemek için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"WiFi Durumu Erişimi"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"WiFi durumunu almak için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"WiFi Durumunu Değiştir"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"WiFi'yi açıp/kapatmak için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Bluetooth durumunu almak için gereklidir."</string>
   <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Yönetici"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Herhangi bir diyalog olmadan Bluetooth'u açıp kapamak için gereklidir"</string>
@@ -133,6 +144,10 @@
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
   <!-- Dialog -->
+  <string name="downloadHelper_States">"Diğer indirmeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
+  <string name="downloadHelper_RemainingTime">"[TIME] kaldı"</string>
+  <string name="downloadHelper_Speed">"hız: [SPEED]/s"</string>
+  <string name="uploadHelper_States">"Diğer yüklemeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
   <!-- Preferences: Main -->
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
