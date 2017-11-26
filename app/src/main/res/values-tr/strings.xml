@@ -47,6 +47,7 @@
   <string name="advancedPrefsDesc_UseGraphics">"Harf daireleri yerine Grafikler kullanın."</string>
   <string name="advancedPrefsCategory_LockScreen">"Kilit ekranı"</string>
   <string name="advancedPrefsTitle_ShowOnLockScreen">"Kilit ekranında göster"</string>
+  <string name="advancedPrefsDesc_ShowOnLockScreen">"Hiçbir şey gösterilmeyecek şekilde devre dışı bırakıldığında, kilit ekranında Güç Menüsünü göster."</string>
   <string name="advancedPrefsCategory_Delays">"Gecikmeler"</string>
   <string name="advancedPrefs_DelayZero">"Neredeyse anında"</string>
   <string name="advancedPrefsTitle_ScreenshotDelay">"Ekran görüntüsü gecikmesi"</string>
@@ -58,6 +59,7 @@
   <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"[PRESETNAME] silindi!"</string>
   <string name="presetLoad_PresetLoaded">"[PRESETNAME] yüklendi!"</string>
+  <string name="presetSaveDialog_CreatorNameInfo">"Bu hazır ayarı oluşturan:"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
