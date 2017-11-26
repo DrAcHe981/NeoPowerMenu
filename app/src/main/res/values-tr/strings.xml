@@ -79,8 +79,19 @@
   <string name="advancedPrefsDesc_DialogGravity">"İletişim kutusu konumunu değiştirin."</string>
   <!-- Torch -->
   <string name="quick_settings_torch_on">"Fener Açık"</string>
+  <string name="quick_settings_torch_off">"Fener Kapalı"</string>
+  <string name="quick_settings_torch_off_notif">"Kapatmak için dokunun"</string>
+  <string name="powerMenuMain_AirplaneMode">"Uçak Modu"</string>
+  <string name="powerMenuMain_RestartUI">"Sistem Arayüzünü yeniden başlat"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Reveal">"Orta rengi"</string>
+  <string name="colorsType_Circle">"Daire rengi"</string>
+  <string name="colorsType_Background">"Arkaplan rengi"</string>
+  <string name="colorsType_Text">"Metin rengi"</string>
+  <string name="powerMenuMain_Flashlight">"Fener"</string>
   <!-- Permissions Screen -->
+  <string name="permissionsScreen_Title">"İzinler"</string>
+  <string name="permissionsScreen_NotAllGranted">"Tüm izinler verilmedi, bazı işlevler çalışmayabilir..."</string>
   <!-- Preferences: Colors -->
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Bluetooth durumunu almak için gereklidir."</string>
   <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Yönetici"</string>
