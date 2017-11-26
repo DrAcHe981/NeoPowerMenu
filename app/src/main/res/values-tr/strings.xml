@@ -149,7 +149,10 @@
   <string name="downloadHelper_Speed">"hız: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Diğer yüklemeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
   <string name="visibilityOrder_AddItem">"Normal öğe ekle\nSadece bir yuvalı normal bir öğe.|Birden çok öğe ekle\nTek bir satırda üç öğeye kadar ekle.|Birden çok sayfalı öğe ekle\nTıklamak yeni bir 'sayfa' gösterecek'."</string>
+  <string name="visibilityOrder_MultiPage">"Çok sayfalı öğe burada başlıyor\nİlk normal öğe, 'yeni sayfayı' açmak için düğmeyi tanımlar.|Çok sayfalı öğe burada bitiyor"</string>
   <!-- Preferences: Main -->
+  <string name="preferencesCategory_RootXposed">"Root ve Xposed"</string>
+  <string name="preferences_RootXposed1">"Root ve Xposed mevcut değil|Bu modülün çalışabilmesi için Root ve Xposed gereklidir."</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
 </resources>
