@@ -92,7 +92,16 @@
   <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"İzinler"</string>
   <string name="permissionsScreen_NotAllGranted">"Tüm izinler verilmedi, bazı işlevler çalışmayabilir..."</string>
+  <string name="permissionsScreen_ClickToRequest">"İzin istemek için tıklayın."</string>
+  <string name="permissionsScreen_DontAskAgain">"Bir daha sorma"</string>
+  <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Harici Depolamayı Okuma/Yazma"</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Özel grafikleri kullanmak için gereklidir."</string>
+  <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
+  <string name="permissionsScreenDesc_android.permission.CAMERA">"Feneri açıp/kapatmak için gereklidir."</string>
+  <string name="visibilityOrder_HideDesc">"Açıklamayı gizle"</string>
   <!-- Preferences: Colors -->
+  <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Surface Flinger Erişimi"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Ekran kaydedicinin ekranı kaydetmesi için gereklidir."</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Bluetooth durumunu almak için gereklidir."</string>
   <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Yönetici"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Herhangi bir diyalog olmadan Bluetooth'u açıp kapamak için gereklidir"</string>
