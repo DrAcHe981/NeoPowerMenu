@@ -60,8 +60,25 @@
   <string name="presetLoad_PresetDeleted">"[PRESETNAME] silindi!"</string>
   <string name="presetLoad_PresetLoaded">"[PRESETNAME] yüklendi!"</string>
   <string name="presetSaveDialog_CreatorNameInfo">"Bu hazır ayarı oluşturan:"</string>
+  <string name="presetSaveDialog_InfoText">"Hazır ayar için bir ad belirleyin:"</string>
+  <string name="presetSaveDialog_OverwriteText">"Zaten mevcut, hazır ayarın üzerine yazılacak!"</string>
+  <string name="presetSave_PresetSaved">"[PRESETNAME] kaydedildi!"</string>
+  <string name="powerMenuMain_Screenrecord">"Ekran kaydı"</string>
   <!-- Screen recording -->
+  <string name="screenrecord_notif_ticker">"Ekran kaydediliyor"</string>
+  <string name="screenrecord_notif_title">Ekran kaydı</string>
+  <string name="screenrecord_toast_error">"Ekran kaydedilemiyor"</string>
+  <string name="screenrecord_toast_processing">"Önceki kayıt hala işlendiğinden dolayı yeni kayıt başlatılamıyor"</string>
+  <string name="screenrecord_toast_saved">"%s olarak kaydedildi"</string>
+  <string name="screenrecord_toast_save_error">"Kayıt çıktı dosyasına kaydedilemiyor"</string>
+  <string name="powerMenuMain_FlashlightOff">"Feneri kapat"</string>
+  <string name="powerMenuMain_FlashlightDesc">"Şu süre sonra kapat [AUTOOFF] ."</string>
+  <string name="powerMenuMain_FlashlightDescDisabled">"Otomatik kapatma devre dışı."</string>
+  <string name="powerMenuMain_ExpandedDesktop">"Genişletilmiş Masaüstü"</string>
+  <string name="advancedPrefsTitle_DialogGravity">"İletişim Kutusu Konumu"</string>
+  <string name="advancedPrefsDesc_DialogGravity">"İletişim kutusu konumunu değiştirin."</string>
   <!-- Torch -->
+  <string name="quick_settings_torch_on">"Fener Açık"</string>
   <!-- Preferences: Colors -->
   <!-- Permissions Screen -->
   <!-- Preferences: Colors -->
