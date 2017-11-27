@@ -227,4 +227,6 @@
   <string name="tourPage_6_Title">"Gelişmiş Menü"</string>
   <string name="tourPage_6_Text">"Burada genel olarak tüm güç menüsü davranışını özelleştirebilirsiniz."</string>
   <string name="tourPage_7_Title">"Keyfini Çıkarın!"</string>
+  <string name="tourPage_7_Text">"Küçük turum bitti, ancak endişelenmeyin, çok daha fazla özellik var!\nSadece kendiniz deneyin ve mükemmel güç menüsünü bulun."</string>
+  <string name="advancedPrefs_UseRootTitle">"Root sistemlerini kullan"</string>
 </resources>
