@@ -161,6 +161,20 @@
   <string name="presetsManager_Stars">"Yıldızlar: [STARS]"</string>
   <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] renkleri"</string>
+  <string name="colorsPartDescDialog">"[BUTTON] üzerine tıklandığında ki iletişim kutusunun renkleri."</string>
+  <string name="colorsPartDescButton">"[BUTTON] düğmesinin renkleri."</string>
+  <string name="colorsPartPresets">"Hazır ayarlar"</string>
+  <string name="colorsPartReveal">"Orta"</string>
+  <string name="colorsPartRevealDesc">"Gösterilen animasyonun rengi."</string>
+  <string name="colorsPartRevealDesc1">"Yeniden Başlat/Kapat seçeneği üzerine tıklandığında ortaya çıkan animasyon rengi."</string>
+  <string name="colorsPartMain">"İletişim kutusu"</string>
+  <string name="presetsManager_Refresh">"Yenile"</string>
+  <string name="presetsManager_OrderBy">"Sıralama"</string>
+  <string name="presetsManager_OrderNames">"Ad|Tarih|Yıldızlar|Oluşturan|Kendi"</string>
+  <string name="presetsManager_OrderAscDesc">"Artan|Azalan"</string>
+  <string name="visibilityOrder_SelectMulti">"Lütfen üç öğe seçin:"</string>
+  <string name="powerMenuMain_Empty">"Boş"</string>
+  <string name="login_Recover">"Kurtar"</string>
   <!-- Dialog -->
   <string name="downloadHelper_States">"Diğer indirmeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] kaldı"</string>
