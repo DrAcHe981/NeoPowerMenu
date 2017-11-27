@@ -204,6 +204,14 @@
   <string name="preferencesCategory_RootXposed">"Root ve Xposed"</string>
   <string name="preferences_RootXposed1">"Root ve Xposed mevcut değil|Bu modülün çalışabilmesi için Root ve Xposed gereklidir."</string>
   <string name="preferences_RootXposed2">"Xposed çalışıyor, Root değil|Ancak Root, Kapatmak veya Yeniden başlatmak için gereklidir...\nLütfen root erişimi izni verin."</string>
+  <string name="preferences_RootXposed3">"Root çalışıyor, Xposed değil|Ancak Xposed, Güç Menüsünü değiştirmek için gereklidir...\nLütfen Xposed yükleyicisinden modülü etkinleştirin."</string>
+  <string name="preferences_RootXposed4">"Root ve Xposed çalışıyor|Uygulama iyi çalışmalı!"</string>
+  <string name="preferences_RootXposed5">"Bağlı Modülün sürümü çok düşük... | Güncelleme işlemini tamamlamak için lütfen cihazınızı yeniden başlatın!"</string>
+  <string name="preferencesCategory_General">"Genel"</string>
+  <string name="preferences_Style">"Stil"</string>
+  <string name="preferences_Theme">"Tema|Görünümü değiştirin."</string>
+  <string name="preferences_Graphics">"Grafikler|Grafikleri değiştirin, özel ya da önceden tanımlanmış grafikleri kullanın."</string>
+  <string name="preferences_VisibilityOrder">"Görünüm ve Sıralama|Göstermek istediğiniz öğeleri seçin ve istediğiniz gibi sıralayın."</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
   <string name="errorActivity_Close">"Kapat"</string>
