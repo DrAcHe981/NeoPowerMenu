@@ -214,6 +214,8 @@
   <string name="preferences_VisibilityOrder">"Görünüm ve Sıralama|Göstermek istediğiniz öğeleri seçin ve istediğiniz gibi sıralayın."</string>
   <string name="preferences_Animations">"Animasyonlar | Animasyonları değiştirin veya tamamen devre dışı bırakın."</string>
   <string name="preferencesCategory_Other">"Diğer"</string>
+  <string name="preferences_Account">"Hesap | Buradan giriş yapabilir, bir hesap oluşturabilir veya giriş yaptığınızda istatistiklerinizi kontrol edebilirsiniz."</string>
+  <string name="preferences_Advanced">"Gelişmiş Ayarlar | Gecikmeler veya hız gibi gelişmiş ayarları değiştirin."</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
   <string name="errorActivity_Close">"Kapat"</string>
