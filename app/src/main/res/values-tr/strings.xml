@@ -141,8 +141,26 @@
   <string name="login_Username">"Kullanıcı adı:"</string>
   <string name="login_Email">"E-posta:"</string>
   <string name="login_RetypeEmail">"E-postayı Tekrarla:"</string>
+  <string name="login_PasswordOverEmail">"Parolanızı etkinleştirme E-postasındaki bağlantı ile ayarlayabilirsiniz (E-posta sadece İngilizce olarak mevcuttur)."</string>
+  <string name="login_Password">"Parola:"</string>
+  <string name="login_KeepLogin">"Oturumu açık tut."</string>
+  <string name="login_Register">"Bir hesabın yok mu?\nYeni bir hesap oluşturmak için buraya tıkla!"</string>
+  <string name="login_LoggedIn">"Giriş yapıldı!"</string>
+  <string name="login_LoginFailedWithReason">"Giriş başarısız: "</string>
+  <string name="login_LoginFailedWrongData">"Giriş başarısız, E-posta veya parola yanlış!"</string>
+  <string name="login_RegisterFailedNameUsed">"Maalesef, seçtiğiniz ad veya e-posta adresi zaten kullanılıyor."</string>
+  <string name="login_RegisterSuccess">"Kayıt başarılı, hesabınızı etkinleştirmek için bir e-posta alacaksınız!"</string>
+  <string name="login_Processing">"İşleniyor..."</string>
+  <string name="login_TitleStatistics">"[USERNAMEEMAIL] için istatistikler"</string>
+  <string name="login_Statistics">"Hazır ayarlar yüklendi: [UPLOADCOUNT]\n\nVerilen yıldızlar: [STARSGIVEN]\nAlınan yıldızlar: [STARSRECEIVED]\n\nYıldızlara göre hazır ayarların:\n[TOP5PRESETS]"</string>
+  <string name="login_StatisticsFailed">"İstatistikler alınamadı..."</string>
   <!-- Fuzzy -->
+  <string name="login_ReloadStatistics">"İstatistikleri yeniden yüklemek için buraya tıklayın"</string>
+  <string name="login_TitleLogout">"Çıkış"</string>
+  <string name="login_pleaseCheckInput">"Bir şeyler ters gitti, lütfen girişinizi kontrol edin."</string>
+  <string name="presetsManager_Stars">"Yıldızlar: [STARS]"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsPartTitle">"[PART] renkleri"</string>
   <!-- Dialog -->
   <string name="downloadHelper_States">"Diğer indirmeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] kaldı"</string>
