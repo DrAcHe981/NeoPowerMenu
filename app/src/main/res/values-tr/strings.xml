@@ -175,7 +175,20 @@
   <string name="visibilityOrder_SelectMulti">"Lütfen üç öğe seçin:"</string>
   <string name="powerMenuMain_Empty">"Boş"</string>
   <string name="login_Recover">"Kurtar"</string>
+  <string name="login_RecoverAccount">"Hesabına erişemiyor musun?\nKurtarma seçenekleri için buraya tıkla."</string>
+  <string name="login_RecoverPassword">"Parolayı Sıfırla"</string>
+  <string name="login_RecoverSuccess">"Parolanızı nasıl sıfırlayacağınıza ilişkin talimatları içeren bir e-posta alacaksınız."</string>
+  <string name="login_RecoverNotFound">"Bu verilere sahip hiçbir kullanıcı bulunamadı."</string>
+  <string name="powerMenuMain_SoundVibrate">"Ses: Titreşim"</string>
+  <string name="powerMenuMain_SoundNormal">"Ses: Normal"</string>
+  <string name="powerMenuMain_SoundSilent">"Ses: Sessiz"</string>
   <!-- Dialog -->
+  <string name="Dialog_Buttons">"Tamam|Evet|Hayır|Yeniden Adlandır|Vazgeç|Sil|Yükle|Kaydet|Yoksay"</string>
+  <string name="presetLoadDialog_BuiltIn">"Açık|Koyu|Siyah"</string>
+  <string name="advancedPrefs_DialogGravity">"Üst|Sol|Sağ|Alt"</string>
+  <string name="graphics_Choose">"Varsayılana sıfırla|Hazırlardan seç|Galeriden seç"</string>
+  <string name="graphics_Crop">"Kırp|Daire kırp"</string>
+  <string name="graphics_GraphicsSaveLoad">"Mevcut grafiklerle kaydet.|Bu hazır ayar grafikler içeriyor, bunları yüklemek istiyor musunuz?\nBu, mevcut grafiklerin üzerine yazacaktır!"</string>
   <string name="downloadHelper_States">"Diğer indirmeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] kaldı"</string>
   <string name="downloadHelper_Speed">"hız: [SPEED]/s"</string>
