@@ -215,4 +215,16 @@
   <string name="tourPage_0_Title">"NPM'ye Hoş Geldiniz!"</string>
   <string name="tourPage_0_Text">"Hepsinden önce: Uygulamamı indirdiğiniz için teşekkürler!\n\nBu küçük turda size uygulamamın temellerini göstereceğim."</string>
   <string name="tourPage_1_Title">"Ana Menü"</string>
+  <string name="tourPage_1_Text">"Burada tüm farklı bölümleri bulabilir ve uygulamanın doğru şekilde çalışıp çalışmadığını, her şeyin iyi düzenlendiğini görebilirsiniz ^^."</string>
+  <string name="tourPage_2_Title">"Tema Menüsü"</string>
+  <string name="tourPage_2_Text">"Kişiselleştirmeniz burada başlıyor: her rengi değiştirebilirsiniz!\nEn kişiselleştirilebilir güç menüsünü sunmak ana hedefimdir."</string>
+  <string name="tourPage_3_Title">"Grafik Menüsü"</string>
+  <string name="tourPage_3_Text">"Kullanılan grafikleri özelleştirin."</string>
+  <string name="tourPage_4_Title">"Görünüm ve Sıralama Menüsü"</string>
+  <string name="tourPage_4_Text">"Menüden ne yapmak istediğinizi seçin ve seçenekleri istediğiniz gibi sıralayın.\nYeni öğeler eklemek için '+' işaretini tıklayın, öğeyi silmek için ekranın dışına sürükleyin.\n\n'Kilit' simgesi, kilit ekranında göster demektir.\n'İ' simgesi açıklamayı göster demektir."</string>
+  <string name="tourPage_5_Title">"Animasyon Menüsü"</string>
+  <string name="tourPage_5_Text">"Menünün içe veya dışa doğru animasyon yapma şeklini değiştirin veya animasyonları tamamen devre dışı bırakın."</string>
+  <string name="tourPage_6_Title">"Gelişmiş Menü"</string>
+  <string name="tourPage_6_Text">"Burada genel olarak tüm güç menüsü davranışını özelleştirebilirsiniz."</string>
+  <string name="tourPage_7_Title">"Keyfini Çıkarın!"</string>
 </resources>
