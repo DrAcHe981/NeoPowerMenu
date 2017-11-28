@@ -220,6 +220,11 @@
   <string name="preferences_HideLauncherIcon">"Başlatıcıdan uygulamayı gizleyin|Başlatıcıdan uygulama simgesini gizler; simgenin gizlenmesi yeniden başlatana kadar sürebilir.\nBu ayarlar ekranına daha sonra, yalnızca Xposed Installer'dan erişilebilir."</string>
   <string name="preferences_DeepXposedLogging">"Derin Xposed günlüğü|Değişiklikleri görmek için yeniden başlatmayı etkinleştirdikten sonra gelişmiş Xposed günlüğünü etkinleştirin."</string>
   <string name="preferencesCategory_About">"Hakkında"</string>
+  <string name="preferences_NeoSource">"Kaynak|NeoPowerMenu açık kaynaktır.\nGitHub'daki kaynağı kontrol edin."</string>
+  <string name="preferences_Share">"Paylaş|Uygulamayı beğendiniz mi? Arkadaşlarınızla paylaşın."</string>
+  <string name="preferences_About">"Kodlama: Neon-Soft / DrAcHe981|Naman Dwivedi (naman14)'nin kaynağına dayanır.\nDaha fazla bilgi edinmek için buraya tıklayın."</string>
+  <string name="animations_Items">"Arkaplan|Diyalog|Simgeler|Tek satır öğeleri|Çok satırlı öğeler"</string>
+  <string name="animations_Speeds">"Çok hızlı|Daha hızlı|Hızlı|Normal|Yavaş|Daha yavaş|Çok yavaş"</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
   <string name="errorActivity_Close">"Kapat"</string>
