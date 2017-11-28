@@ -234,6 +234,16 @@
   <string name="powerMenu_SureToRebootPowerOff">"Cihazınızı yeniden başlatmak istediğinizden emin misiniz?|Cihazınızı kapatmak istediğinizden emin misiniz?"</string>
   <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Onay iste|Yeniden başlatmadan veya kapatmadan önce çıkan onay kutusunu etkinleştirin."</string>
+  <string name="preferences_Donate">"Bağış yap|Uygulamayı beğendiniz mi?\nNeden bana bir fincan kahve ya da başka bir şey bağışta bulunmuyorsunuz?"</string>
+  <string name="advancedPrefs_HideOnClick">"Tıklandığında gizle"</string>
+  <string name="advancedPrefs_HideOnClickDesc">"Bir açma/kapatma düğmesine tıklandığında menüyü gizle."</string>
+  <string name="advancedPrefs_LoadAppIcons">"Uygulama Simgelerini Yükle"</string>
+  <string name="advancedPrefs_LoadAppIconsDesc">"Uygulama kısayol düğmeleri için Uygulama simgelerini yükle."</string>
+  <string name="style_Material">Materyal</string>
+  <string name="style_MaterialFullscreen">Materyal (Tam ekran)</string>
+  <string name="style_MaterialFullHorizontal">Materyal (Tam yatay)</string>
+  <string name="advancedPrefs_ExperimentalPWMHook">Deneysel PhoneWindowManager kancası</string>
+  <string name="advancedPrefs_ExperimentalPWMHookDesc">GlobalActions sınıfı yerine PhoneWindowManager\'a bağla.\nDikkatli kullanın, cihazınız için normal kanca çalışırsa etkinleştirmeyin!\nDeğişiklikleri görmek için yeniden başlatın.</string>
   <string name="errorActivity_Close">"Kapat"</string>
   <string name="errorActivity_MoreInfo">"Daha fazla bilgi"</string>
   <string name="tourReview_Title">"İnceleme turu"</string>
