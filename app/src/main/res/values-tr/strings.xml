@@ -216,6 +216,10 @@
   <string name="preferencesCategory_Other">"Diğer"</string>
   <string name="preferences_Account">"Hesap | Buradan giriş yapabilir, bir hesap oluşturabilir veya giriş yaptığınızda istatistiklerinizi kontrol edebilirsiniz."</string>
   <string name="preferences_Advanced">"Gelişmiş Ayarlar | Gecikmeler veya hız gibi gelişmiş ayarları değiştirin."</string>
+  <string name="preferences_Permissions">"İzinler | İstenen izinleri gösterin ve ne için kullanıldıklarını görün.\nİlk başlatıldığında eklenmeyen ek izinler verin (Android 6.0+)."</string>
+  <string name="preferences_HideLauncherIcon">"Başlatıcıdan uygulamayı gizleyin|Başlatıcıdan uygulama simgesini gizler; simgenin gizlenmesi yeniden başlatana kadar sürebilir.\nBu ayarlar ekranına daha sonra, yalnızca Xposed Installer'dan erişilebilir."</string>
+  <string name="preferences_DeepXposedLogging">"Derin Xposed günlüğü|Değişiklikleri görmek için yeniden başlatmayı etkinleştirdikten sonra gelişmiş Xposed günlüğünü etkinleştirin."</string>
+  <string name="preferencesCategory_About">"Hakkında"</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
   <string name="errorActivity_Close">"Kapat"</string>
