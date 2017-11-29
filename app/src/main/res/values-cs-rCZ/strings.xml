@@ -57,9 +57,34 @@
   <string name="ColorPicker_Opacity">"Průhlednost:"</string>
   <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"Smazáno [PRESETNAME]!"</string>
+  <string name="presetLoad_PresetLoaded">"Načteno [PRESETNAME]!"</string>
+  <string name="presetSaveDialog_CreatorNameInfo">"Tato předvolby byla vytvořena:"</string>
+  <string name="presetSaveDialog_InfoText">"Nastav jméno předvolby:"</string>
+  <string name="presetSaveDialog_OverwriteText">"Již existuje, přdvolby bude přepsána!"</string>
+  <string name="presetSave_PresetSaved">"Uložen [PRESETNAME]!"</string>
+  <string name="powerMenuMain_Screenrecord">"Záznam obrazovky"</string>
   <!-- Screen recording -->
+  <string name="screenrecord_notif_ticker">"Obrazovka je nahrávána"</string>
+  <string name="screenrecord_notif_title">Záznam obrazovky</string>
+  <string name="screenrecord_toast_error">"Nahrávání obrazovky není možné"</string>
+  <string name="screenrecord_toast_processing">"Nelze začít nové nahrávání protože předchozí nebylo ukončeno"</string>
+  <string name="screenrecord_toast_saved">"Nahrávání uloženo: %s"</string>
+  <string name="screenrecord_toast_save_error">"Nelze uložit nahrávku do souboru"</string>
+  <string name="powerMenuMain_FlashlightOff">"Vypnout svítilnu"</string>
+  <string name="powerMenuMain_FlashlightDesc">"Vypnout po [AUTOOFF]."</string>
+  <string name="powerMenuMain_FlashlightDescDisabled">"Automatické vypínání zrušeno."</string>
+  <string name="powerMenuMain_ExpandedDesktop">"Rozšířená plocha"</string>
+  <string name="advancedPrefsTitle_DialogGravity">"Pozice okna dialogu"</string>
+  <string name="advancedPrefsDesc_DialogGravity">"Změnit pozici okna dialogu."</string>
   <!-- Torch -->
+  <string name="quick_settings_torch_on">"Svítilna zapnuta"</string>
+  <string name="quick_settings_torch_off">"Svítilna vypnuta"</string>
+  <string name="quick_settings_torch_off_notif">"Klepnutím vypnete"</string>
+  <string name="powerMenuMain_AirplaneMode">"Řežim letadlo"</string>
+  <string name="powerMenuMain_RestartUI">"Restartovat systémové prostředí"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Reveal">"Ukázat barvu"</string>
+  <string name="colorsType_Circle">"Barevná paleta"</string>
   <!-- Permissions Screen -->
   <!-- Preferences: Colors -->
   <!-- Preferences: Preset Manager -->
