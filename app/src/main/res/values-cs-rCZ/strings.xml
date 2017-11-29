@@ -187,9 +187,22 @@
   <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
   <string name="graphics_Crop">"Oříznutí|Kruhové oříznutí"</string>
   <string name="graphics_NoPresetsFound">"Žádné grafické předvolby nenalezeny..."</string>
+  <string name="downloadHelper_RemainingTime">"[TIME] zbývá"</string>
+  <string name="downloadHelper_Speed">"rychlost: [SPEED]/s"</string>
   <!-- Preferences: Main -->
+  <string name="preferencesCategory_RootXposed">"Root a Xposed"</string>
+  <string name="preferencesCategory_General">"Hlavní"</string>
+  <string name="preferences_Style">"Styl"</string>
+  <string name="preferencesCategory_Other">"Ostatní"</string>
+  <string name="preferencesCategory_About">"O aplikaci"</string>
+  <string name="animations_Type">"Typ"</string>
+  <string name="animations_Speed">"Rychlost"</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
+  <string name="advancedPrefs_HideOnClick">"Schovat po kliknutí"</string>
+  <string name="advancedPrefs_LoadAppIcons">"Nahrát ikony aplikace"</string>
+  <string name="advancedPrefs_LoadAppIconsDesc">"Nahrát ikony aplikace na zástupce."</string>
+  <string name="style_Material">Materiál</string>
   <string name="style_MaterialFullscreen">Material (Celá obrazovka)</string>
   <string name="style_MaterialFullHorizontal">Material (Horizontálně)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Experimentální PhoneWindowManager hook</string>
