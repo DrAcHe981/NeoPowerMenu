@@ -159,6 +159,7 @@
   <string name="presetsManager_Stars">"Hodnocení: [STARS]"</string>
   <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] barvy"</string>
+  <string name="colorsPartDescDialog">"Barvy dialogů po kliknutí na [BUTTON]."</string>
   <string name="colorsPartDescButton">"Barvy [BUTTON] tlačítka."</string>
   <string name="colorsPartPresets">"Předvolby"</string>
   <string name="colorsPartReveal">"Zobrazit"</string>
@@ -189,4 +190,7 @@
   <!-- Preferences: Main -->
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
+  <string name="style_MaterialFullscreen">Material (Celá obrazovka)</string>
+  <string name="style_MaterialFullHorizontal">Material (Horizontálně)</string>
+  <string name="advancedPrefs_ExperimentalPWMHook">Experimentální PhoneWindowManager hook</string>
 </resources>
