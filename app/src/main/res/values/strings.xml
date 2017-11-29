@@ -458,5 +458,6 @@
     <string name="screenrecord_notif_binarynotFound">Could not locate, read, or execute binary file.\nScreen recording might not be supported on your device.</string>
     <string name="advancedPrefsTitle_HideActionDescriptionText">Hide description text in shutdown/reboot action dialog</string>
     <string name="advancedPrefsDesc_HideActionDescriptionText">Hide the \"Shutting down...\" or similar from the shutdown/reboot action dialog.</string>
+    <string name="visibilityOrder_MissingPermissionForNotiPolicy">Missing notification policy permission, please allow it to use this toggle!</string>
 
 </resources>

@@ -20,6 +20,7 @@ import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.DSLV.*;
 import de.NeonSoft.neopowermenu.helpers.*;
+import de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,6 +31,10 @@ import java.util.*;
 public class PreferencesVisibilityOrderFragment extends Fragment {
 
     public static Activity mContext;
+    public static int visibilityOrderPermissionRequest_Id = -1;
+    public static int visibilityOrderPermissionRequest = 103;
+    public static int AddItemMode_NEW = 1;
+    public static int AddItemMode_REPLACE = 2;
     public static ShortcutHandler mShortcutHandler;
 
     PackageManager pm;
@@ -64,36 +69,36 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
     public static ArrayList<String> SelectedPowerMenuItems = new ArrayList<>();
     public static ArrayList<String> SelectedPowerMenuItemsTexts = new ArrayList<>();
     public static String[] PowerMenuItems = new String[]{
-            "Empty",
-            "Shutdown",
-            "Reboot",
-            "SoftReboot",
-            "Screenshot",
-            "Screenrecord",
-            "Flashlight",
-            "ExpandedDesktop",
-            "AirplaneMode",
-            "RestartUI",
-            "SoundMode",
-            "Recovery",
-            "Bootloader",
-            "SafeMode",
-            "SoundVibrate",
-            "SoundNormal",
-            "SoundSilent",
-            "KillApp",
-            "AppShortcut",
-            "ToggleRotate",
-            "MediaPrevious",
-            "MediaPlayPause",
-            "MediaNext",
-            "ToggleWifi",
-            "ToggleBluetooth",
-            "ToggleData",
-            "RebootFlashMode",
-            "LockPhone",
-            "SilentMode",
-            "Shortcut"};
+            "Empty", // 0
+            "Shutdown", // 1
+            "Reboot", // 2
+            "SoftReboot", // 3
+            "Screenshot", // 4
+            "Screenrecord", // 5
+            "Flashlight", // 6
+            "ExpandedDesktop", // 7
+            "AirplaneMode", // 8
+            "RestartUI", // 9
+            "SoundMode", // 10
+            "Recovery", // 11
+            "Bootloader", // 12
+            "SafeMode", // 13
+            "SoundVibrate", // 14
+            "SoundNormal", // 15
+            "SoundSilent", // 16
+            "KillApp", // 17
+            "AppShortcut", // 18
+            "ToggleRotate", // 19
+            "MediaPrevious", // 20
+            "MediaPlayPause", // 21
+            "MediaNext", // 22
+            "ToggleWifi", // 23
+            "ToggleBluetooth", // 24
+            "ToggleData", // 25
+            "RebootFlashMode", // 26
+            "LockPhone", // 27
+            "SilentMode", // 28
+            "Shortcut"}; // 29
     public static String[] PowerMenuItemsTexts;
 
     private DragSortListView.DropListener onDrop =
@@ -253,321 +258,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
 
             @Override
             public void onClick(View p1) {
-                slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
-                dialogFragment.setContext(getActivity());
-                dialogFragment.setFragmentManager(MainActivity.fragmentManager);
-                dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
-
-                    @Override
-                    public void onListItemClick(int position, String text) {
-
-                        if (position == 0) {
-                            final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
-                            dialogFragment.setContext(getActivity());
-                            dialogFragment.setFragmentManager(MainActivity.fragmentManager);
-                            dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
-
-                                @Override
-                                public void onListItemClick(int position, String text) {
-                                    String[] FinalPowerMenuItems;
-                                    if (FilteredPowerMenuItems.isEmpty()) {
-                                        FinalPowerMenuItems = PowerMenuItems;
-                                    } else {
-                                        FinalPowerMenuItems = FilteredPowerMenuItems.toArray(new String[]{});
-                                    }
-                                    if (FinalPowerMenuItems[position].equals("AppShortcut")) {
-                                        showLoadingDialog("apps");
-                                        MenuItemHolder item = new MenuItemHolder();
-                                        item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
-                                        loadAppsTask = new loadApps().execute(item, -1);
-                                    } else if (FinalPowerMenuItems[position].equals("Shortcut")) {
-                                        showLoadingDialog("shortcuts");
-                                        MenuItemHolder item = new MenuItemHolder();
-                                        item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
-                                        loadShortcutsTask = new loadShortcuts().execute(item, -1);
-                                    } else {
-                                        MenuItemHolder item = new MenuItemHolder();
-                                        item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
-                                        item.setTitle(FinalPowerMenuItems[position], "","");
-                                        item.setText("","","");
-                                        if (FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[7])) {
-                                            if (!helper.isAppInstalled(mContext, "com.ceco.gm2.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.kitkat.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.lollipop.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.marshmallow.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.nougat.gravitybox")) {
-
-                                                slideDownDialogFragment NoGravityBox = new slideDownDialogFragment();
-                                                NoGravityBox.setContext(getActivity());
-                                                NoGravityBox.setFragmentManager(MainActivity.fragmentManager);
-                                                NoGravityBox.setText(getString(R.string.visibilityOrder_NoGravityBoxFound));
-                                                NoGravityBox.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
-                                                NoGravityBox.showDialog(R.id.dialog_container);
-                                            }
-                                        }
-                                        adapter.addItem(item);
-                                    }
-                                }
-
-                                @Override
-                                public void onNegativeClick() {
-
-                                }
-
-                                @Override
-                                public void onNeutralClick() {
-
-                                }
-
-                                @Override
-                                public void onPositiveClick(Bundle resultBundle) {
-
-                                }
-
-                                @Override
-                                public void onTouchOutside() {
-
-                                }
-                            });
-                            dialogFragment.addInput(getString(R.string.visibilityOrder_FilterItemsList), "", true, new TextWatcher() {
-
-                                @Override
-                                public void afterTextChanged(Editable p1) {
-
-                                }
-
-                                @Override
-                                public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
-
-                                }
-
-                                @Override
-                                public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
-                                    FilteredPowerMenuItems.clear();
-                                    FilteredPowerMenuItemsTexts.clear();
-                                    if (p1.toString().isEmpty()) {
-                                        dialogFragment.setList(ListView.CHOICE_MODE_NONE, PowerMenuItemsTexts, -1, true);
-                                    } else {
-                                        for (int x = 0; x < PowerMenuItems.length; x++) {
-                                            if (PowerMenuItemsTexts[x].toLowerCase().contains(p1.toString().toLowerCase())) {
-                                                FilteredPowerMenuItems.add(PowerMenuItems[x]);
-                                                FilteredPowerMenuItemsTexts.add(PowerMenuItemsTexts[x]);
-                                            }
-                                        }
-                                        dialogFragment.setList(ListView.CHOICE_MODE_NONE, FilteredPowerMenuItemsTexts, -1, true);
-                                    }
-                                }
-                            });
-                            dialogFragment.setList(ListView.CHOICE_MODE_NONE, PowerMenuItemsTexts, 0, true);
-                            dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                            dialogFragment.showDialog(R.id.dialog_container);
-                        } else if (position == 1) {
-                            final ArrayList<String> AddPowerMenuItems = new ArrayList<>();
-                            final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
-                            dialogFragment.setContext(getActivity());
-                            dialogFragment.setFragmentManager(MainActivity.fragmentManager);
-                            dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
-
-                                @Override
-                                public void onListItemClick(int position, String text) {
-                                    if (FilteredPowerMenuItems.isEmpty()) {
-                                        if (dialogFragment.getListItemChecked(position)) {
-                                            AddPowerMenuItems.add(PowerMenuItems[position]);
-                                        } else {
-                                            AddPowerMenuItems.remove(PowerMenuItems[position]);
-                                        }
-                                    } else {
-                                        if (dialogFragment.getListItemChecked(position)) {
-                                            AddPowerMenuItems.add(FilteredPowerMenuItems.get(position));
-                                        } else {
-                                            AddPowerMenuItems.remove(FilteredPowerMenuItems.get(position));
-                                        }
-                                    }
-                                }
-
-                                @Override
-                                public void onNegativeClick() {
-
-                                }
-
-                                @Override
-                                public void onNeutralClick() {
-
-                                }
-
-                                @Override
-                                public void onPositiveClick(Bundle resultBundle) {
-                                    if (resultBundle != null) {
-                                        MenuItemHolder item = new MenuItemHolder();
-                                        item.setType(visibilityOrder_ListAdapter.TYPE_MULTI);
-                                        item.setTitle(AddPowerMenuItems.get(0), (AddPowerMenuItems.size() > 1 ? AddPowerMenuItems.get(1) : ""), (AddPowerMenuItems.size() > 2 ? AddPowerMenuItems.get(2) : ""));
-                                        item.setText("","","");
-                                        adapter.addItem(item);
-                                    }
-                                }
-
-                                @Override
-                                public void onTouchOutside() {
-
-                                }
-                            });
-                            dialogFragment.addInput(getString(R.string.visibilityOrder_FilterItemsList), "", true, new TextWatcher() {
-
-                                @Override
-                                public void afterTextChanged(Editable p1) {
-
-                                }
-
-                                @Override
-                                public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
-
-                                }
-
-                                @Override
-                                public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
-                                    FilteredPowerMenuItems.clear();
-                                    FilteredPowerMenuItemsTexts.clear();
-                                    FilteredCheckedItems.clear();
-                                    if (p1.toString().isEmpty()) {
-                                        for (int x = 0; x < PowerMenuItems.length; x++) {
-                                            for (int z = 0; z < AddPowerMenuItems.size(); z++) {
-                                                FilteredCheckedItems.add(false);
-                                                if (AddPowerMenuItems.get(z).equalsIgnoreCase(PowerMenuItems[x])) {
-                                                    FilteredCheckedItems.set(x, true);
-                                                }
-                                            }
-                                        }
-                                        dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, PowerMenuItemsTexts, -1, false);
-                                        dialogFragment.setListChecks(FilteredCheckedItems);
-                                    } else {
-                                        for (int x = 0; x < PowerMenuItems.length; x++) {
-                                            if (PowerMenuItemsTexts[x].toLowerCase().contains(p1.toString().toLowerCase())) {
-                                                FilteredPowerMenuItems.add(PowerMenuItems[x]);
-                                                FilteredPowerMenuItemsTexts.add(PowerMenuItemsTexts[x]);
-                                                FilteredCheckedItems.add(false);
-                                                for (int z = 0; z < AddPowerMenuItems.size(); z++) {
-                                                    if (AddPowerMenuItems.get(z).equalsIgnoreCase(PowerMenuItems[x])) {
-                                                        FilteredCheckedItems.set(FilteredCheckedItems.size() - 1, true);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, FilteredPowerMenuItemsTexts, -1, false);
-                                        dialogFragment.setListChecks(FilteredCheckedItems);
-                                    }
-                                }
-                            });
-                            //dialogFragment.setText(getString(R.string.visibilityOrder_SelectMulti));
-                            dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, -1, false);
-                            dialogFragment.setListLimit(3, false);
-                            dialogFragment.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                            dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
-                            dialogFragment.showDialog(R.id.dialog_container);
-                        } else if (position == 2) {
-                            final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
-                            dialogFragment.setContext(getActivity());
-                            dialogFragment.setFragmentManager(MainActivity.fragmentManager);
-                            dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
-
-                                @Override
-                                public void onListItemClick(int position, String text) {
-
-                                    String[] FinalPowerMenuItems;
-                                    if (FilteredPowerMenuItems.isEmpty()) {
-                                        FinalPowerMenuItems = PowerMenuItems;
-                                    } else {
-                                        FinalPowerMenuItems = FilteredPowerMenuItems.toArray(new String[]{});
-                                    }
-                                    Date date = new Date();
-                                    String groupName = helper.md5Crypto(date.getDay() + "." + date.getMonth() + "." + date.getYear() + "/" + date.getHours() + ":" + date.getMinutes() + ":" + date.getMinutes() + ":" + date.getSeconds());
-                                    MenuItemHolder item = new MenuItemHolder();
-                                    item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START);
-                                    item.setTitle(groupName,"","");
-                                    adapter.addItem(item);
-                                    item = new MenuItemHolder();
-                                    item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
-                                    item.setTitle(FinalPowerMenuItems[position],"","");
-                                    adapter.addItem(item);
-                                    item = new MenuItemHolder();
-                                    item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END);
-                                    item.setTitle(groupName,"","");
-                                    adapter.addItem(item);
-                                }
-
-                                @Override
-                                public void onNegativeClick() {
-
-                                }
-
-                                @Override
-                                public void onNeutralClick() {
-
-                                }
-
-                                @Override
-                                public void onPositiveClick(Bundle resultBundle) {
-
-                                }
-
-                                @Override
-                                public void onTouchOutside() {
-
-                                }
-                            });
-                            dialogFragment.addInput(getString(R.string.visibilityOrder_FilterItemsList), "", true, new TextWatcher() {
-
-                                @Override
-                                public void afterTextChanged(Editable p1) {
-
-                                }
-
-                                @Override
-                                public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
-
-                                }
-
-                                @Override
-                                public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
-                                    FilteredPowerMenuItems.clear();
-                                    FilteredPowerMenuItemsTexts.clear();
-                                    if (p1.toString().isEmpty()) {
-                                        dialogFragment.setList(ListView.CHOICE_MODE_NONE, PowerMenuItemsTexts, -1, true);
-                                    } else {
-                                        for (int x = 0; x < PowerMenuItems.length; x++) {
-                                            if (PowerMenuItemsTexts[x].toLowerCase().contains(p1.toString().toLowerCase())) {
-                                                FilteredPowerMenuItems.add(PowerMenuItems[x]);
-                                                FilteredPowerMenuItemsTexts.add(PowerMenuItemsTexts[x]);
-                                            }
-                                        }
-                                        dialogFragment.setList(ListView.CHOICE_MODE_NONE, FilteredPowerMenuItemsTexts, -1, true);
-                                    }
-                                }
-                            });
-                            dialogFragment.setList(ListView.CHOICE_MODE_NONE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, 0, true);
-                            dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                            dialogFragment.showDialog(R.id.dialog_container);
-                        }
-                    }
-
-                    @Override
-                    public void onNegativeClick() {
-
-                    }
-
-                    @Override
-                    public void onNeutralClick() {
-
-                    }
-
-                    @Override
-                    public void onPositiveClick(Bundle resultBundle) {
-
-                    }
-
-                    @Override
-                    public void onTouchOutside() {
-
-                    }
-                });
-                dialogFragment.setList(ListView.CHOICE_MODE_NONE, getString(R.string.visibilityOrder_AddItem).split("\\|"), -1, true);
-                dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                dialogFragment.showDialog(R.id.dialog_container);
+                showAddItemDialog(AddItemMode_NEW, 1, -1);
             }
         });
         if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
@@ -575,6 +266,398 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         }
 
         return InflatedView;
+    }
+
+    public static void showAddItemDialog(final int addItemMode, final int itemSpace, final int addItemPosition) {
+        slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+        dialogFragment.setContext(mContext);
+        dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+        dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+            @Override
+            public void onListItemClick(int position, String text) {
+                if (position == 0) {
+                    showAddSingleItemDialog(addItemMode, itemSpace, addItemPosition);
+                } else if (position == 1) {
+                    showAddMultiItemDialog(addItemMode, itemSpace, addItemPosition);
+                } else if (position == 2) {
+                    final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    dialogFragment.setContext(mContext);
+                    dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                    dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+                        @Override
+                        public void onListItemClick(int position, String text) {
+
+                            String[] FinalPowerMenuItems;
+                            if (FilteredPowerMenuItems.isEmpty()) {
+                                FinalPowerMenuItems = PowerMenuItems;
+                            } else {
+                                FinalPowerMenuItems = FilteredPowerMenuItems.toArray(new String[]{});
+                            }
+                            Date date = new Date();
+                            String groupName = helper.md5Crypto(date.getDay() + "." + date.getMonth() + "." + date.getYear() + "/" + date.getHours() + ":" + date.getMinutes() + ":" + date.getMinutes() + ":" + date.getSeconds());
+                            MenuItemHolder item = new MenuItemHolder();
+                            item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START);
+                            item.setTitle(groupName,"","");
+                            adapter.addItem(item);
+                            item = new MenuItemHolder();
+                            item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
+                            item.setTitle(FinalPowerMenuItems[position],"","");
+                            adapter.addItem(item);
+                            item = new MenuItemHolder();
+                            item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END);
+                            item.setTitle(groupName,"","");
+                            adapter.addItem(item);
+                        }
+
+                        @Override
+                        public void onNegativeClick() {
+
+                        }
+
+                        @Override
+                        public void onNeutralClick() {
+
+                        }
+
+                        @Override
+                        public void onPositiveClick(Bundle resultBundle) {
+
+                        }
+
+                        @Override
+                        public void onTouchOutside() {
+
+                        }
+                    });
+                    dialogFragment.addInput(mContext.getString(R.string.visibilityOrder_FilterItemsList), "", true, new TextWatcher() {
+
+                        @Override
+                        public void afterTextChanged(Editable p1) {
+
+                        }
+
+                        @Override
+                        public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
+                            FilteredPowerMenuItems.clear();
+                            FilteredPowerMenuItemsTexts.clear();
+                            if (p1.toString().isEmpty()) {
+                                dialogFragment.setList(ListView.CHOICE_MODE_NONE, PowerMenuItemsTexts, -1, true);
+                            } else {
+                                for (int x = 0; x < PowerMenuItems.length; x++) {
+                                    if (PowerMenuItemsTexts[x].toLowerCase().contains(p1.toString().toLowerCase())) {
+                                        FilteredPowerMenuItems.add(PowerMenuItems[x]);
+                                        FilteredPowerMenuItemsTexts.add(PowerMenuItemsTexts[x]);
+                                    }
+                                }
+                                dialogFragment.setList(ListView.CHOICE_MODE_NONE, FilteredPowerMenuItemsTexts, -1, true);
+                            }
+                        }
+                    });
+                    dialogFragment.setList(ListView.CHOICE_MODE_NONE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, 0, true);
+                    dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+                    dialogFragment.showDialog(R.id.dialog_container);
+                }
+            }
+
+            @Override
+            public void onNegativeClick() {
+
+            }
+
+            @Override
+            public void onNeutralClick() {
+
+            }
+
+            @Override
+            public void onPositiveClick(Bundle resultBundle) {
+
+            }
+
+            @Override
+            public void onTouchOutside() {
+
+            }
+        });
+        dialogFragment.setList(ListView.CHOICE_MODE_NONE, mContext.getString(R.string.visibilityOrder_AddItem).split("\\|"), -1, true);
+        dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+        dialogFragment.showDialog(R.id.dialog_container);
+    }
+    public static void showAddSingleItemDialog(final int addItemMode, final int itemSpace, final int addItemPosition) {
+        final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+        dialogFragment.setContext(mContext);
+        dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+        dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+            @Override
+            public void onListItemClick(int position, String text) {
+                String[] FinalPowerMenuItems;
+                if (FilteredPowerMenuItems.isEmpty()) {
+                    FinalPowerMenuItems = PowerMenuItems;
+                } else {
+                    FinalPowerMenuItems = FilteredPowerMenuItems.toArray(new String[]{});
+                }
+                if (FinalPowerMenuItems[position].equals("AppShortcut")) {
+                    showLoadingDialog("apps");
+                    MenuItemHolder item;
+                    if (addItemMode==AddItemMode_NEW) {
+                        item = new MenuItemHolder();
+                        item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
+                    } else {
+                        item = adapter.getItem(addItemPosition);
+                    }
+                    if (item.getType()==visibilityOrder_ListAdapter.TYPE_MULTI) {
+                        if (itemSpace==1) {
+                            item.setTitle("[THIS]", item.getTitle(2), item.getTitle(3));
+                            item.setText("", item.getText(2), item.getText(3));
+                            item.setShortcutUri("", item.getShortcutUri(2), item.getShortcutUri(3));
+                        } else if (itemSpace==2) {
+                            item.setTitle(item.getTitle(1), "[THIS]", item.getTitle(3));
+                            item.setText(item.getText(1), "", item.getText(3));
+                            item.setShortcutUri(item.getShortcutUri(1), "", item.getShortcutUri(3));
+                        } else if (itemSpace==3) {
+                            item.setTitle(item.getTitle(1), item.getTitle(2), "[THIS]");
+                            item.setText(item.getText(1), item.getText(2), "");
+                            item.setShortcutUri(item.getShortcutUri(1), item.getShortcutUri(2), "");
+                        }
+                    }
+                    loadAppsTask = new loadApps().execute(item, addItemMode==AddItemMode_NEW ? -1 : addItemPosition);
+                } else if (FinalPowerMenuItems[position].equals("Shortcut")) {
+                    showLoadingDialog("shortcuts");
+                    MenuItemHolder item;
+                    if (addItemMode==AddItemMode_NEW) {
+                        item = new MenuItemHolder();
+                        item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
+                    } else {
+                        item = adapter.getItem(addItemPosition);
+                    }
+                    if (item.getType()==visibilityOrder_ListAdapter.TYPE_MULTI) {
+                        if (itemSpace==1) {
+                            item.setTitle("[THIS]", item.getTitle(2), item.getTitle(3));
+                            item.setText("", item.getText(2), item.getText(3));
+                            item.setShortcutUri("", item.getShortcutUri(2), item.getShortcutUri(3));
+                        } else if (itemSpace==2) {
+                            item.setTitle(item.getTitle(1), "[THIS]", item.getTitle(3));
+                            item.setText(item.getText(1), "", item.getText(3));
+                            item.setShortcutUri(item.getShortcutUri(1), "", item.getShortcutUri(3));
+                        } else if (itemSpace==3) {
+                            item.setTitle(item.getTitle(1), item.getTitle(2), "[THIS]");
+                            item.setText(item.getText(1), item.getText(2), "");
+                            item.setShortcutUri(item.getShortcutUri(1), item.getShortcutUri(2), "");
+                        }
+                    }
+                    loadShortcutsTask = new loadShortcuts().execute(item, addItemMode==AddItemMode_NEW ? -1 : addItemPosition);
+                } else {
+                    MenuItemHolder item;
+                    if (addItemMode==AddItemMode_NEW) {
+                        item = new MenuItemHolder();
+                        item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
+                    } else {
+                        item = adapter.getItemAt(addItemPosition);
+                    }
+                    if (itemSpace==1) {
+                        item.setTitle(FinalPowerMenuItems[position], item.getTitle(2), item.getTitle(3));
+                        item.setText("", item.getText(2), item.getText(3));
+                        item.setShortcutUri("", item.getShortcutUri(2), item.getShortcutUri(3));
+                    } else if (itemSpace==2) {
+                        item.setTitle(item.getTitle(1), FinalPowerMenuItems[position], item.getTitle(3));
+                        item.setText(item.getText(1), "", item.getText(3));
+                        item.setShortcutUri(item.getShortcutUri(1), "", item.getShortcutUri(3));
+                    } else if (itemSpace==3) {
+                        item.setTitle(item.getTitle(1), item.getTitle(2), FinalPowerMenuItems[position]);
+                        item.setText(item.getText(1), item.getText(2), "");
+                        item.setShortcutUri(item.getShortcutUri(1), item.getShortcutUri(2), "");
+                    }
+                    if (FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[7])) {
+                        if (!helper.isAppInstalled(mContext, "com.ceco.gm2.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.kitkat.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.lollipop.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.marshmallow.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.nougat.gravitybox")) {
+
+                            slideDownDialogFragment NoGravityBox = new slideDownDialogFragment();
+                            NoGravityBox.setContext(mContext);
+                            NoGravityBox.setFragmentManager(MainActivity.fragmentManager);
+                            NoGravityBox.setText(mContext.getString(R.string.visibilityOrder_NoGravityBoxFound));
+                            NoGravityBox.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                            NoGravityBox.showDialog(R.id.dialog_container);
+                        }
+                    }
+                    if (addItemMode==AddItemMode_NEW) {
+                        adapter.addItem(item);
+                    } else {
+                        adapter.removeAt(addItemPosition);
+                        adapter.insertAt(addItemPosition, item);
+                    }
+                    if (FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[10]) || FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[16]) || FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[28])) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !MainActivity.notificationManager.isNotificationPolicyAccessGranted()) {
+                            visibilityOrderPermissionRequest_Id = adapter.getCount();
+                            Toast.makeText(mContext, mContext.getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                            mContext.startActivityForResult(intent, visibilityOrderPermissionRequest);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onNegativeClick() {
+
+            }
+
+            @Override
+            public void onNeutralClick() {
+
+            }
+
+            @Override
+            public void onPositiveClick(Bundle resultBundle) {
+
+            }
+
+            @Override
+            public void onTouchOutside() {
+
+            }
+        });
+        dialogFragment.addInput(mContext.getString(R.string.visibilityOrder_FilterItemsList), "", true, new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable p1) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
+                FilteredPowerMenuItems.clear();
+                FilteredPowerMenuItemsTexts.clear();
+                if (p1.toString().isEmpty()) {
+                    dialogFragment.setList(ListView.CHOICE_MODE_NONE, PowerMenuItemsTexts, -1, true);
+                } else {
+                    for (int x = 0; x < PowerMenuItems.length; x++) {
+                        if (PowerMenuItemsTexts[x].toLowerCase().contains(p1.toString().toLowerCase())) {
+                            FilteredPowerMenuItems.add(PowerMenuItems[x]);
+                            FilteredPowerMenuItemsTexts.add(PowerMenuItemsTexts[x]);
+                        }
+                    }
+                    dialogFragment.setList(ListView.CHOICE_MODE_NONE, FilteredPowerMenuItemsTexts, -1, true);
+                }
+            }
+        });
+        dialogFragment.setList(ListView.CHOICE_MODE_NONE, PowerMenuItemsTexts, 0, true);
+        dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+        dialogFragment.showDialog(R.id.dialog_container);
+    }
+    public static void showAddMultiItemDialog(final int addItemMode, final int itemSpace, final int addItemPosition) {
+        final ArrayList<String> AddPowerMenuItems = new ArrayList<>();
+        final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+        dialogFragment.setContext(mContext);
+        dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+        dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+            @Override
+            public void onListItemClick(int position, String text) {
+                if (FilteredPowerMenuItems.isEmpty()) {
+                    if (dialogFragment.getListItemChecked(position)) {
+                        AddPowerMenuItems.add(PowerMenuItems[position]);
+                    } else {
+                        AddPowerMenuItems.remove(PowerMenuItems[position]);
+                    }
+                } else {
+                    if (dialogFragment.getListItemChecked(position)) {
+                        AddPowerMenuItems.add(FilteredPowerMenuItems.get(position));
+                    } else {
+                        AddPowerMenuItems.remove(FilteredPowerMenuItems.get(position));
+                    }
+                }
+            }
+
+            @Override
+            public void onNegativeClick() {
+
+            }
+
+            @Override
+            public void onNeutralClick() {
+
+            }
+
+            @Override
+            public void onPositiveClick(Bundle resultBundle) {
+                if (resultBundle != null) {
+                    MenuItemHolder item = new MenuItemHolder();
+                    item.setType(visibilityOrder_ListAdapter.TYPE_MULTI);
+                    item.setTitle(AddPowerMenuItems.get(0), (AddPowerMenuItems.size() > 1 ? AddPowerMenuItems.get(1) : ""), (AddPowerMenuItems.size() > 2 ? AddPowerMenuItems.get(2) : ""));
+                    item.setText("","","");
+                    adapter.addItem(item);
+                }
+            }
+
+            @Override
+            public void onTouchOutside() {
+
+            }
+        });
+        dialogFragment.addInput(mContext.getString(R.string.visibilityOrder_FilterItemsList), "", true, new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable p1) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence p1, int p2, int p3, int p4) {
+                FilteredPowerMenuItems.clear();
+                FilteredPowerMenuItemsTexts.clear();
+                FilteredCheckedItems.clear();
+                if (p1.toString().isEmpty()) {
+                    for (int x = 0; x < PowerMenuItems.length; x++) {
+                        for (int z = 0; z < AddPowerMenuItems.size(); z++) {
+                            FilteredCheckedItems.add(false);
+                            if (AddPowerMenuItems.get(z).equalsIgnoreCase(PowerMenuItems[x])) {
+                                FilteredCheckedItems.set(x, true);
+                            }
+                        }
+                    }
+                    dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, PowerMenuItemsTexts, -1, false);
+                    dialogFragment.setListChecks(FilteredCheckedItems);
+                } else {
+                    for (int x = 0; x < PowerMenuItems.length; x++) {
+                        if (PowerMenuItemsTexts[x].toLowerCase().contains(p1.toString().toLowerCase())) {
+                            FilteredPowerMenuItems.add(PowerMenuItems[x]);
+                            FilteredPowerMenuItemsTexts.add(PowerMenuItemsTexts[x]);
+                            FilteredCheckedItems.add(false);
+                            for (int z = 0; z < AddPowerMenuItems.size(); z++) {
+                                if (AddPowerMenuItems.get(z).equalsIgnoreCase(PowerMenuItems[x])) {
+                                    FilteredCheckedItems.set(FilteredCheckedItems.size() - 1, true);
+                                }
+                            }
+                        }
+                    }
+                    dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, FilteredPowerMenuItemsTexts, -1, false);
+                    dialogFragment.setListChecks(FilteredCheckedItems);
+                }
+            }
+        });
+        //dialogFragment.setText(getString(R.string.visibilityOrder_SelectMulti));
+        dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, -1, false);
+        dialogFragment.setListLimit(3, false);
+        dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+        dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+        dialogFragment.showDialog(R.id.dialog_container);
     }
 
     public static void showLoadingDialog(final String mode) {
@@ -624,13 +707,22 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         }
     }
 
+    public static void receivedPermissionResult(int resultCode) {
+        if (resultCode == Activity.RESULT_OK) {
+
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+
+        }
+    }
+
     public static class loadApps extends AsyncTask<Object, String, String> {
 
         PackageManager pm;
         MenuItemHolder item;
         //int type;
         int rechoice = -1;
-        String result;
+        int itemSpace = 1;
+        //String result;
 
         @Override
         protected void onPreExecute() {
@@ -643,7 +735,16 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         @Override
         protected String doInBackground(Object... strings) {
             item = (MenuItemHolder) strings[0];
-            result = item.getTitle(1) + "|" + item.getTitle(2) + "|" + item.getTitle(3);
+            //result = item.getTitle(1) + "|" + item.getTitle(2) + "|" + item.getTitle(3);
+            if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTI) {
+                if (item.getTitle(1).equals("[THIS]")) {
+                    itemSpace = 1;
+                } else if (item.getTitle(2).equals("[THIS]")) {
+                    itemSpace = 2;
+                } else if (item.getTitle(3).equals("[THIS]")) {
+                    itemSpace = 3;
+                }
+            }
             rechoice = (int) strings[1];
             //get a list of installed apps.
             Intent intent = new Intent();
@@ -704,34 +805,21 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     @Override
                     public void onPositiveClick(Bundle resultBundle) {
                         String string;
-                        if (item.getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
-                            if (appsPackagesFiltered.isEmpty()) {
-                                string = appsPackages.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
-                            } else {
-                                string = appsPackagesFiltered.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
-                            }
+                        if (appsPackagesFiltered.isEmpty()) {
+                            string = appsPackages.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
                         } else {
-                            if (appsPackagesFiltered.isEmpty()) {
-                                string = result.replace("[THIS]", appsPackages.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)));
-                            } else {
-                                string = result.replace("[THIS]", appsPackagesFiltered.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)));
-                            }
+                            string = appsPackagesFiltered.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
                         }
-                        MenuItemHolder newItem = new MenuItemHolder();
-                        newItem.setType(item.getType());
-                        if (item.getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
-                            newItem.setTitle(string,"","");
-                        } else {
-                            newItem.setTitle(string.split("\\|")[0],string.split("\\|")[1],string.split("\\|")[2]);
-                        }
-                        newItem.setHideDesc(false);
-                        newItem.setHideOnLockScreen(false);
-                        newItem.setText( "","","");
+                        item.setType(item.getType());
+                        item.setTitle(itemSpace==1 ? string : item.getTitle(1),itemSpace==2 ? string : item.getTitle(2),itemSpace==3 ? string : item.getTitle(3));
+                        //newItem.setHideDesc(false);
+                        //newItem.setHideOnLockScreen(false);
+                        item.setText(itemSpace==1 ? "" : item.getText(1),itemSpace==2 ? "" : item.getText(2),itemSpace==3 ? "" : item.getText(3));
                         if (rechoice != -1) {
                             adapter.removeAt(rechoice);
-                            adapter.insertAt(rechoice, newItem);
+                            adapter.insertAt(rechoice, item);
                         } else {
-                            adapter.addItem(newItem);
+                            adapter.addItem(item);
                         }
                     }
 
@@ -1158,7 +1246,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
 
         @Override
         public void onShortcutCancelled() {
-            Toast.makeText(mContext, "Shortcut creation cancelled", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mContext, "Shortcut creation cancelled", Toast.LENGTH_SHORT).show();
         }
     }
 

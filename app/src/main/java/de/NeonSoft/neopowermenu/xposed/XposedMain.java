@@ -709,16 +709,23 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     }
 
     private static void killLastApp(Context p1) {
-        ActivityManager am = (ActivityManager) p1.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfo = am.getRunningAppProcesses();
-
-        if (DeepXposedLogging) {
-            XposedUtils.log("Trying to kill " + runningAppProcessInfo.get(1).processName + " (" + runningAppProcessInfo.get(1).pid + ")");
-        }
-
-        java.lang.Process suProcess = null;
         try {
-            suProcess = Runtime.getRuntime().exec("am force-stop " + runningAppProcessInfo.get(1).processName);
+            ActivityManager am = (ActivityManager) p1.getSystemService(Context.ACTIVITY_SERVICE);
+            List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfo = am.getRunningAppProcesses();
+
+            int processNumber = 1;
+            do {
+                XposedUtils.log("Skipping killing of " + runningAppProcessInfo.get(processNumber).processName + ", selecting next process...");
+                processNumber += 1;
+            }
+            while (runningAppProcessInfo.get(processNumber).processName.equalsIgnoreCase("com.google.gms.persistent"));
+
+            if (DeepXposedLogging) {
+                XposedUtils.log("Trying to kill " + runningAppProcessInfo.get(processNumber).processName + " (" + runningAppProcessInfo.get(processNumber).pid + ")");
+            }
+
+            java.lang.Process suProcess = null;
+            suProcess = Runtime.getRuntime().exec("am force-stop " + runningAppProcessInfo.get(processNumber).processName);
             DataOutputStream os = new DataOutputStream(suProcess.getOutputStream());
             os.writeBytes("" + "\n");
             os.flush();

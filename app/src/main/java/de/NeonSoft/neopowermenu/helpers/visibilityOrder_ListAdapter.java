@@ -53,7 +53,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                 if (string.contains(".")) {
                     try {
                         string = pm.getApplicationInfo(string.split("/")[0], 0).loadLabel(pm).toString();
-                    } catch (PackageManager.NameNotFoundException e) {
+                    } catch (PackageManager.NameNotFoundException ignored) {
                     }
                 } else {
                     try {
@@ -61,7 +61,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     } catch (Throwable t) {
                         try {
                             string = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuBottom_" + items.get(position).getTitle(1), "string", MainActivity.class.getPackage().getName()));
-                        } catch (Throwable t1) {
+                        } catch (Throwable ignored) {
                         }
                     }
                 }
@@ -79,7 +79,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     HideDescription.setVisibility(items.get(position).getHideDesc() ? View.GONE : View.VISIBLE);
                     hasDescription = true;
                 }
-            } catch (Throwable t) {
+            } catch (Throwable ignored) {
             }
             HideOnLockscreen.setVisibility(items.get(position).getHideOnLockScreen() ? View.GONE : View.VISIBLE);
             LockedWithPassword.setVisibility(items.get(position).getLockedWithPassword() ? View.VISIBLE : View.GONE);
@@ -88,7 +88,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
                 @Override
                 public void onClick(View p1) {
-                    final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    /*final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                     dialogFragment.setContext(mContext);
                     dialogFragment.setFragmentManager(MainActivity.fragmentManager);
                     dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
@@ -170,7 +170,8 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     });
                     dialogFragment.setList(ListView.CHOICE_MODE_NONE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, -1, true);
                     dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                    dialogFragment.showDialog(R.id.dialog_container);
+                    dialogFragment.showDialog(R.id.dialog_container);*/
+                    PreferencesVisibilityOrderFragment.showAddSingleItemDialog(PreferencesVisibilityOrderFragment.AddItemMode_REPLACE, 1, position);
                 }
             });
 
@@ -195,7 +196,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                 if (string.contains(".")) {
                     try {
                         string = pm.getApplicationInfo(string.split("/")[0], 0).loadLabel(pm).toString();
-                    } catch (PackageManager.NameNotFoundException e) {
+                    } catch (PackageManager.NameNotFoundException ignored) {
                     }
                 } else {
                     try {
@@ -203,7 +204,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     } catch (Throwable t) {
                         try {
                             string = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuBottom_" + items.get(position).getTitle(1), "string", MainActivity.class.getPackage().getName()));
-                        } catch (Throwable t1) {
+                        } catch (Throwable ignored) {
                         }
                     }
                 }
@@ -221,7 +222,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     if (string2.contains(".")) {
                         try {
                             string2 = pm.getApplicationInfo(string2.split("/")[0], 0).loadLabel(pm).toString();
-                        } catch (PackageManager.NameNotFoundException e) {
+                        } catch (PackageManager.NameNotFoundException ignored) {
                         }
                     } else {
                         try {
@@ -229,7 +230,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                         } catch (Throwable t) {
                             try {
                                 string2 = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuBottom_" + items.get(position).getTitle(2), "string", MainActivity.class.getPackage().getName()));
-                            } catch (Throwable t1) {
+                            } catch (Throwable ignored) {
                             }
                         }
                     }
@@ -250,7 +251,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     if (string3.contains(".")) {
                         try {
                             string3 = pm.getApplicationInfo(string3.split("/")[0], 0).loadLabel(pm).toString();
-                        } catch (PackageManager.NameNotFoundException e) {
+                        } catch (PackageManager.NameNotFoundException ignored) {
                         }
                     } else {
                         try {
@@ -258,7 +259,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                         } catch (Throwable t) {
                             try {
                                 string3 = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuBottom_" + items.get(position).getTitle(3), "string", MainActivity.class.getPackage().getName()));
-                            } catch (Throwable t1) {
+                            } catch (Throwable ignored) {
                             }
                         }
                     }
@@ -272,7 +273,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
                 @Override
                 public void onClick(View p1) {
-                    final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    /*final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                     dialogFragment.setContext(mContext);
                     dialogFragment.setFragmentManager(MainActivity.fragmentManager);
                     dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
@@ -361,14 +362,15 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     });
                     dialogFragment.setList(ListView.CHOICE_MODE_NONE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, -1, true);
                     dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                    dialogFragment.showDialog(R.id.dialog_container);
+                    dialogFragment.showDialog(R.id.dialog_container);*/
+                    PreferencesVisibilityOrderFragment.showAddSingleItemDialog(PreferencesVisibilityOrderFragment.AddItemMode_REPLACE, 1, position);
                 }
             });
             item2.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View p1) {
-                    final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    /*final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                     dialogFragment.setContext(mContext);
                     dialogFragment.setFragmentManager(MainActivity.fragmentManager);
                     dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
@@ -457,14 +459,15 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     });
                     dialogFragment.setList(ListView.CHOICE_MODE_NONE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, -1, true);
                     dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                    dialogFragment.showDialog(R.id.dialog_container);
+                    dialogFragment.showDialog(R.id.dialog_container);*/
+                    PreferencesVisibilityOrderFragment.showAddSingleItemDialog(PreferencesVisibilityOrderFragment.AddItemMode_REPLACE, 2, position);
                 }
             });
             item3.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View p1) {
-                    final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    /*final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                     dialogFragment.setContext(mContext);
                     dialogFragment.setFragmentManager(MainActivity.fragmentManager);
                     dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
@@ -553,7 +556,8 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     });
                     dialogFragment.setList(ListView.CHOICE_MODE_NONE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, -1, true);
                     dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                    dialogFragment.showDialog(R.id.dialog_container);
+                    dialogFragment.showDialog(R.id.dialog_container);*/
+                    PreferencesVisibilityOrderFragment.showAddSingleItemDialog(PreferencesVisibilityOrderFragment.AddItemMode_REPLACE, 3, position);
                 }
             });
 

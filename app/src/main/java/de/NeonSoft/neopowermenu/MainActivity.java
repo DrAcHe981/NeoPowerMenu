@@ -1,6 +1,7 @@
 package de.NeonSoft.neopowermenu;
 
 import android.app.*;
+import android.app.admin.DevicePolicyManager;
 import android.content.*;
 import android.content.pm.*;
 import android.content.res.*;
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     public static String ForcedLanguage = "System";
     public static Context context;
     public static Activity activity;
+    public static DevicePolicyManager devicePolicyManager;
+    public static NotificationManager notificationManager;
     public static IBinder windowToken;
     public static LayoutInflater inflater;
     public static boolean RootAvailable;
@@ -105,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
         CustomActivityOnCrash.install(getApplicationContext());
         CustomActivityOnCrash.setRestartActivityClass(MainActivity.class);
         ACRA.init(getApplication());
+
+        devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         SettingsManager.getInstance(this).fixFolderPermissionsAsync();
 
@@ -347,7 +353,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == permissionsScreen.RESULT_ENABLE_ADMIN || requestCode == permissionsScreen.MY_PERMISSIONS_REQUEST) {
+        if (requestCode == PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest) {
+            PreferencesVisibilityOrderFragment.receivedPermissionResult(resultCode);
+        } else if(requestCode == permissionsScreen.RESULT_ENABLE_ADMIN || requestCode == permissionsScreen.MY_PERMISSIONS_REQUEST) {
             permissionsScreen.adapter.notifyDataSetChanged();
         } else if (requestCode == PreferencesVisibilityOrderFragment.REQ_OBTAIN_SHORTCUT && PreferencesVisibilityOrderFragment.mShortcutHandler != null) {
             if (resultCode == Activity.RESULT_OK) {

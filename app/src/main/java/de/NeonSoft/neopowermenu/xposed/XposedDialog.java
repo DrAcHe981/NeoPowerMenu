@@ -566,7 +566,7 @@ public class XposedDialog extends DialogFragment {
         if (!title.equalsIgnoreCase("Empty")) {
             String string = title;
             if (customText.isEmpty()) {
-                if (string.contains(".")) {
+                if (string.contains(".") && string.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
                     try {
                         string = pm.getApplicationInfo(string.split("/")[0], 0).loadLabel(pm).toString();
@@ -664,17 +664,18 @@ public class XposedDialog extends DialogFragment {
         text.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(1).equalsIgnoreCase("Empty")) {
-            String string = XposedMainActivity.mItems.get(id).getTitle(1);
+            String string = "";//XposedMainActivity.mItems.get(id).getTitle(1);
             if (!XposedMainActivity.mItems.get(id).getText(1).isEmpty()) {
                 string = XposedMainActivity.mItems.get(id).getText(1);
             }
             if (string.isEmpty()) {
-                //string = XposedMainActivity.mItems.get(id).getTitle(1);
-                if (string.contains(".")) {
+                string = XposedMainActivity.mItems.get(id).getTitle(1);
+                if (string.contains(".") && string.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
                     try {
                         string = pm.getApplicationInfo(string.split("/")[0], 0).loadLabel(pm).toString();
                     } catch (PackageManager.NameNotFoundException e) {
+                        Log.w("NPM", "[xposedDialog] Could not find package: " + XposedMainActivity.mItems.get(id).getTitle(1), e);
                     }
                 } else {
                     try {
@@ -724,17 +725,18 @@ public class XposedDialog extends DialogFragment {
         text2.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(2).equalsIgnoreCase("Empty")) {
-            String string2 = XposedMainActivity.mItems.get(id).getTitle(2);
+            String string2 = "";//XposedMainActivity.mItems.get(id).getTitle(2);
             if (!XposedMainActivity.mItems.get(id).getText(2).isEmpty()) {
                 string2 = XposedMainActivity.mItems.get(id).getText(2);
             }
             if (string2.isEmpty()) {
-                //string2 = XposedMainActivity.mItems.get(id).getTitle(2);
-                if (string2.contains(".")) {
+                string2 = XposedMainActivity.mItems.get(id).getTitle(2);
+                if (string2.contains(".") && string2.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
                     try {
                         string2 = pm.getApplicationInfo(string2.split("/")[0], 0).loadLabel(pm).toString();
                     } catch (PackageManager.NameNotFoundException e) {
+                        Log.w("NPM", "[xposedDialog] Could not find package: " + XposedMainActivity.mItems.get(id).getTitle(2), e);
                     }
                 } else {
                     try {
@@ -783,17 +785,18 @@ public class XposedDialog extends DialogFragment {
         text3.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(3).equalsIgnoreCase("Empty")) {
-            String string3 = XposedMainActivity.mItems.get(id).getTitle(3);
+            String string3 = "";//XposedMainActivity.mItems.get(id).getTitle(3);
             if (!XposedMainActivity.mItems.get(id).getText(3).isEmpty()) {
                 string3 = XposedMainActivity.mItems.get(id).getText(3);
             }
             if (string3.isEmpty()) {
-                //string3 = XposedMainActivity.mItems.get(id).getTitle(3);
-                if (string3.contains(".")) {
+                string3 = XposedMainActivity.mItems.get(id).getTitle(3);
+                if (string3.contains(".") && string3.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
                     try {
                         string3 = pm.getApplicationInfo(string3.split("/")[0], 0).loadLabel(pm).toString();
                     } catch (PackageManager.NameNotFoundException e) {
+                        Log.w("NPM", "[xposedDialog] Could not find package: " + XposedMainActivity.mItems.get(id).getTitle(3), e);
                     }
                 } else {
                     try {
@@ -842,11 +845,11 @@ public class XposedDialog extends DialogFragment {
             if (!soundModeIcon_Image.isEmpty() && amRingerMode != am.getRingerMode()) {
                 for (int i = 0; i < soundModeIcon_Image.size(); i++) {
                     if (am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
-                        loadImage(soundModeIcon_Image.get(i), 14, PreferencesGraphicsFragment.graphics[14][2].toString(), soundModeIcon_Color.get(i));
+                        loadImage(soundModeIcon_Image.get(i), 14, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[14][2].toString() + ".png", soundModeIcon_Color.get(i));
                     } else if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
-                        loadImage(soundModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[13][2].toString(), soundModeIcon_Color.get(i));
+                        loadImage(soundModeIcon_Image.get(i), 13, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[13][2].toString() + ".png", soundModeIcon_Color.get(i));
                     } else {
-                        loadImage(soundModeIcon_Image.get(i), 12, PreferencesGraphicsFragment.graphics[12][2].toString(), soundModeIcon_Color.get(i));
+                        loadImage(soundModeIcon_Image.get(i), 12, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[12][2].toString() + ".png", soundModeIcon_Color.get(i));
                     }
                 }
                 if (!soundModeIcon_Text.isEmpty()) {
@@ -871,29 +874,29 @@ public class XposedDialog extends DialogFragment {
                         try {
                             if (airplaneMode != android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON)) {
                                 if (android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON) == 0) {
-                                    loadImage(airplaneModeIcon_Image.get(i), 10, PreferencesGraphicsFragment.graphics[10][2].toString(), airplaneModeIcon_Color.get(i));
+                                    loadImage(airplaneModeIcon_Image.get(i), 10, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[10][2].toString() + ".png", airplaneModeIcon_Color.get(i));
                                 } else {
-                                    loadImage(airplaneModeIcon_Image.get(i), 9, PreferencesGraphicsFragment.graphics[9][2].toString(), airplaneModeIcon_Color.get(i));
+                                    loadImage(airplaneModeIcon_Image.get(i), 9, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[9][2].toString() + ".png", airplaneModeIcon_Color.get(i));
                                 }
                                 airplaneMode = android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON);
                             }
                         } catch (Throwable e) {
                             Log.e("NPM", "[xposedDialog] Failed to refresh airplane icon:", e);
-                            loadImage(airplaneModeIcon_Image.get(i), 10, PreferencesGraphicsFragment.graphics[10][2].toString(), airplaneModeIcon_Color.get(i));
+                            loadImage(airplaneModeIcon_Image.get(i), 10, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[10][2].toString() + ".png", airplaneModeIcon_Color.get(i));
                         }
                     } else {
                         try {
                             if (airplaneMode != android.provider.Settings.System.getInt(mContext.getContentResolver(), android.provider.Settings.System.AIRPLANE_MODE_ON)) {
                                 if (android.provider.Settings.System.getInt(mContext.getContentResolver(), android.provider.Settings.System.AIRPLANE_MODE_ON) == 0) {
-                                    loadImage(airplaneModeIcon_Image.get(i), 10, PreferencesGraphicsFragment.graphics[10][2].toString(), airplaneModeIcon_Color.get(i));
+                                    loadImage(airplaneModeIcon_Image.get(i), 10, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[10][2].toString() + ".png", airplaneModeIcon_Color.get(i));
                                 } else {
-                                    loadImage(airplaneModeIcon_Image.get(i), 9, PreferencesGraphicsFragment.graphics[9][2].toString(), airplaneModeIcon_Color.get(i));
+                                    loadImage(airplaneModeIcon_Image.get(i), 9, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[9][2].toString() + ".png", airplaneModeIcon_Color.get(i));
                                 }
                                 airplaneMode = android.provider.Settings.System.getInt(mContext.getContentResolver(), android.provider.Settings.System.AIRPLANE_MODE_ON);
                             }
                         } catch (Throwable e) {
                             Log.e("NPM", "[xposedDialog] Failed to refresh airplane icon:", e);
-                            loadImage(airplaneModeIcon_Image.get(i), 10, PreferencesGraphicsFragment.graphics[10][2].toString(), airplaneModeIcon_Color.get(i));
+                            loadImage(airplaneModeIcon_Image.get(i), 10, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[10][2].toString() + ".png", airplaneModeIcon_Color.get(i));
                         }
                     }
                 }
@@ -904,9 +907,9 @@ public class XposedDialog extends DialogFragment {
                     try {
                         if (flashlightOn != (TorchService.getTorchState() == TorchService.TORCH_STATUS_ON)) {
                             if (TorchService.getTorchState() == TorchService.TORCH_STATUS_ON) {
-                                loadImage(flashlightIcon_Image.get(i), 6, PreferencesGraphicsFragment.graphics[6][2].toString(), flashlightIcon_Color.get(i));
+                                loadImage(flashlightIcon_Image.get(i), 6, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[6][2].toString() + ".png", flashlightIcon_Color.get(i));
                             } else {
-                                loadImage(flashlightIcon_Image.get(i), 7, PreferencesGraphicsFragment.graphics[7][2].toString(), flashlightIcon_Color.get(i));
+                                loadImage(flashlightIcon_Image.get(i), 7, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[7][2].toString() + ".png", flashlightIcon_Color.get(i));
                             }
                             flashlightOn = TorchService.getTorchState() == TorchService.TORCH_STATUS_ON;
                         }
@@ -921,9 +924,9 @@ public class XposedDialog extends DialogFragment {
                     try {
                         if (rotate != android.provider.Settings.System.getInt(mContext.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION)) {
                             if (android.provider.Settings.System.getInt(mContext.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION) == 0) {
-                                loadImage(rotateIcon_Image.get(i), 20, PreferencesGraphicsFragment.graphics[20][2].toString(), rotateIcon_Color.get(i));
+                                loadImage(rotateIcon_Image.get(i), 20, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[20][2].toString() + ".png", rotateIcon_Color.get(i));
                             } else {
-                                loadImage(rotateIcon_Image.get(i), 21, PreferencesGraphicsFragment.graphics[21][2].toString(), rotateIcon_Color.get(i));
+                                loadImage(rotateIcon_Image.get(i), 21, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[21][2].toString() + ".png", rotateIcon_Color.get(i));
                             }
                             rotate = android.provider.Settings.System.getInt(mContext.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION);
                         }
@@ -938,14 +941,14 @@ public class XposedDialog extends DialogFragment {
                     try {
                         if (mediaPlaying != am.isMusicActive()) {
                             if (!am.isMusicActive()) {
-                                loadImage(playPauseIcon_Image.get(i), 23, PreferencesGraphicsFragment.graphics[23][2].toString(), playPauseIcon_Color.get(i));
+                                loadImage(playPauseIcon_Image.get(i), 23, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[23][2].toString() + ".png", playPauseIcon_Color.get(i));
                             } else {
-                                loadImage(playPauseIcon_Image.get(i), 24, PreferencesGraphicsFragment.graphics[24][2].toString(), playPauseIcon_Color.get(i));
+                                loadImage(playPauseIcon_Image.get(i), 24, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[24][2].toString() + ".png", playPauseIcon_Color.get(i));
                             }
                             mediaPlaying = am.isMusicActive();
                         }
                     } catch (Throwable e) {
-                        loadImage(playPauseIcon_Image.get(i), 23, PreferencesGraphicsFragment.graphics[23][2].toString(), playPauseIcon_Color.get(i));
+                        loadImage(playPauseIcon_Image.get(i), 23, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[23][2].toString() + ".png", playPauseIcon_Color.get(i));
                         Log.e("NPM", "[xposedDialog] Failed to refresh media icon:", e);
                     }
                 }
@@ -956,14 +959,14 @@ public class XposedDialog extends DialogFragment {
                     try {
                         if (wifiActive != wifiManager.isWifiEnabled()) {
                             if (!wifiManager.isWifiEnabled()) {
-                                loadImage(toggleWifi_Image.get(i), 26, PreferencesGraphicsFragment.graphics[26][2].toString(), toggleWifi_Color.get(i));
+                                loadImage(toggleWifi_Image.get(i), 26, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[26][2].toString() + ".png", toggleWifi_Color.get(i));
                             } else {
-                                loadImage(toggleWifi_Image.get(i), 27, PreferencesGraphicsFragment.graphics[27][2].toString(), toggleWifi_Color.get(i));
+                                loadImage(toggleWifi_Image.get(i), 27, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[27][2].toString() + ".png", toggleWifi_Color.get(i));
                             }
                             wifiActive = wifiManager.isWifiEnabled();
                         }
                     } catch (Throwable e) {
-                        loadImage(toggleWifi_Image.get(i), 26, PreferencesGraphicsFragment.graphics[26][2].toString(), toggleWifi_Color.get(i));
+                        loadImage(toggleWifi_Image.get(i), 26, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[26][2].toString() + ".png", toggleWifi_Color.get(i));
                         Log.e("NPM", "[xposedDialog] Failed to refresh wifi icon:", e);
                     }
                 }
@@ -974,14 +977,14 @@ public class XposedDialog extends DialogFragment {
                     try {
                         if (bluetoothActive != bluetoothAdapter.isEnabled()) {
                             if (!bluetoothAdapter.isEnabled()) {
-                                loadImage(toggleBluetooth_Image.get(i), 28, PreferencesGraphicsFragment.graphics[28][2].toString(), toggleBluetooth_Color.get(i));
+                                loadImage(toggleBluetooth_Image.get(i), 28, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[28][2].toString() + ".png", toggleBluetooth_Color.get(i));
                             } else {
-                                loadImage(toggleBluetooth_Image.get(i), 29, PreferencesGraphicsFragment.graphics[29][2].toString(), toggleBluetooth_Color.get(i));
+                                loadImage(toggleBluetooth_Image.get(i), 29, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[29][2].toString() + ".png", toggleBluetooth_Color.get(i));
                             }
                             bluetoothActive = bluetoothAdapter.isEnabled();
                         }
                     } catch (Throwable e) {
-                        loadImage(toggleBluetooth_Image.get(i), 28, PreferencesGraphicsFragment.graphics[28][2].toString(), toggleBluetooth_Color.get(i));
+                        loadImage(toggleBluetooth_Image.get(i), 28, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[28][2].toString() + ".png", toggleBluetooth_Color.get(i));
                         Log.e("NPM", "[xposedDialog] Failed to refresh bluetooth icon:", e);
                     }
                 }
@@ -992,14 +995,14 @@ public class XposedDialog extends DialogFragment {
                     try {
                         if (dataActive != isDataActive()) {
                             if (!isDataActive()) {
-                                loadImage(toggleData_Image.get(i), 30, PreferencesGraphicsFragment.graphics[30][2].toString(), toggleData_Color.get(i));
+                                loadImage(toggleData_Image.get(i), 30, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[30][2].toString() + ".png", toggleData_Color.get(i));
                             } else {
-                                loadImage(toggleData_Image.get(i), 31, PreferencesGraphicsFragment.graphics[31][2].toString(), toggleData_Color.get(i));
+                                loadImage(toggleData_Image.get(i), 31, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[31][2].toString() + ".png", toggleData_Color.get(i));
                             }
                             dataActive = isDataActive();
                         }
                     } catch (Throwable e) {
-                        loadImage(toggleData_Image.get(i), 30, PreferencesGraphicsFragment.graphics[30][2].toString(), toggleData_Color.get(i));
+                        loadImage(toggleData_Image.get(i), 30, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[30][2].toString() + ".png", toggleData_Color.get(i));
                         Log.e("NPM", "[xposedDialog] Failed to refresh data icon:", e);
                     }
                 }
@@ -1009,12 +1012,12 @@ public class XposedDialog extends DialogFragment {
                 for (int i = 0; i < silentModeIcon_Image.size(); i++) {
                     try {
                         if (am.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
-                            loadImage(silentModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[13][2].toString(), silentModeIcon_Color.get(i));
+                            loadImage(silentModeIcon_Image.get(i), 13, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[13][2].toString() + ".png", silentModeIcon_Color.get(i));
                         } else if (am.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
-                            loadImage(silentModeIcon_Image.get(i), 12, PreferencesGraphicsFragment.graphics[12][2].toString(), silentModeIcon_Color.get(i));
+                            loadImage(silentModeIcon_Image.get(i), 12, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[12][2].toString() + ".png", silentModeIcon_Color.get(i));
                         }
                     } catch (Throwable t) {
-                        loadImage(silentModeIcon_Image.get(i), 13, PreferencesGraphicsFragment.graphics[12][2].toString(), silentModeIcon_Color.get(i));
+                        loadImage(silentModeIcon_Image.get(i), 13, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[12][2].toString() + ".png", silentModeIcon_Color.get(i));
                         Log.e("NPM", "[xposedDialog] Failed to refresh silent mode icon:", t);
                     }
                 }
@@ -1030,126 +1033,86 @@ public class XposedDialog extends DialogFragment {
                 GraphicDrawable drawable = GraphicDrawable.builder().buildRound((Bitmap) null, Color.parseColor(color1));
                 background.setImageDrawable(drawable);
                 foreground.setVisibility(View.VISIBLE);
-                if (!XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty() || !XposedMainActivity.mItems.get(id).getShortcutUri(2).isEmpty() || !XposedMainActivity.mItems.get(id).getShortcutUri(3).isEmpty()) {
-                    final String finalText1 = text;
-                    SimpleImageLoadingListener listener = new SimpleImageLoadingListener() {
-                        @Override
-                        public void onLoadingStarted(String imageUri, View view) {
-                            foreground.setImageBitmap(null);
-                            foreground.setPadding((int) helper.convertDpToPixel(5, mContext), (int) helper.convertDpToPixel(5, mContext), (int) helper.convertDpToPixel(5, mContext), (int) helper.convertDpToPixel(5, mContext));
-                            foreground.setColorFilter(Color.parseColor("#ffffff"),
-                                    android.graphics.PorterDuff.Mode.DST);
-                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                foreground.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, true));
-                            }
-                            foreground.setVisibility(View.INVISIBLE);
-                            super.onLoadingStarted(imageUri, view);
-                        }
-
-                        @Override
-                        public void onLoadingComplete(final String imageUri, final View view, Bitmap loadedImage) {
-                            foreground.setPadding((int) mGraphicsPadding, (int) mGraphicsPadding, (int) mGraphicsPadding, (int) mGraphicsPadding);
-                            foreground.setImageBitmap(loadedImage);
-                            if (mColorizeNonStockIcons) {
-                                foreground.setColorFilter(Color.parseColor(color1),
-                                        android.graphics.PorterDuff.Mode.MULTIPLY);
-                            }
-                            foreground.setVisibility(View.VISIBLE);
-                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                foreground.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
-                            }
-                        }
-
-                        @Override
-                        public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                            Log.w("NPM", "[xposedDialog] Failed to load image '" + imageUri + "': " + failReason.getCause());
-                            foreground.setImageDrawable(mContext.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[33][1]));
-                            foreground.setColorFilter(Color.parseColor(color1),
-                                    android.graphics.PorterDuff.Mode.MULTIPLY);
-                            foreground.setVisibility(View.VISIBLE);
-                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                foreground.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
-                            }
-                            if (imageUri.contains("/images/")) {
-                                XposedMainActivity.mImageLoader.loadImage("file://" + mContext.getFilesDir().getPath() + "/app_picker/" + finalText1 + ".png", this);
-                            }
-                        }
-                    };
-                    XposedMainActivity.mImageLoader.loadImage("file://" + mContext.getFilesDir().getPath() + "/images/" + text + ".png", listener);
-                } else if (text.equalsIgnoreCase("Shutdown")) {
-                    loadImage(foreground, 1, PreferencesGraphicsFragment.graphics[1][2].toString(), color2);
+                for (int i = 1; i <= 3; i++) {
+                    if (text.equalsIgnoreCase(XposedMainActivity.mItems.get(id).getTitle(i)) && !XposedMainActivity.mItems.get(id).getShortcutUri(i).isEmpty()) {
+                        loadImage(foreground, 34, new File(mContext.getFilesDir().getPath() + "/images/" + text + ".png").exists() ? mContext.getFilesDir().getPath() + "/images/" + text + ".png" : mContext.getFilesDir().getPath() + "/app_picker/" + text + ".png", color2);
+                        return;
+                    }
+                }
+                if (text.equalsIgnoreCase("Shutdown")) {
+                    loadImage(foreground, 1, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[1][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("Reboot")) {
-                    loadImage(foreground, 2, PreferencesGraphicsFragment.graphics[2][2].toString(), color2);
+                    loadImage(foreground, 2, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[2][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("SoftReboot")) {
-                    loadImage(foreground, 3, PreferencesGraphicsFragment.graphics[3][2].toString(), color2);
+                    loadImage(foreground, 3, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[3][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("Screenshot")) {
-                    loadImage(foreground, 4, PreferencesGraphicsFragment.graphics[4][2].toString(), color2);
+                    loadImage(foreground, 4, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[4][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("Screenrecord")) {
-                    loadImage(foreground, 5, PreferencesGraphicsFragment.graphics[5][2].toString(), color2);
+                    loadImage(foreground, 5, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[5][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("Flashlight")) {
                     if (TorchService.getTorchState() == TorchService.TORCH_STATUS_OFF) {
-                        loadImage(foreground, 7, PreferencesGraphicsFragment.graphics[7][2].toString(), color2);
+                        loadImage(foreground, 7, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[7][2].toString() + ".png", color2);
                     } else {
-                        loadImage(foreground, 6, PreferencesGraphicsFragment.graphics[6][2].toString(), color2);
+                        loadImage(foreground, 6, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[6][2].toString() + ".png", color2);
                     }
                     flashlightIcon_Image.add(foreground);
                     flashlightIcon_Color.add(color2);
                 } else if (text.equalsIgnoreCase("ExpandedDesktop")) {
-                    loadImage(foreground, 8, PreferencesGraphicsFragment.graphics[8][2].toString(), color2);
+                    loadImage(foreground, 8, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[8][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("AirplaneMode")) {
                     if (Build.VERSION.SDK_INT >= 17) {
                         try {
                             if (android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON) == 0) {
-                                loadImage(foreground, 10, PreferencesGraphicsFragment.graphics[10][2].toString(), color2);
+                                loadImage(foreground, 10, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[10][2].toString() + ".png", color2);
                             } else {
-                                loadImage(foreground, 9, PreferencesGraphicsFragment.graphics[9][2].toString(), color2);
+                                loadImage(foreground, 9, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[9][2].toString() + ".png", color2);
                             }
                         } catch (Throwable e) {
-                            loadImage(foreground, 10, PreferencesGraphicsFragment.graphics[10][2].toString(), color2);
+                            loadImage(foreground, 10, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[10][2].toString() + ".png", color2);
                         }
                     } else {
                         try {
                             if (android.provider.Settings.System.getInt(mContext.getContentResolver(), android.provider.Settings.System.AIRPLANE_MODE_ON) == 0) {
-                                loadImage(foreground, 10, PreferencesGraphicsFragment.graphics[10][2].toString(), color2);
+                                loadImage(foreground, 10, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[10][2].toString() + ".png", color2);
                             } else {
-                                loadImage(foreground, 9, PreferencesGraphicsFragment.graphics[9][2].toString(), color2);
+                                loadImage(foreground, 9, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[9][2].toString() + ".png", color2);
                             }
                         } catch (Throwable e) {
-                            loadImage(foreground, 10, PreferencesGraphicsFragment.graphics[10][2].toString(), color2);
+                            loadImage(foreground, 10, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[10][2].toString() + ".png", color2);
                         }
                     }
                     airplaneModeIcon_Image.add(foreground);
                     airplaneModeIcon_Color.add(color2);
                 } else if (text.equalsIgnoreCase("RestartUI")) {
-                    loadImage(foreground, 11, PreferencesGraphicsFragment.graphics[11][2].toString(), color2);
+                    loadImage(foreground, 11, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[11][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("SoundMode")) {
                     if (amRingerMode == AudioManager.RINGER_MODE_VIBRATE) {
-                        loadImage(foreground, 14, PreferencesGraphicsFragment.graphics[14][2].toString(), color2);
+                        loadImage(foreground, 14, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[14][2].toString() + ".png", color2);
                     } else if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
-                        loadImage(foreground, 13, PreferencesGraphicsFragment.graphics[13][2].toString(), color2);
+                        loadImage(foreground, 13, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[13][2].toString() + ".png", color2);
                     } else {
-                        loadImage(foreground, 12, PreferencesGraphicsFragment.graphics[12][2].toString(), color2);
+                        loadImage(foreground, 12, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[12][2].toString() + ".png", color2);
                     }
                     soundModeIcon_Image.add(foreground);
                     soundModeIcon_Color.add(color2);
                 } else if (text.equalsIgnoreCase("Recovery")) {
-                    loadImage(foreground, 15, PreferencesGraphicsFragment.graphics[15][2].toString(), color2);
+                    loadImage(foreground, 15, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[15][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("Bootloader")) {
-                    loadImage(foreground, 16, PreferencesGraphicsFragment.graphics[16][2].toString(), color2);
+                    loadImage(foreground, 16, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[16][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("SafeMode")) {
-                    loadImage(foreground, 17, PreferencesGraphicsFragment.graphics[17][2].toString(), color2);
+                    loadImage(foreground, 17, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[17][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("SoundVibrate")) {
-                    loadImage(foreground, 14, PreferencesGraphicsFragment.graphics[14][2].toString(), color2);
+                    loadImage(foreground, 14, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[14][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("SoundNormal")) {
-                    loadImage(foreground, 12, PreferencesGraphicsFragment.graphics[12][2].toString(), color2);
+                    loadImage(foreground, 12, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[12][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("SoundSilent")) {
-                    loadImage(foreground, 13, PreferencesGraphicsFragment.graphics[13][2].toString(), color2);
+                    loadImage(foreground, 13, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[13][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("KillApp")) {
-                    loadImage(foreground, 18, PreferencesGraphicsFragment.graphics[18][2].toString(), color2);
+                    loadImage(foreground, 18, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[18][2].toString() + ".png", color2);
                 } else if (text.contains(".")) {
                     //Log.d("NPM:appIcon","Checking: "+id+"_"+text.split("/")[0]);
                     if (new File(mContext.getFilesDir().getPath() + "/images/" + text.split("/")[0] + ".png").exists()) {
-                        loadImage(foreground, 19, text.split("/")[0], color2);
+                        loadImage(foreground, 19, mContext.getFilesDir().getPath() + "/images/" + text.split("/")[0] + ".png", color2);
                     } else {
                         if (mLoadAppIcons) {
                             try {
@@ -1168,82 +1131,82 @@ public class XposedDialog extends DialogFragment {
                                 foreground.setVisibility(View.INVISIBLE);
                             }
                         } else {
-                            loadImage(foreground, 19, PreferencesGraphicsFragment.graphics[19][2].toString(), color2);
+                            loadImage(foreground, 19, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[19][2].toString() + ".png", color2);
                         }
                     }
                 } else if (text.equalsIgnoreCase("ToggleRotate")) {
                     try {
                         if (android.provider.Settings.System.getInt(mContext.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION) == 0) {
-                            loadImage(foreground, 20, PreferencesGraphicsFragment.graphics[20][2].toString(), color2);
+                            loadImage(foreground, 20, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[20][2].toString() + ".png", color2);
                         } else {
-                            loadImage(foreground, 21, PreferencesGraphicsFragment.graphics[21][2].toString(), color2);
+                            loadImage(foreground, 21, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[21][2].toString() + ".png", color2);
                         }
                     } catch (Throwable e) {
-                        loadImage(foreground, 21, PreferencesGraphicsFragment.graphics[21][2].toString(), color2);
+                        loadImage(foreground, 21, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[21][2].toString() + ".png", color2);
                     }
                     rotateIcon_Image.add(foreground);
                     rotateIcon_Color.add(color2);
                 } else if (text.equalsIgnoreCase("MediaPrevious")) {
-                    loadImage(foreground, 22, PreferencesGraphicsFragment.graphics[22][2].toString(), color2);
+                    loadImage(foreground, 22, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[22][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("MediaPlayPause")) {
                     try {
                         if (!mediaPlaying) {
-                            loadImage(foreground, 23, PreferencesGraphicsFragment.graphics[23][2].toString(), color2);
+                            loadImage(foreground, 23, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[23][2].toString() + ".png", color2);
                         } else {
-                            loadImage(foreground, 24, PreferencesGraphicsFragment.graphics[24][2].toString(), color2);
+                            loadImage(foreground, 24, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[24][2].toString() + ".png", color2);
                         }
                     } catch (Throwable t) {
-                        loadImage(foreground, 23, PreferencesGraphicsFragment.graphics[23][2].toString(), color2);
+                        loadImage(foreground, 23, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[23][2].toString() + ".png", color2);
                     }
                     playPauseIcon_Image.add(foreground);
                     playPauseIcon_Color.add(color2);
                 } else if (text.equalsIgnoreCase("MediaNext")) {
-                    loadImage(foreground, 25, PreferencesGraphicsFragment.graphics[25][2].toString(), color2);
+                    loadImage(foreground, 25, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[25][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("ToggleWifi")) {
                     try {
                         if (!wifiActive) {
-                            loadImage(foreground, 26, PreferencesGraphicsFragment.graphics[26][2].toString(), color2);
+                            loadImage(foreground, 26, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[26][2].toString() + ".png", color2);
                         } else {
-                            loadImage(foreground, 27, PreferencesGraphicsFragment.graphics[27][2].toString(), color2);
+                            loadImage(foreground, 27, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[27][2].toString() + ".png", color2);
                         }
                     } catch (Throwable t) {
-                        loadImage(foreground, 26, PreferencesGraphicsFragment.graphics[26][2].toString(), color2);
+                        loadImage(foreground, 26, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[26][2].toString() + ".png", color2);
                     }
                     toggleWifi_Image.add(foreground);
                     toggleWifi_Color.add(color2);
                 } else if (text.equalsIgnoreCase("ToggleBluetooth")) {
                     try {
                         if (!bluetoothActive) {
-                            loadImage(foreground, 28, PreferencesGraphicsFragment.graphics[28][2].toString(), color2);
+                            loadImage(foreground, 28, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[28][2].toString() + ".png", color2);
                         } else {
-                            loadImage(foreground, 29, PreferencesGraphicsFragment.graphics[29][2].toString(), color2);
+                            loadImage(foreground, 29, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[29][2].toString() + ".png", color2);
                         }
                     } catch (Throwable t) {
-                        loadImage(foreground, 28, PreferencesGraphicsFragment.graphics[28][2].toString(), color2);
+                        loadImage(foreground, 28, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[28][2].toString() + ".png", color2);
                     }
                     toggleBluetooth_Image.add(foreground);
                     toggleBluetooth_Color.add(color2);
                 } else if (text.equalsIgnoreCase("ToggleData")) {
                     try {
                         if (!dataActive) {
-                            loadImage(foreground, 30, PreferencesGraphicsFragment.graphics[30][2].toString(), color2);
+                            loadImage(foreground, 30, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[30][2].toString() + ".png", color2);
                         } else {
-                            loadImage(foreground, 31, PreferencesGraphicsFragment.graphics[31][2].toString(), color2);
+                            loadImage(foreground, 31, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[31][2].toString() + ".png", color2);
                         }
                     } catch (Throwable t) {
-                        loadImage(foreground, 30, PreferencesGraphicsFragment.graphics[30][2].toString(), color2);
+                        loadImage(foreground, 30, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[30][2].toString() + ".png", color2);
                     }
                     toggleData_Image.add(foreground);
                     toggleData_Color.add(color2);
                 } else if (text.equalsIgnoreCase("RebootFlashMode")) {
-                    loadImage(foreground, 32, PreferencesGraphicsFragment.graphics[32][2].toString(), color2);
+                    loadImage(foreground, 32, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[32][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("LockPhone")) {
-                    loadImage(foreground, 33, PreferencesGraphicsFragment.graphics[33][2].toString(), color2);
+                    loadImage(foreground, 33, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[33][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("SilentMode")) {
                     if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
-                        loadImage(foreground, 13, PreferencesGraphicsFragment.graphics[13][2].toString(), color2);
+                        loadImage(foreground, 13, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[13][2].toString() + ".png", color2);
                     } else {
-                        loadImage(foreground, 12, PreferencesGraphicsFragment.graphics[12][2].toString(), color2);
+                        loadImage(foreground, 12, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[12][2].toString() + ".png", color2);
                     }
                     silentModeIcon_Image.add(foreground);
                     silentModeIcon_Color.add(color2);
@@ -1267,8 +1230,8 @@ public class XposedDialog extends DialogFragment {
     }
 
     private void loadImage(final ImageView image, final int id, final String fileName, final String color) {
-        if (new File(mContext.getFilesDir().getPath() + "/images/" + fileName + ".png").exists()) {
-            XposedMainActivity.mImageLoader.displayImage("file://" + mContext.getFilesDir().getPath() + "/images/" + fileName + ".png",
+        if (new File(fileName).exists()) {
+            XposedMainActivity.mImageLoader.displayImage("file://" + fileName,
                     image, new SimpleImageLoadingListener() {
                         @Override
                         public void onLoadingStarted(String imageUri, View view) {
@@ -1299,7 +1262,7 @@ public class XposedDialog extends DialogFragment {
 
                         @Override
                         public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                            Log.w("NPM", "[xposedDialog] Failed to load image '" + imageUri + "': " + failReason.getCause());
+                            Log.w("NPM", "[xposedDialog] Failed to load image '" + imageUri, failReason.getCause());
                             image.setImageDrawable(mContext.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[id][1]));
                             image.setColorFilter(Color.parseColor(color),
                                     android.graphics.PorterDuff.Mode.MULTIPLY);
@@ -1310,6 +1273,7 @@ public class XposedDialog extends DialogFragment {
                         }
                     });
         } else {
+            Log.w("NPM","[xposedDialog] No image found for " +  fileName);
             image.setPadding((int) mGraphicsPadding, (int) mGraphicsPadding, (int) mGraphicsPadding, (int) mGraphicsPadding);
             image.setImageDrawable(mContext.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[id][1]));
             image.setColorFilter(Color.parseColor(color),
@@ -1656,30 +1620,35 @@ public class XposedDialog extends DialogFragment {
                 }
             }
             //SubDialogs.clear();
-            if (id >= 0 && (!XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty() || !XposedMainActivity.mItems.get(id).getShortcutUri(2).isEmpty() || !XposedMainActivity.mItems.get(id).getShortcutUri(3).isEmpty())) {
+            Intent ShortcutIntent = null;
+            String uri = "";
+            try {
                 if (!mPreviewMode) {
-                    SubDialogs.clear();
-                    dismissThis();
-                    Intent intent = null;
-                    String uri = "";
-                    try {
-                        if (XposedMainActivity.mItems.get(id).getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
-                            uri = XposedMainActivity.mItems.get(id).getShortcutUri(1);
-                            intent = Intent.parseUri(XposedMainActivity.mItems.get(id).getShortcutUri(1), Intent.URI_INTENT_SCHEME);
-                        } else {
-                            for (int i = 1; i <= 3; i++) {
-                                if (name.equalsIgnoreCase(XposedMainActivity.mItems.get(id).getTitle(i))) {
-                                    uri = XposedMainActivity.mItems.get(id).getShortcutUri(i);
-                                    intent = Intent.parseUri(XposedMainActivity.mItems.get(id).getShortcutUri(i), Intent.URI_INTENT_SCHEME);
-                                }
+                    if (XposedMainActivity.mItems.get(id).getType() == visibilityOrder_ListAdapter.TYPE_NORMAL && !XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty()) {
+                        uri = XposedMainActivity.mItems.get(id).getShortcutUri(1);
+                        ShortcutIntent = Intent.parseUri(XposedMainActivity.mItems.get(id).getShortcutUri(1), Intent.URI_INTENT_SCHEME);
+                    } else {
+                        for (int i = 1; i <= 3; i++) {
+                            if (name.equalsIgnoreCase(XposedMainActivity.mItems.get(id).getTitle(i)) && !XposedMainActivity.mItems.get(id).getShortcutUri(i).isEmpty()) {
+                                uri = XposedMainActivity.mItems.get(id).getShortcutUri(i);
+                                ShortcutIntent = Intent.parseUri(XposedMainActivity.mItems.get(id).getShortcutUri(i), Intent.URI_INTENT_SCHEME);
                             }
                         }
-                        mContext.startActivity(intent);
-                    } catch (Throwable e) {
-                        Log.e("NPM", "[xposedDialog] No package with uri '" + uri + "' found...", e);
+                    }
+                    if (!uri.isEmpty()) {
+                        SubDialogs.clear();
+                        dismissThis();
+                        mContext.startActivity(ShortcutIntent);
+                        return;
                     }
                 }
-            } else if (name.equalsIgnoreCase("Shutdown")) {
+            } catch (Throwable e) {
+                Log.e("NPM", "[xposedDialog] No package with uri '" + uri + "' found...", e);
+                SubDialogs.clear();
+                dismissThis();
+                return;
+            }
+            if (name.equalsIgnoreCase("Shutdown")) {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
@@ -2342,7 +2311,6 @@ public class XposedDialog extends DialogFragment {
         status.setTextColor(Color.parseColor(colorPrefs.getString("Dialog" + showingFor + "_Textcolor", "#ffffff")));
         status_detail.setTextColor(Color.parseColor(colorPrefs.getString("Dialog" + showingFor + "_Textcolor", "#ffffff")));
 
-        //if(GraphicBehindProgress) loadImage(progressbg, 0, colorPrefs.getString("DialogShutdown_Textcolor", "#ffffff"));
         if (preferences.getString("ProgressDrawable", "Stock").equalsIgnoreCase("file")) {
             if (new File(mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[0][2] + ".png").exists()) {
                 XposedMainActivity.mImageLoader.displayImage("file://" + mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[0][2] + ".png",
