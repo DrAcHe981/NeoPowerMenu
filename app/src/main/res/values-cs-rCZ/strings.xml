@@ -213,4 +213,7 @@
   <string name="tourPage_UnknownProblem">"Objevil se problém při zobrazování další stránky, prosím klikněte na \"Přeskočit\" a nahlaste problém autorovi...\n\nProblém způsoben:\n"</string>
   <string name="tourPage_0_Title">"Vítejte v NPM!"</string>
   <string name="tourPage_0_Text">"V první řadě: Děkuji za stažení mé aplikace!\n\nMalá ukázka vám předvede co umí moje aplikace."</string>
+  <string name="tourPage_1_Title">"Hlavní menu"</string>
+  <string name="tourPage_1_Text">"Zde můžete najít všechny sekce a vidět zda aplikace funguje správně, vše je pěkně seřazeno ^^."</string>
+  <string name="tourPage_2_Title">"Menu Motivů"</string>
 </resources>
