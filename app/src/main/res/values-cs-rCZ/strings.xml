@@ -108,7 +108,20 @@
   <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Neusínat"</string>
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Je vyžadováno pro zabránění ukončení procesu svítilny a nahrávání obrazovky."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Přístup ke stavu WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Požadováno získání stavu WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Změna stavu WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Vyžadováno přepnutí WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Požadováno získání stavu Bluetooth."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Administrátor"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Vyžadováno přepnutí bluetooth bez dialogů."</string>
+  <string name="powerMenuMain_SoundMode">"Režim zvuku"</string>
+  <string name="powerMenuMain_SoundModeDesc">"Současný režim: [SOUNDMODE]"</string>
+  <string name="SoundMode_Normal">"Normální"</string>
+  <string name="SoundMode_Vibrate">"Vibrování"</string>
+  <string name="SoundMode_Silent">"Ticho"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleAccount">"Účet"</string>
   <!-- Login page -->
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
@@ -131,7 +144,14 @@
   <string name="login_RecoverNotFound">"Žádní uživatelé se zadanými kritérii nenalezeni."</string>
   <string name="powerMenuMain_SoundVibrate">"Zvuk: Vibrace"</string>
   <string name="powerMenuMain_SoundNormal">"Zvuk: Normal"</string>
+  <string name="powerMenuMain_SoundSilent">"Zvuk: Vypnout"</string>
   <!-- Dialog -->
+  <string name="Dialog_Buttons">"OK|Ano|Ne|Přejmenovat|Zrušit|Smazat|Načíst|Uložit|Ignorovat"</string>
+  <string name="presetLoadDialog_BuiltIn">"Světlé|Šedé|Černé"</string>
+  <string name="advancedPrefs_DialogGravity">"Horní|Levý|Pravý|Spodní"</string>
+  <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
+  <string name="graphics_Crop">"Oříznutí|Kruhové oříznutí"</string>
+  <string name="graphics_NoPresetsFound">"Žádné grafické předvolby nenalezeny..."</string>
   <!-- Preferences: Main -->
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
