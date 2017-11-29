@@ -46,6 +46,17 @@
   <string name="advancedPrefsDesc_UseGraphics">"Použíj grafiku místo palety."</string>
   <string name="advancedPrefsCategory_LockScreen">"Zámek obrazovky"</string>
   <string name="advancedPrefsTitle_ShowOnLockScreen">"Zobrazit na zamčené obrazovce"</string>
+  <string name="advancedPrefsDesc_ShowOnLockScreen">"Zobrazit vypínací tlačítka na zamčené obrazovce, pokud je volba vypnuta, nebudou zobrazena."</string>
+  <string name="advancedPrefsCategory_Delays">"Zpoždění"</string>
+  <string name="advancedPrefs_DelayZero">"Téměř ihned"</string>
+  <string name="advancedPrefsTitle_ScreenshotDelay">"Prodleva snímku obrazovky"</string>
+  <string name="advancedPrefsDesc_ScreenshotDelay">"Prodleva mezi kliknutím a snímkem obrazovky."</string>
+  <string name="Dialog_SelectColor">"Výběr barvy"</string>
+  <string name="ColorPicker_Value">"Hodnota:"</string>
+  <string name="ColorPicker_Saturation">"Sytost:"</string>
+  <string name="ColorPicker_Opacity">"Průhlednost:"</string>
+  <string name="ColorPicker_Hex">"Hex:"</string>
+  <string name="presetLoad_PresetDeleted">"Smazáno [PRESETNAME]!"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
