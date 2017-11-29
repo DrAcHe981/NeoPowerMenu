@@ -193,4 +193,5 @@
   <string name="style_MaterialFullscreen">Material (Celá obrazovka)</string>
   <string name="style_MaterialFullHorizontal">Material (Horizontálně)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Experimentální PhoneWindowManager hook</string>
+  <string name="advancedPrefs_ColorizeNonStockIcons">"Obarvit ikony"</string>
 </resources>
