@@ -1695,6 +1695,7 @@ public class XposedDialog extends DialogFragment {
                 status_detail.setText(R.string.powerMenu_Shuttingdown);
 
                 setProgressScreen("Shutdown");
+                toggleSystemUI(true);
                 if (!mPreviewMode) {
                     if (HookShutdownThread) {
                         XposedUtils.doShutdown(mContext, 0);
@@ -1752,6 +1753,7 @@ public class XposedDialog extends DialogFragment {
                 status_detail.setText(R.string.powerMenu_Rebooting);
 
                 setProgressScreen("Reboot");
+                toggleSystemUI(true);
                 if (!mPreviewMode) {
                     if (HookShutdownThread) {
                         XposedUtils.doReboot(mContext, 0);
@@ -1809,6 +1811,7 @@ public class XposedDialog extends DialogFragment {
                 status_detail.setText(R.string.powerMenu_Rebooting);
 
                 setProgressScreen("SoftReboot");
+                toggleSystemUI(true);
                 if (!mPreviewMode) {
                     if (HookShutdownThread) {
                         XposedUtils.doReboot(mContext, 1);
@@ -1959,6 +1962,7 @@ public class XposedDialog extends DialogFragment {
                 status_detail.setText(R.string.powerMenu_Rebooting);
 
                 setProgressScreen("Recovery");
+                toggleSystemUI(true);
                 if (!mPreviewMode) {
                     if (HookShutdownThread) {
                         XposedUtils.doReboot(mContext, 2);
@@ -2016,6 +2020,7 @@ public class XposedDialog extends DialogFragment {
                 status_detail.setText(R.string.powerMenu_Rebooting);
 
                 setProgressScreen("Bootloader");
+                toggleSystemUI(true);
                 if (!mPreviewMode) {
                     if (HookShutdownThread) {
                         XposedUtils.doReboot(mContext, 3);
@@ -2073,6 +2078,7 @@ public class XposedDialog extends DialogFragment {
                 status_detail.setText(R.string.powerMenu_Rebooting);
 
                 setProgressScreen("SafeMode");
+                toggleSystemUI(true);
                 if (!mPreviewMode) {
                     new BackgroundThread(REBOOT_SAFE_MODE).start();
                 }
@@ -2241,6 +2247,7 @@ public class XposedDialog extends DialogFragment {
                 status_detail.setText(R.string.powerMenu_Rebooting);
 
                 setProgressScreen("RebootFlashMode");
+                toggleSystemUI(true);
                 if (!mPreviewMode) {
                     if (HookShutdownThread) {
                         XposedUtils.doReboot(mContext, 0);
@@ -2437,6 +2444,20 @@ public class XposedDialog extends DialogFragment {
             }
         }
 
+    }
+
+    private void toggleSystemUI(boolean hide) {
+        if (hide) {
+            View decorView = XposedMainActivity.mActivity.getWindow().getDecorView();
+            // Hide Status Bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+            decorView.setSystemUiVisibility(uiOptions);
+        } else {
+            View decorView = XposedMainActivity.mActivity.getWindow().getDecorView();
+            // Hide Status Bar.
+            int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
+            decorView.setSystemUiVisibility(uiOptions);
+        }
     }
 
     private void setThreadPrio(int prio) {

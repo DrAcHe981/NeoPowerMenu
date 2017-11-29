@@ -3,6 +3,8 @@ package de.NeonSoft.neopowermenu;
 import android.app.*;
 import android.content.*;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -33,6 +35,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import de.NeonSoft.neopowermenu.Preferences.AddShortcutList;
 import de.NeonSoft.neopowermenu.Preferences.PreferencesGraphicsFragment;
@@ -75,6 +78,8 @@ public class addShortcut extends AppCompatActivity {
     private static ImageLoader imageLoader;
     private boolean ImgLoader_Loaded;
 
+    public static String ForcedLanguage = "System";
+
     @Override
     protected void onCreate(Bundle p1) {
 
@@ -86,6 +91,17 @@ public class addShortcut extends AppCompatActivity {
 
         preferences = SettingsManager.getInstance(this).getMainPrefs();
         colorPrefs = getSharedPreferences("colors", 0);
+
+        ForcedLanguage = preferences.getString("ForcedLanguage","System");
+        if(!ForcedLanguage.equalsIgnoreCase("system")) {
+            Locale myLocale = new Locale(ForcedLanguage);
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
+        }
+
         setTheme(R.style.ThemeBaseDark);
 
         LOCALTESTSERVER = preferences.getBoolean("useLocalServer", false);

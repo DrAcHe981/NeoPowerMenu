@@ -37,6 +37,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class XposedMainActivity extends Activity implements DialogInterface.OnDismissListener {
 
@@ -56,6 +57,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     static ImageLoader mImageLoader;
     boolean mImageLoaderLoaded = false;
+
+    public static String ForcedLanguage = "System";
 
     boolean HookShutdownThread = false;
     boolean DeepXposedLogging = false;
@@ -122,6 +125,16 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             s = p.applicationInfo.dataDir;
         } catch (PackageManager.NameNotFoundException e) {
             Log.w("NPM", "Error Package name not found ", e);
+        }
+
+        ForcedLanguage = preferences.getString("ForcedLanguage","System");
+        if(!ForcedLanguage.equalsIgnoreCase("system")) {
+            Locale myLocale = new Locale(ForcedLanguage);
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = myLocale;
+            res.updateConfiguration(conf, dm);
         }
 
         mBlurBehind = preferences.getBoolean("BlurBehind", false);

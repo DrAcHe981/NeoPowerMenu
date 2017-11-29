@@ -2,6 +2,8 @@ package de.NeonSoft.neopowermenu.xposed;
 
 import android.app.*;
 import android.content.*;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.media.AudioManager;
 import android.os.*;
 import android.os.Process;
@@ -18,9 +20,12 @@ import de.NeonSoft.neopowermenu.services.*;
 import de.robv.android.xposed.*;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.*;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 import android.view.*;
@@ -64,7 +69,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
 
-    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER","android.permission.READ_FRAME_BUFFER"};
+    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER", "android.permission.READ_FRAME_BUFFER"};
 
     private static final String CLASS_SYSTEMUI = "com.android.systemui.SystemUIApplication";
 
@@ -83,7 +88,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public static final String NPM_ACTION_BROADCAST_REBOOTFLASHMODE = "de.NeonSoft.neopowermenu.action.RebootFlashMode";
 
 
-    Handler xHandler;
+    static Handler xHandler;
     private final static Object mScreenshotLock = new Object();
     private static ServiceConnection mScreenshotConnection = null;
 
@@ -636,7 +641,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                                         p1.unbindService(mScreenshotConnection);
                                         mScreenshotConnection = null;
                                         handler.removeCallbacks(mScreenshotTimeout);
-                                        if(DeepXposedLogging) XposedUtils.log("Screenshot message handled, unbinding and removing callbacks.");
+                                        if (DeepXposedLogging)
+                                            XposedUtils.log("Screenshot message handled, unbinding and removing callbacks.");
                                     }
                                 }
                             }
@@ -647,7 +653,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             @Override
                             public void run() {
                                 try {
-                                    if(DeepXposedLogging) XposedUtils.log("Sending screenshot message...");
+                                    if (DeepXposedLogging)
+                                        XposedUtils.log("Sending screenshot message...");
                                     messenger.send(msg);
                                 } catch (RemoteException e) {
                                     //Log.e(TAG, e.toString());
@@ -708,17 +715,71 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         p1.sendBroadcast(intent);
     }
 
-    private static void killLastApp(Context p1) {
+    private static void killLastApp(final Context p1) {
         try {
+            final Intent intent = new Intent(Intent.ACTION_MAIN);
+            final PackageManager pm = p1.getPackageManager();
+            String defaultHomePackage = "com.android.launcher";
+            intent.addCategory(Intent.CATEGORY_HOME);
+
+            final ResolveInfo res = pm.resolveActivity(intent, 0);
+            if (res.activityInfo != null && !res.activityInfo.packageName.equals("android")) {
+                defaultHomePackage = res.activityInfo.packageName;
+            }
+
+            ActivityManager am = (ActivityManager) p1.getSystemService(Service.ACTIVITY_SERVICE);
+            List<ActivityManager.RunningAppProcessInfo> apps = am.getRunningAppProcesses();
+
+            String targetKilled = null;
+            for (ActivityManager.RunningAppProcessInfo appInfo : apps) {
+                int uid = appInfo.uid;
+                // Make sure it's a foreground user application (not system,
+                // root, phone, etc.)
+                if (uid >= Process.FIRST_APPLICATION_UID && uid <= Process.LAST_APPLICATION_UID
+                        && appInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND &&
+                        !appInfo.processName.startsWith(defaultHomePackage) &&
+                        !appInfo.processName.startsWith(MainActivity.class.getPackage().getName()) &&
+                        !appInfo.processName.startsWith("com.google.android.gms")) {
+                    if (appInfo.pkgList != null && appInfo.pkgList.length > 0) {
+                        for (String pkg : appInfo.pkgList) {
+                            if (DeepXposedLogging) XposedUtils.log("Force stopping: " + pkg);
+                            XposedHelpers.callMethod(am, "forceStopPackage", pkg);
+                        }
+                    } else {
+                        if (DeepXposedLogging)
+                            XposedUtils.log("Killing process ID " + appInfo.pid + ": " + appInfo.processName);
+                        Process.killProcess(appInfo.pid);
+                    }
+                    targetKilled = appInfo.processName;
+                    break;
+                }
+            }
+
+            if (targetKilled != null) {
+                try {
+                    targetKilled = (String) pm.getApplicationLabel(
+                            pm.getApplicationInfo(targetKilled, 0));
+                } catch (PackageManager.NameNotFoundException nfe) {
+                    //
+                }
+                //Class<?>[] paramArgs = new Class<?>[3];
+                //paramArgs[0] = XposedHelpers.findClass(CLASS_WINDOW_STATE, null);
+                //paramArgs[1] = int.class;
+                //paramArgs[2] = boolean.class;
+                //XposedHelpers.callMethod(mPhoneWindowManager, "performHapticFeedbackLw", paramArgs, null, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING, true);
+                Toast.makeText(p1, p1.createPackageContext(MainActivity.class.getPackage().getName(),0).getString(R.string.powerMenu_Task_Killed).replace("[TARGET]", targetKilled), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(p1, p1.createPackageContext(MainActivity.class.getPackage().getName(),0).getString(R.string.powerMenu_No_Task_To_Kill), Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            XposedUtils.log("Failed to execute kill command: " + e);
+        }
+        /*try {
             ActivityManager am = (ActivityManager) p1.getSystemService(Context.ACTIVITY_SERVICE);
             List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfo = am.getRunningAppProcesses();
 
             int processNumber = 1;
-            do {
-                XposedUtils.log("Skipping killing of " + runningAppProcessInfo.get(processNumber).processName + ", selecting next process...");
-                processNumber += 1;
-            }
-            while (runningAppProcessInfo.get(processNumber).processName.equalsIgnoreCase("com.google.gms.persistent"));
+            if (runningAppProcessInfo.get(processNumber).processName.equalsIgnoreCase("com.google.gms.persistent")) processNumber = 2;
 
             if (DeepXposedLogging) {
                 XposedUtils.log("Trying to kill " + runningAppProcessInfo.get(processNumber).processName + " (" + runningAppProcessInfo.get(processNumber).pid + ")");
@@ -732,7 +793,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             os.close();
         } catch (Throwable e) {
             XposedUtils.log("Failed to kill: " + e.toString());
-        }
+        }*/
     }
 
     private static void toggleRotation(Context p1) {
