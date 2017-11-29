@@ -194,4 +194,23 @@
   <string name="style_MaterialFullHorizontal">Material (Horizontálně)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Experimentální PhoneWindowManager hook</string>
   <string name="advancedPrefs_ColorizeNonStockIcons">"Obarvit ikony"</string>
+  <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Ve výchozím stavu ikony nejsou obarveny, aktivací umožníte volbu."</string>
+  <string name="advancedPrefs_RoundAppIcons">"Kulaté ikony aplikací"</string>
+  <string name="advancedPrefs_RoundAppIconsDesc">"Zakulatit ikony aplikací, ikdyž nepasují do kruhů."</string>
+  <string name="colorsApplyToAll">"Nastavit vše pomocí tohoto typu"</string>
+  <string name="colorsResetToDefault">"Obnovit výchozí"</string>
+  <string name="errorActivity_CopyToClip">"Zkopírovat do schránky"</string>
+  <string name="errorActivity_Copyied">"Zkopírováno do schránky"</string>
+  <string name="errorActivity_RestartApp">"Restartovat aplikaci"</string>
+  <string name="errorActivity_CloseApp">"Zavřít aplikaci"</string>
+  <string name="errorActivity_Close">"Zavřít"</string>
+  <string name="errorActivity_MoreInfo">"Další informace"</string>
+  <string name="tourReview_Title">"Review tour"</string>
+  <string name="tourReview_Desc">"Začněte kliknutím zde."</string>
+  <string name="tourPage_Next">"Další"</string>
+  <string name="tourPage_Skip">"Přeskočit"</string>
+  <string name="tourPage_Enjoy">"Vytvořte si vlastní menu!"</string>
+  <string name="tourPage_UnknownProblem">"Objevil se problém při zobrazování další stránky, prosím klikněte na \"Přeskočit\" a nahlaste problém autorovi...\n\nProblém způsoben:\n"</string>
+  <string name="tourPage_0_Title">"Vítejte v NPM!"</string>
+  <string name="tourPage_0_Text">"V první řadě: Děkuji za stažení mé aplikace!\n\nMalá ukázka vám předvede co umí moje aplikace."</string>
 </resources>
