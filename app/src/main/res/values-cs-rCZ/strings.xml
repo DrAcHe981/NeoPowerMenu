@@ -122,7 +122,18 @@
   <string name="SoundMode_Silent">"Ticho"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Účet"</string>
+  <string name="presetsManager_UploadComplete">"Nahrávání dokončeno!"</string>
+  <string name="presetsManager_UploadFailedSameName">"Tento název již existuje, prosím vyberte jiný."</string>
+  <string name="presetsManager_UploadFailedNoAccess">"Toto jméno autora je chráněné, prosím použijte jiné pro přihlášení."</string>
+  <string name="presetsManager_UploadFailed">"Nahrávání se nezdařilo!"</string>
+  <string name="presetsManager_DownloadFailed">"Stahování selhalo!"</string>
+  <string name="presetsManager_CantConnecttoServer">"Nelze se připojit na server!\nProsím zkontrolujte vaše nastavení sítě a zkuste to znovu."</string>
+  <string name="presetsManager_CantConnecttoDB">"Nelze se připojit k databázi!\nProsím zkuste to později, pokud problém přetrvá: Obraťte se na autora aplikace."</string>
+  <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
+  <string name="permissionsScreenDesc_android.permission.INTERNET">"Je vyžadováno stažení/nahrání přednastavení z/na veřejný server."</string>
   <!-- Login page -->
+  <string name="login_Title">"Přihlášení"</string>
+  <string name="login_TitleRegister">"Registrace"</string>
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
   <string name="colorsPartDescButton">"Barvy [BUTTON] tlačítka."</string>
