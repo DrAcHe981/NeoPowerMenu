@@ -8,7 +8,7 @@
   <string name="powerMenuMain_SoftReboot">"Rychlý restart"</string>
   <string name="powerMenuMain_SoftRebootDesc">"Ukončením procesu přerestartovat UI Androidu"</string>
   <string name="powerMenuMain_Screenshot">"Snímek obrazovky"</string>
-  <string name="powerMenuMain_ScreenshotDesc">"Zpoždění snímku obrazovky"</string>
+  <string name="powerMenuMain_ScreenshotDesc">"Zpoždění snímku obrazovky: [SCREENSHOTDELAY]"</string>
   <string name="powerMenuBottom_Recovery">"Obnovení"</string>
   <string name="powerMenuBottom_Bootloader">"Zavaděč"</string>
   <string name="powerMenuBottom_SafeMode">"Bezpečný režim"</string>
@@ -23,9 +23,29 @@
   <string name="powerMenuMain_ToggleWifi">"WiFi"</string>
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Data"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
   <!-- Preferences: Visibility and order -->
+  <string name="visibilityOrderCategory_VisibilityOrder">"Zobrazení a pořadí"</string>
+  <string name="category_Preset">"Přednastavené"</string>
+  <string name="preset_Load">"Načíst předvolbu"</string>
+  <string name="preset_LoadDesc">"Nahrát uloženou konfiguraci"</string>
+  <string name="preset_Save">"Uložit předvolbu"</string>
+  <string name="preset_SaveDesc">"Uložit aktuální konfiguraci"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleLocal">"Místní předvolby"</string>
+  <string name="presetsManager_TitleOnline">"Předvolby online"</string>
+  <string name="presetsManager_Creator">"Autor"</string>
+  <string name="presetsManager_BuiltIn">"Vestavěný"</string>
+  <string name="presetsManager_SureToDelete">"Opravdu chcecte smazat [PRESETNAME]?\nAkce nelze vrátit zpět!"</string>
+  <string name="presetsManager_ImportMsg">"Přejete si importovat předvolby?"</string>
+  <string name="presetsManager_ImportSuccess">"[PRESETNAME] úspěšně importován."</string>
+  <string name="presetsManager_ImportFailed">"Import selhal..."</string>
   <!-- Preferences: Advanced -->
+  <string name="advancedPrefsCategory_PowerMenu">"Menu napájení"</string>
+  <string name="advancedPrefsTitle_UseGraphics">"Použij grafiku"</string>
+  <string name="advancedPrefsDesc_UseGraphics">"Použíj grafiku místo palety."</string>
+  <string name="advancedPrefsCategory_LockScreen">"Zámek obrazovky"</string>
+  <string name="advancedPrefsTitle_ShowOnLockScreen">"Zobrazit na zamčené obrazovce"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
