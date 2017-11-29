@@ -85,8 +85,25 @@
   <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"Ukázat barvu"</string>
   <string name="colorsType_Circle">"Barevná paleta"</string>
+  <string name="colorsType_Background">"Barva pozadí"</string>
+  <string name="colorsType_Text">"Barva textu"</string>
+  <string name="powerMenuMain_Flashlight">"Svítilna"</string>
   <!-- Permissions Screen -->
+  <string name="permissionsScreen_Title">"Oprávnění"</string>
+  <string name="permissionsScreen_NotAllGranted">"Všechna oprávnění nebyla přidělena, některé funkce nemusí pracovat správně..."</string>
+  <string name="permissionsScreen_ClickToRequest">"Stiskem vyvolejte oprávnění."</string>
+  <string name="permissionsScreen_DontAskAgain">"Už se znovu neptat"</string>
+  <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Čtení/Zápis externího úložiště"</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Je požadováno použití úpravy grafiky."</string>
+  <string name="permissionsScreenTitle_android.permission.CAMERA">"Fotoaparát"</string>
+  <string name="permissionsScreenDesc_android.permission.CAMERA">"Je vyžadováno přepnutí svítilny."</string>
+  <string name="visibilityOrder_HideDesc">"Skrýt popis"</string>
   <!-- Preferences: Colors -->
+  <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Přístup do Surface Flinger"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Je vyžadováno pro nahrávání obrazovky povolit nahrávání."</string>
+  <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Nahrát zvuk"</string>
+  <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Je vyžadováno pro nahrávání zvuku povolit nahrávání."</string>
+  <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Varovná hláška"</string>
   <!-- Preferences: Preset Manager -->
   <!-- Login page -->
   <!-- Fuzzy -->
