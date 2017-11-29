@@ -104,10 +104,33 @@
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Nahrát zvuk"</string>
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Je vyžadováno pro nahrávání zvuku povolit nahrávání."</string>
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Varovná hláška"</string>
+  <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Pro zobrazení Menu vypnutí, je vyžadováno překleslení přes všechny aplikace."</string>
+  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Neusínat"</string>
+  <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Je vyžadováno pro zabránění ukončení procesu svítilny a nahrávání obrazovky."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Přístup ke stavu WiFi"</string>
   <!-- Preferences: Preset Manager -->
   <!-- Login page -->
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
+  <string name="colorsPartDescButton">"Barvy [BUTTON] tlačítka."</string>
+  <string name="colorsPartPresets">"Předvolby"</string>
+  <string name="colorsPartReveal">"Zobrazit"</string>
+  <string name="colorsPartRevealDesc">"Barva animace zobrazení."</string>
+  <string name="colorsPartRevealDesc1">"Barva animace zobrazení při kliknutí na volbu Restartovat/Vypnout."</string>
+  <string name="colorsPartMain">"Dialogové okno"</string>
+  <string name="presetsManager_Refresh">"Obnovit"</string>
+  <string name="presetsManager_OrderBy">"Seřadit podle"</string>
+  <string name="presetsManager_OrderNames">"Jméno|Čas|Hodnocení|Autor|Vlastní"</string>
+  <string name="presetsManager_OrderAscDesc">"A->Z|Z->A"</string>
+  <string name="visibilityOrder_SelectMulti">"Prosím vyberte tři položky:"</string>
+  <string name="powerMenuMain_Empty">"Prázdný"</string>
+  <string name="login_Recover">"Obnovit"</string>
+  <string name="login_RecoverAccount">"Nemůžete se připojit k vašemu účtu?\nKlikněte zde pro volbu obnovy."</string>
+  <string name="login_RecoverPassword">"Resetovat heslo"</string>
+  <string name="login_RecoverSuccess">"Obdržíte e-mail s instrukcemi pro obnovení hesla."</string>
+  <string name="login_RecoverNotFound">"Žádní uživatelé se zadanými kritérii nenalezeni."</string>
+  <string name="powerMenuMain_SoundVibrate">"Zvuk: Vibrace"</string>
+  <string name="powerMenuMain_SoundNormal">"Zvuk: Normal"</string>
   <!-- Dialog -->
   <!-- Preferences: Main -->
   <!-- Power Menu -->
