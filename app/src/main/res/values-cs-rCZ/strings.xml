@@ -134,6 +134,19 @@
   <!-- Login page -->
   <string name="login_Title">"Přihlášení"</string>
   <string name="login_TitleRegister">"Registrace"</string>
+  <string name="login_Info">"Uživatelská jména jsou registrovaných členů jsou chráněna, nikdo tak nemůže nahrávat data jejich jménem. Můžete se přihlásit nebo se registrovat.\nAvšak není to nutné!\nNikdy nebudu sdílet žádné soukromé údaje!"</string>
+  <string name="login_UsernameEmail">"Uživatelské jméno nebo E-mail:"</string>
+  <string name="login_Username">"Uživatelské jméno:"</string>
+  <string name="login_Email">"E-mail:"</string>
+  <string name="login_RetypeEmail">"E-mail znovu:"</string>
+  <string name="login_PasswordOverEmail">"Vaše heslo můžete nastavit pomocí odkazu v aktivačním emailu (Tento email je dostupný pouze v anglickém jazyce)."</string>
+  <string name="login_Password">"Heslo:"</string>
+  <string name="login_KeepLogin">"Zůstat přihlášen."</string>
+  <string name="login_Register">"Potřebujete účet?\nKlikněte zde pro vytvoření!"</string>
+  <string name="login_LoggedIn">"Přihlášen!"</string>
+  <string name="login_LoginFailedWithReason">"Přihlášení se nezdařilo: "</string>
+  <string name="login_LoginFailedWrongData">"Přihlášení se nezdařilo, špatné heslo nebo E-mail!"</string>
+  <string name="login_RegisterFailedNameUsed">"Lituji, vybrané jméno nebo Email je již používán."</string>
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
   <string name="colorsPartDescButton">"Barvy [BUTTON] tlačítka."</string>
