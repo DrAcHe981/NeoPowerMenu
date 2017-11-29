@@ -147,8 +147,18 @@
   <string name="login_LoginFailedWithReason">"Přihlášení se nezdařilo: "</string>
   <string name="login_LoginFailedWrongData">"Přihlášení se nezdařilo, špatné heslo nebo E-mail!"</string>
   <string name="login_RegisterFailedNameUsed">"Lituji, vybrané jméno nebo Email je již používán."</string>
+  <string name="login_RegisterSuccess">"Registrace byla úspěšná, bude vám zaslán aktivační email!"</string>
+  <string name="login_Processing">"Zpracovávám..."</string>
+  <string name="login_TitleStatistics">"Statistiky pro [USERNAMEEMAIL]"</string>
+  <string name="login_Statistics">"Předvolby nahrány: [UPLOADCOUNT]\n\nObdarováné hodnocení: [STARSGIVEN]\nObdržené hodnocení: [STARSRECEIVED]\n\nVaše předvolby(seřazeny podle hodnocení):\n[TOP5PRESETS]"</string>
+  <string name="login_StatisticsFailed">"Nelze získat statistiky..."</string>
   <!-- Fuzzy -->
+  <string name="login_ReloadStatistics">"Klikněte pro znovunačtení statistik"</string>
+  <string name="login_TitleLogout">"Odhlásit se"</string>
+  <string name="login_pleaseCheckInput">"Něco se nepovedlo;-), zkontrolujte vaše zadání."</string>
+  <string name="presetsManager_Stars">"Hodnocení: [STARS]"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsPartTitle">"[PART] barvy"</string>
   <string name="colorsPartDescButton">"Barvy [BUTTON] tlačítka."</string>
   <string name="colorsPartPresets">"Předvolby"</string>
   <string name="colorsPartReveal">"Zobrazit"</string>
