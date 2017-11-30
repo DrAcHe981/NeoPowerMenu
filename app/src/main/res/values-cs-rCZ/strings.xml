@@ -122,6 +122,7 @@
   <string name="SoundMode_Silent">"Ticho"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Účet"</string>
+  <string name="presetsManager_UploadMsg">"Přednastavení bude nahráno na server, viditelné pro všechny další uživatele.\n\nPřed nahrátím máte poslední šanci změnit jméno nebo autora..."</string>
   <string name="presetsManager_UploadComplete">"Nahrávání dokončeno!"</string>
   <string name="presetsManager_UploadFailedSameName">"Tento název již existuje, prosím vyberte jiný."</string>
   <string name="presetsManager_UploadFailedNoAccess">"Toto jméno autora je chráněné, prosím použijte jiné pro přihlášení."</string>
@@ -187,6 +188,7 @@
   <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
   <string name="graphics_Crop">"Oříznutí|Kruhové oříznutí"</string>
   <string name="graphics_NoPresetsFound">"Žádné grafické předvolby nenalezeny..."</string>
+  <string name="graphics_GraphicsSaveLoad">"Uložit akttuální grafický návrh.|Toto přednastavení obsahuje grafiku, chcete ji načíst?\nVolba přepíše váš aktuální grafický návrh!"</string>
   <string name="downloadHelper_RemainingTime">"[TIME] zbývá"</string>
   <string name="downloadHelper_Speed">"rychlost: [SPEED]/s"</string>
   <!-- Preferences: Main -->
