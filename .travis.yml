@@ -92,7 +92,7 @@ before_deploy:
 - cp $TRAVIS_BUILD_DIR/new.keystore $HOME
 - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk neohack -keystore $HOME/new.keystore -storepass $storepass -keypass $keypass
 - jarsigner -verify ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk
-- "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/NeoPowerMenu_TravisCI.apk"
+- "${ANDROID_HOME}/build-tools/26.0.2/zipalign 4 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/NeoPowerMenu_TravisCI.apk"
 deploy:
   provider: releases
   api_key: $accstkn
