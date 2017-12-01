@@ -62,7 +62,7 @@ before_install:
 
 install:
 - echo yes | sdkmanager "tools"
-- echo yes | sdkmanager "platforms;android-25" # Latest platform required by SDK tools
+- echo yes | sdkmanager "platforms;android-24" # Latest platform required by SDK tools
 - echo yes | sdkmanager "platforms;android-${API}" # Android platform required by emulator
 - echo yes | sdkmanager "extras;android;m2repository"
 - echo yes | sdkmanager "extras;google;m2repository"
@@ -75,7 +75,7 @@ install:
 
 before_script:
 # Wait for emulator fully-booted and disable animations
-- android-wait-for-emulator
+- adb wait-for-device
 - adb shell settings put global window_animation_scale 0 &
 - adb shell settings put global transition_animation_scale 0 &
 - adb shell settings put global animator_duration_scale 0 &
