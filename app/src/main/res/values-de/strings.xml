@@ -429,4 +429,6 @@
   <string name="screenrecord_notif_binarynotFound">Konnte die binäre Datei nicht finden, lesen, oder ausführen. \n Bildschirmaufnahme ist möglicherweise auf Ihrem Gerät nicht unterstützt.</string>
   <string name="advancedPrefsTitle_HideActionDescriptionText">Beschreibungstext im Herunterfahren/Neu starten dialog ausblenden</string>
   <string name="advancedPrefsDesc_HideActionDescriptionText">Verstecke \"Wird heruntergefahren...\" oder ähnliches im Herunterfahren/Neu starten Dialog.</string>
+  <string name="powerMenu_Task_Killed">[TARGET] wurde beendet!</string>
+  <string name="powerMenu_No_Task_To_Kill">Keine Prozesse gefunden die beendet werden können.</string>
 </resources>
