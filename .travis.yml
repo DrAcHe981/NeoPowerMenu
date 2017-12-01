@@ -93,7 +93,5 @@ deploy:
   provider: releases
   api_key: $accstkn
   # replace your-apk-name
-  file: "$HOME/android/NeoPowerMenu.apk"
+  file: "$HOME/android/NeoPowerMenu_Commit_${TRAVIS_COMMIT}.apk"
   skip_cleanup: true
-  on:
-    tags: true
