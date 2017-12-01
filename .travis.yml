@@ -10,7 +10,8 @@ android:
     - platform-tools
     - build-tools-26.0.1
     - android-26
-
+before_install:
+ - chmod +x gradlew
 script:
    - ./gradlew build connectedCheck
 jdk:
