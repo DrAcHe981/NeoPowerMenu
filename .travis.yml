@@ -25,6 +25,11 @@ android:
     - tools # Update tools from revision 24.4.1 to 25.2.5
     - build-tools-26.0.2 # Match build-tools version used in build.gradle
 
+  licenses:
+    - 'android-sdk-preview-license-52d11cd2'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+
 env:
   global:
     - DIR=constraint-layout-start # Project directory
@@ -33,12 +38,14 @@ env:
     - ABI=armeabi-v7a # ARM ABI v7a by default
     - QEMU_AUDIO_DRV=none # Disable emulator audio to avoid warning
     - GRADLE_USER_HOME="${TRAVIS_BUILD_DIR}/gradle" # Change location for Gradle Wrapper and cache
-    - ANDROID_HOME=/usr/local/android-sdk-25.0.2 # Depends on the cookbooks version used in the VM
-    - TOOLS=${ANDROID_HOME}/tools # PATH order matters, exists more than one emulator script
-    - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+    # - ANDROID_HOME=/usr/local/android-sdk-25.0.2 # Depends on the cookbooks version used in the VM
+    # - TOOLS=${ANDROID_HOME}/tools # PATH order matters, exists more than one emulator script
+    # - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
     - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
 before_install:
+  - openssl aes-256-cbc -K $encrypted_fb365c1216b5_key -iv $encrypted_fb365c1216b5_iv
+  - in new.keystore.enc -out new.keystore -d
   - chmod +x gradlew
 
 script:
