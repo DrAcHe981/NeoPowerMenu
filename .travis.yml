@@ -90,14 +90,14 @@ before_deploy:
 - git config --local user.email "drache981@gmail.com"
 - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 - cp $TRAVIS_BUILD_DIR/new.keystore $HOME
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/app-release-unsigned.apk neohack -keystore $HOME/new.keystore -storepass $storepass -keypass $keypass
-- jarsigner -verify ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/app-release-unsigned.apk
-- "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/app-release-unsigned.apk ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/NeoPowerMenu_TravisCI.apk"
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk neohack -keystore $HOME/new.keystore -storepass $storepass -keypass $keypass
+- jarsigner -verify ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk
+- "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/NeoPowerMenu_TravisCI.apk"
 deploy:
   provider: releases
   api_key: $accstkn
   # replace your-apk-name
-  file: "app/build/outputs/apk/NeoPowerMenu_TavisCI.apk"
+  file: "${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/NeoPowerMenu_TavisCI.apk"
   skip_cleanup: true
   overwrite: true
   on:
