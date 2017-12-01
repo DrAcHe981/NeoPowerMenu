@@ -75,11 +75,11 @@ before_install:
 
 before_script:
 # Wait for emulator fully-booted and disable animations
-- adb wait-for-device
-- adb shell settings put global window_animation_scale 0 &
-- adb shell settings put global transition_animation_scale 0 &
-- adb shell settings put global animator_duration_scale 0 &
-- adb shell input keyevent 82 &
+#- adb wait-for-device
+#- adb shell settings put global window_animation_scale 0 &
+#- adb shell settings put global transition_animation_scale 0 &
+#- adb shell settings put global animator_duration_scale 0 &
+#- adb shell input keyevent 82 &
 
 script:
 - ./gradlew build connectedCheck
