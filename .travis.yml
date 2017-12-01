@@ -99,3 +99,5 @@ deploy:
   file: "$HOME/android/NeoPowerMenu_TavisCI.apk"
   skip_cleanup: true
   overwrite: true
+  on:
+    all_branches: true
