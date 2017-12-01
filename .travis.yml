@@ -90,8 +90,8 @@ before_deploy:
 - git config --local user.email "drache981@gmail.com"
 - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 - cp $TRAVIS_BUILD_DIR/.keystore $HOME
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk your-apk-name -keystore $HOME/.keystore -storepass $storepass -keypass $keypass
-- "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 $HOME/android/release-unsigned.apk $HOME/android/NeoPowerMenu.apk"
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk your-apk-name -keystore $HOME/new.keystore -storepass $storepass -keypass $keypass
+- "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 $HOME/android/release-unsigned.apk $HOME/android/NeoPowerMenu_TravisCI.apk"
 deploy:
   provider: releases
   api_key: $accstkn
