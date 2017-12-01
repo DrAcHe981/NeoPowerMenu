@@ -1,5 +1,8 @@
 language: android
 sudo: required
+branches:
+  only:
+    - 1.5
 android:
   components:
     - tools # to get the new `repository-11.xml`
