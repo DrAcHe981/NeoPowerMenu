@@ -56,8 +56,8 @@ env:
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_fb365c1216b5_key -iv $encrypted_fb365c1216b5_iv -in new.keystore.enc -out new.keystore -d
-- export EMULATOR="system-images;android-${API};${TAG};${ABI}" # Used to install/create emulator
-- echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid warning
+#- export EMULATOR="system-images;android-${API};${TAG};${ABI}" # Used to install/create emulator
+#- echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid warning
 - chmod +x gradlew
 
 #install:
@@ -90,14 +90,16 @@ before_deploy:
 - git config --local user.email "drache981@gmail.com"
 - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 - cp $TRAVIS_BUILD_DIR/new.keystore $HOME
-- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk neohack -keystore $HOME/new.keystore -storepass $storepass -keypass $keypass
-- "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 $HOME/android/release-unsigned.apk $HOME/android/NeoPowerMenu_TravisCI.apk"
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/app-release-unsigned.apk neohack -keystore $HOME/new.keystore -storepass $storepass -keypass $keypass
+- jarsigner -verify ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/app-release-unsigned.apk
+- "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/app-release-unsigned.apk ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/NeoPowerMenu_TravisCI.apk"
 deploy:
   provider: releases
   api_key: $accstkn
   # replace your-apk-name
-  file: "$HOME/android/NeoPowerMenu_TavisCI.apk"
+  file: "app/build/outputs/apk/NeoPowerMenu_TavisCI.apk"
   skip_cleanup: true
   overwrite: true
   on:
+    repo: DrAcHe981/NeoPowerMenu
     all_branches: true
