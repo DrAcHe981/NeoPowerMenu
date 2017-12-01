@@ -85,13 +85,17 @@ script:
 - ./gradlew build connectedCheck
 
 before_deploy:
+# Set up git user name and tag this commit
+- git config --local user.name "DrAcHe981"
+- git config --local user.email "drache981@gmail.com"
+- git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 - cp $TRAVIS_BUILD_DIR/.keystore $HOME
 - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk your-apk-name -keystore $HOME/.keystore -storepass $storepass -keypass $keypass
 - "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 $HOME/android/release-unsigned.apk $HOME/android/NeoPowerMenu.apk"
-
 deploy:
   provider: releases
   api_key: $accstkn
   # replace your-apk-name
-  file: "$HOME/android/NeoPowerMenu_Commit_${TRAVIS_COMMIT}.apk"
+  file: "$HOME/android/NeoPowerMenu_TavisCI.apk"
   skip_cleanup: true
+  overwrite: true
