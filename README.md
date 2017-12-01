@@ -4,6 +4,7 @@
 [![api](https://img.shields.io/badge/api-16%2B-brightgreen.svg)]()
 [![Crowdin](https://d322cqt584bo4o.cloudfront.net/neopowermenu/localized.svg)](https://crowdin.com/project/neopowermenu)
 [![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](https://travis-ci.org/DrAcHe981/NeoPowerMenu.svg?branch=1.5)](https://travis-ci.org/DrAcHe981/NeoPowerMenu)
 
 **Download the module in the [Xposed Repository](https://repo.xposed.info/module/de.NeonSoft.neopowermenu)**<br>
 **Get support on [XDA-Developers](http://forum.xda-developers.com/xposed/modules/mod-neopowermenu-t3324581)**<br>
