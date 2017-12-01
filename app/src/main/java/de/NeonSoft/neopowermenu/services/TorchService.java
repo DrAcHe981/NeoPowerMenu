@@ -5,14 +5,16 @@ import android.content.*;
 import android.graphics.*;
 import android.hardware.*;
 import android.os.*;
+
 import de.NeonSoft.neopowermenu.*;
+import de.NeonSoft.neopowermenu.helpers.SettingsManager;
+
 import android.os.PowerManager.WakeLock;
 
 import android.hardware.Camera;
 
-public class TorchService extends Service
- {
-    private static final String TAG = "NPM:TorchService";
+public class TorchService extends Service {
+    private static final String TAG = "NPM";
 
     public static final String ACTION_TOGGLE_TORCH = "neopowermenu.intent.action.TOGGLE_TORCH";
     public static final String ACTION_TORCH_STATUS_CHANGED = "neopowermenu.intent.action.TORCH_STATUS_CHANGED";
@@ -29,6 +31,7 @@ public class TorchService extends Service
     private PendingIntent mPendingIntent;
     private WakeLock mPartialWakeLock;
     private int mTorchTimeout;
+    private boolean mTorchAutoOff = true;
     private Handler mHandler;
 
     @Override
@@ -53,9 +56,9 @@ public class TorchService extends Service
         builder.setContentIntent(mPendingIntent);
         mTorchNotif = builder.build();
 
-        SharedPreferences prefs = getSharedPreferences(getPackageName() + "_preferences",
-                Context.MODE_WORLD_READABLE);
-        mTorchTimeout = (int) prefs.getLong("FlashlightAutoOff", 10*60*1000);
+        SharedPreferences prefs = SettingsManager.getInstance(this).getMainPrefs();
+        mTorchTimeout = (int) prefs.getLong("FlashlightAutoOffTime", 10 * 60 * 1000);
+        mTorchAutoOff = prefs.getBoolean("FlashlightAutoOff", true);
         mHandler = new Handler();
     }
 
@@ -79,10 +82,10 @@ public class TorchService extends Service
         return START_NOT_STICKY;
     }
 
-		public static int getTorchState() {
-				return mTorchStatus;
-		}
-		
+    public static int getTorchState() {
+        return mTorchStatus;
+    }
+
     private synchronized void toggleTorch(boolean goToSleep) {
         if (mTorchStatus != TORCH_STATUS_ON) {
             setTorchOn();
@@ -104,11 +107,11 @@ public class TorchService extends Service
             mTorchStatus = TORCH_STATUS_ON;
             startForeground(2, mTorchNotif);
 
-            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE); 
+            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
             mPartialWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
             mPartialWakeLock.acquire(mTorchTimeout > 0 ? mTorchTimeout : 3600000);
             mHandler.removeCallbacks(mTorchTimeoutRunnable);
-            if (mTorchTimeout > 0) {
+            if (mTorchAutoOff && mTorchTimeout > 0) {
                 mHandler.postDelayed(mTorchTimeoutRunnable, mTorchTimeout);
             }
         } catch (Exception e) {

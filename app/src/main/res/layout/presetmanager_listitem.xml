@@ -3,7 +3,9 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_height="wrap_content"
 	android:layout_width="wrap_content"
-	android:orientation="horizontal">
+	android:orientation="horizontal"
+	android:background="?android:attr/selectableItemBackground"
+	android:id="@+id/root">
 
 	<LinearLayout
 		android:layout_height="wrap_content"
@@ -15,15 +17,22 @@
 			android:layout_height="wrap_content"
 			android:orientation="horizontal">
 
+			<ProgressBar
+				style="?android:attr/progressBarStyleHorizontal"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:id="@+id/presetmanagerlistitemProgressBar_Download"
+				android:progressDrawable="@drawable/custom_progressbar"/>
+
 			<LinearLayout
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
 				android:orientation="vertical"
-				android:paddingRight="5dp"
 				android:layout_weight="0"
 				android:layout_alignParentRight="true"
 				android:id="@+id/listitemhandleleftLinearLayout1"
-				android:layout_centerVertical="true">
+				android:layout_centerVertical="true"
+				android:layout_marginRight="5dp">
 
 				<LinearLayout
 					android:layout_height="wrap_content"
@@ -31,14 +40,6 @@
 					android:orientation="vertical"
 					android:id="@+id/presetmanagerlistitemLinearLayout_Local"
 					android:visibility="visible">
-
-					<TextView
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="@string/presetsManager_Active"
-						android:gravity="bottom|center_horizontal"
-						android:textColor="#FFFFFF"
-						android:layout_weight="1.0"/>
 
 					<RadioButton
 						android:layout_height="wrap_content"
@@ -59,19 +60,20 @@
 
 					<TextView
 						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
 						android:layout_width="wrap_content"
-						android:text="Download:"
-						android:gravity="bottom|center_horizontal"
-						android:textColor="#FFFFFF"
-						android:layout_weight="1.0"/>
+						android:text="@string/presetsManager_Stars"
+						android:id="@+id/presetmanagerlistitemTextView_Stars"
+						android:textColor="#FFFFFF"/>
 
 					<ImageView
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:src="@android:drawable/ic_delete"
+						android:layout_height="35dp"
+						android:layout_width="35dp"
+						android:src="@drawable/ic_file_file_download"
 						android:layout_weight="1.0"
 						android:layout_gravity="center|center_vertical|center_horizontal"
-						android:padding="0dp"/>
+						android:padding="3dp"
+						android:id="@+id/presetmanagerlistitemImageView_Online"/>
 
 				</LinearLayout>
 
@@ -79,34 +81,47 @@
 
 			<LinearLayout
 				android:layout_height="wrap_content"
-				android:minHeight="60dp"
+				android:minHeight="50dp"
 				android:layout_width="match_parent"
 				android:orientation="vertical"
-				android:paddingLeft="5dp"
+				android:paddingLeft="10dp"
 				android:layout_toLeftOf="@id/listitemhandleleftLinearLayout1"
 				android:layout_alignParentLeft="true"
 				android:layout_marginRight="10dp"
 				android:id="@+id/listitemhandleleftLinearLayout2">
 
-				<TextView
+				<LinearLayout
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
-					android:text="Title/Primary Text"
-					android:layout_weight="1.0"
-					android:gravity="bottom"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:textColor="#FFFFFF"
-					android:id="@+id/title"
-					android:paddingLeft="10dp"
-					android:paddingRight="10dp"/>
+					android:orientation="horizontal">
+
+					<ImageView
+						android:layout_height="match_parent"
+						android:layout_width="25dp"
+						android:src="@drawable/ic_device_now_wallpaper"
+						android:id="@+id/presetmanagerlistitemImageView_hasGraphics"
+						android:padding="2dp"
+                        android:layout_gravity="top"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="Title/Primary Text"
+						android:gravity="bottom"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:textColor="#FFFFFF"
+						android:id="@+id/title"
+						android:paddingRight="10dp"/>
+
+				</LinearLayout>
 
 				<TextView
-					android:layout_height="wrap_content"
+					android:layout_height="match_parent"
 					android:layout_width="match_parent"
 					android:text="Description/Secondary Text"
 					android:layout_weight="1.0"
 					android:gravity="top"
-					android:paddingLeft="15dp"
+					android:paddingLeft="5dp"
 					android:id="@+id/text"
 					android:paddingRight="10dp"/>
 
@@ -116,10 +131,44 @@
 				android:layout_height="35dp"
 				android:layout_width="match_parent"
 				android:orientation="horizontal"
-				android:gravity="right"
+				android:gravity="left"
 				android:id="@+id/presetmanagerlistitemLinearLayout_BottomBar"
 				android:layout_below="@id/listitemhandleleftLinearLayout2"
-				android:layout_alignRight="@id/listitemhandleleftLinearLayout2">
+				android:layout_alignRight="@id/listitemhandleleftLinearLayout2"
+				android:paddingLeft="5dp">
+
+				<LinearLayout
+					android:background="?android:attr/selectableItemBackground"
+					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:id="@+id/presetmanagerlistitemLinearLayout_Upload"
+					android:gravity="center_vertical">
+
+					<ImageView
+						android:layout_height="35dp"
+						android:layout_width="35dp"
+						android:src="@drawable/ic_file_file_upload"
+						android:padding="3dp"
+						android:id="@+id/presetmanagerlistitemImageView_Upload"/>
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="wrap_content"
+						android:text="@string/presetsManager_Buttons"
+						android:gravity="center_vertical"
+						android:id="@+id/presetmanagerlistitemTextView_Upload"/>
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="2dp"
+						android:background="@color/colorAccentDarkTheme"
+						android:alpha="0.3"
+						android:layout_marginTop="5dp"
+						android:layout_marginBottom="5dp"
+						android:layout_marginLeft="5dp"/>
+
+				</LinearLayout>
 
 				<LinearLayout
 					android:background="?android:attr/selectableItemBackground"
@@ -127,9 +176,7 @@
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
 					android:id="@+id/presetmanagerlistitemLinearLayout_Share"
-					android:gravity="center_vertical"
-					android:paddingRight="5dp"
-					android:paddingLeft="5dp">
+					android:gravity="center_vertical">
 
 					<ImageView
 						android:layout_height="30dp"
@@ -141,18 +188,55 @@
 					<TextView
 						android:layout_height="match_parent"
 						android:layout_width="wrap_content"
-						android:text="@string/presetsManager_Share"
-						android:gravity="center_vertical"/>
+						android:text="@string/presetsManager_Buttons"
+						android:gravity="center_vertical"
+						android:id="@+id/presetmanagerlistitemTextView_Share"/>
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="2dp"
+						android:background="@color/colorAccentDarkTheme"
+						android:alpha="0.3"
+						android:layout_marginTop="5dp"
+						android:layout_marginBottom="5dp"
+						android:layout_marginLeft="5dp"/>
 
 				</LinearLayout>
 
-				<TextView
+				<LinearLayout
+					android:background="?android:attr/selectableItemBackground"
 					android:layout_height="match_parent"
-					android:layout_width="2dp"
-					android:background="@color/colorAccentDarkTheme"
-					android:alpha="0.3"
-					android:layout_marginTop="5dp"
-					android:layout_marginBottom="5dp"/>
+					android:layout_width="wrap_content"
+					android:orientation="horizontal"
+					android:id="@+id/presetmanagerlistitemLinearLayout_Star"
+					android:gravity="center_vertical">
+
+					<ImageView
+						android:layout_height="35dp"
+						android:layout_width="35dp"
+						android:src="@drawable/ic_action_star_10"
+						android:padding="3dp"
+						android:id="@+id/presetmanagerlistitemImageView_Star"/>
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="wrap_content"
+						android:text="@string/presetsManager_Buttons"
+						android:gravity="center_vertical"
+						android:id="@+id/presetmanagerlistitemTextView_StarText"/>
+
+					<TextView
+						android:id="@+id/presetmanagerlistitemTextView_StarLine"
+						android:layout_height="match_parent"
+						android:layout_width="2dp"
+						android:background="@color/colorAccentDarkTheme"
+						android:alpha="0.3"
+						android:layout_marginTop="5dp"
+						android:layout_marginBottom="5dp"
+						android:layout_marginLeft="5dp"
+						android:visibility="gone"/>
+
+				</LinearLayout>
 
 				<LinearLayout
 					android:background="?android:attr/selectableItemBackground"
@@ -160,9 +244,7 @@
 					android:layout_width="wrap_content"
 					android:orientation="horizontal"
 					android:id="@+id/presetmanagerlistitemLinearLayout_Delete"
-					android:gravity="center_vertical"
-					android:paddingRight="5dp"
-					android:paddingLeft="5dp">
+					android:gravity="center_vertical">
 
 					<ImageView
 						android:layout_height="30dp"
@@ -174,8 +256,9 @@
 					<TextView
 						android:layout_height="match_parent"
 						android:layout_width="wrap_content"
-						android:text="@string/presetsManager_Delete"
-						android:gravity="center_vertical"/>
+						android:text="@string/presetsManager_Buttons"
+						android:gravity="center_vertical"
+						android:id="@+id/presetmanagerlistitemTextView_Delete"/>
 
 				</LinearLayout>
 
@@ -191,27 +274,17 @@
 				android:layout_marginRight="5dp"
 				android:layout_marginLeft="5dp"/>
 
-			<TextView
-				android:layout_height="wrap_content"
-				android:layout_width="2dp"
-				android:background="@color/colorAccentDarkTheme"
-				android:alpha="0.3"
-				android:layout_toLeftOf="@id/listitemhandleleftLinearLayout1"
-				android:layout_marginBottom="7dp"
-				android:layout_marginTop="5dp"
-				android:layout_marginRight="5dp"
-				android:layout_alignTop="@id/listitemhandleleftLinearLayout2"
-				android:layout_alignBottom="@id/presetmanagerlistitemTextView1"/>
-
-			<ProgressBar
-				style="?android:attr/progressBarStyleHorizontal"
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:id="@+id/presetmanagerlistitemProgressBar_Download"
-				android:progressDrawable="@drawable/custom_progressbar"
-				android:alpha="0.1"
-				android:layout_alignBottom="@id/presetmanagerlistitemTextView1"
-				android:layout_alignTop="@id/listitemhandleleftLinearLayout2"/>
+			<ImageView
+				android:layout_height="25dp"
+				android:layout_width="wrap_content"
+				android:src="@drawable/ic_device_now_wallpaper"
+				android:layout_alignParentTop="true"
+				android:padding="3dp"
+				android:id="@+id/presetmanagerlistitemImageView_hasGraphics1"
+				android:layout_alignRight="@id/listitemhandleleftLinearLayout1"
+				android:layout_alignLeft="@id/listitemhandleleftLinearLayout1"
+				android:scaleType="fitCenter"
+				android:visibility="gone"/>
 
 		</RelativeLayout>
 

@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/slidedowndialogfragmentTextView_DialogBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#CC000000"/>
+
+        <LinearLayout
+            android:id="@+id/slidedowndialogfragmentLinearLayout_DialogRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="@color/colorPrimaryDarkDarkTheme"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:id="@+id/slidedowndialogfragmentLinearLayout_MainContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDarkDarkTheme"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:background="@color/transparent"/>
+
+                        <TextView
+                            android:id="@+id/slidedowndialogfragmentTextView_DialogText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:text="text"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#FFFFFF"/>
+
+                        <LinearLayout
+                            android:id="@+id/slidedowndialogfragmentLinearLayout_CustomViewHolder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/slidedowndialogfragmentLinearLayout_InputHolder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"/>
+
+                        <LinearLayout
+                            android:id="@+id/slidedowndialogfragmentLinearLayout_DialogColorPicker"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.0"
+                                android:gravity="center|center_vertical|center_horizontal"
+                                android:orientation="horizontal">
+
+                                <com.larswerkman.holocolorpicker.ValueBar
+                                    android:id="@+id/slidedowndialogfragmentValueBar_DialogValueBar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:visibility="visible"
+                                    app:bar_orientation_horizontal="false"/>
+
+                                <com.larswerkman.holocolorpicker.SaturationBar
+                                    android:id="@+id/slidedowndialogfragmentSaturationBar_DialogSaturationBar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:visibility="visible"
+                                    app:bar_orientation_horizontal="false"/>
+
+                                <com.larswerkman.holocolorpicker.OpacityBar
+                                    android:id="@+id/slidedowndialogfragmentOpacityBar_DialogOpacityBar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:visibility="gone"
+                                    app:bar_orientation_horizontal="false"/>
+
+                                <com.larswerkman.holocolorpicker.ColorPicker
+                                    android:id="@+id/slidedowndialogfragmentColorPicker_DialogColorPicker"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/ColorPicker_Hex"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                                <EditText
+                                    android:id="@+id/slidedowndialogfragmentEditText_DialogHexInput"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.0"
+                                    android:ems="10"
+                                    android:lines="1"
+                                    android:singleLine="true"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/slidedowndialogfragmentLinearLayout_CheckBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <CheckBox
+                                android:id="@+id/slidedowndialogfragmentCheckBox_CheckBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Text"/>
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/slidedowndialogfragmentRelativeLayout_Progressbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <ProgressBar
+                                android:id="@+id/slidedowndialogfragmentProgressBar_Progressbar"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_margin="2dp"
+                                android:layout_weight="1.0"
+                                android:minHeight="35dp"
+                                android:progressDrawable="@drawable/custom_progressbar"/>
+
+                            <TextView
+                                android:layout_width="5dp"
+                                android:layout_height="2dp"
+                                android:layout_alignLeft="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_alignTop="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_marginLeft="-2dp"
+                                android:layout_marginTop="-2dp"
+                                android:background="@color/colorAccentDarkThemeTrans"/>
+
+                            <TextView
+                                android:layout_width="2dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_alignLeft="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_alignTop="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_marginLeft="-2dp"
+                                android:background="@color/colorAccentDarkThemeTrans"/>
+
+                            <TextView
+                                android:layout_width="5dp"
+                                android:layout_height="2dp"
+                                android:layout_alignBottom="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_alignLeft="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_marginBottom="-2dp"
+                                android:layout_marginLeft="-2dp"
+                                android:background="@color/colorAccentDarkThemeTrans"/>
+
+                            <TextView
+                                android:layout_width="5dp"
+                                android:layout_height="2dp"
+                                android:layout_alignRight="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_alignTop="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_marginRight="-2dp"
+                                android:layout_marginTop="-2dp"
+                                android:background="@color/colorAccentDarkThemeTrans"/>
+
+                            <TextView
+                                android:layout_width="2dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_alignRight="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_alignTop="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_marginRight="-2dp"
+                                android:background="@color/colorAccentDarkThemeTrans"/>
+
+                            <TextView
+                                android:layout_width="5dp"
+                                android:layout_height="2dp"
+                                android:layout_alignBottom="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_alignRight="@id/slidedowndialogfragmentProgressBar_Progressbar"
+                                android:layout_marginBottom="-2dp"
+                                android:layout_marginRight="-2dp"
+                                android:background="@color/colorAccentDarkThemeTrans"/>
+
+                            <RelativeLayout
+                                android:id="@+id/slidedowndialogfragmentRelativeLayout_ProgressText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true">
+
+                                <TextView
+                                    android:id="@+id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_width="50dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="2dp"
+                                    android:background="#81000000"
+                                    android:gravity="center"
+                                    android:padding="2dp"
+                                    android:text="100%"/>
+
+                                <TextView
+                                    android:layout_width="5dp"
+                                    android:layout_height="2dp"
+                                    android:layout_alignLeft="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_alignTop="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_marginLeft="-2dp"
+                                    android:layout_marginTop="-2dp"
+                                    android:background="@color/colorAccentDarkThemeTrans"/>
+
+                                <TextView
+                                    android:layout_width="2dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignBottom="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_alignLeft="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_alignTop="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_marginLeft="-2dp"
+                                    android:background="@color/colorAccentDarkThemeTrans"/>
+
+                                <TextView
+                                    android:layout_width="5dp"
+                                    android:layout_height="2dp"
+                                    android:layout_alignBottom="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_alignLeft="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_marginBottom="-2dp"
+                                    android:layout_marginLeft="-2dp"
+                                    android:background="@color/colorAccentDarkThemeTrans"/>
+
+                                <TextView
+                                    android:layout_width="5dp"
+                                    android:layout_height="2dp"
+                                    android:layout_alignRight="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_alignTop="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_marginRight="-2dp"
+                                    android:layout_marginTop="-2dp"
+                                    android:background="@color/colorAccentDarkThemeTrans"/>
+
+                                <TextView
+                                    android:layout_width="2dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignBottom="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_alignRight="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_alignTop="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_marginRight="-2dp"
+                                    android:background="@color/colorAccentDarkThemeTrans"/>
+
+                                <TextView
+                                    android:layout_width="5dp"
+                                    android:layout_height="2dp"
+                                    android:layout_alignBottom="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_alignRight="@id/slidedowndialogfragmentTextView_Progressbar"
+                                    android:layout_marginBottom="-2dp"
+                                    android:layout_marginRight="-2dp"
+                                    android:background="@color/colorAccentDarkThemeTrans"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <LinearLayout
+                    android:id="@+id/slidedowndialogfragmentLinearLayout_DialogList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1.0"
+                    android:background="@color/colorPrimaryDarkDarkTheme"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ListView
+                        android:id="@+id/slidedowndialogfragmentListView_DialogList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0"
+                        android:divider="@color/colorAccentDarkThemeTrans"
+                        android:dividerHeight="1dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/slidedowndialogfragmentTextView_OverwriteInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0"
+                android:background="@color/colorPrimaryDarkDarkTheme"
+                android:text="Input Assist Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtons"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonNegative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNegativeText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:text="Negative"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#FFFFFF"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonNeutral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/slidedowndialogfragmentTextView_DialogButtonNeutralText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:text="Neutral"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#FFFFFF"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/slidedowndialogfragmentLinearLayout_DialogButtonPositive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/slidedowndialogfragmentTextView_DialogButtonPositiveText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="Positive"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#FFFFFF"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/slidedowndialogfragmentTextView_DialogTouchOutside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/slidedowndialogfragmentLinearLayout_DialogRoot"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
+

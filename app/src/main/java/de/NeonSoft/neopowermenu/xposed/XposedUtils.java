@@ -3,9 +3,15 @@ package de.NeonSoft.neopowermenu.xposed;
 import android.content.*;
 import android.content.pm.*;
 import android.content.res.*;
+import android.graphics.*;
 import android.os.*;
+import android.text.TextUtils;
+import android.util.*;
+import android.view.*;
 import de.NeonSoft.neopowermenu.*;
 import de.robv.android.xposed.*;
+
+import java.io.File;
 import java.util.*;
 
 import static de.robv.android.xposed.XposedHelpers.callStaticMethod;
@@ -13,21 +19,37 @@ import static de.robv.android.xposed.XposedHelpers.findClass;
 
 public class XposedUtils
 {
-		private static Boolean mHasFlash;
-		private static Boolean mIsExynosDevice;
-		
-		public static void log(String message) {
-				XposedBridge.log("[NeoPowerMenu] "+message);
-		}
 
-    public static boolean isAppInstalled(Context context, String appUri) {
+    public static int NPM_POWERACTION_SHUTDOWN = 0;
+    public static int NPM_POWERACTION_REBOOT = 1;
+    public static int NPM_POWERACTION_SOFTREBOOT = 2;
+    public static int NPM_POWERACTION_RECOVERY = 3;
+    public static int NPM_POWERACTION_BOOTLOADER = 4;
+
+    private static Boolean mHasFlash;
+    private static Boolean mIsExynosDevice;
+    private static Boolean mIsSamsumgRom = null;
+    private static Boolean mIsOxygenOsRom = null;
+
+    public static void log(String message) {
+        Log.i("NPM",message);
         try {
-            PackageManager pm = context.getPackageManager();
-            pm.getPackageInfo(appUri, PackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+            XposedBridge.log("[NeoPowerMenu] "+message);
+        } catch (Throwable t) {}
+    }
+
+    public static Point getLocationInView(View src, View target)
+		{
+        final int[] l0 = new int[2];
+        src.getLocationOnScreen(l0);
+
+        final int[] l1 = new int[2];
+        target.getLocationOnScreen(l1);
+
+        l1[0] = l1[0] - l0[0] + target.getWidth() / 2;
+        l1[1] = l1[1] - l0[1] + target.getHeight() / 2;
+
+        return new Point(l1[0], l1[1]);
     }
 
     public static boolean hasFlash(Context con) {
@@ -98,7 +120,27 @@ public class XposedUtils
 				} catch (Throwable t) { /* ignore */ }
 		}
 
+    public static boolean isParanoidRom() {
+        return (Build.DISPLAY != null && Build.DISPLAY.startsWith("pa_"));
+    }
+    public static boolean isSamsungRom() {
+        if (mIsSamsumgRom != null) return mIsSamsumgRom;
+
+        mIsSamsumgRom = (new File("/system/framework/twframework.jar").isFile() ||
+                new File("/system/framework/touchwiz.jar").isFile());
+        return mIsSamsumgRom;
+    }
+
+
     public static void performSoftReboot() {
+    }
+
+    public static boolean isOxygenOsRom() {
+        if (mIsOxygenOsRom == null) {
+            String version = SystemProp.get("ro.oxygen.version", "0");
+            mIsOxygenOsRom = version != null && !version.isEmpty() &&  !"0".equals(version);
+        }
+        return mIsOxygenOsRom;
     }
 
     public static class SystemProp extends XposedUtils {
@@ -201,6 +243,44 @@ public class XposedUtils
                 callStaticMethod(classSystemProperties, "set", key, val);
             } catch (Throwable t) {
                 log("SystemProp.set failed: " + t.getMessage());
+            }
+        }
+    }
+
+    public static boolean USE_DEVICE_PROTECTED_STORAGE() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+    }
+
+
+    public static void doPowerAction(Context context, int mode) {
+        final PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        IPowerManager powerManager = IPowerManager.Stub.asInterface(ServiceManager.getService(Context.POWER_SERVICE));
+        if (mode == NPM_POWERACTION_SHUTDOWN) {
+            try {
+                powerManager.shutdown(false, false);
+            } catch (Exception e) {
+                XposedUtils.log("Failed to perform shutdown: " + e.toString());
+            }
+        } else if (mode == NPM_POWERACTION_REBOOT) {
+            try {
+                pm.reboot(null);
+            } catch (Exception e) {
+                XposedUtils.log("Failed to perform reboot(" + mode + "): " + e.toString());
+            }
+        } else if (mode == NPM_POWERACTION_SOFTREBOOT) {
+            performSoftReboot();
+        } else if (mode == NPM_POWERACTION_RECOVERY) {
+            //replaceRecoveryMessage();
+            try {
+                pm.reboot("recovery");
+            } catch (Exception e) {
+                XposedUtils.log("Failed to perform reboot(" + mode + "): " + e.toString());
+            }
+        } else if (mode == NPM_POWERACTION_BOOTLOADER) {
+            try {
+                pm.reboot(isSamsungRom() ? "download" : "bootloader");
+            } catch (Exception e) {
+                XposedUtils.log("Failed to perform reboot(" + mode + "): " + e.toString());
             }
         }
     }

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent">
+
+	<ScrollView
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:fillViewport="true">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:animateLayoutChanges="true">
+
+			<View
+				android:background="@color/transparent"
+				android:layout_height="0dp"
+				android:layout_width="wrap_content"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="match_parent"
+				android:text="@string/login_Info"
+				android:layout_marginBottom="10dp"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:layout_marginTop="5dp"
+				android:id="@+id/activityloginTextView_AccountInfo"/>
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:visibility="visible"
+				android:id="@+id/activityloginLinearLayout_LoginContainer">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_UsernameEmail"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:ems="10"
+						android:id="@+id/activityloginEditText_UsernameEmail"
+						android:singleLine="true"
+						android:inputType="textEmailAddress"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_Password"/>
+
+					<RelativeLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent">
+
+						<EditText
+							android:layout_height="wrap_content"
+							android:inputType="textPassword"
+							android:layout_width="match_parent"
+							android:ems="10"
+							android:id="@+id/activityloginEditText_Password"
+							android:singleLine="true"/>
+
+							<ImageView
+									android:background="?selectableItemBackgroundBorderless"
+							android:layout_height="35dp"
+							android:layout_width="35dp"
+							android:src="@drawable/ic_action_eye_closed"
+							android:layout_alignParentRight="true"
+							android:id="@+id/activityloginImageView_ShowHidePW"
+							android:padding="3dp"/>
+
+					</RelativeLayout>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<CheckBox
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/login_KeepLogin"
+						android:id="@+id/activityloginCheckBox_KeepLogin"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:background="?android:attr/selectableItemBackground"
+					android:clickable="true"
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:id="@+id/activityloginLinearLayout_CreateAccount"
+					android:layout_marginTop="10dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="match_parent"
+						android:text="@string/login_Register"
+						android:gravity="center_horizontal"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:background="?android:attr/selectableItemBackground"
+					android:clickable="true"
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical"
+					android:id="@+id/activityloginLinearLayout_RecoverButton"
+					android:layout_marginTop="10dp">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="match_parent"
+						android:text="@string/login_RecoverAccount"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:id="@+id/activityloginLinearLayout_RegisterContainer"
+				android:visibility="gone">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_Username"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:ems="10"
+						android:id="@+id/activityloginEditText_Username"
+						android:singleLine="true"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_Email"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:ems="10"
+						android:id="@+id/activityloginEditText_Email"
+						android:inputType="textEmailAddress"
+						android:singleLine="true"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_RetypeEmail"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:ems="10"
+						android:id="@+id/activityloginEditText_RetypeEmail"
+						android:inputType="textEmailAddress"
+						android:singleLine="true"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:layout_width="match_parent"
+						android:text="@string/login_PasswordOverEmail"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activityloginLinearLayout_RecoverAccount"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:visibility="gone">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginBottom="5dp">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="match_parent"
+						android:text="@string/login_RecoverPassword"
+						android:textAppearance="?android:attr/textAppearanceLarge"
+						android:gravity="center|center_vertical|center_horizontal"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:layout_weight="1.0"/>
+
+					<TextView
+						android:layout_height="2dp"
+						android:layout_width="match_parent"
+						android:background="@color/colorAccentDarkTheme"
+						android:layout_marginRight="5dp"
+						android:layout_marginLeft="5dp"
+						android:alpha="0.5"
+						android:minWidth="200dp"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_Username"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:ems="10"
+						android:id="@+id/activityloginEditText_RecoverUsername"
+						android:singleLine="true"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:layout_width="match_parent"
+						android:text="@string/login_Email"/>
+
+					<EditText
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:ems="10"
+						android:id="@+id/activityloginEditText_RecoverEmail"
+						android:inputType="textEmailAddress"
+						android:singleLine="true"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/activityloginLinearLayout_LoggedInContainer"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"
+				android:visibility="gone">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:orientation="vertical"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginTop="10dp">
+
+					<TextView
+						android:layout_height="match_parent"
+						android:layout_width="match_parent"
+						android:text="@string/login_TitleStatistics"
+						android:textAppearance="?android:attr/textAppearanceLarge"
+						android:gravity="center|center_vertical|center_horizontal"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"
+						android:id="@+id/activityloginTextView_TitleStatistics"
+						android:layout_weight="1.0"/>
+
+					<TextView
+						android:layout_height="2dp"
+						android:layout_width="match_parent"
+						android:background="@color/colorAccentDarkTheme"
+						android:layout_marginRight="5dp"
+						android:layout_marginLeft="5dp"
+						android:alpha="0.5"
+						android:minWidth="200dp"/>
+
+				</LinearLayout>
+
+				<TextView
+					android:id="@+id/activityloginTextView_ReloadStatistics"
+					android:background="?android:attr/selectableItemBackground"
+					android:clickable="true"
+					android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_width="match_parent"
+					android:text="@string/login_ReloadStatistics"
+					android:gravity="center|center_vertical|center_horizontal"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:layout_width="wrap_content"
+					android:text="@string/login_Statistics"
+					android:id="@+id/activityloginTextView_Statistics"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</RelativeLayout>
+

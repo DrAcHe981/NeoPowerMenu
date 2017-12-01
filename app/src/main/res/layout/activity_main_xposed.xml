@@ -4,13 +4,35 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@android:color/transparent">
+	android:background="@android:color/transparent"
+	android:id="@+id/activitymainxposedFrameLayout_Root">
 
 	<de.NeonSoft.neopowermenu.helpers.CircularRevealView
 		android:id="@+id/reveal"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:background="@android:color/transparent"/>
+		android:background="@android:color/transparent">
+
+		<ImageView
+			android:id="@+id/revealImage"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@android:color/transparent"
+			android:visibility="gone"/>
+
+	</de.NeonSoft.neopowermenu.helpers.CircularRevealView>
+
+	<de.NeonSoft.neopowermenu.helpers.CircularRevealView
+		android:id="@+id/reveal2"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@android:color/transparent"
+		android:visibility="gone"/>
+
+	<FrameLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:id="@+id/powerfragment_holder"/>
 
 	<TextView
 		android:layout_height="wrap_content"
@@ -21,11 +43,6 @@
 		android:gravity="center_horizontal"
 		android:visibility="gone"
 		android:paddingTop="35dp"/>
-
-	<FrameLayout
-		android:layout_height="match_parent"
-		android:layout_width="match_parent"
-		android:id="@+id/powerfragment_holder"/>
 
 </FrameLayout>
 

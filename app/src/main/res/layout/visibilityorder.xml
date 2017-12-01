@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content"
+	android:layout_width="wrap_content">
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:background="@color/window_background_dark">
+
+		<de.NeonSoft.neopowermenu.DSLV.DragSortListView
+			xmlns:dslv="http://schemas.android.com/apk/res/de.NeonSoft.neopowermenu"
+			android:id="@+id/visibilityorderDSLV_List"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:dividerHeight="0dp"
+			android:divider="@color/transparent"
+			dslv:drag_enabled="true"
+			dslv:collapsed_height="2dp"
+			dslv:drag_scroll_start="0.33"
+			dslv:max_drag_scroll_speed="0.5"
+			dslv:float_alpha="0.6"
+			dslv:slide_shuffle_speed="0.3"
+			dslv:track_drag_sort="false"
+			dslv:use_default_controller="true"
+			dslv:drag_handle_id="@id/drag_handle"
+			dslv:sort_enabled="true"
+			dslv:remove_enabled="true"
+			dslv:drag_start_mode="onMove"
+			dslv:drop_animation_duration="150"
+			dslv:remove_mode="flingRemove"
+			android:visibility="visible"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:visibility="visible"
+		android:layout_height="38dp"
+		android:layout_width="50dp"
+		android:orientation="horizontal"
+		android:background="@color/colorPrimaryDarkDarkTheme"
+		android:layout_alignParentRight="true"
+		android:id="@+id/visibilityorderLinearLayout_Add">
+
+		<ImageView
+			android:background="?selectableItemBackgroundBorderless"
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:src="@drawable/ic_action_add"
+			android:padding="3dp"
+			android:id="@+id/visibilityorderImageView_Add"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:id="@+id/activityvisibilityorderLinearLayout_Saving"
+		android:gravity="center"
+		android:background="#CC000000"
+		android:visibility="gone">
+
+		<ProgressBar
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="wrap_content"
+			android:text="@string/login_Processing"/>
+
+	</LinearLayout>
+
+</RelativeLayout>
+

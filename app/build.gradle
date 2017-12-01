@@ -1,40 +1,55 @@
-apply plugin: 'java'
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
-
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 18
-        versionName "1.4.2"
+        targetSdkVersion 26
+        versionCode 53
+        versionName "1.5.6-7"
+        multiDexEnabled true
     }
-
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug-aide {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //productFlavors {
+    //}
 }
-		
+
 dependencies {
-	compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-	compile 'com.android.support:support-v4:+'
-	compile 'com.larswerkman:HoloColorPicker:1.5'
-    compile files('lib/XposedBridgeApi-20150213.jar')
-    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.2.+'
+    compile 'net.lingala.zip4j:zip4j:+'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'cat.ereza:customactivityoncrash:1.5.0'
+    compile 'ch.acra:acra:4.9.0'
+    compile 'org.apache.commons:commons-lang3:3.0'
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
+    compile 'com.android.support:support-v4:26.1.0';
+    compile 'com.larswerkman:HoloColorPicker:1.5'
+    //compile files('lib/XposedBridgeApi-20150213.jar')
+	//compile files('lib/api-82-sources.jar')
+    provided 'de.robv.android.xposed:api:+'
+    compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'eu.chainfire:libsuperuser:1.0.0.+'
-    compile fileTree(dir: 'deps', include: ['*.jar'])
+    //compile fileTree(include: ['*.jar'], dir: 'deps')
+    provided fileTree(include: ['*.jar'], dir: 'syslib')
 }

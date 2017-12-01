@@ -1,10 +1,9 @@
 package de.NeonSoft.neopowermenu.helpers;
 
+import android.content.*;
 import android.graphics.*;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
-import android.graphics.drawable.shapes.RectShape;
-import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.drawable.*;
+import android.graphics.drawable.shapes.*;
 
 /**
  * @author DrAcHe981
@@ -12,20 +11,27 @@ import android.graphics.drawable.shapes.RoundRectShape;
  */
 public class GraphicDrawable extends ShapeDrawable {
 
+    private final Context context;
     private final Paint textPaint;
     private final Paint borderPaint;
     private static final float SHADE_FACTOR = 0.9f;
-		private final Bitmap graphic;
+    private final Bitmap graphic;
     private final int color;
+    private final int padding;
     private final RectShape shape;
     private final int height;
     private final int width;
     private final int fontSize;
     private final float radius;
     private final int borderThickness;
+    private static GraphicDrawable thisDrawable;
 
     private GraphicDrawable(Builder builder) {
         super(builder.shape);
+
+        context = builder.context;
+
+        thisDrawable = this;
 
         // shape properties
         shape = builder.shape;
@@ -34,9 +40,10 @@ public class GraphicDrawable extends ShapeDrawable {
         radius = builder.radius;
 
         // graphic and color
-				graphic = builder.graphic;
+        graphic = builder.graphic;
         color = builder.color;
-				
+        padding = builder.padding;
+
         // text paint settings
         fontSize = builder.fontSize;
         textPaint = new Paint();
@@ -62,9 +69,9 @@ public class GraphicDrawable extends ShapeDrawable {
     }
 
     private int getDarkerShade(int color) {
-        return Color.rgb((int)(SHADE_FACTOR * Color.red(color)),
-												 (int)(SHADE_FACTOR * Color.green(color)),
-												 (int)(SHADE_FACTOR * Color.blue(color)));
+        return Color.rgb((int) (SHADE_FACTOR * Color.red(color)),
+                (int) (SHADE_FACTOR * Color.green(color)),
+                (int) (SHADE_FACTOR * Color.blue(color)));
     }
 
     @Override
@@ -82,23 +89,24 @@ public class GraphicDrawable extends ShapeDrawable {
         canvas.translate(r.left, r.top);
 
         // draw graphic
-				//canvas.drawBitmap(graphic,null,r,textPaint);
-				
+        Rect r2 = new Rect();
+        int px = (int) helper.convertDpToPixel(padding, context);
+        r2.set(r.left + px, r.top + px, r.right - px, r.bottom - px);
+        if (graphic != null) canvas.drawBitmap(graphic, null, r2, textPaint);
+
         canvas.restoreToCount(count);
 
     }
 
     private void drawBorder(Canvas canvas) {
         RectF rect = new RectF(getBounds());
-        rect.inset(borderThickness/2, borderThickness/2);
+        rect.inset(borderThickness / 2, borderThickness / 2);
 
         if (shape instanceof OvalShape) {
             canvas.drawOval(rect, borderPaint);
-        }
-        else if (shape instanceof RoundRectShape) {
+        } else if (shape instanceof RoundRectShape) {
             canvas.drawRoundRect(rect, radius, radius, borderPaint);
-        }
-        else {
+        } else {
             canvas.drawRect(rect, borderPaint);
         }
     }
@@ -134,7 +142,9 @@ public class GraphicDrawable extends ShapeDrawable {
 
     public static class Builder implements IConfigBuilder, IShapeBuilder, IBuilder {
 
-				private Bitmap graphic;
+        public Context context;
+
+        private Bitmap graphic;
 
         private int color;
 
@@ -158,8 +168,11 @@ public class GraphicDrawable extends ShapeDrawable {
 
         public float radius;
 
+        private int padding;
+
         private Builder() {
-						graphic = null;
+            context = null;
+            graphic = null;
             color = Color.GRAY;
             textColor = Color.WHITE;
             borderThickness = 0;
@@ -170,6 +183,12 @@ public class GraphicDrawable extends ShapeDrawable {
             fontSize = -1;
             isBold = false;
             toUpperCase = false;
+            padding = 10;
+        }
+
+        public IConfigBuilder setContext(Context context) {
+            this.context = context;
+            return this;
         }
 
         public IConfigBuilder width(int width) {
@@ -266,9 +285,16 @@ public class GraphicDrawable extends ShapeDrawable {
             this.graphic = graphic;
             return new GraphicDrawable(this);
         }
+
+        public IShapeBuilder setPadding(int pad) {
+            this.padding = pad;
+            return this;
+        }
     }
 
     public interface IConfigBuilder {
+        public IConfigBuilder setContext(Context context);
+
         public IConfigBuilder width(int width);
 
         public IConfigBuilder height(int height);
@@ -308,5 +334,7 @@ public class GraphicDrawable extends ShapeDrawable {
         public GraphicDrawable buildRoundRect(Bitmap graphic, int color, int radius);
 
         public GraphicDrawable buildRound(Bitmap graphic, int color);
+
+        IShapeBuilder setPadding(int i);
     }
 }

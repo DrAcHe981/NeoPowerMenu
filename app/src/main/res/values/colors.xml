@@ -2,7 +2,6 @@
 <resources>
     <color name="window_background">#FFF5F5F5</color>
     <color name="window_background_dark">#212121</color>
-    <color name="window_background_black">#000000</color>
 
     <color name="colorPrimary">#00BCD4</color>
     <color name="colorPrimaryDark">#0097A7</color>
@@ -13,17 +12,6 @@
     <color name="colorAccentDarkTheme">#cc3333</color>
     <color name="colorAccentDarkThemeTrans">#82cc3333</color>
 
-    <color name="colorPrimaryBlack">#000000</color>
-    <color name="colorPrimaryDarkBlack">#000000</color>
-    <color name="colorAccentBlack">#ffffff</color>
-		
-		<color name="transparent">#00000000</color>
-		
-		<color name="theme_dialog_color1">#B0000000</color>	<!-- Background 			-->
-		<color name="theme_dialog_color2">#222222</color>	<!-- Icon/Buttons 			-->
-		<color name="theme_dialog_color3">#333333</color>	<!-- Title/Middle Btn/Frame -->
-		<color name="theme_dialog_color4">#111111</color>	<!-- Dialog Background 		-->
-		<color name="theme_dialog_text1">#FFFFFF</color>	<!-- Primary Text 			-->
-		<color name="theme_dialog_text2">#A4A4A4</color>	<!-- Secondary Text 		-->
-		
+    <color name="transparent">#00000000</color>
+
 </resources>

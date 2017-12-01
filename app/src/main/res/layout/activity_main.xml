@@ -10,102 +10,32 @@
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:orientation="vertical">
+		android:orientation="vertical"
+		android:gravity="top">
 
 		<LinearLayout
 			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
-			android:orientation="vertical">
-
-			<RelativeLayout
-				android:layout_height="45dp"
-				android:layout_width="match_parent"
-				android:background="@color/colorPrimaryDarkTheme">
-
-				<LinearLayout
-					android:layout_height="match_parent"
-					android:layout_width="wrap_content"
-					android:orientation="horizontal"
-					android:background="?selectableItemBackgroundBorderless"
-					android:id="@+id/mainLinearLayout_Button"
-					android:layout_alignParentRight="true"
-					android:gravity="center_vertical"
-					android:paddingRight="10dp"
-					android:paddingLeft="10dp"
-					android:visibility="visible">
-
-					<ImageView
-						android:layout_height="35dp"
-						android:layout_width="35dp"
-						android:src="@drawable/ic_editor_publish"
-						android:padding="3dp"
-						android:id="@+id/mainImageView_Button"/>
-
-					<TextView
-						android:layout_height="wrap_content"
-						android:textAppearance="?android:attr/textAppearanceMedium"
-						android:layout_width="wrap_content"
-						android:text="Text"
-						android:id="@+id/mainTextView_Button"
-						android:ellipsize="marquee"
-						android:marqueeRepeatLimit="marquee_forever"
-						android:focusable="true"
-						android:focusableInTouchMode="true"
-						android:singleLine="true"
-						android:textColor="#FFFFFF"/>
-
-				</LinearLayout>
-
-				<LinearLayout
-					android:layout_height="match_parent"
-					android:layout_width="wrap_content"
-					android:orientation="vertical"
-					android:layout_toLeftOf="@id/mainLinearLayout_Button"
-					android:layout_alignParentLeft="true"
-					android:layout_marginLeft="5dp">
-
-					<TextView
-						android:layout_height="wrap_content"
-						android:textAppearance="?android:attr/textAppearanceLarge"
-						android:layout_width="match_parent"
-						android:text="@string/app_name"
-						android:gravity="bottom"
-						android:textColor="#FFFFFF"
-						android:id="@+id/mainTextView_Title"
-						android:ellipsize="marquee"
-						android:marqueeRepeatLimit="marquee_forever"
-						android:focusable="true"
-						android:focusableInTouchMode="true"
-						android:singleLine="true"/>
-
-					<TextView
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:text="v2.0"
-						android:layout_marginLeft="5dp"
-						android:gravity="top"
-						android:id="@+id/mainTextView_Version"
-						android:ellipsize="marquee"
-						android:marqueeRepeatLimit="marquee_forever"
-						android:focusable="true"
-						android:focusableInTouchMode="true"
-						android:singleLine="true"/>
-
-				</LinearLayout>
-
-			</RelativeLayout>
-
-			<TextView
-				android:layout_height="2dp"
-				android:layout_width="match_parent"
-				android:background="@color/colorPrimaryDarkDarkTheme"/>
+			android:orientation="vertical"
+			android:id="@+id/actionBar">
 
 		</LinearLayout>
 
 		<FrameLayout
-			android:id="@+id/pref_container"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"/>
+			android:layout_height="match_parent"
+			android:layout_width="match_parent">
+
+			<FrameLayout
+				android:id="@+id/pref_container"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"/>
+
+			<FrameLayout
+				android:id="@+id/dialog_container"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"/>
+
+		</FrameLayout>
 
 	</LinearLayout>
 

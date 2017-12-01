@@ -1,4 +1,5 @@
 package de.NeonSoft.neopowermenu.Preferences;
+
 import android.app.*;
 import android.content.*;
 import android.content.pm.*;
@@ -9,245 +10,179 @@ import android.util.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+
 import com.larswerkman.holocolorpicker.*;
+
 import de.NeonSoft.neopowermenu.*;
+
 import java.io.*;
+
 import android.support.v4.app.Fragment;
 
 import de.NeonSoft.neopowermenu.R;
 import de.NeonSoft.neopowermenu.helpers.*;
+
 import java.util.*;
 
-public class PreferencesColorFragment extends Fragment
-{
+public class PreferencesColorFragment extends Fragment {
 
-		static Context mContext;
-		
-		private static ListView ListView_ColorsList;
-		private static ColorsListAdapter adapter;
-		
-		AlertDialog loadpresetsDialog;
-		AlertDialog savePresetDialog;
-		File[] presetsFiles;
-		String[] presetsList;
-		String[] lightPreset = {"","",
-				"","#8800bcd4","#880097a7",
-				"","#fff5f5f5","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
-				"","#000000","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] darkPreset = {"","",
-				"","#88121212","#8821272b",
-				"","#ff212121","#ffd32f2f","#ff3f51b5","#ffe91e63","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff3f51b5","#ff8bc34a","#ff277b71","#ff009688",
-				"","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[] blackPreset = {"","",
-				"","#88000000","#88000000",
-				"","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000","#ff000000",
-				"","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff","#ffffff"};
-		String[][] ColorNames = {{ColorsListAdapter.TYPE_LOAD,""},{ColorsListAdapter.TYPE_SAVE,""},
-				{ColorsListAdapter.TYPE_HEADER,"Reveal"},{ColorsListAdapter.TYPE_ITEM,"RevealBackground"},{ColorsListAdapter.TYPE_ITEM,"ActionRevealBackground"},
-				{ColorsListAdapter.TYPE_HEADER,"Backgrounds"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogReboot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSoftReboot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenshot_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Backgroundcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Backgroundcolor"},
-				{ColorsListAdapter.TYPE_HEADER,"Texts"},{ColorsListAdapter.TYPE_ITEM,"Dialog_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogShutdown_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogReboot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSoftReboot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenshot_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogScreenrecord_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogFlashlight_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogExpandedDesktop_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogRecovery_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogBootloader_Textcolor"},{ColorsListAdapter.TYPE_ITEM,"DialogSafeMode_Textcolor"}};
-		
-		static ColorPicker picker;
-		static boolean hexChangeViaWheel;
-		
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-		{
-				// TODO: Implement this method
-				MainActivity.visibleFragment = "CustomColors";
-				View InflatedView = inflater.inflate(R.layout.activity_colorpreferences,container,false);
-				
-				mContext = getActivity();
-				
-				ListView_ColorsList = (ListView) InflatedView.findViewById(R.id.activitycolorpreferencesListView_Colors);
-				
-				adapter = new ColorsListAdapter(getActivity(),ColorNames,lightPreset);
-				ListView_ColorsList.setFastScrollEnabled(true);
-				ListView_ColorsList.setAdapter(adapter);
-				
-				
-				return InflatedView;
-		}
+    Context mContext;
 
-		public static void showColorPicker(final TextView previewTextView,final String forColor,final String defaultColor,final boolean showOpacityBar) {
+    ListView ListView_ColorsList;
+    ColorsListAdapter adapter;
 
-				AlertDialog.Builder alertdb = new AlertDialog.Builder(mContext);
-				View inflatedLayout = MainActivity.inflater.inflate(R.layout.dialogcolorpicker,null);
-				picker = (ColorPicker) inflatedLayout.findViewById(R.id.picker);
-				TextView opacityText = (TextView) inflatedLayout.findViewById(R.id.opacitybarText);
-				OpacityBar opacityBar = (OpacityBar) inflatedLayout.findViewById(R.id.opacitybar);
-				SVBar SVBar = (SVBar) inflatedLayout.findViewById(R.id.SVBar);
-				ValueBar valueBar = (ValueBar) inflatedLayout.findViewById(R.id.Valuebar);
-				SaturationBar saturationBar = (SaturationBar) inflatedLayout.findViewById(R.id.Saturationbar);
-				final TextView hexInput = (TextView) inflatedLayout.findViewById(R.id.hexInput);
+    public static String[] lightPreset = {
+            "Presets", "Load", "Save",
+            "Main", "#8800bcd4", "#fff5f5f5", "#000000",
+            "Shutdown", "#ff0097a7", "#ffd32f2f", "#ffd32f2f", "#ffffff",
+            "Reboot", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff",
+            "SoftReboot", "#ff0097a7", "#ffe91e63", "#ffe91e63", "#ffffff",
+            "Screenshot", "#ff3f51b5", "#ffffff",
+            "Screenrecord", "#ff3f51b5", "#ffffff",
+            "Flashlight", "#ff3f51b5", "#ffffff",
+            "ExpandedDesktop", "#ff3f51b5", "#ffffff",
+            "AirplaneMode", "#ff3f51b5", "#ffffff",
+            "RestartUI", "#ff3f51b5", "#ffffff",
+            "SoundMode", "#ff3f51b5", "#ffffff",
+            "Recovery", "#ff0097a7", "#ff8bc34a", "#ff8bc34a", "#ffffff",
+            "Bootloader", "#ff0097a7", "#ff277b71", "#ff277b71", "#ffffff",
+            "SafeMode", "#ff0097a7", "#ff009698", "#ff009698", "#ffffff",
+            "SoundVibrate", "#ff3f51b5", "#ffffff",
+            "SoundNormal", "#ff3f51b5", "#ffffff",
+            "SoundSilent", "#ff3f51b5", "#ffffff",
+            "KillApp", "#ff3f51b5", "#ffffff",
+            "AppShortcut", "#ff3f51b5", "#ffffff",
+            "ToggleRotate", "#ff3f51b5", "#ffffff",
+            "MediaPrevious", "#ff3f51b5", "#ffffff",
+            "MediaPlayPause", "#ff3f51b5", "#ffffff",
+            "MediaNext", "#ff3f51b5", "#ffffff",
+            "ToggleWifi", "#ff3f51b5", "#ffffff",
+            "ToggleBluetooth", "#ff3f51b5", "#ffffff",
+            "ToggleData", "#ff3f51b5", "#ffffff",
+            "RebootFlashMode", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff",
+            "LockPhone", "#ff3f51b5", "#ffffff",
+            "SilentMode", "#ff3f51b5", "#ffffff",
+            "Shortcut", "#ff3f51b5", "#ffffff"};
 
-				if(showOpacityBar) {
-						opacityText.setVisibility(View.VISIBLE);
-						opacityBar.setVisibility(View.VISIBLE);
-						picker.addOpacityBar(opacityBar);
-				}
+    public static String[] darkPreset = {
+            "Presets", "Load", "Save",
+            "Main", "#88121212", "#ff212121", "#ffffff",
+            "Shutdown", "#ff0097a7", "#ffd32f2f", "#ffd32f2f", "#ffffff",
+            "Reboot", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff",
+            "SoftReboot", "#ff0097a7", "#ffe91e63", "#ffe91e63", "#ffffff",
+            "Screenshot", "#ff3f51b5", "#ffffff",
+            "Screenrecord", "#ff3f51b5", "#ffffff",
+            "Flashlight", "#ff3f51b5", "#ffffff",
+            "ExpandedDesktop", "#ff3f51b5", "#ffffff",
+            "AirplaneMode", "#ff3f51b5", "#ffffff",
+            "RestartUI", "#ff3f51b5", "#ffffff",
+            "SoundMode", "#ff3f51b5", "#ffffff",
+            "Recovery", "#ff0097a7", "#ff8bc34a", "#ff8bc34a", "#ffffff",
+            "Bootloader", "#ff0097a7", "#ff277b71", "#ff277b71", "#ffffff",
+            "SafeMode", "#ff0097a7", "#ff009698", "#ff009698", "#ffffff",
+            "SoundVibrate", "#ff3f51b5", "#ffffff",
+            "SoundNormal", "#ff3f51b5", "#ffffff",
+            "SoundSilent", "#ff3f51b5", "#ffffff",
+            "KillApp", "#ff3f51b5", "#ffffff",
+            "AppShortcut", "#ff3f51b5", "#ffffff",
+            "ToggleRotate", "#ff3f51b5", "#ffffff",
+            "MediaPrevious", "#ff3f51b5", "#ffffff",
+            "MediaPlayPause", "#ff3f51b5", "#ffffff",
+            "MediaNext", "#ff3f51b5", "#ffffff",
+            "ToggleWifi", "#ff3f51b5", "#ffffff",
+            "ToggleBluetooth", "#ff3f51b5", "#ffffff",
+            "ToggleData", "#ff3f51b5", "#ffffff",
+            "RebootFlashMode", "#ff0097a7", "#ff3f51b5", "#ff3f51b5", "#ffffff",
+            "LockPhone", "#ff3f51b5", "#ffffff",
+            "SilentMode", "#ff3f51b5", "#ffffff",
+            "Shortcut", "#ff3f51b5", "#ffffff"};
 
-				picker.addSVBar(SVBar);
-				picker.addValueBar(valueBar);
-				picker.addSaturationBar(saturationBar);
-				picker.setOldCenterColor(Color.parseColor(MainActivity.preferences.getString(forColor,defaultColor)));
-				picker.setColor(Color.parseColor(MainActivity.preferences.getString(forColor,defaultColor)));
-				if(showOpacityBar) {
-						hexInput.setText(""+String.format("#%08X", (0xFFFFFFFF & picker.getColor())));
-				} else {
-						hexInput.setText(""+String.format("#%06X", (0xFFFFFF & picker.getColor())));
-				}
-				/*picker.setOnColorChangedListener(new ColorPicker.OnColorChangedListener() {
+    public static String[] blackPreset = {
+            "Presets", "Load", "Save",
+            "Main", "#88000000", "#ff000000", "#ffffff",
+            "Shutdown", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
+            "Reboot", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
+            "SoftReboot", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
+            "Screenshot", "#ff000000", "#ffffff",
+            "Screenrecord", "#ff000000", "#ffffff",
+            "Flashlight", "#ff000000", "#ffffff",
+            "ExpandedDesktop", "#ff000000", "#ffffff",
+            "AirplaneMode", "#ff000000", "#ffffff",
+            "RestartUI", "#ff000000", "#ffffff",
+            "SoundMode", "#ff000000", "#ffffff",
+            "Recovery", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
+            "Bootloader", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
+            "SafeMode", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
+            "SoundVibrate", "#ff000000", "#ffffff",
+            "SoundNormal", "#ff000000", "#ffffff",
+            "SoundSilent", "#ff000000", "#ffffff",
+            "KillApp", "#ff000000", "#ffffff",
+            "AppShortcut", "#ff000000", "#ffffff",
+            "ToggleRotate", "#ff000000", "#ffffff",
+            "MediaPrevious", "#ff000000", "#ffffff",
+            "MediaPlayPause", "#ff000000", "#ffffff",
+            "MediaNext", "#ff000000", "#ffffff",
+            "ToggleWifi", "#ff000000", "#ffffff",
+            "ToggleBluetooth", "#ff000000", "#ffffff",
+            "ToggleData", "#ff000000", "#ffffff",
+            "RebootFlashMode", "#ff000000", "#ff000000", "#ff000000", "#ffffff",
+            "LockPhone", "#ff000000", "#ffffff",
+            "SilentMode", "#ff000000", "#ffffff",
+            "Shortcut", "#ff000000", "#ffffff"};
 
-				 @Override
-				 public void onColorChanged(int p1)
-				 {
-				 // TODO: Implement this method
-				 hexChangeViaWheel = true;
-				 hexInput.setText(""+String.format("#%08X", (0xFFFFFFFF & p1)));
-				 }
+    public static Object[][] ColorNames = {
+            {ColorsListAdapter.TYPE_HEADER, "Presets"}, {ColorsListAdapter.TYPE_LOAD, "Load"}, {ColorsListAdapter.TYPE_SAVE, "Save"},
+            {ColorsListAdapter.TYPE_HEADER, "Main"}, {ColorsListAdapter.TYPE_ITEM, "Dialog_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "Dialog_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "Dialog_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "Shutdown"}, {ColorsListAdapter.TYPE_ITEM, "DialogShutdown_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogShutdown_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogShutdown_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogShutdown_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "Reboot"}, {ColorsListAdapter.TYPE_ITEM, "DialogReboot_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogReboot_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogReboot_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogReboot_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "SoftReboot"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoftReboot_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoftReboot_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoftReboot_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoftReboot_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "Screenshot"}, {ColorsListAdapter.TYPE_ITEM, "DialogScreenshot_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogScreenshot_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "Screenrecord"}, {ColorsListAdapter.TYPE_ITEM, "DialogScreenrecord_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogScreenrecord_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "Flashlight"}, {ColorsListAdapter.TYPE_ITEM, "DialogFlashlight_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogFlashlight_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "ExpandedDesktop"}, {ColorsListAdapter.TYPE_ITEM, "DialogExpandedDesktop_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogExpandedDesktop_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "AirplaneMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogAirplaneMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogAirplaneMode_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "RestartUI"}, {ColorsListAdapter.TYPE_ITEM, "DialogRestartUI_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRestartUI_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "SoundMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoundMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoundMode_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "Recovery"}, {ColorsListAdapter.TYPE_ITEM, "DialogRecovery_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRecovery_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRecovery_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRecovery_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "Bootloader"}, {ColorsListAdapter.TYPE_ITEM, "DialogBootloader_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogBootloader_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogBootloader_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogBootloader_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "SafeMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogSafeMode_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSafeMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSafeMode_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSafeMode_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "SoundVibrate"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoundVibrate_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoundVibrate_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "SoundNormal"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoundNormal_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoundNormal_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "SoundSilent"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoundSilent_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSoundSilent_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "KillApp"}, {ColorsListAdapter.TYPE_ITEM, "DialogKillApp_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogKillApp_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "AppShortcut"}, {ColorsListAdapter.TYPE_ITEM, "DialogAppShortcut_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogAppShortcut_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "ToggleRotate"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleRotate_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleRotate_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "MediaPrevious"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaPrevious_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaPrevious_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "MediaPlayPause"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaPlayPause_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaPlayPause_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "MediaNext"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaNext_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogMediaNext_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "ToggleWifi"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleWifi_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleWifi_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "ToggleBluetooth"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleBluetooth_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleBluetooth_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "ToggleData"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleData_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogToggleData_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "RebootFlashMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Revealcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Backgroundcolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogRebootFlashMode_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "LockPhone"}, {ColorsListAdapter.TYPE_ITEM, "DialogLockPhone_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogLockPhone_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "SilentMode"}, {ColorsListAdapter.TYPE_ITEM, "DialogSilentMode_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogSilentMode_Textcolor"},
+            {ColorsListAdapter.TYPE_HEADER, "Shortcut"}, {ColorsListAdapter.TYPE_ITEM, "DialogShortcut_Circlecolor"}, {ColorsListAdapter.TYPE_ITEM, "DialogShortcut_Textcolor"}};
 
-				 });*/
-				picker.setOnTouchListener(new OnTouchListener() {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
+            MainActivity.visibleFragment = "CustomColors";
+        }
+        View InflatedView = inflater.inflate(R.layout.activity_colorpreferences, container, false);
 
-								@Override
-								public boolean onTouch(View p1, MotionEvent p2)
-								{
-										// TODO: Implement this method
-										hexChangeViaWheel = true;
-										if(showOpacityBar) {
-												hexInput.setText(""+String.format("#%08X", (0xFFFFFFFF & picker.getColor())));
-										} else {
-												hexInput.setText(""+String.format("#%06X", (0xFFFFFF & picker.getColor())));
-										}
-										return false;
-								}
-						});
-				SVBar.setOnTouchListener(new OnTouchListener() {
+        mContext = getActivity();
 
-								@Override
-								public boolean onTouch(View p1, MotionEvent p2)
-								{
-										// TODO: Implement this method
-										hexChangeViaWheel = true;
-										if(showOpacityBar) {
-												hexInput.setText(""+String.format("#%08X", (0xFFFFFFFF & picker.getColor())));
-										} else {
-												hexInput.setText(""+String.format("#%06X", (0xFFFFFF & picker.getColor())));
-										}
-										return false;
-								}
-						});
-				valueBar.setOnTouchListener(new OnTouchListener() {
+        MainActivity.actionbar.setTitle(getString(R.string.preferences_Theme).split("\\|")[0]);
+        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Theme).split("\\|")[1]);
 
-								@Override
-								public boolean onTouch(View p1, MotionEvent p2)
-								{
-										// TODO: Implement this method
-										hexChangeViaWheel = true;
-										if(showOpacityBar) {
-												hexInput.setText(""+String.format("#%08X", (0xFFFFFFFF & picker.getColor())));
-										} else {
-												hexInput.setText(""+String.format("#%06X", (0xFFFFFF & picker.getColor())));
-										}
-										return false;
-								}
-						});
-				saturationBar.setOnTouchListener(new OnTouchListener() {
+        ListView_ColorsList = (ListView) InflatedView.findViewById(R.id.activitycolorpreferencesListView_Colors);
 
-								@Override
-								public boolean onTouch(View p1, MotionEvent p2)
-								{
-										// TODO: Implement this method
-										hexChangeViaWheel = true;
-										if(showOpacityBar) {
-												hexInput.setText(""+String.format("#%08X", (0xFFFFFFFF & picker.getColor())));
-										} else {
-												hexInput.setText(""+String.format("#%06X", (0xFFFFFF & picker.getColor())));
-										}
-										return false;
-								}
-						});
-				opacityBar.setOnTouchListener(new OnTouchListener() {
+        adapter = new ColorsListAdapter(getActivity(), ColorNames, lightPreset);
+        ListView_ColorsList.setFastScrollEnabled(true);
+        ListView_ColorsList.setAdapter(adapter);
 
-								@Override
-								public boolean onTouch(View p1, MotionEvent p2)
-								{
-										// TODO: Implement this method
-										hexChangeViaWheel = true;
-										if(showOpacityBar) {
-												hexInput.setText(""+String.format("#%08X", (0xFFFFFFFF & picker.getColor())));
-										} else {
-												hexInput.setText(""+String.format("#%06X", (0xFFFFFF & picker.getColor())));
-										}
-										return false;
-								}
-						});
-				hexInput.addTextChangedListener(new TextWatcher() {
 
-								@Override
-								public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
-								{
-										// TODO: Implement this method
-								}
+        return InflatedView;
+    }
 
-								@Override
-								public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
-								{
-										// TODO: Implement this method
-								}
-
-								@Override
-								public void afterTextChanged(Editable p1)
-								{
-										// TODO: Implement this method
-										if(!hexChangeViaWheel) {
-												try {
-														hexInput.setTextColor(Color.parseColor("#FFFFFF"));
-														picker.setColor(Color.parseColor(hexInput.getText().toString()));
-														//picker.invalidate();
-												} catch (Throwable e) {
-														hexInput.setTextColor(Color.parseColor("#FF0000"));
-												}
-										} else {
-												hexChangeViaWheel = false;
-										}
-								}
-						});
-				alertdb.setView(inflatedLayout);
-				alertdb.setTitle(R.string.Dialog_SelectColor);
-				alertdb.setNegativeButton(R.string.Dialog_Cancel, new AlertDialog.OnClickListener() {
-
-								@Override
-								public void onClick(DialogInterface p1, int p2)
-								{
-										// TODO: Implement this method
-								}
-						});
-				alertdb.setPositiveButton(R.string.Dialog_Save, new AlertDialog.OnClickListener() {
-
-								@Override
-								public void onClick(DialogInterface p1, int p2)
-								{
-										//Toast.makeText(MainActivity.context,"Color: "+picker.getColor(),Toast.LENGTH_SHORT).show();
-										try {
-												//String[] prefOld = TextUtils.split(forPref.getTitle().toString(),"Current: *");
-												if(showOpacityBar) {
-														//forPref.setTitle(prefOld[0]+"Current: "+String.format("#%08X", (0xFFFFFFFF & picker.getColor()))+")");
-														MainActivity.preferences.edit().putString(forColor,String.format("#%08X", (0xFFFFFFFF & picker.getColor()))).commit();
-												} else {
-														//forPref.setTitle(prefOld[0]+"Current: "+String.format("#%06X", (0xFFFFFF & picker.getColor()))+")");
-														MainActivity.preferences.edit().putString(forColor,String.format("#%06X", (0xFFFFFF & picker.getColor()))).commit();
-												}
-												previewTextView.setBackgroundColor(picker.getColor());
-										} catch (Throwable t) {
-												Log.e("NeoPowerMenu",t.toString());
-										}
-										adapter.notifyDataSetChanged();
-										// TODO: Implement this method
-								}
-						});
-				alertdb.show();
-		}
-		
 }

@@ -1,33 +1,14 @@
 <resources>
 
 
-    <style name="Dialog_Theme">
-        <!-- Fill the screen -->
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:windowFrame">@color/transparent</item>
-        <item name="android:windowTitleStyle">@null</item>
-        <item name="android:windowBackground">@color/transparent</item>
-				<item name="android:backgroundDimEnabled">true</item>
-        <item name="android:windowIsFloating">true</item>
-				<item name="android:windowIsTranslucent">true</item>  
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
-        <item name="android:windowCloseOnTouchOutside">false</item>
-        <item name="android:windowActionModeOverlay">true</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
-				<item name="android:windowAnimationStyle">@style/PopUpDialogAnimation.Window</item>
-				<item name="android:colorEdgeEffect">@color/theme_dialog_color3</item>
+    <!-- Animations -->
+    <style name="PopUpDialogAnimation" />
+
+    <!-- Animations for a non-full-screen window or activity. -->
+    <style name="PopUpDialogAnimation.Window">
+        <item name="android:windowEnterAnimation">@null</item>
+        <item name="android:windowExitAnimation">@null</item>
     </style>
-
-		<!-- Animations --> 
-		<style name="PopUpDialogAnimation" /> 
-
-		<!-- Animations for a non-full-screen window or activity. --> 
-		<style name="PopUpDialogAnimation.Window"> 
-				<item name="android:windowEnterAnimation">@null</item>
-				<item name="android:windowExitAnimation">@null</item>
-		</style> 
 		
     <style name="AppThemeDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="windowActionBar">false</item>
@@ -36,33 +17,54 @@
         <item name="colorAccent">#607D8B</item>
         <item name="android:windowFrame">@color/transparent</item>
         <item name="android:windowTitleStyle">@null</item>
-				<item name="android:backgroundDimEnabled">false</item>
-				<item name="android:windowIsTranslucent">true</item>  
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:windowCloseOnTouchOutside">false</item>
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
-		
-		<style name="TransparentApp">
+
+    <style name="TransparentApp" parent="Theme.AppCompat.NoActionBar">
+        <item name="accentColor">@color/transparent</item>
+        <item name="iconColor">@android:color/white</item>
+        <item name="colorPrimary">@color/colorPrimaryDarkTheme</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/colorAccentDarkTheme</item>
         <item name="android:windowFrame">@color/transparent</item>
         <item name="android:windowTitleStyle">@null</item>
         <item name="android:windowBackground">@color/transparent</item>
         <item name="windowBackground">@color/transparent</item>
-				<item name="android:backgroundDimEnabled">false</item>
-				<item name="android:windowIsTranslucent">true</item>  
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:windowCloseOnTouchOutside">false</item>
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
-		</style>
-
-
-    <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
-        <item name="android:windowExitAnimation">@anim/slide_down_out</item>
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+		
+    <style name="slideDownDialogFragment" parent="Theme.AppCompat.NoActionBar">
+        <item name="accentColor">@color/transparent</item>
+        <item name="iconColor">@android:color/white</item>
+        <item name="colorPrimary">@color/colorPrimaryDarkTheme</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/colorAccentDarkTheme</item>
+        <item name="android:windowFrame">@color/transparent</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="windowBackground">@color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
 
     <attr format="reference" name="accentColor"/>
@@ -77,8 +79,8 @@
         <item name="accentColor">@color/colorAccent</item>
         <item name="iconColor">@android:color/black</item>
         <item name="windowBackground">@color/window_background</item>
-
     </style>
+
     <style name="ThemeBaseDark" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryDarkTheme</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkDarkTheme</item>
@@ -90,40 +92,40 @@
     </style>
 
     <style name="ThemeDialogBaseLight" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/transparent</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/transparent</item>
         <item name="android:windowBackground">@color/transparent</item>
-        <item name="accentColor">@color/colorAccent</item>
+        <item name="accentColor">@color/transparent</item>
         <item name="iconColor">@android:color/black</item>
         <item name="windowBackground">@color/transparent</item>
         <item name="android:windowFrame">@color/transparent</item>
-				<item name="android:windowActionBar">false</item>
-				<item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
         <item name="android:windowTitleStyle">@null</item>
-				<item name="android:backgroundDimEnabled">false</item>
-				<item name="android:windowIsTranslucent">true</item>    
-				<item name="android:windowIsFloating">true</item>  
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsFloating">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
-
     </style>
+
     <style name="ThemeDialogBaseDark" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryDarkTheme</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkDarkTheme</item>
-        <item name="colorAccent">@color/colorAccentDarkTheme</item>
+        <item name="colorPrimary">@color/transparent</item>
+        <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/transparent</item>
         <item name="android:windowBackground">@color/transparent</item>
-        <item name="accentColor">@color/colorAccentDarkTheme</item>
+        <item name="accentColor">@color/transparent</item>
         <item name="iconColor">@android:color/white</item>
         <item name="windowBackground">@color/transparent</item>
         <item name="android:windowFrame">@color/transparent</item>
         <item name="android:windowTitleStyle">@null</item>
-				<item name="android:backgroundDimEnabled">false</item>
-				<item name="android:windowIsTranslucent">true</item>  
-				<item name="android:windowIsFloating">true</item>  
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:windowCloseOnTouchOutside">false</item>

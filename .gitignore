@@ -1,0 +1,17 @@
+build
+*.iml
+out
+.idea
+prebuilts
+.DS_Store
+local.properties
+.gradle
+*.apk
+*.txt
+wiki
+*.keystore
+Language Mover
+Icons
+captures
+crowdin.properties
+X.travis.yml
