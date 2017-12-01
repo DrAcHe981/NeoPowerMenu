@@ -85,6 +85,10 @@ script:
 - ./gradlew build connectedCheck
 
 before_deploy:
+# Set up git user name and tag this commit
+- git config --local user.name "DrAcHe981"
+- git config --local user.email "drache981@gmail.com"
+- git tag "TravisCI_$(date +'%d-%m-%Y_%H-%M-%S')_$(git log --format=%h -1)"
 - cp $TRAVIS_BUILD_DIR/new.keystore $HOME
 - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk neohack -keystore $HOME/new.keystore -storepass $storepass -keypass $keypass
 - jarsigner -verify ${TRAVIS_BUILD_DIR}/app/build/outputs/apk/release/app-release-unsigned.apk
