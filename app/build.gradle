@@ -17,7 +17,6 @@ android {
         versionCode 53
         versionName "1.5.6-7"
         multiDexEnabled true
-        signingConfig signingConfigs.config
     }
     dexOptions {
         javaMaxHeapSize "8g"
