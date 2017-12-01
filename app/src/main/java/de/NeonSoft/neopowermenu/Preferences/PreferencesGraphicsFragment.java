@@ -40,7 +40,7 @@ public class PreferencesGraphicsFragment extends Fragment {
     private LinearLayout LinearLayout_Behavior;
 
     public static GridView GridView_Images;
-    GraphicsAdapter graphicsAdapter;
+    GraphicsAdapter GraphicsAdapter;
 
     TextView graphicsDisabled;
 
@@ -169,7 +169,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                         float_padding = helper.convertDpToPixel(i, mContext);
                         PaddingValue.setText((int) helper.convertPixelsToDp(float_padding, mContext) + "dp");
                         //MainActivity.preferences.edit().putFloat(PreferenceNames.pGraphicsPadding, float_padding).commit();
-                        graphicsAdapter.notifyDataSetChanged();
+                        GraphicsAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -191,7 +191,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                     @Override
                     public void onNegativeClick() {
                         float_padding = MainActivity.preferences.getFloat(PreferenceNames.pGraphicsPadding, 0);
-                        graphicsAdapter.notifyDataSetChanged();
+                        GraphicsAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -228,7 +228,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                                 .putBoolean(PreferenceNames.pUseGraphics, boolean_UseGraphics)
                                 .putBoolean(PreferenceNames.pLoadAppIcons, boolean_LoadAppIcons)
                                 .putBoolean(PreferenceNames.pColorizeNonStockIcons, boolean_ColorizeNonStockIcons).commit();
-                        graphicsAdapter.notifyDataSetChanged();
+                        GraphicsAdapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -343,11 +343,11 @@ public class PreferencesGraphicsFragment extends Fragment {
             }
         }
 
-        graphicsAdapter = new GraphicsAdapter(getActivity(), MainActivity.imageLoader, GraphicsList);
+        GraphicsAdapter = new GraphicsAdapter(getActivity(), MainActivity.imageLoader, GraphicsList);
         GridView_Images.setFastScrollEnabled(true);
         PauseOnScrollListener listener = new PauseOnScrollListener(MainActivity.imageLoader, true, true);
         GridView_Images.setOnScrollListener(listener);
-        GridView_Images.setAdapter(graphicsAdapter);
+        GridView_Images.setAdapter(GraphicsAdapter);
         //graphicsAdapter.addFallbackGraphics(defaultGraphics);
         //graphicsAdapter.addAll(GraphicsList);
 
@@ -364,7 +364,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                     @Override
                     public void onListItemClick(int position, String text) {
                         if (GraphicsList.get(selected).getFile() != null && position != 1) {
-                            graphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
+                            GraphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
                             new File(GraphicsList.get(selected).getFile().replace("/app_picker/","/images/")).delete();
                         }
                         if (position == 0) {
@@ -387,7 +387,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                                 }
                             }
                             item.setFileName(GraphicsList.get(selected).getFileName());
-                            graphicsAdapter.set(selected, item);
+                            GraphicsAdapter.set(selected, item);
                             GraphicsList.set(selected, item);
                         } else if (position == 1) {
                             helper.zipLogging(false);
@@ -424,7 +424,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                                 public void onPositiveClick(Bundle resultBundle) {
                                     if (presetsFiles.length > 0) {
                                         if (GraphicsList.get(selected).getFile() != null) {
-                                            graphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
+                                            GraphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
                                             new File(GraphicsList.get(selected).getFile()).delete();
                                         }
                                         if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
@@ -436,7 +436,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                                             item.setName(GraphicsList.get(selected).getName());
                                             item.setFile(mContext.getFilesDir().getPath() + "/images/" + GraphicsList.get(selected).getFileName() + ".png");
                                             item.setFileName(GraphicsList.get(selected).getFileName());
-                                            graphicsAdapter.set(selected, item);
+                                            GraphicsAdapter.set(selected, item);
                                             GraphicsList.set(selected, item);
                                         }
                                     }
@@ -471,7 +471,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                             item.setName(GraphicsList.get(selected).getName());
                             item.setRessource(R.drawable.progress_pitchblack_darkred_cm13);
                             item.setFileName(GraphicsList.get(selected).getFileName());
-                            graphicsAdapter.set(selected, item);
+                            GraphicsAdapter.set(selected, item);
                             GraphicsList.set(selected, item);
                         } else if (position == 4) {
                             MainActivity.preferences.edit().putString("ProgressDrawable", "WeaReOne").commit();
@@ -479,7 +479,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                             item.setName(GraphicsList.get(selected).getName());
                             item.setRessource(R.drawable.progress_weareone);
                             item.setFileName(GraphicsList.get(selected).getFileName());
-                            graphicsAdapter.set(selected, item);
+                            GraphicsAdapter.set(selected, item);
                             GraphicsList.set(selected, item);
                         }
                     }
