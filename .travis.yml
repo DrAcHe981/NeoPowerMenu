@@ -24,6 +24,7 @@ android:
   - platform-tools # Update platform-tools to revision 25.0.3+
   - tools # Update tools from revision 24.4.1 to 25.2.5
   - build-tools-26.0.2 # Match build-tools version used in build.gradle
+  - android-26
 
   licenses:
   - 'android-sdk-preview-license-52d11cd2'
@@ -38,10 +39,12 @@ env:
   - ABI=armeabi-v7a # ARM ABI v7a by default
   - QEMU_AUDIO_DRV=none # Disable emulator audio to avoid warning
   - GRADLE_USER_HOME="${TRAVIS_BUILD_DIR}/gradle" # Change location for Gradle Wrapper and cache
-  # - ANDROID_HOME=/usr/local/android-sdk-25.0.2 # Depends on the cookbooks version used in the VM
-  # - TOOLS=${ANDROID_HOME}/tools # PATH order matters, exists more than one emulator script
-  # - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+  - ANDROID_HOME=/usr/local/android-sdk-26.0.2 # Depends on the cookbooks version used in the VM
+  - TOOLS=${ANDROID_HOME}/tools # PATH order matters, exists more than one emulator script
+  - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
   - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+  - secure: w7P2VVjVWpZmCrqzoD3QoouyJnI6mxod8GKdKwivtmKoA5tiJTa5q75uVYrv2t6PqYfASud5tVVs40l2S85xdNwSD84TTlBl1NSGq99tnXzrqHGvQR7y7jZHrV+uuH+A0N3fPgkLb0zqG4Rgn7CXLRkSKgKh7akhySXP0swII2cBMFMgee/lOa1O2gv1CivbsA8UA5WIfh2EkIF43vpgNsiqS3NLa1M/CYCoG1DypDPXhICC1Zw0kd+iefLUy4X1Hn8QCegHQTRovEh/8h3OqbwcFxSre6l6yVPhIYxkJ0rui1iqNLSsGa640ccz4r5Y9vHL6B72Q7P6D6iaYqcJlUpNqTrr2dvIcsWbd/ZTjmaJlasFkh0s08qlrYPHZDOEpzHJj/PIfCLAaLcwKhlTtCeTtvfNpiIPcy3dHFsOwgXsDmkZz3OZwRTnQqoSEUufLzlYC0RoJpXWaK2XZDZ11Kc2K3LnIf/3+LonesRazgnwLvFmy57wPDGTINV9CQxfadVsa7ksQ8cpuA9kiCyUm4zSgsybx/Yxc7seGn9HecHkX0Ykffi8OLnhjpW4DaEfU+ADY2scdKYWiiu+gAf9z2iBsIqZr1o4qmKoc3vapiOoDNFjF7ofDsnQKDFzCx3/kXvNKkilxRXVSMYH+MNxazgiKpuET5S/O95qiBdzcxM=
+  - secure: RN2HVrfOCbTBuhXk0wG2GJtj8XkTEWzPRDskhYH5WKauDOw1LcAYrsM84fvtbbj+FidHqpxc26IjVLxnpyNrrP5T1EXCPP7itcZa491YSY89DdQf5+h+z4JAiHY8JIofXCOQkpjwFlFHhczabgD7OgHrxmiwi1o5PyMfjQwWWGvinwA4Gc1+JQ85xSp2I6T9Cy9W/3IVo0CmaPxqEWp/1K4HwmorXowHlR6Bm+x81u/xZs9662ZIXscDXoCxGoTo+SfggH7MATXvFyIesk5bB0mUPixIeNYhxQKsJYkCX227IeylBNDoF9B7Ej0BHjfjMIn7quNIoaI5hR+XYPd8enfPOfNBUIPcotX5T3CrJqDdD/7WTkHZTWM1ImSH9HV/KqhbuU7ZZPeFKFGKqApLhnt7BIiw+h1eruPDHp02H7nsO3wrn0oY/4j6UGZr+jdpta5Ikx7aBu2fUjkAWXHE/C7vyhkQpULH5FsXEk+RTrktpg3ggTo0p/se7veo2ftpQgOawPLOfRdAhoX8qJjbZ1u6skwZjk3PsF1aCm9wssCJRz+dwmFZsRWiQDgtw38AKxBTtrWto5bFj9yRl27e3a7IUdetVlIyB2BwhML73X/S5T/33q4HiQzcHUyFRadJRlATXsDdOnnqDjaHSSFbawMQrNI3AF3j4n5AMZLW8AI=
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_fb365c1216b5_key -iv $encrypted_fb365c1216b5_iv -in new.keystore.enc -out new.keystore -d
@@ -52,3 +55,17 @@ script:
 
 jdk:
 - oraclejdk8
+
+before_deploy:
+- cp $TRAVIS_BUILD_DIR/.keystore $HOME
+- jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 $HOME/android/release-unsigned.apk your-apk-name -keystore $HOME/.keystore -storepass $storepass -keypass $keypass
+- "${ANDROID_HOME}/build-tools/22.0.1/zipalign 4 $HOME/android/release-unsigned.apk $HOME/android/NeoPowerMenu.apk"
+
+deploy:
+  provider: releases
+  api_key: 515a8cc134bfb14fd515f6591a0cf734f4429fc0
+  # replace your-apk-name
+  file: "$HOME/android/NeoPowerMenu.apk"
+  skip_cleanup: true
+  on:
+    tags: true
