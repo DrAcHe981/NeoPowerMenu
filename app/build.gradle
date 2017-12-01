@@ -1,14 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'neohack'
-            keyPassword 'drache'
-            storeFile file('E:/Programmierungs Projekte und Programme/AppProjects/NeoPowerMenu/new.keystore')
-            storePassword 'drache'
-        }
-    }
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
