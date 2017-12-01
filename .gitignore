@@ -9,12 +9,9 @@ local.properties
 *.apk
 *.txt
 wiki
-<<<<<<< HEAD
 *.keystore
 Language Mover
 Icons
 captures
 crowdin.properties
 X.travis.yml
-=======
->>>>>>> master
