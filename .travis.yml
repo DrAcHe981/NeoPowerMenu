@@ -60,18 +60,18 @@ before_install:
 - echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid warning
 - chmod +x gradlew
 
-install:
-- echo yes | sdkmanager "tools"
-- echo yes | sdkmanager "platforms;android-24" # Latest platform required by SDK tools
-- echo yes | sdkmanager "platforms;android-${API}" # Android platform required by emulator
-- echo yes | sdkmanager "extras;android;m2repository"
-- echo yes | sdkmanager "extras;google;m2repository"
-- echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
-- echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
-- echo yes | sdkmanager "$EMULATOR" # Install emulator system image
+#install:
+#- echo yes | sdkmanager "tools"
+#- echo yes | sdkmanager "platforms;android-24" # Latest platform required by SDK tools
+#- echo yes | sdkmanager "platforms;android-${API}" # Android platform required by emulator
+#- echo yes | sdkmanager "extras;android;m2repository"
+#- echo yes | sdkmanager "extras;google;m2repository"
+#- echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
+#- echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
+#- echo yes | sdkmanager "$EMULATOR" # Install emulator system image
 # Create and start emulator
-- echo no | avdmanager create avd -n acib -k "$EMULATOR" -f --abi "$ABI" --tag "$TAG"
-- emulator -avd acib -engine classic -no-window -verbose -qemu -m 512 &
+#- echo no | avdmanager create avd -n acib -k "$EMULATOR" -f --abi "$ABI" --tag "$TAG"
+#- emulator -avd acib -engine classic -no-window -verbose -qemu -m 512 &
 
 before_script:
 # Wait for emulator fully-booted and disable animations
