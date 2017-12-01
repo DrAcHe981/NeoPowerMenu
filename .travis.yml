@@ -7,15 +7,15 @@ branches:
   only:
   - 1.5
 
-before_cache:
-- rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock # Avoid to repack it due locks
-- rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/3.3/classAnalysis/classAnalysis.lock
-- rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/3.3/jarSnapshots/jarSnapshots.lock
+#before_cache:
+#- rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock # Avoid to repack it due locks
+#- rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/3.3/classAnalysis/classAnalysis.lock
+#- rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/3.3/jarSnapshots/jarSnapshots.lock
 
-cache:
-  directories:
-  - ${TRAVIS_BUILD_DIR}/gradle/caches/
-  - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
+cache: false
+#  directories:
+#  - ${TRAVIS_BUILD_DIR}/gradle/caches/
+#  - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
 
 notifications:
   email: false
@@ -34,7 +34,7 @@ android:
   - sys-img-armeabi-v7a-android-26
 
   licenses:
-  - 'android-sdk-preview-license-52d11cd2'
+  - 'android-sdk-preview-license-.+'
   - 'android-sdk-license-.+'
   - 'google-gdk-license-.+'
 
