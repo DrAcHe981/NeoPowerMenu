@@ -8,7 +8,7 @@ branches:
   - "master"
 
 before_cache:
-- rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock # Avoid to repack it due locks
+- rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/modules-2/modules-2.lock
 - rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/3.3/classAnalysis/classAnalysis.lock
 - rm -f ${TRAVIS_BUILD_DIR}/gradle/caches/3.3/jarSnapshots/jarSnapshots.lock
 
@@ -19,13 +19,21 @@ cache:
 
 notifications:
   email: false
+  webhooks:
+    urls:
+      secure: wfNj618sl+Y9pAq4gz3quPnGPwtY3DglOjDyVt/UmlCtTfz4vLIfUuxsnHxLEbsxziQQVQ3l3lyV4j+cyYcaTPrOy7lSQl6REkkrT2et/36skw93+Hvo7q3JNQDtXdKGDfA0qVPXg/xpTuocExBYwsuJqG9u/0tWsaR1i/J2jMTUSeGBIY16kY3CtUJmOgjNgafkcKRLc1vbxZOdcUJ9rK6sycrzx2mzstGAU1ZoupYADQ5pC1PPje6pryZ+ow9gyxVmJ9K//w+ZfPIPQEuELhfyS8eVco8drJYYOlbz10pNUzzyK19XAMperksinUB1qUqLyLEIq+qpkEO01gbgM3A3EgAItMzpGm+zt7GlHts4UFJ5FfJ9W4HcOniyd/IJr+jVbC6MJZf345mRKodl9XN/a+vhYbrrVgt6jbND5/P4VIAgzPTkamyLgTt0tBH+sL3dZDWfo79Rf9hmZ8i5JLiQh44LjnnwsYQVNmPBXFi6XDcBAXRphcop16K1sjUymAQCepMRBkNpG3TGrSg4X3zxgmNNitc5D/KVuV7xeSKCULhrbxRuuv4APf6epVQAzoCGRl9pq7/pUDtK5d+c2EBdZsR4oo0oGcU38ym/yRC1crJAy3RQu4L/7gqz0bMdx6jeaEyII3VzoY7UqXvWYKbLtA3o48e2hbGLG6bthkg=
+    on_success: never
+    on_failure: always
+    on_start: never
+    on_cancel: never
+    on_error: always
 
 android:
-  components: # Cookbooks version: https://github.com/travis-ci/travis-cookbooks/tree/9c6cd11
-  - tools # Update preinstalled tools from revision 24.0.2 to 24.4.1
-  - build-tools-26.0.2 # Match build-tools version used in build.gradle
-  - platform-tools # Update platform-tools to revision 25.0.3+
-  - tools # Update tools from revision 24.4.1 to 25.2.5
+  components:
+  - tools
+  - build-tools-26.0.2
+  - platform-tools
+  - tools
   - extra-google-google_play_services
   - extra-google-m2repository
   - extra-android-m2repository
@@ -40,52 +48,27 @@ android:
 
 env:
   global:
-  - DIR=constraint-layout-start # Project directory
-  - API=25 # Android API level 25 by default
-  - TAG=google_apis # Google APIs by default, alternatively use default
-  - ABI=armeabi-v7a # ARM ABI v7a by default
-  - QEMU_AUDIO_DRV=none # Disable emulator audio to avoid warning
-  - GRADLE_USER_HOME="${TRAVIS_BUILD_DIR}/gradle" # Change location for Gradle Wrapper and cache
-  # - ANDROID_HOME=/usr/local/android-sdk-26.0.2 # Depends on the cookbooks version used in the VM
-  - TOOLS=${ANDROID_HOME}/tools # PATH order matters, exists more than one emulator script
+  - DIR=constraint-layout-start
+  - API=25
+  - TAG=google_apis
+  - ABI=armeabi-v7a
+  - QEMU_AUDIO_DRV=none
+  - GRADLE_USER_HOME="${TRAVIS_BUILD_DIR}/gradle"
+  - TOOLS=${ANDROID_HOME}/tools
   - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-  - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+  - ADB_INSTALL_TIMEOUT=20
   - secure: w7P2VVjVWpZmCrqzoD3QoouyJnI6mxod8GKdKwivtmKoA5tiJTa5q75uVYrv2t6PqYfASud5tVVs40l2S85xdNwSD84TTlBl1NSGq99tnXzrqHGvQR7y7jZHrV+uuH+A0N3fPgkLb0zqG4Rgn7CXLRkSKgKh7akhySXP0swII2cBMFMgee/lOa1O2gv1CivbsA8UA5WIfh2EkIF43vpgNsiqS3NLa1M/CYCoG1DypDPXhICC1Zw0kd+iefLUy4X1Hn8QCegHQTRovEh/8h3OqbwcFxSre6l6yVPhIYxkJ0rui1iqNLSsGa640ccz4r5Y9vHL6B72Q7P6D6iaYqcJlUpNqTrr2dvIcsWbd/ZTjmaJlasFkh0s08qlrYPHZDOEpzHJj/PIfCLAaLcwKhlTtCeTtvfNpiIPcy3dHFsOwgXsDmkZz3OZwRTnQqoSEUufLzlYC0RoJpXWaK2XZDZ11Kc2K3LnIf/3+LonesRazgnwLvFmy57wPDGTINV9CQxfadVsa7ksQ8cpuA9kiCyUm4zSgsybx/Yxc7seGn9HecHkX0Ykffi8OLnhjpW4DaEfU+ADY2scdKYWiiu+gAf9z2iBsIqZr1o4qmKoc3vapiOoDNFjF7ofDsnQKDFzCx3/kXvNKkilxRXVSMYH+MNxazgiKpuET5S/O95qiBdzcxM=
   - secure: RN2HVrfOCbTBuhXk0wG2GJtj8XkTEWzPRDskhYH5WKauDOw1LcAYrsM84fvtbbj+FidHqpxc26IjVLxnpyNrrP5T1EXCPP7itcZa491YSY89DdQf5+h+z4JAiHY8JIofXCOQkpjwFlFHhczabgD7OgHrxmiwi1o5PyMfjQwWWGvinwA4Gc1+JQ85xSp2I6T9Cy9W/3IVo0CmaPxqEWp/1K4HwmorXowHlR6Bm+x81u/xZs9662ZIXscDXoCxGoTo+SfggH7MATXvFyIesk5bB0mUPixIeNYhxQKsJYkCX227IeylBNDoF9B7Ej0BHjfjMIn7quNIoaI5hR+XYPd8enfPOfNBUIPcotX5T3CrJqDdD/7WTkHZTWM1ImSH9HV/KqhbuU7ZZPeFKFGKqApLhnt7BIiw+h1eruPDHp02H7nsO3wrn0oY/4j6UGZr+jdpta5Ikx7aBu2fUjkAWXHE/C7vyhkQpULH5FsXEk+RTrktpg3ggTo0p/se7veo2ftpQgOawPLOfRdAhoX8qJjbZ1u6skwZjk3PsF1aCm9wssCJRz+dwmFZsRWiQDgtw38AKxBTtrWto5bFj9yRl27e3a7IUdetVlIyB2BwhML73X/S5T/33q4HiQzcHUyFRadJRlATXsDdOnnqDjaHSSFbawMQrNI3AF3j4n5AMZLW8AI=
   - secure: i/IsSBiP7dodkAV3fRvsDB7EAL5I/jyJ9Q3d/z4tXKk4wJfTIySxOlXmnQAQK2p8HtJbc9h5tFjkGDqhCpyo1A6oI++9Mt1xgkYoSkCMxOojPcF+6lGUhOiiEHuXJVKg6rJuOe81fs7roJqPU/4vu6cxgYkfA2A8pvSVhsZerj5pROOW5RiGASwaCiKoVM5m58IuFeg7VvThsk8wMVTdLvGV7eatAAMO4g/0/ymhbt4NI/mVV5eo7r2iWMzwKum9ZQsWsu+FiWpgK7saUPdEaFEgyP6TWZZWgKIbeezib5J5C5kVvPg0XbM/h4qhy8z8hWH8rnr5mMDukKnSl8CEQXzzdSa/1xabXSSGKjqGUDZu1PMUyowl+sdaAWQvXN94tcnIgDmLM0mGQ7G9MJJHOnnoWdVADGTez+3AmsHgZO2zLoyzkbAFzNaW4VkwBSS3qk2V3AF7Z9MgZ00eayv8kDNtO9fOVD18wt0eUgMoe4isUNqxIMgYreY8KJ8Qc/MRDrqiv8R9W2IHDXFOn3WK4UY5xjOeyAMdSjcKPRHm6eRDSMgUHAF4f20WNP5gKONWRfL3rR859CWNwFd2lYv5E4srR0SHTQ+wyBqLChyb988Tr8OcIQSGSPRXhS7+94VK+fObcgGdR7QdoZ3f2AgQ2znab/oFfjAso+N+nsHCqFc=
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_fb365c1216b5_key -iv $encrypted_fb365c1216b5_iv -in new.keystore.enc -out new.keystore -d
-#- export EMULATOR="system-images;android-${API};${TAG};${ABI}" # Used to install/create emulator
-#- echo 'count=0' > /home/travis/.android/repositories.cfg # Avoid warning
 - chmod +x gradlew
-
-#install:
-#- echo yes | sdkmanager "tools"
-#- echo yes | sdkmanager "platforms;android-24" # Latest platform required by SDK tools
-#- echo yes | sdkmanager "platforms;android-${API}" # Android platform required by emulator
-#- echo yes | sdkmanager "extras;android;m2repository"
-#- echo yes | sdkmanager "extras;google;m2repository"
-#- echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
-#- echo yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2"
-#- echo yes | sdkmanager "$EMULATOR" # Install emulator system image
-# Create and start emulator
-#- echo no | avdmanager create avd -n acib -k "$EMULATOR" -f --abi "$ABI" --tag "$TAG"
-#- emulator -avd acib -engine classic -no-window -verbose -qemu -m 512 &
-
-#before_script:
-# Wait for emulator fully-booted and disable animations
-#- adb wait-for-device
-#- adb shell settings put global window_animation_scale 0 &
-#- adb shell settings put global transition_animation_scale 0 &
-#- adb shell settings put global animator_duration_scale 0 &
-#- adb shell input keyevent 82 &
 
 script:
 - ./gradlew build connectedCheck
 
 before_deploy:
-# Set up git user name and tag this commit
 - git config --local user.name "DrAcHe981"
 - git config --local user.email "drache981@gmail.com"
 - git tag "TravisCI_$(date +'%d-%m-%Y_%H-%M-%S')_$(git log --format=%h -1)"
