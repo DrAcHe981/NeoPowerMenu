@@ -19,14 +19,6 @@ cache:
 
 notifications:
   email: false
-  webhooks:
-    urls:
-      secure: wfNj618sl+Y9pAq4gz3quPnGPwtY3DglOjDyVt/UmlCtTfz4vLIfUuxsnHxLEbsxziQQVQ3l3lyV4j+cyYcaTPrOy7lSQl6REkkrT2et/36skw93+Hvo7q3JNQDtXdKGDfA0qVPXg/xpTuocExBYwsuJqG9u/0tWsaR1i/J2jMTUSeGBIY16kY3CtUJmOgjNgafkcKRLc1vbxZOdcUJ9rK6sycrzx2mzstGAU1ZoupYADQ5pC1PPje6pryZ+ow9gyxVmJ9K//w+ZfPIPQEuELhfyS8eVco8drJYYOlbz10pNUzzyK19XAMperksinUB1qUqLyLEIq+qpkEO01gbgM3A3EgAItMzpGm+zt7GlHts4UFJ5FfJ9W4HcOniyd/IJr+jVbC6MJZf345mRKodl9XN/a+vhYbrrVgt6jbND5/P4VIAgzPTkamyLgTt0tBH+sL3dZDWfo79Rf9hmZ8i5JLiQh44LjnnwsYQVNmPBXFi6XDcBAXRphcop16K1sjUymAQCepMRBkNpG3TGrSg4X3zxgmNNitc5D/KVuV7xeSKCULhrbxRuuv4APf6epVQAzoCGRl9pq7/pUDtK5d+c2EBdZsR4oo0oGcU38ym/yRC1crJAy3RQu4L/7gqz0bMdx6jeaEyII3VzoY7UqXvWYKbLtA3o48e2hbGLG6bthkg=
-    on_success: never
-    on_failure: always
-    on_start: never
-    on_cancel: never
-    on_error: always
 
 android:
   components:
