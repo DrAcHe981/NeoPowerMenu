@@ -365,6 +365,9 @@
   <string name="advancedPrefs_SelectSize">"Video boyutu seçin:"</string>
   <string name="screenrecord_toast_nosupport">"Sisteminiz ekran kaydını desteklemiyor"</string>
   <string name="advancedPrefsTitle_ScreenRecordUseStockBinary">"Stok dosyaları kullan"</string>
+  <string name="advancedPrefsDesc_ScreenRecordUseStockBinary">"Etkinleştirildiğinde, kayıt için stok ekran kaydı dosyaları kullanılır.\nAlternatif dosyalar sorun çıkarıyorsa kullanın.\nBu stok dosyalar, ses ve 3 dakikadan fazla kayda izin vermez."</string>
+  <string name="advancedPrefs_Hours">"saat"</string>
+  <string name="advancedPrefs_Minutes">"dakika"</string>
   <string name="advancedPrefs_Seconds">"saniye"</string>
   <string name="advancedPrefs_MilliSeconds">"milisaniye"</string>
   <string name="advancedPrefsTitle_BlurBehind">"Bulanıklık"</string>
@@ -415,4 +418,5 @@
   <string name="style_MaterialDynamicWidth">Materyal (Dinamik genişlik)</string>
   <string name="graphics_BehaviorTitle">Grafik davranışını özelleştir</string>
   <string name="graphics_BehaviorDesc">Grafikleri etkinleştirin/devre dışı bırakın ve dolgu ve renklendirme gibi değerleri özelleştirin.</string>
+  <string name="visibilityOrder_SearchShortcut">Arama Kısayolu (büyük küçük harfe duyarsız):</string>
 </resources>
