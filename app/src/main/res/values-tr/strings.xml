@@ -361,6 +361,10 @@
   <string name="advancedPrefsTitle_ScreenRecordBitRate">"Video bit hızı"</string>
   <string name="advancedPrefsTitle_ScreenRecordRotate">"Videoyu Döndür"</string>
   <string name="advancedPrefsDesc_ScreenRecordRotate">"Çıktıyı 90 derece döndürür."</string>
+  <string name="advancedPrefs_SelectBitRate">"Bit hızı seçin:"</string>
+  <string name="advancedPrefs_SelectSize">"Video boyutu seçin:"</string>
+  <string name="screenrecord_toast_nosupport">"Sisteminiz ekran kaydını desteklemiyor"</string>
+  <string name="advancedPrefsTitle_ScreenRecordUseStockBinary">"Stok dosyaları kullan"</string>
   <string name="advancedPrefs_Seconds">"saniye"</string>
   <string name="advancedPrefs_MilliSeconds">"milisaniye"</string>
   <string name="advancedPrefsTitle_BlurBehind">"Bulanıklık"</string>
