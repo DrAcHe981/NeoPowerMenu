@@ -294,4 +294,16 @@
   <string name="uploadHelper_UnknownError">"Dosyayı yüklerken bilinmeyen bir sorun oluştu, lütfen tekrar deneyin."</string>
   <string name="visibilityOrder_SearchApp">"Uygulama ara (büyük küçük harfe duyarsız):"</string>
   <string name="visibilityOrder_FilterItemsList">"Öğe ara (büyük küçük harfe duyarsız):"</string>
+  <string name="powerMenuMain_MediaPrevious">"Önceki"</string>
+  <string name="powerMenuMain_MediaPlayPause">"Çal/Duraklat"</string>
+  <string name="powerMenuMain_MediaNext">"Sonraki"</string>
+  <string name="presetsManager_Loading">"Hazır ayar yükleniyor..."</string>
+  <string name="shortcut_ShowPowerMenu">"Güç menüsü"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviour">"Görünümü ve davranışı düzenle"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourDesc">"Öğenin davranışını aşağıdan seçin:"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText">"Öğe metni: (varsayılanı kullanmak için boşaltın)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText1">"İlk Öğe metni: (varsayılanı kullanmak için boşaltın)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText2">"İkinci Öğe metni: (varsayılanı kullanmak için boşaltın)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText3">"Üçüncü Öğe metni: (varsayılanı kullanmak için boşaltın)"</string>
+  <string name="visibilityOrder_HideOnLockscreen">"Kilit ekranında gizle"</string>
 </resources>
