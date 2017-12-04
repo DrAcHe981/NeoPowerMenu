@@ -306,4 +306,14 @@
   <string name="visibilityOrder_EditAppearanceBehaviourText2">"İkinci Öğe metni: (varsayılanı kullanmak için boşaltın)"</string>
   <string name="visibilityOrder_EditAppearanceBehaviourText3">"Üçüncü Öğe metni: (varsayılanı kullanmak için boşaltın)"</string>
   <string name="visibilityOrder_HideOnLockscreen">"Kilit ekranında gizle"</string>
+  <string name="visibilityOrder_InvalidMultiPageMove">"Geçersiz taşıma işlemi, Bitişten sonra başlangıç veya başlangıçtan önce bitiş olamaz!"</string>
+  <string name="preferences_BackupRestoreTitle">"Yedekle ve Geri Yükle"</string>
+  <string name="preferences_BackupRestoreDesc">"Tüm ayarlarınızı yedekleyip daha sonra geri yükleyebilir, ayrıca bir şeyler ters giderse veya sadece yeni bir menü isterseniz ayarlarınızı silebilirsiniz."</string>
+  <string name="backupRestoreCategory_BackupRestore">"Yedekleme ve geri yükleme"</string>
+  <string name="backupRestore_NewBackupTitle">"Tüm ayarları yedekle"</string>
+  <string name="backupRestore_NewBackupDesc">"Tüm ayarları yerel depolama birimi köküne kaydetmek için buraya tıklayın."</string>
+  <string name="backupRestore_RestoreTitle">"Ayarları geri yükle"</string>
+  <string name="backupRestore_RestoreDesc">"Kayıtlı ayarları geri yüklemek için buraya tıklayın."</string>
+  <string name="backupRestoreCategory_Delete">"Sil"</string>
+  <string name="backupRestore_DeleteSettingsTitle">"Ayarları sil"</string>
 </resources>
