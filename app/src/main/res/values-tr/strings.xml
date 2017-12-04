@@ -244,6 +244,9 @@
   <string name="style_MaterialFullHorizontal">Materyal (Tam yatay)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Deneysel PhoneWindowManager kancası</string>
   <string name="advancedPrefs_ExperimentalPWMHookDesc">GlobalActions sınıfı yerine PhoneWindowManager\'a bağla.\nDikkatli kullanın, cihazınız için normal kanca çalışırsa etkinleştirmeyin!\nDeğişiklikleri görmek için yeniden başlatın.</string>
+  <string name="advancedPrefs_ColorizeNonStockIcons">"Özel simgeleri renklendir"</string>
+  <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Varsayılan olarak, özel simgeler renkli olmaz, bu etkinleştirildiğinde değişir."</string>
+  <string name="advancedPrefs_RoundAppIcons">"Yuvarlak uygulama simgeleri"</string>
   <string name="errorActivity_Close">"Kapat"</string>
   <string name="errorActivity_MoreInfo">"Daha fazla bilgi"</string>
   <string name="tourReview_Title">"İnceleme turu"</string>
