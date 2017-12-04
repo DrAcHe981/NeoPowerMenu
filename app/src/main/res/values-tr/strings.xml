@@ -247,6 +247,13 @@
   <string name="advancedPrefs_ColorizeNonStockIcons">"Özel simgeleri renklendir"</string>
   <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Varsayılan olarak, özel simgeler renkli olmaz, bu etkinleştirildiğinde değişir."</string>
   <string name="advancedPrefs_RoundAppIcons">"Yuvarlak uygulama simgeleri"</string>
+  <string name="advancedPrefs_RoundAppIconsDesc">"Dairelerle uyuşmuyorsa, uygulamanın simgelerini yuvarlak yap."</string>
+  <string name="colorsApplyToAll">"Bu türdeki hepsine uygula"</string>
+  <string name="colorsResetToDefault">"Varsayılana sıfırla"</string>
+  <string name="errorActivity_CopyToClip">"Panoya kopyala"</string>
+  <string name="errorActivity_Copyied">"Panoya kopyalandı"</string>
+  <string name="errorActivity_RestartApp">"Uygulamayı yeniden başlat"</string>
+  <string name="errorActivity_CloseApp">"Uygulamayı kapat"</string>
   <string name="errorActivity_Close">"Kapat"</string>
   <string name="errorActivity_MoreInfo">"Daha fazla bilgi"</string>
   <string name="tourReview_Title">"İnceleme turu"</string>
@@ -272,4 +279,19 @@
   <string name="tourPage_7_Title">"Keyfini Çıkarın!"</string>
   <string name="tourPage_7_Text">"Küçük turum bitti, ancak endişelenmeyin, çok daha fazla özellik var!\nSadece kendiniz deneyin ve mükemmel güç menüsünü bulun."</string>
   <string name="advancedPrefs_UseRootTitle">"Root sistemlerini kullan"</string>
+  <string name="advancedPrefs_UseRootDesc">"Kapatmak veya yeniden başlatmak için su komutlarını kullan. Devre dışı bırakılırsa, sistem işlemi üzerinde komut çalıştırmaya çalışılacaktır, bu bazı aygıtlarda başarısız olabilir."</string>
+  <string name="graphics_PaddingTitle">"Grafik Dolgusu"</string>
+  <string name="graphics_PaddingDesc">"Grafik dolgusunu tanımlar.\nDaha yüksek değer = Daha küçük grafikler. (Varsayılan 0dp)"</string>
+  <string name="presetsManager_LoadOnlyGraphics">"Sadece grafikleri yükle"</string>
+  <string name="downloadHelper_InvalidSize">"İndirilen dosya tamamlanmadı.\nLütfen tekrar deneyin."</string>
+  <string name="downloadHelper_FailedAt1">"Sunucuya bağlanılamadı, lütfen bağlantınızı kontrol edin ve tekrar deneyin."</string>
+  <string name="downloadHelper_FailedAt2">"Gerekli bilgileri talep edemedi, lütfen bağlantınızı kontrol edin ve tekrar deneyin."</string>
+  <string name="downloadHelper_FailedAt3">"Dosya indirilemedi, lütfen bağlantınızı kontrol edin ve tekrar deneyin."</string>
+  <string name="downloadHelper_UnknownError">"Dosyayı indirirken bilinmeyen bir sorun oluştu, lütfen tekrar deneyin."</string>
+  <string name="uploadHelper_FailedAt1">"Sunucuya bağlanılamadı, lütfen bağlantınızı kontrol edin ve tekrar deneyin."</string>
+  <string name="uploadHelper_FailedAt2">"Gerekli bilgileri talep edemedi, lütfen bağlantınızı kontrol edin ve tekrar deneyin."</string>
+  <string name="uploadHelper_FailedAt3">"Dosya yüklenemedi, lütfen bağlantınızı kontrol edin ve tekrar deneyin."</string>
+  <string name="uploadHelper_UnknownError">"Dosyayı yüklerken bilinmeyen bir sorun oluştu, lütfen tekrar deneyin."</string>
+  <string name="visibilityOrder_SearchApp">"Uygulama ara (büyük küçük harfe duyarsız):"</string>
+  <string name="visibilityOrder_FilterItemsList">"Öğe ara (büyük küçük harfe duyarsız):"</string>
 </resources>
