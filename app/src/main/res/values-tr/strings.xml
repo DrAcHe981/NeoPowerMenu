@@ -425,4 +425,10 @@
   <string name="advancedPrefsTitle_ScreenRecordCountdown">Ekran kaydı geri sayımı</string>
   <string name="advancedPrefsDesc_ScreenRecordCountdown">Ekran kaydına başlamadan önce bir geri sayım göster.</string>
   <string name="screenrecord_toast_start_in">Ekran kaydı [TIME] içinde başlıyor...</string>
+  <string name="screenrecord_notif_binarynotFound">İkili dosya bulunamadı, okunamadı veya çalıştırılamadı.\nEkran kaydı cihazınızda desteklenmiyor olabilir.</string>
+  <string name="advancedPrefsTitle_HideActionDescriptionText">Kapatma/yeniden başlatma eylemi penceresinde açıklama metnini gizle</string>
+  <string name="advancedPrefsDesc_HideActionDescriptionText">Kapatma/yeniden başlatma eylemi kutusundaki \"Kapatılıyor...\" veya benzeri şeyleri gizle.</string>
+  <string name="visibilityOrder_MissingPermissionForNotiPolicy">Bildirim politikası izni eksik, bu açma/kapamayı kullanmak için lütfen izin verin!</string>
+  <string name="powerMenu_Task_Killed">[TARGET] sonlandırıldı!</string>
+  <string name="powerMenu_No_Task_To_Kill">Sonlandırılacak görev bulunamadı.</string>
 </resources>
