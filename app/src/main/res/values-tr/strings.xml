@@ -341,6 +341,7 @@
   <string name="powerMenuMain_LockPhone">"Cihazı kilitle"</string>
   <string name="permissionsScreenTitle_DeviceAdmin">"Cihaz Yöneticisi"</string>
   <string name="permissionsScreenDesc_DeviceAdmin">"Cihazı kilitlemek için gerekli, etkinleştirdikten sonra kaldırma iki adımlı bir işlemdir, öncelikle cihaz yöneticisini devre dışı bırakın ve ardından NeoPowerMenu uygulamasını kaldırın."</string>
+  <string name="permissionsScreenTitle_android.permission.RECEIVE_BOOT_COMPLETED">"Önyükleme tamamlandı erişimi"</string>
   <string name="permissionsScreenDesc_android.permission.RECEIVE_BOOT_COMPLETED">"Önyükleme sırasında bazı kütüphaneleri hazırlamak için gereklidir."</string>
   <string name="permissionsScreen_DeviceAdminDisable">"Bunu devre dışı bırakmak, güç menüsünü kullanarak cihazı kilitleme özelliğini kaldıracaktır."</string>
   <string name="visibilityOrder_FillEmpty">"Boş öğeleri boşluk bırak"</string>
