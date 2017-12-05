@@ -198,10 +198,17 @@
   <string name="downloadHelper_Speed">"rychlost: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Čekám na jiné stahování...|Připojuji se na server...|Požaduji informace... |Stahuji..|Ruším..."</string>
   <string name="visibilityOrder_AddItem">"Přidat standartní položku\nStadartní položka s jedním slotem.|Přidat více položek\nPřidat až tři položky na jeden řádek.|Přidat vícestránkovou položku\nKliknutím zobrazit novou 'stránku'."</string>
+  <string name="visibilityOrder_MultiPage">"Vícestránková položka začíná zde\nPrvní položka definuje tlačítko pro otevření 'nové stránky'.|Vícestránková položka končí zde"</string>
   <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root a Xposed"</string>
+  <string name="preferences_RootXposed1">"Root a Xposed není k dispozici|Pro zprovoznění tohoto modulu je nutné mít Root a nainstalovaný Xposed."</string>
+  <string name="preferences_RootXposed2">"Xposed funguje, Root nefunguje|Je nutné mít Root pro Vypínání, Restart...\nProsím povolte aplikaci přístup k Root."</string>
+  <string name="preferences_RootXposed3">"Root funguje, Xposed nefunguje|Xposed je nezbytné aktivovat pro přístup do Vypínacího menu...\nProsím aktivujte modul v Xposed installeru."</string>
+  <string name="preferences_RootXposed4">"Root a Xposed fungují|Aplikace by měla fungovat správně!"</string>
+  <string name="preferences_RootXposed5">"Verze Hooked Modulu je zastaralá...|Prosím restartujte zařízení pro dokončení procesu aktualizace!"</string>
   <string name="preferencesCategory_General">"Hlavní"</string>
   <string name="preferences_Style">"Styl"</string>
+  <string name="preferences_Theme">"Téma|Změnit vzhled."</string>
   <string name="preferencesCategory_Other">"Ostatní"</string>
   <string name="preferencesCategory_About">"O aplikaci"</string>
   <string name="animations_Type">"Typ"</string>
