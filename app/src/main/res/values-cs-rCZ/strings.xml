@@ -209,6 +209,7 @@
   <string name="preferencesCategory_General">"Hlavní"</string>
   <string name="preferences_Style">"Styl"</string>
   <string name="preferences_Theme">"Téma|Změnit vzhled."</string>
+  <string name="preferences_Graphics">"Grafika|Změnit grafiku, použij předdefinované grafické objekty."</string>
   <string name="preferencesCategory_Other">"Ostatní"</string>
   <string name="preferencesCategory_About">"O aplikaci"</string>
   <string name="animations_Type">"Typ"</string>
