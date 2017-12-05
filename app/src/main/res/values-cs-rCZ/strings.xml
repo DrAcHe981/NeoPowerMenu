@@ -197,6 +197,7 @@
   <string name="downloadHelper_RemainingTime">"[TIME] zbývá"</string>
   <string name="downloadHelper_Speed">"rychlost: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Čekám na jiné stahování...|Připojuji se na server...|Požaduji informace... |Stahuji..|Ruším..."</string>
+  <string name="visibilityOrder_AddItem">"Přidat standartní položku\nStadartní položka s jedním slotem.|Přidat více položek\nPřidat až tři položky na jeden řádek.|Přidat vícestránkovou položku\nKliknutím zobrazit novou 'stránku'."</string>
   <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root a Xposed"</string>
   <string name="preferencesCategory_General">"Hlavní"</string>
