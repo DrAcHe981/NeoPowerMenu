@@ -316,4 +316,24 @@
   <string name="advancedPrefs_SelectSize">"Zvolte velikost videa:"</string>
   <string name="screenrecord_toast_nosupport">"Váš systém nepodporuje nahrávání obrazovky"</string>
   <string name="advancedPrefsTitle_ScreenRecordUseStockBinary">"Použít stock binary"</string>
+  <string name="advancedPrefsDesc_ScreenRecordUseStockBinary">"Pokud je volba povolena, stock binary je použit pro nahrávání videa obrazovky.\nPoužijte jen v případě že alternativní nahrávání způsobuje problémy.\nPoznámka, se stock binary nelze nahrát zvuk a nahrávání je omezeno na 3 minuty."</string>
+  <string name="advancedPrefs_Hours">"hodin(a/y)"</string>
+  <string name="advancedPrefs_Minutes">"minut(a/y)"</string>
+  <string name="advancedPrefs_Seconds">"sekund(a/y)"</string>
+  <string name="advancedPrefs_MilliSeconds">"milisekund(a/y)"</string>
+  <string name="advancedPrefsTitle_BlurBehind">"Rozmazání"</string>
+  <string name="advancedPrefsDesc_BlurBehind">"Povolte volbu pro rozmazaní pozadí za vypínacím menu."</string>
+  <string name="advancedPrefsTitle_BlurRadius">"Poloměr rozostření"</string>
+  <string name="advancedPrefsDesc_BlurRadius">"Definujte jak velký kus pozadí má být rozmazán. (výchozí hodnota: 14)"</string>
+  <string name="advancedPrefs_SelectBlurRadius">"Vyberte poloměr rozostření:"</string>
+  <string name="screenrecord_notif_open">"Otevřít pomocí..."</string>
+  <string name="screenrecord_notif_saving">Ukládání...</string>
+  <string name="screenrecord_notif_failedCreateDir">"Nelze vytvořit požadované adresáře."</string>
+  <string name="screenrecord_notif_failedToSave">"Nelze zkopírovat výstupní soubor, otevřete si log pro více informací."</string>
+  <string name="errorActivity_Info">"Objevila se neočekávaná chyba.\nOmlouváme se za potíže."</string>
+  <string name="powerMenuMain_SilentMode">"Tichý režim"</string>
+  <string name="visibilityOrder_LockWithPassword">"Zamknout pomocí hesla"</string>
+  <string name="powerMenu_Password">"heslo"</string>
+  <string name="powerMenu_LockedWithPassword">"Toto tlačítko je zamknuté, pro pokračování zadejte heslo prosím..."</string>
+  <string name="powerMenu_WrongPassword">Nesprávné heslo, zkuste to prosím znovu...</string>
 </resources>
