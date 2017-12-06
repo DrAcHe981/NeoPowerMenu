@@ -377,4 +377,9 @@
   <string name="advancedPrefsDesc_ScreenRecordCountdown">Zobrazit odpočet před spuštěním záznamu obrazovky.</string>
   <string name="screenrecord_toast_start_in">Nahrávání obrazovky začne za [TIME]...</string>
   <string name="screenrecord_notif_binarynotFound">Nepodařilo se nalézt, načíst nebo spustit soubor binary.\nNahrávání obrazovky možná není podporováno na vašem zařízení.</string>
+  <string name="advancedPrefsTitle_HideActionDescriptionText">Skrýt popisek při zobrazení dialogu vypnutí/restartování</string>
+  <string name="advancedPrefsDesc_HideActionDescriptionText">Skrýt \"Vypínám...\" nebo obdobný dialog zobrazovaný při vypínutí/restartu zařízení.</string>
+  <string name="visibilityOrder_MissingPermissionForNotiPolicy">Chybí politika zobrazení práv, prosím povolte pomocí tohoto přepínače!</string>
+  <string name="powerMenu_Task_Killed">Ukončen [TARGET]!</string>
+  <string name="powerMenu_No_Task_To_Kill">Nenalezen žádný proces k ukončení.</string>
 </resources>
