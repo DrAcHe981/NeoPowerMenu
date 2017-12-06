@@ -278,4 +278,14 @@
   <string name="tourPage_7_Title">"Příjemnou zábavu!"</string>
   <string name="tourPage_7_Text">"Toto je konec ukázky, ale nebojte čeká na vás mnohem více možností.\nMusíte si to vyzkoušet sami a vybrat to nejlepší vypínací menu podle sebe."</string>
   <string name="advancedPrefs_UseRootTitle">"Použij Root systems"</string>
+  <string name="advancedPrefs_UseRootDesc">"Použij příkaz su pro vypnutí nebo restartování. Pokud je deaktivován, zkusím spustit příkaz jako system process, avšak nemusí fungovat na všech zařízeních."</string>
+  <string name="graphics_PaddingTitle">"Grafický Rozvržení"</string>
+  <string name="graphics_PaddingDesc">"Definuje rozvržení grafiky.\nVyšší hodnota = Menší grafika. (Výchozí 0dp)"</string>
+  <string name="presetsManager_LoadOnlyGraphics">"Načíst pouze grafiku"</string>
+  <string name="downloadHelper_InvalidSize">"Stažený soubor není celý.\nProsím zkuste to znovu."</string>
+  <string name="downloadHelper_FailedAt1">"Nepodařilo se připojit k serveru, prosím zkontrolujte své připojení a zkuste to znovu."</string>
+  <string name="downloadHelper_FailedAt2">"Nepodařilo se stáhnout požadované informace, prosím zkontrolujte své připojení a zkuste to znovu."</string>
+  <string name="downloadHelper_FailedAt3">"Stažení souboru se nezdařilo, prosím zkontrolujte své připojení a zkuste to znovu."</string>
+  <string name="downloadHelper_UnknownError">"Při stahováni souboru se vyskytla chyba, prosím zkuste to znovu."</string>
+  <string name="uploadHelper_FailedAt1">"Nepodařilo se připojit k serveru, prosím zkontrolujte své připojení a zkuste to znovu."</string>
 </resources>
