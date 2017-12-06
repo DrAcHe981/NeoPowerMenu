@@ -288,4 +288,14 @@
   <string name="downloadHelper_FailedAt3">"Stažení souboru se nezdařilo, prosím zkontrolujte své připojení a zkuste to znovu."</string>
   <string name="downloadHelper_UnknownError">"Při stahováni souboru se vyskytla chyba, prosím zkuste to znovu."</string>
   <string name="uploadHelper_FailedAt1">"Nepodařilo se připojit k serveru, prosím zkontrolujte své připojení a zkuste to znovu."</string>
+  <string name="uploadHelper_FailedAt2">"Nepodařilo se stáhnout požadované informace, prosím zkontrolujte své připojení a zkuste to znovu."</string>
+  <string name="uploadHelper_FailedAt3">"Nahrání souboru se nezdařilo, prosím zkontrolujte své připojení a zkuste to znovu."</string>
+  <string name="uploadHelper_UnknownError">"Při nahrávání souboru se vyskytla chyba, prosím zkuste to znovu."</string>
+  <string name="visibilityOrder_SearchApp">"Vyhledat aplikaci (rozlišujte malá a velká písmena):"</string>
+  <string name="visibilityOrder_FilterItemsList">"Vyhledat položku (rozlišujte malá a velká písmena):"</string>
+  <string name="powerMenuMain_MediaPrevious">"Předchozí"</string>
+  <string name="powerMenuMain_MediaPlayPause">"Přehrát/Pozastavit"</string>
+  <string name="advancedPrefsCategory_Torch">"Svítilna"</string>
+  <string name="advancedPrefsCategory_Screenrecord">"Záznam obrazovky"</string>
+  <string name="advancedPrefsTitle_FlashlightAutoOff">"Automatické vypnutí baterky"</string>
 </resources>
