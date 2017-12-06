@@ -364,4 +364,17 @@
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Politika oznámení o přístupu"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Pro změnu módu 'Nerušit', je požadována verze Android Nougat(7.0) nebo vyšší."</string>
   <string name="powerMenuMain_Shortcut">Zástupce</string>
+  <string name="visibilityOrder_NoGravityBoxFound">GravityBox nebyl nalezen, tato položka nebude fungovat bez nainstalovaného modulu GravityBox.</string>
+  <string name="visibilityOrder_HideText">Skrýt text</string>
+  <string name="style_MaterialDynamicWidth">Materiál (Dynamická šířka)</string>
+  <string name="graphics_BehaviorTitle">Přizpůsobit chování grafiky</string>
+  <string name="graphics_BehaviorDesc">Povolit/Zakázat grafiku a změněnu hodnot jako zarovnání a obarvení.</string>
+  <string name="visibilityOrder_SearchShortcut">Vyhledat Zástupce (rozlišujte malá a velká písmena):</string>
+  <string name="preferences_TranslateDesc">Víte o jazyku který chybí v této aplikaci?\nKlikněte zde pro vstup na stránky Crowdingu a pomožte nám s překladem!</string>
+  <string name="preferences_TranslateTitle">Překlad</string>
+  <string name="graphics_NotEnabled">Grafické prvky nejsou povoleny\nKliknutím sem je povolíte!</string>
+  <string name="advancedPrefsTitle_ScreenRecordCountdown">Odpočet záznamu obrazovky</string>
+  <string name="advancedPrefsDesc_ScreenRecordCountdown">Zobrazit odpočet před spuštěním záznamu obrazovky.</string>
+  <string name="screenrecord_toast_start_in">Nahrávání obrazovky začne za [TIME]...</string>
+  <string name="screenrecord_notif_binarynotFound">Nepodařilo se nalézt, načíst nebo spustit soubor binary.\nNahrávání obrazovky možná není podporováno na vašem zařízení.</string>
 </resources>
