@@ -348,4 +348,20 @@
   <string name="powerMenu_PasswordUsePassword">"Použít heslo"</string>
   <string name="powerMenu_PasswordLockedWithFingerprint">"Toto tlačítko je zamčené, prosím použíjte váš otisk prstu pro odemčení..."</string>
   <string name="powerMenu_FingerprintFailed">"Nepodařilo se odemknout pomocí otisku prstu, prosím zkuste to znovu..."</string>
+  <string name="advancedPrefs_MissingFingerprintPermission">"Volbu nelze povolit pokud aplikace nemá přístup ke čtečce otisků prstů..."</string>
+  <string name="advancedPrefs_NoFingerprintsAdded">"Volbu nelze povolit pokud nejsou žádné uložené otisky k dispozici..."</string>
+  <string name="advancedPrefs_KeyguardNotSecured">"Volbu nelze povolit bez zabezpečení žámku obrazovky..."</string>
+  <string name="advancedPrefs_ClickOkToOpenSettings">"Klikněte na OK pro otevření nastavení zabepečení."</string>
+  <string name="visibilityOrder_ConfirmFingerprint">"Prosím potvrďte otisk prstu pro aktivaci této volby!"</string>
+  <string name="addShortcut_Add">"Přidat"</string>
+  <string name="addShortcut_AddShortcut">"Přidat zástupce"</string>
+  <string name="addShortcut_Next">"Další"</string>
+  <string name="addShortcut_Settings">"Nastavení zkratek"</string>
+  <string name="addShortcutTitle_UseCustomGraphic">"Použít vlastní grafiku"</string>
+  <string name="addShortcutDesc_UseCustomGraphic">"Povolte volbu pro použití upravené grafiky (pokud je k dispozici)."</string>
+  <string name="permissionsScreenTitle_android.permission.USE_FINGERPRINT">"Použití otisku prstu"</string>
+  <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Je požadováno použití čtečky otisků prstů jako metoda odemčení."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Politika oznámení o přístupu"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Pro změnu módu 'Nerušit', je požadována verze Android Nougat(7.0) nebo vyšší."</string>
+  <string name="powerMenuMain_Shortcut">Zástupce</string>
 </resources>
