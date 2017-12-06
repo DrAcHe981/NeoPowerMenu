@@ -229,14 +229,20 @@
   <string name="animations_Speed">"Rychlost"</string>
   <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Animace načítání"</string>
+  <string name="presetsManager_LoadMore">"Načítám...|Prosím čekejte...|Zobrazit více předvoleb|Klikněte zde pro zobrazení více předvoleb.|Konec.|Žádné další předvolby k zobrazení.|Zkuste to znovu kliknutím zde."</string>
+  <string name="powerMenu_SureToRebootPowerOff">"Opravdu chcete restartovat vaše zařízení?|Opravdu chcete vypnout vaše zařízení?"</string>
   <!-- Preferences: Advanced -->
+  <string name="advancedPrefs_Confirmation">"Požadavek na potvrzení|Zapne potvrzovací dialog před restartováním nebo vypnutím telefonu."</string>
+  <string name="preferences_Donate">"Podpořit|Líbí se vám tato aplikace?\nProč by jste nemohli podpořit vývojáře šálkem kafé nebo něčeho jiného?"</string>
   <string name="advancedPrefs_HideOnClick">"Schovat po kliknutí"</string>
+  <string name="advancedPrefs_HideOnClickDesc">"Kliknutím na přepínací tlačítko, se schová menu."</string>
   <string name="advancedPrefs_LoadAppIcons">"Nahrát ikony aplikace"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Nahrát ikony aplikace na zástupce."</string>
   <string name="style_Material">Materiál</string>
   <string name="style_MaterialFullscreen">Material (Celá obrazovka)</string>
   <string name="style_MaterialFullHorizontal">Material (Horizontálně)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Experimentální PhoneWindowManager hook</string>
+  <string name="advancedPrefs_ExperimentalPWMHookDesc">Hook v PhoneWindowManager namísto třídy GlobalActions.\nPoužijte obezřetně, neaktivujte volbu, pokud varianta normálního hooku funguje správně!\nPro aplikaci změn, restartujte telefon.</string>
   <string name="advancedPrefs_ColorizeNonStockIcons">"Obarvit ikony"</string>
   <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Ve výchozím stavu ikony nejsou obarveny, aktivací umožníte volbu."</string>
   <string name="advancedPrefs_RoundAppIcons">"Kulaté ikony aplikací"</string>
@@ -260,4 +266,6 @@
   <string name="tourPage_1_Title">"Hlavní menu"</string>
   <string name="tourPage_1_Text">"Zde můžete najít všechny sekce a vidět zda aplikace funguje správně, vše je pěkně seřazeno ^^."</string>
   <string name="tourPage_2_Title">"Menu Motivů"</string>
+  <string name="tourPage_2_Text">"Tady začínají vaše úpravy: můžete změnit libovolnou barvu!\nCílem je nabídnout nejlépe přizpůsobitelné vypínací menu."</string>
+  <string name="tourPage_3_Title">"Grafické Menu"</string>
 </resources>
