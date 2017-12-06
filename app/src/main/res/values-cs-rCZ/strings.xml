@@ -210,7 +210,11 @@
   <string name="preferences_Style">"Styl"</string>
   <string name="preferences_Theme">"Téma|Změnit vzhled."</string>
   <string name="preferences_Graphics">"Grafika|Změnit grafiku, použij předdefinované grafické objekty."</string>
+  <string name="preferences_VisibilityOrder">"Viditelnost a řazení|Vyberte položky které chcete zobrazit a seřaďte je podle přání."</string>
+  <string name="preferences_Animations">"Animace|Zmeňte animace nebo je kompletně vypněte."</string>
   <string name="preferencesCategory_Other">"Ostatní"</string>
+  <string name="preferences_Account">"Účet|Zde se můžete přihlásit, vytvořit účet nebo prohlédnout statistiky v případě, že jste již přihlášen."</string>
+  <string name="preferences_Advanced">"Pokročilé nastavení|Změna pokročilého nastavení, jako zpoždění či rychlost."</string>
   <string name="preferencesCategory_About">"O aplikaci"</string>
   <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Rychlost"</string>
