@@ -316,6 +316,13 @@
   <string name="backupRestore_RestoreDesc">"Klikněte zde pro obnovu uloženého nastavení."</string>
   <string name="backupRestoreCategory_Delete">"Smazat"</string>
   <string name="backupRestore_DeleteSettingsTitle">"Odstranit nastavení"</string>
+  <string name="backupRestore_DeleteSettingsDesc">"Klikněte zde pro vyvolání dialogu s resetem nastavení jednotlivých položek. Volbu použijte pokud začne docházet k padání aplikace na specifické obrazovce."</string>
+  <string name="backupRestore_ChooseBackupOptions">"Vyberte prosím co chcete zálohovat:\nVybráním 'Přednastavení' nebo 'Grafiky' by mohlo způsobit vytvoření velkého souboru k zálohování!"</string>
+  <string name="backupRestore_ChooseBackupName">"Jméno souboru zálohy: (Pokud nevyplňíte, vytvoří se jméno automaticky)"</string>
+  <string name="backupRestore_ChooseRestoreOptions">"Vyberte prosím co chcete obnovit:"</string>
+  <string name="backupRestore_ChooseDeleteOptions">"Vyberte prosím co chcete smazat:"</string>
+  <string name="backupRestore_BackupComplete">"Zálohování dokončeno!"</string>
+  <string name="backupRestore_BackupFailed">"Zálohování se nezdařilo, zkuste to prosím znovu."</string>
   <string name="advancedPrefsCategory_Torch">"Svítilna"</string>
   <string name="advancedPrefsCategory_Screenrecord">"Záznam obrazovky"</string>
   <string name="advancedPrefsTitle_FlashlightAutoOff">"Automatické vypnutí svítilny"</string>
