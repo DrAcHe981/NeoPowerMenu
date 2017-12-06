@@ -297,5 +297,15 @@
   <string name="powerMenuMain_MediaPlayPause">"Přehrát/Pozastavit"</string>
   <string name="advancedPrefsCategory_Torch">"Svítilna"</string>
   <string name="advancedPrefsCategory_Screenrecord">"Záznam obrazovky"</string>
-  <string name="advancedPrefsTitle_FlashlightAutoOff">"Automatické vypnutí baterky"</string>
+  <string name="advancedPrefsTitle_FlashlightAutoOff">"Automatické vypnutí svítilny"</string>
+  <string name="advancedPrefsDesc_FlashlightAutoOff">"Automaticky vypnout svítilnu po přednastaveném čase."</string>
+  <string name="advancedPrefsTitle_FlashlightAutoOffTime">"Vypnout svítilnu po"</string>
+  <string name="advancedPrefsDesc_FlashlightAutoOffTime">"Vypnout svítilnu po přednastaveném čase."</string>
+  <string name="advancedPrefs_SelectTime">"Vyberte čas:"</string>
+  <string name="advancedPrefsTitle_ScreenRecordMicrophone">"Mikrofon"</string>
+  <string name="advancedPrefsDesc_ScreenRecordMicrophone">"Nahrávejte zvuk pomocí mikrofonu."</string>
+  <string name="advancedPrefsTitle_ScreenRecordSize">"Velikost videa"</string>
+  <string name="advancedPrefsDesc_ScreenRecordSize">"Vyberte velikost pro nahrávané video."</string>
+  <string name="advancedPrefsTitle_ScreenRecordTime">"Časová omezení"</string>
+  <string name="advancedPrefsDesc_ScreenRecordTime">"Zadejte maximální délku nahrávky."</string>
 </resources>
