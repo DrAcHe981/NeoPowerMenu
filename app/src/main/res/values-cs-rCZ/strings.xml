@@ -307,5 +307,13 @@
   <string name="advancedPrefsTitle_ScreenRecordSize">"Velikost videa"</string>
   <string name="advancedPrefsDesc_ScreenRecordSize">"Vyberte velikost pro nahrávané video."</string>
   <string name="advancedPrefsTitle_ScreenRecordTime">"Časová omezení"</string>
-  <string name="advancedPrefsDesc_ScreenRecordTime">"Zadejte maximální délku nahrávky."</string>
+  <string name="advancedPrefsDesc_ScreenRecordTime">"Definujte maximální délku nahrávky."</string>
+  <string name="advancedPrefsDesc_ScreenRecordBitRate">"Definujte bitrate (velikost datového toku) pro nahrávání videa."</string>
+  <string name="advancedPrefsTitle_ScreenRecordBitRate">"Bitrate videa"</string>
+  <string name="advancedPrefsTitle_ScreenRecordRotate">"Otočení videa"</string>
+  <string name="advancedPrefsDesc_ScreenRecordRotate">"Otočit výstup o 90 stupňů."</string>
+  <string name="advancedPrefs_SelectBitRate">"Zvolte bit rate:"</string>
+  <string name="advancedPrefs_SelectSize">"Zvolte velikost videa:"</string>
+  <string name="screenrecord_toast_nosupport">"Váš systém nepodporuje nahrávání obrazovky"</string>
+  <string name="advancedPrefsTitle_ScreenRecordUseStockBinary">"Použít stock binary"</string>
 </resources>
