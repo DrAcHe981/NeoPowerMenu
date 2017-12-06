@@ -340,6 +340,11 @@
   <string name="xposedMain_MenuActivityNotFound_Restart">"Restartovat"</string>
   <string name="powerMenuMain_LockPhone">"Zamknutí zařízení"</string>
   <string name="permissionsScreenTitle_DeviceAdmin">"Správce zařízení"</string>
+  <string name="permissionsScreenDesc_DeviceAdmin">"Je vyžadováno právo zamknutí zařízení. Po povolení je odinstalace nutná udělat ve dvou krocích, vypnutí správce zařízení a poté odinstalace NeoPowerMenu."</string>
+  <string name="permissionsScreenTitle_android.permission.RECEIVE_BOOT_COMPLETED">"Práva na Boot obdržena"</string>
+  <string name="permissionsScreenDesc_android.permission.RECEIVE_BOOT_COMPLETED">"Je vyžadováno připravit některé knihovny při spuštění."</string>
+  <string name="permissionsScreen_DeviceAdminDisable">"Vypnutím této položky odstraníte možnost zamknut zařízení přes menu vypnutí."</string>
+  <string name="visibilityOrder_FillEmpty">"Udrž prázdný prostor pro položky"</string>
   <string name="advancedPrefsCategory_Torch">"Svítilna"</string>
   <string name="advancedPrefsCategory_Screenrecord">"Záznam obrazovky"</string>
   <string name="advancedPrefsTitle_FlashlightAutoOff">"Automatické vypnutí svítilny"</string>
