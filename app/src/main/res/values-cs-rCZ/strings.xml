@@ -221,9 +221,14 @@
   <string name="preferencesCategory_About">"O aplikaci"</string>
   <string name="preferences_NeoSource">"Zdroj|NeoPowerMenu je open source.\nPro více informací navštivte GitHub."</string>
   <string name="preferences_Share">"Sdílet|Líbí se vám aplikace? Nasdílejte ji svým přátelům."</string>
+  <string name="preferences_About">"Naprogramoval Neon-Soft / DrAcHe981|Aplikace založena na kódu Naman Dwivedi (naman14).\nPro získání více informací, klikněte zde."</string>
+  <string name="animations_Items">"Pozadí|Dialogy|Ikony|Položky na jeden řádek|Více položek na řádek"</string>
+  <string name="animations_Speeds">"Nejrychlejší|Rychlejší|Rychlé|Normalní|Pomalé|Pomalejší|Nejpomalejší"</string>
+  <string name="animations_Types">"Přechod|Odhalení\n(Funguje pouze pro pozadí)|Posunout nahoru|Posunout doleva|Posunout doprava|Posunout dolů|Scale nahoru|Scale dolů|Zakázat"</string>
   <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Rychlost"</string>
   <!-- Power Menu -->
+  <string name="powerMenuMain_Progress">"Animace načítání"</string>
   <!-- Preferences: Advanced -->
   <string name="advancedPrefs_HideOnClick">"Schovat po kliknutí"</string>
   <string name="advancedPrefs_LoadAppIcons">"Nahrát ikony aplikace"</string>
