@@ -268,4 +268,14 @@
   <string name="tourPage_2_Title">"Menu Motivů"</string>
   <string name="tourPage_2_Text">"Tady začínají vaše úpravy: můžete změnit libovolnou barvu!\nCílem je nabídnout nejlépe přizpůsobitelné vypínací menu."</string>
   <string name="tourPage_3_Title">"Grafické Menu"</string>
+  <string name="tourPage_3_Text">"Přizpůsobte si grafiku, která je použita."</string>
+  <string name="tourPage_4_Title">"Viditelnost a Pořadí Menu"</string>
+  <string name="tourPage_4_Text">"Vyberte které položky chcete mít v menu a přizpůsobte si jejich pořadí.\nKliknutím na '+' přidáte novou položku, tahem pryč položku smažete.\n\nIkona 'zámečku' znamená: zobraz na zamčené obrazovce.\nIkona 'i' znamená: zobraz popis položky."</string>
+  <string name="tourPage_5_Title">"Menu Animací"</string>
+  <string name="tourPage_5_Text">"Změňte chování animací menu, nebo je můžete úplně vypnout."</string>
+  <string name="tourPage_6_Title">"Menu Pokročilé"</string>
+  <string name="tourPage_6_Text">"Zde můžete měnit chování celého vypínacího menu."</string>
+  <string name="tourPage_7_Title">"Příjemnou zábavu!"</string>
+  <string name="tourPage_7_Text">"Toto je konec ukázky, ale nebojte čeká na vás mnohem více možností.\nMusíte si to vyzkoušet sami a vybrat to nejlepší vypínací menu podle sebe."</string>
+  <string name="advancedPrefs_UseRootTitle">"Použij Root systems"</string>
 </resources>
