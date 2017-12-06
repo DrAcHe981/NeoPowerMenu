@@ -38,7 +38,7 @@
   <string name="presetsManager_Creator">"Oluşturan: [CREATORNAME]"</string>
   <string name="presetsManager_BuiltIn">"Dahili"</string>
   <string name="presetsManager_SureToDelete">"[PRESETNAME] gerçekten silinsin mi?\nBu geri alınamaz!"</string>
-  <string name="presetsManager_ImportMsg">"Bu hazır ayarı almak ister misiniz?"</string>
+  <string name="presetsManager_ImportMsg">"Bu hazır ayarı almak istiyor musunuz?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] başarıyla alındı."</string>
   <string name="presetsManager_ImportFailed">"Alma başarısız..."</string>
   <!-- Preferences: Advanced -->
@@ -51,7 +51,7 @@
   <string name="advancedPrefsCategory_Delays">"Gecikmeler"</string>
   <string name="advancedPrefs_DelayZero">"Neredeyse anında"</string>
   <string name="advancedPrefsTitle_ScreenshotDelay">"Ekran görüntüsü gecikmesi"</string>
-  <string name="advancedPrefsDesc_ScreenshotDelay">"Tıklama ve ekran görüntüsü arasındaki gecikme."</string>
+  <string name="advancedPrefsDesc_ScreenshotDelay">"Tıklama ve ekran görüntüsü alma arasındaki gecikme."</string>
   <string name="Dialog_SelectColor">"Renk seç"</string>
   <string name="ColorPicker_Value">"Değer:"</string>
   <string name="ColorPicker_Saturation">"Koyuluk:"</string>
