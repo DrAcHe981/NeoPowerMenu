@@ -306,6 +306,16 @@
   <string name="visibilityOrder_EditAppearanceBehaviourText2">"Text druhé položky: (Nevyplňujte pro použití výchozího textu)"</string>
   <string name="visibilityOrder_EditAppearanceBehaviourText3">"Text třetí položky: (Nevyplňujte pro použití výchozího textu)"</string>
   <string name="visibilityOrder_HideOnLockscreen">"Skrýt na zamykací obrazovce"</string>
+  <string name="visibilityOrder_InvalidMultiPageMove">"Neplatná operace. Nelze použít konec před začátkem (začátek po konci)!"</string>
+  <string name="preferences_BackupRestoreTitle">"Zálohování a obnova"</string>
+  <string name="preferences_BackupRestoreDesc">"Zálohujte si všechna vaše nastavení a obnovte je později, v případě problémů nebo pokud prostě chcete čisté menu, můžete nastavení smazat."</string>
+  <string name="backupRestoreCategory_BackupRestore">"Zálohování a obnova"</string>
+  <string name="backupRestore_NewBackupTitle">"Zálohovat všechna nastavení"</string>
+  <string name="backupRestore_NewBackupDesc">"Klikněte zde pro uložení veškerého nastavení do rootu zařízení."</string>
+  <string name="backupRestore_RestoreTitle">"Obnova nastavení"</string>
+  <string name="backupRestore_RestoreDesc">"Klikněte zde pro obnovu uloženého nastavení."</string>
+  <string name="backupRestoreCategory_Delete">"Smazat"</string>
+  <string name="backupRestore_DeleteSettingsTitle">"Odstranit nastavení"</string>
   <string name="advancedPrefsCategory_Torch">"Svítilna"</string>
   <string name="advancedPrefsCategory_Screenrecord">"Záznam obrazovky"</string>
   <string name="advancedPrefsTitle_FlashlightAutoOff">"Automatické vypnutí svítilny"</string>
