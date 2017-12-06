@@ -215,7 +215,12 @@
   <string name="preferencesCategory_Other">"Ostatní"</string>
   <string name="preferences_Account">"Účet|Zde se můžete přihlásit, vytvořit účet nebo prohlédnout statistiky v případě, že jste již přihlášen."</string>
   <string name="preferences_Advanced">"Pokročilé nastavení|Změna pokročilého nastavení, jako zpoždění či rychlost."</string>
+  <string name="preferences_Permissions">"Oprávnění|Zobrazte si požadované typy oprávnění a nahlídněnte na co jsou použita.\nUdělte další oprávnění, která nejsou požadována při prvním puštění (Android 6.0+)."</string>
+  <string name="preferences_HideLauncherIcon">"Skrytí aplikace v prostředí|Volba skryje aplikaci v prostředí telefonu, změna se může projevit až restartování telefonu.\nPoté bude toto nastavení přístupné pouze z Xposed Installeru."</string>
+  <string name="preferences_DeepXposedLogging">"Pokročilé logování Xposed|Volba povolí pokročilé logování Xposed, pokud volbu povolíte, restartujte telefon pro správnou funkci."</string>
   <string name="preferencesCategory_About">"O aplikaci"</string>
+  <string name="preferences_NeoSource">"Zdroj|NeoPowerMenu je open source.\nPro více informací navštivte GitHub."</string>
+  <string name="preferences_Share">"Sdílet|Líbí se vám aplikace? Nasdílejte ji svým přátelům."</string>
   <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Rychlost"</string>
   <!-- Power Menu -->
