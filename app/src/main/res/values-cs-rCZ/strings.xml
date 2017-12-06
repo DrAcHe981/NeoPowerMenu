@@ -336,4 +336,16 @@
   <string name="powerMenu_Password">"heslo"</string>
   <string name="powerMenu_LockedWithPassword">"Toto tlačítko je zamknuté, pro pokračování zadejte heslo prosím..."</string>
   <string name="powerMenu_WrongPassword">Nesprávné heslo, zkuste to prosím znovu...</string>
+  <string name="visibilityOrder_NoPasswordSet">"Nebylo zadáno žádné heslo..\nProsím zadejte nové heslo níže:"</string>
+  <string name="advancedPrefs_ChangePassword">"Zadejte nové heslo, nebo nechte prázdné pokud chcete heslo smazat..."</string>
+  <string name="advancedPrefsDesc_Password">"Zamknout položku pomocí hesla, klikněte zde pro změnu nebo odstranění hesla."</string>
+  <string name="advancedPrefsTitle_Password">"Zamknout pomocí hesla"</string>
+  <string name="advancedPrefs_Password">"Heslo:"</string>
+  <string name="advancedPrefs_OldPassword">"Staré heslo:"</string>
+  <string name="visibilityOrder_RemovePWLock">"Prosím zadejte heslo k odemčení této položky:"</string>
+  <string name="advancedPrefsTitle_LockWithFingerprint">"Použití otisku prstu"</string>
+  <string name="advancedPrefsDesc_LockWithFingerprint">"Zabezpečit položku pomocí otisku prstu"</string>
+  <string name="powerMenu_PasswordUsePassword">"Použít heslo"</string>
+  <string name="powerMenu_PasswordLockedWithFingerprint">"Toto tlačítko je zamčené, prosím použíjte váš otisk prstu pro odemčení..."</string>
+  <string name="powerMenu_FingerprintFailed">"Nepodařilo se odemknout pomocí otisku prstu, prosím zkuste to znovu..."</string>
 </resources>
