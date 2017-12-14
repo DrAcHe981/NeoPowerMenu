@@ -55,6 +55,10 @@
   <string name="Dialog_SelectColor">"Pilih warna"</string>
   <string name="ColorPicker_Value">"Kadar:"</string>
   <string name="ColorPicker_Saturation">"Penjenuhan:"</string>
+  <string name="ColorPicker_Opacity">"Kegelapan:"</string>
+  <string name="ColorPicker_Hex">"Hex:"</string>
+  <string name="presetLoad_PresetDeleted">"Menghapus [PRESETNAME]!"</string>
+  <string name="presetLoad_PresetLoaded">"Yang diisi [PRESETNAME]!"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
