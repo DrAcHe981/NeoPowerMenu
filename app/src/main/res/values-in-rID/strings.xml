@@ -47,6 +47,10 @@
   <string name="advancedPrefsDesc_UseGraphics">"Gunakan grafis sebagai gantinya dari lingkaran surat."</string>
   <string name="advancedPrefsCategory_LockScreen">"Kunci skrin"</string>
   <string name="advancedPrefsTitle_ShowOnLockScreen">"Tunjakan di kunci skrin"</string>
+  <string name="advancedPrefsDesc_ShowOnLockScreen">"Tunjukan kekuatan menu di kunci skrin, jika cacat tikak akan muncul apa-apa."</string>
+  <string name="advancedPrefsCategory_Delays">"Menunda"</string>
+  <string name="advancedPrefs_DelayZero">"Hampir seketika"</string>
+  <string name="advancedPrefsTitle_ScreenshotDelay">"Menunda Kunci skrin"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
