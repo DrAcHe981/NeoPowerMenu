@@ -27,7 +27,12 @@
   <string name="visibilityOrderCategory_VisibilityOrder">"Jangkauan dan perintah"</string>
   <string name="category_Preset">"Pereset"</string>
   <string name="preset_Load">"Muatkan pereset"</string>
+  <string name="preset_LoadDesc">"Muat konfigurasi tersimpan"</string>
+  <string name="preset_Save">"Simpan pereset"</string>
+  <string name="preset_SaveDesc">"Simpan konfigurasi anda sekarang"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleLocal">"Tempat Pereset"</string>
+  <string name="presetsManager_TitleOnline">"Online pereset"</string>
   <!-- Preferences: Advanced -->
   <!-- Screen recording -->
   <!-- Torch -->
