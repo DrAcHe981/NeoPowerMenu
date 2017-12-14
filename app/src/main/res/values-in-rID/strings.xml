@@ -19,7 +19,14 @@
   <string name="powerMenuMain_ToggleRotate">"Putarkan layar"</string>
   <string name="ToggleRotateMode_Auto">"Otomatis"</string>
   <string name="ToggleRotateMode_Off">"Putus"</string>
+  <string name="powerMenuMain_ToggleWifi">"Wifi"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
+  <string name="powerMenuMain_ToggleData">"Bahan"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Mode kilat"</string>
   <!-- Preferences: Visibility and order -->
+  <string name="visibilityOrderCategory_VisibilityOrder">"Jangkauan dan perintah"</string>
+  <string name="category_Preset">"Pereset"</string>
+  <string name="preset_Load">"Muatkan pereset"</string>
   <!-- Preferences: Preset Manager -->
   <!-- Preferences: Advanced -->
   <!-- Screen recording -->
