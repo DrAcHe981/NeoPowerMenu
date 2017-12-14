@@ -43,6 +43,10 @@
   <string name="presetsManager_ImportFailed">"Gagal mendatangkan..."</string>
   <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Daftar daya"</string>
+  <string name="advancedPrefsTitle_UseGraphics">"Gunakan grafis"</string>
+  <string name="advancedPrefsDesc_UseGraphics">"Gunakan grafis sebagai gantinya dari lingkaran surat."</string>
+  <string name="advancedPrefsCategory_LockScreen">"Kunci skrin"</string>
+  <string name="advancedPrefsTitle_ShowOnLockScreen">"Tunjakan di kunci skrin"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
