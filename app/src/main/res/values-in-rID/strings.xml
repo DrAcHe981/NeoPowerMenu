@@ -51,6 +51,10 @@
   <string name="advancedPrefsCategory_Delays">"Menunda"</string>
   <string name="advancedPrefs_DelayZero">"Hampir seketika"</string>
   <string name="advancedPrefsTitle_ScreenshotDelay">"Menunda Kunci skrin"</string>
+  <string name="advancedPrefsDesc_ScreenshotDelay">"Menunda antara klik dan kunci skrin."</string>
+  <string name="Dialog_SelectColor">"Pilih warna"</string>
+  <string name="ColorPicker_Value">"Kadar:"</string>
+  <string name="ColorPicker_Saturation">"Penjenuhan:"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
