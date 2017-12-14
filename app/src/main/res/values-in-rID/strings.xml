@@ -37,7 +37,12 @@
   <string name="presetsManager_TitleOnline">"Online pereset"</string>
   <string name="presetsManager_Creator">"Pencipta: [NAMA PENCIPTA]"</string>
   <string name="presetsManager_BuiltIn">"Dibangun-di"</string>
+  <string name="presetsManager_SureToDelete">"Apa anda yakin anda ingin untuk menghapus [PRESETNAME]?\n ini tidak bisa dibatalkan!"</string>
+  <string name="presetsManager_ImportMsg">"Barangkali anda suka untuk mendatangkan prasetel ini?"</string>
+  <string name="presetsManager_ImportSuccess">"[PRESETNAME] berhasil mendatangkan."</string>
+  <string name="presetsManager_ImportFailed">"Gagal mendatangkan..."</string>
   <!-- Preferences: Advanced -->
+  <string name="advancedPrefsCategory_PowerMenu">"Daftar daya"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
