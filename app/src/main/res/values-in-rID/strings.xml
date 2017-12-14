@@ -7,6 +7,12 @@
   <string name="powerMenuMain_SoftReboot">"Muat ulang"</string>
   <string name="powerMenuMain_SoftRebootDesc">"Cukup nyalakan ulang Android UI dengan membunuh proses zigot"</string>
   <string name="powerMenuMain_Screenshot">"Tangkapan skrin"</string>
+  <string name="powerMenuMain_ScreenshotDesc">"Melambatkan Tangkapan skrin [SCREENSHOTDELAY]"</string>
+  <string name="powerMenuBottom_Recovery">"Pembaruan"</string>
+  <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
+  <string name="powerMenuBottom_SafeMode">"Mode aman"</string>
+  <string name="powerMenu_Shuttingdown">"Mematikan..."</string>
+  <string name="powerMenu_Rebooting">"Ulang reebot..."</string>
   <!-- Preferences: Visibility and order -->
   <!-- Preferences: Preset Manager -->
   <!-- Preferences: Advanced -->
