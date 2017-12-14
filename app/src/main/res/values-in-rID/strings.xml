@@ -13,6 +13,12 @@
   <string name="powerMenuBottom_SafeMode">"Mode aman"</string>
   <string name="powerMenu_Shuttingdown">"Mematikan..."</string>
   <string name="powerMenu_Rebooting">"Ulang reebot..."</string>
+  <string name="powerMenuMain_KillApp">"Matikan latar depan app"</string>
+  <string name="powerMenuMain_AppShortcut">"App singkat"</string>
+  <string name="powerMenuMain_ActivityShortcut">"Aktifitas singkat"</string>
+  <string name="powerMenuMain_ToggleRotate">"Putarkan layar"</string>
+  <string name="ToggleRotateMode_Auto">"Otomatis"</string>
+  <string name="ToggleRotateMode_Off">"Putus"</string>
   <!-- Preferences: Visibility and order -->
   <!-- Preferences: Preset Manager -->
   <!-- Preferences: Advanced -->
