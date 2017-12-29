@@ -59,7 +59,19 @@
   <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"Menghapus [PRESETNAME]!"</string>
   <string name="presetLoad_PresetLoaded">"Yang diisi [PRESETNAME]!"</string>
+  <string name="presetSaveDialog_CreatorNameInfo">"Preset ini diciptakan oleh:"</string>
+  <string name="presetSaveDialog_InfoText">"Tetapkan nama untuk preset:"</string>
+  <string name="presetSaveDialog_OverwriteText">"Sudah ada, preset akan ditimpa!"</string>
+  <string name="presetSave_PresetSaved">"Disimpan [PRESETNAME]!"</string>
+  <string name="powerMenuMain_Screenrecord">"Screenrecord"</string>
   <!-- Screen recording -->
+  <string name="screenrecord_notif_ticker">"Layar sedang direkam"</string>
+  <string name="screenrecord_notif_title">Rekaman layar</string>
+  <string name="screenrecord_toast_error">"Tidak dapat merekam layar"</string>
+  <string name="screenrecord_toast_processing">"Tidak bisa memulai rekaman baru karena rekaman sebelumnya masih diproses"</string>
+  <string name="screenrecord_toast_saved">"Perekaman disimpan sebagai%s"</string>
+  <string name="screenrecord_toast_save_error">"Tidak dapat menyimpan rekaman ke file output"</string>
+  <string name="powerMenuMain_FlashlightOff">"Matikan obor"</string>
   <!-- Torch -->
   <!-- Preferences: Colors -->
   <!-- Permissions Screen -->
