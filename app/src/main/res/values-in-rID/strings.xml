@@ -72,6 +72,9 @@
   <string name="screenrecord_toast_saved">"Perekaman disimpan sebagai%s"</string>
   <string name="screenrecord_toast_save_error">"Tidak dapat menyimpan rekaman ke file output"</string>
   <string name="powerMenuMain_FlashlightOff">"Matikan obor"</string>
+  <string name="powerMenuMain_FlashlightDesc">"Matikan setelah [AUTOOFF]."</string>
+  <string name="powerMenuMain_FlashlightDescDisabled">"Matikan otomatis dinonaktifkan."</string>
+  <string name="powerMenuMain_ExpandedDesktop">"Desktop yang diperluas"</string>
   <!-- Torch -->
   <!-- Preferences: Colors -->
   <!-- Permissions Screen -->
@@ -92,6 +95,12 @@
   <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Ubah Negara WiFi"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Diperlukan untuk mendapatkan status bluetooth."</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_UploadMsg">"Preset ini akan diunggah ke server publik, terlihat oleh semua pengguna lainnya.\n\n Ini adalah kesempatan terakhir Anda untuk menyesuaikan nama atau pencipta sebelum mengupload..."</string>
+  <string name="presetsManager_UploadComplete">"Upload selesai!"</string>
+  <string name="presetsManager_UploadFailedSameName">"Nama ini sudah di pakai, silahkan pilih yang lain."</string>
+  <string name="presetsManager_UploadFailedNoAccess">"Nama pencipta ini dilindungi, pilih yang lain atau masuk log."</string>
+  <string name="presetsManager_UploadFailed">"Gagal mengunggah!"</string>
+  <string name="presetsManager_DownloadFailed">"Download gagal!"</string>
   <string name="presetsManager_CantConnecttoDB">"Tidak dapat terhubung ke database!\nSilahkan coba lagi nanti, bila tidak ada yang berubah: laporkan ke pengembang."</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Diperlukan untuk mendownload/mengunggah preset dari/ke server publik."</string>
   <!-- Login page -->
@@ -107,9 +116,22 @@
   <string name="colorsPartDescDialog">"Warna dialog saat diklik [BUTTON]."</string>
   <string name="colorsPartRevealDesc">"Warna yang diwahyukan animasi."</string>
   <string name="colorsPartRevealDesc1">"Warna animasi yang terbuka saat diklik pada opsi Reboot/Shutdown."</string>
+  <string name="presetsManager_OrderNames">"Nama | Waktu | Bintang |Pencipta | Sendiri"</string>
+  <string name="presetsManager_OrderAscDesc">"Ascending | Descending"</string>
+  <string name="visibilityOrder_SelectMulti">"Silakan pilih tiga item:"</string>
+  <string name="powerMenuMain_Empty">"Kosong"</string>
+  <string name="login_Recover">"Memulihkan"</string>
+  <string name="login_RecoverAccount">"Tidak dapat mengakses akun Anda?\nKlik di sini untuk menemukan opsi."</string>
+  <string name="login_RecoverPassword">"Reset Password"</string>
   <string name="login_RecoverSuccess">"Anda akan menerima email berisi instruksi tentang cara mereset kata sandi Anda."</string>
   <string name="login_RecoverNotFound">"Tidak ada pengguna dengan data ini yang ditemukan."</string>
+  <string name="powerMenuMain_SoundVibrate">"Suara: Getar"</string>
+  <string name="powerMenuMain_SoundNormal">"Suara: Normal"</string>
+  <string name="powerMenuMain_SoundSilent">"Suara: Diam"</string>
   <!-- Dialog -->
+  <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
+  <string name="graphics_Crop">"Tanaman | Lingkari tanaman"</string>
+  <string name="graphics_NoPresetsFound">"Tidak ada preset dengan grafis yang ditemukan..."</string>
   <!-- Preferences: Main -->
   <string name="preferences_RootXposed1">"Root dan Xposed tidak tersedia|Root dan Xposed diperlukan agar modul ini bisa bekerja."</string>
   <string name="preferences_Account">"Account|Disini anda bisa login, membuat akun atau mengecek statistik anda saat login."</string>
