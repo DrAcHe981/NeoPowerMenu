@@ -198,4 +198,8 @@
   <string name="powerMenuMain_MediaNext">"Lanjut"</string>
   <string name="presetsManager_Loading">"Membaca preset..."</string>
   <string name="shortcut_ShowPowerMenu">"Menu daya"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviour">"Edit penampilan dan tingkah laku"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourDesc">"Pilih di bawah bagaimana item berperilaku:"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText">"Teks item: (kosongkan untuk menggunakan default)"</string>
+  <string name="visibilityOrder_HideOnLockscreen">"Sembunyikan di Lockscreen"</string>
 </resources>
