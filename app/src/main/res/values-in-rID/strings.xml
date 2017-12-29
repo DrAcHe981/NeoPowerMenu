@@ -63,10 +63,34 @@
   <!-- Torch -->
   <!-- Preferences: Colors -->
   <!-- Permissions Screen -->
+  <string name="permissionsScreen_NotAllGranted">"Tidak semua izin diberikan, beberapa fungsi mungkin tidak berfungsi..."</string>
+  <string name="permissionsScreen_ClickToRequest">"Klik untuk meminta izin."</string>
+  <string name="permissionsScreen_DontAskAgain">"Jangan tanya lagi"</string>
+  <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Baca/Tulis Penyimpanan Eksternal"</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Diperlukan untuk menggunakan grafis khusus."</string>
+  <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
   <!-- Preferences: Colors -->
+  <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Diperlukan perekam layar untuk merekam layar."</string>
+  <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Diperlukan untuk merekam audio dengan screen recorder."</string>
+  <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Jendela System Alert"</string>
+  <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Diperlukan untuk menampilkan Power Menu di atas segalanya."</string>
+  <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Diperlukan untuk mencegah pembunuhan terhadap layanan obor dan screenrecord."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Akses WiFi State"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Diperlukan untuk mendapatkan status WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Ubah Negara WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Diperlukan untuk mendapatkan status bluetooth."</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_CantConnecttoDB">"Tidak dapat terhubung ke database!\nSilahkan coba lagi nanti, bila tidak ada yang berubah: laporkan ke pengembang."</string>
+  <string name="permissionsScreenDesc_android.permission.INTERNET">"Diperlukan untuk mendownload/mengunggah preset dari/ke server publik."</string>
   <!-- Login page -->
+  <string name="login_Info">"Nama pengguna pengguna terdaftar terlindungi sehingga tidak ada yang bisa mengunggah namanya, di sini Anda bisa login atau membuat akun baru.\nIni tidak diperlukan jika Anda tidak mau!\nAku tidak akan pernah membagi data pribadi apa pun!"</string>
+  <string name="login_PasswordOverEmail">"Anda dapat mengatur kata sandi Anda melalui link di aktivasi E-mail (E-mail hanya tersedia dalam bahasa Inggris)."</string>
+  <string name="login_Register">"Perlu akun?\nKlik di sini untuk membuat akun baru!"</string>
+  <string name="login_LoginFailedWrongData">"Login gagal, salah E-mail atau kata sandi!"</string>
+  <string name="login_RegisterFailedNameUsed">"Maaf, nama atau alamat email yang dipilih sudah digunakan."</string>
+  <string name="login_RegisterSuccess">"Pendaftaran berhasil, Anda akan menerima email untuk mengaktifkan akun Anda!"</string>
   <!-- Fuzzy -->
+  <string name="login_pleaseCheckInput">"Ada yang tidak beres, tolong periksa masukanmu."</string>
   <!-- Preferences: Colors -->
   <!-- Dialog -->
   <!-- Preferences: Main -->
