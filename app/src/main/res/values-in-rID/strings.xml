@@ -304,6 +304,21 @@
   <string name="visibilityOrder_HideOnLockscreen">"Sembunyikan di Lockscreen"</string>
   <string name="visibilityOrder_InvalidMultiPageMove">"Operasi pemindahan tidak valid, Tidak mungkin ada awal setelah akhir atau akhir sebelum memulai!"</string>
   <string name="preferences_BackupRestoreTitle">"Backup dan Restore"</string>
+  <string name="preferences_BackupRestoreDesc">"Cadangan semua pengaturan Anda dan mengembalikannya nanti, Anda juga bisa menghapus pengaturan jika terjadi kesalahan atau jika Anda hanya ingin menu segar."</string>
+  <string name="backupRestoreCategory_BackupRestore">"Backup dan restore"</string>
+  <string name="backupRestore_NewBackupTitle">"Backup semua setting"</string>
+  <string name="backupRestore_NewBackupDesc">"Klik di sini untuk menyimpan semua pengaturan ke akar penyimpanan lokal."</string>
+  <string name="backupRestore_RestoreTitle">"Kembalikan pengaturan"</string>
+  <string name="backupRestore_RestoreDesc">"Klik di sini untuk mengembalikan pengaturan yang tersimpan."</string>
+  <string name="backupRestoreCategory_Delete">"Menghapus"</string>
+  <string name="backupRestore_DeleteSettingsTitle">"Hapus pengaturan"</string>
+  <string name="backupRestore_DeleteSettingsDesc">"Klik di sini untuk mendapatkan dialog dengan pengaturan yang bisa Anda atur ulang, Gunakan ini jika ada yang menghancurkan beberapa pengaturan dan aplikasinya tetap mogok saat memasuki."</string>
+  <string name="backupRestore_ChooseBackupName">"Nama cadangan: (Biarkan kosong untuk menggunakan nama otomatis)"</string>
+  <string name="backupRestore_ChooseRestoreOptions">"Silakan pilih yang ingin Anda pulihkan:"</string>
+  <string name="backupRestore_ChooseDeleteOptions">"Pilih apa yang ingin Anda hapus:"</string>
+  <string name="backupRestore_BackupComplete">"Backup selesai!"</string>
+  <string name="backupRestore_BackupFailed">"Backup gagal, coba lagi."</string>
+  <string name="backupRestore_Restart">"Mengulang kembali"</string>
   <string name="backupRestoreOptions_MainPreferences">"Preferensi utama (id perangkat unik, pengaturan lanjutan, dll.)"</string>
   <string name="backupRestoreOptions_Colors">"Warna"</string>
   <string name="backupRestoreOptions_Presets">"Preset"</string>
@@ -362,6 +377,9 @@
   <string name="advancedPrefs_Password">"Kata sandi:"</string>
   <string name="advancedPrefs_OldPassword">"Password lama:"</string>
   <string name="visibilityOrder_RemovePWLock">"Masukkan kata sandi untuk membuka kunci item ini:"</string>
+  <string name="advancedPrefsTitle_LockWithFingerprint">"Gunakan Sidik Jari"</string>
+  <string name="advancedPrefsDesc_LockWithFingerprint">"Kunci item dengan sidik jari"</string>
+  <string name="powerMenu_PasswordUsePassword">"Gunakan kata sandi"</string>
   <string name="powerMenu_PasswordLockedWithFingerprint">"Tombol ini terkunci, gunakan sidik jari Anda untuk melanjutkan..."</string>
   <string name="powerMenu_FingerprintFailed">"Gagal membuka kunci sidik jari, coba lagi..."</string>
   <string name="advancedPrefs_MissingFingerprintPermission">"Tidak dapat mengaktifkan tanpa izin untuk menggunakan pemindai sidik jari..."</string>
@@ -369,4 +387,10 @@
   <string name="advancedPrefs_KeyguardNotSecured">"Tidak dapat mengaktifkan tanpa keamanan lockscreen..."</string>
   <string name="advancedPrefs_ClickOkToOpenSettings">"Klik OK untuk membuka pengaturan keamanan."</string>
   <string name="visibilityOrder_ConfirmFingerprint">"Harap konfirmasikan sidik jari Anda untuk mengaktifkan fitur ini!"</string>
+  <string name="addShortcut_Add">"Menambahkan"</string>
+  <string name="addShortcut_AddShortcut">"Tambahkan pintasan"</string>
+  <string name="addShortcut_Next">"Berikutnya"</string>
+  <string name="addShortcut_Settings">"Sesuaikan Shortcut"</string>
+  <string name="addShortcutTitle_UseCustomGraphic">"Gunakan grafik khusus"</string>
+  <string name="addShortcutDesc_UseCustomGraphic">"Aktifkan ini untuk menggunakan grafik khusus (jika tersedia)."</string>
 </resources>
