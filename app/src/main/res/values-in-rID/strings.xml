@@ -233,4 +233,24 @@
   <string name="xposedMain_MenuActivityNotFound">"Sepertinya Anda telah menghapus modul saya sebelum Anda menonaktifkannya... \n Sekarang sistem tidak tahu apa yang harus dilakukan di sini, silakan klik restart untuk memulai ulang perangkat Anda dan untuk menyelesaikan penginstalan!"</string>
   <string name="permissionsScreenDesc_DeviceAdmin">"Diperlukan untuk mengunci perangkat, setelah mengaktifkan, mencopot pemasangan adalah proses dua langkah, nonaktifkan dulu admin perangkat dan kemudian copot pemasangan NeoPowerMenu."</string>
   <string name="permissionsScreenDesc_android.permission.RECEIVE_BOOT_COMPLETED">"Diperlukan untuk menyiapkan beberapa perpustakaan saat boot."</string>
+  <string name="permissionsScreen_DeviceAdminDisable">"Menonaktifkan ini akan menghilangkan kemampuan untuk mengunci perangkat melalui menu daya."</string>
+  <string name="advancedPrefsDesc_FlashlightAutoOff">"Matikan lampu senter secara otomatis setelah waktu tertentu."</string>
+  <string name="advancedPrefsDesc_FlashlightAutoOffTime">"Matikan lampu senter setelah waktu yang ditentukan."</string>
+  <string name="advancedPrefsDesc_ScreenRecordMicrophone">"Rekam suara menggunakan mikrofon."</string>
+  <string name="advancedPrefsDesc_ScreenRecordSize">"Pilih ukuran untuk video yang direkam."</string>
+  <string name="advancedPrefsDesc_ScreenRecordTime">"Tentukan panjang maks untuk rekaman."</string>
+  <string name="advancedPrefsDesc_ScreenRecordBitRate">"Tentukan bitrate yang digunakan untuk merekam video."</string>
+  <string name="advancedPrefsDesc_ScreenRecordRotate">"Memutar output hingga 90 derajat."</string>
+  <string name="screenrecord_toast_nosupport">"Sistem Anda tidak mendukung perekaman layar"</string>
+  <string name="advancedPrefsDesc_ScreenRecordUseStockBinary">"Bila diaktifkan, stock screenrecord binary digunakan untuk merekam. \n Gunakan jika terjadi masalah biner alternatif. \n Perhatikan, bahwa biner saham tidak mendukung audio dan rekaman lebih dari 3 menit."</string>
+  <string name="advancedPrefsDesc_BlurBehind">"Aktifkan ini untuk mengaburkan konten di balik menu daya."</string>
+  <string name="advancedPrefsDesc_BlurRadius">"Tentukan berapa latar belakang yang harus dikaburkan. (default: 14)"</string>
+  <string name="screenrecord_notif_failedCreateDir">"Tidak dapat membuat direktori yang dibutuhkan."</string>
+  <string name="powerMenu_PasswordLockedWithFingerprint">"Tombol ini terkunci, gunakan sidik jari Anda untuk melanjutkan..."</string>
+  <string name="powerMenu_FingerprintFailed">"Gagal membuka kunci sidik jari, coba lagi..."</string>
+  <string name="advancedPrefs_MissingFingerprintPermission">"Tidak dapat mengaktifkan tanpa izin untuk menggunakan pemindai sidik jari..."</string>
+  <string name="advancedPrefs_NoFingerprintsAdded">"Tidak dapat mengaktifkan tanpa sidik jari yang tersimpan..."</string>
+  <string name="advancedPrefs_KeyguardNotSecured">"Tidak dapat mengaktifkan tanpa keamanan lockscreen..."</string>
+  <string name="advancedPrefs_ClickOkToOpenSettings">"Klik OK untuk membuka pengaturan keamanan."</string>
+  <string name="visibilityOrder_ConfirmFingerprint">"Harap konfirmasikan sidik jari Anda untuk mengaktifkan fitur ini!"</string>
 </resources>
