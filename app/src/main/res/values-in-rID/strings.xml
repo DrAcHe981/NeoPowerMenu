@@ -94,6 +94,7 @@
   <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Diperlukan untuk mendapatkan status WiFi."</string>
   <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Ubah Negara WiFi"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Diperlukan untuk mendapatkan status bluetooth."</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Diperlukan untuk mengaktifkan bluetooth tanpa dialog apapun."</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_UploadMsg">"Preset ini akan diunggah ke server publik, terlihat oleh semua pengguna lainnya.\n\n Ini adalah kesempatan terakhir Anda untuk menyesuaikan nama atau pencipta sebelum mengupload..."</string>
   <string name="presetsManager_UploadComplete">"Upload selesai!"</string>
@@ -101,6 +102,7 @@
   <string name="presetsManager_UploadFailedNoAccess">"Nama pencipta ini dilindungi, pilih yang lain atau masuk log."</string>
   <string name="presetsManager_UploadFailed">"Gagal mengunggah!"</string>
   <string name="presetsManager_DownloadFailed">"Download gagal!"</string>
+  <string name="presetsManager_CantConnecttoServer">"Tidak dapat terhubung ke server! \n Silakan periksa koneksi jaringan Anda atau coba lagi nanti."</string>
   <string name="presetsManager_CantConnecttoDB">"Tidak dapat terhubung ke database!\nSilahkan coba lagi nanti, bila tidak ada yang berubah: laporkan ke pengembang."</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Diperlukan untuk mendownload/mengunggah preset dari/ke server publik."</string>
   <!-- Login page -->
@@ -111,11 +113,13 @@
   <string name="login_RegisterFailedNameUsed">"Maaf, nama atau alamat email yang dipilih sudah digunakan."</string>
   <string name="login_RegisterSuccess">"Pendaftaran berhasil, Anda akan menerima email untuk mengaktifkan akun Anda!"</string>
   <!-- Fuzzy -->
+  <string name="login_ReloadStatistics">"Klik di sini untuk memuat ulang statistik"</string>
   <string name="login_pleaseCheckInput">"Ada yang tidak beres, tolong periksa masukanmu."</string>
   <!-- Preferences: Colors -->
   <string name="colorsPartDescDialog">"Warna dialog saat diklik [BUTTON]."</string>
   <string name="colorsPartRevealDesc">"Warna yang diwahyukan animasi."</string>
   <string name="colorsPartRevealDesc1">"Warna animasi yang terbuka saat diklik pada opsi Reboot/Shutdown."</string>
+  <string name="presetsManager_OrderBy">"Dipesan oleh"</string>
   <string name="presetsManager_OrderNames">"Nama | Waktu | Bintang |Pencipta | Sendiri"</string>
   <string name="presetsManager_OrderAscDesc">"Ascending | Descending"</string>
   <string name="visibilityOrder_SelectMulti">"Silakan pilih tiga item:"</string>
@@ -129,15 +133,19 @@
   <string name="powerMenuMain_SoundNormal">"Suara: Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Suara: Diam"</string>
   <!-- Dialog -->
+  <string name="Dialog_Buttons">"OK | Ya | Tidak | Ubah nama | Batal | Hapus | Load | Save | Ignore"</string>
   <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
   <string name="graphics_Crop">"Tanaman | Lingkari tanaman"</string>
   <string name="graphics_NoPresetsFound">"Tidak ada preset dengan grafis yang ditemukan..."</string>
   <string name="graphics_GraphicsSaveLoad">"Simpan dengan grafis saat ini. Preset ini berisi grafis, apakah Anda ingin memuatnya? \n Ini akan menimpa grafis Anda saat ini!"</string>
+  <string name="presetsManager_ReportDialog">"Anda yakin untuk melaporkan [PRESETNAME]? \n Ini tidak dapat dibatalkan, jadi tolong jangan laporkan hanya untuk bersenang-senang! \n \n Juga kita memerlukan alasan mengapa Anda ingin melaporkannya, silahkan masukkan di bawah ini:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] melaporkan, pengembang akan melihatnya. Laporan gagal, silakan coba lagi.\n Akhir: "</string>
   <string name="presetsManager_Buttons">"Berikan Bintang | Hapus Bintang | Hapus | Laporan | Upload | Share"</string>
   <string name="screenrecord_notif_buttons">"Berhenti | Toggle pointer"</string>
   <string name="downloadHelper_States">"Menunggu unduhan lainnya... |Menghubungkan ke server... |Meminta informasi... |Mengunduh... |Membatalkan..."</string>
   <string name="uploadHelper_States">"Menunggu upload lainnya... | Menghubungkan ke server... | Meminta informasi... | Mengunggah... | Membatalkan..."</string>
+  <string name="visibilityOrder_AddItem">"Tambahkan item normal \n Hanya item normal dengan hanya satu slot. Tambahkan item multi \n Tambahkan hingga tiga item dalam satu baris. | Tambahkan item multi halaman \n Mengkliknya akan menampilkan 'halaman' baru."</string>
+  <string name="visibilityOrder_MultiPage">"Item multi halaman dimulai di sini \n Item normal pertama mendefinisikan tombol untuk membuka 'halaman baru'. | Halaman multi item berakhir di sini"</string>
   <!-- Preferences: Main -->
   <string name="preferences_RootXposed1">"Root dan Xposed tidak tersedia|Root dan Xposed diperlukan agar modul ini bisa bekerja."</string>
   <string name="preferences_RootXposed2">"Xposed working, Root not | Tapi Root diperlukan untuk Power off atau Reboot...\nSilahkan akses root."</string>
@@ -157,16 +165,25 @@
   <string name="preferences_HideLauncherIcon">"Sembunyikan aplikasi di peluncur|Menyembunyikan ikon aplikasi di peluncur, diperlukan waktu hingga reboot untuk menyembunyikan ikonnya.\nSetelan pengaturan ini hanya dapat diakses melalui Installer Xposed."</string>
   <string name="preferences_DeepXposedLogging">"Deep Xposed logging|Aktifkan logging Xposed lanjutan, setelah mengaktifkan reboot untuk melihat perubahan."</string>
   <string name="preferencesCategory_About">"Tentang"</string>
+  <string name="preferences_NeoSource">"Sumber | NeoPowerMenu adalah open source. \n Periksa sumber di GitHub."</string>
+  <string name="preferences_Share">"Bagikan | Seperti apl? Berbagi dengan teman Anda."</string>
+  <string name="preferences_About">"Kode oleh Neon-Soft / DrAcHe981 berdasarkan sumber Naman Dwivedi (naman14). \n Klik di sini untuk mendapatkan info lebih lanjut."</string>
+  <string name="animations_Items">"Latar Belakang | Dialog | Ikon | Item baris tunggal | Item multi baris"</string>
+  <string name="animations_Speeds">"Sangat cepat | Cepat | Cepat | Normal | Lambat | Lebih lambat | Sangat lambat"</string>
+  <string name="animations_Types">"Fade | Reveal \n (Bekerja hanya untuk latar belakang) | Slide up | Slide left | Slide right | Slide down | Scale up | Scale down | Disabled"</string>
   <!-- Power Menu -->
+  <string name="presetsManager_LoadMore">"Memuat... | Mohon tunggu... | Tampilkan preset lebih lanjut Klik di sini untuk menampilkan lebih banyak preset. | Akhir | Tidak ada lagi preset yang akan ditampilkan. | Klik di sini untuk mencoba lagi."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Yakin ingin me-reboot perangkat Anda?|Apakah Anda yakin ingin mematikan perangkat?"</string>
   <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Membutuhkan konfirmasi|Aktifkan dialog konfirmasi sebelum melakukan reboot atau matikan."</string>
+  <string name="preferences_Donate">"Sumbang? Seperti aplikasinya? \n Mengapa tidak menyumbangkan saya secangkir kopi atau sesuatu yang lain?"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Sembunyikan menu saat mengklik tombol pengalih."</string>
   <string name="advancedPrefs_LoadAppIcons">"Ikon Aplikasi Muat"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Muatkan ikon App untuk tombol pintasan aplikasi."</string>
   <string name="style_MaterialFullscreen">Bahan (Layar Penuh)</string>
   <string name="style_MaterialFullHorizontal">Bahan (Full horizontal)</string>
   <string name="advancedPrefs_ExperimentalPWMHook">Kait PhoneWindowManager yang Eksperimental</string>
+  <string name="advancedPrefs_ExperimentalPWMHookDesc">Hook ke PhoneWindowManager bukan kelas GlobalActions. \n Gunakan hati-hati, jangan aktifkan jika kait normal bekerja untuk perangkat Anda! \n Reboot untuk melihat perubahan.</string>
   <string name="advancedPrefs_ColorizeNonStockIcons">"Colorize custom icons"</string>
   <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Secara default ikon kustom tidak akan berwarna, mengaktifkan ini akan mengubahnya."</string>
   <string name="advancedPrefs_RoundAppIcons">"Ikon aplikasi bundar"</string>
@@ -174,6 +191,13 @@
   <string name="colorsApplyToAll">"Terapkan untuk semua dari jenis ini"</string>
   <string name="colorsResetToDefault">"Setel ulang ke default"</string>
   <string name="errorActivity_CopyToClip">"Menyalin ke clipboard"</string>
+  <string name="tourReview_Desc">"Klik di sini untuk membiarkan tur dimulai."</string>
+  <string name="tourPage_UnknownProblem">"Ada masalah yang tidak diketahui yang menunjukkan halaman tur berikutnya, klik skip dan laporkan masalahnya ke pengembang... \n \n Disebabkan oleh: \n"</string>
+  <string name="tourPage_0_Text">"Pertama-tama: Terima kasih telah mengunduh aplikasi saya! \n \n Tur kecil ini akan menunjukkan dasar-dasar untuk menggunakan aplikasi saya."</string>
+  <string name="tourPage_1_Text">"Di sini Anda dapat menemukan semua bagian yang berbeda dan juga melihat apakah aplikasi bekerja dengan benar, semuanya sudah diatur dengan baik ^^."</string>
+  <string name="tourPage_2_Text">"Di sini mulai kustomisasi Anda: Anda dapat mengubah setiap warna! \n Menawarkan menu daya yang paling mudah disesuaikan adalah tujuan utama saya."</string>
+  <string name="tourPage_3_Text">"Sesuaikan grafis yang digunakan."</string>
+  <string name="tourPage_4_Text">"Pilih apa yang ingin Anda miliki di menu Anda dan urutkan pilihan sesuai keinginan. \n Klik '+' untuk menambahkan item baru, gesek item dari layar untuk menghapusnya. \n \n Ikon 'kunci' berarti: tampilkan pada layar lockscreen. \n Ikon 'i' berarti: tampilkan deskripsi item."</string>
   <string name="tourPage_5_Title">"Menu Animasi"</string>
   <string name="tourPage_5_Text">"Mengubah cara menu menjiwai masuk dan keluar atau menonaktifkan animasi sepenuhnya."</string>
   <string name="tourPage_6_Title">"Menu Lanjutan"</string>
@@ -181,6 +205,7 @@
   <string name="tourPage_7_Text">"Itulah akhir dari tur kelingkingku, tapi jangan khawatir, ada lebih banyak fitur!\nHanya coba sendiri dan temukan menu kekuatan sempurnamu."</string>
   <string name="advancedPrefs_UseRootDesc">"Gunakan perintah su untuk shutdown atau reboot. Jika dinonaktifkan maka akan mencoba menjalankan perintah pada proses sistem, hal ini mungkin gagal pada beberapa perangkat."</string>
   <string name="graphics_PaddingTitle">"Padding Grafis"</string>
+  <string name="graphics_PaddingDesc">"Mendefinisikan padding grafis. \n Nilai lebih tinggi = Grafis yang lebih kecil. (Default 0dp)"</string>
   <string name="presetsManager_LoadOnlyGraphics">"Hanya memuat grafis"</string>
   <string name="downloadHelper_InvalidSize">"File yang didownload tidak lengkap.\nSilahkan coba lagi."</string>
   <string name="downloadHelper_FailedAt1">"Gagal terhubung ke server, periksa koneksi Anda dan coba lagi."</string>
@@ -201,5 +226,11 @@
   <string name="visibilityOrder_EditAppearanceBehaviour">"Edit penampilan dan tingkah laku"</string>
   <string name="visibilityOrder_EditAppearanceBehaviourDesc">"Pilih di bawah bagaimana item berperilaku:"</string>
   <string name="visibilityOrder_EditAppearanceBehaviourText">"Teks item: (kosongkan untuk menggunakan default)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText1">"Teks Item Pertama: (kosongkan untuk menggunakan default)"</string>
+  <string name="visibilityOrder_EditAppearanceBehaviourText2">"Teks Item Kedua: (kosongkan untuk menggunakan default)"</string>
   <string name="visibilityOrder_HideOnLockscreen">"Sembunyikan di Lockscreen"</string>
+  <string name="backupRestoreOptions_MainPreferences">"Preferensi utama (id perangkat unik, pengaturan lanjutan, dll.)"</string>
+  <string name="xposedMain_MenuActivityNotFound">"Sepertinya Anda telah menghapus modul saya sebelum Anda menonaktifkannya... \n Sekarang sistem tidak tahu apa yang harus dilakukan di sini, silakan klik restart untuk memulai ulang perangkat Anda dan untuk menyelesaikan penginstalan!"</string>
+  <string name="permissionsScreenDesc_DeviceAdmin">"Diperlukan untuk mengunci perangkat, setelah mengaktifkan, mencopot pemasangan adalah proses dua langkah, nonaktifkan dulu admin perangkat dan kemudian copot pemasangan NeoPowerMenu."</string>
+  <string name="permissionsScreenDesc_android.permission.RECEIVE_BOOT_COMPLETED">"Diperlukan untuk menyiapkan beberapa perpustakaan saat boot."</string>
 </resources>
