@@ -393,4 +393,15 @@
   <string name="addShortcut_Settings">"Sesuaikan Shortcut"</string>
   <string name="addShortcutTitle_UseCustomGraphic">"Gunakan grafik khusus"</string>
   <string name="addShortcutDesc_UseCustomGraphic">"Aktifkan ini untuk menggunakan grafik khusus (jika tersedia)."</string>
+  <string name="permissionsScreenTitle_android.permission.USE_FINGERPRINT">"Gunakan Sidik Jari"</string>
+  <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Diperlukan untuk menggunakan pemindai sidik jari sebagai item unlock method."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Kebijakan pemberitahuan akses"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Diperlukan pada Nougat (7.0) dan yang lebih tinggi untuk mengubah mode 'Jangan Ganggu'."</string>
+  <string name="powerMenuMain_Shortcut">Jalan pintas</string>
+  <string name="visibilityOrder_NoGravityBoxFound">GravityBox tidak dapat ditemukan, item ini tidak akan berpengaruh tanpa adanya GravityBox.</string>
+  <string name="visibilityOrder_HideText">Sembunyikan teks</string>
+  <string name="style_MaterialDynamicWidth">Bahan (lebar dinamis)</string>
+  <string name="graphics_BehaviorTitle">Sesuaikan perilaku grafis</string>
+  <string name="graphics_BehaviorDesc">Aktifkan / Nonaktifkan grafis dan sesuaikan nilai seperti padding dan pewarnaan.</string>
+  <string name="visibilityOrder_SearchShortcut">Pintasan Pencarian (case insensitive):</string>
 </resources>
