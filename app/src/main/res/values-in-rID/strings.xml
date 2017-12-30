@@ -75,27 +75,54 @@
   <string name="powerMenuMain_FlashlightDesc">"Matikan setelah [AUTOOFF]."</string>
   <string name="powerMenuMain_FlashlightDescDisabled">"Matikan otomatis dinonaktifkan."</string>
   <string name="powerMenuMain_ExpandedDesktop">"Desktop yang diperluas"</string>
+  <string name="advancedPrefsTitle_DialogGravity">"Posisi Dialog"</string>
+  <string name="advancedPrefsDesc_DialogGravity">"Ubah posisi dialog."</string>
   <!-- Torch -->
+  <string name="quick_settings_torch_on">"Obor On"</string>
+  <string name="quick_settings_torch_off">"Obor Mati"</string>
+  <string name="quick_settings_torch_off_notif">"Sentuh untuk mematikan"</string>
+  <string name="powerMenuMain_AirplaneMode">"Mode pesawat"</string>
+  <string name="powerMenuMain_RestartUI">"Restart System UI"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Reveal">"Ungkapkan warna"</string>
+  <string name="colorsType_Circle">"Lingkari warna"</string>
+  <string name="colorsType_Background">"Warna latar belakang"</string>
+  <string name="colorsType_Text">"Warna teks"</string>
+  <string name="powerMenuMain_Flashlight">"Obor"</string>
   <!-- Permissions Screen -->
+  <string name="permissionsScreen_Title">"Izin"</string>
   <string name="permissionsScreen_NotAllGranted">"Tidak semua izin diberikan, beberapa fungsi mungkin tidak berfungsi..."</string>
   <string name="permissionsScreen_ClickToRequest">"Klik untuk meminta izin."</string>
   <string name="permissionsScreen_DontAskAgain">"Jangan tanya lagi"</string>
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Baca/Tulis Penyimpanan Eksternal"</string>
   <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"Diperlukan untuk menggunakan grafis khusus."</string>
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
+  <string name="permissionsScreenDesc_android.permission.CAMERA">"Diperlukan untuk mengganti obor."</string>
+  <string name="visibilityOrder_HideDesc">"Sembunyikan deskripsi"</string>
   <!-- Preferences: Colors -->
+  <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Akses Permukaan Flinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Diperlukan perekam layar untuk merekam layar."</string>
+  <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Suara rekaman"</string>
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Diperlukan untuk merekam audio dengan screen recorder."</string>
   <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"Jendela System Alert"</string>
   <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"Diperlukan untuk menampilkan Power Menu di atas segalanya."</string>
+  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"Wake Lock"</string>
   <string name="permissionsScreenDesc_android.permission.WAKE_LOCK">"Diperlukan untuk mencegah pembunuhan terhadap layanan obor dan screenrecord."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"Akses WiFi State"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Diperlukan untuk mendapatkan status WiFi."</string>
   <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Ubah Negara WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Diperlukan untuk mengaktifkan WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Diperlukan untuk mendapatkan status bluetooth."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Admin Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Diperlukan untuk mengaktifkan bluetooth tanpa dialog apapun."</string>
+  <string name="powerMenuMain_SoundMode">"Mode Suara"</string>
+  <string name="powerMenuMain_SoundModeDesc">"Mode aktif: [SOUNDMODE]"</string>
+  <string name="SoundMode_Normal">"Normal"</string>
+  <string name="SoundMode_Vibrate">"Bergetar"</string>
+  <string name="SoundMode_Silent">"Diam"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleAccount">"Rekening"</string>
   <string name="presetsManager_UploadMsg">"Preset ini akan diunggah ke server publik, terlihat oleh semua pengguna lainnya.\n\n Ini adalah kesempatan terakhir Anda untuk menyesuaikan nama atau pencipta sebelum mengupload..."</string>
   <string name="presetsManager_UploadComplete">"Upload selesai!"</string>
   <string name="presetsManager_UploadFailedSameName">"Nama ini sudah di pakai, silahkan pilih yang lain."</string>
@@ -104,14 +131,27 @@
   <string name="presetsManager_DownloadFailed">"Download gagal!"</string>
   <string name="presetsManager_CantConnecttoServer">"Tidak dapat terhubung ke server! \n Silakan periksa koneksi jaringan Anda atau coba lagi nanti."</string>
   <string name="presetsManager_CantConnecttoDB">"Tidak dapat terhubung ke database!\nSilahkan coba lagi nanti, bila tidak ada yang berubah: laporkan ke pengembang."</string>
+  <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Diperlukan untuk mendownload/mengunggah preset dari/ke server publik."</string>
   <!-- Login page -->
+  <string name="login_Title">"Masuk"</string>
+  <string name="login_TitleRegister">"Daftar"</string>
   <string name="login_Info">"Nama pengguna pengguna terdaftar terlindungi sehingga tidak ada yang bisa mengunggah namanya, di sini Anda bisa login atau membuat akun baru.\nIni tidak diperlukan jika Anda tidak mau!\nAku tidak akan pernah membagi data pribadi apa pun!"</string>
+  <string name="login_UsernameEmail">"Username atau email:"</string>
+  <string name="login_Username">"Nama pengguna:"</string>
+  <string name="login_Email">"E-mail:"</string>
+  <string name="login_RetypeEmail">"Ulangi email:"</string>
   <string name="login_PasswordOverEmail">"Anda dapat mengatur kata sandi Anda melalui link di aktivasi E-mail (E-mail hanya tersedia dalam bahasa Inggris)."</string>
+  <string name="login_Password">"Kata sandi:"</string>
+  <string name="login_KeepLogin">"Buat saya tetap masuk."</string>
   <string name="login_Register">"Perlu akun?\nKlik di sini untuk membuat akun baru!"</string>
+  <string name="login_LoggedIn">"Masuk!"</string>
+  <string name="login_LoginFailedWithReason">"Gagal masuk: "</string>
   <string name="login_LoginFailedWrongData">"Login gagal, salah E-mail atau kata sandi!"</string>
   <string name="login_RegisterFailedNameUsed">"Maaf, nama atau alamat email yang dipilih sudah digunakan."</string>
   <string name="login_RegisterSuccess">"Pendaftaran berhasil, Anda akan menerima email untuk mengaktifkan akun Anda!"</string>
+  <string name="login_Processing">"Pengolahan..."</string>
+  <string name="login_TitleStatistics">"Statistik untuk [USERNAMEEMAIL]"</string>
   <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Klik di sini untuk memuat ulang statistik"</string>
   <string name="login_pleaseCheckInput">"Ada yang tidak beres, tolong periksa masukanmu."</string>
