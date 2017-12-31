@@ -404,4 +404,12 @@
   <string name="graphics_BehaviorTitle">Sesuaikan perilaku grafis</string>
   <string name="graphics_BehaviorDesc">Aktifkan / Nonaktifkan grafis dan sesuaikan nilai seperti padding dan pewarnaan.</string>
   <string name="visibilityOrder_SearchShortcut">Pintasan Pencarian (case insensitive):</string>
+  <string name="preferences_TranslateTitle">Terjemahan</string>
+  <string name="advancedPrefsTitle_ScreenRecordCountdown">Rekam layar mundur</string>
+  <string name="advancedPrefsDesc_ScreenRecordCountdown">Tampilkan hitungan mundur sebelum memulai perekaman layar.</string>
+  <string name="screenrecord_toast_start_in">Memulai perekaman layar di [[TIME]]...</string>
+  <string name="advancedPrefsTitle_HideActionDescriptionText">Sembunyikan teks deskripsi dalam dialog shutdown / reboot action</string>
+  <string name="advancedPrefsDesc_HideActionDescriptionText">Sembunyikan \"Shutting down...\" atau serupa dengan dialog shutdown / reboot action.</string>
+  <string name="visibilityOrder_MissingPermissionForNotiPolicy">Izin kebijakan pemberitahuan yang hilang, perkenankan untuk menggunakan toggle ini!</string>
+  <string name="powerMenu_No_Task_To_Kill">Tidak menemukan tugas yang bisa dibunuh.</string>
 </resources>
