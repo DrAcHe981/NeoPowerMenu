@@ -181,8 +181,8 @@
   <string name="powerMenuMain_SoundSilent">"Suara: Diam"</string>
   <!-- Dialog -->
   <string name="Dialog_Buttons">"OK | Ya | Tidak | Ubah nama | Batal | Hapus | Load | Save | Ignore"</string>
-  <string name="presetLoadDialog_BuiltIn">"Light | Dark | Black"</string>
-  <string name="advancedPrefs_DialogGravity">"Atas | Kiri | Kanan | Bawah"</string>
+  <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
+  <string name="advancedPrefs_DialogGravity">"Atas|Kiri|Kanan|Bawah"</string>
   <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
   <string name="graphics_Crop">"Tanaman | Lingkari tanaman"</string>
   <string name="graphics_NoPresetsFound">"Tidak ada preset dengan grafis yang ditemukan..."</string>
@@ -409,7 +409,7 @@
   <string name="visibilityOrder_HideText">Sembunyikan teks</string>
   <string name="style_MaterialDynamicWidth">Bahan (lebar dinamis)</string>
   <string name="graphics_BehaviorTitle">Sesuaikan perilaku grafis</string>
-  <string name="graphics_BehaviorDesc">Aktifkan / Nonaktifkan grafis dan sesuaikan nilai seperti padding dan pewarnaan.</string>
+  <string name="graphics_BehaviorDesc">Aktifkan/Nonaktifkan grafis dan sesuaikan nilai seperti padding dan pewarnaan.</string>
   <string name="visibilityOrder_SearchShortcut">Pintasan Pencarian (case insensitive):</string>
   <string name="preferences_TranslateDesc">Anda tahu bahasa yang seharusnya dimiliki aplikasi ini? \n Kemudian ketuk di sini untuk melihat proyek Crowdin dan bantu terjemahannya!</string>
   <string name="preferences_TranslateTitle">Terjemahan</string>
