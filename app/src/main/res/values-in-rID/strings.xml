@@ -257,9 +257,9 @@
   <string name="tourPage_Next">"Berikutnya"</string>
   <string name="tourPage_Skip">"Melewatkan"</string>
   <string name="tourPage_Enjoy">"Buat menu anda!"</string>
-  <string name="tourPage_UnknownProblem">"Ada masalah yang tidak diketahui yang menunjukkan halaman tur berikutnya, klik skip dan laporkan masalahnya ke pengembang... \n \n Disebabkan oleh: \n"</string>
+  <string name="tourPage_UnknownProblem">"Ada masalah yang tidak diketahui yang menunjukkan halaman tur berikutnya, klik skip dan laporkan masalahnya ke pengembang...\n\n Disebabkan oleh:\n"</string>
   <string name="tourPage_0_Title">"Selamat datang di NPM!"</string>
-  <string name="tourPage_0_Text">"Pertama-tama: Terima kasih telah mengunduh aplikasi saya! \n \n Tur kecil ini akan menunjukkan dasar-dasar untuk menggunakan aplikasi saya."</string>
+  <string name="tourPage_0_Text">"Pertama-tama: Terima kasih telah mengunduh aplikasi saya! \n\n Tur kecil ini akan menunjukkan dasar-dasar untuk menggunakan aplikasi saya."</string>
   <string name="tourPage_1_Title">"Menu Utama"</string>
   <string name="tourPage_1_Text">"Di sini Anda dapat menemukan semua bagian yang berbeda dan juga melihat apakah aplikasi bekerja dengan benar, semuanya sudah diatur dengan baik ^^."</string>
   <string name="tourPage_2_Title">"Menu Theme"</string>
@@ -267,7 +267,7 @@
   <string name="tourPage_3_Title">"Menu Grafis"</string>
   <string name="tourPage_3_Text">"Sesuaikan grafis yang digunakan."</string>
   <string name="tourPage_4_Title">"Menu Visibilitas dan Pemesanan"</string>
-  <string name="tourPage_4_Text">"Pilih apa yang ingin Anda miliki di menu Anda dan urutkan pilihan sesuai keinginan. \n Klik '+' untuk menambahkan item baru, gesek item dari layar untuk menghapusnya. \n \n Ikon 'kunci' berarti: tampilkan pada layar lockscreen. \n Ikon 'i' berarti: tampilkan deskripsi item."</string>
+  <string name="tourPage_4_Text">"Pilih apa yang ingin Anda miliki di menu Anda dan urutkan pilihan sesuai keinginan.\nKlik '+' untuk menambahkan item baru, gesek item dari layar untuk menghapusnya.\n\n Ikon 'kunci' berarti: tampilkan pada layar lockscreen.\n Ikon 'i' berarti: tampilkan deskripsi item."</string>
   <string name="tourPage_5_Title">"Menu Animasi"</string>
   <string name="tourPage_5_Text">"Mengubah cara menu menjiwai masuk dan keluar atau menonaktifkan animasi sepenuhnya."</string>
   <string name="tourPage_6_Title">"Menu Lanjutan"</string>
@@ -277,7 +277,7 @@
   <string name="advancedPrefs_UseRootTitle">"Gunakan sistem Root"</string>
   <string name="advancedPrefs_UseRootDesc">"Gunakan perintah su untuk shutdown atau reboot. Jika dinonaktifkan maka akan mencoba menjalankan perintah pada proses sistem, hal ini mungkin gagal pada beberapa perangkat."</string>
   <string name="graphics_PaddingTitle">"Padding Grafis"</string>
-  <string name="graphics_PaddingDesc">"Mendefinisikan padding grafis. \n Nilai lebih tinggi = Grafis yang lebih kecil. (Default 0dp)"</string>
+  <string name="graphics_PaddingDesc">"Mendefinisikan padding grafis.\n Nilai lebih tinggi = Grafis yang lebih kecil. (Default 0dp)"</string>
   <string name="presetsManager_LoadOnlyGraphics">"Hanya memuat grafis"</string>
   <string name="downloadHelper_InvalidSize">"File yang didownload tidak lengkap.\nSilahkan coba lagi."</string>
   <string name="downloadHelper_FailedAt1">"Gagal terhubung ke server, periksa koneksi Anda dan coba lagi."</string>
