@@ -331,6 +331,8 @@
   <string name="xposedMain_MenuActivityNotFound">"Parece que usted ha desinstalado mi módulo antes de desabilitarlo...\nAhora el sistema no sabe qué hacer, haga clic en reiniciar para reiniciar el dispositivo y para completar la desinstalación!"</string>
   <string name="xposedMain_MenuActivityNotFound_Cancel">"Cancelar"</string>
   <string name="xposedMain_MenuActivityNotFound_Restart">"Reiniciar"</string>
+  <string name="powerMenuMain_LockPhone">"Bloquear dispositivo"</string>
+  <string name="permissionsScreenTitle_DeviceAdmin">"Administrador de dispositivo"</string>
   <string name="advancedPrefsDesc_ScreenRecordMicrophone">"Grabar sonido usando el micrófono."</string>
   <string name="advancedPrefsTitle_ScreenRecordSize">"Tamaño de vídeo"</string>
   <string name="advancedPrefsDesc_ScreenRecordSize">"Seleccione el tamaño del vídeo grabado."</string>
@@ -365,4 +367,22 @@
   <string name="addShortcut_Next">"Siguiente"</string>
   <string name="addShortcut_Settings">"Personalizar atajo"</string>
   <string name="addShortcutTitle_UseCustomGraphic">"Usar gráfico personalizado"</string>
+  <string name="addShortcutDesc_UseCustomGraphic">"Activa esto para usar un gráfico personalizado (si está disponible)."</string>
+  <string name="permissionsScreenTitle_android.permission.USE_FINGERPRINT">"Usar huella dactilar"</string>
+  <string name="graphics_BehaviorTitle">Personaliza el comportamiento gráfico</string>
+  <string name="graphics_BehaviorDesc">Activar/Desactivar gráficos y personaliza valores como márgenes y coloreado.</string>
+  <string name="visibilityOrder_SearchShortcut">Crear atajo (caso insensible):</string>
+  <string name="preferences_TranslateDesc">Te sabes idiomas en los que debería estar esta app?\nEntonces toca aquí para ver el proyecto en Crowdin y ayudar con la traducción!</string>
+  <string name="preferences_TranslateTitle">Traducción</string>
+  <string name="graphics_NotEnabled">Los gráficos no están activados\nToca aquí para activarlos!</string>
+  <string name="advancedPrefsTitle_ScreenRecordCountdown">Conteo para la grabación de pantalla</string>
+  <string name="advancedPrefsDesc_ScreenRecordCountdown">Mostrar un conteo antes de empezar a grabar la pantalla.</string>
+  <string name="screenrecord_toast_start_in">Empezando el grabado de pantalla en [TIME]...</string>
+  <string name="screenrecord_notif_binarynotFound">No se pudo localizar, leer, o ejecutar el archivo binario.\nEl grabado de pantalla puede no estar soportado en tu dispositivo.</string>
+  <string name="advancedPrefsTitle_HideActionDescriptionText">Ocultar el texto descriptivo en el diálogo al apagar/reiniciar</string>
+  <string name="advancedPrefsDesc_HideActionDescriptionText">Ocultar el \"Apagando...\" O similares del dialogo de apagado/reiniciado.</string>
+  <string name="visibilityOrder_MissingPermissionForNotiPolicy">Permiso para la política de notificaciones no encontrado, por favor permitir para utilizar esta opción!</string>
+  <string name="powerMenu_Task_Killed">Eliminado [TARGET]!</string>
+  <string name="powerMenu_No_Task_To_Kill">No se han encontrado procesos que se puedan eliminar.</string>
+  <string name="graphics_PowerMenuBackground">Fondo del menú</string>
 </resources>
