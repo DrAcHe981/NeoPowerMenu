@@ -432,4 +432,5 @@
   <string name="visibilityOrder_MissingPermissionForNotiPolicy">Bildirim politikası izni eksik, bu açma/kapamayı kullanmak için lütfen izin verin!</string>
   <string name="powerMenu_Task_Killed">[TARGET] sonlandırıldı!</string>
   <string name="powerMenu_No_Task_To_Kill">Sonlandırılacak görev bulunamadı.</string>
+  <string name="graphics_PowerMenuBackground">Menü Arkaplanı</string>
 </resources>
