@@ -1029,7 +1029,7 @@ public class XposedDialog extends DialogFragment {
 
     public void createCircleIcon(final int id, ImageView background, final ImageView foreground, String text, String finalText, final String color1, String color2) {
         try {
-            if (preferences.getBoolean("UseGraphics", false)) {
+            if (preferences.getBoolean(PreferenceNames.pUseGraphics, false)) {
                 GraphicDrawable drawable = GraphicDrawable.builder().buildRound((Bitmap) null, Color.parseColor(color1));
                 background.setImageDrawable(drawable);
                 foreground.setVisibility(View.VISIBLE);

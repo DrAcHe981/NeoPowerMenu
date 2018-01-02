@@ -352,7 +352,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         if((isShortcutWithVisibleContent) && animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
             final Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
             final int speed = (int) anim.getDuration();
-            if (new File(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png").exists()) {
+            if (new File(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png").exists() && preferences.getBoolean(PreferenceNames.pUseGraphics, false)) {
                 handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -534,7 +534,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
             final int speed;
             final Animation anim = helper.getAnimation(mContext, animationPrefs, 0, true);
             speed = (int) anim.getDuration();
-            if (new File(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png").exists()) {
+            if (new File(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png").exists() && preferences.getBoolean(PreferenceNames.pUseGraphics, false)) {
                 handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
