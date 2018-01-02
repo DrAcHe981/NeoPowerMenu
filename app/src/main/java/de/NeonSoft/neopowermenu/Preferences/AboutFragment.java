@@ -75,7 +75,9 @@ public class AboutFragment extends Fragment {
                 "> Turkish:\n" +
                 " Fatih Fırıncı (Fatih_BaKeR)\n" +
                 "> Indonesian:\n" +
-                " wahyusaputraa, auliaramadhn, luky123, cery93\n\n" +
+                " wahyusaputraa, auliaramadhn, luky123, cery93\n" +
+                "> Arabic:\n" +
+                " Omar Mostafa (omarjokr)\n\n" +
                 "Special Thanks:\n" +
                 " You for using my Module.\n" +
                 " C3C0 for all the code I took out of GravityBox.\n" +
