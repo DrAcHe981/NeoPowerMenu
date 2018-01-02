@@ -24,6 +24,7 @@
   <string name="powerMenuMain_ToggleWifi">"Wi-Fi"</string>
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Datos"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Modo de flasheo"</string>
   <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidad y orden"</string>
   <string name="category_Preset">"Temas"</string>
@@ -65,6 +66,7 @@
   <string name="powerMenuMain_Screenrecord">"Grabado de pantalla"</string>
   <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Pantalla se está grabando"</string>
+  <string name="screenrecord_notif_title">Grabación de pantalla</string>
   <string name="screenrecord_toast_error">"Incapaz de grabar pantalla"</string>
   <string name="screenrecord_toast_processing">"No se puede iniciar nueva grabación la grabación anterior todavía se está procesando"</string>
   <string name="screenrecord_toast_saved">"Grabación salvada como %s"</string>
@@ -184,6 +186,7 @@
   <string name="presetLoadDialog_BuiltIn">"Claro | Oscuro | Negro"</string>
   <string name="advancedPrefs_DialogGravity">"Arriba | Izquierda | Derecho | Inferior"</string>
   <string name="graphics_Choose">"Restaurar original | Elegir tema | Elegir de la galería"</string>
+  <string name="graphics_Crop">"Cortado | Corte circular"</string>
   <string name="graphics_NoPresetsFound">"No hay temas con gráficos encontrados..."</string>
   <string name="graphics_GraphicsSaveLoad">"Salvar con gráficos actuales. | Esta tema contiene gráficos, ¿quieres cargarlos?\n¡Esto sobrescribira a los gráficos actuales!"</string>
   <string name="presetsManager_ReportDialog">"¿Está seguro de informar este [PRESETNAME]? \nEsto no se puede deshacer, así que por favor no informe por diversión! \n\nYa que necesitamos una razón por la cual quieres denunciarlo, por favor ingrese. | Motivo de informe:"</string>
