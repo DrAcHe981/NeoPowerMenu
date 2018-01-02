@@ -276,11 +276,23 @@
   <string name="tourPage_6_Title">"Menú avanzado"</string>
   <string name="tourPage_6_Text">"Aquí podrás personalizar el menú en todo su esplendor."</string>
   <string name="tourPage_7_Title">"¡Disfruta!"</string>
+  <string name="tourPage_7_Text">"Aquí termina este pequeño tour, pero no te preocupes, hay muchas más opciones!\nSólo inténtalo tú mismo y encuentra tu menú de apagado perfecto."</string>
+  <string name="advancedPrefs_UseRootTitle">"Usar sistemas de Rooteo"</string>
+  <string name="advancedPrefs_UseRootDesc">"Usar comandos de súper usuario para apagar o reiniciar. Si lo desactivas se correrán comandos en el proceso del sistema, esto puede fallar en algunos dispositivos."</string>
   <string name="graphics_PaddingTitle">"Relleno gráfico"</string>
+  <string name="graphics_PaddingDesc">"Define el margen gráfico.\nMayor márgen = gráficos más pequeños. (Predefinido 0dp)"</string>
+  <string name="presetsManager_LoadOnlyGraphics">"Sólo cargar gráficos"</string>
+  <string name="downloadHelper_InvalidSize">"El archivo descargado no está completo.\nPor favor intenta de nuevo."</string>
+  <string name="downloadHelper_FailedAt1">"Error conectando con el servidor, por favor verifique su conexión y vuelva a intentarlo."</string>
+  <string name="downloadHelper_FailedAt2">"Error al pedir la información necesaria, por favor compruebe su conexión y vuelva a intentarlo."</string>
+  <string name="downloadHelper_FailedAt3">"Error al descargar archivo, por favor compruebe su conexión e inténtelo de nuevo."</string>
+  <string name="downloadHelper_UnknownError">"Hubo un problema desconocido al descargar el archivo, por favor intente de nuevo."</string>
+  <string name="uploadHelper_FailedAt1">"Error al conectar con el servidor, por favor compruebe su conexión e inténtelo de nuevo."</string>
   <string name="uploadHelper_FailedAt2">"Error al solicitar la información necesaria, por favor, compruebe su conexión y vuelva a intentarlo."</string>
   <string name="uploadHelper_FailedAt3">"No se pudo cargar el archivo, por favor, compruebe su conexión y vuelva a intentarlo."</string>
   <string name="uploadHelper_UnknownError">"Hubo un problema desconocido mientras se cargaba el archivo, por favor, inténtelo de nuevo."</string>
   <string name="visibilityOrder_SearchApp">"Buscar aplicación (mayúsculas y minúsculas):"</string>
+  <string name="visibilityOrder_FilterItemsList">"Buscar ítem (caso insensible):"</string>
   <string name="powerMenuMain_MediaPrevious">"Anterior"</string>
   <string name="powerMenuMain_MediaPlayPause">"Reproducir/Pausa"</string>
   <string name="powerMenuMain_MediaNext">"Siguiente"</string>
@@ -348,4 +360,9 @@
   <string name="powerMenuMain_SilentMode">"Modo silencioso"</string>
   <string name="visibilityOrder_LockWithPassword">"Bloquear con contraseña"</string>
   <string name="powerMenu_Password">"contraseña"</string>
+  <string name="addShortcut_Add">"Añadir"</string>
+  <string name="addShortcut_AddShortcut">"Añadir atajo"</string>
+  <string name="addShortcut_Next">"Siguiente"</string>
+  <string name="addShortcut_Settings">"Personalizar atajo"</string>
+  <string name="addShortcutTitle_UseCustomGraphic">"Usar gráfico personalizado"</string>
 </resources>
