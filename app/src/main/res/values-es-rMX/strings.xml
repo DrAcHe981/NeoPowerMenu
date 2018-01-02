@@ -100,6 +100,7 @@
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Requerido para prender/apagar antorcha."</string>
   <string name="visibilityOrder_HideDesc">"Ocultar descripción"</string>
   <!-- Preferences: Colors -->
+  <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Permiso al Surface Flinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Requerido para el grabar la pantalla grabé la pantalla."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Grabar audio"</string>
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Requerido para grabar audio en la grabación de pantalla."</string>
