@@ -2447,16 +2447,18 @@ public class XposedDialog extends DialogFragment {
     }
 
     private void toggleSystemUI(boolean hide) {
-        if (hide) {
-            View decorView = XposedMainActivity.mActivity.getWindow().getDecorView();
-            // Hide Status Bar.
-            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-            decorView.setSystemUiVisibility(uiOptions);
-        } else {
-            View decorView = XposedMainActivity.mActivity.getWindow().getDecorView();
-            // Hide Status Bar.
-            int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
-            decorView.setSystemUiVisibility(uiOptions);
+        if (!mPreviewMode) {
+            if (hide) {
+                View decorView = XposedMainActivity.mActivity.getWindow().getDecorView();
+                // Hide Status Bar.
+                int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+                decorView.setSystemUiVisibility(uiOptions);
+            } else {
+                View decorView = XposedMainActivity.mActivity.getWindow().getDecorView();
+                // Hide Status Bar.
+                int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
+                decorView.setSystemUiVisibility(uiOptions);
+            }
         }
     }
 
