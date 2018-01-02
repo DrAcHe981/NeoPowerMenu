@@ -111,7 +111,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
                             holder.imgQueue.setPadding((int) PreferencesGraphicsFragment.float_padding * 4, (int) PreferencesGraphicsFragment.float_padding * 4, (int) PreferencesGraphicsFragment.float_padding * 4, (int) PreferencesGraphicsFragment.float_padding * 4);
                             holder.imgQueue.setImageBitmap(loadedImage);
                             holder.imgQueue.setVisibility(View.VISIBLE);
-                            if (mGraphics.get(position).getFileName().equalsIgnoreCase("Progress")) {
+                            if (mGraphics.get(position).getName().equalsIgnoreCase("Progress")) {
                                 Animation progressAnim = AnimationUtils.loadAnimation(mActivity, R.anim.rotate_right);
                                 progressAnim.setRepeatMode(Animation.RESTART);
                                 progressAnim.setRepeatCount(Animation.INFINITE);
