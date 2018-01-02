@@ -13,12 +13,15 @@ import com.theartofdev.edmodo.cropper.*;
 import de.NeonSoft.neopowermenu.*;
 
 import de.NeonSoft.neopowermenu.R;
+import de.NeonSoft.neopowermenu.helpers.helper;
 
 import android.view.View.*;
 
 import java.io.*;
 
 import android.view.animation.*;
+
+import static de.NeonSoft.neopowermenu.helpers.helper.getRealScreenSize;
 
 public class Cropper extends android.support.v4.app.Fragment
         implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCroppedImageCompleteListener {
@@ -65,7 +68,7 @@ public class Cropper extends android.support.v4.app.Fragment
                 String string = getResources().getString(getResources().getIdentifier("powerMenuBottom_" + mItem, "string", MainActivity.class.getPackage().getName()));
                 MainActivity.actionbar.setSubTitle(string);
             } catch (Throwable t1) {
-                Log.e("NPM", "No String found for resource " + mItem + "\n" + t);
+                Log.w("NPM", "[CROPPER] No String found for resource " + mItem + "\n" + t);
             }
         }
 
@@ -126,6 +129,16 @@ public class Cropper extends android.support.v4.app.Fragment
             }
         });
 
+
+        if (mSaveAs.contains("xposed_dialog_background")) {
+            Point screenSize = helper.getRealScreenSize(getActivity());
+            mCropImageView.setCropShape(CropImageView.CropShape.RECTANGLE);
+            mCropImageView.setAspectRatio(screenSize.x, screenSize.y);
+            Switch_RoundCrop.setChecked(false);
+            LinearLayout_RoundCrop.setVisibility(View.GONE);
+        }
+
+
         progressHolder = (RelativeLayout) InflatedView.findViewById(R.id.cropperRelativeLayout_Progress);
         progressHolder.setVisibility(View.GONE);
         progress = (ProgressBar) InflatedView.findViewById(R.id.cropperProgressBar_Progress);
@@ -178,7 +191,7 @@ public class Cropper extends android.support.v4.app.Fragment
             }
             //startActivity(intent);
         } else {
-            Log.e("NPM", "Failed to crop image", error);
+            Log.e("NPM", "[CROPPER] Failed to crop image", error);
             //Toast.makeText(getActivity(), "Image crop failed: " + error.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
@@ -200,19 +213,19 @@ public class Cropper extends android.support.v4.app.Fragment
         protected String doInBackground(Bitmap[] p1) {
             // TODO: Implement this method
             Bitmap saveBitmap = (mCropImageView.getCropShape() == CropImageView.CropShape.OVAL ? CropImage.toOvalBitmap(p1[0]) : p1[0]);
-            Log.i("NPM", "Saving " + (mCropImageView.getCropShape() == CropImageView.CropShape.OVAL ? "oval" : "rectangle") + " shaped image to " + getActivity().getFilesDir().getPath() + "/images/" + mSaveAs);
+            Log.i("NPM", "[CROPPER] Saving " + (mCropImageView.getCropShape() == CropImageView.CropShape.OVAL ? "oval" : "rectangle") + " shaped image to " + getActivity().getFilesDir().getPath() + "/images/" + mSaveAs);
             FileOutputStream out = null;
             try {
                 out = new FileOutputStream(getActivity().getFilesDir().getPath() + "/images/" + mSaveAs);
                 saveBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
             } catch (Throwable t) {
-                Log.e("NPM", "Failed to save: " + t.toString());
+                Log.e("NPM", "[CROPPER] Failed to save: " + t.toString());
                 return t.toString();
             } finally {
                 try {
                     out.close();
                 } catch (IOException e) {
-                    Log.e("NPM", "Failed to save: " + e.toString());
+                    Log.e("NPM", "[CROPPER] Failed to save: " + e.toString());
                     return e.toString();
                 }
             }
@@ -227,7 +240,7 @@ public class Cropper extends android.support.v4.app.Fragment
             progressHolder.setVisibility(View.GONE);
             if (p1 != null) {
                 Toast.makeText(getActivity(), "Failed to save,please try again...\nFor more info check the logs.", Toast.LENGTH_LONG).show();
-                Log.e("NPM", "Failed to save cropped image: " + p1);
+                Log.e("NPM", "[CROPPER] Failed to save cropped image: " + p1);
             } else {
                 MainActivity.changePrefPage(new PreferencesGraphicsFragment(), true);
             }

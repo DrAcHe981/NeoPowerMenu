@@ -244,6 +244,12 @@ public class PreferencesGraphicsFragment extends Fragment {
 
         GridView_Images = (GridView) InflatedView.findViewById(R.id.activitygraphicsGridView1);
 
+        GraphicItemHolder backgroundGraphic = new GraphicItemHolder();
+        backgroundGraphic.setName(getString(R.string.graphics_PowerMenuBackground));
+        backgroundGraphic.setFile(mContext.getFilesDir().getPath() + "/images/" + "xposed_dialog_background.png");
+        backgroundGraphic.setFileName("xposed_dialog_background");
+        GraphicsList.add(backgroundGraphic);
+
         for (int i = 0; i < graphics.length; i++) {
             GraphicItemHolder graphic = new GraphicItemHolder();
             graphic.setName(graphics[i][0].toString());
@@ -368,7 +374,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                             new File(GraphicsList.get(selected).getFile().replace("/app_picker/","/images/")).delete();
                         }
                         if (position == 0) {
-                            if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
+                            if (GraphicsList.get(selected).getFileName().equalsIgnoreCase("Progress")) {
                                 MainActivity.preferences.edit().putString("ProgressDrawable", "Stock").commit();
                             }
                             GraphicItemHolder item = new GraphicItemHolder();
@@ -380,8 +386,10 @@ public class PreferencesGraphicsFragment extends Fragment {
                                     item.setFile(mContext.getFilesDir().getPath() + "/app_picker/" + GraphicsList.get(selected).getName() + ".png");
                                 }
                             } else {
-                                if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
+                                if (GraphicsList.get(selected).getFileName().equalsIgnoreCase("Progress")) {
                                     item.setFile(graphics[selected][1].toString());
+                                } else if (GraphicsList.get(selected).getFileName().equalsIgnoreCase("xposed_dialog_background")) {
+                                    item.setFile(mContext.getFilesDir().getPath() + "/images/" + "xposed_dialog_background.png");
                                 } else {
                                     item.setRessource((int) graphics[selected][1]);
                                 }

@@ -121,7 +121,11 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
 
                         @Override
                         public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                            Log.e("NPM", "Failed to load image '" + imageUri + "': " + failReason.getCause());
+                            holder.imgQueue.setImageBitmap(null);
+                            holder.imgQueue.setVisibility(View.INVISIBLE);
+                            holder.LoadingBar.setVisibility(View.INVISIBLE);
+                            Log.w("NPM", "Failed to load image '" + imageUri + "': ", failReason.getCause());
+                            super.onLoadingStarted(imageUri, view);
                         }
                     });
         } else if (mGraphics.get(position).getRessource() != -1) {

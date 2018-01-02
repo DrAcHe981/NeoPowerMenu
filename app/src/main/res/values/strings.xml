@@ -461,5 +461,6 @@
     <string name="visibilityOrder_MissingPermissionForNotiPolicy">Missing notification policy permission, please allow it to use this toggle!</string>
     <string name="powerMenu_Task_Killed">Killed [TARGET]!</string>
     <string name="powerMenu_No_Task_To_Kill">Found no tasks that can be killed.</string>
+    <string name="graphics_PowerMenuBackground">Menu Background</string>
 
 </resources>
