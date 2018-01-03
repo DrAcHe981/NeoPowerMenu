@@ -200,8 +200,8 @@
   <string name="preferencesCategory_RootXposed">"Akar dan Xposed"</string>
   <string name="preferences_RootXposed1">"Root dan Xposed tidak tersedia|Root dan Xposed diperlukan agar modul ini bisa bekerja."</string>
   <string name="preferences_RootXposed2">"Xposed working, Root not | Tapi Root diperlukan untuk Power off atau Reboot...\nSilahkan akses root."</string>
-  <string name="preferences_RootXposed3">"Root bekerja, Xposed not | Tapi Xposed diperlukan untuk mengganti Power Menu...\nSilakan aktifkan modul di installer Xposed."</string>
-  <string name="preferences_RootXposed4">"Root dan Xposed bekerja | Aplikasi harus bekerja dengan baik!"</string>
+  <string name="preferences_RootXposed3">"Root bekerja, Xposed not|Tapi Xposed diperlukan untuk mengganti Power Menu...\nSilakan aktifkan modul di installer Xposed."</string>
+  <string name="preferences_RootXposed4">"Root dan Xposed bekerja|Aplikasi harus bekerja dengan baik!"</string>
   <string name="preferences_RootXposed5">"Modul Modul Hooked terlalu rendah...|restart perangkat Anda untuk menyelesaikan proses update!"</string>
   <string name="preferencesCategory_General">"Umum"</string>
   <string name="preferences_Style">"Gaya"</string>
