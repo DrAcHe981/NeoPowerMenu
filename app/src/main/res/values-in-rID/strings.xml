@@ -212,7 +212,7 @@
   <string name="preferencesCategory_Other">"Lain"</string>
   <string name="preferences_Account">"Account|Disini anda bisa login, membuat akun atau mengecek statistik anda saat login."</string>
   <string name="preferences_Advanced">"Pengaturan Lanjutan|Ubah pengaturan lanjutan seperti penundaan atau kecepatan."</string>
-  <string name="preferences_Permissions">"Izin|Tampilkan izin yang diminta dan lihat penggunaannya apa adanya. \nGrant izin tambahan yang tidak ditambahkan pada awal pertama (Android 6.0+)."</string>
+  <string name="preferences_Permissions">"Izin|Tampilkan izin yang diminta dan lihat penggunaannya apa adanya.\nGrant izin tambahan yang tidak ditambahkan pada awal pertama (Android 6.0+)."</string>
   <string name="preferences_HideLauncherIcon">"Sembunyikan aplikasi di peluncur|Menyembunyikan ikon aplikasi di peluncur, diperlukan waktu hingga reboot untuk menyembunyikan ikonnya.\nSetelan pengaturan ini hanya dapat diakses melalui Installer Xposed."</string>
   <string name="preferences_DeepXposedLogging">"Deep Xposed logging|Aktifkan logging Xposed lanjutan, setelah mengaktifkan reboot untuk melihat perubahan."</string>
   <string name="preferencesCategory_About">"Tentang"</string>
@@ -238,7 +238,7 @@
   <string name="style_Material">Bahan</string>
   <string name="style_MaterialFullscreen">Bahan (Layar Penuh)</string>
   <string name="style_MaterialFullHorizontal">Bahan (Full horizontal)</string>
-  <string name="advancedPrefs_ExperimentalPWMHook">Kait PhoneWindowManager yang Eksperimental</string>
+  <string name="advancedPrefs_ExperimentalPWMHook">Manajer Pengelola Jendela Hook Eksperimental</string>
   <string name="advancedPrefs_ExperimentalPWMHookDesc">Hook ke PhoneWindowManager bukan kelas GlobalActions. \n Gunakan hati-hati, jangan aktifkan jika kait normal bekerja untuk perangkat Anda! \n Reboot untuk melihat perubahan.</string>
   <string name="advancedPrefs_ColorizeNonStockIcons">"Colorize custom icons"</string>
   <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Secara default ikon kustom tidak akan berwarna, mengaktifkan ini akan mengubahnya."</string>
