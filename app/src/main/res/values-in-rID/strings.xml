@@ -69,7 +69,7 @@
   <string name="screenrecord_notif_title">Rekaman layar</string>
   <string name="screenrecord_toast_error">"Tidak dapat merekam layar"</string>
   <string name="screenrecord_toast_processing">"Tidak bisa memulai rekaman baru karena rekaman sebelumnya masih diproses"</string>
-  <string name="screenrecord_toast_saved">"Perekaman disimpan sebagai%s"</string>
+  <string name="screenrecord_toast_saved">"Perekaman disimpan sebagai %s"</string>
   <string name="screenrecord_toast_save_error">"Tidak dapat menyimpan rekaman ke file output"</string>
   <string name="powerMenuMain_FlashlightOff">"Matikan obor"</string>
   <string name="powerMenuMain_FlashlightDesc">"Matikan setelah [AUTOOFF]."</string>
@@ -168,7 +168,7 @@
   <string name="presetsManager_Refresh">"Menyegarkan"</string>
   <string name="presetsManager_OrderBy">"Dipesan oleh"</string>
   <string name="presetsManager_OrderNames">"Nama | Waktu | Bintang |Pencipta | Sendiri"</string>
-  <string name="presetsManager_OrderAscDesc">"Ascending | Descending"</string>
+  <string name="presetsManager_OrderAscDesc">"Ascending|Descending"</string>
   <string name="visibilityOrder_SelectMulti">"Silakan pilih tiga item:"</string>
   <string name="powerMenuMain_Empty">"Kosong"</string>
   <string name="login_Recover">"Memulihkan"</string>
@@ -184,14 +184,14 @@
   <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
   <string name="advancedPrefs_DialogGravity">"Atas|Kiri|Kanan|Bawah"</string>
   <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
-  <string name="graphics_Crop">"Tanaman | Lingkari tanaman"</string>
+  <string name="graphics_Crop">"Tanaman|Lingkari tanaman"</string>
   <string name="graphics_NoPresetsFound">"Tidak ada preset dengan grafis yang ditemukan..."</string>
   <string name="graphics_GraphicsSaveLoad">"Simpan dengan grafis saat ini.|Preset ini berisi grafis, apakah Anda ingin memuatnya?\nIni akan menimpa grafis Anda saat ini!"</string>
   <string name="presetsManager_ReportDialog">"Anda yakin untuk melaporkan [PRESETNAME]? \n Ini tidak dapat dibatalkan, jadi tolong jangan laporkan hanya untuk bersenang-senang! \n \n Juga kita memerlukan alasan mengapa Anda ingin melaporkannya, silahkan masukkan di bawah ini:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] melaporkan, pengembang akan melihatnya. Laporan gagal, silakan coba lagi.\nAkhir: "</string>
-  <string name="presetsManager_Buttons">"Berikan Bintang|Hapus Bintang |Hapus | Laporan |Upload|Share"</string>
+  <string name="presetsManager_Buttons">"Berikan Bintang|Hapus Bintang |Hapus |Laporan|Upload|Share"</string>
   <string name="screenrecord_notif_buttons">"Berhenti|Toggle pointer"</string>
-  <string name="downloadHelper_States">"Menunggu unduhan lainnya... |Menghubungkan ke server... |Meminta informasi... |Mengunduh... |Membatalkan..."</string>
+  <string name="downloadHelper_States">"Menunggu unduhan lainnya...|Menghubungkan ke server... |Meminta informasi... |Mengunduh...|Membatalkan..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] tersisa"</string>
   <string name="uploadHelper_States">"Menunggu upload lainnya... | Menghubungkan ke server... | Meminta informasi... | Mengunggah... | Membatalkan..."</string>
   <string name="visibilityOrder_AddItem">"Tambahkan item normal \n Hanya item normal dengan hanya satu slot. Tambahkan item multi \n Tambahkan hingga tiga item dalam satu baris. | Tambahkan item multi halaman \n Mengkliknya akan menampilkan 'halaman' baru."</string>
