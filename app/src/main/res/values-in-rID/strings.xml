@@ -186,11 +186,11 @@
   <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
   <string name="graphics_Crop">"Tanaman | Lingkari tanaman"</string>
   <string name="graphics_NoPresetsFound">"Tidak ada preset dengan grafis yang ditemukan..."</string>
-  <string name="graphics_GraphicsSaveLoad">"Simpan dengan grafis saat ini. Preset ini berisi grafis, apakah Anda ingin memuatnya? \n Ini akan menimpa grafis Anda saat ini!"</string>
+  <string name="graphics_GraphicsSaveLoad">"Simpan dengan grafis saat ini.|Preset ini berisi grafis, apakah Anda ingin memuatnya?\n Ini akan menimpa grafis Anda saat ini!"</string>
   <string name="presetsManager_ReportDialog">"Anda yakin untuk melaporkan [PRESETNAME]? \n Ini tidak dapat dibatalkan, jadi tolong jangan laporkan hanya untuk bersenang-senang! \n \n Juga kita memerlukan alasan mengapa Anda ingin melaporkannya, silahkan masukkan di bawah ini:"</string>
-  <string name="presetsManager_ReportResult">"[PRESETNAME] melaporkan, pengembang akan melihatnya. Laporan gagal, silakan coba lagi.\n Akhir: "</string>
-  <string name="presetsManager_Buttons">"Berikan Bintang | Hapus Bintang | Hapus | Laporan | Upload | Share"</string>
-  <string name="screenrecord_notif_buttons">"Berhenti | Toggle pointer"</string>
+  <string name="presetsManager_ReportResult">"[PRESETNAME] melaporkan, pengembang akan melihatnya. Laporan gagal, silakan coba lagi.\nAkhir: "</string>
+  <string name="presetsManager_Buttons">"Berikan Bintang|Hapus Bintang |Hapus | Laporan |Upload|Share"</string>
+  <string name="screenrecord_notif_buttons">"Berhenti|Toggle pointer"</string>
   <string name="downloadHelper_States">"Menunggu unduhan lainnya... |Menghubungkan ke server... |Meminta informasi... |Mengunduh... |Membatalkan..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] tersisa"</string>
   <string name="uploadHelper_States">"Menunggu upload lainnya... | Menghubungkan ke server... | Meminta informasi... | Mengunggah... | Membatalkan..."</string>
@@ -288,7 +288,7 @@
   <string name="uploadHelper_FailedAt2">"Gagal meminta informasi yang dibutuhkan, periksa koneksi Anda dan coba lagi."</string>
   <string name="uploadHelper_FailedAt3">"Gagal mengunggah berkas, periksa sambungan Anda dan coba lagi."</string>
   <string name="uploadHelper_UnknownError">"Ada masalah yang tidak diketahui saat mengupload file, coba lagi."</string>
-  <string name="visibilityOrder_SearchApp">"Aplikasi penelusuran (case insensitive):"</string>
+  <string name="visibilityOrder_SearchApp">"Aplikasi penelusuran (case insensitiv):"</string>
   <string name="visibilityOrder_FilterItemsList">"Item pencarian (case insensitive):"</string>
   <string name="powerMenuMain_MediaPrevious">"Sebelumnya"</string>
   <string name="powerMenuMain_MediaPlayPause">"Putar/Jeda"</string>
