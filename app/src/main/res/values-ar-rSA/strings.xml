@@ -29,7 +29,12 @@
   <string name="visibilityOrderCategory_VisibilityOrder">"المظهر و الأوامر"</string>
   <string name="category_Preset">"المسبقة"</string>
   <string name="preset_Load">"تحميل سابق"</string>
+  <string name="preset_LoadDesc">"تحميل الضبط المحفوظ مسبقاً"</string>
+  <string name="preset_Save">"حفظ الحالي"</string>
+  <string name="preset_SaveDesc">"حفظ إعدادات التكوين الحالية"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleLocal">"الإعدادات المسبقة المحلية"</string>
+  <string name="presetsManager_TitleOnline">"تحميل إعدادات مسبقة"</string>
   <!-- Preferences: Advanced -->
   <!-- Screen recording -->
   <!-- Torch -->
