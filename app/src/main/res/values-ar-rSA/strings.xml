@@ -15,7 +15,20 @@
   <string name="powerMenuBottom_SafeMode">"الوضع الآمن"</string>
   <string name="powerMenu_Shuttingdown">"إيقاف التشغيل..."</string>
   <string name="powerMenu_Rebooting">"إعادة التشغيل..."</string>
+  <string name="powerMenuMain_KillApp">"قتل التطبيقات في الخلفية"</string>
+  <string name="powerMenuMain_AppShortcut">"اختصار التطبيق"</string>
+  <string name="powerMenuMain_ActivityShortcut">"اختصار النشاط"</string>
+  <string name="powerMenuMain_ToggleRotate">"تدوير الشاشة"</string>
+  <string name="ToggleRotateMode_Auto">"تلقائي"</string>
+  <string name="ToggleRotateMode_Off">"غلق"</string>
+  <string name="powerMenuMain_ToggleWifi">"لاسلكي"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"بلوتوث"</string>
+  <string name="powerMenuMain_ToggleData">"بيانات"</string>
+  <string name="powerMenuMain_RebootFlashMode">"وضع التثبيت"</string>
   <!-- Preferences: Visibility and order -->
+  <string name="visibilityOrderCategory_VisibilityOrder">"المظهر و الأوامر"</string>
+  <string name="category_Preset">"المسبقة"</string>
+  <string name="preset_Load">"تحميل سابق"</string>
   <!-- Preferences: Preset Manager -->
   <!-- Preferences: Advanced -->
   <!-- Screen recording -->
