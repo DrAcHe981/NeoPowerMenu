@@ -7,6 +7,14 @@
   <string name="powerMenuMain_Shutdown">"إيقاف التشغيل"</string>
   <string name="powerMenuMain_Reboot">"إعادة التشغيل"</string>
   <string name="powerMenuMain_SoftReboot">"إعادة تشغيل سريع"</string>
+  <string name="powerMenuMain_SoftRebootDesc">"إعادة تشغيل واجهة المستخدم ببساطة عن طريق قتل عملية zygote"</string>
+  <string name="powerMenuMain_Screenshot">"لقطة للشاشة"</string>
+  <string name="powerMenuMain_ScreenshotDesc">"تأخير إلتقاط الشاشة"</string>
+  <string name="powerMenuBottom_Recovery">"وضع الريكوفري"</string>
+  <string name="powerMenuBottom_Bootloader">"وضع الإقلاع"</string>
+  <string name="powerMenuBottom_SafeMode">"الوضع الآمن"</string>
+  <string name="powerMenu_Shuttingdown">"إيقاف التشغيل..."</string>
+  <string name="powerMenu_Rebooting">"إعادة التشغيل..."</string>
   <!-- Preferences: Visibility and order -->
   <!-- Preferences: Preset Manager -->
   <!-- Preferences: Advanced -->
