@@ -44,6 +44,12 @@
   <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"قائمة الطاقة"</string>
   <string name="advancedPrefsTitle_UseGraphics">"استخدم الرسومات"</string>
+  <string name="advancedPrefsDesc_UseGraphics">"استخدم الرسومات بدلا من دوائر الأحرف."</string>
+  <string name="advancedPrefsCategory_LockScreen">"قفل الشاشة"</string>
+  <string name="advancedPrefsTitle_ShowOnLockScreen">"إظهار في الشاشة المقفلة"</string>
+  <string name="advancedPrefsDesc_ShowOnLockScreen">"عرض قائمة الطاقة على شاشة القفل، عند التعطيل لن يظهر أي شيء."</string>
+  <string name="advancedPrefsCategory_Delays">"تأخير"</string>
+  <string name="advancedPrefs_DelayZero">"لحظة تقريباً"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
