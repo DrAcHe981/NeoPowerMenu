@@ -35,7 +35,15 @@
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"الإعدادات المسبقة المحلية"</string>
   <string name="presetsManager_TitleOnline">"تحميل إعدادات مسبقة"</string>
+  <string name="presetsManager_Creator">"إنشاء [اسم المنشئ]"</string>
+  <string name="presetsManager_BuiltIn">"مدمج"</string>
+  <string name="presetsManager_SureToDelete">"أمتأكد أنك تريد حذف [PRESETNAME]\n هذا الإجراء لا يمكن التراجع عنه!"</string>
+  <string name="presetsManager_ImportMsg">"هل تريد استيراد هذا الإعداد المسبق؟"</string>
+  <string name="presetsManager_ImportSuccess">"[PRESETNAME] اكتمل استيراده."</string>
+  <string name="presetsManager_ImportFailed">"فشل الاستيراد..."</string>
   <!-- Preferences: Advanced -->
+  <string name="advancedPrefsCategory_PowerMenu">"قائمة الطاقة"</string>
+  <string name="advancedPrefsTitle_UseGraphics">"استخدم الرسومات"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
