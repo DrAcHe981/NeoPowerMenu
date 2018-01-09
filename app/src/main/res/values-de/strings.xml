@@ -433,6 +433,5 @@
   <string name="powerMenu_Task_Killed">[TARGET] wurde beendet!</string>
   <string name="powerMenu_No_Task_To_Kill">Keine Prozesse gefunden die beendet werden können.</string>
   <string name="graphics_PowerMenuBackground">Menü Hintergrund</string>
-  <string name="visibilityOrder_MissingPermissionForCamera">Erlauben sie den Zugriff auf die Kamera, um diesen Schalter zu verwenden!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Dein Gerät scheint dieses Element nicht zu unterstützen!</string>
 </resources>
