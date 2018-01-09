@@ -1,7 +1,10 @@
 package de.NeonSoft.neopowermenu.services;
 
+import android.Manifest;
 import android.app.*;
 import android.content.*;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageParser;
 import android.graphics.*;
 import android.hardware.*;
 import android.os.*;
@@ -12,6 +15,11 @@ import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 import android.os.PowerManager.WakeLock;
 
 import android.hardware.Camera;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
+
+import static de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen.MY_PERMISSIONS_REQUEST;
 
 public class TorchService extends Service {
     private static final String TAG = "NPM";

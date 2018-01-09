@@ -1,7 +1,10 @@
 package de.NeonSoft.neopowermenu.Preferences;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -9,8 +12,10 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
 import android.os.*;
 import android.support.v4.app.*;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.*;
@@ -21,6 +26,8 @@ import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.DSLV.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen;
+import de.NeonSoft.neopowermenu.xposed.XposedMainActivity;
+import de.NeonSoft.neopowermenu.xposed.XposedUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -28,10 +35,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
+import static de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen.MY_PERMISSIONS_REQUEST;
+
 public class PreferencesVisibilityOrderFragment extends Fragment {
 
     public static Activity mContext;
     public static int visibilityOrderPermissionRequest_Id = -1;
+    public static int visibilityOrderPermissionRequest_ItemSpace;
     public static int visibilityOrderPermissionRequest = 103;
     public static int AddItemMode_NEW = 1;
     public static int AddItemMode_REPLACE = 2;
@@ -486,19 +496,97 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             NoGravityBox.showDialog(R.id.dialog_container);
                         }
                     }
+                    if (FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[10]) || FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[16]) || FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[28])) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !MainActivity.notificationManager.isNotificationPolicyAccessGranted()) {
+                            visibilityOrderPermissionRequest_Id = addItemPosition;
+                            visibilityOrderPermissionRequest_ItemSpace = itemSpace;
+                            slideDownDialogFragment MissingPermission = new slideDownDialogFragment();
+                            MissingPermission.setContext(mContext);
+                            MissingPermission.setFragmentManager(MainActivity.fragmentManager);
+                            MissingPermission.setText(mContext.getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy));
+                            MissingPermission.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                            MissingPermission.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+                            MissingPermission.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                                @Override
+                                public void onListItemClick(int position, String text) {
+
+                                }
+
+                                @Override
+                                public void onNegativeClick() {
+                                    receivedPermissionResult(false);
+                                }
+
+                                @Override
+                                public void onNeutralClick() {
+
+                                }
+
+                                @Override
+                                public void onPositiveClick(Bundle resultBundle) {
+                                    Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                                    mContext.startActivityForResult(intent, visibilityOrderPermissionRequest);
+                                }
+
+                                @Override
+                                public void onTouchOutside() {
+
+                                }
+                            });
+                            MissingPermission.showDialog(R.id.dialog_container);
+                        }
+                    } else if (FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[6])) {
+                        if (!XposedUtils.hasFlash(mContext)) {
+                            slideDownDialogFragment MissingPermission = new slideDownDialogFragment();
+                            MissingPermission.setContext(mContext);
+                            MissingPermission.setFragmentManager(MainActivity.fragmentManager);
+                            MissingPermission.setText(mContext.getString(R.string.visibilityOrder_NotSupportedbyDevice));
+                            MissingPermission.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                            MissingPermission.showDialog(R.id.dialog_container);
+                            return;
+                        } else if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                            visibilityOrderPermissionRequest_Id = addItemPosition;
+                            visibilityOrderPermissionRequest_ItemSpace = itemSpace;
+                            slideDownDialogFragment MissingPermission = new slideDownDialogFragment();
+                            MissingPermission.setContext(mContext);
+                            MissingPermission.setFragmentManager(MainActivity.fragmentManager);
+                            MissingPermission.setText(mContext.getString(R.string.visibilityOrder_MissingPermissionForCamera));
+                            MissingPermission.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                            MissingPermission.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+                            MissingPermission.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                                @Override
+                                public void onListItemClick(int position, String text) {
+
+                                }
+
+                                @Override
+                                public void onNegativeClick() {
+                                    receivedPermissionResult(false);
+                                }
+
+                                @Override
+                                public void onNeutralClick() {
+
+                                }
+
+                                @Override
+                                public void onPositiveClick(Bundle resultBundle) {
+                                    ActivityCompat.requestPermissions(mContext, new String[]{Manifest.permission.CAMERA}, visibilityOrderPermissionRequest);
+                                }
+
+                                @Override
+                                public void onTouchOutside() {
+
+                                }
+                            });
+                            MissingPermission.showDialog(R.id.dialog_container);
+                        }
+                    }
                     if (addItemMode==AddItemMode_NEW) {
                         adapter.addItem(item);
                     } else {
                         adapter.removeAt(addItemPosition);
                         adapter.insertAt(addItemPosition, item);
-                    }
-                    if (FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[10]) || FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[16]) || FinalPowerMenuItems[position].equalsIgnoreCase(PowerMenuItems[28])) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !MainActivity.notificationManager.isNotificationPolicyAccessGranted()) {
-                            visibilityOrderPermissionRequest_Id = adapter.getCount();
-                            Toast.makeText(mContext, mContext.getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                            mContext.startActivityForResult(intent, visibilityOrderPermissionRequest);
-                        }
                     }
                 }
             }
@@ -707,11 +795,17 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         }
     }
 
-    public static void receivedPermissionResult(int resultCode) {
-        if (resultCode == Activity.RESULT_OK) {
-
-        } else if (resultCode == Activity.RESULT_CANCELED) {
-
+    public static void receivedPermissionResult(boolean granted) {
+        if (!granted) {
+            if (adapter.getItemAt(visibilityOrderPermissionRequest_Id).getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
+                adapter.removeAt(visibilityOrderPermissionRequest_Id);
+            } else if (adapter.getItemAt(visibilityOrderPermissionRequest_Id).getType() == visibilityOrder_ListAdapter.TYPE_MULTI) {
+                MenuItemHolder item = adapter.getItemAt(visibilityOrderPermissionRequest_Id);
+                item.setText((visibilityOrderPermissionRequest_ItemSpace == 1 ? "" : item.getText(1)), (visibilityOrderPermissionRequest_ItemSpace == 2 ? "" : item.getText(2)), (visibilityOrderPermissionRequest_ItemSpace == 3 ? "" : item.getText(3)));
+                item.setTitle((visibilityOrderPermissionRequest_ItemSpace == 1 ? "Empty" : item.getTitle(1)), (visibilityOrderPermissionRequest_ItemSpace == 2 ? "Empty" : item.getTitle(2)), (visibilityOrderPermissionRequest_ItemSpace == 3 ? "Empty" : item.getTitle(3)));
+                item.setShortcutUri((visibilityOrderPermissionRequest_ItemSpace == 1 ? "" : item.getShortcutUri(1)), (visibilityOrderPermissionRequest_ItemSpace == 2 ? "" : item.getShortcutUri(2)), (visibilityOrderPermissionRequest_ItemSpace == 3 ? "" : item.getShortcutUri(3)));
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 

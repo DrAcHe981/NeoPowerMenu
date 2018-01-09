@@ -354,7 +354,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest) {
-            PreferencesVisibilityOrderFragment.receivedPermissionResult(resultCode);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                PreferencesVisibilityOrderFragment.receivedPermissionResult(notificationManager.isNotificationPolicyAccessGranted());
+            }
         } else if(requestCode == permissionsScreen.RESULT_ENABLE_ADMIN || requestCode == permissionsScreen.MY_PERMISSIONS_REQUEST) {
             permissionsScreen.adapter.notifyDataSetChanged();
         } else if (requestCode == PreferencesVisibilityOrderFragment.REQ_OBTAIN_SHORTCUT && PreferencesVisibilityOrderFragment.mShortcutHandler != null) {
@@ -397,18 +399,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case permissionsScreen.MY_PERMISSIONS_REQUEST: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                }
-                permissionsScreen.adapter.notifyDataSetChanged();
-                break;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
+        if (requestCode == permissionsScreen.MY_PERMISSIONS_REQUEST) {
+            permissionsScreen.adapter.notifyDataSetChanged();
+        } else if (requestCode == PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest) {
+            PreferencesVisibilityOrderFragment.receivedPermissionResult(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED);
         }
     }
 

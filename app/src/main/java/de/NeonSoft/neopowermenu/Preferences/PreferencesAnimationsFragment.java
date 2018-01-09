@@ -24,6 +24,7 @@ public class PreferencesAnimationsFragment extends android.support.v4.app.Fragme
             {animationsAdapter.TYPE_HEADER, "icons"},{animationsAdapter.TYPE_ITEM, "icons_type"},{animationsAdapter.TYPE_ITEM, "icons_speed"}, //6
             {animationsAdapter.TYPE_HEADER, "singleline"},{animationsAdapter.TYPE_ITEM, "singleline_type"},{animationsAdapter.TYPE_ITEM, "singleline_speed"}, //9
             {animationsAdapter.TYPE_HEADER, "multiline"},{animationsAdapter.TYPE_ITEM, "multiline_type"},{animationsAdapter.TYPE_ITEM, "multiline_speed"}}; //12
+            //{animationsAdapter.TYPE_HEADER, "progressbar"},{animationsAdapter.TYPE_ITEM, "progressbar_type"},{animationsAdapter.TYPE_ITEM, "progressbar_speed"}}; //15
 
     public static String[] customPrefs = {
             "Alpha",

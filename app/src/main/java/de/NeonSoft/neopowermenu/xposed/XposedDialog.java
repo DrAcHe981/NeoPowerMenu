@@ -21,6 +21,7 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.telephony.*;
 import android.util.*;
 import android.view.*;
@@ -39,6 +40,7 @@ import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
 import de.NeonSoft.neopowermenu.R;
 import de.NeonSoft.neopowermenu.helpers.*;
+import de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen;
 import de.NeonSoft.neopowermenu.services.*;
 import eu.chainfire.libsuperuser.*;
 
@@ -58,6 +60,8 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+import static de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen.MY_PERMISSIONS_REQUEST;
+
 public class XposedDialog extends DialogFragment {
 
     SharedPreferences preferences;
@@ -74,6 +78,7 @@ public class XposedDialog extends DialogFragment {
     }
 
     static PackageManager pm;
+    static NotificationManager notificationManager;
     KeyguardManager mKeyguardManager;
     KeyguardManager.KeyguardLock mKeyguardLock;
     FingerprintManager mFingerprintManager;
@@ -197,6 +202,7 @@ public class XposedDialog extends DialogFragment {
         mContext = getActivity();
 
         pm = mContext.getPackageManager();
+        notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         mKeyguardManager = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
         mKeyguardLock = mKeyguardManager.newKeyguardLock(Context.KEYGUARD_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -1862,19 +1868,28 @@ public class XposedDialog extends DialogFragment {
                         SubDialogs.clear();
                         dismissThis();
                     }
-                    final Handler handler = new Handler();
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            handler.post(new Runnable() {
-
+                    if (!XposedUtils.hasFlash(mContext)) {
+                        Toast.makeText(mContext, getString(R.string.visibilityOrder_NotSupportedbyDevice), Toast.LENGTH_LONG).show();
+                    } else {
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForCamera), Toast.LENGTH_LONG).show();
+                            ActivityCompat.requestPermissions(XposedMainActivity.mActivity, new String[]{Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST);
+                        } else {
+                            final Handler handler = new Handler();
+                            new Thread() {
                                 @Override
                                 public void run() {
-                                    toggleTorch(false);
+                                    handler.post(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            toggleTorch(false);
+                                        }
+                                    });
                                 }
-                            });
+                            }.start();
                         }
-                    }.start();
+                    }
                 }
             } else if (name.equalsIgnoreCase("ExpandedDesktop")) {
                 if (!mPreviewMode) {
@@ -1907,12 +1922,18 @@ public class XposedDialog extends DialogFragment {
                         SubDialogs.clear();
                         dismissThis();
                     }
-                    if (amRingerMode == AudioManager.RINGER_MODE_NORMAL) {
-                        am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
-                    } else if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
-                        am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-                    } else if (amRingerMode == AudioManager.RINGER_MODE_VIBRATE) {
-                        am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                    if ((amRingerMode == AudioManager.RINGER_MODE_SILENT || amRingerMode == AudioManager.RINGER_MODE_VIBRATE) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
+                        Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                        mContext.startActivity(intent);
+                    } else {
+                        if (amRingerMode == AudioManager.RINGER_MODE_NORMAL) {
+                            am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                        } else if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
+                            am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                        } else if (amRingerMode == AudioManager.RINGER_MODE_VIBRATE) {
+                            am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                        }
                     }
                 }
             } else if (name.equalsIgnoreCase("Recovery")) {
@@ -2088,7 +2109,13 @@ public class XposedDialog extends DialogFragment {
                         SubDialogs.clear();
                         dismissThis();
                     }
-                    am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                    if (amRingerMode == AudioManager.RINGER_MODE_SILENT && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
+                        Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                        mContext.startActivity(intent);
+                    } else {
+                        am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                    }
                 }
             } else if (name.equalsIgnoreCase("SoundNormal")) {
                 if (!mPreviewMode) {
@@ -2096,7 +2123,13 @@ public class XposedDialog extends DialogFragment {
                         SubDialogs.clear();
                         dismissThis();
                     }
-                    am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                    if (amRingerMode == AudioManager.RINGER_MODE_SILENT && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
+                        Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                        mContext.startActivity(intent);
+                    } else {
+                        am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                    }
                 }
             } else if (name.equalsIgnoreCase("SoundSilent")) {
                 if (!mPreviewMode) {
@@ -2104,7 +2137,13 @@ public class XposedDialog extends DialogFragment {
                         SubDialogs.clear();
                         dismissThis();
                     }
-                    am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
+                        Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                        mContext.startActivity(intent);
+                    } else {
+                        am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                    }
                 }
             } else if (name.contains(".")) {
                 if (!mPreviewMode) {
@@ -2284,7 +2323,13 @@ public class XposedDialog extends DialogFragment {
                     if (amRingerMode == AudioManager.RINGER_MODE_SILENT) {
                         am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
                     } else if (amRingerMode == AudioManager.RINGER_MODE_NORMAL) {
-                        am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
+                            Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                            mContext.startActivity(intent);
+                        } else {
+                            am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                        }
                     }
                 }
             }

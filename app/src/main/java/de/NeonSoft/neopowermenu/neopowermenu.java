@@ -10,7 +10,7 @@ import cat.ereza.customactivityoncrash.*;
 		formUriBasicAuthPassword = "acraerrormailer",
 		reportType = org.acra.sender.HttpSender.Type.JSON,
 		mode = ReportingInteractionMode.SILENT,
-		sendReportsAtShutdown = false,
+		sendReportsAtShutdown = true,
 		socketTimeout = 1000 * 20
 )
 
