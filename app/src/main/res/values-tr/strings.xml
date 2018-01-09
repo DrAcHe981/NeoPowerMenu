@@ -433,4 +433,6 @@
   <string name="powerMenu_Task_Killed">[TARGET] sonlandırıldı!</string>
   <string name="powerMenu_No_Task_To_Kill">Sonlandırılacak görev bulunamadı.</string>
   <string name="graphics_PowerMenuBackground">Menü Arkaplanı</string>
+  <string name="visibilityOrder_MissingPermissionForCamera">Kamera izni eksik, bu anahtarın kullanılması için lütfen izin verin!</string>
+  <string name="visibilityOrder_NotSupportedbyDevice">Cihazınız bu öğeyi desteklemiyor gibi görünüyor!</string>
 </resources>
