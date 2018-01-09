@@ -670,18 +670,13 @@ public class XposedDialog extends DialogFragment {
         text.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(1).equalsIgnoreCase("Empty")) {
-            String string = "";//XposedMainActivity.mItems.get(id).getTitle(1);
-            if (!XposedMainActivity.mItems.get(id).getText(1).isEmpty()) {
-                string = XposedMainActivity.mItems.get(id).getText(1);
-            }
-            if (string.isEmpty()) {
-                string = XposedMainActivity.mItems.get(id).getTitle(1);
+            String string = XposedMainActivity.mItems.get(id).getTitle(1);;
+            if (XposedMainActivity.mItems.get(id).getText(1).isEmpty()) {
                 if (string.contains(".") && string.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
                     try {
                         string = pm.getApplicationInfo(string.split("/")[0], 0).loadLabel(pm).toString();
                     } catch (PackageManager.NameNotFoundException e) {
-                        Log.w("NPM", "[xposedDialog] Could not find package: " + XposedMainActivity.mItems.get(id).getTitle(1), e);
                     }
                 } else {
                     try {
@@ -690,11 +685,11 @@ public class XposedDialog extends DialogFragment {
                         try {
                             string = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuBottom_" + XposedMainActivity.mItems.get(id).getTitle(1), "string", MainActivity.class.getPackage().getName()));
                         } catch (Throwable t1) {
-                            string = "Failed to get String resource for powerMenuBottom_" + XposedMainActivity.mItems.get(id).getTitle(1);
-                            Log.w("NPM", "[xposedDialog] Failed to get String resource for powerMenuBottom_" + XposedMainActivity.mItems.get(id).getTitle(1), t);
                         }
                     }
                 }
+            } else {
+                string = XposedMainActivity.mItems.get(id).getText(1);
             }
             text.setText(string);
             text.setVisibility((XposedMainActivity.mItems.get(id).getHideText() ? View.GONE : View.VISIBLE));
@@ -731,18 +726,13 @@ public class XposedDialog extends DialogFragment {
         text2.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(2).equalsIgnoreCase("Empty")) {
-            String string2 = "";//XposedMainActivity.mItems.get(id).getTitle(2);
-            if (!XposedMainActivity.mItems.get(id).getText(2).isEmpty()) {
-                string2 = XposedMainActivity.mItems.get(id).getText(2);
-            }
-            if (string2.isEmpty()) {
-                string2 = XposedMainActivity.mItems.get(id).getTitle(2);
+            String string2 = XposedMainActivity.mItems.get(id).getTitle(2);;
+            if (XposedMainActivity.mItems.get(id).getText(2).isEmpty()) {
                 if (string2.contains(".") && string2.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
                     try {
                         string2 = pm.getApplicationInfo(string2.split("/")[0], 0).loadLabel(pm).toString();
                     } catch (PackageManager.NameNotFoundException e) {
-                        Log.w("NPM", "[xposedDialog] Could not find package: " + XposedMainActivity.mItems.get(id).getTitle(2), e);
                     }
                 } else {
                     try {
@@ -751,10 +741,11 @@ public class XposedDialog extends DialogFragment {
                         try {
                             string2 = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuBottom_" + XposedMainActivity.mItems.get(id).getTitle(2), "string", MainActivity.class.getPackage().getName()));
                         } catch (Throwable t1) {
-                            Log.w("NPM", "[xposedDialog] Failed to get String resource for powerMenuBottom_" + XposedMainActivity.mItems.get(id).getTitle(2), t);
                         }
                     }
                 }
+            } else {
+                string2 = XposedMainActivity.mItems.get(id).getText(2);
             }
             text2.setText(string2);
             text2.setVisibility((XposedMainActivity.mItems.get(id).getHideText() ? View.GONE : View.VISIBLE));
@@ -791,18 +782,13 @@ public class XposedDialog extends DialogFragment {
         text3.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(3).equalsIgnoreCase("Empty")) {
-            String string3 = "";//XposedMainActivity.mItems.get(id).getTitle(3);
-            if (!XposedMainActivity.mItems.get(id).getText(3).isEmpty()) {
-                string3 = XposedMainActivity.mItems.get(id).getText(3);
-            }
-            if (string3.isEmpty()) {
-                string3 = XposedMainActivity.mItems.get(id).getTitle(3);
+            String string3 = XposedMainActivity.mItems.get(id).getTitle(3);;
+            if (XposedMainActivity.mItems.get(id).getText(3).isEmpty()) {
                 if (string3.contains(".") && string3.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
                     try {
                         string3 = pm.getApplicationInfo(string3.split("/")[0], 0).loadLabel(pm).toString();
                     } catch (PackageManager.NameNotFoundException e) {
-                        Log.w("NPM", "[xposedDialog] Could not find package: " + XposedMainActivity.mItems.get(id).getTitle(3), e);
                     }
                 } else {
                     try {
@@ -811,10 +797,11 @@ public class XposedDialog extends DialogFragment {
                         try {
                             string3 = mContext.getResources().getString(mContext.getResources().getIdentifier("powerMenuBottom_" + XposedMainActivity.mItems.get(id).getTitle(3), "string", MainActivity.class.getPackage().getName()));
                         } catch (Throwable t1) {
-                            Log.w("NPM", "[xposedDialog] Failed to get String resource for powerMenuBottom_" + XposedMainActivity.mItems.get(id).getTitle(3), t);
                         }
                     }
                 }
+            } else {
+                string3 = XposedMainActivity.mItems.get(id).getText(3);
             }
             text3.setText(string3);
             text3.setVisibility((XposedMainActivity.mItems.get(id).getHideText() ? View.GONE : View.VISIBLE));
@@ -884,7 +871,6 @@ public class XposedDialog extends DialogFragment {
                                 } else {
                                     loadImage(airplaneModeIcon_Image.get(i), 9, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[9][2].toString() + ".png", airplaneModeIcon_Color.get(i));
                                 }
-                                airplaneMode = android.provider.Settings.Global.getInt(mContext.getContentResolver(), android.provider.Settings.Global.AIRPLANE_MODE_ON);
                             }
                         } catch (Throwable e) {
                             Log.e("NPM", "[xposedDialog] Failed to refresh airplane icon:", e);
@@ -898,7 +884,6 @@ public class XposedDialog extends DialogFragment {
                                 } else {
                                     loadImage(airplaneModeIcon_Image.get(i), 9, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[9][2].toString() + ".png", airplaneModeIcon_Color.get(i));
                                 }
-                                airplaneMode = android.provider.Settings.System.getInt(mContext.getContentResolver(), android.provider.Settings.System.AIRPLANE_MODE_ON);
                             }
                         } catch (Throwable e) {
                             Log.e("NPM", "[xposedDialog] Failed to refresh airplane icon:", e);
@@ -917,7 +902,6 @@ public class XposedDialog extends DialogFragment {
                             } else {
                                 loadImage(flashlightIcon_Image.get(i), 7, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[7][2].toString() + ".png", flashlightIcon_Color.get(i));
                             }
-                            flashlightOn = TorchService.getTorchState() == TorchService.TORCH_STATUS_ON;
                         }
                     } catch (Throwable t) {
                         Log.e("NPM", "[xposedDialog] Failed to refresh torch icon:", t);
@@ -934,7 +918,6 @@ public class XposedDialog extends DialogFragment {
                             } else {
                                 loadImage(rotateIcon_Image.get(i), 21, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[21][2].toString() + ".png", rotateIcon_Color.get(i));
                             }
-                            rotate = android.provider.Settings.System.getInt(mContext.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION);
                         }
                     } catch (Throwable e) {
                         Log.e("NPM", "[xposedDialog] Failed to refresh rotate icon:", e);
@@ -951,7 +934,6 @@ public class XposedDialog extends DialogFragment {
                             } else {
                                 loadImage(playPauseIcon_Image.get(i), 24, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[24][2].toString() + ".png", playPauseIcon_Color.get(i));
                             }
-                            mediaPlaying = am.isMusicActive();
                         }
                     } catch (Throwable e) {
                         loadImage(playPauseIcon_Image.get(i), 23, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[23][2].toString() + ".png", playPauseIcon_Color.get(i));
@@ -969,7 +951,6 @@ public class XposedDialog extends DialogFragment {
                             } else {
                                 loadImage(toggleWifi_Image.get(i), 27, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[27][2].toString() + ".png", toggleWifi_Color.get(i));
                             }
-                            wifiActive = wifiManager.isWifiEnabled();
                         }
                     } catch (Throwable e) {
                         loadImage(toggleWifi_Image.get(i), 26, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[26][2].toString() + ".png", toggleWifi_Color.get(i));
@@ -987,7 +968,6 @@ public class XposedDialog extends DialogFragment {
                             } else {
                                 loadImage(toggleBluetooth_Image.get(i), 29, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[29][2].toString() + ".png", toggleBluetooth_Color.get(i));
                             }
-                            bluetoothActive = bluetoothAdapter.isEnabled();
                         }
                     } catch (Throwable e) {
                         loadImage(toggleBluetooth_Image.get(i), 28, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[28][2].toString() + ".png", toggleBluetooth_Color.get(i));
@@ -1005,7 +985,6 @@ public class XposedDialog extends DialogFragment {
                             } else {
                                 loadImage(toggleData_Image.get(i), 31, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[31][2].toString() + ".png", toggleData_Color.get(i));
                             }
-                            dataActive = isDataActive();
                         }
                     } catch (Throwable e) {
                         loadImage(toggleData_Image.get(i), 30, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[30][2].toString() + ".png", toggleData_Color.get(i));
@@ -1028,7 +1007,30 @@ public class XposedDialog extends DialogFragment {
                     }
                 }
             }
-            amRingerMode = am.getRingerMode();
+            try {
+                if (Build.VERSION.SDK_INT >= 17) {
+                    airplaneMode = Settings.Global.getInt(mContext.getContentResolver(), Settings.System.AIRPLANE_MODE_ON);
+                } else {
+                    airplaneMode = Settings.System.getInt(mContext.getContentResolver(), Settings.System.AIRPLANE_MODE_ON);
+                }
+            } catch (Settings.SettingNotFoundException ignored) {
+            }
+            flashlightOn = TorchService.getTorchState() == TorchService.TORCH_STATUS_ON;
+            try {
+                rotate = Settings.System.getInt(mContext.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION);
+            } catch (Settings.SettingNotFoundException ignored) {
+            }
+            if (am != null) {
+                mediaPlaying = am.isMusicActive();
+                amRingerMode = am.getRingerMode();
+            }
+            if (wifiManager != null) {
+                wifiActive = wifiManager.isWifiEnabled();
+            }
+            if (bluetoothAdapter != null) {
+                bluetoothActive = bluetoothAdapter.isEnabled();
+            }
+            dataActive = isDataActive();
             mHandler.postDelayed(mRun, 250L);
         }
     }
@@ -2471,7 +2473,7 @@ public class XposedDialog extends DialogFragment {
         protected void onPostExecute(String p1) {
 
             super.onPostExecute(p1);
-            if (p1 == null) {
+            if (p1 == null && preferences.getBoolean(PreferenceNames.pUseGraphics, false)) {
                 progressbg.setImageDrawable(image);
                 progressbg.setVisibility(View.VISIBLE);
                 if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
@@ -2729,10 +2731,12 @@ public class XposedDialog extends DialogFragment {
 
     private void toggleBluetooth(boolean enable) {
         try {
-            if (enable) {
-                bluetoothAdapter.enable();
-            } else {
-                bluetoothAdapter.disable();
+            if (bluetoothAdapter != null) {
+                if (enable) {
+                    bluetoothAdapter.enable();
+                } else {
+                    bluetoothAdapter.disable();
+                }
             }
         } catch (Throwable t) {
             Log.e("NPM", "[xposedDialog] Error toggling bluetooth: ", t);

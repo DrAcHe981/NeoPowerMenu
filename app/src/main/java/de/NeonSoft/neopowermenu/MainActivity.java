@@ -355,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                PreferencesVisibilityOrderFragment.receivedPermissionResult(notificationManager.isNotificationPolicyAccessGranted());
+                PreferencesVisibilityOrderFragment.receivedPermissionResult(PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest_ItemSpace, PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest_Id, notificationManager.isNotificationPolicyAccessGranted());
             }
         } else if(requestCode == permissionsScreen.RESULT_ENABLE_ADMIN || requestCode == permissionsScreen.MY_PERMISSIONS_REQUEST) {
             permissionsScreen.adapter.notifyDataSetChanged();
@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == permissionsScreen.MY_PERMISSIONS_REQUEST) {
             permissionsScreen.adapter.notifyDataSetChanged();
         } else if (requestCode == PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest) {
-            PreferencesVisibilityOrderFragment.receivedPermissionResult(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED);
+            PreferencesVisibilityOrderFragment.receivedPermissionResult(PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest_ItemSpace, PreferencesVisibilityOrderFragment.visibilityOrderPermissionRequest_Id, grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED);
         }
     }
 
