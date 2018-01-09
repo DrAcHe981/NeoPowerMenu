@@ -459,4 +459,5 @@
   <string name="visibilityOrder_MissingPermissionForNotiPolicy">Отсутствует разрешение политики уведомлений, предоставьте его чтобы использовать этот переключатель!</string>
   <string name="powerMenu_Task_Killed">Убито [TARGET]!</string>
   <string name="powerMenu_No_Task_To_Kill">Не найдены задания, которые можно убить.</string>
+  <string name="graphics_PowerMenuBackground">Фон Меню</string>
 </resources>
