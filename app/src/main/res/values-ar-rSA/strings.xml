@@ -103,7 +103,24 @@
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"مطلوب لمسجل الشاشة من أجل تسجيل الشاشة."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"تسجيل الصوت"</string>
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"مطلوب من أجل تسجيل الصوت مع تسجيل الشاشة."</string>
+  <string name="permissionsScreenTitle_android.permission.SYSTEM_ALERT_WINDOW">"نافذة تنبيه النظام"</string>
+  <string name="permissionsScreenDesc_android.permission.SYSTEM_ALERT_WINDOW">"مطلوب لإظهار قائمة الطاقة فوق الجميع."</string>
+  <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"إيقاظ القفل"</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_WIFI_STATE">"الوصول لحالة wifi"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"مطلوب للحصول على حالة شبكة wifi."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"تغيير حالة WiFi"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"مطلوب لزر التحكم بwifi."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"بلوتوث"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"مطلوب للحصول على حالة البلوتوث."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"مشرف البلوتوث"</string>
+  <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"مطلوب لزر تبديل البلوتوث دون أي حوار."</string>
+  <string name="powerMenuMain_SoundMode">"وضع الصوت"</string>
+  <string name="powerMenuMain_SoundModeDesc">"الوضع الحالي: [SOUNDMODE]"</string>
+  <string name="SoundMode_Normal">"عادي"</string>
+  <string name="SoundMode_Vibrate">"اهتزاز"</string>
+  <string name="SoundMode_Silent">"صامت"</string>
   <!-- Preferences: Preset Manager -->
+  <string name="presetsManager_TitleAccount">"الحساب"</string>
   <!-- Login page -->
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
