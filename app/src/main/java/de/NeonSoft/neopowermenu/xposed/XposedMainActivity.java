@@ -301,31 +301,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         revealView = (CircularRevealView) findViewById(R.id.reveal);
         revealImageView = (ImageView) findViewById(R.id.revealImage);
-        if (new File(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png").exists()) {
-            mImageLoader.loadImage(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png", new ImageLoadingListener() {
-                @Override
-                public void onLoadingStarted(String imageUri, View view) {
-
-                }
-
-                @Override
-                public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-
-                }
-
-                @Override
-                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                    revealImageView.setImageBitmap(loadedImage);
-                    revealImageView.setVisibility(View.VISIBLE);
-                    revealImageView.startAnimation(new AnimationUtils().loadAnimation(mContext, R.anim.fade_in));
-                }
-
-                @Override
-                public void onLoadingCancelled(String imageUri, View view) {
-
-                }
-            });
-        }
         revealView2 = (CircularRevealView) findViewById(R.id.reveal2);
 
         PreviewLabel = (TextView) findViewById(R.id.PreviewLable);
@@ -377,19 +352,50 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         if((isShortcutWithVisibleContent) && animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
             final Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
             final int speed = (int) anim.getDuration();
-            handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, speed, null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        revealView.startAnimation(anim);
-                    }
-                }
-            }, 50);
+            if (new File(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png").exists() && preferences.getBoolean(PreferenceNames.pUseGraphics, false)) {
+                handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mImageLoader.loadImage(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png", new ImageLoadingListener() {
+                            @Override
+                            public void onLoadingStarted(String imageUri, View view) {
 
+                            }
+
+                            @Override
+                            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                                //Log.w("NPM","Failed to load background image:", failReason.getCause());
+                            }
+
+                            @Override
+                            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                                revealImageView.setImageBitmap(loadedImage);
+                                revealImageView.setVisibility(View.VISIBLE);
+                                revealImageView.startAnimation(anim);
+                            }
+
+                            @Override
+                            public void onLoadingCancelled(String imageUri, View view) {
+
+                            }
+                        });
+                    }
+                }, 50);
+            } else {
+                handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 1) {
+                            revealView.reveal(p.x, p.y, color, 0, speed, null);
+                        } else {
+                            revealView.reveal(p.x, p.y, color, 0, 0, null);
+                            revealView.startAnimation(anim);
+                        }
+                    }
+                }, 50);
+            }
 
             handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -399,7 +405,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                 }
             }, Math.max(speed - 150, 0));
         } else {
-                revealView.reveal(p.x, p.y, color, 0, 0, null);
+            revealView.reveal(p.x, p.y, color, 0, 0, null);
             showPowerDialog();
         }
     }
@@ -526,33 +532,44 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
             final int speed;
-            Animation anim = helper.getAnimation(mContext, animationPrefs, 0, true);
+            final Animation anim = helper.getAnimation(mContext, animationPrefs, 0, true);
             speed = (int) anim.getDuration();
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
+            if (new File(mContext.getFilesDir().getPath() + "/images/xposed_dialog_background.png").exists() && preferences.getBoolean(PreferenceNames.pUseGraphics, false)) {
+                handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        revealImageView.startAnimation(anim);
+                        revealImageView.setVisibility(View.GONE);
+                    }
+                }, 0);
+            } else {
+                handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 1) {
-                        String color = colorPrefs.getString("Reveal_Backgroundcolor", "#8800bcd4");
-                        if (Color.alpha(Color.parseColor(color)) > 0) {
-                            if (revealView.getVisibility() == View.VISIBLE) {
-                                revealView.hide(p.x, p.y, Color.parseColor("#00000000"), 0, speed, null);
+                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) == 1) {
+                            String color = colorPrefs.getString("Reveal_Backgroundcolor", "#8800bcd4");
+                            if (Color.alpha(Color.parseColor(color)) > 0) {
+                                if (revealView.getVisibility() == View.VISIBLE) {
+                                    revealView.hide(p.x, p.y, Color.parseColor("#00000000"), 0, speed, null);
+                                }
+                            }
+                        } else {
+                            //revealView.hide(p.x, p.y, backgroundColor, 0, 0, null);
+                            Animation anim = helper.getAnimation(mContext, animationPrefs, 0, true);
+                            if (revealView2.getVisibility() == View.VISIBLE) {
+                                revealView2.startAnimation(anim);
+                                revealView2.setVisibility(View.GONE);
+                            } else if (revealView.getVisibility() == View.VISIBLE) {
+                                revealView.startAnimation(anim);
+                                revealView.setVisibility(View.GONE);
                             }
                         }
-                    } else {
-                        //revealView.hide(p.x, p.y, backgroundColor, 0, 0, null);
-                        Animation anim = helper.getAnimation(mContext, animationPrefs, 0, true);
-                        if (revealView2.getVisibility() == View.VISIBLE) {
-                            revealView2.startAnimation(anim);
-                            revealView2.setVisibility(View.GONE);
-                        } else if (revealView.getVisibility() == View.VISIBLE) {
-                            revealView.startAnimation(anim);
-                            revealView.setVisibility(View.GONE);
-                        }
                     }
-                }
-            }, 0);
+                }, 0);
+            }
             handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override

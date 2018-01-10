@@ -7,20 +7,21 @@
 	android:background="@android:color/transparent"
 	android:id="@+id/activitymainxposedFrameLayout_Root">
 
+	<ImageView
+		android:id="@+id/revealImage"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@android:color/transparent"
+		android:visibility="gone"/>
+
 	<de.NeonSoft.neopowermenu.helpers.CircularRevealView
 		android:id="@+id/reveal"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="@android:color/transparent">
 
-		<ImageView
-			android:id="@+id/revealImage"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:background="@android:color/transparent"
-			android:visibility="gone"/>
-
 	</de.NeonSoft.neopowermenu.helpers.CircularRevealView>
+
 
 	<de.NeonSoft.neopowermenu.helpers.CircularRevealView
 		android:id="@+id/reveal2"

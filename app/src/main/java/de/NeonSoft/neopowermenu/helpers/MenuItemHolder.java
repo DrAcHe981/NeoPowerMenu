@@ -6,9 +6,9 @@ public class MenuItemHolder {
 
     private int iType = -1;
     private ResolveInfo iRI = null;
-    private String iTitle1 = "";
-    private String iTitle2 = "";
-    private String iTitle3 = "";
+    private String iTitle1 = "Empty";
+    private String iTitle2 = "Empty";
+    private String iTitle3 = "Empty";
     private boolean iHideDesc = false;
     private boolean iHideOnLockscreen = false;
     private String iText1 = "";
