@@ -50,6 +50,17 @@
   <string name="advancedPrefsDesc_ShowOnLockScreen">"عرض قائمة الطاقة على شاشة القفل، عند التعطيل لن يظهر أي شيء."</string>
   <string name="advancedPrefsCategory_Delays">"تأخير"</string>
   <string name="advancedPrefs_DelayZero">"لحظة تقريباً"</string>
+  <string name="advancedPrefsTitle_ScreenshotDelay">"تأخير إلتقاط الشاشة"</string>
+  <string name="advancedPrefsDesc_ScreenshotDelay">"المدة بين الضغط وإلتقاط الشاشة."</string>
+  <string name="Dialog_SelectColor">"اختيار اللون"</string>
+  <string name="ColorPicker_Value">"القيمة:"</string>
+  <string name="ColorPicker_Saturation">"تشبّع اللون:"</string>
+  <string name="ColorPicker_Opacity">"التعتيم:"</string>
+  <string name="ColorPicker_Hex">"كود Hex:"</string>
+  <string name="presetLoad_PresetDeleted">"مسح [PRESETNAME]!"</string>
+  <string name="presetLoad_PresetLoaded">"تحميل [PRESETNAME]!"</string>
+  <string name="presetSaveDialog_CreatorNameInfo">"أنشئ هذا الإعداد المسبق بواسطة:"</string>
+  <string name="presetSaveDialog_InfoText">"ضع اسماً للإعداد المسبق:"</string>
   <!-- Screen recording -->
   <!-- Torch -->
   <!-- Preferences: Colors -->
