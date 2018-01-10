@@ -121,6 +121,13 @@
   <string name="SoundMode_Silent">"صامت"</string>
   <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"الحساب"</string>
+  <string name="presetsManager_UploadMsg">"سيتم رفع هذا الإعداد المسبق وسيظهر لجميع المستخدمين. \n\n هذه فرصتك الأخيرة لتعديل اسم الإعداد أو منشئ المحتوى قبل الرفع..."</string>
+  <string name="presetsManager_UploadComplete">"تم الرفع!"</string>
+  <string name="presetsManager_UploadFailedSameName">"هذا الاسم مُستخدم بالفعل. يرجى اختيار اسم آخر."</string>
+  <string name="presetsManager_UploadFailedNoAccess">"اسم هذا المنشئ محمي، اختر اسم آخر أو سجل الدخول."</string>
+  <string name="presetsManager_UploadFailed">"فشل الرفع!"</string>
+  <string name="presetsManager_DownloadFailed">"فشل التحميل!"</string>
+  <string name="presetsManager_CantConnecttoServer">"فشل الاتصال بالسيرفر. \n يرجي التحقق من اتصال الانترنت لديك وإعادة المحاولة."</string>
   <!-- Login page -->
   <!-- Fuzzy -->
   <!-- Preferences: Colors -->
