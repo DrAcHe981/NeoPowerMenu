@@ -75,9 +75,24 @@
   <string name="powerMenuMain_FlashlightDesc">"إيقاف التشغيل بعد [AUTOOFF]."</string>
   <string name="powerMenuMain_FlashlightDescDisabled">"تعطيل إيقاف التشغيل التلقائي."</string>
   <string name="powerMenuMain_ExpandedDesktop">"سطح المكتب الموسّع"</string>
+  <string name="advancedPrefsTitle_DialogGravity">"وضع الحوار"</string>
+  <string name="advancedPrefsDesc_DialogGravity">"تغيير وضع الحوار."</string>
   <!-- Torch -->
+  <string name="quick_settings_torch_on">"الشعلة تعمل"</string>
+  <string name="quick_settings_torch_off">"الشعلة لا تعمل"</string>
+  <string name="quick_settings_torch_off_notif">"المس لإيقاف التشغيل"</string>
+  <string name="powerMenuMain_AirplaneMode">"وضع الطيران"</string>
+  <string name="powerMenuMain_RestartUI">"إعادة تشغيل الواجهة"</string>
   <!-- Preferences: Colors -->
+  <string name="colorsType_Reveal">"اكتشاف اللون"</string>
+  <string name="colorsType_Circle">"لون الدائرة"</string>
+  <string name="colorsType_Background">"لون الخلفية"</string>
+  <string name="colorsType_Text">"لون الكتابة"</string>
+  <string name="powerMenuMain_Flashlight">"شعلة"</string>
   <!-- Permissions Screen -->
+  <string name="permissionsScreen_Title">"أذونات"</string>
+  <string name="permissionsScreen_NotAllGranted">"لم يتم منح جميع الأذونات، قد لا تعمل بعض الوظائف..."</string>
+  <string name="permissionsScreen_ClickToRequest">"انقر لطلب الأذونات."</string>
   <!-- Preferences: Colors -->
   <!-- Preferences: Preset Manager -->
   <!-- Login page -->
