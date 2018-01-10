@@ -93,7 +93,16 @@
   <string name="permissionsScreen_Title">"أذونات"</string>
   <string name="permissionsScreen_NotAllGranted">"لم يتم منح جميع الأذونات، قد لا تعمل بعض الوظائف..."</string>
   <string name="permissionsScreen_ClickToRequest">"انقر لطلب الأذونات."</string>
+  <string name="permissionsScreen_DontAskAgain">"لا تسأل مرة أخرى"</string>
+  <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"قراءة/كتابة الذاكرة الخارجية"</string>
+  <string name="permissionsScreenDesc_android.permission.WRITE_EXTERNAL_STORAGE">"مطلوب لاستخدام الرسومات المخصصة."</string>
+  <string name="permissionsScreenTitle_android.permission.CAMERA">"كاميرا"</string>
+  <string name="permissionsScreenDesc_android.permission.CAMERA">"مطلوب لتفعيل الشعلة."</string>
+  <string name="visibilityOrder_HideDesc">"إخفاء الوصف"</string>
   <!-- Preferences: Colors -->
+  <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"مطلوب لمسجل الشاشة من أجل تسجيل الشاشة."</string>
+  <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"تسجيل الصوت"</string>
+  <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"مطلوب من أجل تسجيل الصوت مع تسجيل الشاشة."</string>
   <!-- Preferences: Preset Manager -->
   <!-- Login page -->
   <!-- Fuzzy -->
