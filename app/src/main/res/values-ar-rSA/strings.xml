@@ -61,7 +61,20 @@
   <string name="presetLoad_PresetLoaded">"تحميل [PRESETNAME]!"</string>
   <string name="presetSaveDialog_CreatorNameInfo">"أنشئ هذا الإعداد المسبق بواسطة:"</string>
   <string name="presetSaveDialog_InfoText">"ضع اسماً للإعداد المسبق:"</string>
+  <string name="presetSaveDialog_OverwriteText">"موجود مسبقاً سيتم الكتابة فوق الإعداد المسبق!"</string>
+  <string name="presetSave_PresetSaved">"حفظ [PRESETNAME]!"</string>
+  <string name="powerMenuMain_Screenrecord">"تسجيل الشاشة"</string>
   <!-- Screen recording -->
+  <string name="screenrecord_notif_ticker">"الشاشة يتم تسجيلها"</string>
+  <string name="screenrecord_notif_title">تسجيل الشاشة</string>
+  <string name="screenrecord_toast_error">"لا يتم تسجيل الشاشة"</string>
+  <string name="screenrecord_toast_processing">"لا يمكن بدء تسجيل جديد بما أنه لا يزال قيد التسجيل السابق"</string>
+  <string name="screenrecord_toast_saved">"التسجيل تم حفظه %s"</string>
+  <string name="screenrecord_toast_save_error">"تعذر حفظ التسجيل إلى ملف الإخراج"</string>
+  <string name="powerMenuMain_FlashlightOff">"إيقاف الشعلة"</string>
+  <string name="powerMenuMain_FlashlightDesc">"إيقاف التشغيل بعد [AUTOOFF]."</string>
+  <string name="powerMenuMain_FlashlightDescDisabled">"تعطيل إيقاف التشغيل التلقائي."</string>
+  <string name="powerMenuMain_ExpandedDesktop">"سطح المكتب الموسّع"</string>
   <!-- Torch -->
   <!-- Preferences: Colors -->
   <!-- Permissions Screen -->
