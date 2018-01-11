@@ -433,4 +433,6 @@
   <string name="powerMenu_Task_Killed">Eliminado [TARGET]!</string>
   <string name="powerMenu_No_Task_To_Kill">No se han encontrado procesos que se puedan eliminar.</string>
   <string name="graphics_PowerMenuBackground">Fondo del menú</string>
+  <string name="visibilityOrder_MissingPermissionForCamera">No se han encontrado los permisos de cámara, por favor dar permisos para utilizar este conmutador!</string>
+  <string name="visibilityOrder_NotSupportedbyDevice">Tu dispositivo parece no soportar el elemento \"[TITLE]\"!</string>
 </resources>
