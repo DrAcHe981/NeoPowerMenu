@@ -48,7 +48,7 @@ public class tourPage extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        if(page != -1) {
+        if(page != -1 && page < tourFragment.pageImages.size()) {
             View view = inflater.inflate(R.layout.tourpage, container, false);
 
             ImageView Image = (ImageView) view.findViewById(R.id.tourPageImage);

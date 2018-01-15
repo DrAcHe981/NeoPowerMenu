@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (fragmentManager.findFragmentByTag(slideDownDialogFragment.dialogTag) != null) {
+        if (fragmentManager.findFragmentByTag(slideDownDialogFragment.dialogTag) != null && slideDownDialogFragment.dialogs.size() > 0) {
                         /*Intent intent = new Intent();
                          intent.setAction(slideDownDialogFragment.dialogCloseCall);
 						 context.sendBroadcast(intent);*/
