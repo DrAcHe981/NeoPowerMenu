@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"root化した端末ならこのアプリで電源メニューを自由にカスタマイズできるよ!"</string>
   <string name="PreviewPowerMenu">"プレビュー"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"電源を切る"</string>
   <string name="powerMenuMain_Reboot">"再起動"</string>
   <string name="powerMenuMain_SoftReboot">"ソフトリブート"</string>
@@ -23,14 +22,12 @@
   <string name="ToggleRotateMode_Off">"オフ"</string>
   <string name="powerMenuMain_ToggleWifi">"Wi-Fi"</string>
   <string name="powerMenuMain_ToggleData">"データ"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"表示と並び順"</string>
   <string name="category_Preset">"プリセット"</string>
   <string name="preset_Load">"プリセットの読み込み"</string>
   <string name="preset_LoadDesc">"保存した設定の読み込み"</string>
   <string name="preset_Save">"プリセットの保存"</string>
   <string name="preset_SaveDesc">"現在の設定の保存"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"ローカルプリセット"</string>
   <string name="presetsManager_TitleOnline">"オンラインプリセット"</string>
   <string name="presetsManager_Creator">"制作者: [CREATORNAME]"</string>
@@ -39,7 +36,6 @@
   <string name="presetsManager_ImportMsg">"このプリセットをインポートしますか?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] をインポートしました。"</string>
   <string name="presetsManager_ImportFailed">"インポートに失敗しました..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"電源メニュー"</string>
   <string name="advancedPrefsTitle_UseGraphics">"グラフィックを使用"</string>
   <string name="advancedPrefsDesc_UseGraphics">"文字の円ではなくグラフィックを使うようにします。"</string>
@@ -61,7 +57,6 @@
   <string name="presetSaveDialog_OverwriteText">"既に存在します。プリセットは上書きされます!"</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] を保存しました!"</string>
   <string name="powerMenuMain_Screenrecord">"スクリーンレコード"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"画面を記録中です"</string>
   <string name="screenrecord_toast_error">"画面の録画に失敗しました"</string>
   <string name="screenrecord_toast_processing">"以前の録画の処理中のため、新しい録画を開始できません"</string>
@@ -73,19 +68,16 @@
   <string name="powerMenuMain_ExpandedDesktop">"拡張デスクトップ"</string>
   <string name="advancedPrefsTitle_DialogGravity">"ダイアログの位置"</string>
   <string name="advancedPrefsDesc_DialogGravity">"ダイアログの位置を変更します。"</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"ライト点灯"</string>
   <string name="quick_settings_torch_off">"ライト消灯"</string>
   <string name="quick_settings_torch_off_notif">"タップで消灯"</string>
   <string name="powerMenuMain_AirplaneMode">"機内モード"</string>
   <string name="powerMenuMain_RestartUI">"システム UI の再起動"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"リベール色"</string>
   <string name="colorsType_Circle">"円の色"</string>
   <string name="colorsType_Background">"背景色"</string>
   <string name="colorsType_Text">"文字色"</string>
   <string name="powerMenuMain_Flashlight">"ライト"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"権限"</string>
   <string name="permissionsScreen_NotAllGranted">"一部の権限が許可されていません。正しく動作しない可能性があります..."</string>
   <string name="permissionsScreen_ClickToRequest">"タップで権限を要求します。"</string>
@@ -95,7 +87,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"カメラ"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"トーチのトグルのために必要です。"</string>
   <string name="visibilityOrder_HideDesc">"説明を非表示にする"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Surface Flinger へのアクセス"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"スクリーンレコーダーで画面を録画するために必要です。"</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"音声の録音"</string>
@@ -116,7 +107,6 @@
   <string name="SoundMode_Normal">"通常"</string>
   <string name="SoundMode_Vibrate">"バイブ"</string>
   <string name="SoundMode_Silent">"サイレント"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"アカウント"</string>
   <string name="presetsManager_UploadMsg">"このプリセットを誰でも見られるよう、公開サーバーにアップロードします。\n\nここがアップロード前に名前や制作者名を変えられる最後のステップです..."</string>
   <string name="presetsManager_UploadComplete">"アップロードしました!"</string>
@@ -128,7 +118,6 @@
   <string name="presetsManager_CantConnecttoDB">"データベースに接続できません! \n後でもう一度試して変わりが無ければ、開発者に報告してください。"</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"インターネット"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"プリセットを公開サーバからダウンロード/公開サーバにアップロードするために必要です。"</string>
-  <!-- Login page -->
   <string name="login_Title">"ログイン"</string>
   <string name="login_TitleRegister">"登録"</string>
   <string name="login_Info">"このユーザー名は保護されているので、誰もこの名前でアップロードできません。ログインするか、新規登録してください。\n登録は必須ではありません!\n個人情報は一切共有されません!"</string>
@@ -149,12 +138,10 @@
   <string name="login_TitleStatistics">"[USERNAMEEMAIL] の統計情報"</string>
   <string name="login_Statistics">"プリセットをアップロードしました: [UPLOADCOUNT]\n\n送った星: [STARSGIVEN]\n受け取った星: [STARSRECEIVED]\n\nあなたのプリセット (星の数順): \n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"統計情報の取得に失敗しました..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"ここをタップで統計情報を再読み込み"</string>
   <string name="login_TitleLogout">"ログアウト"</string>
   <string name="login_pleaseCheckInput">"何かが間違っています。入力内容を確認してください。"</string>
   <string name="presetsManager_Stars">"星: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] 色"</string>
   <string name="colorsPartDescDialog">"[BUTTON] をタップしたときのダイアログの色です。"</string>
   <string name="colorsPartDescButton">"[BUTTON] ボタンの色です。"</string>
@@ -177,10 +164,8 @@
   <string name="powerMenuMain_SoundVibrate">"サウンド: マナーモード"</string>
   <string name="powerMenuMain_SoundNormal">"サウンド: 通常"</string>
   <string name="powerMenuMain_SoundSilent">"サウンド: サイレント"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|はい|いいえ|名前の変更|キャンセル|削除|読み込み|保存|無視"</string>
   <string name="presetLoadDialog_BuiltIn">"ライト|ダーク|ブラック"</string>
-  <string name="advancedPrefs_DialogGravity">"上|左|右|下"</string>
   <string name="graphics_Choose">"既定の復元|プリセットから選択|ギャラリーから選択"</string>
   <string name="graphics_Crop">"トリミング|サークルトリミング"</string>
   <string name="graphics_NoPresetsFound">"グラフィックのプリセットが見つかりません..."</string>
@@ -195,7 +180,6 @@
   <string name="uploadHelper_States">"他のアップロードを待機中...|サーバーへ接続中...|情報を要求中...|アップロード中...|キャンセル中..."</string>
   <string name="visibilityOrder_AddItem">"通常アイテムの追加\n一つだけのスロットのアイテムです。|マルチアイテムの追加\n一行に三つのアイテムまで追加できます。|マルチページアイテムの追加\nタップで新しいページを表示します。"</string>
   <string name="visibilityOrder_MultiPage">"マルチページアイテムの始まり\n最初の通常アイテムは新しいページを開くボタンを定義します。|マルチページアイテムの終わり"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root と Xposed"</string>
   <string name="preferences_RootXposed1">"Root と Xposed を利用できません|このモジュールを動作させるには Root と Xposed が必要です。"</string>
   <string name="preferences_RootXposed2">"Xposed 動作中、Root なし|電源を切ったり再起動したりするために Root が必要です...\nRoot アクセスを許可してください。"</string>
@@ -223,11 +207,9 @@
   <string name="animations_Types">"フェード|リベール\n(背景でのみ動作)|上にスライド|左にスライド|右にスライド|下にスライド|スケールアップ|スケールダウン|なし"</string>
   <string name="animations_Type">"タイプ"</string>
   <string name="animations_Speed">"速度"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"読み込み中の円"</string>
   <string name="presetsManager_LoadMore">"読み込み中...|お待ちください...|さらにプリセットを表示|ここをタップすると他のプリセットを表示します。|終わりです。|表示するプリセットがありません。|ここをタップすると再試行します。"</string>
   <string name="powerMenu_SureToRebootPowerOff">"再起動しますか?|シャットダウンしますか?"</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"確認を表示する|再起動や電源を切る前に確認ダイアログを表示します。"</string>
   <string name="preferences_Donate">"寄付|アプリが気に入りましたか?\nコーヒー一杯でもいただけたら嬉しいです!"</string>
   <string name="advancedPrefs_HideOnClick">"タップで隠す"</string>
