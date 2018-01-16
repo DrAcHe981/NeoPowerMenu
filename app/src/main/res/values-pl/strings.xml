@@ -6,7 +6,6 @@
 
 \"\"\""</string>
   <string name="PreviewPowerMenu">"Podgląd"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Wyłącz"</string>
   <string name="powerMenuMain_Reboot">"Uruchom ponownie"</string>
   <string name="powerMenuMain_SoftReboot">"Szybki restart"</string>
@@ -16,14 +15,12 @@
   <string name="powerMenuBottom_SafeMode">"Tryb bezpieczny"</string>
   <string name="powerMenu_Shuttingdown">"Wyłączanie..."</string>
   <string name="powerMenu_Rebooting">"Ponowne uruchamianie..."</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Kolejność i widoczność"</string>
   <string name="category_Preset">"Szablony"</string>
   <string name="preset_Load">"Wczytaj szablon"</string>
   <string name="preset_LoadDesc">"Wczytaj gotową konfigurację."</string>
   <string name="preset_Save">"Zapisz szablon"</string>
   <string name="preset_SaveDesc">"Zapisz swoją obecną konfigurację."</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Lokalne szablony"</string>
   <string name="presetsManager_TitleOnline">"Szablony online"</string>
   <string name="presetsManager_Creator">"Twórca: [CREATORNAME]"</string>
@@ -33,7 +30,6 @@ Tego nie można cofnąć!\"\"\""</string>
   <string name="presetsManager_ImportMsg">"Czy chcesz importować ten szablon?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] importowany pomyślnie."</string>
   <string name="presetsManager_ImportFailed">"Importowanie nie powiodło się..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Menu zasilania"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Użyj grafiki"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Użyj grafiki zamiast koła z literą."</string>
@@ -55,7 +51,6 @@ Tego nie można cofnąć!\"\"\""</string>
   <string name="presetSaveDialog_OverwriteText">"Plik o takiej nazwie istnieje i zostanie nadpisany!"</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] zapisany!"</string>
   <string name="powerMenuMain_Screenrecord">"Nagrywanie ekranu"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Nagrywanie ekranu rozpoczęte"</string>
   <string name="screenrecord_toast_error">"Nie można nagrać ekranu"</string>
   <string name="screenrecord_toast_processing">"Nie można nagrać ekranu, ponieważ poprzednie nagranie jest nadal przetwarzane."</string>
@@ -67,17 +62,14 @@ Tego nie można cofnąć!\"\"\""</string>
   <string name="powerMenuMain_ExpandedDesktop">"Rozszerzony pulpit"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Pozycja okna"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Zmień pozycję okna menu zasilania."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Latarka włączona"</string>
   <string name="quick_settings_torch_off">"Latarka wyłączona"</string>
   <string name="quick_settings_torch_off_notif">"Dotknij aby wyłączyć"</string>
   <string name="powerMenuMain_AirplaneMode">"Tryb samolotowy"</string>
   <string name="powerMenuMain_RestartUI">"Zrestartuj Ui Systemu"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Background">"Kolor tła"</string>
   <string name="colorsType_Text">"Kolor tekstu"</string>
   <string name="powerMenuMain_Flashlight">"Latarka"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Uprawnienia"</string>
   <string name="permissionsScreen_NotAllGranted">"Nie wszystkie uprawnienia są przyznane, niektóre funkcje mogą nie działać ..."</string>
   <string name="permissionsScreen_DontAskAgain">"Nie pytaj ponownie"</string>
@@ -85,14 +77,12 @@ Tego nie można cofnąć!\"\"\""</string>
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Wymagane aby włączyć latarkę"</string>
   <string name="visibilityOrder_HideDesc">"Ukryj opis"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Nagraj dźwięk"</string>
   <string name="permissionsScreenTitle_android.permission.WAKE_LOCK">"WakeLock"</string>
   <string name="powerMenuMain_SoundMode">"Tryb Dźwięku"</string>
   <string name="SoundMode_Normal">"Normalny"</string>
   <string name="SoundMode_Vibrate">"Wibracja"</string>
   <string name="SoundMode_Silent">"Cichy"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Konto"</string>
   <string name="presetsManager_UploadComplete">"Wysyłanie zakończone!"</string>
   <string name="presetsManager_UploadFailedSameName">"Wybrana nazwa jest zajęta, wybierz inną."</string>
@@ -101,7 +91,6 @@ Tego nie można cofnąć!\"\"\""</string>
   <string name="presetsManager_DownloadFailed">"Pobieranie nie udane!"</string>
   <string name="presetsManager_CantConnecttoServer">"\"\"\"Nie można połączyć się z serwerem!
 Proszę sprawdzić połączenie sieciowe lub spróbować ponownie później.\"\"\""</string>
-  <!-- Login page -->
   <string name="login_Title">"Logowanie"</string>
   <string name="login_TitleRegister">"Rejestracja"</string>
   <string name="login_UsernameEmail">"Nazwa użytkownika lub email:"</string>
@@ -118,10 +107,8 @@ Kliknij aby utworzyć nowe konto!\"\"\""</string>
   <string name="login_Processing">"Przetwarzanie..."</string>
   <string name="login_TitleStatistics">"Statystyki dla  [USERNAMEEMAIL]"</string>
   <string name="login_StatisticsFailed">"Nie udało się uzyskać statystyk ..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Kliknij tutaj, aby odświeżyć statystyki"</string>
   <string name="login_TitleLogout">"Wyloguj"</string>
-  <!-- Preferences: Colors -->
   <string name="presetsManager_Refresh">"Odświerz"</string>
   <string name="presetsManager_OrderBy">"Uporządkuj wg."</string>
   <string name="presetsManager_OrderNames">"Nazwa|Czas|Gwiazdki|Autor|Własne"</string>
@@ -132,12 +119,9 @@ Kliknij aby utworzyć nowe konto!\"\"\""</string>
   <string name="powerMenuMain_SoundVibrate">"Dźwięk: Wibracja"</string>
   <string name="powerMenuMain_SoundNormal">"Dźwięk: Normalny"</string>
   <string name="powerMenuMain_SoundSilent">"Dźwięk: Cichy"</string>
-  <!-- Dialog -->
   <string name="presetLoadDialog_BuiltIn">"Jasny|Ciemny|Czarny"</string>
-  <string name="advancedPrefs_DialogGravity">"Góra|Lewo|Prawo|Dół"</string>
   <string name="graphics_Choose">"Przywróć domyślne|Wybierz zdefiniowane|Wybierz z galerii"</string>
   <string name="presetsManager_Buttons">"Daj gwiazdkę|Usuń gwiazdkę|Usuń|Zgłoś|Wgraj|Podziel się"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root oraz Xposed"</string>
   <string name="preferences_RootXposed1">"Root oraz Xposed niedostępne|Root oraz Xposed są wymagane do działania modułu."</string>
   <string name="preferences_RootXposed2">"\"\"\"Xposed działa, ale root nie.|Root jest wymagany do wyłączenia lub restartu...
@@ -160,6 +144,4 @@ Ustawienia będą dostępne jedynie przez Xposed Installer.\"\"\""</string>
 Sprawdź źródła na GitHub\"\"\""</string>
   <string name="preferences_Share">"Udostępnij|Lubisz tą aplikację? Podziel się nią ze znajomymi!"</string>
   <string name="preferences_About">"Kod: Neon-Soft / DrAcHe981|Oparte na źródle od Naman Dwivedi(naman14)."</string>
-  <!-- Power Menu -->
-  <!-- Preferences: Advanced -->
 </resources>
