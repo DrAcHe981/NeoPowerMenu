@@ -33,4 +33,13 @@ public class PreferenceNames {
     public static String pLoadAppIcons = "LoadAppIcons";
     public static String pRoundAppIcons = "RoundAppIcons";
     public static String pColorizeNonStockIcons = "ColorizeNonStockIcons";
+
+
+    public static String pFakeOffStrategy = "FakePowerOffStrategy";
+    public static String pFakeOffInSOD = "FakePowerOffInSOD";
+    public static String pFakeOffTime = "FakePowerOffTime";
+    public static String pFakeOff = "FakePowerOff";
+    public static String pFakeOffSimPowerButtonTime = "FakePowerOffSimButtonTime";
+    public static String pFakeOffSilent = "FakePowerOffSetSilent";
+    public static String pFakeOffLed = "FakePowerOffLed";
 }

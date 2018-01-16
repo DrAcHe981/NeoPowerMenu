@@ -1,4 +1,4 @@
-package de.NeonSoft.neopowermenu;
+package de.NeonSoft.neopowermenu.Receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

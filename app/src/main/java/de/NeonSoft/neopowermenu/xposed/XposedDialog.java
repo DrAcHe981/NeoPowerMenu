@@ -143,6 +143,7 @@ public class XposedDialog extends DialogFragment {
 
     private final String SHUTDOWN_BROADCAST = "am broadcast android.intent.action.ACTION_SHUTDOWN";
     private final String SHUTDOWN = "reboot -p";
+    private final String FAKEPOWEROFF = "fakepoweroff";
     private final String REBOOT_CMD = "reboot";
     private final String REBOOT_SOFT_REBOOT_CMD = "setprop ctl.restart zygote";
     private final String REBOOT_RECOVERY_CMD = "reboot recovery";
@@ -570,7 +571,7 @@ public class XposedDialog extends DialogFragment {
         desc.setVisibility(View.GONE);
 
         if (!title.equalsIgnoreCase("Empty")) {
-            String string = title;
+            String string = title.replace("(Fake)", "");
             if (customText.isEmpty()) {
                 if (string.contains(".") && string.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
@@ -670,7 +671,7 @@ public class XposedDialog extends DialogFragment {
         text.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(1).equalsIgnoreCase("Empty")) {
-            String string = XposedMainActivity.mItems.get(id).getTitle(1);;
+            String string = XposedMainActivity.mItems.get(id).getTitle(1).replace("(Fake)", "");
             if (XposedMainActivity.mItems.get(id).getText(1).isEmpty()) {
                 if (string.contains(".") && string.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
@@ -726,7 +727,7 @@ public class XposedDialog extends DialogFragment {
         text2.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(2).equalsIgnoreCase("Empty")) {
-            String string2 = XposedMainActivity.mItems.get(id).getTitle(2);;
+            String string2 = XposedMainActivity.mItems.get(id).getTitle(2).replace("(Fake)", "");
             if (XposedMainActivity.mItems.get(id).getText(2).isEmpty()) {
                 if (string2.contains(".") && string2.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
@@ -782,7 +783,7 @@ public class XposedDialog extends DialogFragment {
         text3.setVisibility(View.GONE);
 
         if (!XposedMainActivity.mItems.get(id).getTitle(3).equalsIgnoreCase("Empty")) {
-            String string3 = XposedMainActivity.mItems.get(id).getTitle(3);;
+            String string3 = XposedMainActivity.mItems.get(id).getTitle(3).replace("(Fake)", "");
             if (XposedMainActivity.mItems.get(id).getText(3).isEmpty()) {
                 if (string3.contains(".") && string3.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
@@ -1047,7 +1048,7 @@ public class XposedDialog extends DialogFragment {
                         return;
                     }
                 }
-                if (text.equalsIgnoreCase("Shutdown")) {
+                if (text.equalsIgnoreCase("Shutdown") || text.equalsIgnoreCase("FakePowerOff")) {
                     loadImage(foreground, 1, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[1][2].toString() + ".png", color2);
                 } else if (text.equalsIgnoreCase("Reboot")) {
                     loadImage(foreground, 2, mContext.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[2][2].toString() + ".png", color2);
@@ -1581,6 +1582,7 @@ public class XposedDialog extends DialogFragment {
                 }
             }
             if (RequireConfirmation && (name.equalsIgnoreCase("Shutdown") ||
+                    name.equalsIgnoreCase("FakePowerOff") ||
                     name.equalsIgnoreCase("Reboot") ||
                     name.equalsIgnoreCase("SoftReboot") ||
                     name.equalsIgnoreCase("Recovery") ||
@@ -1590,7 +1592,7 @@ public class XposedDialog extends DialogFragment {
                 if (!confirmDialog.equalsIgnoreCase(name)) {
                     confirmDialog = name;
                     SubDialogs.add("Confirm");
-                    confirmAction.setText(mContext.getString(R.string.powerMenu_SureToRebootPowerOff).split("\\|")[(name.equalsIgnoreCase("Shutdown") ? 1 : 0)]);
+                    confirmAction.setText(mContext.getString(R.string.powerMenu_SureToRebootPowerOff).split("\\|")[(name.equalsIgnoreCase("Shutdown") || name.equalsIgnoreCase("FakePowerOff") ? 1 : 0)]);
                     confirmNo.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_NO]);
                     confirmNo.setOnClickListener(new OnClickListener() {
 
@@ -1656,7 +1658,58 @@ public class XposedDialog extends DialogFragment {
                 dismissThis();
                 return;
             }
-            if (name.equalsIgnoreCase("Shutdown")) {
+            if (name.equalsIgnoreCase("FakePowerOff")) {
+                canDismiss = false;
+
+                //revealView.setVisibility(View.VISIBLE);
+                final int color = Color.parseColor(colorPrefs.getString("DialogShutdown_Backgroundcolor", "#d32f2f"));
+                final Point p = getLocationInView(revealView, v);
+                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
+                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
+                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
+                    } else {
+                        revealView.reveal(p.x, p.y, color, 0, 0, null);
+                        if (frame3.getVisibility() == View.VISIBLE) {
+                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+                        } else if (frame.getVisibility() == View.VISIBLE) {
+                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
+                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
+                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+                        }
+                        revealView.startAnimation(anim);
+                        frame2.startAnimation(anim);
+                    }
+                } else {
+                    revealView.reveal(p.x, p.y, color, 0, 0, null);
+                }
+
+                if (selectedView == v) {
+                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
+                    selectedView = null;
+                } else {
+                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
+                    selectedView = v;
+                }
+
+                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogShutdown_Revealcolor", "#ff0097a7"));
+                frame.setVisibility(View.GONE);
+                frame3.setVisibility(View.GONE);
+                frameConfirm.setVisibility(View.GONE);
+                frameEnterPassword.setVisibility(View.GONE);
+                frame2.setVisibility(View.VISIBLE);
+
+                status.setText(R.string.powerMenuMain_Shutdown);
+                status_detail.setText(R.string.powerMenu_Shuttingdown);
+
+                setProgressScreen("Shutdown");
+                toggleSystemUI(true);
+                if (!mPreviewMode) {
+                    new BackgroundThread(FAKEPOWEROFF).start();
+                }
+            } else if (name.equalsIgnoreCase("Shutdown")) {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
@@ -2531,9 +2584,11 @@ public class XposedDialog extends DialogFragment {
                 if (sCmd == null) {
                     return;
                 }
-                if (mDeepXposedLogging)
-                    XposedUtils.log("Sending " + SHUTDOWN_BROADCAST);
-                Shell.SU.run(SHUTDOWN_BROADCAST);
+                if (!((String) sCmd).equalsIgnoreCase("fakepoweroff")) {
+                    if (mDeepXposedLogging)
+                        XposedUtils.log("Sending " + SHUTDOWN_BROADCAST);
+                    Shell.SU.run(SHUTDOWN_BROADCAST);
+                }
 
                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                     @Override
@@ -2550,9 +2605,15 @@ public class XposedDialog extends DialogFragment {
                                     mContext.sendOrderedBroadcast(broadcast, null);
                                 }
                             } else {
-                                if (mDeepXposedLogging)
-                                    XposedUtils.log("Running su command " + sCmd.toString());
-                                Shell.SU.run((String) sCmd);
+                                if (((String) sCmd).equalsIgnoreCase("fakepoweroff")) {
+                                    Intent broadcast = new Intent();
+                                    broadcast.setAction(XposedMain.NPM_ACTION_BROADCAST_FAKEPOWEROFF);
+                                    mContext.sendOrderedBroadcast(broadcast, null);
+                                } else {
+                                    if (mDeepXposedLogging)
+                                        XposedUtils.log("Running su command " + sCmd.toString());
+                                    Shell.SU.run((String) sCmd);
+                                }
                             }
                         } else if (sCmd instanceof String[]) {
                             if (mDeepXposedLogging)
