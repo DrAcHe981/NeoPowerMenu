@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Оцените это отличное приложение для настройки меню выключения с Вашего Аndroid-устройства с root-доступом!"</string>
   <string name="PreviewPowerMenu">"Предпросмотр"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Выключение"</string>
   <string name="powerMenuMain_Reboot">"Перезагрузка"</string>
   <string name="powerMenuMain_SoftReboot">"Мягкая Перезагрузка"</string>
@@ -25,14 +24,12 @@
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Мобильные Данные"</string>
   <string name="powerMenuMain_RebootFlashMode">"Режим установки"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Отображение и порядок"</string>
   <string name="category_Preset">"Шаблоны"</string>
   <string name="preset_Load">"Загрузить шаблон"</string>
   <string name="preset_LoadDesc">"Загрузить сохранённую конфигурацию"</string>
   <string name="preset_Save">"Сохранить шаблон"</string>
   <string name="preset_SaveDesc">"Сохраните свою текущую конфигурацию"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Шаблоны на устройстве"</string>
   <string name="presetsManager_TitleOnline">"Шаблоны онлайн"</string>
   <string name="presetsManager_Creator">"Создатель: [CREATORNAME]"</string>
@@ -42,7 +39,6 @@
   <string name="presetsManager_ImportMsg">"Вы хотите импортировать этот шаблон?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] Импортирован успешно."</string>
   <string name="presetsManager_ImportFailed">"Импортировать не удалось..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Меню выключения"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Использовать графику"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Использовать графические элементы вместо букв в кружках"</string>
@@ -65,7 +61,6 @@
   <string name="presetSaveDialog_OverwriteText">"Уже существует, шаблон будет перезаписан!"</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] сохранён!"</string>
   <string name="powerMenuMain_Screenrecord">"Запись экрана"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Экран записывается"</string>
   <string name="screenrecord_notif_title">Запись экрана</string>
   <string name="screenrecord_toast_error">"Невозможно записать экран"</string>
@@ -78,19 +73,16 @@
   <string name="powerMenuMain_ExpandedDesktop">"Расширенный экран"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Позиция диалогового окна"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Изменить позицию диалогового окна"</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Фонарик включен"</string>
   <string name="quick_settings_torch_off">"Фонарик выключен"</string>
   <string name="quick_settings_torch_off_notif">"Нажмите, чтобы выключить"</string>
   <string name="powerMenuMain_AirplaneMode">"Режим полёта"</string>
   <string name="powerMenuMain_RestartUI">"Перезапуск System UI"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"Цвет появления окна"</string>
   <string name="colorsType_Circle">"Цвет круга"</string>
   <string name="colorsType_Background">"Цвет фона"</string>
   <string name="colorsType_Text">"Цвет текста"</string>
   <string name="powerMenuMain_Flashlight">"Фонарик"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Разрешения"</string>
   <string name="permissionsScreen_NotAllGranted">"Не все разрешения предоставлены, некоторые функции могут не работать..."</string>
   <string name="permissionsScreen_ClickToRequest">"Нажмите, чтобы запросить разрешения"</string>
@@ -100,7 +92,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Камера"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Нужно для включения Фонарика"</string>
   <string name="visibilityOrder_HideDesc">"Спрятать описание"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Доступ к Surfaceflinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Процесс, необходимый для Записи экрана"</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Запись звука"</string>
@@ -122,7 +113,6 @@
   <string name="SoundMode_Normal">"Нормальный"</string>
   <string name="SoundMode_Vibrate">"Вибрация"</string>
   <string name="SoundMode_Silent">"Тихий"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Регистрация"</string>
   <string name="presetsManager_UploadMsg">"Имя пользователя или E-mail:"</string>
   <string name="presetsManager_UploadComplete">"Имя пользователя:"</string>
@@ -135,7 +125,6 @@
   <string name="presetsManager_CantConnecttoDB">"Вход выполнен!"</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"Ошибка входа: "</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Ошибка входа, неверный E-mail или пароль!"</string>
-  <!-- Login page -->
   <string name="login_Title">"Извините, выбранное имя или E-mail уже используется."</string>
   <string name="login_TitleRegister">"Регистрация"</string>
   <string name="login_Info">"\"\"\"Имена зарегистрированных пользователей защищены, так что никто не может загружать от их имени. Здесь Вы можете войти или создать аккаунт.
@@ -165,12 +154,10 @@
 Ваши шаблоны (сортированы по Звёздам):
 [TOP5PRESETS]\"\"\""</string>
   <string name="login_StatisticsFailed">"Ошибка в получении статистики..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Перезагрузить статистику"</string>
   <string name="login_TitleLogout">"Выйти"</string>
   <string name="login_pleaseCheckInput">"Что-то пошло не так, пожалуйста, проверьте введённые данные."</string>
   <string name="presetsManager_Stars">"Звёзды: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"Цвета \"[PART]\""</string>
   <string name="colorsPartDescDialog">"Цвета диалогового окна при нажатии на \"[BUTTON]\"."</string>
   <string name="colorsPartDescButton">"Цвета кнопки \"[BUTTON]\""</string>
@@ -194,10 +181,8 @@
   <string name="powerMenuMain_SoundVibrate">"Звук: Вибрация"</string>
   <string name="powerMenuMain_SoundNormal">"Звук: Нормально"</string>
   <string name="powerMenuMain_SoundSilent">"Звук: Без звука"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"ОК|Да|Нет|Переименовать|Отмена|Удалить|Загрузить|Сохранить|Игнорировать"</string>
   <string name="presetLoadDialog_BuiltIn">"Светлый|Тёмный|Чёрный"</string>
-  <string name="advancedPrefs_DialogGravity">"Вверх|Влево|Вправо|Вниз"</string>
   <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
   <string name="graphics_Crop">"Обрезка | Круговая обрезка"</string>
   <string name="graphics_NoPresetsFound">"Шаблонов с графикой не найдено..."</string>
@@ -220,7 +205,6 @@
 Нажатие откроет новую вкладку с кнопками.\"\"\""</string>
   <string name="visibilityOrder_MultiPage">"\"\"\"Элементы во вкладках, начало
 Первый обычный элемент определяет кнопку, которая будет открывать вкладку.|Элементы во вкладках, конец\"\"\""</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
   <string name="preferences_RootXposed1">"Root и Xposed недоступны|Root и Xposed должны быть работающими."</string>
   <string name="preferences_RootXposed2">"\"\"\"Xposed работает, Root - нет|Требуется Root, чтобы выключить или перезагрузить...
@@ -254,11 +238,9 @@
 (Работает только для заднего плана)|Верхний край|Левый край||Правый край|Нижний край|Расширить вверх|Расширить вниз|Отключено\"\"\""</string>
   <string name="animations_Type">"Тип"</string>
   <string name="animations_Speed">"Скорость"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Круг загрузки"</string>
   <string name="presetsManager_LoadMore">"Загрузка...|Пожалуйста, подождите...|Показать больше шаблонов|Нажмите сюда, чтобы отобразить больше шаблонов.|Конец.|Больше шаблонов нет.|Нажмите, чтобы попробовать снова."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Вы уверены, что хотите перезагрузить устройство?|Вы уверены, что хотите выключить устройство?"</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Запрос подтверждения|Включить запрос подтверждения перед перезагрузкой или выключением."</string>
   <string name="preferences_Donate">"\"\"\"Пожертвовать|Понравилось приложение?
 Почему бы не пожертвовать мне на чашку кофе или ещё чего-нибудь?\"\"\""</string>
