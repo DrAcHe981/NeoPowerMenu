@@ -205,7 +205,7 @@
   <string name="preferences_RootXposed5">"Modul Modul Hooked terlalu rendah...|restart perangkat Anda untuk menyelesaikan proses update!"</string>
   <string name="preferencesCategory_General">"Umum"</string>
   <string name="preferences_Style">"Gaya"</string>
-  <string name="preferences_Theme">"Tema Ubah tampilan dan nuansa."</string>
+  <string name="preferences_Theme">"Tema|Ubah tampilan dan nuansa."</string>
   <string name="preferences_Graphics">"Grafik|Ubah grafis, gunakan grafis ubahsuaian atau standar."</string>
   <string name="preferences_VisibilityOrder">"Visibilitas dan Pemesanan|Pilih item yang ingin Anda tampilkan dan pesan sesuai keinginan Anda."</string>
   <string name="preferences_Animations">"Animasi|Ubah animasi atau nonaktifkan semuanya."</string>
