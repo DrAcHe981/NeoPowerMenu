@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Vyzkoušejte tuto nádhernou aplikaci, určenou k přizpůsobení vzhledu nabídky vypnutí na vašem telefonu s Rootem!"</string>
   <string name="PreviewPowerMenu">"Náhled"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Vypnout"</string>
   <string name="powerMenuMain_Reboot">"Restartovat"</string>
   <string name="powerMenuMain_SoftReboot">"Rychlý restart"</string>
@@ -25,14 +24,12 @@
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Data"</string>
   <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Zobrazení a pořadí"</string>
   <string name="category_Preset">"Přednastavené"</string>
   <string name="preset_Load">"Načíst předvolbu"</string>
   <string name="preset_LoadDesc">"Nahrát uloženou konfiguraci"</string>
   <string name="preset_Save">"Uložit předvolbu"</string>
   <string name="preset_SaveDesc">"Uložit aktuální konfiguraci"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Místní předvolby"</string>
   <string name="presetsManager_TitleOnline">"Předvolby online"</string>
   <string name="presetsManager_Creator">"Autor"</string>
@@ -41,7 +38,6 @@
   <string name="presetsManager_ImportMsg">"Přejete si importovat předvolby?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] úspěšně importován."</string>
   <string name="presetsManager_ImportFailed">"Import selhal..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Menu napájení"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Použij grafiku"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Použíj grafiku místo palety."</string>
@@ -64,7 +60,6 @@
   <string name="presetSaveDialog_OverwriteText">"Již existuje, přdvolby bude přepsána!"</string>
   <string name="presetSave_PresetSaved">"Uložen [PRESETNAME]!"</string>
   <string name="powerMenuMain_Screenrecord">"Záznam obrazovky"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Obrazovka je nahrávána"</string>
   <string name="screenrecord_notif_title">Záznam obrazovky</string>
   <string name="screenrecord_toast_error">"Nahrávání obrazovky není možné"</string>
@@ -77,19 +72,16 @@
   <string name="powerMenuMain_ExpandedDesktop">"Rozšířená plocha"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Pozice okna dialogu"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Změnit pozici okna dialogu."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Svítilna zapnuta"</string>
   <string name="quick_settings_torch_off">"Svítilna vypnuta"</string>
   <string name="quick_settings_torch_off_notif">"Klepnutím vypnete"</string>
   <string name="powerMenuMain_AirplaneMode">"Řežim letadlo"</string>
   <string name="powerMenuMain_RestartUI">"Restartovat systémové prostředí"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"Ukázat barvu"</string>
   <string name="colorsType_Circle">"Barevná paleta"</string>
   <string name="colorsType_Background">"Barva pozadí"</string>
   <string name="colorsType_Text">"Barva textu"</string>
   <string name="powerMenuMain_Flashlight">"Svítilna"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Oprávnění"</string>
   <string name="permissionsScreen_NotAllGranted">"Všechna oprávnění nebyla přidělena, některé funkce nemusí pracovat správně..."</string>
   <string name="permissionsScreen_ClickToRequest">"Stiskem vyvolejte oprávnění."</string>
@@ -99,7 +91,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Fotoaparát"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Je vyžadováno přepnutí svítilny."</string>
   <string name="visibilityOrder_HideDesc">"Skrýt popis"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Přístup do Surface Flinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Je vyžadováno pro nahrávání obrazovky povolit nahrávání."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Nahrát zvuk"</string>
@@ -121,7 +112,6 @@
   <string name="SoundMode_Normal">"Normální"</string>
   <string name="SoundMode_Vibrate">"Vibrování"</string>
   <string name="SoundMode_Silent">"Ticho"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Účet"</string>
   <string name="presetsManager_UploadMsg">"Přednastavení bude nahráno na server, viditelné pro všechny další uživatele.\n\nPřed nahrátím máte poslední šanci změnit jméno nebo autora..."</string>
   <string name="presetsManager_UploadComplete">"Nahrávání dokončeno!"</string>
@@ -133,7 +123,6 @@
   <string name="presetsManager_CantConnecttoDB">"Nelze se připojit k databázi!\nProsím zkuste to později, pokud problém přetrvá: Obraťte se na autora aplikace."</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Je vyžadováno stažení/nahrání přednastavení z/na veřejný server."</string>
-  <!-- Login page -->
   <string name="login_Title">"Přihlášení"</string>
   <string name="login_TitleRegister">"Registrace"</string>
   <string name="login_Info">"Uživatelská jména jsou registrovaných členů jsou chráněna, nikdo tak nemůže nahrávat data jejich jménem. Můžete se přihlásit nebo se registrovat.\nAvšak není to nutné!\nNikdy nebudu sdílet žádné soukromé údaje!"</string>
@@ -154,12 +143,10 @@
   <string name="login_TitleStatistics">"Statistiky pro [USERNAMEEMAIL]"</string>
   <string name="login_Statistics">"Předvolby nahrány: [UPLOADCOUNT]\n\nObdarováné hodnocení: [STARSGIVEN]\nObdržené hodnocení: [STARSRECEIVED]\n\nVaše předvolby(seřazeny podle hodnocení):\n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"Nelze získat statistiky..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Klikněte pro znovunačtení statistik"</string>
   <string name="login_TitleLogout">"Odhlásit se"</string>
   <string name="login_pleaseCheckInput">"Něco se nepovedlo;-), zkontrolujte vaše zadání."</string>
   <string name="presetsManager_Stars">"Hodnocení: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] barvy"</string>
   <string name="colorsPartDescDialog">"Barvy dialogů po kliknutí na [BUTTON]."</string>
   <string name="colorsPartDescButton">"Barvy [BUTTON] tlačítka."</string>
@@ -182,10 +169,9 @@
   <string name="powerMenuMain_SoundVibrate">"Zvuk: Vibrace"</string>
   <string name="powerMenuMain_SoundNormal">"Zvuk: Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Zvuk: Vypnout"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Ano|Ne|Přejmenovat|Zrušit|Smazat|Načíst|Uložit|Ignorovat"</string>
   <string name="presetLoadDialog_BuiltIn">"Světlé|Šedé|Černé"</string>
-    <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
+  <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
   <string name="graphics_Crop">"Oříznutí|Kruhové oříznutí"</string>
   <string name="graphics_NoPresetsFound">"Žádné grafické předvolby nenalezeny..."</string>
   <string name="graphics_GraphicsSaveLoad">"Uložit akttuální grafický návrh.|Toto přednastavení obsahuje grafiku, chcete ji načíst?\nVolba přepíše váš aktuální grafický návrh!"</string>
@@ -199,7 +185,6 @@
   <string name="uploadHelper_States">"Čekám na jiné stahování...|Připojuji se na server...|Požaduji informace... |Stahuji..|Ruším..."</string>
   <string name="visibilityOrder_AddItem">"Přidat standartní položku\nStadartní položka s jedním slotem.|Přidat více položek\nPřidat až tři položky na jeden řádek.|Přidat vícestránkovou položku\nKliknutím zobrazit novou 'stránku'."</string>
   <string name="visibilityOrder_MultiPage">"Vícestránková položka začíná zde\nPrvní položka definuje tlačítko pro otevření 'nové stránky'.|Vícestránková položka končí zde"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root a Xposed"</string>
   <string name="preferences_RootXposed1">"Root a Xposed není k dispozici|Pro zprovoznění tohoto modulu je nutné mít Root a nainstalovaný Xposed."</string>
   <string name="preferences_RootXposed2">"Xposed funguje, Root nefunguje|Je nutné mít Root pro Vypínání, Restart...\nProsím povolte aplikaci přístup k Root."</string>
@@ -227,11 +212,9 @@
   <string name="animations_Types">"Přechod|Odhalení\n(Funguje pouze pro pozadí)|Posunout nahoru|Posunout doleva|Posunout doprava|Posunout dolů|Scale nahoru|Scale dolů|Zakázat"</string>
   <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Rychlost"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Animace načítání"</string>
   <string name="presetsManager_LoadMore">"Načítám...|Prosím čekejte...|Zobrazit více předvoleb|Klikněte zde pro zobrazení více předvoleb.|Konec.|Žádné další předvolby k zobrazení.|Zkuste to znovu kliknutím zde."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Opravdu chcete restartovat vaše zařízení?|Opravdu chcete vypnout vaše zařízení?"</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Požadavek na potvrzení|Zapne potvrzovací dialog před restartováním nebo vypnutím telefonu."</string>
   <string name="preferences_Donate">"Podpořit|Líbí se vám tato aplikace?\nProč by jste nemohli podpořit vývojáře šálkem kafé nebo něčeho jiného?"</string>
   <string name="advancedPrefs_HideOnClick">"Schovat po kliknutí"</string>

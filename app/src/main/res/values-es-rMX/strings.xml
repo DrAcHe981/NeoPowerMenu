@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Checa está hermosa aplicación para personalizar tu menú de apagado en to equipo Android rooteado!"</string>
   <string name="PreviewPowerMenu">"Previsualizacion"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Apagar"</string>
   <string name="powerMenuMain_Reboot">"Reiniciar"</string>
   <string name="powerMenuMain_SoftReboot">"Reinicio suave"</string>
@@ -25,14 +24,12 @@
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Datos"</string>
   <string name="powerMenuMain_RebootFlashMode">"Modo de flasheo"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidad y orden"</string>
   <string name="category_Preset">"Temas"</string>
   <string name="preset_Load">"Cargar tema"</string>
   <string name="preset_LoadDesc">"Cargar y salvar configuración"</string>
   <string name="preset_Save">"Salvar tema"</string>
   <string name="preset_SaveDesc">"Salvar tu configuración actual"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Tema local"</string>
   <string name="presetsManager_TitleOnline">"Temas en linea"</string>
   <string name="presetsManager_Creator">"Creador:[CREATORNAME]"</string>
@@ -41,7 +38,6 @@
   <string name="presetsManager_ImportMsg">"¿Quisieras importar este tema?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] Importado con éxito."</string>
   <string name="presetsManager_ImportFailed">"Fallo de importación..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Menú de apagado"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Usar graficos"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Usar gráficos en lugar de un círculo con letras."</string>
@@ -64,7 +60,6 @@
   <string name="presetSaveDialog_OverwriteText">"¡Ya existe, el tema será sobrescrito!"</string>
   <string name="presetSave_PresetSaved">"¡Salvado [PRESETNAME]!"</string>
   <string name="powerMenuMain_Screenrecord">"Grabado de pantalla"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Pantalla se está grabando"</string>
   <string name="screenrecord_notif_title">Grabación de pantalla</string>
   <string name="screenrecord_toast_error">"Incapaz de grabar pantalla"</string>
@@ -77,19 +72,16 @@
   <string name="powerMenuMain_ExpandedDesktop">"Escritorio expandido"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Posición de dialogo"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Cambiar posición de diálogo."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Prender antorcha"</string>
   <string name="quick_settings_torch_off">"Apagar antorcha"</string>
   <string name="quick_settings_torch_off_notif">"Tocar para apagar"</string>
   <string name="powerMenuMain_AirplaneMode">"Modo avión"</string>
   <string name="powerMenuMain_RestartUI">"Reiniciar UI de sistema"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"Revelar color"</string>
   <string name="colorsType_Circle">"Color del círculo"</string>
   <string name="colorsType_Background">"Color de fondo"</string>
   <string name="colorsType_Text">"Color de texto"</string>
   <string name="powerMenuMain_Flashlight">"Antorcha"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Permisos"</string>
   <string name="permissionsScreen_NotAllGranted">"No todos los permisos fueron otorgados, algunas funciones no funcionarán..."</string>
   <string name="permissionsScreen_ClickToRequest">"Hacer clic para pedir el permiso."</string>
@@ -99,7 +91,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Camara"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Requerido para prender/apagar antorcha."</string>
   <string name="visibilityOrder_HideDesc">"Ocultar descripción"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Permiso al Surface Flinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Requerido para el grabar la pantalla grabé la pantalla."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Grabar audio"</string>
@@ -121,7 +112,6 @@
   <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibrar"</string>
   <string name="SoundMode_Silent">"Silencio"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Cuenta"</string>
   <string name="presetsManager_UploadMsg">"Este Tema se subira al servidor público, y será visible para otros usuarios.\n\nEsta es tu última oportunidad de ajustar el nombre o el creador antes de subir..."</string>
   <string name="presetsManager_UploadComplete">"¡Carga completa!"</string>
@@ -133,7 +123,6 @@
   <string name="presetsManager_CantConnecttoDB">"¡No se puede conectar a la base de datos! \nPorfavor intentalo más tarde, cuando nada cambie: por favor, reportalo al desarrollador."</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Necesaria para descargar/cargar temas de el servidor público."</string>
-  <!-- Login page -->
   <string name="login_Title">"Inicio de sesión"</string>
   <string name="login_TitleRegister">"Regístrate"</string>
   <string name="login_Info">"Los nombres de usuarios registrados se protegen para que no se puede cargar en su nombre, aquí puedes iniciar sesión o crear una nueva cuenta. \nEsto no es necesario si no quieres! \nYo nunca compartirá ningún dato privado!"</string>
@@ -154,12 +143,10 @@
   <string name="login_TitleStatistics">"Estadísticas para [USERNAMEEMAIL]"</string>
   <string name="login_Statistics">"Temas subidos: [UPLOADCOUNT]\n\nEstrellas dadas: [STARSGIVEN]\nEstrellas recibidas: [STARSRECEIVED]\n\nTus temas (ordenados por calificación): \n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"No se pudo obtener estadísticas..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Haga clic aquí para actualizar las estadísticas"</string>
   <string name="login_TitleLogout">"Salir"</string>
   <string name="login_pleaseCheckInput">"Algo salió mal, por favor revisa tus datos."</string>
   <string name="presetsManager_Stars">"Calificación: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] colores"</string>
   <string name="colorsPartDescDialog">"Los colores del cuadro de diálogo al hacer clic en [BUTTON]."</string>
   <string name="colorsPartDescButton">"Los colores del botón [BUTTON]."</string>
@@ -182,10 +169,9 @@
   <string name="powerMenuMain_SoundVibrate">"Sonido: vibración"</string>
   <string name="powerMenuMain_SoundNormal">"Sonido: Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Sonido: Silencio"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"OK | Sí | No | Cambiar el nombre de | Cancelar | Eliminar | Carga | Guardar | Ignorar"</string>
   <string name="presetLoadDialog_BuiltIn">"Claro | Oscuro | Negro"</string>
-    <string name="graphics_Choose">"Restaurar original | Elegir tema | Elegir de la galería"</string>
+  <string name="graphics_Choose">"Restaurar original | Elegir tema | Elegir de la galería"</string>
   <string name="graphics_Crop">"Cortado | Corte circular"</string>
   <string name="graphics_NoPresetsFound">"No hay temas con gráficos encontrados..."</string>
   <string name="graphics_GraphicsSaveLoad">"Salvar con gráficos actuales. | Esta tema contiene gráficos, ¿quieres cargarlos?\n¡Esto sobrescribira a los gráficos actuales!"</string>
@@ -199,7 +185,6 @@
   <string name="uploadHelper_States">"A la espera de otras cargas... | Conectando al servidor... | Solicitando información... | Subir... | Cancelando..."</string>
   <string name="visibilityOrder_AddItem">"Añadir un ítem normal\nUn ítem normal usará un lugar. | Añadir multiple items\nAgrega hasta tres artículos en una línea. | Añadir multiple items\n Con un clic se mostrará una nueva página."</string>
   <string name="visibilityOrder_MultiPage">"Páginas de elementos inicia aquí\nEl primer elemento normal define el botón para abrir la 'nueva página'. | Páginas de elementos termina aquí"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Rooteado y Xposed"</string>
   <string name="preferences_RootXposed1">"Rooteado y Xposed no están disponibles | Rooteo y Xposed son requeridos para que esté módulo funcione."</string>
   <string name="preferences_RootXposed2">"Xposed trabajando, Rooteo no | El Rooteo es necesaria para apagar o reiniciar...\nPorfavor permite acceso root."</string>
@@ -227,11 +212,9 @@
   <string name="animations_Types">"Desaparecer | Aparecer\n(Funciona sólo para el fondo) |Deslizar hacia arriba| Deslizar a la izquierda | Deslizar a la derecha | Deslizar hacia abajo | Aumentar | Reducir | Inhabilitar"</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidad"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Imagen de carga"</string>
   <string name="presetsManager_LoadMore">"Cargando... | Por favor, espere... | Mostrar más temad| Haga clic aquí para mostrar más temas. | El final. | No hay más temas para mostrar. | Haga clic aquí para intentarlo de nuevo."</string>
   <string name="powerMenu_SureToRebootPowerOff">"¿Está seguro de que quieres reiniciar el dispositivo? | ¿Seguro desea apagar el dispositivo?"</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Requiere confirmación | Permitir un cuadro diálogo de confirmación antes de reiniciar el o apagar."</string>
   <string name="preferences_Donate">"Donar | ¿Te gusta la aplicación? \nPorque no donarme una taza de café o algo más?"</string>
   <string name="advancedPrefs_HideOnClick">"Ocultar con un clic"</string>

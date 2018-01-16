@@ -5,7 +5,6 @@
 
 \"\""</string>
   <string name="PreviewPowerMenu">"Aperçu"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Éteindre"</string>
   <string name="powerMenuMain_Reboot">"Redémarrer"</string>
   <string name="powerMenuMain_SoftReboot">"Redémarrage logiciel"</string>
@@ -24,14 +23,12 @@
   <string name="ToggleRotateMode_Off">"Inactif"</string>
   <string name="powerMenuMain_ToggleWifi">"Wifi"</string>
   <string name="powerMenuMain_ToggleData">"Données"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilité et Ordre"</string>
   <string name="category_Preset">"Préréglagles"</string>
   <string name="preset_Load">"Chager préréglages"</string>
   <string name="preset_LoadDesc">"Charger une configuration sauvegardée"</string>
   <string name="preset_Save">"Enregistrer préréglage"</string>
   <string name="preset_SaveDesc">"Enregistrer votre configuration actuelle"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Préréglages locaux"</string>
   <string name="presetsManager_TitleOnline">"Préréglages en ligne"</string>
   <string name="presetsManager_Creator">"Créateur: [CREATORNAME]"</string>
@@ -40,7 +37,6 @@
   <string name="presetsManager_ImportMsg">"Souhaitez-vous importer ce préréglage ?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] importé avec succès."</string>
   <string name="presetsManager_ImportFailed">"Échec de l'importation..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Menu de Démarrage"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Utiliser des Graphiques"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Utiliser des Graphiques à la pace des Lettres cerclées."</string>
@@ -63,7 +59,6 @@
   <string name="presetSaveDialog_OverwriteText">"Déjà existant, le préréglage va être écrasé !"</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] enregistré !"</string>
   <string name="powerMenuMain_Screenrecord">"Enregistrement de l'écran"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"L'écran est en train d'être enregistré"</string>
   <string name="screenrecord_toast_error">"Impossible d'éenregistrer l'écran"</string>
   <string name="screenrecord_toast_processing">"Impossible de lancer un nouvel enregistrement car le précédent est toujours en-cours d'utilisation"</string>
@@ -75,18 +70,15 @@
   <string name="powerMenuMain_ExpandedDesktop">"Bureau étendu"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Position de la boîte de dialogue"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Modifier la position de la boîte de dialogue."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Torche On"</string>
   <string name="quick_settings_torch_off">"Torche Off"</string>
   <string name="quick_settings_torch_off_notif">"Appuyer pour éteindre"</string>
   <string name="powerMenuMain_AirplaneMode">"Mode Avion"</string>
   <string name="powerMenuMain_RestartUI">"Redémarrer l'interface Système"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Circle">"Couleur du cercle"</string>
   <string name="colorsType_Background">"Couleur d'arrière-plan"</string>
   <string name="colorsType_Text">"Couleur du texte"</string>
   <string name="powerMenuMain_Flashlight">"Torche"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_NotAllGranted">"Toutes les permissions ne sont pas accordées, certaines options peuvent ne pas fonctionner..."</string>
   <string name="permissionsScreen_ClickToRequest">"Appuyez pour demander la permissions."</string>
   <string name="permissionsScreen_DontAskAgain">"Ne plus demander"</string>
@@ -95,7 +87,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Appareil photo"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Requis pour activer/désactiver la Torche."</string>
   <string name="visibilityOrder_HideDesc">"Cacher la description"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Requis pour que l'enregistrement de l'écran puisse fonctionner."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Enregistrement Audio"</string>
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"Requis pour enregistrer le son avec l'enregistrement de l'écran."</string>
@@ -114,7 +105,6 @@
   <string name="powerMenuMain_SoundModeDesc">"Mode actuel : [SOUNDMODE]"</string>
   <string name="SoundMode_Vibrate">"Vibreur"</string>
   <string name="SoundMode_Silent">"Silencieux"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Compte"</string>
   <string name="presetsManager_UploadMsg">"Ce préréglage va être chargé sur le serveur public, le rendant visible par tous.\n\nC'est votre dernière chance pour ajuster le nom ou le créateur avant le chargement..."</string>
   <string name="presetsManager_UploadComplete">"Chargement terminé !"</string>
@@ -125,7 +115,6 @@
   <string name="presetsManager_CantConnecttoServer">"Impossible de se connecter au serveur !\nVeuillez vérifier votre connection réseau et réessayez plus tard."</string>
   <string name="presetsManager_CantConnecttoDB">"Impossible de se connecter à la base de données !\nVeuillez réessayez ultérieurement. En cas de nouvel échec, merci de le signaler au développeur."</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Requis pour télécharger ou charger des préréglages depuis le serveur public."</string>
-  <!-- Login page -->
   <string name="login_Title">"S'identifier"</string>
   <string name="login_TitleRegister">"S'enregistrer"</string>
   <string name="login_Info">"Les noms d'utilisateurs enregistrés sont protégés donc personne ne peut charger des données en leurs noms. Ici, vous pouvez vous identifier ou créer un nouveau compte.\nVous pouvez ignorer cette étape !\nJe ne partagerai jamais aucune donnée personnelle !"</string>
@@ -146,12 +135,10 @@
   <string name="login_TitleStatistics">"Statistiques de [USERNAMEEMAIL]"</string>
   <string name="login_Statistics">"Préréglages chargés : [UPLOADCOUNT]\n\nÉtoiles attribuées : [STARSGIVEN]\nÉtoiles reçues : [STARSRECEIVED]\n\nVos préréglages (triés par étoiles) :\n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"Impossible d'obtenir les statistiques..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Cliquez ici pour recharger les statistiques"</string>
   <string name="login_TitleLogout">"Déconnexion"</string>
   <string name="login_pleaseCheckInput">"Une erreur est survenue. Veuillez recommencer."</string>
   <string name="presetsManager_Stars">"Étoiles : [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] couleurs"</string>
   <string name="colorsPartDescDialog">"Les couleurs de la boîte de dialogue quand on appuie sur [BUTTON]."</string>
   <string name="colorsPartDescButton">"Les couleurs du bouton [BUTTON]."</string>
@@ -174,13 +161,11 @@
   <string name="powerMenuMain_SoundVibrate">"Son : vibrer"</string>
   <string name="powerMenuMain_SoundNormal">"Son : Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Son : silencieux"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Oui|Non|Renommer|Annuler|Supprimer|Charger|Enregistrer|Ignorer"</string>
   <string name="presetLoadDialog_BuiltIn">"Clair|Sombre|Noir"</string>
-    <string name="graphics_Choose">"Restaurer par défaut | Choisir des préréglages | Choisir dans la Galerie"</string>
+  <string name="graphics_Choose">"Restaurer par défaut | Choisir des préréglages | Choisir dans la Galerie"</string>
   <string name="presetsManager_Buttons">"Donner Star | Supprimer Star | Supprimer | Report | Télécharger | Partager"</string>
   <string name="screenrecord_notif_buttons">"Stop | Afficher pointeur"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
   <string name="preferences_RootXposed1">"Root et Xposed non disponible|Root et Xposed requis pour que ce module fonctionne."</string>
   <string name="preferences_RootXposed2">"Xposed fonctionnel, pas le Root|Mais le Root est requis pour éteindre ou redémarrer...\nVeuillez accepter l'accès root."</string>
@@ -201,6 +186,4 @@ Cet écran de paramètres sera alors uniquement accessible via le Xposed Install
   <string name="preferences_Share">"Partager|Vous aimez l'appli ? Partagez-la avec vos amis."</string>
   <string name="preferences_About">"Code par Neon-Soft / DrAcHe981|basé sur le code source de Naman Dwivedi (naman14)."</string>
   <string name="animations_Speed">"Vitesse"</string>
-  <!-- Power Menu -->
-  <!-- Preferences: Advanced -->
 </resources>

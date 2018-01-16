@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Schau dir diese wundervolle App an und passe das Ausschaltmenü deines gerooteten Geräts nach deinen Wünschen an!"</string>
   <string name="PreviewPowerMenu">"Vorschau"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Ausschalten"</string>
   <string name="powerMenuMain_Reboot">"Neu starten"</string>
   <string name="powerMenuMain_SoftReboot">"Schneller Neustart"</string>
@@ -25,14 +24,12 @@
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Mobile Daten"</string>
   <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Sichtbarkeit und Sortierung"</string>
   <string name="category_Preset">"Voreinstellungen"</string>
   <string name="preset_Load">"Lade Voreinstellung"</string>
   <string name="preset_LoadDesc">"Lade eine gespeicherte Konfiguration"</string>
   <string name="preset_Save">"Speichere Voreinstellung"</string>
   <string name="preset_SaveDesc">"Speichere deine aktuelle Konfiguration"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Lokale Voreinstellungen"</string>
   <string name="presetsManager_TitleOnline">"Online Voreinstellungen"</string>
   <string name="presetsManager_Creator">"Ersteller: [CREATORNAME]"</string>
@@ -41,7 +38,6 @@
   <string name="presetsManager_ImportMsg">"Möchtest du diese Voreinstellung importieren?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] wurde importiert."</string>
   <string name="presetsManager_ImportFailed">"Fehler beim importieren..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Ausschaltmenü"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Nutze Grafiken"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Nutze Grafiken an stelle der Buchstaben-Kreise."</string>
@@ -64,7 +60,6 @@
   <string name="presetSaveDialog_OverwriteText">"Existiert bereits, Voreinstellung wird überschrieben!"</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] wurde gespeichert!"</string>
   <string name="powerMenuMain_Screenrecord">"Bildschirmaufnahme"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Bildschirm wird aufgezeichnet"</string>
   <string name="screenrecord_notif_title">Bildschirmaufnahme</string>
   <string name="screenrecord_toast_error">"Bildschirmaufnahme nicht möglich"</string>
@@ -77,19 +72,16 @@
   <string name="powerMenuMain_ExpandedDesktop">"Erweiterter Desktop"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Dialog position"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Ändere die Dialog Position."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Taschenlampe an"</string>
   <string name="quick_settings_torch_off">"Taschenlampe aus"</string>
   <string name="quick_settings_torch_off_notif">"Zum ausschalten der Taschenlampe hier drücken"</string>
   <string name="powerMenuMain_AirplaneMode">"Flugzeug-Modus"</string>
   <string name="powerMenuMain_RestartUI">"System UI neu starten"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"Reveal Farbe"</string>
   <string name="colorsType_Circle">"Kreisfarbe"</string>
   <string name="colorsType_Background">"Hintergrundfarbe"</string>
   <string name="colorsType_Text">"Textfarbe"</string>
   <string name="powerMenuMain_Flashlight">"Taschenlampe"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Berechtigungen"</string>
   <string name="permissionsScreen_NotAllGranted">"Du hast nicht alle Berechtigungen gewährt, manche Dinge werden nicht funktionieren..."</string>
   <string name="permissionsScreen_ClickToRequest">"Klicke, um die Berechtigung anzufragen."</string>
@@ -99,7 +91,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Benötigt für die Taschenlampe."</string>
   <string name="visibilityOrder_HideDesc">"Verstecke Beschreibung"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Surface Flinger Zugriff"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Wird für die Bildschirmaufnahme benötigt."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ton aufnehmen"</string>
@@ -121,7 +112,6 @@
   <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibrieren"</string>
   <string name="SoundMode_Silent">"Lautlos"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Konto"</string>
   <string name="presetsManager_UploadMsg">"Diese Voreinstellung wird auf den Öffentlichen Server hochgeladen, sichtbar für alle Nutzer.\n\nDies ist deine letzte Chance, den Namen oder den Ersteller anzupassen..."</string>
   <string name="presetsManager_UploadComplete">"Hochladen abgeschlossen!"</string>
@@ -133,7 +123,6 @@
   <string name="presetsManager_CantConnecttoDB">"Es kann keine Verbindung zur Datenbank hergestellt werden! \nBitte versuch es später erneut, wenn sich nichts ändert: Melde dies bitte dem Entwickler."</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Wird benötigt, um Voreinstellungen vom öffentlichen Server runter oder hochzuladen."</string>
-  <!-- Login page -->
   <string name="login_Title">"Anmelden"</string>
   <string name="login_TitleRegister">"Registrieren"</string>
   <string name="login_Info">"Die Namen von Registrierten Nutzern sind geschützt, damit keiner unter dem Namen hochladen kann, hier kannst du dich anmelden oder ein Konto erstellen.\nDies wird nicht benötigt, wenn du nicht möchtest!\nIch werde niemals irgendwelche privaten Daten teilen!"</string>
@@ -154,12 +143,10 @@
   <string name="login_TitleStatistics">"Statistiken für [USERNAMEEMAIL]"</string>
   <string name="login_Statistics">"Voreinstellungen hochgeladen: [UPLOADCOUNT]\n\nSterne vergeben: [STARSGIVEN]\nSterne erhalten: [STARSRECEIVED]\n\nDeine Voreinstellungen (nach Sternen sortiert):\n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"Fehler beim Abrufen der Statistiken..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Hier klicken, um die Statistiken neu zu laden"</string>
   <string name="login_TitleLogout">"Abmelden"</string>
   <string name="login_pleaseCheckInput">"Ein Fehler ist aufgetreten, bitte überprüfen Sie Ihre Eingabe."</string>
   <string name="presetsManager_Stars">"Sterne: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] Farben"</string>
   <string name="colorsPartDescDialog">"Die Farben des Dialogs wenn auf [BUTTON] geklickt wurde."</string>
   <string name="colorsPartDescButton">"Die Farben des [BUTTON] Knopfes."</string>
@@ -182,10 +169,9 @@
   <string name="powerMenuMain_SoundVibrate">"Ton: vibrieren"</string>
   <string name="powerMenuMain_SoundNormal">"Ton: Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Ton: Lautlos"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Ja|Nein|Umbenennen|Abbrechen|Löschen|Laden|Speichern|Ignorieren"</string>
   <string name="presetLoadDialog_BuiltIn">"Hell|Dunkel|Schwarz"</string>
-    <string name="graphics_Choose">"Standard wiederherstellen|Aus Voreinstellung wählen|Aus Galerie wählen"</string>
+  <string name="graphics_Choose">"Standard wiederherstellen|Aus Voreinstellung wählen|Aus Galerie wählen"</string>
   <string name="graphics_Crop">"Zuschneiden|Rund zuschneiden"</string>
   <string name="graphics_NoPresetsFound">"Keine Voreinstellungen mit Grafiken gefunden..."</string>
   <string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern.|Diese Voreinstellung enthält Grafiken, willst du sie laden? \nDies überschreibt deine aktuellen Grafiken!"</string>
@@ -199,7 +185,6 @@
   <string name="uploadHelper_States">"Warte auf andere Uploads...|Verbinde mit Server...|Informationen werden abgerufen...|Hochladen...|Wird abgebrochen..."</string>
   <string name="visibilityOrder_AddItem">"Normales Item hinzufügen\nEin ganz Normales Item mit nur einem Slot.|Multi Item hinzufügen\nFüge bis zu drei Items in einer Linie hinzu.|Multi Seiten Item hinzufügen\nAnklicken öffnet eine 'neue Seite'."</string>
   <string name="visibilityOrder_MultiPage">"Multi Seiten Item startet hier\nDas erste Normale Item definiert den Knopf, um die 'neue Seite' zu öffnen.|Multi Seiten Item endet hier"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root und Xposed"</string>
   <string name="preferences_RootXposed1">"Root und Xposed sind nicht verfügbar|Ohne Root und Xposed funktioniert leider nichts."</string>
   <string name="preferences_RootXposed2">"Xposed funktioniert, Root nicht|Aber Root wird zum Ausschalten oder Neustarten benötigt...\nBitte erlaube den Root-Zugriff."</string>
@@ -227,11 +212,9 @@
   <string name="animations_Types">"Überblenden|Reveal\n(Funktioniert nur für den Hintergrund)|Nach oben schieben|Nach links schieben|Nach rechts schieben|Nach unten schieben|Hoch skalieren|Runter skalieren|Deaktiviert"</string>
   <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Geschwindigkeit"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Ladekreis"</string>
   <string name="presetsManager_LoadMore">"Laden...|Bitte warten|Zeige mehr Voreinstellungen|Klicke hier, um mehr Voreinstellungen anzuzeigen.|Das Ende.|Keine weiteren Voreinstellungen zum anzeigen.|Klicke hier, um es erneut zu versuchen."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Bist du sicher, dass du dein Gerät neustarten willst?|Bist du sicher, dass du dein Gerät ausschalten willst?"</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Benötige Bestätigung|Aktiviere eine Bestätigung, bevor das Gerät neu startet oder ausgeschaltet wird."</string>
   <string name="preferences_Donate">"Spenden|Du magst die App?\nWarum spendest du mir nicht eine Tasse Kaffee oder etwas anderes?"</string>
   <string name="advancedPrefs_HideOnClick">"Nach klicken ausblenden"</string>

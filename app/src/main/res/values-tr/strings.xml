@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Root'lu android cihazının Güç Menüsünü özelleştirmek için bu güzel uygulamaya bir bak!"</string>
   <string name="PreviewPowerMenu">"Önizleme"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Kapat"</string>
   <string name="powerMenuMain_Reboot">"Yeniden Başlat"</string>
   <string name="powerMenuMain_SoftReboot">"Hızlı Yeniden Başlat"</string>
@@ -25,14 +24,12 @@
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Veri"</string>
   <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Görünüm ve sıralama"</string>
   <string name="category_Preset">"Hazır ayarlar"</string>
   <string name="preset_Load">"Hazır ayar yükle"</string>
   <string name="preset_LoadDesc">"Kayıtlı bir yapılandırma yükle"</string>
   <string name="preset_Save">"Hazır ayarı kaydet"</string>
   <string name="preset_SaveDesc">"Geçerli yapılandırmanızı kaydedin"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Yerel Hazır Ayarlar"</string>
   <string name="presetsManager_TitleOnline">"Çevrimiçi Hazır Ayarlar"</string>
   <string name="presetsManager_Creator">"Oluşturan: [CREATORNAME]"</string>
@@ -41,7 +38,6 @@
   <string name="presetsManager_ImportMsg">"Bu hazır ayarı almak istiyor musunuz?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] başarıyla alındı."</string>
   <string name="presetsManager_ImportFailed">"Alma başarısız..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Güç Menüsü"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Grafikleri Kullan"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Harf daireleri yerine Grafikler kullanın."</string>
@@ -64,7 +60,6 @@
   <string name="presetSaveDialog_OverwriteText">"Zaten mevcut, hazır ayarın üzerine yazılacak!"</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] kaydedildi!"</string>
   <string name="powerMenuMain_Screenrecord">"Ekran kaydı"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Ekran kaydediliyor"</string>
   <string name="screenrecord_notif_title">Ekran kaydı</string>
   <string name="screenrecord_toast_error">"Ekran kaydedilemiyor"</string>
@@ -77,19 +72,16 @@
   <string name="powerMenuMain_ExpandedDesktop">"Genişletilmiş Masaüstü"</string>
   <string name="advancedPrefsTitle_DialogGravity">"İletişim Kutusu Konumu"</string>
   <string name="advancedPrefsDesc_DialogGravity">"İletişim kutusu konumunu değiştirin."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Fener Açık"</string>
   <string name="quick_settings_torch_off">"Fener Kapalı"</string>
   <string name="quick_settings_torch_off_notif">"Kapatmak için dokunun"</string>
   <string name="powerMenuMain_AirplaneMode">"Uçak Modu"</string>
   <string name="powerMenuMain_RestartUI">"Sistem Arayüzünü yeniden başlat"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"Orta rengi"</string>
   <string name="colorsType_Circle">"Daire rengi"</string>
   <string name="colorsType_Background">"Arkaplan rengi"</string>
   <string name="colorsType_Text">"Metin rengi"</string>
   <string name="powerMenuMain_Flashlight">"Fener"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"İzinler"</string>
   <string name="permissionsScreen_NotAllGranted">"Tüm izinler verilmedi, bazı işlevler çalışmayabilir..."</string>
   <string name="permissionsScreen_ClickToRequest">"İzin istemek için tıklayın."</string>
@@ -99,7 +91,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Feneri açıp/kapatmak için gereklidir."</string>
   <string name="visibilityOrder_HideDesc">"Açıklamayı gizle"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Surface Flinger Erişimi"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Ekran kaydedicinin ekranı kaydetmesi için gereklidir."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Ses Kaydı"</string>
@@ -121,7 +112,6 @@
   <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Titreşim"</string>
   <string name="SoundMode_Silent">"Sessiz"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Hesap"</string>
   <string name="presetsManager_UploadMsg">"Bu hazır ayar diğer kullanıcıların da görebileceği şekilde genel sunucuya yüklenecek.\n\nBu, yüklemeden önce, adı veya oluşturucuyu belirleyebilmek için son şansınız..."</string>
   <string name="presetsManager_UploadComplete">"Yükleme tamamlandı!"</string>
@@ -133,7 +123,6 @@
   <string name="presetsManager_CantConnecttoDB">"Veritabanına bağlanılamıyor!\nLütfen daha sonra tekrar deneyin, hiçbir şey değişmezse: Lütfen bunu geliştiriciye bildirin."</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"İnternet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Genel sunucudan hazır ayarları indirebilmek/sunucuya yükleyebilmek için gerekli."</string>
-  <!-- Login page -->
   <string name="login_Title">"Giriş"</string>
   <string name="login_TitleRegister">"Kayıt"</string>
   <string name="login_Info">"Kayıtlı kullanıcıların kullanıcı adları kimsenin adına yüklenememesi için korunmaktadır, buradan giriş yapabilir veya yeni bir hesap oluşturabilirsiniz.\nİstemiyorsanız, bu gerekli değildir!\nNÖzel hiçbir veriyi asla paylaşmayacağım!"</string>
@@ -154,12 +143,10 @@
   <string name="login_TitleStatistics">"[USERNAMEEMAIL] için istatistikler"</string>
   <string name="login_Statistics">"Hazır ayarlar yüklendi: [UPLOADCOUNT]\n\nVerilen yıldızlar: [STARSGIVEN]\nAlınan yıldızlar: [STARSRECEIVED]\n\nYıldızlara göre hazır ayarların:\n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"İstatistikler alınamadı..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"İstatistikleri yeniden yüklemek için buraya tıklayın"</string>
   <string name="login_TitleLogout">"Çıkış"</string>
   <string name="login_pleaseCheckInput">"Bir şeyler ters gitti, lütfen girişinizi kontrol edin."</string>
   <string name="presetsManager_Stars">"Yıldızlar: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] renkleri"</string>
   <string name="colorsPartDescDialog">"[BUTTON] üzerine tıklandığında ki iletişim kutusunun renkleri."</string>
   <string name="colorsPartDescButton">"[BUTTON] düğmesinin renkleri."</string>
@@ -182,10 +169,9 @@
   <string name="powerMenuMain_SoundVibrate">"Ses: Titreşim"</string>
   <string name="powerMenuMain_SoundNormal">"Ses: Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Ses: Sessiz"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"Tamam|Evet|Hayır|Yeniden Adlandır|Vazgeç|Sil|Yükle|Kaydet|Yoksay"</string>
   <string name="presetLoadDialog_BuiltIn">"Açık|Koyu|Siyah"</string>
-    <string name="graphics_Choose">"Varsayılana sıfırla|Hazırlardan seç|Galeriden seç"</string>
+  <string name="graphics_Choose">"Varsayılana sıfırla|Hazırlardan seç|Galeriden seç"</string>
   <string name="graphics_Crop">"Kırp|Daire kırp"</string>
   <string name="graphics_NoPresetsFound">"Grafikli hazır ayar bulunamadı..."</string>
   <string name="graphics_GraphicsSaveLoad">"Mevcut grafiklerle kaydet.|Bu hazır ayar grafikler içeriyor, bunları yüklemek istiyor musunuz?\nBu, mevcut grafiklerin üzerine yazacaktır!"</string>
@@ -199,7 +185,6 @@
   <string name="uploadHelper_States">"Diğer yüklemeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
   <string name="visibilityOrder_AddItem">"Normal öğe ekle\nSadece bir yuvalı normal bir öğe.|Birden çok öğe ekle\nTek bir satırda üç öğeye kadar ekle.|Birden çok sayfalı öğe ekle\nTıklamak yeni bir 'sayfa' gösterecek'."</string>
   <string name="visibilityOrder_MultiPage">"Çok sayfalı öğe burada başlıyor\nİlk normal öğe, 'yeni sayfayı' açmak için düğmeyi tanımlar.|Çok sayfalı öğe burada bitiyor"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root ve Xposed"</string>
   <string name="preferences_RootXposed1">"Root ve Xposed mevcut değil|Bu modülün çalışabilmesi için Root ve Xposed gereklidir."</string>
   <string name="preferences_RootXposed2">"Xposed çalışıyor, Root değil|Ancak Root, Kapatmak veya Yeniden başlatmak için gereklidir...\nLütfen root erişimi izni verin."</string>
@@ -227,11 +212,9 @@
   <string name="animations_Types">"Soldur|Göster\n(Sadece arkaplanda çalışır)|Yukarı kaydır|Sola kaydır|Sağa kaydır|Aşağı kaydır|Yukarı ölçekle|Aşağı ölçekle|Devre dışı"</string>
   <string name="animations_Type">"Tür"</string>
   <string name="animations_Speed">"Hız"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Yükleniyor dairesi"</string>
   <string name="presetsManager_LoadMore">"Yükleniyor...|Lütfen bekleyin...|Daha fazla hazır ayar göster|Daha fazla hazır ayar için buraya tıklayın.|Son.|Gösterilecek daha fazla hazır ayar yok.|Tekrar denemek için buraya tıklayın."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Cihazınızı yeniden başlatmak istediğinizden emin misiniz?|Cihazınızı kapatmak istediğinizden emin misiniz?"</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Onay iste|Yeniden başlatmadan veya kapatmadan önce çıkan onay kutusunu etkinleştirin."</string>
   <string name="preferences_Donate">"Bağış yap|Uygulamayı beğendiniz mi?\nNeden bana bir fincan kahve ya da başka bir şey bağışta bulunmuyorsunuz?"</string>
   <string name="advancedPrefs_HideOnClick">"Tıklandığında gizle"</string>

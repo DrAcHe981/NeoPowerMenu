@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Bekijk deze prachtige app om het power menu van je gerookte android smartphone aan te passen!"</string>
   <string name="PreviewPowerMenu">"Inzien"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Uitschakelen"</string>
   <string name="powerMenuMain_Reboot">"Opnieuw opstarten"</string>
   <string name="powerMenuMain_SoftReboot">"Systeem opnieuw opstarten"</string>
@@ -19,14 +18,12 @@
   <string name="powerMenuMain_ActivityShortcut">"Snelkoppeling van de activiteit"</string>
   <string name="powerMenuMain_ToggleRotate">"Schermrotatie"</string>
   <string name="ToggleRotateMode_Off">"Uit"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Zichtbaarheid en sortering"</string>
   <string name="category_Preset">"Voorkeuren"</string>
   <string name="preset_Load">"Laad preset"</string>
   <string name="preset_LoadDesc">"Laad een bewaarde configuratie"</string>
   <string name="preset_Save">"Bewaar preset"</string>
   <string name="preset_SaveDesc">"Bewaar je huidige configuratie"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Lokale presets"</string>
   <string name="presetsManager_TitleOnline">"Online presets"</string>
   <string name="presetsManager_Creator">"Maker: [CREATORNAME]"</string>
@@ -35,7 +32,6 @@
   <string name="presetsManager_ImportMsg">"Wil je deze preset importeren?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] succesvol geïmporteerd."</string>
   <string name="presetsManager_ImportFailed">"Importeren mislukt..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Afsluit menu"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Gebruik graphics"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Gebruikt graphics in plaats van geletterde cirkels."</string>
@@ -58,7 +54,6 @@
   <string name="presetSaveDialog_OverwriteText">"Bestaat al, preset zal worden overschreven!"</string>
   <string name="presetSave_PresetSaved">"Opgeslagen [PRESETNAME]!"</string>
   <string name="powerMenuMain_Screenrecord">"Schermopname"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Schermopname gestart"</string>
   <string name="screenrecord_toast_error">"Kan schermopnane niet starten"</string>
   <string name="screenrecord_toast_processing">"Kan schermopname niet starten omdat de vorige opname nog wordt verwerkt"</string>
@@ -70,18 +65,15 @@
   <string name="powerMenuMain_ExpandedDesktop">"Uitgebreid bureaublad"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Positie scherm"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Verander de scherm positie"</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Zaklamp aan"</string>
   <string name="quick_settings_torch_off">"Zaklamp uit"</string>
   <string name="quick_settings_torch_off_notif">"Tik om zaklamp uit te schakelen"</string>
   <string name="powerMenuMain_AirplaneMode">"Vliegtuigmodus"</string>
   <string name="powerMenuMain_RestartUI">"Herstart System UI"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Circle">"Kleuren cirkel"</string>
   <string name="colorsType_Background">"Achtergrondkleur"</string>
   <string name="colorsType_Text">"Tekstkleur"</string>
   <string name="powerMenuMain_Flashlight">"Zaklamp"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Machtigingen"</string>
   <string name="permissionsScreen_NotAllGranted">"Niet alle machtigingen zijn toegestaan, sommige functies werken mogelijk niet..."</string>
   <string name="permissionsScreen_ClickToRequest">"Klik om machtigingen op te vragen."</string>
@@ -89,7 +81,6 @@
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Lees/schrijf externe opslag"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Benodigd om zaklamp in te schakelen"</string>
   <string name="visibilityOrder_HideDesc">"Verberg beschrijving"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Toegang tot Surface Flinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Benodigd om schermopname te starten."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Neem geluiden op"</string>
@@ -103,7 +94,6 @@
   <string name="SoundMode_Normal">"Normaal"</string>
   <string name="SoundMode_Vibrate">"Trillen"</string>
   <string name="SoundMode_Silent">"Stil"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_UploadMsg">"Deze preset zal geüpload worden naar een publieke server, zichtbaar voor andere gebruikers.\n\nDit is je laatste kans om de naam of maker aan te passen voordat de present wordt geüpload..."</string>
   <string name="presetsManager_UploadComplete">"Upload voltooid!"</string>
   <string name="presetsManager_UploadFailedSameName">"Deze naam is al in gebruik, probeer a.u.b. een andere naam."</string>
@@ -115,7 +105,6 @@ Controleer je netwerkverbindinge of probeer het later nog eens.\"\"\""</string>
   <string name="presetsManager_CantConnecttoDB">"\"\"\"Kan niet met de database verbinden!
 Probeer het later nog eens, wanneer het dan nog niet lukt dit graag aan de ontwikkelaar melden.\"\"\""</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Benodigd om presents te downloaden/uploaden van en naar de publieke server."</string>
-  <!-- Login page -->
   <string name="login_Title">"Inloggen"</string>
   <string name="login_TitleRegister">"Registreer"</string>
   <string name="login_Info">"De gebruikersnamen van geregistreerde gebruikers zijn beschermd zodat niemand een upload in hun na kan doen, hier kun je inloggen of een nieuwe account creëren.\nDit is niet vereist als je het niet wilt!\nIk zal nooit privé data delen!"</string>
@@ -136,12 +125,10 @@ Klik hier om een nieuwe account te maken!\"\"\""</string>
   <string name="login_TitleStatistics">"Statistieken voor [USERNAMEEMAIL]"</string>
   <string name="login_Statistics">"Voorkeuren upgeload: [UPLOADCOUNT]\n\nAantal gegeven sterren: [STARSGIVEN]\nAantal ontvangen steren: [STARSRECEIVED]\n\nUw voorkeuren (op volgorde van het aantal sterren):\n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"Fout bij het ophalen van de statistieken..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Klik hier om de statistieken opnieuw te laden"</string>
   <string name="login_TitleLogout">"Uitloggen"</string>
   <string name="login_pleaseCheckInput">"Er ging iets fout. Controleer wat u heeft ingevuld."</string>
   <string name="presetsManager_Stars">"Aantal sterren"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"Kleuren"</string>
   <string name="colorsPartDescDialog">"De kleur van het dialoog wanneer er op geklikt wordt."</string>
   <string name="colorsPartDescButton">"De kleuren van de .. knop."</string>
@@ -154,8 +141,6 @@ Klik hier om een nieuwe account te maken!\"\"\""</string>
   <string name="login_RecoverNotFound">"Geen gebruiker gevonden met deze gegevens."</string>
   <string name="powerMenuMain_SoundVibrate">"Geluid: trillen"</string>
   <string name="powerMenuMain_SoundNormal">"Geluid: normaal"</string>
-  <!-- Dialog -->
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root en Xposed"</string>
   <string name="preferences_RootXposed1">"Root en Xposed niet beschikbaar|Root en Xposed zijn vereist om deze module te gebruiken."</string>
   <string name="preferences_RootXposed2">"\"\"\"Xposed beschikbaar, maar root niet|Root toegang is vereist om uit te schakelen of opnieuw te starten...
@@ -180,8 +165,6 @@ Dit instellingenscherm zal na het verbergen alleen toegankelijk zijn via de Xpos
   <string name="preferences_Share">"Deel|Bevalt de app? Deel hem met je vrienden."</string>
   <string name="preferences_About">"\"\"\"Code door Neon-Soft / DrAcHe981|Gebaseerd op code van Naman Dwivedi (naman14).
 Klik hier voor meer informatie.\"\"\""</string>
-  <!-- Power Menu -->
-  <!-- Preferences: Advanced -->
   <string name="errorActivity_MoreInfo">"Meer info"</string>
   <string name="tourPage_Next">"Volgende"</string>
   <string name="tourPage_Skip">"Overslaan"</string>
