@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"تحقق من هذا التطبيق الجميل الذي يتيح لك تخصيص قائمة الطاقة على جهازك الاندرويد مع الروت!"</string>
   <string name="PreviewPowerMenu">"معاينة"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"إيقاف التشغيل"</string>
   <string name="powerMenuMain_Reboot">"إعادة التشغيل"</string>
   <string name="powerMenuMain_SoftReboot">"إعادة تشغيل سريع"</string>
@@ -25,14 +24,12 @@
   <string name="powerMenuMain_ToggleBluetooth">"بلوتوث"</string>
   <string name="powerMenuMain_ToggleData">"بيانات"</string>
   <string name="powerMenuMain_RebootFlashMode">"وضع التثبيت"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"المظهر و الأوامر"</string>
   <string name="category_Preset">"المسبقة"</string>
   <string name="preset_Load">"تحميل سابق"</string>
   <string name="preset_LoadDesc">"تحميل الضبط المحفوظ مسبقاً"</string>
   <string name="preset_Save">"حفظ الحالي"</string>
   <string name="preset_SaveDesc">"حفظ إعدادات التكوين الحالية"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"الإعدادات المسبقة المحلية"</string>
   <string name="presetsManager_TitleOnline">"تحميل إعدادات مسبقة"</string>
   <string name="presetsManager_Creator">"إنشاء [اسم المنشئ]"</string>
@@ -41,7 +38,6 @@
   <string name="presetsManager_ImportMsg">"هل تريد استيراد هذا الإعداد المسبق؟"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] اكتمل استيراده."</string>
   <string name="presetsManager_ImportFailed">"فشل الاستيراد..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"قائمة الطاقة"</string>
   <string name="advancedPrefsTitle_UseGraphics">"استخدم الرسومات"</string>
   <string name="advancedPrefsDesc_UseGraphics">"استخدم الرسومات بدلا من دوائر الأحرف."</string>
@@ -64,7 +60,6 @@
   <string name="presetSaveDialog_OverwriteText">"موجود مسبقاً سيتم الكتابة فوق الإعداد المسبق!"</string>
   <string name="presetSave_PresetSaved">"حفظ [PRESETNAME]!"</string>
   <string name="powerMenuMain_Screenrecord">"تسجيل الشاشة"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"الشاشة يتم تسجيلها"</string>
   <string name="screenrecord_notif_title">تسجيل الشاشة</string>
   <string name="screenrecord_toast_error">"لا يتم تسجيل الشاشة"</string>
@@ -77,19 +72,16 @@
   <string name="powerMenuMain_ExpandedDesktop">"سطح المكتب الموسّع"</string>
   <string name="advancedPrefsTitle_DialogGravity">"وضع الحوار"</string>
   <string name="advancedPrefsDesc_DialogGravity">"تغيير وضع الحوار."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"الشعلة تعمل"</string>
   <string name="quick_settings_torch_off">"الشعلة لا تعمل"</string>
   <string name="quick_settings_torch_off_notif">"المس لإيقاف التشغيل"</string>
   <string name="powerMenuMain_AirplaneMode">"وضع الطيران"</string>
   <string name="powerMenuMain_RestartUI">"إعادة تشغيل الواجهة"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"اكتشاف اللون"</string>
   <string name="colorsType_Circle">"لون الدائرة"</string>
   <string name="colorsType_Background">"لون الخلفية"</string>
   <string name="colorsType_Text">"لون الكتابة"</string>
   <string name="powerMenuMain_Flashlight">"شعلة"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"أذونات"</string>
   <string name="permissionsScreen_NotAllGranted">"لم يتم منح جميع الأذونات، قد لا تعمل بعض الوظائف..."</string>
   <string name="permissionsScreen_ClickToRequest">"انقر لطلب الأذونات."</string>
@@ -99,7 +91,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"كاميرا"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"مطلوب لتفعيل الشعلة."</string>
   <string name="visibilityOrder_HideDesc">"إخفاء الوصف"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"مطلوب لمسجل الشاشة من أجل تسجيل الشاشة."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"تسجيل الصوت"</string>
   <string name="permissionsScreenDesc_android.permission.RECORD_AUDIO">"مطلوب من أجل تسجيل الصوت مع تسجيل الشاشة."</string>
@@ -119,7 +110,6 @@
   <string name="SoundMode_Normal">"عادي"</string>
   <string name="SoundMode_Vibrate">"اهتزاز"</string>
   <string name="SoundMode_Silent">"صامت"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"الحساب"</string>
   <string name="presetsManager_UploadMsg">"سيتم رفع هذا الإعداد المسبق وسيظهر لجميع المستخدمين. \n\n هذه فرصتك الأخيرة لتعديل اسم الإعداد أو منشئ المحتوى قبل الرفع..."</string>
   <string name="presetsManager_UploadComplete">"تم الرفع!"</string>
@@ -128,11 +118,4 @@
   <string name="presetsManager_UploadFailed">"فشل الرفع!"</string>
   <string name="presetsManager_DownloadFailed">"فشل التحميل!"</string>
   <string name="presetsManager_CantConnecttoServer">"فشل الاتصال بالسيرفر. \n يرجي التحقق من اتصال الانترنت لديك وإعادة المحاولة."</string>
-  <!-- Login page -->
-  <!-- Fuzzy -->
-  <!-- Preferences: Colors -->
-  <!-- Dialog -->
-  <!-- Preferences: Main -->
-  <!-- Power Menu -->
-  <!-- Preferences: Advanced -->
 </resources>
