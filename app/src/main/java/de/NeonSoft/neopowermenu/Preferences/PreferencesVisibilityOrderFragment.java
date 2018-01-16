@@ -102,7 +102,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
             "RebootFlashMode", // 26
             "LockPhone", // 27
             "SilentMode", // 28
-            "Shortcut"}; // 29
+            "Shortcut"}; //, //29
+            // "FakePowerOff"}; // 30
     public static String[] PowerMenuItemsTexts;
 
     private DragSortListView.DropListener onDrop =
@@ -178,7 +179,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                 getString(R.string.powerMenuMain_RebootFlashMode),
                 getString(R.string.powerMenuMain_LockPhone),
                 getString(R.string.powerMenuMain_SilentMode),
-                getString(R.string.powerMenuMain_Shortcut)};
+                getString(R.string.powerMenuMain_Shortcut)}; //,
+                // getString(R.string.powerMenuMain_FakePowerOff)};
 
         View InflatedView = inflater.inflate(R.layout.visibilityorder, container, false);
 

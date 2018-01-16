@@ -1012,12 +1012,12 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                     } catch (Throwable t) {
                         Log.e("NPM", "Failed to hide IME:", t);
                     }
-                    TextView_DialogTouchOutside.setOnTouchListener(new OnTouchListener() {
+                    /*TextView_DialogTouchOutside.setOnTouchListener(new OnTouchListener() {
                         @Override
                         public boolean onTouch(View view, MotionEvent motionEvent) {
                             return !hideActive;
                         }
-                    });
+                    });*/
                     TextView_DialogBg.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.fade_out));
                     TextView_DialogBg.setVisibility(View.GONE);
                     TextView_DialogTouchOutside.setVisibility(View.GONE);

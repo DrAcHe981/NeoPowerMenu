@@ -14,7 +14,7 @@ android {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 54
+        versionCode 55
         versionName "1.5.6-8"
         multiDexEnabled true
     }
@@ -36,20 +36,20 @@ android {
 }
 
 dependencies {
-    compile 'com.theartofdev.edmodo:android-image-cropper:2.2.+'
-    compile 'net.lingala.zip4j:zip4j:+'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'cat.ereza:customactivityoncrash:1.5.0'
-    compile 'ch.acra:acra:4.9.0'
-    compile 'org.apache.commons:commons-lang3:3.0'
-    compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-    compile 'com.android.support:support-v4:26.1.0';
-    compile 'com.larswerkman:HoloColorPicker:1.5'
-    //compile files('lib/XposedBridgeApi-20150213.jar')
-	//compile files('lib/api-82-sources.jar')
-    provided 'de.robv.android.xposed:api:+'
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'eu.chainfire:libsuperuser:1.0.0.+'
-    //compile fileTree(include: ['*.jar'], dir: 'deps')
-    provided fileTree(include: ['*.jar'], dir: 'syslib')
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.2.+'
+    implementation 'net.lingala.zip4j:zip4j:+'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'cat.ereza:customactivityoncrash:1.5.0'
+    implementation 'ch.acra:acra:4.9.0'
+    implementation 'org.apache.commons:commons-lang3:3.0'
+    implementation 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
+    implementation 'com.android.support:support-v4:26.1.0';
+    implementation 'com.larswerkman:HoloColorPicker:1.5'
+    //implementation files('lib/XposedBridgeApi-20150213.jar')
+	//implementation files('lib/api-82-sources.jar')
+    compileOnly 'de.robv.android.xposed:api:+'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'eu.chainfire:libsuperuser:1.0.0.+'
+    //implementation fileTree(include: ['*.jar'], dir: 'deps')
+    compileOnly fileTree(include: ['*.jar'], dir: 'syslib')
 }

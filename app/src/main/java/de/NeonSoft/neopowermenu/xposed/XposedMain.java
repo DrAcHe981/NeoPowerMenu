@@ -1,5 +1,6 @@
 package de.NeonSoft.neopowermenu.xposed;
 
+import android.Manifest;
 import android.app.*;
 import android.content.*;
 import android.content.pm.PackageManager;
@@ -69,7 +70,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
 
-    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER", "android.permission.READ_FRAME_BUFFER"};
+    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER", "android.permission.READ_FRAME_BUFFER", "android.permission.WRITE_SETTINGS", "android.permission.WRITE_SECURE_SETTINGS"};
 
     private static final String CLASS_SYSTEMUI = "com.android.systemui.SystemUIApplication";
 
@@ -86,6 +87,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public static final String NPM_ACTION_BROADCAST_TOGGLEROTATION = "de.NeonSoft.neopowermenu.action.toggleRotationMode";
     public static final String NPM_ACTION_BROADCAST_TOGGLEDATA = "de.NeonSoft.neopowermenu.action.toggleData";
     public static final String NPM_ACTION_BROADCAST_REBOOTFLASHMODE = "de.NeonSoft.neopowermenu.action.RebootFlashMode";
+    public static final String NPM_ACTION_BROADCAST_FAKEPOWEROFF = "de.NeonSoft.neopowermenu.action.FakePowerOff";
 
 
     static Handler xHandler;
@@ -161,6 +163,9 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 case NPM_ACTION_BROADCAST_TOGGLEDATA:
                     toggleData(p1, !isDataActive(p1));
                     break;
+                case NPM_ACTION_BROADCAST_FAKEPOWEROFF:
+                    fakePowerOff(p1);
+                    break;
             }
             if (isOrderedBroadcast()) {
                 if (DeepXposedLogging)
@@ -230,11 +235,11 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             String usedPMClass;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 usedGADClass = CLASS_GLOBAL_ACTIONS_MARSHMALLOW;
-                if (XposedUtils.isOxygenOsRom()) {
-                    usedPWMClass = CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW_OEM;
-                } else {
+                //if (XposedUtils.isOxygenOsRom()) {
+                //    usedPWMClass = CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW_OEM;
+                //} else {
                     usedPWMClass = CLASS_PHONE_WINDOW_MANAGER_MARSHMALLOW;
-                }
+                //}
                 usedPMClass = CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW;
             } else {
                 usedGADClass = CLASS_GLOBAL_ACTIONS;
@@ -605,10 +610,6 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
 
     private static void takeScreenshot(final Context p1) {
         final Handler handler = new Handler();
-        if (handler == null) {
-            XposedUtils.log("Screenshot failed: handler is null, this should never happen!");
-            return;
-        }
 
         mScreenshotConnection = null;
 
@@ -846,6 +847,127 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             return false;
         }
         return false;
+    }
+
+    private void fakePowerOff(final Context context) {
+
+        boolean z;
+        final int mfpoTime = preferences.getInt(PreferenceNames.pFakeOffTime, 2);
+        final int screenOffStrategy = preferences.getInt(PreferenceNames.pFakeOffStrategy, 0);
+        final int mOrigTimeOut = preferences.getInt("pref_orig_timeout", -1);
+        boolean mOrigTimeOutAvailable;
+        if (mOrigTimeOut >= 15000) {
+            z = true;
+        } else {
+            z = false;
+        }
+        mOrigTimeOutAvailable = z;
+
+        Handler handler = new Handler();
+        if (mOrigTimeOutAvailable) {
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    if (!preferences.getBoolean(PreferenceNames.pFakeOff, true) || screenOffStrategy != 0) {
+                        return;
+                    }
+                    if (Settings.System.putInt(context.getContentResolver(), "screen_off_timeout", 1000)) {
+                        Log.d("NPM", "[FakePowerOffAction] successfully set timeout to 1000");
+                    } else {
+                        Log.e("NPM", "[FakePowerOffAction] failed to set timeout");
+                    }
+                }
+            }, (long) ((mfpoTime * 1000) - 2000));
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    if (!preferences.getBoolean("_pref_fpo_screen_off", true) || screenOffStrategy != 0) {
+                        return;
+                    }
+                    if (Settings.System.putInt(context.getContentResolver(), "screen_off_timeout", mOrigTimeOut)) {
+                        Log.d("NPM", "[FakePowerOffAction] successfully reset timeout to" + mOrigTimeOut);
+                    } else {
+                        Log.e("NPM", "[FakePowerOffAction] failed to reset timeout");
+                    }
+                }
+            }, (long) ((mfpoTime * 1000) + 5000));
+        } else {
+            Log.w("NPM", "[FakePowerOffAction] original time out NOT available, don't mess with it");
+        }
+        int mSimPowerBtnTime = preferences.getInt(PreferenceNames.pFakeOffSimPowerButtonTime, 0);
+        if (screenOffStrategy == 1 || screenOffStrategy == 2) {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (screenOffStrategy == 1 || screenOffStrategy == 2) {
+                        try {
+                            new DataOutputStream(Runtime.getRuntime().exec("su").getOutputStream()).writeBytes("input keyevent 26\n");
+                        } catch (Throwable e) {
+                            Log.e("NPM", "[FakePowerOffAction]", e);
+                        }
+                    }
+                    if (screenOffStrategy == 2) {
+                        Intent intent = new Intent();
+                        intent.setAction("de.NeonSoft.neopowermenu.FakePowerOffBroadcastSticky");
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.sendBroadcast(intent);
+                        Intent intent2 = new Intent("de.NeonSoft.neopowermenu.FakePowerOffBroadcastSticky");
+                        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent2.putExtra("isPresent", true);
+                        context.sendStickyBroadcast(intent2);
+                        Settings.System.putInt(context.getContentResolver(), "screen_brightness", 1);
+                        try {
+                            new DataOutputStream(Runtime.getRuntime().exec("su").getOutputStream()).writeBytes("echo 0 > /sys/class/graphics/fb0/blank\necho 1 > /sys/class/graphics/fb0/blank\n");
+                        } catch (Throwable e2) {
+                            Log.e("NPM", "[FakePowerOffAction]", e2);
+                        }
+                    }
+                }
+            }, (long) ((mfpoTime * 1000) - mSimPowerBtnTime));
+        }
+        if (screenOffStrategy == 3) {
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    XposedHelpers.callMethod((PowerManager) context.getSystemService(Context.POWER_SERVICE), "goToSleep", new Object[]{Long.valueOf(SystemClock.uptimeMillis())});
+                }
+            }, (long) (mfpoTime * 1000));
+        }
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                Intent intent = new Intent();
+                intent.setAction("de.NeonSoft.neopowermenu.intent.FAKE_POWER_OFF");
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.sendBroadcast(intent);
+                if (preferences.getBoolean(PreferenceNames.pFakeOffSilent, true)) {
+                    try {
+                        ((AudioManager) context.getSystemService(Context.AUDIO_SERVICE)).setRingerMode(0);
+                        Log.d("NPM", "[FakePowerOffAction] Set device to silent");
+                    } catch (Throwable throwable) {
+                        Log.e("NPM", "[FakePowerOffAction] Failed to set device to silent mode.", throwable);
+                    }
+                }
+                if (preferences.getBoolean(PreferenceNames.pFakeOffLed, true)) {
+                    boolean success = Settings.System.putInt(context.getContentResolver(), "notification_pulse", 0);
+                    if (Build.MANUFACTURER.toLowerCase().startsWith("lg")) {
+                        Log.d("NPM", "[FakePowerOffAction] is lg phone");
+                        if (Settings.System.putInt(context.getContentResolver(), "lge_notification_pulse", 0)) {
+                            Log.d("NPM", "[FakePowerOffAction] successfully turn off LED notif for LG device");
+                        } else {
+                            Log.e("NPM", "[FakePowerOffAction] failed to turn off LED notif for LG device");
+                        }
+                    }
+                    if (success) {
+                        Log.e("NPM", "[FakePowerOffAction] successfully turn off LED notif");
+                    } else {
+                        Log.e("NPM", "[FakePowerOffAction] failed to turn off LED notif");
+                    }
+                }
+                if (preferences.getBoolean(PreferenceNames.pFakeOffInSOD, false)) {
+                    Log.d("NPM", "[FakePowerOffAction] setting SOD flag to true");
+                    XSOD.isInSOD = true;
+                    Log.d("NPM", "[FakePowerOffAction] preventing screen on");
+                    XSOD.preventScreenOn();
+                }
+            }
+        }, (long) ((mfpoTime * 1000) + 1000));
     }
 
     private boolean showDialog() {
