@@ -134,8 +134,7 @@ Kliknij aby utworzyć nowe konto!\"\"\""</string>
   <string name="powerMenuMain_SoundSilent">"Dźwięk: Cichy"</string>
   <!-- Dialog -->
   <string name="presetLoadDialog_BuiltIn">"Jasny|Ciemny|Czarny"</string>
-  <string name="advancedPrefs_DialogGravity">"Góra|Lewo|Prawo|Dół"</string>
-  <string name="graphics_Choose">"Przywróć domyślne|Wybierz zdefiniowane|Wybierz z galerii"</string>
+    <string name="graphics_Choose">"Przywróć domyślne|Wybierz zdefiniowane|Wybierz z galerii"</string>
   <string name="presetsManager_Buttons">"Daj gwiazdkę|Usuń gwiazdkę|Usuń|Zgłoś|Wgraj|Podziel się"</string>
   <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root oraz Xposed"</string>

@@ -3,7 +3,6 @@
 <string name="ShareMessage">"Check out this beautiful app to customize your Power Menu of your rooted android device!"</string>
 <string name="PreviewPowerMenu">"Preview"</string>
 
-<!-- Power Menu -->
 <string name="powerMenuMain_Shutdown">"Power Off"</string>
 <string name="powerMenuMain_Reboot">"Reboot"</string>
 <string name="powerMenuMain_SoftReboot">"Soft Reboot"</string>
@@ -26,7 +25,6 @@
 		<string name="powerMenuMain_ToggleData">"Data"</string>
 		<string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
 
-<!-- Preferences: Visibility and order -->
 <string name="visibilityOrderCategory_VisibilityOrder">"Visibility and order"</string>
 <string name="category_Preset">"Presets"</string>
 <string name="preset_Load">"Load preset"</string>
@@ -34,7 +32,6 @@
 <string name="preset_Save">"Save preset"</string>
 <string name="preset_SaveDesc">"Save your current configuration"</string>
 
-<!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleLocal">"Local Presets"</string>
 <string name="presetsManager_TitleOnline">"Online Presets"</string>
 <string name="presetsManager_Creator">"Creator: [CREATORNAME]"</string>
@@ -44,7 +41,6 @@
 <string name="presetsManager_ImportSuccess">"[PRESETNAME] imported successfully."</string>
 <string name="presetsManager_ImportFailed">"Import failed..."</string>
 
-<!-- Preferences: Advanced -->
 <string name="advancedPrefsCategory_PowerMenu">"Power Menu"</string>
 <string name="advancedPrefsTitle_UseGraphics">"Use Graphics"</string>
 <string name="advancedPrefsDesc_UseGraphics">"Use Graphics instead of the Letter circles."</string>
@@ -68,7 +64,6 @@
 <string name="presetSave_PresetSaved">"Saved [PRESETNAME]!"</string>
 <string name="powerMenuMain_Screenrecord">"Screenrecord"</string>
 
-<!-- Screen recording -->
 <string name="screenrecord_notif_ticker">"Screen is being recorded"</string>
 <string name="screenrecord_notif_title">Screen recording</string>
 <string name="screenrecord_toast_error">"Unable to record screen"</string>
@@ -82,21 +77,18 @@
 <string name="advancedPrefsTitle_DialogGravity">"Dialog Position"</string>
 <string name="advancedPrefsDesc_DialogGravity">"Change the dialog position."</string>
 
-<!-- Torch -->
 <string name="quick_settings_torch_on">"Torch On"</string>
 <string name="quick_settings_torch_off">"Torch Off"</string>
 <string name="quick_settings_torch_off_notif">"Touch to turn off"</string>
 <string name="powerMenuMain_AirplaneMode">"Airplane Mode"</string>
 <string name="powerMenuMain_RestartUI">"Restart System UI"</string>
 
-<!-- Preferences: Colors -->
 		<string name="colorsType_Reveal">"Reveal color"</string>
     <string name="colorsType_Circle">"Circle color"</string>
 <string name="colorsType_Background">"Background color"</string>
 <string name="colorsType_Text">"Text color"</string>
 <string name="powerMenuMain_Flashlight">"Torch"</string>
 
-<!-- Permissions Screen -->
 <string name="permissionsScreen_Title">"Permissions"</string>
 <string name="permissionsScreen_NotAllGranted">"Not all permissions are granted, some functions may not work..."</string>
 <string name="permissionsScreen_ClickToRequest">"Click to request the permission."</string>
@@ -107,7 +99,6 @@
 <string name="permissionsScreenDesc_android.permission.CAMERA">"Required to toggle the torch."</string>
 <string name="visibilityOrder_HideDesc">"Hide description"</string>
 
-<!-- Preferences: Colors -->
 <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Access Surface Flinger"</string>
 <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Required for the screen recorder to record the screen."</string>
 <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Record Audio"</string>
@@ -130,7 +121,6 @@
 <string name="SoundMode_Vibrate">"Vibrate"</string>
 <string name="SoundMode_Silent">"Silent"</string>
 
-<!-- Preferences: Preset Manager -->
 <string name="presetsManager_TitleAccount">"Account"</string>
 <string name="presetsManager_UploadMsg">"This Preset will be uploaded to the public server, visible to all other users.\n\nThis is your last chance to adjust the name or the creator before uploading..."</string>
 <string name="presetsManager_UploadComplete">"Upload complete!"</string>
@@ -143,7 +133,6 @@
 <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
 <string name="permissionsScreenDesc_android.permission.INTERNET">"Required to download/upload presets from/to the public server."</string>
 
-<!-- Login page -->
 <string name="login_Title">"Login"</string>
 <string name="login_TitleRegister">"Register"</string>
 <string name="login_Info">"The user names of registered users are protected so no one can upload in their name, here you can log in or create an new account.\nThis is not required if you don't want to!\nI will never share any private data!"</string>
@@ -165,13 +154,11 @@
 <string name="login_Statistics">"Presets uploaded: [UPLOADCOUNT]\n\nStars given: [STARSGIVEN]\nStars received: [STARSRECEIVED]\n\nYour presets (ordered by stars):\n[TOP5PRESETS]"</string>
 <string name="login_StatisticsFailed">"Failed to get statistics..."</string>
 
-<!-- Fuzzy -->
 <string name="login_ReloadStatistics">"Click here to reload statistics"</string>
 <string name="login_TitleLogout">"Logout"</string>
 <string name="login_pleaseCheckInput">"Something went wrong, please check your input."</string>
 <string name="presetsManager_Stars">"Stars: [STARS]"</string>
 
-<!-- Preferences: Colors -->
 <string name="colorsPartTitle">"[PART] colors"</string>
 <string name="colorsPartDescDialog">"The colors of the dialog when clicked on [BUTTON]."</string>
 <string name="colorsPartDescButton">"The colors of the [BUTTON] button."</string>
@@ -195,11 +182,9 @@
 <string name="powerMenuMain_SoundNormal">"Sound: Normal"</string>
 <string name="powerMenuMain_SoundSilent">"Sound: Silent"</string>
 
-<!-- Dialog -->
 <string name="Dialog_Buttons">"OK|Yes|No|Rename|Cancel|Delete|Load|Save|Ignore"</string>
 <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
-<string name="advancedPrefs_DialogGravity">"Top|Left|Right|Bottom"</string>
-<string name="graphics_Choose">"Restore default|Choose from presets|Choose from gallery"</string>
+    <string name="graphics_Choose">"Restore default|Choose from presets|Choose from gallery"</string>
 <string name="graphics_Crop">"Crop|Circle crop"</string>
 <string name="graphics_NoPresetsFound">"No presets with graphics found..."</string>
 <string name="graphics_GraphicsSaveLoad">"Save with current graphics.|This preset contains graphics, do you want to load them?\nThis will overwrite your current graphics!"</string>
@@ -214,7 +199,6 @@
 <string name="visibilityOrder_AddItem">"Add normal item\nJust a normal item with only one slot.|Add multi item\nAdd up to three items in one line.|Add multi page item\nClicking it will show a new 'page'."</string>
 <string name="visibilityOrder_MultiPage">"Multi page item starts here\nThe first normal item defines the button to open the 'new page'.|Multi page item ends here"</string>
 
-<!-- Preferences: Main -->
 <string name="preferencesCategory_RootXposed">"Root and Xposed"</string>
 <string name="preferences_RootXposed1">"Root and Xposed not available|Root and Xposed are required for this module to work."</string>
 <string name="preferences_RootXposed2">"Xposed working, Root not|But Root is needed to Power off or Reboot...\nPlease allow root access."</string>
@@ -243,12 +227,10 @@
     <string name="animations_Type">"Type"</string>
     <string name="animations_Speed">"Speed"</string>
 
-<!-- Power Menu -->
 <string name="powerMenuMain_Progress">"Loading circle"</string>
 <string name="presetsManager_LoadMore">"Loading...|Please wait...|Show more presets|Click here to show more presets.|The End.|No more presets to show.|Click here to try again."</string>
 <string name="powerMenu_SureToRebootPowerOff">"Are you sure you want to reboot your device?|Are your sure you want to power off your device?"</string>
 
-<!-- Preferences: Advanced -->
 <string name="advancedPrefs_Confirmation">"Require confirmation|Enable a confirmation dialog before reboot or power off."</string>
 <string name="preferences_Donate">"Donate|Like the app?\nWhy not donate me a cup of coffee or something else?"</string>
     <string name="advancedPrefs_HideOnClick">"Hide on click"</string>
@@ -464,5 +446,6 @@
     <string name="graphics_PowerMenuBackground">Menu Background</string>
     <string name="visibilityOrder_MissingPermissionForCamera">Missing camera permission, please allow it to use this toggle!</string>
     <string name="visibilityOrder_NotSupportedbyDevice">Your device does not seem to support the \"[TITLE]\" element!</string>
+    <string name="powerMenuMain_FakePowerOff">Power off (Fake)</string>
 
 </resources>

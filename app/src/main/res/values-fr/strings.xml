@@ -177,8 +177,7 @@
   <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Oui|Non|Renommer|Annuler|Supprimer|Charger|Enregistrer|Ignorer"</string>
   <string name="presetLoadDialog_BuiltIn">"Clair|Sombre|Noir"</string>
-  <string name="advancedPrefs_DialogGravity">"Haut|Gauche|Droite|Bas"</string>
-  <string name="graphics_Choose">"Restaurer par défaut | Choisir des préréglages | Choisir dans la Galerie"</string>
+    <string name="graphics_Choose">"Restaurer par défaut | Choisir des préréglages | Choisir dans la Galerie"</string>
   <string name="presetsManager_Buttons">"Donner Star | Supprimer Star | Supprimer | Report | Télécharger | Partager"</string>
   <string name="screenrecord_notif_buttons">"Stop | Afficher pointeur"</string>
   <!-- Preferences: Main -->

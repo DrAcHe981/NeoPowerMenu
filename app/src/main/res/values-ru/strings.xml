@@ -197,8 +197,7 @@
   <!-- Dialog -->
   <string name="Dialog_Buttons">"ОК|Да|Нет|Переименовать|Отмена|Удалить|Загрузить|Сохранить|Игнорировать"</string>
   <string name="presetLoadDialog_BuiltIn">"Светлый|Тёмный|Чёрный"</string>
-  <string name="advancedPrefs_DialogGravity">"Вверх|Влево|Вправо|Вниз"</string>
-  <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
+    <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
   <string name="graphics_Crop">"Обрезка | Круговая обрезка"</string>
   <string name="graphics_NoPresetsFound">"Шаблонов с графикой не найдено..."</string>
   <string name="graphics_GraphicsSaveLoad">"\"\"\"Сохранить текущую графику.|Этот шаблон содержит графические изображения, вы хотите их загрузить?

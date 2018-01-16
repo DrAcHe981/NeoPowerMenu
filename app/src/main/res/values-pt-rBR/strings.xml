@@ -200,8 +200,7 @@ Clique aqui para opções de recuperação.\"\""</string>
   <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Sim|Não|Renomear|Cancelar|Excluir|Carregar|Salvar|Ignorar"</string>
   <string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
-  <string name="advancedPrefs_DialogGravity">"Topo|Esquerda|Direita|Baixo"</string>
-  <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
+    <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
   <string name="graphics_Crop">"Cortar|Cortar redondo"</string>
   <string name="graphics_NoPresetsFound">"Nenhuma predefinição com gráficos encontrada..."</string>
   <string name="graphics_GraphicsSaveLoad">"\"\"Salvar com os gráficos atuais.|Essa predefinição contém gráficos, você quer carregá-los?

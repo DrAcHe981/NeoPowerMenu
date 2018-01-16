@@ -185,8 +185,7 @@
   <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Ja|Nein|Umbenennen|Abbrechen|Löschen|Laden|Speichern|Ignorieren"</string>
   <string name="presetLoadDialog_BuiltIn">"Hell|Dunkel|Schwarz"</string>
-  <string name="advancedPrefs_DialogGravity">"Oben|Links|Rechts|Unten"</string>
-  <string name="graphics_Choose">"Standard wiederherstellen|Aus Voreinstellung wählen|Aus Galerie wählen"</string>
+    <string name="graphics_Choose">"Standard wiederherstellen|Aus Voreinstellung wählen|Aus Galerie wählen"</string>
   <string name="graphics_Crop">"Zuschneiden|Rund zuschneiden"</string>
   <string name="graphics_NoPresetsFound">"Keine Voreinstellungen mit Grafiken gefunden..."</string>
   <string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern.|Diese Voreinstellung enthält Grafiken, willst du sie laden? \nDies überschreibt deine aktuellen Grafiken!"</string>

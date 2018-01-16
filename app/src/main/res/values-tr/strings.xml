@@ -185,8 +185,7 @@
   <!-- Dialog -->
   <string name="Dialog_Buttons">"Tamam|Evet|Hayır|Yeniden Adlandır|Vazgeç|Sil|Yükle|Kaydet|Yoksay"</string>
   <string name="presetLoadDialog_BuiltIn">"Açık|Koyu|Siyah"</string>
-  <string name="advancedPrefs_DialogGravity">"Üst|Sol|Sağ|Alt"</string>
-  <string name="graphics_Choose">"Varsayılana sıfırla|Hazırlardan seç|Galeriden seç"</string>
+    <string name="graphics_Choose">"Varsayılana sıfırla|Hazırlardan seç|Galeriden seç"</string>
   <string name="graphics_Crop">"Kırp|Daire kırp"</string>
   <string name="graphics_NoPresetsFound">"Grafikli hazır ayar bulunamadı..."</string>
   <string name="graphics_GraphicsSaveLoad">"Mevcut grafiklerle kaydet.|Bu hazır ayar grafikler içeriyor, bunları yüklemek istiyor musunuz?\nBu, mevcut grafiklerin üzerine yazacaktır!"</string>

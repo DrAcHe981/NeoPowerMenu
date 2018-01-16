@@ -185,8 +185,7 @@
   <!-- Dialog -->
   <string name="Dialog_Buttons">"OK | Sí | No | Cambiar el nombre de | Cancelar | Eliminar | Carga | Guardar | Ignorar"</string>
   <string name="presetLoadDialog_BuiltIn">"Claro | Oscuro | Negro"</string>
-  <string name="advancedPrefs_DialogGravity">"Arriba | Izquierda | Derecho | Inferior"</string>
-  <string name="graphics_Choose">"Restaurar original | Elegir tema | Elegir de la galería"</string>
+    <string name="graphics_Choose">"Restaurar original | Elegir tema | Elegir de la galería"</string>
   <string name="graphics_Crop">"Cortado | Corte circular"</string>
   <string name="graphics_NoPresetsFound">"No hay temas con gráficos encontrados..."</string>
   <string name="graphics_GraphicsSaveLoad">"Salvar con gráficos actuales. | Esta tema contiene gráficos, ¿quieres cargarlos?\n¡Esto sobrescribira a los gráficos actuales!"</string>

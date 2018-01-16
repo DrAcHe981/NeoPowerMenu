@@ -159,8 +159,7 @@
   <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Si|No|Rinomina|Annulla|Cancella|Carica|Salva|Ignora"</string>
   <string name="presetLoadDialog_BuiltIn">"Chiaro | Scuro | Nero"</string>
-  <string name="advancedPrefs_DialogGravity">"Alto | Sinistra | Diritto | Fondo"</string>
-  <string name="graphics_Choose">"Ripristinare l'impostazione predefinita | Scegliere tra preset | Scegli dalla Galleria"</string>
+    <string name="graphics_Choose">"Ripristinare l'impostazione predefinita | Scegliere tra preset | Scegli dalla Galleria"</string>
   <string name="graphics_Crop">"Rifila | Rifila cerchio"</string>
   <string name="graphics_NoPresetsFound">"Nessun preset con grafica trovato..."</string>
   <string name="graphics_GraphicsSaveLoad">"Salvare con grafica attuale. | Questo preset contiene grafica, vuoi caricarli? \nThis sovrascriverà il vostro attuale grafica!"</string>

@@ -185,8 +185,7 @@
   <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Ano|Ne|Přejmenovat|Zrušit|Smazat|Načíst|Uložit|Ignorovat"</string>
   <string name="presetLoadDialog_BuiltIn">"Světlé|Šedé|Černé"</string>
-  <string name="advancedPrefs_DialogGravity">"Horní|Levý|Pravý|Spodní"</string>
-  <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
+    <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
   <string name="graphics_Crop">"Oříznutí|Kruhové oříznutí"</string>
   <string name="graphics_NoPresetsFound">"Žádné grafické předvolby nenalezeny..."</string>
   <string name="graphics_GraphicsSaveLoad">"Uložit akttuální grafický návrh.|Toto přednastavení obsahuje grafiku, chcete ji načíst?\nVolba přepíše váš aktuální grafický návrh!"</string>

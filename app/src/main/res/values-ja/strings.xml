@@ -180,7 +180,6 @@
   <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|はい|いいえ|名前の変更|キャンセル|削除|読み込み|保存|無視"</string>
   <string name="presetLoadDialog_BuiltIn">"ライト|ダーク|ブラック"</string>
-  <string name="advancedPrefs_DialogGravity">"上|左|右|下"</string>
   <string name="graphics_Choose">"既定の復元|プリセットから選択|ギャラリーから選択"</string>
   <string name="graphics_Crop">"トリミング|サークルトリミング"</string>
   <string name="graphics_NoPresetsFound">"グラフィックのプリセットが見つかりません..."</string>

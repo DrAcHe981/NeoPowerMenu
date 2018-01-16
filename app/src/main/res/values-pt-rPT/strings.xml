@@ -78,8 +78,7 @@ Isso não pode  ser desfeito!\""</string>
   <!-- Preferences: Colors -->
   <!-- Dialog -->
   <string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
-  <string name="advancedPrefs_DialogGravity">"Cima|Esquerda|Direita|Abaixo"</string>
-  <!-- Preferences: Main -->
+    <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
   <string name="preferences_RootXposed1">"Root e Xposed não disponíveis|Root e Xposed são necessários para o funcionamento"</string>
   <string name="preferences_RootXposed2">"\"Xposed funcionando,acesso Root não.|É preciso ter acesso Root para  Desligar ou reiniciar...
