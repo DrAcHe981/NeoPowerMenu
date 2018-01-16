@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Scopri questa magnifica app per personalizzare il tuo Menu di Riavvio sul tuo dispositivo con privilegi di root!"</string>
   <string name="PreviewPowerMenu">"Anteprima"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Spegni"</string>
   <string name="powerMenuMain_Reboot">"Riavvia"</string>
   <string name="powerMenuMain_SoftReboot">"Riavvio Soft"</string>
@@ -17,13 +16,11 @@
   <string name="powerMenuMain_ActivityShortcut">"Scorciatoia attività"</string>
   <string name="powerMenuMain_ToggleRotate">"Rotazione schermo"</string>
   <string name="ToggleRotateMode_Off">"Spento"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilità e ordinamento"</string>
   <string name="preset_Load">"Carica preset"</string>
   <string name="preset_LoadDesc">"Carica una configurazione salvata"</string>
   <string name="preset_Save">"Salva preset"</string>
   <string name="preset_SaveDesc">"Salva configurazione corrente"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Presets Locali"</string>
   <string name="presetsManager_TitleOnline">"Presets online"</string>
   <string name="presetsManager_Creator">"Creatore: [CREATORNAME]"</string>
@@ -32,7 +29,6 @@
   <string name="presetsManager_ImportMsg">"Vuoi importare questo preset?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] importati correttamente."</string>
   <string name="presetsManager_ImportFailed">"Importazione fallita..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Menu di Riavvio"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Usare la grafica"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Usare Grafici invece di Lettere cerchiate."</string>
@@ -55,7 +51,6 @@
   <string name="presetSaveDialog_OverwriteText">"Già esistente, il preset verrà sovrascritto!"</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] salvato!"</string>
   <string name="powerMenuMain_Screenrecord">"Registra schermo"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Lo schermo è in fase di registrazione"</string>
   <string name="screenrecord_toast_error">"Impossibile registrare schermo"</string>
   <string name="screenrecord_toast_processing">"Non è possibile avviare nuova registrazione in quanto la registrazione precedente è ancora in fase di elaborazione"</string>
@@ -67,18 +62,15 @@
   <string name="powerMenuMain_ExpandedDesktop">"Desktop Esteso"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Posizione finestra di dialogo"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Modificare la posizione della finestra di dialogo."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Torcia Attivata"</string>
   <string name="quick_settings_torch_off">"Torcia Disattivata"</string>
   <string name="quick_settings_torch_off_notif">"Premi per spegnere la torcia"</string>
   <string name="powerMenuMain_AirplaneMode">"Modalità aereo"</string>
   <string name="powerMenuMain_RestartUI">"Riavviare l'interfaccia utente del sistema"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Circle">"Colore cerchio"</string>
   <string name="colorsType_Background">"Colore dello sfondo"</string>
   <string name="colorsType_Text">"Colore del testo"</string>
   <string name="powerMenuMain_Flashlight">"Torcia"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Permessi di Accesso"</string>
   <string name="permissionsScreen_NotAllGranted">"Non tutte le autorizzazioni sono concesse, alcune funzioni potrebbero non funzionare..."</string>
   <string name="permissionsScreen_ClickToRequest">"Clicca per richiedere l'autorizzazione."</string>
@@ -86,7 +78,6 @@
   <string name="permissionsScreenTitle_android.permission.WRITE_EXTERNAL_STORAGE">"Archiviazione esterna di lettura/scrittura"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Necessaria per attivare o disattivare la torcia."</string>
   <string name="visibilityOrder_HideDesc">"Nascondi Descrizione"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Accesso Surface Flinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Necessaria per lo screen recorder per registrare lo schermo."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Registra l’Audio"</string>
@@ -99,7 +90,6 @@
   <string name="SoundMode_Normal">"Normale"</string>
   <string name="SoundMode_Vibrate">"Vibrazione"</string>
   <string name="SoundMode_Silent">"Silenzioso"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Profilo"</string>
   <string name="presetsManager_UploadMsg">"Questo Preset verrà caricato sul server pubblico, visibile a tutti gli altri users.\n\n Questa è l'ultima possibilità per modificare il nome o il creatore prima di caricare..."</string>
   <string name="presetsManager_UploadComplete">"Caricamento completato!"</string>
@@ -110,7 +100,6 @@
   <string name="presetsManager_CantConnecttoServer">"Impossibile connettersi al server! \n Per favore controllare la connessione di rete o riprovare più tardi."</string>
   <string name="presetsManager_CantConnecttoDB">"Impossibile connettersi al database! \n Per favore riprovare più tardi, quando non cambia nulla: si prega di segnalarlo allo sviluppatore."</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Richiesto scaricare/caricare preset dal/sul server pubblico."</string>
-  <!-- Login page -->
   <string name="login_TitleRegister">"Iscriviti"</string>
   <string name="login_Info">"Gli username degli utenti registrati sono protetti in modo che nessuno può caricare a nome loro, qui puoi accedere o creare un nuovo account.\n Questo non è necessario se non vuoi farlo! \n Nessun dato privato verrà condiviso!"</string>
   <string name="login_UsernameEmail">"Nome utente o e-mail:"</string>
@@ -129,12 +118,10 @@
   <string name="login_TitleStatistics">"Statistiche per [USERNAMEEMAIL]"</string>
   <string name="login_Statistics">"Preset caricato: [UPLOADCOUNT]\n\n Stars Data: [STARSGIVEN]\n Stars ricevuto: [STARSRECEIVED]\n\n Il tuo preset (ordinati per stelle): \n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"Impossibile ottenere le statistiche..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Clicca qui per ricaricare le statistiche"</string>
   <string name="login_TitleLogout">"Disconnetti"</string>
   <string name="login_pleaseCheckInput">"Qualcosa è andato storto, si prega di controllare il vostro input."</string>
   <string name="presetsManager_Stars">"Stelle: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"[PART] colori"</string>
   <string name="colorsPartDescDialog">"I colori della finestra di dialogo quando si fa clic su [BUTTON]."</string>
   <string name="colorsPartDescButton">"I colori del pulsante [BUTTON]."</string>
@@ -156,10 +143,8 @@
   <string name="powerMenuMain_SoundVibrate">"Suono: vibrazione"</string>
   <string name="powerMenuMain_SoundNormal">"Suono: normale"</string>
   <string name="powerMenuMain_SoundSilent">"Suono: silenzioso"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Si|No|Rinomina|Annulla|Cancella|Carica|Salva|Ignora"</string>
   <string name="presetLoadDialog_BuiltIn">"Chiaro | Scuro | Nero"</string>
-  <string name="advancedPrefs_DialogGravity">"Alto | Sinistra | Diritto | Fondo"</string>
   <string name="graphics_Choose">"Ripristinare l'impostazione predefinita | Scegliere tra preset | Scegli dalla Galleria"</string>
   <string name="graphics_Crop">"Rifila | Rifila cerchio"</string>
   <string name="graphics_NoPresetsFound">"Nessun preset con grafica trovato..."</string>
@@ -172,7 +157,6 @@
   <string name="uploadHelper_States">"In attesa di altri upload... | Connessione al server... | Richiesta di informazioni... | Upload in corso... | Cancellazione..."</string>
   <string name="visibilityOrder_AddItem">"Aggiungere normale item\n Solo un elemento normale con un solo slot. | Multi item\nAggiungi fino a tre voci in una sola riga. | Aggiungere pagina multi item\nCliccare per vsualizzare una nuova 'pagina'."</string>
   <string name="visibilityOrder_MultiPage">"Elemento multi pagina inizia qui\nIl primo elemento normale definisce il pulsante per aprire la pagina' nuova'. | Elemento Multi pagina termina qui"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
   <string name="preferences_RootXposed1">"Root e Xposed non dispobili | Root e Xposed necessari per far si che il modulo funzioni."</string>
   <string name="preferences_RootXposed2">"Xposed funzionante, Root non funzionante | Root è richiesto per Spegnere o Riavviare...\n Per favore consenti accesso root."</string>
@@ -200,11 +184,9 @@
   <string name="animations_Types">"Dissolvenza | Reveal\n (funziona solo per lo sfondo) | Scorrere verso l'alto | Scorrere a sinistra | Scorrere a destra | Scivolare giù | Scala verso l'alto | Scala verso il basso | Disabilitato"</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocità"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Cerchio di caricamento"</string>
   <string name="presetsManager_LoadMore">"Loading... | Si prega di attendere... | Visualizza più preset | Clicca qui per visualizzare più preset. | Alla fine. | Non più preset per mostrare. | Clicca qui per riprovare."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Sei sicuro di voler riavviare il dispositivo? | Sei sicuro di voler spegnere il dispositivo?"</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Richiesta la conferma | Attivare una finestra di dialogo di conferma prima di riavvio o spegnimento."</string>
   <string name="preferences_Donate">"Donare | Ti piace l'app? \n Perchè non mi doni una tazza di caffè o qualcos'altro?"</string>
   <string name="advancedPrefs_HideOnClick">"Nascondi cliccando"</string>
