@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Confira este belo app para customizar o Menu de Energia de seu dispositivo Android rooteado!"</string>
   <string name="PreviewPowerMenu">"PRÉVIA"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Desligar"</string>
   <string name="powerMenuMain_Reboot">"Reiniciar"</string>
   <string name="powerMenuMain_SoftReboot">"Reiniciar Rápido"</string>
@@ -25,14 +24,12 @@
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Dados"</string>
   <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilidade e ordem"</string>
   <string name="category_Preset">"Predefinições"</string>
   <string name="preset_Load">"Carregar predefinição"</string>
   <string name="preset_LoadDesc">"Carregar uma configuração salva"</string>
   <string name="preset_Save">"Salvar predefinição"</string>
   <string name="preset_SaveDesc">"Salvar sua configuração atual"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Predefinições Locais"</string>
   <string name="presetsManager_TitleOnline">"Predefinições Online"</string>
   <string name="presetsManager_Creator">"Criador: [CREATORNAME]"</string>
@@ -42,7 +39,6 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="presetsManager_ImportMsg">"Gostaria de importar esta predefinição?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] foi importada com sucesso."</string>
   <string name="presetsManager_ImportFailed">"Importação falhou..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Menu de Enegia"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Usar Ícones"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Usar ícones ao invés de letras nos círculos."</string>
@@ -65,7 +61,6 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="presetSaveDialog_OverwriteText">"Já existe, a predefinição será sobrescrita!"</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] salva!"</string>
   <string name="powerMenuMain_Screenrecord">"Gravação de Tela"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"A tela está sendo gravada"</string>
   <string name="screenrecord_notif_title">Gravação de tela</string>
   <string name="screenrecord_toast_error">"Incapaz de gravar a tela"</string>
@@ -78,19 +73,16 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="powerMenuMain_ExpandedDesktop">"Área de Trabalho Expandida"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Posição da Caixa de Diálogo"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Mudar a posição da caixa de diálogo."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Lanterna Ligada"</string>
   <string name="quick_settings_torch_off">"Lanterna Desligada"</string>
   <string name="quick_settings_torch_off_notif">"Toque para desligar"</string>
   <string name="powerMenuMain_AirplaneMode">"Modo Avião"</string>
   <string name="powerMenuMain_RestartUI">"Reiniciar System UI"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"Cor ao revelar"</string>
   <string name="colorsType_Circle">"Cor do círculo"</string>
   <string name="colorsType_Background">"Cor de fundo"</string>
   <string name="colorsType_Text">"Cor do texto "</string>
   <string name="powerMenuMain_Flashlight">"Lanterna"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Permissões"</string>
   <string name="permissionsScreen_NotAllGranted">"Nem todas as permissões foram concedidas, algumas funções podem não funcionar..."</string>
   <string name="permissionsScreen_ClickToRequest">"Clique para solicitar a permissão."</string>
@@ -100,7 +92,6 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Câmera"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Necessário para alternar a Lanterna."</string>
   <string name="visibilityOrder_HideDesc">"Ocultar descrição"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Acessar SurfaceFlinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Necessário para o gravador de tela gravar a tela."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Gravar Áudio"</string>
@@ -122,7 +113,6 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibrar"</string>
   <string name="SoundMode_Silent">"Silencioso"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Conta"</string>
   <string name="presetsManager_UploadMsg">"\"\"Esta predefinição será enviada para o servidor público, visível para todos os usuários.
 
@@ -138,7 +128,6 @@ Por favor cheque sua conexão com a internet ou tente novamente mais tarde.\"\""
 Por favor, tente novamente mais tarde, se nada mudar: por favor informe ao desenvolvedor.\"\""</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Necessário para baixar ou enviar predefinições do servidor público."</string>
-  <!-- Login page -->
   <string name="login_Title">"Entrar"</string>
   <string name="login_TitleRegister">"Registrar"</string>
   <string name="login_Info">"\"\"Os nomes de usuários registrados são protegidos de modo que ninguém pode fazer o envios com eles, aqui você pode fazer login ou criar uma conta nova.
@@ -168,12 +157,10 @@ Estrelas recebidas: [STARSRECEIVED]
 Suas predefinições (ordenados por estrelas):
 [TOP5PRESETS]\"\"\""</string>
   <string name="login_StatisticsFailed">"Falha ao receber estatísticas..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Atualizar estatísticas"</string>
   <string name="login_TitleLogout">"Sair"</string>
   <string name="login_pleaseCheckInput">"Algo deu errado, por favor, verifique a sua entrada."</string>
   <string name="presetsManager_Stars">"Estrelas: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartTitle">"Cores [PART]"</string>
   <string name="colorsPartDescDialog">"Cores da caixa de diálogo ao clicar em [BUTTON]."</string>
   <string name="colorsPartDescButton">"Cores do botão [BUTTON]."</string>
@@ -197,10 +184,8 @@ Clique aqui para opções de recuperação.\"\""</string>
   <string name="powerMenuMain_SoundVibrate">"Som: Vibrar"</string>
   <string name="powerMenuMain_SoundNormal">"Som: Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Som: Silencioso"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"OK|Sim|Não|Renomear|Cancelar|Excluir|Carregar|Salvar|Ignorar"</string>
   <string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
-  <string name="advancedPrefs_DialogGravity">"Topo|Esquerda|Direita|Baixo"</string>
   <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
   <string name="graphics_Crop">"Cortar|Cortar redondo"</string>
   <string name="graphics_NoPresetsFound">"Nenhuma predefinição com gráficos encontrada..."</string>
@@ -224,7 +209,6 @@ Adicionar até três itens em uma linha.|Adicionar item múltipla página
 Clicando vai te levar a uma nova 'página'.\"\""</string>
   <string name="visibilityOrder_MultiPage">"\"\"A múltipla página começa aqui
 O primeiro item normal define o botão para abrir a 'nova página'.|A múltipla página termina aqui\"\""</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
   <string name="preferences_RootXposed1">"Root e Xposed indisponíveis|Root e Xposed são necessários para o módulo funcionar."</string>
   <string name="preferences_RootXposed2">"Xposed funcionando, Root não|Root é necessário para desligar ou reiniciar, por favor permita o acesso root."</string>
@@ -256,11 +240,9 @@ Cheque a fonte no GitHub.\"\""</string>
 (Funciona somente para o plano de fundo)|Deslizar acima|Deslizar a esquerda|Deslizar a direita|Deslizar abaixo|Aumentar|Diminuir|Desativado\"\""</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
   <string name="presetsManager_LoadMore">"Carregando...|Aguarde...|Mais predefinições|Clique aqui para mostrar mais predefinições.|O Fim.|Não há mais nenhuma.|Toque para repetir. "</string>
   <string name="powerMenu_SureToRebootPowerOff">"Tem certeza que deseja reiniciar o dispositivo?|Tem certeza que deseja desligar o dispositivo? "</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Pedir confirmação|Ative para pedir confirmação ao desligar ou reiniciar o dispositivo. "</string>
   <string name="preferences_Donate">"Doar|Gosta do app?\nPor quê não me pagar um cafezinho ou outra coisa?"</string>
   <string name="advancedPrefs_HideOnClick">"Esconder ao clicar"</string>
