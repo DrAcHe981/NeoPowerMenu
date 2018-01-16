@@ -3,7 +3,6 @@
 <resources>
   <string name="ShareMessage">"Cek keluar aplikasi bagus ini dengan menyesuaikan daftar kekuatan berakar anda untuk perangkat android!"</string>
   <string name="PreviewPowerMenu">"Pratinjau"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Shutdown">"Matikan Daya"</string>
   <string name="powerMenuMain_Reboot">"Reebot"</string>
   <string name="powerMenuMain_SoftReboot">"Muat ulang"</string>
@@ -25,14 +24,12 @@
   <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Bahan"</string>
   <string name="powerMenuMain_RebootFlashMode">"Mode kilat"</string>
-  <!-- Preferences: Visibility and order -->
   <string name="visibilityOrderCategory_VisibilityOrder">"Jangkauan dan perintah"</string>
   <string name="category_Preset">"Pereset"</string>
   <string name="preset_Load">"Muatkan pereset"</string>
   <string name="preset_LoadDesc">"Muat konfigurasi tersimpan"</string>
   <string name="preset_Save">"Simpan pereset"</string>
   <string name="preset_SaveDesc">"Simpan konfigurasi anda sekarang"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleLocal">"Tempat Pereset"</string>
   <string name="presetsManager_TitleOnline">"Online pereset"</string>
   <string name="presetsManager_Creator">"Pencipta: [NAMA PENCIPTA]"</string>
@@ -41,7 +38,6 @@
   <string name="presetsManager_ImportMsg">"Barangkali anda suka untuk mendatangkan prasetel ini?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] berhasil mendatangkan."</string>
   <string name="presetsManager_ImportFailed">"Gagal mendatangkan..."</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefsCategory_PowerMenu">"Daftar daya"</string>
   <string name="advancedPrefsTitle_UseGraphics">"Gunakan grafis"</string>
   <string name="advancedPrefsDesc_UseGraphics">"Gunakan grafis sebagai gantinya dari lingkaran surat."</string>
@@ -64,7 +60,6 @@
   <string name="presetSaveDialog_OverwriteText">"Sudah ada, preset akan ditimpa!"</string>
   <string name="presetSave_PresetSaved">"Disimpan [PRESETNAME]!"</string>
   <string name="powerMenuMain_Screenrecord">"Screenrecord"</string>
-  <!-- Screen recording -->
   <string name="screenrecord_notif_ticker">"Layar sedang direkam"</string>
   <string name="screenrecord_notif_title">Rekaman layar</string>
   <string name="screenrecord_toast_error">"Tidak dapat merekam layar"</string>
@@ -77,19 +72,16 @@
   <string name="powerMenuMain_ExpandedDesktop">"Desktop yang diperluas"</string>
   <string name="advancedPrefsTitle_DialogGravity">"Posisi Dialog"</string>
   <string name="advancedPrefsDesc_DialogGravity">"Ubah posisi dialog."</string>
-  <!-- Torch -->
   <string name="quick_settings_torch_on">"Obor On"</string>
   <string name="quick_settings_torch_off">"Obor Mati"</string>
   <string name="quick_settings_torch_off_notif">"Sentuh untuk mematikan"</string>
   <string name="powerMenuMain_AirplaneMode">"Mode pesawat"</string>
   <string name="powerMenuMain_RestartUI">"Restart System UI"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsType_Reveal">"Ungkapkan warna"</string>
   <string name="colorsType_Circle">"Lingkari warna"</string>
   <string name="colorsType_Background">"Warna latar belakang"</string>
   <string name="colorsType_Text">"Warna teks"</string>
   <string name="powerMenuMain_Flashlight">"Obor"</string>
-  <!-- Permissions Screen -->
   <string name="permissionsScreen_Title">"Izin"</string>
   <string name="permissionsScreen_NotAllGranted">"Tidak semua izin diberikan, beberapa fungsi mungkin tidak berfungsi..."</string>
   <string name="permissionsScreen_ClickToRequest">"Klik untuk meminta izin."</string>
@@ -99,7 +91,6 @@
   <string name="permissionsScreenTitle_android.permission.CAMERA">"Kamera"</string>
   <string name="permissionsScreenDesc_android.permission.CAMERA">"Diperlukan untuk mengganti obor."</string>
   <string name="visibilityOrder_HideDesc">"Sembunyikan deskripsi"</string>
-  <!-- Preferences: Colors -->
   <string name="permissionsScreenTitle_android.permission.ACCESS_SURFACE_FLINGER">"Akses Permukaan Flinger"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_SURFACE_FLINGER">"Diperlukan perekam layar untuk merekam layar."</string>
   <string name="permissionsScreenTitle_android.permission.RECORD_AUDIO">"Suara rekaman"</string>
@@ -121,7 +112,6 @@
   <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Bergetar"</string>
   <string name="SoundMode_Silent">"Diam"</string>
-  <!-- Preferences: Preset Manager -->
   <string name="presetsManager_TitleAccount">"Rekening"</string>
   <string name="presetsManager_UploadMsg">"Preset ini akan diunggah ke server publik, terlihat oleh semua pengguna lainnya.\n\n Ini adalah kesempatan terakhir Anda untuk menyesuaikan nama atau pencipta sebelum mengupload..."</string>
   <string name="presetsManager_UploadComplete">"Upload selesai!"</string>
@@ -133,7 +123,6 @@
   <string name="presetsManager_CantConnecttoDB">"Tidak dapat terhubung ke database!\nSilahkan coba lagi nanti, bila tidak ada yang berubah: laporkan ke pengembang."</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Diperlukan untuk mendownload/mengunggah preset dari/ke server publik."</string>
-  <!-- Login page -->
   <string name="login_Title">"Masuk"</string>
   <string name="login_TitleRegister">"Daftar"</string>
   <string name="login_Info">"Nama pengguna pengguna terdaftar terlindungi sehingga tidak ada yang bisa mengunggah namanya, di sini Anda bisa login atau membuat akun baru.\nIni tidak diperlukan jika Anda tidak mau!\nAku tidak akan pernah membagi data pribadi apa pun!"</string>
@@ -153,12 +142,10 @@
   <string name="login_Processing">"Pengolahan..."</string>
   <string name="login_TitleStatistics">"Statistik untuk [USERNAMEEMAIL]"</string>
   <string name="login_StatisticsFailed">"Gagal mendapatkan statistik..."</string>
-  <!-- Fuzzy -->
   <string name="login_ReloadStatistics">"Klik di sini untuk memuat ulang statistik"</string>
   <string name="login_TitleLogout">"Keluar"</string>
   <string name="login_pleaseCheckInput">"Ada yang tidak beres, tolong periksa masukanmu."</string>
   <string name="presetsManager_Stars">"Bintang: [STARS]"</string>
-  <!-- Preferences: Colors -->
   <string name="colorsPartDescDialog">"Warna dialog saat diklik [BUTTON]."</string>
   <string name="colorsPartPresets">"Preset"</string>
   <string name="colorsPartReveal">"Mengungkapkan"</string>
@@ -179,10 +166,8 @@
   <string name="powerMenuMain_SoundVibrate">"Suara: Getar"</string>
   <string name="powerMenuMain_SoundNormal">"Suara: Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Suara: Diam"</string>
-  <!-- Dialog -->
   <string name="Dialog_Buttons">"OK | Ya | Tidak | Ubah nama | Batal | Hapus | Load | Save | Ignore"</string>
   <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
-  <string name="advancedPrefs_DialogGravity">"Atas|Kiri|Kanan|Bawah"</string>
   <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
   <string name="graphics_Crop">"Tanaman|Lingkari tanaman"</string>
   <string name="graphics_NoPresetsFound">"Tidak ada preset dengan grafis yang ditemukan..."</string>
@@ -196,7 +181,6 @@
   <string name="uploadHelper_States">"Menunggu upload lainnya...| Menghubungkan ke server...| Meminta informasi... | Mengunggah...| Membatalkan..."</string>
   <string name="visibilityOrder_AddItem">"Tambahkan item normal \n Hanya item normal dengan hanya satu slot. Tambahkan item multi \n Tambahkan hingga tiga item dalam satu baris. | Tambahkan item multi halaman \n Mengkliknya akan menampilkan 'halaman' baru."</string>
   <string name="visibilityOrder_MultiPage">"Item multi halaman dimulai di sini \n Item normal pertama mendefinisikan tombol untuk membuka 'halaman baru'. | Halaman multi item berakhir di sini"</string>
-  <!-- Preferences: Main -->
   <string name="preferencesCategory_RootXposed">"Akar dan Xposed"</string>
   <string name="preferences_RootXposed1">"Root dan Xposed tidak tersedia|Root dan Xposed diperlukan agar modul ini bisa bekerja."</string>
   <string name="preferences_RootXposed2">"Xposed working, Root not | Tapi Root diperlukan untuk Power off atau Reboot...\nSilahkan akses root."</string>
@@ -224,11 +208,9 @@
   <string name="animations_Types">"Fade | Reveal \n (Bekerja hanya untuk latar belakang) | Slide up | Slide left | Slide right | Slide down | Scale up | Scale down | Disabled"</string>
   <string name="animations_Type">"Mengetik"</string>
   <string name="animations_Speed">"Kecepatan"</string>
-  <!-- Power Menu -->
   <string name="powerMenuMain_Progress">"Memuat lingkaran"</string>
   <string name="presetsManager_LoadMore">"Memuat... | Mohon tunggu... | Tampilkan preset lebih lanjut Klik di sini untuk menampilkan lebih banyak preset. | Akhir | Tidak ada lagi preset yang akan ditampilkan. | Klik di sini untuk mencoba lagi."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Yakin ingin me-reboot perangkat Anda?|Apakah Anda yakin ingin mematikan perangkat?"</string>
-  <!-- Preferences: Advanced -->
   <string name="advancedPrefs_Confirmation">"Membutuhkan konfirmasi|Aktifkan dialog konfirmasi sebelum melakukan reboot atau matikan."</string>
   <string name="preferences_Donate">"Sumbang|Seperti aplikasinya? \n Mengapa tidak menyumbangkan saya secangkir kopi atau sesuatu yang lain?"</string>
   <string name="advancedPrefs_HideOnClick">"Sembunyikan di klik"</string>
