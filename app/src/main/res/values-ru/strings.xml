@@ -444,4 +444,5 @@
   <string name="graphics_PowerMenuBackground">Фон Меню</string>
   <string name="visibilityOrder_MissingPermissionForCamera">Нет разрешения на использование камеры, предоставьте чтобы использовать переключатель!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Ваше устройство не поддерживает эдемент \"[TITLE]\"!</string>
+  <string name="powerMenuMain_FakePowerOff">Выключение (Фэйк)</string>
 </resources>
