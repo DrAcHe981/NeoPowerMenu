@@ -451,7 +451,7 @@
     <string name="visibilityOrder_MissingPermissionForCamera">Missing camera permission, please allow it to use this toggle!</string>
     <string name="visibilityOrder_NotSupportedbyDevice">Your device does not seem to support the \"[TITLE]\" element!</string>
     <string name="powerMenuMain_FakePowerOff">Power off (Fake)</string>
-    <string name="crop_failedToSave">\"Failed to save,please try again...\\nFor more info check the logs.\"</string>
+    <string name="crop_failedToSave">Failed to save,please try again...\nFor more info check the logs.</string>
     <string name="visibilityOrder_Horizontal">Show items in a horizontal line</string>
     <string name="position_Width">Width:</string>
     <string name="position_Horizontal">Horizontal:</string>
