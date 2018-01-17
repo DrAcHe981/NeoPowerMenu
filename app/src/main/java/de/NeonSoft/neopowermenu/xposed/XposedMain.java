@@ -70,7 +70,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
 
-    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER", "android.permission.READ_FRAME_BUFFER", "android.permission.WRITE_SETTINGS", "android.permission.WRITE_SECURE_SETTINGS"};
+    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER", "android.permission.READ_FRAME_BUFFER"};
 
     private static final String CLASS_SYSTEMUI = "com.android.systemui.SystemUIApplication";
 
@@ -98,7 +98,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public Object mObjectHolder;
 
     /*<!-- Internal Hook version to check if reboot is needed --!>*/
-    private static final int XposedHookVersion = 27;
+    private static final int XposedHookVersion = 28;
 
 
     private BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {

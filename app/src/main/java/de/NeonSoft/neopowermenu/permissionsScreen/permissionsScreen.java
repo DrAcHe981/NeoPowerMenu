@@ -33,6 +33,8 @@ public class permissionsScreen extends Fragment {
     private static CheckBox CheckBox_DontAskAgain;
 
     public static String[] permissions = {
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.CHANGE_NETWORK_STATE,
             "android.permission.ACCESS_NOTIFICATION_POLICY",
             "android.permission.USE_FINGERPRINT",
             Manifest.permission.RECEIVE_BOOT_COMPLETED,

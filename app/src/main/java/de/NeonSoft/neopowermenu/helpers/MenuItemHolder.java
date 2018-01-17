@@ -2,86 +2,47 @@ package de.NeonSoft.neopowermenu.helpers;
 
 import android.content.pm.ResolveInfo;
 
+import java.util.ArrayList;
+
 public class MenuItemHolder {
 
     private int iType = -1;
-    private ResolveInfo iRI = null;
-    private String iTitle1 = "Empty";
-    private String iTitle2 = "Empty";
-    private String iTitle3 = "Empty";
     private boolean iHideDesc = false;
     private boolean iHideOnLockscreen = false;
-    private String iText1 = "";
-    private String iText2 = "";
-    private String iText3 = "";
     private String iGraphic = "";
     private String iOnPage = "";
     private boolean iFillEmpty = false;
     private boolean iLockedWithPassword = false;
     private boolean iHideText = false;
-    private String iShortcutUri1 = "";
-    private String iShortcutUri2 = "";
-    private String iShortcutUri3 = "";
+    private boolean iHorizontal = true;
+
+    private ArrayList<String> iTitle = new ArrayList<>();
+    private ArrayList<String> iText = new ArrayList<>();
+    private ArrayList<String> iShortcutUri = new ArrayList<>();
 
     public MenuItemHolder() {
-    }
-
-    public MenuItemHolder(int type,
-                          String title,
-                          boolean hideDesc,
-                          boolean hideOnLockscreen,
-                          String text,
-                          String graphic,
-                          String onPage,
-                          boolean fillEnmpty,
-                          boolean lockWithPassword,
-                          boolean hideText) {
-        iType = type;
-        iTitle1 = title;
-        iHideDesc = hideDesc;
-        iHideOnLockscreen = hideOnLockscreen;
-        iText1 = text;
-        iGraphic = graphic;
-        iOnPage = onPage;
-        iFillEmpty = fillEnmpty;
-        iLockedWithPassword = lockWithPassword;
-        iHideText = hideText;
     }
 
     public void setType(int type) {
         iType = type;
     }
-
     public int getType() {
         return iType;
     }
 
-    public void setResolverInfo(ResolveInfo ri) { iRI = ri; }
-
-    public ResolveInfo getResolverinfo() { return iRI; }
-
-    public void setTitle(String title1, String title2, String title3) {
-        iTitle1 = title1;
-        iTitle2 = title2;
-        iTitle3 = title3;
+    public void setTitle (ArrayList<String> title) {
+        iTitle = title;
     }
-
     public String getTitle(int index) {
-        switch (index) {
-            case 1:
-                return iTitle1;
-            case 2:
-                return iTitle2;
-            case 3:
-                return iTitle3;
-        }
-        return "";
+        return iTitle.get(index-1);
+    }
+    public ArrayList<String> getTitles() {
+        return iTitle;
     }
 
     public void setHideDesc(boolean hideDesc) {
         iHideDesc = hideDesc;
     }
-
     public boolean getHideDesc() {
         return iHideDesc;
     }
@@ -89,33 +50,23 @@ public class MenuItemHolder {
     public void setHideOnLockScreen(boolean hideOnLockscreen) {
         iHideOnLockscreen = hideOnLockscreen;
     }
-
     public boolean getHideOnLockScreen() {
         return iHideOnLockscreen;
     }
 
-    public void setText(String text1, String text2, String text3) {
-        iText1 = text1;
-        iText2 = text2;
-        iText3 = text3;
+    public void setText (ArrayList<String> text) {
+        iText = text;
     }
-
     public String getText(int index) {
-        switch (index) {
-            case 1:
-                return iText1;
-            case 2:
-                return iText2;
-            case 3:
-                return iText3;
-        }
-        return "";
+        return iText.get(index-1);
+    }
+    public ArrayList<String> getTexts() {
+        return iText;
     }
 
     public void setGraphic(String graphic) {
         iGraphic = graphic;
     }
-
     public String getGraphic() {
         return iGraphic;
     }
@@ -123,7 +74,6 @@ public class MenuItemHolder {
     public void setOnPage(String onPage) {
         iOnPage = onPage;
     }
-
     public String getOnPage() {
         return iOnPage;
     }
@@ -131,38 +81,34 @@ public class MenuItemHolder {
     public void setFillEmpty(boolean fillEmpty) {
         iFillEmpty = fillEmpty;
     }
-
     public boolean getFillEmpty() {
         return iFillEmpty;
     }
 
     public void setLockedWithPassword(boolean lockWithPassword) { iLockedWithPassword = lockWithPassword; }
-
     public boolean getLockedWithPassword() {
         return iLockedWithPassword;
     }
 
     public void setHideText(boolean hideText) { iHideText = hideText; }
-
     public boolean getHideText() {
         return iHideText;
     }
 
-    public void setShortcutUri(String shortcutUri1, String shortcutUri2, String shortcutUri3) {
-        iShortcutUri1 = shortcutUri1;
-        iShortcutUri2 = shortcutUri2;
-        iShortcutUri3 = shortcutUri3;
+    public void setShortcutUri (ArrayList<String> uri) {
+        iShortcutUri = uri;
+    }
+    public String getShortcutUri(int index) {
+        return iShortcutUri.get(index-1);
+    }
+    public ArrayList<String> getShortcutUtis() {
+        return iShortcutUri;
     }
 
-    public String getShortcutUri(int index) {
-        switch (index) {
-            case 1:
-                return iShortcutUri1;
-            case 2:
-                return iShortcutUri2;
-            case 3:
-                return iShortcutUri3;
-        }
-        return "";
+    public void setHorizontal(boolean horizontal) {
+        iHorizontal = horizontal;
+    }
+    public boolean getHorizontal() {
+        return iHorizontal;
     }
 }

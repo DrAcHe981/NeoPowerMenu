@@ -18,28 +18,71 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/activitydialogpositionImageView_Reset"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_action_trash"/>
+
+        <TextView
+            android:id="@+id/activitydialogpositionTextView_Horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="@string/position_Horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/activitydialogpositionImageView_Reset"/>
+
         <SeekBar
             android:id="@+id/activitydialogpositionSeekBar_Horitontal"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:progress="50"
             android:rotation="180"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/activitydialogpositionTextView_Horizontal"/>
+
+        <TextView
+            android:id="@+id/activitydialogpositionTextView_Vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="@string/position_Vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:rotation="90"
+            android:layout_below="@id/activitydialogpositionImageView_Reset"/>
+
+        <TextView
+            android:id="@+id/activitydialogpositionTextView_Size"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="@string/position_Width"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentBottom="true"/>
 
         <de.NeonSoft.neopowermenu.helpers.VerticalSeekBar
             android:id="@+id/activitydialogpositionSeekBar_Vertical"
             android:layout_width="30dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:progress="50"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginLeft="5dp"
+            android:layout_below="@id/activitydialogpositionTextView_Vertical"
+            android:layout_above="@id/activitydialogpositionTextView_Size"/>
 
-        <ImageView
-            android:id="@+id/activitydialogpositionImageView_Reset"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="3dp"
-            android:src="@drawable/ic_action_trash"/>
+        <SeekBar
+            android:id="@+id/activitydialogpositionSeekBar_Size"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:progress="0"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/activitydialogpositionTextView_Size"
+            android:layout_alignParentBottom="true"/>
 
     </RelativeLayout>
 

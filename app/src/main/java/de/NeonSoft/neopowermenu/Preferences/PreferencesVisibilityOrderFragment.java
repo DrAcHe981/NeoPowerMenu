@@ -15,6 +15,7 @@ import android.support.v4.app.*;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -39,11 +40,13 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
     public static int visibilityOrderPermissionRequest_Count = 0;
     public static int AddItemMode_NEW = 1;
     public static int AddItemMode_REPLACE = 2;
+    public static int AddItemMode_AddToMulti = 3;
     public static ShortcutHandler mShortcutHandler;
 
     static PackageManager pm;
 
-    public static slideDownDialogFragment loadDialog;
+    public static slideDownDialogFragment appsLoadDialog;
+    public static slideDownDialogFragment shortcutsLoadDialog;
 
     public static boolean appsListFullyParsed;
     static ArrayList<String> appsNames = new ArrayList<String>();
@@ -198,6 +201,9 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         ArrayList<String> MultiPage = new ArrayList<>();
         for (int i = 0; i < MainActivity.orderPrefs.getAll().keySet().size(); i++) {
             MenuItemHolder item = new MenuItemHolder();
+            ArrayList<String> titles = new ArrayList<>();
+            ArrayList<String> texts = new ArrayList<>();
+            ArrayList<String> uris = new ArrayList<>();
             if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) != -1) {
                 item.setLockedWithPassword((!MainActivity.preferences.getString(PreferenceNames.pItemPWL, "").isEmpty() && MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_lockedWithPassword", false)));
                 item.setHideText((!MainActivity.preferences.getString(PreferenceNames.pItemPWL, "").isEmpty() && MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideText", false)));
@@ -206,42 +212,44 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     item.setHideDesc(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
                     item.setHideOnLockScreen(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     item.setFillEmpty(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_fillEmpty", false));
-                    item.setTitle(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", ""), "","");
-                    item.setText(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""),"","");
-                    item.setShortcutUri(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""),"","");
+                    titles.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "Empty"));
+                    texts.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
+                    uris.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""));
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL) == visibilityOrder_ListAdapter.TYPE_MULTI) {
                     item.setType(visibilityOrder_ListAdapter.TYPE_MULTI);
                     item.setHideDesc(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
                     item.setHideOnLockScreen(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     item.setFillEmpty(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_fillEmpty", false));
-                    item.setTitle(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", ""),
-                            MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", ""),
-                            MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", ""));
-                    item.setText(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_text", "").replace("< default >", ""),
-                            MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_text", "").replace("< default >", ""),
-                            MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_text", "").replace("< default >", ""));
-                    item.setShortcutUri(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_shortcutUri", ""),
-                            MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_shortcutUri", ""),
-                            MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_shortcutUri", ""));
+                    item.setHorizontal(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_horizontal", true));
+                    int x = 1;
+                    do {
+                        titles.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "Empty"));
+                        texts.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_text", ""));
+                        uris.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_shortcutUri", ""));
+                        x++;
+                    } while (!MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "][EMPTY][").equals("][EMPTY]["));
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
                     item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START);
                     item.setHideDesc(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
                     item.setHideOnLockScreen(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     item.setFillEmpty(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_fillEmpty", false));
-                    item.setTitle(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", ""),"","");
-                    item.setText("","","");
+                    titles.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "Empty"));
+                    texts.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
+                    uris.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""));
                     MultiPage.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", ""));
                 } else if (MultiPage.size() > 0 && MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END) {
                     item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END);
                     item.setHideDesc(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
                     item.setHideOnLockScreen(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     item.setFillEmpty(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_fillEmpty", false));
-                    item.setTitle(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", ""),"","");
-                    item.setText("","","");
+                    titles.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "Empty"));
+                    texts.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
+                    uris.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""));
                     MultiPage.remove(MultiPage.size() - 1);
                 }
-            }
-            if (item.getType() != -1) {
+                item.setTitle(titles);
+                item.setText(texts);
+                item.setShortcutUri(uris);
                 items.add(item);
             }
         }
@@ -305,15 +313,21 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             String groupName = helper.md5Crypto(date.getDay() + "." + date.getMonth() + "." + date.getYear() + "/" + date.getHours() + ":" + date.getMinutes() + ":" + date.getMinutes() + ":" + date.getSeconds());
                             MenuItemHolder item = new MenuItemHolder();
                             item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START);
-                            item.setTitle(groupName,"","");
+                            item.getTitles().add(groupName);
+                            item.getTexts().add("");
+                            item.getShortcutUtis().add("");
                             adapter.addItem(item);
                             item = new MenuItemHolder();
                             item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
-                            item.setTitle(FinalPowerMenuItems[position],"","");
+                            item.getTitles().add(FinalPowerMenuItems[position]);
+                            item.getTexts().add("");
+                            item.getShortcutUtis().add("");
                             adapter.addItem(item);
                             item = new MenuItemHolder();
                             item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END);
-                            item.setTitle(groupName,"","");
+                            item.getTitles().add(groupName);
+                            item.getTexts().add("");
+                            item.getShortcutUtis().add("");
                             adapter.addItem(item);
                         }
 
@@ -416,70 +430,60 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     if (addItemMode==AddItemMode_NEW) {
                         item = new MenuItemHolder();
                         item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
+                        item.getTitles().add("AppShortcut");
+                        item.getTexts().add("");
+                        item.getShortcutUtis().add("");
+                    } else if (addItemMode == AddItemMode_AddToMulti) {
+                        item = adapter.getItem(addItemPosition);
+                        item.getTitles().add("AppShortcut");
+                        item.getTexts().add("");
+                        item.getShortcutUtis().add("");
                     } else {
                         item = adapter.getItem(addItemPosition);
+                        item.getTitles().set(itemSpace-1, "AppShortcut");
+                        item.getTexts().set(itemSpace-1, "");
+                        item.getShortcutUtis().set(itemSpace-1, "");
                     }
-                    if (item.getType()==visibilityOrder_ListAdapter.TYPE_MULTI) {
-                        if (itemSpace==1) {
-                            item.setTitle(FinalPowerMenuItems[position], item.getTitle(2), item.getTitle(3));
-                            item.setText("", item.getText(2), item.getText(3));
-                            item.setShortcutUri("", item.getShortcutUri(2), item.getShortcutUri(3));
-                        } else if (itemSpace==2) {
-                            item.setTitle(item.getTitle(1), FinalPowerMenuItems[position], item.getTitle(3));
-                            item.setText(item.getText(1), "", item.getText(3));
-                            item.setShortcutUri(item.getShortcutUri(1), "", item.getShortcutUri(3));
-                        } else if (itemSpace==3) {
-                            item.setTitle(item.getTitle(1), item.getTitle(2), FinalPowerMenuItems[position]);
-                            item.setText(item.getText(1), item.getText(2), "");
-                            item.setShortcutUri(item.getShortcutUri(1), item.getShortcutUri(2), "");
-                        }
-                    }
-                    loadAppsTask = new loadApps().execute(item, addItemMode==AddItemMode_NEW ? -1 : addItemPosition);
+                    loadAppsTask = helper.startAsyncTask(new loadApps(), item, addItemMode==AddItemMode_NEW ? -1 : addItemPosition);
                 } else if (FinalPowerMenuItems[position].equals("Shortcut")) {
                     showLoadingDialog("shortcuts");
                     MenuItemHolder item;
                     if (addItemMode==AddItemMode_NEW) {
                         item = new MenuItemHolder();
                         item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
+                        item.getTitles().add("Shortcut");
+                        item.getTexts().add("");
+                        item.getShortcutUtis().add("");
+                    } else if (addItemMode == AddItemMode_AddToMulti) {
+                        item = adapter.getItem(addItemPosition);
+                        item.getTitles().add("Shortcut");
+                        item.getTexts().add("");
+                        item.getShortcutUtis().add("");
                     } else {
                         item = adapter.getItem(addItemPosition);
+                        item.getTitles().set(itemSpace-1, "Shortcut");
+                        item.getTexts().set(itemSpace-1, "");
+                        item.getShortcutUtis().set(itemSpace-1, "");
                     }
-                    if (item.getType()==visibilityOrder_ListAdapter.TYPE_MULTI) {
-                        if (itemSpace==1) {
-                            item.setTitle(FinalPowerMenuItems[position], item.getTitle(2), item.getTitle(3));
-                            item.setText("", item.getText(2), item.getText(3));
-                            item.setShortcutUri("", item.getShortcutUri(2), item.getShortcutUri(3));
-                        } else if (itemSpace==2) {
-                            item.setTitle(item.getTitle(1), FinalPowerMenuItems[position], item.getTitle(3));
-                            item.setText(item.getText(1), "", item.getText(3));
-                            item.setShortcutUri(item.getShortcutUri(1), "", item.getShortcutUri(3));
-                        } else if (itemSpace==3) {
-                            item.setTitle(item.getTitle(1), item.getTitle(2), FinalPowerMenuItems[position]);
-                            item.setText(item.getText(1), item.getText(2), "");
-                            item.setShortcutUri(item.getShortcutUri(1), item.getShortcutUri(2), "");
-                        }
-                    }
-                    loadShortcutsTask = new loadShortcuts().execute(item, addItemMode==AddItemMode_NEW ? -1 : addItemPosition);
+                    loadShortcutsTask = helper.startAsyncTask(new loadShortcuts(), item, addItemMode==AddItemMode_NEW ? -1 : addItemPosition);
                 } else {
                     MenuItemHolder item;
                     if (addItemMode==AddItemMode_NEW) {
                         item = new MenuItemHolder();
                         item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
+                        item.getTitles().add(FinalPowerMenuItems[position]);
+                        item.getTexts().add("");
+                        item.getShortcutUtis().add("");
+                    } else if (addItemMode == AddItemMode_AddToMulti) {
+                        item = adapter.getItem(addItemPosition);
+                        item.getTitles().add(FinalPowerMenuItems[position]);
+                        item.getTexts().add("");
+                        item.getShortcutUtis().add("");
                     } else {
                         item = adapter.getItemAt(addItemPosition);
-                    }
-                    if (itemSpace==1) {
-                        item.setTitle(FinalPowerMenuItems[position], item.getTitle(2), item.getTitle(3));
-                        item.setText("", item.getText(2), item.getText(3));
-                        item.setShortcutUri("", item.getShortcutUri(2), item.getShortcutUri(3));
-                    } else if (itemSpace==2) {
-                        item.setTitle(item.getTitle(1), FinalPowerMenuItems[position], item.getTitle(3));
-                        item.setText(item.getText(1), "", item.getText(3));
-                        item.setShortcutUri(item.getShortcutUri(1), "", item.getShortcutUri(3));
-                    } else if (itemSpace==3) {
-                        item.setTitle(item.getTitle(1), item.getTitle(2), FinalPowerMenuItems[position]);
-                        item.setText(item.getText(1), item.getText(2), "");
-                        item.setShortcutUri(item.getShortcutUri(1), item.getShortcutUri(2), "");
+                        item.getTitles().set(itemSpace-1, FinalPowerMenuItems[position]);
+                        item.getTexts().set(itemSpace-1, "");
+                        item.getShortcutUtis().set(itemSpace-1, "");
                     }
                     if (addItemMode==AddItemMode_NEW) {
                         adapter.addItem(item);
@@ -583,19 +587,19 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
             public void onPositiveClick(Bundle resultBundle) {
                 if (resultBundle != null) {
                     MenuItemHolder item = new MenuItemHolder();
-                    item.setType(visibilityOrder_ListAdapter.TYPE_MULTI);
-                    item.setTitle(AddPowerMenuItems.get(0), (AddPowerMenuItems.size() > 1 ? AddPowerMenuItems.get(1) : "Empty"), (AddPowerMenuItems.size() > 2 ? AddPowerMenuItems.get(2) : "Empty"));
-                    item.setText("","","");
+                    item.setType((AddPowerMenuItems.size() > 1 ? visibilityOrder_ListAdapter.TYPE_MULTI : visibilityOrder_ListAdapter.TYPE_NORMAL));
+                    for (int i = 0; i < AddPowerMenuItems.size(); i++) {
+                        item.getTitles().add(AddPowerMenuItems.get(i));
+                        item.getTexts().add("");
+                        item.getShortcutUtis().add("");
+                    }
                     adapter.addItem(item);
                     visibilityOrderPermissionRequest_Id = addItemPosition;
                     checkItemAfterAdd(item, addItemPosition);
-                    for (int i = 1; i <= AddPowerMenuItems.size(); i++) {
+                    for (int i = 0; i < AddPowerMenuItems.size(); i++) {
                         String shortcutAdded = "";
-                        if (item.getTitle(i).equalsIgnoreCase("AppShortcut") || item.getTitle(i).equalsIgnoreCase("Shortcut")) {
+                        if (item.getTitle(i+1).equalsIgnoreCase("AppShortcut") || item.getTitle(i+1).equalsIgnoreCase("Shortcut")) {
                             shortcutAdded = item.getTitle(i);
-                            //item.setTitle(item.getTitle(1)), (i == 2 ? "[" + item.getTitle(2) + "]" : item.getTitle(2)), (i == 3 ? "[" + item.getTitle(3) + "]" : item.getTitle(3)));
-                            //item.setText((i == 1 ? "" : item.getTitle(1)), (i == 2 ? "" : item.getText(2)), (i == 3 ? "" : item.getText(3)));
-                            //item.setShortcutUri((i == 1 ? "" : item.getShortcutUri(1)), (i == 2 ? "" : item.getShortcutUri(2)), (i == 3 ? "" : item.getShortcutUri(3)));
                         }
                         if (shortcutAdded.equalsIgnoreCase("AppShortcut")) {
                             showLoadingDialog("apps");
@@ -661,15 +665,16 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         });
         //dialogFragment.setText(getString(R.string.visibilityOrder_SelectMulti));
         dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, PreferencesVisibilityOrderFragment.PowerMenuItemsTexts, -1, false);
-        dialogFragment.setListLimit(3, false);
+        dialogFragment.setListLimit(10, false);
         dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
         dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
         dialogFragment.showDialog(R.id.dialog_container);
     }
 
     public static void checkItemAfterAdd(final MenuItemHolder item, final int id) {
+        boolean doNotDisturbRequest = false;
         visibilityOrderPermissionRequest_Count = 0;
-        for (int i = 1; i <= (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTI ? 3 : 1); i++) {
+        for (int i = 1; i <= item.getTitles().size(); i++) {
             final int finalI = i;
             if (item.getTitle(i).equalsIgnoreCase(PowerMenuItems[7])) {
                 if (!helper.isAppInstalled(mContext, "com.ceco.gm2.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.kitkat.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.lollipop.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.marshmallow.gravitybox") && !helper.isAppInstalled(mContext, "com.ceco.nougat.gravitybox")) {
@@ -687,9 +692,10 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                         item.getTitle(i).equalsIgnoreCase(PowerMenuItems[15]) ||
                         item.getTitle(i).equalsIgnoreCase(PowerMenuItems[16]) ||
                         item.getTitle(i).equalsIgnoreCase(PowerMenuItems[28])) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !MainActivity.notificationManager.isNotificationPolicyAccessGranted() && visibilityOrderPermissionRequest_Count == 1) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !MainActivity.notificationManager.isNotificationPolicyAccessGranted() && !doNotDisturbRequest) {
                     visibilityOrderPermissionRequest_Count++;
                     visibilityOrderPermissionRequest_ItemSpace = i;
+                    doNotDisturbRequest = true;
                     slideDownDialogFragment MissingPermission = new slideDownDialogFragment();
                     MissingPermission.setContext(mContext);
                     MissingPermission.setFragmentManager(MainActivity.fragmentManager);
@@ -797,8 +803,10 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
     }
 
     public static void showLoadingDialog(final String mode) {
-        if ((mode.equalsIgnoreCase("shortcuts") && !shortcutsListFullyParsed) || (mode.equalsIgnoreCase("apps") && !appsListFullyParsed) && loadDialog == null) {
-            loadDialog = new slideDownDialogFragment();
+        if ((mode.equalsIgnoreCase("shortcuts") && !shortcutsListFullyParsed) || (mode.equalsIgnoreCase("apps") && !appsListFullyParsed)) {
+            slideDownDialogFragment loadDialog = new slideDownDialogFragment();
+            if (mode.equalsIgnoreCase("shortcuts")) shortcutsLoadDialog = loadDialog;
+            if (mode.equalsIgnoreCase("apps")) appsLoadDialog = loadDialog;
             loadDialog.setContext(mContext);
             loadDialog.setFragmentManager(MainActivity.fragmentManager);
             loadDialog.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
@@ -821,10 +829,11 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                 public void onPositiveClick(Bundle resultBundle) {
                     if (mode.equalsIgnoreCase("shortcuts")) {
                         loadShortcutsTask.cancel(true);
+                        shortcutsLoadDialog.setPositiveButton("");
                     } else {
                         loadAppsTask.cancel(true);
+                        appsLoadDialog.setPositiveButton("");
                     }
-                    loadDialog.setPositiveButton("");
                 }
 
                 @Override
@@ -852,12 +861,12 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                 MenuItemHolder item = adapter.getItemAt(id);
                 int finalItemSpace = itemSpace + visibilityOrderPermissionRequest_Count;
                 for (int i = itemSpace; i < finalItemSpace; i++) {
-                    item.setText((itemSpace == 1 ? "" : item.getText(1)), (itemSpace == 2 ? "" : item.getText(2)), (itemSpace == 3 ? "" : item.getText(3)));
-                    item.setTitle((itemSpace == 1 ? "Empty" : item.getTitle(1)), (itemSpace == 2 ? "Empty" : item.getTitle(2)), (itemSpace == 3 ? "Empty" : item.getTitle(3)));
-                    item.setShortcutUri((itemSpace == 1 ? "" : item.getShortcutUri(1)), (itemSpace == 2 ? "" : item.getShortcutUri(2)), (itemSpace == 3 ? "" : item.getShortcutUri(3)));
+                    item.getTitles().set(itemSpace-1, "Empty");
+                    item.getTexts().set(itemSpace-1, "");
+                    item.getShortcutUtis().set(itemSpace-1, "");
                     itemSpace++;
                 }
-                if (item.getTitle(1).equalsIgnoreCase("Empty") && item.getTitle(2).equalsIgnoreCase("Empty") && item.getTitle(3).equalsIgnoreCase("Empty")) {
+                if (itemSpace == item.getTitles().size()) {
                     adapter.removeAt(id);
                 } else {
                     adapter.notifyDataSetChanged();
@@ -872,8 +881,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         MenuItemHolder item;
         //int type;
         int rechoice = -1;
-        int itemSpace = 1;
-        //String result;
+        int itemSpace = 0;
+        ArrayList<String> result;
 
         @Override
         protected void onPreExecute() {
@@ -886,13 +895,12 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         @Override
         protected String doInBackground(Object... strings) {
             item = (MenuItemHolder) strings[0];
+            result = item.getTitles();
             if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTI) {
-                if (item.getTitle(1).equals("AppShortcut")) {
-                    itemSpace = 1;
-                } else if (item.getTitle(2).equals("AppShortcut")) {
-                    itemSpace = 2;
-                } else if (item.getTitle(3).equals("AppShortcut")) {
-                    itemSpace = 3;
+                for (int i = 0;  i < result.size(); i ++) {
+                    if (result.get(i).equalsIgnoreCase("AppShortcut")) {
+                        itemSpace = i;
+                    }
                 }
             }
             rechoice = (int) strings[1];
@@ -917,8 +925,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     return "canceled";
                 }
                 i++;
-                if (loadDialog != null)
-                    loadDialog.setProgressBar((i * 100) / packages.size());
+                if (appsLoadDialog != null)
+                    appsLoadDialog.setProgressBar((i * 100) / packages.size());
                 if (!packageInfo.activityInfo.packageName.equals(packageInfo.loadLabel(pm).toString())) {
                     appsPackages.add(packageInfo.activityInfo.packageName + "/" + packageInfo.activityInfo.name);
                     appsNames.add(packageInfo.loadLabel(pm).toString());
@@ -932,7 +940,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
             super.onPostExecute(s);
             if (s == null) {
                 appsListFullyParsed = true;
-                if (loadDialog != null) loadDialog.cancelDialog();
+                if (appsLoadDialog != null) appsLoadDialog.cancelDialog();
                 final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                 dialogFragment.setContext(mContext);
                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -967,12 +975,18 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             newItem.setType(item.getType());
                             newItem.setHideDesc(false);
                             newItem.setHideOnLockScreen(false);
-                            newItem.setText( item.getText(1), item.getText(2), item.getText(3));
+                            newItem.setTitle(item.getTitles());
+                            newItem.setText(item.getTexts());
+                            newItem.setShortcutUri(item.getShortcutUtis());
                         }
                         if (item.getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
-                            newItem.setTitle(string,"","");
+                            newItem.getTitles().set(0, string);
+                            newItem.getTexts().set(0, "");
+                            newItem.getShortcutUtis().set(0, "");
                         } else {
-                            newItem.setTitle((itemSpace == 1 ? string : item.getTitle(1)), (itemSpace == 2 ? string : item.getTitle(2)), (itemSpace == 3 ? string : item.getTitle(3)));
+                            newItem.getTitles().set(itemSpace, string);
+                            newItem.getTexts().set(itemSpace, "");
+                            newItem.getShortcutUtis().set(itemSpace, "");
                         }
                         if (rechoice != -1) {
                             adapter.removeAt(rechoice);
@@ -1033,9 +1047,9 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         PackageManager pm;
         MenuItemHolder item;
         //int type;
-        int ThisEditID;
+        int ThisEditID = 1;
         int rechoice = -1;
-        String result;
+        ArrayList<String> result;
 
         @Override
         protected void onPreExecute() {
@@ -1048,7 +1062,12 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         @Override
         protected String doInBackground(Object... strings) {
             item = (MenuItemHolder) strings[0];
-            result = item.getTitle(1) + "|" + item.getTitle(2) + "|" +item.getTitle(3);
+            result = item.getTitles();
+            for (int i = 0;  i < result.size(); i ++) {
+                if (result.get(i).equalsIgnoreCase("Shortcut")) {
+                    ThisEditID = i+1;
+                }
+            }
             rechoice = (int) strings[1];
 
             List<PackageInfo> packages = pm.getInstalledPackages(0);
@@ -1078,8 +1097,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     return "canceled";
                 }
                 i++;
-                if (loadDialog != null)
-                    loadDialog.setProgressBar((i * 100) / shortcuts.size());
+                if (shortcutsLoadDialog != null)
+                    shortcutsLoadDialog.setProgressBar((i * 100) / shortcuts.size());
                 shortcutPackages.add(packageInfo);
                 shortcutNames.add(packageInfo.loadLabel(pm).toString());
             }
@@ -1096,7 +1115,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
             super.onPostExecute(s);
             if (s == null) {
                 shortcutsListFullyParsed = true;
-                if (loadDialog != null) loadDialog.cancelDialog();
+                if (shortcutsLoadDialog != null) shortcutsLoadDialog.cancelDialog();
                 final slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                 dialogFragment.setContext(mContext);
                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -1126,12 +1145,6 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                                 thisRI = shortcutPackagesFiltered.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
                             }
                         } else {
-                            String[] split = result.split("\\|");
-                            for (int i = 0;  i < split.length; i ++) {
-                                if (split[i].equalsIgnoreCase("Shortcut")) {
-                                    ThisEditID = i+1;
-                                }
-                            }
                             if (shortcutsNamesFiltered.isEmpty()) {
                                 thisRI = shortcutPackages.get(resultBundle.getInt(slideDownDialogFragment.RESULT_LIST));
                             } else {
@@ -1155,14 +1168,16 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                                         newItem.setType(item.getType());
                                         newItem.setHideDesc(false);
                                         newItem.setHideOnLockScreen(false);
-                                        newItem.setText( item.getText(1), item.getText(2), item.getText(3));
+                                        newItem.setTitle(item.getTitles());
+                                        newItem.setText(item.getTexts());
+                                        newItem.setShortcutUri(item.getShortcutUtis());
                                     }
                                     if (newItem.getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
-                                        newItem.setTitle(sir.getIntent().getStringExtra("label"),"","");
-                                        newItem.setShortcutUri(sir.getIntent().toUri(Intent.URI_INTENT_SCHEME), "","");
+                                        newItem.getTitles().set(0, sir.getIntent().getStringExtra("label"));
+                                        newItem.getShortcutUtis().set(0, sir.getIntent().toUri(Intent.URI_INTENT_SCHEME));
                                     } else {
-                                        newItem.setTitle((ThisEditID == 1 ? sir.getIntent().getStringExtra("label") : newItem.getTitle(1)), (ThisEditID == 2 ? sir.getIntent().getStringExtra("label") : newItem.getTitle(2)), (ThisEditID == 3 ? sir.getIntent().getStringExtra("label") : newItem.getTitle(3)));
-                                        newItem.setShortcutUri((ThisEditID == 1 ? sir.getIntent().toUri(Intent.URI_INTENT_SCHEME) : newItem.getShortcutUri(1)), (ThisEditID == 2 ? sir.getIntent().toUri(Intent.URI_INTENT_SCHEME) : newItem.getShortcutUri(2)), (ThisEditID == 3 ? sir.getIntent().toUri(Intent.URI_INTENT_SCHEME) : newItem.getShortcutUri(3)));
+                                        newItem.getTitles().set(ThisEditID-1, sir.getIntent().getStringExtra("label"));
+                                        newItem.getShortcutUtis().set(ThisEditID-1, sir.getIntent().toUri(Intent.URI_INTENT_SCHEME));
                                     }
                                     if (rechoice != -1) {
                                         adapter.removeAt(rechoice);

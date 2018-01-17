@@ -104,77 +104,57 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/visibilityordermultiImageView_HideDescription"
-                    android:layout_width="25dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:minHeight="35dp"
-                    android:layout_gravity="top"
-                    android:padding="2dp"
-                    android:src="@drawable/ic_action_info_outline"
-                    android:visibility="gone"/>
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/visibilityordermultiImageView_HideOnLockscreen"
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:minHeight="35dp"
-                    android:layout_gravity="top"
-                    android:padding="2dp"
-                    android:src="@drawable/ic_action_lock_outline"
-                    android:visibility="gone"/>
+                    <ImageView
+                        android:id="@+id/visibilityordermultiImageView_Orientation"
+                        android:layout_width="25dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="top"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_swap_horiz"/>
 
-                <ImageView
-                    android:id="@+id/visibilityordermultiImageView_LockedWithPassword"
-                    android:layout_width="25dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="top"
-                    android:padding="2dp"
-                    android:src="@drawable/ic_communication_vpn_key"
-                    android:visibility="gone"/>
+                    <ImageView
+                        android:id="@+id/visibilityordermultiImageView_HideDescription"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="35dp"
+                        android:layout_gravity="top"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_action_info_outline"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/visibilityordermultiImageView_HideOnLockscreen"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="35dp"
+                        android:layout_gravity="top"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_action_lock_outline"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/visibilityordermultiImageView_LockedWithPassword"
+                        android:layout_width="25dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="top"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_communication_vpn_key"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:id="@+id/visibilityordermulti_items">
 
-                <TextView
-                    android:id="@+id/visibilityordermulti_item1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="?selectableItemBackground"
-                    android:gravity="center_vertical"
-                    android:minHeight="35dp"
-                    android:text="Item 1"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"/>
-
-                <TextView
-                    android:id="@+id/visibilityordermulti_item2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="?selectableItemBackground"
-                    android:gravity="center_vertical"
-                    android:minHeight="35dp"
-                    android:text="Item 2"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"/>
-
-                <TextView
-                    android:id="@+id/visibilityordermulti_item3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="?selectableItemBackground"
-                    android:gravity="center_vertical"
-                    android:minHeight="35dp"
-                    android:text="Item 3"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#FFFFFF"/>
-
-                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -185,6 +165,39 @@
                 android:gravity="left"
                 android:orientation="horizontal"
                 android:paddingLeft="5dp">
+
+                <LinearLayout
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/visibilityordermultiLinearLayout_Add"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_height="30dp"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_action_add"
+                        android:padding="3dp"
+                        android:id="@+id/visibilityordermultiImageView_Add"/>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:text="@string/visibilityOrder_AddMultiItem"
+                        android:gravity="center_vertical"
+                        android:id="@+id/visibilityordermultiTextView_Add"/>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="2dp"
+                        android:background="@color/colorAccentDarkTheme"
+                        android:alpha="0.3"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/visibilityordermultiLinearLayout_EditBehaviour"

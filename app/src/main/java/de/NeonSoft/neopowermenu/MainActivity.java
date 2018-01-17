@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public static actionBar actionbar;
 
     /*<!-- Internal needed Hook version to check if reboot is needed --!>*/
-    public static int neededModuleActiveVersion = 27;
+    public static int neededModuleActiveVersion = 28;
 
     public static String ImportUrl = null;
 
@@ -253,11 +253,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (fragmentManager.findFragmentByTag(slideDownDialogFragment.dialogTag) != null && slideDownDialogFragment.dialogs.size() > 0) {
+        if (fragmentManager.findFragmentByTag(slideDownDialogFragment.dialogTag) != null) {
                         /*Intent intent = new Intent();
                          intent.setAction(slideDownDialogFragment.dialogCloseCall);
 						 context.sendBroadcast(intent);*/
-            //Toast.makeText(context,"Canceling sDDF "+slideDownDialogFragmentHelper.dialogs.size()+"/"+slideDownDialogFragmentHelper.dialogs.size(),Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Canceling sDDF "+slideDownDialogFragment.dialogs.size(),Toast.LENGTH_LONG).show();
             if (slideDownDialogFragment.dialogs.size() > 0 && slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1).cancelDialog() == null) {
                 fragmentManager.beginTransaction().remove(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1)).commitAllowingStateLoss();
             }
@@ -334,7 +334,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onResume() {
-        // TODO: Implement this method
         if (!visibleFragment.equalsIgnoreCase("tour") && !visibleFragment.equalsIgnoreCase("about") && !visibleFragment.equalsIgnoreCase("permissions") && !visibleFragment.equalsIgnoreCase("permissionsAutoStart") && !visibleFragment.equalsIgnoreCase("PresetsManagerOnline") && !visibleFragment.equalsIgnoreCase("PresetsManagerAccount") && !visibleFragment.equalsIgnoreCase("VisibilityOrder") && !visibleFragment.equalsIgnoreCase("Cropper")) {
             actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, previewOnClickListener);
         }
@@ -344,7 +343,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        // TODO: Implement this method
         super.onConfigurationChanged(newConfig);
         if (visibleFragment.equalsIgnoreCase("Graphics")) {
             PreferencesGraphicsFragment.GridView_Images.setNumColumns(getResources().getInteger(R.integer.ImageList_Columns));

@@ -180,12 +180,28 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         }
         //getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
 
+        if (orderPrefs.getAll().isEmpty()) {
+            orderPrefs.edit().putInt("0_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();;
+            orderPrefs.edit().putString("0_item_title", "Shutdown").apply();;
+            orderPrefs.edit().putInt("1_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();;
+            orderPrefs.edit().putString("1_item_title", "Reboot").apply();;
+            orderPrefs.edit().putInt("2_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL).apply();;
+            orderPrefs.edit().putString("2_item_title", "SoftReboot").apply();;
+            orderPrefs.edit().putInt("3_item_type", visibilityOrder_ListAdapter.TYPE_MULTI).apply();;
+            orderPrefs.edit().putString("3_item1_title", "Recovery").apply();;
+            orderPrefs.edit().putString("3_item2_title", "Bootloader").apply();;
+            orderPrefs.edit().putString("3_item3_title", "SafeMode").apply();;
+        }
+
         mItems = new ArrayList<>();
         final ArrayList<String> MultiPage = new ArrayList<>();
         boolean firstItemDrawn = false;
         for (int i = 0; i < orderPrefs.getAll().size(); i++) {
             int createItem = -1;
             MenuItemHolder item = new MenuItemHolder();
+            ArrayList<String> titles = new ArrayList<>();
+            ArrayList<String> texts = new ArrayList<>();
+            ArrayList<String> uris = new ArrayList<>();
             if (orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) != -1) {
                 item.setOnPage((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) : ""));
                 item.setType(orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL));
@@ -194,10 +210,11 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                 item.setFillEmpty(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_fillEmpty", false));
                 item.setLockedWithPassword(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_lockedWithPassword", false));
                 item.setHideText(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideText", false));
+                item.setHorizontal(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_horizontal", true));
                 if (item.getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
-                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"),"","");
-                    item.setText(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""),"","");
-                    item.setShortcutUri(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""),"","");
+                    titles.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "Empty"));
+                    texts.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
+                    uris.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""));
                     if (MultiPage.size() == 0 || (MultiPage.size() == 1 && !firstItemDrawn)) {
                         if (!mKeyguardShowing || (mKeyguardShowing && !item.getHideOnLockScreen())) {
                             createItem = visibilityOrder_ListAdapter.TYPE_NORMAL;
@@ -205,44 +222,46 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                         firstItemDrawn = true;
                     }
                 } else if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTI) {
-                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", ""),
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", ""),
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", ""));
-                    item.setText(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_text", "").replace("< default >", ""),
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_text", "").replace("< default >", ""),
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_text", "").replace("< default >", ""));
-                    item.setShortcutUri(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_shortcutUri", ""),
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_shortcutUri", ""),
-                            orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_shortcutUri", ""));
+                    int x = 1;
+                    do {
+                        titles.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "Empty"));
+                        texts.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_text", ""));
+                        uris.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_shortcutUri", ""));
+                        x++;
+                    } while (!orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "][EMPTY][").equals("][EMPTY]["));
                     if (MultiPage.size() == 0) {
                         if (!mKeyguardShowing || (mKeyguardShowing && !item.getHideOnLockScreen())) {
                             createItem = visibilityOrder_ListAdapter.TYPE_MULTI;
                         }
                     }
                 } else if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
-                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"), "", "");
-                    item.setText("", "", "");
+                    titles.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "Empty"));
+                    texts.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
+                    uris.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""));
                     item.setOnPage(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                     MultiPage.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                     if (!mKeyguardShowing || (mKeyguardShowing && !item.getHideOnLockScreen())) {
                         firstItemDrawn = false;
                     }
                 } else if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END) {
-                    item.setTitle(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"), "", "");
-                    item.setText("", "", "");
+                    titles.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "Empty"));
+                    texts.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
+                    uris.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""));
                     item.setOnPage(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                     if (MultiPage.size() > 0) MultiPage.remove(MultiPage.size() - 1);
                 }
-            }
-            if (XposedMainActivity.action != null && item.getTitle(1).contains(XposedMainActivity.action)) {
-                shortcutItem = i;
-            }
-            if (item.getType() != -1) {
+                item.setTitle(titles);
+                item.setText(texts);
+                item.setShortcutUri(uris);
                 mItems.add(item);
             }
+            // if (XposedMainActivity.action != null && item.getTitle(1).contains(XposedMainActivity.action)) {
+            //     shortcutItem = i;
+            // }
         }
 
         if (action == null ||
+                action.equalsIgnoreCase("FakePowerOff") ||
                 action.equalsIgnoreCase("Shutdown") ||
                 action.equalsIgnoreCase("Reboot") ||
                 action.equalsIgnoreCase("SoftReboot") ||

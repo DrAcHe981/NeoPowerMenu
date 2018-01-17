@@ -21,6 +21,7 @@ import java.io.*;
 
 import android.view.animation.*;
 
+import static de.NeonSoft.neopowermenu.Preferences.PreferencesGraphicsFragment.selected;
 import static de.NeonSoft.neopowermenu.helpers.helper.getRealScreenSize;
 
 public class Cropper extends android.support.v4.app.Fragment
@@ -57,7 +58,6 @@ public class Cropper extends android.support.v4.app.Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: Implement this method
         MainActivity.visibleFragment = "Cropper";
         MainActivity.actionbar.setTitle("NeoPowerMenu");
         try {
@@ -76,7 +76,6 @@ public class Cropper extends android.support.v4.app.Fragment
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
                 handleCropResult(null, mCropImageView.getCroppedImage(), null);
             }
         });
@@ -89,7 +88,6 @@ public class Cropper extends android.support.v4.app.Fragment
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
                 mCropImageView.rotateImage(-90);
             }
         });
@@ -97,7 +95,6 @@ public class Cropper extends android.support.v4.app.Fragment
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
                 mCropImageView.rotateImage(90);
             }
         });
@@ -123,7 +120,6 @@ public class Cropper extends android.support.v4.app.Fragment
 
             @Override
             public void onClick(View p1) {
-                // TODO: Implement this method
                 Switch_RoundCrop.setChecked(!Switch_RoundCrop.isChecked());
                 mCropImageView.setCropShape(Switch_RoundCrop.isChecked() ? CropImageView.CropShape.OVAL : CropImageView.CropShape.RECTANGLE);
             }
@@ -132,6 +128,11 @@ public class Cropper extends android.support.v4.app.Fragment
 
         if (mSaveAs.contains("xposed_dialog_background")) {
             Point screenSize = helper.getRealScreenSize(getActivity());
+            if (helper.isDeviceHorizontal(getActivity())) {
+                int t = screenSize.x;
+                screenSize.x = screenSize.y;
+                screenSize.y = t;
+            }
             mCropImageView.setCropShape(CropImageView.CropShape.RECTANGLE);
             mCropImageView.setAspectRatio(screenSize.x, screenSize.y);
             Switch_RoundCrop.setChecked(false);
@@ -162,13 +163,11 @@ public class Cropper extends android.support.v4.app.Fragment
 
     @Override
     public void onGetCroppedImageComplete(CropImageView p1, Bitmap bitmap, Exception error) {
-        // TODO: Implement this method
         handleCropResult(null, bitmap, error);
     }
 
     @Override
     public void onSetImageUriComplete(CropImageView p1, Uri uri, Exception error) {
-        // TODO: Implement this method
     }
 
     @Override
@@ -183,6 +182,8 @@ public class Cropper extends android.support.v4.app.Fragment
     private void handleCropResult(Uri uri, Bitmap bitmap, Exception error) {
         if (error == null) {
             //Intent intent = new Intent(getActivity(), CropResultActivity.class);
+            PreferencesGraphicsFragment.mGraphicsAdapter.removeFromCache(getActivity().getFilesDir().getPath() + "/images/" + mSaveAs);
+            new File(getActivity().getFilesDir().getPath() + "/images/" + mSaveAs).delete();
             if (uri != null) {
                 //intent.putExtra("URI", uri);
                 mCropImageView.saveCroppedImageAsync(Uri.parse("file://" + getActivity().getFilesDir().getPath() + "/images/" + mSaveAs));
@@ -200,7 +201,6 @@ public class Cropper extends android.support.v4.app.Fragment
 
         @Override
         protected void onPreExecute() {
-            // TODO: Implement this method
             super.onPreExecute();
             if (mSaveAs.contains("Progress")) {
                 MainActivity.preferences.edit().putString("ProgressDrawable", "file").commit();
@@ -211,7 +211,6 @@ public class Cropper extends android.support.v4.app.Fragment
 
         @Override
         protected String doInBackground(Bitmap[] p1) {
-            // TODO: Implement this method
             Bitmap saveBitmap = (mCropImageView.getCropShape() == CropImageView.CropShape.OVAL ? CropImage.toOvalBitmap(p1[0]) : p1[0]);
             Log.i("NPM", "[CROPPER] Saving " + (mCropImageView.getCropShape() == CropImageView.CropShape.OVAL ? "oval" : "rectangle") + " shaped image to " + getActivity().getFilesDir().getPath() + "/images/" + mSaveAs);
             FileOutputStream out = null;
@@ -234,12 +233,11 @@ public class Cropper extends android.support.v4.app.Fragment
 
         @Override
         protected void onPostExecute(String p1) {
-            // TODO: Implement this method
             super.onPostExecute(p1);
             progressHolder.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
             progressHolder.setVisibility(View.GONE);
             if (p1 != null) {
-                Toast.makeText(getActivity(), "Failed to save,please try again...\nFor more info check the logs.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), getString(R.string.crop_failedToSave), Toast.LENGTH_LONG).show();
                 Log.e("NPM", "[CROPPER] Failed to save cropped image: " + p1);
             } else {
                 MainActivity.changePrefPage(new PreferencesGraphicsFragment(), true);

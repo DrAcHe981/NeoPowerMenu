@@ -4,7 +4,6 @@ import android.app.*;
 import android.content.*;
 import android.net.*;
 import android.os.*;
-import android.preference.Preference;
 import android.util.*;
 import android.view.*;
 import android.view.animation.AnimationUtils;
@@ -40,7 +39,7 @@ public class PreferencesGraphicsFragment extends Fragment {
     private LinearLayout LinearLayout_Behavior;
 
     public static GridView GridView_Images;
-    GraphicsAdapter mGraphicsAdapter;
+    static GraphicsAdapter mGraphicsAdapter;
 
     TextView graphicsDisabled;
 
@@ -215,9 +214,10 @@ public class PreferencesGraphicsFragment extends Fragment {
         });
 
         GridView_Images = (GridView) InflatedView.findViewById(R.id.activitygraphicsGridView1);
+        GridView_Images.setNumColumns(getResources().getInteger(R.integer.ImageList_Columns));
 
         GraphicItemHolder backgroundGraphic = new GraphicItemHolder();
-        backgroundGraphic.setName(getString(R.string.graphics_PowerMenuBackground));
+        backgroundGraphic.setName(getString(R.string.powerMenuMain_MenuBackground));
         backgroundGraphic.setFile(mContext.getFilesDir().getPath() + "/images/" + "xposed_dialog_background.png");
         backgroundGraphic.setFileName("xposed_dialog_background");
         GraphicsList.add(backgroundGraphic);
@@ -244,18 +244,6 @@ public class PreferencesGraphicsFragment extends Fragment {
             GraphicsList.add(graphic);
         }
 
-        /*
-                for(int i = 0; i < defaultGraphics.length; i++) {
-						Graphic graphic = new Graphic();
-						graphic.setName(loadGraphics[i][0].toString());
-						if(loadGraphics[i][1].getClass().equals(String.class)) {
-								graphic.setFile(loadGraphics[i][1].toString());
-						} else if (loadGraphics[i][1].getClass().equals(Integer.class)) {
-								graphic.setRessource(loadGraphics[i][1]);
-						}
-						graphic.setFileName(loadGraphics[i][2].toString());
-						GraphicsList.add(graphic);
-				}*/
         ArrayList<String> MultiPage = new ArrayList<String>();
         for (int i = 0; i < MainActivity.orderPrefs.getAll().keySet().size(); i++) {
             if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) != -1) {
@@ -274,45 +262,21 @@ public class PreferencesGraphicsFragment extends Fragment {
                         GraphicsList.add(graphic);
                     }
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL) == visibilityOrder_ListAdapter.TYPE_MULTI) {
-                    if (MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").contains(".") || !MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_shortcutUri", "").isEmpty()) {
+                    int x = 1;
+                    do {
                         GraphicItemHolder graphic = new GraphicItemHolder();
-                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0]);
-                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0] + ".png").exists()) {
-                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0] + ".png");
-                        } else if (new File(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null") + ".png").exists()) {
-                            graphic.setFile(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null") + ".png");
+                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0]);
+                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0] + ".png").exists()) {
+                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0] + ".png");
+                        } else if (new File(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null") + ".png").exists()) {
+                            graphic.setFile(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null") + ".png");
                         } else {
                             graphic.setRessource(R.drawable.ic_action_android);
                         }
-                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item1_title", "null").split("/")[0]);
+                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0]);
                         GraphicsList.add(graphic);
-                    }
-                    if (MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").contains(".") || !MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_shortcutUri", "").isEmpty()) {
-                        GraphicItemHolder graphic = new GraphicItemHolder();
-                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0]);
-                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0] + ".png").exists()) {
-                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0] + ".png");
-                        } else if (new File(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null") + ".png").exists()) {
-                            graphic.setFile(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null") + ".png");
-                        } else {
-                            graphic.setRessource(R.drawable.ic_action_android);
-                        }
-                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item2_title", "null").split("/")[0]);
-                        GraphicsList.add(graphic);
-                    }
-                    if (MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").contains(".") || !MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_shortcutUri", "").isEmpty()) {
-                        GraphicItemHolder graphic = new GraphicItemHolder();
-                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0]);
-                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0] + ".png").exists()) {
-                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0] + ".png");
-                        } else if (new File(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null") + ".png").exists()) {
-                            graphic.setFile(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null") + ".png");
-                        } else {
-                            graphic.setRessource(R.drawable.ic_action_android);
-                        }
-                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item3_title", "null").split("/")[0]);
-                        GraphicsList.add(graphic);
-                    }
+                        x++;
+                    } while (!MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "][EMPTY][").equals("][EMPTY]["));
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
                     MultiPage.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                 } else if (MultiPage.size() > 0 && MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END) {
@@ -341,13 +305,13 @@ public class PreferencesGraphicsFragment extends Fragment {
 
                     @Override
                     public void onListItemClick(int position, String text) {
-                        if (GraphicsList.get(selected).getFile() != null && position != 1) {
-                            mGraphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
-                            new File(GraphicsList.get(selected).getFile().replace("/app_picker/","/images/")).delete();
-                        }
                         if (position == 0) {
                             if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
                                 MainActivity.preferences.edit().putString("ProgressDrawable", "Stock").commit();
+                            }
+                            if (new File(GraphicsList.get(selected).getFile()).exists()) {
+                                mGraphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
+                                new File(GraphicsList.get(selected).getFile()).delete();
                             }
                             GraphicItemHolder item = new GraphicItemHolder();
                             item.setName(GraphicsList.get(selected).getName());
@@ -370,76 +334,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                             mGraphicsAdapter.set(selected, item);
                             GraphicsList.set(selected, item);
                         } else if (position == 1) {
-                            helper.zipLogging(false);
-                            //Toast.makeText(getActivity(),getString(R.string.presetsManager_NJI),Toast.LENGTH_SHORT).show();
-                            File presetsFolder = new File(getActivity().getFilesDir().getPath() + "/presets/");
-                            final File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
-                                public boolean accept(File dir, String name) {
-                                    boolean supported = helper.isValidZip(dir + "/" + name, null) && helper.unzipFile(dir + "/" + name, mContext.getFilesDir().getAbsolutePath() + "/temp/", GraphicsList.get(selected).getName() + ".png", null) == null;
-                                    return (supported && name.toLowerCase().endsWith(".nps"));
-                                }
-                            });
-                            helper.zipLogging(true);
-                            slideDownDialogFragment presetsListDialog = new slideDownDialogFragment();
-                            presetsListDialog.setContext(mContext);
-                            presetsListDialog.setFragmentManager(MainActivity.fragmentManager);
-                            presetsListDialog.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
-
-                                @Override
-                                public void onListItemClick(int position, String text) {
-
-                                }
-
-                                @Override
-                                public void onNegativeClick() {
-
-                                }
-
-                                @Override
-                                public void onNeutralClick() {
-
-                                }
-
-                                @Override
-                                public void onPositiveClick(Bundle resultBundle) {
-                                    if (presetsFiles.length > 0) {
-                                        if (GraphicsList.get(selected).getFile() != null) {
-                                            mGraphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
-                                            new File(GraphicsList.get(selected).getFile()).delete();
-                                        }
-                                        if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
-                                            MainActivity.preferences.edit().putString("ProgressDrawable", "file").commit();
-                                        }
-                                        Log.d("NPM", "Extracting from " + presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)]);
-                                        if (helper.unzipFile(presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)].toString(), mContext.getFilesDir().getPath() + "/images/", GraphicsList.get(selected).getFileName() + ".png", null) == null) {
-                                            GraphicItemHolder item = new GraphicItemHolder();
-                                            item.setName(GraphicsList.get(selected).getName());
-                                            item.setFile(mContext.getFilesDir().getPath() + "/images/" + GraphicsList.get(selected).getFileName() + ".png");
-                                            item.setFileName(GraphicsList.get(selected).getFileName());
-                                            mGraphicsAdapter.set(selected, item);
-                                            GraphicsList.set(selected, item);
-                                        }
-                                    }
-                                }
-
-                                @Override
-                                public void onTouchOutside() {
-
-                                }
-                            });
-                            if (presetsFiles.length > 0) {
-                                String[] presetsListTitles = new String[presetsFiles.length];
-                                for (int i = 0; i < presetsFiles.length; i++) {
-                                    presetsListTitles[i] = presetsFiles[i].getName().split(".nps")[0];
-                                }
-                                presetsListDialog.setList(ListView.CHOICE_MODE_SINGLE, presetsListTitles, -1, false);
-                                presetsListDialog.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                                presetsListDialog.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[6]);
-                            } else {
-                                presetsListDialog.setText(getString(R.string.graphics_NoPresetsFound));
-                                presetsListDialog.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
-                            }
-                            presetsListDialog.showDialog(R.id.dialog_container);
+                            helper.startAsyncTask(new ScanPresetsForGraphic(), selected);
                         } else if (position == 2) {
                             Intent intent = new Intent();
                             intent.setType("image/*");
@@ -528,6 +423,148 @@ public class PreferencesGraphicsFragment extends Fragment {
 
         MainActivity.changePrefPage(cropper, false);
 
+    }
+
+    class ScanPresetsForGraphic extends AsyncTask<Integer, Integer, String> {
+
+        slideDownDialogFragment loadDialog;
+        File presetsFolder;
+        File[] presetsFiles;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            loadDialog = new slideDownDialogFragment();
+            loadDialog.setContext(mContext);
+            loadDialog.setFragmentManager(MainActivity.fragmentManager);
+            loadDialog.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                @Override
+                public void onListItemClick(int position, String text) {
+
+                }
+
+                @Override
+                public void onNegativeClick() {
+
+                }
+
+                @Override
+                public void onNeutralClick() {
+
+                }
+
+                @Override
+                public void onPositiveClick(Bundle resultBundle) {
+                    cancel(true);
+                    loadDialog.setPositiveButton("");
+                }
+
+                @Override
+                public void onTouchOutside() {
+
+                }
+            });
+            loadDialog.setCloseOnTouchOutside(false);
+            loadDialog.setCloseOnButtonClick(false);
+            loadDialog.setText(mContext.getString(R.string.login_Processing));
+            loadDialog.addProgressBar(true, false);
+            loadDialog.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+            loadDialog.showDialog(R.id.dialog_container);
+            helper.zipLogging(false);
+            presetsFolder = new File(getActivity().getFilesDir().getPath() + "/presets/");
+        }
+
+        @Override
+        protected String doInBackground(final Integer... selected) {
+            final int[] i = {0};
+            presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
+                public boolean accept(File dir, String name) {
+                    boolean supported = helper.isValidZip(dir + "/" + name, null) && helper.unzipFile(dir + "/" + name, mContext.getFilesDir().getAbsolutePath() + "/temp/", GraphicsList.get(selected[0]).getName() + ".png", null) == null;
+                    onProgressUpdate((i[0] * 100) / presetsFolder.listFiles().length);
+                    i[0]++;
+                    return (supported && name.toLowerCase().endsWith(".nps"));
+                }
+            });
+            if (isCancelled()) {
+                return "canceled";
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            loadDialog.setProgressBar(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if (s == null) {
+                helper.zipLogging(true);
+                loadDialog.cancelDialog();
+                slideDownDialogFragment presetsListDialog = new slideDownDialogFragment();
+                presetsListDialog.setContext(mContext);
+                presetsListDialog.setFragmentManager(MainActivity.fragmentManager);
+                presetsListDialog.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+                    @Override
+                    public void onListItemClick(int position, String text) {
+
+                    }
+
+                    @Override
+                    public void onNegativeClick() {
+
+                    }
+
+                    @Override
+                    public void onNeutralClick() {
+
+                    }
+
+                    @Override
+                    public void onPositiveClick(Bundle resultBundle) {
+                        if (presetsFiles.length > 0) {
+                            if (GraphicsList.get(selected).getFile() != null) {
+                                mGraphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
+                                new File(GraphicsList.get(selected).getFile()).delete();
+                            }
+                            if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
+                                MainActivity.preferences.edit().putString("ProgressDrawable", "file").commit();
+                            }
+                            Log.d("NPM", "Extracting from " + presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)]);
+                            if (helper.unzipFile(presetsFiles[resultBundle.getInt(slideDownDialogFragment.RESULT_LIST)].toString(), mContext.getFilesDir().getPath() + "/images/", GraphicsList.get(selected).getFileName() + ".png", null) == null) {
+                                GraphicItemHolder item = new GraphicItemHolder();
+                                item.setName(GraphicsList.get(selected).getName());
+                                item.setFile(mContext.getFilesDir().getPath() + "/images/" + GraphicsList.get(selected).getFileName() + ".png");
+                                item.setFileName(GraphicsList.get(selected).getFileName());
+                                mGraphicsAdapter.set(selected, item);
+                                GraphicsList.set(selected, item);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onTouchOutside() {
+
+                    }
+                });
+                if (presetsFiles.length > 0) {
+                    String[] presetsListTitles = new String[presetsFiles.length];
+                    for (int i = 0; i < presetsFiles.length; i++) {
+                        presetsListTitles[i] = presetsFiles[i].getName().split(".nps")[0];
+                    }
+                    presetsListDialog.setList(ListView.CHOICE_MODE_SINGLE, presetsListTitles, -1, false);
+                    presetsListDialog.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
+                    presetsListDialog.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[6]);
+                } else {
+                    presetsListDialog.setText(getString(R.string.graphics_NoPresetsFound));
+                    presetsListDialog.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                }
+                presetsListDialog.showDialog(R.id.dialog_container);
+            }
+        }
     }
 
 }

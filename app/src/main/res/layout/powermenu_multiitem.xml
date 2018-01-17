@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:layout_gravity="fill_horizontal"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/powermenumulti_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/powermenumulti_itemicon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"/>
+
+            <ImageView
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:src="@drawable/ic_hardware_memory"
+                android:id="@+id/powermenumulti_itemicon2"
+                android:padding="5dp"/>
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="Item"
+            android:textSize="10sp"
+            android:id="@+id/powermenumulti_itemtext"
+            android:singleLine="true"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -249,7 +249,7 @@
 
         <de.NeonSoft.neopowermenu.helpers.CircularRevealView
             android:id="@+id/reveal"
-            android:layout_width="match_parent"
+            android:layout_width="340dp"
             android:layout_height="170dp"
             android:layout_gravity="center"/>
 
