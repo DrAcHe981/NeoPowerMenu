@@ -305,8 +305,8 @@
   <string name="backupRestore_ChooseDeleteOptions">"Por favor, elija lo que desea eliminar:"</string>
   <string name="backupRestore_BackupComplete">"Respaldo completo!"</string>
   <string name="backupRestore_BackupFailed">"Error de copia de seguridad, por favor, inténtelo de nuevo."</string>
-  <string name="backupRestore_RestoreComplete">"Restauración del archivo casi completada!\nPresione en recomenzar para completar el proceso de restauración del archivo. (Esto puede demorar)"</string>
-  <string name="backupRestore_DeleteComplete">"Eliminación del archivo casi completada!\nPresione en recomenzar para completar el proceso de eliminación del archivo. (Esto puede demorar)"</string>
+  <string name="backupRestore_RestoreComplete">"Restauración del archivo casi completada!\nPresione en reiniciar para completar el proceso de restauración del archivo. (Esto puede demorar)"</string>
+  <string name="backupRestore_DeleteComplete">"Eliminación del archivo casi completada!\nPresione en reiniciar para completar el proceso de eliminación del archivo. (Esto puede demorar)"</string>
   <string name="backupRestore_Restart">"Reiniciar"</string>
   <string name="backupRestore_DeleteFailed">"Eliminación del archivo fallida...\nPor favor intente de nuevo, algunos archivos se encontrarán corruptos ahora..."</string>
   <string name="backupRestore_RestoreFailed">"Restauración del archivo fallida...\nPor favor intente de nuevo, algunos archivos pueden estar corruptos ahora..."</string>
@@ -324,7 +324,7 @@
   <string name="permissionsScreenTitle_DeviceAdmin">"Administrador de dispositivo"</string>
   <string name="permissionsScreenDesc_DeviceAdmin">"Necesario para bloquear el dispositivo, luego de activarlo, desinstalar es un proceso de dos pasos, primero desactiva el administrador de dispositivos y luego desinstala NeoPowerMenu."</string>
   <string name="permissionsScreenTitle_android.permission.RECEIVE_BOOT_COMPLETED">"Recibir Booteo Completo"</string>
-  <string name="permissionsScreenDesc_android.permission.RECEIVE_BOOT_COMPLETED">"Necesatio para preparar las librerias al iniciar el dispositivo."</string>
+  <string name="permissionsScreenDesc_android.permission.RECEIVE_BOOT_COMPLETED">"Necesario para preparar las librerias al iniciar el dispositivo."</string>
   <string name="permissionsScreen_DeviceAdminDisable">"Desactivar esto quita la habilidad de bloquear el dispositivo a través del menú de apagado."</string>
   <string name="visibilityOrder_FillEmpty">"Mantener espacio vacío entre ítems"</string>
   <string name="advancedPrefsCategory_Torch">"Linterna"</string>
