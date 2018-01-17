@@ -58,7 +58,7 @@ before_install:
 - chmod +x gradlew
 
 script:
-- ./gradlew build connectedCheck
+- ./gradlew build connectedCheck -x lint
 
 before_deploy:
 - git config --local user.name "DrAcHe981"

@@ -289,7 +289,7 @@ public class PreferencesPartFragment extends Fragment {
                         viewIntent.putExtra("fragment", 1);
                         viewIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(viewIntent);
-                    } catch (ActivityNotFoundException e) {
+                    } catch (Throwable e) {
                         slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                         dialogFragment.setContext(mActivity);
                         dialogFragment.setFragmentManager(MainActivity.fragmentManager);

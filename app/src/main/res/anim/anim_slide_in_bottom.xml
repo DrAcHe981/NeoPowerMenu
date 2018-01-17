@@ -3,8 +3,7 @@
 
 		<alpha
 				android:fromAlpha="0"
-				android:toAlpha="1"
-				android:duration="450"/>
+				android:toAlpha="1"/>
 		
 		<translate xmlns:android="http://schemas.android.com/apk/res/android"
 				android:startOffset="0"

@@ -139,6 +139,7 @@
                 android:paddingRight="10dp"
                 android:text="Item"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:background="?selectableItemBackground"
                 android:textColor="#FFFFFF"/>
 
         </LinearLayout>
