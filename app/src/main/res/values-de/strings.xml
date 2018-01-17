@@ -395,6 +395,10 @@
   <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Erforderlich, um den Fingerabdruck Scanner zum Element entsperren zu nutzen."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Auf Benachrichtigungen zugreifen"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Erforderlich, um auf Nougat(7.0) und höher den \"Bitte nicht stören\" Modus zu ändern."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_NETWORK_STATE">"Auf Netzwerk status zugreifen"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_NETWORK_STATE">"Benötigt um den aktuellen Netzwerk Status auszulesen."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_NETWORK_STATE">"Netzwerk status ändern"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_NETWORK_STATE">"Benötigt um den Netzwerk Status zu ändern."</string>
   <string name="powerMenuMain_Shortcut">Verknüpfung</string>
   <string name="visibilityOrder_NoGravityBoxFound">GravityBox konnte nicht gefunden werden, dieses Element funktioniert nicht wenn GravityBox nicht installiert ist.</string>
   <string name="visibilityOrder_HideText">Text ausblenden</string>
@@ -418,4 +422,10 @@
   <string name="visibilityOrder_MissingPermissionForCamera">Erlauben sie den Zugriff auf die Kamera, um diesen Schalter zu verwenden!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Dein Gerät scheint das \"[TITLE]\" Element nicht zu unterstützen!</string>
   <string name="powerMenuMain_FakePowerOff">Ausschalten (Fake)</string>
+  <string name="visibilityOrder_Horizontal">Zeige Elemente in einer horizontalen Linie</string>
+  <string name="position_Width">Breite:</string>
+  <string name="position_Horizontal">Horizontal:</string>
+  <string name="position_Vertical">Vertikal:</string>
+  <string name="visibilityOrder_AddMultiItem">Hinzufügen</string>
+  <string name="visibilityOrder_EditMultiItemChoices">Bearbeite Element text|Element entfernen</string>
 </resources>
