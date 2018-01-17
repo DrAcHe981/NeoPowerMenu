@@ -422,6 +422,7 @@
   <string name="visibilityOrder_MissingPermissionForCamera">Erlauben sie den Zugriff auf die Kamera, um diesen Schalter zu verwenden!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Dein Gerät scheint das \"[TITLE]\" Element nicht zu unterstützen!</string>
   <string name="powerMenuMain_FakePowerOff">Ausschalten (Fake)</string>
+  <string name="crop_failedToSave">Speichern fehlgeschlagen...\nÜberprüfe die logs für weitere Infos.</string>
   <string name="visibilityOrder_Horizontal">Zeige Elemente in einer horizontalen Linie</string>
   <string name="position_Width">Breite:</string>
   <string name="position_Horizontal">Horizontal:</string>
