@@ -275,7 +275,7 @@
   <string name="uploadHelper_FailedAt3">"No se pudo cargar el archivo, por favor, compruebe su conexión y vuelva a intentarlo."</string>
   <string name="uploadHelper_UnknownError">"Hubo un problema desconocido mientras se cargaba el archivo, por favor, inténtelo de nuevo."</string>
   <string name="visibilityOrder_SearchApp">"Buscar aplicación (mayúsculas y minúsculas):"</string>
-  <string name="visibilityOrder_FilterItemsList">"Buscar ítem (caso insensible):"</string>
+  <string name="visibilityOrder_FilterItemsList">"Buscar elemento (insensible a mayúsculas y minúsculas):"</string>
   <string name="powerMenuMain_MediaPrevious">"Anterior"</string>
   <string name="powerMenuMain_MediaPlayPause">"Reproducir/Pausa"</string>
   <string name="powerMenuMain_MediaNext">"Siguiente"</string>
