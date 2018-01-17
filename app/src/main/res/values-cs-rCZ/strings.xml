@@ -414,5 +414,4 @@
   <string name="visibilityOrder_MissingPermissionForNotiPolicy">Chybí politika zobrazení práv, prosím povolte pomocí tohoto přepínače!</string>
   <string name="powerMenu_Task_Killed">Ukončen [TARGET]!</string>
   <string name="powerMenu_No_Task_To_Kill">Nenalezen žádný proces k ukončení.</string>
-  <string name="powerMenuMain_MenuBackground">Pozadí menu taxonomii</string>
 </resources>
