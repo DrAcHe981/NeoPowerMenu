@@ -417,4 +417,5 @@
   <string name="graphics_PowerMenuBackground">Menü Arkaplanı</string>
   <string name="visibilityOrder_MissingPermissionForCamera">Kamera izni eksik, bu anahtarın kullanılması için lütfen izin verin!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Cihazınız \"[TITLE]\" öğesini desteklemiyor gibi görünüyor!</string>
+  <string name="powerMenuMain_FakePowerOff">Kapat (Sahte)</string>
 </resources>
