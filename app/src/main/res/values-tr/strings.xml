@@ -428,4 +428,5 @@
   <string name="position_Horizontal">Yatay:</string>
   <string name="position_Vertical">Dikey:</string>
   <string name="visibilityOrder_AddMultiItem">Ekle</string>
+  <string name="visibilityOrder_EditMultiItemChoices">Öğe metnini düzenle|Öğeyi kaldır</string>
 </resources>
