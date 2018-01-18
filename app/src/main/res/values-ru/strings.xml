@@ -422,6 +422,10 @@
   <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Требуется для использования сканера отпечатков пальцев как способа разблокировки."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Доступ к оповещениям"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Необходимо на Nougat(7.0) и моложе, чтобы переключиться в режим \"Не беспокоить\"."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_NETWORK_STATE">"Доступ к состоянию сети"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_NETWORK_STATE">"Требуется для получения состояния сети устройства."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_NETWORK_STATE">"Изменение состояния сети"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_NETWORK_STATE">"Требуется для изменения состояния сети устройства."</string>
   <string name="powerMenuMain_Shortcut">Шорткат</string>
   <string name="visibilityOrder_NoGravityBoxFound">GravityBox не найден, этот пункт не может работать без установленного GravityBox.</string>
   <string name="visibilityOrder_HideText">Скрыть текст</string>
@@ -441,6 +445,7 @@
   <string name="visibilityOrder_MissingPermissionForNotiPolicy">Отсутствует разрешение политики уведомлений, предоставьте его чтобы использовать этот переключатель!</string>
   <string name="powerMenu_Task_Killed">Убито [TARGET]!</string>
   <string name="powerMenu_No_Task_To_Kill">Не найдены задания, которые можно убить.</string>
+  <string name="powerMenuMain_MenuBackground">Фон Меню</string>
   <string name="visibilityOrder_MissingPermissionForCamera">Нет разрешения на использование камеры, предоставьте чтобы использовать переключатель!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Ваше устройство не поддерживает эдемент \"[TITLE]\"!</string>
   <string name="powerMenuMain_FakePowerOff">Выключение (Фэйк)</string>
