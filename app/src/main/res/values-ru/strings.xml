@@ -449,4 +449,11 @@
   <string name="visibilityOrder_MissingPermissionForCamera">Нет разрешения на использование камеры, предоставьте чтобы использовать переключатель!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Ваше устройство не поддерживает эдемент \"[TITLE]\"!</string>
   <string name="powerMenuMain_FakePowerOff">Выключение (Фэйк)</string>
+  <string name="crop_failedToSave">Невозможно сохранить, попробуйте ещё раз...\nДля дополнительной информации проверьте логи.</string>
+  <string name="visibilityOrder_Horizontal">Показывать элементы горизонтально</string>
+  <string name="position_Width">Ширина:</string>
+  <string name="position_Horizontal">Горизонтально:</string>
+  <string name="position_Vertical">Вертикально:</string>
+  <string name="visibilityOrder_AddMultiItem">Добавить</string>
+  <string name="visibilityOrder_EditMultiItemChoices">Изменить цвет элемента|Удалить элемент</string>
 </resources>
