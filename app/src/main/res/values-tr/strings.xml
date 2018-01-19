@@ -423,7 +423,7 @@
   <string name="visibilityOrder_NotSupportedbyDevice">Cihazınız \"[TITLE]\" öğesini desteklemiyor gibi görünüyor!</string>
   <string name="powerMenuMain_FakePowerOff">Kapat (Sahte)</string>
   <string name="crop_failedToSave">Kaydedilemedi, lütfen tekrar deneyin...\nDaha fazla bilgi için günlükleri kontrol edin.</string>
-  <string name="visibilityOrder_Horizontal">Öğeleri yatay bir çizgiyle göster</string>
+  <string name="visibilityOrder_Horizontal">Öğeleri yatay bir satırda göster</string>
   <string name="position_Width">Genişlik:</string>
   <string name="position_Horizontal">Yatay:</string>
   <string name="position_Vertical">Dikey:</string>
