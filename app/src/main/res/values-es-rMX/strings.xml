@@ -395,6 +395,10 @@
   <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Necesario para utilizar el escáner de huella dactilar como método de desbloqueo de elemento."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Acceder a las notificaciones"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Necesario en Nougat(7.0) y en adelante para cambiar el modo 'No Molestar'."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_NETWORK_STATE">"Estado de la red"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_NETWORK_STATE">"Necesario para obtener el estado de la red."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_NETWORK_STATE">"Cambiar el estado de la red"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_NETWORK_STATE">"Necesario para cambiar el estado de la red."</string>
   <string name="powerMenuMain_Shortcut">Atajo</string>
   <string name="visibilityOrder_NoGravityBoxFound">GravityBox no encontrado, este elemento no tendrá efecto sin GravityBox instalado.</string>
   <string name="visibilityOrder_HideText">Ocultar texto</string>
