@@ -186,7 +186,7 @@
 <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
     <string name="graphics_Choose">"Restore default|Choose from presets|Choose from gallery"</string>
 <string name="graphics_Crop">"Crop|Circle crop"</string>
-<string name="graphics_NoPresetsFound">"No presets with graphics found..."</string>
+<string name="graphics_NoPresetsFound">Could not find any preset which contains this graphic...</string>
 <string name="graphics_GraphicsSaveLoad">"Save with current graphics.|This preset contains graphics, do you want to load them?\nThis will overwrite your current graphics!"</string>
 <string name="presetsManager_ReportDialog">"Are you sure to report [PRESETNAME]?\nThis can't be undone, so please don't report just for fun!\n\nAlso we need a reason why you want to report it, please enter it below.|Report reason:"</string>
 <string name="presetsManager_ReportResult">"[PRESETNAME] reported, the developer will have a look at it.|Report failed, please try again.\nReason: "</string>
@@ -196,8 +196,8 @@
     <string name="downloadHelper_RemainingTime">"[TIME] remaining"</string>
     <string name="downloadHelper_Speed">"speed: [SPEED]/s"</string>
 <string name="uploadHelper_States">"Waiting for other uploads...|Connecting to server...|Requesting information... |Uploading...|Cancelling..."</string>
-<string name="visibilityOrder_AddItem">"Add normal item\nJust a normal item with only one slot.|Add multi item\nAdd up to three items in one line.|Add multi page item\nClicking it will show a new 'page'."</string>
-<string name="visibilityOrder_MultiPage">"Multi page item starts here\nThe first normal item defines the button to open the 'new page'.|Multi page item ends here"</string>
+<string name="visibilityOrder_AddItem">"Add normal item\nJust a normal item with only one slot.|Add multi item\nAdd multiple items in one line.|Add folder item\nClicking it will show a new 'page'."</string>
+<string name="visibilityOrder_MultiPage">"Folder item starts here\nThe first normal item defines the button to open the folder.|Folder item ends here"</string>
 
 <string name="preferencesCategory_RootXposed">"Root and Xposed"</string>
 <string name="preferences_RootXposed1">"Root and Xposed not available|Root and Xposed are required for this module to work."</string>
@@ -223,7 +223,7 @@
 <string name="preferences_About">"Code by Neon-Soft / DrAcHe981|based on the source of Naman Dwivedi (naman14).\nClick here to get more info."</string>
 <string name="animations_Items">"Background|Dialog|Icons|Single line items|Multi line items"</string>
 <string name="animations_Speeds">"Very fast|Faster|Fast|Normal|Slow|Slower|Very slow"</string>
-<string name="animations_Types">"Fade|Reveal\n(Works only for the background)|Slide up|Slide left|Slide right|Slide down|Scale up|Scale down|Disabled"</string>
+<string name="animations_Types">"Fade|Reveal|Slide up|Slide left|Slide right|Slide down|Scale up|Scale down|Flip vertical|Flip horizontal|Disabled"</string>
     <string name="animations_Type">"Type"</string>
     <string name="animations_Speed">"Speed"</string>
 
@@ -451,12 +451,18 @@
     <string name="visibilityOrder_MissingPermissionForCamera">Missing camera permission, please allow it to use this toggle!</string>
     <string name="visibilityOrder_NotSupportedbyDevice">Your device does not seem to support the \"[TITLE]\" element!</string>
     <string name="powerMenuMain_FakePowerOff">Power off (Fake)</string>
-    <string name="crop_failedToSave">\"Failed to save,please try again...\\nFor more info check the logs.\"</string>
+    <string name="crop_failedToSave">Failed to save,please try again...\nFor more info check the logs.</string>
     <string name="visibilityOrder_Horizontal">Show items in a horizontal line</string>
     <string name="position_Width">Width:</string>
     <string name="position_Horizontal">Horizontal:</string>
     <string name="position_Vertical">Vertical:</string>
     <string name="visibilityOrder_AddMultiItem">Add</string>
     <string name="visibilityOrder_EditMultiItemChoices">Edit element text|Remove element</string>
+    <string name="graphics_RadiusTitle">Circle radius</string>
+    <string name="graphics_RadiusDesc">Define how much rounded the backgrounds of the power menu graphics are. (Default: 100%)</string>
+    <string name="advancedPrefsDesc_RoundedCorners">Enable/disable rounded corners for the power dialog.</string>
+    <string name="advancedPrefsTitle_RoundedCorners">Rounded dialog corners</string>
+    <string name="advancedPrefsTitle_RoundedCornersRadius">Rounded dialog corners radius</string>
+    <string name="advancedPrefsDesc_RoundedCornersRadius">Define how much rounded the dialog corners are. (Default 0%)</string>
 
 </resources>

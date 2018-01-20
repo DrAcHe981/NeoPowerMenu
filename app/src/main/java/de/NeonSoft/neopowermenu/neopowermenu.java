@@ -20,7 +20,7 @@ public class neopowermenu extends Application
 		@Override
 		public void onCreate()
 		{
-				// TODO: Implement this method
+
 				super.onCreate();
 		}
 		

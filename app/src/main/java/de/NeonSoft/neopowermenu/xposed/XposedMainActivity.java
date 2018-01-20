@@ -62,11 +62,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     boolean HookShutdownThread = false;
     boolean DeepXposedLogging = false;
-    boolean HideOnClick = false;
-    boolean LoadAppIcons = true;
-    boolean RoundAppIcons = false;
-    boolean ColorizeNonStockIcons = false;
-    float GraphicsPadding = 0;
 
     boolean mBlurBehind = false;
     float mBlurRadius = 14f;
@@ -89,6 +84,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
     private int shortcutItem = -1;
     static boolean isShortcutWithVisibleContent = false;
+    boolean mRoundedDialogCorners = false;
+    int mRoundedDialogCornersRadius = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,17 +103,15 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
 
         initImageLoader();
 
-        preferences = SettingsManager.getInstance(this).getMainPrefs();//getSharedPreferences(MainActivity.class.getPackage().getName() + "_preferences",  0);
+        preferences = SettingsManager.getInstance(this).getMainPrefs();
         colorPrefs = getSharedPreferences("colors", 0);
         orderPrefs = getSharedPreferences("visibilityOrder", 0);
         animationPrefs = getSharedPreferences("animations", 0);
 
+        mRoundedDialogCorners = preferences.getBoolean(PreferenceNames.pRoundedDialogCorners, false);
+        mRoundedDialogCornersRadius = (mRoundedDialogCorners ? preferences.getInt(PreferenceNames.pRoundedDialogCornersRadius, 0) : 0);
+
         DeepXposedLogging = preferences.getBoolean(PreferenceNames.pDeepXposedLogging, false);
-        HideOnClick = preferences.getBoolean("HideOnClick", false);
-        LoadAppIcons = preferences.getBoolean("LoadAppIcons", true);
-        RoundAppIcons = preferences.getBoolean("RoundAppIcons", false);
-        ColorizeNonStockIcons = preferences.getBoolean("ColorizeNonStockIcons", false);
-        GraphicsPadding = preferences.getFloat("GraphicsPadding", 0);
 
         PackageManager m = getPackageManager();
         String s = getPackageName();
@@ -501,16 +496,6 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         } else {
             revealView.reveal(p.x, p.y, color, 0, 0, null);
         }
-
-    }
-
-    public void revealToTop() {
-        final int color = Color.parseColor("#8800bcd4");
-
-        final Point p = new Point(maxX / 2, maxY / 2);
-
-        revealView.reveal(p.x, p.y, color, 0, 340, null);
-
 
     }
 

@@ -45,7 +45,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
 
         final ViewHolder holder = new ViewHolder();
         holder.imgQueueBg = (ImageView) InflatedView.findViewById(de.NeonSoft.neopowermenu.R.id.imgQueueBg);
-        GraphicDrawable drawable = GraphicDrawable.builder().beginConfig().setContext(mActivity).endConfig().buildRound(null, mActivity.getResources().getColor(R.color.colorPrimaryDarkDarkTheme));
+        GraphicDrawable drawable = GraphicDrawable.builder().beginConfig().setContext(mActivity).endConfig().buildRoundRect(null, mActivity.getResources().getColor(R.color.colorPrimaryDarkDarkTheme), (PreferencesGraphicsFragment.int_radius/2) * 3);
         holder.imgQueueBg.setImageDrawable(drawable);
         holder.imgQueue = (ImageView) InflatedView.findViewById(de.NeonSoft.neopowermenu.R.id.imgQueue);
         holder.imgQueue.setPadding((int) helper.convertDpToPixel(20, mActivity), (int) helper.convertDpToPixel(20, mActivity), (int) helper.convertDpToPixel(20, mActivity), (int) helper.convertDpToPixel(20, mActivity));

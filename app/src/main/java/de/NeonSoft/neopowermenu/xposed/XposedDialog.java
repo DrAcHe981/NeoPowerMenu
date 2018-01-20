@@ -7,6 +7,7 @@ import android.app.admin.DevicePolicyManager;
 import android.bluetooth.*;
 import android.content.*;
 import android.content.pm.*;
+import android.filterfw.core.Frame;
 import android.graphics.*;
 import android.graphics.drawable.*;
 import android.hardware.fingerprint.FingerprintManager;
@@ -70,8 +71,11 @@ public class XposedDialog extends DialogFragment {
     boolean mLoadAppIcons = true;
     int sStyleName;
     float mGraphicsPadding = 0;
+    int mGraphicsRadius = 0;
     boolean mColorizeNonStockIcons = false;
     boolean mDeepXposedLogging = false;
+    boolean mRoundedDialogCorners = false;
+    int mRoundedDialogCornersRadius = 0;
 
     boolean RequireConfirmation = false;
     String confirmDialog = "";
@@ -101,7 +105,9 @@ public class XposedDialog extends DialogFragment {
     FrameLayout frameEnterPassword;
     LinearLayout frameLinear, frame2Linear, frame3Linear, frameConfirmLinear, frameEnterPasswordLinear;
     ScrollView frameScroll, frame3Scroll;
+    FrameLayout revealViewHolder;
     private CircularRevealView revealView;
+    private TextView revealViewText;
     private View selectedView;
     int backgroundColor;
     ImageView progressbg;
@@ -206,11 +212,14 @@ public class XposedDialog extends DialogFragment {
         orderPrefs = mContext.getSharedPreferences("visibilityOrder", 0);
         animationPrefs = mContext.getSharedPreferences("animations", 0);
         HookShutdownThread = preferences.getBoolean("HookShutdownThread", false);
-        mDeepXposedLogging = preferences.getBoolean("DeepXposedLogging", false);
-        mHideOnClick = preferences.getBoolean("HideOnClick", false);
-        mLoadAppIcons = preferences.getBoolean("LoadAppIcons", true);
-        mColorizeNonStockIcons = preferences.getBoolean("ColorizeNonStockIcons", false);
-        mGraphicsPadding = preferences.getFloat("GraphicsPadding", 0);
+        mDeepXposedLogging = preferences.getBoolean(PreferenceNames.pDeepXposedLogging, false);
+        mHideOnClick = preferences.getBoolean(PreferenceNames.pLoadAppIcons, false);
+        mLoadAppIcons = preferences.getBoolean(PreferenceNames.pLoadAppIcons, true);
+        mColorizeNonStockIcons = preferences.getBoolean(PreferenceNames.pColorizeNonStockIcons, false);
+        mGraphicsPadding = preferences.getFloat(PreferenceNames.pGraphicsPadding, 0);
+        mGraphicsRadius = preferences.getInt(PreferenceNames.pCircleRadius, 100);
+        mRoundedDialogCorners = preferences.getBoolean(PreferenceNames.pRoundedDialogCorners, false);
+        mRoundedDialogCornersRadius = (mRoundedDialogCorners ? preferences.getInt(PreferenceNames.pRoundedDialogCornersRadius, 0) : 0);
 
         mPasswordLock = preferences.getString(PreferenceNames.pItemPWL, "");
         mUseFingerprint = preferences.getBoolean(PreferenceNames.pLockWithFingerprint, false);
@@ -252,17 +261,18 @@ public class XposedDialog extends DialogFragment {
         RequireConfirmation = preferences.getBoolean("RequireConfirmation", false);
         UseRootCommands = preferences.getBoolean("UseRoot", true);
 
-        int_Vertical = preferences.getInt("DialogPosition_Vertical",50);
-        int_Horizontal = preferences.getInt("DialogPosition_Horizontal",50);
-        int_Size = preferences.getInt("DialogPosition_Size",60);
+        int_Vertical = preferences.getInt(PreferenceNames.pDialogPosition_Vertical,50);
+        int_Horizontal = preferences.getInt(PreferenceNames.pDialogPosition_Horizontal,50);
+        int_Size = preferences.getInt(PreferenceNames.pDialogPosition_Size,60);
         DisplaySize = helper.getDisplaySize(mContext, false);
 
-        if (!helper.isDeviceHorizontal(mContext)) {
+        if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
             DisplaySize[1] = (int) DisplaySize[1] - helper.getNavigationBarSize(mContext).y - helper.getStatusBarHeight(mContext);
         } else {
             DisplaySize[0] = (int) DisplaySize[0] - helper.getNavigationBarSize(mContext).x;
             DisplaySize[1] = (int) DisplaySize[1] - helper.getStatusBarHeight(mContext);
         }
+        Log.d("NPM", "Nav bar size: " + helper.getNavigationBarSize(mContext).y + ", Status bar size: " + helper.getStatusBarHeight(mContext));
 
         dialogMain = (LinearLayout) PowerDialog.findViewById(R.id.fragmentpowerFrameLayout_Main);
 
@@ -270,12 +280,18 @@ public class XposedDialog extends DialogFragment {
 
         dialogContent = (FrameLayout) PowerDialog.findViewById(R.id.fragmentpowerFrameLayout1);
 
-        revealView = (CircularRevealView) PowerDialog.findViewById(R.id.reveal);
+        revealViewHolder = (FrameLayout) PowerDialog.findViewById(R.id.revealViewHolder);
+        revealView = (CircularRevealView) PowerDialog.findViewById(R.id.revealView);
+        revealViewText = (TextView) PowerDialog.findViewById(R.id.revealViewText);
         backgroundColor = Color.parseColor(colorPrefs.getString("Dialog_Backgroundcolor", "#ffffff"));
         ListContainer = (LinearLayout) PowerDialog.findViewById(R.id.ListContainer);
 
         frame = (FrameLayout) PowerDialog.findViewById(R.id.frame);
-        dialogContent.setBackgroundColor(backgroundColor);
+        GradientDrawable bgDrawable = (GradientDrawable) dialogContent.getBackground();
+        bgDrawable.setColor(backgroundColor);
+        bgDrawable.setCornerRadius(mRoundedDialogCornersRadius);
+        bgDrawable.setStroke(0, Color.parseColor("#00000000"));
+        dialogContent.setBackground(bgDrawable);
         frameLinear = (LinearLayout) PowerDialog.findViewById(R.id.frameLinear);
         frameScroll = (ScrollView) PowerDialog.findViewById(R.id.frameScroll);
         frame2 = (FrameLayout) PowerDialog.findViewById(R.id.frame2);
@@ -354,28 +370,36 @@ public class XposedDialog extends DialogFragment {
             crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
             crparams.height = FrameLayout.LayoutParams.MATCH_PARENT;
             revealView.setLayoutParams(crparams);
+            revealViewText.setLayoutParams(crparams);
             frameConfirm.setLayoutParams(crparams);
             frameEnterPassword.setLayoutParams(crparams);
         } else if (sStyleName == 2) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
+            params.width = (int) helper.getDisplaySize(mContext, false)[0];
+            params.topMargin = helper.getStatusBarHeight(mContext);
+            if (!helper.isDeviceHorizontal(mContext)) {
+                params.bottomMargin = helper.getNavigationBarSize(mContext).y;
+            } else if (helper.isDeviceHorizontal(mContext)) {
+                params.rightMargin = helper.getNavigationBarSize(mContext).x;
+            }
+            dialogContent.setLayoutParams(params);
+            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
+            crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            //crparams.height = ((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+            revealView.setLayoutParams(crparams);
+            revealViewText.setLayoutParams(crparams);
+            frameConfirm.setLayoutParams(crparams);
+            frameEnterPassword.setLayoutParams(crparams);
+            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
+            params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            params2.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            frame.setLayoutParams(params2);
+            frame3.setLayoutParams(params2);
             LinearLayout.LayoutParams frameScrollParams = new LinearLayout.LayoutParams(frameScroll.getLayoutParams());
             frameScrollParams.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));
             frameScrollParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
             frameScroll.setLayoutParams(frameScrollParams);
             frame3Scroll.setLayoutParams(frameScrollParams);
-            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
-            crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            crparams.height = ((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
-            revealView.setLayoutParams(crparams);
-            frameConfirm.setLayoutParams(crparams);
-            frameEnterPassword.setLayoutParams(crparams);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
-            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
-            dialogContent.setLayoutParams(params);
-            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
-            //params2.topMargin = helper.getStatusBarHeight(mContext);
-            params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            frame.setLayoutParams(params2);
-            frame3.setLayoutParams(params2);
         } else {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
             params.width = LinearLayout.LayoutParams.WRAP_CONTENT;//(int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
@@ -391,6 +415,7 @@ public class XposedDialog extends DialogFragment {
             crparams.width = ((int) helper.convertDpToPixel(340, mContext));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
             //crparams.height = LinearLayout.LayoutParams.WRAP_CONTENT;//((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
             revealView.setLayoutParams(crparams);
+            revealViewText.setLayoutParams(crparams);
             frameConfirm.setLayoutParams(crparams);
             frameEnterPassword.setLayoutParams(crparams);
             FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
@@ -485,11 +510,17 @@ public class XposedDialog extends DialogFragment {
         mHandler.postDelayed(mRun, 250L);
 
         if (XposedMainActivity.isShortcutWithVisibleContent) {
-            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                dialogMain.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+            int animationId = animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]);
+            if (animationId != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                if (animationId >= 6 && animationId <= 9) {
+                    dialogContent.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                } else {
+                    dialogMain.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                }
             }
         } else {
             dialogMain.setVisibility(View.INVISIBLE);
+            dialogContent.setVisibility(View.INVISIBLE);
         }
 
         ViewTreeObserver vto = dialogContent.getViewTreeObserver();
@@ -497,14 +528,7 @@ public class XposedDialog extends DialogFragment {
 
             @Override
             public void onGlobalLayout() {
-                if (frame.getWidth() > revealView.getWidth()) {
-                    FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
-                    crparams.width = frame.getWidth();
-                    revealView.setLayoutParams(crparams);
-                    frameConfirm.setLayoutParams(crparams);
-                    frameEnterPassword.setLayoutParams(crparams);
-                }
-                if (sStyleName == 0) revealView.setVisibility(View.GONE);
+                if (sStyleName != 1) revealView.setVisibility(View.GONE);
                 setGravity(sStyleName);
                 ViewTreeObserver obs = dialogContent.getViewTreeObserver();
 
@@ -920,7 +944,7 @@ public class XposedDialog extends DialogFragment {
     public void createCircleIcon(final int id, ImageView background, final ImageView foreground, String text, String finalText, final String color1, String color2) {
         try {
             if (preferences.getBoolean(PreferenceNames.pUseGraphics, false)) {
-                GraphicDrawable drawable = GraphicDrawable.builder().buildRound((Bitmap) null, Color.parseColor(color1));
+                GraphicDrawable drawable = GraphicDrawable.builder().buildRoundRect((Bitmap) null, Color.parseColor(color1), mGraphicsRadius/2);
                 background.setImageDrawable(drawable);
                 foreground.setVisibility(View.VISIBLE);
                 for (int i = 1; i <= XposedMainActivity.mItems.get(id).getTitles().size(); i++) {
@@ -1110,7 +1134,7 @@ public class XposedDialog extends DialogFragment {
                     }
                 }
                 TextDrawable drawable = TextDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig()
-                        .buildRound(finalText.substring(0, 1), Color.parseColor(color1));
+                        .buildRoundRect(finalText.substring(0, 1), Color.parseColor(color1), mGraphicsRadius);
                 background.setImageDrawable(drawable);
                 foreground.setVisibility(View.GONE);
             }
@@ -1311,6 +1335,18 @@ public class XposedDialog extends DialogFragment {
                 if (!confirmDialog.equalsIgnoreCase(name)) {
                     confirmDialog = name;
                     SubDialogs.add("EnterPassword");
+                    int width = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getWidth() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getWidth() : (frame.getVisibility() == View.VISIBLE ? frame.getWidth() : frame3.getWidth())));
+                    int height = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getHeight() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getHeight() : (frame.getVisibility() == View.VISIBLE ? frame.getHeight() : frame3.getHeight())));
+                    if (sStyleName != 1 && (width > revealView.getWidth() || height > revealView.getHeight())) {
+                        FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
+                        if (width > crparams.width) {
+                            crparams.width = width;
+                        }
+                        if (height > crparams.height) {
+                            crparams.height = height;
+                        }
+                        frameEnterPassword.setLayoutParams(crparams);
+                    }
                     frameEnterPasswordLinear.setLayoutTransition(null);
                     EnterPasswordInput.setVisibility(View.VISIBLE);
                     EnterPasswordFingerprint.setVisibility(View.GONE);
@@ -1473,6 +1509,18 @@ public class XposedDialog extends DialogFragment {
                 if (!confirmDialog.equalsIgnoreCase(name)) {
                     confirmDialog = name;
                     SubDialogs.add("Confirm");
+                    int width = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getWidth() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getWidth() : (frame.getVisibility() == View.VISIBLE ? frame.getWidth() : frame3.getWidth())));
+                    int height = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getHeight() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getHeight() : (frame.getVisibility() == View.VISIBLE ? frame.getHeight() : frame3.getHeight())));
+                    if (sStyleName != 1 && (width > revealView.getWidth() || height > revealView.getHeight())) {
+                        FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
+                        if (width > crparams.width) {
+                            crparams.width = width;
+                        }
+                        if (height > crparams.height) {
+                            crparams.height = height;
+                        }
+                        frameConfirm.setLayoutParams(crparams);
+                    }
                     confirmAction.setText(mContext.getString(R.string.powerMenu_SureToRebootPowerOff).split("\\|")[(name.equalsIgnoreCase("Shutdown") || name.equalsIgnoreCase("FakePowerOff") ? 1 : 0)]);
                     confirmNo.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_NO]);
                     confirmNo.setOnClickListener(new OnClickListener() {
@@ -1515,45 +1563,7 @@ public class XposedDialog extends DialogFragment {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
-                final int color = Color.parseColor(colorPrefs.getString("DialogShutdown_Backgroundcolor", "#d32f2f"));
-                final Point p = getLocationInView(revealView, v);
-                revealView.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        if (frame3.getVisibility() == View.VISIBLE) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frame.getVisibility() == View.VISIBLE) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        }
-                        revealView.startAnimation(anim);
-                        frame2.startAnimation(anim);
-                    }
-                } else {
-                    revealView.reveal(p.x, p.y, color, 0, 0, null);
-                }
-
-                if (selectedView == v) {
-                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
-                    selectedView = null;
-                } else {
-                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
-                    selectedView = v;
-                }
-
-                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogShutdown_Revealcolor", "#ff0097a7"));
-                frame.setVisibility(View.GONE);
-                frame3.setVisibility(View.GONE);
-                frameConfirm.setVisibility(View.GONE);
-                frameEnterPassword.setVisibility(View.GONE);
-                frame2.setVisibility(View.VISIBLE);
+                revealDialog("Shutdown", v);
 
                 status.setText(R.string.powerMenuMain_Shutdown);
                 status_detail.setText(R.string.powerMenu_Shuttingdown);
@@ -1567,45 +1577,7 @@ public class XposedDialog extends DialogFragment {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
-                final int color = Color.parseColor(colorPrefs.getString("DialogShutdown_Backgroundcolor", "#d32f2f"));
-                final Point p = getLocationInView(revealView, v);
-                revealView.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        if (frame3.getVisibility() == View.VISIBLE) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frame.getVisibility() == View.VISIBLE) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        }
-                        revealView.startAnimation(anim);
-                        frame2.startAnimation(anim);
-                    }
-                } else {
-                    revealView.reveal(p.x, p.y, color, 0, 0, null);
-                }
-
-                if (selectedView == v) {
-                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
-                    selectedView = null;
-                } else {
-                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
-                    selectedView = v;
-                }
-
-                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogShutdown_Revealcolor", "#ff0097a7"));
-                frame.setVisibility(View.GONE);
-                frame3.setVisibility(View.GONE);
-                frameConfirm.setVisibility(View.GONE);
-                frameEnterPassword.setVisibility(View.GONE);
-                frame2.setVisibility(View.VISIBLE);
+                revealDialog(name, v);
 
                 status.setText(R.string.powerMenuMain_Shutdown);
                 status_detail.setText(R.string.powerMenu_Shuttingdown);
@@ -1626,45 +1598,7 @@ public class XposedDialog extends DialogFragment {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
-                final int color = Color.parseColor(colorPrefs.getString("DialogReboot_Backgroundcolor", "#3f51b5"));
-                final Point p = getLocationInView(revealView, v);
-                revealView.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        if (frame3.getVisibility() == View.VISIBLE) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frame.getVisibility() == View.VISIBLE) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        }
-                        revealView.startAnimation(anim);
-                        frame2.startAnimation(anim);
-                    }
-                } else {
-                    revealView.reveal(p.x, p.y, color, 0, 0, null);
-                }
-
-                if (selectedView == v) {
-                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
-                    selectedView = null;
-                } else {
-                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
-                    selectedView = v;
-                }
-
-                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogReboot_Revealcolor", "#ff0097a7"));
-                frame.setVisibility(View.GONE);
-                frame3.setVisibility(View.GONE);
-                frameConfirm.setVisibility(View.GONE);
-                frameEnterPassword.setVisibility(View.GONE);
-                frame2.setVisibility(View.VISIBLE);
+                revealDialog(name, v);
 
                 status.setText(R.string.powerMenuMain_Reboot);
                 status_detail.setText(R.string.powerMenu_Rebooting);
@@ -1685,45 +1619,7 @@ public class XposedDialog extends DialogFragment {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
-                final int color = Color.parseColor(colorPrefs.getString("DialogSoftReboot_Backgroundcolor", "#e91e63"));
-                final Point p = getLocationInView(revealView, v);
-                revealView.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        if (frame3.getVisibility() == View.VISIBLE) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frame.getVisibility() == View.VISIBLE) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        }
-                        revealView.startAnimation(anim);
-                        frame2.startAnimation(anim);
-                    }
-                } else {
-                    revealView.reveal(p.x, p.y, color, 0, 0, null);
-                }
-
-                if (selectedView == v) {
-                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
-                    selectedView = null;
-                } else {
-                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
-                    selectedView = v;
-                }
-
-                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogSoftReboot_Revealcolor", "#ff0097a7"));
-                frame.setVisibility(View.GONE);
-                frame3.setVisibility(View.GONE);
-                frameConfirm.setVisibility(View.GONE);
-                frameEnterPassword.setVisibility(View.GONE);
-                frame2.setVisibility(View.VISIBLE);
+                revealDialog(name, v);
 
                 status.setText(R.string.powerMenuMain_SoftReboot);
                 status_detail.setText(R.string.powerMenu_Rebooting);
@@ -1744,18 +1640,17 @@ public class XposedDialog extends DialogFragment {
                 if (!mPreviewMode) {
                     SubDialogs.clear();
                     dismissThis();
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
+                    //Handler handler = new Handler();
+                    //handler.postDelayed(new Runnable() {
 
-                        @Override
-                        public void run() {
-
+                    //    @Override
+                    //    public void run() {
                             Intent takeScreenshotBC = new Intent();
                             takeScreenshotBC.setAction(XposedMain.NPM_ACTION_BROADCAST_SCREENSHOT);
                             mContext.sendOrderedBroadcast(takeScreenshotBC, null);
                             //Toast.makeText(mContext, "Taking screenshot...",Toast.LENGTH_SHORT).show();
-                        }
-                    }, preferences.getLong("ScreenshotDelay", 1000));
+                    //    }
+                    //}, preferences.getLong("ScreenshotDelay", 1000));
                 }
             } else if (name.equalsIgnoreCase("Screenrecord")) {
                 if (!mPreviewMode) {
@@ -1861,45 +1756,7 @@ public class XposedDialog extends DialogFragment {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
-                final int color = Color.parseColor(colorPrefs.getString("DialogRecovery_Backgroundcolor", "#8bc34a"));
-                final Point p = getLocationInView(revealView, v);
-                revealView.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        if (frame3.getVisibility() == View.VISIBLE) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frame.getVisibility() == View.VISIBLE) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        }
-                        revealView.startAnimation(anim);
-                        frame2.startAnimation(anim);
-                    }
-                } else {
-                    revealView.reveal(p.x, p.y, color, 0, 0, null);
-                }
-
-                if (selectedView == v) {
-                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
-                    selectedView = null;
-                } else {
-                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
-                    selectedView = v;
-                }
-
-                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogRecovery_Revealcolor", "#ff0097a7"));
-                frame.setVisibility(View.GONE);
-                frame3.setVisibility(View.GONE);
-                frameConfirm.setVisibility(View.GONE);
-                frameEnterPassword.setVisibility(View.GONE);
-                frame2.setVisibility(View.VISIBLE);
+                revealDialog(name, v);
 
                 status.setText(R.string.powerMenuBottom_Recovery);
                 status_detail.setText(R.string.powerMenu_Rebooting);
@@ -1920,45 +1777,7 @@ public class XposedDialog extends DialogFragment {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
-                final int color = Color.parseColor(colorPrefs.getString("DialogBootloader_Backgroundcolor", "#277b71"));
-                final Point p = getLocationInView(revealView, v);
-                revealView.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        if (frame3.getVisibility() == View.VISIBLE) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frame.getVisibility() == View.VISIBLE) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        }
-                        revealView.startAnimation(anim);
-                        frame2.startAnimation(anim);
-                    }
-                } else {
-                    revealView.reveal(p.x, p.y, color, 0, 0, null);
-                }
-
-                if (selectedView == v) {
-                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
-                    selectedView = null;
-                } else {
-                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
-                    selectedView = v;
-                }
-
-                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogBootloader_Revealcolor", "#ff0097a7"));
-                frame.setVisibility(View.GONE);
-                frame3.setVisibility(View.GONE);
-                frameConfirm.setVisibility(View.GONE);
-                frameEnterPassword.setVisibility(View.GONE);
-                frame2.setVisibility(View.VISIBLE);
+                revealDialog(name, v);
 
                 status.setText(R.string.powerMenuBottom_Bootloader);
                 status_detail.setText(R.string.powerMenu_Rebooting);
@@ -1979,45 +1798,7 @@ public class XposedDialog extends DialogFragment {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
-                final int color = Color.parseColor(colorPrefs.getString("DialogSafeMode_Backgroundcolor", "#009688"));
-                final Point p = getLocationInView(revealView, v);
-                revealView.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        if (frame3.getVisibility() == View.VISIBLE) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frame.getVisibility() == View.VISIBLE) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        }
-                        revealView.startAnimation(anim);
-                        frame2.startAnimation(anim);
-                    }
-                } else {
-                    revealView.reveal(p.x, p.y, color, 0, 0, null);
-                }
-
-                if (selectedView == v) {
-                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
-                    selectedView = null;
-                } else {
-                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
-                    selectedView = v;
-                }
-
-                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogSafeMode_Revealcolor", "#ff0097a7"));
-                frame.setVisibility(View.GONE);
-                frame3.setVisibility(View.GONE);
-                frameConfirm.setVisibility(View.GONE);
-                frameEnterPassword.setVisibility(View.GONE);
-                frame2.setVisibility(View.VISIBLE);
+                revealDialog(name, v);
 
                 status.setText(R.string.powerMenuBottom_SafeMode);
                 status_detail.setText(R.string.powerMenu_Rebooting);
@@ -2167,45 +1948,7 @@ public class XposedDialog extends DialogFragment {
                 canDismiss = false;
 
                 //revealView.setVisibility(View.VISIBLE);
-                final int color = Color.parseColor(colorPrefs.getString("DialogRebootFlashMode_Backgroundcolor", "#3f51b5"));
-                final Point p = getLocationInView(revealView, v);
-                revealView.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
-                        revealView.reveal(p.x, p.y, color, 0, anim.getDuration(), null);
-                    } else {
-                        revealView.reveal(p.x, p.y, color, 0, 0, null);
-                        if (frame3.getVisibility() == View.VISIBLE) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frame.getVisibility() == View.VISIBLE) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
-                        }
-                        revealView.startAnimation(anim);
-                        frame2.startAnimation(anim);
-                    }
-                } else {
-                    revealView.reveal(p.x, p.y, color, 0, 0, null);
-                }
-
-                if (selectedView == v) {
-                    //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
-                    selectedView = null;
-                } else {
-                    //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
-                    selectedView = v;
-                }
-
-                ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("DialogRebootFlashMode_Revealcolor", "#ff0097a7"));
-                frame.setVisibility(View.GONE);
-                frame3.setVisibility(View.GONE);
-                frameConfirm.setVisibility(View.GONE);
-                frameEnterPassword.setVisibility(View.GONE);
-                frame2.setVisibility(View.VISIBLE);
+                revealDialog(name, v);
 
                 status.setText(R.string.powerMenuMain_RebootFlashMode);
                 status_detail.setText(R.string.powerMenu_Rebooting);
@@ -2259,6 +2002,72 @@ public class XposedDialog extends DialogFragment {
                 }
             }
         }
+    }
+
+    public void revealDialog(String name, View v) {
+        final int color = Color.parseColor(colorPrefs.getString("Dialog" + name +"_Backgroundcolor", "#000000"));
+        revealView.setVisibility(View.VISIBLE);
+        int width = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getWidth() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getWidth() : (frame.getVisibility() == View.VISIBLE ? frame.getWidth() : frame3.getWidth())));
+        int height = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getHeight() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getHeight() : (frame.getVisibility() == View.VISIBLE ? frame.getHeight() : frame3.getHeight())));
+        if (sStyleName != 1 && (width > revealView.getWidth() || height > revealView.getHeight())) {
+            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
+            if (width > crparams.width) {
+                crparams.width = width;
+                Log.d("NPM", "Setting revealView width to " + width);
+            }
+            if (height > crparams.height) {
+                crparams.height = height;
+                Log.d("NPM", "Setting revealView height to " + height);
+            }
+            revealView.setLayoutParams(crparams);
+            revealViewText.setLayoutParams(crparams);
+        }
+        //final Point p = getLocationInView(revealView, v);
+        int centerX = revealViewHolder.getWidth() / 2;
+        int centerY = revealViewHolder.getHeight() / 2;
+        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+            Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
+            if (frame3.getVisibility() == View.VISIBLE) {
+                frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+            } else if (frame.getVisibility() == View.VISIBLE) {
+                frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+            } else if (frameConfirm.getVisibility() == View.VISIBLE) {
+                frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+            } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
+                frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+            }
+            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
+                revealView.reveal(centerX, centerY, color,  0, anim.getDuration(), null);
+            } else {
+                revealView.reveal(centerX, centerY, color, 0, 0, null);
+                GradientDrawable bgDrawable = (GradientDrawable) revealViewText.getBackground();
+                bgDrawable.setColor(color);
+                bgDrawable.setCornerRadius(mRoundedDialogCornersRadius);
+                bgDrawable.setStroke(0, Color.parseColor("#00000000"));
+                revealViewText.setBackground(bgDrawable);
+                revealViewText.setVisibility(View.VISIBLE);
+                revealView.setVisibility(View.INVISIBLE);
+                revealViewText.startAnimation(anim);
+                frame2.startAnimation(anim);
+            }
+        } else {
+            revealView.reveal(centerX, centerY, color, 0, 0, null);
+        }
+
+        if (selectedView == v) {
+            //revealView.hide(p.x, p.y, backgroundColor, 0, 330, null);
+            selectedView = null;
+        } else {
+            //revealView.reveal(p.x / 2, p.y / 2, color, v.getHeight() / 2, 440, null);
+            selectedView = v;
+        }
+
+        ((XposedMainActivity) mContext).revealFromTop(colorPrefs.getString("Dialog" + name + "_Revealcolor", "#000000"));
+        frame.setVisibility(View.GONE);
+        frame3.setVisibility(View.GONE);
+        frameConfirm.setVisibility(View.GONE);
+        frameEnterPassword.setVisibility(View.GONE);
+        frame2.setVisibility(View.VISIBLE);
     }
 
     public void checkPassword(int id, String name, View v) {
@@ -2519,15 +2328,21 @@ public class XposedDialog extends DialogFragment {
                 if (!isDismissing) {
                     isDismissing = true;
                     int speed = 0;
-                    if (mContext != null && animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                    int animationId = animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]);
+                    if (mContext != null && animationId != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
                         Animation anim = helper.getAnimation(mContext, animationPrefs, 3, true);
-                        dialogMain.startAnimation(anim);
+                        if (animationId >= 6 && animationId <= 9) {
+                            dialogContent.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
+                        } else {
+                            dialogMain.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
+                        }
                         speed = (int) anim.getDuration();
                     }
                     new Handler().postDelayed(new Runnable() {
 
                         @Override
                         public void run() {
+                            if (dialogContent != null) dialogContent.setVisibility(View.GONE);
                             if (dialogMain != null) dialogMain.setVisibility(View.GONE);
                             menuHost.dismissThis();
                         }
@@ -2589,15 +2404,15 @@ public class XposedDialog extends DialogFragment {
     private void setGravity(int iStyle) {
         DisplaySize = helper.getDisplaySize(mContext, false);
 
-        if (!helper.isDeviceHorizontal(mContext)) {
-            DisplaySize[1] = (int) DisplaySize[1] - helper.getNavigationBarSize(mContext).y - helper.getStatusBarHeight(mContext);
+        if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
+            DisplaySize[1] = (int) DisplaySize[1] - (helper.getNavigationBarSize(mContext).y + helper.getStatusBarHeight(mContext));
         } else {
             DisplaySize[0] = (int) DisplaySize[0] - helper.getNavigationBarSize(mContext).x;
             DisplaySize[1] = (int) DisplaySize[1] - helper.getStatusBarHeight(mContext);
         }
         int left = 0, top = 0, right = 0, bottom = 0;
         try {
-            bottom = ((int_Vertical * ((int) DisplaySize[1] - (dialogContent.getHeight()+25))) / 100);
+            bottom = ((int_Vertical * ((int) DisplaySize[1] - dialogContent.getHeight())) / 100);
             //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
         } catch (Exception e) {
             Log.d("NPM", "[xposedDialog] Gravity calculation error.", e);
@@ -2611,10 +2426,10 @@ public class XposedDialog extends DialogFragment {
         if (iStyle != 1) {
             dialogPadding.setPadding(left, top, right, bottom);
             try {
-                if (!helper.isDeviceHorizontal(mContext)) {
+                if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
                     LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
                     dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
-                    dialogContentParams.bottomMargin = helper.getNavigationBarSize(mContext).y;
+                    dialogContentParams.bottomMargin = (int) (helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.convertDpToPixel(12, mContext) : 0));
                     dialogContent.setLayoutParams(dialogContentParams);
                 } else {
                     LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());

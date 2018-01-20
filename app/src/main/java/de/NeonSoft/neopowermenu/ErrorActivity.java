@@ -81,7 +81,7 @@ public final class ErrorActivity extends AppCompatActivity {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        // TODO: Implement this method
+
         super.onConfigurationChanged(newConfig);
     }
 

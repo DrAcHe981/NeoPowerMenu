@@ -24,7 +24,7 @@ public class animationsCustomAdapter extends ArrayAdapter<String>
 		@Override
 		public View getView(int position, View p2, ViewGroup p3)
 		{
-				// TODO: Implement this method
+
 				View InflatedView = mContext.getLayoutInflater().inflate(R.layout.animationscustom, p3, false);
 				
 				LinearLayout pref1 = (LinearLayout) InflatedView.findViewById(R.id.animationscustomLinearLayout_Pref1);
@@ -47,20 +47,20 @@ public class animationsCustomAdapter extends ArrayAdapter<String>
 								@Override
 								public void afterTextChanged(Editable p1)
 								{
-										// TODO: Implement this method
+
 								}
 
 								@Override
 								public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
 								{
-										// TODO: Implement this method
+
 										beforeChange = p1;
 								}
 
 								@Override
 								public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
 								{
-										// TODO: Implement this method
+
 										if(!p1.toString().matches("[0-9][%p?]")) {
 												pref1Edit.setText(beforeChange);
 										}
@@ -79,20 +79,20 @@ public class animationsCustomAdapter extends ArrayAdapter<String>
 										@Override
 										public void afterTextChanged(Editable p1)
 										{
-												// TODO: Implement this method
+
 										}
 
 										@Override
 										public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4)
 										{
-												// TODO: Implement this method
+
 												beforeChange = p1;
 										}
 
 										@Override
 										public void onTextChanged(CharSequence p1, int p2, int p3, int p4)
 										{
-												// TODO: Implement this method
+
 												if(!p1.toString().matches("[0-9][%p?]")) {
 														pref2Edit.setText(beforeChange);
 												}

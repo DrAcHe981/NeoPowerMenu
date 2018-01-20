@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -52,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -202,6 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -264,6 +267,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical"
                 android:visibility="gone">
@@ -327,6 +331,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -530,6 +535,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -592,6 +598,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -696,10 +703,138 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/activityadvancedLinearLayout_RoundedCorners"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:focusable="true"
+                android:clickable="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:minHeight="50dp"
+                        android:orientation="vertical"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="@string/advancedPrefsTitle_RoundedCorners"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="10dp"
+                            android:text="@string/advancedPrefsDesc_RoundedCorners"/>
+
+                    </LinearLayout>
+
+                    <Switch
+                        android:id="@+id/activityadvancedSwitch_RoundedCorners"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:alpha="0.3"
+                    android:background="@color/colorAccentDarkTheme"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activityadvancedLinearLayout_RoundedCornersRadius"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="@string/advancedPrefsTitle_RoundedCornersRadius"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#FFFFFF"/>
+
+                        <TextView
+                            android:id="@+id/activityadvancedTextView_RoundedCornersRadiusValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="5dp"
+                            android:gravity="center|center_vertical|center_horizontal"
+                            android:text="0%"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="10dp"
+                        android:text="@string/advancedPrefsDesc_RoundedCornersRadius"/>
+
+                    <SeekBar
+                        android:id="@+id/activityadvancedSeekbar_RoundedCornersRadius"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:alpha="0.3"
+                    android:background="@color/colorAccentDarkTheme"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/activityadvancedLinearLayout_HideSecondLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -762,6 +897,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -818,6 +954,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -880,6 +1017,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -1003,6 +1141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -1067,6 +1206,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -1131,6 +1271,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical"
                 android:visibility="gone">
@@ -1194,6 +1335,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 
@@ -1283,6 +1425,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
+                android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
 

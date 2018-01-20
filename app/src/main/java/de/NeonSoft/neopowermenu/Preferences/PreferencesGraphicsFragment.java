@@ -2,6 +2,8 @@ package de.NeonSoft.neopowermenu.Preferences;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.PaintDrawable;
 import android.net.*;
 import android.os.*;
 import android.util.*;
@@ -31,10 +33,7 @@ public class PreferencesGraphicsFragment extends Fragment {
     public static boolean boolean_LoadAppIcons = true;
     public static boolean boolean_ColorizeNonStockIcons = false;
     public static float float_padding = 0;
-
-    LinearLayout LinearLayout_Padding;
-    TextView TextView_PaddingValue;
-    SeekBar SeekBar_Padding;
+    public static int int_radius = 100;
 
     private LinearLayout LinearLayout_Behavior;
 
@@ -104,6 +103,7 @@ public class PreferencesGraphicsFragment extends Fragment {
         boolean_LoadAppIcons = MainActivity.preferences.getBoolean(PreferenceNames.pLoadAppIcons, true);
         boolean_ColorizeNonStockIcons = MainActivity.preferences.getBoolean(PreferenceNames.pColorizeNonStockIcons, false);
         float_padding = MainActivity.preferences.getFloat(PreferenceNames.pGraphicsPadding, 0);
+        int_radius = MainActivity.preferences.getInt(PreferenceNames.pCircleRadius, 100);
 
         View InflatedView = inflater.inflate(R.layout.activity_graphics, container, false);
 
@@ -124,11 +124,11 @@ public class PreferencesGraphicsFragment extends Fragment {
                 checked.add(boolean_ColorizeNonStockIcons);
                 dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, options, -1, false);
                 dialogFragment.setListChecks(checked);
-                View customView = inflater.inflate(R.layout.seekbardialog, null, false);
-                final TextView PaddingTitle = (TextView) customView.findViewById(R.id.seekbardialog_Title);
-                final TextView PaddingValue = (TextView) customView.findViewById(R.id.seekbardialog_Value);
-                final TextView PaddingDesc = (TextView) customView.findViewById(R.id.seekbardialog_Desc);
-                final SeekBar PaddingSeekbar = (SeekBar) customView.findViewById(R.id.seekbardialog_Seekbar);
+                View PaddingView = inflater.inflate(R.layout.seekbardialog, null, false);
+                final TextView PaddingTitle = (TextView) PaddingView.findViewById(R.id.seekbardialog_Title);
+                final TextView PaddingValue = (TextView) PaddingView.findViewById(R.id.seekbardialog_Value);
+                final TextView PaddingDesc = (TextView) PaddingView.findViewById(R.id.seekbardialog_Desc);
+                final SeekBar PaddingSeekbar = (SeekBar) PaddingView.findViewById(R.id.seekbardialog_Seekbar);
                 PaddingTitle.setText(R.string.graphics_PaddingTitle);
                 PaddingDesc.setText(R.string.graphics_PaddingDesc);
                 PaddingSeekbar.setMax(20);
@@ -152,7 +152,36 @@ public class PreferencesGraphicsFragment extends Fragment {
                     public void onStopTrackingTouch(SeekBar seekBar) {
                     }
                 });
-                dialogFragment.setCustomView(customView);
+                dialogFragment.addCustomView(PaddingView);
+                View CircleRadiusView = inflater.inflate(R.layout.seekbardialog, null, false);
+                final TextView RadiusTitle = (TextView) CircleRadiusView.findViewById(R.id.seekbardialog_Title);
+                final TextView RadiusValue = (TextView) CircleRadiusView.findViewById(R.id.seekbardialog_Value);
+                final TextView RadiusDesc = (TextView) CircleRadiusView.findViewById(R.id.seekbardialog_Desc);
+                final SeekBar RadiusSeekbar = (SeekBar) CircleRadiusView.findViewById(R.id.seekbardialog_Seekbar);
+                RadiusTitle.setText(R.string.graphics_RadiusTitle);
+                RadiusDesc.setText(R.string.graphics_RadiusDesc);
+                RadiusSeekbar.setMax(100);
+                RadiusSeekbar.setProgress(int_radius);
+                RadiusValue.setText(int_radius + "%");
+                RadiusSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                        int_radius = i;
+                        RadiusValue.setText(int_radius + "%");
+                        //MainActivity.preferences.edit().putFloat(PreferenceNames.pGraphicsPadding, float_padding).commit();
+                        mGraphicsAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                    }
+                });
+                dialogFragment.addCustomView(CircleRadiusView);
                 dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
                     @Override
                     public void onListItemClick(int position, String text) {
@@ -162,6 +191,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                     @Override
                     public void onNegativeClick() {
                         float_padding = MainActivity.preferences.getFloat(PreferenceNames.pGraphicsPadding, 0);
+                        int_radius = MainActivity.preferences.getInt(PreferenceNames.pCircleRadius, 100);
                         mGraphicsAdapter.notifyDataSetChanged();
                     }
 
@@ -196,6 +226,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                         float_padding = helper.convertDpToPixel(PaddingSeekbar.getProgress(), mContext);
                         MainActivity.preferences.edit()
                                 .putFloat(PreferenceNames.pGraphicsPadding, float_padding)
+                                .putInt(PreferenceNames.pCircleRadius, int_radius)
                                 .putBoolean(PreferenceNames.pUseGraphics, boolean_UseGraphics)
                                 .putBoolean(PreferenceNames.pLoadAppIcons, boolean_LoadAppIcons)
                                 .putBoolean(PreferenceNames.pColorizeNonStockIcons, boolean_ColorizeNonStockIcons).commit();
@@ -209,6 +240,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                 });
                 dialogFragment.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[4]);
                 dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[7]);
+                dialogFragment.setBackgroundDimFactor(20);
                 dialogFragment.showDialog(R.id.dialog_container);
             }
         });

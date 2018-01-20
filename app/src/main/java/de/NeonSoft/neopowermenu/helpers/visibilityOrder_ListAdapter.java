@@ -195,7 +195,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
                         );
                         dialogFragment.setList(ListView.CHOICE_MODE_NONE, mContext.getString(R.string.visibilityOrder_EditMultiItemChoices).split("\\|"), -1, true);
-                        dialogFragment.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+                        dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
                         dialogFragment.showDialog(R.id.dialog_container);
                         return true;
                     }
@@ -298,15 +298,16 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                 for (int i = 0; i < items.size(); i++) {
                     try {
                         MenuItemHolder checkItem = getItemAt(i);
-                        if (MainActivity.DeepLogging)
-                            Log.i("NPM", "(" + String.format("%02d", i) + ")> " + checkItem.getType() + " | " + checkItem.getTitle(1));
+                        if (MainActivity.DeepLogging) {
+                            Log.i("NPM", "(" + String.format("%02d", i) + " | " + String.format("%02d", pages.size()) + ")> " + checkItem.getType() + " | " + checkItem.getTitles().toString());
+                        }
                         if (checkItem.getType() == TYPE_MULTIPAGE_START) {
                             pages.add(checkItem.getTitle(1));
                         } else if (checkItem.getType() == TYPE_MULTIPAGE_END) {
                             pages.remove(pages.size() - 1);
                         }
                     } catch (Throwable t) {
-                        Log.e("NPM", "Invalid move operation:", t);
+                        //Log.e("NPM", "Invalid move operation:", t);
                         validMove = false;
                         break;
                     }

@@ -12,319 +12,345 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-    <FrameLayout
-        android:id="@+id/fragmentpowerFrameLayout1"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:foregroundGravity="center|center_vertical|center_horizontal"
-        android:background="@drawable/accentframe">
-
-        <FrameLayout
-            android:id="@+id/frame"
-            android:layout_width="match_parent"
-            android:foregroundGravity="center"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical|center_horizontal">
-
-            <LinearLayout
-                android:id="@+id/frameLinear"
-                android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:id="@+id/fragmentpowerFrameLayout1"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:foregroundGravity="center|center_vertical|center_horizontal"
+                android:background="@drawable/accentframe">
 
-                <ScrollView
-                    android:id="@+id/frameScroll"
+                <FrameLayout
+                    android:id="@+id/frame"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.0">
+                    android:foregroundGravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical|center_horizontal">
 
                     <LinearLayout
-                        android:id="@+id/ListContainer"
+                        android:id="@+id/frameLinear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:layout_gravity="center|center_vertical|center_horizontal">
 
-                        <View
-                            android:layout_width="wrap_content"
+                        <ScrollView
+                            android:id="@+id/frameScroll"
+                            android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:background="@color/transparent"/>
+                            android:layout_weight="1.0">
+
+                            <LinearLayout
+                                android:id="@+id/ListContainer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <View
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:background="@color/transparent"/>
+
+                            </LinearLayout>
+
+                        </ScrollView>
 
                     </LinearLayout>
 
-                </ScrollView>
+                </FrameLayout>
 
-            </LinearLayout>
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/frame3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical|center_horizontal"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:id="@+id/frame3Linear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ScrollView
-                    android:id="@+id/frame3Scroll"
+                <FrameLayout
+                    android:id="@+id/frame3"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.0">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical|center_horizontal"
+                    android:visibility="gone">
 
                     <LinearLayout
-                        android:id="@+id/ListContainer2"
+                        android:id="@+id/frame3Linear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:layout_gravity="center|center_vertical|center_horizontal">
 
-                        <View
-                            android:layout_width="wrap_content"
+                        <ScrollView
+                            android:id="@+id/frame3Scroll"
+                            android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:background="@color/transparent"/>
+                            android:layout_weight="1.0">
+
+                            <LinearLayout
+                                android:id="@+id/ListContainer2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+
+                                <View
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:background="@color/transparent"/>
+
+                            </LinearLayout>
+
+                        </ScrollView>
 
                     </LinearLayout>
 
-                </ScrollView>
+                </FrameLayout>
 
-            </LinearLayout>
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/frameConfirm"
-            android:layout_width="340dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_gravity="center|center_vertical|center_horizontal"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:id="@+id/frameConfirmLinear"
-                android:layout_width="340dp"
-                android:layout_height="170dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/fragmentpowerTextView_ConfirmAction"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Reboot?"
-                    android:textSize="20sp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/fragmentpowerTextView_ConfirmNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="No"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:id="@+id/fragmentpowerTextView_ConfirmYes"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Yes"
-                        android:textSize="16sp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/frameEnterPassword"
-            android:layout_width="340dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_gravity="center|center_vertical|center_horizontal"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:id="@+id/frameEnterPasswordLinear"
-                android:layout_width="340dp"
-                android:layout_height="170dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/fragmentpowerTextView_EnterPasswordAction"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:gravity="center"
-                    android:text="@string/powerMenu_LockedWithPassword"
-                    android:layout_weight="1"
-                    android:textSize="20sp"/>
-
-                <TextView
-                    android:id="@+id/fragmentpowerTextView_EnterPasswordError"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Error"
-                    android:textColor="@color/colorAccentDarkTheme"
-                    android:textSize="20sp"
-                    android:visibility="gone"/>
-
-                <ImageView
-                    android:id="@+id/fragmentpowerImageView_EnterPasswordFingerPrint"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/fingerprint_white_192x192"
-                    android:visibility="gone"/>
-
-                <EditText
-                    android:id="@+id/fragmentpowerEditText_EnterPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:hint="@string/powerMenu_Password"
-                    android:inputType="textPassword"
-                    android:visibility="visible"/>
-
-                <LinearLayout
+                <FrameLayout
+                    android:id="@+id/frameConfirm"
                     android:layout_width="340dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/fragmentpowerTextView_EnterPasswordCancel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Cancel"
-                        android:textSize="16sp"/>
-
-                    <TextView
-                        android:id="@+id/fragmentpowerTextView_EnterPasswordOk"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Ok"
-                        android:textSize="16sp"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </FrameLayout>
-
-        <de.NeonSoft.neopowermenu.helpers.CircularRevealView
-            android:id="@+id/reveal"
-            android:layout_width="340dp"
-            android:layout_height="170dp"
-            android:layout_gravity="center"/>
-
-        <FrameLayout
-            android:id="@+id/frame2"
-            android:layout_width="340dp"
-            android:layout_height="170dp"
-            android:layout_gravity="center"
-            android:foregroundGravity="center"
-            android:visibility="visible">
-
-            <LinearLayout
-                android:id="@+id/frame2Linear"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginLeft="-45dp"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:id="@+id/frame2Relative"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/progressbg"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:layout_centerInParent="true"/>
-
-                    <ProgressBar
-                        android:id="@+id/progress"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        android:indeterminate="true"/>
-
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="Power Off"
-                        android:textColor="#ffffff"
-                        android:textSize="20sp"/>
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="center|center_vertical|center_horizontal"
+                    android:visibility="gone">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:id="@+id/frameConfirmLinear"
+                        android:layout_width="340dp"
+                        android:layout_height="170dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="5dp">
 
                         <TextView
-                            android:id="@+id/status_detail"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/fragmentpowerTextView_ConfirmAction"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Reboot?"
+                            android:textSize="20sp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="Shutting Down..."
-                            android:textColor="#ffffff"
-                            android:textSize="10sp"
-                            android:visibility="visible"/>
+                            android:gravity="right"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/fragmentpowerTextView_ConfirmNo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.0"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="No"
+                                android:textSize="16sp"/>
+
+                            <TextView
+                                android:id="@+id/fragmentpowerTextView_ConfirmYes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.0"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Yes"
+                                android:textSize="16sp"/>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </FrameLayout>
 
-            </LinearLayout>
+                <FrameLayout
+                    android:id="@+id/frameEnterPassword"
+                    android:layout_width="340dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="center|center_vertical|center_horizontal"
+                    android:visibility="gone">
 
-        </FrameLayout>
+                    <LinearLayout
+                        android:id="@+id/frameEnterPasswordLinear"
+                        android:layout_width="340dp"
+                        android:layout_height="170dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="5dp">
 
-    </FrameLayout>
+                        <TextView
+                            android:id="@+id/fragmentpowerTextView_EnterPasswordAction"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:text="@string/powerMenu_LockedWithPassword"
+                            android:layout_weight="1"
+                            android:textSize="20sp"/>
+
+                        <TextView
+                            android:id="@+id/fragmentpowerTextView_EnterPasswordError"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Error"
+                            android:textColor="@color/colorAccentDarkTheme"
+                            android:textSize="20sp"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/fragmentpowerImageView_EnterPasswordFingerPrint"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/fingerprint_white_192x192"
+                            android:visibility="gone"/>
+
+                        <EditText
+                            android:id="@+id/fragmentpowerEditText_EnterPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:hint="@string/powerMenu_Password"
+                            android:inputType="textPassword"
+                            android:visibility="visible"/>
+
+                        <LinearLayout
+                            android:layout_width="340dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/fragmentpowerTextView_EnterPasswordCancel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.0"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Cancel"
+                                android:textSize="16sp"/>
+
+                            <TextView
+                                android:id="@+id/fragmentpowerTextView_EnterPasswordOk"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.0"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="Ok"
+                                android:textSize="16sp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/revealViewHolder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foregroundGravity="center"
+                    android:layout_gravity="center">
+
+                    <de.NeonSoft.neopowermenu.helpers.CircularRevealView
+                        android:id="@+id/revealView"
+                        android:layout_width="340dp"
+                        android:layout_height="170dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center" />
+
+                    <TextView
+                        android:id="@+id/revealViewText"
+                        android:layout_width="340dp"
+                        android:layout_height="170dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:background="@drawable/accentframe"
+                        android:visibility="gone"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frame2"
+                    android:layout_width="340dp"
+                    android:layout_height="170dp"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/frame2Linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/frame2Relative"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/progressbg"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_centerInParent="true"/>
+
+                            <ProgressBar
+                                android:id="@+id/progress"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:indeterminate="true"/>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="Power Off"
+                                android:textColor="#ffffff"
+                                android:textSize="20sp"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/status_detail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="Shutting Down..."
+                                    android:textColor="#ffffff"
+                                    android:textSize="10sp"
+                                    android:visibility="visible"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

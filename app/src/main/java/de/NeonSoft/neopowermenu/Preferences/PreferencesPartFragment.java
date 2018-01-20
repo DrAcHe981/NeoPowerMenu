@@ -41,6 +41,8 @@ public class PreferencesPartFragment extends Fragment {
 
     View InflatedView;
 
+    public static ScrollView scrollView;
+
     LinearLayout LinearLayout_ModuleState;
     ProgressBar ProgressBar_RootWait;
     TextView TextView_ModuleStateTitle;
@@ -166,6 +168,8 @@ public class PreferencesPartFragment extends Fragment {
         DeepXposedLogging = MainActivity.preferences.getBoolean("DeepXposedLogging", false);
 
         InflatedView = inflater.inflate(R.layout.activity_preferences, container, false);
+
+        scrollView = (ScrollView) InflatedView.findViewById(R.id.scrollView);
 
         LinearLayout_ModuleState = (LinearLayout) InflatedView.findViewById(R.id.activitypreferencesLinearLayout_ModuleState);
         ProgressBar_RootWait = (ProgressBar) InflatedView.findViewById(R.id.activitypreferencesProgressBar_ModuleState);

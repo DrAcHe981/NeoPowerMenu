@@ -33,6 +33,7 @@ public class PreferenceNames {
     public static String pLoadAppIcons = "LoadAppIcons";
     public static String pRoundAppIcons = "RoundAppIcons";
     public static String pColorizeNonStockIcons = "ColorizeNonStockIcons";
+    public static String pCircleRadius = "CircleRadius";
 
 
     public static String pFakeOffStrategy = "FakePowerOffStrategy";
@@ -42,4 +43,11 @@ public class PreferenceNames {
     public static String pFakeOffSimPowerButtonTime = "FakePowerOffSimButtonTime";
     public static String pFakeOffSilent = "FakePowerOffSetSilent";
     public static String pFakeOffLed = "FakePowerOffLed";
+
+    public static String pDialogPosition_Vertical = "DialogPosition_Vertical";
+    public static String pDialogPosition_Horizontal = "DialogPosition_Horizontal";
+    public static String pDialogPosition_Size = "DialogPosition_Size";
+
+    public static String pRoundedDialogCorners = "RoundedDialogCorners";
+    public static String pRoundedDialogCornersRadius = "RoundedDialogCornersRadius";
 }

@@ -41,6 +41,7 @@ import de.NeonSoft.neopowermenu.Preferences.AddShortcutList;
 import de.NeonSoft.neopowermenu.Preferences.PreferencesGraphicsFragment;
 import de.NeonSoft.neopowermenu.Preferences.PreferencesVisibilityOrderFragment;
 import de.NeonSoft.neopowermenu.helpers.GraphicDrawable;
+import de.NeonSoft.neopowermenu.helpers.PreferenceNames;
 import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 import de.NeonSoft.neopowermenu.helpers.TextDrawable;
 import de.NeonSoft.neopowermenu.helpers.URLFileNameGenerator;
@@ -63,7 +64,8 @@ public class addShortcut extends AppCompatActivity {
     public static boolean useGraphic = true;
     public static String color1 = "#ff000000";
     public static String color2 = "#ffffff";
-    public static float padding = 5f;
+    public static float padding = 0f;
+    public static int radius = 0;
     public static boolean useCustomGraphic = true;
     LinearLayout mActionBarHolder;
 
@@ -83,14 +85,15 @@ public class addShortcut extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle p1) {
 
-        useGraphic = true;
-        useCustomGraphic = false;
-        padding = 10f;
-
         mActivity = getApplicationContext();
 
         preferences = SettingsManager.getInstance(this).getMainPrefs();
         colorPrefs = getSharedPreferences("colors", 0);
+
+        useGraphic = preferences.getBoolean(PreferenceNames.pUseGraphics, false);
+        useCustomGraphic = false;
+        padding = preferences.getFloat(PreferenceNames.pGraphicsPadding, 0);
+        radius = preferences.getInt(PreferenceNames.pCircleRadius, 100);
 
         ForcedLanguage = preferences.getString("ForcedLanguage","System");
         if(!ForcedLanguage.equalsIgnoreCase("system")) {
@@ -213,7 +216,7 @@ public class addShortcut extends AppCompatActivity {
             if (addShortcut.useGraphic) {
                 Bitmap bd = null;
                 if (text.equalsIgnoreCase(mActivity.getString(R.string.shortcut_ShowPowerMenu))) {
-                    bd = loadImage(0, "#FFFFFF");
+                    bd = loadImage(0, color2);
                 } else if (text.equalsIgnoreCase("Shutdown")) {
                     bd = loadImage(1, color2);
                 } else if (text.equalsIgnoreCase("Reboot")) {
@@ -269,14 +272,10 @@ public class addShortcut extends AppCompatActivity {
                 } else if (text.equalsIgnoreCase("SilentMode")) {
                     bd = loadImage(12, color2);
                 }
-                if (text.equalsIgnoreCase(mActivity.getString(R.string.shortcut_ShowPowerMenu))) {
-                    fbd = GraphicDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig().setPadding(0).buildRound(bd, mActivity.getResources().getColor(R.color.transparent));
-                } else {
-                    fbd = GraphicDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig().setPadding((int) padding).buildRound(bd, Color.parseColor(color1));
-                }
+                fbd = GraphicDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig().setPadding((int) padding).buildRoundRect(bd, Color.parseColor(color1), addShortcut.radius / 2);
             } else {
                 fbd = TextDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig()
-                        .buildRound(finalText.substring(0, 1), Color.parseColor(color1));
+                        .buildRoundRect(finalText.substring(0, 1), Color.parseColor(color1), addShortcut.radius);
             }
         } catch (Throwable t) {
             Log.e("NPM", "Failed to create Circle Icon.", t);
@@ -339,7 +338,7 @@ public class addShortcut extends AppCompatActivity {
         } else {
             Drawable drawable;
             if (id == 0) {
-                drawable = mActivity.getResources().getDrawable(R.mipmap.ic_launcher);
+                drawable = mActivity.getResources().getDrawable(R.drawable.ic_settings_power);
             } else {
                 drawable = mActivity.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[id][1]);
             }

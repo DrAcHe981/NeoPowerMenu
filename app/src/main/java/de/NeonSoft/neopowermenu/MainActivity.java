@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
                         /*Intent intent = new Intent();
                          intent.setAction(slideDownDialogFragment.dialogCloseCall);
 						 context.sendBroadcast(intent);*/
-            Toast.makeText(context,"Canceling sDDF "+slideDownDialogFragment.dialogs.size(),Toast.LENGTH_LONG).show();
+            //Toast.makeText(context,"Canceling sDDF "+slideDownDialogFragment.dialogs.size(),Toast.LENGTH_LONG).show();
             if (slideDownDialogFragment.dialogs.size() > 0 && slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1).cancelDialog() == null) {
                 fragmentManager.beginTransaction().remove(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1)).commitAllowingStateLoss();
             }

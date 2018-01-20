@@ -50,6 +50,10 @@ public class AddShortcutSettings extends Fragment {
     private TextView TextView_Padding;
     private SeekBar SeekBar_Padding;
 
+    private LinearLayout LinearLayout_Radius;
+    private TextView TextView_Radius;
+    private SeekBar SeekBar_Radius;
+
     private LinearLayout LinearLayout_CircleColor;
     private TextView TextView_CircleColorPreview;
 
@@ -86,7 +90,7 @@ public class AddShortcutSettings extends Fragment {
             } catch (Throwable ignored) {
             }
         }
-        image.setImageBitmap(addShortcut.createCircleIcon(selectedItem, finalString, addShortcut.color1, addShortcut.color2));
+        addShortcut.createCircleIcon(selectedItem, finalString, addShortcut.color1, addShortcut.color2);
         title.setText(finalString);
 
         LinearLayout_UseGraphic = (LinearLayout) InflatedView.findViewById(R.id.addShortcut_UseGraphic);
@@ -234,6 +238,31 @@ public class AddShortcutSettings extends Fragment {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 addShortcut.padding = i;
                 TextView_Padding.setText(i + "dp");
+                image.setImageBitmap(addShortcut.createCircleIcon(selectedItem, finalString, addShortcut.color1, addShortcut.color2));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        LinearLayout_Radius = (LinearLayout) InflatedView.findViewById(R.id.addShortcut_RadiusRoot);
+        TextView_Radius = (TextView) InflatedView.findViewById(R.id.addShortcut_RadiusValue);
+        SeekBar_Radius = (SeekBar) InflatedView.findViewById(R.id.addShortcut_Radius);
+        SeekBar_Radius.setMax(100);
+        SeekBar_Radius.setProgress(addShortcut.radius);
+        TextView_Radius.setText(addShortcut.radius + "%");
+
+        SeekBar_Radius.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                addShortcut.radius = i;
+                TextView_Radius.setText(i + "%");
                 image.setImageBitmap(addShortcut.createCircleIcon(selectedItem, finalString, addShortcut.color1, addShortcut.color2));
             }
 

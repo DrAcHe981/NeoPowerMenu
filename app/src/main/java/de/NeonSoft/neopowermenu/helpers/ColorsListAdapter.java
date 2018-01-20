@@ -128,7 +128,8 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                         fw.append("Creator=a " + Build.BRAND + " " + Build.MODEL + " user\n");
                                     }
                                     fw.append("GraphicsScale=" + MainActivity.preferences.getFloat("GraphicsPadding", 0) + "\n");
-																		fw.append("ColorizeNonStockIcons=" + MainActivity.preferences.getBoolean("ColorizeNonStockIcons",false) + "\n");
+									fw.append("ColorizeNonStockIcons=" + MainActivity.preferences.getBoolean("ColorizeNonStockIcons",false) + "\n");
+                                    fw.append("CircleRadius=" + MainActivity.preferences.getInt(PreferenceNames.pCircleRadius, 0) + "\n");
                                     fw.append("[COLORS]" + "\n");
                                     for (int i = 0; i < colorNamesArray.length; i++) {
                                         String[] loadColor = colorNamesArray[i][1].toString().split("_");

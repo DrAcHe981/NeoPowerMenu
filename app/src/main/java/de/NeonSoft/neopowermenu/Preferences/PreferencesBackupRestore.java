@@ -633,6 +633,7 @@ public class PreferencesBackupRestore extends Fragment {
                         if (MainActivity.DeepLogging) Log.d("NPM", "Deleting graphics...");
                         MainActivity.imageLoader.clearMemoryCache();
                         MainActivity.imageLoader.clearDiskCache();
+                        MainActivity.preferences.edit().putString("ProgressDrawable", "stock").commit();
                         File[] oldGraphicsFiles = new File(mActivity.getFilesDir().getPath() + "/images/").listFiles(new FilenameFilter() {
                             public boolean accept(File dir, String name) {
                                 return name.endsWith(".png");

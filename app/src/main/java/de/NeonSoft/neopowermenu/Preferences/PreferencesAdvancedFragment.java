@@ -61,6 +61,15 @@ public class PreferencesAdvancedFragment extends Fragment {
     TextView TextView_ScreenRecordCountdown;
     long Long_ScreenRecordCountdown;
 
+    LinearLayout LinearLayout_RoundedCorners;
+    Switch Switch_RoundedCorners;
+    boolean boolean_RoundedCorners;
+
+    LinearLayout LinearLayout_RoundedCornersRadius;
+    TextView TextView_RoundedCornersRadiusValue;
+    SeekBar SeekBar_RoundedCornersRadius;
+    int int_roundedCorners;
+
     LinearLayout LinearLayout_HideDescriptionLine;
     Switch Switch_HideDescriptionLine;
     boolean boolean_HideDescriptionLine;
@@ -649,6 +658,71 @@ public class PreferencesAdvancedFragment extends Fragment {
                 dialogFragment.setNegativeButton(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
                 dialogFragment.setPositiveButton(getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
                 dialogFragment.showDialog(R.id.dialog_container);
+            }
+        });
+
+        boolean_RoundedCorners = MainActivity.preferences.getBoolean(PreferenceNames.pRoundedDialogCorners, false);
+        LinearLayout_RoundedCorners = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_RoundedCorners);
+        Switch_RoundedCorners = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_RoundedCorners);
+
+        Switch_RoundedCorners.setChecked(boolean_RoundedCorners);
+        Switch_RoundedCorners.setClickable(false);
+        Switch_RoundedCorners.setFocusable(false);
+
+        //LinearLayout_RoundedCorners.setEnabled(false);
+        //LinearLayout_RoundedCorners.setAlpha((float) .3);
+
+        LinearLayout_RoundedCorners.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View p1) {
+                boolean_RoundedCorners = !boolean_RoundedCorners;
+                Switch_RoundedCorners.setChecked(boolean_RoundedCorners);
+                MainActivity.preferences.edit().putBoolean(PreferenceNames.pRoundedDialogCorners, boolean_RoundedCorners).commit();
+                if (boolean_RoundedCorners) {
+                    LinearLayout_RoundedCornersRadius.setEnabled(true);
+                    SeekBar_RoundedCornersRadius.setEnabled(true);
+                    LinearLayout_RoundedCornersRadius.setAlpha((float) 1);
+                } else {
+                    LinearLayout_RoundedCornersRadius.setEnabled(false);
+                    SeekBar_RoundedCornersRadius.setEnabled(false);
+                    LinearLayout_RoundedCornersRadius.setAlpha((float) .3);
+                }
+            }
+        });
+
+        int_roundedCorners = MainActivity.preferences.getInt(PreferenceNames.pRoundedDialogCornersRadius, 0);
+        LinearLayout_RoundedCornersRadius = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_RoundedCornersRadius);
+        TextView_RoundedCornersRadiusValue = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_RoundedCornersRadiusValue);
+        SeekBar_RoundedCornersRadius = (SeekBar) InflatedView.findViewById(R.id.activityadvancedSeekbar_RoundedCornersRadius);
+
+        SeekBar_RoundedCornersRadius.setProgress(int_roundedCorners);
+        TextView_RoundedCornersRadiusValue.setText(int_roundedCorners + "%");
+        if (boolean_RoundedCorners) {
+            LinearLayout_RoundedCornersRadius.setEnabled(true);
+            SeekBar_RoundedCornersRadius.setEnabled(true);
+            LinearLayout_RoundedCornersRadius.setAlpha((float) 1);
+        } else {
+            LinearLayout_RoundedCornersRadius.setEnabled(false);
+            SeekBar_RoundedCornersRadius.setEnabled(false);
+            LinearLayout_RoundedCornersRadius.setAlpha((float) .3);
+        }
+
+        SeekBar_RoundedCornersRadius.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int_roundedCorners = progress;
+                TextView_RoundedCornersRadiusValue.setText(int_roundedCorners + "%");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                MainActivity.preferences.edit().putInt(PreferenceNames.pRoundedDialogCornersRadius, int_roundedCorners).commit();
             }
         });
 

@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:background="?selectableItemBackgroundBorderless"
+        android:focusable="true"
         android:clickable="true"
         android:orientation="vertical"
-        android:paddingTop="15dp"
-        android:focusable="true">
+        android:paddingTop="15dp">
 
         <RelativeLayout
             android:layout_height="wrap_content"

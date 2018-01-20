@@ -6,6 +6,9 @@ import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 import de.NeonSoft.neopowermenu.Preferences.*;
@@ -37,7 +40,7 @@ public class animationsAdapter extends ArrayAdapter<Object> {
 
     @Override
     public View getView(final int p1, View p2, ViewGroup p3) {
-        // TODO: Implement this method
+
         View InflatedView;
         InflatedView = mContext.getLayoutInflater().inflate(R.layout.animations_item, p3, false);
         if(items[p1][1].toString().contains("reveal")) {
@@ -66,7 +69,7 @@ public class animationsAdapter extends ArrayAdapter<Object> {
 
                         @Override
                         public void onClick(View view) {
-                            // TODO: Implement this method
+
                             slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                             dialogFragment.setContext(mContext);
                             dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -74,32 +77,40 @@ public class animationsAdapter extends ArrayAdapter<Object> {
 
                                 @Override
                                 public void onListItemClick(int position, String text) {
-                                    // TODO: Implement this method
+                                    if (!items[p1-1][1].toString().contains("reveal") && position > 0) {
+                                        position++;
+                                    }
                                     MainActivity.animationPrefs.edit().putInt(items[p1][1].toString(), position).apply();
                                     notifyDataSetChanged();
                                 }
 
                                 @Override
                                 public void onNegativeClick() {
-                                    // TODO: Implement this method
+
                                 }
 
                                 @Override
                                 public void onNeutralClick() {
-                                    // TODO: Implement this method
+
                                 }
 
                                 @Override
                                 public void onPositiveClick(Bundle resultBundle) {
-                                    // TODO: Implement this method
+
                                 }
 
                                 @Override
                                 public void onTouchOutside() {
-                                    // TODO: Implement this method
+
                                 }
                             });
-                            dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, mContext.getString(R.string.animations_Types).split("\\|"), MainActivity.animationPrefs.getInt(items[p1][1].toString(), defaultTypes[p1]), true);
+                            ArrayList<String> animations = new ArrayList<>(Arrays.asList(mContext.getString(R.string.animations_Types).split("\\|")));
+                            int selItem = MainActivity.animationPrefs.getInt(items[p1][1].toString(), defaultTypes[p1]);
+                            if (!items[p1-1][1].toString().contains("reveal")) {
+                                animations.remove(1);
+                                selItem = (selItem > 0 ? selItem-1 : selItem);
+                            }
+                            dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, animations, selItem, true);
                             dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
                             dialogFragment.showDialog(R.id.dialog_container);
                         }
@@ -112,7 +123,7 @@ public class animationsAdapter extends ArrayAdapter<Object> {
 
                             @Override
                             public void onClick(View view) {
-                                // TODO: Implement this method
+
                                 slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                                 dialogFragment.setContext(mContext);
                                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -120,29 +131,29 @@ public class animationsAdapter extends ArrayAdapter<Object> {
 
                                     @Override
                                     public void onListItemClick(int position, String text) {
-                                        // TODO: Implement this method
+
                                         MainActivity.animationPrefs.edit().putInt(items[p1][1].toString(), position).apply();
                                         notifyDataSetChanged();
                                     }
 
                                     @Override
                                     public void onNegativeClick() {
-                                        // TODO: Implement this method
+
                                     }
 
                                     @Override
                                     public void onNeutralClick() {
-                                        // TODO: Implement this method
+
                                     }
 
                                     @Override
                                     public void onPositiveClick(Bundle resultBundle) {
-                                        // TODO: Implement this method
+
                                     }
 
                                     @Override
                                     public void onTouchOutside() {
-                                        // TODO: Implement this method
+
                                     }
                                 });
                                 dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, mContext.getString(R.string.animations_Speeds).split("\\|"), MainActivity.animationPrefs.getInt(items[p1][1].toString(), 3), true);

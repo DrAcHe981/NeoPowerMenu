@@ -1,7 +1,6 @@
 package de.NeonSoft.neopowermenu.helpers;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.*;
 import android.content.pm.PackageManager;
 import android.content.res.*;
@@ -31,8 +30,6 @@ import java.util.concurrent.TimeUnit;
 import net.lingala.zip4j.core.*;
 import net.lingala.zip4j.model.*;
 import net.lingala.zip4j.util.*;
-
-import static de.NeonSoft.neopowermenu.Preferences.PreferencesGraphicsFragment.mContext;
 
 //import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
@@ -605,6 +602,10 @@ public class helper {
                 anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_up);
             } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 7) {
                 anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_down);
+            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 8) {
+                anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_vertical_in);
+            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 9) {
+                anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_horizontal_in);
             } else {
                 anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
             }
@@ -625,6 +626,10 @@ public class helper {
                 anim = AnimationUtils.loadAnimation(context, R.anim.scale_out_up);
             } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 7) {
                 anim = AnimationUtils.loadAnimation(context, R.anim.scale_out_down);
+            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 8) {
+                anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_vertical_out);
+            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 9) {
+                anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_horizontal_out);
             } else {
                 anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
             }

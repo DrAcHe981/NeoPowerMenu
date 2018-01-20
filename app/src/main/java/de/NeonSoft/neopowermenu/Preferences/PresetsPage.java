@@ -66,7 +66,7 @@ public class PresetsPage extends Fragment
 										@Override
 										public void onClick(View p1)
 										{
-												// TODO: Implement this method
+
 										}
 								});
 				TextView message = (TextView) view.findViewById(R.id.presetsmanagerlistholderTextView_Message);
@@ -106,7 +106,7 @@ public class PresetsPage extends Fragment
 				@Override
 				protected void onPreExecute()
 				{
-						// TODO: Implement this method
+
 						super.onPreExecute();
 						File presetsFolder = new File(getActivity().getFilesDir().getPath() + "/presets/");
 						presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
@@ -136,7 +136,7 @@ public class PresetsPage extends Fragment
 				@Override
 				protected String doInBackground(Object[] p1)
 				{
-						// TODO: Implement this method
+
 						list = (ListView) p1[0];
 						messageHolder = (RelativeLayout) p1[1];
 						message = (TextView) p1[2];
@@ -189,7 +189,7 @@ public class PresetsPage extends Fragment
 				@Override
 				protected void onPostExecute(String p1)
 				{
-						// TODO: Implement this method
+
 						super.onPostExecute(p1);
 						messageHolder.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext,R.anim.fade_out));
 						messageHolder.setVisibility(View.GONE);
