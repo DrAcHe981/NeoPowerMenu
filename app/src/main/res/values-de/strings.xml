@@ -430,8 +430,9 @@
   <string name="visibilityOrder_AddMultiItem">Hinzufügen</string>
   <string name="visibilityOrder_EditMultiItemChoices">Bearbeite Element text|Element entfernen</string>
   <string name="graphics_RadiusTitle">Kreis radius</string>
-  <string name="graphics_RadiusDesc">Legen Sie fest, wie stark die Hintergründe der Ausschaltmenü-Grafiken gerundet werden. (Standard: 100%)</string>
+  <string name="graphics_RadiusDesc">Lege fest, wie stark die Hintergründe der Ausschaltmenü-Grafiken gerundet werden. (Standard: 100%)</string>
   <string name="advancedPrefsDesc_RoundedCorners">Aktiviere/deaktiviere abgerundete ecken für das Ausschaltmenü.</string>
   <string name="advancedPrefsTitle_RoundedCorners">Abgerundete dialog ecken</string>
   <string name="advancedPrefsTitle_RoundedCornersRadius">Radius der Abrundung für die ecken</string>
+  <string name="advancedPrefsDesc_RoundedCornersRadius">Lege fest, wie stark das Ausschaltmenü abgerundet wird. (Standard: 0%)</string>
 </resources>
