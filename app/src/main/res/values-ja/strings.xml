@@ -168,7 +168,6 @@
   <string name="presetLoadDialog_BuiltIn">"ライト|ダーク|ブラック"</string>
   <string name="graphics_Choose">"既定の復元|プリセットから選択|ギャラリーから選択"</string>
   <string name="graphics_Crop">"トリミング|サークルトリミング"</string>
-  <string name="graphics_NoPresetsFound">"グラフィックのプリセットが見つかりません..."</string>
   <string name="graphics_GraphicsSaveLoad">"現在のグラフィックと一緒に保存します。|このプリセットはグラフィックを含んでいます。読み込みますか?\n現在のグラフィックは上書きされます!"</string>
   <string name="presetsManager_ReportDialog">"[PRESETNAME] を本当に通報しますか?\nこの操作は元に戻せないので、ふざけて通報しないでください!\n\n何故通報するのか理由を記入してください。|通報の理由:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] を通報しました。開発者によって確認されます。|通報に失敗しました。やり直してください。\n原因: "</string>
@@ -178,8 +177,6 @@
   <string name="downloadHelper_RemainingTime">"残り [TIME]"</string>
   <string name="downloadHelper_Speed">"速度: [SPEED]/秒"</string>
   <string name="uploadHelper_States">"他のアップロードを待機中...|サーバーへ接続中...|情報を要求中...|アップロード中...|キャンセル中..."</string>
-  <string name="visibilityOrder_AddItem">"通常アイテムの追加\n一つだけのスロットのアイテムです。|マルチアイテムの追加\n一行に三つのアイテムまで追加できます。|マルチページアイテムの追加\nタップで新しいページを表示します。"</string>
-  <string name="visibilityOrder_MultiPage">"マルチページアイテムの始まり\n最初の通常アイテムは新しいページを開くボタンを定義します。|マルチページアイテムの終わり"</string>
   <string name="preferencesCategory_RootXposed">"Root と Xposed"</string>
   <string name="preferences_RootXposed1">"Root と Xposed を利用できません|このモジュールを動作させるには Root と Xposed が必要です。"</string>
   <string name="preferences_RootXposed2">"Xposed 動作中、Root なし|電源を切ったり再起動したりするために Root が必要です...\nRoot アクセスを許可してください。"</string>
@@ -204,7 +201,6 @@
   <string name="preferences_About">"開発者: Neon-Soft / DrAcHe981|Naman Dwivedi (naman14) のソースを基に開発しています。\nタップで詳細を表示します。"</string>
   <string name="animations_Items">"背景|ダイアログ|アイコン|単行アイテム|複数行アイテム"</string>
   <string name="animations_Speeds">"非常に速い|さらに速い|速い|通常|遅い|さらに遅い|非常に遅い"</string>
-  <string name="animations_Types">"フェード|リベール\n(背景でのみ動作)|上にスライド|左にスライド|右にスライド|下にスライド|スケールアップ|スケールダウン|なし"</string>
   <string name="animations_Type">"タイプ"</string>
   <string name="animations_Speed">"速度"</string>
   <string name="powerMenuMain_Progress">"読み込み中の円"</string>
