@@ -213,7 +213,7 @@ public class XposedDialog extends DialogFragment {
         animationPrefs = mContext.getSharedPreferences("animations", 0);
         HookShutdownThread = preferences.getBoolean("HookShutdownThread", false);
         mDeepXposedLogging = preferences.getBoolean(PreferenceNames.pDeepXposedLogging, false);
-        mHideOnClick = preferences.getBoolean(PreferenceNames.pLoadAppIcons, false);
+        mHideOnClick = preferences.getBoolean(PreferenceNames.pHideOnClick, false);
         mLoadAppIcons = preferences.getBoolean(PreferenceNames.pLoadAppIcons, true);
         mColorizeNonStockIcons = preferences.getBoolean(PreferenceNames.pColorizeNonStockIcons, false);
         mGraphicsPadding = preferences.getFloat(PreferenceNames.pGraphicsPadding, 0);

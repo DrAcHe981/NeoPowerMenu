@@ -209,7 +209,7 @@
   <string name="preferences_About">"Skript von Neon-Soft / DrAcHe981|basierend auf der Source von Naman Dwivedi (naman14).\nKlicke hier für mehr Infos."</string>
   <string name="animations_Items">"Hintergrund|Dialog|Symbole|Einzel Linien Items|Multi Linien Items"</string>
   <string name="animations_Speeds">"Sehr schnell|Schneller|Schnell|Normal|Langsam|Langsamer|Am langsamsten"</string>
-  <string name="animations_Types">"Überblenden|Reveal|Nach oben schieben|Nach links schieben|Nach rechts schieben|Nach unten schieben|Hoch skalieren|Runter skalieren|Vertical drehen|Horizontal drehen|Deaktiviert"</string>
+  <string name="animations_Types">"Überblenden|Reveal|Nach oben schieben|Nach links schieben|Nach rechts schieben|Nach unten schieben|Hoch skalieren|Runter skalieren|Vertikal drehen|Horizontal drehen|Deaktiviert"</string>
   <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Geschwindigkeit"</string>
   <string name="powerMenuMain_Progress">"Ladekreis"</string>
