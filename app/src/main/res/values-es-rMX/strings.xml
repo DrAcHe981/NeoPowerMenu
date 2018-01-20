@@ -411,7 +411,6 @@
   <string name="visibilityOrder_MissingPermissionForNotiPolicy">Permiso para la política de notificaciones no encontrado, por favor permitir para utilizar esta opción!</string>
   <string name="powerMenu_Task_Killed">Eliminado [TARGET]!</string>
   <string name="powerMenu_No_Task_To_Kill">No se han encontrado procesos que se puedan eliminar.</string>
-  <string name="powerMenuMain_MenuBackground">Fondo del menú</string>
   <string name="visibilityOrder_MissingPermissionForCamera">No se han encontrado los permisos de cámara, por favor dar permisos para utilizar este conmutador!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Tu dispositivo parece no soportar el elemento \"[TITLE]\"!</string>
 </resources>
