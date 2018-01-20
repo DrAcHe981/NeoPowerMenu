@@ -173,7 +173,6 @@
   <string name="presetLoadDialog_BuiltIn">"Açık|Koyu|Siyah"</string>
   <string name="graphics_Choose">"Varsayılana sıfırla|Hazırlardan seç|Galeriden seç"</string>
   <string name="graphics_Crop">"Kırp|Daire kırp"</string>
-  <string name="graphics_NoPresetsFound">"Grafikli hazır ayar bulunamadı..."</string>
   <string name="graphics_GraphicsSaveLoad">"Mevcut grafiklerle kaydet.|Bu hazır ayar grafikler içeriyor, bunları yüklemek istiyor musunuz?\nBu, mevcut grafiklerin üzerine yazacaktır!"</string>
   <string name="presetsManager_ReportDialog">"[PRESETNAME] gerçekten bildirilsin mi?\nBu geri alınamaz, bu yüzden lütfen eğlenmek için bildirmeyin!\n\nAyrıca, bunu neden bildirmek istediğinize dair bir gerekçeye ihtiyacımız var, lütfen aşağıya girin.|Bildirme nedeni:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] bildirildi, geliştirici ona bakacak.|Bildirme başarısız, lütfen tekrar deneyin.\nNeden: "</string>
@@ -183,8 +182,6 @@
   <string name="downloadHelper_RemainingTime">"[TIME] kaldı"</string>
   <string name="downloadHelper_Speed">"hız: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Diğer yüklemeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
-  <string name="visibilityOrder_AddItem">"Normal öğe ekle\nSadece bir yuvalı normal bir öğe.|Birden çok öğe ekle\nTek bir satırda üç öğeye kadar ekle.|Birden çok sayfalı öğe ekle\nTıklamak yeni bir 'sayfa' gösterecek'."</string>
-  <string name="visibilityOrder_MultiPage">"Çok sayfalı öğe burada başlıyor\nİlk normal öğe, 'yeni sayfayı' açmak için düğmeyi tanımlar.|Çok sayfalı öğe burada bitiyor"</string>
   <string name="preferencesCategory_RootXposed">"Root ve Xposed"</string>
   <string name="preferences_RootXposed1">"Root ve Xposed mevcut değil|Bu modülün çalışabilmesi için Root ve Xposed gereklidir."</string>
   <string name="preferences_RootXposed2">"Xposed çalışıyor, Root değil|Ancak Root, Kapatmak veya Yeniden başlatmak için gereklidir...\nLütfen root erişimi izni verin."</string>
@@ -209,7 +206,6 @@
   <string name="preferences_About">"Kodlama: Neon-Soft / DrAcHe981|Naman Dwivedi (naman14)'nin kaynağına dayanır.\nDaha fazla bilgi edinmek için buraya tıklayın."</string>
   <string name="animations_Items">"Arkaplan|Diyalog|Simgeler|Tek satır öğeleri|Çok satırlı öğeler"</string>
   <string name="animations_Speeds">"Çok hızlı|Daha hızlı|Hızlı|Normal|Yavaş|Daha yavaş|Çok yavaş"</string>
-  <string name="animations_Types">"Soldur|Göster\n(Sadece arkaplanda çalışır)|Yukarı kaydır|Sola kaydır|Sağa kaydır|Aşağı kaydır|Yukarı ölçekle|Aşağı ölçekle|Devre dışı"</string>
   <string name="animations_Type">"Tür"</string>
   <string name="animations_Speed">"Hız"</string>
   <string name="powerMenuMain_Progress">"Yükleniyor dairesi"</string>
