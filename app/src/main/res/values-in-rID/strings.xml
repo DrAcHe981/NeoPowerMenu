@@ -178,7 +178,6 @@
   <string name="downloadHelper_States">"Menunggu unduhan lainnya...|Menghubungkan ke server... |Meminta informasi... |Mengunduh...|Membatalkan..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] tersisa"</string>
   <string name="uploadHelper_States">"Menunggu upload lainnya...| Menghubungkan ke server...| Meminta informasi... | Mengunggah...| Membatalkan..."</string>
-  <string name="visibilityOrder_MultiPage">"Item multi halaman dimulai di sini \n Item normal pertama mendefinisikan tombol untuk membuka 'halaman baru'. | Halaman multi item berakhir di sini"</string>
   <string name="preferencesCategory_RootXposed">"Akar dan Xposed"</string>
   <string name="preferences_RootXposed1">"Root dan Xposed tidak tersedia|Root dan Xposed diperlukan agar modul ini bisa bekerja."</string>
   <string name="preferences_RootXposed2">"Xposed working, Root not | Tapi Root diperlukan untuk Power off atau Reboot...\nSilahkan akses root."</string>
@@ -203,7 +202,7 @@
   <string name="preferences_About">"Kode oleh Neon-Soft / DrAcHe981|berdasarkan sumber Naman Dwivedi (naman14). \n Klik di sini untuk mendapatkan info lebih lanjut."</string>
   <string name="animations_Items">"Latar Belakang | Dialog | Ikon | Item baris tunggal | Item multi baris"</string>
   <string name="animations_Speeds">"Sangat cepat | Cepat | Cepat | Normal | Lambat | Lebih lambat | Sangat lambat"</string>
-    <string name="animations_Type">"Mengetik"</string>
+  <string name="animations_Type">"Mengetik"</string>
   <string name="animations_Speed">"Kecepatan"</string>
   <string name="powerMenuMain_Progress">"Memuat lingkaran"</string>
   <string name="presetsManager_LoadMore">"Memuat... | Mohon tunggu... | Tampilkan preset lebih lanjut Klik di sini untuk menampilkan lebih banyak preset. | Akhir | Tidak ada lagi preset yang akan ditampilkan. | Klik di sini untuk mencoba lagi."</string>

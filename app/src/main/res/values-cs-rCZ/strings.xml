@@ -182,7 +182,6 @@
   <string name="downloadHelper_RemainingTime">"[TIME] zbývá"</string>
   <string name="downloadHelper_Speed">"rychlost: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Čekám na jiné stahování...|Připojuji se na server...|Požaduji informace... |Stahuji..|Ruším..."</string>
-  <string name="visibilityOrder_MultiPage">"Vícestránková položka začíná zde\nPrvní položka definuje tlačítko pro otevření 'nové stránky'.|Vícestránková položka končí zde"</string>
   <string name="preferencesCategory_RootXposed">"Root a Xposed"</string>
   <string name="preferences_RootXposed1">"Root a Xposed není k dispozici|Pro zprovoznění tohoto modulu je nutné mít Root a nainstalovaný Xposed."</string>
   <string name="preferences_RootXposed2">"Xposed funguje, Root nefunguje|Je nutné mít Root pro Vypínání, Restart...\nProsím povolte aplikaci přístup k Root."</string>
@@ -207,7 +206,7 @@
   <string name="preferences_About">"Naprogramoval Neon-Soft / DrAcHe981|Aplikace založena na kódu Naman Dwivedi (naman14).\nPro získání více informací, klikněte zde."</string>
   <string name="animations_Items">"Pozadí|Dialogy|Ikony|Položky na jeden řádek|Více položek na řádek"</string>
   <string name="animations_Speeds">"Nejrychlejší|Rychlejší|Rychlé|Normalní|Pomalé|Pomalejší|Nejpomalejší"</string>
-    <string name="animations_Type">"Typ"</string>
+  <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Rychlost"</string>
   <string name="powerMenuMain_Progress">"Animace načítání"</string>
   <string name="presetsManager_LoadMore">"Načítám...|Prosím čekejte...|Zobrazit více předvoleb|Klikněte zde pro zobrazení více předvoleb.|Konec.|Žádné další předvolby k zobrazení.|Zkuste to znovu kliknutím zde."</string>

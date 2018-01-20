@@ -198,8 +198,6 @@
   <string name="downloadHelper_RemainingTime">"[TIME] осталось"</string>
   <string name="downloadHelper_Speed">"скорость: [SPEED]/с"</string>
   <string name="uploadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
-  <string name="visibilityOrder_MultiPage">"\"\"\"Элементы во вкладках, начало
-Первый обычный элемент определяет кнопку, которая будет открывать вкладку.|Элементы во вкладках, конец\"\"\""</string>
   <string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
   <string name="preferences_RootXposed1">"Root и Xposed недоступны|Root и Xposed должны быть работающими."</string>
   <string name="preferences_RootXposed2">"\"\"\"Xposed работает, Root - нет|Требуется Root, чтобы выключить или перезагрузить...
@@ -229,7 +227,7 @@
   <string name="preferences_About">"Создано Neon-Soft / DrAcHe981|Основано на исходном коде Naman Dwivedi(naman14)."</string>
   <string name="animations_Items">"Задний фон|Диалоговое окно|Иконки|Единичные элементы на линии|Множественные элементы на линии"</string>
   <string name="animations_Speeds">"Очень быстро|Быстрее|Быстро|Нормально|Медленно|Медленнее|Очень медленно"</string>
-    <string name="animations_Type">"Тип"</string>
+  <string name="animations_Type">"Тип"</string>
   <string name="animations_Speed">"Скорость"</string>
   <string name="powerMenuMain_Progress">"Круг загрузки"</string>
   <string name="presetsManager_LoadMore">"Загрузка...|Пожалуйста, подождите...|Показать больше шаблонов|Нажмите сюда, чтобы отобразить больше шаблонов.|Конец.|Больше шаблонов нет.|Нажмите, чтобы попробовать снова."</string>
@@ -415,6 +413,10 @@
   <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Требуется для использования сканера отпечатков пальцев как способа разблокировки."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Доступ к оповещениям"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Необходимо на Nougat(7.0) и моложе, чтобы переключиться в режим \"Не беспокоить\"."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_NETWORK_STATE">"Доступ к состоянию сети"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_NETWORK_STATE">"Требуется для получения состояния сети устройства."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_NETWORK_STATE">"Изменение состояния сети"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_NETWORK_STATE">"Требуется для изменения состояния сети устройства."</string>
   <string name="powerMenuMain_Shortcut">Шорткат</string>
   <string name="visibilityOrder_NoGravityBoxFound">GravityBox не найден, этот пункт не может работать без установленного GravityBox.</string>
   <string name="visibilityOrder_HideText">Скрыть текст</string>
@@ -434,7 +436,15 @@
   <string name="visibilityOrder_MissingPermissionForNotiPolicy">Отсутствует разрешение политики уведомлений, предоставьте его чтобы использовать этот переключатель!</string>
   <string name="powerMenu_Task_Killed">Убито [TARGET]!</string>
   <string name="powerMenu_No_Task_To_Kill">Не найдены задания, которые можно убить.</string>
+  <string name="powerMenuMain_MenuBackground">Фон Меню</string>
   <string name="visibilityOrder_MissingPermissionForCamera">Нет разрешения на использование камеры, предоставьте чтобы использовать переключатель!</string>
   <string name="visibilityOrder_NotSupportedbyDevice">Ваше устройство не поддерживает эдемент \"[TITLE]\"!</string>
   <string name="powerMenuMain_FakePowerOff">Выключение (Фэйк)</string>
+  <string name="crop_failedToSave">Невозможно сохранить, попробуйте ещё раз...\nДля дополнительной информации проверьте логи.</string>
+  <string name="visibilityOrder_Horizontal">Показывать элементы горизонтально</string>
+  <string name="position_Width">Ширина:</string>
+  <string name="position_Horizontal">Горизонтально:</string>
+  <string name="position_Vertical">Вертикально:</string>
+  <string name="visibilityOrder_AddMultiItem">Добавить</string>
+  <string name="visibilityOrder_EditMultiItemChoices">Изменить цвет элемента|Удалить элемент</string>
 </resources>
