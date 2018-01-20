@@ -185,7 +185,6 @@
   <string name="presetLoadDialog_BuiltIn">"Светлый|Тёмный|Чёрный"</string>
   <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
   <string name="graphics_Crop">"Обрезка | Круговая обрезка"</string>
-  <string name="graphics_NoPresetsFound">"Шаблонов с графикой не найдено..."</string>
   <string name="graphics_GraphicsSaveLoad">"\"\"\"Сохранить текущую графику.|Этот шаблон содержит графические изображения, вы хотите их загрузить?
 Это перезапишет ваши текущие изображения!\"\"\""</string>
   <string name="presetsManager_ReportDialog">"\"\"\"Вы уверены, что хотите пожаловаться на [PRESETNAME]?
@@ -199,12 +198,6 @@
   <string name="downloadHelper_RemainingTime">"[TIME] осталось"</string>
   <string name="downloadHelper_Speed">"скорость: [SPEED]/с"</string>
   <string name="uploadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
-  <string name="visibilityOrder_AddItem">"\"\"\"Добавить обычный элемент
-Просто обычный элемент с одной кнопкой.|Добавить мульти-элемент
-Можно добавить до трёх элементов в ряду.|Добавить элемент-вкладку
-Нажатие откроет новую вкладку с кнопками.\"\"\""</string>
-  <string name="visibilityOrder_MultiPage">"\"\"\"Элементы во вкладках, начало
-Первый обычный элемент определяет кнопку, которая будет открывать вкладку.|Элементы во вкладках, конец\"\"\""</string>
   <string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
   <string name="preferences_RootXposed1">"Root и Xposed недоступны|Root и Xposed должны быть работающими."</string>
   <string name="preferences_RootXposed2">"\"\"\"Xposed работает, Root - нет|Требуется Root, чтобы выключить или перезагрузить...
@@ -234,8 +227,6 @@
   <string name="preferences_About">"Создано Neon-Soft / DrAcHe981|Основано на исходном коде Naman Dwivedi(naman14)."</string>
   <string name="animations_Items">"Задний фон|Диалоговое окно|Иконки|Единичные элементы на линии|Множественные элементы на линии"</string>
   <string name="animations_Speeds">"Очень быстро|Быстрее|Быстро|Нормально|Медленно|Медленнее|Очень медленно"</string>
-  <string name="animations_Types">"\"\"\"Затемнение|Появление
-(Работает только для заднего плана)|Верхний край|Левый край||Правый край|Нижний край|Расширить вверх|Расширить вниз|Отключено\"\"\""</string>
   <string name="animations_Type">"Тип"</string>
   <string name="animations_Speed">"Скорость"</string>
   <string name="powerMenuMain_Progress">"Круг загрузки"</string>
