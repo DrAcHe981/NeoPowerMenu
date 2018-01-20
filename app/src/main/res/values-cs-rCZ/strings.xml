@@ -173,7 +173,6 @@
   <string name="presetLoadDialog_BuiltIn">"Světlé|Šedé|Černé"</string>
   <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
   <string name="graphics_Crop">"Oříznutí|Kruhové oříznutí"</string>
-  <string name="graphics_NoPresetsFound">"Žádné grafické předvolby nenalezeny..."</string>
   <string name="graphics_GraphicsSaveLoad">"Uložit akttuální grafický návrh.|Toto přednastavení obsahuje grafiku, chcete ji načíst?\nVolba přepíše váš aktuální grafický návrh!"</string>
   <string name="presetsManager_ReportDialog">"Opravdu chcete nahlásit [PRESETNAME]?\nAkci nelze vrátit zpět, prosím nezneužívejte nahlašování!\n\nNíže prosím uveďte důvod nahlášení.|Důvod nahlášení:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] reportován, autor prověří nahlášený problém.|Nahlašování selhalo, prosím zkuste to znovu.\nDůvod: "</string>
@@ -183,7 +182,6 @@
   <string name="downloadHelper_RemainingTime">"[TIME] zbývá"</string>
   <string name="downloadHelper_Speed">"rychlost: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Čekám na jiné stahování...|Připojuji se na server...|Požaduji informace... |Stahuji..|Ruším..."</string>
-  <string name="visibilityOrder_AddItem">"Přidat standartní položku\nStadartní položka s jedním slotem.|Přidat více položek\nPřidat až tři položky na jeden řádek.|Přidat vícestránkovou položku\nKliknutím zobrazit novou 'stránku'."</string>
   <string name="visibilityOrder_MultiPage">"Vícestránková položka začíná zde\nPrvní položka definuje tlačítko pro otevření 'nové stránky'.|Vícestránková položka končí zde"</string>
   <string name="preferencesCategory_RootXposed">"Root a Xposed"</string>
   <string name="preferences_RootXposed1">"Root a Xposed není k dispozici|Pro zprovoznění tohoto modulu je nutné mít Root a nainstalovaný Xposed."</string>
@@ -209,8 +207,7 @@
   <string name="preferences_About">"Naprogramoval Neon-Soft / DrAcHe981|Aplikace založena na kódu Naman Dwivedi (naman14).\nPro získání více informací, klikněte zde."</string>
   <string name="animations_Items">"Pozadí|Dialogy|Ikony|Položky na jeden řádek|Více položek na řádek"</string>
   <string name="animations_Speeds">"Nejrychlejší|Rychlejší|Rychlé|Normalní|Pomalé|Pomalejší|Nejpomalejší"</string>
-  <string name="animations_Types">"Přechod|Odhalení\n(Funguje pouze pro pozadí)|Posunout nahoru|Posunout doleva|Posunout doprava|Posunout dolů|Scale nahoru|Scale dolů|Zakázat"</string>
-  <string name="animations_Type">"Typ"</string>
+    <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Rychlost"</string>
   <string name="powerMenuMain_Progress">"Animace načítání"</string>
   <string name="presetsManager_LoadMore">"Načítám...|Prosím čekejte...|Zobrazit více předvoleb|Klikněte zde pro zobrazení více předvoleb.|Konec.|Žádné další předvolby k zobrazení.|Zkuste to znovu kliknutím zde."</string>

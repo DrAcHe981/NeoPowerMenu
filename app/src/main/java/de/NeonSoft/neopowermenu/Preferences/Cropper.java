@@ -72,14 +72,6 @@ public class Cropper extends android.support.v4.app.Fragment
             }
         }
 
-        MainActivity.actionbar.setButton(getString(R.string.graphics_Crop).split("\\|")[0], R.drawable.ic_content_content_cut, new OnClickListener() {
-
-            @Override
-            public void onClick(View p1) {
-                handleCropResult(null, mCropImageView.getCroppedImage(), null);
-            }
-        });
-
         View InflatedView = inflater.inflate(R.layout.cropper, container, false);
 
         ImageView_RotateLeft = (ImageView) InflatedView.findViewById(R.id.cropperImageView_RotateLeft);
@@ -157,6 +149,14 @@ public class Cropper extends android.support.v4.app.Fragment
         } else {
             MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
         }
+
+        MainActivity.actionbar.setButton(getString(R.string.graphics_Crop).split("\\|")[0], R.drawable.ic_content_content_cut, new OnClickListener() {
+
+            @Override
+            public void onClick(View p1) {
+                handleCropResult(null, mCropImageView.getCroppedImage(), null);
+            }
+        });
 
         return InflatedView;
     }

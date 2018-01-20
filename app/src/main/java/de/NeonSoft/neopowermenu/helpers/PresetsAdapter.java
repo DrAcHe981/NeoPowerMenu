@@ -1184,6 +1184,8 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             MainActivity.preferences.edit().putFloat(PreferenceNames.pGraphicsPadding, Integer.parseInt(aData[1])).commit();
                         } else if (aData[0].equals("ColorizeNonStockIcons")) {
                             MainActivity.preferences.edit().putBoolean(PreferenceNames.pColorizeNonStockIcons, (aData[1].equals("true") ? true : false)).commit();
+                        } else if (aData[0].equals("CircleRadius")) {
+                            MainActivity.preferences.edit().putInt(PreferenceNames.pCircleRadius, Integer.parseInt(aData[1])).commit();
                         } else {
                             if (presetVersionName.equals("1.4.2")) {
                                 if (aData[0].equalsIgnoreCase("RevealBackground")) {

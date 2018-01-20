@@ -41,7 +41,7 @@ import android.telephony.*;
 public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit {
 
     private static final String TAG = "NPM";
-    private XSharedPreferences preferences;
+    private static XSharedPreferences preferences;
     public static boolean DeepXposedLogging = false;
     public boolean UseRoot = true;
 
@@ -612,69 +612,73 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         final Handler handler = new Handler();
 
         mScreenshotConnection = null;
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (mScreenshotLock) {
+                    if (mScreenshotConnection != null) {
+                        XposedUtils.log("Screenshot failed: cant create connection.");
+                        return;
+                    }
+                    ComponentName cn = new ComponentName("com.android.systemui",
+                            "com.android.systemui.screenshot.TakeScreenshotService");
+                    Intent intent = new Intent();
+                    intent.setComponent(cn);
+                    ServiceConnection conn = new ServiceConnection() {
+                        @Override
+                        public void onServiceConnected(ComponentName name, IBinder service) {
+                            synchronized (mScreenshotLock) {
+                                if (mScreenshotConnection != this) {
+                                    XposedUtils.log("Screenshot failed: wrong connection.");
+                                    return;
+                                }
+                                final Messenger messenger = new Messenger(service);
+                                final Message msg = Message.obtain(null, 1);
+                                final ServiceConnection myConn = this;
 
-        synchronized (mScreenshotLock) {
-            if (mScreenshotConnection != null) {
-                XposedUtils.log("Screenshot failed: cant create connection.");
-                return;
-            }
-            ComponentName cn = new ComponentName("com.android.systemui",
-                    "com.android.systemui.screenshot.TakeScreenshotService");
-            Intent intent = new Intent();
-            intent.setComponent(cn);
-            ServiceConnection conn = new ServiceConnection() {
-                @Override
-                public void onServiceConnected(ComponentName name, IBinder service) {
-                    synchronized (mScreenshotLock) {
-                        if (mScreenshotConnection != this) {
-                            XposedUtils.log("Screenshot failed: wrong connection.");
-                            return;
-                        }
-                        final Messenger messenger = new Messenger(service);
-                        final Message msg = Message.obtain(null, 1);
-                        final ServiceConnection myConn = this;
-
-                        Handler h = new Handler(handler.getLooper()) {
-                            @Override
-                            public void handleMessage(Message msg) {
-                                synchronized (mScreenshotLock) {
-                                    if (mScreenshotConnection == myConn) {
-                                        p1.unbindService(mScreenshotConnection);
-                                        mScreenshotConnection = null;
-                                        handler.removeCallbacks(mScreenshotTimeout);
-                                        if (DeepXposedLogging)
-                                            XposedUtils.log("Screenshot message handled, unbinding and removing callbacks.");
+                                Handler h = new Handler(handler.getLooper()) {
+                                    @Override
+                                    public void handleMessage(Message msg) {
+                                        synchronized (mScreenshotLock) {
+                                            if (mScreenshotConnection == myConn) {
+                                                p1.unbindService(mScreenshotConnection);
+                                                mScreenshotConnection = null;
+                                                handler.removeCallbacks(mScreenshotTimeout);
+                                                if (DeepXposedLogging)
+                                                    XposedUtils.log("Screenshot message handled, unbinding and removing callbacks.");
+                                            }
+                                        }
                                     }
-                                }
+                                };
+                                msg.replyTo = new Messenger(h);
+                                msg.arg1 = msg.arg2 = 0;
+                                h.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            if (DeepXposedLogging)
+                                                XposedUtils.log("Sending screenshot message...");
+                                            messenger.send(msg);
+                                        } catch (RemoteException e) {
+                                            //Log.e(TAG, e.toString());
+                                            XposedUtils.log("Screenshot failed: " + e.toString());
+                                        }
+                                    }
+                                });
                             }
-                        };
-                        msg.replyTo = new Messenger(h);
-                        msg.arg1 = msg.arg2 = 0;
-                        h.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    if (DeepXposedLogging)
-                                        XposedUtils.log("Sending screenshot message...");
-                                    messenger.send(msg);
-                                } catch (RemoteException e) {
-                                    //Log.e(TAG, e.toString());
-                                    XposedUtils.log("Screenshot failed: " + e.toString());
-                                }
-                            }
-                        });
+                        }
+
+                        @Override
+                        public void onServiceDisconnected(ComponentName name) {
+                        }
+                    };
+                    if (p1.bindService(intent, conn, Context.BIND_AUTO_CREATE)) {
+                        mScreenshotConnection = conn;
+                        handler.postDelayed(mScreenshotTimeout, 10000);
                     }
                 }
-
-                @Override
-                public void onServiceDisconnected(ComponentName name) {
-                }
-            };
-            if (p1.bindService(intent, conn, Context.BIND_AUTO_CREATE)) {
-                mScreenshotConnection = conn;
-                handler.postDelayed(mScreenshotTimeout, 10000);
             }
-        }
+        }, preferences.getLong(PreferenceNames.pScreenshotDelay, 1000));
     }
 
     private static void toggleScreenRecord(Context p1) {

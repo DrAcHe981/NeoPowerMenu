@@ -120,8 +120,7 @@
                     <ImageView
                         android:id="@+id/visibilityordermultiImageView_HideDescription"
                         android:layout_width="25dp"
-                        android:layout_height="wrap_content"
-                        android:minHeight="35dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="top"
                         android:padding="2dp"
                         android:src="@drawable/ic_action_info_outline"
@@ -130,8 +129,7 @@
                     <ImageView
                         android:id="@+id/visibilityordermultiImageView_HideOnLockscreen"
                         android:layout_width="25dp"
-                        android:layout_height="wrap_content"
-                        android:minHeight="35dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="top"
                         android:padding="2dp"
                         android:src="@drawable/ic_action_lock_outline"

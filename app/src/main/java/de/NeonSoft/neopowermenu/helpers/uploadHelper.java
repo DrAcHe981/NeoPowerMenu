@@ -75,22 +75,22 @@ public class uploadHelper {
 
             @Override
             public void onStateChanged(int state) {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onPublishUploadProgress(long nowSize, long totalSize) {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onUploadComplete(String response) {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onUploadFailed(String reason) {
-                // TODO: Implement this method
+
             }
         };
     }
@@ -100,22 +100,22 @@ public class uploadHelper {
 
             @Override
             public void onStateChanged(int state) {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onPublishUploadProgress(long nowSize, long totalSize) {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onUploadComplete(String response) {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onUploadFailed(String reason) {
-                // TODO: Implement this method
+
             }
         };
     }
@@ -199,7 +199,7 @@ public class uploadHelper {
 
                 @Override
                 public void run() {
-                    // TODO: Implement this method
+
                     mInterface.onStateChanged(state);
                 }
             });
@@ -222,7 +222,7 @@ public class uploadHelper {
 
         @Override
         protected void onPreExecute() {
-            // TODO: Implement this method
+
             super.onPreExecute();
             setState(STATE_WAITING);
             isRunning = true;
@@ -242,7 +242,7 @@ public class uploadHelper {
 
                             @Override
                             public void run() {
-                                // TODO: Implement this method
+
                                 if (dlnowsize > 0 && dltotalsize > 0) {
                                     if (getState() != STATE_CANCELLING) {
                                         mInterface.onPublishUploadProgress(dlnowsize, dltotalsize);
@@ -257,7 +257,7 @@ public class uploadHelper {
 
                 @Override
                 public void run() {
-                    // TODO: Implement this method
+
                     try {
                         long mReaminingSize = dltotalsize - dlnowsize;
                         long mDownloadedSize = dlnowsize;
@@ -288,7 +288,7 @@ public class uploadHelper {
 
         @Override
         protected String doInBackground(Object... p1) {
-            // TODO: Implement this method
+
             int count;
             String uploadFileName;
             if (p1.length >= 3) {
@@ -400,14 +400,14 @@ public class uploadHelper {
 
         @Override
         protected void onProgressUpdate(String[] p1) {
-            // TODO: Implement this method
+
             super.onProgressUpdate(p1);
             mInterface.onPublishUploadProgress(Integer.parseInt(p1[1]), Integer.parseInt(p1[2]));
         }
 
         @Override
         protected void onCancelled(String p1) {
-            // TODO: Implement this method
+
             super.onCancelled(p1);
             if (mPartialWakeLock != null && mPartialWakeLock.isHeld()) {
                 mPartialWakeLock.release();
@@ -429,7 +429,7 @@ public class uploadHelper {
 
         @Override
         protected void onPostExecute(String p1) {
-            // TODO: Implement this method
+
             super.onPostExecute(p1);
             if (mPartialWakeLock != null && mPartialWakeLock.isHeld()) {
                 mPartialWakeLock.release();

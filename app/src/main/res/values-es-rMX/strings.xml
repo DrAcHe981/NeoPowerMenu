@@ -173,7 +173,6 @@
   <string name="presetLoadDialog_BuiltIn">"Claro | Oscuro | Negro"</string>
   <string name="graphics_Choose">"Restaurar original | Elegir tema | Elegir de la galería"</string>
   <string name="graphics_Crop">"Cortado | Corte circular"</string>
-  <string name="graphics_NoPresetsFound">"No hay temas con gráficos encontrados..."</string>
   <string name="graphics_GraphicsSaveLoad">"Salvar con gráficos actuales. | Esta tema contiene gráficos, ¿quieres cargarlos?\n¡Esto sobrescribira a los gráficos actuales!"</string>
   <string name="presetsManager_ReportDialog">"¿Está seguro de informar este [PRESETNAME]? \nEsto no se puede deshacer, así que por favor no informe por diversión! \n\nYa que necesitamos una razón por la cual quieres denunciarlo, por favor ingrese. | Motivo de informe:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] reportado, el desarrollador tendrá un vistazo. | Informe de error fallido, por favor intentelo nuevamente. \nRason: "</string>
@@ -183,7 +182,6 @@
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
   <string name="downloadHelper_Speed">"velocidad: [SPEED]/s"</string>
   <string name="uploadHelper_States">"A la espera de otras cargas... | Conectando al servidor... | Solicitando información... | Subir... | Cancelando..."</string>
-  <string name="visibilityOrder_AddItem">"Añadir un ítem normal\nUn ítem normal usará un lugar. | Añadir multiple items\nAgrega hasta tres artículos en una línea. | Añadir multiple items\n Con un clic se mostrará una nueva página."</string>
   <string name="visibilityOrder_MultiPage">"Páginas de elementos inicia aquí\nEl primer elemento normal define el botón para abrir la 'nueva página'. | Páginas de elementos termina aquí"</string>
   <string name="preferencesCategory_RootXposed">"Rooteado y Xposed"</string>
   <string name="preferences_RootXposed1">"Rooteado y Xposed no están disponibles | Rooteo y Xposed son requeridos para que esté módulo funcione."</string>
@@ -209,8 +207,7 @@
   <string name="preferences_About">"Código por neón-Soft / DrAcHe981 | basado en la fuente de Naman Dwivedi (naman14). \nClic aquí para más información."</string>
   <string name="animations_Items">"Fondo | Diálogo | Iconos | Artículo simple | Artículos múltiples"</string>
   <string name="animations_Speeds">"Muy rápido | Más rápido | Rápido | Normal | Lento | Más lento | Muy lento"</string>
-  <string name="animations_Types">"Desaparecer | Aparecer\n(Funciona sólo para el fondo) |Deslizar hacia arriba| Deslizar a la izquierda | Deslizar a la derecha | Deslizar hacia abajo | Aumentar | Reducir | Inhabilitar"</string>
-  <string name="animations_Type">"Tipo"</string>
+    <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidad"</string>
   <string name="powerMenuMain_Progress">"Imagen de carga"</string>
   <string name="presetsManager_LoadMore">"Cargando... | Por favor, espere... | Mostrar más temad| Haga clic aquí para mostrar más temas. | El final. | No hay más temas para mostrar. | Haga clic aquí para intentarlo de nuevo."</string>

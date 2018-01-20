@@ -14,7 +14,7 @@ public class URLFileNameGenerator implements FileNameGenerator
 		@Override
 		public String generate(String p1)
 		{
-				// TODO: Implement this method
+
 				if (p1==null )return null;
 				return mGenerator.generate(p1.replaceFirst("file://",""));
 		}

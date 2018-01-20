@@ -24,7 +24,10 @@
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/ic_action_trash"/>
+            android:src="@drawable/ic_action_trash"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:focusable="true"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/activitydialogpositionTextView_Horizontal"
@@ -45,16 +48,15 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/activitydialogpositionTextView_Horizontal"/>
 
-        <TextView
+        <de.NeonSoft.neopowermenu.helpers.VerticalTextView
             android:id="@+id/activitydialogpositionTextView_Vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:text="@string/position_Vertical"
+            android:layout_width="41dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/activitydialogpositionImageView_Reset"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:rotation="90"
-            android:layout_below="@id/activitydialogpositionImageView_Reset"/>
+            android:gravity="center"
+            android:text="@string/position_Vertical" />
 
         <TextView
             android:id="@+id/activitydialogpositionTextView_Size"

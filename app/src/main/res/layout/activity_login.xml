@@ -112,6 +112,7 @@
 
 				<LinearLayout
 					android:background="?android:attr/selectableItemBackground"
+					android:focusable="true"
 					android:clickable="true"
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
@@ -130,6 +131,7 @@
 
 				<LinearLayout
 					android:background="?android:attr/selectableItemBackground"
+					android:focusable="true"
 					android:clickable="true"
 					android:layout_height="wrap_content"
 					android:layout_width="match_parent"
@@ -348,6 +350,7 @@
 				<TextView
 					android:id="@+id/activityloginTextView_ReloadStatistics"
 					android:background="?android:attr/selectableItemBackground"
+					android:focusable="true"
 					android:clickable="true"
 					android:layout_height="wrap_content"
 					android:textAppearance="?android:attr/textAppearanceMedium"

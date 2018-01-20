@@ -4,6 +4,7 @@ import android.app.*;
 import android.content.*;
 import android.content.pm.PackageManager;
 import android.graphics.*;
+import android.graphics.drawable.GradientDrawable;
 import android.media.*;
 import android.os.*;
 import android.support.annotation.Nullable;
@@ -43,9 +44,12 @@ public class GravityChooserDialog extends DialogFragment {
     public static int amRingerMode;
 
     static float float_padding = 0;
+    int mGraphicsRadius;
     int int_Vertical = 0;
     int int_Horizontal = 0;
     int int_Size = 0;
+    boolean boolean_roundedCorners;
+    int int_Radius = 0;
     Object[] DisplaySize;
 
     View DummyPowerDialog;
@@ -68,11 +72,14 @@ public class GravityChooserDialog extends DialogFragment {
             DisplaySize[1] = (int) DisplaySize[1] - helper.getStatusBarHeight(mContext);
         }
 
-        float_padding = MainActivity.preferences.getFloat("GraphicsPadding",0);
+        float_padding = MainActivity.preferences.getFloat(PreferenceNames.pGraphicsPadding,0);
+        mGraphicsRadius = MainActivity.preferences.getInt(PreferenceNames.pCircleRadius, 100);
 
-        int_Vertical = MainActivity.preferences.getInt("DialogPosition_Vertical",50);
-        int_Horizontal = MainActivity.preferences.getInt("DialogPosition_Horizontal",50);
-        int_Size = MainActivity.preferences.getInt("DialogPosition_Size",60);
+        int_Vertical = MainActivity.preferences.getInt(PreferenceNames.pDialogPosition_Vertical,50);
+        int_Horizontal = MainActivity.preferences.getInt(PreferenceNames.pDialogPosition_Horizontal,50);
+        int_Size = MainActivity.preferences.getInt(PreferenceNames.pDialogPosition_Size,60);
+        boolean_roundedCorners = MainActivity.preferences.getBoolean(PreferenceNames.pRoundedDialogCorners, false);
+        int_Radius = (boolean_roundedCorners ? MainActivity.preferences.getInt(PreferenceNames.pRoundedDialogCornersRadius, 0) : 0);
 
         MainActivity.visibleFragment = "Gravity";
 
@@ -155,6 +162,11 @@ public class GravityChooserDialog extends DialogFragment {
         DummyPowerDialog = p1.inflate(R.layout.fragment_power, LinearLayout_ImageHolder, false);
         PowerDialogFrame = (FrameLayout) DummyPowerDialog.findViewById(R.id.fragmentpowerFrameLayout1);
         PowerDialogFrame.setPadding(2,2,2,2);
+        GradientDrawable bgDrawable = (GradientDrawable) PowerDialogFrame.getBackground();
+        bgDrawable.setColor(Color.parseColor(MainActivity.colorPrefs.getString("Dialog_Backgroundcolor", "#ffffff")));
+        bgDrawable.setStroke(2, mContext.getResources().getColor(R.color.colorAccentDarkTheme));
+        bgDrawable.setCornerRadius(int_Radius);
+        PowerDialogFrame.setBackground(bgDrawable);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DummyPowerDialog.getLayoutParams());
         params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -185,6 +197,7 @@ public class GravityChooserDialog extends DialogFragment {
         });
 
         LinearLayout Main = (LinearLayout) DummyPowerDialog.findViewById(R.id.fragmentpowerFrameLayout_Main);
+        FrameLayout Content = (FrameLayout) DummyPowerDialog.findViewById(R.id.fragmentpowerFrameLayout1);
 
         LinearLayout ListContainer = (LinearLayout) DummyPowerDialog.findViewById(R.id.ListContainer);
 
@@ -300,12 +313,20 @@ public class GravityChooserDialog extends DialogFragment {
             ListContainer.addView(inflated);
         }
 
-
         LinearLayout_ImageHolder.addView(DummyPowerDialog);
         LinearLayout.LayoutParams MainParams = new LinearLayout.LayoutParams(Main.getLayoutParams());
         MainParams.width = (int) helper.getDisplaySize(mContext, true)[0] - 200;
         //MainParams.height = (int) helper.convertDpToPixel((float) 250, mContext);
         //Main.setLayoutParams(MainParams);
+
+        int animationId = MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]);
+        if (animationId != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+            if (animationId >= 6 && animationId <= 9) {
+                Content.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 3, false));
+            } else {
+                LinearLayout_ImageHolder.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 3, false));
+            }
+        }
 
         ViewTreeObserver vto = DummyPowerDialog.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -329,7 +350,7 @@ public class GravityChooserDialog extends DialogFragment {
     public void createCircleIcon(ImageView background, final ImageView foreground, String text, String color1, String color2) {
         try {
             if (MainActivity.preferences.getBoolean("UseGraphics", false)) {
-                GraphicDrawable drawable = GraphicDrawable.builder().buildRound((Bitmap) null, Color.parseColor(color1));
+                GraphicDrawable drawable = GraphicDrawable.builder().buildRoundRect((Bitmap) null, Color.parseColor(color1), mGraphicsRadius/2);
                 background.setImageDrawable(drawable);
                 foreground.setVisibility(View.VISIBLE);
                 if (text.equalsIgnoreCase(mContext.getString(R.string.powerMenuMain_Shutdown))) {
@@ -411,7 +432,7 @@ public class GravityChooserDialog extends DialogFragment {
 
     void changeGravity() {
         DisplaySize = helper.getDisplaySize(mContext, false);
-        if (!helper.isDeviceHorizontal(mContext)) {
+        if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
             DisplaySize[1] = (int) DisplaySize[1] - helper.getNavigationBarSize(mContext).y - helper.getStatusBarHeight(mContext) - MainActivity.actionBarHolder.getHeight();
         } else {
             DisplaySize[0] = (int) DisplaySize[0] - helper.getNavigationBarSize(mContext).x;
@@ -422,20 +443,25 @@ public class GravityChooserDialog extends DialogFragment {
         params.width = (int) (((int) DisplaySize[0]) * (0.01 * int_Size));
         DummyPowerDialog.setLayoutParams(params);
         PowerDialogFrame.setLayoutParams(params);
-        int left = 0, top = 0, right = 0, bottom = 0;
-        try {
-            bottom = ((int_Vertical * ((int) DisplaySize[1] - DummyPowerDialogHeight)) / SeekBar_Vertical.getMax());
-            //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
-        } catch (Exception e) {
-            Log.d("NPM", "Calculation error.", e);
-        }
-        try {
-            right = ((int_Horizontal * ((int) DisplaySize[0] - DummyPowerDialog.getWidth())) / SeekBar_Horizontal.getMax());
-            //left = ((int) DisplaySize[1] % (int) helper.convertDpToPixel(int_Horizontal, mContext));
-        } catch (Exception e) {
-            Log.d("NPM", "Calculation error.", e);
-        }
-        LinearLayout_ImageHolder.setPadding(left, top, right, bottom);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                int left = 0, top = 0, right = 0, bottom = 0;
+                try {
+                    bottom = ((int_Vertical * ((int) DisplaySize[1] - DummyPowerDialogHeight)) / SeekBar_Vertical.getMax());
+                    //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
+                } catch (Exception e) {
+                    Log.d("NPM", "Calculation error.", e);
+                }
+                try {
+                    right = ((int_Horizontal * ((int) DisplaySize[0] - DummyPowerDialog.getWidth())) / SeekBar_Horizontal.getMax());
+                    //left = ((int) DisplaySize[1] % (int) helper.convertDpToPixel(int_Horizontal, mContext));
+                } catch (Exception e) {
+                    Log.d("NPM", "Calculation error.", e);
+                }
+                LinearLayout_ImageHolder.setPadding(left, top, right, bottom);
+            }
+        }, 1L);
     }
 
     @Override

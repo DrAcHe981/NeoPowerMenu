@@ -43,7 +43,7 @@ public class PreferencesAnimationsFragment extends android.support.v4.app.Fragme
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: Implement this method
+
         if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
             MainActivity.visibleFragment = "Animations";
         }

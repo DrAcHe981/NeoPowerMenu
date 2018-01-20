@@ -53,8 +53,13 @@ public class AddShortcutList extends Fragment {
         addShortcut.mActionBar.setButton(getString(R.string.addShortcut_Next), R.drawable.ic_content_send, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addShortcut.color1 = addShortcut.colorPrefs.getString("Dialog" + addShortcut.items.get(adapter.getSelectedPosition()) + "_Circlecolor", "#ff000000");
-                addShortcut.color2 = addShortcut.colorPrefs.getString("Dialog" + addShortcut.items.get(adapter.getSelectedPosition()) + "_Textcolor", "#ff000000");
+                if (adapter.getSelectedPosition()==0) {
+                    addShortcut.color1 = "#ff404040";
+                    addShortcut.color2 = "#ffffffff";
+                } else {
+                    addShortcut.color1 = addShortcut.colorPrefs.getString("Dialog" + addShortcut.items.get(adapter.getSelectedPosition()) + "_Circlecolor", "#ff000000");
+                    addShortcut.color2 = addShortcut.colorPrefs.getString("Dialog" + addShortcut.items.get(adapter.getSelectedPosition()) + "_Textcolor", "#ff000000");
+                }
                 AddShortcutSettings settingsFragment = new AddShortcutSettings();
                 settingsFragment.setItem(addShortcut.items.get(adapter.getSelectedPosition()));
                 addShortcut.changePrefPage(settingsFragment, "Settings", false);

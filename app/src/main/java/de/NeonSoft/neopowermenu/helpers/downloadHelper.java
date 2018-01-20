@@ -66,22 +66,22 @@ public class downloadHelper {
 
             @Override
             public void onStateChanged(int state) {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onPublishDownloadProgress(long nowSize, long totalSize) {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onDownloadComplete() {
-                // TODO: Implement this method
+
             }
 
             @Override
             public void onDownloadFailed(String reason) {
-                // TODO: Implement this method
+
             }
         };
         this.mLocalUrl = context.getFilesDir().getPath() + "/download";
@@ -158,7 +158,7 @@ public class downloadHelper {
 
             @Override
             public void run() {
-                // TODO: Implement this method
+
                 mInterface.onStateChanged(state);
             }
         });
@@ -178,7 +178,7 @@ public class downloadHelper {
 
         @Override
         protected void onPreExecute() {
-            // TODO: Implement this method
+
             super.onPreExecute();
             setState(STATE_WAITING);
             isRunning = true;
@@ -194,7 +194,7 @@ public class downloadHelper {
 
                         @Override
                         public void run() {
-                            // TODO: Implement this method
+
                             if (dlnowsize > 0 && dltotalsize > 0) {
                                 mProgress = (int) ((dlnowsize * 100) / dltotalsize);
                                 if (getState() != STATE_CANCELLING) {
@@ -209,7 +209,7 @@ public class downloadHelper {
 
                 @Override
                 public void run() {
-                    // TODO: Implement this method
+
                     try {
                         long mReaminingSize = dltotalsize - dlnowsize;
                         long mDownloadedSize = dlnowsize;
@@ -238,7 +238,7 @@ public class downloadHelper {
 
         @Override
         protected String doInBackground(Object[] p1) {
-            // TODO: Implement this method
+
             int count;
             try {
                 try {
@@ -294,14 +294,14 @@ public class downloadHelper {
 
         @Override
         protected void onProgressUpdate(String[] p1) {
-            // TODO: Implement this method
+
             super.onProgressUpdate(p1);
             mInterface.onPublishDownloadProgress(Integer.parseInt(p1[1]), Integer.parseInt(p1[2]));
         }
 
         @Override
         protected void onCancelled(String p1) {
-            // TODO: Implement this method
+
             super.onCancelled(p1);
             timer.cancel();
             try {
@@ -317,7 +317,7 @@ public class downloadHelper {
 
         @Override
         protected void onPostExecute(String p1) {
-            // TODO: Implement this method
+
             super.onPostExecute(p1);
             timer.cancel();
             try {

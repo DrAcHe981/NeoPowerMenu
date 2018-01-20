@@ -100,7 +100,17 @@ public class ShortcutListAdapter extends ArrayAdapter<String> {
         }
         title.setText(string);
 
-        image.setImageBitmap(addShortcut.createCircleIcon(mItems.get(position), string, addShortcut.colorPrefs.getString("Dialog" + mItems.get(position) + "_Circlecolor", "#ff000000"), addShortcut.colorPrefs.getString("Dialog" + mItems.get(position) + "_Textcolor", "#ffffff")));
+        String color1 = "#ff000000", color2 = "#ffffffff";
+
+        if (position==0) {
+            color1 = "#ff404040";
+            color2 = "#ffffffff";
+        } else {
+            color1 = addShortcut.colorPrefs.getString("Dialog" + addShortcut.items.get(position) + "_Circlecolor", "#ff000000");
+            color2 = addShortcut.colorPrefs.getString("Dialog" + addShortcut.items.get(position) + "_Textcolor", "#ff000000");
+        }
+
+        image.setImageBitmap(addShortcut.createCircleIcon(mItems.get(position), string, color1, color2));
         return InflatedView;
     }
 

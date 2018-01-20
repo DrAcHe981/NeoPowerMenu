@@ -170,7 +170,6 @@
   <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
   <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
   <string name="graphics_Crop">"Tanaman|Lingkari tanaman"</string>
-  <string name="graphics_NoPresetsFound">"Tidak ada preset dengan grafis yang ditemukan..."</string>
   <string name="graphics_GraphicsSaveLoad">"Simpan dengan grafis saat ini.|Preset ini berisi grafis, apakah Anda ingin memuatnya?\n ini akan menimpa grafis Anda saat ini!\n!"</string>
   <string name="presetsManager_ReportDialog">"Anda yakin untuk melaporkan [PRESETNAME]? \n Ini tidak dapat dibatalkan, jadi tolong jangan laporkan hanya untuk bersenang-senang! \n \n Juga kita memerlukan alasan mengapa Anda ingin melaporkannya, silahkan masukkan di bawah ini:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] melaporkan, pengembang akan melihatnya.|Laporan gagal, silakan coba lagi.\nAkhir: "</string>
@@ -179,7 +178,6 @@
   <string name="downloadHelper_States">"Menunggu unduhan lainnya...|Menghubungkan ke server... |Meminta informasi... |Mengunduh...|Membatalkan..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] tersisa"</string>
   <string name="uploadHelper_States">"Menunggu upload lainnya...| Menghubungkan ke server...| Meminta informasi... | Mengunggah...| Membatalkan..."</string>
-  <string name="visibilityOrder_AddItem">"Tambahkan item normal \n Hanya item normal dengan hanya satu slot. Tambahkan item multi \n Tambahkan hingga tiga item dalam satu baris. | Tambahkan item multi halaman \n Mengkliknya akan menampilkan 'halaman' baru."</string>
   <string name="visibilityOrder_MultiPage">"Item multi halaman dimulai di sini \n Item normal pertama mendefinisikan tombol untuk membuka 'halaman baru'. | Halaman multi item berakhir di sini"</string>
   <string name="preferencesCategory_RootXposed">"Akar dan Xposed"</string>
   <string name="preferences_RootXposed1">"Root dan Xposed tidak tersedia|Root dan Xposed diperlukan agar modul ini bisa bekerja."</string>
@@ -205,8 +203,7 @@
   <string name="preferences_About">"Kode oleh Neon-Soft / DrAcHe981|berdasarkan sumber Naman Dwivedi (naman14). \n Klik di sini untuk mendapatkan info lebih lanjut."</string>
   <string name="animations_Items">"Latar Belakang | Dialog | Ikon | Item baris tunggal | Item multi baris"</string>
   <string name="animations_Speeds">"Sangat cepat | Cepat | Cepat | Normal | Lambat | Lebih lambat | Sangat lambat"</string>
-  <string name="animations_Types">"Fade | Reveal \n (Bekerja hanya untuk latar belakang) | Slide up | Slide left | Slide right | Slide down | Scale up | Scale down | Disabled"</string>
-  <string name="animations_Type">"Mengetik"</string>
+    <string name="animations_Type">"Mengetik"</string>
   <string name="animations_Speed">"Kecepatan"</string>
   <string name="powerMenuMain_Progress">"Memuat lingkaran"</string>
   <string name="presetsManager_LoadMore">"Memuat... | Mohon tunggu... | Tampilkan preset lebih lanjut Klik di sini untuk menampilkan lebih banyak preset. | Akhir | Tidak ada lagi preset yang akan ditampilkan. | Klik di sini untuk mencoba lagi."</string>

@@ -4,6 +4,9 @@ import android.animation.*;
 import android.app.*;
 import android.content.*;
 import android.graphics.*;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.*;
 import android.support.v4.app.*;
 import android.support.v4.app.FragmentManager;
@@ -59,6 +62,9 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 
     private boolean useCustomView = false;
     private View customView = null;
+    private ArrayList<View> customViews = new ArrayList<>();
+
+    private int backgroundDimFactor = 80;
 
     private String dialogText = "";
     private float dialogTextSize = -1;
@@ -194,6 +200,10 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
 
     public void setCustomView(View view) {
         this.customView = view;
+        this.useCustomView = true;
+    }
+    public void addCustomView(View view) {
+        this.customViews.add(view);
         this.useCustomView = true;
     }
 
@@ -549,6 +559,10 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         }
     }
 
+    public void setBackgroundDimFactor(int dimFactorPercentage) {
+        this.backgroundDimFactor = dimFactorPercentage;
+    }
+
     public void showDialog(int mDialogContainer) {
         try {
             if (mFragmentmanager == null) {
@@ -628,6 +642,10 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
             }
         });
 
+        ColorDrawable bgDrawable = (ColorDrawable) TextView_DialogBg.getBackground();
+        bgDrawable.setColor(Color.argb(backgroundDimFactor, 0, 0, 0));
+        TextView_DialogBg.setBackground(bgDrawable);
+
         LinearLayout_MainContainer = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_MainContainer);
         //LinearLayout_DialogRoot.setLayoutTransition(transitioner);
         //LinearLayout_MainContainer.setLayoutTransition(transitioner);
@@ -687,7 +705,14 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
         TextView_DialogTouchOutside.setVisibility(View.GONE);
         if (this.useCustomView) {
             LinearLayout LinearLayout_CustomViewHolder = (LinearLayout) InflatedView.findViewById(R.id.slidedowndialogfragmentLinearLayout_CustomViewHolder);
-            LinearLayout_CustomViewHolder.addView(this.customView);
+            if (customView!=null) {
+                LinearLayout_CustomViewHolder.addView(this.customView);
+            }
+            if (customViews.size()>0) {
+                for (View view : this.customViews) {
+                    LinearLayout_CustomViewHolder.addView(view);
+                }
+            }
         }
             if (dialogListItems != null && dialogListItems.length > 0) {
                 dialogListAdapter = new ArrayAdapter<>(mContext, (dialogListMode == ListView.CHOICE_MODE_NONE ? android.R.layout.simple_list_item_1 : (dialogListMode == ListView.CHOICE_MODE_MULTIPLE ? android.R.layout.simple_list_item_multiple_choice : android.R.layout.simple_list_item_single_choice)), dialogListItems);

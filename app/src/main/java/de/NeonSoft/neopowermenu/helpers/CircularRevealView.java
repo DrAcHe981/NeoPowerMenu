@@ -39,7 +39,7 @@ public class CircularRevealView extends ViewGroup {
         super(context, attrs, defStyleAttr);
 
         if (isInEditMode()) {
-            return;
+            //return;
         }
 
         inkView = new View(context);
@@ -66,6 +66,10 @@ public class CircularRevealView extends ViewGroup {
         final int size = (int) (circleSize / SCALE);
         final int sizeSpec = MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY);
         inkView.measure(sizeSpec, sizeSpec);
+    }
+
+    public void redrawRevealView() {
+
     }
 
     public void reveal(final int x, final int y, final int color, Animator.AnimatorListener listener) {
