@@ -185,8 +185,9 @@
   <string name="presetLoadDialog_BuiltIn">"Светлый|Тёмный|Чёрный"</string>
   <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
   <string name="graphics_Crop">"Обрезка | Круговая обрезка"</string>
-  <string name="graphics_GraphicsSaveLoad">"\"\"\"Сохранить текущую графику.|Этот шаблон содержит графические изображения, вы хотите их загрузить?
-Это перезапишет ваши текущие изображения!\"\"\""</string>
+  <string name="graphics_NoPresetsFound">Невозможно найти шаблон с такой графикой...</string>
+  <string name="graphics_GraphicsSaveLoad">"Сохранить текущую графику.|Этот шаблон содержит графические изображения, вы хотите их загрузить?
+Это перезапишет ваши текущие изображения!"</string>
   <string name="presetsManager_ReportDialog">"\"\"\"Вы уверены, что хотите пожаловаться на [PRESETNAME]?
 Это не может быть отменено, поэтому не жалуйтесь просто ради веселья, пожалуйста!
 
@@ -198,6 +199,8 @@
   <string name="downloadHelper_RemainingTime">"[TIME] осталось"</string>
   <string name="downloadHelper_Speed">"скорость: [SPEED]/с"</string>
   <string name="uploadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
+  <string name="visibilityOrder_AddItem">"Добавить обычный объект\nПросто обычный объект с одним слотом.|Добавить мульти объект\nДобавить несколько объектов в одну линию.|Добавить объект-папку\nПосле нажатия появится новая 'страница'."</string>
+  <string name="visibilityOrder_MultiPage">"Папка начинается здесь\nПервый обычный объект определяет кнопку для открытия папки.|Папка заканчиввется здесь"</string>
   <string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
   <string name="preferences_RootXposed1">"Root и Xposed недоступны|Root и Xposed должны быть работающими."</string>
   <string name="preferences_RootXposed2">"\"\"\"Xposed работает, Root - нет|Требуется Root, чтобы выключить или перезагрузить...
@@ -215,8 +218,8 @@
   <string name="preferencesCategory_Other">"Другое"</string>
   <string name="preferences_Account">"Аккаунт|Здесь Вы можете войти в аккаунт, создать аккаунт или проверить свою статистику."</string>
   <string name="preferences_Advanced">"Расширенные настройки|Измените расширенные настройки, например, задержки, притяжение или скорость."</string>
-  <string name="preferences_Permissions">"\"\"\"Разрешения|Показывает используемые разрешения и для чего они используются.
-Предоставляет дополнительные разрешения, если они не были предоставлены во время первого запуска(Android 6.0+).\"\"\""</string>
+  <string name="preferences_Permissions">"Разрешения|Показывает используемые разрешения и для чего они используются.
+Предоставляет дополнительные разрешения, если они не были предоставлены во время первого запуска(Android 6.0+)."</string>
   <string name="preferences_HideLauncherIcon">"\"\"\"Спрятать приложение в меню приложений|Прячет иконку приложения в меню приложений, может потребоваться перезагрузка.
 Это приложение будет доступно через Xposed Installer.\"\"\""</string>
   <string name="preferences_DeepXposedLogging">"Подробное логгирование Xposed|Разрешить подробное логгирование Xposed, после разрешения перезагрузить, чтобы увидеть изменения"</string>
@@ -230,7 +233,7 @@
   <string name="presetsManager_LoadMore">"Загрузка...|Пожалуйста, подождите...|Показать больше шаблонов|Нажмите сюда, чтобы отобразить больше шаблонов.|Конец.|Больше шаблонов нет.|Нажмите, чтобы попробовать снова."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Вы уверены, что хотите перезагрузить устройство?|Вы уверены, что хотите выключить устройство?"</string>
   <string name="advancedPrefs_Confirmation">"Запрос подтверждения|Включить запрос подтверждения перед перезагрузкой или выключением."</string>
-    <string name="advancedPrefs_HideOnClick">"Скрыть по нажатии"</string>
+  <string name="advancedPrefs_HideOnClick">"Скрыть по нажатии"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Скрыть меню при нажатии на переключатель."</string>
   <string name="advancedPrefs_LoadAppIcons">"Загрузить иконки приложений"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Загрузить иконки приложений для кнопок ярлыков приложений."</string>
@@ -433,7 +436,7 @@
   <string name="powerMenu_No_Task_To_Kill">Не найдены задания, которые можно убить.</string>
   <string name="powerMenuMain_MenuBackground">Фон Меню</string>
   <string name="visibilityOrder_MissingPermissionForCamera">Нет разрешения на использование камеры, предоставьте чтобы использовать переключатель!</string>
-  <string name="visibilityOrder_NotSupportedbyDevice">Ваше устройство не поддерживает эдемент \"[TITLE]\"!</string>
+  <string name="visibilityOrder_NotSupportedbyDevice">Ваше устройство не поддерживает элемент \"[TITLE]\"!</string>
   <string name="powerMenuMain_FakePowerOff">Выключение (Фэйк)</string>
   <string name="crop_failedToSave">Невозможно сохранить, попробуйте ещё раз...\nДля дополнительной информации проверьте логи.</string>
   <string name="visibilityOrder_Horizontal">Показывать элементы горизонтально</string>
@@ -442,4 +445,10 @@
   <string name="position_Vertical">Вертикально:</string>
   <string name="visibilityOrder_AddMultiItem">Добавить</string>
   <string name="visibilityOrder_EditMultiItemChoices">Изменить цвет элемента|Удалить элемент</string>
+  <string name="graphics_RadiusTitle">Радиус круга</string>
+  <string name="graphics_RadiusDesc">Выберите зкругление фонов графики меню выключения.(По умолчанию: 100%)</string>
+  <string name="advancedPrefsDesc_RoundedCorners">Включить/отключить закругление углов диалога меню выключения.</string>
+  <string name="advancedPrefsTitle_RoundedCorners">Закругление углов диалога</string>
+  <string name="advancedPrefsTitle_RoundedCornersRadius">Радиус закругления углов диалога</string>
+  <string name="advancedPrefsDesc_RoundedCornersRadius">Выберите на сколько будут закруглены углы диалога. (По умолчанию 0%)</string>
 </resources>

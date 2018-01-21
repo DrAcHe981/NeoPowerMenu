@@ -232,7 +232,7 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="presetsManager_LoadMore">"Carregando...|Aguarde...|Mais predefinições|Clique aqui para mostrar mais predefinições.|O Fim.|Não há mais nenhuma.|Toque para repetir. "</string>
   <string name="powerMenu_SureToRebootPowerOff">"Tem certeza que deseja reiniciar o dispositivo?|Tem certeza que deseja desligar o dispositivo? "</string>
   <string name="advancedPrefs_Confirmation">"Pedir confirmação|Ative para pedir confirmação ao desligar ou reiniciar o dispositivo. "</string>
-    <string name="advancedPrefs_HideOnClick">"Esconder ao clicar"</string>
+  <string name="advancedPrefs_HideOnClick">"Esconder ao clicar"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Esconder o menu ao clicar em um botão de ativação."</string>
   <string name="advancedPrefs_LoadAppIcons">"Carregar Ícones de Apps"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Carrega ícones para os botões de atalho de aplicativo."</string>

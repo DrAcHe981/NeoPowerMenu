@@ -209,7 +209,7 @@
   <string name="presetsManager_LoadMore">"Načítám...|Prosím čekejte...|Zobrazit více předvoleb|Klikněte zde pro zobrazení více předvoleb.|Konec.|Žádné další předvolby k zobrazení.|Zkuste to znovu kliknutím zde."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Opravdu chcete restartovat vaše zařízení?|Opravdu chcete vypnout vaše zařízení?"</string>
   <string name="advancedPrefs_Confirmation">"Požadavek na potvrzení|Zapne potvrzovací dialog před restartováním nebo vypnutím telefonu."</string>
-    <string name="advancedPrefs_HideOnClick">"Schovat po kliknutí"</string>
+  <string name="advancedPrefs_HideOnClick">"Schovat po kliknutí"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Kliknutím na přepínací tlačítko, se schová menu."</string>
   <string name="advancedPrefs_LoadAppIcons">"Nahrát ikony aplikace"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Nahrát ikony aplikace na zástupce."</string>

@@ -205,7 +205,7 @@
   <string name="presetsManager_LoadMore">"Memuat... | Mohon tunggu... | Tampilkan preset lebih lanjut Klik di sini untuk menampilkan lebih banyak preset. | Akhir | Tidak ada lagi preset yang akan ditampilkan. | Klik di sini untuk mencoba lagi."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Yakin ingin me-reboot perangkat Anda?|Apakah Anda yakin ingin mematikan perangkat?"</string>
   <string name="advancedPrefs_Confirmation">"Membutuhkan konfirmasi|Aktifkan dialog konfirmasi sebelum melakukan reboot atau matikan."</string>
-    <string name="advancedPrefs_HideOnClick">"Sembunyikan di klik"</string>
+  <string name="advancedPrefs_HideOnClick">"Sembunyikan di klik"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Sembunyikan menu saat mengklik tombol pengalih."</string>
   <string name="advancedPrefs_LoadAppIcons">"Ikon Aplikasi Muat"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Muatkan ikon App untuk tombol pintasan aplikasi."</string>

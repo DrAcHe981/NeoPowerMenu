@@ -209,7 +209,7 @@
   <string name="presetsManager_LoadMore">"Cargando... | Por favor, espere... | Mostrar más temad| Haga clic aquí para mostrar más temas. | El final. | No hay más temas para mostrar. | Haga clic aquí para intentarlo de nuevo."</string>
   <string name="powerMenu_SureToRebootPowerOff">"¿Está seguro de que quieres reiniciar el dispositivo? | ¿Seguro desea apagar el dispositivo?"</string>
   <string name="advancedPrefs_Confirmation">"Requiere confirmación | Permitir un cuadro diálogo de confirmación antes de reiniciar el o apagar."</string>
-    <string name="advancedPrefs_HideOnClick">"Ocultar con un clic"</string>
+  <string name="advancedPrefs_HideOnClick">"Ocultar con un clic"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Ocultar el menú haciendo clic en un botón."</string>
   <string name="advancedPrefs_LoadAppIcons">"Cargar iconos"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Los iconos de aplicación para los botones de acceso directo de aplicación de la carga."</string>

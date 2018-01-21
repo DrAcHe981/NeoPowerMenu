@@ -204,7 +204,7 @@
   <string name="presetsManager_LoadMore">"読み込み中...|お待ちください...|さらにプリセットを表示|ここをタップすると他のプリセットを表示します。|終わりです。|表示するプリセットがありません。|ここをタップすると再試行します。"</string>
   <string name="powerMenu_SureToRebootPowerOff">"再起動しますか?|シャットダウンしますか?"</string>
   <string name="advancedPrefs_Confirmation">"確認を表示する|再起動や電源を切る前に確認ダイアログを表示します。"</string>
-    <string name="advancedPrefs_HideOnClick">"タップで隠す"</string>
+  <string name="advancedPrefs_HideOnClick">"タップで隠す"</string>
   <string name="advancedPrefs_HideOnClickDesc">"トグルボタンをタップした時にメニューを隠します。"</string>
   <string name="advancedPrefs_LoadAppIcons">"アプリのアイコンを読み込む"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"アプリショートカットボタンのアイコンをアプリのアイコンにします。"</string>

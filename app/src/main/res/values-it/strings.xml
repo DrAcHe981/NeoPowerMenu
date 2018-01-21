@@ -181,7 +181,7 @@
   <string name="presetsManager_LoadMore">"Loading... | Si prega di attendere... | Visualizza più preset | Clicca qui per visualizzare più preset. | Alla fine. | Non più preset per mostrare. | Clicca qui per riprovare."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Sei sicuro di voler riavviare il dispositivo? | Sei sicuro di voler spegnere il dispositivo?"</string>
   <string name="advancedPrefs_Confirmation">"Richiesta la conferma | Attivare una finestra di dialogo di conferma prima di riavvio o spegnimento."</string>
-    <string name="advancedPrefs_HideOnClick">"Nascondi cliccando"</string>
+  <string name="advancedPrefs_HideOnClick">"Nascondi cliccando"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Nascondi il menù quando clicchi sull'interruttore."</string>
   <string name="advancedPrefs_LoadAppIcons">"Carica icone App"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Carica icone App per pulsanti scorciatoie."</string>
