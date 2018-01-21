@@ -202,17 +202,13 @@
   <string name="preferences_DeepXposedLogging">"Pokročilé logování Xposed|Volba povolí pokročilé logování Xposed, pokud volbu povolíte, restartujte telefon pro správnou funkci."</string>
   <string name="preferencesCategory_About">"O aplikaci"</string>
   <string name="preferences_NeoSource">"Zdroj|NeoPowerMenu je open source.\nPro více informací navštivte GitHub."</string>
-  <string name="preferences_Share">"Sdílet|Líbí se vám aplikace? Nasdílejte ji svým přátelům."</string>
   <string name="preferences_About">"Naprogramoval Neon-Soft / DrAcHe981|Aplikace založena na kódu Naman Dwivedi (naman14).\nPro získání více informací, klikněte zde."</string>
-  <string name="animations_Items">"Pozadí|Dialogy|Ikony|Položky na jeden řádek|Více položek na řádek"</string>
-  <string name="animations_Speeds">"Nejrychlejší|Rychlejší|Rychlé|Normalní|Pomalé|Pomalejší|Nejpomalejší"</string>
   <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Rychlost"</string>
   <string name="powerMenuMain_Progress">"Animace načítání"</string>
   <string name="presetsManager_LoadMore">"Načítám...|Prosím čekejte...|Zobrazit více předvoleb|Klikněte zde pro zobrazení více předvoleb.|Konec.|Žádné další předvolby k zobrazení.|Zkuste to znovu kliknutím zde."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Opravdu chcete restartovat vaše zařízení?|Opravdu chcete vypnout vaše zařízení?"</string>
   <string name="advancedPrefs_Confirmation">"Požadavek na potvrzení|Zapne potvrzovací dialog před restartováním nebo vypnutím telefonu."</string>
-  <string name="preferences_Donate">"Podpořit|Líbí se vám tato aplikace?\nProč by jste nemohli podpořit vývojáře šálkem kafé nebo něčeho jiného?"</string>
   <string name="advancedPrefs_HideOnClick">"Schovat po kliknutí"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Kliknutím na přepínací tlačítko, se schová menu."</string>
   <string name="advancedPrefs_LoadAppIcons">"Nahrát ikony aplikace"</string>
