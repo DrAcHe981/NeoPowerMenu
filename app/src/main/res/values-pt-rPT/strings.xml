@@ -97,8 +97,7 @@ Essa configuração só está acessível no Xposed Installer.\""</string>
   <string name="preferences_DeepXposedLogging">"Logs do xposed|Ativar logs avançados no xposed,após ativar, reinicie para ver as mudanças."</string>
   <string name="preferencesCategory_About">"Sobre"</string>
   <string name="preferences_NeoSource">"Fonte|NeoPowerMenu é um código aberto, cheque a fonte no GitHub"</string>
-  <string name="preferences_Share">"Compartilhar|Gostou do aplicativo? Compartilhe-o para todos seus amigos."</string>
-  <string name="preferences_About">"Código por Neon-Soft / DrAcHe981|Baseado em um código feito por Naman Dwivedi (naman14)."</string>
+    <string name="preferences_About">"Código por Neon-Soft / DrAcHe981|Baseado em um código feito por Naman Dwivedi (naman14)."</string>
   <!-- Power Menu -->
   <!-- Preferences: Advanced -->
 </resources>

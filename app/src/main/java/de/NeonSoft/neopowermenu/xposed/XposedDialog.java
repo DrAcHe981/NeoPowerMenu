@@ -7,7 +7,6 @@ import android.app.admin.DevicePolicyManager;
 import android.bluetooth.*;
 import android.content.*;
 import android.content.pm.*;
-import android.filterfw.core.Frame;
 import android.graphics.*;
 import android.graphics.drawable.*;
 import android.hardware.fingerprint.FingerprintManager;
@@ -36,6 +35,7 @@ import de.NeonSoft.neopowermenu.services.*;
 import eu.chainfire.libsuperuser.*;
 
 import java.io.*;
+import java.sql.Time;
 import java.util.*;
 
 import static de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen.MY_PERMISSIONS_REQUEST;
@@ -103,7 +103,7 @@ public class XposedDialog extends DialogFragment {
     FrameLayout frame3;
     FrameLayout frameConfirm;
     FrameLayout frameEnterPassword;
-    LinearLayout frameLinear, frame2Linear, frame3Linear, frameConfirmLinear, frameEnterPasswordLinear;
+    LinearLayout frameLinear, /*frame2Linear,*/ frame3Linear, frameConfirmLinear, frameEnterPasswordLinear;
     ScrollView frameScroll, frame3Scroll;
     FrameLayout revealViewHolder;
     private CircularRevealView revealView;
@@ -213,7 +213,7 @@ public class XposedDialog extends DialogFragment {
         animationPrefs = mContext.getSharedPreferences("animations", 0);
         HookShutdownThread = preferences.getBoolean("HookShutdownThread", false);
         mDeepXposedLogging = preferences.getBoolean(PreferenceNames.pDeepXposedLogging, false);
-        mHideOnClick = preferences.getBoolean(PreferenceNames.pLoadAppIcons, false);
+        mHideOnClick = preferences.getBoolean(PreferenceNames.pHideOnClick, false);
         mLoadAppIcons = preferences.getBoolean(PreferenceNames.pLoadAppIcons, true);
         mColorizeNonStockIcons = preferences.getBoolean(PreferenceNames.pColorizeNonStockIcons, false);
         mGraphicsPadding = preferences.getFloat(PreferenceNames.pGraphicsPadding, 0);
@@ -296,7 +296,7 @@ public class XposedDialog extends DialogFragment {
         frameScroll = (ScrollView) PowerDialog.findViewById(R.id.frameScroll);
         frame2 = (FrameLayout) PowerDialog.findViewById(R.id.frame2);
         frame2.setVisibility(View.GONE);
-        frame2Linear = (LinearLayout) PowerDialog.findViewById(R.id.frame2Linear);
+        //frame2Linear = (LinearLayout) PowerDialog.findViewById(R.id.frame2Linear);
         frame3 = (FrameLayout) PowerDialog.findViewById(R.id.frame3);
         frame3.setVisibility(View.GONE);
         frame3Linear = (LinearLayout) PowerDialog.findViewById(R.id.frame3Linear);
@@ -432,13 +432,13 @@ public class XposedDialog extends DialogFragment {
         //frameConfirm.setLayoutParams(params2);
         //frameEnterPassword.setLayoutParams(params2);
 
-        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) < mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) < mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
             LayoutTransition lt = new LayoutTransition();
             dialogMain.setLayoutTransition(lt);
             dialogContent.setLayoutTransition(lt);
         }
 
-        frame2Linear.setGravity(Gravity.CENTER);
+        //frame2Linear.setGravity(Gravity.CENTER);
 
         status = (TextView) PowerDialog.findViewById(R.id.status);
         status_detail = (TextView) PowerDialog.findViewById(R.id.status_detail);
@@ -510,12 +510,13 @@ public class XposedDialog extends DialogFragment {
         mHandler.postDelayed(mRun, 250L);
 
         if (XposedMainActivity.isShortcutWithVisibleContent) {
-            int animationId = animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]);
+            int animationId = animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]);
             if (animationId != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                Animation anim = helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false);
                 if (animationId >= 6 && animationId <= 9) {
-                    dialogContent.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                    dialogContent.startAnimation(anim);
                 } else {
-                    dialogMain.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                    dialogMain.startAnimation(anim);
                 }
             }
         } else {
@@ -656,8 +657,8 @@ public class XposedDialog extends DialogFragment {
         } else {
             root.setVisibility(View.INVISIBLE);
         }
-        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[10][1].toString(), PreferencesAnimationsFragment.defaultTypes[10]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-            root.startAnimation(helper.getAnimation(mContext, animationPrefs, 9, false));
+        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_SingleLine+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_SingleLine+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+            root.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_SingleLine, false));
         }
         return inflated;
     }
@@ -723,8 +724,8 @@ public class XposedDialog extends DialogFragment {
                         performMenuClick(id, XposedMainActivity.mItems.get(id).getTitle(finalI), p1);
                     }
                 });
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[13][1].toString(), PreferencesAnimationsFragment.defaultTypes[13]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    Animation anim = helper.getAnimation(mContext, animationPrefs, 12, false);
+                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_MultiLine+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_MultiLine+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                    Animation anim = helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_MultiLine, false);
                     anim.setStartOffset((anim.getDuration() / 30) * ((i-1) * 3));
                     root.startAnimation(anim);
                 }
@@ -1038,8 +1039,8 @@ public class XposedDialog extends DialogFragment {
                                             android.graphics.PorterDuff.Mode.MULTIPLY);
                                 }
                                 foreground.setVisibility(View.VISIBLE);
-                                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                    foreground.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
+                                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                                    foreground.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, false));
                                 }
                             } catch (PackageManager.NameNotFoundException e) {
                                 foreground.setVisibility(View.INVISIBLE);
@@ -1153,8 +1154,8 @@ public class XposedDialog extends DialogFragment {
                             image.setPadding((int) helper.convertDpToPixel(5, mContext), (int) helper.convertDpToPixel(5, mContext), (int) helper.convertDpToPixel(5, mContext), (int) helper.convertDpToPixel(5, mContext));
                             image.setColorFilter(Color.parseColor("#ffffff"),
                                     android.graphics.PorterDuff.Mode.DST);
-                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                image.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, true));
+                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                                image.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, true));
                             }
                             image.setVisibility(View.INVISIBLE);
                             super.onLoadingStarted(imageUri, view);
@@ -1169,8 +1170,8 @@ public class XposedDialog extends DialogFragment {
                                         android.graphics.PorterDuff.Mode.MULTIPLY);
                             }
                             image.setVisibility(View.VISIBLE);
-                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                image.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
+                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                                image.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, false));
                             }
                         }
 
@@ -1181,8 +1182,8 @@ public class XposedDialog extends DialogFragment {
                             image.setColorFilter(Color.parseColor(color),
                                     android.graphics.PorterDuff.Mode.MULTIPLY);
                             image.setVisibility(View.VISIBLE);
-                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                image.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
+                            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                                image.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, false));
                             }
                         }
                     });
@@ -1193,8 +1194,8 @@ public class XposedDialog extends DialogFragment {
             image.setColorFilter(Color.parseColor(color),
                     android.graphics.PorterDuff.Mode.MULTIPLY);
             image.setVisibility(View.VISIBLE);
-            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                image.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
+            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                image.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, false));
             }
         }
     }
@@ -1312,11 +1313,11 @@ public class XposedDialog extends DialogFragment {
             }
             if (frame3.getVisibility() == View.GONE) {
                 frame3.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
                     if (confirmDialog.isEmpty()) {
-                        frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
+                        frame.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true));
                     }
-                    frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                    frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false));
                 }
                 if (!confirmDialog.isEmpty()) {
                     confirmDialog = "";
@@ -1324,9 +1325,9 @@ public class XposedDialog extends DialogFragment {
                 frame.setVisibility(View.GONE);
             } else {
                 frame.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
-                    frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                    frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true));
+                    frame.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false));
                 }
                 frame3.setVisibility(View.GONE);
             }
@@ -1482,16 +1483,16 @@ public class XposedDialog extends DialogFragment {
                     frameEnterPasswordLinear.setLayoutTransition(new LayoutTransition());
                     if (frame3.getVisibility() == View.GONE) {
                         frameEnterPassword.setVisibility(View.VISIBLE);
-                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true));
+                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false));
                         }
                         frame.setVisibility(View.GONE);
                     } else {
                         frameEnterPassword.setVisibility(View.VISIBLE);
-                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
-                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true));
+                            frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false));
                         }
                         frame3.setVisibility(View.GONE);
                     }
@@ -1542,16 +1543,16 @@ public class XposedDialog extends DialogFragment {
                     });
                     if (frame3.getVisibility() == View.GONE) {
                         frameConfirm.setVisibility(View.VISIBLE);
-                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                            frame.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true));
+                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false));
                         }
                         frame.setVisibility(View.GONE);
                     } else {
                         frameConfirm.setVisibility(View.VISIBLE);
-                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[1]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
-                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, false));
+                        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                            frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true));
+                            frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false));
                         }
                         frame3.setVisibility(View.GONE);
                     }
@@ -2025,18 +2026,18 @@ public class XposedDialog extends DialogFragment {
         //final Point p = getLocationInView(revealView, v);
         int centerX = revealViewHolder.getWidth() / 2;
         int centerY = revealViewHolder.getHeight() / 2;
-        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-            Animation anim = helper.getAnimation(mContext, animationPrefs, 0, false);
+        if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Reveal+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Reveal+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+            Animation anim = helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Reveal, false);
             if (frame3.getVisibility() == View.VISIBLE) {
-                frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+                frame3.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Reveal, true));
             } else if (frame.getVisibility() == View.VISIBLE) {
-                frame.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+                frame.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Reveal, true));
             } else if (frameConfirm.getVisibility() == View.VISIBLE) {
-                frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+                frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Reveal, true));
             } else if (frameEnterPassword.getVisibility() == View.VISIBLE) {
-                frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 0, true));
+                frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Reveal, true));
             }
-            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[1][1].toString(), PreferencesAnimationsFragment.defaultTypes[0]) == 1) {
+            if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Reveal+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Reveal+PreferencesAnimationsFragment.anim_Type]) == 1) {
                 revealView.reveal(centerX, centerY, color,  0, anim.getDuration(), null);
             } else {
                 revealView.reveal(centerX, centerY, color, 0, 0, null);
@@ -2115,34 +2116,8 @@ public class XposedDialog extends DialogFragment {
                                     progressbg.setColorFilter(Color.parseColor(colorPrefs.getString("Dialog" + showingFor + "_Textcolor", "#ffffff")),
                                             android.graphics.PorterDuff.Mode.MULTIPLY);
                                 }
-                                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                    Animation blendIn = helper.getAnimation(mContext, animationPrefs, 6, false);
-                                    blendIn.setAnimationListener(new Animation.AnimationListener() {
-
-                                        @Override
-                                        public void onAnimationEnd(Animation p1) {
-
-                                            Animation progressAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate_right);
-                                            progressAnim.setRepeatMode(Animation.RESTART);
-                                            progressAnim.setRepeatCount(Animation.INFINITE);
-                                            progressbg.startAnimation(progressAnim);
-                                        }
-
-                                        @Override
-                                        public void onAnimationRepeat(Animation p1) {
-
-                                        }
-
-                                        @Override
-                                        public void onAnimationStart(Animation p1) {
-
-                                        }
-                                    });
-                                    progressbg.startAnimation(blendIn);
-                                } else {
-                                    Animation progressAnim = AnimationUtils.loadAnimation(mContext, R.anim.rotate_right);
-                                    progressAnim.setRepeatMode(Animation.RESTART);
-                                    progressAnim.setRepeatCount(Animation.INFINITE);
+                                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Progressbar+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types_Progressbar).split("\\|").length - 1) {
+                                    Animation progressAnim = helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Progressbar, false, progressbg);
                                     progressbg.startAnimation(progressAnim);
                                 }
                             }
@@ -2152,8 +2127,8 @@ public class XposedDialog extends DialogFragment {
                                 Log.w("NPM", "[xposedDialog] Failed to load image '" + imageUri + "': " + failReason.getCause().toString());
                                 progress.getIndeterminateDrawable().setColorFilter(Color.parseColor(colorPrefs.getString("Dialog" + showingFor + "_Textcolor", "#ffffff")), android.graphics.PorterDuff.Mode.MULTIPLY);
                                 progress.setVisibility(View.VISIBLE);
-                                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                    progress.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
+                                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                                    progress.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, false));
                                 }
                             }
                         });
@@ -2161,8 +2136,8 @@ public class XposedDialog extends DialogFragment {
         } else {
             if (preferences.getString("ProgressDrawable", "Stock").equalsIgnoreCase("Stock")) {
                 progress.getIndeterminateDrawable().setColorFilter(Color.parseColor(colorPrefs.getString("Dialog" + showingFor + "_Textcolor", "#ffffff")), android.graphics.PorterDuff.Mode.MULTIPLY);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    progress.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
+                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                    progress.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, false));
                 }
             } else {
                 progress.setVisibility(View.GONE);
@@ -2208,8 +2183,8 @@ public class XposedDialog extends DialogFragment {
             if (p1 == null && preferences.getBoolean(PreferenceNames.pUseGraphics, false)) {
                 progressbg.setImageDrawable(image);
                 progressbg.setVisibility(View.VISIBLE);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    progressbg.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
+                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                    //progressbg.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, false, progressbg));
                 }
                 ((AnimationDrawable) progressbg.getDrawable()).start();
             } else {
@@ -2217,8 +2192,8 @@ public class XposedDialog extends DialogFragment {
                 progressbg.setVisibility(View.INVISIBLE);
                 progress.setVisibility(View.VISIBLE);
                 progress.getIndeterminateDrawable().setColorFilter(Color.parseColor(colorPrefs.getString("Dialog" + showingFor + "_Textcolor", "#ffffff")), android.graphics.PorterDuff.Mode.MULTIPLY);
-                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[2]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    progress.startAnimation(helper.getAnimation(mContext, animationPrefs, 6, false));
+                if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                    progress.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Icons, false, progressbg));
                 }
             }
         }
@@ -2327,39 +2302,59 @@ public class XposedDialog extends DialogFragment {
             if (canDismiss || mPreviewMode) {
                 if (!isDismissing) {
                     isDismissing = true;
-                    int speed = 0;
-                    int animationId = animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]);
+                    Animation anim = null;
+                    int animationId = animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]);
                     if (mContext != null && animationId != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                        Animation anim = helper.getAnimation(mContext, animationPrefs, 3, true);
-                        if (animationId >= 6 && animationId <= 9) {
-                            dialogContent.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
-                        } else {
-                            dialogMain.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
-                        }
-                        speed = (int) anim.getDuration();
+                        anim = helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true);
                     }
-                    new Handler().postDelayed(new Runnable() {
+                    if (anim != null) {
+                        long speed = anim.getDuration();
+                        anim.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
 
-                        @Override
-                        public void run() {
-                            if (dialogContent != null) dialogContent.setVisibility(View.GONE);
-                            if (dialogMain != null) dialogMain.setVisibility(View.GONE);
-                            menuHost.dismissThis();
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                if (dialogContent != null) dialogContent.setVisibility(View.GONE);
+                                if (dialogMain != null) dialogMain.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+                        if (animationId >= 6 && animationId <= 9) {
+                            dialogContent.startAnimation(anim);
+                        } else {
+                            dialogMain.startAnimation(anim);
                         }
-                    }, Math.max(speed - 100, 0));
+                        mHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                menuHost.dismissThis();
+                            }
+                        }, Math.max(speed - 200, 0));
+                    } else {
+                        if (dialogContent != null) dialogContent.setVisibility(View.GONE);
+                        if (dialogMain != null) dialogMain.setVisibility(View.GONE);
+                        menuHost.dismissThis();
+                    }
                 }
             }
         } else {
             if (!confirmDialog.isEmpty()) {
                 if (SubDialogs.get(SubDialogs.size() - 1).equalsIgnoreCase("EnterPassword")) {
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                        frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
+                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                        frameEnterPassword.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true));
                     }
                     if (mFingerprintHandler != null) mFingerprintHandler.stopAuth();
                     frameEnterPassword.setVisibility(View.GONE);
                 } else {
-                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                        frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, 3, true));
+                    if (animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                        frameConfirm.startAnimation(helper.getAnimation(mContext, animationPrefs, PreferencesAnimationsFragment.anim_Dialog, true));
                     }
                     frameConfirm.setVisibility(View.GONE);
                 }

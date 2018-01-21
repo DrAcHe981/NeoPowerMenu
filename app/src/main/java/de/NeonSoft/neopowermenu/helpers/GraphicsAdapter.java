@@ -19,8 +19,6 @@ import de.NeonSoft.neopowermenu.Preferences.*;
 
 import java.util.*;
 
-import android.content.pm.PackageManager.*;
-
 public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
 
     Activity mActivity;
@@ -45,7 +43,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
 
         final ViewHolder holder = new ViewHolder();
         holder.imgQueueBg = (ImageView) InflatedView.findViewById(de.NeonSoft.neopowermenu.R.id.imgQueueBg);
-        GraphicDrawable drawable = GraphicDrawable.builder().beginConfig().setContext(mActivity).endConfig().buildRoundRect(null, mActivity.getResources().getColor(R.color.colorPrimaryDarkDarkTheme), (PreferencesGraphicsFragment.int_radius/2) * 3);
+        GraphicDrawable drawable = GraphicDrawable.builder().beginConfig().setContext(mActivity).endConfig().buildRoundRect(null, mActivity.getResources().getColor(R.color.colorPrimaryDarkDarkTheme), (PreferencesGraphicsFragment.int_radius/2) * 4);
         holder.imgQueueBg.setImageDrawable(drawable);
         holder.imgQueue = (ImageView) InflatedView.findViewById(de.NeonSoft.neopowermenu.R.id.imgQueue);
         holder.imgQueue.setPadding((int) helper.convertDpToPixel(20, mActivity), (int) helper.convertDpToPixel(20, mActivity), (int) helper.convertDpToPixel(20, mActivity), (int) helper.convertDpToPixel(20, mActivity));
@@ -112,10 +110,10 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
                             holder.imgQueue.setImageBitmap(loadedImage);
                             holder.imgQueue.setVisibility(View.VISIBLE);
                             if (mGraphics.get(position).getName().equalsIgnoreCase("Progress")) {
-                                Animation progressAnim = AnimationUtils.loadAnimation(mActivity, R.anim.rotate_right);
-                                progressAnim.setRepeatMode(Animation.RESTART);
-                                progressAnim.setRepeatCount(Animation.INFINITE);
-                                holder.imgQueue.startAnimation(progressAnim);
+                                if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Progressbar+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Icons+PreferencesAnimationsFragment.anim_Type]) != mActivity.getString(R.string.animations_Types_Progressbar).split("\\|").length - 1) {
+                                    Animation progressAnim = helper.getAnimation(mActivity, MainActivity.animationPrefs, PreferencesAnimationsFragment.anim_Progressbar, false, holder.imgQueue);
+                                    holder.imgQueue.startAnimation(progressAnim);
+                                }
                             }
                         }
 

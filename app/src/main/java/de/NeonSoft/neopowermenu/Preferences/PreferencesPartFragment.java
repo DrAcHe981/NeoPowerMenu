@@ -157,8 +157,9 @@ public class PreferencesPartFragment extends Fragment {
         for (int i = 0; i < PreferencesAnimationsFragment.names.length; i++) {
             if ((int) PreferencesAnimationsFragment.names[i][0] == animationsAdapter.TYPE_ITEM) {
                 if (PreferencesAnimationsFragment.names[i][1].toString().contains("type") && MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i][1].toString(), -1) == -1) {
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i][1].toString(), PreferencesAnimationsFragment.defaultTypes[i]).apply();
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + 1][1].toString(), 3).apply();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[i + PreferencesAnimationsFragment.anim_Type]).apply();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Interpolator][1].toString(), 0).apply();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Speed][1].toString(), 3).apply();
                 }
             }
         }

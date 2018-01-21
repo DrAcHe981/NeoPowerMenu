@@ -162,8 +162,7 @@ Dit instellingenscherm zal na het verbergen alleen toegankelijk zijn via de Xpos
   <string name="preferences_DeepXposedLogging">"Xposed logging|Schakel geavanceerde Xposed logging in en start opnieuw op om door te voeren."</string>
   <string name="preferencesCategory_About">"Over"</string>
   <string name="preferences_NeoSource">"Bron|NeoPowerMenu is open source.\nBekijk de broncode op GitHub."</string>
-  <string name="preferences_About">"\"\"\"Code door Neon-Soft / DrAcHe981|Gebaseerd op code van Naman Dwivedi (naman14).
-Klik hier voor meer informatie.\"\"\""</string>
+  <string name="preferences_About">Code door Neon-Soft / DrAcHe981|Gebaseerd op code van Naman Dwivedi (naman14).\nKlik hier voor meer informatie.</string>
   <string name="errorActivity_MoreInfo">"Meer info"</string>
   <string name="tourPage_Next">"Volgende"</string>
   <string name="tourPage_Skip">"Overslaan"</string>

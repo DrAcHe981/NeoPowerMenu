@@ -244,7 +244,7 @@ public class downloadHelper {
                 try {
                     try {
                         String name = p1[0].toString().split("/")[p1[0].toString().split("/").length - 1];
-                        Log.i("NPM", "[downloadHelper] Initializing download: \nServer: " + p1[0] + "\nFile Name: " + name);
+                        Log.i("NPM", "[downloadHelper] Initializing download: \nServer: " + p1[0] + "\nDownload to: " + p1[1]  + "/\nFile Name: " + name);
                         URL url = new URL(p1[0].toString().replace(" ", "%20"));
                         file = p1[1] + "/" + name;
                         if (new File(file).exists()) {

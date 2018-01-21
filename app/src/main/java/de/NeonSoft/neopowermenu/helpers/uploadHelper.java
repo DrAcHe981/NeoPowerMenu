@@ -371,7 +371,7 @@ public class uploadHelper {
                     dos.writeBytes(lineEnd);
                     dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
                     // Responses from the server (code and message)
-                    //serverResponseCode = conn.getResponseCode();
+                    int serverResponseCode = conn.getResponseCode();
                     //String serverResponseMessage = conn.getResponseMessage();
                     //if(serverResponseCode==200) {
                     InputStream serverErrorMessage = conn.getInputStream();
@@ -381,8 +381,8 @@ public class uploadHelper {
                     while ((errorMsgB = br.readLine()) != null) {
                         errorMsg += errorMsgB + "\n";
                     }
-                    Log.i("NPM", "[uploadHelper] HTTP Message is : " + errorMsg.split(",")[0]);
-                    return errorMsg;
+                    Log.i("NPM", "[uploadHelper] HTTP response is: " + serverResponseCode + ": " + errorMsg.split(",")[0]);
+                    return serverResponseCode + "|" + errorMsg;
                     //}
                     //Log.i("NPM:uH", "HTTP Response is : " + serverResponseMessage + ": " + serverResponseCode);
                     //if(serverResponseCode==200) {
@@ -390,10 +390,10 @@ public class uploadHelper {
                     //}
                 } catch (MalformedURLException ex) {
                     Log.e("NPM", "[uploadHelper] " + instanceName + "> "+ ex.toString());
-                    return "Failed at: "+STATE_NAMES[getState()];
+                    return "-1|" + "Failed at: "+STATE_NAMES[getState()];
                 } catch (Throwable e) {
                     Log.e("NPM", "[uploadHelper] " + instanceName + "> "+ e.toString());
-                    return "Failed at: "+STATE_NAMES[getState()];
+                    return "-1|" + "Failed at: "+STATE_NAMES[getState()];
                 }
             } // End else block
         }
@@ -445,22 +445,27 @@ public class uploadHelper {
                 dos.close();
             } catch (Throwable ignored) {
             }
-            if (p1.contains("success")) {
-                mInterface.onUploadComplete(p1);
+            String[] result = p1.split("\\|");
+            if (result[1].contains("success")) {
+                mInterface.onUploadComplete(result[1]);
             } else {
-                switch (getState()) {
-                    case 1:
-                        mInterface.onUploadFailed((mActivity == null ? mContext : mActivity).getString(R.string.uploadHelper_FailedAt1));
-                        break;
-                    case 2:
-                        mInterface.onUploadFailed((mActivity == null ? mContext : mActivity).getString(R.string.uploadHelper_FailedAt2));
-                        break;
-                    case 3:
-                        mInterface.onUploadFailed((mActivity == null ? mContext : mActivity).getString(R.string.uploadHelper_FailedAt3));
-                        break;
-                    default:
-                        mInterface.onUploadFailed((mActivity == null ? mContext : mActivity).getString(R.string.uploadHelper_UnknownError));
-                        break;
+                if (Integer.parseInt(result[0]) == 200) {
+                    mInterface.onUploadFailed(result[1]);
+                } else {
+                    switch (getState()) {
+                        case 1:
+                            mInterface.onUploadFailed((mActivity == null ? mContext : mActivity).getString(R.string.uploadHelper_FailedAt1));
+                            break;
+                        case 2:
+                            mInterface.onUploadFailed((mActivity == null ? mContext : mActivity).getString(R.string.uploadHelper_FailedAt2));
+                            break;
+                        case 3:
+                            mInterface.onUploadFailed((mActivity == null ? mContext : mActivity).getString(R.string.uploadHelper_FailedAt3));
+                            break;
+                        default:
+                            mInterface.onUploadFailed((mActivity == null ? mContext : mActivity).getString(R.string.uploadHelper_UnknownError));
+                            break;
+                    }
                 }
             }
             isRunning = false;

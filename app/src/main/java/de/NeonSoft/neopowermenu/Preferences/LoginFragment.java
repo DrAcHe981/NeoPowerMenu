@@ -325,9 +325,9 @@ public class LoginFragment extends Fragment {
             public void onClick(View p1) {
                 
                 MainActivity.loggedIn = false;
-                MainActivity.usernameemail = "null";
-                MainActivity.password = "null";
-                MainActivity.accountUniqeId = "none";
+                MainActivity.usernameemail = "";
+                MainActivity.password = "";
+                MainActivity.accountUniqeId = "";
                 MainActivity.userRank = "U";
                 MainActivity.preferences.edit().putBoolean("autoLogin", false)
                         .remove("ueel")
