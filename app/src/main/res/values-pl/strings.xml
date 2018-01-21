@@ -142,6 +142,5 @@ Ustawienia będą dostępne jedynie przez Xposed Installer.\"\"\""</string>
   <string name="preferencesCategory_About">"O aplikacji"</string>
   <string name="preferences_NeoSource">"\"\"\"Źródło|Aplikacja ma otwarte źródło.
 Sprawdź źródła na GitHub\"\"\""</string>
-  <string name="preferences_Share">"Udostępnij|Lubisz tą aplikację? Podziel się nią ze znajomymi!"</string>
   <string name="preferences_About">"Kod: Neon-Soft / DrAcHe981|Oparte na źródle od Naman Dwivedi(naman14)."</string>
 </resources>
