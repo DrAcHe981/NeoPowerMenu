@@ -198,17 +198,13 @@
   <string name="preferences_DeepXposedLogging">"Deep Xposed logging|Aktifkan logging Xposed lanjutan, setelah mengaktifkan reboot untuk melihat perubahan."</string>
   <string name="preferencesCategory_About">"Tentang"</string>
   <string name="preferences_NeoSource">"Sumber | NeoPowerMenu adalah open source. \n Periksa sumber di GitHub."</string>
-  <string name="preferences_Share">"Bagikan | Seperti apl? Berbagi dengan teman Anda."</string>
   <string name="preferences_About">"Kode oleh Neon-Soft / DrAcHe981|berdasarkan sumber Naman Dwivedi (naman14). \n Klik di sini untuk mendapatkan info lebih lanjut."</string>
-  <string name="animations_Items">"Latar Belakang | Dialog | Ikon | Item baris tunggal | Item multi baris"</string>
-  <string name="animations_Speeds">"Sangat cepat | Cepat | Cepat | Normal | Lambat | Lebih lambat | Sangat lambat"</string>
   <string name="animations_Type">"Mengetik"</string>
   <string name="animations_Speed">"Kecepatan"</string>
   <string name="powerMenuMain_Progress">"Memuat lingkaran"</string>
   <string name="presetsManager_LoadMore">"Memuat... | Mohon tunggu... | Tampilkan preset lebih lanjut Klik di sini untuk menampilkan lebih banyak preset. | Akhir | Tidak ada lagi preset yang akan ditampilkan. | Klik di sini untuk mencoba lagi."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Yakin ingin me-reboot perangkat Anda?|Apakah Anda yakin ingin mematikan perangkat?"</string>
   <string name="advancedPrefs_Confirmation">"Membutuhkan konfirmasi|Aktifkan dialog konfirmasi sebelum melakukan reboot atau matikan."</string>
-  <string name="preferences_Donate">"Sumbang|Seperti aplikasinya? \n Mengapa tidak menyumbangkan saya secangkir kopi atau sesuatu yang lain?"</string>
   <string name="advancedPrefs_HideOnClick">"Sembunyikan di klik"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Sembunyikan menu saat mengklik tombol pengalih."</string>
   <string name="advancedPrefs_LoadAppIcons">"Ikon Aplikasi Muat"</string>
