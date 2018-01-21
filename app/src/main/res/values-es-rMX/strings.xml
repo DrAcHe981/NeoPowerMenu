@@ -202,17 +202,13 @@
   <string name="preferences_DeepXposedLogging">"Registro de Xposed profundo | Activar el registro avanzado de Xposed, después de habilitar el reinicio para ver cambios."</string>
   <string name="preferencesCategory_About">"Acerca de"</string>
   <string name="preferences_NeoSource">"Codigo Fuente | NeoPowerMenu es código abierto. \nVe nuestro código fuente en GitHub."</string>
-  <string name="preferences_Share">"Compartir | ¿Te gusta la aplicación? Compártelo con tus amigos."</string>
   <string name="preferences_About">"Código por neón-Soft / DrAcHe981 | basado en la fuente de Naman Dwivedi (naman14). \nClic aquí para más información."</string>
-  <string name="animations_Items">"Fondo | Diálogo | Iconos | Artículo simple | Artículos múltiples"</string>
-  <string name="animations_Speeds">"Muy rápido | Más rápido | Rápido | Normal | Lento | Más lento | Muy lento"</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidad"</string>
   <string name="powerMenuMain_Progress">"Imagen de carga"</string>
   <string name="presetsManager_LoadMore">"Cargando... | Por favor, espere... | Mostrar más temad| Haga clic aquí para mostrar más temas. | El final. | No hay más temas para mostrar. | Haga clic aquí para intentarlo de nuevo."</string>
   <string name="powerMenu_SureToRebootPowerOff">"¿Está seguro de que quieres reiniciar el dispositivo? | ¿Seguro desea apagar el dispositivo?"</string>
   <string name="advancedPrefs_Confirmation">"Requiere confirmación | Permitir un cuadro diálogo de confirmación antes de reiniciar el o apagar."</string>
-  <string name="preferences_Donate">"Donar | ¿Te gusta la aplicación? \nPorque no donarme una taza de café o algo más?"</string>
   <string name="advancedPrefs_HideOnClick">"Ocultar con un clic"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Ocultar el menú haciendo clic en un botón."</string>
   <string name="advancedPrefs_LoadAppIcons">"Cargar iconos"</string>
