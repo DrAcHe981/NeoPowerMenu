@@ -452,4 +452,8 @@
   <string name="visibilityOrder_EditMultiItemChoices">Изменить цвет элемента|Удалить элемент</string>
   <string name="graphics_RadiusTitle">Радиус круга</string>
   <string name="graphics_RadiusDesc">Выберите зкругление фонов графики меню выключения.(По умолчанию: 100%)</string>
+  <string name="advancedPrefsDesc_RoundedCorners">Включить/отключить закругление углов диалога меню выключения.</string>
+  <string name="advancedPrefsTitle_RoundedCorners">Закругление углов диалога</string>
+  <string name="advancedPrefsTitle_RoundedCornersRadius">Радиус закругления углов диалога</string>
+  <string name="advancedPrefsDesc_RoundedCornersRadius">Выберите на сколько будут закруглены углы диалога. (По умолчанию 0%)</string>
 </resources>
