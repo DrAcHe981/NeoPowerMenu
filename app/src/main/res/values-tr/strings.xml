@@ -431,4 +431,8 @@
   <string name="visibilityOrder_EditMultiItemChoices">Öğe metnini düzenle|Öğeyi kaldır</string>
   <string name="graphics_RadiusTitle">Dairesel yarıçap</string>
   <string name="graphics_RadiusDesc">Güç menüsü grafiklerinin arka planlarının ne kadar yuvarlak olacağını tanımlayın. (Varsayılan: %100)</string>
+  <string name="advancedPrefsDesc_RoundedCorners">Güç iletişimi için yuvarlak köşeleri etkinleştirin/devre dışı bırakın.</string>
+  <string name="advancedPrefsTitle_RoundedCorners">Yuvarlak iletişim köşeleri</string>
+  <string name="advancedPrefsTitle_RoundedCornersRadius">Yuvarlak iletişim köşeleri yarıçapı</string>
+  <string name="advancedPrefsDesc_RoundedCornersRadius">İletişim köşelerinin ne kadar yuvarlak olacağını tanımlayın. (Varsayılan %0)</string>
 </resources>
