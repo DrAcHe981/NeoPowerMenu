@@ -185,6 +185,7 @@
   <string name="presetLoadDialog_BuiltIn">"Светлый|Тёмный|Чёрный"</string>
   <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
   <string name="graphics_Crop">"Обрезка | Круговая обрезка"</string>
+  <string name="graphics_NoPresetsFound">Невозможно найти шаблон с такой графикой...</string>
   <string name="graphics_GraphicsSaveLoad">"\"\"\"Сохранить текущую графику.|Этот шаблон содержит графические изображения, вы хотите их загрузить?
 Это перезапишет ваши текущие изображения!\"\"\""</string>
   <string name="presetsManager_ReportDialog">"\"\"\"Вы уверены, что хотите пожаловаться на [PRESETNAME]?
@@ -198,6 +199,8 @@
   <string name="downloadHelper_RemainingTime">"[TIME] осталось"</string>
   <string name="downloadHelper_Speed">"скорость: [SPEED]/с"</string>
   <string name="uploadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
+  <string name="visibilityOrder_AddItem">"Добавить обычный объект\nПросто обычный объект с одним слотом.|Добавить мульти объект\nДобавить несколько объектов в одну линию.|Добавить объект-папку\nПосле нажатия появится новая 'страница'."</string>
+  <string name="visibilityOrder_MultiPage">"Папка начинается здесь\nПервый обычный объект определяет кнопку для открытия папки.|Папка заканчиввется здесь"</string>
   <string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
   <string name="preferences_RootXposed1">"Root и Xposed недоступны|Root и Xposed должны быть работающими."</string>
   <string name="preferences_RootXposed2">"\"\"\"Xposed работает, Root - нет|Требуется Root, чтобы выключить или перезагрузить...
@@ -447,4 +450,6 @@
   <string name="position_Vertical">Вертикально:</string>
   <string name="visibilityOrder_AddMultiItem">Добавить</string>
   <string name="visibilityOrder_EditMultiItemChoices">Изменить цвет элемента|Удалить элемент</string>
+  <string name="graphics_RadiusTitle">Радиус круга</string>
+  <string name="graphics_RadiusDesc">Выберите зкругление фонов графики меню выключения.(По умолчанию: 100%)</string>
 </resources>
