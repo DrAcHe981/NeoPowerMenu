@@ -441,7 +441,7 @@
   <string name="powerMenu_No_Task_To_Kill">Не найдены задания, которые можно убить.</string>
   <string name="powerMenuMain_MenuBackground">Фон Меню</string>
   <string name="visibilityOrder_MissingPermissionForCamera">Нет разрешения на использование камеры, предоставьте чтобы использовать переключатель!</string>
-  <string name="visibilityOrder_NotSupportedbyDevice">Ваше устройство не поддерживает эдемент \"[TITLE]\"!</string>
+  <string name="visibilityOrder_NotSupportedbyDevice">Ваше устройство не поддерживает элемент \"[TITLE]\"!</string>
   <string name="powerMenuMain_FakePowerOff">Выключение (Фэйк)</string>
   <string name="crop_failedToSave">Невозможно сохранить, попробуйте ещё раз...\nДля дополнительной информации проверьте логи.</string>
   <string name="visibilityOrder_Horizontal">Показывать элементы горизонтально</string>
