@@ -225,17 +225,13 @@ Conceder permissões adicionais que não são adicionadas na primeira inicializa
   <string name="preferencesCategory_About">"Sobre"</string>
   <string name="preferences_NeoSource">"\"\"Fonte|NeoPowerMenu é um código aberto.
 Cheque a fonte no GitHub.\"\""</string>
-  <string name="preferences_Share">"Compartilhar|Gostou do aplicativo? Compartilhe com seus amigos."</string>
   <string name="preferences_About">"Código por Neon-Soft/DrAcHe981|Baseado em um código de Naman Dwivedi (naman14)."</string>
-  <string name="animations_Items">"Plano de fundo|Diálogo|Ícones|Itens de única linha|Itens de múltiplas linhas"</string>
-  <string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal|Lento|Mais lento|Muito lento"</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
   <string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
   <string name="presetsManager_LoadMore">"Carregando...|Aguarde...|Mais predefinições|Clique aqui para mostrar mais predefinições.|O Fim.|Não há mais nenhuma.|Toque para repetir. "</string>
   <string name="powerMenu_SureToRebootPowerOff">"Tem certeza que deseja reiniciar o dispositivo?|Tem certeza que deseja desligar o dispositivo? "</string>
   <string name="advancedPrefs_Confirmation">"Pedir confirmação|Ative para pedir confirmação ao desligar ou reiniciar o dispositivo. "</string>
-  <string name="preferences_Donate">"Doar|Gosta do app?\nPor quê não me pagar um cafezinho ou outra coisa?"</string>
   <string name="advancedPrefs_HideOnClick">"Esconder ao clicar"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Esconder o menu ao clicar em um botão de ativação."</string>
   <string name="advancedPrefs_LoadAppIcons">"Carregar Ícones de Apps"</string>
