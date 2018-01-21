@@ -296,17 +296,19 @@ public class PreferencesGraphicsFragment extends Fragment {
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL) == visibilityOrder_ListAdapter.TYPE_MULTI) {
                     int x = 1;
                     do {
-                        GraphicItemHolder graphic = new GraphicItemHolder();
-                        graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0]);
-                        if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0] + ".png").exists()) {
-                            graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0] + ".png");
-                        } else if (new File(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null") + ".png").exists()) {
-                            graphic.setFile(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null") + ".png");
-                        } else {
-                            graphic.setRessource(R.drawable.ic_action_android);
+                        if (MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").contains(".") || !MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_shortcutUri", "").isEmpty()) {
+                            GraphicItemHolder graphic = new GraphicItemHolder();
+                            graphic.setName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0]);
+                            if (new File(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0] + ".png").exists()) {
+                                graphic.setFile(mContext.getFilesDir().getPath() + "/images/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0] + ".png");
+                            } else if (new File(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null") + ".png").exists()) {
+                                graphic.setFile(mContext.getFilesDir().getPath() + "/app_picker/" + MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null") + ".png");
+                            } else {
+                                graphic.setRessource(R.drawable.ic_action_android);
+                            }
+                            graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0]);
+                            GraphicsList.add(graphic);
                         }
-                        graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0]);
-                        GraphicsList.add(graphic);
                         x++;
                     } while (!MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "][EMPTY][").equals("][EMPTY]["));
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {

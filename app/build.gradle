@@ -9,7 +9,6 @@ android {
     }
     useLibrary 'org.apache.http.legacy'
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16

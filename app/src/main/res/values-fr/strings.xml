@@ -183,7 +183,6 @@ Cet écran de paramètres sera alors uniquement accessible via le Xposed Install
   <string name="preferences_DeepXposedLogging">"Journalisation détaillée Xposed|Activer la journalisation avancée Xposed, puis redémarrer pour voir les changes."</string>
   <string name="preferencesCategory_About">"AbÀ proposout"</string>
   <string name="preferences_NeoSource">"Source|NeoPowerMenu est open source.\nVérifiez la source sur GitHub."</string>
-  <string name="preferences_Share">"Partager|Vous aimez l'appli ? Partagez-la avec vos amis."</string>
-  <string name="preferences_About">"Code par Neon-Soft / DrAcHe981|basé sur le code source de Naman Dwivedi (naman14)."</string>
+    <string name="preferences_About">"Code par Neon-Soft / DrAcHe981|basé sur le code source de Naman Dwivedi (naman14)."</string>
   <string name="animations_Speed">"Vitesse"</string>
 </resources>

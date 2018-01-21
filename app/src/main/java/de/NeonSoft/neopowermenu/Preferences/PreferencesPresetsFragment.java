@@ -32,12 +32,6 @@ import java.util.*;
 
 public class PreferencesPresetsFragment extends Fragment {
 
-    public static AlertDialog importad;
-    public static String Filename;
-    public static String sCreator = "< unknown >";
-    public static String newUrl;
-    public static boolean Importcancled = false;
-
     public static RelativeLayout progressHolder;
     public static ProgressBar progress;
     public static TextView LoadingMsg;
@@ -390,12 +384,14 @@ public class PreferencesPresetsFragment extends Fragment {
         onlineOrder.startAnimation(AnimationUtils.loadAnimation(mContext, R.anim.abc_slide_in_top));
     }
 
-    public static boolean ImportPreset(final String surl, final PresetsAdapter adapter, String name, final String creator) {
-        Importcancled = false;
-        sCreator = "< unknown >";
+    public static boolean ImportPreset(final String surl, final PresetsAdapter adapter, final String name, final String creator) {
+        final String Filename;
+        final boolean[] Importcancled = {false};
+        final String newUrl;
         final boolean isZip;
         try {
-            //Log.i("NPM","Showing import dialog for: "+surl);
+            Log.i("NPM","Showing import dialog for: "+surl);
+            Log.i("NPM","Name: "+name);
             String fUrl = surl;
             if (!surl.endsWith(".nps")) {
                 MainActivity.ImportUrl = null;
@@ -454,7 +450,7 @@ public class PreferencesPresetsFragment extends Fragment {
                 @Override
                 public void onNegativeClick() {
 
-                    Importcancled = true;
+                    Importcancled[0] = true;
                 }
 
                 @Override
@@ -468,6 +464,8 @@ public class PreferencesPresetsFragment extends Fragment {
                     File prefile = new File(newUrl);
                     String newFilename = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0") + ".nps";
                     preset.setName(newFilename.replace(".nps", ""));
+                    Log.i("NPM","Importing: "+newUrl);
+                    Log.i("NPM","Name: "+newFilename);
                     final boolean newPresetAdded;
                     newPresetAdded = !new File(mContext.getFilesDir().getPath() + "/presets/" + newFilename).exists();
                     String FilePath = "";
@@ -505,7 +503,7 @@ public class PreferencesPresetsFragment extends Fragment {
                 @Override
                 public void onTouchOutside() {
 
-                    Importcancled = true;
+                    Importcancled[0] = true;
                 }
             });
             dialogFragment.setText(mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", (creator != null && !creator.isEmpty()) ? creator : preset.getDescription()) + "\n\n" + mContext.getString(R.string.presetsManager_ImportMsg));
@@ -546,7 +544,7 @@ public class PreferencesPresetsFragment extends Fragment {
             Log.e("NPM", "Import failed!\n" + e.toString());
         }
         MainActivity.ImportUrl = null;
-        return !Importcancled;
+        return !Importcancled[0];
     }
 
     private static class MyPagerAdapter extends FragmentStatePagerAdapter {

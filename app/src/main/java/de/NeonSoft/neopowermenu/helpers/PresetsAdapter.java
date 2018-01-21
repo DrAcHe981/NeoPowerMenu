@@ -440,7 +440,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                 uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.neon-soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
                                 uH.setLocalUrl(path);
                                 uH.uploadAs(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0") + ".nps");
-                                uH.setAdditionalUploadPosts(new String[][]{{"presetName", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")}, {"presetCreator", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1")}, {"presetAppVersion", "v" + appVersion}, {"presetHasGraphics", hasGraphics ? "true" : "false"}, {MainActivity.userName.contains("@") ? "userEmail" : "userName", MainActivity.userName}, {"userId", MainActivity.deviceUniqeId}});
+                                uH.setAdditionalUploadPosts(new String[][]{{"presetName", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")}, {"presetCreator", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1")}, {"presetAppVersion", "v" + appVersion}, {MainActivity.userName.contains("@") ? "userEmail" : "userName", MainActivity.userName}, {"userId", MainActivity.deviceUniqeId}});
                                 uH.startUpload();
                             }
 

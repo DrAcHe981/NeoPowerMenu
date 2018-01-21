@@ -223,19 +223,14 @@
   <string name="preferencesCategory_About">"О приложении"</string>
   <string name="preferences_NeoSource">"\"\"\"Исходный код|NeoPowerMenu имеет открытый исходный код.
 Исходники на Github.\"\"\""</string>
-  <string name="preferences_Share">"Поделиться|Понравилось приложение? Поделитесь им среди своих друзей."</string>
   <string name="preferences_About">"Создано Neon-Soft / DrAcHe981|Основано на исходном коде Naman Dwivedi(naman14)."</string>
-  <string name="animations_Items">"Задний фон|Диалоговое окно|Иконки|Единичные элементы на линии|Множественные элементы на линии"</string>
-  <string name="animations_Speeds">"Очень быстро|Быстрее|Быстро|Нормально|Медленно|Медленнее|Очень медленно"</string>
   <string name="animations_Type">"Тип"</string>
   <string name="animations_Speed">"Скорость"</string>
   <string name="powerMenuMain_Progress">"Круг загрузки"</string>
   <string name="presetsManager_LoadMore">"Загрузка...|Пожалуйста, подождите...|Показать больше шаблонов|Нажмите сюда, чтобы отобразить больше шаблонов.|Конец.|Больше шаблонов нет.|Нажмите, чтобы попробовать снова."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Вы уверены, что хотите перезагрузить устройство?|Вы уверены, что хотите выключить устройство?"</string>
   <string name="advancedPrefs_Confirmation">"Запрос подтверждения|Включить запрос подтверждения перед перезагрузкой или выключением."</string>
-  <string name="preferences_Donate">"\"\"\"Пожертвовать|Понравилось приложение?
-Почему бы не пожертвовать мне на чашку кофе или ещё чего-нибудь?\"\"\""</string>
-  <string name="advancedPrefs_HideOnClick">"Скрыть по нажатии"</string>
+    <string name="advancedPrefs_HideOnClick">"Скрыть по нажатии"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Скрыть меню при нажатии на переключатель."</string>
   <string name="advancedPrefs_LoadAppIcons">"Загрузить иконки приложений"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Загрузить иконки приложений для кнопок ярлыков приложений."</string>

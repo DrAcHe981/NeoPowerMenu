@@ -219,11 +219,13 @@
 <string name="preferences_DeepXposedLogging">"Deep Xposed logging|Enable advanced Xposed logging, after enabling reboot to see changes."</string>
 <string name="preferencesCategory_About">"About"</string>
 <string name="preferences_NeoSource">"Source|NeoPowerMenu is open source.\nCheck out the source on GitHub."</string>
-<string name="preferences_Share">"Share|Like the app? Share it with your friends."</string>
+<string name="preferences_Share">"Share|Know people who could like the app?\nTap here to share it with them!"</string>
 <string name="preferences_About">"Code by Neon-Soft / DrAcHe981|based on the source of Naman Dwivedi (naman14).\nClick here to get more info."</string>
-<string name="animations_Items">"Background|Dialog|Icons|Single line items|Multi line items"</string>
-<string name="animations_Speeds">"Very fast|Faster|Fast|Normal|Slow|Slower|Very slow"</string>
+    <string name="animations_Items">"Background|Dialog|Icons|Single line items|Multi line items|Progressbar"</string>
+<string name="animations_Speeds">"Very fast|Faster|Fast|Normal|Slow|Slower|Very slow|Custom"</string>
+    <string name="animations_Interpolators">Linear|Accelerate|Decelerate|Accelerate and decelerate|Bounce|Anticipate|Overshoot|Anticipate and overshoot</string>
 <string name="animations_Types">"Fade|Reveal|Slide up|Slide left|Slide right|Slide down|Scale up|Scale down|Flip vertical|Flip horizontal|Disabled"</string>
+<string name="animations_Types_Progressbar">"Rotate clockwise|Rotate counter clockwise|Pulsate|Scale up|Scale down|Disabled"</string>
     <string name="animations_Type">"Type"</string>
     <string name="animations_Speed">"Speed"</string>
 
@@ -232,7 +234,7 @@
 <string name="powerMenu_SureToRebootPowerOff">"Are you sure you want to reboot your device?|Are your sure you want to power off your device?"</string>
 
 <string name="advancedPrefs_Confirmation">"Require confirmation|Enable a confirmation dialog before reboot or power off."</string>
-<string name="preferences_Donate">"Donate|Like the app?\nWhy not donate me a cup of coffee or something else?"</string>
+<string name="preferences_Donate">"Donate|Like my work?\nWhy not donate me a cup of coffee or something else?"</string>
     <string name="advancedPrefs_HideOnClick">"Hide on click"</string>
     <string name="advancedPrefs_HideOnClickDesc">"Hide the menu when clicking on an toggle button."</string>
     <string name="advancedPrefs_LoadAppIcons">"Load App Icons"</string>
@@ -464,5 +466,8 @@
     <string name="advancedPrefsTitle_RoundedCorners">Rounded dialog corners</string>
     <string name="advancedPrefsTitle_RoundedCornersRadius">Rounded dialog corners radius</string>
     <string name="advancedPrefsDesc_RoundedCornersRadius">Define how much rounded the dialog corners are. (Default 0%)</string>
+    <string name="animations_Interpolator">Interpolator</string>
+    <string name="animations_CustomSpeed">Custom speed in milliseconds: (Default: 700ms)</string>
+    <string name="animations_CustomSpeedTooSmall">This value can\'t be smaller than [VALUE].</string>
 
 </resources>

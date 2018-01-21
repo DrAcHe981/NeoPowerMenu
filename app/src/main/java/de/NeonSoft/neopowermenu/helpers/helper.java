@@ -11,10 +11,12 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.text.*;
 import android.util.*;
 import android.view.*;
 import android.view.animation.*;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 
 import de.NeonSoft.neopowermenu.*;
@@ -566,75 +568,163 @@ public class helper {
         return new Object[]{width, height, mHorizontal};
     }
 
-    public static Animation getAnimation(Context context, SharedPreferences prefs, int forItem, boolean forOut) {
+    public static Animation getAnimation(final Context context, SharedPreferences prefs, int forItem, boolean forOut) {
+        return getAnimation(context, prefs, forItem, forOut, null);
+    }
+    public static Animation getAnimation(final Context context, SharedPreferences prefs, int forItem, boolean forOut, final View view) {
         int speed;
         speed = 700;
-        if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 2][1].toString(), 3) == 0) {
+        int speedId = prefs.getInt(PreferencesAnimationsFragment.names[forItem + PreferencesAnimationsFragment.anim_Speed][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + PreferencesAnimationsFragment.anim_Speed]);
+        if (speedId == 0) {
             speed = 100;
-        } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 2][1].toString(), 3) == 1) {
+        } else if (speedId == 1) {
             speed = 300;
-        } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 2][1].toString(), 3) == 2) {
+        } else if (speedId == 2) {
             speed = 500;
-        } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 2][1].toString(), 3) == 3) {
+        } else if (speedId == 3) {
             speed = 700;
-        } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 2][1].toString(), 3) == 4) {
+        } else if (speedId == 4) {
             speed = 900;
-        } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 2][1].toString(), 3) == 5) {
+        } else if (speedId == 5) {
             speed = 1100;
-        } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 2][1].toString(), 3) == 6) {
+        } else if (speedId == 6) {
             speed = 1300;
-        }
-        Animation anim = null;
-        if (!forOut) {
-            if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 0) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 1) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 2) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_bottom);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 3) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_right);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 4) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_left);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 5) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_top);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 6) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_up);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 7) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_down);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 8) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_vertical_in);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 9) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_horizontal_in);
-            } else {
-                anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
-            }
         } else {
-            if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 0) {
+            speed = speedId;
+        }
+        Animation anim = null, anim2 = null;
+        int animId = prefs.getInt(PreferencesAnimationsFragment.names[forItem + PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + PreferencesAnimationsFragment.anim_Type]);
+        if (PreferencesAnimationsFragment.names[forItem][1].toString().contains("progressbar")) {
+            if (animId == 0) {
+                anim = AnimationUtils.loadAnimation(context, R.anim.rotate_clockwise);
+            } else if (animId == 1) {
+                anim = AnimationUtils.loadAnimation(context, R.anim.rotate_counter_clockwise);
+            } else if (animId == 2) {
                 anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 1) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 2) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_bottom);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 3) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 4) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_left);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 5) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_top);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 6) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.scale_out_up);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 7) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.scale_out_down);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 8) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_vertical_out);
-            } else if (prefs.getInt(PreferencesAnimationsFragment.names[forItem + 1][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + 1]) == 9) {
-                anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_horizontal_out);
+                anim2 = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+            } else if (animId == 3) {
+                anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_up);
+                anim2 = AnimationUtils.loadAnimation(context, R.anim.scale_out_down);
+            } else if (animId == 4) {
+                anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_down);
+                anim2 = AnimationUtils.loadAnimation(context, R.anim.scale_out_up);
             } else {
                 anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+                anim2 = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+            }
+            speed += 400;
+        } else {
+            if (!forOut) {
+                if (animId == 0) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+                } else if (animId == 1) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+                } else if (animId == 2) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_bottom);
+                } else if (animId == 3) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_right);
+                } else if (animId == 4) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_left);
+                } else if (animId == 5) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_in_top);
+                } else if (animId == 6) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_up);
+                } else if (animId == 7) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.scale_in_down);
+                } else if (animId == 8) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_vertical_in);
+                } else if (animId == 9) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_horizontal_in);
+                } else {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+                }
+            } else {
+                if (animId == 0) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+                } else if (animId == 1) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+                } else if (animId == 2) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_bottom);
+                } else if (animId == 3) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_right);
+                } else if (animId == 4) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_left);
+                } else if (animId == 5) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_slide_out_top);
+                } else if (animId == 6) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.scale_out_up);
+                } else if (animId == 7) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.scale_out_down);
+                } else if (animId == 8) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_vertical_out);
+                } else if (animId == 9) {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.anim_flip_horizontal_out);
+                } else {
+                    anim = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+                }
             }
         }
+        android.view.animation.Interpolator interpolator = null;
+        int interpolatorId = prefs.getInt(PreferencesAnimationsFragment.names[forItem + PreferencesAnimationsFragment.anim_Interpolator][1].toString(), PreferencesAnimationsFragment.defaultTypes[forItem + PreferencesAnimationsFragment.anim_Interpolator]);
+        if (interpolatorId == 0) {
+            interpolator = AnimationUtils.loadInterpolator(context, android.R.interpolator.linear);
+        } else if (interpolatorId == 1) {
+            interpolator = AnimationUtils.loadInterpolator(context, android.R.interpolator.accelerate_quint);
+        } else if (interpolatorId == 2) {
+            interpolator = AnimationUtils.loadInterpolator(context, android.R.interpolator.decelerate_quint);
+        } else if (interpolatorId == 3) {
+            interpolator = new android.view.animation.Interpolator() {
+                @Override
+                public float getInterpolation(float input) {
+                    float x = input * 2.0f;
+                    if (input < 0.5f) return 0.5f * x * x * x * x * x;
+                    x = (input - 0.5f) * 2 - 1;
+                    return 0.5f * x * x * x * x * x + 1;
+                }
+            };
+        } else if (interpolatorId == 4) {
+            interpolator = AnimationUtils.loadInterpolator(context, android.R.interpolator.bounce);
+        } else if (interpolatorId == 5) {
+            interpolator = AnimationUtils.loadInterpolator(context, android.R.interpolator.anticipate);
+        } else if (interpolatorId == 6) {
+            interpolator = AnimationUtils.loadInterpolator(context, android.R.interpolator.overshoot);
+        } else if (interpolatorId == 7) {
+            interpolator = AnimationUtils.loadInterpolator(context, android.R.interpolator.anticipate_overshoot);
+        }
+        anim.setInterpolator(interpolator);
         anim.setDuration(speed);
+        if (anim2!=null) {
+            anim2.setInterpolator(interpolator);
+            anim2.setDuration(speed);
+        }
+        if (PreferencesAnimationsFragment.names[forItem][1].toString().contains("progressbar")) {
+            final Animation finalAnim = anim, finalAnim2 = anim2;
+            final boolean[] first = {true};
+            anim.setAnimationListener(new Animation.AnimationListener() {
+
+                @Override
+                public void onAnimationEnd(Animation arg0) {
+                    if (first[0]) {
+                        finalAnim.setAnimationListener(this);
+                        view.startAnimation(finalAnim);
+                        if (finalAnim2 != null) first[0] = false;
+                    } else if (finalAnim2 != null) {
+                        finalAnim2.setAnimationListener(this);
+                        view.startAnimation(finalAnim2);
+                        first[0] = true;
+                    }
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation arg0) {
+                }
+
+                @Override
+                public void onAnimationStart(Animation arg0) {
+                }
+
+            });
+        }
         return anim;
     }
 

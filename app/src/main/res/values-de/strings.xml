@@ -205,10 +205,7 @@
   <string name="preferences_DeepXposedLogging">"Tiefes Xposed Logging|Aktiviere Erweitertes Logging, nach der Aktivierung neu starten, um Änderung zu sehen."</string>
   <string name="preferencesCategory_About">"Über"</string>
   <string name="preferences_NeoSource">"Source|NeoPowerMenu ist Open-Source.\nFinde die Source auf GitHub."</string>
-  <string name="preferences_Share">"Teilen|Du magst die App? Teile sie mit deinen Freunden."</string>
   <string name="preferences_About">"Skript von Neon-Soft / DrAcHe981|basierend auf der Source von Naman Dwivedi (naman14).\nKlicke hier für mehr Infos."</string>
-  <string name="animations_Items">"Hintergrund|Dialog|Symbole|Einzel Linien Items|Multi Linien Items"</string>
-  <string name="animations_Speeds">"Sehr schnell|Schneller|Schnell|Normal|Langsam|Langsamer|Am langsamsten"</string>
   <string name="animations_Types">"Überblenden|Reveal|Nach oben schieben|Nach links schieben|Nach rechts schieben|Nach unten schieben|Hoch skalieren|Runter skalieren|Vertikal drehen|Horizontal drehen|Deaktiviert"</string>
   <string name="animations_Type">"Typ"</string>
   <string name="animations_Speed">"Geschwindigkeit"</string>
@@ -216,8 +213,7 @@
   <string name="presetsManager_LoadMore">"Laden...|Bitte warten|Zeige mehr Voreinstellungen|Klicke hier, um mehr Voreinstellungen anzuzeigen.|Das Ende.|Keine weiteren Voreinstellungen zum anzeigen.|Klicke hier, um es erneut zu versuchen."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Bist du sicher, dass du dein Gerät neustarten willst?|Bist du sicher, dass du dein Gerät ausschalten willst?"</string>
   <string name="advancedPrefs_Confirmation">"Benötige Bestätigung|Aktiviere eine Bestätigung, bevor das Gerät neu startet oder ausgeschaltet wird."</string>
-  <string name="preferences_Donate">"Spenden|Du magst die App?\nWarum spendest du mir nicht eine Tasse Kaffee oder etwas anderes?"</string>
-  <string name="advancedPrefs_HideOnClick">"Nach klicken ausblenden"</string>
+    <string name="advancedPrefs_HideOnClick">"Nach klicken ausblenden"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Das Menü schließen wenn auf einen Schalter geklickt wurde."</string>
   <string name="advancedPrefs_LoadAppIcons">"App-Symbole laden"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"App-Symbole für Verknüpfungs knöpfe laden."</string>

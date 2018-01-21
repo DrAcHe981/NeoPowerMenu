@@ -94,7 +94,7 @@ public class GravityChooserDialog extends DialogFragment {
         LinearLayout_ImageHolder = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_ImageHolder);
 
         SeekBar_Vertical = (SeekBar) InflatedView.findViewById(R.id.activitydialogpositionSeekBar_Vertical);
-        SeekBar_Vertical.setMax(100);
+        SeekBar_Vertical.setMax(97);
         SeekBar_Vertical.setProgress(int_Vertical);
 
         SeekBar_Vertical.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -202,7 +202,7 @@ public class GravityChooserDialog extends DialogFragment {
         LinearLayout ListContainer = (LinearLayout) DummyPowerDialog.findViewById(R.id.ListContainer);
 
         FrameLayout frame = (FrameLayout) DummyPowerDialog.findViewById(R.id.frame);
-        frame.setBackgroundColor(Color.parseColor(MainActivity.colorPrefs.getString("Dialog_Backgroundcolor", "#ffffff")));
+        //frame.setBackgroundColor(Color.parseColor(MainActivity.colorPrefs.getString("Dialog_Backgroundcolor", "#ffffff")));
 
         ((FrameLayout) DummyPowerDialog.findViewById(R.id.frame2)).setVisibility(View.GONE);
         ((FrameLayout) DummyPowerDialog.findViewById(R.id.frameConfirm)).setVisibility(View.GONE);
@@ -265,8 +265,8 @@ public class GravityChooserDialog extends DialogFragment {
                 } else {
                     root.setVisibility(View.INVISIBLE);
                 }
-                if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[10][1].toString(), PreferencesAnimationsFragment.defaultTypes[10]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                    root.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 9, false));
+                if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_SingleLine+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_SingleLine+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                    root.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, PreferencesAnimationsFragment.anim_SingleLine, false));
                 }
             } else {
 
@@ -300,8 +300,8 @@ public class GravityChooserDialog extends DialogFragment {
 
                     String IDENTIFIER = mItems.get(x);
                     createCircleIcon(icon, icon2, string, MainActivity.colorPrefs.getString("Dialog" + IDENTIFIER + "_Circlecolor", "#ff000000"), MainActivity.colorPrefs.getString("Dialog" + IDENTIFIER + "_Textcolor", "#ffffff"));
-                    if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[13][1].toString(), PreferencesAnimationsFragment.defaultTypes[13]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                        Animation anim = helper.getAnimation(mContext, MainActivity.animationPrefs, 12, false);
+                    if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_MultiLine+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_MultiLine+PreferencesAnimationsFragment.anim_Type]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
+                        Animation anim = helper.getAnimation(mContext, MainActivity.animationPrefs, PreferencesAnimationsFragment.anim_MultiLine, false);
                         anim.setStartOffset((anim.getDuration() / 30) * ((i - 1) * 3));
                         root.startAnimation(anim);
                     }
@@ -319,12 +319,12 @@ public class GravityChooserDialog extends DialogFragment {
         //MainParams.height = (int) helper.convertDpToPixel((float) 250, mContext);
         //Main.setLayoutParams(MainParams);
 
-        int animationId = MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[4][1].toString(), PreferencesAnimationsFragment.defaultTypes[4]);
+        int animationId = MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[PreferencesAnimationsFragment.anim_Dialog+PreferencesAnimationsFragment.anim_Type]);
         if (animationId != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
             if (animationId >= 6 && animationId <= 9) {
-                Content.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 3, false));
+                Content.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false));
             } else {
-                LinearLayout_ImageHolder.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 3, false));
+                LinearLayout_ImageHolder.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, PreferencesAnimationsFragment.anim_Dialog, false));
             }
         }
 
@@ -387,9 +387,6 @@ public class GravityChooserDialog extends DialogFragment {
                             image.setPadding((int) helper.convertDpToPixel(5,mContext), (int) helper.convertDpToPixel(5,mContext), (int) helper.convertDpToPixel(5,mContext), (int) helper.convertDpToPixel(5,mContext));
                             image.setColorFilter(Color.parseColor("#ffffff"),
                                     android.graphics.PorterDuff.Mode.DST);
-                            if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                //image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, true));
-                            }
                             image.setVisibility(View.INVISIBLE);
                             super.onLoadingStarted(imageUri, view);
                         }
@@ -403,9 +400,6 @@ public class GravityChooserDialog extends DialogFragment {
                                         android.graphics.PorterDuff.Mode.MULTIPLY);
                             }
                             image.setVisibility(View.VISIBLE);
-                            if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                //image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, false));
-                            }
                         }
 
                         @Override
@@ -415,9 +409,6 @@ public class GravityChooserDialog extends DialogFragment {
                             image.setColorFilter(Color.parseColor(color),
                                     android.graphics.PorterDuff.Mode.SRC_IN);
                             image.setVisibility(View.VISIBLE);
-                            if (MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[7][1].toString(), PreferencesAnimationsFragment.defaultTypes[7]) != mContext.getString(R.string.animations_Types).split("\\|").length - 1) {
-                                //image.startAnimation(helper.getAnimation(mContext, MainActivity.animationPrefs, 6, false));
-                            }
                         }
                     });
         } else {
