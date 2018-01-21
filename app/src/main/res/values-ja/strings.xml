@@ -197,17 +197,13 @@
   <string name="preferences_DeepXposedLogging">"詳細な Xposed ログ|Xposed の詳細なログを記録します。変更後は再起動してください。"</string>
   <string name="preferencesCategory_About">"このアプリについて"</string>
   <string name="preferences_NeoSource">"ソース|NeoPowerMenu はオープンソースです。\nGitHubでソースを確認できます。"</string>
-  <string name="preferences_Share">"共有|アプリが気に入りましたか? 友達に共有しましょう。"</string>
   <string name="preferences_About">"開発者: Neon-Soft / DrAcHe981|Naman Dwivedi (naman14) のソースを基に開発しています。\nタップで詳細を表示します。"</string>
-  <string name="animations_Items">"背景|ダイアログ|アイコン|単行アイテム|複数行アイテム"</string>
-  <string name="animations_Speeds">"非常に速い|さらに速い|速い|通常|遅い|さらに遅い|非常に遅い"</string>
   <string name="animations_Type">"タイプ"</string>
   <string name="animations_Speed">"速度"</string>
   <string name="powerMenuMain_Progress">"読み込み中の円"</string>
   <string name="presetsManager_LoadMore">"読み込み中...|お待ちください...|さらにプリセットを表示|ここをタップすると他のプリセットを表示します。|終わりです。|表示するプリセットがありません。|ここをタップすると再試行します。"</string>
   <string name="powerMenu_SureToRebootPowerOff">"再起動しますか?|シャットダウンしますか?"</string>
   <string name="advancedPrefs_Confirmation">"確認を表示する|再起動や電源を切る前に確認ダイアログを表示します。"</string>
-  <string name="preferences_Donate">"寄付|アプリが気に入りましたか?\nコーヒー一杯でもいただけたら嬉しいです!"</string>
   <string name="advancedPrefs_HideOnClick">"タップで隠す"</string>
   <string name="advancedPrefs_HideOnClickDesc">"トグルボタンをタップした時にメニューを隠します。"</string>
   <string name="advancedPrefs_LoadAppIcons">"アプリのアイコンを読み込む"</string>
