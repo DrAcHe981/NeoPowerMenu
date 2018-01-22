@@ -439,4 +439,14 @@
   <string name="animations_Interpolator">Interpolator</string>
   <string name="animations_CustomSpeed">Benutzerdefinierte Geschwindigkeit in Millisekunden: (Standard: 700ms)</string>
   <string name="animations_CustomSpeedTooSmall">Dieser Wert darf nicht kleiner als [VALUE] sein.</string>
+  <string name="savePreset_Colors">Aktuelle Farben speichern</string>
+  <string name="savePreset_Animations">Aktuelle Animationen speichern</string>
+  <string name="savePreset_Graphics">Aktuelle Grafiken speichern</string>
+  <string name="presetsManager_LoadPreset">Bitte wähle was du aus dieser Voreinstellung laden möchtest:</string>
+  <string name="loadPreset_Colors">Farben laden</string>
+  <string name="loadPreset_Animations">Animationen laden</string>
+  <string name="loadPreset_Graphics">Grafiken laden</string>
+  <string name="presetsManager_Contains">Voreinstellung beinhaltet:</string>
+  <string name="tourPage_8_Title">Das Voreinstellungen Menü</string>
+  <string name="tourPage_8_Text">Hier kannst du deine gespeicherten Voreinstellungen laden oder von anderen Benutzern dieser App erstellte herunterladen!\n\nFühle dich frei, deine Kreationen auch der Sammlung hinzuzufügen!</string>
 </resources>
