@@ -439,4 +439,14 @@
   <string name="animations_Interpolator">Enterpolasyon</string>
   <string name="animations_CustomSpeed">Milisaniye cinsinden özel hız: (Varsayılan: 700ms)</string>
   <string name="animations_CustomSpeedTooSmall">Bu değer [VALUE] değerinden küçük olamaz.</string>
+  <string name="savePreset_Colors">Geçerli renkleri kaydet</string>
+  <string name="savePreset_Animations">Geçerli animasyonları kaydet</string>
+  <string name="savePreset_Graphics">Geçerli grafikleri kaydet</string>
+  <string name="presetsManager_LoadPreset">Lütfen bu hazır ayardan ne yüklemek istediğinizi seçin:</string>
+  <string name="loadPreset_Colors">Renkleri yükle</string>
+  <string name="loadPreset_Animations">Animasyonları yükle</string>
+  <string name="loadPreset_Graphics">Grafikleri yükle</string>
+  <string name="presetsManager_Contains">Hazır ayar içeriği:</string>
+  <string name="tourPage_8_Title">Hazır Ayarlar Menüsü</string>
+  <string name="tourPage_8_Text">Burada kayıtlı hazır ayarlarınızı yükleyebilir veya bu uygulamanın diğer kullanıcıları tarafından oluşturulmuş hazır ayarlarını indirebilirsiniz!\n\nOluşturduklarınızı koleksiyona eklemekten de çekinmeyin!</string>
 </resources>
