@@ -19,6 +19,7 @@ import java.util.Arrays;
 
 import de.NeonSoft.neopowermenu.R;
 import de.NeonSoft.neopowermenu.addShortcut;
+import de.NeonSoft.neopowermenu.helpers.PreferenceNames;
 import de.NeonSoft.neopowermenu.helpers.ShortcutListAdapter;
 
 public class AddShortcutList extends Fragment {
@@ -35,7 +36,8 @@ public class AddShortcutList extends Fragment {
 
         addShortcut.useGraphic = true;
         addShortcut.useCustomGraphic = false;
-        addShortcut.padding = 10f;
+        addShortcut.padding = 10;
+        addShortcut.radius = addShortcut.preferences.getInt(PreferenceNames.pCircleRadius, 100);
 
         mActivity = getActivity();
 
@@ -43,7 +45,7 @@ public class AddShortcutList extends Fragment {
 
         addShortcut.items = new ArrayList<>(Arrays.asList(PreferencesVisibilityOrderFragment.PowerMenuItems));
         addShortcut.items.remove(0);
-        addShortcut.items.add(0,getString(R.string.shortcut_ShowPowerMenu));
+        addShortcut.items.add(0, "PowerMenu");
         addShortcut.items.remove(18);
         addShortcut.items.remove(28);
 

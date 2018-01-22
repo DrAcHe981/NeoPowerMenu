@@ -599,7 +599,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     for (int i = 0; i < AddPowerMenuItems.size(); i++) {
                         String shortcutAdded = "";
                         if (item.getTitle(i+1).equalsIgnoreCase("AppShortcut") || item.getTitle(i+1).equalsIgnoreCase("Shortcut")) {
-                            shortcutAdded = item.getTitle(i);
+                            shortcutAdded = item.getTitle(i+1);
                         }
                         if (shortcutAdded.equalsIgnoreCase("AppShortcut")) {
                             showLoadingDialog("apps");

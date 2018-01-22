@@ -215,7 +215,7 @@ public class addShortcut extends AppCompatActivity {
         try {
             if (addShortcut.useGraphic) {
                 Bitmap bd = null;
-                if (text.equalsIgnoreCase(mActivity.getString(R.string.shortcut_ShowPowerMenu))) {
+                if (text.equalsIgnoreCase("PowerMenu")) {
                     bd = loadImage(0, color2);
                 } else if (text.equalsIgnoreCase("Shutdown")) {
                     bd = loadImage(1, color2);
@@ -275,7 +275,7 @@ public class addShortcut extends AppCompatActivity {
                 fbd = GraphicDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig().setPadding((int) padding).buildRoundRect(bd, Color.parseColor(color1), addShortcut.radius / 2);
             } else {
                 fbd = TextDrawable.builder().beginConfig().textColor(Color.parseColor(color2)).endConfig()
-                        .buildRoundRect(finalText.substring(0, 1), Color.parseColor(color1), addShortcut.radius);
+                        .buildRoundRect(finalText.substring(0, 1), Color.parseColor(color1), addShortcut.radius / 2);
             }
         } catch (Throwable t) {
             Log.e("NPM", "Failed to create Circle Icon.", t);
@@ -314,27 +314,31 @@ public class addShortcut extends AppCompatActivity {
     public static Bitmap loadImage(final int id, final String color) {
         final Bitmap[] image = {null};
         if(new File(mActivity.getFilesDir() + "/images/" + PreferencesGraphicsFragment.graphics[id][2].toString() + ".png").exists() && useCustomGraphic) {
-            imageLoader.loadImage(mActivity.getFilesDir() + "/images/" + PreferencesGraphicsFragment.graphics[id][2].toString() + ".png", new ImageLoadingListener() {
-                @Override
-                public void onLoadingStarted(String imageUri, View view) {
+            if (id == 0) {
+                image[0] = helper.drawableToBitmap(mActivity.getResources().getDrawable(R.drawable.ic_settings_power));
+            } else {
+                imageLoader.loadImage(mActivity.getFilesDir() + "/images/" + PreferencesGraphicsFragment.graphics[id][2].toString() + ".png", new ImageLoadingListener() {
+                    @Override
+                    public void onLoadingStarted(String imageUri, View view) {
 
-                }
+                    }
 
-                @Override
-                public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                    image[0] = helper.drawableToBitmap(mActivity.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[id][1]));
-                }
+                    @Override
+                    public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                        image[0] = helper.drawableToBitmap(mActivity.getResources().getDrawable((Integer) PreferencesGraphicsFragment.graphics[id][1]));
+                    }
 
-                @Override
-                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                    image[0] = changeBitmapColor(loadedImage, Color.parseColor(color));
-                }
+                    @Override
+                    public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                        image[0] = changeBitmapColor(loadedImage, Color.parseColor(color));
+                    }
 
-                @Override
-                public void onLoadingCancelled(String imageUri, View view) {
-                    image[0] = helper.drawableToBitmap(mActivity.getResources().getDrawable((int) PreferencesGraphicsFragment.graphics[id][1]));
-                }
-            });
+                    @Override
+                    public void onLoadingCancelled(String imageUri, View view) {
+                        image[0] = helper.drawableToBitmap(mActivity.getResources().getDrawable((Integer) PreferencesGraphicsFragment.graphics[id][1]));
+                    }
+                });
+            }
         } else {
             Drawable drawable;
             if (id == 0) {
