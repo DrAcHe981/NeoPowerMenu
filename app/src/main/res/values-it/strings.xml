@@ -147,7 +147,6 @@
   <string name="presetLoadDialog_BuiltIn">"Chiaro | Scuro | Nero"</string>
   <string name="graphics_Choose">"Ripristinare l'impostazione predefinita | Scegliere tra preset | Scegli dalla Galleria"</string>
   <string name="graphics_Crop">"Rifila | Rifila cerchio"</string>
-  <string name="graphics_GraphicsSaveLoad">"Salvare con grafica attuale. | Questo preset contiene grafica, vuoi caricarli? \nThis sovrascriverà il vostro attuale grafica!"</string>
   <string name="presetsManager_ReportDialog">"Sei sicuro di segnalare [PRESETNAME]? \n Questa operazione non può essere annullata, quindi si prega di non segnalare solo per divertimento! \n\n Necessario un motivo perché vuoi segnalarlo, inseriscilo qui sotto. | Motivo di relazione:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] riferito, lo sviluppatore darà un'occhiata a questo. | Report non riuscito, si prega di riprovare. \n Motivo: "</string>
   <string name="presetsManager_Buttons">"Dare stella | Rimuovere stella | Elimina | Relazione | Caricare | Condividi"</string>

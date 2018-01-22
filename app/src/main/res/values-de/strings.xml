@@ -174,7 +174,6 @@
   <string name="graphics_Choose">"Standard wiederherstellen|Aus Voreinstellung wählen|Aus Galerie wählen"</string>
   <string name="graphics_Crop">"Zuschneiden|Rund zuschneiden"</string>
   <string name="graphics_NoPresetsFound">Es konnte keine Voreinstellung gefunden werden, die diese Grafik enthält...</string>
-  <string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern.|Diese Voreinstellung enthält Grafiken, willst du sie laden? \nDies überschreibt deine aktuellen Grafiken!"</string>
   <string name="presetsManager_ReportDialog">"Bist du dir sicher dass du [PRESETNAME] melden willst?\nDies kann nicht rückgängig gemacht werde, also melde nicht nur zum Spaß!\n\nDesweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein.|Meldegrund:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet, der Entwickler wird einen Blick drüber werfen.|Melden fehlgeschlagen, bitte versuch es erneut.\nGrund: "</string>
   <string name="presetsManager_Buttons">"Stern geben|Stern entfernen|Löschen|Melden|Hochladen|Teilen"</string>
@@ -440,4 +439,14 @@
   <string name="animations_Interpolator">Interpolator</string>
   <string name="animations_CustomSpeed">Benutzerdefinierte Geschwindigkeit in Millisekunden: (Standard: 700ms)</string>
   <string name="animations_CustomSpeedTooSmall">Dieser Wert darf nicht kleiner als [VALUE] sein.</string>
+  <string name="savePreset_Colors">Aktuelle Farben speichern</string>
+  <string name="savePreset_Animations">Aktuelle Animationen speichern</string>
+  <string name="savePreset_Graphics">Aktuelle Grafiken speichern</string>
+  <string name="presetsManager_LoadPreset">Bitte wähle was du aus dieser Voreinstellung laden möchtest:</string>
+  <string name="loadPreset_Colors">Farben laden</string>
+  <string name="loadPreset_Animations">Animationen laden</string>
+  <string name="loadPreset_Graphics">Grafiken laden</string>
+  <string name="presetsManager_Contains">Voreinstellung beinhaltet:</string>
+  <string name="tourPage_8_Title">Das Voreinstellungen Menü</string>
+  <string name="tourPage_8_Text">Hier kannst du deine gespeicherten Voreinstellungen laden oder von anderen Benutzern dieser App erstellte herunterladen!\n\nFühle dich frei, deine Kreationen auch der Sammlung hinzuzufügen!</string>
 </resources>

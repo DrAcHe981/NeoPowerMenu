@@ -173,7 +173,6 @@
   <string name="presetLoadDialog_BuiltIn">"Světlé|Šedé|Černé"</string>
   <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
   <string name="graphics_Crop">"Oříznutí|Kruhové oříznutí"</string>
-  <string name="graphics_GraphicsSaveLoad">"Uložit akttuální grafický návrh.|Toto přednastavení obsahuje grafiku, chcete ji načíst?\nVolba přepíše váš aktuální grafický návrh!"</string>
   <string name="presetsManager_ReportDialog">"Opravdu chcete nahlásit [PRESETNAME]?\nAkci nelze vrátit zpět, prosím nezneužívejte nahlašování!\n\nNíže prosím uveďte důvod nahlášení.|Důvod nahlášení:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] reportován, autor prověří nahlášený problém.|Nahlašování selhalo, prosím zkuste to znovu.\nDůvod: "</string>
   <string name="presetsManager_Buttons">"Ohodnotit|Odebrat hodnocení|Smazat|Nahlásit|Nahrát|Sdílet"</string>

@@ -173,7 +173,6 @@
   <string name="presetLoadDialog_BuiltIn">"Claro | Oscuro | Negro"</string>
   <string name="graphics_Choose">"Restaurar original | Elegir tema | Elegir de la galería"</string>
   <string name="graphics_Crop">"Cortado | Corte circular"</string>
-  <string name="graphics_GraphicsSaveLoad">"Salvar con gráficos actuales. | Esta tema contiene gráficos, ¿quieres cargarlos?\n¡Esto sobrescribira a los gráficos actuales!"</string>
   <string name="presetsManager_ReportDialog">"¿Está seguro de informar este [PRESETNAME]? \nEsto no se puede deshacer, así que por favor no informe por diversión! \n\nYa que necesitamos una razón por la cual quieres denunciarlo, por favor ingrese. | Motivo de informe:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] reportado, el desarrollador tendrá un vistazo. | Informe de error fallido, por favor intentelo nuevamente. \nRason: "</string>
   <string name="presetsManager_Buttons">"Dar estrellas | Quitar estrellas | Eliminar | Reportar | Subir | Compartir"</string>

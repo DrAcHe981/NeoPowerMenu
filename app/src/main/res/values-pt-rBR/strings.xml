@@ -188,8 +188,6 @@ Clique aqui para opções de recuperação.\"\""</string>
   <string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
   <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
   <string name="graphics_Crop">"Cortar|Cortar redondo"</string>
-  <string name="graphics_GraphicsSaveLoad">"\"\"Salvar com os gráficos atuais.|Essa predefinição contém gráficos, você quer carregá-los?
-Isso vai sobrescrever seus gráficos atuais!\"\""</string>
   <string name="presetsManager_ReportDialog">"\"\"Você quer mesmo reportar [PRESETNAME]?
 Isso não pode ser desfeito, então por favor não reporte apenas por diversão!
 

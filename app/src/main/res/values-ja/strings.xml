@@ -168,7 +168,6 @@
   <string name="presetLoadDialog_BuiltIn">"ライト|ダーク|ブラック"</string>
   <string name="graphics_Choose">"既定の復元|プリセットから選択|ギャラリーから選択"</string>
   <string name="graphics_Crop">"トリミング|サークルトリミング"</string>
-  <string name="graphics_GraphicsSaveLoad">"現在のグラフィックと一緒に保存します。|このプリセットはグラフィックを含んでいます。読み込みますか?\n現在のグラフィックは上書きされます!"</string>
   <string name="presetsManager_ReportDialog">"[PRESETNAME] を本当に通報しますか?\nこの操作は元に戻せないので、ふざけて通報しないでください!\n\n何故通報するのか理由を記入してください。|通報の理由:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] を通報しました。開発者によって確認されます。|通報に失敗しました。やり直してください。\n原因: "</string>
   <string name="presetsManager_Buttons">"星を付ける|星を外す|削除|通報|アップロード|共有"</string>
