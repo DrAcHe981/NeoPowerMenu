@@ -210,13 +210,15 @@
   <string name="animations_Items">"Arka plan|İletişim kutusu|Simgeler|Tek satır öğeleri|Birden çok satır öğeleri|İlerleme çubuğu"</string>
   <string name="animations_Speeds">"Çok hızlı|Daha hızlı|Hızlı|Normal|Yavaş|Daha yavaş|Çok yavaş|Özel"</string>
   <string name="animations_Interpolators">Doğrusal|Hızlandır|Yavaşlat|Hızlandır ve yavaşlat|Sıçra|Bekle|İleriye at|Bekle ve ileriye at</string>
-  <string name="animations_Types">"Karart|Göster|Yukarı kaydır|Sola kaydır|Sağa kaydır|Aşağı kaydır|Yukarı ölçekle|Aşağı ölçekle|Dikey döndür|Yatay döndür|Devre dışı"</string>
+  <string name="animations_Types">"Karart|Göster|Yukarı kaydır|Sola kaydır|Sağa kaydır|Aşağı kaydır|Yükselt|Düşür|Dikey döndür|Yatay döndür|Devre dışı"</string>
+  <string name="animations_Types_Progressbar">"Saat yönünde döndür|Saat yönünün tersine döndür|Titre|Yükselt|Düşür|Devre dışı"</string>
   <string name="animations_Type">"Tür"</string>
   <string name="animations_Speed">"Hız"</string>
   <string name="powerMenuMain_Progress">"Yükleniyor dairesi"</string>
   <string name="presetsManager_LoadMore">"Yükleniyor...|Lütfen bekleyin...|Daha fazla hazır ayar göster|Daha fazla hazır ayar için buraya tıklayın.|Son.|Gösterilecek daha fazla hazır ayar yok.|Tekrar denemek için buraya tıklayın."</string>
   <string name="powerMenu_SureToRebootPowerOff">"Cihazınızı yeniden başlatmak istediğinizden emin misiniz?|Cihazınızı kapatmak istediğinizden emin misiniz?"</string>
   <string name="advancedPrefs_Confirmation">"Onay iste|Yeniden başlatmadan veya kapatmadan önce çıkan onay kutusunu etkinleştirin."</string>
+  <string name="preferences_Donate">"Bağış yap|Çalışmamı beğendiniz mi?\nNeden bana bir fincan kahve ya da başka bir şey bağışta bulunmuyorsunuz?"</string>
   <string name="advancedPrefs_HideOnClick">"Tıklandığında gizle"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Bir açma/kapatma düğmesine tıklandığında menüyü gizle."</string>
   <string name="advancedPrefs_LoadAppIcons">"Uygulama Simgelerini Yükle"</string>
