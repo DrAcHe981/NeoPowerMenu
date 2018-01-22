@@ -174,7 +174,6 @@
   <string name="graphics_Choose">"Standard wiederherstellen|Aus Voreinstellung wählen|Aus Galerie wählen"</string>
   <string name="graphics_Crop">"Zuschneiden|Rund zuschneiden"</string>
   <string name="graphics_NoPresetsFound">Es konnte keine Voreinstellung gefunden werden, die diese Grafik enthält...</string>
-  <string name="graphics_GraphicsSaveLoad">"Mit aktuellen Grafiken speichern.|Diese Voreinstellung enthält Grafiken, willst du sie laden? \nDies überschreibt deine aktuellen Grafiken!"</string>
   <string name="presetsManager_ReportDialog">"Bist du dir sicher dass du [PRESETNAME] melden willst?\nDies kann nicht rückgängig gemacht werde, also melde nicht nur zum Spaß!\n\nDesweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein.|Meldegrund:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] gemeldet, der Entwickler wird einen Blick drüber werfen.|Melden fehlgeschlagen, bitte versuch es erneut.\nGrund: "</string>
   <string name="presetsManager_Buttons">"Stern geben|Stern entfernen|Löschen|Melden|Hochladen|Teilen"</string>
