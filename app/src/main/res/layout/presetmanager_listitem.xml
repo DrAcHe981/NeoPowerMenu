@@ -10,7 +10,7 @@
 	<LinearLayout
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-		android:orientation="vertical">
+		android:orientation="horizontal">
 
 		<RelativeLayout
 			android:layout_width="match_parent"
@@ -28,7 +28,6 @@
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
 				android:orientation="vertical"
-				android:layout_weight="0"
 				android:layout_alignParentRight="true"
 				android:id="@+id/listitemhandleleftLinearLayout1"
 				android:layout_centerVertical="true"
@@ -95,14 +94,6 @@
 					android:layout_width="match_parent"
 					android:orientation="horizontal">
 
-					<ImageView
-						android:layout_height="match_parent"
-						android:layout_width="25dp"
-						android:src="@drawable/ic_device_now_wallpaper"
-						android:id="@+id/presetmanagerlistitemImageView_hasGraphics"
-						android:padding="2dp"
-                        android:layout_gravity="top"/>
-
 					<TextView
 						android:layout_height="wrap_content"
 						android:layout_width="match_parent"
@@ -111,7 +102,8 @@
 						android:textAppearance="?android:attr/textAppearanceMedium"
 						android:textColor="#FFFFFF"
 						android:id="@+id/title"
-						android:paddingRight="10dp"/>
+						android:paddingRight="10dp"
+						android:layout_weight="1"/>
 
 				</LinearLayout>
 
@@ -124,6 +116,57 @@
 					android:paddingLeft="5dp"
 					android:id="@+id/text"
 					android:paddingRight="10dp"/>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal"
+					android:paddingLeft="5dp"
+					android:id="@+id/presetmanagerlistitemLinearLayout_Content">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:gravity="center"
+						android:text="@string/presetsManager_Contains"/>
+
+						<ImageView
+							android:layout_height="20dp"
+							android:layout_width="30dp"
+							android:src="@drawable/ic_color_lens"
+							android:id="@+id/presetmanagerlistitemImageView_hasColors"
+							android:layout_margin="2dp" />
+
+					<ImageView
+						android:layout_height="20dp"
+						android:layout_width="30dp"
+						android:src="@drawable/ic_device_now_wallpaper"
+						android:id="@+id/presetmanagerlistitemImageView_hasGraphics"
+						android:layout_margin="2dp"/>
+
+					<ImageView
+						android:layout_height="20dp"
+						android:layout_width="30dp"
+						android:src="@drawable/ic_flip"
+						android:id="@+id/presetmanagerlistitemImageView_hasAnimations"
+						android:layout_margin="2dp"/>
+
+					<ImageView
+						android:layout_height="20dp"
+						android:layout_width="30dp"
+						android:src="@drawable/ic_crop_square"
+						android:id="@+id/presetmanagerlistitemImageView_hasRoundedCorners"
+						android:layout_margin="2dp"
+						android:visibility="invisible"/>
+
+					<ImageView
+						android:layout_height="20dp"
+						android:layout_width="30dp"
+						android:src="@drawable/ic_crop_square"
+						android:layout_margin="2dp"
+						android:visibility="invisible"/>
+
+				</LinearLayout>
 
 			</LinearLayout>
 

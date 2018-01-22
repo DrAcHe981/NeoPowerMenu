@@ -148,18 +148,19 @@ public class PreferencesPartFragment extends Fragment {
         for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
             if ((int) PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM) {
                 if (MainActivity.colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty()) {
-                    //Log.d("NPM:cI","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
+                    //Log.d("NPM","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
                     MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).apply();
                     MainActivity.preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
                 }
             }
         }
         for (int i = 0; i < PreferencesAnimationsFragment.names.length; i++) {
-            if ((int) PreferencesAnimationsFragment.names[i][0] == animationsAdapter.TYPE_ITEM) {
-                if (PreferencesAnimationsFragment.names[i][1].toString().contains("type") && MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i][1].toString(), -1) == -1) {
+            if ((int) PreferencesAnimationsFragment.names[i][0] == animationsAdapter.TYPE_HEADER) {
+                if (PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Type][1].toString().contains("type") && MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Type][1].toString(), -1) == -1) {
+                    //Log.d("NPM","["+i+"]> Setting initial animation for "+PreferencesAnimationsFragment.names[i][1].toString()+" with the value "+PreferencesAnimationsFragment.defaultTypes[i + PreferencesAnimationsFragment.anim_Type]);
                     MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Type][1].toString(), PreferencesAnimationsFragment.defaultTypes[i + PreferencesAnimationsFragment.anim_Type]).apply();
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Interpolator][1].toString(), 0).apply();
-                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Speed][1].toString(), 3).apply();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Interpolator][1].toString(), PreferencesAnimationsFragment.defaultTypes[i + PreferencesAnimationsFragment.anim_Interpolator]).apply();
+                    MainActivity.animationPrefs.edit().putInt(PreferencesAnimationsFragment.names[i + PreferencesAnimationsFragment.anim_Speed][1].toString(), PreferencesAnimationsFragment.defaultTypes[i + PreferencesAnimationsFragment.anim_Speed]).apply();
                 }
             }
         }

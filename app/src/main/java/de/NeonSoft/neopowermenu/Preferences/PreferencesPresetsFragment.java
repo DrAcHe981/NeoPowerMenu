@@ -96,15 +96,17 @@ public class PreferencesPresetsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        MainActivity.visibleFragment = "PresetsManager";
+        if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
+            MainActivity.visibleFragment = "PresetsManager";
+        }
 
         MainActivity.actionbar.setTitle(getString(R.string.preset_Load));
         MainActivity.actionbar.setSubTitle(getString(R.string.preset_LoadDesc));
 
         mContext = getActivity();
         onlineSearchTerm = "";
-        onlineOrderSelected = 0;
-        onlineOrderSelectedString = "";
+        onlineOrderSelected = 3;
+        onlineOrderSelectedString = getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")";
 
         InflatedView = inflater.inflate(R.layout.activity_presetsmanager, container, false);
 
@@ -126,12 +128,14 @@ public class PreferencesPresetsFragment extends Fragment {
 
         vpPager.setCurrentItem(startTab);
 
-        if (startTab == 0) {
-            MainActivity.visibleFragment = "PresetsManagerAccount";
-        } else if (startTab == 1) {
-            MainActivity.visibleFragment = "PresetsManager";
-        } else if (startTab == 2) {
-            MainActivity.visibleFragment = "PresetsManagerOnline";
+        if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
+            if (startTab == 0) {
+                MainActivity.visibleFragment = "PresetsManagerAccount";
+            } else if (startTab == 1) {
+                MainActivity.visibleFragment = "PresetsManager";
+            } else if (startTab == 2) {
+                MainActivity.visibleFragment = "PresetsManagerOnline";
+            }
         }
 
         vpPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

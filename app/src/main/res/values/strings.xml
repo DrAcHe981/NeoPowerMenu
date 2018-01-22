@@ -187,7 +187,6 @@
     <string name="graphics_Choose">"Restore default|Choose from presets|Choose from gallery"</string>
 <string name="graphics_Crop">"Crop|Circle crop"</string>
 <string name="graphics_NoPresetsFound">Could not find any preset which contains this graphic...</string>
-<string name="graphics_GraphicsSaveLoad">"Save with current graphics.|This preset contains graphics, do you want to load them?\nThis will overwrite your current graphics!"</string>
 <string name="presetsManager_ReportDialog">"Are you sure to report [PRESETNAME]?\nThis can't be undone, so please don't report just for fun!\n\nAlso we need a reason why you want to report it, please enter it below.|Report reason:"</string>
 <string name="presetsManager_ReportResult">"[PRESETNAME] reported, the developer will have a look at it.|Report failed, please try again.\nReason: "</string>
 <string name="presetsManager_Buttons">"Give Star|Remove Star|Delete|Report|Upload|Share"</string>
@@ -469,5 +468,15 @@
     <string name="animations_Interpolator">Interpolator</string>
     <string name="animations_CustomSpeed">Custom speed in milliseconds: (Default: 700ms)</string>
     <string name="animations_CustomSpeedTooSmall">This value can\'t be smaller than [VALUE].</string>
+    <string name="savePreset_Colors">Save current colors</string>
+    <string name="savePreset_Animations">Save current animations</string>
+    <string name="savePreset_Graphics">Save current graphics</string>
+    <string name="presetsManager_LoadPreset">Please select what you want to load from this preset:</string>
+    <string name="loadPreset_Colors">Load colors</string>
+    <string name="loadPreset_Animations">Load animations</string>
+    <string name="loadPreset_Graphics">Load graphics</string>
+    <string name="presetsManager_Contains">Preset contains:</string>
+    <string name="tourPage_8_Title">The Presets Menu</string>
+    <string name="tourPage_8_Text">Here you can load your saved presets, or even download one\'s created by other users of this app!\n\nFeel free to add your creations to the collection as well!</string>
 
 </resources>

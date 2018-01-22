@@ -169,7 +169,10 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
                     preset.setDescription(jObject.getString("_presetCreator") + ",=," + jObject.getString("_presetAppVersion") + ",=," + jObject.getString("_presetStars"));
                     preset.setType(PresetsHolder.TYPE_ONLINE);
                     preset.setId(jObject.getString("_creatorUniqeId"));
-										preset.setHasGraphics(jObject.getString("_presetHasGraphics").equalsIgnoreCase("true"));
+                    preset.setHasColors(jObject.getString("_presetContent").contains("colors"));
+                    preset.setHasGraphics(jObject.getString("_presetContent").contains("graphics"));
+                    preset.setHasAnimations(jObject.getString("_presetContent").contains("animations"));
+                    preset.setHasRoundCorners(jObject.getString("_presetContent").contains("roundcorners"));
 										presets[i] = preset;
                     //PreferencesPresetsFragment.OnlineHasGraphics.add(jObject.getString("_presetHasGraphics").equalsIgnoreCase("true"));
 

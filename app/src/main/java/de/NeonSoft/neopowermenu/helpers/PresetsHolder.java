@@ -17,6 +17,9 @@ public class PresetsHolder
 		private String pName = "< Error >";
 		private String pDescription = "This is an empty holder, this should normally never happen...";
 		private boolean pHasGraphics = false;
+		private boolean pHasColors = false;
+		private boolean pHasAnimations = false;
+		private boolean pHasRoundCorners = false;
 		private downloadHelper pDownloadHelper = null;
 		private LinearLayout pPresetRoot = null;
 		private LinearLayout pPresetLayout = null;
@@ -87,6 +90,27 @@ public class PresetsHolder
 		public boolean getHasGraphics() {
 				return this.pHasGraphics;
 		}
+
+	public void setHasColors(boolean hasColors) {
+		this.pHasColors = hasColors;
+	}
+	public boolean getHasColors() {
+		return this.pHasColors;
+	}
+
+	public void setHasAnimations(boolean hasAnimations) {
+		this.pHasAnimations = hasAnimations;
+	}
+	public boolean getHasAnimations() {
+		return this.pHasAnimations;
+	}
+
+	public void setHasRoundCorners(boolean hasRoundCorners) {
+		this.pHasRoundCorners = hasRoundCorners;
+	}
+	public boolean getHasRoundCorners() {
+		return this.pHasRoundCorners;
+	}
 
 		public void setDownloadHelper(downloadHelper helper) {
 				this.pDownloadHelper = helper;

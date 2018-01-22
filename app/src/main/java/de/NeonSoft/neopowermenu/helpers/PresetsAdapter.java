@@ -2,8 +2,12 @@ package de.NeonSoft.neopowermenu.helpers;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.net.*;
 import android.os.*;
+import android.support.v4.content.FileProvider;
 import android.text.*;
 import android.util.*;
 import android.view.*;
@@ -59,8 +63,15 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
         ItemTitle.setGravity(Gravity.NO_GRAVITY);
         final TextView ItemDesc = (TextView) rowView.findViewById(R.id.text);
         ItemDesc.setGravity(Gravity.NO_GRAVITY);
+        final LinearLayout presetContent = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Content);
+        presetContent.setVisibility(View.GONE);
+        final ImageView hasColors = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_hasColors);
+        hasColors.setAlpha((float) .2);
         final ImageView hasGraphics = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_hasGraphics);
-        hasGraphics.setVisibility(View.GONE);
+        hasGraphics.setAlpha((float) .2);
+        final ImageView hasAnimations = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_hasAnimations);
+        hasAnimations.setAlpha((float) .2);
+        final ImageView hasRoundedCorners = (ImageView) rowView.findViewById(R.id.presetmanagerlistitemImageView_hasRoundedCorners);
         LinearLayout LocalButton = (LinearLayout) rowView.findViewById(R.id.presetmanagerlistitemLinearLayout_Local);
         LocalButton.setVisibility(View.VISIBLE);
         RadioButton ItemSwitch = (RadioButton) rowView.findViewById(R.id.Active);
@@ -108,8 +119,33 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
         if (preset.getType() == PresetsHolder.TYPE_INTERNAL) {
             root.setEnabled(true);
             if (position >= 3) {
-                if (helper.isValidZip(context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps", null)) {
-                    hasGraphics.setVisibility(View.VISIBLE);
+                presetContent.setVisibility(View.VISIBLE);
+                File presetFile = new File(context.getFilesDir().getPath() + "/presets/" +  mItems.get(position).getName() + ".nps");
+                if ( helper.isValidZip(context.getFilesDir().getPath() + "/presets/" +  mItems.get(position).getName() + ".nps", null))  {
+                    helper.unzipFile(context.getFilesDir().getPath() + "/presets/" +  mItems.get(position).getName() + ".nps", context.getFilesDir().getPath() + "/temp/", mItems.get(position).getName() + ".nps",null);
+                    presetFile = new File(context.getFilesDir().getPath() + "/temp/" +  mItems.get(position).getName() + ".nps");
+                    hasGraphics.setAlpha((float) 1);
+                }
+                try {
+                    FileInputStream fIn = new FileInputStream(presetFile);
+                    BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
+                    String aDataRow = "";
+                    while ((aDataRow = myReader.readLine()) != null) {
+                        if (aDataRow.equals("[COLORS]")) {
+                            hasColors.setAlpha((float) 1);
+                        } else if (aDataRow.equals("[ANIMATIONS]")) {
+                            hasAnimations.setVisibility(View.VISIBLE);
+                            hasAnimations.setAlpha((float) 1);
+                        } else if (aDataRow.contains("DialogCornersRadius")) {
+                            String[] rcsplit = aDataRow.split("=");
+                            if (Integer.parseInt(rcsplit[1]) > 0) {
+                                hasRoundedCorners.setImageResource(R.drawable.ic_rounded_corner);
+                            } else {
+                                hasRoundedCorners.setImageResource(R.drawable.ic_crop_square);
+                            }
+                        }
+                    }
+                } catch (Throwable e) {
                 }
                 BottomBar.setVisibility(View.VISIBLE);
                 Upload.setOnClickListener(new OnClickListener() {
@@ -143,8 +179,10 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                 String appVersion = MainActivity.versionName.replace("v", "");
                                 final String presetName = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim();
                                 final String presetCreator = resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1").replace("/", "").trim();
-                                boolean hasGraphics = false;
+                                File presetFile = new File(context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps");
+                               String features = "";
                                 String path = "";
+                                boolean hasGraphics = false;
                                 try {
                                     FileInputStream fIn;
                                     if (helper.isValidZip(context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps", null)) {
@@ -156,6 +194,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                         helper.zipFile(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps", context.getFilesDir().getPath() + "/temp/" + presetName + ".nps.tmp", null);
                                         path = context.getFilesDir().getPath() + "/temp/" + presetName + ".nps";
                                         fIn = new FileInputStream(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps");
+                                        presetFile = new File(context.getFilesDir().getPath() + "/temp/" + mItems.get(position).getName() + ".nps");
                                     } else {
                                         path = context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps";
                                         fIn = new FileInputStream(context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps");
@@ -171,6 +210,24 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                     myReader.close();
                                     fIn.close();
                                 } catch (Throwable t) {
+                                }
+                                try {
+                                    FileInputStream fIn = new FileInputStream(presetFile);
+                                    BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
+                                    String aDataRow = "";
+                                    while ((aDataRow = myReader.readLine()) != null) {
+                                        if (aDataRow.equals("[COLORS]")) {
+                                            features += (features.isEmpty() ? "" : ",") + "colors";
+                                        } else if (aDataRow.equals("[ANIMATIONS]")) {
+                                            features += (features.isEmpty() ? "" : ",") + "animations";
+                                        } else if (aDataRow.contains("DialogCornersRadius")) {
+                                            String[] rcsplit = aDataRow.split("=");
+                                            if (Integer.parseInt(rcsplit[1]) > 0) {
+                                                features += (features.isEmpty() ? "" : ",") + "roundcorners";
+                                            }
+                                        }
+                                    }
+                                } catch (Throwable e) {
                                 }
                                 if (hasGraphics) {
                                     new File(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps").delete();
@@ -440,7 +497,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                 uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.neon-soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
                                 uH.setLocalUrl(path);
                                 uH.uploadAs(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0") + ".nps");
-                                uH.setAdditionalUploadPosts(new String[][]{{"presetName", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")}, {"presetCreator", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1")}, {"presetAppVersion", "v" + appVersion}, {MainActivity.userName.contains("@") ? "userEmail" : "userName", MainActivity.userName}, {"userId", MainActivity.deviceUniqeId}});
+                                uH.setAdditionalUploadPosts(new String[][]{{"presetName", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")}, {"presetCreator", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1")}, {"presetAppVersion", "v" + appVersion}, {MainActivity.userName.contains("@") ? "userEmail" : "userName", MainActivity.userName}, {"userId", MainActivity.deviceUniqeId}, {"presetContent", features}});
                                 uH.startUpload();
                             }
 
@@ -525,10 +582,11 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             tmpfile.delete();
                             helper.copyFile(context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps", context.getExternalFilesDir(null) + "/sharedpresets/" + mItems.get(position).getName() + ".nps");
 
-                            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(context.getExternalFilesDir(null) + "/sharedpresets/" + mItems.get(position).getName() + ".nps")));
-                            context.startActivity(shareIntent.createChooser(shareIntent, mItems.get(position).getName()));
+                            shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(context, MainActivity.class.getPackage().getName()+".fileprovider", new File(context.getExternalFilesDir(null) + "/sharedpresets/" + mItems.get(position).getName() + ".nps")));
+                            context.startActivity(Intent.createChooser(shareIntent, mItems.get(position).getName()));
                             PreferencesPresetsFragment.progress.setVisibility(View.GONE);
                         } catch (Throwable e) {
+                            Log.e("NPM", "Failed to share preset:", e);
                         }
                     }
                 });
@@ -546,7 +604,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                 public void onClick(View p1) {
 
                     selectedName = mItems.get(position).getName();
-                    if (helper.isValidZip(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps", null)) {
+                    if (position > 2) {
                         slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                         dialogFragment.setContext(context);
                         dialogFragment.setFragmentManager(MainActivity.fragmentManager);
@@ -565,34 +623,11 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             @Override
                             public void onNeutralClick() {
 
-                                helper.unzipFile(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps", context.getFilesDir().getPath() + "/temp/", selectedName + ".nps", null);
-                                new loadPreset().execute(context.getFilesDir().getPath() + "/temp/" + selectedName + ".nps");
                             }
 
                             @Override
                             public void onPositiveClick(Bundle resultBundle) {
-
-                                helper.unzipAll(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps", context.getFilesDir().getPath() + "/temp/", null);
-                                for (int i = 0; i < PreferencesGraphicsFragment.graphics.length; i++) {
-                                    try {
-                                        new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").delete();
-                                        new File(context.getFilesDir().getPath() + "/temp/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").renameTo(new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png"));
-                                        MemoryCacheUtils.removeFromCache(((context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").startsWith("file://") ? "" : "file://") + context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png", MainActivity.imageLoader.getMemoryCache());
-                                        DiskCacheUtils.removeFromCache(((context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").startsWith("file://") ? "" : "file://") + context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png", MainActivity.imageLoader.getDiscCache());
-                                        if (PreferencesGraphicsFragment.graphics[i][2].toString().equalsIgnoreCase("Progress") && new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").exists()) {
-                                            MainActivity.preferences.edit().putString("ProgressDrawable", "file").commit();
-                                        } else {
-                                            MainActivity.preferences.edit().putString("ProgressDrawable", "stock").commit();
-                                        }
-                                    } catch (Throwable t) {
-                                        Log.d("NPM", "Cant move graphic " + PreferencesGraphicsFragment.graphics[i][0] + "-" + PreferencesGraphicsFragment.graphics[i][1] + ".png, reason: " + t.toString());
-                                    }
-                                }
-                                if (!resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)) {
-                                    new loadPreset().execute(context.getFilesDir().getPath() + "/temp/" + selectedName + ".nps");
-                                } else {
-                                    Toast.makeText(context, context.getString(R.string.presetLoad_PresetLoaded).replace("[PRESETNAME]", selectedName), Toast.LENGTH_SHORT).show();
-                                }
+                                new loadPreset().execute(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps", resultBundle.getString(slideDownDialogFragment.RESULT_LIST));
                             }
 
                             @Override
@@ -600,14 +635,44 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                             }
                         });
-                        dialogFragment.setText(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[1]);
-                        dialogFragment.setCheckBox(context.getString(R.string.presetsManager_LoadOnlyGraphics), false);
-                        dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
-                        dialogFragment.setNeutralButton(context.getString(R.string.Dialog_Buttons).split("\\|")[2]);
-                        dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_LOAD]);
-                        dialogFragment.showDialog(R.id.dialog_container);
+                        dialogFragment.setText(context.getString(R.string.presetsManager_LoadPreset));
+                        ArrayList<String> options = new ArrayList<>();
+                        ArrayList<Boolean> checked = new ArrayList<>();
+                        File presetFile = new File(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps");
+                        if ( helper.isValidZip(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps", null))  {
+                            options.add(context.getString(R.string.loadPreset_Graphics));
+                            checked.add(false);
+                            helper.unzipFile(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps", context.getFilesDir().getPath() + "/temp/",selectedName + ".nps",null);
+                            presetFile = new File(context.getFilesDir().getPath() + "/temp/" + selectedName + ".nps");
+                        }
+                        try {
+                            FileInputStream fIn = new FileInputStream(presetFile);
+                            BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
+                            String aDataRow = "";
+                            while ((aDataRow = myReader.readLine()) != null) {
+                                if (aDataRow.equals("[COLORS]")) {
+                                    options.add(context.getString(R.string.loadPreset_Colors));
+                                    checked.add(true);
+                                } else if (aDataRow.equals("[ANIMATIONS]")) {
+                                    options.add(context.getString(R.string.loadPreset_Animations));
+                                    checked.add(false);
+                                }
+                            }
+                        } catch (Throwable e) {
+                        }
+                        if (presetFile.getPath().equals(context.getFilesDir().getPath() + "/temp/" + selectedName + ".nps")) presetFile.delete();
+                        if (options.size() == 1) {
+                            new loadPreset().execute(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps", options.get(0));
+                        } else {
+                            dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, options, -1, false);
+                            dialogFragment.setListChecks(checked);
+                            dialogFragment.setListReturnMode(slideDownDialogFragment.LIST_RETURN_MODE_TEXT);
+                            dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
+                            dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_LOAD]);
+                            dialogFragment.showDialog(R.id.dialog_container);
+                        }
                     } else {
-                        new loadPreset().execute((position >= 3 ? context.getFilesDir().getPath() + "/presets/" : "") + selectedName + (position >= 3 ? ".nps" : ""));
+                        new loadPreset().execute(selectedName, context.getString(R.string.loadPreset_Colors));
                     }
                 }
             });
@@ -1040,8 +1105,20 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                     }
                 }
             });
+            presetContent.setVisibility(View.VISIBLE);
+            if (preset.getHasColors()) {
+                hasColors.setAlpha((float) 1);
+            }
             if (preset.getHasGraphics()) {
-                hasGraphics.setVisibility(View.VISIBLE);
+                hasGraphics.setAlpha((float) 1);
+            }
+            if (preset.getHasAnimations()) {
+                hasAnimations.setAlpha((float) 1);
+            }
+            if (preset.getHasRoundCorners()) {
+                hasRoundedCorners.setImageResource(R.drawable.ic_rounded_corner);
+            } else {
+                hasRoundedCorners.setImageResource(R.drawable.ic_crop_square);
             }
         } else if (preset.getType() == PresetsHolder.TYPE_LOADMORE) {
             BottomBar.setVisibility(View.GONE);
@@ -1147,31 +1224,58 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
         @Override
         protected String doInBackground(String[] p1) {
-            Log.i("NPM","Trying to load preset: " + p1[0]);
+            String selectedOptions = p1[1];
+            Log.i("NPM","Trying to load preset: " + p1[0] + "\nLoading the components: " + p1[1].split(" ")[1]);
             try {
                 String[] builtIn = context.getString(R.string.presetLoadDialog_BuiltIn).split("\\|");
                 if (p1[0].startsWith(context.getFilesDir().getPath())) {
+                    if (selectedOptions.contains(context.getString(R.string.loadPreset_Colors))) {
+                        for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
+                            String[] loadColor = PreferencesColorFragment.ColorNames[i][1].toString().split("_");
+                            if (loadColor.length > 1) {
+                                if (loadColor[1].contains("Reveal")) {
+                                    MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Revealcolor", PreferencesColorFragment.lightPreset[i]).apply();
+                                } else if (loadColor[1].contains("Background")) {
+                                    MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Backgroundcolor", PreferencesColorFragment.lightPreset[i]).apply();
+                                } else if (loadColor[1].contains("Text")) {
+                                    MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Textcolor", PreferencesColorFragment.lightPreset[i]).apply();
+                                } else if (loadColor[1].contains("Circle")) {
+                                    MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Circlecolor", PreferencesColorFragment.lightPreset[i]).apply();
+                                }
+                                publishProgress("Resetting to default...");
+                            }
+                        }
+                    }
+
+                    if (helper.isValidZip(p1[0], null)) {
+                        helper.unzipAll(context.getFilesDir().getPath() + "/presets/" + selectedName + ".nps", context.getFilesDir().getPath() + "/temp/", null);
+                        p1[0] = context.getFilesDir().getPath() + "/temp/" + selectedName + ".nps";
+                    }
                     File presetFile = new File(p1[0]);
                     FileInputStream fIn = new FileInputStream(presetFile);
                     BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
                     String aDataRow = "";
                     String aBuffer = "";
-                    for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
-                        String[] loadColor = PreferencesColorFragment.ColorNames[i][1].toString().split("_");
-                        if (loadColor.length > 1) {
-                            if (loadColor[1].contains("Reveal")) {
-                                MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Revealcolor", PreferencesColorFragment.lightPreset[i]).apply();
-                            } else if (loadColor[1].contains("Background")) {
-                                MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Backgroundcolor", PreferencesColorFragment.lightPreset[i]).apply();
-                            } else if (loadColor[1].contains("Text")) {
-                                MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Textcolor", PreferencesColorFragment.lightPreset[i]).apply();
-                            } else if (loadColor[1].contains("Circle")) {
-                                MainActivity.colorPrefs.edit().putString(loadColor[0] + "_Circlecolor", PreferencesColorFragment.lightPreset[i]).apply();
+
+                    if (selectedOptions.contains(context.getString(R.string.loadPreset_Graphics))) {
+                        for (int i = 0; i < PreferencesGraphicsFragment.graphics.length; i++) {
+                            try {
+                                publishProgress("Loading graphic \"" + PreferencesGraphicsFragment.graphics[i][2] + "\"");
+                                new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").delete();
+                                new File(context.getFilesDir().getPath() + "/temp/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").renameTo(new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png"));
+                                MemoryCacheUtils.removeFromCache(((context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").startsWith("file://") ? "" : "file://") + context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png", MainActivity.imageLoader.getMemoryCache());
+                                DiskCacheUtils.removeFromCache(((context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png").startsWith("file://") ? "" : "file://") + context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[i][2] + ".png", MainActivity.imageLoader.getDiscCache());
+                            } catch (Throwable t) {
+                                Log.d("NPM", "Cant move graphic " + PreferencesGraphicsFragment.graphics[i][0] + "-" + PreferencesGraphicsFragment.graphics[i][1] + ".png, reason: " + t.toString());
                             }
-                            publishProgress("Resetting to default...");
+                        }
+                        if (PreferencesGraphicsFragment.graphics[0][2].toString().equalsIgnoreCase("Progress") && new File(context.getFilesDir().getPath() + "/images/" + PreferencesGraphicsFragment.graphics[0][2] + ".png").exists()) {
+                            MainActivity.preferences.edit().putString("ProgressDrawable", "file").commit();
+                        } else {
+                            MainActivity.preferences.edit().putString("ProgressDrawable", "stock").commit();
                         }
                     }
-
+                    String currentSection = "main";
                     while ((aDataRow = myReader.readLine()) != null) {
                         aBuffer += aDataRow + "\n";
                         String aData[] = aDataRow.split("=");
@@ -1186,38 +1290,54 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                             MainActivity.preferences.edit().putBoolean(PreferenceNames.pColorizeNonStockIcons, (aData[1].equals("true") ? true : false)).commit();
                         } else if (aData[0].equals("CircleRadius")) {
                             MainActivity.preferences.edit().putInt(PreferenceNames.pCircleRadius, Integer.parseInt(aData[1])).commit();
+                        } else if (aData[0].equals("DialogCornersRadius")) {
+                            MainActivity.preferences.edit().putInt(PreferenceNames.pRoundedDialogCornersRadius, Integer.parseInt(aData[1])).commit();
                         } else {
-                            if (presetVersionName.equals("1.4.2")) {
-                                if (aData[0].equalsIgnoreCase("RevealBackground")) {
-                                    aData[0] = "Reveal_Backgroundcolor";
-                                } else if (aData[0].equalsIgnoreCase("ActionRevealBackground")) {
-                                    aData[0] = "ActionReveal_Backgroundcolor";
+                            if (aDataRow.contains("[COLORS]")) {
+                                currentSection = "colors";
+                            } else if (aDataRow.contains("[ANIMATIONS]")) {
+                                currentSection = "animations";
+                            }
+                            if (selectedOptions.contains(context.getString(R.string.loadPreset_Colors)) && currentSection.equals("colors")) {
+                                if (presetVersionName.equals("1.4.2")) {
+                                    if (aData[0].equalsIgnoreCase("RevealBackground")) {
+                                        aData[0] = "Reveal_Backgroundcolor";
+                                    } else if (aData[0].equalsIgnoreCase("ActionRevealBackground")) {
+                                        aData[0] = "ActionReveal_Backgroundcolor";
+                                    }
+                                }
+                                if (presetVersionCode < 34 && aData[0].contains("Background") && !aData[0].contains("Reveal")) {
+                                    String[] split = aData[0].split("_");
+                                    MainActivity.colorPrefs.edit().putString(split[0] + "_Circlecolor", aData[1]).apply();
+                                }
+                                if (presetVersionCode < 43 && aData[0].contains("ActionReveal")) {
+                                    //String[] split = aData[0].split("=");
+                                    oldActionReveal = aData[1];
+                                    //publishProgress("importingOldAR");
+                                }
+                                if (presetVersionCode < 44) {
+                                    if (aData[0].equalsIgnoreCase("Reveal_Backgroundcolor")) {
+                                        aData[0] = "Dialog_Revealcolor";
+                                    }
+                                }
+                                if (!oldActionReveal.isEmpty() && aData[0].contains("Background") && !aData[0].contains("Reveal")) {
+                                    String[] split = aData[0].split("_");
+                                    //publishProgress("convertedOldAR");
+                                    MainActivity.colorPrefs.edit().putString(split[0] + "_Revealcolor", oldActionReveal).apply();
+                                }
+                                for (int check = 0; check < PreferencesColorFragment.ColorNames.length; check++) {
+                                    if (PreferencesColorFragment.ColorNames[check][1].toString().equals(aData[0]) && aData[0].contains("color")) {
+                                        MainActivity.colorPrefs.edit().putString(aData[0], aData[1]).apply();
+                                        publishProgress(loadColor[0] + ": " + aData[1]);
+                                    }
                                 }
                             }
-                            if (presetVersionCode < 34 && aData[0].contains("Background") && !aData[0].contains("Reveal")) {
-                                String[] split = aData[0].split("_");
-                                MainActivity.colorPrefs.edit().putString(split[0] + "_Circlecolor", aData[1]).apply();
-                            }
-                            if (presetVersionCode < 43 && aData[0].contains("ActionReveal")) {
-                                //String[] split = aData[0].split("=");
-                                oldActionReveal = aData[1];
-                                //publishProgress("importingOldAR");
-                            }
-                            if (presetVersionCode < 44) {
-                                if (aData[0].equalsIgnoreCase("Reveal_Backgroundcolor")) {
-                                    aData[0] = "Dialog_Revealcolor";
+
+                            if (selectedOptions.contains(context.getString(R.string.loadPreset_Animations)) && currentSection.equals("animations")) {
+                                if (aData[0].contains("_type") || aData[0].contains("_interpolator") || aData[0].contains("_speed")) {
+                                    MainActivity.animationPrefs.edit().putInt(aData[0], Integer.parseInt(aData[1])).apply();
+                                    publishProgress(aData[0] + ": " + aData[1]);
                                 }
-                            }
-                            for (int check = 0; check < PreferencesColorFragment.ColorNames.length; check++) {
-                                if (PreferencesColorFragment.ColorNames[check][1].toString().equals(aData[0]) && aData[0].contains("color")) {
-                                    MainActivity.colorPrefs.edit().putString(aData[0], aData[1]).apply();
-                                    publishProgress(loadColor[0] + ": " + aData[1]);
-                                }
-                            }
-                            if (!oldActionReveal.isEmpty() && aData[0].contains("Background") && !aData[0].contains("Reveal")) {
-                                String[] split = aData[0].split("_");
-                                //publishProgress("convertedOldAR");
-                                MainActivity.colorPrefs.edit().putString(split[0] + "_Revealcolor", oldActionReveal).apply();
                             }
                         }
                     }

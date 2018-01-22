@@ -39,6 +39,7 @@ import java.util.zip.ZipFile;
 
 import de.NeonSoft.neopowermenu.MainActivity;
 import de.NeonSoft.neopowermenu.R;
+import de.NeonSoft.neopowermenu.helpers.PreferenceNames;
 import de.NeonSoft.neopowermenu.helpers.SettingsManager;
 import de.NeonSoft.neopowermenu.helpers.helper;
 import de.NeonSoft.neopowermenu.helpers.slideDownDialogFragment;
@@ -634,6 +635,7 @@ public class PreferencesBackupRestore extends Fragment {
                         MainActivity.imageLoader.clearMemoryCache();
                         MainActivity.imageLoader.clearDiskCache();
                         MainActivity.preferences.edit().putString("ProgressDrawable", "stock").commit();
+                        MainActivity.preferences.edit().putInt(PreferenceNames.pCircleRadius, 100).commit();
                         File[] oldGraphicsFiles = new File(mActivity.getFilesDir().getPath() + "/images/").listFiles(new FilenameFilter() {
                             public boolean accept(File dir, String name) {
                                 return name.endsWith(".png");

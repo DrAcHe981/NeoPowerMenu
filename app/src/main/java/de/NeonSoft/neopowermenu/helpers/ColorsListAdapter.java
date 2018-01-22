@@ -114,6 +114,8 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                             @Override
                             public void onPositiveClick(Bundle resultBundle) {
 
+                                String selectedOptions = resultBundle.getString(slideDownDialogFragment.RESULT_LIST);
+
                                 try {
                                     File presetFile = new File(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".nps");
                                     presetFile.createNewFile();
@@ -129,25 +131,36 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                     }
                                     fw.append("GraphicsScale=" + MainActivity.preferences.getFloat("GraphicsPadding", 0) + "\n");
 									fw.append("ColorizeNonStockIcons=" + MainActivity.preferences.getBoolean("ColorizeNonStockIcons",false) + "\n");
-                                    fw.append("CircleRadius=" + MainActivity.preferences.getInt(PreferenceNames.pCircleRadius, 0) + "\n");
-                                    fw.append("[COLORS]" + "\n");
-                                    for (int i = 0; i < colorNamesArray.length; i++) {
-                                        String[] loadColor = colorNamesArray[i][1].toString().split("_");
-                                        if (loadColor.length > 1) {
-																						if (loadColor[1].contains("Reveal")) {
-                                                fw.append(loadColor[0] + "_Revealcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Revealcolor", "#ffffffff") + "\n");
-																						} else if (loadColor[1].contains("Background")) {
-                                                fw.append(loadColor[0] + "_Backgroundcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Backgroundcolor", "#ffffffff") + "\n");
-                                            } else if (loadColor[1].contains("Text")) {
-                                                fw.append(loadColor[0] + "_Textcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Textcolor", "#ffffff") + "\n");
-                                            } else if (loadColor[1].contains("Circle")) {
-                                                fw.append(loadColor[0] + "_Circlecolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Circlecolor", "#ffffff") + "\n");
+                                    fw.append("CircleRadius=" + MainActivity.preferences.getInt(PreferenceNames.pCircleRadius, 100) + "\n");
+                                    fw.append("DialogCornersRadius=" + MainActivity.preferences.getInt(PreferenceNames.pRoundedDialogCornersRadius, 0) + "\n");
+                                    if (selectedOptions.contains(context.getString(R.string.savePreset_Colors))) {
+                                        fw.append("[COLORS]" + "\n");
+                                        for (int i = 0; i < colorNamesArray.length; i++) {
+                                            String[] loadColor = colorNamesArray[i][1].toString().split("_");
+                                            if (loadColor.length > 1) {
+                                                if (loadColor[1].contains("Reveal")) {
+                                                    fw.append(loadColor[0] + "_Revealcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Revealcolor", "#ffffffff") + "\n");
+                                                } else if (loadColor[1].contains("Background")) {
+                                                    fw.append(loadColor[0] + "_Backgroundcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Backgroundcolor", "#ffffffff") + "\n");
+                                                } else if (loadColor[1].contains("Text")) {
+                                                    fw.append(loadColor[0] + "_Textcolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Textcolor", "#ffffff") + "\n");
+                                                } else if (loadColor[1].contains("Circle")) {
+                                                    fw.append(loadColor[0] + "_Circlecolor=" + MainActivity.colorPrefs.getString(loadColor[0] + "_Circlecolor", "#ffffff") + "\n");
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if (selectedOptions.contains(context.getString(R.string.savePreset_Animations))) {
+                                        fw.append("[ANIMATIONS]" + "\n");
+                                        for (int i = 0; i < PreferencesAnimationsFragment.names.length; i++) {
+                                            String[] loadAnimation = PreferencesAnimationsFragment.names[i][1].toString().split("_");
+                                            if (loadAnimation.length > 1) {
+                                                fw.append(PreferencesAnimationsFragment.names[i][1].toString() + "=" + MainActivity.animationPrefs.getInt(PreferencesAnimationsFragment.names[i][1].toString(), PreferencesAnimationsFragment.defaultTypes[i]) + "\n");
                                             }
                                         }
                                     }
                                     fw.close();
-                                    MainActivity.preferences.edit().putString("lastUsedPreset", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim()).commit();
-                                    if (resultBundle.getBoolean(slideDownDialogFragment.RESULT_CHECKBOX)) {
+                                    if (selectedOptions.contains(context.getString(R.string.savePreset_Graphics))) {
                                         helper.zipAll(context.getFilesDir().getPath() + "/images/", context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".zip", null);
                                         helper.zipFile(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".nps", context.getFilesDir().getPath() + "/temp/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".zip", null);
                                         new File(context.getFilesDir().getPath() + "/presets/" + resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim() + ".nps").delete();
@@ -157,6 +170,7 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                     } else {
                                         Toast.makeText(context.getApplicationContext(), context.getString(R.string.presetSave_PresetSaved).replace("[PRESETNAME]", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim()), Toast.LENGTH_SHORT).show();
                                     }
+                                    MainActivity.preferences.edit().putString("lastUsedPreset", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0").replace("/", "").trim()).commit();
                                 } catch (IOException e) {
                                 }
                             }
@@ -195,13 +209,21 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                     }
                                 }
                         );
-                        dialogFragment.addInput(context.getString(R.string.presetSaveDialog_InfoText), MainActivity.preferences.getString("lastPresetCreatedBy", ""), true, null);
+                        dialogFragment.addInput(context.getString(R.string.presetSaveDialog_CreatorNameInfo), MainActivity.preferences.getString("lastPresetCreatedBy", ""), true, null);
                         dialogFragment.setInputAssistInfo(context.getString(R.string.presetSaveDialog_OverwriteText));
                         File graphicsDir = new File(context.getFilesDir().getPath() + "/images/");
                         File[] graphics = graphicsDir.listFiles();
-                        if (graphics.length > 0) {
-                            dialogFragment.setCheckBox(context.getString(R.string.graphics_GraphicsSaveLoad).split("\\|")[0], false);
-                        }
+                        ArrayList<String> options = new ArrayList<>();
+                        ArrayList<Boolean> checked = new ArrayList<>();
+                        options.add(context.getString(R.string.savePreset_Colors));
+                        checked.add(true);
+                        options.add(context.getString(R.string.savePreset_Animations));
+                        checked.add(false);
+                        if (graphics.length > 0) options.add(context.getString(R.string.savePreset_Graphics));
+                        if (graphics.length > 0) checked.add(false);
+                        dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, options, -1, false);
+                        dialogFragment.setListChecks(checked);
+                        dialogFragment.setListReturnMode(slideDownDialogFragment.LIST_RETURN_MODE_TEXT);
                         dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
                         dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[7]);
                         dialogFragment.showDialog(R.id.dialog_container);

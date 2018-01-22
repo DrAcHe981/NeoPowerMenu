@@ -73,7 +73,7 @@ public class tourPage extends Fragment
             ButtonHolder.setVisibility(View.GONE);
             TextView ButtonText = (TextView) view.findViewById(R.id.tourPageButtonText);
 
-            if (page != -1 && title != null) {
+            if (page != -1) {
                 if (page == 0) {
                     Title.setText(getString(R.string.tourPage_0_Title));
                     Image.setVisibility(View.VISIBLE);
@@ -90,18 +90,21 @@ public class tourPage extends Fragment
                     Title.setText(getString(R.string.tourPage_2_Title));
                     Text.setText(getString(R.string.tourPage_2_Text));
                 } else if (page == 3) {
+                    Title.setText(getString(R.string.tourPage_8_Title));
+                    Text.setText(getString(R.string.tourPage_8_Text));
+                } else if (page == 4) {
                     Title.setText(getString(R.string.tourPage_3_Title));
                     Text.setText(getString(R.string.tourPage_3_Text));
-                } else if (page == 4) {
+                } else if (page == 5) {
                     Title.setText(getString(R.string.tourPage_4_Title));
                     Text.setText(getString(R.string.tourPage_4_Text));
-                } else if (page == 5) {
+                } else if (page == 6) {
                     Title.setText(getString(R.string.tourPage_5_Title));
                     Text.setText(getString(R.string.tourPage_5_Text));
-                } else if (page == 6) {
+                } else if (page == 7) {
                     Title.setText(getString(R.string.tourPage_6_Title));
                     Text.setText(getString(R.string.tourPage_6_Text));
-                } else if (page == 7) {
+                } else if (page == 8) {
                     Title.setText(getString(R.string.tourPage_7_Title));
                     Image.setVisibility(View.VISIBLE);
                     //Image.setPadding((int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext));

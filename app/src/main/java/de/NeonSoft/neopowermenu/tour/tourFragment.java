@@ -76,7 +76,7 @@ public class tourFragment extends Fragment {
         });
 
         pager = (NonSwipeableViewPager) InflatedView.findViewById(R.id.pager);
-        pagerAdapter = new MyPagerAdapter(MainActivity.fragmentManager, new String[]{"0", "1", "2", "3", "4", "5", "6", "7"});
+        pagerAdapter = new MyPagerAdapter(MainActivity.fragmentManager, new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8"});
         pager.setAdapter(pagerAdapter);
 
         finishOnClick = new View.OnClickListener() {
@@ -117,19 +117,22 @@ public class tourFragment extends Fragment {
                     MainActivity.changePrefPage(new PreferencesColorFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
                 } else if (position == 3) {
-                    MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
+                    MainActivity.changePrefPage(new PreferencesPresetsFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
                 } else if (position == 4) {
-                    MainActivity.changePrefPage(new PreferencesVisibilityOrderFragment(), false);
+                    MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
                 } else if (position == 5) {
-                    MainActivity.changePrefPage(new PreferencesAnimationsFragment(), false);
+                    MainActivity.changePrefPage(new PreferencesVisibilityOrderFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
                 } else if (position == 6) {
-                    MainActivity.changePrefPage(new PreferencesAdvancedFragment(), false);
+                    MainActivity.changePrefPage(new PreferencesAnimationsFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
                 } else if (position == 7) {
-										pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
+                    MainActivity.changePrefPage(new PreferencesAdvancedFragment(), false);
+                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                } else if (position == 8) {
+                    pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
                     pageImages.get(position).setVisibility(View.VISIBLE);
                     pageImages.get(position).startAnimation(fadeIn);
                     MainActivity.changePrefPage(new PreferencesPartFragment(), false);
@@ -283,6 +286,13 @@ public class tourFragment extends Fragment {
                     pageBundle.putString("title", "7");
 										pageImages.add(null);
 										pageTextHolders.add(null);
+                    page.setArguments(pageBundle);
+                    return page;
+                case 8:
+                    pageBundle.putInt("page", 8);
+                    pageBundle.putString("title", "8");
+                    pageImages.add(null);
+                    pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 default:
