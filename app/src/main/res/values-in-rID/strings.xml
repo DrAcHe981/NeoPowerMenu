@@ -170,7 +170,6 @@
   <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
   <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
   <string name="graphics_Crop">"Tanaman|Lingkari tanaman"</string>
-  <string name="graphics_GraphicsSaveLoad">"Simpan dengan grafis saat ini.|Preset ini berisi grafis, apakah Anda ingin memuatnya?\n ini akan menimpa grafis Anda saat ini!\n!"</string>
   <string name="presetsManager_ReportDialog">"Anda yakin untuk melaporkan [PRESETNAME]? \n Ini tidak dapat dibatalkan, jadi tolong jangan laporkan hanya untuk bersenang-senang! \n \n Juga kita memerlukan alasan mengapa Anda ingin melaporkannya, silahkan masukkan di bawah ini:"</string>
   <string name="presetsManager_ReportResult">"[PRESETNAME] melaporkan, pengembang akan melihatnya.|Laporan gagal, silakan coba lagi.\nAkhir: "</string>
   <string name="presetsManager_Buttons">"Berikan Bintang|Hapus Bintang |Hapus |Laporan|Upload|Share"</string>
