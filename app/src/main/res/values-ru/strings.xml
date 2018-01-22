@@ -186,8 +186,6 @@
   <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
   <string name="graphics_Crop">"Обрезка | Круговая обрезка"</string>
   <string name="graphics_NoPresetsFound">Невозможно найти шаблон с такой графикой...</string>
-  <string name="graphics_GraphicsSaveLoad">"Сохранить текущую графику.|Этот шаблон содержит графические изображения, вы хотите их загрузить?
-Это перезапишет ваши текущие изображения!"</string>
   <string name="presetsManager_ReportDialog">"\"\"\"Вы уверены, что хотите пожаловаться на [PRESETNAME]?
 Это не может быть отменено, поэтому не жалуйтесь просто ради веселья, пожалуйста!
 
