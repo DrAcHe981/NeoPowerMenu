@@ -437,4 +437,7 @@
   <string name="advancedPrefsTitle_RoundedCorners">Yuvarlak iletişim köşeleri</string>
   <string name="advancedPrefsTitle_RoundedCornersRadius">Yuvarlak iletişim köşeleri yarıçapı</string>
   <string name="advancedPrefsDesc_RoundedCornersRadius">İletişim köşelerinin ne kadar yuvarlak olacağını tanımlayın. (Varsayılan %0)</string>
+  <string name="animations_Interpolator">Enterpolasyon</string>
+  <string name="animations_CustomSpeed">Milisaniye cinsinden özel hız: (Varsayılan: 700ms)</string>
+  <string name="animations_CustomSpeedTooSmall">Bu değer [VALUE] değerinden küçük olamaz.</string>
 </resources>
