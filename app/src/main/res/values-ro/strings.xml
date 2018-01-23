@@ -137,7 +137,6 @@ Presetarile tale (in functie de numarul de stele)
   <string name="presetsManager_Refresh">"Innoire"</string>
   <string name="presetsManager_OrderBy">"Ordonat in functie de"</string>
   <string name="presetsManager_OrderNames">"Nume|Timp|Stele|Creator|Personal"</string>
-  <string name="presetsManager_OrderAscDesc">"Crescator|Descrescator"</string>
   <string name="visibilityOrder_SelectMulti">"Selecteaza trei elemente"</string>
   <string name="powerMenuMain_Empty">"Gol"</string>
   <string name="login_Recover">"Recuperare"</string>
@@ -146,25 +145,7 @@ Presetarile tale (in functie de numarul de stele)
   <string name="powerMenuMain_SoundNormal">"Sunet: Normal"</string>
   <string name="powerMenuMain_SoundSilent">"Sunet: Silentios"</string>
   <string name="preferencesCategory_RootXposed">"Root si Xposed"</string>
-  <string name="preferences_RootXposed1">"Atat accesul Root cat si modul Xposed nu sunt prezente pe telefon.|Accesul Root pentru telefon si instalarea modului Xposed sunt necesare pentru functionarea acestui mod."</string>
-  <string name="preferences_RootXposed2">"\"\"\"Modul Xposed este functional,insa telefonul nu prezinta acces Root.|Dar...pentru a utiliza acest mod aveti nevoie de Root...
-Va rugam sa permiteti accesul root.\"\"\""</string>
-  <string name="preferences_RootXposed3">"\"\"\"Acces Root prezent, modul Xposed nu este instalat.|Dar mdoul Xposed este necesar pentru a inlocui meniul de oprire.
-Activeaza modulul in Xposed.\"\"\""</string>
-  <string name="preferences_RootXposed4">"Acces Root si mod Xposed functional.|Aplicatia ar trebui sa functioneze!"</string>
-  <string name="preferences_RootXposed5">"Versiunea Modului este prea veche...|Restarteaza telefonul pentru a finaliza procesul de actualizare!"</string>
   <string name="preferences_Style">"Stil"</string>
-  <string name="preferences_Theme">"Teme|Schimba modul de vizualiare"</string>
-  <string name="preferences_VisibilityOrder">"Vizibilitate si ordine|Selecteaza elementele pe care vrei sa le vezi in ordinea dorita"</string>
   <string name="preferencesCategory_Other">"Altele"</string>
-  <string name="preferences_Advanced">"Setari avansate|Schimba setarile avansate cum ar fi intarzieri,gravitatie sau viteza"</string>
-  <string name="preferences_Permissions">"\"\"\"Permisiuni|Arata permisiunile folosite si vezi pentru ce sunt utilizate.
-Acorda alte permisiuni daca nu sunt deja activate de la inceput (Android 6.0+)\"\"\""</string>
-  <string name="preferences_HideLauncherIcon">"\"\"\"Ascunde aplicatia din lista de aplicatii|Ascunde aplicatia in lista de aplicatii (necesita posibil o restartare a telefonului).
-Setarile vor fi accesibile doar prin aplicatia Xposed Installer de acum.\"\"\""</string>
-  <string name="preferences_DeepXposedLogging">"Permite logs-uri Xposed avansat.|Permite logs-uri Xposed avansate (dupa activare restarteaza telefonul pentru a vedea schimbarile)"</string>
   <string name="preferencesCategory_About">"Despre"</string>
-  <string name="preferences_NeoSource">"\"\"\"Sursa|NeoPowerMenu este open-source.
-Vezi sursa pe GitHub\"\"\""</string>
-  <string name="preferences_About">"Codul de Neon-Soft/DrAcHe981|bazat pe sursa lui Naman Dwivedi (naman14)"</string>
 </resources>
