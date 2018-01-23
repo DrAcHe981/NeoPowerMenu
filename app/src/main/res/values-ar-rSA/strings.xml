@@ -8,7 +8,6 @@
   <string name="powerMenuMain_SoftReboot">"إعادة تشغيل سريع"</string>
   <string name="powerMenuMain_SoftRebootDesc">"إعادة تشغيل واجهة المستخدم ببساطة عن طريق قتل عملية zygote"</string>
   <string name="powerMenuMain_Screenshot">"لقطة للشاشة"</string>
-  <string name="powerMenuMain_ScreenshotDesc">"تأخير إلتقاط الشاشة"</string>
   <string name="powerMenuBottom_Recovery">"وضع الريكوفري"</string>
   <string name="powerMenuBottom_Bootloader">"وضع الإقلاع"</string>
   <string name="powerMenuBottom_SafeMode">"الوضع الآمن"</string>
@@ -32,7 +31,6 @@
   <string name="preset_SaveDesc">"حفظ إعدادات التكوين الحالية"</string>
   <string name="presetsManager_TitleLocal">"الإعدادات المسبقة المحلية"</string>
   <string name="presetsManager_TitleOnline">"تحميل إعدادات مسبقة"</string>
-  <string name="presetsManager_Creator">"إنشاء [اسم المنشئ]"</string>
   <string name="presetsManager_BuiltIn">"مدمج"</string>
   <string name="presetsManager_SureToDelete">"أمتأكد أنك تريد حذف [PRESETNAME]\n هذا الإجراء لا يمكن التراجع عنه!"</string>
   <string name="presetsManager_ImportMsg">"هل تريد استيراد هذا الإعداد المسبق؟"</string>
