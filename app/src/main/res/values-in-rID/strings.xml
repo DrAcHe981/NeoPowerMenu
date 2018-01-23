@@ -32,7 +32,7 @@
   <string name="preset_SaveDesc">"Simpan konfigurasi anda sekarang"</string>
   <string name="presetsManager_TitleLocal">"Tempat Pereset"</string>
   <string name="presetsManager_TitleOnline">"Online pereset"</string>
-  <string name="presetsManager_Creator">"Pencipta: [NAMA PENCIPTA]"</string>
+  <string name="presetsManager_Creator">"Pencipta: [CREATORNAME]"</string>
   <string name="presetsManager_BuiltIn">"Dibangun-di"</string>
   <string name="presetsManager_SureToDelete">"Apa anda yakin anda ingin untuk menghapus [PRESETNAME]?\n ini tidak bisa dibatalkan!"</string>
   <string name="presetsManager_ImportMsg">"Barangkali anda suka untuk mendatangkan prasetel ini?"</string>
