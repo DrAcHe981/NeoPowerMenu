@@ -2,6 +2,7 @@ package de.NeonSoft.neopowermenu.Preferences;
 
 import android.app.*;
 import android.content.*;
+import android.content.ClipboardManager;
 import android.content.pm.*;
 import android.graphics.*;
 import android.os.*;
@@ -27,6 +28,8 @@ import java.util.*;
 public class PreferencesColorFragment extends Fragment {
 
     Context mContext;
+
+    public static android.content.ClipboardManager cbM;
 
     ListView ListView_ColorsList;
     ColorsListAdapter adapter;
@@ -171,6 +174,7 @@ public class PreferencesColorFragment extends Fragment {
         View InflatedView = inflater.inflate(R.layout.activity_colorpreferences, container, false);
 
         mContext = getActivity();
+        cbM = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
 
         MainActivity.actionbar.setTitle(getString(R.string.preferences_ThemeTitle));
         MainActivity.actionbar.setSubTitle(getString(R.string.preferences_ThemeDesc));

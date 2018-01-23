@@ -60,7 +60,7 @@ public class XposedDialog extends DialogFragment {
     KeyguardManager.KeyguardLock mKeyguardLock;
     FingerprintManager mFingerprintManager;
 
-    public Context mContext;
+    public static Context mContext;
     public Handler mHandler;
     public LayoutInflater mInflater;
 
@@ -68,7 +68,7 @@ public class XposedDialog extends DialogFragment {
     boolean mHideOnClick = false;
     boolean mKeyguardShowing = false;
     boolean mLoadAppIcons = true;
-    int sStyleName;
+    static int sStyleName;
     float mGraphicsPadding = 0;
     int mGraphicsRadius = 0;
     boolean mColorizeNonStockIcons = false;
@@ -92,21 +92,22 @@ public class XposedDialog extends DialogFragment {
     private Runnable hidePasswordErrorRunnable;
 
     LinearLayout dialogMain;
-    LinearLayout dialogPadding;
-    FrameLayout dialogContent;
+    static LinearLayout dialogPadding;
+    static FrameLayout dialogContent;
     LinearLayout ListContainer;
     LinearLayout ListContainer2;
 
-    FrameLayout frame;
+    static FrameLayout frame;
     FrameLayout frame2;
-    FrameLayout frame3;
-    FrameLayout frameConfirm;
-    FrameLayout frameEnterPassword;
+    static FrameLayout frame3;
+    static FrameLayout frameConfirm;
+    static FrameLayout frameEnterPassword;
     LinearLayout frameLinear, /*frame2Linear,*/ frame3Linear, frameConfirmLinear, frameEnterPasswordLinear;
-    ScrollView frameScroll, frame3Scroll;
+    static ScrollView frameScroll;
+    static ScrollView frame3Scroll;
     FrameLayout revealViewHolder;
-    private CircularRevealView revealView;
-    private TextView revealViewText;
+    private static CircularRevealView revealView;
+    private static TextView revealViewText;
     private View selectedView;
     int backgroundColor;
     ImageView progressbg;
@@ -138,10 +139,10 @@ public class XposedDialog extends DialogFragment {
 
     public boolean canDismiss = true;
 
-    int int_Vertical = 0;
-    int int_Horizontal = 0;
-    int int_Size = 0;
-    Object[] DisplaySize;
+    static int int_Vertical = 0;
+    static int int_Horizontal = 0;
+    static int int_Size = 0;
+    static Object[] DisplaySize;
 
     AudioManager am;
     public static int amRingerMode;
@@ -260,7 +261,7 @@ public class XposedDialog extends DialogFragment {
         RequireConfirmation = preferences.getBoolean("RequireConfirmation", false);
         UseRootCommands = preferences.getBoolean("UseRoot", true);
 
-        int_Vertical = preferences.getInt(PreferenceNames.pDialogPosition_Vertical,50);
+        int_Vertical = preferences.getInt(PreferenceNames.pDialogPosition_Vertical,50)+3;
         int_Horizontal = preferences.getInt(PreferenceNames.pDialogPosition_Horizontal,50);
         int_Size = preferences.getInt(PreferenceNames.pDialogPosition_Size,60);
         DisplaySize = helper.getDisplaySize(mContext, false);
@@ -344,87 +345,8 @@ public class XposedDialog extends DialogFragment {
         EnterPasswordOk.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
         EnterPasswordOk.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_OK]);
 
-        if (sStyleName == 1) {
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
-            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
-            params.height = LinearLayout.LayoutParams.MATCH_PARENT;
-            dialogContent.setLayoutParams(params);
-            LinearLayout.LayoutParams frameScrollParams = new LinearLayout.LayoutParams(frameScroll.getLayoutParams());
-            frameScrollParams.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));
-            frameScrollParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-            //frameScrollParams.topMargin = helper.getStatusBarHeight(mContext);
-            //if (!helper.isDeviceHorizontal(mContext)) {
-            //    frameScrollParams.bottomMargin = helper.getNavigationBarSize(mContext).y;
-            //} else if (helper.isDeviceHorizontal(mContext)) {
-            //    frameScrollParams.rightMargin = helper.getNavigationBarSize(mContext).x;
-            //}
-            frameScroll.setPadding(0, helper.getStatusBarHeight(mContext), helper.getNavigationBarSize(mContext).x, helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0));
-            frame3Scroll.setPadding(0, helper.getStatusBarHeight(mContext), helper.getNavigationBarSize(mContext).x, helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0));
-            frameScroll.setLayoutParams(frameScrollParams);
-            frame3Scroll.setLayoutParams(frameScrollParams);
-            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
-            params2.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));
-            params2.height = FrameLayout.LayoutParams.WRAP_CONTENT;
-            //frame.setLayoutParams(params2);
-            //frame3.setLayoutParams(params2);
-            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
-            crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            crparams.height = FrameLayout.LayoutParams.MATCH_PARENT;
-            revealView.setLayoutParams(crparams);
-            revealViewText.setLayoutParams(crparams);
-            frameConfirm.setLayoutParams(crparams);
-            frameEnterPassword.setLayoutParams(crparams);
-        } else if (sStyleName == 2) {
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
-            params.width = (int) helper.getDisplaySize(mContext, false)[0];
-            params.topMargin = helper.getStatusBarHeight(mContext);
-            if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
-                params.bottomMargin = helper.getNavigationBarSize(mContext).y;
-            } else if (helper.isDeviceHorizontal(mContext)) {
-                params.rightMargin = helper.getNavigationBarSize(mContext).x;
-            }
-            dialogContent.setLayoutParams(params);
-            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
-            crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            //crparams.height = ((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
-            revealView.setLayoutParams(crparams);
-            revealViewText.setLayoutParams(crparams);
-            frameConfirm.setLayoutParams(crparams);
-            frameEnterPassword.setLayoutParams(crparams);
-            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
-            params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
-            params2.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-            frame.setLayoutParams(params2);
-            frame3.setLayoutParams(params2);
-            LinearLayout.LayoutParams frameScrollParams = new LinearLayout.LayoutParams(frameScroll.getLayoutParams());
-            frameScrollParams.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));
-            frameScrollParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-            frameScroll.setLayoutParams(frameScrollParams);
-            frame3Scroll.setLayoutParams(frameScrollParams);
-        } else {
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
-            params.width = LinearLayout.LayoutParams.WRAP_CONTENT;//(int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
-            params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-            params.topMargin = helper.getStatusBarHeight(mContext);
-            if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
-                params.bottomMargin = helper.getNavigationBarSize(mContext).y;
-            } else if (helper.isDeviceHorizontal(mContext)) {
-                params.rightMargin = helper.getNavigationBarSize(mContext).x;
-            }
-            dialogContent.setLayoutParams(params);
-            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
-            crparams.width = ((int) helper.convertDpToPixel(340, mContext));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
-            //crparams.height = LinearLayout.LayoutParams.WRAP_CONTENT;//((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
-            revealView.setLayoutParams(crparams);
-            revealViewText.setLayoutParams(crparams);
-            frameConfirm.setLayoutParams(crparams);
-            frameEnterPassword.setLayoutParams(crparams);
-            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
-            params2.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));// FrameLayout.LayoutParams.MATCH_PARENT;
-            params2.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-            frame.setLayoutParams(params2);
-            frame3.setLayoutParams(params2);
-        }
+        initLayoutParams();
+
         FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frameEnterPassword.getLayoutParams());
         params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
         //params2.height = ((int) helper.convertDpToPixel(170, mContext));
@@ -558,6 +480,105 @@ public class XposedDialog extends DialogFragment {
 
         return PowerDialog;
 
+    }
+
+    public static void initLayoutParams() {
+        if (sStyleName == 1) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
+            params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+            params.height = LinearLayout.LayoutParams.MATCH_PARENT;
+            dialogContent.setLayoutParams(params);
+            LinearLayout.LayoutParams frameScrollParams = new LinearLayout.LayoutParams(frameScroll.getLayoutParams());
+            frameScrollParams.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));
+            frameScrollParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            //frameScrollParams.topMargin = helper.getStatusBarHeight(mContext);
+            //if (!helper.isDeviceHorizontal(mContext)) {
+            //    frameScrollParams.bottomMargin = helper.getNavigationBarSize(mContext).y;
+            //} else if (helper.isDeviceHorizontal(mContext)) {
+            //    frameScrollParams.rightMargin = helper.getNavigationBarSize(mContext).x;
+            //}
+            int left = 0, right = 0;
+            if (helper.isNavigationBarOnLeft(mContext)) {
+                left = helper.getNavigationBarSize(mContext).x;
+            } else {
+                right = helper.getNavigationBarSize(mContext).x;
+            }
+            frameScroll.setPadding(left, helper.getStatusBarHeight(mContext), right, helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0));
+            frame3Scroll.setPadding(left, helper.getStatusBarHeight(mContext), right, helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0));
+            frameScroll.setLayoutParams(frameScrollParams);
+            frame3Scroll.setLayoutParams(frameScrollParams);
+            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
+            params2.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));
+            params2.height = FrameLayout.LayoutParams.WRAP_CONTENT;
+            //frame.setLayoutParams(params2);
+            //frame3.setLayoutParams(params2);
+            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
+            crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            crparams.height = FrameLayout.LayoutParams.MATCH_PARENT;
+            revealView.setLayoutParams(crparams);
+            revealViewText.setLayoutParams(crparams);
+            frameConfirm.setLayoutParams(crparams);
+            frameEnterPassword.setLayoutParams(crparams);
+        } else if (sStyleName == 2) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
+            params.width = (int) helper.getDisplaySize(mContext, false)[0];
+            params.topMargin = helper.getStatusBarHeight(mContext);
+            if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
+                params.bottomMargin = helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0);
+            } else if (helper.isDeviceHorizontal(mContext)) {
+                if (helper.isNavigationBarOnLeft(mContext)) {
+                    params.leftMargin = helper.getNavigationBarSize(mContext).x;
+                } else {
+                    params.rightMargin = helper.getNavigationBarSize(mContext).x;
+                }
+            }
+            //dialogContent.setPadding(0, helper.getStatusBarHeight(mContext), helper.getNavigationBarSize(mContext).x, helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0));
+            dialogContent.setLayoutParams(params);
+            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
+            crparams.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            //crparams.height = ((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+            revealView.setLayoutParams(crparams);
+            revealViewText.setLayoutParams(crparams);
+            frameConfirm.setLayoutParams(crparams);
+            frameEnterPassword.setLayoutParams(crparams);
+            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
+            params2.width = FrameLayout.LayoutParams.MATCH_PARENT;
+            params2.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            frame.setLayoutParams(params2);
+            frame3.setLayoutParams(params2);
+            LinearLayout.LayoutParams frameScrollParams = new LinearLayout.LayoutParams(frameScroll.getLayoutParams());
+            frameScrollParams.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));
+            frameScrollParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            frameScroll.setLayoutParams(frameScrollParams);
+            frame3Scroll.setLayoutParams(frameScrollParams);
+        } else {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
+            params.width = LinearLayout.LayoutParams.WRAP_CONTENT;//(int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
+            params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            params.topMargin = helper.getStatusBarHeight(mContext);
+            if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
+                params.bottomMargin = helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0);
+            } else if (helper.isDeviceHorizontal(mContext)) {
+                if (helper.isNavigationBarOnLeft(mContext)) {
+                    params.leftMargin = helper.getNavigationBarSize(mContext).x;
+                } else {
+                    params.rightMargin = helper.getNavigationBarSize(mContext).x;
+                }
+            }
+            dialogContent.setLayoutParams(params);
+            FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
+            crparams.width = ((int) helper.convertDpToPixel(340, mContext));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
+            //crparams.height = LinearLayout.LayoutParams.WRAP_CONTENT;//((int) helper.convertDpToPixel(170, mContext));// + (boolean_DialogGravityBottom ? helper.getNavigationBarSize(mContext).y : (boolean_DialogGravityTop ? helper.getStatusBarHeight(mContext) : 0));
+            revealView.setLayoutParams(crparams);
+            revealViewText.setLayoutParams(crparams);
+            frameConfirm.setLayoutParams(crparams);
+            frameEnterPassword.setLayoutParams(crparams);
+            FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
+            params2.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));// FrameLayout.LayoutParams.MATCH_PARENT;
+            params2.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            frame.setLayoutParams(params2);
+            frame3.setLayoutParams(params2);
+        }
     }
 
     private View createNormalItem(final int id, String title, String pageItem, boolean hideDesc, String customText) {
@@ -1741,9 +1762,13 @@ public class XposedDialog extends DialogFragment {
                         dismissThis();
                     }
                     if ((amRingerMode == AudioManager.RINGER_MODE_SILENT || amRingerMode == AudioManager.RINGER_MODE_VIBRATE) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
-                        Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                        mContext.startActivity(intent);
+                        try {
+                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                            mContext.startActivity(intent);
+                            Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                        } catch (Throwable t) {
+                            Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         if (amRingerMode == AudioManager.RINGER_MODE_NORMAL) {
                             am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
@@ -1817,9 +1842,13 @@ public class XposedDialog extends DialogFragment {
                         dismissThis();
                     }
                     if (amRingerMode == AudioManager.RINGER_MODE_SILENT && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
-                        Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                        mContext.startActivity(intent);
+                        try {
+                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                            mContext.startActivity(intent);
+                            Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                        } catch (Throwable t) {
+                            Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
                     }
@@ -1831,9 +1860,13 @@ public class XposedDialog extends DialogFragment {
                         dismissThis();
                     }
                     if (amRingerMode == AudioManager.RINGER_MODE_SILENT && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
-                        Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                        mContext.startActivity(intent);
+                        try {
+                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                            mContext.startActivity(intent);
+                            Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                        } catch (Throwable t) {
+                            Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
                     }
@@ -1845,9 +1878,13 @@ public class XposedDialog extends DialogFragment {
                         dismissThis();
                     }
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
-                        Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                        mContext.startActivity(intent);
+                        try {
+                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                            mContext.startActivity(intent);
+                            Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                        } catch (Throwable t) {
+                            Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
                     }
@@ -1973,13 +2010,17 @@ public class XposedDialog extends DialogFragment {
                     dismissThis();
                     DevicePolicyManager devicePolicyManager = (DevicePolicyManager) mContext.getSystemService(Context.DEVICE_POLICY_SERVICE);
                     if (!devicePolicyManager.isAdminActive(new ComponentName(mContext, deviceAdmin.class))) {
-                        Intent intent = new Intent(DevicePolicyManager
-                                .ACTION_ADD_DEVICE_ADMIN);
-                        intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN,
-                                new ComponentName(mContext, deviceAdmin.class));
-                        intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                                getString(R.string.permissionsScreenDesc_DeviceAdmin));
-                        startActivity(intent);
+                        try {
+                            Intent intent = new Intent(DevicePolicyManager
+                                    .ACTION_ADD_DEVICE_ADMIN);
+                            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN,
+                                    new ComponentName(mContext, deviceAdmin.class));
+                            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+                                    getString(R.string.permissionsScreenDesc_DeviceAdmin));
+                            startActivity(intent);
+                        } catch (Throwable t) {
+                            Toast.makeText(mContext, "Your device does not seem to support device admins.", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         devicePolicyManager.lockNow();
                     }
@@ -1994,9 +2035,13 @@ public class XposedDialog extends DialogFragment {
                         am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
                     } else if (amRingerMode == AudioManager.RINGER_MODE_NORMAL) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
-                            Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                            mContext.startActivity(intent);
+                            try {
+                                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                                mContext.startActivity(intent);
+                                Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
+                            } catch (Throwable t) {
+                                Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                            }
                         } else {
                             am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
                         }
@@ -2402,7 +2447,7 @@ public class XposedDialog extends DialogFragment {
         }
     }
 
-    private void setGravity(int iStyle) {
+    public static void setGravity(int iStyle) {
         DisplaySize = helper.getDisplaySize(mContext, false);
 
         if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
@@ -2430,12 +2475,16 @@ public class XposedDialog extends DialogFragment {
                 if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
                     LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
                     dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
-                    dialogContentParams.bottomMargin = (int) (helper.getNavigationBarSize(mContext).y);
+                    dialogContentParams.bottomMargin = helper.getNavigationBarSize(mContext).y;
                     dialogContent.setLayoutParams(dialogContentParams);
                 } else {
                     LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
                     dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
-                    dialogContentParams.rightMargin = helper.getNavigationBarSize(mContext).x;
+                    if (helper.isNavigationBarOnLeft(mContext)) {
+                        dialogContentParams.leftMargin = helper.getNavigationBarSize(mContext).x;
+                    } else {
+                        dialogContentParams.rightMargin = helper.getNavigationBarSize(mContext).x;
+                    }
                     dialogContent.setLayoutParams(dialogContentParams);
                 }
             } catch (Exception e) {

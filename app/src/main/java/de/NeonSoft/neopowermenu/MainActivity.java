@@ -346,6 +346,8 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         if (visibleFragment.equalsIgnoreCase("Graphics")) {
             PreferencesGraphicsFragment.GridView_Images.setNumColumns(getResources().getInteger(R.integer.ImageList_Columns));
+        } else if (visibleFragment.equalsIgnoreCase("Gravity")) {
+            GravityChooserDialog.changeGravity();
         }
     }
 

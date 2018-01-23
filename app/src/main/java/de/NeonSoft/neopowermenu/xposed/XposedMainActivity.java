@@ -618,6 +618,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        XposedDialog.initLayoutParams();
+        XposedDialog.setGravity(sStyleName);
     }
 
 }

@@ -1,8 +1,11 @@
 package de.NeonSoft.neopowermenu.helpers;
 
 import android.app.*;
+import android.content.*;
+import android.content.ClipboardManager;
 import android.content.pm.*;
 import android.graphics.*;
+import android.telephony.PreciseCallState;
 import android.text.*;
 import android.util.*;
 import android.view.*;
@@ -338,6 +341,22 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                     MainActivity.colorPrefs.edit().putString(loadColor[0] + colorType, defaultColors[p1]).apply();
                                     Preview.setBackgroundColor(Color.parseColor(defaultColors[p1]));
                                     notifyDataSetChanged();
+                                } else if (position == 2) {
+                                    ClipData clip = ClipData.newPlainText("ColorCopy", currentColor);
+                                    PreferencesColorFragment.cbM.setPrimaryClip(clip);
+                                    Toast.makeText(context, context.getString(cat.ereza.customactivityoncrash.R.string.customactivityoncrash_error_activity_error_details_copied), Toast.LENGTH_SHORT).show();
+                                } else if (position == 3) {
+                                    if (PreferencesColorFragment.cbM.hasPrimaryClip() && PreferencesColorFragment.cbM.getPrimaryClip().getItemAt(0).getText().toString().matches("#[0-9a-fA-F]{6,8}")) {
+                                        String color = PreferencesColorFragment.cbM.getPrimaryClip().getItemAt(0).getText().toString();
+                                        if (color.length() < defaultColors[p1].length()) {
+                                            color = color.replace("#","#FF");
+                                        } else if (color.length() > defaultColors[p1].length()) {
+                                            color = "#" + color.substring(3,color.length());
+                                        }
+                                        MainActivity.colorPrefs.edit().putString(loadColor[0] + colorType, color).apply();
+                                        Preview.setBackgroundColor(Color.parseColor(defaultColors[p1]));
+                                        notifyDataSetChanged();
+                                    }
                                 }
                             }
 
@@ -361,7 +380,14 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
 
                             }
                         });
-                        dialogFragment.setList(ListView.CHOICE_MODE_NONE, new String[]{context.getString(R.string.colorsApplyToAll), context.getString(R.string.colorsResetToDefault)}, -1, true);
+                        ArrayList<String> options = new ArrayList<>();
+                        options.add(context.getString(R.string.colorsApplyToAll));
+                        options.add(context.getString(R.string.colorsResetToDefault));
+                        options.add(context.getString(R.string.colorsCopyColor));
+                        if (PreferencesColorFragment.cbM.hasPrimaryClip() && PreferencesColorFragment.cbM.getPrimaryClip().getItemAt(0).getText().toString().matches("#[0-9a-fA-F]{6,8}")) {
+                            options.add(context.getString(R.string.colorsInsertColor));
+                        }
+                        dialogFragment.setList(ListView.CHOICE_MODE_NONE, options, -1, true);
                         dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
                         dialogFragment.showDialog(R.id.dialog_container);
                         return true;

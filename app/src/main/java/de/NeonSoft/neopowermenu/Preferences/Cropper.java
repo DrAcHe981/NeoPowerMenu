@@ -22,7 +22,7 @@ import java.io.*;
 import android.view.animation.*;
 
 public class Cropper extends android.support.v4.app.Fragment
-        implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCroppedImageCompleteListener {
+        implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnCropImageCompleteListener {
 
     ImageView ImageView_RotateLeft;
     ImageView ImageView_RotateRight;
@@ -90,13 +90,13 @@ public class Cropper extends android.support.v4.app.Fragment
 
         mCropImageView = (CropImageView) InflatedView.findViewById(R.id.cropImageView);
         mCropImageView.setOnSetImageUriCompleteListener(this);
-        mCropImageView.setOnGetCroppedImageCompleteListener(this);
+        mCropImageView.setOnCropImageCompleteListener(this);
 
         mCropImageView.setAutoZoomEnabled(true);
         mCropImageView.setFixedAspectRatio(true);
         mCropImageView.setGuidelines(CropImageView.Guidelines.ON_TOUCH);
         mCropImageView.setShowCropOverlay(true);
-        mCropImageView.setShowProgressBar(true);
+        mCropImageView.setShowProgressBar(false);
 
         LinearLayout_RoundCrop = (LinearLayout) InflatedView.findViewById(R.id.cropperLinearLayout_CropRound);
         TextView_RoundCrop = (TextView) InflatedView.findViewById(R.id.cropperTextView_CropRound);
@@ -128,9 +128,11 @@ public class Cropper extends android.support.v4.app.Fragment
             LinearLayout_RoundCrop.setVisibility(View.GONE);
         }
 
+        //mCropImageView.setCropRect();
+
 
         progressHolder = (RelativeLayout) InflatedView.findViewById(R.id.cropperRelativeLayout_Progress);
-        progressHolder.setVisibility(View.GONE);
+        progressHolder.setVisibility(View.VISIBLE);
         progress = (ProgressBar) InflatedView.findViewById(R.id.cropperProgressBar_Progress);
 
         progressHolder.setOnClickListener(new OnClickListener() {
@@ -159,12 +161,14 @@ public class Cropper extends android.support.v4.app.Fragment
     }
 
     @Override
-    public void onGetCroppedImageComplete(CropImageView p1, Bitmap bitmap, Exception error) {
-        handleCropResult(null, bitmap, error);
+    public void onCropImageComplete(CropImageView view, CropImageView.CropResult result) {
+        handleCropResult(result.getUri(), result.getBitmap(), result.getError());
     }
 
     @Override
     public void onSetImageUriComplete(CropImageView p1, Uri uri, Exception error) {
+        progressHolder.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.fade_out));
+        progressHolder.setVisibility(View.GONE);
     }
 
     @Override

@@ -255,7 +255,7 @@ public class helper {
         Point appUsableScreenSize = getAppUsableScreenSize(mContext);
         Point realScreenSize = getRealScreenSize(mContext);
 
-        // at right
+        // at side
         if (appUsableScreenSize.x < realScreenSize.x) {
             return new Point(realScreenSize.x - appUsableScreenSize.x, 0);
         }
@@ -267,6 +267,21 @@ public class helper {
 
         // none
         return new Point(0, 0);
+    }
+    public static boolean isNavigationBarOnLeft(Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = windowManager.getDefaultDisplay();
+        int rotation =  display.getRotation();
+
+        String aVerReleaseStr = Build.VERSION.RELEASE;
+        int dotInd = aVerReleaseStr.indexOf(".");
+        if (dotInd >= 0) {
+            aVerReleaseStr = aVerReleaseStr.replaceAll("\\.", "");
+            aVerReleaseStr = new StringBuffer(aVerReleaseStr).insert(dotInd, ".").toString();
+        }
+
+        float androidVer = Float.parseFloat(aVerReleaseStr);
+        return rotation == 3 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
     }
 
     public static Point getAppUsableScreenSize(Context mContext) {

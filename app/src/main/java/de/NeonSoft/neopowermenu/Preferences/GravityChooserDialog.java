@@ -34,10 +34,10 @@ public class GravityChooserDialog extends DialogFragment {
 
     public static Activity mContext;
 
-    LinearLayout LinearLayout_ImageHolder;
+    static LinearLayout LinearLayout_ImageHolder;
 
-    private SeekBar SeekBar_Vertical;
-    private SeekBar SeekBar_Horizontal;
+    private static SeekBar SeekBar_Vertical;
+    private static SeekBar SeekBar_Horizontal;
     private SeekBar SeekBar_Size;
     private ImageView ImageView_Reset;
     AudioManager am;
@@ -45,16 +45,16 @@ public class GravityChooserDialog extends DialogFragment {
 
     static float float_padding = 0;
     int mGraphicsRadius;
-    int int_Vertical = 0;
-    int int_Horizontal = 0;
-    int int_Size = 0;
+    static int int_Vertical = 0;
+    static int int_Horizontal = 0;
+    static int int_Size = 0;
     boolean boolean_roundedCorners;
     int int_Radius = 0;
-    Object[] DisplaySize;
+    static Object[] DisplaySize;
 
-    View DummyPowerDialog;
-    int DummyPowerDialogHeight;
-    FrameLayout PowerDialogFrame;
+    static View DummyPowerDialog;
+    static int DummyPowerDialogHeight;
+    static FrameLayout PowerDialogFrame;
 
     @Override
     public View onCreateView(LayoutInflater p1, ViewGroup p2, Bundle p3) {
@@ -421,7 +421,7 @@ public class GravityChooserDialog extends DialogFragment {
         }
     }
 
-    void changeGravity() {
+    public static void changeGravity() {
         DisplaySize = helper.getDisplaySize(mContext, false);
         if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
             DisplaySize[1] = (int) DisplaySize[1] - helper.getNavigationBarSize(mContext).y - helper.getStatusBarHeight(mContext) - MainActivity.actionBarHolder.getHeight();

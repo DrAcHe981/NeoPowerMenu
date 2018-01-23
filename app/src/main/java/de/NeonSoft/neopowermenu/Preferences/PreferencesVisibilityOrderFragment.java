@@ -23,6 +23,7 @@ import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.DSLV.*;
 import de.NeonSoft.neopowermenu.helpers.*;
+import de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen;
 import de.NeonSoft.neopowermenu.xposed.XposedUtils;
 
 import java.io.File;
@@ -692,7 +693,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                         item.getTitle(i).equalsIgnoreCase(PowerMenuItems[15]) ||
                         item.getTitle(i).equalsIgnoreCase(PowerMenuItems[16]) ||
                         item.getTitle(i).equalsIgnoreCase(PowerMenuItems[28])) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !MainActivity.notificationManager.isNotificationPolicyAccessGranted() && !doNotDisturbRequest) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !MainActivity.notificationManager.isNotificationPolicyAccessGranted() && !doNotDisturbRequest) {
                     visibilityOrderPermissionRequest_Count++;
                     visibilityOrderPermissionRequest_ItemSpace = i;
                     doNotDisturbRequest = true;
@@ -720,8 +721,16 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
 
                         @Override
                         public void onPositiveClick(Bundle resultBundle) {
-                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                            mContext.startActivityForResult(intent, visibilityOrderPermissionRequest);
+                            try {
+                                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                                mContext.startActivityForResult(intent, permissionsScreen.MY_PERMISSIONS_REQUEST);
+                            } catch (Throwable t) {
+                                slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                                dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                                dialogFragment.setContext(mContext);
+                                dialogFragment.setText("Your device does not seem to support notification policy access settings.");
+                                dialogFragment.showDialog(R.id.dialog_container);
+                            }
                         }
 
                         @Override
