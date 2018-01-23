@@ -34,8 +34,7 @@
   <string name="presetsManager_TitleOnline">"Шаблоны онлайн"</string>
   <string name="presetsManager_Creator">"Создатель: [CREATORNAME]"</string>
   <string name="presetsManager_BuiltIn">"Встроенный"</string>
-  <string name="presetsManager_SureToDelete">"\"\"\"Вы уверены, что хотите удалить [PRESETNAME]?
-Это не может быть отменено!\"\"\""</string>
+  <string name="presetsManager_SureToDelete">"Вы уверены, что хотите удалить [PRESETNAME]?"</string>
   <string name="presetsManager_ImportMsg">"Вы хотите импортировать этот шаблон?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] Импортирован успешно."</string>
   <string name="presetsManager_ImportFailed">"Импортировать не удалось..."</string>
@@ -120,16 +119,13 @@
   <string name="presetsManager_UploadFailedNoAccess">"Повторите E-mail:"</string>
   <string name="presetsManager_UploadFailed">"Вы можете создать пароль по ссылке в электронном письме активации(электронное письмо доступно только на английском языке)."</string>
   <string name="presetsManager_DownloadFailed">"Не выходить из аккаунта."</string>
-  <string name="presetsManager_CantConnecttoServer">"\"\"\"Нужен аккаунт?
-Нажмите сюда, чтобы создать его!\"\"\""</string>
+  <string name="presetsManager_CantConnecttoServer">"Нужен аккаунт?"</string>
   <string name="presetsManager_CantConnecttoDB">"Вход выполнен!"</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"Ошибка входа: "</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Ошибка входа, неверный E-mail или пароль!"</string>
   <string name="login_Title">"Извините, выбранное имя или E-mail уже используется."</string>
   <string name="login_TitleRegister">"Регистрация"</string>
-  <string name="login_Info">"\"\"\"Имена зарегистрированных пользователей защищены, так что никто не может загружать от их имени. Здесь Вы можете войти или создать аккаунт.
-Это не обязательно, если Вы не хотите!
-Я никогда не разглашу никакой личной информации!\"\"\""</string>
+  <string name="login_Info">"Имена зарегистрированных пользователей защищены, так что никто не может загружать от их имени. Здесь Вы можете войти или создать аккаунт.\nЭто не обязательно, если Вы не хотите!"</string>
   <string name="login_UsernameEmail">"Имя пользователя или E-mail:"</string>
   <string name="login_Username">"Имя пользователя:"</string>
   <string name="login_Email">"Эл. почта:"</string>
@@ -137,8 +133,7 @@
   <string name="login_PasswordOverEmail">"Вы можете создать свой пароль по ссылке в электронном письме активации (электронное письмо доступно только на английском языке)."</string>
   <string name="login_Password">"Пароль:"</string>
   <string name="login_KeepLogin">"Не выходить из аккаунта."</string>
-  <string name="login_Register">"\"\"\"Нужен аккаунт?
-Нажмите сюда, чтобы создать его!\"\"\""</string>
+  <string name="login_Register">"Нужен аккаунт?"</string>
   <string name="login_LoggedIn">"Вход выполнен!"</string>
   <string name="login_LoginFailedWithReason">"Вход не выполнен: "</string>
   <string name="login_LoginFailedWrongData">"Вход не выполнен, неверный пароль или E-mail!"</string>
@@ -146,13 +141,7 @@
   <string name="login_RegisterSuccess">"Регистрация завершена, вы получите электронное письмо, чтобы активировать аккаунт."</string>
   <string name="login_Processing">"Обработка..."</string>
   <string name="login_TitleStatistics">"Статистика для [USERNAMEEMAIL]"</string>
-  <string name="login_Statistics">"\"\"\"Шаблонов загружено: [UPLOADCOUNT]
-
-Звёзд дано: [STARSGIVEN]
-Звёзд получено: [STARSRECEIVED]
-
-Ваши шаблоны (сортированы по Звёздам):
-[TOP5PRESETS]\"\"\""</string>
+  <string name="login_Statistics">"Шаблонов загружено: [UPLOADCOUNT]\n\nЗвёзд дано: [STARSGIVEN]\nЗвёзд получено: [STARSRECEIVED]\n\nВаши шаблоны (сортированы по Звёздам):"</string>
   <string name="login_StatisticsFailed">"Ошибка в получении статистики..."</string>
   <string name="login_ReloadStatistics">"Перезагрузить статистику"</string>
   <string name="login_TitleLogout">"Выйти"</string>
@@ -172,8 +161,7 @@
   <string name="visibilityOrder_SelectMulti">"Пожалуйста, выберите три элемента."</string>
   <string name="powerMenuMain_Empty">"Пусто"</string>
   <string name="login_Recover">"Восстановить"</string>
-  <string name="login_RecoverAccount">"\"\"\"Нет доступа к аккаунта?
-Нажмите сюда для восстановления.\"\"\""</string>
+  <string name="login_RecoverAccount">"Нет доступа к аккаунта?"</string>
   <string name="login_RecoverPassword">"Сбросить пароль"</string>
   <string name="login_RecoverSuccess">"Вы получите E-mail с инструкцией о сбросе пароля."</string>
   <string name="login_RecoverNotFound">"Пользователя с этими данными не найдено."</string>
@@ -191,14 +179,48 @@
   <string name="uploadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
   <string name="visibilityOrder_AddItem">"Добавить обычный объект\nПросто обычный объект с одним слотом.|Добавить мульти объект\nДобавить несколько объектов в одну линию.|Добавить объект-папку\nПосле нажатия появится новая 'страница'."</string>
   <string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
+  <string name="preferences_RootXposed1Title">"Root и Xposed недоступны"</string>
+  <string name="preferences_RootXposed1Desc">"Root и Xposed должны быть работающими."</string>
+  <string name="preferences_RootXposed2Title">"Xposed работает, Root - нет"</string>
+  <string name="preferences_RootXposed2Desc">"Требуется Root, чтобы выключить или перезагрузить..."</string>
+  <string name="preferences_RootXposed3Title">"Root работает, Xposed - нет"</string>
+  <string name="preferences_RootXposed3Desc">"Требуется Xposed, чтобы заменить Меню Выключения..."</string>
+  <string name="preferences_RootXposed4Title">"Root и Xposed работают"</string>
+  <string name="preferences_RootXposed4Desc">"Приложение должно работать хорошо!"</string>
+  <string name="preferences_RootXposed5Title">"Установленная версия модуля слишком старая..."</string>
+  <string name="preferences_RootXposed5Desc">"Пожалуйста, перезагрузите устройство, чтобы закончить процесс обновления!"</string>
   <string name="preferencesCategory_General">"Основное"</string>
   <string name="preferences_Style">"Стиль"</string>
+  <string name="preferences_ThemeTitle">"Тема"</string>
+  <string name="preferences_ThemeDesc">"Измените внешний вид."</string>
+  <string name="preferences_GraphicsTitle">"Графика"</string>
+  <string name="preferences_GraphicsDesc">"Изменить графику, использовать кастомную или предустановленных графику."</string>
+  <string name="preferences_VisibilityOrderTitle">"Отображение и порядок"</string>
+  <string name="preferences_VisibilityOrderDesc">"Выберите элементы, которые Вы бы хотели видеть и расположите их так, как Вам хочется."</string>
+  <string name="preferences_AnimationsTitle">"Анимации"</string>
+  <string name="preferences_AnimationsDesc">"Изменить анимации или убрать их полностью."</string>
   <string name="preferencesCategory_Other">"Другое"</string>
+  <string name="preferences_AccountTitle">"Аккаунт"</string>
+  <string name="preferences_AccountDesc">"Здесь Вы можете войти в аккаунт, создать аккаунт или проверить свою статистику."</string>
+  <string name="preferences_AdvancedTitle">"Расширенные настройки"</string>
+  <string name="preferences_AdvancedDesc">"Измените расширенные настройки, например, задержки, притяжение или скорость."</string>
+  <string name="preferences_PermissionsTitle">"Разрешения"</string>
+  <string name="preferences_PermissionsDesc">"Показывает используемые разрешения и для чего они используются."</string>
+  <string name="preferences_HideLauncherIconTitle">"Спрятать приложение в меню приложений"</string>
+  <string name="preferences_HideLauncherIconDesc">"Прячет иконку приложения в меню приложений, может потребоваться перезагрузка."</string>
+  <string name="preferences_DeepXposedLoggingTitle">"Подробное логгирование Xposed"</string>
+  <string name="preferences_DeepXposedLoggingDesc">"Разрешить подробное логгирование Xposed, после разрешения перезагрузить, чтобы увидеть изменения"</string>
   <string name="preferencesCategory_About">"О приложении"</string>
+  <string name="preferences_NeoSourceTitle">"Исходный код"</string>
+  <string name="preferences_NeoSourceDesc">"NeoPowerMenu имеет открытый исходный код."</string>
+  <string name="preferences_AboutTitle">"Создано Neon-Soft / DrAcHe981"</string>
+  <string name="preferences_AboutDesc">"Основано на исходном коде Naman Dwivedi(naman14)."</string>
   <string name="animations_Type">"Тип"</string>
   <string name="animations_Speed">"Скорость"</string>
   <string name="powerMenuMain_Progress">"Круг загрузки"</string>
   <string name="presetsManager_LoadMore">"Загрузка...|Пожалуйста, подождите...|Показать больше шаблонов|Нажмите сюда, чтобы отобразить больше шаблонов.|Конец.|Больше шаблонов нет.|Нажмите, чтобы попробовать снова."</string>
+  <string name="advancedPrefs_ConfirmationTitle">"Запрос подтверждения"</string>
+  <string name="advancedPrefs_ConfirmationDesc">"Включить запрос подтверждения перед перезагрузкой или выключением."</string>
   <string name="advancedPrefs_HideOnClick">"Скрыть по нажатии"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Скрыть меню при нажатии на переключатель."</string>
   <string name="advancedPrefs_LoadAppIcons">"Загрузить иконки приложений"</string>
@@ -349,6 +371,7 @@
   <string name="visibilityOrder_LockWithPassword">"Заблокировать паролем"</string>
   <string name="powerMenu_Password">"пароль"</string>
   <string name="powerMenu_LockedWithPassword">"Эта кнопка заблокирована, пожалуйста, введите пароль для продолжения..."</string>
+  <string name="powerMenu_WrongPassword">"\"Неверный пароль, пожалуйста, попробуйте снова..."</string>
   <string name="visibilityOrder_NoPasswordSet">"Пароль не установлен...\nПожалуйста, введите новый пароль внизу:"</string>
   <string name="advancedPrefs_ChangePassword">"Введите новый пароль ниже или оставьте поле пустым, чтобы его убрать..."</string>
   <string name="advancedPrefsDesc_Password">"Блокировка кнопок паролем, нажмите сюда, чтобы сменить или убрать пароль."</string>
