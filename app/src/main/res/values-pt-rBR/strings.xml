@@ -62,7 +62,7 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="presetSave_PresetSaved">"[PRESETNAME] salva!"</string>
   <string name="powerMenuMain_Screenrecord">"Gravação de Tela"</string>
   <string name="screenrecord_notif_ticker">"A tela está sendo gravada"</string>
-  <string name="screenrecord_notif_title">Gravação de tela</string>
+  <string name="screenrecord_notif_title">"Gravação de tela"</string>
   <string name="screenrecord_toast_error">"Incapaz de gravar a tela"</string>
   <string name="screenrecord_toast_processing">"Não é possível iniciar uma nova gravação se a gravação anterior ainda estiver sendo processada"</string>
   <string name="screenrecord_toast_saved">"Gravação salva como %s"</string>
@@ -172,7 +172,6 @@ Suas predefinições (ordenados por estrelas):
   <string name="presetsManager_Refresh">"Atualizar"</string>
   <string name="presetsManager_OrderBy">"Ordenar por"</string>
   <string name="presetsManager_OrderNames">"Nome|hora|estrelas|criador|seus"</string>
-  <string name="presetsManager_OrderAscDesc">"Ascendente|Descendente"</string>
   <string name="visibilityOrder_SelectMulti">"Por favor selecione três itens:"</string>
   <string name="powerMenuMain_Empty">"Vazio"</string>
   <string name="login_Recover">"Recuperar"</string>
@@ -187,58 +186,29 @@ Clique aqui para opções de recuperação.\"\""</string>
   <string name="Dialog_Buttons">"OK|Sim|Não|Renomear|Cancelar|Excluir|Carregar|Salvar|Ignorar"</string>
   <string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
   <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
-  <string name="graphics_Crop">"Cortar|Cortar redondo"</string>
-  <string name="presetsManager_ReportDialog">"\"\"Você quer mesmo reportar [PRESETNAME]?
-Isso não pode ser desfeito, então por favor não reporte apenas por diversão!
-
-Também nós precisamos de um porquê você quer reportar isso, por favor escreva abaixo.|Razão da denúncia:\"\""</string>
-  <string name="presetsManager_ReportResult">"\"\"[PRESETNAME] reportado, o desenvolvedor vai dar uma olhada nisso.|Falha no relato, por favor tente de novo.
-Razão: \"\""</string>
   <string name="presetsManager_Buttons">"Dar Estrela|Remover Estrela|Deletar|Denunciar|Enviar|Compartilhar"</string>
-  <string name="screenrecord_notif_buttons">"Parar|Alternar indicador"</string>
   <string name="downloadHelper_States">"Esperando por outros downloads...|Conectando ao servidor...|Requisitando informação...|Baixando...|Cancelando..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
   <string name="downloadHelper_Speed">"velocidade: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Esperando por outros envios...|Conectando ao servidor...|Requisitando informação...|Enviando...|Cancelando..."</string>
   <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
-  <string name="preferences_RootXposed1">"Root e Xposed indisponíveis|Root e Xposed são necessários para o módulo funcionar."</string>
-  <string name="preferences_RootXposed2">"Xposed funcionando, Root não|Root é necessário para desligar ou reiniciar, por favor permita o acesso root."</string>
-  <string name="preferences_RootXposed3">"\"\"Root funcionando, Xposed não|Xposed é necessário para substituir o Menu de Energia...
-Por favor ative o módulo no Xposed Installer.\"\""</string>
-  <string name="preferences_RootXposed4">"Root e Xposed funcionando|O aplicativo deve funcionar corretamente!"</string>
-  <string name="preferences_RootXposed5">"Versão do módulo muito antiga...|Por favor reinicie seu dispositivo para concluir o processo de atualização!"</string>
   <string name="preferencesCategory_General">"Geral"</string>
   <string name="preferences_Style">"Estilo"</string>
-  <string name="preferences_Theme">"Tema|Mudar a aparência e conferir uma prévia."</string>
-  <string name="preferences_Graphics">"Ícones|Mudar os ícones,usar customizados ou ícones predefinidos."</string>
-  <string name="preferences_VisibilityOrder">"Visibilidade e Ordem|Selecione os itens que deseja ver e a ordem de cada um."</string>
-  <string name="preferences_Animations">"Animações|Mudar as animações ou desativá-las completamente."</string>
   <string name="preferencesCategory_Other">"Outros"</string>
-  <string name="preferences_Account">"Conta|Aqui você pode logar, criar uma conta ou checar suas estatísticas quando logado."</string>
-  <string name="preferences_Advanced">"Configurações Avançadas|Alterar configurações avançadas como atraso, gravidade ou velocidade."</string>
-  <string name="preferences_Permissions">"\"\"Permissões|Mostrar as permissões usadas e ver para que são usadas.
-Conceder permissões adicionais que não são adicionadas na primeira inicialização (Android 6.0+).\"\""</string>
-  <string name="preferences_HideLauncherIcon">"Ocultar aplicativo no launcher|Oculta o aplicativo no launcher,isso pode levar até uma reinicialização para ocultar o ícone. Essa opção de configurações ficará apenas acessível no Xposed Installer."</string>
-  <string name="preferences_DeepXposedLogging">"Log do Xposed|Ativar o log avançado do Xposed, após ativar reinicie para ver as mudanças."</string>
   <string name="preferencesCategory_About">"Sobre"</string>
-  <string name="preferences_NeoSource">"\"\"Fonte|NeoPowerMenu é um código aberto.
-Cheque a fonte no GitHub.\"\""</string>
-  <string name="preferences_About">"Código por Neon-Soft/DrAcHe981|Baseado em um código de Naman Dwivedi (naman14)."</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
   <string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
   <string name="presetsManager_LoadMore">"Carregando...|Aguarde...|Mais predefinições|Clique aqui para mostrar mais predefinições.|O Fim.|Não há mais nenhuma.|Toque para repetir. "</string>
-  <string name="powerMenu_SureToRebootPowerOff">"Tem certeza que deseja reiniciar o dispositivo?|Tem certeza que deseja desligar o dispositivo? "</string>
-  <string name="advancedPrefs_Confirmation">"Pedir confirmação|Ative para pedir confirmação ao desligar ou reiniciar o dispositivo. "</string>
   <string name="advancedPrefs_HideOnClick">"Esconder ao clicar"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Esconder o menu ao clicar em um botão de ativação."</string>
   <string name="advancedPrefs_LoadAppIcons">"Carregar Ícones de Apps"</string>
   <string name="advancedPrefs_LoadAppIconsDesc">"Carrega ícones para os botões de atalho de aplicativo."</string>
-  <string name="style_Material">Material</string>
-  <string name="style_MaterialFullscreen">Material (Tela Cheia)</string>
-  <string name="style_MaterialFullHorizontal">Material (Horizontal completo)</string>
-  <string name="advancedPrefs_ExperimentalPWMHook">Método PhoneWindowManager experimental</string>
-  <string name="advancedPrefs_ExperimentalPWMHookDesc">Método PhoneWindowManager em vez do GlobalActions.\nUse com cuidado, não habilite se o método normal funciona no seu dispositivo! \nReinicie para ver as alterações.</string>
+  <string name="style_Material">"Material"</string>
+  <string name="style_MaterialFullscreen">"Material (Tela Cheia)"</string>
+  <string name="style_MaterialFullHorizontal">"Material (Horizontal completo)"</string>
+  <string name="advancedPrefs_ExperimentalPWMHook">"Método PhoneWindowManager experimental"</string>
+  <string name="advancedPrefs_ExperimentalPWMHookDesc">"Método PhoneWindowManager em vez do GlobalActions.\nUse com cuidado, não habilite se o método normal funciona no seu dispositivo! \nReinicie para ver as alterações."</string>
   <string name="advancedPrefs_ColorizeNonStockIcons">"Colorir ícones personalizados"</string>
   <string name="advancedPrefs_ColorizeNonStockIconsDesc">"Por padrão, ícones personalizados não vão ser coloridos, ative para mudar isso."</string>
   <string name="advancedPrefs_RoundAppIcons">"Ícones de app redondos"</string>
@@ -372,7 +342,7 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="advancedPrefsDesc_BlurRadius">"Defina o quanto o fundo deve ser borrado. (padrão: 14)"</string>
   <string name="advancedPrefs_SelectBlurRadius">"Selecione o raio de desfoque:"</string>
   <string name="screenrecord_notif_open">"Abrir com..."</string>
-  <string name="screenrecord_notif_saving">Salvando...</string>
+  <string name="screenrecord_notif_saving">"Salvando..."</string>
   <string name="screenrecord_notif_failedCreateDir">"Não foi possível criar as pastas necessárias."</string>
   <string name="screenrecord_notif_failedToSave">"Não foi possível copiar o arquivo de saída, verifique o registro para obter mais informações."</string>
   <string name="errorActivity_Info">"Ocorreu um erro inesperado.\nLamentamos pelo inconveniente."</string>
@@ -380,7 +350,6 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="visibilityOrder_LockWithPassword">"Bloquear com senha"</string>
   <string name="powerMenu_Password">"senha"</string>
   <string name="powerMenu_LockedWithPassword">"Este botão está bloqueado, por favor digite a senha para prosseguir..."</string>
-  <string name="powerMenu_WrongPassword">Senha incorreta, por favor tente novamente...</string>
   <string name="visibilityOrder_NoPasswordSet">"Nenhuma senha definida...\nPor favor digite uma senha abaixo:"</string>
   <string name="advancedPrefs_ChangePassword">"Digite uma nova senha abaixo, ou deixe em branco para removê-la..."</string>
   <string name="advancedPrefsDesc_Password">"Bloquear itens com uma senha, clique aqui para alterar ou remover a senha."</string>
@@ -408,20 +377,20 @@ Cheque a fonte no GitHub.\"\""</string>
   <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Necessária para usar o scanner de impressão digital, como método de desbloqueio."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Acessar política de notificações"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Necessária no Nougat (7.0) e acima para alterar o modo 'Não Perturbe'."</string>
-  <string name="powerMenuMain_Shortcut">Atalho</string>
-  <string name="visibilityOrder_NoGravityBoxFound">GravityBox não instalado, esse item não terá efeito sem o GravityBox instalado.</string>
-  <string name="visibilityOrder_HideText">Ocultar texto</string>
-  <string name="style_MaterialDynamicWidth">Material (Largura Dinâmica)</string>
-  <string name="graphics_BehaviorTitle">Personalize o comportamento dos gráficos</string>
-  <string name="graphics_BehaviorDesc">Ative/Desative gráficos e customize valores como preenchimento e coloração.</string>
-  <string name="visibilityOrder_SearchShortcut">Atalho de Busca (case insensitive):</string>
-  <string name="preferences_TranslateDesc">Sabe idiomas que este app deveria ter? \nEntão toque aqui para conferir o projeto no Crowdin e ajudar com a tradução!</string>
-  <string name="preferences_TranslateTitle">Tradução</string>
-  <string name="graphics_NotEnabled">Gráficos não estão habilitados\nToque aqui para habilitar!</string>
-  <string name="advancedPrefsTitle_ScreenRecordCountdown">Contagem para gravação de tela</string>
-  <string name="advancedPrefsDesc_ScreenRecordCountdown">Mostrar uma contagem regressiva antes de iniciar a gravação de tela.</string>
-  <string name="screenrecord_toast_start_in">Iniciando a gravação em [TIME]...</string>
-  <string name="screenrecord_notif_binarynotFound">Não foi possível localizar, ler ou executar o arquivo binário. \nA gravação de tela pode não ser suportada em seu dispositivo.</string>
-  <string name="advancedPrefsTitle_HideActionDescriptionText">Esconder texto de descrição na caixa de diálogo de ação de desligamento/reinicialização</string>
-  <string name="advancedPrefsDesc_HideActionDescriptionText">Esconder a mensagem \"Desligando...\" ou similar na caixa de diálogo ação de desligamento/reinicialização.</string>
+  <string name="powerMenuMain_Shortcut">"Atalho"</string>
+  <string name="visibilityOrder_NoGravityBoxFound">"GravityBox não instalado, esse item não terá efeito sem o GravityBox instalado."</string>
+  <string name="visibilityOrder_HideText">"Ocultar texto"</string>
+  <string name="style_MaterialDynamicWidth">"Material (Largura Dinâmica)"</string>
+  <string name="graphics_BehaviorTitle">"Personalize o comportamento dos gráficos"</string>
+  <string name="graphics_BehaviorDesc">"Ative/Desative gráficos e customize valores como preenchimento e coloração."</string>
+  <string name="visibilityOrder_SearchShortcut">"Atalho de Busca (case insensitive):"</string>
+  <string name="preferences_TranslateDesc">"Sabe idiomas que este app deveria ter? \nEntão toque aqui para conferir o projeto no Crowdin e ajudar com a tradução!"</string>
+  <string name="preferences_TranslateTitle">"Tradução"</string>
+  <string name="graphics_NotEnabled">"Gráficos não estão habilitados\nToque aqui para habilitar!"</string>
+  <string name="advancedPrefsTitle_ScreenRecordCountdown">"Contagem para gravação de tela"</string>
+  <string name="advancedPrefsDesc_ScreenRecordCountdown">"Mostrar uma contagem regressiva antes de iniciar a gravação de tela."</string>
+  <string name="screenrecord_toast_start_in">"Iniciando a gravação em [TIME]..."</string>
+  <string name="screenrecord_notif_binarynotFound">"Não foi possível localizar, ler ou executar o arquivo binário. \nA gravação de tela pode não ser suportada em seu dispositivo."</string>
+  <string name="advancedPrefsTitle_HideActionDescriptionText">"Esconder texto de descrição na caixa de diálogo de ação de desligamento/reinicialização"</string>
+  <string name="advancedPrefsDesc_HideActionDescriptionText">"Esconder a mensagem \"Desligando...\" ou similar na caixa de diálogo ação de desligamento/reinicialização."</string>
 </resources>
