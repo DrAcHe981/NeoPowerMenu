@@ -176,7 +176,7 @@
   <string name="graphics_Crop">"Zuschneiden"</string>
   <string name="graphics_CropCircle">"Rund schneiden"</string>
   <string name="graphics_NoPresetsFound">"Es konnte keine Voreinstellung gefunden werden, die diese Grafik enthält..."</string>
-  <string name="presetsManager_ReportDialogText">"Bist du dir sicher dass du [PRESETNAME] melden willst?\nDies kann nicht rückgängig gemacht werde, also melde nicht nur zum Spaß!\n\nDesweiteren benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein."</string>
+  <string name="presetsManager_ReportDialogText">"Bist du dir sicher dass du [PRESETNAME] melden willst?\nDies kann nicht rückgängig gemacht werde, also melde nicht nur zum Spaß!\n\nDesweiterem benötigen wir einen Grund zum melden, bitte gib ihn hier drunter ein."</string>
   <string name="presetsManager_ReportDialogReason">"Grund der Meldung:"</string>
   <string name="presetsManager_ReportResultSuccess">"[PRESETNAME] wurde gemeldet, der Entwickler wird einen blick darauf werfen."</string>
   <string name="presetsManager_ReportResultFailed">"Melden fehlgeschlagen, bitte versuche es nochmal.\nGrund: "</string>
@@ -189,6 +189,7 @@
   <string name="uploadHelper_States">"Warte auf andere Uploads...|Verbinde mit Server...|Informationen werden abgerufen...|Hochladen...|Wird abgebrochen..."</string>
   <string name="visibilityOrder_AddItem">"Normales Item hinzufügen\nEin ganz Normales Item mit nur einem Slot.|Multi Item hinzufügen\nFüge mehrere Items in einer Linie hinzu.|Ordner Item hinzufügen\nAnklicken öffnet eine 'neue Seite'."</string>
   <string name="visibilityOrder_MultiPageStart">"Ordner Item startet hier\nDas erste Normale Item definiert den Knopf, um den Ordner öffnen."</string>
+  <string name="visibilityOrder_MultiPageEnd">"Ordner item endet hier"</string>
   <string name="preferencesCategory_RootXposed">"Root und Xposed"</string>
   <string name="preferences_RootXposed1Title">"Root und Xposed sind nicht verfügbar"</string>
   <string name="preferences_RootXposed1Desc">"Ohne Root und Xposed funktioniert leider nichts."</string>
@@ -222,6 +223,7 @@
   <string name="preferences_DeepXposedLoggingTitle">"Tiefes Xposed Logging"</string>
   <string name="preferences_DeepXposedLoggingDesc">"Aktiviere Erweitertes Logging, nach der Aktivierung neu starten, um Änderung zu sehen."</string>
   <string name="preferencesCategory_About">"Über"</string>
+  <string name="preferences_NeoSourceTitle">"Quellcode"</string>
   <string name="preferences_NeoSourceDesc">"NeoPowerMenu ist Open-Source.\nFinde die Source auf GitHub."</string>
   <string name="preferences_ShareTitle">"Teilen"</string>
   <string name="preferences_ShareDesc">"Du kennst Leute die diese App mögen könnten? \nTippe hier, um sie mit ihnen zu teilen!"</string>
@@ -236,6 +238,8 @@
   <string name="animations_Speed">"Geschwindigkeit"</string>
   <string name="powerMenuMain_Progress">"Ladekreis"</string>
   <string name="presetsManager_LoadMore">"Laden...|Bitte warten|Zeige mehr Voreinstellungen|Klicke hier, um mehr Voreinstellungen anzuzeigen.|Das Ende.|Keine weiteren Voreinstellungen zum anzeigen.|Klicke hier, um es erneut zu versuchen."</string>
+  <string name="powerMenu_SureToReboot">"Bist du sicher, dass du deine dein Gerät neu starten möchtest?"</string>
+  <string name="powerMenu_SureToPowerOff">"Bist du sicher, dass du deine dein Gerät ausschalten möchtest?"</string>
   <string name="advancedPrefs_ConfirmationTitle">"Benötige Bestätigung"</string>
   <string name="advancedPrefs_ConfirmationDesc">"Aktiviere eine Bestätigung, bevor das Gerät neu startet oder ausgeschaltet wird."</string>
   <string name="preferences_DonateTitle">"Spenden"</string>
@@ -451,6 +455,8 @@
   <string name="position_Horizontal">"Horizontal:"</string>
   <string name="position_Vertical">"Vertikal:"</string>
   <string name="visibilityOrder_AddMultiItem">"Hinzufügen"</string>
+  <string name="visibilityOrder_EditMultiItemText">"Element text bearbeiten"</string>
+  <string name="visibilityOrder_EditMultiItemRemove">"Element entfernen"</string>
   <string name="graphics_RadiusTitle">"Kreis radius"</string>
   <string name="graphics_RadiusDesc">"Lege fest, wie stark die Hintergründe der Ausschaltmenü-Grafiken gerundet werden. (Standard: 100%)"</string>
   <string name="advancedPrefsDesc_RoundedCorners">"Aktiviere/deaktiviere abgerundete ecken für das Ausschaltmenü."</string>
