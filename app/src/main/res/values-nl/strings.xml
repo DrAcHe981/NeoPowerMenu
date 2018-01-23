@@ -100,10 +100,8 @@
   <string name="presetsManager_UploadFailedNoAccess">"Deze naam van de maker is beveiligd, kies een andere naam of log in."</string>
   <string name="presetsManager_UploadFailed">"Upload mislukt!"</string>
   <string name="presetsManager_DownloadFailed">"Download mislukt!"</string>
-  <string name="presetsManager_CantConnecttoServer">"\"\"\"Kan niet met de server verbinden!
-Controleer je netwerkverbindinge of probeer het later nog eens.\"\"\""</string>
-  <string name="presetsManager_CantConnecttoDB">"\"\"\"Kan niet met de database verbinden!
-Probeer het later nog eens, wanneer het dan nog niet lukt dit graag aan de ontwikkelaar melden.\"\"\""</string>
+  <string name="presetsManager_CantConnecttoServer">"Kan niet met de server verbinden!"</string>
+  <string name="presetsManager_CantConnecttoDB">"Kan niet met de database verbinden!"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Benodigd om presents te downloaden/uploaden van en naar de publieke server."</string>
   <string name="login_Title">"Inloggen"</string>
   <string name="login_TitleRegister">"Registreer"</string>
@@ -114,8 +112,7 @@ Probeer het later nog eens, wanneer het dan nog niet lukt dit graag aan de ontwi
   <string name="login_PasswordOverEmail">"Je kunt een wachtwoord instellen via de activatie E-mail (deze E-mail is alleen in het Engels beschikbaar)."</string>
   <string name="login_Password">"Wachtwoord:"</string>
   <string name="login_KeepLogin">"Hou me ingelogd."</string>
-  <string name="login_Register">"\"\"\"Een account nodig?
-Klik hier om een nieuwe account te maken!\"\"\""</string>
+  <string name="login_Register">"Een account nodig?"</string>
   <string name="login_LoggedIn">"Ingelogd!"</string>
   <string name="login_LoginFailedWithReason">"Inloggen mislukt:"</string>
   <string name="login_LoginFailedWrongData">"Inloggen mislukt, verkeerde E-mail of wachtwoord!"</string>
@@ -142,10 +139,36 @@ Klik hier om een nieuwe account te maken!\"\"\""</string>
   <string name="powerMenuMain_SoundVibrate">"Geluid: trillen"</string>
   <string name="powerMenuMain_SoundNormal">"Geluid: normaal"</string>
   <string name="preferencesCategory_RootXposed">"Root en Xposed"</string>
+  <string name="preferences_RootXposed1Title">"Root en Xposed niet beschikbaar"</string>
+  <string name="preferences_RootXposed1Desc">"Root en Xposed zijn vereist om deze module te gebruiken."</string>
+  <string name="preferences_RootXposed2Title">"Xposed beschikbaar, maar root niet"</string>
+  <string name="preferences_RootXposed2Desc">"Root toegang is vereist om uit te schakelen of opnieuw te starten..."</string>
+  <string name="preferences_RootXposed3Title">"Root beschikbaar, maar Xposed niet"</string>
+  <string name="preferences_RootXposed3Desc">"Xposed is vereist om het Power Menu aan te passen..."</string>
+  <string name="preferences_RootXposed4Title">"Root en Xposed werken"</string>
+  <string name="preferences_RootXposed4Desc">"De app zou prima moeten werken!"</string>
+  <string name="preferences_RootXposed5Title">"Module versie is te laag..."</string>
+  <string name="preferences_RootXposed5Desc">"Start het apparaat opnieuw op om de update te voltooien!"</string>
   <string name="preferencesCategory_General">"Algemeen"</string>
   <string name="preferences_Style">"Stijl"</string>
+  <string name="preferences_ThemeTitle">"Thema"</string>
+  <string name="preferences_ThemeDesc">"Verander het uiterlijk."</string>
+  <string name="preferences_VisibilityOrderTitle">"Zichtbaarheid en volgorde"</string>
+  <string name="preferences_VisibilityOrderDesc">"Selecteer de items die je wilt laten zien en sorteer ze naar jouw voorkeur."</string>
   <string name="preferencesCategory_Other">"Overig"</string>
+  <string name="preferences_AdvancedTitle">"Geavanceerde instellingen"</string>
+  <string name="preferences_AdvancedDesc">"Verander geavanceerde instellingen als vertraging, zwaarte of snelheid."</string>
+  <string name="preferences_PermissionsTitle">"Machtigingen"</string>
+  <string name="preferences_PermissionsDesc">"Toon de gevraagde machtigingen en bekijk waar ze voor worden gebruikt."</string>
+  <string name="preferences_HideLauncherIconTitle">"Verberg de app in de launcher."</string>
+  <string name="preferences_HideLauncherIconDesc">"Verbergt het app icoon in de launcher. Opnieuw opstarten kan nodig zijn om het icoon te verbergen."</string>
+  <string name="preferences_DeepXposedLoggingTitle">"Xposed logging"</string>
+  <string name="preferences_DeepXposedLoggingDesc">"Schakel geavanceerde Xposed logging in en start opnieuw op om door te voeren."</string>
   <string name="preferencesCategory_About">"Over"</string>
+  <string name="preferences_NeoSourceTitle">"Bron"</string>
+  <string name="preferences_NeoSourceDesc">"NeoPowerMenu is open source.\nBekijk de broncode op GitHub."</string>
+  <string name="preferences_AboutTitle">"Code door Neon-Soft / DrAcHe981"</string>
+  <string name="preferences_AboutDesc">"Gebaseerd op code van Naman Dwivedi (naman14)."</string>
   <string name="errorActivity_MoreInfo">"Meer info"</string>
   <string name="tourPage_Next">"Volgende"</string>
   <string name="tourPage_Skip">"Overslaan"</string>
