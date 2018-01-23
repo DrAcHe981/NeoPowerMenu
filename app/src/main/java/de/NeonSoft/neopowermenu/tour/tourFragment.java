@@ -76,7 +76,7 @@ public class tourFragment extends Fragment {
         });
 
         pager = (NonSwipeableViewPager) InflatedView.findViewById(R.id.pager);
-        pagerAdapter = new MyPagerAdapter(MainActivity.fragmentManager, new String[]{"0", "1", "2", "3", "4", "5", "6", "7"});
+        pagerAdapter = new MyPagerAdapter(MainActivity.fragmentManager, new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8"});
         pager.setAdapter(pagerAdapter);
 
         finishOnClick = new View.OnClickListener() {
@@ -102,8 +102,6 @@ public class tourFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
 								try {
-                pageTextHolders.get(position).setVisibility(View.VISIBLE);
-                pageTextHolders.get(position).startAnimation(slideIn);
                 if (position == 0) {
 										pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
                     pageImages.get(position).setVisibility(View.VISIBLE);
@@ -129,12 +127,14 @@ public class tourFragment extends Fragment {
                     MainActivity.changePrefPage(new PreferencesAdvancedFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
                 } else if (position == 7) {
-										pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
+                    pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
                     pageImages.get(position).setVisibility(View.VISIBLE);
                     pageImages.get(position).startAnimation(fadeIn);
                     MainActivity.changePrefPage(new PreferencesPartFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Enjoy), R.drawable.ic_action_launch, finishOnClick);
                 }
+                                    pageTextHolders.get(position).setVisibility(View.VISIBLE);
+                                    pageTextHolders.get(position).startAnimation(slideIn);
 								} catch (Throwable t) {
 										slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
 										dialogFragment.setContext(mActivity);
@@ -283,6 +283,13 @@ public class tourFragment extends Fragment {
                     pageBundle.putString("title", "7");
 										pageImages.add(null);
 										pageTextHolders.add(null);
+                    page.setArguments(pageBundle);
+                    return page;
+                case 8:
+                    pageBundle.putInt("page", 8);
+                    pageBundle.putString("title", "8");
+                    pageImages.add(null);
+                    pageTextHolders.add(null);
                     page.setArguments(pageBundle);
                     return page;
                 default:

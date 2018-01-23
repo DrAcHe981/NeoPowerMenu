@@ -82,15 +82,19 @@ public class AddShortcutSettings extends Fragment {
         title = (TextView) InflatedView.findViewById(R.id.itemText);
 
         finalString = selectedItem;
-        try {
-            finalString = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuMain_" + selectedItem, "string", MainActivity.class.getPackage().getName()));
-        } catch (Throwable t) {
+        if (selectedItem.equalsIgnoreCase("PowerMenu")) {
+            finalString = getString(R.string.shortcut_ShowPowerMenu);
+        } else {
             try {
-                finalString = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuBottom_" + selectedItem, "string", MainActivity.class.getPackage().getName()));
-            } catch (Throwable ignored) {
+                finalString = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuMain_" + selectedItem, "string", MainActivity.class.getPackage().getName()));
+            } catch (Throwable t) {
+                try {
+                    finalString = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuBottom_" + selectedItem, "string", MainActivity.class.getPackage().getName()));
+                } catch (Throwable ignored) {
+                }
             }
         }
-        addShortcut.createCircleIcon(selectedItem, finalString, addShortcut.color1, addShortcut.color2);
+        image.setImageBitmap(addShortcut.createCircleIcon(selectedItem, finalString, addShortcut.color1, addShortcut.color2));
         title.setText(finalString);
 
         LinearLayout_UseGraphic = (LinearLayout) InflatedView.findViewById(R.id.addShortcut_UseGraphic);
@@ -110,8 +114,10 @@ public class AddShortcutSettings extends Fragment {
                 LinearLayout_Padding.setEnabled(addShortcut.useGraphic);
                 SeekBar_Padding.setEnabled(addShortcut.useGraphic);
                 LinearLayout_Padding.setAlpha(addShortcut.useGraphic ? 1f : .3f);
+                if (!selectedItem.equalsIgnoreCase("PowerMenu")) {
                     LinearLayout_UseCustomGraphic.setEnabled(addShortcut.useGraphic);
                     LinearLayout_UseCustomGraphic.setAlpha(addShortcut.useGraphic ? 1f : .3f);
+                }
             }
         });
 
@@ -131,6 +137,11 @@ public class AddShortcutSettings extends Fragment {
                 image.setImageBitmap(addShortcut.createCircleIcon(selectedItem, finalString, addShortcut.color1, addShortcut.color2));
             }
         });
+
+        if (selectedItem.equalsIgnoreCase("PowerMenu")) {
+            LinearLayout_UseCustomGraphic.setAlpha((float) .3);
+            LinearLayout_UseCustomGraphic.setEnabled(false);
+        }
 
         LinearLayout_CircleColor = (LinearLayout) InflatedView.findViewById(R.id.addShortcut_CircleColorRoot);
         TextView_CircleColorPreview = (TextView) InflatedView.findViewById(R.id.addShortcut_CircleColorPreview);

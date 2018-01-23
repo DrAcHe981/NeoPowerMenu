@@ -83,18 +83,22 @@ public class ShortcutListAdapter extends ArrayAdapter<String> {
         });
 
         String string = mItems.get(position);
-        if (string.contains(".")) {
-            try {
-                string = pm.getApplicationInfo(string.split("/")[0], 0).loadLabel(pm).toString();
-            } catch (PackageManager.NameNotFoundException e) {
-            }
+        if (string.equalsIgnoreCase("PowerMenu")) {
+            string = mActivity.getString(R.string.shortcut_ShowPowerMenu);
         } else {
-            try {
-                string = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuMain_" + mItems.get(position), "string", MainActivity.class.getPackage().getName()));
-            } catch (Throwable t) {
+            if (string.contains(".")) {
                 try {
-                    string = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuBottom_" + mItems.get(position), "string", MainActivity.class.getPackage().getName()));
-                } catch (Throwable t1) {
+                    string = pm.getApplicationInfo(string.split("/")[0], 0).loadLabel(pm).toString();
+                } catch (PackageManager.NameNotFoundException e) {
+                }
+            } else {
+                try {
+                    string = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuMain_" + mItems.get(position), "string", MainActivity.class.getPackage().getName()));
+                } catch (Throwable t) {
+                    try {
+                        string = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuBottom_" + mItems.get(position), "string", MainActivity.class.getPackage().getName()));
+                    } catch (Throwable t1) {
+                    }
                 }
             }
         }

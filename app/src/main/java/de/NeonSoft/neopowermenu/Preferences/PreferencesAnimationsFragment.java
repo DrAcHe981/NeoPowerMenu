@@ -66,8 +66,8 @@ public class PreferencesAnimationsFragment extends android.support.v4.app.Fragme
         if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
             MainActivity.visibleFragment = "Animations";
         }
-        MainActivity.actionbar.setTitle(getString(R.string.preferences_Animations).split("\\|")[0]);
-        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Animations).split("\\|")[1]);
+        MainActivity.actionbar.setTitle(getString(R.string.preferences_AnimationsTitle));
+        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_AnimationsDesc));
 
         View InflatedView = inflater.inflate(R.layout.activity_animations, container, false);
 

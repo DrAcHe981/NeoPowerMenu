@@ -35,7 +35,6 @@ import de.NeonSoft.neopowermenu.services.*;
 import eu.chainfire.libsuperuser.*;
 
 import java.io.*;
-import java.sql.Time;
 import java.util.*;
 
 import static de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen.MY_PERMISSIONS_REQUEST;
@@ -289,7 +288,7 @@ public class XposedDialog extends DialogFragment {
         frame = (FrameLayout) PowerDialog.findViewById(R.id.frame);
         GradientDrawable bgDrawable = (GradientDrawable) dialogContent.getBackground();
         bgDrawable.setColor(backgroundColor);
-        bgDrawable.setCornerRadius(mRoundedDialogCornersRadius);
+        if (sStyleName != 1) bgDrawable.setCornerRadius(mRoundedDialogCornersRadius);
         bgDrawable.setStroke(0, Color.parseColor("#00000000"));
         dialogContent.setBackground(bgDrawable);
         frameLinear = (LinearLayout) PowerDialog.findViewById(R.id.frameLinear);
@@ -349,16 +348,18 @@ public class XposedDialog extends DialogFragment {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
             params.width = LinearLayout.LayoutParams.MATCH_PARENT;
             params.height = LinearLayout.LayoutParams.MATCH_PARENT;
-            params.topMargin = helper.getStatusBarHeight(mContext);
-            if (!helper.isDeviceHorizontal(mContext)) {
-                params.bottomMargin = helper.getNavigationBarSize(mContext).y;
-            } else if (helper.isDeviceHorizontal(mContext)) {
-                params.rightMargin = helper.getNavigationBarSize(mContext).x;
-            }
             dialogContent.setLayoutParams(params);
             LinearLayout.LayoutParams frameScrollParams = new LinearLayout.LayoutParams(frameScroll.getLayoutParams());
             frameScrollParams.width = (int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));
             frameScrollParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            //frameScrollParams.topMargin = helper.getStatusBarHeight(mContext);
+            //if (!helper.isDeviceHorizontal(mContext)) {
+            //    frameScrollParams.bottomMargin = helper.getNavigationBarSize(mContext).y;
+            //} else if (helper.isDeviceHorizontal(mContext)) {
+            //    frameScrollParams.rightMargin = helper.getNavigationBarSize(mContext).x;
+            //}
+            frameScroll.setPadding(0, helper.getStatusBarHeight(mContext), helper.getNavigationBarSize(mContext).x, helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0));
+            frame3Scroll.setPadding(0, helper.getStatusBarHeight(mContext), helper.getNavigationBarSize(mContext).x, helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.getStatusBarHeight(mContext)/2 : 0));
             frameScroll.setLayoutParams(frameScrollParams);
             frame3Scroll.setLayoutParams(frameScrollParams);
             FrameLayout.LayoutParams params2 = new FrameLayout.LayoutParams(frame.getLayoutParams());
@@ -377,7 +378,7 @@ public class XposedDialog extends DialogFragment {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
             params.width = (int) helper.getDisplaySize(mContext, false)[0];
             params.topMargin = helper.getStatusBarHeight(mContext);
-            if (!helper.isDeviceHorizontal(mContext)) {
+            if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
                 params.bottomMargin = helper.getNavigationBarSize(mContext).y;
             } else if (helper.isDeviceHorizontal(mContext)) {
                 params.rightMargin = helper.getNavigationBarSize(mContext).x;
@@ -405,7 +406,7 @@ public class XposedDialog extends DialogFragment {
             params.width = LinearLayout.LayoutParams.WRAP_CONTENT;//(int) (((int) helper.getDisplaySize(mContext, false)[0])*(0.01*int_Size));// + (boolean_DialogGravityRight ? helper.getNavigationBarSize(mContext).x : 0);
             params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
             params.topMargin = helper.getStatusBarHeight(mContext);
-            if (!helper.isDeviceHorizontal(mContext)) {
+            if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
                 params.bottomMargin = helper.getNavigationBarSize(mContext).y;
             } else if (helper.isDeviceHorizontal(mContext)) {
                 params.rightMargin = helper.getNavigationBarSize(mContext).x;
@@ -1522,7 +1523,7 @@ public class XposedDialog extends DialogFragment {
                         }
                         frameConfirm.setLayoutParams(crparams);
                     }
-                    confirmAction.setText(mContext.getString(R.string.powerMenu_SureToRebootPowerOff).split("\\|")[(name.equalsIgnoreCase("Shutdown") || name.equalsIgnoreCase("FakePowerOff") ? 1 : 0)]);
+                    confirmAction.setText(mContext.getString((name.equalsIgnoreCase("Shutdown") || name.equalsIgnoreCase("FakePowerOff") ? R.string.powerMenu_SureToPowerOff : R.string.powerMenu_SureToReboot)));
                     confirmNo.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_NO]);
                     confirmNo.setOnClickListener(new OnClickListener() {
 
@@ -2008,8 +2009,9 @@ public class XposedDialog extends DialogFragment {
     public void revealDialog(String name, View v) {
         final int color = Color.parseColor(colorPrefs.getString("Dialog" + name +"_Backgroundcolor", "#000000"));
         revealView.setVisibility(View.VISIBLE);
-        int width = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getWidth() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getWidth() : (frame.getVisibility() == View.VISIBLE ? frame.getWidth() : frame3.getWidth())));
-        int height = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getHeight() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getHeight() : (frame.getVisibility() == View.VISIBLE ? frame.getHeight() : frame3.getHeight())));
+        int height, width;
+        width = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getWidth() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getWidth() : (frame.getVisibility() == View.VISIBLE ? frame.getWidth() : frame3.getWidth())));
+        height = (frameConfirm.getVisibility() == View.VISIBLE ? frameConfirm.getHeight() : (frameEnterPassword.getVisibility() == View.VISIBLE ? frameEnterPassword.getHeight() : (frame.getVisibility() == View.VISIBLE ? frame.getHeight() : frame3.getHeight())));
         if (sStyleName != 1 && (width > revealView.getWidth() || height > revealView.getHeight())) {
             FrameLayout.LayoutParams crparams = new FrameLayout.LayoutParams(revealView.getLayoutParams());
             if (width > crparams.width) {
@@ -2043,7 +2045,7 @@ public class XposedDialog extends DialogFragment {
                 revealView.reveal(centerX, centerY, color, 0, 0, null);
                 GradientDrawable bgDrawable = (GradientDrawable) revealViewText.getBackground();
                 bgDrawable.setColor(color);
-                bgDrawable.setCornerRadius(mRoundedDialogCornersRadius);
+                if (sStyleName != 1) bgDrawable.setCornerRadius(mRoundedDialogCornersRadius);
                 bgDrawable.setStroke(0, Color.parseColor("#00000000"));
                 revealViewText.setBackground(bgDrawable);
                 revealViewText.setVisibility(View.VISIBLE);
@@ -2222,6 +2224,7 @@ public class XposedDialog extends DialogFragment {
 
     private class BackgroundThread extends Thread {
         private Object sCmd;
+        private boolean runSB = true;
 
         private BackgroundThread(Object cmd) {
             this.sCmd = cmd;
@@ -2238,7 +2241,10 @@ public class XposedDialog extends DialogFragment {
                 if (sCmd == null) {
                     return;
                 }
-                if (!((String) sCmd).equalsIgnoreCase("fakepoweroff")) {
+                if (sCmd instanceof String && ((String) sCmd).equalsIgnoreCase("fakepoweroff")) {
+                    runSB = false;
+                }
+                if (runSB){
                     if (mDeepXposedLogging)
                         XposedUtils.log("Sending " + SHUTDOWN_BROADCAST);
                     Shell.SU.run(SHUTDOWN_BROADCAST);
@@ -2424,7 +2430,7 @@ public class XposedDialog extends DialogFragment {
                 if (!helper.isDeviceHorizontal(mContext) || helper.getNavigationBarSize(mContext).x == 0) {
                     LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());
                     dialogContentParams.topMargin = helper.getStatusBarHeight(mContext);
-                    dialogContentParams.bottomMargin = (int) (helper.getNavigationBarSize(mContext).y + (helper.getNavigationBarSize(mContext).y > 0 ? helper.convertDpToPixel(12, mContext) : 0));
+                    dialogContentParams.bottomMargin = (int) (helper.getNavigationBarSize(mContext).y);
                     dialogContent.setLayoutParams(dialogContentParams);
                 } else {
                     LinearLayout.LayoutParams dialogContentParams = new LinearLayout.LayoutParams(dialogContent.getLayoutParams());

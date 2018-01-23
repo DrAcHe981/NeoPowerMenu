@@ -81,14 +81,16 @@ public class PresetsPage extends Fragment
 				}
 				else
 				{
+					if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
 						PreferencesPresetsFragment.onlineAdapter = new PresetsAdapter(PreferencesPresetsFragment.mContext, PreferencesPresetsFragment.OnlinePresets);
 						list.setAdapter(PreferencesPresetsFragment.onlineAdapter);
 						PreferencesPresetsFragment.onlineList = list;
 						PreferencesPresetsFragment.onlineMSG = message;
 						PreferencesPresetsFragment.onlineMSGHolder = messageHolder;
 						PreferencesPresetsFragment.OnlinePresets.clear();
-						PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(),(PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
+						PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(), (PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
 						//message.setVisibility(View.VISIBLE);
+					}
 				}
 				}
         return view;

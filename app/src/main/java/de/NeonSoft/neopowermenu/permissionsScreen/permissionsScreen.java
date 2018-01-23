@@ -59,8 +59,8 @@ public class permissionsScreen extends Fragment {
             MainActivity.visibleFragment = "permissions";
         }
 
-        MainActivity.actionbar.setTitle(getString(R.string.preferences_Permissions).split("\\|")[0]);
-        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Permissions).split("\\|")[1]);
+        MainActivity.actionbar.setTitle(getString(R.string.preferences_PermissionsTitle));
+        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_PermissionsDesc));
 
         View InflatedView = inflater.inflate(R.layout.permissionsscreen, null);
 

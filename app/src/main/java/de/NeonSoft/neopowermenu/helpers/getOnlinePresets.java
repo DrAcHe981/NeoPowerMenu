@@ -76,7 +76,7 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
     @Override
     protected String doInBackground(Object... p1) {
         
-        String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")";
+        String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + MainActivity.context.getString(R.string.presetsManager_OrderAsc) + ")";
         String searchFor = "";
         String offset = "0";
         if (p1 != null && p1.length > 0) {
@@ -98,7 +98,7 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
         }
         String orderName = "_presetName";
         String orderDirection = "ASC";
-        if (orderBy.contains("(" + MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")")) {
+        if (orderBy.contains("(" + MainActivity.context.getString(R.string.presetsManager_OrderDesc) + ")")) {
             orderDirection = "DESC";
         }
         if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[1])) {
@@ -169,7 +169,10 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
                     preset.setDescription(jObject.getString("_presetCreator") + ",=," + jObject.getString("_presetAppVersion") + ",=," + jObject.getString("_presetStars"));
                     preset.setType(PresetsHolder.TYPE_ONLINE);
                     preset.setId(jObject.getString("_creatorUniqeId"));
-										preset.setHasGraphics(jObject.getString("_presetHasGraphics").equalsIgnoreCase("true"));
+                    preset.setHasColors(jObject.getString("_presetContent").contains("colors"));
+                    preset.setHasGraphics(jObject.getString("_presetContent").contains("graphics"));
+                    preset.setHasAnimations(jObject.getString("_presetContent").contains("animations"));
+                    preset.setHasRoundCorners(jObject.getString("_presetContent").contains("roundcorners"));
 										presets[i] = preset;
                     //PreferencesPresetsFragment.OnlineHasGraphics.add(jObject.getString("_presetHasGraphics").equalsIgnoreCase("true"));
 

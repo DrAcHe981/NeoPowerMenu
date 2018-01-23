@@ -132,8 +132,8 @@ public class PreferencesAdvancedFragment extends Fragment {
             mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
         }
 
-        MainActivity.actionbar.setTitle(getString(R.string.preferences_Advanced).split("\\|")[0]);
-        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Advanced).split("\\|")[1]);
+        MainActivity.actionbar.setTitle(getString(R.string.preferences_AdvancedTitle));
+        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_AdvancedDesc));
 
         View InflatedView = inflater.inflate(R.layout.activity_advanced, container, false);
 
@@ -1103,8 +1103,6 @@ public class PreferencesAdvancedFragment extends Fragment {
         LinearLayout_Confirmation = (LinearLayout) InflatedView.findViewById(R.id.activityadvancedLinearLayout_Confirmation);
         TextView_ConfirmationTitle = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_ConfirmationTitle);
         TextView_ConfirmationDesc = (TextView) InflatedView.findViewById(R.id.activityadvancedTextView_ConfirmationDesc);
-        TextView_ConfirmationTitle.setText(getString(R.string.advancedPrefs_Confirmation).split("\\|")[0]);
-        TextView_ConfirmationDesc.setText(getString(R.string.advancedPrefs_Confirmation).split("\\|")[1]);
         Switch_Confirmation = (Switch) InflatedView.findViewById(R.id.activityadvancedSwitch_Confirmation);
         Switch_Confirmation.setChecked(boolean_Confirmation);
         Switch_Confirmation.setClickable(false);

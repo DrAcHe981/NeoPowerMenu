@@ -94,8 +94,8 @@ public class PreferencesGraphicsFragment extends Fragment {
             MainActivity.visibleFragment = "Graphics";
             MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
         }
-        MainActivity.actionbar.setTitle(getString(R.string.preferences_Graphics).split("\\|")[0]);
-        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Graphics).split("\\|")[1]);
+        MainActivity.actionbar.setTitle(getString(R.string.preferences_GraphicsTitle));
+        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_GraphicsDesc));
 
         mContext = getActivity();
 
@@ -107,7 +107,7 @@ public class PreferencesGraphicsFragment extends Fragment {
 
         View InflatedView = inflater.inflate(R.layout.activity_graphics, container, false);
 
-        LinearLayout_Behavior = (LinearLayout) InflatedView.findViewById(R.id.activitygraphicsLinealLayout_Behavior);
+        LinearLayout_Behavior = InflatedView.findViewById(R.id.activitygraphicsLinealLayout_Behavior);
         LinearLayout_Behavior.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,10 +125,10 @@ public class PreferencesGraphicsFragment extends Fragment {
                 dialogFragment.setList(ListView.CHOICE_MODE_MULTIPLE, options, -1, false);
                 dialogFragment.setListChecks(checked);
                 View PaddingView = inflater.inflate(R.layout.seekbardialog, null, false);
-                final TextView PaddingTitle = (TextView) PaddingView.findViewById(R.id.seekbardialog_Title);
-                final TextView PaddingValue = (TextView) PaddingView.findViewById(R.id.seekbardialog_Value);
-                final TextView PaddingDesc = (TextView) PaddingView.findViewById(R.id.seekbardialog_Desc);
-                final SeekBar PaddingSeekbar = (SeekBar) PaddingView.findViewById(R.id.seekbardialog_Seekbar);
+                final TextView PaddingTitle = PaddingView.findViewById(R.id.seekbardialog_Title);
+                final TextView PaddingValue = PaddingView.findViewById(R.id.seekbardialog_Value);
+                final TextView PaddingDesc = PaddingView.findViewById(R.id.seekbardialog_Desc);
+                final SeekBar PaddingSeekbar = PaddingView.findViewById(R.id.seekbardialog_Seekbar);
                 PaddingTitle.setText(R.string.graphics_PaddingTitle);
                 PaddingDesc.setText(R.string.graphics_PaddingDesc);
                 PaddingSeekbar.setMax(20);
@@ -154,10 +154,10 @@ public class PreferencesGraphicsFragment extends Fragment {
                 });
                 dialogFragment.addCustomView(PaddingView);
                 View CircleRadiusView = inflater.inflate(R.layout.seekbardialog, null, false);
-                final TextView RadiusTitle = (TextView) CircleRadiusView.findViewById(R.id.seekbardialog_Title);
-                final TextView RadiusValue = (TextView) CircleRadiusView.findViewById(R.id.seekbardialog_Value);
-                final TextView RadiusDesc = (TextView) CircleRadiusView.findViewById(R.id.seekbardialog_Desc);
-                final SeekBar RadiusSeekbar = (SeekBar) CircleRadiusView.findViewById(R.id.seekbardialog_Seekbar);
+                final TextView RadiusTitle = CircleRadiusView.findViewById(R.id.seekbardialog_Title);
+                final TextView RadiusValue = CircleRadiusView.findViewById(R.id.seekbardialog_Value);
+                final TextView RadiusDesc = CircleRadiusView.findViewById(R.id.seekbardialog_Desc);
+                final SeekBar RadiusSeekbar = CircleRadiusView.findViewById(R.id.seekbardialog_Seekbar);
                 RadiusTitle.setText(R.string.graphics_RadiusTitle);
                 RadiusDesc.setText(R.string.graphics_RadiusDesc);
                 RadiusSeekbar.setMax(100);
@@ -245,7 +245,7 @@ public class PreferencesGraphicsFragment extends Fragment {
             }
         });
 
-        GridView_Images = (GridView) InflatedView.findViewById(R.id.activitygraphicsGridView1);
+        GridView_Images = InflatedView.findViewById(R.id.activitygraphicsGridView1);
         GridView_Images.setNumColumns(getResources().getInteger(R.integer.ImageList_Columns));
 
         GraphicItemHolder backgroundGraphic = new GraphicItemHolder();
@@ -343,7 +343,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                             if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
                                 MainActivity.preferences.edit().putString("ProgressDrawable", "Stock").commit();
                             }
-                            if (new File(GraphicsList.get(selected).getFile()).exists()) {
+                            if (!GraphicsList.get(selected).getFile().isEmpty() && new File(GraphicsList.get(selected).getFile()).exists()) {
                                 mGraphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
                                 new File(GraphicsList.get(selected).getFile()).delete();
                             }
@@ -421,7 +421,7 @@ public class PreferencesGraphicsFragment extends Fragment {
         });
 
 
-        graphicsDisabled = (TextView) InflatedView.findViewById(R.id.activitygraphicsTextView_Disabled);
+        graphicsDisabled = InflatedView.findViewById(R.id.activitygraphicsTextView_Disabled);
         graphicsDisabled.setVisibility(boolean_UseGraphics ? View.GONE : View.VISIBLE);
         graphicsDisabled.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -441,7 +441,7 @@ public class PreferencesGraphicsFragment extends Fragment {
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SELECT_PICTURE_RESULT) {
-            if (resultCode == mContext.RESULT_OK) {
+            if (resultCode == Activity.RESULT_OK) {
                 startCrop(data.getData());
             }
         }

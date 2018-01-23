@@ -83,7 +83,8 @@
                             android:id="@+id/frame3Scroll"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="1.0">
+                            android:layout_weight="1.0"
+                            android:fillViewport="true">
 
                             <LinearLayout
                                 android:id="@+id/ListContainer2"
@@ -298,25 +299,26 @@
                             android:layout_height="match_parent"
                             android:gravity="center">
 
-                            <ImageView
-                                android:id="@+id/progressbg"
-                                android:layout_width="55dp"
-                                android:layout_height="55dp"
-                                android:layout_centerVertical="true"/>
+                                <ImageView
+                                    android:id="@+id/progressbg"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_centerVertical="true"/>
 
-                            <ProgressBar
-                                android:id="@+id/progress"
-                                android:layout_width="55dp"
-                                android:layout_height="55dp"
-                                android:layout_centerVertical="true"
-                                android:indeterminate="true"/>
+                                <ProgressBar
+                                    android:id="@+id/progress"
+                                    android:layout_width="55dp"
+                                    android:layout_height="55dp"
+                                    android:layout_centerVertical="true"
+                                    android:indeterminate="true"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:gravity="center_vertical"
                             android:layout_centerVertical="true"
-                            android:layout_toRightOf="@id/progress">
+                            android:layout_toRightOf="@id/progressbg">
 
                             <TextView
                                 android:id="@+id/status"

@@ -8,11 +8,9 @@ import android.support.v4.view.*;
 import android.text.*;
 import android.util.*;
 import android.view.*;
-import android.view.View.*;
 import android.view.animation.*;
 import android.view.inputmethod.*;
 import android.widget.*;
-import android.widget.AdapterView.*;
 import android.widget.TextView.*;
 
 import com.ogaclejapan.smarttablayout.*;
@@ -96,15 +94,17 @@ public class PreferencesPresetsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        MainActivity.visibleFragment = "PresetsManager";
+        if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
+            MainActivity.visibleFragment = "PresetsManager";
+        }
 
         MainActivity.actionbar.setTitle(getString(R.string.preset_Load));
         MainActivity.actionbar.setSubTitle(getString(R.string.preset_LoadDesc));
 
         mContext = getActivity();
         onlineSearchTerm = "";
-        onlineOrderSelected = 0;
-        onlineOrderSelectedString = "";
+        onlineOrderSelected = 3;
+        onlineOrderSelectedString = getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + MainActivity.context.getString(R.string.presetsManager_OrderDesc) + ")";
 
         InflatedView = inflater.inflate(R.layout.activity_presetsmanager, container, false);
 
@@ -126,12 +126,14 @@ public class PreferencesPresetsFragment extends Fragment {
 
         vpPager.setCurrentItem(startTab);
 
-        if (startTab == 0) {
-            MainActivity.visibleFragment = "PresetsManagerAccount";
-        } else if (startTab == 1) {
-            MainActivity.visibleFragment = "PresetsManager";
-        } else if (startTab == 2) {
-            MainActivity.visibleFragment = "PresetsManagerOnline";
+        if (!MainActivity.visibleFragment.equalsIgnoreCase("tour")) {
+            if (startTab == 0) {
+                MainActivity.visibleFragment = "PresetsManagerAccount";
+            } else if (startTab == 1) {
+                MainActivity.visibleFragment = "PresetsManager";
+            } else if (startTab == 2) {
+                MainActivity.visibleFragment = "PresetsManagerOnline";
+            }
         }
 
         vpPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -294,16 +296,16 @@ public class PreferencesPresetsFragment extends Fragment {
                     });
                     dialogFragment.setText(mContext.getString(R.string.presetsManager_OrderBy));
                     dialogFragment.setList(ListView.CHOICE_MODE_SINGLE, new String[]{
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[0] + ")",
-                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + mContext.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")"}, onlineOrderSelected, true);
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + mContext.getString(R.string.presetsManager_OrderAsc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + mContext.getString(R.string.presetsManager_OrderDesc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + mContext.getString(R.string.presetsManager_OrderAsc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[1] + " (" + mContext.getString(R.string.presetsManager_OrderDesc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + mContext.getString(R.string.presetsManager_OrderAsc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[2] + " (" + mContext.getString(R.string.presetsManager_OrderDesc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + mContext.getString(R.string.presetsManager_OrderAsc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[3] + " (" + mContext.getString(R.string.presetsManager_OrderDesc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + mContext.getString(R.string.presetsManager_OrderAsc) + ")",
+                            mContext.getString(R.string.presetsManager_OrderNames).split("\\|")[4] + " (" + mContext.getString(R.string.presetsManager_OrderDesc) + ")"}, onlineOrderSelected, true);
                     dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
                     dialogFragment.showDialog(R.id.dialog_container);
                     if (onlineOrder.getVisibility() == View.VISIBLE) {

@@ -21,9 +21,6 @@ import java.io.*;
 
 import android.view.animation.*;
 
-import static de.NeonSoft.neopowermenu.Preferences.PreferencesGraphicsFragment.selected;
-import static de.NeonSoft.neopowermenu.helpers.helper.getRealScreenSize;
-
 public class Cropper extends android.support.v4.app.Fragment
         implements CropImageView.OnSetImageUriCompleteListener, CropImageView.OnGetCroppedImageCompleteListener {
 
@@ -103,7 +100,7 @@ public class Cropper extends android.support.v4.app.Fragment
 
         LinearLayout_RoundCrop = (LinearLayout) InflatedView.findViewById(R.id.cropperLinearLayout_CropRound);
         TextView_RoundCrop = (TextView) InflatedView.findViewById(R.id.cropperTextView_CropRound);
-        TextView_RoundCrop.setText(getString(R.string.graphics_Crop).split("\\|")[1]);
+        TextView_RoundCrop.setText(getString(R.string.graphics_CropCircle));
         Switch_RoundCrop = (Switch) InflatedView.findViewById(R.id.cropperSwitch_CropRound);
         Switch_RoundCrop.setChecked(true);
         Switch_RoundCrop.setClickable(false);
@@ -150,7 +147,7 @@ public class Cropper extends android.support.v4.app.Fragment
             MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
         }
 
-        MainActivity.actionbar.setButton(getString(R.string.graphics_Crop).split("\\|")[0], R.drawable.ic_content_content_cut, new OnClickListener() {
+        MainActivity.actionbar.setButton(getString(R.string.graphics_Crop), R.drawable.ic_content_content_cut, new OnClickListener() {
 
             @Override
             public void onClick(View p1) {

@@ -2,6 +2,7 @@ package de.NeonSoft.neopowermenu.tour;
 
 import android.app.*;
 import android.os.*;
+import android.util.Log;
 import android.view.*;
 import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
@@ -73,7 +74,7 @@ public class tourPage extends Fragment
             ButtonHolder.setVisibility(View.GONE);
             TextView ButtonText = (TextView) view.findViewById(R.id.tourPageButtonText);
 
-            if (page != -1 && title != null) {
+            if (page != -1) {
                 if (page == 0) {
                     Title.setText(getString(R.string.tourPage_0_Title));
                     Image.setVisibility(View.VISIBLE);

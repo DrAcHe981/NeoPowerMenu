@@ -142,7 +142,7 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
         if (getIntent().getAction() != null && getIntent().getAction().equalsIgnoreCase("Shortcut")) {
             action = getIntent().getStringExtra("ShortcutAction");
             //Toast.makeText(getApplicationContext(), "Received action: " + action, Toast.LENGTH_SHORT).show();
-            if (action.equalsIgnoreCase(getString(R.string.shortcut_ShowPowerMenu)) ) {
+            if (action.equalsIgnoreCase("PowerMenu") ) {
                 action = null;
             }
         }
