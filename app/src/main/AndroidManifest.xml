@@ -34,7 +34,8 @@
         android:label="NeoPowerMenu"
         android:theme="@style/ThemeBaseDark"
         android:fullBackupContent="true"
-        android:persistent="true">
+        android:persistent="true"
+        android:largeHeap="true">
         <meta-data
             android:name="xposedmodule"
             android:value="true"/>

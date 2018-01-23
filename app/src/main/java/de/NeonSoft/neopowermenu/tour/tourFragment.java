@@ -102,8 +102,6 @@ public class tourFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
 								try {
-                pageTextHolders.get(position).setVisibility(View.VISIBLE);
-                pageTextHolders.get(position).startAnimation(slideIn);
                 if (position == 0) {
 										pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
                     pageImages.get(position).setVisibility(View.VISIBLE);
@@ -117,27 +115,26 @@ public class tourFragment extends Fragment {
                     MainActivity.changePrefPage(new PreferencesColorFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
                 } else if (position == 3) {
-                    MainActivity.changePrefPage(new PreferencesPresetsFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 4) {
                     MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 5) {
+                } else if (position == 4) {
                     MainActivity.changePrefPage(new PreferencesVisibilityOrderFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 6) {
+                } else if (position == 5) {
                     MainActivity.changePrefPage(new PreferencesAnimationsFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 7) {
+                } else if (position == 6) {
                     MainActivity.changePrefPage(new PreferencesAdvancedFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 8) {
+                } else if (position == 7) {
                     pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
                     pageImages.get(position).setVisibility(View.VISIBLE);
                     pageImages.get(position).startAnimation(fadeIn);
                     MainActivity.changePrefPage(new PreferencesPartFragment(), false);
                     MainActivity.actionbar.setButton(getString(R.string.tourPage_Enjoy), R.drawable.ic_action_launch, finishOnClick);
                 }
+                                    pageTextHolders.get(position).setVisibility(View.VISIBLE);
+                                    pageTextHolders.get(position).startAnimation(slideIn);
 								} catch (Throwable t) {
 										slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
 										dialogFragment.setContext(mActivity);

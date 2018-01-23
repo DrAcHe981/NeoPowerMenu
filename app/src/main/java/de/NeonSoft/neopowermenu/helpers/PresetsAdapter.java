@@ -2,10 +2,6 @@ package de.NeonSoft.neopowermenu.helpers;
 
 import android.app.*;
 import android.content.*;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.net.*;
 import android.os.*;
 import android.support.v4.content.FileProvider;
 import android.text.*;
@@ -22,8 +18,6 @@ import de.NeonSoft.neopowermenu.Preferences.*;
 
 import java.io.*;
 import java.util.*;
-
-import android.widget.AbsListView.*;
 
 public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
@@ -835,7 +829,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                                                 PreferencesPresetsFragment.progressHolder.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fade_out));
                                                 PreferencesPresetsFragment.progressHolder.setVisibility(View.GONE);
-                                                Toast.makeText(context, context.getString(R.string.presetsManager_ReportResult).split("\\|")[0].replace("[PRESETNAME]", mItems.get(position).getName()), Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(context, context.getString(R.string.presetsManager_ReportResultSuccess).replace("[PRESETNAME]", mItems.get(position).getName()), Toast.LENGTH_SHORT).show();
                                             }
 
                                             @Override
@@ -873,7 +867,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                                                     }
                                                 });
-                                                dialogFragment.setText(context.getString(R.string.presetsManager_ReportResult).split("\\|")[1] + reason);
+                                                dialogFragment.setText(context.getString(R.string.presetsManager_ReportResultFailed) + reason);
                                                 dialogFragment.setPositiveButton(context.getString(R.string.Dialog_Buttons).split("\\|")[0]);
                                                 dialogFragment.showDialog(R.id.dialog_container);
                                             }
@@ -893,8 +887,8 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
 
                                     }
                                 });
-                                dialogFragment.setText(context.getString(R.string.presetsManager_ReportDialog).split("\\|")[0].replace("[PRESETNAME]", mItems.get(position).getName()));
-                                dialogFragment.addInput(context.getString(R.string.presetsManager_ReportDialog).split("\\|")[1], "", false, null);
+                                dialogFragment.setText(context.getString(R.string.presetsManager_ReportDialogText).replace("[PRESETNAME]", mItems.get(position).getName()));
+                                dialogFragment.addInput(context.getString(R.string.presetsManager_ReportDialogReason), "", false, null);
                                 dialogFragment.setInputSingleLine(0, false);
                                 dialogFragment.setNegativeButton(context.getString(R.string.Dialog_Buttons).split("\\|")[4]);
                                 dialogFragment.setPositiveButton(context.getString(R.string.presetsManager_Buttons).split("\\|")[3]);

@@ -94,8 +94,8 @@ public class PreferencesGraphicsFragment extends Fragment {
             MainActivity.visibleFragment = "Graphics";
             MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
         }
-        MainActivity.actionbar.setTitle(getString(R.string.preferences_Graphics).split("\\|")[0]);
-        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_Graphics).split("\\|")[1]);
+        MainActivity.actionbar.setTitle(getString(R.string.preferences_GraphicsTitle));
+        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_GraphicsDesc));
 
         mContext = getActivity();
 

@@ -35,7 +35,6 @@ import de.NeonSoft.neopowermenu.services.*;
 import eu.chainfire.libsuperuser.*;
 
 import java.io.*;
-import java.sql.Time;
 import java.util.*;
 
 import static de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen.MY_PERMISSIONS_REQUEST;
@@ -1524,7 +1523,7 @@ public class XposedDialog extends DialogFragment {
                         }
                         frameConfirm.setLayoutParams(crparams);
                     }
-                    confirmAction.setText(mContext.getString(R.string.powerMenu_SureToRebootPowerOff).split("\\|")[(name.equalsIgnoreCase("Shutdown") || name.equalsIgnoreCase("FakePowerOff") ? 1 : 0)]);
+                    confirmAction.setText(mContext.getString((name.equalsIgnoreCase("Shutdown") || name.equalsIgnoreCase("FakePowerOff") ? R.string.powerMenu_SureToPowerOff : R.string.powerMenu_SureToReboot)));
                     confirmNo.setText(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_NO]);
                     confirmNo.setOnClickListener(new OnClickListener() {
 

@@ -76,7 +76,7 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
     @Override
     protected String doInBackground(Object... p1) {
         
-        String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("/")[0] + ")";
+        String orderBy = MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[0] + " (" + MainActivity.context.getString(R.string.presetsManager_OrderAsc) + ")";
         String searchFor = "";
         String offset = "0";
         if (p1 != null && p1.length > 0) {
@@ -98,7 +98,7 @@ public class getOnlinePresets extends AsyncTask<Object, String, String> {
         }
         String orderName = "_presetName";
         String orderDirection = "ASC";
-        if (orderBy.contains("(" + MainActivity.context.getString(R.string.presetsManager_OrderAscDesc).split("\\|")[1] + ")")) {
+        if (orderBy.contains("(" + MainActivity.context.getString(R.string.presetsManager_OrderDesc) + ")")) {
             orderDirection = "DESC";
         }
         if (orderBy.contains(MainActivity.context.getString(R.string.presetsManager_OrderNames).split("\\|")[1])) {

@@ -96,7 +96,7 @@
                                 android:gravity="center_vertical"
                                 android:paddingLeft="10dp"
                                 android:paddingRight="10dp"
-                                android:text="@string/preferences_RootXposed1"
+                                android:text="@string/preferences_RootXposed1Title"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="#FFFFFF"/>
 
@@ -108,7 +108,7 @@
                                 android:gravity="center_vertical"
                                 android:paddingLeft="15dp"
                                 android:paddingRight="10dp"
-                                android:text="@string/preferences_RootXposed1"/>
+                                android:text="@string/preferences_RootXposed1Desc"/>
 
                         </LinearLayout>
 
@@ -229,7 +229,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Theme"
+                        android:text="@string/preferences_ThemeTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -241,7 +241,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Theme"/>
+                        android:text="@string/preferences_ThemeDesc"/>
 
                 </LinearLayout>
 
@@ -280,7 +280,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Graphics"
+                        android:text="@string/preferences_GraphicsTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -292,7 +292,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Graphics"/>
+                        android:text="@string/preferences_GraphicsDesc"/>
 
                 </LinearLayout>
 
@@ -331,7 +331,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_VisibilityOrder"
+                        android:text="@string/preferences_VisibilityOrderTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -343,7 +343,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_VisibilityOrder"/>
+                        android:text="@string/preferences_VisibilityOrderDesc"/>
 
                 </LinearLayout>
 
@@ -382,7 +382,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Animations"
+                        android:text="@string/preferences_AnimationsTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -394,7 +394,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Animations"/>
+                        android:text="@string/preferences_AnimationsDesc"/>
 
                 </LinearLayout>
 
@@ -412,7 +412,7 @@
                 android:id="@+id/activitypreferencesLinearLayout_DialogPosition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
+                android:background="?android:attr/selectableItemBackground"
                 android:focusable="true"
                 android:clickable="true"
                 android:orientation="vertical">
@@ -517,7 +517,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Account"
+                        android:text="@string/preferences_AccountTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -529,7 +529,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Account"/>
+                        android:text="@string/preferences_AccountDesc"/>
 
                 </LinearLayout>
 
@@ -568,7 +568,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Advanced"
+                        android:text="@string/preferences_AdvancedTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -580,7 +580,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Advanced"/>
+                        android:text="@string/preferences_AdvancedDesc"/>
 
                 </LinearLayout>
 
@@ -619,7 +619,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Permissions"
+                        android:text="@string/preferences_PermissionsTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -631,7 +631,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Permissions"/>
+                        android:text="@string/preferences_PermissionsDesc"/>
 
                 </LinearLayout>
 
@@ -727,7 +727,7 @@
                             android:gravity="center_vertical"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@string/preferences_HideLauncherIcon"
+                            android:text="@string/preferences_HideLauncherIconTitle"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="#FFFFFF"/>
 
@@ -739,7 +739,7 @@
                             android:gravity="center_vertical"
                             android:paddingLeft="15dp"
                             android:paddingRight="10dp"
-                            android:text="@string/preferences_HideLauncherIcon"/>
+                            android:text="@string/preferences_HideLauncherIconDesc"/>
 
                     </LinearLayout>
 
@@ -792,7 +792,7 @@
                             android:gravity="center_vertical"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
-                            android:text="@string/preferences_DeepXposedLogging"
+                            android:text="@string/preferences_DeepXposedLoggingTitle"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:textColor="#FFFFFF"/>
 
@@ -804,7 +804,7 @@
                             android:gravity="center_vertical"
                             android:paddingLeft="15dp"
                             android:paddingRight="10dp"
-                            android:text="@string/preferences_DeepXposedLogging"/>
+                            android:text="@string/preferences_DeepXposedLoggingDesc"/>
 
                     </LinearLayout>
 
@@ -878,7 +878,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Donate"
+                        android:text="@string/preferences_DonateTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -890,7 +890,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Donate"/>
+                        android:text="@string/preferences_DonateDesc"/>
 
                 </LinearLayout>
 
@@ -929,7 +929,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_NeoSource"
+                        android:text="@string/preferences_NeoSourceTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -941,7 +941,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_NeoSource"/>
+                        android:text="@string/preferences_NeoSourceDesc"/>
 
                 </LinearLayout>
 
@@ -1031,7 +1031,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Share"
+                        android:text="@string/preferences_ShareTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -1043,7 +1043,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_Share"/>
+                        android:text="@string/preferences_ShareDesc"/>
 
                 </LinearLayout>
 
@@ -1082,7 +1082,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_About"
+                        android:text="@string/preferences_AboutTitle"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#FFFFFF"/>
 
@@ -1094,7 +1094,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
                         android:paddingRight="10dp"
-                        android:text="@string/preferences_About"/>
+                        android:text="@string/preferences_AboutDesc"/>
 
                 </LinearLayout>
 

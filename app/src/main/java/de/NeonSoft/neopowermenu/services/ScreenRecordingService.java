@@ -32,12 +32,9 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import de.NeonSoft.neopowermenu.R;
@@ -244,13 +241,13 @@ public class ScreenRecordingService extends Service {
             builder
                     .addAction(new Notification.Action.Builder(
                             Icon.createWithResource(this, R.drawable.ic_media_stop),
-                            getString(R.string.screenrecord_notif_buttons).split("\\|")[0], stopPendIntent).build())
+                            getString(R.string.screenrecord_notif_buttons_stop), stopPendIntent).build())
                     .addAction(new Notification.Action.Builder(
                             Icon.createWithResource(this, R.drawable.ic_text_dot),
-                            getString(R.string.screenrecord_notif_buttons).split("\\|")[1], pointerPendIntent).build());
+                            getString(R.string.screenrecord_notif_buttons_togglepointer), pointerPendIntent).build());
         } else {
-            builder.addAction(R.drawable.ic_media_stop, getString(R.string.screenrecord_notif_buttons).split("\\|")[0], stopPendIntent)
-                    .addAction(R.drawable.ic_text_dot, getString(R.string.screenrecord_notif_buttons).split("\\|")[1], pointerPendIntent);
+            builder.addAction(R.drawable.ic_media_stop, getString(R.string.screenrecord_notif_buttons_stop), stopPendIntent)
+                    .addAction(R.drawable.ic_text_dot, getString(R.string.screenrecord_notif_buttons_togglepointer), pointerPendIntent);
         }
 
 

@@ -194,7 +194,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                                                    }
 
                         );
-                        dialogFragment.setList(ListView.CHOICE_MODE_NONE, mContext.getString(R.string.visibilityOrder_EditMultiItemChoices).split("\\|"), -1, true);
+                        dialogFragment.setList(ListView.CHOICE_MODE_NONE, new String[] {mContext.getString(R.string.visibilityOrder_EditMultiItemText), mContext.getString(R.string.visibilityOrder_EditMultiItemRemove)}, -1, true);
                         dialogFragment.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[slideDownDialogFragment.BUTTON_CANCEL]);
                         dialogFragment.showDialog(R.id.dialog_container);
                         return true;
@@ -233,7 +233,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
             TextView item = (TextView) InflatedView.findViewById(R.id.visibilityordernormal_item);
             item.setClickable(false);
-            item.setText(mContext.getString(R.string.visibilityOrder_MultiPage).split("\\|")[0]);
+            item.setText(mContext.getString(R.string.visibilityOrder_MultiPageStart));
 
             ImageView HideOnLockscreen = (ImageView) InflatedView.findViewById(R.id.visibilityordernormalImageView_HideOnLockscreen);
             ImageView LockedWithPassword = (ImageView) InflatedView.findViewById(R.id.visibilityordernormalImageView_LockedWithPassword);
@@ -261,7 +261,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
             LinearLayout dragHandle = (LinearLayout) InflatedView.findViewById(R.id.drag_handle);
             //dragHandle.setVisibility(View.GONE);
             item.setClickable(false);
-            item.setText(mContext.getString(R.string.visibilityOrder_MultiPage).split("\\|")[1]);
+            item.setText(mContext.getString(R.string.visibilityOrder_MultiPageEnd));
 
             LinearLayout BottomBar = (LinearLayout) InflatedView.findViewById(R.id.visibilityordernormal_BottomBar);
             BottomBar.setVisibility(View.GONE);

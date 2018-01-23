@@ -149,8 +149,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
 
         pm = mContext.getPackageManager();
 
-        MainActivity.actionbar.setTitle(getString(R.string.preferences_VisibilityOrder).split("\\|")[0]);
-        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_VisibilityOrder).split("\\|")[1]);
+        MainActivity.actionbar.setTitle(getString(R.string.preferences_VisibilityOrderTitle));
+        MainActivity.actionbar.setSubTitle(getString(R.string.preferences_VisibilityOrderDesc));
 
         PowerMenuItemsTexts = new String[]{
                 getString(R.string.powerMenuMain_Empty),
