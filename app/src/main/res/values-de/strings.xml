@@ -130,7 +130,7 @@
   <string name="login_Username">"Nutzername:"</string>
   <string name="login_Email">"E-mail:"</string>
   <string name="login_RetypeEmail">"E-mail wiederholen:"</string>
-  <string name="login_PasswordOverEmail">"Sie können Ihr Passwort über den Link in der Aktivierungs E-mail festlegen, (die E-mail ist nur in englischer Sprache verfügbar)."</string>
+  <string name="login_PasswordOverEmail">"Du kannst dein Passwort über den Link in der Aktivierungs E-mail festlegen, (die E-mail ist nur in englischer Sprache verfügbar)."</string>
   <string name="login_Password">"Passwort:"</string>
   <string name="login_KeepLogin">"Angemeldet bleiben."</string>
   <string name="login_Register">"Kein Konto?\nKlicke hier, um ein Konto zu erstellen!"</string>
@@ -145,7 +145,7 @@
   <string name="login_StatisticsFailed">"Fehler beim Abrufen der Statistiken..."</string>
   <string name="login_ReloadStatistics">"Hier klicken, um die Statistiken neu zu laden"</string>
   <string name="login_TitleLogout">"Abmelden"</string>
-  <string name="login_pleaseCheckInput">"Ein Fehler ist aufgetreten, bitte überprüfen Sie Ihre Eingabe."</string>
+  <string name="login_pleaseCheckInput">"Ein Fehler ist aufgetreten, bitte überprüfe deine Eingabe."</string>
   <string name="presetsManager_Stars">"Sterne: [STARS]"</string>
   <string name="colorsPartTitle">"[PART] Farben"</string>
   <string name="colorsPartDescDialog">"Die Farben des Dialogs wenn auf [BUTTON] geklickt wurde."</string>
@@ -266,7 +266,7 @@
   <string name="errorActivity_Close">"Schließen"</string>
   <string name="errorActivity_MoreInfo">"Mehr Information"</string>
   <string name="tourReview_Title">"Tour wiederholen"</string>
-  <string name="tourReview_Desc">"Klicken Sie hier, um die Tour beginnen zu lassen."</string>
+  <string name="tourReview_Desc">"Klicke hier, um die Tour beginnen zu lassen."</string>
   <string name="tourPage_Next">"Weiter"</string>
   <string name="tourPage_Skip">"Überspringen"</string>
   <string name="tourPage_Enjoy">"Erstelle dein Menü!"</string>
@@ -278,7 +278,7 @@
   <string name="tourPage_2_Title">"Das Designmenü"</string>
   <string name="tourPage_2_Text">"Hier beginnst du deine Anpassungen: Du kannst jede Farbe ändern!\nDas am meisten anpassbare Ausschalt Menü anzubieten ist mein Ziel."</string>
   <string name="tourPage_3_Title">"Das Grafiken-Menü"</string>
-  <string name="tourPage_3_Text">"Passen Sie die Grafiken an, die verwendet werden."</string>
+  <string name="tourPage_3_Text">"Passe die Grafiken an, die verwendet werden."</string>
   <string name="tourPage_4_Title">"Das Sichtbarkeit und Sortierungs Menü"</string>
   <string name="tourPage_4_Text">"Wähle was im Menü sein soll und passe die Sortierung nach deinen wünschen an.\nKlicke auf das '+' um neue Elemente hinzuzufügen, streiche sie aus dem Bildschirm um sie zu löschen.\n\nDas 'Schloss' Symbol heißt: auf dem Sperr Bildschirm zeigen.\nDas 'i' Symbol heißt: die Element Beschreibung anzeigen."</string>
   <string name="tourPage_5_Title">"Das Animationen Menü"</string>
@@ -433,7 +433,7 @@
   <string name="graphics_BehaviorTitle">"Grafik Verhalten anpassen"</string>
   <string name="graphics_BehaviorDesc">"Aktiviere/deaktiviere Grafiken und passen Sie Werte an wie Abstand und Färbung."</string>
   <string name="visibilityOrder_SearchShortcut">"Verknüpfung suchen (Groß/Kleinschreibung wird ignoriert):"</string>
-  <string name="preferences_TranslateDesc">"Sie kennen Sprachen die diese app haben sollte? \nDann tipp hier, um das Projekt auf Crowdin zu sehen und helf bei der Übersetzung!"</string>
+  <string name="preferences_TranslateDesc">"Du kennst Sprachen die diese app haben sollte? \nDann tipp hier, um das Projekt auf Crowdin zu sehen und helf bei der Übersetzung!"</string>
   <string name="preferences_TranslateTitle">"Übersetzung"</string>
   <string name="graphics_NotEnabled">"Grafiken sind nicht aktiviert\nTippe hier zum aktivieren!"</string>
   <string name="advancedPrefsTitle_ScreenRecordCountdown">"Bildschirmaufzeichnung countdown"</string>
@@ -446,7 +446,7 @@
   <string name="powerMenu_Task_Killed">"[TARGET] wurde beendet!"</string>
   <string name="powerMenu_No_Task_To_Kill">"Keine Prozesse gefunden die beendet werden können."</string>
   <string name="powerMenuMain_MenuBackground">"Menü Hintergrund"</string>
-  <string name="visibilityOrder_MissingPermissionForCamera">"Erlauben sie den Zugriff auf die Kamera, um diesen Schalter zu verwenden!"</string>
+  <string name="visibilityOrder_MissingPermissionForCamera">"Erlaube den Zugriff auf die Kamera, um diesen Schalter zu verwenden!"</string>
   <string name="visibilityOrder_NotSupportedbyDevice">"Dein Gerät scheint das \"[TITLE]\" Element nicht zu unterstützen!"</string>
   <string name="powerMenuMain_FakePowerOff">"Ausschalten (Fake)"</string>
   <string name="crop_failedToSave">"Speichern fehlgeschlagen...\nÜberprüfe die logs für weitere Infos."</string>
