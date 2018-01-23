@@ -150,7 +150,6 @@
   <string name="presetsManager_Refresh">"Actualiser"</string>
   <string name="presetsManager_OrderBy">"Trier par"</string>
   <string name="presetsManager_OrderNames">"Nom|Temps|Étoile|Créateur|Les miens"</string>
-  <string name="presetsManager_OrderAscDesc">"Ascendant|Descendant"</string>
   <string name="visibilityOrder_SelectMulti">"Veuillez choisir trois éléments :"</string>
   <string name="powerMenuMain_Empty">"Vide"</string>
   <string name="login_Recover">"Restaurer"</string>
@@ -165,24 +164,9 @@
   <string name="presetLoadDialog_BuiltIn">"Clair|Sombre|Noir"</string>
   <string name="graphics_Choose">"Restaurer par défaut | Choisir des préréglages | Choisir dans la Galerie"</string>
   <string name="presetsManager_Buttons">"Donner Star | Supprimer Star | Supprimer | Report | Télécharger | Partager"</string>
-  <string name="screenrecord_notif_buttons">"Stop | Afficher pointeur"</string>
   <string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
-  <string name="preferences_RootXposed1">"Root et Xposed non disponible|Root et Xposed requis pour que ce module fonctionne."</string>
-  <string name="preferences_RootXposed2">"Xposed fonctionnel, pas le Root|Mais le Root est requis pour éteindre ou redémarrer...\nVeuillez accepter l'accès root."</string>
-  <string name="preferences_RootXposed3">"Root fonctionnel, pas Xposed|Mais Xposed est requis pour remplacer le Menu de Redémarrage...\nVeuillez activer le module dans Xposed installer."</string>
-  <string name="preferences_RootXposed4">"Root et Xposed fonctionnent|L'appli devrait bien fonctionner !"</string>
-  <string name="preferences_RootXposed5">"La version du Module est trop ancienne...|Veuillez redémarrer votre appareil pour terminer le processus de mise à jour !"</string>
   <string name="preferencesCategory_General">"Général"</string>
-  <string name="preferences_Theme">"Thème|Changer l'aspect et l'ergonomie."</string>
-  <string name="preferences_VisibilityOrder">"Visibilité et Order|Sélectionner les éléments que vous voulez afficher et les placer dans l'ordre de votre choix."</string>
   <string name="preferencesCategory_Other">"Autres"</string>
-  <string name="preferences_Advanced">"Paramètres avancés|Changer les paramètres avancés comme les délais, la gravité ou la vitesse."</string>
-  <string name="preferences_Permissions">"Permissions|Afficher les permissions utilisées et voir leurs utilisations.\nAccorder des permissions complémentaires qui ne sont pas ajoutées au premier démarrage (Android 6.0+)."</string>
-  <string name="preferences_HideLauncherIcon">"\"\"Cacher l'appli dans le launcher|Cache l'icône de l'appli dans le launcher, un redémarrage peut être nécessaire.
-Cet écran de paramètres sera alors uniquement accessible via le Xposed Installer.\"\""</string>
-  <string name="preferences_DeepXposedLogging">"Journalisation détaillée Xposed|Activer la journalisation avancée Xposed, puis redémarrer pour voir les changes."</string>
   <string name="preferencesCategory_About">"AbÀ proposout"</string>
-  <string name="preferences_NeoSource">"Source|NeoPowerMenu est open source.\nVérifiez la source sur GitHub."</string>
-  <string name="preferences_About">"Code par Neon-Soft / DrAcHe981|basé sur le code source de Naman Dwivedi (naman14)."</string>
   <string name="animations_Speed">"Vitesse"</string>
 </resources>
