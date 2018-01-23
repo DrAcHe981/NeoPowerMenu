@@ -34,8 +34,7 @@
   <string name="presetsManager_TitleOnline">"Predefinições Online"</string>
   <string name="presetsManager_Creator">"Criador: [CREATORNAME]"</string>
   <string name="presetsManager_BuiltIn">"Embutida"</string>
-  <string name="presetsManager_SureToDelete">"\"\"Tem certeza que quer apagar [PRESETNAME]?
-Isso não pode ser desfeito!\"\""</string>
+  <string name="presetsManager_SureToDelete">"Tem certeza que quer apagar [PRESETNAME]?"</string>
   <string name="presetsManager_ImportMsg">"Gostaria de importar esta predefinição?"</string>
   <string name="presetsManager_ImportSuccess">"[PRESETNAME] foi importada com sucesso."</string>
   <string name="presetsManager_ImportFailed">"Importação falhou..."</string>
@@ -114,25 +113,19 @@ Isso não pode ser desfeito!\"\""</string>
   <string name="SoundMode_Vibrate">"Vibrar"</string>
   <string name="SoundMode_Silent">"Silencioso"</string>
   <string name="presetsManager_TitleAccount">"Conta"</string>
-  <string name="presetsManager_UploadMsg">"\"\"Esta predefinição será enviada para o servidor público, visível para todos os usuários.
-
-Essa é a última chance de ajustar o nome ou o criador antes de enviar...\"\""</string>
+  <string name="presetsManager_UploadMsg">"Esta predefinição será enviada para o servidor público, visível para todos os usuários.\n"</string>
   <string name="presetsManager_UploadComplete">"Envio completo!"</string>
   <string name="presetsManager_UploadFailedSameName">"Esse nome já está em uso, por favor escolha outro."</string>
   <string name="presetsManager_UploadFailedNoAccess">"Esse nome de criador está protegido, escolha outro ou logue-se."</string>
   <string name="presetsManager_UploadFailed">"Falha no envio!"</string>
   <string name="presetsManager_DownloadFailed">"Falha ao baixar!"</string>
-  <string name="presetsManager_CantConnecttoServer">"\"\"Não é possível conectar-se ao servidor!
-Por favor cheque sua conexão com a internet ou tente novamente mais tarde.\"\""</string>
-  <string name="presetsManager_CantConnecttoDB">"\"\"Não é possível conectar ao banco de dados!
-Por favor, tente novamente mais tarde, se nada mudar: por favor informe ao desenvolvedor.\"\""</string>
+  <string name="presetsManager_CantConnecttoServer">"Não é possível conectar-se ao servidor!"</string>
+  <string name="presetsManager_CantConnecttoDB">"Não é possível conectar ao banco de dados!"</string>
   <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Necessário para baixar ou enviar predefinições do servidor público."</string>
   <string name="login_Title">"Entrar"</string>
   <string name="login_TitleRegister">"Registrar"</string>
-  <string name="login_Info">"\"\"Os nomes de usuários registrados são protegidos de modo que ninguém pode fazer o envios com eles, aqui você pode fazer login ou criar uma conta nova.
-Isso não é necessário se você não quiser!
-Nunca compartilharemos quaisquer dados privados!\"\""</string>
+  <string name="login_Info">"Os nomes de usuários registrados são protegidos de modo que ninguém pode fazer o envios com eles, aqui você pode fazer login ou criar uma conta nova.\nIsso não é necessário se você não quiser!"</string>
   <string name="login_UsernameEmail">"Usuário ou E-mail:"</string>
   <string name="login_Username">"Usuário:"</string>
   <string name="login_Email">"E-mail:"</string>
@@ -140,8 +133,7 @@ Nunca compartilharemos quaisquer dados privados!\"\""</string>
   <string name="login_PasswordOverEmail">"Você pode definir sua senha sobre o link no e-mail de ativação (O e-mail só estará disponível em inglês)."</string>
   <string name="login_Password">"Senha:"</string>
   <string name="login_KeepLogin">"Manter-me logado."</string>
-  <string name="login_Register">"\"\"Precisa de uma conta?
-Clique aqui para criar uma nova!\"\""</string>
+  <string name="login_Register">"Precisa de uma conta?"</string>
   <string name="login_LoggedIn">"Logado!"</string>
   <string name="login_LoginFailedWithReason">"Falha ao entrar:"</string>
   <string name="login_LoginFailedWrongData">"Falha ao entrar, e-mail ou senha estão errados!"</string>
@@ -149,13 +141,7 @@ Clique aqui para criar uma nova!\"\""</string>
   <string name="login_RegisterSuccess">"Registrado com sucesso,você receberá um e-mail para ativar sua conta!"</string>
   <string name="login_Processing">"Processando..."</string>
   <string name="login_TitleStatistics">"Estatísticas para [USERNAMEEMAIL]"</string>
-  <string name="login_Statistics">"\"\"Predefinições carregadas: [UPLOADCOUNT]
-
-Estrelas dadas: [STARSGIVEN]
-Estrelas recebidas: [STARSRECEIVED]
-
-Suas predefinições (ordenados por estrelas):
-[TOP5PRESETS]\"\"\""</string>
+  <string name="login_Statistics">"Predefinições carregadas: [UPLOADCOUNT]\n\nEstrelas dadas: [STARSGIVEN]\nEstrelas recebidas: [STARSRECEIVED]\n\nSuas predefinições (ordenados por estrelas):"</string>
   <string name="login_StatisticsFailed">"Falha ao receber estatísticas..."</string>
   <string name="login_ReloadStatistics">"Atualizar estatísticas"</string>
   <string name="login_TitleLogout">"Sair"</string>
@@ -175,8 +161,7 @@ Suas predefinições (ordenados por estrelas):
   <string name="visibilityOrder_SelectMulti">"Por favor selecione três itens:"</string>
   <string name="powerMenuMain_Empty">"Vazio"</string>
   <string name="login_Recover">"Recuperar"</string>
-  <string name="login_RecoverAccount">"\"\"Não consegue acessar a conta?
-Clique aqui para opções de recuperação.\"\""</string>
+  <string name="login_RecoverAccount">"Não consegue acessar a conta?"</string>
   <string name="login_RecoverPassword">"Redefinir Senha"</string>
   <string name="login_RecoverSuccess">"Você receberá um e-mail com as informações para redefinir sua senha."</string>
   <string name="login_RecoverNotFound">"Nenhum usuário com esses dados foi encontrado."</string>
@@ -192,14 +177,48 @@ Clique aqui para opções de recuperação.\"\""</string>
   <string name="downloadHelper_Speed">"velocidade: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Esperando por outros envios...|Conectando ao servidor...|Requisitando informação...|Enviando...|Cancelando..."</string>
   <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
+  <string name="preferences_RootXposed1Title">"Root e Xposed indisponíveis"</string>
+  <string name="preferences_RootXposed1Desc">"Root e Xposed são necessários para o módulo funcionar."</string>
+  <string name="preferences_RootXposed2Title">"Xposed funcionando, Root não"</string>
+  <string name="preferences_RootXposed2Desc">"Root é necessário para desligar ou reiniciar, por favor permita o acesso root."</string>
+  <string name="preferences_RootXposed3Title">"Root funcionando, Xposed não"</string>
+  <string name="preferences_RootXposed3Desc">"Xposed é necessário para substituir o Menu de Energia..."</string>
+  <string name="preferences_RootXposed4Title">"Root e Xposed funcionando"</string>
+  <string name="preferences_RootXposed4Desc">"O aplicativo deve funcionar corretamente!"</string>
+  <string name="preferences_RootXposed5Title">"Versão do módulo muito antiga..."</string>
+  <string name="preferences_RootXposed5Desc">"Por favor reinicie seu dispositivo para concluir o processo de atualização!"</string>
   <string name="preferencesCategory_General">"Geral"</string>
   <string name="preferences_Style">"Estilo"</string>
+  <string name="preferences_ThemeTitle">"Tema"</string>
+  <string name="preferences_ThemeDesc">"Mudar a aparência e conferir uma prévia."</string>
+  <string name="preferences_GraphicsTitle">"Ícones"</string>
+  <string name="preferences_GraphicsDesc">"Mudar os ícones,usar customizados ou ícones predefinidos."</string>
+  <string name="preferences_VisibilityOrderTitle">"Visibilidade e Ordem"</string>
+  <string name="preferences_VisibilityOrderDesc">"Selecione os itens que deseja ver e a ordem de cada um."</string>
+  <string name="preferences_AnimationsTitle">"Animações"</string>
+  <string name="preferences_AnimationsDesc">"Mudar as animações ou desativá-las completamente."</string>
   <string name="preferencesCategory_Other">"Outros"</string>
+  <string name="preferences_AccountTitle">"Conta"</string>
+  <string name="preferences_AccountDesc">"Aqui você pode logar, criar uma conta ou checar suas estatísticas quando logado."</string>
+  <string name="preferences_AdvancedTitle">"Configurações Avançadas"</string>
+  <string name="preferences_AdvancedDesc">"Alterar configurações avançadas como atraso, gravidade ou velocidade."</string>
+  <string name="preferences_PermissionsTitle">"Permissões"</string>
+  <string name="preferences_PermissionsDesc">"Mostrar as permissões usadas e ver para que são usadas."</string>
+  <string name="preferences_HideLauncherIconTitle">"Ocultar aplicativo no launcher"</string>
+  <string name="preferences_HideLauncherIconDesc">"Oculta o aplicativo no launcher,isso pode levar até uma reinicialização para ocultar o ícone. Essa opção de configurações ficará apenas acessível no Xposed Installer."</string>
+  <string name="preferences_DeepXposedLoggingTitle">"Log do Xposed"</string>
+  <string name="preferences_DeepXposedLoggingDesc">"Ativar o log avançado do Xposed, após ativar reinicie para ver as mudanças."</string>
   <string name="preferencesCategory_About">"Sobre"</string>
+  <string name="preferences_NeoSourceTitle">"Fonte"</string>
+  <string name="preferences_NeoSourceDesc">"NeoPowerMenu é um código aberto."</string>
+  <string name="preferences_AboutTitle">"Código por Neon-Soft/DrAcHe981"</string>
+  <string name="preferences_AboutDesc">"Baseado em um código de Naman Dwivedi (naman14)."</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
   <string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
   <string name="presetsManager_LoadMore">"Carregando...|Aguarde...|Mais predefinições|Clique aqui para mostrar mais predefinições.|O Fim.|Não há mais nenhuma.|Toque para repetir. "</string>
+  <string name="advancedPrefs_ConfirmationTitle">"Pedir confirmação"</string>
+  <string name="advancedPrefs_ConfirmationDesc">"Ative para pedir confirmação ao desligar ou reiniciar o dispositivo. "</string>
   <string name="advancedPrefs_HideOnClick">"Esconder ao clicar"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Esconder o menu ao clicar em um botão de ativação."</string>
   <string name="advancedPrefs_LoadAppIcons">"Carregar Ícones de Apps"</string>
@@ -350,6 +369,7 @@ Clique aqui para opções de recuperação.\"\""</string>
   <string name="visibilityOrder_LockWithPassword">"Bloquear com senha"</string>
   <string name="powerMenu_Password">"senha"</string>
   <string name="powerMenu_LockedWithPassword">"Este botão está bloqueado, por favor digite a senha para prosseguir..."</string>
+  <string name="powerMenu_WrongPassword">"Senha incorreta, por favor tente novamente..."</string>
   <string name="visibilityOrder_NoPasswordSet">"Nenhuma senha definida...\nPor favor digite uma senha abaixo:"</string>
   <string name="advancedPrefs_ChangePassword">"Digite uma nova senha abaixo, ou deixe em branco para removê-la..."</string>
   <string name="advancedPrefsDesc_Password">"Bloquear itens com uma senha, clique aqui para alterar ou remover a senha."</string>
