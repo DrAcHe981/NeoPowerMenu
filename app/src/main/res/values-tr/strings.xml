@@ -158,6 +158,8 @@
   <string name="presetsManager_Refresh">"Yenile"</string>
   <string name="presetsManager_OrderBy">"Sıralama"</string>
   <string name="presetsManager_OrderNames">"Ad|Tarih|Yıldızlar|Oluşturan|Kendi"</string>
+  <string name="presetsManager_OrderAsc">"Artan"</string>
+  <string name="presetsManager_OrderDesc">"Azalan"</string>
   <string name="visibilityOrder_SelectMulti">"Lütfen üç öğe seçin:"</string>
   <string name="powerMenuMain_Empty">"Boş"</string>
   <string name="login_Recover">"Kurtar"</string>
@@ -171,6 +173,8 @@
   <string name="Dialog_Buttons">"Tamam|Evet|Hayır|Yeniden Adlandır|Vazgeç|Sil|Yükle|Kaydet|Yoksay"</string>
   <string name="presetLoadDialog_BuiltIn">"Açık|Koyu|Siyah"</string>
   <string name="graphics_Choose">"Varsayılana sıfırla|Hazırlardan seç|Galeriden seç"</string>
+  <string name="graphics_Crop">"Kırp"</string>
+  <string name="graphics_CropCircle">"Daire kırp"</string>
   <string name="graphics_NoPresetsFound">"Bu grafiği içeren hiçbir ön ayar bulunamadı..."</string>
   <string name="presetsManager_Buttons">"Yıldız Ver|Yıldızı Geri Al|Sil|Bildir|Yükle|Paylaş"</string>
   <string name="downloadHelper_States">"Diğer indirmeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
