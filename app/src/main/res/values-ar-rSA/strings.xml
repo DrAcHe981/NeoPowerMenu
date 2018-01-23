@@ -61,7 +61,7 @@
   <string name="presetSave_PresetSaved">"حفظ [PRESETNAME]!"</string>
   <string name="powerMenuMain_Screenrecord">"تسجيل الشاشة"</string>
   <string name="screenrecord_notif_ticker">"الشاشة يتم تسجيلها"</string>
-  <string name="screenrecord_notif_title">تسجيل الشاشة</string>
+  <string name="screenrecord_notif_title">"تسجيل الشاشة"</string>
   <string name="screenrecord_toast_error">"لا يتم تسجيل الشاشة"</string>
   <string name="screenrecord_toast_processing">"لا يمكن بدء تسجيل جديد بما أنه لا يزال قيد التسجيل السابق"</string>
   <string name="screenrecord_toast_saved">"التسجيل تم حفظه %s"</string>
