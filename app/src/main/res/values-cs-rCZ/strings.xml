@@ -158,6 +158,8 @@
   <string name="presetsManager_Refresh">"Obnovit"</string>
   <string name="presetsManager_OrderBy">"Seřadit podle"</string>
   <string name="presetsManager_OrderNames">"Jméno|Čas|Hodnocení|Autor|Vlastní"</string>
+  <string name="presetsManager_OrderAsc">"Vzestupně"</string>
+  <string name="presetsManager_OrderDesc">"Sestupně"</string>
   <string name="visibilityOrder_SelectMulti">"Prosím vyberte tři položky:"</string>
   <string name="powerMenuMain_Empty">"Prázdný"</string>
   <string name="login_Recover">"Obnovit"</string>
@@ -171,6 +173,7 @@
   <string name="Dialog_Buttons">"OK|Ano|Ne|Přejmenovat|Zrušit|Smazat|Načíst|Uložit|Ignorovat"</string>
   <string name="presetLoadDialog_BuiltIn">"Světlé|Šedé|Černé"</string>
   <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
+  <string name="graphics_Crop">"Oříznout"</string>
   <string name="presetsManager_Buttons">"Ohodnotit|Odebrat hodnocení|Smazat|Nahlásit|Nahrát|Sdílet"</string>
   <string name="downloadHelper_States">"Čekám na jiné stahování...|Připojuji se na server...|Požaduji informace... |Stahuji..|Ruším..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] zbývá"</string>
