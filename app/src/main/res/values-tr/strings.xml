@@ -221,7 +221,7 @@
   <string name="preferences_HideLauncherIconTitle">"Başlatıcıdan uygulamayı gizleyin"</string>
   <string name="preferences_HideLauncherIconDesc">"Başlatıcıdan uygulama simgesini gizler; simgenin gizlenmesi yeniden başlatana kadar sürebilir.\nBu ayarlar ekranına daha sonra, yalnızca Xposed Installer'dan erişilebilir."</string>
   <string name="preferences_DeepXposedLoggingTitle">"Derin Xposed günlüğü"</string>
-  <string name="preferences_DeepXposedLoggingDesc">"Değişiklikleri görmek için yeniden başlatmayı etkinleştirdikten sonra gelişmiş Xposed günlüğünü etkinleştirin."</string>
+  <string name="preferences_DeepXposedLoggingDesc">"Değişiklikleri görmek için, yeniden başlatmayı etkinleştirdikten sonra gelişmiş Xposed günlüğünü etkinleştirin."</string>
   <string name="preferencesCategory_About">"Hakkında"</string>
   <string name="preferences_NeoSourceTitle">"Kaynak"</string>
   <string name="preferences_NeoSourceDesc">"NeoPowerMenu açık kaynaktır.\nGitHub'daki kaynağı kontrol edin."</string>
