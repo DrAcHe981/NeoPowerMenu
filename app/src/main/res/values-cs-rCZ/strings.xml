@@ -175,6 +175,8 @@
   <string name="graphics_Choose">"Obnovit výchozí|Vyber z přednastavených|Vyber z galrie"</string>
   <string name="graphics_Crop">"Oříznout"</string>
   <string name="graphics_CropCircle">"Kruhové oříznutí"</string>
+  <string name="graphics_NoPresetsFound">"Nelze najít předvolbu která obsahuje grafiku..."</string>
+  <string name="presetsManager_ReportDialogText">"Jsi si opravdu jistý, že chceš nahlásit [PRESETNAME]?\nTato akce je nevratná, takže nenahlašuj jen tak pro zábavu!\n\nTaké chceme znát důvod nahlášení, tak ho sem napiš."</string>
   <string name="presetsManager_Buttons">"Ohodnotit|Odebrat hodnocení|Smazat|Nahlásit|Nahrát|Sdílet"</string>
   <string name="downloadHelper_States">"Čekám na jiné stahování...|Připojuji se na server...|Požaduji informace... |Stahuji..|Ruším..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] zbývá"</string>
