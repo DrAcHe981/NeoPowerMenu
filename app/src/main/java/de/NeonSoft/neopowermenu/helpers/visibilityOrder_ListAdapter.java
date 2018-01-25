@@ -247,13 +247,6 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     showEditAppearanceBehaviourFor(position);
                 }
             });
-            item.setOnLongClickListener(new OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    showEditTitleFor(position, 1);
-                    return true;
-                }
-            });
         } else if (items.get(position).getType() == TYPE_MULTIPAGE_END) {
             InflatedView = inflater.inflate(R.layout.visibilityorder_normal, p3, false);
 
@@ -472,7 +465,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
                                            final MenuItemHolder item = items.get(position);
                                            final boolean oldLockedWithPassword = item.getLockedWithPassword();
-                                           if (item.getType() == TYPE_NORMAL) {
+                                           if (item.getType() == TYPE_NORMAL || item.getType() == TYPE_MULTIPAGE_START) {
                                                item.setHideDesc(false);
                                                item.setHideOnLockScreen(false);
                                            } else if (item.getType() == TYPE_MULTI) {
