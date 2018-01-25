@@ -261,7 +261,7 @@ public class XposedDialog extends DialogFragment {
         RequireConfirmation = preferences.getBoolean("RequireConfirmation", false);
         UseRootCommands = preferences.getBoolean("UseRoot", true);
 
-        int_Vertical = preferences.getInt(PreferenceNames.pDialogPosition_Vertical,50)+3;
+        int_Vertical = preferences.getInt(PreferenceNames.pDialogPosition_Vertical,50);
         int_Horizontal = preferences.getInt(PreferenceNames.pDialogPosition_Horizontal,50);
         int_Size = preferences.getInt(PreferenceNames.pDialogPosition_Size,60);
         DisplaySize = helper.getDisplaySize(mContext, false);
@@ -2486,7 +2486,7 @@ public class XposedDialog extends DialogFragment {
         }
         int left = 0, top = 0, right = 0, bottom = 0;
         try {
-            bottom = ((int_Vertical * ((int) DisplaySize[1] - dialogContent.getHeight())) / 100);
+            bottom = ((int_Vertical * ((int) DisplaySize[1] - frame.getHeight())) / 100);
             //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
         } catch (Exception e) {
             Log.d("NPM", "[xposedDialog] Gravity calculation error.", e);

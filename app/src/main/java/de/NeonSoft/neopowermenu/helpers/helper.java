@@ -262,7 +262,7 @@ public class helper {
 
         // at bottom
         if (appUsableScreenSize.y < realScreenSize.y) {
-            return new Point(0, realScreenSize.y - appUsableScreenSize.y - (helper.getStatusBarHeight(mContext)/2));
+            return new Point(0, realScreenSize.y - appUsableScreenSize.y);
         }
 
         // none

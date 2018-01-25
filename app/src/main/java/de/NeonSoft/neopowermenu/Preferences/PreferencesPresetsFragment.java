@@ -397,7 +397,7 @@ public class PreferencesPresetsFragment extends Fragment {
             String fUrl = surl;
             if (!surl.endsWith(".nps")) {
                 MainActivity.ImportUrl = null;
-                Toast.makeText(mContext, "Import failed...\nUnknown file type!", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportFailedUnknownFile), Toast.LENGTH_LONG).show();
                 return false;
             }
             if (surl.startsWith("file:")) {
@@ -410,7 +410,7 @@ public class PreferencesPresetsFragment extends Fragment {
                 if (helper.unzipFile(prefile.getPath(), mContext.getFilesDir().getPath() + "/temp/", Filename, null) == null) {
                     prefile = new File(mContext.getFilesDir().getPath() + "/temp/" + Filename);
                 } else {
-                    Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportFailedCorrupted), Toast.LENGTH_LONG).show();
                     return false;
                 }
                 isZip = true;
@@ -427,11 +427,12 @@ public class PreferencesPresetsFragment extends Fragment {
             preset.setDescription("< unknown >");
             while ((aDataRow = myReader.readLine()) != null) {
                 //aBuffer += aDataRow + "\n";
-                if(!aDataRow.equalsIgnoreCase("[INFO]") && !aDataRow.equalsIgnoreCase("[COLORS]")) {
+                if(!aDataRow.equalsIgnoreCase("[INFO]") && !aDataRow.equalsIgnoreCase("[COLORS]") && !aDataRow.equalsIgnoreCase("[ANIMATIONS]")) {
                     String[] aData = aDataRow.split("=");
                     if (aData.length < 2) {
                         MainActivity.ImportUrl = null;
-                        Toast.makeText(mContext, "Import failed...\nCorrupted or invalid preset!\nCause by: Unknown string split length: "+aData.length, Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportFailedCorrupted), Toast.LENGTH_LONG).show();
+                        Log.e("NPM","[presetImport] Failed, invalid split length: " + aData.length);
                         return false;//presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
                     }
                     if (aData[0].equalsIgnoreCase("Creator")) {

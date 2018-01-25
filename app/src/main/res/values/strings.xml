@@ -507,5 +507,7 @@
 <string name="tourPage_8_Text">"Here you can load your saved presets, or even download one\'s created by other users of this app!\n\nFeel free to add your creations to the collection as well!"</string>
     <string name="colorsCopyColor">Copy color</string>
     <string name="colorsInsertColor">Insert color</string>
+    <string name="presetsManager_ImportFailedCorrupted">Import failed...\\nCorrupted or invalid preset!</string>
+    <string name="presetsManager_ImportFailedUnknownFile">Import failed...\\nUnknown file type!</string>
 
 </resources>

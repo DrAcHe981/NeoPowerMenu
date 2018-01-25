@@ -494,7 +494,7 @@ public class uploadHelper {
 
     @SafeVarargs
     private final <T> AsyncTask startAsyncTask(AsyncTask<T, ?, ?> asyncTask, T... params) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB && mAllowMultiple)
+        if (mAllowMultiple)
             return asyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
         else
             return asyncTask.execute(params);

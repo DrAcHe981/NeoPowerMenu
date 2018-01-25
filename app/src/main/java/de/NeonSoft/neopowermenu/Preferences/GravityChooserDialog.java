@@ -94,7 +94,7 @@ public class GravityChooserDialog extends DialogFragment {
         LinearLayout_ImageHolder = (LinearLayout) InflatedView.findViewById(R.id.dialoggravitychooserLinearLayout_ImageHolder);
 
         SeekBar_Vertical = (SeekBar) InflatedView.findViewById(R.id.activitydialogpositionSeekBar_Vertical);
-        SeekBar_Vertical.setMax(97);
+        SeekBar_Vertical.setMax(100);
         SeekBar_Vertical.setProgress(int_Vertical);
 
         SeekBar_Vertical.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -427,7 +427,7 @@ public class GravityChooserDialog extends DialogFragment {
             DisplaySize[1] = (int) DisplaySize[1] - helper.getNavigationBarSize(mContext).y - helper.getStatusBarHeight(mContext) - MainActivity.actionBarHolder.getHeight();
         } else {
             DisplaySize[0] = (int) DisplaySize[0] - helper.getNavigationBarSize(mContext).x;
-            DisplaySize[1] = (int) DisplaySize[1] - helper.getStatusBarHeight(mContext);
+            DisplaySize[1] = (int) DisplaySize[1] - helper.getStatusBarHeight(mContext) - MainActivity.actionBarHolder.getHeight();
         }
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DummyPowerDialog.getLayoutParams());
         params.height = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -439,7 +439,7 @@ public class GravityChooserDialog extends DialogFragment {
             public void run() {
                 int left = 0, top = 0, right = 0, bottom = 0;
                 try {
-                    bottom = ((int_Vertical * ((int) DisplaySize[1] - DummyPowerDialogHeight)) / SeekBar_Vertical.getMax());
+                    bottom = ((int_Vertical * ((int) DisplaySize[1] - DummyPowerDialog.getHeight())) / SeekBar_Vertical.getMax());
                     //top = ((int) DisplaySize[0] % (int) helper.convertDpToPixel(int_Vertical, mContext));
                 } catch (Exception e) {
                     Log.d("NPM", "Calculation error.", e);
