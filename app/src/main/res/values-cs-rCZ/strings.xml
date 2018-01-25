@@ -55,12 +55,12 @@
   <string name="ColorPicker_Hex">"Hex:"</string>
   <string name="presetLoad_PresetDeleted">"Smazáno [PRESETNAME]!"</string>
   <string name="presetLoad_PresetLoaded">"Načteno [PRESETNAME]!"</string>
-  <string name="presetSaveDialog_CreatorNameInfo">"Tato předvolby byla vytvořena:"</string>
+  <string name="presetSaveDialog_CreatorNameInfo">"Tato předvolba byla vytvořena:"</string>
   <string name="presetSaveDialog_InfoText">"Nastav jméno předvolby:"</string>
-  <string name="presetSaveDialog_OverwriteText">"Již existuje, přdvolby bude přepsána!"</string>
+  <string name="presetSaveDialog_OverwriteText">"Již existuje, předvolba bude přepsána!"</string>
   <string name="presetSave_PresetSaved">"Uložen [PRESETNAME]!"</string>
   <string name="powerMenuMain_Screenrecord">"Záznam obrazovky"</string>
-  <string name="screenrecord_notif_ticker">"Obrazovka je nahrávána"</string>
+  <string name="screenrecord_notif_ticker">"Obrazovka se nahrává"</string>
   <string name="screenrecord_notif_title">"Záznam obrazovky"</string>
   <string name="screenrecord_toast_error">"Nahrávání obrazovky není možné"</string>
   <string name="screenrecord_toast_processing">"Nelze začít nové nahrávání protože předchozí nebylo ukončeno"</string>
@@ -163,7 +163,7 @@
   <string name="visibilityOrder_SelectMulti">"Prosím vyberte tři položky:"</string>
   <string name="powerMenuMain_Empty">"Prázdný"</string>
   <string name="login_Recover">"Obnovit"</string>
-  <string name="login_RecoverAccount">"Nemůžete se připojit k vašemu účtu?\nKlikněte zde pro volbu obnovy."</string>
+  <string name="login_RecoverAccount">"Nemůžete se připojit k vašemu účtu?\nKlikněte zde pro volby obnovy."</string>
   <string name="login_RecoverPassword">"Resetovat heslo"</string>
   <string name="login_RecoverSuccess">"Obdržíte e-mail s instrukcemi pro obnovení hesla."</string>
   <string name="login_RecoverNotFound">"Žádní uživatelé se zadanými kritérii nenalezeni."</string>
