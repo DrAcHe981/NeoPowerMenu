@@ -101,7 +101,7 @@ public class MenuItemHolder {
     public String getShortcutUri(int index) {
         return iShortcutUri.get(index-1);
     }
-    public ArrayList<String> getShortcutUtis() {
+    public ArrayList<String> getShortcutUris() {
         return iShortcutUri;
     }
 

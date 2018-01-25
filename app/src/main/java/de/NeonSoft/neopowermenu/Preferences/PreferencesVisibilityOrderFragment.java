@@ -15,7 +15,6 @@ import android.support.v4.app.*;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -316,19 +315,19 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START);
                             item.getTitles().add(groupName);
                             item.getTexts().add("");
-                            item.getShortcutUtis().add("");
+                            item.getShortcutUris().add("");
                             adapter.addItem(item);
                             item = new MenuItemHolder();
                             item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
                             item.getTitles().add(FinalPowerMenuItems[position]);
                             item.getTexts().add("");
-                            item.getShortcutUtis().add("");
+                            item.getShortcutUris().add("");
                             adapter.addItem(item);
                             item = new MenuItemHolder();
                             item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END);
                             item.getTitles().add(groupName);
                             item.getTexts().add("");
-                            item.getShortcutUtis().add("");
+                            item.getShortcutUris().add("");
                             adapter.addItem(item);
                         }
 
@@ -433,17 +432,17 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                         item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
                         item.getTitles().add("AppShortcut");
                         item.getTexts().add("");
-                        item.getShortcutUtis().add("");
+                        item.getShortcutUris().add("");
                     } else if (addItemMode == AddItemMode_AddToMulti) {
                         item = adapter.getItem(addItemPosition);
                         item.getTitles().add("AppShortcut");
                         item.getTexts().add("");
-                        item.getShortcutUtis().add("");
+                        item.getShortcutUris().add("");
                     } else {
                         item = adapter.getItem(addItemPosition);
                         item.getTitles().set(itemSpace-1, "AppShortcut");
                         item.getTexts().set(itemSpace-1, "");
-                        item.getShortcutUtis().set(itemSpace-1, "");
+                        item.getShortcutUris().set(itemSpace-1, "");
                     }
                     loadAppsTask = helper.startAsyncTask(new loadApps(), item, addItemMode==AddItemMode_NEW ? -1 : addItemPosition);
                 } else if (FinalPowerMenuItems[position].equals("Shortcut")) {
@@ -454,17 +453,17 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                         item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
                         item.getTitles().add("Shortcut");
                         item.getTexts().add("");
-                        item.getShortcutUtis().add("");
+                        item.getShortcutUris().add("");
                     } else if (addItemMode == AddItemMode_AddToMulti) {
                         item = adapter.getItem(addItemPosition);
                         item.getTitles().add("Shortcut");
                         item.getTexts().add("");
-                        item.getShortcutUtis().add("");
+                        item.getShortcutUris().add("");
                     } else {
                         item = adapter.getItem(addItemPosition);
                         item.getTitles().set(itemSpace-1, "Shortcut");
                         item.getTexts().set(itemSpace-1, "");
-                        item.getShortcutUtis().set(itemSpace-1, "");
+                        item.getShortcutUris().set(itemSpace-1, "");
                     }
                     loadShortcutsTask = helper.startAsyncTask(new loadShortcuts(), item, addItemMode==AddItemMode_NEW ? -1 : addItemPosition);
                 } else {
@@ -474,17 +473,17 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                         item.setType(visibilityOrder_ListAdapter.TYPE_NORMAL);
                         item.getTitles().add(FinalPowerMenuItems[position]);
                         item.getTexts().add("");
-                        item.getShortcutUtis().add("");
+                        item.getShortcutUris().add("");
                     } else if (addItemMode == AddItemMode_AddToMulti) {
                         item = adapter.getItem(addItemPosition);
                         item.getTitles().add(FinalPowerMenuItems[position]);
                         item.getTexts().add("");
-                        item.getShortcutUtis().add("");
+                        item.getShortcutUris().add("");
                     } else {
                         item = adapter.getItemAt(addItemPosition);
                         item.getTitles().set(itemSpace-1, FinalPowerMenuItems[position]);
                         item.getTexts().set(itemSpace-1, "");
-                        item.getShortcutUtis().set(itemSpace-1, "");
+                        item.getShortcutUris().set(itemSpace-1, "");
                     }
                     if (addItemMode==AddItemMode_NEW) {
                         adapter.addItem(item);
@@ -592,7 +591,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     for (int i = 0; i < AddPowerMenuItems.size(); i++) {
                         item.getTitles().add(AddPowerMenuItems.get(i));
                         item.getTexts().add("");
-                        item.getShortcutUtis().add("");
+                        item.getShortcutUris().add("");
                     }
                     adapter.addItem(item);
                     visibilityOrderPermissionRequest_Id = addItemPosition;
@@ -872,7 +871,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                 for (int i = itemSpace; i < finalItemSpace; i++) {
                     item.getTitles().set(itemSpace-1, "Empty");
                     item.getTexts().set(itemSpace-1, "");
-                    item.getShortcutUtis().set(itemSpace-1, "");
+                    item.getShortcutUris().set(itemSpace-1, "");
                     itemSpace++;
                 }
                 if (itemSpace == item.getTitles().size()) {
@@ -986,16 +985,16 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             newItem.setHideOnLockScreen(false);
                             newItem.setTitle(item.getTitles());
                             newItem.setText(item.getTexts());
-                            newItem.setShortcutUri(item.getShortcutUtis());
+                            newItem.setShortcutUri(item.getShortcutUris());
                         }
                         if (item.getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
                             newItem.getTitles().set(0, string);
                             newItem.getTexts().set(0, "");
-                            newItem.getShortcutUtis().set(0, "");
+                            newItem.getShortcutUris().set(0, "");
                         } else {
                             newItem.getTitles().set(itemSpace, string);
                             newItem.getTexts().set(itemSpace, "");
-                            newItem.getShortcutUtis().set(itemSpace, "");
+                            newItem.getShortcutUris().set(itemSpace, "");
                         }
                         if (rechoice != -1) {
                             adapter.removeAt(rechoice);
@@ -1179,14 +1178,14 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                                         newItem.setHideOnLockScreen(false);
                                         newItem.setTitle(item.getTitles());
                                         newItem.setText(item.getTexts());
-                                        newItem.setShortcutUri(item.getShortcutUtis());
+                                        newItem.setShortcutUri(item.getShortcutUris());
                                     }
                                     if (newItem.getType() == visibilityOrder_ListAdapter.TYPE_NORMAL) {
                                         newItem.getTitles().set(0, sir.getIntent().getStringExtra("label"));
-                                        newItem.getShortcutUtis().set(0, sir.getIntent().toUri(Intent.URI_INTENT_SCHEME));
+                                        newItem.getShortcutUris().set(0, sir.getIntent().toUri(Intent.URI_INTENT_SCHEME));
                                     } else {
                                         newItem.getTitles().set(ThisEditID-1, sir.getIntent().getStringExtra("label"));
-                                        newItem.getShortcutUtis().set(ThisEditID-1, sir.getIntent().toUri(Intent.URI_INTENT_SCHEME));
+                                        newItem.getShortcutUris().set(ThisEditID-1, sir.getIntent().toUri(Intent.URI_INTENT_SCHEME));
                                     }
                                     if (rechoice != -1) {
                                         adapter.removeAt(rechoice);

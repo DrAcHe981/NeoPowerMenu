@@ -164,7 +164,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                                                            } else if (pos==1) {
                                                                 items.get(position).getTitles().remove(finalI-1);
                                                                 items.get(position).getTexts().remove(finalI-1);
-                                                                items.get(position).getShortcutUtis().remove(finalI-1);
+                                                                items.get(position).getShortcutUris().remove(finalI-1);
                                                                 if (items.get(position).getTitles().size() == 0) {
                                                                     items.remove(position);
                                                                 }

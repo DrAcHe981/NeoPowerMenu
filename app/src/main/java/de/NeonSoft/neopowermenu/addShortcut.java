@@ -173,12 +173,16 @@ public class addShortcut extends AppCompatActivity {
 
             Intent intent = new Intent();
             String string = forItem;
-            try {
-                string = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuMain_" + forItem, "string", MainActivity.class.getPackage().getName()));
-            } catch (Throwable t) {
+            if (string.equalsIgnoreCase("PowerMenu")) {
+                string = mActivity.getString(R.string.shortcut_ShowPowerMenu);
+            } else {
                 try {
-                    string = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuBottom_" + forItem, "string", MainActivity.class.getPackage().getName()));
-                } catch (Throwable ignored) {
+                    string = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuMain_" + forItem, "string", MainActivity.class.getPackage().getName()));
+                } catch (Throwable t) {
+                    try {
+                        string = mActivity.getResources().getString(mActivity.getResources().getIdentifier("powerMenuBottom_" + forItem, "string", MainActivity.class.getPackage().getName()));
+                    } catch (Throwable ignored) {
+                    }
                 }
             }
 

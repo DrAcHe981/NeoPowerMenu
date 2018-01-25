@@ -1582,6 +1582,34 @@ public class XposedDialog extends DialogFragment {
                 }
             }
             //SubDialogs.clear();
+            Intent ShortcutIntent = null;
+            String uri = "";
+            try {
+                if (!mPreviewMode) {
+                    if (XposedMainActivity.mItems.get(id).getType() == visibilityOrder_ListAdapter.TYPE_NORMAL && !XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty()) {
+                        uri = XposedMainActivity.mItems.get(id).getShortcutUri(1);
+                        ShortcutIntent = Intent.parseUri(XposedMainActivity.mItems.get(id).getShortcutUri(1), Intent.URI_INTENT_SCHEME);
+                    } else {
+                        for (int i = 1; i <= XposedMainActivity.mItems.get(id).getTitles().size(); i++) {
+                            if (name.equalsIgnoreCase(XposedMainActivity.mItems.get(id).getTitle(i)) && !XposedMainActivity.mItems.get(id).getShortcutUri(i).isEmpty()) {
+                                uri = XposedMainActivity.mItems.get(id).getShortcutUri(i);
+                                ShortcutIntent = Intent.parseUri(XposedMainActivity.mItems.get(id).getShortcutUri(i), Intent.URI_INTENT_SCHEME);
+                            }
+                        }
+                    }
+                    if (!uri.isEmpty()) {
+                        SubDialogs.clear();
+                        dismissThis();
+                        mContext.startActivity(ShortcutIntent);
+                        return;
+                    }
+                }
+            } catch (Throwable e) {
+                Log.e("NPM", "[xposedDialog] No package with uri '" + uri + "' found...", e);
+                SubDialogs.clear();
+                dismissThis();
+                return;
+            }
             if (name.equalsIgnoreCase("FakePowerOff")) {
                 canDismiss = false;
 
