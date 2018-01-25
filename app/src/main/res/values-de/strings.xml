@@ -476,4 +476,6 @@
   <string name="presetsManager_Contains">"Voreinstellung beinhaltet:"</string>
   <string name="tourPage_8_Title">"Das Voreinstellungen Menü"</string>
   <string name="tourPage_8_Text">"Hier kannst du deine gespeicherten Voreinstellungen laden oder von anderen Benutzern dieser App erstellte herunterladen!\n\nFühle dich frei, deine Kreationen auch der Sammlung hinzuzufügen!"</string>
+  <string name="colorsCopyColor">Farbe kopieren</string>
+  <string name="colorsInsertColor">Farbe einfügen</string>
 </resources>
