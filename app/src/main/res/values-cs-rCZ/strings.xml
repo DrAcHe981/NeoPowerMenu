@@ -113,7 +113,7 @@
   <string name="SoundMode_Vibrate">"Vibrování"</string>
   <string name="SoundMode_Silent">"Ticho"</string>
   <string name="presetsManager_TitleAccount">"Účet"</string>
-  <string name="presetsManager_UploadMsg">"Přednastavení bude nahráno na server, viditelné pro všechny další uživatele.\n\nPřed nahrátím máte poslední šanci změnit jméno nebo autora..."</string>
+  <string name="presetsManager_UploadMsg">"Přednastavení bude nahráno na server a bude viditelné pro všechny další uživatele.\n\nPřed touto akcí je dobré si zkontrolovat jméno a jméno autora. (Poslední šance)..."</string>
   <string name="presetsManager_UploadComplete">"Nahrávání dokončeno!"</string>
   <string name="presetsManager_UploadFailedSameName">"Tento název již existuje, prosím vyberte jiný."</string>
   <string name="presetsManager_UploadFailedNoAccess">"Toto jméno autora je chráněné, prosím použijte jiné pro přihlášení."</string>
@@ -141,7 +141,7 @@
   <string name="login_RegisterSuccess">"Registrace byla úspěšná, bude vám zaslán aktivační email!"</string>
   <string name="login_Processing">"Zpracovávám..."</string>
   <string name="login_TitleStatistics">"Statistiky pro [USERNAMEEMAIL]"</string>
-  <string name="login_Statistics">"Předvolby nahrány: [UPLOADCOUNT]\n\nObdarováné hodnocení: [STARSGIVEN]\nObdržené hodnocení: [STARSRECEIVED]\n\nVaše předvolby(seřazeny podle hodnocení):\n[TOP5PRESETS]"</string>
+  <string name="login_Statistics">"Předvolby nahrány: [UPLOADCOUNT]\n\nTvé Hodnocení: [STARSGIVEN]\nObdržené hodnocení: [STARSRECEIVED]\n\nVaše předvolby (seřazeny podle hodnocení):\n[TOP5PRESETS]"</string>
   <string name="login_StatisticsFailed">"Nelze získat statistiky..."</string>
   <string name="login_ReloadStatistics">"Klikněte pro znovunačtení statistik"</string>
   <string name="login_TitleLogout">"Odhlásit se"</string>
