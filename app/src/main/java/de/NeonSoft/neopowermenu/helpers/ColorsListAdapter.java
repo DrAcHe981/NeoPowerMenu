@@ -344,7 +344,7 @@ public class ColorsListAdapter extends ArrayAdapter<Object> {
                                 } else if (position == 2) {
                                     ClipData clip = ClipData.newPlainText("ColorCopy", currentColor);
                                     PreferencesColorFragment.cbM.setPrimaryClip(clip);
-                                    Toast.makeText(context, context.getString(cat.ereza.customactivityoncrash.R.string.customactivityoncrash_error_activity_error_details_copied), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, context.getString(R.string.colorsCopied), Toast.LENGTH_SHORT).show();
                                 } else if (position == 3) {
                                     if (PreferencesColorFragment.cbM.hasPrimaryClip() && PreferencesColorFragment.cbM.getPrimaryClip().getItemAt(0).getText().toString().matches("#[0-9a-fA-F]{6,8}")) {
                                         String color = PreferencesColorFragment.cbM.getPrimaryClip().getItemAt(0).getText().toString();
