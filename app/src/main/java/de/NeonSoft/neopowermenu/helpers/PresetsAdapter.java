@@ -187,12 +187,11 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                         helper.removeFromZip(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps.tmp", mItems.get(position).getName() + ".nps", null);
                                         helper.zipFile(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps", context.getFilesDir().getPath() + "/temp/" + presetName + ".nps.tmp", null);
                                         path = context.getFilesDir().getPath() + "/temp/" + presetName + ".nps";
-                                        fIn = new FileInputStream(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps");
-                                        presetFile = new File(context.getFilesDir().getPath() + "/temp/" + mItems.get(position).getName() + ".nps");
+                                        presetFile = new File(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps");
                                     } else {
                                         path = context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps";
-                                        fIn = new FileInputStream(context.getFilesDir().getPath() + "/presets/" + mItems.get(position).getName() + ".nps");
                                     }
+                                    fIn = new FileInputStream(presetFile);
                                     BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
                                     String aDataRow = "";
                                     while ((aDataRow = myReader.readLine()) != null) {
@@ -317,6 +316,15 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                         //Upload.setAlpha((float) 1);
                                         //if(helper.isValidZip(context.getFilesDir().getPath() + "/temp/" + resultData.get(0) + ".nps",null)) {
                                         new File(context.getFilesDir().getPath() + "/temp/" + presetName + ".nps").delete();
+                                        File presetsFolder = new File(context.getFilesDir().getPath() + "/temp/");
+                                        File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
+                                            public boolean accept(File dir, String name) {
+                                                return true;
+                                            }
+                                        });
+                                        for (int i = 0; i < presetsFiles.length; i++) {
+                                            presetsFiles[i].delete();
+                                        }
                                         //}
                                         PreferencesPresetsFragment.listParser = helper.startAsyncTask(new getOnlinePresets(), (PreferencesPresetsFragment.onlineOrderSelectedString.isEmpty() ? "" : "order=" + PreferencesPresetsFragment.onlineOrderSelectedString));
                                         Toast.makeText(context, context.getString(R.string.presetsManager_UploadComplete), Toast.LENGTH_SHORT).show();
@@ -326,6 +334,15 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                     public void onUploadFailed(String reason) {
 
                                         dialogFragment.closeDialog();
+                                        File presetsFolder = new File(context.getFilesDir().getPath() + "/temp/");
+                                        File[] presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
+                                            public boolean accept(File dir, String name) {
+                                                return true;
+                                            }
+                                        });
+                                        for (int i = 0; i < presetsFiles.length; i++) {
+                                            presetsFiles[i].delete();
+                                        }
                                         //Progress.setProgress(0);
                                         //Progress.clearAnimation();
                                         //Progress.setAlpha((float) 0.2);
