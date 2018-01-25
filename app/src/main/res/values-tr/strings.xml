@@ -158,6 +158,8 @@
   <string name="presetsManager_Refresh">"Yenile"</string>
   <string name="presetsManager_OrderBy">"Sıralama"</string>
   <string name="presetsManager_OrderNames">"Ad|Tarih|Yıldızlar|Oluşturan|Kendi"</string>
+  <string name="presetsManager_OrderAsc">"Artan"</string>
+  <string name="presetsManager_OrderDesc">"Azalan"</string>
   <string name="visibilityOrder_SelectMulti">"Lütfen üç öğe seçin:"</string>
   <string name="powerMenuMain_Empty">"Boş"</string>
   <string name="login_Recover">"Kurtar"</string>
@@ -171,13 +173,23 @@
   <string name="Dialog_Buttons">"Tamam|Evet|Hayır|Yeniden Adlandır|Vazgeç|Sil|Yükle|Kaydet|Yoksay"</string>
   <string name="presetLoadDialog_BuiltIn">"Açık|Koyu|Siyah"</string>
   <string name="graphics_Choose">"Varsayılana sıfırla|Hazırlardan seç|Galeriden seç"</string>
+  <string name="graphics_Crop">"Kırp"</string>
+  <string name="graphics_CropCircle">"Daire kırp"</string>
   <string name="graphics_NoPresetsFound">"Bu grafiği içeren hiçbir ön ayar bulunamadı..."</string>
+  <string name="presetsManager_ReportDialogText">"[PRESETNAME] gerçekten rapor edilsin mi?\nBu geri alınamaz, bu yüzden lütfen sadece eğlence amaçlı rapor etmeyin!\n\nAyrıca, neden rapor etmek istediğinizi lütfen aşağıya girin."</string>
+  <string name="presetsManager_ReportDialogReason">"Rapor nedeni:"</string>
+  <string name="presetsManager_ReportResultSuccess">"[PRESETNAME] rapor edildi, geliştirici buna bir göz atacak."</string>
+  <string name="presetsManager_ReportResultFailed">"Rapor edilemedi, lütfen tekrar deneyin.\nNedeni: "</string>
   <string name="presetsManager_Buttons">"Yıldız Ver|Yıldızı Geri Al|Sil|Bildir|Yükle|Paylaş"</string>
+  <string name="screenrecord_notif_buttons_stop">"Durdur"</string>
+  <string name="screenrecord_notif_buttons_togglepointer">"Dokunmaları göster/kapat"</string>
   <string name="downloadHelper_States">"Diğer indirmeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] kaldı"</string>
   <string name="downloadHelper_Speed">"hız: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Diğer yüklemeler için bekleniyor...|Sunucuya bağlanılıyor...|Bilgi isteniyor... |İndiriliyor...|İptal ediliyor..."</string>
   <string name="visibilityOrder_AddItem">"Normal öğe ekle\nSadece bir yuvalı normal bir öğe.|Birden çok öğe ekle\nBir satırda birden fazla öğe ekle.|Klasör öğesi ekle\nTıklamak yeni bir 'sayfa' gösterecek'."</string>
+  <string name="visibilityOrder_MultiPageStart">"Klasör öğesi burada başlar.\nİlk normal öğe, klasörü açacak düğmeyi tanımlar."</string>
+  <string name="visibilityOrder_MultiPageEnd">"Klasör öğesi burada biter"</string>
   <string name="preferencesCategory_RootXposed">"Root ve Xposed"</string>
   <string name="preferences_RootXposed1Title">"Root ve Xposed mevcut değil"</string>
   <string name="preferences_RootXposed1Desc">"Bu modülün çalışabilmesi için Root ve Xposed gereklidir."</string>
@@ -209,7 +221,7 @@
   <string name="preferences_HideLauncherIconTitle">"Başlatıcıdan uygulamayı gizleyin"</string>
   <string name="preferences_HideLauncherIconDesc">"Başlatıcıdan uygulama simgesini gizler; simgenin gizlenmesi yeniden başlatana kadar sürebilir.\nBu ayarlar ekranına daha sonra, yalnızca Xposed Installer'dan erişilebilir."</string>
   <string name="preferences_DeepXposedLoggingTitle">"Derin Xposed günlüğü"</string>
-  <string name="preferences_DeepXposedLoggingDesc">"Değişiklikleri görmek için yeniden başlatmayı etkinleştirdikten sonra gelişmiş Xposed günlüğünü etkinleştirin."</string>
+  <string name="preferences_DeepXposedLoggingDesc">"Değişiklikleri görmek için, yeniden başlatmayı etkinleştirdikten sonra gelişmiş Xposed günlüğünü etkinleştirin."</string>
   <string name="preferencesCategory_About">"Hakkında"</string>
   <string name="preferences_NeoSourceTitle">"Kaynak"</string>
   <string name="preferences_NeoSourceDesc">"NeoPowerMenu açık kaynaktır.\nGitHub'daki kaynağı kontrol edin."</string>
@@ -226,6 +238,8 @@
   <string name="animations_Speed">"Hız"</string>
   <string name="powerMenuMain_Progress">"Yükleniyor dairesi"</string>
   <string name="presetsManager_LoadMore">"Yükleniyor...|Lütfen bekleyin...|Daha fazla hazır ayar göster|Daha fazla hazır ayar için buraya tıklayın.|Son.|Gösterilecek daha fazla hazır ayar yok.|Tekrar denemek için buraya tıklayın."</string>
+  <string name="powerMenu_SureToReboot">"Cihazınızı yeniden başlatmak istediğinizden emin misiniz?"</string>
+  <string name="powerMenu_SureToPowerOff">"Cihazınızı kapatmak istediğinizden emin misiniz?"</string>
   <string name="advancedPrefs_ConfirmationTitle">"Onay iste"</string>
   <string name="advancedPrefs_ConfirmationDesc">"Yeniden başlatmadan veya kapatmadan önce çıkan onay kutusunu etkinleştirin."</string>
   <string name="preferences_DonateTitle">"Bağış yap"</string>
@@ -441,6 +455,8 @@
   <string name="position_Horizontal">"Yatay:"</string>
   <string name="position_Vertical">"Dikey:"</string>
   <string name="visibilityOrder_AddMultiItem">"Ekle"</string>
+  <string name="visibilityOrder_EditMultiItemText">"Öğe metnini düzenle"</string>
+  <string name="visibilityOrder_EditMultiItemRemove">"Öğeyi kaldır"</string>
   <string name="graphics_RadiusTitle">"Dairesel yarıçap"</string>
   <string name="graphics_RadiusDesc">"Güç menüsü grafiklerinin arka planlarının ne kadar yuvarlak olacağını tanımlayın. (Varsayılan: %100)"</string>
   <string name="advancedPrefsDesc_RoundedCorners">"Güç iletişimi için yuvarlak köşeleri etkinleştirin/devre dışı bırakın."</string>
@@ -460,4 +476,6 @@
   <string name="presetsManager_Contains">"Hazır ayar içeriği:"</string>
   <string name="tourPage_8_Title">"Hazır Ayarlar Menüsü"</string>
   <string name="tourPage_8_Text">"Burada kayıtlı hazır ayarlarınızı yükleyebilir veya bu uygulamanın diğer kullanıcıları tarafından oluşturulmuş hazır ayarlarını indirebilirsiniz!\n\nOluşturduklarınızı koleksiyona eklemekten de çekinmeyin!"</string>
+  <string name="colorsCopyColor">Rengi kopyala</string>
+  <string name="colorsInsertColor">Renk ekle</string>
 </resources>
