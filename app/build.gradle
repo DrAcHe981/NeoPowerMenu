@@ -8,11 +8,11 @@ android {
         abortOnError false
     }
     useLibrary 'org.apache.http.legacy'
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         applicationId "de.NeonSoft.neopowermenu"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 57
         versionName "1.5.7"
         multiDexEnabled true
@@ -35,19 +35,19 @@ android {
 }
 
 dependencies {
-    implementation 'com.theartofdev.edmodo:android-image-cropper:2.6.+'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.5.1'
     implementation 'net.lingala.zip4j:zip4j:+'
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'cat.ereza:customactivityoncrash:1.5.0'
     implementation 'ch.acra:acra:4.9.0'
     implementation 'org.apache.commons:commons-lang3:3.0'
     implementation 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-    implementation 'com.android.support:support-v4:27.0.2'
+    implementation 'com.android.support:support-v4:26.1.0'
     implementation 'com.larswerkman:HoloColorPicker:1.5'
     //implementation files('lib/XposedBridgeApi-20150213.jar')
 	//implementation files('lib/api-82-sources.jar')
     compileOnly 'de.robv.android.xposed:api:+'
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'eu.chainfire:libsuperuser:1.0.0.+'
     //implementation fileTree(include: ['*.jar'], dir: 'deps')
     compileOnly fileTree(include: ['*.jar'], dir: 'syslib')

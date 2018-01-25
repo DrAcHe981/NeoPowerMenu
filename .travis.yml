@@ -23,14 +23,15 @@ notifications:
 android:
   components:
   - tools
-  - build-tools-27.0.3
+  - build-tools-26.0.2
   - platform-tools
   - tools
   - extra-google-google_play_services
   - extra-google-m2repository
   - extra-android-m2repository
   - extra-android-support
-  - android-27
+  - android-26
+  - sys-img-armeabi-v7a-android-26
 
   licenses:
   - 'android-sdk-preview-license-.+'

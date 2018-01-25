@@ -744,7 +744,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         && appInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND &&
                         !appInfo.processName.startsWith(defaultHomePackage) &&
                         !appInfo.processName.startsWith(MainActivity.class.getPackage().getName()) &&
-                        !appInfo.processName.startsWith("com.google.android.gms")) {
+                        !appInfo.processName.startsWith("com.google.android.gms") &&
+                        !appInfo.processName.startsWith("com.android.systemui")) {
                     if (appInfo.pkgList != null && appInfo.pkgList.length > 0) {
                         for (String pkg : appInfo.pkgList) {
                             if (DeepXposedLogging) XposedUtils.log("Force stopping: " + pkg);
