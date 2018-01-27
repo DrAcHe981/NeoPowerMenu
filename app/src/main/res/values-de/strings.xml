@@ -478,4 +478,7 @@
   <string name="tourPage_8_Text">"Hier kannst du deine gespeicherten Voreinstellungen laden oder von anderen Benutzern dieser App erstellte herunterladen!\n\nFühle dich frei, deine Kreationen auch der Sammlung hinzuzufügen!"</string>
   <string name="colorsCopyColor">Farbe kopieren</string>
   <string name="colorsInsertColor">Farbe einfügen</string>
+  <string name="presetsManager_ImportFailedCorrupted">Import fehlgeschlagen...\nBeschädigtes oder ungültiges Preset!</string>
+  <string name="presetsManager_ImportFailedUnknownFile">Import fehlgeschlagen...\nUnbekannter Dateityp!</string>
+  <string name="colorsCopied">Farbe in die Zwischenablage kopiert!</string>
 </resources>

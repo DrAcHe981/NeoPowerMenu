@@ -478,4 +478,7 @@
   <string name="tourPage_8_Text">"Burada kayıtlı hazır ayarlarınızı yükleyebilir veya bu uygulamanın diğer kullanıcıları tarafından oluşturulmuş hazır ayarlarını indirebilirsiniz!\n\nOluşturduklarınızı koleksiyona eklemekten de çekinmeyin!"</string>
   <string name="colorsCopyColor">Rengi kopyala</string>
   <string name="colorsInsertColor">Renk ekle</string>
+  <string name="presetsManager_ImportFailedCorrupted">İçe aktarılamadı...\nBozuk veya geçersiz ön ayar!</string>
+  <string name="presetsManager_ImportFailedUnknownFile">İçe aktarılamadı...\nBilinmeyen dosya türü!</string>
+  <string name="colorsCopied">Renk panoya kopyalandı!</string>
 </resources>
