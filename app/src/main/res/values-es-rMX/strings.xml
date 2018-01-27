@@ -240,6 +240,7 @@
   <string name="advancedPrefs_ConfirmationTitle">"Requiere confirmación "</string>
   <string name="advancedPrefs_ConfirmationDesc">" Permitir un cuadro diálogo de confirmación antes de reiniciar el o apagar."</string>
   <string name="preferences_DonateTitle">"Donar"</string>
+  <string name="preferences_DonateDesc">"¿Te gusta mi trabajo?\n¿Porqué no donarme una taza de café o algo así?"</string>
   <string name="advancedPrefs_HideOnClick">"Ocultar con un clic"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Ocultar el menú haciendo clic en un botón."</string>
   <string name="advancedPrefs_LoadAppIcons">"Cargar iconos"</string>
@@ -451,4 +452,24 @@
   <string name="position_Horizontal">"Horizontal:"</string>
   <string name="position_Vertical">"Vertical:"</string>
   <string name="visibilityOrder_AddMultiItem">"Añadir"</string>
+  <string name="visibilityOrder_EditMultiItemText">"Editar texto de elemento"</string>
+  <string name="visibilityOrder_EditMultiItemRemove">"Remover elemento"</string>
+  <string name="graphics_RadiusTitle">"Radio del círculo"</string>
+  <string name="graphics_RadiusDesc">"Define cuán redondeados están los fondos de los gráficos del menú. (Predeterminado: 100%)"</string>
+  <string name="advancedPrefsDesc_RoundedCorners">"Activar/desactivar las esquinas redondeadas del diálogo de apagado."</string>
+  <string name="advancedPrefsTitle_RoundedCorners">"Esquinas redondeadas del diálogo"</string>
+  <string name="advancedPrefsTitle_RoundedCornersRadius">"Radio de las esquinas redondeadas del diálogo"</string>
+  <string name="advancedPrefsDesc_RoundedCornersRadius">"Definir cuán redondeadas están las esquinas del diálogo. (Predeterminado 0%)"</string>
+  <string name="animations_Interpolator">"Interpolador"</string>
+  <string name="animations_CustomSpeed">"Velocidad personalizada en milisegundos: (Predeterminado: 700ms)"</string>
+  <string name="animations_CustomSpeedTooSmall">"Este valor no puede ser menor a [VALUE]."</string>
+  <string name="savePreset_Colors">"Guardar colores actuales"</string>
+  <string name="savePreset_Animations">"Guardar animaciones actuales"</string>
+  <string name="savePreset_Graphics">"Guardar gráficos actuales"</string>
+  <string name="presetsManager_LoadPreset">"Por favor seleccione lo que quieres cargar de este preset:"</string>
+  <string name="loadPreset_Colors">"Cargar colores"</string>
+  <string name="loadPreset_Animations">"Cargar animaciones"</string>
+  <string name="loadPreset_Graphics">"Cargar gráficos"</string>
+  <string name="presetsManager_Contains">"El preset contiene:"</string>
+  <string name="tourPage_8_Title">"El menú de presets"</string>
 </resources>
