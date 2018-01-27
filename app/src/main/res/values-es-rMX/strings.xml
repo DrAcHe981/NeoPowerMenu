@@ -187,6 +187,9 @@
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
   <string name="downloadHelper_Speed">"velocidad: [SPEED]/s"</string>
   <string name="uploadHelper_States">"A la espera de otras cargas... | Conectando al servidor... | Solicitando información... | Subir... | Cancelando..."</string>
+  <string name="visibilityOrder_AddItem">"Añadir ítem normal\nSólo un ítem normal con un sólo espacio. | Añadir multi ítem\n Añade varios ítems en una línea. | Añadir carpeta de ítems\nAl tocarla se mostrará una nueva 'página'."</string>
+  <string name="visibilityOrder_MultiPageStart">"El ítem de la carpeta empieza aquí\nEl primer ítem normal define el botón para abrir la carpeta."</string>
+  <string name="visibilityOrder_MultiPageEnd">"Los ítems de la carpeta terminan aquí"</string>
   <string name="preferencesCategory_RootXposed">"Rooteado y Xposed"</string>
   <string name="preferences_RootXposed1Title">"Rooteado y Xposed no están disponibles "</string>
   <string name="preferences_RootXposed1Desc">" Rooteo y Xposed son requeridos para que esté módulo funcione."</string>
@@ -472,4 +475,10 @@
   <string name="loadPreset_Graphics">"Cargar gráficos"</string>
   <string name="presetsManager_Contains">"El preset contiene:"</string>
   <string name="tourPage_8_Title">"El menú de presets"</string>
+  <string name="tourPage_8_Text">"Aquí puedes cargar tus presets guardados, o incluso descargar unos que han sido creados por otros usuarios de esta app!\n\nSiéntete libre de añadir tus creaciones a la colección también!"</string>
+  <string name="colorsCopyColor">Copiar color</string>
+  <string name="colorsInsertColor">Insertar color</string>
+  <string name="presetsManager_ImportFailedCorrupted">Importación fallida...\nPreset corrupto o inválido!</string>
+  <string name="presetsManager_ImportFailedUnknownFile">Importación fallida...\nTipo de archivo desconocido!</string>
+  <string name="colorsCopied">Color copiado al portapapeles!</string>
 </resources>
