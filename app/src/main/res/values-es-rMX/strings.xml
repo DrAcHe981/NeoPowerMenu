@@ -158,6 +158,8 @@
   <string name="presetsManager_Refresh">"Actualizar"</string>
   <string name="presetsManager_OrderBy">"Ordenar por"</string>
   <string name="presetsManager_OrderNames">"Nombre | Tiempo | Calificacion | Creador | Propio"</string>
+  <string name="presetsManager_OrderAsc">"Ascendente"</string>
+  <string name="presetsManager_OrderDesc">"Descendente"</string>
   <string name="visibilityOrder_SelectMulti">"Por favor selecciona tres elementos:"</string>
   <string name="powerMenuMain_Empty">"Vacío"</string>
   <string name="login_Recover">"Recuperar"</string>
@@ -171,6 +173,9 @@
   <string name="Dialog_Buttons">"OK | Sí | No | Cambiar el nombre de | Cancelar | Eliminar | Carga | Guardar | Ignorar"</string>
   <string name="presetLoadDialog_BuiltIn">"Claro | Oscuro | Negro"</string>
   <string name="graphics_Choose">"Restaurar original | Elegir tema | Elegir de la galería"</string>
+  <string name="graphics_Crop">"Recortar"</string>
+  <string name="graphics_CropCircle">"Corte circular"</string>
+  <string name="graphics_NoPresetsFound">"No se pudo encontrar ningún preset que contenga estos gráficos..."</string>
   <string name="presetsManager_Buttons">"Dar estrellas | Quitar estrellas | Eliminar | Reportar | Subir | Compartir"</string>
   <string name="downloadHelper_States">"A la espera de otras descargas... | Conectando al servidor... | Solicitando información... | Descargando... | Cancelando..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
