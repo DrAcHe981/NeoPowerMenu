@@ -65,7 +65,7 @@ public class GraphicsAdapter extends ArrayAdapter<GraphicItemHolder> {
             } catch (PackageManager.NameNotFoundException e) {
                 holder.name.setText(mGraphics.get(position).getName());
                 holder.name.setVisibility(View.VISIBLE);
-                Log.e("NPM", "No package found for resource " + mGraphics.get(position).getName() + "\n" + e);
+                Log.e("NPM", "No package found for resource " + mGraphics.get(position).getName(), e);
             }
         } else {
             try {

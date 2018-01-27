@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="?android:attr/selectableItemBackground"
+    android:focusable="true"
+    android:clickable="true"
+    android:id="@+id/colorslistitemholder_Root">
+
+    <LinearLayout
+        android:layout_height="35dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:background="@color/colorPrimaryDarkDarkTheme"
+        android:layout_margin="3dp">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="2dp"
+            android:background="@color/colorPrimaryDarkTheme">
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:background="#55FFFFFF"
+                android:id="@+id/colorslistitemholder_Preview"
+                android:layout_margin="2dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:id="@+id/colorslistitemholder_Texts">
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="Text"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF"
+            android:id="@+id/colorslistitemholder_Title"/>
+
+    </LinearLayout>
+
+</LinearLayout>

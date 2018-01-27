@@ -44,7 +44,7 @@ public class PreferencesGraphicsFragment extends Fragment {
 
     public static int SELECT_PICTURE_RESULT = 1;
 
-    static int selected = -1;
+    public static int selected = -1;
 
     //String activeGraphics = "internal1";
 
@@ -291,7 +291,9 @@ public class PreferencesGraphicsFragment extends Fragment {
                             graphic.setRessource(R.drawable.ic_action_android);
                         }
                         graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null").split("/")[0]);
-                        GraphicsList.add(graphic);
+                        if (!isInArray(GraphicsList, graphic)) {
+                            GraphicsList.add(graphic);
+                        }
                     }
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", visibilityOrder_ListAdapter.TYPE_NORMAL) == visibilityOrder_ListAdapter.TYPE_MULTI) {
                     int x = 1;
@@ -307,10 +309,12 @@ public class PreferencesGraphicsFragment extends Fragment {
                                 graphic.setRessource(R.drawable.ic_action_android);
                             }
                             graphic.setFileName(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "null").split("/")[0]);
-                            GraphicsList.add(graphic);
+                            if (!isInArray(GraphicsList, graphic)) {
+                                GraphicsList.add(graphic);
+                            }
                         }
                         x++;
-                    } while (!MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "][EMPTY][").equals("][EMPTY]["));
+                    } while (!MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item" + x + "_title", "][EMPTY][").equals("][EMPTY]["));
                 } else if (MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
                     MultiPage.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                 } else if (MultiPage.size() > 0 && MainActivity.orderPrefs.getInt((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_type", -1) == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END) {
@@ -343,7 +347,7 @@ public class PreferencesGraphicsFragment extends Fragment {
                             if (GraphicsList.get(selected).getName().equalsIgnoreCase("Progress")) {
                                 MainActivity.preferences.edit().putString("ProgressDrawable", "Stock").commit();
                             }
-                            if (!GraphicsList.get(selected).getFile().isEmpty() && new File(GraphicsList.get(selected).getFile()).exists()) {
+                            if (GraphicsList.get(selected).getFile() != null && !GraphicsList.get(selected).getFile().isEmpty() && new File(GraphicsList.get(selected).getFile()).exists() && !GraphicsList.get(selected).getFile().contains("/app_picker/")) {
                                 mGraphicsAdapter.removeFromCache(GraphicsList.get(selected).getFile());
                                 new File(GraphicsList.get(selected).getFile()).delete();
                             }
@@ -433,7 +437,19 @@ public class PreferencesGraphicsFragment extends Fragment {
             }
         });
 
+        if (selected != -1) {
+            GridView_Images.setSelection(selected);
+        }
+
         return InflatedView;
+    }
+
+    static boolean isInArray(ArrayList<GraphicItemHolder> array, GraphicItemHolder search) {
+        for (int x = 0; x < array.size(); x++) {
+            if (array.get(x).getName().equalsIgnoreCase(search.getName()) &&
+                    array.get(x).getFileName().equalsIgnoreCase(search.getFileName())) return true;
+        }
+        return false;
     }
 
     @Override
@@ -513,7 +529,7 @@ public class PreferencesGraphicsFragment extends Fragment {
             final int[] i = {0};
             presetsFiles = presetsFolder.listFiles(new FilenameFilter() {
                 public boolean accept(File dir, String name) {
-                    boolean supported = helper.isValidZip(dir + "/" + name, null) && helper.unzipFile(dir + "/" + name, mContext.getFilesDir().getAbsolutePath() + "/temp/", GraphicsList.get(selected[0]).getName() + ".png", null) == null;
+                    boolean supported = helper.isValidZip(dir + "/" + name, null) && helper.unzipFile(dir + "/" + name, mContext.getFilesDir().getAbsolutePath() + "/temp/", GraphicsList.get(selected[0]).getFileName() + ".png", null) == null;
                     onProgressUpdate((i[0] * 100) / presetsFolder.listFiles().length);
                     i[0]++;
                     return (supported && name.toLowerCase().endsWith(".nps"));

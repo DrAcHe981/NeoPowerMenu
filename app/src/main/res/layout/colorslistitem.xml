@@ -3,7 +3,16 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:orientation="vertical">
+	android:orientation="vertical"
+	android:id="@+id/colorslistitem_Root">
+
+	<LinearLayout
+		android:id="@+id/colorslistitemLinearLayout_HeaderHolder"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+	</LinearLayout>
 
 	<LinearLayout
 		android:focusable="true"
@@ -15,9 +24,26 @@
 		android:id="@+id/colorslistitemLinearLayout_Root">
 
 		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/colorslistitemLinearLayout_ItemHolder1"
+			android:orientation="horizontal">
+
+		</LinearLayout>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/colorslistitemLinearLayout_ItemHolder2"
+			android:orientation="horizontal">
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/colorslistitemLinearLayout_Legacy"
 			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
-			android:orientation="horizontal">
+			android:orientation="horizontal"
+			android:visibility="gone">
 
 			<LinearLayout
 				android:layout_height="40dp"

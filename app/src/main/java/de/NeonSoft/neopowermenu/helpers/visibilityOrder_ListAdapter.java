@@ -323,7 +323,6 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
 
     public void removeAt(int position) {
         if (items.get(position).getType() == TYPE_MULTIPAGE_START) {
-            MenuItemHolder item = getItemAt(position);
             int removingLayers = 0;
             while (items.size() > position) {
                 MenuItemHolder checkItem = getItemAt(position);
@@ -344,8 +343,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                     items.remove(position);
                 }
             }
-        } else if (items.get(position).getType() == TYPE_MULTIPAGE_END) {
-        } else if (items.get(position).getType() == TYPE_NORMAL || (int) items.get(position).getType() == TYPE_MULTI) {
+        } else if (items.get(position).getType() == TYPE_NORMAL || items.get(position).getType() == TYPE_MULTI) {
             items.remove(position);
         }
         notifyDataSetChanged();
@@ -754,6 +752,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                 }
             }
         }
+        neopowermenu.parseColors();
     }
 
 }

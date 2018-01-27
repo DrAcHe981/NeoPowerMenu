@@ -156,7 +156,8 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                 WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED |
                 WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON);
 
-        getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
+        //getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
+        getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
         //getWindow().getDecorView().setSystemUiVisibility(View.STATUS_BAR_DISABLE_EXPAND | View.STATUS_BAR_DISABLE_HOME | View.STATUS_BAR_DISABLE_RECENT);
         //mKeyguardShowing = getIntent().getBooleanExtra("mKeyguardShowing",false);
         mKeyguardManger = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);

@@ -301,6 +301,7 @@ public class MainActivity extends AppCompatActivity {
                 if (visibleFragment.equalsIgnoreCase("about") || visibleFragment.equalsIgnoreCase("login")) {
                     actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
                 }
+                PreferencesGraphicsFragment.selected = -1;
             }
         } else if (visibleFragment.equalsIgnoreCase("Main") || visibleFragment.equalsIgnoreCase("permissionsAutoStart")) {
             finish();

@@ -40,6 +40,7 @@ public class PreferencesPresetsFragment extends Fragment {
     public static ViewPager vpPager;
     public static MyPagerAdapter adapterViewPager;
 
+    public static ListView localList;
     public static PresetsAdapter localAdapter;
     public static PresetsAdapter onlineAdapter;
     public static ListView onlineList;
@@ -421,22 +422,33 @@ public class PreferencesPresetsFragment extends Fragment {
             BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
             String aDataRow = "";
             //final String[] presetInfo = new String[4];
-						final PresetsHolder preset = new PresetsHolder();
-						preset.setType(PresetsHolder.TYPE_INTERNAL);
+            final PresetsHolder preset = new PresetsHolder();
+			preset.setType(PresetsHolder.TYPE_INTERNAL);
+            preset.setHasGraphics(isZip);
             preset.setName(Filename.split(".nps")[0]);
             preset.setDescription("< unknown >");
             while ((aDataRow = myReader.readLine()) != null) {
                 //aBuffer += aDataRow + "\n";
-                if(!aDataRow.equalsIgnoreCase("[INFO]") && !aDataRow.equalsIgnoreCase("[COLORS]") && !aDataRow.equalsIgnoreCase("[ANIMATIONS]")) {
+                if (!aDataRow.equalsIgnoreCase("[INFO]") && !aDataRow.equalsIgnoreCase("[COLORS]") && !aDataRow.equalsIgnoreCase("[ANIMATIONS]")) {
                     String[] aData = aDataRow.split("=");
                     if (aData.length < 2) {
                         MainActivity.ImportUrl = null;
                         Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportFailedCorrupted), Toast.LENGTH_LONG).show();
-                        Log.e("NPM","[presetImport] Failed, invalid split length: " + aData.length);
+                        Log.e("NPM", "[presetImport] Failed, invalid split length: " + aData.length);
                         return false;//presetInfo[1] = mContext.getString(R.string.presetsManager_Creator).replace("[CREATORNAME]",aData[1]);
                     }
                     if (aData[0].equalsIgnoreCase("Creator")) {
                         preset.setDescription(aData[1]);
+                    }
+                }
+                if (aDataRow.equals("[COLORS]") || aDataRow.contains("_Textcolor") || aDataRow.contains("_Circlecolor") || aDataRow.contains("_Revealcolor") || aDataRow.contains("_Backgroundcolor")) {
+                    preset.setHasColors(true);
+                } else if (aDataRow.equals("[ANIMATIONS]")) {
+                    preset.setHasAnimations(true);
+                } else if (aDataRow.contains("DialogCornersRadius")) {
+                    String[] rcsplit = aDataRow.split("=");
+                    if (Integer.parseInt(rcsplit[1]) > 0) {
+                        preset.setHasRoundCorners(true);
                     }
                 }
             }
@@ -495,6 +507,7 @@ public class PreferencesPresetsFragment extends Fragment {
                         }
                         if (newPresetAdded) {
                             adapter.insert(preset);
+                            localList.setSelection(adapter.getCount());
                         }
                         Toast.makeText(mContext, mContext.getString(R.string.presetsManager_ImportSuccess).replace("[PRESETNAME]", newFilename.replace(".nps", "")), Toast.LENGTH_SHORT).show();
                     } else {

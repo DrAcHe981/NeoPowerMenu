@@ -145,12 +145,14 @@ public class PreferencesPartFragment extends Fragment {
             MainActivity.orderPrefs.edit().putString("3_item2_title", "Bootloader").apply();
             MainActivity.orderPrefs.edit().putString("3_item3_title", "SafeMode").apply();
         }
-        for (int i = 0; i < PreferencesColorFragment.ColorNames.length; i++) {
-            if ((int) PreferencesColorFragment.ColorNames[i][0] == ColorsListAdapter.TYPE_ITEM) {
-                if (MainActivity.colorPrefs.getString(PreferencesColorFragment.ColorNames[i][1].toString(), "").isEmpty()) {
-                    //Log.d("NPM","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
-                    MainActivity.colorPrefs.edit().putString(PreferencesColorFragment.ColorNames[i][1].toString(), MainActivity.preferences.getString(PreferencesColorFragment.ColorNames[i][1].toString(), PreferencesColorFragment.lightPreset[i])).apply();
-                    MainActivity.preferences.edit().remove(PreferencesColorFragment.ColorNames[i][1].toString()).commit();
+        for (int i = 0; i < neopowermenu.colors.size(); i++) {
+            if ((int) neopowermenu.colors.get(i)[0] == ColorsListAdapter.TYPE_ITEM) {
+                //Log.d("NPM","["+i+"]> Setting initial color for "+PreferencesColorFragment.ColorNames[i][1].toString()+" with the value "+PreferencesColorFragment.lightPreset[i]);
+                for (int x = 2; x < neopowermenu.colors.get(i).length; x++) {
+                    if (MainActivity.colorPrefs.getString(neopowermenu.colors.get(i)[x].toString(), "").isEmpty()) {
+                        MainActivity.colorPrefs.edit().putString(neopowermenu.colors.get(i)[x].toString(), MainActivity.preferences.getString(neopowermenu.colors.get(i)[x].toString(), neopowermenu.defaultColors.get(i)[x - 1])).apply();
+                        //MainActivity.preferences.edit().remove(neopowermenu.colors.get(i)[1].toString()).commit();
+                    }
                 }
             }
         }

@@ -136,56 +136,58 @@ public class PresetsPage extends Fragment
 				}
 
 				@Override
-				protected String doInBackground(Object[] p1)
-				{
+				protected String doInBackground(Object[] p1) {
 
-						list = (ListView) p1[0];
-						messageHolder = (RelativeLayout) p1[1];
-						message = (TextView) p1[2];
-						for (int i=0;i < presetsFiles.length;i++)
-						{
-								PresetsHolder preset = new PresetsHolder();
-								preset.setType(PresetsHolder.TYPE_INTERNAL);
-								preset.setName(presetsFiles[i].getName().split(".nps")[0]);
-								preset.setDescription(getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", "<unknown>"));
-								File tmpfile = new File(getActivity().getFilesDir().getPath() + "/presets/" + presetsFiles[i].getName());
-								if(helper.isValidZip(tmpfile.getPath(),null)) {
-										preset.setHasGraphics(true);
-										helper.unzipFile(tmpfile.getPath(),mContext.getFilesDir().getPath()+"/temp/",presetsFiles[i].getName(),null);
-										tmpfile = new File(mContext.getFilesDir().getPath()+"/temp/"+presetsFiles[i].getName());
-								}
-								try
-								{
-										FileInputStream tmpread = new FileInputStream(tmpfile);
-										BufferedReader myReader = new BufferedReader(new InputStreamReader(tmpread));
-										String aDataRow = ""; 
-										String aBuffer = "";
-										while ((aDataRow = myReader.readLine()) != null)
-										{ 
-												String aData[] = aDataRow.split("=");
-												if (aData[0].equalsIgnoreCase("Creator"))
-												{
-														aBuffer += aData[1];
-														break;
-												}
-										}
-										if (!aBuffer.equalsIgnoreCase(""))
-										{
-												preset.setDescription(aBuffer);
-										}
-										tmpread.close();
-										myReader.close();
-								}
-								catch (Throwable e)
-								{
-
-								}
-								if(tmpfile.getPath().startsWith(mContext.getFilesDir().getPath()+"/temp/")) {
-										tmpfile.delete();
-								}
-								presetsList[i + 3] = preset;
+					list = (ListView) p1[0];
+					messageHolder = (RelativeLayout) p1[1];
+					message = (TextView) p1[2];
+					for (int i = 0; i < presetsFiles.length; i++) {
+						PresetsHolder preset = new PresetsHolder();
+						preset.setType(PresetsHolder.TYPE_INTERNAL);
+						preset.setName(presetsFiles[i].getName().split(".nps")[0]);
+						preset.setDescription(getString(R.string.presetsManager_Creator).replace("[CREATORNAME]", "<unknown>"));
+						File tmpfile = new File(getActivity().getFilesDir().getPath() + "/presets/" + presetsFiles[i].getName());
+						if (helper.isValidZip(tmpfile.getPath(), null)) {
+							preset.setHasGraphics(true);
+							helper.unzipFile(tmpfile.getPath(), mContext.getFilesDir().getPath() + "/temp/", presetsFiles[i].getName(), null);
+							tmpfile = new File(mContext.getFilesDir().getPath() + "/temp/" + presetsFiles[i].getName());
+							preset.setHasGraphics(true);
 						}
-						return null;
+						try {
+							FileInputStream tmpread = new FileInputStream(tmpfile);
+							BufferedReader myReader = new BufferedReader(new InputStreamReader(tmpread));
+							String aDataRow = "";
+							String aBuffer = "";
+							while ((aDataRow = myReader.readLine()) != null) {
+								String aData[] = aDataRow.split("=");
+								if (aData[0].equalsIgnoreCase("Creator")) {
+									aBuffer = aData[1];
+								}
+								if (aDataRow.equals("[COLORS]") || aDataRow.contains("_Textcolor") || aDataRow.contains("_Circlecolor") || aDataRow.contains("_Revealcolor") || aDataRow.contains("_Backgroundcolor")) {
+									preset.setHasColors(true);
+								} else if (aDataRow.equals("[ANIMATIONS]")) {
+									preset.setHasAnimations(true);
+								} else if (aDataRow.contains("DialogCornersRadius")) {
+									String[] rcsplit = aDataRow.split("=");
+									if (Integer.parseInt(rcsplit[1]) > 0) {
+										preset.setHasRoundCorners(true);
+									}
+								}
+							}
+							if (!aBuffer.equalsIgnoreCase("")) {
+								preset.setDescription(aBuffer);
+							}
+							tmpread.close();
+							myReader.close();
+						} catch (Throwable e) {
+
+						}
+						if (tmpfile.getPath().startsWith(mContext.getFilesDir().getPath() + "/temp/")) {
+							tmpfile.delete();
+						}
+						presetsList[i + 3] = preset;
+					}
+					return null;
 				}
 
 				@Override
@@ -202,6 +204,7 @@ public class PresetsPage extends Fragment
 						list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 						list.setVisibility(View.VISIBLE);
 						list.startAnimation(AnimationUtils.loadAnimation(PreferencesPresetsFragment.mContext, R.anim.fade_in));
+						PreferencesPresetsFragment.localList = list;
 						if (MainActivity.ImportUrl != null)
 						{
 								PreferencesPresetsFragment.ImportPreset(MainActivity.ImportUrl, PreferencesPresetsFragment.localAdapter,null,null);

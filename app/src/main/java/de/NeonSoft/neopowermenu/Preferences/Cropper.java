@@ -241,7 +241,7 @@ public class Cropper extends android.support.v4.app.Fragment
                 Toast.makeText(getActivity(), getString(R.string.crop_failedToSave), Toast.LENGTH_LONG).show();
                 Log.e("NPM", "[CROPPER] Failed to save cropped image: " + p1);
             } else {
-                MainActivity.changePrefPage(new PreferencesGraphicsFragment(), true);
+                MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
             }
         }
 

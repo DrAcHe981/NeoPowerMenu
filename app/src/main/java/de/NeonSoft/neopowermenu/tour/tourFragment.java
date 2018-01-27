@@ -78,6 +78,7 @@ public class tourFragment extends Fragment {
         pager = (NonSwipeableViewPager) InflatedView.findViewById(R.id.pager);
         pagerAdapter = new MyPagerAdapter(MainActivity.fragmentManager, new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8"});
         pager.setAdapter(pagerAdapter);
+        pager.setOffscreenPageLimit(pagerAdapter.getCount());
 
         finishOnClick = new View.OnClickListener() {
             @Override
@@ -101,81 +102,79 @@ public class tourFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-								try {
-                if (position == 0) {
-										pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
-                    pageImages.get(position).setVisibility(View.VISIBLE);
-                    pageImages.get(position).startAnimation(fadeIn);
-                    MainActivity.changePrefPage(new PreferencesPartFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 1) {
-                    MainActivity.changePrefPage(new PreferencesPartFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 2) {
-                    MainActivity.changePrefPage(new PreferencesColorFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 3) {
-                    MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 4) {
-                    MainActivity.changePrefPage(new PreferencesVisibilityOrderFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 5) {
-                    MainActivity.changePrefPage(new PreferencesAnimationsFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 6) {
-                    MainActivity.changePrefPage(new PreferencesAdvancedFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
-                } else if (position == 7) {
-                    pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
-                    pageImages.get(position).setVisibility(View.VISIBLE);
-                    pageImages.get(position).startAnimation(fadeIn);
-                    MainActivity.changePrefPage(new PreferencesPartFragment(), false);
-                    MainActivity.actionbar.setButton(getString(R.string.tourPage_Enjoy), R.drawable.ic_action_launch, finishOnClick);
+                try {
+                    if (position == 0) {
+                        pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
+                        pageImages.get(position).setVisibility(View.VISIBLE);
+                        pageImages.get(position).startAnimation(fadeIn);
+                        MainActivity.changePrefPage(new PreferencesPartFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                    } else if (position == 1) {
+                        MainActivity.changePrefPage(new PreferencesPartFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                    } else if (position == 2) {
+                        MainActivity.changePrefPage(new PreferencesColorFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                    } else if (position == 3) {
+                        MainActivity.changePrefPage(new PreferencesPresetsFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                    } else if (position == 4) {
+                        MainActivity.changePrefPage(new PreferencesGraphicsFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                    } else if (position == 5) {
+                        MainActivity.changePrefPage(new PreferencesVisibilityOrderFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                    } else if (position == 6) {
+                        MainActivity.changePrefPage(new PreferencesAnimationsFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                    } else if (position == 7) {
+                        MainActivity.changePrefPage(new PreferencesAdvancedFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Next), R.drawable.ic_content_send, nexttourPage);
+                    } else if (position == 8) {
+                        pageImages.get(position).setImageResource(R.mipmap.ic_launcher);
+                        pageImages.get(position).setVisibility(View.VISIBLE);
+                        pageImages.get(position).startAnimation(fadeIn);
+                        MainActivity.changePrefPage(new PreferencesPartFragment(), false);
+                        MainActivity.actionbar.setButton(getString(R.string.tourPage_Enjoy), R.drawable.ic_action_launch, finishOnClick);
+                    }
+                    pageTextHolders.get(position).setVisibility(View.VISIBLE);
+                    pageTextHolders.get(position).startAnimation(slideIn);
+                } catch (Throwable t) {
+                    slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                    dialogFragment.setContext(mActivity);
+                    dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                    dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+
+                        @Override
+                        public void onListItemClick(int position, String text) {
+
+                        }
+
+                        @Override
+                        public void onNegativeClick() {
+
+                        }
+
+                        @Override
+                        public void onNeutralClick() {
+
+                        }
+
+                        @Override
+                        public void onPositiveClick(Bundle resultBundle) {
+                            finishTour();
+                        }
+
+                        @Override
+                        public void onTouchOutside() {
+
+                        }
+                    });
+                    dialogFragment.setNeutralButton(getString(R.string.errorActivity_CopyToClip));
+                    dialogFragment.setText(getString(R.string.tourPage_UnknownProblem) + t.toString());
+                    dialogFragment.setPositiveButton(getString(R.string.tourPage_Skip));
+                    dialogFragment.showDialog(R.id.dialog_container);
                 }
-                                    pageTextHolders.get(position).setVisibility(View.VISIBLE);
-                                    pageTextHolders.get(position).startAnimation(slideIn);
-								} catch (Throwable t) {
-										slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
-										dialogFragment.setContext(mActivity);
-										dialogFragment.setFragmentManager(MainActivity.fragmentManager);
-										dialogFragment.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
-
-														@Override
-														public void onListItemClick(int position, String text)
-														{
-																
-														}
-
-														@Override
-														public void onNegativeClick()
-														{
-																
-														}
-
-														@Override
-														public void onNeutralClick()
-														{
-																
-														}
-
-														@Override
-														public void onPositiveClick(Bundle resultBundle)
-														{
-																finishTour();
-														}
-
-														@Override
-														public void onTouchOutside()
-														{
-																
-														}
-												});
-										dialogFragment.setNeutralButton(getString(R.string.errorActivity_CopyToClip));
-										dialogFragment.setText(getString(R.string.tourPage_UnknownProblem) + t.toString());
-										dialogFragment.setPositiveButton(getString(R.string.tourPage_Skip));
-										dialogFragment.showDialog(R.id.dialog_container);
-								}
             }
 
             @Override
@@ -195,12 +194,12 @@ public class tourFragment extends Fragment {
         MainActivity.visibleFragment = "main";
         MainActivity.fragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).remove(MainActivity.fragmentManager.findFragmentByTag("tour")).commit();
         if (MainActivity.preferences.getBoolean("DontAskPermissionsAgain", false) || permissionsScreen.checkPermissions(mActivity, permissionsScreen.permissions)) {
-            if (MainActivity.ImportUrl != null) {
+            /*if (MainActivity.ImportUrl != null) {
                 MainActivity.changePrefPage(new PreferencesPresetsFragment(), false);
             } else {
                 android.support.v4.app.Fragment fragment = new PreferencesPartFragment();
                 MainActivity.changePrefPage(fragment, false);
-            }
+            }*/
             MainActivity.actionbar.setButtonText(mActivity.getString(R.string.PreviewPowerMenu));
             MainActivity.actionbar.setButtonIcon(R.drawable.ic_action_launch);
             MainActivity.actionbar.setButtonListener(MainActivity.previewOnClickListener);

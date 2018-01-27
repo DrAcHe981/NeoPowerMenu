@@ -91,18 +91,21 @@ public class tourPage extends Fragment
                     Title.setText(getString(R.string.tourPage_2_Title));
                     Text.setText(getString(R.string.tourPage_2_Text));
                 } else if (page == 3) {
+                    Title.setText(getString(R.string.tourPage_8_Title));
+                    Text.setText(getString(R.string.tourPage_8_Text));
+                } else if (page == 4) {
                     Title.setText(getString(R.string.tourPage_3_Title));
                     Text.setText(getString(R.string.tourPage_3_Text));
-                } else if (page == 4) {
+                } else if (page == 5) {
                     Title.setText(getString(R.string.tourPage_4_Title));
                     Text.setText(getString(R.string.tourPage_4_Text));
-                } else if (page == 5) {
+                } else if (page == 6) {
                     Title.setText(getString(R.string.tourPage_5_Title));
                     Text.setText(getString(R.string.tourPage_5_Text));
-                } else if (page == 6) {
+                } else if (page == 7) {
                     Title.setText(getString(R.string.tourPage_6_Title));
                     Text.setText(getString(R.string.tourPage_6_Text));
-                } else if (page == 7) {
+                } else if (page == 8) {
                     Title.setText(getString(R.string.tourPage_7_Title));
                     Image.setVisibility(View.VISIBLE);
                     //Image.setPadding((int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext), (int) helper.convertDpToPixel(80f, mContext));

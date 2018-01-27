@@ -595,7 +595,11 @@ public class XposedDialog extends DialogFragment {
         desc.setVisibility(View.GONE);
 
         if (!title.equalsIgnoreCase("Empty")) {
+            boolean isAppShortcut = false;
             String string = title;
+            if (string.contains(".") && string.contains("/")) {
+                isAppShortcut = true;
+            }
             if (customText.isEmpty()) {
                 if (string.contains(".") && string.contains("/")) {
                     PackageManager pm = mContext.getPackageManager();
@@ -612,7 +616,7 @@ public class XposedDialog extends DialogFragment {
                         } catch (Throwable t1) {
                         }
                     }
-                    string = string.replace("(Fake)", "");
+                    string = string;
                 }
             } else {
                 string = customText;
@@ -654,7 +658,7 @@ public class XposedDialog extends DialogFragment {
 
             desc.setTextColor(Color.parseColor(colorPrefs.getString("Dialog_Textcolor", "#000000")));
 
-            createCircleIcon(id, icon, icon2, title, string, colorPrefs.getString("Dialog" + (!XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty() ? "Shortcut" : (title.contains(".") ? "AppShortcut" : title)) + "_Circlecolor", "#ff000000"), colorPrefs.getString("Dialog" + (!XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty() ? "Shortcut" : (title.contains(".") ? "AppShortcut" : title)) + "_Textcolor", "#ffffff"));
+            createCircleIcon(id, icon, icon2, title, string, colorPrefs.getString("Dialog" + (!XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty() ? "Shortcut" : (title.contains(".") ? "AppShortcut" : "")) + (isAppShortcut ? title.split("/")[0] : title) + "_Circlecolor", "#ff000000"), colorPrefs.getString("Dialog" + (!XposedMainActivity.mItems.get(id).getShortcutUri(1).isEmpty() ? "Shortcut" : (title.contains(".") ? "AppShortcut" : "")) + (isAppShortcut ? title.split("/")[0] : title)  + "_Textcolor", "#ffffff"));
 
             if (pageItem == null || pageItem.isEmpty()) {
                 root.setOnClickListener(new OnClickListener() {
@@ -703,7 +707,11 @@ public class XposedDialog extends DialogFragment {
             text.setVisibility(View.GONE);
             String string;
             if (!XposedMainActivity.mItems.get(id).getTitle(i).equalsIgnoreCase("Empty")) {
+                boolean isAppShortcut = false;
                 string = XposedMainActivity.mItems.get(id).getTitle(i);
+                if (string.contains(".") && string.contains("/")) {
+                    isAppShortcut = true;
+                }
                 if (XposedMainActivity.mItems.get(id).getText(i).isEmpty()) {
                     if (string.contains(".") && string.contains("/")) {
                         PackageManager pm = mContext.getPackageManager();
@@ -720,7 +728,7 @@ public class XposedDialog extends DialogFragment {
                             } catch (Throwable t1) {
                             }
                         }
-                        string = string.replace("(Fake)", "");
+                        string = string;
                     }
                 } else {
                     string = XposedMainActivity.mItems.get(id).getText(i);
@@ -734,7 +742,7 @@ public class XposedDialog extends DialogFragment {
 
                 //Log.d("NPM", "ShortcutUri(1): " + XposedMainActivity.mItems.get(id).getShortcutUri(1));
 
-                String IDENTIFIER = (!XposedMainActivity.mItems.get(id).getShortcutUri(i).isEmpty() ? "Shortcut" : (XposedMainActivity.mItems.get(id).getTitle(i).contains(".") ? "AppShortcut" : XposedMainActivity.mItems.get(id).getTitle(i)));
+                String IDENTIFIER = (!XposedMainActivity.mItems.get(id).getShortcutUri(i).isEmpty() ? "Shortcut" : (XposedMainActivity.mItems.get(id).getTitle(i).contains(".") ? "AppShortcut" : "")) + (isAppShortcut ? XposedMainActivity.mItems.get(id).getTitle(i).split("/")[0] : XposedMainActivity.mItems.get(id).getTitle(i));
                 createCircleIcon(id, icon, icon2, XposedMainActivity.mItems.get(id).getTitle(i), string, colorPrefs.getString("Dialog" + IDENTIFIER + "_Circlecolor", "#ff000000"), colorPrefs.getString("Dialog" + IDENTIFIER + "_Textcolor", "#ffffff"));
 
                 final int finalI = i;
@@ -2445,6 +2453,7 @@ public class XposedDialog extends DialogFragment {
             String parent = "root";
             if (!SubDialogs.isEmpty()) {
                 parent = SubDialogs.get(SubDialogs.size() - 1);
+                if (confirmDialog.isEmpty()) SubDialogs.remove(SubDialogs.size() - 1);
             }
             if (mDeepXposedLogging) Log.i("NPM", "[xposedDialog] Performing menu back to: " + parent);
             performMenuClick(0, "multipage:" + parent, null);

@@ -5,6 +5,8 @@ import android.app.*;
 import android.content.*;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
+import android.content.res.XResources;
 import android.media.AudioManager;
 import android.os.*;
 import android.os.Process;
@@ -38,12 +40,15 @@ import android.telecom.*;
 import android.util.Log;
 import android.telephony.*;
 
+import com.android.internal.app.AlertController;
+
 public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit {
 
     private static final String TAG = "NPM";
     private static XSharedPreferences preferences;
     public static boolean DeepXposedLogging = false;
     public boolean UseRoot = true;
+    public boolean HookShutdownThread = false;
 
     private boolean ExperimentalPWMHook = false;
 
@@ -69,6 +74,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_PACKAGE_MANAGER_SERVICE = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_MANAGER_SERVICE_MARSHMALLOW = "com.android.server.pm.PackageManagerService";
     private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
+    private static final String CLASS_SHUTDOWN_THREAD = "com.android.server.power.ShutdownThread";
 
     private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER", "android.permission.READ_FRAME_BUFFER"};
 
@@ -188,7 +194,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             return;
         DeepXposedLogging = preferences.getBoolean("DeepXposedLogging", false);
         ExperimentalPWMHook = preferences.getBoolean("ExperimentalPWMHook", false);
-        UseRoot = preferences.getBoolean("UseRoot", false);
+        UseRoot = preferences.getBoolean("UseRoot", true);
+        HookShutdownThread = preferences.getBoolean("HookShutdownThread", false);
         XposedUtils.log("/_Zygote init...");
         XposedUtils.log("|_____Module Info");
         XposedUtils.log("|-Module Path: " + startupParam.modulePath);
@@ -210,6 +217,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         }
         XposedUtils.log("|-ExperimentalPWMHook: " + ExperimentalPWMHook);
         XposedUtils.log("|-UseRootCommands: " + UseRoot);
+        XposedUtils.log("|-Hook ShutdownThread: " + HookShutdownThread);
         if (DeepXposedLogging) {
             XposedUtils.log("|_____Device Infos");
             XposedUtils.log("|-Hardware: " + Build.HARDWARE);
@@ -233,6 +241,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             final String usedGADClass;
             final String usedPWMClass;
             String usedPMClass;
+            String usedSDTClass;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 usedGADClass = CLASS_GLOBAL_ACTIONS_MARSHMALLOW;
                 //if (XposedUtils.isOxygenOsRom()) {
@@ -246,6 +255,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 usedPWMClass = CLASS_PHONE_WINDOW_MANAGER;
                 usedPMClass = CLASS_PACKAGE_MANAGER_SERVICE;
             }
+            usedSDTClass = CLASS_SHUTDOWN_THREAD;
 
             if (DeepXposedLogging)
                 XposedUtils.log("Detected " + android.os.Build.VERSION.RELEASE + "(" + Build.VERSION.SDK_INT + "), injecting to: ");
@@ -256,6 +266,8 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
             final Class<?> globalActionsClass = XposedHelpers.findClass(usedGADClass, lpparam.classLoader);
 
             final Class<?> pmServiceClass = XposedHelpers.findClass(usedPMClass, lpparam.classLoader);
+
+            final Class<?> ShutdownThreadClass = XposedHelpers.findClass(usedSDTClass, lpparam.classLoader);
 
             if (DeepXposedLogging)
                 XposedUtils.log("Getting permissions, using method for " + ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) ? "lollipop and above" : "kitkat and below") + "...");
@@ -469,7 +481,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                     XposedUtils.log("Replaced with empty method to prevent crashes.");
             } else {
                 if (DeepXposedLogging)
-                    XposedUtils.log("!! EXPERIMENTAL !! Hook in the PhoneWindowManager");
+                    XposedUtils.log("Hooking in the PhoneWindowManager");
                 if (DeepXposedLogging)
                     XposedUtils.log("Hooking (after) " + usedPWMClass + "#init...");
                 XposedHelpers.findAndHookMethod(usedPWMClass, lpparam.classLoader, "init", Context.class, IWindowManager.class, WindowManagerFuncs.class, new XC_MethodHook() {
@@ -519,6 +531,33 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                 if (DeepXposedLogging)
                     XposedUtils.log("Replaced with showDialog(), just executing startActivity() to start my own dialog.");
             }
+            if (HookShutdownThread) {
+                if (DeepXposedLogging)
+                    XposedUtils.log("Hooking " + ProgressDialog.Builder.class.getName() + "#show...");
+                XposedHelpers.findAndHookMethod(ProgressDialog.Builder.class, "show", Context.class, CharSequence.class,
+                        CharSequence.class, boolean.class,
+                boolean.class, DialogInterface.OnCancelListener.class, new XC_MethodReplacement() {
+                    @Override
+                    protected Object replaceHookedMethod(final MethodHookParam param) throws Throwable {
+                        try {
+                            AlertController.AlertParams aC = ((AlertController.AlertParams) XposedHelpers.getObjectField(param.thisObject, "P"));
+                            Log.d("NPM", "[xposedMain] Dialog title: " + aC.mTitle);
+                            Resources sysRes = XResources.getSystem();
+                            AlertDialog dialog = (AlertDialog) XposedHelpers.callMethod(param.thisObject, "create");
+                            if (!aC.mTitle.equals(sysRes.getString(sysRes.getIdentifier("power_off", "string", "android"))) && !aC.mTitle.equals(sysRes.getString(sysRes.getIdentifier("reboot", "string", "android"))) && !aC.mTitle.equals(sysRes.getString(sysRes.getIdentifier("reboot_to_reset_title", "string", "android")))) {
+                               dialog.show();
+                            }
+                            return dialog;
+                        } catch (Throwable t) {
+                            Log.e("NPM", "[xposedMain] Failed to prevent shutdown dialog:", t);
+                        }
+                        return null;
+                    }
+                });
+                if (DeepXposedLogging)
+                    XposedUtils.log("Trying to prevent default shutdown dialog being shown.");
+            }
+
             XposedUtils.log("Loading complete, all hooks executed.");
         }
         if (lpparam.packageName.equalsIgnoreCase("com.android.systemui")) {
