@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
@@ -12,7 +12,7 @@
 
 		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:gravity="center"
 			android:orientation="vertical"
 			android:paddingBottom="@dimen/customactivityoncrash_activity_vertical_margin"
@@ -39,30 +39,6 @@
 			<LinearLayout
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
-				android:orientation="vertical"
-				android:id="@+id/customactivityoncrash_error_activity_input"
-				android:visibility="gone">
-
-				<TextView
-					android:layout_height="wrap_content"
-					android:textAppearance="?android:attr/textAppearanceSmall"
-					android:layout_width="match_parent"
-					android:text="What was the last thing you did?"
-					android:gravity="center_vertical"/>
-
-				<EditText
-					android:layout_height="wrap_content"
-					android:layout_width="match_parent"
-					android:ems="10"
-					android:maxLines="1"
-					android:singleLine="true"
-					android:id="@+id/customactivityoncrash_error_activity_info_input"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
 				android:orientation="horizontal">
 
 				<Button
@@ -81,9 +57,52 @@
 
 			</LinearLayout>
 
-		</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/errorActivity_LogSubmitted"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/customactivityoncrash_error_activity_submit_more_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/errorActivity_SendDetails"
+                    android:layout_weight="1.0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 	</ScrollView>
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/loadingProgressHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_below="@+id/loadingProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login_Processing"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
 

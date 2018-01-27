@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:background="#55FFFFFF"
                 android:id="@+id/colorslistitemholder_Preview"
+                android:gravity="center"
                 android:layout_margin="2dp"/>
 
         </LinearLayout>
@@ -47,7 +48,6 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:text="Text"
-            android:layout_weight="1.0"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#FFFFFF"

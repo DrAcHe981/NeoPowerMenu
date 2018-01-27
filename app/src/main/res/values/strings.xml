@@ -510,5 +510,11 @@
     <string name="presetsManager_ImportFailedCorrupted">Import failed...\nCorrupted or invalid preset!</string>
     <string name="presetsManager_ImportFailedUnknownFile">Import failed...\nUnknown file type!</string>
     <string name="colorsCopied">Color copied to clipboard!</string>
+    <string name="errorActivity_LogSubmitted">The crash details have been automatically submitted to our server, but it would be appreciated if you could submit further details on what you did right before the crash.</string>
+    <string name="errorActivity_SendDetails">Submit more details</string>
+    <string name="errorActivity_EnterMoreDetails">Enter below what you did before the app crashed: (English only please)</string>
+    <string name="errorActivity_Submit">Submit details</string>
+    <string name="errorActivity_FailedToSubmit">Something went wrong while uploading your details.</string>
+    <string name="errorActivity_SubmitSuccessful">Thank you for submitting more details, we will take a look into it as soon as possible!</string>
 
 </resources>

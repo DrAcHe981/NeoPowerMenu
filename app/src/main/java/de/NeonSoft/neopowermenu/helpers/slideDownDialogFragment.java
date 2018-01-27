@@ -1060,7 +1060,7 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                                 } else {
                                     mFragmentmanager.beginTransaction().remove(mFragment).commitAllowingStateLoss();
                                 }
-                                slideDownDialogFragment.dialogs.remove(slideDownDialogFragment.dialogs.size() - 1);
+                                slideDownDialogFragment.dialogs.remove(slideDownDialogFragment.this);
                             } catch (Throwable t) {
                             }
                         }

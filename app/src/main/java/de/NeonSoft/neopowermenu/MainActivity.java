@@ -248,16 +248,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         actionbar.setAnimationsEnabled(true);
-        //throw new RuntimeException("This is a test crash!");
+        //startActivity(new Intent(getApplicationContext(), ErrorActivity.class));
     }
 
     @Override
     public void onBackPressed() {
         if (fragmentManager.findFragmentByTag(slideDownDialogFragment.dialogTag) != null) {
-                        /*Intent intent = new Intent();
-                         intent.setAction(slideDownDialogFragment.dialogCloseCall);
-						 context.sendBroadcast(intent);*/
-            //Toast.makeText(context,"Canceling sDDF "+slideDownDialogFragment.dialogs.size(),Toast.LENGTH_LONG).show();
             if (slideDownDialogFragment.dialogs.size() > 0 && slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1).cancelDialog() == null) {
                 fragmentManager.beginTransaction().remove(slideDownDialogFragment.dialogs.get(slideDownDialogFragment.dialogs.size() - 1)).commitAllowingStateLoss();
             }

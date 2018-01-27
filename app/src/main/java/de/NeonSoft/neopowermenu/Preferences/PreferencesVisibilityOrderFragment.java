@@ -323,6 +323,25 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                             item.getTexts().add("");
                             item.getShortcutUris().add("");
                             adapter.addItem(item);
+                            if (FinalPowerMenuItems[position].equals("AppShortcut")) {
+                                showLoadingDialog("apps");
+                                item.getTitles().set(0, "AppShortcut");
+                                item.getTexts().set(0, "");
+                                item.getShortcutUris().set(0, "");
+                                loadAppsTask = helper.startAsyncTask(new loadApps(), item, adapter.getCount()-1);
+                            } else if (FinalPowerMenuItems[position].equals("Shortcut")) {
+                                showLoadingDialog("shortcuts");
+                                item.getTitles().set(0, "Shortcut");
+                                item.getTexts().set(0, "");
+                                item.getShortcutUris().set(0, "");
+                                loadShortcutsTask = helper.startAsyncTask(new loadShortcuts(), item, adapter.getCount()-1);
+                            } else {
+                                item.getTitles().set(0, FinalPowerMenuItems[position]);
+                                item.getTexts().set(0, "");
+                                item.getShortcutUris().set(0, "");
+                                visibilityOrderPermissionRequest_Id = adapter.getCount()-1;
+                                checkItemAfterAdd(item, adapter.getCount()-1);
+                            }
                             item = new MenuItemHolder();
                             item.setType(visibilityOrder_ListAdapter.TYPE_MULTIPAGE_END);
                             item.getTitles().add(groupName);
@@ -597,14 +616,10 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     visibilityOrderPermissionRequest_Id = addItemPosition;
                     checkItemAfterAdd(item, addItemPosition);
                     for (int i = 0; i < AddPowerMenuItems.size(); i++) {
-                        String shortcutAdded = "";
-                        if (item.getTitle(i+1).equalsIgnoreCase("AppShortcut") || item.getTitle(i+1).equalsIgnoreCase("Shortcut")) {
-                            shortcutAdded = item.getTitle(i+1);
-                        }
-                        if (shortcutAdded.equalsIgnoreCase("AppShortcut")) {
+                        if (item.getTitle(i+1).equalsIgnoreCase("AppShortcut")) {
                             showLoadingDialog("apps");
                             loadAppsTask = helper.startAsyncTask(new loadApps(), item, adapter.getCount()-1);
-                        } else if (shortcutAdded.equalsIgnoreCase("Shortcut")) {
+                        } else if (item.getTitle(i+1).equalsIgnoreCase("Shortcut")){
                             showLoadingDialog("shortcuts");
                             loadShortcutsTask = helper.startAsyncTask(new loadShortcuts(), item, adapter.getCount()-1);
                         }
