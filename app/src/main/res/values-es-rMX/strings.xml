@@ -481,4 +481,11 @@
   <string name="presetsManager_ImportFailedCorrupted">Importación fallida...\nPreset corrupto o inválido!</string>
   <string name="presetsManager_ImportFailedUnknownFile">Importación fallida...\nTipo de archivo desconocido!</string>
   <string name="colorsCopied">Color copiado al portapapeles!</string>
+  <string name="errorActivity_LogSubmitted">Los detalles del cierre se han enviado automáticamente a nuestro servidor, pero apreciaría si pudiera enviarnos más detalles sobre lo que hacía justo antes del cierre inesperado.</string>
+  <string name="errorActivity_SendDetails">Enviar más detalles</string>
+  <string name="errorActivity_EnterMoreDetails">Ingrese abajo lo que hizo antes de que la app se cierre:
+(Sólo inglés por favor)</string>
+  <string name="errorActivity_Submit">Enviar detalles</string>
+  <string name="errorActivity_FailedToSubmit">Algo ocurrió mientras se enviaban sus datos.</string>
+  <string name="errorActivity_SubmitSuccessful">Gracias por enviar más detalles, vamos a revisarlo lo antes posible!</string>
 </resources>
