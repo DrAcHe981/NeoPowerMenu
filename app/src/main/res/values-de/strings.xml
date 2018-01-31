@@ -481,4 +481,10 @@
   <string name="presetsManager_ImportFailedCorrupted">Import fehlgeschlagen...\nBeschädigtes oder ungültiges Preset!</string>
   <string name="presetsManager_ImportFailedUnknownFile">Import fehlgeschlagen...\nUnbekannter Dateityp!</string>
   <string name="colorsCopied">Farbe in die Zwischenablage kopiert!</string>
+  <string name="errorActivity_LogSubmitted">Die Absturzdetails wurden automatisch an unseren Server übermittelt, es wäre jedoch hilfreich, wenn du weitere Details zu deinen Aktionen unmittelbar vor dem Absturz angeben könntest.</string>
+  <string name="errorActivity_SendDetails">Weitere Details einreichen</string>
+  <string name="errorActivity_EnterMoreDetails">Gib unten ein, was du vor dem Absturz der App getan hast: (bitte nur in Englisch)</string>
+  <string name="errorActivity_Submit">Details senden</string>
+  <string name="errorActivity_FailedToSubmit">Beim Hochladen der Daten ist ein Fehler aufgetreten.</string>
+  <string name="errorActivity_SubmitSuccessful">Vielen Dank für die Übermittlung weiterer Informationen, wir werden so schnell wie möglich einen Blick darauf werfen!</string>
 </resources>
