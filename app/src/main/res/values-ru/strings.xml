@@ -171,6 +171,8 @@
   <string name="Dialog_Buttons">"ОК|Да|Нет|Переименовать|Отмена|Удалить|Загрузить|Сохранить|Игнорировать"</string>
   <string name="presetLoadDialog_BuiltIn">"Светлый|Тёмный|Чёрный"</string>
   <string name="graphics_Choose">"Восстановить исходное|Выбрать из шаблонов|Выбрать из галереи"</string>
+  <string name="graphics_Crop">"Обрезать"</string>
+  <string name="graphics_CropCircle">"Обрезать по кругу"</string>
   <string name="graphics_NoPresetsFound">"Невозможно найти шаблон с такой графикой..."</string>
   <string name="presetsManager_Buttons">"Дать звезду|Убрать звезду|Удалить|Пожаловаться|Загрузить|Поделиться"</string>
   <string name="downloadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
