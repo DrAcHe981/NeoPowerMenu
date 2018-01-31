@@ -1,7 +1,5 @@
 package de.NeonSoft.neopowermenu.helpers;
 
-import android.content.pm.ResolveInfo;
-
 import java.util.ArrayList;
 
 public class MenuItemHolder {
@@ -10,11 +8,13 @@ public class MenuItemHolder {
     private boolean iHideDesc = false;
     private boolean iHideOnLockscreen = false;
     private String iGraphic = "";
+    private String iPageId = "";
     private String iOnPage = "";
     private boolean iFillEmpty = false;
     private boolean iLockedWithPassword = false;
     private boolean iHideText = false;
     private boolean iHorizontal = true;
+    private Boolean iHideFirstItemInFolder = false;
 
     private ArrayList<String> iTitle = new ArrayList<>();
     private ArrayList<String> iText = new ArrayList<>();
@@ -34,7 +34,11 @@ public class MenuItemHolder {
         iTitle = title;
     }
     public String getTitle(int index) {
-        return iTitle.get(index-1);
+        try {
+            return iTitle.get(index-1);
+        } catch (Throwable ignored) {
+            return "";
+        }
     }
     public ArrayList<String> getTitles() {
         return iTitle;
@@ -58,7 +62,11 @@ public class MenuItemHolder {
         iText = text;
     }
     public String getText(int index) {
-        return iText.get(index-1);
+        try {
+            return iText.get(index-1);
+        } catch (Throwable ignored) {
+            return "";
+        }
     }
     public ArrayList<String> getTexts() {
         return iText;
@@ -99,7 +107,11 @@ public class MenuItemHolder {
         iShortcutUri = uri;
     }
     public String getShortcutUri(int index) {
-        return iShortcutUri.get(index-1);
+        try {
+            return iShortcutUri.get(index-1);
+        } catch (Throwable ignored) {
+            return "";
+        }
     }
     public ArrayList<String> getShortcutUris() {
         return iShortcutUri;
@@ -110,5 +122,19 @@ public class MenuItemHolder {
     }
     public boolean getHorizontal() {
         return iHorizontal;
+    }
+
+    public void setHideFirstItemInFolder(boolean show) {
+        this.iHideFirstItemInFolder = show;
+    }
+    public Boolean getHideFirstItemInFolder() {
+        return this.iHideFirstItemInFolder;
+    }
+
+    public void setPageId(String id) {
+        this.iPageId = id;
+    }
+    public String getPageId() {
+        return this.iPageId;
     }
 }

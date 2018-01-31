@@ -14,7 +14,6 @@ import android.widget.*;
 
 import cat.ereza.customactivityoncrash.*;
 
-import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.helpers.*;
 
 import org.acra.*;
@@ -233,8 +232,10 @@ public class XposedMainActivity extends Activity implements DialogInterface.OnDi
                 } else if (item.getType() == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
                     titles.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "Empty"));
                     texts.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
+                    item.setPageId(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_pageId", ""));
                     uris.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""));
                     item.setOnPage(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
+                    item.setHideFirstItemInFolder(orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideFirst", false));
                     MultiPage.add(orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "null"));
                     if (!mKeyguardShowing || (mKeyguardShowing && !item.getHideOnLockScreen())) {
                         firstItemDrawn = false;

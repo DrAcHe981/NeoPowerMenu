@@ -2,7 +2,10 @@ package de.NeonSoft.neopowermenu.Preferences;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -22,7 +25,6 @@ import android.widget.*;
 import de.NeonSoft.neopowermenu.*;
 import de.NeonSoft.neopowermenu.DSLV.*;
 import de.NeonSoft.neopowermenu.helpers.*;
-import de.NeonSoft.neopowermenu.permissionsScreen.permissionsScreen;
 import de.NeonSoft.neopowermenu.xposed.XposedUtils;
 
 import java.io.File;
@@ -44,6 +46,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
     public static ShortcutHandler mShortcutHandler;
 
     static PackageManager pm;
+    private static NotificationManager nm;
+    private static DevicePolicyManager devicePolicyManager;
 
     public static slideDownDialogFragment appsLoadDialog;
     public static slideDownDialogFragment shortcutsLoadDialog;
@@ -148,6 +152,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
         mContext = getActivity();
 
         pm = mContext.getPackageManager();
+        nm = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        devicePolicyManager = (DevicePolicyManager) mContext.getSystemService(Context.DEVICE_POLICY_SERVICE);
 
         MainActivity.actionbar.setTitle(getString(R.string.preferences_VisibilityOrderTitle));
         MainActivity.actionbar.setSubTitle(getString(R.string.preferences_VisibilityOrderDesc));
@@ -233,6 +239,8 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                     item.setHideDesc(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideDesc", false));
                     item.setHideOnLockScreen(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideOnLockscreen", false));
                     item.setFillEmpty(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_fillEmpty", false));
+                    item.setHideFirstItemInFolder(MainActivity.orderPrefs.getBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideFirst", false));
+                    item.setPageId(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_pageId", ""));
                     titles.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", "Empty"));
                     texts.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_text", ""));
                     uris.add(MainActivity.orderPrefs.getString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_shortcutUri", ""));
@@ -606,7 +614,7 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
             public void onPositiveClick(Bundle resultBundle) {
                 if (resultBundle != null) {
                     MenuItemHolder item = new MenuItemHolder();
-                    item.setType((AddPowerMenuItems.size() > 1 ? visibilityOrder_ListAdapter.TYPE_MULTI : visibilityOrder_ListAdapter.TYPE_NORMAL));
+                    item.setType(visibilityOrder_ListAdapter.TYPE_MULTI);
                     for (int i = 0; i < AddPowerMenuItems.size(); i++) {
                         item.getTitles().add(AddPowerMenuItems.get(i));
                         item.getTexts().add("");
@@ -737,12 +745,12 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                         public void onPositiveClick(Bundle resultBundle) {
                             try {
                                 Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                                mContext.startActivityForResult(intent, permissionsScreen.MY_PERMISSIONS_REQUEST);
+                                mContext.startActivityForResult(intent, visibilityOrderPermissionRequest);
                             } catch (Throwable t) {
                                 slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                                 dialogFragment.setFragmentManager(MainActivity.fragmentManager);
                                 dialogFragment.setContext(mContext);
-                                dialogFragment.setText("Your device does not seem to support notification policy access settings.");
+                                dialogFragment.setText("Failed to launch the \"notification policy access\" settings:\n" + t.toString());
                                 dialogFragment.showDialog(R.id.dialog_container);
                             }
                         }
@@ -812,6 +820,55 @@ public class PreferencesVisibilityOrderFragment extends Fragment {
                         @Override
                         public void onPositiveClick(Bundle resultBundle) {
                             ActivityCompat.requestPermissions(mContext, new String[]{Manifest.permission.CAMERA}, visibilityOrderPermissionRequest);
+                        }
+
+                        @Override
+                        public void onTouchOutside() {
+                            onNegativeClick();
+                        }
+                    });
+                    MissingPermission.showDialog(R.id.dialog_container);
+                }
+            } else if (item.getTitle(i).equalsIgnoreCase(PowerMenuItems[27])) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !devicePolicyManager.isAdminActive(new ComponentName(mContext, deviceAdmin.class))) {
+                    visibilityOrderPermissionRequest_Count++;
+                    visibilityOrderPermissionRequest_ItemSpace = i;
+                    slideDownDialogFragment MissingPermission = new slideDownDialogFragment();
+                    MissingPermission.setContext(mContext);
+                    MissingPermission.setFragmentManager(MainActivity.fragmentManager);
+                    MissingPermission.setText(mContext.getString(R.string.visibilityOrder_MissingDeviceAdmin));
+                    MissingPermission.setPositiveButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[0]);
+                    MissingPermission.setNegativeButton(mContext.getString(R.string.Dialog_Buttons).split("\\|")[4]);
+                    MissingPermission.setListener(new slideDownDialogFragment.slideDownDialogInterface() {
+                        @Override
+                        public void onListItemClick(int position, String text) {
+
+                        }
+
+                        @Override
+                        public void onNegativeClick() {
+                            receivedPermissionResult(finalI, id, false);
+                        }
+
+                        @Override
+                        public void onNeutralClick() {
+
+                        }
+
+                        @Override
+                        public void onPositiveClick(Bundle resultBundle) {
+                            try {
+                                Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+                                intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, new ComponentName(mContext, deviceAdmin.class));
+                                intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, mContext.getString(R.string.permissionsScreenDesc_DeviceAdmin));
+                                mContext.startActivityForResult(intent, visibilityOrderPermissionRequest);
+                            } catch (Throwable t) {
+                                slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
+                                dialogFragment.setFragmentManager(MainActivity.fragmentManager);
+                                dialogFragment.setContext(mContext);
+                                dialogFragment.setText("Failed to launch the \"device admin\" settings:\n" + t.toString());
+                                dialogFragment.showDialog(R.id.dialog_container);
+                            }
                         }
 
                         @Override

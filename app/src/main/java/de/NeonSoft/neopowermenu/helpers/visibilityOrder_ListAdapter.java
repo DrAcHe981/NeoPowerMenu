@@ -285,9 +285,12 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
             MenuItemHolder item = getItemAt(from);
             if (item.getType() == TYPE_MULTIPAGE_START || item.getType() == TYPE_MULTIPAGE_END) {
                 boolean validMove = true;
-                items.remove(from);
+                items.remove(item);
                 items.add(to, item);
                 ArrayList<String> pages = new ArrayList<>();
+                if (MainActivity.DeepLogging) {
+                    Log.i("NPM", "(item | page size)> item type | title(s)");
+                }
                 for (int i = 0; i < items.size(); i++) {
                     try {
                         MenuItemHolder checkItem = getItemAt(i);
@@ -437,6 +440,9 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
             }
             options.add(mContext.getString(R.string.visibilityOrder_LockWithPassword));
             checked.add(thisItem.getLockedWithPassword());
+        } else {
+            options.add(mContext.getString(R.string.visibilityOrder_HideFirstItemInFolder));
+            checked.add(thisItem.getHideFirstItemInFolder());
         }
         slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
         dialogFragment.setContext(mContext);
@@ -473,6 +479,7 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                                            }
                                            item.setLockedWithPassword(false);
                                            item.setHideText(false);
+                                           item.setHideFirstItemInFolder(false);
                                            if (thisItem.getType() == TYPE_NORMAL || thisItem.getType() == TYPE_MULTIPAGE_START) {
 
                                                if (!listResult.isEmpty()) {
@@ -483,6 +490,8 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
                                                            item.setHideOnLockScreen(true);
                                                        } else if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_HideText))) {
                                                            item.setHideText(true);
+                                                       } else if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_HideFirstItemInFolder))) {
+                                                           item.setHideFirstItemInFolder(true);
                                                        } else if (result.equalsIgnoreCase(mContext.getString(R.string.visibilityOrder_LockWithPassword))) {
                                                            if (MainActivity.preferences.getString(PreferenceNames.pItemPWL, "").isEmpty()) {
                                                                slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
@@ -736,6 +745,8 @@ public class visibilityOrder_ListAdapter extends ArrayAdapter<MenuItemHolder> {
             MainActivity.orderPrefs.edit().putBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_horizontal", items.get(i).getHorizontal()).apply();
             if (items.get(i).getType() == TYPE_MULTIPAGE_START) {
                 MainActivity.orderPrefs.edit().putString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", items.get(i).getTitle(1)).apply();
+                MainActivity.orderPrefs.edit().putString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_pageId", items.get(i).getPageId()).apply();
+                MainActivity.orderPrefs.edit().putBoolean((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_hideFirst", items.get(i).getHideFirstItemInFolder()).apply();
                 MultiPage.add(items.get(i).getTitle(1));
             } else if (items.get(i).getType() == TYPE_MULTIPAGE_END) {
                 MainActivity.orderPrefs.edit().putString((MultiPage.size() > 0 ? MultiPage.get(MultiPage.size() - 1) + "_" : "") + i + "_item_title", MultiPage.get(MultiPage.size() - 1)).apply();

@@ -329,6 +329,7 @@ public class LoginFragment extends Fragment {
                 MainActivity.password = "";
                 MainActivity.accountUniqeId = "";
                 MainActivity.userRank = "U";
+                MainActivity.userName = "";
                 MainActivity.preferences.edit().putBoolean("autoLogin", false)
                         .remove("ueel")
                         .remove("pd")

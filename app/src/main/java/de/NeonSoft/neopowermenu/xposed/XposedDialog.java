@@ -1246,6 +1246,7 @@ public class XposedDialog extends DialogFragment {
                 ArrayList<String> MultiPage = new ArrayList<String>();
                 //Log.i("NPM:itemLoader","Searching for multi item with the code "+page);
                 //Log.i("NPM:itemLoader","Total entries to check: "+XposedMainActivity.mItems.size());
+                boolean hideThisItemInFolder = false;
                 for (int i = 0; i < XposedMainActivity.mItems.size(); i++) {
                     if (XposedMainActivity.mItems.get(i).getType() == visibilityOrder_ListAdapter.TYPE_MULTIPAGE_START) {
                         if (XposedMainActivity.mItems.get(i).getOnPage().equals(page)) {
@@ -1253,6 +1254,7 @@ public class XposedDialog extends DialogFragment {
                             //MultiPage.add(XposedMainActivity.mItems.get(i));
                             inRightSpot = true;
                             //Log.i("NPM:itemLoader","Got the right spot!");
+                            hideThisItemInFolder = XposedMainActivity.mItems.get(i).getHideFirstItemInFolder();
                         } else {
                             if (inRightSpot && MultiPage.size() == 0) {
                                 firstItemDrawn = false;
@@ -1275,15 +1277,18 @@ public class XposedDialog extends DialogFragment {
                             if (XposedMainActivity.mItems.get(i).getOnPage().contains(page)) {
                                 if (MultiPage.size() == 0 || !firstItemDrawn) {
                                     if (!mKeyguardShowing || (mKeyguardShowing && !XposedMainActivity.mItems.get(i).getHideOnLockScreen())) {
-                                        if (frame3.getVisibility() == View.GONE) {
-                                            ListContainer2.addView(createNormalItem(i, XposedMainActivity.mItems.get(i).getTitle(1), (MultiPage.size() > 0 ? page : null), XposedMainActivity.mItems.get(i).getHideDesc(), XposedMainActivity.mItems.get(i).getText(1)));
-                                        } else {
-                                            ListContainer.addView(createNormalItem(i, XposedMainActivity.mItems.get(i).getTitle(1), (MultiPage.size() > 0 ? page : null), XposedMainActivity.mItems.get(i).getHideDesc(), XposedMainActivity.mItems.get(i).getText(1)));
+                                        if (!hideThisItemInFolder) {
+                                            if (frame3.getVisibility() == View.GONE) {
+                                                ListContainer2.addView(createNormalItem(i, XposedMainActivity.mItems.get(i).getTitle(1), (MultiPage.size() > 0 ? page : null), XposedMainActivity.mItems.get(i).getHideDesc(), XposedMainActivity.mItems.get(i).getText(1)));
+                                            } else {
+                                                ListContainer.addView(createNormalItem(i, XposedMainActivity.mItems.get(i).getTitle(1), (MultiPage.size() > 0 ? page : null), XposedMainActivity.mItems.get(i).getHideDesc(), XposedMainActivity.mItems.get(i).getText(1)));
+                                            }
                                         }
                                     }
                                 }
                                 if (!firstItemDrawn) {
                                     firstItemDrawn = true;
+                                    hideThisItemInFolder = false;
                                     if (MultiPage.size() > 0) {
                                         page = MultiPage.get(MultiPage.size() - 1);
                                         //MultiPage.remove(MultiPage.size()-1);
@@ -1803,7 +1808,7 @@ public class XposedDialog extends DialogFragment {
                             mContext.startActivity(intent);
                             Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
                         } catch (Throwable t) {
-                            Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext, "Failed to launch the \"notification policy access\" settings:\n" + t.toString(), Toast.LENGTH_LONG).show();
                         }
                     } else {
                         if (amRingerMode == AudioManager.RINGER_MODE_NORMAL) {
@@ -1883,7 +1888,7 @@ public class XposedDialog extends DialogFragment {
                             mContext.startActivity(intent);
                             Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
                         } catch (Throwable t) {
-                            Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext, "Failed to launch the \"notification policy access\" settings:\n" + t.toString(), Toast.LENGTH_LONG).show();
                         }
                     } else {
                         am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
@@ -1901,7 +1906,7 @@ public class XposedDialog extends DialogFragment {
                             mContext.startActivity(intent);
                             Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
                         } catch (Throwable t) {
-                            Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext, "Failed to launch the \"notification policy access\" settings:\n" + t.toString(), Toast.LENGTH_LONG).show();
                         }
                     } else {
                         am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
@@ -1919,7 +1924,7 @@ public class XposedDialog extends DialogFragment {
                             mContext.startActivity(intent);
                             Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
                         } catch (Throwable t) {
-                            Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext, "Failed to launch the \"notification policy access\" settings:\n" + t.toString(), Toast.LENGTH_LONG).show();
                         }
                     } else {
                         am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
@@ -2054,8 +2059,9 @@ public class XposedDialog extends DialogFragment {
                             intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
                                     getString(R.string.permissionsScreenDesc_DeviceAdmin));
                             startActivity(intent);
+                            //Toast.makeText(mContext, mContext.getString(R.string.visibilityOrder_MissingDeviceAdmin), Toast.LENGTH_LONG).show();
                         } catch (Throwable t) {
-                            Toast.makeText(mContext, "Your device does not seem to support device admins.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "Failed to launch the \"device admin\" settings:\n" + t.toString(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         devicePolicyManager.lockNow();
@@ -2076,7 +2082,7 @@ public class XposedDialog extends DialogFragment {
                                 mContext.startActivity(intent);
                                 Toast.makeText(mContext, getString(R.string.visibilityOrder_MissingPermissionForNotiPolicy), Toast.LENGTH_LONG).show();
                             } catch (Throwable t) {
-                                Toast.makeText(mContext, "Your device does not seem to support notification policy access settings.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(mContext, "Failed to launch the \"notification policy access\" settings:\n" + t.toString(), Toast.LENGTH_LONG).show();
                             }
                         } else {
                             am.setRingerMode(AudioManager.RINGER_MODE_SILENT);

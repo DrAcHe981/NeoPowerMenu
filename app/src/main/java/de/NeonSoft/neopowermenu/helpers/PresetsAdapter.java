@@ -487,7 +487,7 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                                 uH.setServerUrl("http" + (MainActivity.LOCALTESTSERVER ? "" : "s") + "://" + (MainActivity.LOCALTESTSERVER ? "127.0.0.1:8080" : "www.neon-soft.de") + "/page/NeoPowerMenu/phpWebservice/webservice2.php");
                                 uH.setLocalUrl(path);
                                 uH.uploadAs(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0") + ".nps");
-                                uH.setAdditionalUploadPosts(new String[][]{{"presetName", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")}, {"presetCreator", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1")}, {"presetAppVersion", "v" + appVersion}, {MainActivity.userName.contains("@") ? "userEmail" : "userName", MainActivity.userName}, {"userId", MainActivity.deviceUniqeId}, {"presetContent", features}});
+                                uH.setAdditionalUploadPosts(new String[][]{{"presetName", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "0")}, {"presetCreator", resultBundle.getString(slideDownDialogFragment.RESULT_INPUT + "1")}, {"presetAppVersion", "v" + appVersion}, {MainActivity.usernameemail.contains("@") ? "userEmail" : "userName", "" + MainActivity.usernameemail}, {"userId", "" + MainActivity.deviceUniqeId}, {"accId", "" + MainActivity.accountUniqeId}, {"presetContent", features}});
                                 uH.startUpload();
                             }
 
@@ -1333,19 +1333,19 @@ public class PresetsAdapter extends ArrayAdapter<PresetsHolder> {
                     } else if (p1[0].equalsIgnoreCase(builtIn[2])) {
                         preset = neopowermenu.blackPresetArray;
                     }
-                    for (int i = 0; i < preset.length; i++) {
-                        for (int x = 2; x < neopowermenu.ColorNamesArray[i].length; x++) {
-                            String[] loadColor = neopowermenu.ColorNamesArray[i][x].toString().split("_");
+                    for (int i = 0; i < neopowermenu.colors.size(); i++) {
+                        for (int x = 2; x < neopowermenu.colors.get(i).length; x++) {
+                            String[] loadColor = neopowermenu.colors.get(i)[x].toString().split("_");
                             if (loadColor.length > 1) {
-                                MainActivity.colorPrefs.edit().putString(neopowermenu.ColorNamesArray[i][x].toString(), preset[i][x - 1]).apply();
-                                publishProgress(loadColor[0] + ": " + preset[i][x - 1]);
+                                MainActivity.colorPrefs.edit().putString(neopowermenu.colors.get(i)[x].toString(), (i < preset.length ? preset[i][x - 1] : neopowermenu.defaultColors.get(i)[x -1])).apply();
+                                publishProgress(loadColor[0] + ": " + (i < preset.length ? preset[i][x - 1] : neopowermenu.defaultColors.get(i)[x -1]));
                             }
                         }
                     }
                 }
                 return "success";
             } catch (Throwable e) {
-                Log.e("NPM", "Failed to import: ", e);
+                Log.e("NPM", "Failed to load preset: ", e);
                 return e.toString();
             }
         }

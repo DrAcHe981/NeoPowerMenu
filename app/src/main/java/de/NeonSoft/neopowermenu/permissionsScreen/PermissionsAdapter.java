@@ -60,7 +60,7 @@ public class PermissionsAdapter extends ArrayAdapter<String> {
                             slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                             dialogFragment.setFragmentManager(MainActivity.fragmentManager);
                             dialogFragment.setContext(mContext);
-                            dialogFragment.setText("Your device does not seem to support notification policy access settings.");
+                            dialogFragment.setText("Failed to launch the \"notification policy access\" settings:\n" + t.toString());
                             dialogFragment.showDialog(R.id.dialog_container);
                         }
                     }
@@ -81,18 +81,15 @@ public class PermissionsAdapter extends ArrayAdapter<String> {
                     @Override
                     public void onClick(View view) {
                         try {
-                            Intent intent = new Intent(DevicePolicyManager
-                                    .ACTION_ADD_DEVICE_ADMIN);
-                            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN,
-                                    new ComponentName(mContext, deviceAdmin.class));
-                            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                                    mContext.getString(R.string.permissionsScreenDesc_DeviceAdmin));
+                            Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+                            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, new ComponentName(mContext, deviceAdmin.class));
+                            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, mContext.getString(R.string.permissionsScreenDesc_DeviceAdmin));
                             mContext.startActivityForResult(intent, permissionsScreen.RESULT_ENABLE_ADMIN);
                         } catch (Throwable t) {
                             slideDownDialogFragment dialogFragment = new slideDownDialogFragment();
                             dialogFragment.setFragmentManager(MainActivity.fragmentManager);
                             dialogFragment.setContext(mContext);
-                            dialogFragment.setText("Your device does not seem to support device admins.");
+                            dialogFragment.setText("Failed to launch the \"device admin\" settings:\n" + t.toString());
                             dialogFragment.showDialog(R.id.dialog_container);
                         }
                     }
