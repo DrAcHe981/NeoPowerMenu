@@ -35,6 +35,8 @@ import java.util.*;
 
 import android.content.res.*;
 
+import org.acra.ACRA;
+
 public final class ErrorActivity extends AppCompatActivity {
 
     public static android.support.v4.app.FragmentManager fragmentManager;
@@ -52,7 +54,6 @@ public final class ErrorActivity extends AppCompatActivity {
         thisActivity = this;
 
         fragmentManager = getSupportFragmentManager();
-
 
         setContentView(de.NeonSoft.neopowermenu.R.layout.customactivityoncrash_error_activity);
 

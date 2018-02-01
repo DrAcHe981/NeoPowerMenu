@@ -248,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         actionbar.setAnimationsEnabled(true);
-        //startActivity(new Intent(getApplicationContext(), ErrorActivity.class));
     }
 
     @Override

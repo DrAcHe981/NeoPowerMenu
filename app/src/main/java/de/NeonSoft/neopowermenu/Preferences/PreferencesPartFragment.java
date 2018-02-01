@@ -612,6 +612,7 @@ public class PreferencesPartFragment extends Fragment {
             MainActivity.actionbar.setButton(getString(R.string.PreviewPowerMenu), R.drawable.ic_action_launch, MainActivity.previewOnClickListener);
         }
 
+
         return InflatedView;
     }
 

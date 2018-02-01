@@ -756,8 +756,8 @@ public class slideDownDialogFragment extends android.support.v4.app.DialogFragme
                     if (dialogInputTextWatcher.get(i) != null)
                         Input.addTextChangedListener(dialogInputTextWatcher.get(i));
                     Input.setText(dialogInputDefaultText.get(i));
-                    Input.setInputType(dialogInputMode.get(i));
                     Input.setSingleLine(dialogInputSingleLine.get(i));
+                    Input.setInputType(dialogInputMode.get(i));
                     dialogInputs.set(i, Input);
                     LinearLayout_InputHolder.addView(InputView);
                 }

@@ -19,7 +19,8 @@ import de.NeonSoft.neopowermenu.helpers.visibilityOrder_ListAdapter;
 		reportType = org.acra.sender.HttpSender.Type.JSON,
 		mode = ReportingInteractionMode.SILENT,
 		sendReportsAtShutdown = true,
-		socketTimeout = 1000 * 20
+		socketTimeout = 1000 * 20,
+        alsoReportToAndroidFramework = true
 )
 
 public class neopowermenu extends Application

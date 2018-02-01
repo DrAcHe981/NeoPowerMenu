@@ -26,6 +26,7 @@ public class errorFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
+
         View InflatedView = inflater.inflate(de.NeonSoft.neopowermenu.R.layout.customactivityoncrash_error_fragment, container, false);
 
         //Close/restart button logic:
@@ -144,7 +145,10 @@ public class errorFragment extends Fragment {
                         try {
                             crashOut.createNewFile();
                             FileWriter fw = new FileWriter(crashOut);
-                            fw.append(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0"));
+                            fw.append("[DETAILS]\n");
+                            fw.append(resultBundle.getString(slideDownDialogFragment.RESULT_INPUT+"0") + "\n");
+                            fw.append("[STACKTRACE]\n");
+                            fw.append(CustomActivityOnCrash.getStackTraceFromIntent(ErrorActivity.thisActivity.getIntent()));
                             fw.close();
                             uploadHelper uploadDetails = new uploadHelper(ErrorActivity.thisActivity);
                             uploadDetails.setInterface(new uploadHelper.uploadHelperInterface() {
@@ -185,7 +189,7 @@ public class errorFragment extends Fragment {
                             loadingBar.startAnimation(AnimationUtils.loadAnimation(ErrorActivity.thisActivity, R.anim.fade_in));
                             uploadDetails.setLocalUrl(ErrorActivity.thisActivity.getFilesDir().getPath() + "/crashDetails.txt");
                             uploadDetails.setServerUrl("https://neon-soft.de/inc/acra/acra.php");
-                            uploadDetails.setAdditionalUploadPosts(new String[][] {{"type", "details"}, {"stacktrace", "" + CustomActivityOnCrash.getStackTraceFromIntent(ErrorActivity.thisActivity.getIntent())}, {"package", MainActivity.class.getPackage().getName()}});
+                            uploadDetails.setAdditionalUploadPosts(new String[][] {{"type", "details"}, {"package", MainActivity.class.getPackage().getName()}});
                             uploadDetails.startUpload();
                         } catch (Throwable e) {
                             Log.e("NPM","[errorActivity] Failed to save crash details.",e);
