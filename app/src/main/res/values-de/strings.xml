@@ -488,5 +488,4 @@
   <string name="errorActivity_FailedToSubmit">Beim Hochladen der Daten ist ein Fehler aufgetreten.</string>
   <string name="errorActivity_SubmitSuccessful">Vielen Dank für die Übermittlung weiterer Informationen, wir werden so schnell wie möglich einen Blick darauf werfen!</string>
   <string name="visibilityOrder_MissingDeviceAdmin">Der NeoPowerMenu Geräte Administrator ist nicht aktiviert, bitte aktiviere es um dieses Element zu nutzen!</string>
-  <string name="visibilityOrder_HideFirstItemInFolder">Verwende das erste Element nur für den Ordner Knopf (Es wird nicht im Ordner selbst angezeigt)</string>
 </resources>
