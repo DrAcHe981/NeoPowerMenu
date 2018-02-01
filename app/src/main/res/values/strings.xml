@@ -517,6 +517,6 @@
     <string name="errorActivity_FailedToSubmit">Something went wrong while uploading your details.</string>
     <string name="errorActivity_SubmitSuccessful">Thank you for submitting more details, we will take a look into it as soon as possible!</string>
     <string name="visibilityOrder_MissingDeviceAdmin">The NeoPowerMenu device admin is not enabled, please enable it to use this element!</string>
-    <string name="visibilityOrder_HideFirstItemInFolder">Use first item only for the folder toggle (It wont be shown in folder itself)</string>
+    <string name="visibilityOrder_HideFirstItemInFolder">"Use first item only for the folder toggle (It won't be shown in folder itself)"</string>
 
 </resources>
