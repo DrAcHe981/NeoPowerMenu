@@ -750,7 +750,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         !appInfo.processName.startsWith("com.android.systemui")) {
                     boolean permissionAvailable = true;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        permissionAvailable = mContext.checkSelfPermission("android.permission.FORCE_STOP_PACKAGES") == PackageManager.PERMISSION_GRANTED;
+                        permissionAvailable = p1.checkSelfPermission("android.permission.FORCE_STOP_PACKAGES") == PackageManager.PERMISSION_GRANTED;
                     }
                     if (appInfo.pkgList != null && appInfo.pkgList.length > 0 && permissionAvailable) {
                         for (String pkg : appInfo.pkgList) {
