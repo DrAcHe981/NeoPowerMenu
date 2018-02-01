@@ -76,7 +76,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     private static final String CLASS_PACKAGE_PARSER_PACKAGE = "android.content.pm.PackageParser.Package";
     private static final String CLASS_SHUTDOWN_THREAD = "com.android.server.power.ShutdownThread";
 
-    private static final String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER", "android.permission.READ_FRAME_BUFFER"};
+    private static String[] XPOSEDPERMISSIONS = {"android.permission.ACCESS_SURFACE_FLINGER", "android.permission.READ_FRAME_BUFFER", "android.permission.FORCE_STOP_PACKAGES"};
 
     private static final String CLASS_SYSTEMUI = "com.android.systemui.SystemUIApplication";
 
@@ -104,7 +104,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public Object mObjectHolder;
 
     /*<!-- Internal Hook version to check if reboot is needed --!>*/
-    private static final int XposedHookVersion = 28;
+    private static final int XposedHookVersion = 29;
 
 
     private BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
@@ -277,50 +277,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             @SuppressWarnings("unchecked")
                             @Override
                             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                                final String pkgName = (String) XposedHelpers.getObjectField(param.args[0], "packageName");
-
-                                if (PACKAGE_NAME.equals(pkgName)) {
-                                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                                        final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
-                                        final Object ps = XposedHelpers.callMethod(extras, "getPermissionsState");
-                                        final List<String> grantedPerms =
-                                                (List<String>) XposedHelpers.getObjectField(param.args[0], "requestedPermissions");
-                                        final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
-                                        final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
-
-                                        for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                            if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
-                                                final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
-                                                        XPOSEDPERMISSIONS[i]);
-                                                int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
-                                                if (DeepXposedLogging)
-                                                    XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ") ; ret=" + ret);
-                                            }
-                                        }
-
-                                    } else {
-                                        final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
-                                        final Set<String> grantedPerms =
-                                                (Set<String>) XposedHelpers.getObjectField(extras, "grantedPermissions");
-                                        final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
-                                        final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
-
-                                        for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                            if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
-                                                final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
-                                                        XPOSEDPERMISSIONS[i]);
-                                                grantedPerms.add(XPOSEDPERMISSIONS[i]);
-                                                int[] gpGids = (int[]) XposedHelpers.getObjectField(extras, "gids");
-                                                int[] bpGids = (int[]) XposedHelpers.getObjectField(pAccessSurfaceFlinger, "gids");
-                                                gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(),
-                                                        "appendInts", gpGids, bpGids);
-
-                                                if (DeepXposedLogging)
-                                                    XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ")");
-                                            }
-                                        }
-                                    }
-                                }
+                                performPermissionPatch(param);
                             }
                         });
             } else {
@@ -329,51 +286,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                             @SuppressWarnings("unchecked")
                             @Override
                             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                                final String pkgName = (String) XposedHelpers.getObjectField(param.args[0], "packageName");
-
-                                // NeoPowerMenu
-                                if (PACKAGE_NAME.equals(pkgName)) {
-                                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                                        final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
-                                        final Object ps = XposedHelpers.callMethod(extras, "getPermissionsState");
-                                        final List<String> grantedPerms =
-                                                (List<String>) XposedHelpers.getObjectField(param.args[0], "requestedPermissions");
-                                        final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
-                                        final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
-
-                                        for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                            if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
-                                                final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
-                                                        XPOSEDPERMISSIONS[i]);
-                                                int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
-                                                if (DeepXposedLogging)
-                                                    XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ") ; ret=" + ret);
-                                            }
-                                        }
-
-                                    } else {
-                                        final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
-                                        final Set<String> grantedPerms =
-                                                (Set<String>) XposedHelpers.getObjectField(extras, "grantedPermissions");
-                                        final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
-                                        final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
-
-                                        for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
-                                            if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
-                                                final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
-                                                        XPOSEDPERMISSIONS[i]);
-                                                grantedPerms.add(XPOSEDPERMISSIONS[i]);
-                                                int[] gpGids = (int[]) XposedHelpers.getObjectField(extras, "gids");
-                                                int[] bpGids = (int[]) XposedHelpers.getObjectField(pAccessSurfaceFlinger, "gids");
-                                                gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(),
-                                                        "appendInts", gpGids, bpGids);
-
-                                                if (DeepXposedLogging)
-                                                    XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ")");
-                                            }
-                                        }
-                                    }
-                                }
+                                performPermissionPatch(param);
                             }
                         });
             }
@@ -632,6 +545,56 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
         return;
     }
 
+    private void performPermissionPatch(XC_MethodHook.MethodHookParam param) {
+        final String pkgName = (String) XposedHelpers.getObjectField(param.args[0], "packageName");
+
+        if (PACKAGE_NAME.equals(pkgName) || pkgName.equals("com.android.systemui")) {
+            if (pkgName.equals("com.android.systemui")) {
+                XPOSEDPERMISSIONS = new String[] {"android.permission.FORCE_STOP_PACKAGES"};
+            }
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
+                final Object ps = XposedHelpers.callMethod(extras, "getPermissionsState");
+                final List<String> grantedPerms =
+                        (List<String>) XposedHelpers.getObjectField(param.args[0], "requestedPermissions");
+                final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
+                final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
+
+                for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
+                    if (!(boolean) XposedHelpers.callMethod(ps, "hasInstallPermission", XPOSEDPERMISSIONS[i])) {
+                        final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
+                                XPOSEDPERMISSIONS[i]);
+                        int ret = (int) XposedHelpers.callMethod(ps, "grantInstallPermission", pAccessSurfaceFlinger);
+                        if (DeepXposedLogging)
+                            XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ") ; ret=" + ret);
+                    }
+                }
+
+            } else {
+                final Object extras = XposedHelpers.getObjectField(param.args[0], "mExtras");
+                final Set<String> grantedPerms =
+                        (Set<String>) XposedHelpers.getObjectField(extras, "grantedPermissions");
+                final Object settings = XposedHelpers.getObjectField(param.thisObject, "mSettings");
+                final Object permissions = XposedHelpers.getObjectField(settings, "mPermissions");
+
+                for (int i = 0; i < XPOSEDPERMISSIONS.length; i++) {
+                    if (!grantedPerms.contains(XPOSEDPERMISSIONS[i])) {
+                        final Object pAccessSurfaceFlinger = XposedHelpers.callMethod(permissions, "get",
+                                XPOSEDPERMISSIONS[i]);
+                        grantedPerms.add(XPOSEDPERMISSIONS[i]);
+                        int[] gpGids = (int[]) XposedHelpers.getObjectField(extras, "gids");
+                        int[] bpGids = (int[]) XposedHelpers.getObjectField(pAccessSurfaceFlinger, "gids");
+                        gpGids = (int[]) XposedHelpers.callStaticMethod(param.thisObject.getClass(),
+                                "appendInts", gpGids, bpGids);
+
+                        if (DeepXposedLogging)
+                            XposedUtils.log("Permission added: " + XPOSEDPERMISSIONS[i] + " (" + pAccessSurfaceFlinger + ")");
+                    }
+                }
+            }
+        }
+    }
+
     private static void performCMDCall(String[] cmd) {
         XposedUtils.log("Trying to run '" + cmd[0] + "' using system process call");
 
@@ -785,7 +748,11 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
                         !appInfo.processName.startsWith(MainActivity.class.getPackage().getName()) &&
                         !appInfo.processName.startsWith("com.google.android.gms") &&
                         !appInfo.processName.startsWith("com.android.systemui")) {
-                    if (appInfo.pkgList != null && appInfo.pkgList.length > 0) {
+                    boolean permissionAvailable = true;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        permissionAvailable = mContext.checkSelfPermission("android.permission.FORCE_STOP_PACKAGES") == PackageManager.PERMISSION_GRANTED;
+                    }
+                    if (appInfo.pkgList != null && appInfo.pkgList.length > 0 && permissionAvailable) {
                         for (String pkg : appInfo.pkgList) {
                             if (DeepXposedLogging) XposedUtils.log("Force stopping: " + pkg);
                             XposedHelpers.callMethod(am, "forceStopPackage", pkg);
