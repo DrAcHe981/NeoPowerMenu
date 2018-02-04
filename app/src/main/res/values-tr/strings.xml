@@ -487,4 +487,6 @@
   <string name="errorActivity_Submit">Ayrıntıları gönder</string>
   <string name="errorActivity_FailedToSubmit">Ayrıntılarınız yüklenirken bir sorun oluştu.</string>
   <string name="errorActivity_SubmitSuccessful">Daha fazla ayrıntı gönderdiğiniz için teşekkür ederiz, mümkün olan en kısa zamanda inceleyeceğiz!</string>
+  <string name="visibilityOrder_MissingDeviceAdmin">NeoPowerMenu cihaz yöneticisi etkin değil, lütfen bu öğeyi kullanmak için etkinleştirin!</string>
+  <string name="visibilityOrder_HideFirstItemInFolder">"Yalnızca klasör gösterme/gizleme için ilk öğeyi kullan (Klasörün içinde gösterilmez)"</string>
 </resources>
