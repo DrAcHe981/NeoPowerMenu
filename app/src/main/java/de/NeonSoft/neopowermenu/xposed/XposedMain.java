@@ -104,7 +104,7 @@ public class XposedMain implements IXposedHookLoadPackage, IXposedHookZygoteInit
     public Object mObjectHolder;
 
     /*<!-- Internal Hook version to check if reboot is needed --!>*/
-    private static final int XposedHookVersion = 29;
+    private static final int XposedHookVersion = 30;
 
 
     private BroadcastReceiver mNPMReceiver = new BroadcastReceiver() {
