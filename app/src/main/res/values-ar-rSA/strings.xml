@@ -118,5 +118,13 @@
   <string name="presetsManager_UploadFailed">"فشل الرفع!"</string>
   <string name="presetsManager_DownloadFailed">"فشل التحميل!"</string>
   <string name="presetsManager_CantConnecttoServer">"فشل الاتصال بالسيرفر. \n يرجي التحقق من اتصال الانترنت لديك وإعادة المحاولة."</string>
+  <string name="permissionsScreenTitle_android.permission.INTERNET">"انترنت"</string>
   <string name="login_Title">"تسجيل الدخول"</string>
+  <string name="login_TitleRegister">"التسجيل"</string>
+  <string name="login_Info">"حسابات المستخدمين محمية ، لذلك لا احد يستطيع رفع الملفات ب اسمهم
+من هنا يمكنك تسجيل الدخول او انشاء حساب جديد.\n هذا ليس ضروري اذا كنت لا ترغب بذلك\n! لن اقوم بمشاركة اي معلومات خاصة بك!"</string>
+  <string name="login_UsernameEmail">"اسم المستخدم او الايميل:"</string>
+  <string name="login_Username">"اسم المستخدم:"</string>
+  <string name="login_Email">"الايميل:"</string>
+  <string name="login_RetypeEmail">"أعد إدخال الايميل:"</string>
 </resources>
