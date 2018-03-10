@@ -161,6 +161,7 @@
   <string name="Dialog_Buttons">"OK|Oui|Non|Renommer|Annuler|Supprimer|Charger|Enregistrer|Ignorer"</string>
   <string name="presetLoadDialog_BuiltIn">"Clair|Sombre|Noir"</string>
   <string name="graphics_Choose">"Restaurer par défaut | Choisir des préréglages | Choisir dans la Galerie"</string>
+  <string name="graphics_NoPresetsFound">"Impossible de trouver un preset contenant ce graphique ..."</string>
   <string name="presetsManager_Buttons">"Donner Star | Supprimer Star | Supprimer | Report | Télécharger | Partager"</string>
   <string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
   <string name="preferences_RootXposed1Title">"Root et Xposed non disponible"</string>
@@ -176,6 +177,7 @@
   <string name="preferencesCategory_General">"Général"</string>
   <string name="preferences_ThemeTitle">"Thème"</string>
   <string name="preferences_ThemeDesc">"Changer l'aspect et l'ergonomie."</string>
+  <string name="preferences_GraphicsDesc">"Changez les graphiques, utilisez des graphiques personnalisés ou prédéfinis."</string>
   <string name="preferences_VisibilityOrderTitle">"Visibilité et Order"</string>
   <string name="preferences_VisibilityOrderDesc">"Sélectionner les éléments que vous voulez afficher et les placer dans l'ordre de votre choix."</string>
   <string name="preferencesCategory_Other">"Autres"</string>
