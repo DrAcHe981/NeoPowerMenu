@@ -488,4 +488,5 @@
   <string name="errorActivity_Submit">Enviar detalles</string>
   <string name="errorActivity_FailedToSubmit">Algo ocurrió mientras se enviaban sus datos.</string>
   <string name="errorActivity_SubmitSuccessful">Gracias por enviar más detalles, vamos a revisarlo lo antes posible!</string>
+  <string name="visibilityOrder_MissingDeviceAdmin">El administrador de dispositivo NeoPowerMenu no está habilitado, por favor activarlo usar este elemento!</string>
 </resources>
