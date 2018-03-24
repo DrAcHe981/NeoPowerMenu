@@ -158,6 +158,8 @@
   <string name="presetsManager_Refresh">"Atualizar"</string>
   <string name="presetsManager_OrderBy">"Ordenar por"</string>
   <string name="presetsManager_OrderNames">"Nome|hora|estrelas|criador|seus"</string>
+  <string name="presetsManager_OrderAsc">"Ascendente"</string>
+  <string name="presetsManager_OrderDesc">"Descendente"</string>
   <string name="visibilityOrder_SelectMulti">"Por favor selecione três itens:"</string>
   <string name="powerMenuMain_Empty">"Vazio"</string>
   <string name="login_Recover">"Recuperar"</string>
@@ -171,6 +173,7 @@
   <string name="Dialog_Buttons">"OK|Sim|Não|Renomear|Cancelar|Excluir|Carregar|Salvar|Ignorar"</string>
   <string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
   <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
+  <string name="graphics_Crop">"Cortar"</string>
   <string name="presetsManager_Buttons">"Dar Estrela|Remover Estrela|Deletar|Denunciar|Enviar|Compartilhar"</string>
   <string name="downloadHelper_States">"Esperando por outros downloads...|Conectando ao servidor...|Requisitando informação...|Baixando...|Cancelando..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
