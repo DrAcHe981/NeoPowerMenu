@@ -7,7 +7,10 @@
   <string name="powerMenuMain_Reboot">"Riavvia"</string>
   <string name="powerMenuMain_SoftReboot">"Riavvio Soft"</string>
   <string name="powerMenuMain_SoftRebootDesc">"Riavvio semplice Android UI con chiusura il processo zygote"</string>
+  <string name="powerMenuMain_Screenshot">"Screenshot"</string>
   <string name="powerMenuMain_ScreenshotDesc">"Ritardo screenshot: [SCREENSHOTDELAY]"</string>
+  <string name="powerMenuBottom_Recovery">"Recovery"</string>
+  <string name="powerMenuBottom_Bootloader">"Bootloader"</string>
   <string name="powerMenuBottom_SafeMode">"Modalità Provvisoria"</string>
   <string name="powerMenu_Shuttingdown">"Spegnimento..."</string>
   <string name="powerMenu_Rebooting">"Riavvio..."</string>
