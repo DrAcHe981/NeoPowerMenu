@@ -176,13 +176,23 @@
   <string name="graphics_Crop">"Обрезать"</string>
   <string name="graphics_CropCircle">"Обрезать по кругу"</string>
   <string name="graphics_NoPresetsFound">"Невозможно найти шаблон с такой графикой..."</string>
+  <string name="presetsManager_ReportDialogText">"\"\"\"Вы уверены, что хотите пожаловаться на [PRESETNAME]?
+Это не может быть отменено, поэтому не жалуйтесь просто ради веселья, пожалуйста!
+
+Также нам нужна причина, почему вы жалуетесь на него, пожалуйста, укажите её ниже.|Причина:\"\"\""</string>
+  <string name="presetsManager_ReportDialogReason">"Причина жалобы"</string>
+  <string name="presetsManager_ReportResultSuccess">"[PRESETNAME] сообщил, что разработчик проверит."</string>
+  <string name="presetsManager_ReportResultFailed">"Ошибка записи. Пожалуйста, попробуйте снова."</string>
   <string name="presetsManager_Buttons">"Дать звезду|Убрать звезду|Удалить|Пожаловаться|Загрузить|Поделиться"</string>
   <string name="screenrecord_notif_buttons_stop">"Стоп"</string>
+  <string name="screenrecord_notif_buttons_togglepointer">"Переключить указатель"</string>
   <string name="downloadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] осталось"</string>
   <string name="downloadHelper_Speed">"скорость: [SPEED]/с"</string>
   <string name="uploadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
   <string name="visibilityOrder_AddItem">"Добавить обычный объект\nПросто обычный объект с одним слотом.|Добавить мульти объект\nДобавить несколько объектов в одну линию.|Добавить объект-папку\nПосле нажатия появится новая 'страница'."</string>
+  <string name="visibilityOrder_MultiPageStart">"Папка начинается здесь\nПервый обычный объект определяет кнопку для открытия папки.|Папка заканчиввется здесь"</string>
+  <string name="visibilityOrder_MultiPageEnd">"Папка заканчивается здесь"</string>
   <string name="preferencesCategory_RootXposed">"Root и Xposed"</string>
   <string name="preferences_RootXposed1Title">"Root и Xposed недоступны"</string>
   <string name="preferences_RootXposed1Desc">"Root и Xposed должны быть работающими."</string>
@@ -219,8 +229,13 @@
   <string name="preferences_NeoSourceTitle">"Исходный код"</string>
   <string name="preferences_NeoSourceDesc">"NeoPowerMenu имеет открытый исходный код."</string>
   <string name="preferences_ShareTitle">"Поделиться"</string>
+  <string name="preferences_ShareDesc">"Знаете людей, которым может понравиться приложение? \ NНажмите здесь, чтобы поделиться им с ними!"</string>
   <string name="preferences_AboutTitle">"Создано Neon-Soft / DrAcHe981"</string>
   <string name="preferences_AboutDesc">"Основано на исходном коде Naman Dwivedi(naman14)."</string>
+  <string name="animations_Items">"Задний фон|Диалоговое окно|Иконки|Единичные элементы на линии|Множественные элементы на линии"</string>
+  <string name="animations_Speeds">"Очень быстро|Быстрее|Быстро|Нормально|Медленно|Медленнее|Очень медленно"</string>
+  <string name="animations_Interpolators">"Линейный | Ускорение | Замедление | Ускорение и замедление | Отскок | Ожидание | Перегрузка | Ожидание и перерегулирование"</string>
+  <string name="animations_Types_Progressbar">"Поворот по часовой стрелке | Поворот против часовой стрелки | Пульсация | Масштабирование вверх | Масштабирование вниз | Отключено"</string>
   <string name="animations_Type">"Тип"</string>
   <string name="animations_Speed">"Скорость"</string>
   <string name="powerMenuMain_Progress">"Круг загрузки"</string>
@@ -229,6 +244,9 @@
   <string name="powerMenu_SureToPowerOff">"Вы уверены, что хотите перезагрузить устройство?"</string>
   <string name="advancedPrefs_ConfirmationTitle">"Запрос подтверждения"</string>
   <string name="advancedPrefs_ConfirmationDesc">"Включить запрос подтверждения перед перезагрузкой или выключением."</string>
+  <string name="preferences_DonateTitle">"Поддержать"</string>
+  <string name="preferences_DonateDesc">"\"\"\"Пожертвовать|Понравилось приложение?
+Почему бы не пожертвовать мне на чашку кофе или ещё чего-нибудь?\"\"\""</string>
   <string name="advancedPrefs_HideOnClick">"Скрыть по нажатии"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Скрыть меню при нажатии на переключатель."</string>
   <string name="advancedPrefs_LoadAppIcons">"Загрузить иконки приложений"</string>
@@ -440,15 +458,26 @@
   <string name="position_Horizontal">"Горизонтально:"</string>
   <string name="position_Vertical">"Вертикально:"</string>
   <string name="visibilityOrder_AddMultiItem">"Добавить"</string>
+  <string name="visibilityOrder_EditMultiItemText">"Редактировать элемент текста"</string>
+  <string name="visibilityOrder_EditMultiItemRemove">"Удалить элемент"</string>
   <string name="graphics_RadiusTitle">"Радиус круга"</string>
   <string name="graphics_RadiusDesc">"Выберите зкругление фонов графики меню выключения.(По умолчанию: 100%)"</string>
   <string name="advancedPrefsDesc_RoundedCorners">"Включить/отключить закругление углов диалога меню выключения."</string>
   <string name="advancedPrefsTitle_RoundedCorners">"Закругление углов диалога"</string>
   <string name="advancedPrefsTitle_RoundedCornersRadius">"Радиус закругления углов диалога"</string>
   <string name="advancedPrefsDesc_RoundedCornersRadius">"Выберите на сколько будут закруглены углы диалога. (По умолчанию 0%)"</string>
+  <string name="animations_Interpolator">"Интерполятор"</string>
+  <string name="animations_CustomSpeed">"Другая скорость в милисекундах: (по умолчанию: 700ms)"</string>
+  <string name="animations_CustomSpeedTooSmall">"Это значение не может быть меньше [VALUE]."</string>
   <string name="savePreset_Colors">"Сохранить текущий цвет"</string>
   <string name="savePreset_Animations">"Сохранить текущую анимацию"</string>
   <string name="savePreset_Graphics">"Сохранить текущую графику"</string>
+  <string name="presetsManager_LoadPreset">"Выберите, что вы хотите загрузить из этой предустановки:"</string>
+  <string name="loadPreset_Colors">"Загрузка цвета"</string>
+  <string name="loadPreset_Animations">"Загрузка анимации"</string>
+  <string name="loadPreset_Graphics">"Загрузка графики"</string>
+  <string name="presetsManager_Contains">"Предустановка содержит:"</string>
+  <string name="tourPage_8_Title">"Меню пресетов"</string>
   <string name="tourPage_8_Text">"Здесь вы можете загружать сохраненные пресеты или даже загружать их, созданные другими пользователями этого приложения! \ N \ nВозможно добавлять ваши творения в коллекцию!"</string>
   <string name="colorsCopyColor">Копировать цвет</string>
   <string name="colorsInsertColor">Вставить цвет</string>
