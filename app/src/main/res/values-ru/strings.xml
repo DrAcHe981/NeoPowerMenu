@@ -158,6 +158,8 @@
   <string name="presetsManager_Refresh">"Обновить"</string>
   <string name="presetsManager_OrderBy">"Сортировать по"</string>
   <string name="presetsManager_OrderNames">"Название|Время|Звёзды|Создатель|Собственные"</string>
+  <string name="presetsManager_OrderAsc">"По возрастанию"</string>
+  <string name="presetsManager_OrderDesc">"По убыванию"</string>
   <string name="visibilityOrder_SelectMulti">"Пожалуйста, выберите три элемента."</string>
   <string name="powerMenuMain_Empty">"Пусто"</string>
   <string name="login_Recover">"Восстановить"</string>
@@ -175,6 +177,7 @@
   <string name="graphics_CropCircle">"Обрезать по кругу"</string>
   <string name="graphics_NoPresetsFound">"Невозможно найти шаблон с такой графикой..."</string>
   <string name="presetsManager_Buttons">"Дать звезду|Убрать звезду|Удалить|Пожаловаться|Загрузить|Поделиться"</string>
+  <string name="screenrecord_notif_buttons_stop">"Стоп"</string>
   <string name="downloadHelper_States">"Ожидание других загрузок...|Соединение с сервером...|Запрос информации...|Загрузка...|Отмена..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] осталось"</string>
   <string name="downloadHelper_Speed">"скорость: [SPEED]/с"</string>
@@ -215,6 +218,7 @@
   <string name="preferencesCategory_About">"О приложении"</string>
   <string name="preferences_NeoSourceTitle">"Исходный код"</string>
   <string name="preferences_NeoSourceDesc">"NeoPowerMenu имеет открытый исходный код."</string>
+  <string name="preferences_ShareTitle">"Поделиться"</string>
   <string name="preferences_AboutTitle">"Создано Neon-Soft / DrAcHe981"</string>
   <string name="preferences_AboutDesc">"Основано на исходном коде Naman Dwivedi(naman14)."</string>
   <string name="animations_Type">"Тип"</string>
@@ -442,4 +446,23 @@
   <string name="advancedPrefsTitle_RoundedCorners">"Закругление углов диалога"</string>
   <string name="advancedPrefsTitle_RoundedCornersRadius">"Радиус закругления углов диалога"</string>
   <string name="advancedPrefsDesc_RoundedCornersRadius">"Выберите на сколько будут закруглены углы диалога. (По умолчанию 0%)"</string>
+  <string name="savePreset_Colors">"Сохранить текущий цвет"</string>
+  <string name="savePreset_Animations">"Сохранить текущую анимацию"</string>
+  <string name="savePreset_Graphics">"Сохранить текущую графику"</string>
+  <string name="tourPage_8_Text">"Здесь вы можете загружать сохраненные пресеты или даже загружать их, созданные другими пользователями этого приложения! \ N \ nВозможно добавлять ваши творения в коллекцию!"</string>
+  <string name="colorsCopyColor">Копировать цвет</string>
+  <string name="colorsInsertColor">Вставить цвет</string>
+  <string name="presetsManager_ImportFailedCorrupted">Ошибка импорта ... \ nКорректный или недействительный пресет!</string>
+  <string name="presetsManager_ImportFailedUnknownFile">Импорт невозможен... \ nНеизвестный тип файла!</string>
+  <string name="colorsCopied">Цвет скопирован в буфер обмена!</string>
+  <string name="errorActivity_LogSubmitted">Детали сбоя были автоматически отправлены на наш сервер, но было бы полезно, если бы вы могли представить более подробную информацию о том, что вы сделали прямо перед сбоем.</string>
+  <string name="errorActivity_SendDetails">Отправить более подробную информацию</string>
+  <string name="errorActivity_EnterMoreDetails">Введите ниже того, что вы сделали до того, как приложение рухнуло: (только на английском языке)
+ 
+Контекст | Контекст запроса</string>
+  <string name="errorActivity_Submit">Отправить более подробную информацию</string>
+  <string name="errorActivity_FailedToSubmit">При загрузке ваших данных что-то пошло не так.</string>
+  <string name="errorActivity_SubmitSuccessful">Благодарим Вас за предоставление более подробной информации, мы рассмотрим его как можно скорее!</string>
+  <string name="visibilityOrder_MissingDeviceAdmin">Администратор устройства NeoPowerMenu не включен, пожалуйста, включите его для использования этого элемента!</string>
+  <string name="visibilityOrder_HideFirstItemInFolder">"Используйте первый элемент только для переключения папки (он не будет отображаться в самой папке)"</string>
 </resources>
