@@ -221,6 +221,8 @@
   <string name="animations_Speed">"Скорость"</string>
   <string name="powerMenuMain_Progress">"Круг загрузки"</string>
   <string name="presetsManager_LoadMore">"Загрузка...|Пожалуйста, подождите...|Показать больше шаблонов|Нажмите сюда, чтобы отобразить больше шаблонов.|Конец.|Больше шаблонов нет.|Нажмите, чтобы попробовать снова."</string>
+  <string name="powerMenu_SureToReboot">"Вы уверены, что хотите перезагрузить устройство?"</string>
+  <string name="powerMenu_SureToPowerOff">"Вы уверены, что хотите перезагрузить устройство?"</string>
   <string name="advancedPrefs_ConfirmationTitle">"Запрос подтверждения"</string>
   <string name="advancedPrefs_ConfirmationDesc">"Включить запрос подтверждения перед перезагрузкой или выключением."</string>
   <string name="advancedPrefs_HideOnClick">"Скрыть по нажатии"</string>
