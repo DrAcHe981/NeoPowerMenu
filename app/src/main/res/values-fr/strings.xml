@@ -18,9 +18,12 @@
   <string name="powerMenuMain_AppShortcut">"Raccourci d'application"</string>
   <string name="powerMenuMain_ActivityShortcut">"Raccourci d’activité"</string>
   <string name="powerMenuMain_ToggleRotate">"Rotation de l’écran"</string>
+  <string name="ToggleRotateMode_Auto">"Auto"</string>
   <string name="ToggleRotateMode_Off">"Inactif"</string>
   <string name="powerMenuMain_ToggleWifi">"Wifi"</string>
+  <string name="powerMenuMain_ToggleBluetooth">"Bluetooth"</string>
   <string name="powerMenuMain_ToggleData">"Données"</string>
+  <string name="powerMenuMain_RebootFlashMode">"Flashmode"</string>
   <string name="visibilityOrderCategory_VisibilityOrder">"Visibilité et Ordre"</string>
   <string name="category_Preset">"Préréglagles"</string>
   <string name="preset_Load">"Chager préréglages"</string>
@@ -58,6 +61,7 @@
   <string name="presetSave_PresetSaved">"[PRESETNAME] enregistré !"</string>
   <string name="powerMenuMain_Screenrecord">"Enregistrement de l'écran"</string>
   <string name="screenrecord_notif_ticker">"L'écran est en train d'être enregistré"</string>
+  <string name="screenrecord_notif_title">"Enregistrement d'écran"</string>
   <string name="screenrecord_toast_error">"Impossible d'éenregistrer l'écran"</string>
   <string name="screenrecord_toast_processing">"Impossible de lancer un nouvel enregistrement car le précédent est toujours en-cours d'utilisation"</string>
   <string name="screenrecord_toast_saved">"Enregistrement enregistré en %s"</string>
@@ -77,6 +81,7 @@
   <string name="colorsType_Background">"Couleur d'arrière-plan"</string>
   <string name="colorsType_Text">"Couleur du texte"</string>
   <string name="powerMenuMain_Flashlight">"Torche"</string>
+  <string name="permissionsScreen_Title">"Permissions"</string>
   <string name="permissionsScreen_NotAllGranted">"Toutes les permissions ne sont pas accordées, certaines options peuvent ne pas fonctionner..."</string>
   <string name="permissionsScreen_ClickToRequest">"Appuyez pour demander la permissions."</string>
   <string name="permissionsScreen_DontAskAgain">"Ne plus demander"</string>
@@ -96,11 +101,13 @@
   <string name="permissionsScreenDesc_android.permission.ACCESS_WIFI_STATE">"Requis pour obtenir l’état du WiFi."</string>
   <string name="permissionsScreenTitle_android.permission.CHANGE_WIFI_STATE">"Changer l'état du Wi-Fi"</string>
   <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"Requis pour activer/désactiver le WiFi."</string>
+  <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Requis pour obtenir l’état du Bluetooth."</string>
   <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Admin Bluetooth"</string>
   <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Requis pour activer/désactiver le Bluetooth sans aucun dialogue."</string>
   <string name="powerMenuMain_SoundMode">"Mode Son"</string>
   <string name="powerMenuMain_SoundModeDesc">"Mode actuel : [SOUNDMODE]"</string>
+  <string name="SoundMode_Normal">"Normal"</string>
   <string name="SoundMode_Vibrate">"Vibreur"</string>
   <string name="SoundMode_Silent">"Silencieux"</string>
   <string name="presetsManager_TitleAccount">"Compte"</string>
@@ -112,6 +119,7 @@
   <string name="presetsManager_DownloadFailed">"Échec du téléchargement !"</string>
   <string name="presetsManager_CantConnecttoServer">"Impossible de se connecter au serveur !\nVeuillez vérifier votre connection réseau et réessayez plus tard."</string>
   <string name="presetsManager_CantConnecttoDB">"Impossible de se connecter à la base de données !\nVeuillez réessayez ultérieurement. En cas de nouvel échec, merci de le signaler au développeur."</string>
+  <string name="permissionsScreenTitle_android.permission.INTERNET">"Internet"</string>
   <string name="permissionsScreenDesc_android.permission.INTERNET">"Requis pour télécharger ou charger des préréglages depuis le serveur public."</string>
   <string name="login_Title">"S'identifier"</string>
   <string name="login_TitleRegister">"S'enregistrer"</string>
@@ -148,6 +156,8 @@
   <string name="presetsManager_Refresh">"Actualiser"</string>
   <string name="presetsManager_OrderBy">"Trier par"</string>
   <string name="presetsManager_OrderNames">"Nom|Temps|Étoile|Créateur|Les miens"</string>
+  <string name="presetsManager_OrderAsc">"Croissant"</string>
+  <string name="presetsManager_OrderDesc">"Décroissant"</string>
   <string name="visibilityOrder_SelectMulti">"Veuillez choisir trois éléments :"</string>
   <string name="powerMenuMain_Empty">"Vide"</string>
   <string name="login_Recover">"Restaurer"</string>
@@ -161,6 +171,7 @@
   <string name="Dialog_Buttons">"OK|Oui|Non|Renommer|Annuler|Supprimer|Charger|Enregistrer|Ignorer"</string>
   <string name="presetLoadDialog_BuiltIn">"Clair|Sombre|Noir"</string>
   <string name="graphics_Choose">"Restaurer par défaut | Choisir des préréglages | Choisir dans la Galerie"</string>
+  <string name="graphics_Crop">"Rogner"</string>
   <string name="graphics_NoPresetsFound">"Impossible de trouver un preset contenant ce graphique ..."</string>
   <string name="presetsManager_Buttons">"Donner Star | Supprimer Star | Supprimer | Report | Télécharger | Partager"</string>
   <string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
