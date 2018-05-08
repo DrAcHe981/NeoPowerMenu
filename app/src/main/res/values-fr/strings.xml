@@ -252,5 +252,12 @@
   <string name="tourPage_Next">"Suivant"</string>
   <string name="tourPage_Skip">"Passer"</string>
   <string name="tourPage_Enjoy">"Créez votre menu !"</string>
+  <string name="tourPage_0_Text">"Tout d'abord merci d'avoir téléchargé mon application !\n\nCette petite visite guidée va vous présenter le base nécessaire pour utiliser mon application."</string>
   <string name="tourPage_1_Title">"Le Menu principal"</string>
+  <string name="tourPage_1_Text">"Ici vous trouverez toutes les différentes sections et vous pourrez également constater si l'application fonctionne correctement, tout est bien rangé ^^."</string>
+  <string name="tourPage_2_Title">"Le menu Thème"</string>
+  <string name="tourPage_2_Text">"Votre personnalisation commence ici : vous pouvez changer toutes les couleurs !\nMon objectif principal est d'offrir un \"power menu\" le plus personnalisable possible."</string>
+  <string name="tourPage_3_Title">"Le menu Graphismes"</string>
+  <string name="tourPage_3_Text">"Personnalisez les graphismes utilisés."</string>
+  <string name="tourPage_4_Title">"Le menu Visibilité et Ordre"</string>
 </resources>
