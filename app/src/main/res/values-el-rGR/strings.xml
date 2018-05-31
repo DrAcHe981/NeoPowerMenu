@@ -3,8 +3,8 @@
 <resources>
   <string name="ShareMessage">"Check out this beautiful app to customize your Power Menu of your rooted android device!"</string>
   <string name="PreviewPowerMenu">"Preview"</string>
-  <string name="powerMenuMain_Shutdown">"Power Off"</string>
-  <string name="powerMenuMain_Reboot">"Reboot"</string>
+  <string name="powerMenuMain_Shutdown">"Απενεργοποίηση"</string>
+  <string name="powerMenuMain_Reboot">"Επανεκκίνηση"</string>
   <string name="powerMenuMain_SoftReboot">"Soft Reboot"</string>
   <string name="powerMenuMain_SoftRebootDesc">"Simply restarts the Android UI by killing the zygote process"</string>
   <string name="powerMenuMain_Screenshot">"Screenshot"</string>
