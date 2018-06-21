@@ -146,7 +146,9 @@
   <string name="login_TitleLogout">"Keluar"</string>
   <string name="login_pleaseCheckInput">"Ada yang tidak beres, tolong periksa masukanmu."</string>
   <string name="presetsManager_Stars">"Bintang: [STARS]"</string>
+  <string name="colorsPartTitle">"[PART] warna"</string>
   <string name="colorsPartDescDialog">"Warna dialog saat diklik [BUTTON]."</string>
+  <string name="colorsPartDescButton">"Warna [BUTTON] tombol."</string>
   <string name="colorsPartPresets">"Preset"</string>
   <string name="colorsPartReveal">"Mengungkapkan"</string>
   <string name="colorsPartRevealDesc">"Warna yang diwahyukan animasi."</string>
@@ -155,6 +157,8 @@
   <string name="presetsManager_Refresh">"Menyegarkan"</string>
   <string name="presetsManager_OrderBy">"Dipesan oleh"</string>
   <string name="presetsManager_OrderNames">"Nama | Waktu | Bintang |Pencipta | Sendiri"</string>
+  <string name="presetsManager_OrderAsc">"Naik"</string>
+  <string name="presetsManager_OrderDesc">"Turun"</string>
   <string name="visibilityOrder_SelectMulti">"Silakan pilih tiga item:"</string>
   <string name="powerMenuMain_Empty">"Kosong"</string>
   <string name="login_Recover">"Memulihkan"</string>
@@ -168,6 +172,7 @@
   <string name="Dialog_Buttons">"OK | Ya | Tidak | Ubah nama | Batal | Hapus | Load | Save | Ignore"</string>
   <string name="presetLoadDialog_BuiltIn">"Light|Dark|Black"</string>
   <string name="graphics_Choose">"Kembalikan default | Pilih dari preset | Pilih dari galeri"</string>
+  <string name="graphics_Crop">"Potong"</string>
   <string name="presetsManager_Buttons">"Berikan Bintang|Hapus Bintang |Hapus |Laporan|Upload|Share"</string>
   <string name="downloadHelper_States">"Menunggu unduhan lainnya...|Menghubungkan ke server... |Meminta informasi... |Mengunduh...|Membatalkan..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] tersisa"</string>
