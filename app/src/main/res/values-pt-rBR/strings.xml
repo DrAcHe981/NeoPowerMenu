@@ -214,6 +214,7 @@
   <string name="preferencesCategory_About">"Sobre"</string>
   <string name="preferences_NeoSourceTitle">"Fonte"</string>
   <string name="preferences_NeoSourceDesc">"NeoPowerMenu é um código aberto."</string>
+  <string name="preferences_ShareTitle">"Compartilhar"</string>
   <string name="preferences_AboutTitle">"Código por Neon-Soft/DrAcHe981"</string>
   <string name="preferences_AboutDesc">"Baseado em um código de Naman Dwivedi (naman14)."</string>
   <string name="animations_Type">"Tipo"</string>
