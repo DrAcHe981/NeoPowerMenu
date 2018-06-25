@@ -219,6 +219,7 @@
   <string name="preferences_NeoSourceTitle">"Fonte"</string>
   <string name="preferences_NeoSourceDesc">"NeoPowerMenu é um código aberto."</string>
   <string name="preferences_ShareTitle">"Compartilhar"</string>
+  <string name="preferences_ShareDesc">"Conhece pessoas que podem gostar do aplicativo?\nToque aqui para compartilhá-lo com os outros!"</string>
   <string name="preferences_AboutTitle">"Código por Neon-Soft/DrAcHe981"</string>
   <string name="preferences_AboutDesc">"Baseado em um código de Naman Dwivedi (naman14)."</string>
   <string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal| Lento|Mais lento|Muito lento|Personalizado"</string>
@@ -231,6 +232,7 @@
   <string name="advancedPrefs_ConfirmationTitle">"Pedir confirmação"</string>
   <string name="advancedPrefs_ConfirmationDesc">"Ative para pedir confirmação ao desligar ou reiniciar o dispositivo. "</string>
   <string name="preferences_DonateTitle">"Doar"</string>
+  <string name="preferences_DonateDesc">"Gosta do meu trabalho?\nPor que não me doar uma xícara de café ou outra coisa?"</string>
   <string name="advancedPrefs_HideOnClick">"Esconder ao clicar"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Esconder o menu ao clicar em um botão de ativação."</string>
   <string name="advancedPrefs_LoadAppIcons">"Carregar Ícones de Apps"</string>
@@ -446,6 +448,8 @@
   <string name="advancedPrefsTitle_RoundedCorners">"Cantos arredondados na caixa de diálogo"</string>
   <string name="advancedPrefsTitle_RoundedCornersRadius">"Raio dos cantos arredondados da caixa de diálogo"</string>
   <string name="advancedPrefsDesc_RoundedCornersRadius">"Defina o quanto serão arredondados os cantos da caixa de diálogo. (Padrão 0%)"</string>
+  <string name="animations_CustomSpeed">"Velocidade personalizada em milissegundos: (Padrão: 700ms)"</string>
+  <string name="animations_CustomSpeedTooSmall">"Este valor não pode ser menor que [VALUE]."</string>
   <string name="savePreset_Colors">"Salvar as cores atuais"</string>
   <string name="savePreset_Animations">"Salvar as animações atuais"</string>
   <string name="savePreset_Graphics">"Salvar os gráficos atuais"</string>
