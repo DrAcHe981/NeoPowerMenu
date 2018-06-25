@@ -183,6 +183,8 @@
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
   <string name="downloadHelper_Speed">"velocidade: [SPEED]/s"</string>
   <string name="uploadHelper_States">"Esperando por outros envios...|Conectando ao servidor...|Requisitando informação...|Enviando...|Cancelando..."</string>
+  <string name="visibilityOrder_MultiPageStart">"O item da pasta começa aqui\nO primeiro item normal define o botão para abrir a pasta."</string>
+  <string name="visibilityOrder_MultiPageEnd">"O item da pasta termina aqui"</string>
   <string name="preferencesCategory_RootXposed">"Root e Xposed"</string>
   <string name="preferences_RootXposed1Title">"Root e Xposed indisponíveis"</string>
   <string name="preferences_RootXposed1Desc">"Root e Xposed são necessários para o módulo funcionar."</string>
@@ -222,6 +224,7 @@
   <string name="preferences_ShareDesc">"Conhece pessoas que podem gostar do aplicativo?\nToque aqui para compartilhá-lo com os outros!"</string>
   <string name="preferences_AboutTitle">"Código por Neon-Soft/DrAcHe981"</string>
   <string name="preferences_AboutDesc">"Baseado em um código de Naman Dwivedi (naman14)."</string>
+  <string name="animations_Items">"Fundo|Caixa de diálogo|Ícones|Ítens de linha única|Ítens de várias linhas|Barra de progresso"</string>
   <string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal| Lento|Mais lento|Muito lento|Personalizado"</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
