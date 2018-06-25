@@ -226,6 +226,8 @@
   <string name="preferences_AboutDesc">"Baseado em um código de Naman Dwivedi (naman14)."</string>
   <string name="animations_Items">"Fundo|Caixa de diálogo|Ícones|Ítens de linha única|Ítens de várias linhas|Barra de progresso"</string>
   <string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal| Lento|Mais lento|Muito lento|Personalizado"</string>
+  <string name="animations_Interpolators">"Linear|Acelerar|Desacelerar|Acelerar e desacelerar|Saltar|Antecipar|Derrapar|Antecipar e ultrapassar"</string>
+  <string name="animations_Types">"Esmaecer|Revelar|Deslizar para cima|Deslizar para a esquerda|Deslizar para a direita|Deslizar para baixo|Ampliar|Reduzir|Girar na vertical|Girar na horizontal|Desabilitado"</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
   <string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
