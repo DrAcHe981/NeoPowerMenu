@@ -439,8 +439,10 @@
   <string name="screenrecord_notif_binarynotFound">"Não foi possível localizar, ler ou executar o arquivo binário. \nA gravação de tela pode não ser suportada em seu dispositivo."</string>
   <string name="advancedPrefsTitle_HideActionDescriptionText">"Esconder texto de descrição na caixa de diálogo de ação de desligamento/reinicialização"</string>
   <string name="advancedPrefsDesc_HideActionDescriptionText">"Esconder a mensagem \"Desligando...\" ou similar na caixa de diálogo ação de desligamento/reinicialização."</string>
+  <string name="powerMenu_Task_Killed">"[TARGET] interrompida!"</string>
   <string name="powerMenu_No_Task_To_Kill">"Não encontrei tarefas que possam ser interrompidas."</string>
   <string name="powerMenuMain_MenuBackground">"Plano de Fundo do Menu"</string>
+  <string name="visibilityOrder_MissingPermissionForCamera">"Permissão da câmera inexistente, permita-a para usar este botão!"</string>
   <string name="visibilityOrder_NotSupportedbyDevice">"Seu dispositivo parece não suportar o elemento \"[TITLE]\"!"</string>
   <string name="powerMenuMain_FakePowerOff">"Desligar (Fake)"</string>
   <string name="crop_failedToSave">"Falha ao salvar, por favor, tente novamente...\nPara mais informações, verifique os registros."</string>
