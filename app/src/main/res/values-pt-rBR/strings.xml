@@ -438,6 +438,7 @@
   <string name="visibilityOrder_EditMultiItemText">"Editar o texto do elemento"</string>
   <string name="visibilityOrder_EditMultiItemRemove">"Remover elemento"</string>
   <string name="graphics_RadiusTitle">"Raio do círculo"</string>
+  <string name="graphics_RadiusDesc">"Defina o quanto serão arredondados os planos de fundo dos gráficos do menu de energia. (Padrão: 100%)"</string>
   <string name="presetsManager_LoadPreset">"Por favor, selecione o que você deseja carregar a partir desta predefinição:"</string>
   <string name="presetsManager_Contains">"A predefinição inclue:"</string>
   <string name="tourPage_8_Title">"As Opções de Predefinições"</string>
