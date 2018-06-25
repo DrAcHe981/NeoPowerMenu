@@ -175,6 +175,7 @@
   <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
   <string name="graphics_Crop">"Cortar"</string>
   <string name="graphics_NoPresetsFound">"Não foi possível encontrar alguma predefinição que contenha este gráfico..."</string>
+  <string name="presetsManager_ReportDialogText">"Você quer mesmo relatar [PRESETNAME]?\nIsto não pode ser desfeito, então, por favor, não relate apenas por diversão!\n\nTambém precisamos de um motivo pelo qual você quer relatá-lo, por favor, escreva-o abaixo."</string>
   <string name="presetsManager_ReportDialogReason">"Informar motivo:"</string>
   <string name="presetsManager_ReportResultSuccess">"[PRESETNAME] relatado, o desenvolvedor dará um olhada nele."</string>
   <string name="presetsManager_ReportResultFailed">"Falha ao relatar, por favor, tente novamente.\nMotivo: "</string>
@@ -439,6 +440,7 @@
   <string name="screenrecord_notif_binarynotFound">"Não foi possível localizar, ler ou executar o arquivo binário. \nA gravação de tela pode não ser suportada em seu dispositivo."</string>
   <string name="advancedPrefsTitle_HideActionDescriptionText">"Esconder texto de descrição na caixa de diálogo de ação de desligamento/reinicialização"</string>
   <string name="advancedPrefsDesc_HideActionDescriptionText">"Esconder a mensagem \"Desligando...\" ou similar na caixa de diálogo ação de desligamento/reinicialização."</string>
+  <string name="visibilityOrder_MissingPermissionForNotiPolicy">"Permissão da política de notificações inexistente, permita-a para usar este botão!"</string>
   <string name="powerMenu_Task_Killed">"[TARGET] interrompida!"</string>
   <string name="powerMenu_No_Task_To_Kill">"Não encontrei tarefas que possam ser interrompidas."</string>
   <string name="powerMenuMain_MenuBackground">"Plano de Fundo do Menu"</string>
