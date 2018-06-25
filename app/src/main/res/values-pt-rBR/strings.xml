@@ -174,7 +174,9 @@
   <string name="presetLoadDialog_BuiltIn">"Claro|Escuro|Preto"</string>
   <string name="graphics_Choose">"Restaurar padrão|Escolher de predefinidos|Escolher da galeria"</string>
   <string name="graphics_Crop">"Cortar"</string>
+  <string name="graphics_NoPresetsFound">"Não foi possível encontrar alguma predefinição que contenha este gráfico..."</string>
   <string name="presetsManager_Buttons">"Dar Estrela|Remover Estrela|Deletar|Denunciar|Enviar|Compartilhar"</string>
+  <string name="screenrecord_notif_buttons_stop">"Parar"</string>
   <string name="downloadHelper_States">"Esperando por outros downloads...|Conectando ao servidor...|Requisitando informação...|Baixando...|Cancelando..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
   <string name="downloadHelper_Speed">"velocidade: [SPEED]/s"</string>
