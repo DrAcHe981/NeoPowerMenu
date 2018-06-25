@@ -176,6 +176,7 @@
   <string name="graphics_Crop">"Cortar"</string>
   <string name="graphics_NoPresetsFound">"Não foi possível encontrar alguma predefinição que contenha este gráfico..."</string>
   <string name="presetsManager_ReportDialogReason">"Informar motivo:"</string>
+  <string name="presetsManager_ReportResultSuccess">"[PRESETNAME] relatado, o desenvolvedor dará um olhada nele."</string>
   <string name="presetsManager_Buttons">"Dar Estrela|Remover Estrela|Deletar|Denunciar|Enviar|Compartilhar"</string>
   <string name="screenrecord_notif_buttons_stop">"Parar"</string>
   <string name="downloadHelper_States">"Esperando por outros downloads...|Conectando ao servidor...|Requisitando informação...|Baixando...|Cancelando..."</string>
