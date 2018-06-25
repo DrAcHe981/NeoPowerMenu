@@ -221,6 +221,7 @@
   <string name="preferences_ShareTitle">"Compartilhar"</string>
   <string name="preferences_AboutTitle">"Código por Neon-Soft/DrAcHe981"</string>
   <string name="preferences_AboutDesc">"Baseado em um código de Naman Dwivedi (naman14)."</string>
+  <string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal| Lento|Mais lento|Muito lento|Personalizado"</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
   <string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
@@ -229,6 +230,7 @@
   <string name="powerMenu_SureToPowerOff">"Tem certeza de que deseja desligar seu dispositivo?"</string>
   <string name="advancedPrefs_ConfirmationTitle">"Pedir confirmação"</string>
   <string name="advancedPrefs_ConfirmationDesc">"Ative para pedir confirmação ao desligar ou reiniciar o dispositivo. "</string>
+  <string name="preferences_DonateTitle">"Doar"</string>
   <string name="advancedPrefs_HideOnClick">"Esconder ao clicar"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Esconder o menu ao clicar em um botão de ativação."</string>
   <string name="advancedPrefs_LoadAppIcons">"Carregar Ícones de Apps"</string>
@@ -407,6 +409,10 @@
   <string name="permissionsScreenDesc_android.permission.USE_FINGERPRINT">"Necessária para usar o scanner de impressão digital, como método de desbloqueio."</string>
   <string name="permissionsScreenTitle_android.permission.ACCESS_NOTIFICATION_POLICY">"Acessar política de notificações"</string>
   <string name="permissionsScreenDesc_android.permission.ACCESS_NOTIFICATION_POLICY">"Necessária no Nougat (7.0) e acima para alterar o modo 'Não Perturbe'."</string>
+  <string name="permissionsScreenTitle_android.permission.ACCESS_NETWORK_STATE">"Acessar estado da rede"</string>
+  <string name="permissionsScreenDesc_android.permission.ACCESS_NETWORK_STATE">"Indispensável para obter o estado da rede do dispositivo."</string>
+  <string name="permissionsScreenTitle_android.permission.CHANGE_NETWORK_STATE">"Alterar o estado da rede"</string>
+  <string name="permissionsScreenDesc_android.permission.CHANGE_NETWORK_STATE">"Indispensável para alterar o estado da rede do dispositivo."</string>
   <string name="powerMenuMain_Shortcut">"Atalho"</string>
   <string name="visibilityOrder_NoGravityBoxFound">"GravityBox não instalado, esse item não terá efeito sem o GravityBox instalado."</string>
   <string name="visibilityOrder_HideText">"Ocultar texto"</string>
@@ -423,6 +429,15 @@
   <string name="screenrecord_notif_binarynotFound">"Não foi possível localizar, ler ou executar o arquivo binário. \nA gravação de tela pode não ser suportada em seu dispositivo."</string>
   <string name="advancedPrefsTitle_HideActionDescriptionText">"Esconder texto de descrição na caixa de diálogo de ação de desligamento/reinicialização"</string>
   <string name="advancedPrefsDesc_HideActionDescriptionText">"Esconder a mensagem \"Desligando...\" ou similar na caixa de diálogo ação de desligamento/reinicialização."</string>
+  <string name="crop_failedToSave">"Falha ao salvar, por favor, tente novamente...\nPara mais informações, verifique os registros."</string>
+  <string name="visibilityOrder_Horizontal">"Mostrar os itens em uma linha horizontal"</string>
+  <string name="position_Width">"Largura:"</string>
+  <string name="position_Horizontal">"Horizontal:"</string>
+  <string name="position_Vertical">"Vertical:"</string>
+  <string name="visibilityOrder_AddMultiItem">"Adicionar"</string>
+  <string name="visibilityOrder_EditMultiItemText">"Editar o texto do elemento"</string>
+  <string name="visibilityOrder_EditMultiItemRemove">"Remover elemento"</string>
+  <string name="graphics_RadiusTitle">"Raio do círculo"</string>
   <string name="presetsManager_LoadPreset">"Por favor, selecione o que você deseja carregar a partir desta predefinição:"</string>
   <string name="presetsManager_Contains">"A predefinição inclue:"</string>
   <string name="tourPage_8_Title">"As Opções de Predefinições"</string>
@@ -430,5 +445,13 @@
   <string name="colorsInsertColor">Inserir cor</string>
   <string name="presetsManager_ImportFailedCorrupted">Falha na importação...\nPredefinição corrompida ou inválida!</string>
   <string name="presetsManager_ImportFailedUnknownFile">Falha na importação...\nTipo de arquivo desconhecido!</string>
+  <string name="colorsCopied">A cor foi copiada para área de transferência!</string>
+  <string name="errorActivity_LogSubmitted">Os detalhes da falha foram enviados automaticamente para nosso servidor, mas seria interessante se você pudesse enviar mais detalhes sobre o que fazia antes do ocorrido.</string>
+  <string name="errorActivity_SendDetails">Enviar mais detalhes</string>
+  <string name="errorActivity_EnterMoreDetails">Digite abaixo o que você fazia antes do aplicativo falhar: (apenas em inglês, por favor)</string>
+  <string name="errorActivity_Submit">Enviar detalhes</string>
+  <string name="errorActivity_FailedToSubmit">Algo deu errado ao enviar seus detalhes.</string>
+  <string name="errorActivity_SubmitSuccessful">Obrigado por enviar mais detalhes, vamos dar uma olhada nele o mais rápido possível!</string>
   <string name="visibilityOrder_MissingDeviceAdmin">O NeoPowerMenu como administrador do dispositivo não está habilitado, por favor habilite-o para usar este elemento!</string>
+  <string name="visibilityOrder_HideFirstItemInFolder">"Use o primeiro item apenas para alternar a pasta (ele não será mostrado na própria pasta)"</string>
 </resources>
