@@ -426,6 +426,9 @@
   <string name="presetsManager_LoadPreset">"Por favor, selecione o que você deseja carregar a partir desta predefinição:"</string>
   <string name="presetsManager_Contains">"A predefinição inclue:"</string>
   <string name="tourPage_8_Title">"As Opções de Predefinições"</string>
+  <string name="colorsCopyColor">Copiar cor</string>
+  <string name="colorsInsertColor">Inserir cor</string>
   <string name="presetsManager_ImportFailedCorrupted">Falha na importação...\nPredefinição corrompida ou inválida!</string>
+  <string name="presetsManager_ImportFailedUnknownFile">Falha na importação...\nTipo de arquivo desconhecido!</string>
   <string name="visibilityOrder_MissingDeviceAdmin">O NeoPowerMenu como administrador do dispositivo não está habilitado, por favor habilite-o para usar este elemento!</string>
 </resources>
