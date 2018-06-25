@@ -446,9 +446,16 @@
   <string name="advancedPrefsTitle_RoundedCorners">"Cantos arredondados na caixa de diálogo"</string>
   <string name="advancedPrefsTitle_RoundedCornersRadius">"Raio dos cantos arredondados da caixa de diálogo"</string>
   <string name="advancedPrefsDesc_RoundedCornersRadius">"Defina o quanto serão arredondados os cantos da caixa de diálogo. (Padrão 0%)"</string>
+  <string name="savePreset_Colors">"Salvar as cores atuais"</string>
+  <string name="savePreset_Animations">"Salvar as animações atuais"</string>
+  <string name="savePreset_Graphics">"Salvar os gráficos atuais"</string>
   <string name="presetsManager_LoadPreset">"Por favor, selecione o que você deseja carregar a partir desta predefinição:"</string>
+  <string name="loadPreset_Colors">"Carregar cores"</string>
+  <string name="loadPreset_Animations">"Carregar animações"</string>
+  <string name="loadPreset_Graphics">"Carregar gráficos"</string>
   <string name="presetsManager_Contains">"A predefinição inclue:"</string>
   <string name="tourPage_8_Title">"As Opções de Predefinições"</string>
+  <string name="tourPage_8_Text">"Aqui você pode carregar suas predefinições salvas, ou até mesmo baixar uma que fora criada por outros usuários deste aplicativo!\n\nSinta-se à vontade para adicionar também suas criações para a coleção!"</string>
   <string name="colorsCopyColor">Copiar cor</string>
   <string name="colorsInsertColor">Inserir cor</string>
   <string name="presetsManager_ImportFailedCorrupted">Falha na importação...\nPredefinição corrompida ou inválida!</string>
