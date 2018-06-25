@@ -448,6 +448,7 @@
   <string name="advancedPrefsTitle_RoundedCorners">"Cantos arredondados na caixa de diálogo"</string>
   <string name="advancedPrefsTitle_RoundedCornersRadius">"Raio dos cantos arredondados da caixa de diálogo"</string>
   <string name="advancedPrefsDesc_RoundedCornersRadius">"Defina o quanto serão arredondados os cantos da caixa de diálogo. (Padrão 0%)"</string>
+  <string name="animations_Interpolator">"Interpolador"</string>
   <string name="animations_CustomSpeed">"Velocidade personalizada em milissegundos: (Padrão: 700ms)"</string>
   <string name="animations_CustomSpeedTooSmall">"Este valor não pode ser menor que [VALUE]."</string>
   <string name="savePreset_Colors">"Salvar as cores atuais"</string>
