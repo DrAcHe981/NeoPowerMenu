@@ -177,8 +177,10 @@
   <string name="graphics_NoPresetsFound">"Não foi possível encontrar alguma predefinição que contenha este gráfico..."</string>
   <string name="presetsManager_ReportDialogReason">"Informar motivo:"</string>
   <string name="presetsManager_ReportResultSuccess">"[PRESETNAME] relatado, o desenvolvedor dará um olhada nele."</string>
+  <string name="presetsManager_ReportResultFailed">"Falha ao relatar, por favor, tente novamente.\nMotivo: "</string>
   <string name="presetsManager_Buttons">"Dar Estrela|Remover Estrela|Deletar|Denunciar|Enviar|Compartilhar"</string>
   <string name="screenrecord_notif_buttons_stop">"Parar"</string>
+  <string name="screenrecord_notif_buttons_togglepointer">"Alternar indicador"</string>
   <string name="downloadHelper_States">"Esperando por outros downloads...|Conectando ao servidor...|Requisitando informação...|Baixando...|Cancelando..."</string>
   <string name="downloadHelper_RemainingTime">"[TIME] restante"</string>
   <string name="downloadHelper_Speed">"velocidade: [SPEED]/s"</string>
@@ -228,6 +230,7 @@
   <string name="animations_Speeds">"Muito rápido|Mais rápido|Rápido|Normal| Lento|Mais lento|Muito lento|Personalizado"</string>
   <string name="animations_Interpolators">"Linear|Acelerar|Desacelerar|Acelerar e desacelerar|Saltar|Antecipar|Derrapar|Antecipar e ultrapassar"</string>
   <string name="animations_Types">"Esmaecer|Revelar|Deslizar para cima|Deslizar para a esquerda|Deslizar para a direita|Deslizar para baixo|Ampliar|Reduzir|Girar na vertical|Girar na horizontal|Desabilitado"</string>
+  <string name="animations_Types_Progressbar">"Rotacionar no sentido horário|Rotacionar no sentido anti-horário|Pulsar|Ampliar|Reduzir|Desabilitado"</string>
   <string name="animations_Type">"Tipo"</string>
   <string name="animations_Speed">"Velocidade"</string>
   <string name="powerMenuMain_Progress">"Círculo de carregamento"</string>
