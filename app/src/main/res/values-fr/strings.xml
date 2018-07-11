@@ -187,6 +187,7 @@
   <string name="downloadHelper_RemainingTime">"[TIME] restant"</string>
   <string name="downloadHelper_Speed">"vitesse : [SPEED]/s"</string>
   <string name="uploadHelper_States">"Attente de d'autres envoies... | Connexin au serveur... | Requête d'information... | Envoie... | Annulation..."</string>
+  <string name="visibilityOrder_AddItem">"Ajouter un élément normal\nJuste un élément normal avec un seul emplacement. |Ajouter de multiples éléments\nAjouter de multiples éléments dans une ligne.|Ajouter un élément dossier\nAppuyer dessus affichera une nouvelle 'page'."</string>
   <string name="visibilityOrder_MultiPageStart">"Le groupe items commence ici\nLe groupe est représenté par le premier item normal."</string>
   <string name="visibilityOrder_MultiPageEnd">"Le groupe d'items s'arrête ici"</string>
   <string name="preferencesCategory_RootXposed">"Root et Xposed"</string>
@@ -204,6 +205,7 @@
   <string name="preferences_Style">"Style"</string>
   <string name="preferences_ThemeTitle">"Thème"</string>
   <string name="preferences_ThemeDesc">"Changer l'aspect et l'ergonomie."</string>
+  <string name="preferences_GraphicsTitle">"Graphismes"</string>
   <string name="preferences_GraphicsDesc">"Changez les graphiques, utilisez des graphiques personnalisés ou prédéfinis."</string>
   <string name="preferences_VisibilityOrderTitle">"Visibilité et Order"</string>
   <string name="preferences_VisibilityOrderDesc">"Sélectionner les éléments que vous voulez afficher et les placer dans l'ordre de votre choix."</string>
@@ -211,6 +213,7 @@
   <string name="preferences_AnimationsDesc">"Modifier les animations ou les désactiver complètement."</string>
   <string name="preferencesCategory_Other">"Autres"</string>
   <string name="preferences_AccountTitle">"Compte"</string>
+  <string name="preferences_AccountDesc">"Ici vous pourrez vous connecter, créer un compte ou vérifier vos statistiques lorsque vous êtes connecté."</string>
   <string name="preferences_AdvancedTitle">"Paramètres avancés"</string>
   <string name="preferences_AdvancedDesc">"Changer les paramètres avancés comme les délais, la gravité ou la vitesse."</string>
   <string name="preferences_PermissionsTitle">"Permissions"</string>
