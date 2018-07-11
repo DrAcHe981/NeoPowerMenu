@@ -237,6 +237,7 @@
   <string name="animations_Type">"Type"</string>
   <string name="animations_Speed">"Vitesse"</string>
   <string name="powerMenuMain_Progress">"Cercle de chargement"</string>
+  <string name="presetsManager_LoadMore">"Chargement...|Patientez s'il vous plaît|Afficher plus de préréglages|Appuyez ici pour afficher plus de préréglages|Fin|Pas plus de préréglages disponibles|Appuyez ici pour réessayer."</string>
   <string name="powerMenu_SureToReboot">"Êtes-vous sûr de vouloir redémarrer votre appareil ?"</string>
   <string name="powerMenu_SureToPowerOff">"Êtes-vous sûr de vouloir éteindre votre appareil ?"</string>
   <string name="advancedPrefs_ConfirmationTitle">"Confirmation recquise"</string>
@@ -245,6 +246,7 @@
   <string name="preferences_DonateDesc">"Vous aimez mon travail ? \nPourquoi ne pas m'offrir un café ou autre chose ?"</string>
   <string name="advancedPrefs_HideOnClick">"Masquer lors de l'appui"</string>
   <string name="advancedPrefs_HideOnClickDesc">"Masquer le menu lors du clic sur un bouton à bascule."</string>
+  <string name="advancedPrefs_LoadAppIcons">"Charger icones d'applications"</string>
   <string name="style_Material">"Material"</string>
   <string name="style_MaterialFullscreen">"Material (plein écran)"</string>
   <string name="style_MaterialFullHorizontal">"Material (à l'horizontal complet)"</string>
