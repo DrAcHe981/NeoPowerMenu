@@ -229,7 +229,9 @@
   <string name="preferences_ShareDesc">"Vous connaissez quelqu'un à qui cette application pourrait plaire ?\nAlors cliquez ici pour la partager avec eux !"</string>
   <string name="preferences_AboutTitle">"Code par Neon-Soft / DrAcHe981"</string>
   <string name="preferences_AboutDesc">"basé sur le code source de Naman Dwivedi (naman14)."</string>
+  <string name="animations_Items">"Arrière plan|Dialogue|Icônes|Ligne d'éléments unique|Ligne d'éléments multiple|Barre de progression"</string>
   <string name="animations_Speeds">"Très rapide|Plus rapide|Rapide|Normal|Lent|Plus lent|Très lent|Personnalisé"</string>
+  <string name="animations_Interpolators">"Linéaire|Accélérer|Décélérer|Accélérer et décélérer|Rebondir|Anticiper|Surtirer|Anticiper et surtirer"</string>
   <string name="animations_Type">"Type"</string>
   <string name="animations_Speed">"Vitesse"</string>
   <string name="powerMenuMain_Progress">"Cercle de chargement"</string>
