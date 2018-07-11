@@ -233,6 +233,7 @@
   <string name="animations_Speeds">"Très rapide|Plus rapide|Rapide|Normal|Lent|Plus lent|Très lent|Personnalisé"</string>
   <string name="animations_Interpolators">"Linéaire|Accélérer|Décélérer|Accélérer et décélérer|Rebondir|Anticiper|Surtirer|Anticiper et surtirer"</string>
   <string name="animations_Types">"Disparaître|Apparaître|Glisser vers le haut|Glisser vers la gauche|Glisser vers la droite|Glisser vers le bas|Agrandir|Réduire|Retourner verticalement|Retourner horizontalement|Désactivé"</string>
+  <string name="animations_Types_Progressbar">"Retourner dans le sens des aiguilles d'une montre|Retourner dans le sens des aiguilles d'une montre|Vibrer|Agrandir|Réduire|Désactivé"</string>
   <string name="animations_Type">"Type"</string>
   <string name="animations_Speed">"Vitesse"</string>
   <string name="powerMenuMain_Progress">"Cercle de chargement"</string>
