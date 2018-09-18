@@ -440,7 +440,7 @@
   <string name="advancedPrefsDesc_ScreenRecordCountdown">"Mostrar uma contagem regressiva antes de iniciar a gravação de tela."</string>
   <string name="screenrecord_toast_start_in">"Iniciando a gravação em [TIME]..."</string>
   <string name="screenrecord_notif_binarynotFound">"Não foi possível localizar, ler ou executar o arquivo binário. \nA gravação de tela pode não ser suportada em seu dispositivo."</string>
-  <string name="advancedPrefsTitle_HideActionDescriptionText">"Esconder texto de descrição na caixa de diálogo de ação de desligamento/reinicialização"</string>
+  <string name="advancedPrefsTitle_HideActionDescriptionText">"Ocultar texto de descrição na caixa de diálogo da ação de desligar/reiniciar"</string>
   <string name="advancedPrefsDesc_HideActionDescriptionText">"Ocultar a mensagem \"Desligando...\" ou similar na caixa de diálogo da ação de desligar/reiniciar."</string>
   <string name="visibilityOrder_MissingPermissionForNotiPolicy">"Permissão da política de notificações inexistente, permita-a para usar este botão!"</string>
   <string name="powerMenu_Task_Killed">"[TARGET] interrompida!"</string>
