@@ -261,4 +261,13 @@
     <string name="xposedMain_MenuActivityNotFound">"Sembra che tu abbia rimosso il mio modulo prima di averlo disabilitato...\nAdesso il sistema non sa cosa fare qui, per favore clicca su Riavvia per riavviare il tuo dispositivo per completare la rimozione!"</string>
     <string name="xposedMain_MenuActivityNotFound_Cancel">"Annulla"</string>
     <string name="xposedMain_MenuActivityNotFound_Restart">"Riavvia"</string>
+    <string name="addShortcut_Add">"Aggiungere"</string>
+    <string name="addShortcut_AddShortcut">"Aggiungi collegamento"</string>
+    <string name="addShortcut_Next">"Prossimo"</string>
+    <string name="permissionsScreenTitle_android.permission.USE_FINGERPRINT">"Utilizza impronta digitale"</string>
+    <string name="powerMenuMain_Shortcut">"Collegamento"</string>
+    <string name="visibilityOrder_HideText">"Nascondi il testo"</string>
+    <string name="position_Horizontal">"Orizzontale:"</string>
+    <string name="position_Vertical">"Verticale:"</string>
+    <string name="visibilityOrder_AddMultiItem">"Aggiungere"</string>
 </resources>
