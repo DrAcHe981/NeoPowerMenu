@@ -105,7 +105,7 @@
     <string name="permissionsScreenDesc_android.permission.CHANGE_WIFI_STATE">"WiFi'yi açıp/kapatmak için gereklidir."</string>
     <string name="permissionsScreenTitle_android.permission.BLUETOOTH">"Bluetooth"</string>
     <string name="permissionsScreenDesc_android.permission.BLUETOOTH">"Bluetooth durumunu almak için gereklidir."</string>
-    <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Yönetici"</string>
+    <string name="permissionsScreenTitle_android.permission.BLUETOOTH_ADMIN">"Bluetooth Yöneticisi"</string>
     <string name="permissionsScreenDesc_android.permission.BLUETOOTH_ADMIN">"Herhangi bir diyalog olmadan Bluetooth'u açıp kapamak için gereklidir"</string>
     <string name="powerMenuMain_SoundMode">"Ses Modu"</string>
     <string name="powerMenuMain_SoundModeDesc">"Geçerli mod: [SOUNDMODE]"</string>
@@ -122,9 +122,9 @@
     <string name="presetsManager_CantConnecttoServer">"Sunucuya bağlanılamıyor!\nLütfen internet bağlantınızı kontrol edin veya daha sonra tekrar deneyin."</string>
     <string name="presetsManager_CantConnecttoDB">"Veritabanına bağlanılamıyor!\nLütfen daha sonra tekrar deneyin, hiçbir şey değişmezse: Lütfen bunu geliştiriciye bildirin."</string>
     <string name="permissionsScreenTitle_android.permission.INTERNET">"İnternet"</string>
-    <string name="permissionsScreenDesc_android.permission.INTERNET">"Genel sunucudan hazır ayarları indirebilmek/sunucuya yükleyebilmek için gerekli."</string>
+    <string name="permissionsScreenDesc_android.permission.INTERNET">"Genel sunucudan hazır ayarları indirebilmek/yükleyebilmek için gerekli."</string>
     <string name="login_Title">"Giriş"</string>
-    <string name="login_TitleRegister">"Kayıt"</string>
+    <string name="login_TitleRegister">"Kayıt ol"</string>
     <string name="login_Info">"Kayıtlı kullanıcıların kullanıcı adları kimsenin adına yüklenememesi için korunmaktadır, buradan giriş yapabilir veya yeni bir hesap oluşturabilirsiniz.\nİstemiyorsanız, bu gerekli değildir!\nHiçbir özel veriyi asla paylaşmayacağım!"</string>
     <string name="login_UsernameEmail">"Kullanıcı adı veya E-posta:"</string>
     <string name="login_Username">"Kullanıcı adı:"</string>
