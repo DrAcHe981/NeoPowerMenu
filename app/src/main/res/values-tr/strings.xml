@@ -218,7 +218,7 @@
     <string name="preferences_AdvancedDesc">" Gecikmeler veya hız gibi gelişmiş ayarları değiştirin."</string>
     <string name="preferences_PermissionsTitle">"İzinler "</string>
     <string name="preferences_PermissionsDesc">" İstenen izinleri gösterin ve ne için kullanıldıklarını görün.\nİlk başlatıldığında eklenmeyen ek izinler verin (Android 6.0+)."</string>
-    <string name="preferences_HideLauncherIconTitle">"Başlatıcıdan uygulamayı gizleyin"</string>
+    <string name="preferences_HideLauncherIconTitle">"Başlatıcıdan uygulamayı gizle"</string>
     <string name="preferences_HideLauncherIconDesc">"Başlatıcıdan uygulama simgesini gizler; simgenin gizlenmesi yeniden başlatana kadar sürebilir.\nBu ayarlar ekranına daha sonra, yalnızca Xposed Installer'dan erişilebilir."</string>
     <string name="preferences_DeepXposedLoggingTitle">"Derin Xposed günlüğü"</string>
     <string name="preferences_DeepXposedLoggingDesc">"Değişiklikleri görmek için, yeniden başlatmayı etkinleştirdikten sonra gelişmiş Xposed günlüğünü etkinleştirin."</string>
